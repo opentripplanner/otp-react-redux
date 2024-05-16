@@ -8,16 +8,12 @@ import { ComponentContext } from '../../util/contexts'
 import { getFormattedMode } from '../../util/i18n'
 import { getModeFromRoute } from '../../util/viewer'
 import { Icon } from '../util/styledIcon'
-import { SetViewedRouteHandler, ViewedRouteObject } from '../util/types'
 import { TransitOperatorConfig } from '../../util/config-types'
+import { ViewedRouteObject } from '../util/types'
 import Link from '../util/link'
 import OperatorLogo from '../util/operator-logo'
 
 import RouteName from './route-name'
-
-interface ButtonProps {
-  display?: boolean
-}
 
 interface Props {
   findRouteIfNeeded: ({ routeId }: { routeId: string }) => void
@@ -26,7 +22,6 @@ interface Props {
   isActive?: boolean
   operator: TransitOperatorConfig
   route?: ViewedRouteObject
-  setViewedRoute: SetViewedRouteHandler
 }
 
 export const StyledRouteRow = styled.li`
@@ -76,23 +71,25 @@ const RouteDetailsContainer = styled.div`
   overflow: hidden;
 `
 
-const PatternButton = styled.button<ButtonProps>`
+const PatternViewerLink = styled(Link)`
   background: transparent;
   border: none;
   border-radius: 50%;
   color: ${blue[900]};
   height: 40px;
+  line-height: 40px;
   margin-right: 8px;
   position: absolute;
   right: 5px;
+  text-align: center;
   transition: all ease-out 0.1s;
-  z-index: ${(props) => (props.display ? 2 : -2)};
   width: 40px;
+  z-index: -2;
 
   svg {
     height: 22px !important;
     margin-top: -3px;
-    opacity: ${(props) => (props.display ? '80%' : 0)};
+    opacity: 0;
     width: 22px !important;
   }
 
@@ -104,6 +101,14 @@ const PatternButton = styled.button<ButtonProps>`
   &:hover {
     background: #fff;
     transition: all ease-out 0.1s;
+  }
+
+  ${RouteRowLink}.active + & {
+    z-index: 2;
+
+    svg {
+      opacity: 80%;
+    }
   }
 `
 
@@ -145,22 +150,16 @@ export class RouteRow extends PureComponent<Props> {
     }
   }
 
-  _patternButtonClicked = (): void => {
-    const { route, setViewedRoute } = this.props
-    if (route) {
-      const { id, patterns } = route
-      const firstPattern = patterns && Object.values(patterns)?.[0]?.id
-      setViewedRoute({ patternId: firstPattern, routeId: id })
-    }
-  }
-
   render(): JSX.Element | null {
     const { intl, isActive, operator, route } = this.props
     const { ModeIcon, RouteRenderer } = this.context
 
     if (!route) return null
 
-    const patternViewerButtonText = intl.formatMessage({
+    const { patterns } = route
+    const firstPattern = patterns && Object.values(patterns)?.[0]?.id
+
+    const patternViewerLinkText = intl.formatMessage({
       description: 'identifies the purpose of the pattern viewer button',
       id: 'components.RouteViewer.openPatternViewer'
     })
@@ -199,19 +198,18 @@ export class RouteRow extends PureComponent<Props> {
             <RouteName route={route} RouteRenderer={RouteRenderer} />
           </RouteDetailsContainer>
         </RouteRowLink>
-        <PatternButton
-          aria-label={patternViewerButtonText}
-          display={isActive}
+        <PatternViewerLink
+          aria-label={patternViewerLinkText}
           id={`open-route-button-${route.shortName || route.longName}-${
             operator.name || '' // don't print 'undefined' if there is no operator.
           }`}
-          onClick={this._patternButtonClicked}
-          // Cannot keyboard navigate to the button unless it is visible
+          // Cannot keyboard navigate to the link unless it is visible
           tabIndex={isActive ? 0 : -1}
-          title={patternViewerButtonText}
+          title={patternViewerLinkText}
+          to={`/route/${route.id}/pattern/${firstPattern}`}
         >
           <Icon Icon={ArrowRight} />
-        </PatternButton>
+        </PatternViewerLink>
       </StyledRouteRow>
     )
   }

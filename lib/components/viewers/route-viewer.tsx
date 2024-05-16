@@ -17,12 +17,8 @@ import {
 } from '../../util/state'
 import { getFormattedMode } from '../../util/i18n'
 import { getRouteOrPatternViewerTitle } from '../../util/viewer'
-import {
-  SetViewedRouteHandler,
-  ViewedRouteObject,
-  ViewedRouteState
-} from '../util/types'
 import { StyledIconWrapper } from '../util/styledIcon'
+import { ViewedRouteObject, ViewedRouteState } from '../util/types'
 import PageTitle from '../util/page-title'
 
 import { RouteRow } from './route-row'
@@ -47,7 +43,6 @@ interface Props {
   routes: Route[]
   setMainPanelContent: (panelId: number | null) => void
   setRouteViewerFilter: (filter: FilterProps) => void
-  setViewedRoute: SetViewedRouteHandler
   transitOperators: TransitOperator[]
   viewedRoute?: ViewedRouteState
   viewedRouteObject?: ViewedRouteObject
@@ -125,7 +120,6 @@ class RouteViewer extends Component<Props, State> {
       intl,
       modes,
       routes: sortedRoutes,
-      setViewedRoute,
       transitOperators,
       viewedRoute,
       viewedRouteObject
@@ -254,7 +248,6 @@ class RouteViewer extends Component<Props, State> {
                 key={route.id}
                 operator={operator}
                 route={route}
-                setViewedRoute={setViewedRoute}
               />
             )
           })}
@@ -289,8 +282,7 @@ const mapDispatchToProps = {
   findRouteIfNeeded: apiActions.findRouteIfNeeded,
   findRoutesIfNeeded: apiActions.findRoutesIfNeeded,
   setMainPanelContent: uiActions.setMainPanelContent,
-  setRouteViewerFilter: uiActions.setRouteViewerFilter,
-  setViewedRoute: uiActions.setViewedRoute
+  setRouteViewerFilter: uiActions.setRouteViewerFilter
 }
 
 export default connect(
