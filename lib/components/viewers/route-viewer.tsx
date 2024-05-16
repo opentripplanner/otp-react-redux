@@ -25,7 +25,7 @@ import {
 import { StyledIconWrapper } from '../util/styledIcon'
 import PageTitle from '../util/page-title'
 
-import { RouteRow } from './RouteRow'
+import { RouteRow } from './route-row'
 import VehiclePositionRetriever from './vehicle-position-retriever'
 
 interface FilterProps {
