@@ -1,5 +1,4 @@
 import { ArrowRight } from '@styled-icons/fa-solid'
-import { Button } from 'react-bootstrap'
 import { IntlShape } from 'react-intl'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
@@ -12,6 +11,7 @@ import { Icon } from '../util/styledIcon'
 import { SetViewedRouteHandler, ViewedRouteObject } from '../util/types'
 import { TransitOperatorConfig } from '../../util/config-types'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
+import Link from '../util/link'
 import OperatorLogo from '../util/operator-logo'
 
 import RouteName from './route-name'
@@ -43,7 +43,7 @@ export const StyledRouteRow = styled.li`
   position: relative;
 `
 // Route Row Button sits invisible on top of the route name and info.
-export const RouteRowButton = styled(Button)<ButtonProps>`
+export const RouteRowLink = styled(Link)<ButtonProps>`
   align-items: center;
   display: flex;
   min-height: 50px;
@@ -154,20 +154,6 @@ export class RouteRow extends PureComponent<Props> {
     }
   }
 
-  _onClick = (): void => {
-    const { isActive, route, setViewedRoute } = this.props
-    if (isActive) {
-      // Deselect current route if active.
-      setViewedRoute({ patternId: null, routeId: null })
-    } else {
-      const id = route?.id
-      if (id) {
-        // Otherwise, set active and fetch route patterns.
-        setViewedRoute({ routeId: route?.id })
-      }
-    }
-  }
-
   _patternButtonClicked = (): void => {
     const { route, setViewedRoute } = this.props
     if (route) {
@@ -194,14 +180,13 @@ export class RouteRow extends PureComponent<Props> {
 
     return (
       <StyledRouteRow ref={this.activeRef}>
-        <RouteRowButton
-          aria-pressed={isActive || false}
+        <RouteRowLink
           className="clear-button-formatting"
-          onClick={this._onClick}
           onFocus={this._onFocusOrEnter}
           onMouseEnter={this._onFocusOrEnter}
           onTouchStart={this._onFocusOrEnter}
           patternActive={isActive}
+          to={`/route/${route.id}`}
         >
           <RouteDetailsContainer>
             <OperatorLogo operator={operator} />
@@ -227,7 +212,7 @@ export class RouteRow extends PureComponent<Props> {
             <RouteName route={route} RouteRenderer={RouteRenderer} />
           </RouteDetailsContainer>
           <InvisibleA11yLabel>({routeMapToggleText})</InvisibleA11yLabel>
-        </RouteRowButton>
+        </RouteRowLink>
         <PatternButton
           aria-label={patternViewerButtonText}
           display={isActive}
