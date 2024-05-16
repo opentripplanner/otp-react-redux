@@ -33,6 +33,7 @@ import FormattedDayOfWeekCompact from '../../util/formatted-day-of-week-compact'
 import FormattedValidationError from '../../util/formatted-validation-error'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
+import { BORDER_COLOR } from './trip-summary-pane'
 import TripStatus from './trip-status'
 import TripSummary from './trip-duration-summary'
 
@@ -66,7 +67,7 @@ const AvailableDays = styled(FieldSet)`
     }
   }
   & > span {
-    border: 1px solid #ccc;
+    border: 1px solid ${BORDER_COLOR};
     border-left: none;
     box-sizing: border-box;
     display: inline-block;
@@ -77,7 +78,7 @@ const AvailableDays = styled(FieldSet)`
     text-align: center;
   }
   & > span:first-of-type {
-    border-left: 1px solid #ccc;
+    border-left: 1px solid ${BORDER_COLOR};
   }
 
   .glyphicon {

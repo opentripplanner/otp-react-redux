@@ -24,6 +24,13 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
   >
     <Connect(NearbyView)>
       <NearbyView
+        currentPosition={
+          Object {
+            "coords": null,
+            "error": null,
+            "fetching": false,
+          }
+        }
         fetchNearby={[Function]}
         homeTimezone="America/Los_Angeles"
         nearby={Array []}
@@ -132,6 +139,13 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
   >
     <Connect(NearbyView)>
       <NearbyView
+        currentPosition={
+          Object {
+            "coords": null,
+            "error": null,
+            "fetching": false,
+          }
+        }
         fetchNearby={[Function]}
         homeTimezone="America/Los_Angeles"
         nearby={
@@ -4207,7 +4221,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh krQqGl"
+                            className="sc-ehsPLh kxBipD"
                           >
                             <styled.div>
                               <div
@@ -4296,7 +4310,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-dwqccx jgqhIg"
+                                      className="sc-dwqccx bGdJor"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -4638,7 +4652,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh krQqGl"
+                            className="sc-ehsPLh kxBipD"
                           >
                             <styled.div>
                               <div
@@ -4727,7 +4741,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-dwqccx jgqhIg"
+                                      className="sc-dwqccx bGdJor"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -5069,7 +5083,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh krQqGl"
+                            className="sc-ehsPLh kxBipD"
                           >
                             <styled.div>
                               <div
@@ -5158,7 +5172,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-dwqccx jgqhIg"
+                                      className="sc-dwqccx bGdJor"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -7690,7 +7704,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh krQqGl"
+                            className="sc-ehsPLh kxBipD"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -10016,7 +10030,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     >
                                       <styled.p>
                                         <p
-                                          className="sc-dwqccx jgqhIg"
+                                          className="sc-dwqccx bGdJor"
                                         >
                                           <FormattedMessage
                                             id="components.NearbyView.distanceAway"
@@ -15313,7 +15327,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh krQqGl"
+                            className="sc-ehsPLh kxBipD"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -16835,7 +16849,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     >
                                       <styled.p>
                                         <p
-                                          className="sc-dwqccx jgqhIg"
+                                          className="sc-dwqccx bGdJor"
                                         >
                                           <FormattedMessage
                                             id="components.NearbyView.distanceAway"
@@ -19897,7 +19911,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh krQqGl"
+                            className="sc-ehsPLh kxBipD"
                           >
                             <styled.div>
                               <div
@@ -19986,7 +20000,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-dwqccx jgqhIg"
+                                      className="sc-dwqccx bGdJor"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -20328,7 +20342,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh krQqGl"
+                            className="sc-ehsPLh kxBipD"
                           >
                             <styled.div>
                               <div
@@ -20417,7 +20431,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-dwqccx jgqhIg"
+                                      className="sc-dwqccx bGdJor"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -20759,7 +20773,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh krQqGl"
+                            className="sc-ehsPLh kxBipD"
                           >
                             <styled.div>
                               <div
@@ -20848,7 +20862,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-dwqccx jgqhIg"
+                                      className="sc-dwqccx bGdJor"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -23688,7 +23702,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh krQqGl"
+                            className="sc-ehsPLh kxBipD"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -26322,7 +26336,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     >
                                       <styled.p>
                                         <p
-                                          className="sc-dwqccx jgqhIg"
+                                          className="sc-dwqccx bGdJor"
                                         >
                                           <FormattedMessage
                                             id="components.NearbyView.distanceAway"
@@ -30773,7 +30787,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh krQqGl"
+                            className="sc-ehsPLh kxBipD"
                           >
                             <styled.div>
                               <div
@@ -30862,7 +30876,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-dwqccx jgqhIg"
+                                      className="sc-dwqccx bGdJor"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -31204,7 +31218,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh krQqGl"
+                            className="sc-ehsPLh kxBipD"
                           >
                             <styled.div>
                               <div
@@ -31293,7 +31307,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-dwqccx jgqhIg"
+                                      className="sc-dwqccx bGdJor"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -31635,7 +31649,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh krQqGl"
+                            className="sc-ehsPLh kxBipD"
                           >
                             <styled.div>
                               <div
@@ -31724,7 +31738,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-dwqccx jgqhIg"
+                                      className="sc-dwqccx bGdJor"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -32066,7 +32080,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh krQqGl"
+                            className="sc-ehsPLh kxBipD"
                           >
                             <styled.div>
                               <div
@@ -32155,7 +32169,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-dwqccx jgqhIg"
+                                      className="sc-dwqccx bGdJor"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -32497,7 +32511,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh krQqGl"
+                            className="sc-ehsPLh kxBipD"
                           >
                             <styled.div>
                               <div
@@ -32586,7 +32600,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-dwqccx jgqhIg"
+                                      className="sc-dwqccx bGdJor"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -34314,7 +34328,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh krQqGl"
+                            className="sc-ehsPLh kxBipD"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -35836,7 +35850,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     >
                                       <styled.p>
                                         <p
-                                          className="sc-dwqccx jgqhIg"
+                                          className="sc-dwqccx bGdJor"
                                         >
                                           <FormattedMessage
                                             id="components.NearbyView.distanceAway"
@@ -38903,7 +38917,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh krQqGl"
+                            className="sc-ehsPLh kxBipD"
                           >
                             <styled.div>
                               <div
@@ -38992,7 +39006,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-dwqccx jgqhIg"
+                                      className="sc-dwqccx bGdJor"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -41420,7 +41434,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh krQqGl"
+                            className="sc-ehsPLh kxBipD"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -43642,7 +43656,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     >
                                       <styled.p>
                                         <p
-                                          className="sc-dwqccx jgqhIg"
+                                          className="sc-dwqccx bGdJor"
                                         >
                                           <FormattedMessage
                                             id="components.NearbyView.distanceAway"
@@ -48550,7 +48564,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh krQqGl"
+                            className="sc-ehsPLh kxBipD"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -51184,7 +51198,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     >
                                       <styled.p>
                                         <p
-                                          className="sc-dwqccx jgqhIg"
+                                          className="sc-dwqccx bGdJor"
                                         >
                                           <FormattedMessage
                                             id="components.NearbyView.distanceAway"
@@ -57348,7 +57362,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh krQqGl"
+                            className="sc-ehsPLh kxBipD"
                           >
                             <styled.div>
                               <div
@@ -57437,7 +57451,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 >
                                   <styled.p>
                                     <p
-                                      className="sc-dwqccx jgqhIg"
+                                      className="sc-dwqccx bGdJor"
                                     >
                                       <FormattedMessage
                                         id="components.NearbyView.distanceAway"
@@ -59969,7 +59983,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh krQqGl"
+                            className="sc-ehsPLh kxBipD"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -62295,7 +62309,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     >
                                       <styled.p>
                                         <p
-                                          className="sc-dwqccx jgqhIg"
+                                          className="sc-dwqccx bGdJor"
                                         >
                                           <FormattedMessage
                                             id="components.NearbyView.distanceAway"

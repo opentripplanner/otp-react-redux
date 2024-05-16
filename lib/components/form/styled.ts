@@ -1,3 +1,4 @@
+import { blue, grey } from '../util/colors'
 import {
   DateTimeSelector,
   SettingsSelectorPanel,
@@ -34,9 +35,9 @@ const commonButtonCss = css`
 
 export const commonInputCss = css`
   background: none;
-  border: 1px solid #ccc;
+  border: 1px solid ${blue[200]};
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  color: #555;
+  color: ${grey[800]};
   font-family: inherit;
   font-weight: inherit;
   padding: 6px 12px;
@@ -63,7 +64,7 @@ export const StyledSettingsSelectorPanel = styled(SettingsSelectorPanel)`
   ${modeButtonButtonCss}
 
   ${TripFormClasses.SettingLabel} {
-    color: #686868;
+    color: ${grey[700]};
     font-size: 14px;
     font-weight: inherit;
     letter-spacing: 1px;
@@ -71,7 +72,7 @@ export const StyledSettingsSelectorPanel = styled(SettingsSelectorPanel)`
     text-transform: uppercase;
   }
   ${TripFormClasses.SettingsHeader} {
-    color: #333333;
+    color: ${grey[900]};
     font-size: 18px;
     margin: 16px 0px;
   }
@@ -89,7 +90,7 @@ export const StyledSettingsSelectorPanel = styled(SettingsSelectorPanel)`
       margin-bottom: 20px;
 
       &:focus {
-        border-color: #66afe9;
+        border-color: ${blue[400]};
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
           0 0 8px rgba(102, 175, 233, 0.6);
         outline: 0;

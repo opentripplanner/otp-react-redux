@@ -4,7 +4,7 @@ import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import React from 'react'
 
 import { ALL_DAYS } from '../../../util/monitored-trip'
-import { getBaseColor } from '../../util/base-color'
+import { getBaseColor } from '../../util/colors'
 import FormattedDayOfWeek from '../../util/formatted-day-of-week'
 import FormattedDayOfWeekCompact from '../../util/formatted-day-of-week-compact'
 

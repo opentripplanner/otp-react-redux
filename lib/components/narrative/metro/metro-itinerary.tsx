@@ -14,6 +14,7 @@ import styled, { keyframes } from 'styled-components'
 import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
 import { ComponentContext } from '../../../util/contexts'
+import { DARK_TEXT_GREY } from '../../util/colors'
 import { FlexIndicator } from '../default/flex-indicator'
 import { getActiveSearch } from '../../../util/state'
 import { getFare } from '../../../util/itinerary'
@@ -38,8 +39,8 @@ import RouteBlock from './route-block'
 const ItineraryWrapper = styled.div.attrs((props) => {
   return { 'aria-label': props['aria-label'] }
 })`
-  border-bottom: 0.1ch solid #33333333;
-  color: #333;
+  border-bottom: 0.1ch solid ${DARK_TEXT_GREY}33;
+  color: ${DARK_TEXT_GREY};
   display: grid; /* We don't use grid here, but "block" and "inline" cause problems with Firefox */
   padding: 0;
 `

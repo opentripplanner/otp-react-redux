@@ -5,15 +5,16 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { AppReduxState } from '../../util/state-types'
+import { DARK_TEXT_GREY } from '../util/colors'
 
 type Props = {
   location: Location | null
 }
 
 const NearbyDot = styled.div<{ invisible: boolean }>`
-  background: var(--main-base-color, #333);
+  background: var(--main-base-color, ${DARK_TEXT_GREY});
   border-radius: 30px;
-  box-shadow: 0px 0px 10px 10px var(--main-base-color, #333);
+  box-shadow: 0px 0px 10px 10px var(--main-base-color, ${DARK_TEXT_GREY});
   cursor: pointer;
   display: block;
   height: 50px;

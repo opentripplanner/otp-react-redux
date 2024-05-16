@@ -1,3 +1,4 @@
+import { DARK_TEXT_GREY, grey } from '../../util/colors'
 import styled from 'styled-components'
 
 export const FloatingLoadingIndicator = styled.div`
@@ -22,7 +23,7 @@ export const NearbySidebarContainer = styled.ol`
 export const Card = styled.div`
   background: white;
   border-radius: 10px;
-  color: #222;
+  color: ${DARK_TEXT_GREY};
   display: flex;
   flex-direction: column;
 
@@ -57,7 +58,7 @@ export const CardTitle = styled.p`
 `
 
 export const CardSubheader = styled.p`
-  color: #444;
+  color: ${grey[900]};
   font-size: 16px;
   font-weight: 400;
   grid-column: 1;
@@ -65,7 +66,7 @@ export const CardSubheader = styled.p`
 `
 
 export const CardAside = styled.p`
-  color: #444444ba;
+  color: ${grey[900]}ba;
   grid-column: -1;
   grid-row: 1;
   text-align: right;

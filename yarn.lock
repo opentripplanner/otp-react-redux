@@ -2383,7 +2383,7 @@
   dependencies:
     "@octokit/openapi-types" "^10.0.0"
 
-"@opentripplanner/base-map@^3.0.16", "@opentripplanner/base-map@^3.0.17":
+"@opentripplanner/base-map@^3.0.16", "@opentripplanner/base-map@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.1.0.tgz#3181d4ec17029db8a40ca1342e20d1a0d449931f"
   integrity sha512-feOSOWmiBFvIFWyG+OllCMxOcTmRKzxIoKKeoEgUFjNdVnrkZM6HH5r0m5IaQA9wO7T0N0K64hn/zdRQZBv0rQ==
@@ -2392,10 +2392,15 @@
     maplibre-gl "^2.1.9"
     react-map-gl "^7.0.15"
 
+"@opentripplanner/building-blocks@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/building-blocks/-/building-blocks-1.0.3.tgz#74de32daba0d7fae7d10d5738db6d2f2824da3dd"
+  integrity sha512-065pZZTzR+qisgbvJd9swhitMMin1/ooMwuzqqRknsKYK+wOGge3Y3sbgQZATyjR/oH43uF0P2ZhGcbgqgM+YQ==
+
 "@opentripplanner/core-utils@^11.2.3":
-  version "11.3.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.3.0.tgz#5d9764bf2684d78e24911d20435b6488ab7a9632"
-  integrity sha512-qAx/z3GK1ccGYDlSHUJ5zPbD8FUCG+rDHwMSbtKgj1ciBxVL3KpcnfBGQAzcTysBRlw1lDmeondAGd5fsykuBg==
+  version "11.3.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.3.1.tgz#e42d95aa3d6b6cd167e8c63222c726d2ae6ebdd6"
+  integrity sha512-yUE5jmhO5UlA40Ik7jwSoxsqkiAdG40h+/BwmjfLaRjelD6weuzqQkEz7qSCbLo9M3ylchZmcwtaAFZX8xVh/g==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.0"
