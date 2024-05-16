@@ -1,7 +1,6 @@
-// TODO: Typescript, which doesn't make sense to do in this file until common types are established
-/* eslint-disable react/prop-types */
 import { ArrowRight } from '@styled-icons/fa-solid'
 import { Button } from 'react-bootstrap'
+import { IntlShape } from 'react-intl'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 
@@ -10,10 +9,28 @@ import { ComponentContext } from '../../util/contexts'
 import { getFormattedMode } from '../../util/i18n'
 import { getModeFromRoute } from '../../util/viewer'
 import { Icon } from '../util/styledIcon'
+import { SetViewedRouteHandler, ViewedRouteObject } from '../util/types'
+import { TransitOperatorConfig } from '../../util/config-types'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import OperatorLogo from '../util/operator-logo'
 
 import RouteName from './route-name'
+
+interface ButtonProps {
+  display?: boolean
+  patternActive?: boolean
+}
+
+interface Props {
+  findRouteIfNeeded: ({ routeId }: { routeId: string }) => void
+  initialRender?: boolean
+  intl: IntlShape
+  isActive?: boolean
+  operator: TransitOperatorConfig
+  patternActive?: boolean
+  route?: ViewedRouteObject
+  setViewedRoute: SetViewedRouteHandler
+}
 
 export const StyledRouteRow = styled.li`
   align-items: center;
@@ -26,7 +43,7 @@ export const StyledRouteRow = styled.li`
   position: relative;
 `
 // Route Row Button sits invisible on top of the route name and info.
-export const RouteRowButton = styled(Button)`
+export const RouteRowButton = styled(Button)<ButtonProps>`
   align-items: center;
   display: flex;
   min-height: 50px;
@@ -68,7 +85,7 @@ const RouteDetailsContainer = styled.div`
   overflow: hidden;
 `
 
-const PatternButton = styled.button`
+const PatternButton = styled.button<ButtonProps>`
   background: transparent;
   border: none;
   border-radius: 50%;
@@ -99,60 +116,72 @@ const PatternButton = styled.button`
   }
 `
 
-export class RouteRow extends PureComponent {
+export class RouteRow extends PureComponent<Props> {
+  activeRef: React.RefObject<HTMLLIElement>
+
   static contextType = ComponentContext
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props)
     // Create a ref used to scroll to
-    this.activeRef = React.createRef()
+    this.activeRef = React.createRef<HTMLLIElement>()
   }
 
-  componentDidMount = () => {
+  componentDidMount = (): void => {
     const { isActive, route } = this.props
     if (isActive && route?.id) {
       // This is fired when coming back from the route details view
-      this.activeRef.current.scrollIntoView()
+      this.activeRef.current?.scrollIntoView()
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(): void {
     /*
        If the initial route row list is being rendered and there is an active
        route, scroll to it. The initialRender prop prohibits the row being scrolled to
        if the user has clicked on a route
     */
     if (this.props.isActive && this.props.initialRender) {
-      this.activeRef.current.scrollIntoView()
+      this.activeRef.current?.scrollIntoView()
     }
   }
 
-  _onFocusOrEnter = () => {
+  _onFocusOrEnter = (): void => {
     const { findRouteIfNeeded, route } = this.props
-    findRouteIfNeeded({ routeId: route.id })
+    const id = route?.id
+    if (id) {
+      findRouteIfNeeded({ routeId: id })
+    }
   }
 
-  _onClick = () => {
+  _onClick = (): void => {
     const { isActive, route, setViewedRoute } = this.props
     if (isActive) {
       // Deselect current route if active.
       setViewedRoute({ patternId: null, routeId: null })
     } else {
-      // Otherwise, set active and fetch route patterns.
-      setViewedRoute({ routeId: route.id })
+      const id = route?.id
+      if (id) {
+        // Otherwise, set active and fetch route patterns.
+        setViewedRoute({ routeId: route?.id })
+      }
     }
   }
 
-  _patternButtonClicked = () => {
+  _patternButtonClicked = (): void => {
     const { route, setViewedRoute } = this.props
-    const { id, patterns } = route
-    const firstPattern = route && patterns && Object.values(patterns)?.[0]?.id
-    setViewedRoute({ patternId: firstPattern, routeId: id })
+    if (route) {
+      const { id, patterns } = route
+      const firstPattern = patterns && Object.values(patterns)?.[0]?.id
+      setViewedRoute({ patternId: firstPattern, routeId: id })
+    }
   }
 
-  render() {
+  render(): JSX.Element | null {
     const { intl, isActive, operator, route } = this.props
     const { ModeIcon, RouteRenderer } = this.context
+
+    if (!route) return null
 
     const patternViewerButtonText = intl.formatMessage({
       description: 'identifies the purpose of the pattern viewer button',
@@ -185,9 +214,9 @@ export class RouteRow extends PureComponent {
                   )}
                   height={28}
                   leg={{
-                    routeId: route?.id,
-                    routeLongName: route?.longName,
-                    routeShortName: route?.shortName
+                    routeId: route.id,
+                    routeLongName: route.longName,
+                    routeShortName: route.shortName
                   }}
                   mode={getModeFromRoute(route)}
                   role="img"
