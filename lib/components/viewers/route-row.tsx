@@ -45,6 +45,10 @@ export const RouteRowLink = styled(Link)`
   transition: all ease-out 0.1s;
   width: 100%;
 
+  &:hover {
+    color: inherit;
+  }
+
   &.active {
     background-color: ${blue[50]};
     border-radius: 4px;
