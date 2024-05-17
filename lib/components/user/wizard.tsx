@@ -9,7 +9,7 @@ import toast from 'react-hot-toast'
 
 import * as uiActions from '../../actions/ui'
 import { AppReduxState } from '../../util/state-types'
-import { GRAY_ON_WHITE } from '../util/colors'
+import { GREY_ON_WHITE } from '../util/colors'
 import PageTitle from '../util/page-title'
 
 import { EditedUser } from './types'
@@ -37,7 +37,7 @@ interface Props extends OwnProps, WizardProps {
 }
 
 const StepNumber = styled.p`
-  color: ${GRAY_ON_WHITE};
+  color: ${GREY_ON_WHITE};
   font-size: 40%;
   margin: -1em 0 0 0;
 `

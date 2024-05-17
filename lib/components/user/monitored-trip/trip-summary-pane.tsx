@@ -5,12 +5,15 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { dayFieldsToArray } from '../../../util/monitored-trip'
+import { grey } from '../../util/colors'
 import { InlineLoading } from '../../narrative/loading'
 import { MonitoredTripProps } from '../types'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 import MonitoredDays from './trip-monitored-days'
 import TripSummary from './trip-duration-summary'
+
+export const BORDER_COLOR = grey[100]
 
 /**
  * Displays the summary information of a monitored trip.
@@ -29,7 +32,7 @@ const SavedTripBody = styled.div`
 
 const LocationDetails = styled.div`
   align-items: start;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid ${BORDER_COLOR};
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -40,9 +43,9 @@ const LocationDetails = styled.div`
 
   @media (max-width: 768px) {
     align-items: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid ${BORDER_COLOR};
     border-right: 0;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid ${BORDER_COLOR};
     padding: 30px 20px 30px 20px;
     width: 100%;
   }
