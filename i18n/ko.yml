@@ -428,7 +428,6 @@ components:
     shortTitle: 경로 보기
     stopsInDirectionOfTravel: "이동편 이 방향의 정류장:"
     title: 경로 뷰어
-    toggleRouteOnMap: 지도에서 경로 토글
   SaveTripButton:
     cantSaveText: 저장할 수 없음
     cantSaveTooltip: 대중교통을 포함하고 렌트 또는 차량 호출을 포함하지 않는 트립 일정만 모니터링할 수 있습니다.
