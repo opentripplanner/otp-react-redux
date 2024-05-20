@@ -1,3 +1,4 @@
+import { grey } from '../util/colors'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -25,7 +26,7 @@ export const NavbarButton = styled.button`
   &:hover,
   &[aria-expanded='true'] {
     background: rgba(0, 0, 0, 0.05);
-    color: #ddd;
+    color: ${grey[50]};
     cursor: pointer;
   }
   &.active {

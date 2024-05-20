@@ -6,10 +6,7 @@ import Wizard, { WizardProps } from '../wizard'
 /**
  * This component is the mobility profile wizard.
  */
-const MobilityWizard = ({
-  activePaneId,
-  formikProps
-}: WizardProps): JSX.Element => {
+const MobilityWizard = ({ formikProps }: WizardProps): JSX.Element => {
   const intl = useIntl()
 
   const title = intl.formatMessage({
@@ -18,7 +15,6 @@ const MobilityWizard = ({
 
   return (
     <Wizard
-      activePaneId={activePaneId}
       formikProps={formikProps}
       pages={['mobilityDevices', 'mobilityLimitations']}
       returnTo="/account/settings"

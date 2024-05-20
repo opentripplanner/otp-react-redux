@@ -7,6 +7,7 @@ import React, { useCallback, useEffect } from 'react'
 import * as uiActions from '../../actions/ui'
 import * as userActions from '../../actions/user'
 import { CREATE_ACCOUNT_TERMS_PATH } from '../../util/constants'
+import PageTitle from '../util/page-title'
 
 import DeleteUser from './delete-user'
 
@@ -24,13 +25,14 @@ interface Props {
  */
 const VerifyEmailPane = ({ resendVerificationEmail, routeTo }: Props) => {
   const intl = useIntl()
-  const emailVerified = useAuth0().user?.email_verified
-  const logout = useAuth0().logout
+  const auth0 = useAuth0()
+  const emailVerified = auth0.user?.email_verified
+  const logout = auth0.logout
 
   const handleEmailVerified = useCallback(() => {
     logout()
     window.location.reload()
-  }, [])
+  }, [logout])
 
   const handleResend = useCallback(() => {
     resendVerificationEmail(intl)
@@ -45,8 +47,14 @@ const VerifyEmailPane = ({ resendVerificationEmail, routeTo }: Props) => {
     }
   }, [emailVerified, routeTo])
 
+  const verifyEmail = intl.formatMessage({
+    id: 'components.NewAccountWizard.verify'
+  })
+
   return (
-    <div>
+    <>
+      <PageTitle title={verifyEmail} />
+      <h1>{verifyEmail}</h1>
       <p>
         <FormattedMessage id="components.VerifyEmailPane.instructions1" />
       </p>
@@ -73,7 +81,7 @@ const VerifyEmailPane = ({ resendVerificationEmail, routeTo }: Props) => {
       <div style={{ marginTop: '3em' }}>
         <DeleteUser size="large" />
       </div>
-    </div>
+    </>
   )
 }
 

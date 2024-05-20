@@ -91,8 +91,6 @@ export interface Auth0Config {
 /** Local persistence setting */
 export interface LocalPersistenceConfig {
   strategy: 'localStorage'
-  // eslint-disable-next-line camelcase
-  terms_of_storage?: boolean
 }
 
 /** OTP Middleware (Personas) settings */
@@ -107,14 +105,27 @@ export interface MiddlewarePersistenceConfig {
   strategy: 'otp_middleware'
 }
 
+/**
+ * Enum to describe the layout state of checkboxes.
+ */
+export enum CheckboxDefaultState {
+  /** Checkbox is hidden and initially checked */
+  HIDDEN_CHECKED = 'hidden-checked',
+  /** Checkbox is hidden and initially unchecked */
+  HIDDEN_UNCHECKED = 'hidden-unchecked',
+  /** Checkbox is visible and initially checked */
+  VISIBLE_CHECKED = 'visible-checked',
+  /** Checkbox is visible and initially unchecked */
+  VISIBLE_UNCHECKED = 'visible-unchecked'
+}
+
 /** General persistence settings */
 export type PersistenceConfig = (
   | LocalPersistenceConfig
   | MiddlewarePersistenceConfig
 ) & {
   enabled?: boolean
-  // eslint-disable-next-line camelcase
-  terms_of_storage?: boolean
+  termsOfStorageDefault?: CheckboxDefaultState
 }
 
 /** Popup target settings */
@@ -265,6 +276,7 @@ export interface ItineraryConfig {
   onlyShowCountdownForRealtime?: boolean
   previewOverlay?: boolean
   renderRouteNamesInBlocks?: boolean
+  showAllWalkLegs?: boolean
   showFirstResultByDefault?: boolean
   showHeaderText?: boolean
   showLegDurations?: boolean
