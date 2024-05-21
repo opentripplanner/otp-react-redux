@@ -4,6 +4,7 @@ import { Itinerary, Leg } from '@opentripplanner/types'
 import React from 'react'
 import styled from 'styled-components'
 
+import { AppReduxState } from '../../../util/state-types'
 import { getFormattedMode } from '../../../util/i18n'
 import FormattedDuration, {
   formatDuration
@@ -12,7 +13,7 @@ import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 import {
   getItineraryRoutes,
-  removeInsignifigantWalkLegs
+  removeInsignificantWalkLegs
 } from './attribute-utils'
 import RouteBlock from './route-block'
 
@@ -65,6 +66,7 @@ type Props = {
   /** This is true when there is only one itinerary being shown and the itinerary-body is visible */
   expanded: boolean
   itinerary: Itinerary
+  showAllWalkLegs?: boolean
   showLegDurations?: boolean
 }
 
@@ -73,10 +75,13 @@ const MetroItineraryRoutes = ({
   expanded,
   itinerary,
   LegIcon,
+  showAllWalkLegs,
   showLegDurations
 }: Props): JSX.Element => {
   const intl = useIntl()
-  const routeLegs = itinerary.legs.filter(removeInsignifigantWalkLegs)
+  const routeLegs = showAllWalkLegs
+    ? itinerary.legs
+    : itinerary.legs.filter(removeInsignificantWalkLegs)
   const transitRoutes = getItineraryRoutes(itinerary, intl)
 
   return (
@@ -129,9 +134,9 @@ const MetroItineraryRoutes = ({
   )
 }
 
-// TODO: state type
-const mapStateToProps = (state: any) => ({
-  enableDot: !state.otp.config.itinerary?.disableMetroSeperatorDot
+const mapStateToProps = (state: AppReduxState) => ({
+  enableDot: !state.otp.config.itinerary?.disableMetroSeperatorDot,
+  showAllWalkLegs: state.otp.config.itinerary?.showAllWalkLegs
 })
 
 export default connect(mapStateToProps)(MetroItineraryRoutes)
