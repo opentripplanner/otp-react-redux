@@ -82,6 +82,8 @@ class RouteDetails extends Component<Props> {
     const { agency, patterns = {}, shortName, url } = route
     const pattern = patterns[patternId]
 
+    const moreDetailsURL = url || route.agency.url
+
     const routeColor = getRouteColorBasedOnSettings(operator, route)
 
     const headsigns = Object.entries(patterns)
@@ -180,7 +182,7 @@ class RouteDetails extends Component<Props> {
                 />
               </>
             )}
-            {url && (
+            {moreDetailsURL && (
               <LinkOpensNewWindow
                 contents={
                   <FormattedMessage id="components.RouteDetails.moreDetails" />
@@ -188,7 +190,7 @@ class RouteDetails extends Component<Props> {
                 style={{
                   color: getMostReadableTextColor(routeColor, route?.textColor)
                 }}
-                url={url}
+                url={moreDetailsURL}
               />
             )}
           </LogoLinkContainer>
