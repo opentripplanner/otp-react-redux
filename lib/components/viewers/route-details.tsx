@@ -82,7 +82,7 @@ class RouteDetails extends Component<Props> {
     const { agency, patterns = {}, shortName, url } = route
     const pattern = patterns[patternId]
 
-    const moreDetailsURL = url || route.agency.url
+    const moreDetailsURL = url || route?.agency?.url
 
     const routeColor = getRouteColorBasedOnSettings(operator, route)
 
