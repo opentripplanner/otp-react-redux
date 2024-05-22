@@ -2434,7 +2434,7 @@
     "@opentripplanner/location-icon" "^1.4.1"
     flat "^5.0.2"
 
-"@opentripplanner/geocoder@^2.0.1", "@opentripplanner/geocoder@^2.2.2":
+"@opentripplanner/geocoder@^2.2.2":
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-2.2.2.tgz#8ddc669287ccdfff1a5cce14d1fa8049421c6480"
   integrity sha512-tJIOOE5N9kpMj0ji1YyVfWwg4yAFVs7Ks+EET67acql768bXwRE6rHoX6oaHvKhbCDjaQ7kuPIwi1BYWHQgg0Q==
