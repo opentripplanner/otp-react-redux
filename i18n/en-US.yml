@@ -78,13 +78,13 @@ common:
     tuesday: Tuesday
     wednesday: Wednesday
   daysOfWeekCompact:
-    friday: Fri.
-    monday: Mon.
-    saturday: Sat.
-    sunday: Sun.
-    thursday: Thu.
-    tuesday: Tue.
-    wednesday: Wed.
+    friday: F
+    monday: M
+    saturday: S
+    sunday: Su
+    thursday: Th
+    tuesday: T
+    wednesday: W
   daysOfWeekPlural:
     friday: Fridays
     monday: Mondays
@@ -239,7 +239,7 @@ components:
     a11y: Accessibility
     mainTitle: My settings
     notifications: Notifications
-    places: Favorite places
+    places: Saved places
     terms: Terms
   FavoritePlaceList:
     addAnotherPlace: Add another place
@@ -351,6 +351,7 @@ components:
     bikesAvailable: "{bikesAvailable, plural, one {# bike} other {# bikes}} available"
     companyBicycle: "{company} Bike"
     companyScooter: "{company} Scooter"
+    distanceAway: "{localizedDistanceString} away"
     error: An error occurred loading nearby amenities.
     header: Nearby View
     nearbyListIntro: List of {count} nearby entities.
@@ -360,7 +361,7 @@ components:
     createNewAccount: Create a new account
     finish: Account setup complete!
     notifications: Notification preferences
-    places: Add your locations
+    places: Add your saved places
     verify: Verify your email address
   NotFound:
     description: The content you requested is not available.
@@ -599,7 +600,8 @@ components:
     vehicleName: Vehicle {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: Checking itinerary existence for each day of the week...
-    selectAtLeastOneDay: Please select at least one day to monitor.
+    onlyOnDate: Only on {date, date, ::eeeee yyyyMMdd}
+    recurringEachWeek: On certain days each week
     tripDaysPrompt: What days do you take this trip?
     tripIsAvailableOnDaysIndicated: Your trip is available on the days of the week as indicated above.
     tripNamePrompt: "Please provide a name for this trip:"
@@ -658,6 +660,9 @@ components:
       awaiting: Awaiting calculation...
       description: Please wait a bit for the trip to calculate.
       heading: Trip not yet calculated
+    past:
+      description: This is a one-time trip that occurred in the past.
+      heading: Trip is in the past
     snoozed:
       description: Unsnooze trip monitoring to see the updated status.
       heading: Trip monitoring is snoozed for today
@@ -676,11 +681,11 @@ components:
     arriveAt: "Arrive at "
     leaveAt: "Leave at "
   TripSummaryPane:
-    happensOnDays: "Happens on: <strong>{days}</strong>"
-    notifications: >-
-      Notifications: <strong>{leadTimeInMinutes} min. before scheduled
-      departure</strong>
-    notificationsDisabled: "Notifications: <strong>Disabled</strong>"
+    happensOnDays: "Happens on: {days}"
+    monitoredTripDays: Trip monitored days
+    notifications: "{leadTimeInMinutes} min. before scheduled departure"
+    notificationsDisabled: Notifications disabled
+    timeAndDuration: Trip time and duration
   TripTools:
     copyLink: Copy Link
     header: Trip Tools

@@ -5,6 +5,7 @@ import { Layer, Source, useMap } from 'react-map-gl'
 import polyline from '@mapbox/polyline'
 import React, { useEffect } from 'react'
 
+import { DARK_TEXT_GREY } from '../util/colors'
 import {
   getActiveItinerary,
   getActiveSearch,
@@ -66,7 +67,7 @@ const RoutePreviewOverlay = ({
           }}
           paint={{
             'line-blur': 4,
-            'line-color': '#333',
+            'line-color': DARK_TEXT_GREY,
             'line-dasharray': [1, 2],
             'line-opacity': 0.6,
             'line-width': 4

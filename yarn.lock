@@ -2383,23 +2383,28 @@
   dependencies:
     "@octokit/openapi-types" "^10.0.0"
 
-"@opentripplanner/base-map@^3.0.16", "@opentripplanner/base-map@^3.0.17":
-  version "3.0.17"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.0.17.tgz#01862a7925b59be355e3229edac954ef876343cb"
-  integrity sha512-cWfhquu7PrLnqte03Mj5XQJW3OSrRtwq10/s2Az523X9yeheZsiO4sm/Bfmizr9xhqec/UTl882nOVKjESHzHA==
+"@opentripplanner/base-map@^3.0.16", "@opentripplanner/base-map@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.1.0.tgz#3181d4ec17029db8a40ca1342e20d1a0d449931f"
+  integrity sha512-feOSOWmiBFvIFWyG+OllCMxOcTmRKzxIoKKeoEgUFjNdVnrkZM6HH5r0m5IaQA9wO7T0N0K64hn/zdRQZBv0rQ==
   dependencies:
     mapbox-gl "npm:empty-npm-package@1.0.0"
     maplibre-gl "^2.1.9"
     react-map-gl "^7.0.15"
 
-"@opentripplanner/core-utils@^11.2.3", "@opentripplanner/core-utils@^11.3.1":
-  version "11.3.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.3.1.tgz#e42d95aa3d6b6cd167e8c63222c726d2ae6ebdd6"
-  integrity sha512-yUE5jmhO5UlA40Ik7jwSoxsqkiAdG40h+/BwmjfLaRjelD6weuzqQkEz7qSCbLo9M3ylchZmcwtaAFZX8xVh/g==
+"@opentripplanner/building-blocks@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/building-blocks/-/building-blocks-1.0.3.tgz#74de32daba0d7fae7d10d5738db6d2f2824da3dd"
+  integrity sha512-065pZZTzR+qisgbvJd9swhitMMin1/ooMwuzqqRknsKYK+wOGge3Y3sbgQZATyjR/oH43uF0P2ZhGcbgqgM+YQ==
+
+"@opentripplanner/core-utils@^11.2.3", "@opentripplanner/core-utils@^11.3.1", "@opentripplanner/core-utils@^11.4.0":
+  version "11.4.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.4.0.tgz#f8c664d67d36108eab5e0477966c156ccfac6619"
+  integrity sha512-4weAgo3PwqrDfaQnLVhGxX67/lpjXQsW6OoIFluFFK6HZEN6mu6KW6OkTBGRbTSlVRE+Xz0FwmPuSrI3WlQDMA==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.0"
-    "@opentripplanner/geocoder" "^2.0.1"
+    "@opentripplanner/geocoder" "^2.2.2"
     "@styled-icons/foundation" "^10.34.0"
     "@turf/along" "^6.0.1"
     chroma-js "^2.4.2"
@@ -2429,10 +2434,10 @@
     "@opentripplanner/location-icon" "^1.4.1"
     flat "^5.0.2"
 
-"@opentripplanner/geocoder@^2.0.1", "@opentripplanner/geocoder@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-2.2.0.tgz#071f91664e898b06705c781fddd4f75dfcb3cc3f"
-  integrity sha512-V41WOCIpvwLRHEchBg3vRzGOOxoI+SdxczLGgLGPJ/Q/XiqaTqUgsK8WUv+hAUAGYNxI7jZbx7zdC2pXCH0m4w==
+"@opentripplanner/geocoder@^2.0.1", "@opentripplanner/geocoder@^2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-2.2.2.tgz#8ddc669287ccdfff1a5cce14d1fa8049421c6480"
+  integrity sha512-tJIOOE5N9kpMj0ji1YyVfWwg4yAFVs7Ks+EET67acql768bXwRE6rHoX6oaHvKhbCDjaQ7kuPIwi1BYWHQgg0Q==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
     "@conveyal/lonlat" "^1.4.1"
@@ -2471,14 +2476,14 @@
     react-resize-detector "^4.2.1"
     string-similarity "^4.0.4"
 
-"@opentripplanner/location-field@^2.0.16":
-  version "2.0.16"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-2.0.16.tgz#4b20f3065b77b8781efaa0094bc8d351e600c835"
-  integrity sha512-XLMSa92VOe8Ii5M1AuLf57qQfWYcRG6F0+OhIesh11l/R2xqOql68zyucpkKfH0HHBSKqahYDAYSk4nkkyEviA==
+"@opentripplanner/location-field@^2.0.17":
+  version "2.0.17"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-2.0.17.tgz#36b2f6f86f3aba41c90462a85b5b729d4085a6be"
+  integrity sha512-HnijWJ5kN0/F52ommMTYlahehlwq4L0kPkcyAXEjM4H7uPhml+1IwYySrmNgMRa1rEiiDlJY5VkK4FXg/MfqLQ==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
-    "@opentripplanner/core-utils" "^11.2.3"
-    "@opentripplanner/geocoder" "^2.0.1"
+    "@opentripplanner/core-utils" "^11.3.1"
+    "@opentripplanner/geocoder" "^2.2.2"
     "@opentripplanner/humanize-distance" "^1.2.0"
     "@opentripplanner/location-icon" "^1.4.1"
     "@styled-icons/fa-solid" "^10.34.0"
@@ -2502,10 +2507,10 @@
     "@opentripplanner/from-to-location-picker" "^2.1.11"
     flat "^5.0.2"
 
-"@opentripplanner/otp2-tile-overlay@^1.0.11":
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/otp2-tile-overlay/-/otp2-tile-overlay-1.0.11.tgz#367670fc3a4c6b9831e5e4fdf5384d77c6de31b7"
-  integrity sha512-j/mAw30gJsk8yFLJEAftHm5en0OlgUpb8S8uVPgyQ6h4DXgy3TpU2szQzedMB61it+ug619NxnIpZp3053MCKA==
+"@opentripplanner/otp2-tile-overlay@^1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/otp2-tile-overlay/-/otp2-tile-overlay-1.0.12.tgz#1fc6ea68f47c44ff39fd04c13d946a68ed62d279"
+  integrity sha512-6BizhZkMvs6IuztqfAiZNLTczI4BHDXgd6XenMTPDhA+q2MCcxyJezxZWdWqaN9Eov/MI677Xp3+91hjiTsM5Q==
   dependencies:
     "@opentripplanner/map-popup" "^3.0.2"
 
@@ -2564,10 +2569,10 @@
     "@opentripplanner/map-popup" "^3.0.2"
     flat "^5.0.2"
 
-"@opentripplanner/transit-vehicle-overlay@^4.0.9":
-  version "4.0.9"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/transit-vehicle-overlay/-/transit-vehicle-overlay-4.0.9.tgz#f193de3444445fefe1bf8e40e312d53ea2a70dc7"
-  integrity sha512-VajxLn+qIOQ17Z7vdjWFmImDz4aKJ4mzQsztZH0zSZepmEFD5HLqdlvm1RGRbpLbnAU2XWGVgAAT8NTT5YxVyw==
+"@opentripplanner/transit-vehicle-overlay@^4.0.10":
+  version "4.0.10"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/transit-vehicle-overlay/-/transit-vehicle-overlay-4.0.10.tgz#a63e86a2dc5108ddf47ba8d8c0c9f5017c65c86a"
+  integrity sha512-j8+KCyeCD7WLQgAIbtzX7ckwqLU1fwKjXCMJ5E5/t75YqNuWB8hAiUonerIanuA20TUinm4sPwSL3dr9OnGNlA==
   dependencies:
     "@opentripplanner/base-map" "^3.0.16"
     "@opentripplanner/core-utils" "^11.2.3"
@@ -2601,10 +2606,10 @@
     flat "^5.0.2"
     react-animate-height "^3.0.4"
 
-"@opentripplanner/trip-form@^3.5.2":
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.5.2.tgz#301778fdb848e6d19b9794e090ad3eafcb810efe"
-  integrity sha512-TIPs+ETssJJQKOzxaDyioyNUinG4alnsthC9GSn/xDMQS+A2+6PzvG7cyLqV99xIf99OTdBmyB4VHd23Ey3oUw==
+"@opentripplanner/trip-form@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.6.0.tgz#e02996e3e21cee951a61522c1c01ea55f978c2b8"
+  integrity sha512-iV3bQkRhcJxvty7BZ+RUN/ylLmH+twUcveQgHj1HUCkPhEOz98m26ykDYXQhOXP68k/y9PtaLlt+Gzsa6p+8xQ==
   dependencies:
     "@floating-ui/react" "^0.19.2"
     "@opentripplanner/core-utils" "^11.2.3"
@@ -2626,10 +2631,10 @@
     "@opentripplanner/base-map" "^3.0.16"
     "@opentripplanner/core-utils" "^11.2.3"
 
-"@opentripplanner/types@^6.4.0":
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-6.4.0.tgz#6f7a3475ea982c7b7d8b2f1383a6d775dfabe62a"
-  integrity sha512-PS+CUwETLf0WzAUZg3qiey+SBigaf0CfknKF1XMOM+zJVc2c8nN34hgnwV7sS+RKs030KZFAgIn8p035ErcBuQ==
+"@opentripplanner/types@^6.5.0":
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-6.5.0.tgz#d8cca355bf30f0984283faa793113ad6c0dba38d"
+  integrity sha512-FllEyE+1WQ2GOSKXQOuzrk+OPcJEqr4+zacsHQLB9WVyfm5D/BPHR1/OjfuVngrwLTK5bKP8VlDRS1ba/R8rtg==
 
 "@opentripplanner/vehicle-rental-overlay@^2.1.7":
   version "2.1.7"
@@ -5506,16 +5511,7 @@ cachedir@2.2.0:
   resolved "https://registry.yarnpkg.com/cachedir/-/cachedir-2.2.0.tgz#19afa4305e05d79e417566882e0c8f960f62ff0e"
   integrity sha512-VvxA0xhNqIIfg0V9AmJkDg91DaJwryutH5rVEZAhcNi4iJFj9f+QxmAjgK1LT9I8OgToX27fypX6/MeCXVbBjQ==
 
-call-bind@^1.0.0, call-bind@^1.0.2:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/call-bind/-/call-bind-1.0.5.tgz#6fa2b7845ce0ea49bf4d8b9ef64727a2c2e2e513"
-  integrity sha512-C3nQxfFZxFRVoJoGKKI8y3MOEo129NQ+FgQ08iye+Mk4zNZZGdjfs06bVTr+DBSlA66Q2VEcMki/cUCP4SercQ==
-  dependencies:
-    function-bind "^1.1.2"
-    get-intrinsic "^1.2.1"
-    set-function-length "^1.1.1"
-
-call-bind@^1.0.7:
+call-bind@^1.0.0, call-bind@^1.0.2, call-bind@^1.0.7:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/call-bind/-/call-bind-1.0.7.tgz#06016599c40c56498c18769d2730be242b6fa3b9"
   integrity sha512-GHTSNSYICQ7scH7sZ+M2rFopRoLh8t2bLSW6BbgrtLsahOIB5iyAVJf9GjWK3cYTDaMj4XdBpM1cA6pIS0Kv2w==
@@ -6968,15 +6964,6 @@ defaults@^1.0.3:
   integrity sha1-xlYFHpgX2f8I7YgUd/P+QBnz730=
   dependencies:
     clone "^1.0.2"
-
-define-data-property@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/define-data-property/-/define-data-property-1.1.1.tgz#c35f7cd0ab09883480d12ac5cb213715587800b3"
-  integrity sha512-E7uGkTzkk1d0ByLeSc6ZsFS79Axg+m1P/VsgYsxHgiuc3tFSj+MjMIwe90FC4lOAZzNBdY7kkO2P2wKdsQ1vgQ==
-  dependencies:
-    get-intrinsic "^1.2.1"
-    gopd "^1.0.1"
-    has-property-descriptors "^1.0.0"
 
 define-data-property@^1.1.4:
   version "1.1.4"
@@ -8944,17 +8931,7 @@ get-func-name@^2.0.0:
   resolved "https://registry.yarnpkg.com/get-func-name/-/get-func-name-2.0.2.tgz#0d7cf20cd13fda808669ffa88f4ffc7a3943fc41"
   integrity sha512-8vXOvuE167CtIc3OyItco7N/dpRtBbYOsPsXCz7X/PMnlGjYjSGuZJgM1Y7mmew7BKf9BqvLX2tnOVy1BBUsxQ==
 
-get-intrinsic@^1.0.2, get-intrinsic@^1.1.0, get-intrinsic@^1.1.1, get-intrinsic@^1.1.3, get-intrinsic@^1.2.1, get-intrinsic@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/get-intrinsic/-/get-intrinsic-1.2.2.tgz#281b7622971123e1ef4b3c90fd7539306da93f3b"
-  integrity sha512-0gSo4ml/0j98Y3lngkFEot/zhiCeWsbYIlZ+uZOVgzLyLaUw7wxUL+nCTP0XJvJg1AXulJRI3UJi8GsbDuxdGA==
-  dependencies:
-    function-bind "^1.1.2"
-    has-proto "^1.0.1"
-    has-symbols "^1.0.3"
-    hasown "^2.0.0"
-
-get-intrinsic@^1.2.4:
+get-intrinsic@^1.1.0, get-intrinsic@^1.1.1, get-intrinsic@^1.1.3, get-intrinsic@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/get-intrinsic/-/get-intrinsic-1.2.4.tgz#e385f5a4b5227d449c3eabbad05494ef0abbeadd"
   integrity sha512-5uYhsJH8VJBTv7oslg4BznJYhDoRI6waYCxMmCdnTrcCrHA/fCFKoTFz2JKKE0HdDFUF7/oQuhzumXJK7paBRQ==
@@ -9288,13 +9265,6 @@ has-flag@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-4.0.0.tgz#944771fd9c81c81265c4d6941860da06bb59479b"
   integrity sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==
-
-has-property-descriptors@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/has-property-descriptors/-/has-property-descriptors-1.0.1.tgz#52ba30b6c5ec87fd89fa574bc1c39125c6f65340"
-  integrity sha512-VsX8eaIewvas0xnvinAe9bw4WfIeODpGYikiWYLH+dma0Jw6KHYqWiWfhQlgOVK8D6PvjubK5Uc4P0iIhIcNVg==
-  dependencies:
-    get-intrinsic "^1.2.2"
 
 has-property-descriptors@^1.0.2:
   version "1.0.2"
@@ -13246,7 +13216,7 @@ object-hash@^1.3.1:
   resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-1.3.1.tgz#fde452098a951cb145f039bb7d455449ddc126df"
   integrity sha512-OSuu/pU4ENM9kmREg0BdNrUDIl1heYa4mBZacJc+vVWz4GtAwu7jO8s4AIt2aGRUTqxykpWzI3Oqnsm13tTMDA==
 
-object-inspect@^1.11.0, object-inspect@^1.13.1, object-inspect@^1.6.0, object-inspect@^1.7.0, object-inspect@^1.9.0:
+object-inspect@^1.11.0, object-inspect@^1.13.1, object-inspect@^1.6.0, object-inspect@^1.7.0:
   version "1.13.1"
   resolved "https://registry.yarnpkg.com/object-inspect/-/object-inspect-1.13.1.tgz#b96c6109324ccfef6b12216a956ca4dc2ff94bc2"
   integrity sha512-5qoj1RUiKOMsCCNLV1CBiPYE10sziTsnmNxkAI/rZhiD63CF7IqdFGC/XzjWjpSgLf0LxXX3bDFIh0E18f6UhQ==
@@ -14939,19 +14909,12 @@ qrcode-terminal@^0.12.0:
   resolved "https://registry.yarnpkg.com/qrcode-terminal/-/qrcode-terminal-0.12.0.tgz#bb5b699ef7f9f0505092a3748be4464fe71b5819"
   integrity sha512-EXtzRZmC+YGmGlDFbXKxQiMZNwCLEO6BANKXG4iCtSIM0yqc/pappSx3RIKr4r0uh5JsBckOXeKrB3Iz7mdQpQ==
 
-qs@6.11.0:
+qs@6.11.0, qs@^6.10.3, qs@^6.3.0, qs@^6.5.1, qs@^6.9.1:
   version "6.11.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.11.0.tgz#fd0d963446f7a65e1367e01abd85429453f0c37a"
   integrity sha512-MvjoMCJwEarSbUYk5O+nmoSzSutSsTwF85zcHPQ9OrlFoZOYIjaqBAJIqIXjptyD5vThxGq52Xu/MaJzRkIk4Q==
   dependencies:
     side-channel "^1.0.4"
-
-qs@^6.10.3, qs@^6.3.0, qs@^6.5.1, qs@^6.9.1:
-  version "6.12.0"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.12.0.tgz#edd40c3b823995946a8a0b1f208669c7a200db77"
-  integrity sha512-trVZiI6RMOkO476zLGaBIzszOdFPnCCXHPG9kn0yuS1uz6xdVxPfZdB3vUig9pxPFDM9BRAgz/YUIVQ1/vuiUg==
-  dependencies:
-    side-channel "^1.0.6"
 
 qs@~6.5.2:
   version "6.5.3"
@@ -15345,13 +15308,6 @@ react-resize-detector@^4.2.1:
     prop-types "^15.7.2"
     raf-schd "^4.0.2"
     resize-observer-polyfill "^1.5.1"
-
-react-router-bootstrap@^0.25.0:
-  version "0.25.0"
-  resolved "https://registry.yarnpkg.com/react-router-bootstrap/-/react-router-bootstrap-0.25.0.tgz#5d1a99b5b8a2016c011fc46019d2397e563ce0df"
-  integrity sha512-/22eqxjn6Zv5fvY2rZHn57SKmjmJfK7xzJ6/G1OgxAjLtKVfWgV5sn41W2yiqzbtV5eE4/i4LeDLBGYTqx7jbA==
-  dependencies:
-    prop-types "^15.5.10"
 
 react-router-dom@^5.3.4:
   version "5.3.4"
@@ -16511,16 +16467,6 @@ set-blocking@^2.0.0, set-blocking@~2.0.0:
   resolved "https://registry.yarnpkg.com/set-blocking/-/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
   integrity sha1-BF+XgtARrppoA93TgrJDkrPYkPc=
 
-set-function-length@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/set-function-length/-/set-function-length-1.1.1.tgz#4bc39fafb0307224a33e106a7d35ca1218d659ed"
-  integrity sha512-VoaqjbBJKiWtg4yRcKBQ7g7wnGnLV3M8oLvVWwOk2PdYY6PEFegR1vezXR0tw6fZGF9csVakIRjrJiy2veSBFQ==
-  dependencies:
-    define-data-property "^1.1.1"
-    get-intrinsic "^1.2.1"
-    gopd "^1.0.1"
-    has-property-descriptors "^1.0.0"
-
 set-function-length@^1.2.1:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/set-function-length/-/set-function-length-1.2.2.tgz#aac72314198eaed975cf77b2c3b6b880695e5449"
@@ -16620,15 +16566,6 @@ shellwords@^0.1.1:
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
 
 side-channel@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/side-channel/-/side-channel-1.0.4.tgz#efce5c8fdc104ee751b25c58d4290011fa5ea2cf"
-  integrity sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==
-  dependencies:
-    call-bind "^1.0.0"
-    get-intrinsic "^1.0.2"
-    object-inspect "^1.9.0"
-
-side-channel@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/side-channel/-/side-channel-1.0.6.tgz#abd25fb7cd24baf45466406b1096b7831c9215f2"
   integrity sha512-fDW/EZ6Q9RiO8eFG8Hj+7u/oW+XrPTIChwCOM2+th2A6OblDtYYIpve9m+KvI9Z4C9qSEXlaGR6bTEYHReuglA==
