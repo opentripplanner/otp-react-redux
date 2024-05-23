@@ -13,6 +13,7 @@ import { ItinerarySortOption } from '../../util/config-types'
 import { sortOptions } from '../util/sortOptions'
 import { SortResultsDropdown } from '../util/dropdown'
 import { UnstyledButton } from '../util/unstyled-button'
+import { UnstyledLink } from '../user/styled'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import PopupTriggerText from '../app/popup-trigger-text'
 
@@ -45,7 +46,6 @@ export default function NarrativeItinerariesHeader({
   onSortChange,
   onSortDirChange,
   onToggleShowErrors,
-  onViewAllOptions,
   pending,
   popupTarget,
   setPopupContent,
@@ -62,7 +62,6 @@ export default function NarrativeItinerariesHeader({
   onSortChange: (type: string) => VoidFunction
   onSortDirChange: () => void
   onToggleShowErrors: () => void
-  onViewAllOptions: () => void
   pending: boolean
   popupTarget: string
   setPopupContent: (url: string) => void
@@ -140,14 +139,11 @@ export default function NarrativeItinerariesHeader({
 
       {itineraryIsExpanded || showingErrors ? (
         <>
-          <button
-            className="clear-button-formatting"
-            onClick={onViewAllOptions}
-          >
+          <UnstyledLink to="/" toParams={{ ui_activeItinerary: -1 }}>
             <IconWithText Icon={ArrowLeft}>
               <FormattedMessage id="components.NarrativeItinerariesHeader.viewAll" />
             </IconWithText>
-          </button>
+          </UnstyledLink>
           {itineraryIsExpanded && (
             // marginLeft: auto is a way of making something "float right"
             // within a flex container
