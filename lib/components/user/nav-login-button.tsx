@@ -84,7 +84,13 @@ const NavLoginButton = ({
               if (link.url.startsWith('http')) {
                 return (
                   <li key={link.url}>
-                    <NavUnstyledLink href={link.url} target="_blank">
+                    <NavUnstyledLink
+                      // Bypass our Link component and directly render an <a> element here,
+                      // so that the link works even when running the app locally.
+                      as="a"
+                      href={link.url}
+                      target="_blank"
+                    >
                       <FormattedMessage id="components.NavLoginButton.help" />
                       <NewWindowIconA11y
                         size={12}

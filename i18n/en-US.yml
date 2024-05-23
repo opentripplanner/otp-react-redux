@@ -239,7 +239,7 @@ components:
     a11y: Accessibility
     mainTitle: My settings
     notifications: Notifications
-    places: Favorite places
+    places: Saved places
     terms: Terms
   FavoritePlaceList:
     addAnotherPlace: Add another place
@@ -361,7 +361,7 @@ components:
     createNewAccount: Create a new account
     finish: Account setup complete!
     notifications: Notification preferences
-    places: Add your locations
+    places: Add your saved places
     verify: Verify your email address
   NotFound:
     description: The content you requested is not available.
