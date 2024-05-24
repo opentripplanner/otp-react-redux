@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { FocusTrapWrapper } from '@opentripplanner/map-popup/lib'
 import { Popup } from '@opentripplanner/base-map'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { useIntl, WrappedComponentProps } from 'react-intl'
@@ -9,7 +10,6 @@ import styled from 'styled-components'
 import type { Location } from '@opentripplanner/types'
 
 import * as mapActions from '../../actions/map'
-import { FocusTrapWrapper } from '@opentripplanner/map-popup/lib'
 import { Icon } from '../util/styledIcon'
 import { renderCoordinates } from '../../util/i18n'
 import { SetLocationHandler, ZoomToPlaceHandler } from '../util/types'
