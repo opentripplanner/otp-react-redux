@@ -28,7 +28,6 @@ Object {
     "departArrive": "NOW",
     "endTime": "09:00",
     "from": null,
-    "ignoreRealtimeUpdates": false,
     "intermediatePlaces": Array [],
     "maxBikeDistance": 4828,
     "maxBikeTime": 20,
