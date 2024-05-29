@@ -35,7 +35,7 @@ const RoutePreviewOverlay = ({
   useEffect(() => {
     if (visible && mainPanelContent === null) {
       map?.fitBounds([from, to], {
-        duration: 500,
+        duration: 600,
         padding: getFitBoundsPadding(map, 0.2)
       })
     }
