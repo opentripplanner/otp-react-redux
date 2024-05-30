@@ -276,6 +276,7 @@ export interface ItineraryConfig {
   onlyShowCountdownForRealtime?: boolean
   previewOverlay?: boolean
   renderRouteNamesInBlocks?: boolean
+  showAboutPrefixNonTransitLegs?: boolean
   showAllWalkLegs?: boolean
   showFirstResultByDefault?: boolean
   showHeaderText?: boolean
