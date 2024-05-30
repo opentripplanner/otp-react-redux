@@ -37,6 +37,7 @@ export const StyledRouteRow = styled.li`
 // Route Row Button sits invisible on top of the route name and info.
 export const RouteRowLink = styled(Link)`
   align-items: center;
+  border-radius: 4px;
   display: flex;
   min-height: 50px;
   padding: 5px;
@@ -46,12 +47,17 @@ export const RouteRowLink = styled(Link)`
   width: 100%;
 
   &:hover {
+    background-color: ${blue[50]};
     color: inherit;
+    text-decoration: none;
   }
 
   &.active {
     background-color: ${blue[50]};
-    border-radius: 4px;
+    color: inherit;
+    outline: 2px solid ${blue[200]};
+    outline-offset: -2px;
+    text-decoration: none;
   }
 `
 
