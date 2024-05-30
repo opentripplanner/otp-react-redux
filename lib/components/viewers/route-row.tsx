@@ -38,26 +38,23 @@ export const StyledRouteRow = styled.li`
 export const RouteRowLink = styled(Link)`
   align-items: center;
   border-radius: 4px;
+  color: inherit !important;
   display: flex;
   min-height: 50px;
   padding: 5px;
   // Make sure route details always leaves enough room for pattern button
   padding-right: 55px;
+  text-decoration: none !important;
   transition: all ease-out 0.1s;
   width: 100%;
 
   &:hover {
-    background-color: ${blue[50]};
-    color: inherit;
-    text-decoration: none;
+    outline: 2px solid ${blue[200]};
+    outline-offset: -2px;
   }
 
   &.active {
     background-color: ${blue[50]};
-    color: inherit;
-    outline: 2px solid ${blue[200]};
-    outline-offset: -2px;
-    text-decoration: none;
   }
 `
 
