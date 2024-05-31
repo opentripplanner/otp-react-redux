@@ -2458,14 +2458,14 @@
     "@opentripplanner/core-utils" "^11.2.3"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@^5.2.6", "@opentripplanner/itinerary-body@^5.2.8":
-  version "5.2.8"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-5.2.8.tgz#12cb356dc3c203af9603541d46b2c30f0cc8dbe1"
-  integrity sha512-D/gH80BlTR/J4XYyhVG234J5qVatzYwEjObHUY01u17X+uUgRcl05zv9vNSLx9Va0UDxPc7oR+Ro5VnkW+QkKA==
+"@opentripplanner/itinerary-body@^5.2.6", "@opentripplanner/itinerary-body@^5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-5.3.0.tgz#1a611dc6c49438666e58c34d0f1f88ab6ff48f2d"
+  integrity sha512-yNMluEX4jJMEdvObGcivnJCS8wMqzZ1j+zJ/40oE9uK9XNyT6o3ascpcsDPN45ZJTIUBoj1FVhItvrfLxaRYMA==
   dependencies:
-    "@opentripplanner/core-utils" "^11.2.3"
+    "@opentripplanner/core-utils" "^11.3.1"
     "@opentripplanner/humanize-distance" "^1.2.0"
-    "@opentripplanner/icons" "^2.0.9"
+    "@opentripplanner/icons" "^2.0.10"
     "@opentripplanner/location-icon" "^1.4.1"
     "@styled-icons/fa-solid" "^10.34.0"
     "@styled-icons/foundation" "^10.34.0"
@@ -2497,14 +2497,14 @@
     "@styled-icons/fa-regular" "^10.34.0"
     "@styled-icons/fa-solid" "^10.34.0"
 
-"@opentripplanner/map-popup@^3.0.2", "@opentripplanner/map-popup@^3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/map-popup/-/map-popup-3.0.3.tgz#4ded505bcf23f505b07abfe5d24142eb2faa483a"
-  integrity sha512-AvXLUfnEj5PoDHd8eFdpMXsXqmLyreSPPeiVIggNvZUDTm6uHpCAovSrSOOoFT3nOIEaUw4TCcjamJeV0gaNJw==
+"@opentripplanner/map-popup@^3.0.2", "@opentripplanner/map-popup@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/map-popup/-/map-popup-3.1.0.tgz#51627e4d4c902d10bec6fffa2c3e3eed0994a42c"
+  integrity sha512-UzQ9OYOslNqDxvGWIPOZ4KyIJ7R0CO2riC56AJeHz5EI0JSv1Rlt1b6JTz0BtJ9cbHksB2QB43x8bJs6if7mfg==
   dependencies:
-    "@opentripplanner/base-map" "^3.0.16"
-    "@opentripplanner/core-utils" "^11.2.3"
-    "@opentripplanner/from-to-location-picker" "^2.1.11"
+    "@opentripplanner/base-map" "^3.1.0"
+    "@opentripplanner/core-utils" "^11.3.1"
+    "@opentripplanner/from-to-location-picker" "^2.1.12"
     flat "^5.0.2"
 
 "@opentripplanner/otp2-tile-overlay@^1.0.12":
