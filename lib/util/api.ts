@@ -68,4 +68,6 @@ export function removeUnusedQueryParams(params: any): void {
   delete params.ignoreRealtimeUpdates
   delete params.optimize
   delete params.optimizeBike
+  delete params.maxWalkDistance
+  delete params.maxBikeDistance
 }
