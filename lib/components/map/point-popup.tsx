@@ -1,15 +1,15 @@
 import { connect } from 'react-redux'
+import { FocusTrapWrapper } from '@opentripplanner/map-popup/lib'
 import { Popup } from '@opentripplanner/base-map'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { useIntl, WrappedComponentProps } from 'react-intl'
 import { useMap } from 'react-map-gl'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import type { Location } from '@opentripplanner/types'
 
 import * as mapActions from '../../actions/map'
-import { getEntryRelativeTo } from '../util/get-entry-relative-to'
 import { Icon } from '../util/styledIcon'
 import { renderCoordinates } from '../../util/i18n'
 import { SetLocationHandler, ZoomToPlaceHandler } from '../util/types'
@@ -51,49 +51,6 @@ function MapPopup({
   const intl = useIntl()
   const { current: map } = useMap()
 
-  /**
-   * Creates a focus trap within map popup that can be dismissed with esc.
-   * https://medium.com/cstech/achieving-focus-trapping-in-a-react-modal-component-3f28f596f35b
-   */
-
-  /**
-   * Check to see which keys are down by tracking keyUp and keyDown events
-   * in order to see when "tab" and "shift" are pressed at the same time.
-   */
-  let keysDown: string[] = useMemo(() => [], [])
-
-  // Argument for document.querySelectorAll to target focusable elements.
-  const queryId = 'button#zoom-btn, #from-to button'
-
-  const _handleKeyDown = useCallback(
-    (e) => {
-      keysDown.push(e.key)
-      const element = e.target as HTMLElement
-      switch (e.key) {
-        case 'Escape':
-          clearMapPopupLocation()
-          break
-        case 'Tab':
-          if (keysDown.includes('Shift')) {
-            e.preventDefault()
-            getEntryRelativeTo(queryId, element, -1)?.focus()
-          } else {
-            e.preventDefault()
-            getEntryRelativeTo(queryId, element, 1)?.focus()
-          }
-          break
-        case ' ':
-          break
-        default:
-      }
-    },
-    [clearMapPopupLocation, keysDown]
-  )
-
-  const _handleKeyUp = (e: any) => {
-    keysDown = keysDown.filter((key) => key !== e.key)
-  }
-
   // Memoize callbacks that shouldn't change from one render to the next.
   const onSetLocationFromPopup = useCallback(
     (payload) => {
@@ -116,16 +73,16 @@ function MapPopup({
   })
 
   return (
-    <div onKeyDown={_handleKeyDown} onKeyUp={_handleKeyUp} role="presentation">
-      <Popup
-        closeButton={false}
-        closeOnClick
-        latitude={mapPopupLocation.lat}
-        longitude={mapPopupLocation.lon}
-        onClose={clearMapPopupLocation}
-        // Override inline style supplied by react-map-gl to accommodate long "plan a trip" translations.
-        style={{ maxWidth: '260px', width: '260px' }}
-      >
+    <Popup
+      closeButton={false}
+      closeOnClick
+      latitude={mapPopupLocation.lat}
+      longitude={mapPopupLocation.lon}
+      onClose={clearMapPopupLocation}
+      // Override inline style supplied by react-map-gl to accommodate long "plan a trip" translations.
+      style={{ maxWidth: '260px', width: '260px' }}
+    >
+      <FocusTrapWrapper closePopup={clearMapPopupLocation} id="stop-popup">
         <PopupTitleWrapper>
           <PopupTitle>
             {typeof popupName === 'string' && popupName.split(',').length > 3
@@ -148,8 +105,8 @@ function MapPopup({
             setLocation={onSetLocationFromPopup}
           />
         </div>
-      </Popup>
-    </div>
+      </FocusTrapWrapper>
+    </Popup>
   )
 }
 

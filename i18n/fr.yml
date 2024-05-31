@@ -519,7 +519,6 @@ components:
     shortTitle: Index des lignes
     stopsInDirectionOfTravel: "Arrêts dans cette direction :"
     title: Index des lignes
-    toggleRouteOnMap: Afficher ou masquer la ligne sur la carte
   SaveTripButton:
     cantSaveText: Impossible d'enregistrer
     cantSaveTooltip: >-

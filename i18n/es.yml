@@ -511,7 +511,6 @@ components:
     shortTitle: Ver rutas
     stopsInDirectionOfTravel: "Paradas en este sentido de la marcha:"
     title: Visor de rutas
-    toggleRouteOnMap: Cambiar la ruta en el mapa
   SaveTripButton:
     cantSaveText: No se puede guardar
     cantSaveTooltip: >-
