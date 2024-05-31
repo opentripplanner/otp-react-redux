@@ -1,12 +1,16 @@
 import { CalendarAlt } from '@styled-icons/fa-solid/CalendarAlt'
 import { Clock } from '@styled-icons/fa-regular/Clock'
 import { connect } from 'react-redux'
+import { decodeQueryParams, StringParam } from 'serialize-query-params'
 import { toDate } from 'date-fns-tz'
+import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 
 import { IconWithText } from '../util/styledIcon'
 import FormattedCalendarString from '../util/formatted-calendar-string'
 import FormattedDateTimePreview from '../util/formatted-date-time-preview'
+
+import { DepartArriveValue } from './date-time-modal'
 
 interface Props {
   date: string
@@ -38,13 +42,24 @@ const DateTimePreview = ({
   )
 }
 
+const queryParamConfig = {
+  date: StringParam,
+  departArrive: StringParam,
+  time: StringParam
+}
+
 const mapStateToProps = (state: any) => {
-  const { date, departArrive, time } = state.otp.currentQuery
   const { homeTimezone: timeZone } = state.otp.config
+  const urlSearchParams = new URLSearchParams(state.router.location.search)
+  const { date, departArrive, time } = decodeQueryParams(queryParamConfig, {
+    date: urlSearchParams.get('date'),
+    departArrive: urlSearchParams.get('departArrive'),
+    time: urlSearchParams.get('time')
+  })
   return {
-    date,
-    departArrive,
-    time,
+    date: date || coreUtils.time.getCurrentDate(),
+    departArrive: (departArrive as DepartArriveValue) || 'NOW',
+    time: time || coreUtils.time.getCurrentTime(),
     timeZone
   }
 }
