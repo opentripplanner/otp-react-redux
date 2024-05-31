@@ -36,7 +36,6 @@ Object {
     "maxWalkTime": 15,
     "mode": "WALK,TRANSIT",
     "numItineraries": 3,
-    "optimizeBike": "SAFE",
     "routingType": "ITINERARY",
     "startTime": "07:00",
     "time": "19:34",
