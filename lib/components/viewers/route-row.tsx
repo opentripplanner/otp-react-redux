@@ -1,7 +1,5 @@
-// TODO: Typescript, which doesn't make sense to do in this file until common types are established
-/* eslint-disable react/prop-types */
 import { ArrowRight } from '@styled-icons/fa-solid'
-import { Button } from 'react-bootstrap'
+import { IntlShape } from 'react-intl'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 
@@ -10,10 +8,21 @@ import { ComponentContext } from '../../util/contexts'
 import { getFormattedMode } from '../../util/i18n'
 import { getModeFromRoute } from '../../util/viewer'
 import { Icon } from '../util/styledIcon'
-import InvisibleA11yLabel from '../util/invisible-a11y-label'
+import { TransitOperatorConfig } from '../../util/config-types'
+import { ViewedRouteObject } from '../util/types'
+import Link from '../util/link'
 import OperatorLogo from '../util/operator-logo'
 
 import RouteName from './route-name'
+
+interface Props {
+  findRouteIfNeeded: ({ routeId }: { routeId: string }) => void
+  initialRender?: boolean
+  intl: IntlShape
+  isActive?: boolean
+  operator: TransitOperatorConfig
+  route?: ViewedRouteObject
+}
 
 export const StyledRouteRow = styled.li`
   align-items: center;
@@ -26,25 +35,26 @@ export const StyledRouteRow = styled.li`
   position: relative;
 `
 // Route Row Button sits invisible on top of the route name and info.
-export const RouteRowButton = styled(Button)`
+export const RouteRowLink = styled(Link)`
   align-items: center;
+  border-radius: 10px;
+  color: inherit !important;
   display: flex;
   min-height: 50px;
   padding: 5px;
   // Make sure route details always leaves enough room for pattern button
   padding-right: 55px;
+  text-decoration: none !important;
   transition: all ease-out 0.1s;
   width: 100%;
 
-  &:before {
-    background-color: ${(props) => (props.patternActive ? blue[50] : 'white')};
-    border-radius: 4px;
-    content: '';
-    height: 100%;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: -4;
+  &:hover {
+    outline: 2px solid ${blue[200]};
+    outline-offset: -2px;
+  }
+
+  &.active {
+    background-color: ${blue[50]};
   }
 `
 
@@ -68,23 +78,25 @@ const RouteDetailsContainer = styled.div`
   overflow: hidden;
 `
 
-const PatternButton = styled.button`
+const PatternViewerLink = styled(Link)`
   background: transparent;
   border: none;
   border-radius: 50%;
   color: ${blue[900]};
   height: 40px;
+  line-height: 40px;
   margin-right: 8px;
   position: absolute;
   right: 5px;
+  text-align: center;
   transition: all ease-out 0.1s;
-  z-index: ${(props) => (props.display ? 2 : -2)};
   width: 40px;
+  z-index: -2;
 
   svg {
     height: 22px !important;
     margin-top: -3px;
-    opacity: ${(props) => (props.display ? '80%' : 0)};
+    opacity: 0;
     width: 22px !important;
   }
 
@@ -97,99 +109,96 @@ const PatternButton = styled.button`
     background: #fff;
     transition: all ease-out 0.1s;
   }
+
+  ${RouteRowLink}.active + & {
+    z-index: 2;
+
+    svg {
+      opacity: 80%;
+    }
+  }
 `
 
-export class RouteRow extends PureComponent {
+export class RouteRow extends PureComponent<Props> {
+  activeRef: React.RefObject<HTMLLIElement>
+
   static contextType = ComponentContext
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props)
     // Create a ref used to scroll to
-    this.activeRef = React.createRef()
+    this.activeRef = React.createRef<HTMLLIElement>()
   }
 
-  componentDidMount = () => {
+  componentDidMount = (): void => {
     const { isActive, route } = this.props
     if (isActive && route?.id) {
       // This is fired when coming back from the route details view
-      this.activeRef.current.scrollIntoView()
+      this.activeRef.current?.scrollIntoView()
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(): void {
     /*
        If the initial route row list is being rendered and there is an active
        route, scroll to it. The initialRender prop prohibits the row being scrolled to
        if the user has clicked on a route
     */
     if (this.props.isActive && this.props.initialRender) {
-      this.activeRef.current.scrollIntoView()
+      this.activeRef.current?.scrollIntoView()
     }
   }
 
-  _onFocusOrEnter = () => {
+  _onFocusOrEnter = (): void => {
     const { findRouteIfNeeded, route } = this.props
-    findRouteIfNeeded({ routeId: route.id })
-  }
-
-  _onClick = () => {
-    const { isActive, route, setViewedRoute } = this.props
-    if (isActive) {
-      // Deselect current route if active.
-      setViewedRoute({ patternId: null, routeId: null })
-    } else {
-      // Otherwise, set active and fetch route patterns.
-      setViewedRoute({ routeId: route.id })
+    const id = route?.id
+    if (id) {
+      findRouteIfNeeded({ routeId: id })
     }
   }
 
-  _patternButtonClicked = () => {
-    const { route, setViewedRoute } = this.props
-    const { id, patterns } = route
-    const firstPattern = route && patterns && Object.values(patterns)?.[0]?.id
-    setViewedRoute({ patternId: firstPattern, routeId: id })
-  }
-
-  render() {
+  render(): JSX.Element | null {
     const { intl, isActive, operator, route } = this.props
     const { ModeIcon, RouteRenderer } = this.context
 
-    const patternViewerButtonText = intl.formatMessage({
+    if (!route) return null
+
+    const { id, longName, mode, patterns, shortName } = route
+    const modeFromRoute = getModeFromRoute(route)
+    const routePath = `/route/${id}`
+    const firstPattern = patterns && Object.values(patterns)?.[0]?.id
+
+    const patternViewerLinkText = intl.formatMessage({
       description: 'identifies the purpose of the pattern viewer button',
       id: 'components.RouteViewer.openPatternViewer'
-    })
-    const routeMapToggleText = intl.formatMessage({
-      description: 'identifies the behavior of the route viewer button',
-      id: 'components.RouteViewer.toggleRouteOnMap'
     })
 
     return (
       <StyledRouteRow ref={this.activeRef}>
-        <RouteRowButton
-          aria-pressed={isActive || false}
+        <RouteRowLink
           className="clear-button-formatting"
-          onClick={this._onClick}
           onFocus={this._onFocusOrEnter}
           onMouseEnter={this._onFocusOrEnter}
           onTouchStart={this._onFocusOrEnter}
-          patternActive={isActive}
+          to={routePath}
+          tracking
         >
           <RouteDetailsContainer>
             <OperatorLogo operator={operator} />
-            {route.mode && operator.routeIcons !== false && (
+            {mode && operator.routeIcons !== false && (
               <ModeIconElement>
                 <ModeIcon
                   aria-label={getFormattedMode(
-                    getModeFromRoute(route).toLowerCase(),
+                    modeFromRoute.toLowerCase(),
                     intl
                   )}
                   height={28}
                   leg={{
-                    routeId: route?.id,
-                    routeLongName: route?.longName,
-                    routeShortName: route?.shortName
+                    routeId: id,
+                    routeLongName: longName,
+                    routeShortName: shortName
                   }}
-                  mode={getModeFromRoute(route)}
+                  mode={modeFromRoute}
                   role="img"
                   width={28}
                 />
@@ -197,21 +206,19 @@ export class RouteRow extends PureComponent {
             )}
             <RouteName route={route} RouteRenderer={RouteRenderer} />
           </RouteDetailsContainer>
-          <InvisibleA11yLabel>({routeMapToggleText})</InvisibleA11yLabel>
-        </RouteRowButton>
-        <PatternButton
-          aria-label={patternViewerButtonText}
-          display={isActive}
-          id={`open-route-button-${route.shortName || route.longName}-${
+        </RouteRowLink>
+        <PatternViewerLink
+          aria-label={patternViewerLinkText}
+          id={`open-route-button-${shortName || longName}-${
             operator.name || '' // don't print 'undefined' if there is no operator.
           }`}
-          onClick={this._patternButtonClicked}
-          // Cannot keyboard navigate to the button unless it is visible
+          // Cannot keyboard navigate to the link unless it is visible
           tabIndex={isActive ? 0 : -1}
-          title={patternViewerButtonText}
+          title={patternViewerLinkText}
+          to={`${routePath}/pattern/${firstPattern}`}
         >
           <Icon Icon={ArrowRight} />
-        </PatternButton>
+        </PatternViewerLink>
       </StyledRouteRow>
     )
   }

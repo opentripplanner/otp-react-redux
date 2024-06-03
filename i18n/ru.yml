@@ -469,7 +469,6 @@ components:
     shortTitle: Просмотр маршрутов
     stopsInDirectionOfTravel: "Остановки в этом направлении движения:"
     title: Средство просмотра маршрутов
-    toggleRouteOnMap: Переключить маршрут на карте
   SaveTripButton:
     cantSaveText: Невозможно сохранить
     cantSaveTooltip: >-

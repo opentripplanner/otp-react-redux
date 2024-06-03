@@ -471,7 +471,6 @@ components:
     shortTitle: Xem các tuyến đường
     stopsInDirectionOfTravel: "Các trạm dừng trong hướng di chuyển này:"
     title: Xem tuyến đường
-    toggleRouteOnMap: Chuyển đổi tuyến đường trên bản đồ
   SaveTripButton:
     cantSaveText: Không thể tiết kiệm
     cantSaveTooltip: >-
