@@ -427,7 +427,6 @@ components:
     shortTitle: 查看路线
     stopsInDirectionOfTravel: 行程此方向上的公车站：
     title: 路线查看器
-    toggleRouteOnMap: 在地图上切换路线
   SaveTripButton:
     cantSaveText: 无法保存
     cantSaveTooltip: 只有包括交通的行程而没有租车或叫车的行程可以被监控.

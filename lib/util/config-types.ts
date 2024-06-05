@@ -220,6 +220,7 @@ export type SupportedOverlays =
   | MapTileLayerConfig
 
 export interface MapConfig {
+  autoFlyOnTripFormUpdate?: boolean
   baseLayers?: BaseLayerConfig[]
   initLat?: number
   initLon?: number
