@@ -71,6 +71,7 @@ export type MapillaryConfig = ApiKeyConfig
 export type NearbyViewConfig = {
   hideEmptyStops?: boolean
   radius?: number
+  showShadowDotOnMapDrag?: boolean
   useRouteViewSort?: boolean
 }
 
