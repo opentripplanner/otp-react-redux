@@ -476,7 +476,6 @@ components:
     shortTitle: Tingnan ang Mga Ruta
     stopsInDirectionOfTravel: "Mga hintuan sa direksyong ito ng paglalakbay:"
     title: Viewer ng Ruta
-    toggleRouteOnMap: I-toggle ang ruta sa mapa
   SaveTripButton:
     cantSaveText: Hindi ma-save
     cantSaveTooltip: >-

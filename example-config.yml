@@ -115,6 +115,7 @@ persistence:
 map:
   initLat: 45.52
   initLon: -122.682
+  # autoFlyOnTripFormUpdate: false
   baseLayers:
     - name: Streets
       # These tiles are free to use, but not in production
