@@ -4,11 +4,11 @@ import {
   extractMainHeadsigns
 } from '../../lib/util/viewer'
 
-function createStop(id) {
-  return {
+function createStops(ids) {
+  return ids.map((id) => ({
     id,
     name: id
-  }
+  }))
 }
 
 function prefixHeadsign(pattern) {
@@ -64,13 +64,7 @@ describe('util > viewer', () => {
             length: 1404,
             points: 'p1-points'
           },
-          stops: [
-            createStop('S1'),
-            createStop('S2'),
-            createStop('S3'),
-            createStop('S4'),
-            createStop('S5')
-          ]
+          stops: createStops(['S1', 'S2', 'S3', 'S4', 'S5'])
         },
         P2: {
           headsign,
@@ -80,12 +74,7 @@ describe('util > viewer', () => {
             length: 1072,
             points: 'p2-points'
           },
-          stops: [
-            createStop('S3'),
-            createStop('S4'),
-            createStop('S6'),
-            createStop('S7')
-          ]
+          stops: createStops(['S3', 'S4', 'S6', 'S7'])
         },
         P3: {
           headsign,
@@ -95,7 +84,7 @@ describe('util > viewer', () => {
             length: 987,
             points: 'p3-points'
           },
-          stops: [createStop('S3'), createStop('S4'), createStop('S5')]
+          stops: createStops(['S3', 'S4', 'S5'])
         }
       }
       const headsignData = extractMainHeadsigns(patterns, route, prefixHeadsign)
