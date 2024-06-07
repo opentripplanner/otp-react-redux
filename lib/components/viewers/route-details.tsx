@@ -78,7 +78,7 @@ class RouteDetails extends Component<Props> {
   }
 
   _editHeadsign = (pattern: Pattern) => {
-    return this.props.intl.formatMessage(
+    pattern.headsign = this.props.intl.formatMessage(
       { id: 'components.RouteDetails.headsignTo' },
       { ...pattern }
     )
