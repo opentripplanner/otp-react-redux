@@ -11,8 +11,8 @@ function createStops(ids) {
   }))
 }
 
-function prefixHeadsign(pattern) {
-  pattern.headsign = `To ${pattern.headsign}`
+function editHeadsign(pattern) {
+  pattern.headsign = `${pattern.headsign} (${pattern.lastStop})`
 }
 
 describe('util > viewer', () => {
@@ -87,8 +87,10 @@ describe('util > viewer', () => {
           stops: createStops(['S3', 'S4', 'S5'])
         }
       }
-      const headsignData = extractMainHeadsigns(patterns, route, prefixHeadsign)
+      const headsignData = extractMainHeadsigns(patterns, route, editHeadsign)
       expect(headsignData.length).toBe(2)
+      expect(headsignData[0].headsign).toBe(headsign)
+      expect(headsignData[1].headsign).toBe('Everett via Lynnwood (S7)')
     })
   })
 })

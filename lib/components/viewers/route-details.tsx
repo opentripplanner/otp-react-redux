@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
-import { Stop, TransitOperator } from '@opentripplanner/types'
+import { Pattern, Stop, TransitOperator } from '@opentripplanner/types'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
@@ -77,7 +77,7 @@ class RouteDetails extends Component<Props> {
     setViewedStop(stop)
   }
 
-  _prefixHeadsign = (pattern: Pattern) => {
+  _editHeadsign = (pattern: Pattern) => {
     return this.props.intl.formatMessage(
       { id: 'components.RouteDetails.headsignTo' },
       { ...pattern }
@@ -96,7 +96,7 @@ class RouteDetails extends Component<Props> {
     const headsigns = extractMainHeadsigns(
       patterns,
       shortName,
-      this._prefixHeadsign
+      this._editHeadsign
     ).sort((a, b) => {
       // sort by number of vehicles on that pattern
       const aVehicleCount =
