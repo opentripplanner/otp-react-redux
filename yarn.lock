@@ -2397,10 +2397,28 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/building-blocks/-/building-blocks-1.0.3.tgz#74de32daba0d7fae7d10d5738db6d2f2824da3dd"
   integrity sha512-065pZZTzR+qisgbvJd9swhitMMin1/ooMwuzqqRknsKYK+wOGge3Y3sbgQZATyjR/oH43uF0P2ZhGcbgqgM+YQ==
 
-"@opentripplanner/core-utils@^11.2.3", "@opentripplanner/core-utils@^11.3.1", "@opentripplanner/core-utils@^11.4.0":
+"@opentripplanner/core-utils@^11.2.3", "@opentripplanner/core-utils@^11.3.1":
   version "11.4.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.4.0.tgz#f8c664d67d36108eab5e0477966c156ccfac6619"
   integrity sha512-4weAgo3PwqrDfaQnLVhGxX67/lpjXQsW6OoIFluFFK6HZEN6mu6KW6OkTBGRbTSlVRE+Xz0FwmPuSrI3WlQDMA==
+  dependencies:
+    "@conveyal/lonlat" "^1.4.1"
+    "@mapbox/polyline" "^1.1.0"
+    "@opentripplanner/geocoder" "^2.2.2"
+    "@styled-icons/foundation" "^10.34.0"
+    "@turf/along" "^6.0.1"
+    chroma-js "^2.4.2"
+    date-fns "^2.28.0"
+    date-fns-tz "^1.2.2"
+    graphql "^16.6.0"
+    lodash.clonedeep "^4.5.0"
+    lodash.isequal "^4.5.0"
+    qs "^6.9.1"
+
+"@opentripplanner/core-utils@^11.4.1":
+  version "11.4.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.4.1.tgz#9ccfed82f9a05078bd8e815dd4025af164e37acb"
+  integrity sha512-5FZT0ESVctyoO3V0W80QMZuzAc8hEYZxLAyrEARYXNeAHnBNxngGGMj7QMLK4JZgJDESnNietSRnBJd2MBWhOw==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.0"
@@ -2445,6 +2463,17 @@
     isomorphic-mapzen-search "^1.6.1"
     lodash.memoize "^4.1.2"
 
+"@opentripplanner/geocoder@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-3.0.1.tgz#834960bc52f515e1223346a8002fb847674d33bc"
+  integrity sha512-+LHTqY8pHmPE39IjVev5T5baa+BohEyvsLwVwFB2bYWzM+m/RgAJ188uBcDzXKdqk5y3dZR9ZODYVMtrvIiKzQ==
+  dependencies:
+    "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
+    "@conveyal/lonlat" "^1.4.1"
+    "@leeoniya/ufuzzy" "^1.0.14"
+    isomorphic-mapzen-search "^1.6.1"
+    lodash.memoize "^4.1.2"
+
 "@opentripplanner/humanize-distance@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/humanize-distance/-/humanize-distance-1.2.0.tgz#71cf5d5d1b756adef15300edbba0995ccd4b35ee"
@@ -2476,10 +2505,10 @@
     react-resize-detector "^4.2.1"
     string-similarity "^4.0.4"
 
-"@opentripplanner/location-field@^2.0.17":
-  version "2.0.17"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-2.0.17.tgz#36b2f6f86f3aba41c90462a85b5b729d4085a6be"
-  integrity sha512-HnijWJ5kN0/F52ommMTYlahehlwq4L0kPkcyAXEjM4H7uPhml+1IwYySrmNgMRa1rEiiDlJY5VkK4FXg/MfqLQ==
+"@opentripplanner/location-field@^2.0.18":
+  version "2.0.18"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-2.0.18.tgz#e64c61d73b8858a6f9401cf132c3ec0c39395bab"
+  integrity sha512-Wsk5Rk8nWreQqlAcQLg/4PiIYa9DaYN1oNZzFyoZ5MLaAyN1voZHS6iuO5MYvxWx/3FOMR5pX+kgBa4Pr8CacA==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
     "@opentripplanner/core-utils" "^11.3.1"
