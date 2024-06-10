@@ -5,11 +5,12 @@ import {
   Styled as TripFormClasses
 } from '@opentripplanner/trip-form'
 import { Input, MenuItemLi } from '@opentripplanner/location-field/lib/styled'
+import { prefersReducedMotion } from '../util/prefersReducedMotion'
 import LocationField from '@opentripplanner/location-field'
 import styled, { css } from 'styled-components'
 
 // How many ms it takes for the advanced settings panel to fly in and out
-export const PANEL_ANIMATION_TIMING = 550
+export const PANEL_ANIMATION_TIMING = prefersReducedMotion ? 0 : 550
 
 const commonButtonCss = css`
   -webkit-user-select: none;
