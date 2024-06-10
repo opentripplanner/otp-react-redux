@@ -13,12 +13,10 @@ const StyledTransparentButton = styled.button`
   align-items: center;
   background: transparent;
   border: none;
-  color: ${grey[700]};
+  color: ${grey[800]};
   display: flex;
   gap: 7px;
   margin-bottom: 5px;
-
-  float: right;
 `
 
 const AdvancedSettingsButton = ({ onClick }: Props): JSX.Element => {
