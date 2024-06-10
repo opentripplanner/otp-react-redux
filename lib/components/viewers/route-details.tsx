@@ -1,17 +1,15 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
-import { Pattern, Stop, TransitOperator } from '@opentripplanner/types'
+import { Stop, TransitOperator } from '@opentripplanner/types'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
 import { DEFAULT_ROUTE_COLOR } from '../util/colors'
-import {
-  extractMainHeadsigns,
-  getRouteColorBasedOnSettings
-} from '../../util/viewer'
+import { extractMainHeadsigns, PatternSummary } from '../../util/pattern-viewer'
 import { getOperatorName } from '../../util/state'
+import { getRouteColorBasedOnSettings } from '../../util/viewer'
 import { LinkOpensNewWindow } from '../util/externalLink'
 import {
   SetViewedRouteHandler,
@@ -39,13 +37,6 @@ const PatternSelectButton = styled(UnstyledButton)`
     white-space: nowrap;
   }
 `
-
-interface PatternSummary {
-  geometryLength: number
-  headsign: string
-  id: string
-  lastStop?: string
-}
 
 interface Props {
   intl: IntlShape
@@ -77,11 +68,11 @@ class RouteDetails extends Component<Props> {
     setViewedStop(stop)
   }
 
-  _editHeadsign = (pattern: Pattern) => {
+  _editHeadsign = (pattern: PatternSummary) => {
     pattern.headsign = this.props.intl.formatMessage(
       { id: 'components.RouteDetails.headsignTo' },
       { ...pattern }
-    )
+    ) as string
   }
 
   render() {
