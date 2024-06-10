@@ -8,8 +8,8 @@ import React, { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 
 const panelFlyIn = keyframes`
-  0% { left: 100%; }
- 100% { left: 0 }
+  0% { left: 100%; opacity: 25% }
+ 100% { left: 0; opacity: 100% }
 `
 
 const PanelOverlay = styled.div<{ reverseAnimation: boolean }>`
