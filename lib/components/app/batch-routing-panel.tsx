@@ -16,6 +16,7 @@ import ViewerContainer from '../viewers/viewer-container'
 interface Props {
   activeSearch: any
   intl: IntlShape
+  mainPanelContent: number
   mobile?: boolean
   showUserSettings: boolean
 }
@@ -28,6 +29,16 @@ class BatchRoutingPanel extends Component<Props> {
     fade: false,
     planTripClicked: false,
     showAdvancedModeSettings: false
+  }
+
+  componentDidUpdate(prevProps: Readonly<Props>): void {
+    if (
+      prevProps.mainPanelContent === null &&
+      this.props.mainPanelContent !== null &&
+      this.state.showAdvancedModeSettings
+    ) {
+      this.handleCloseAdvanceSettings()
+    }
   }
 
   handleSubmit = (e: FormEvent) => e.preventDefault()
@@ -60,8 +71,6 @@ class BatchRoutingPanel extends Component<Props> {
       : intl.formatMessage({
           id: 'common.searchForms.click'
         })
-
-    console.log(this.state)
 
     return (
       <ViewerContainer
@@ -147,8 +156,11 @@ const mapStateToProps = (state: any) => {
     getShowUserSettings(state) &&
     (state.user.loggedInUser?.hasConsentedToTerms ||
       getPersistenceMode(state.otp.config.persistence).isLocalStorage)
+  const { mainPanelContent } = state.otp.ui
+
   return {
     activeSearch: getActiveSearch(state),
+    mainPanelContent,
     showUserSettings
   }
 }
