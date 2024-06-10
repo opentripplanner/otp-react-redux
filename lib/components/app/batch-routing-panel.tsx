@@ -4,6 +4,7 @@ import React, { Component, FormEvent } from 'react'
 
 import { getActiveSearch, getShowUserSettings } from '../../util/state'
 import { getPersistenceMode } from '../../util/user'
+import { PANEL_ANIMATION_TIMING } from '../form/styled'
 import AdvancedSettingsPanel from '../form/advanced-settings-panel'
 import BatchSettings from '../form/batch-settings'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
@@ -51,14 +52,14 @@ class BatchRoutingPanel extends Component<Props> {
     this.setState({ showAdvancedModeSettings: true })
     setTimeout(() => {
       this.setState({ fade: true })
-    }, 300)
+    }, PANEL_ANIMATION_TIMING)
   }
 
   handleCloseAdvanceSettings = () => {
     this.setState({ fade: false })
     setTimeout(() => {
       this.setState({ showAdvancedModeSettings: false })
-    }, 300)
+    }, PANEL_ANIMATION_TIMING)
   }
 
   render() {

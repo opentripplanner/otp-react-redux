@@ -2,6 +2,7 @@ import { Close } from '@styled-icons/fa-solid'
 import { FocusTrapWrapper } from '@opentripplanner/map-popup/lib'
 import { FormattedMessage, useIntl } from 'react-intl'
 
+import { PANEL_ANIMATION_TIMING } from './styled'
 import PageTitle from '../util/page-title'
 import React, { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
@@ -12,7 +13,7 @@ const panelFlyIn = keyframes`
 `
 
 const PanelOverlay = styled.div<{ reverseAnimation: boolean }>`
-  animation: ${panelFlyIn} 300ms ease-in forwards;
+  animation: ${panelFlyIn} ${PANEL_ANIMATION_TIMING}ms linear forwards;
   animation-direction: ${(props) => props.reverseAnimation && 'reverse'};
   background: white;
   box-shadow: 3px 0px 12px #00000052;
