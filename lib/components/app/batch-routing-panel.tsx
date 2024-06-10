@@ -4,6 +4,7 @@ import React, { Component, FormEvent } from 'react'
 
 import { getActiveSearch, getShowUserSettings } from '../../util/state'
 import { getPersistenceMode } from '../../util/user'
+import AdvancedSettingsPanel from '../form/advanced-settings-panel'
 import BatchSettings from '../form/batch-settings'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import LocationField from '../form/connected-location-field'
@@ -24,13 +25,29 @@ interface Props {
  */
 class BatchRoutingPanel extends Component<Props> {
   state = {
-    planTripClicked: false
+    fade: false,
+    planTripClicked: false,
+    showAdvancedModeSettings: false
   }
 
   handleSubmit = (e: FormEvent) => e.preventDefault()
 
   handlePlanTripClick = () => {
     this.setState({ planTripClicked: true })
+  }
+
+  handleOpenAdvanceSettings = () => {
+    this.setState({ showAdvancedModeSettings: true })
+    setTimeout(() => {
+      this.setState({ fade: true })
+    }, 300)
+  }
+
+  handleCloseAdvanceSettings = () => {
+    this.setState({ fade: false })
+    setTimeout(() => {
+      this.setState({ showAdvancedModeSettings: false })
+    }, 300)
   }
 
   render() {
@@ -43,6 +60,8 @@ class BatchRoutingPanel extends Component<Props> {
       : intl.formatMessage({
           id: 'common.searchForms.click'
         })
+
+    console.log(this.state)
 
     return (
       <ViewerContainer
@@ -63,32 +82,45 @@ class BatchRoutingPanel extends Component<Props> {
           onSubmit={this.handleSubmit}
           style={{ padding: '10px' }}
         >
-          <span className="batch-routing-panel-location-fields">
-            <LocationField
-              inputPlaceholder={intl.formatMessage(
-                { id: 'common.searchForms.enterStartLocation' },
-                { mapAction }
-              )}
-              isRequired
-              locationType="from"
-              selfValidate={planTripClicked}
-              showClearButton={!mobile}
+          {' '}
+          {!this.state.fade && (
+            <>
+              <span className="batch-routing-panel-location-fields">
+                <LocationField
+                  inputPlaceholder={intl.formatMessage(
+                    { id: 'common.searchForms.enterStartLocation' },
+                    { mapAction }
+                  )}
+                  isRequired
+                  locationType="from"
+                  selfValidate={planTripClicked}
+                  showClearButton={!mobile}
+                />
+                <LocationField
+                  inputPlaceholder={intl.formatMessage(
+                    { id: 'common.searchForms.enterDestination' },
+                    { mapAction }
+                  )}
+                  isRequired
+                  locationType="to"
+                  selfValidate={planTripClicked}
+                  showClearButton={!mobile}
+                />
+                <div className="switch-button-container">
+                  <SwitchButton />
+                </div>
+              </span>
+              <BatchSettings
+                onPlanTripClick={this.handlePlanTripClick}
+                openAdvancedSettings={this.handleOpenAdvanceSettings}
+              />
+            </>
+          )}
+          {this.state.showAdvancedModeSettings && (
+            <AdvancedSettingsPanel
+              closeAdvancedSettings={this.handleCloseAdvanceSettings}
             />
-            <LocationField
-              inputPlaceholder={intl.formatMessage(
-                { id: 'common.searchForms.enterDestination' },
-                { mapAction }
-              )}
-              isRequired
-              locationType="to"
-              selfValidate={planTripClicked}
-              showClearButton={!mobile}
-            />
-            <div className="switch-button-container">
-              <SwitchButton />
-            </div>
-          </span>
-          <BatchSettings onPlanTripClick={this.handlePlanTripClick} />
+          )}
         </form>
         {!activeSearch && showUserSettings && (
           <UserSettings style={{ margin: '0 10px', overflowY: 'auto' }} />
