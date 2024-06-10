@@ -27,14 +27,14 @@ const PanelOverlay = styled.div<{ reverseAnimation: boolean }>`
 `
 
 const CloseButton = styled.button`
-  border: none;
   background: transparent;
+  border: none;
 `
 
 const HeaderContainer = styled.div`
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 `
 
 const AdvancedSettingsPanel = ({
