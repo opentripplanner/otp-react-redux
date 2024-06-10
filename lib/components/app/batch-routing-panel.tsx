@@ -132,18 +132,20 @@ class BatchRoutingPanel extends Component<Props> {
             />
           )}
         </form>
-        {!activeSearch && showUserSettings && (
+        {!activeSearch && showUserSettings && !this.state.fade && (
           <UserSettings style={{ margin: '0 10px', overflowY: 'auto' }} />
         )}
-        <div
-          className="desktop-narrative-container"
-          style={{
-            flexGrow: 1,
-            overflowY: 'hidden'
-          }}
-        >
-          <NarrativeItineraries />
-        </div>
+        {!this.state.fade && (
+          <div
+            className="desktop-narrative-container"
+            style={{
+              flexGrow: 1,
+              overflowY: 'hidden'
+            }}
+          >
+            <NarrativeItineraries />
+          </div>
+        )}
       </ViewerContainer>
     )
   }
