@@ -16,7 +16,7 @@ describe('util > pattern-viewer', () => {
   describe('extractMainHeadsigns', () => {
     it('should retain the essential patterns', () => {
       // Consider the following patterns P1, P2, P3 of the same route with the same headsigns:
-      // Stops 1  2  3  4  5  6  7 --> direction of travel
+      // Stops S1 S2 S3 S4 S5 S6 S7 --> direction of travel
       // P1:   o--o--o--o--o
       // P2:         o--o-----o--o
       // P3:         o--o--o
@@ -31,7 +31,7 @@ describe('util > pattern-viewer', () => {
         P1: {
           headsign,
           id: 'P1',
-          name: '512 to Everett Station (CommTrans:2861) from SODO Busway & S Royal Brougham Way (kcm:99267)',
+          name: 'P1 Pattern name',
           patternGeometry: {
             length: 1404,
             points: 'p1-points'
@@ -41,7 +41,7 @@ describe('util > pattern-viewer', () => {
         P2: {
           headsign,
           id: 'P2',
-          name: '512 to Hewitt Ave & Virginia Ave (CommTrans:427)',
+          name: 'P2 Pattern name',
           patternGeometry: {
             length: 1072,
             points: 'p2-points'
@@ -51,7 +51,7 @@ describe('util > pattern-viewer', () => {
         P3: {
           headsign,
           id: 'P3',
-          name: '512 to Everett Station (CommTrans:2861) from Northgate Station Bay 2 (CommTrans:2192)',
+          name: 'P3 Pattern name',
           patternGeometry: {
             length: 987,
             points: 'p3-points'
@@ -62,7 +62,7 @@ describe('util > pattern-viewer', () => {
       const headsignData = extractMainHeadsigns(patterns, route, editHeadsign)
       expect(headsignData.length).toBe(2)
       expect(headsignData[0].headsign).toBe(headsign)
-      expect(headsignData[1].headsign).toBe('Everett via Lynnwood (S7)')
+      expect(headsignData[1].headsign).toBe(`${headsign} (S7)`)
     })
   })
 })
