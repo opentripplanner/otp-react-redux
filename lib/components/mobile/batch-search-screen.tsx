@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 
 import * as uiActions from '../../actions/ui'
 import { MobileScreens } from '../../actions/ui-constants'
+import { PANEL_ANIMATION_TIMING } from '../form/styled'
+import AdvancedSettingsPanel from '../form/advanced-settings-panel'
 import BatchSettings from '../form/batch-settings'
 import DefaultMap from '../map/default-map'
 import LocationField from '../form/connected-location-field'
@@ -22,7 +24,9 @@ interface Props {
 
 class BatchSearchScreen extends Component<Props> {
   state = {
-    planTripClicked: false
+    fade: false,
+    planTripClicked: false,
+    showAdvancedModeSettings: false
   }
 
   _fromFieldClicked = () => this.props.setMobileScreen(SET_FROM_LOCATION)
@@ -31,6 +35,20 @@ class BatchSearchScreen extends Component<Props> {
 
   handlePlanTripClick = () => {
     this.setState({ planTripClicked: true })
+  }
+
+  handleOpenAdvanceSettings = () => {
+    this.setState({ showAdvancedModeSettings: true })
+    setTimeout(() => {
+      this.setState({ fade: true })
+    }, PANEL_ANIMATION_TIMING)
+  }
+
+  handleCloseAdvanceSettings = () => {
+    this.setState({ fade: false })
+    setTimeout(() => {
+      this.setState({ showAdvancedModeSettings: false })
+    }, PANEL_ANIMATION_TIMING)
   }
 
   render() {
@@ -45,30 +63,43 @@ class BatchSearchScreen extends Component<Props> {
         />
         <main tabIndex={-1}>
           <div className="batch-search-settings mobile-padding">
-            <LocationField
-              inputPlaceholder={intl.formatMessage({
-                id: 'components.LocationSearch.setOrigin'
-              })}
-              isRequired
-              locationType="from"
-              onTextInputClick={this._fromFieldClicked}
-              selfValidate={planTripClicked}
-              showClearButton={false}
-            />
-            <LocationField
-              inputPlaceholder={intl.formatMessage({
-                id: 'components.LocationSearch.setDestination'
-              })}
-              isRequired
-              locationType="to"
-              onTextInputClick={this._toFieldClicked}
-              selfValidate={planTripClicked}
-              showClearButton={false}
-            />
-            <div className="switch-button-container-mobile">
-              <SwitchButton />
-            </div>
-            <BatchSettings onPlanTripClick={this.handlePlanTripClick} />
+            {!this.state.fade && (
+              <>
+                <LocationField
+                  inputPlaceholder={intl.formatMessage({
+                    id: 'components.LocationSearch.setOrigin'
+                  })}
+                  isRequired
+                  locationType="from"
+                  onTextInputClick={this._fromFieldClicked}
+                  selfValidate={planTripClicked}
+                  showClearButton={false}
+                />
+                <LocationField
+                  inputPlaceholder={intl.formatMessage({
+                    id: 'components.LocationSearch.setDestination'
+                  })}
+                  isRequired
+                  locationType="to"
+                  onTextInputClick={this._toFieldClicked}
+                  selfValidate={planTripClicked}
+                  showClearButton={false}
+                />
+                <div className="switch-button-container-mobile">
+                  <SwitchButton />
+                </div>
+                <BatchSettings
+                  onPlanTripClick={this.handlePlanTripClick}
+                  openAdvancedSettings={this.handleOpenAdvanceSettings}
+                />
+              </>
+            )}
+
+            {this.state.showAdvancedModeSettings && (
+              <AdvancedSettingsPanel
+                closeAdvancedSettings={this.handleCloseAdvanceSettings}
+              />
+            )}
           </div>
           <div className="batch-search-map">
             <DefaultMap />
