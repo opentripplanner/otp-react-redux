@@ -34,6 +34,7 @@ import {
   ModeSelectorContainer,
   PlanTripButton
 } from './batch-styled'
+import AdvancedSettingsButton from './advanced-settings-button'
 import DateTimeButton from './date-time-button'
 
 const queryParamConfig = { modeButtons: DelimitedArrayParam }
@@ -48,6 +49,7 @@ type Props = {
   modeSettingDefinitions: ModeSetting[]
   modeSettingValues: ModeSettingValues
   onPlanTripClick: () => void
+  openAdvancedSettings?: () => void
   routingQuery: any
   setQueryParam: (evt: any) => void
   spacedOutModeSelector?: boolean
@@ -80,6 +82,7 @@ function BatchSettings({
   modeSettingDefinitions,
   modeSettingValues,
   onPlanTripClick,
+  openAdvancedSettings,
   routingQuery,
   setQueryParam,
   spacedOutModeSelector,
@@ -240,6 +243,9 @@ function BatchSettings({
         // Prevent the hover on date/time selector when mode selector has a popup open via keyboard.
         style={{ pointerEvents: modeSelectorPopup ? 'none' : undefined }}
       />
+      {openAdvancedSettings && (
+        <AdvancedSettingsButton onClick={openAdvancedSettings} />
+      )}
       <ModeSelectorContainer
         squashed={!spacedOutModeSelector}
         // Prevent hover effect on mode selector when date selector is activated via keyboard.
