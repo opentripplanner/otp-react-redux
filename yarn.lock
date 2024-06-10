@@ -2397,25 +2397,7 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/building-blocks/-/building-blocks-1.0.3.tgz#74de32daba0d7fae7d10d5738db6d2f2824da3dd"
   integrity sha512-065pZZTzR+qisgbvJd9swhitMMin1/ooMwuzqqRknsKYK+wOGge3Y3sbgQZATyjR/oH43uF0P2ZhGcbgqgM+YQ==
 
-"@opentripplanner/core-utils@^11.2.3", "@opentripplanner/core-utils@^11.3.1":
-  version "11.4.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.4.0.tgz#f8c664d67d36108eab5e0477966c156ccfac6619"
-  integrity sha512-4weAgo3PwqrDfaQnLVhGxX67/lpjXQsW6OoIFluFFK6HZEN6mu6KW6OkTBGRbTSlVRE+Xz0FwmPuSrI3WlQDMA==
-  dependencies:
-    "@conveyal/lonlat" "^1.4.1"
-    "@mapbox/polyline" "^1.1.0"
-    "@opentripplanner/geocoder" "^2.2.2"
-    "@styled-icons/foundation" "^10.34.0"
-    "@turf/along" "^6.0.1"
-    chroma-js "^2.4.2"
-    date-fns "^2.28.0"
-    date-fns-tz "^1.2.2"
-    graphql "^16.6.0"
-    lodash.clonedeep "^4.5.0"
-    lodash.isequal "^4.5.0"
-    qs "^6.9.1"
-
-"@opentripplanner/core-utils@^11.4.1":
+"@opentripplanner/core-utils@^11.2.3", "@opentripplanner/core-utils@^11.3.1", "@opentripplanner/core-utils@^11.4.1":
   version "11.4.1"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.4.1.tgz#9ccfed82f9a05078bd8e815dd4025af164e37acb"
   integrity sha512-5FZT0ESVctyoO3V0W80QMZuzAc8hEYZxLAyrEARYXNeAHnBNxngGGMj7QMLK4JZgJDESnNietSRnBJd2MBWhOw==
