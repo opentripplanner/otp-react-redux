@@ -9,7 +9,7 @@ import LocationField from '@opentripplanner/location-field'
 import styled, { css } from 'styled-components'
 
 // How many ms it takes for the advanced settings panel to fly in and out
-export const PANEL_ANIMATION_TIMING = 300
+export const PANEL_ANIMATION_TIMING = 550
 
 const commonButtonCss = css`
   -webkit-user-select: none;
