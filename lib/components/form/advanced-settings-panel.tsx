@@ -1,5 +1,6 @@
 import { Close } from '@styled-icons/fa-solid'
-import { useIntl } from 'react-intl'
+import { FocusTrapWrapper } from '@opentripplanner/map-popup/lib'
+import { FormattedMessage, useIntl } from 'react-intl'
 
 import PageTitle from '../util/page-title'
 import React, { useState } from 'react'
@@ -11,17 +12,17 @@ const panelFlyIn = keyframes`
 `
 
 const PanelOverlay = styled.div<{ reverseAnimation: boolean }>`
-  left: 0;
-  top: 0;
-  height: 100vh;
-  width: 100%;
-  position: absolute;
   animation: ${panelFlyIn} 400ms ease-in forwards;
   animation-direction: ${(props) => props.reverseAnimation && 'reverse'};
-  z-index: 100;
   background: white;
-  padding: 1.5em;
   box-shadow: 3px 0px 12px #00000052;
+  height: 100vh;
+  left: 0;
+  padding: 1.5em;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 100;
 `
 
 const CloseButton = styled.button`
@@ -61,17 +62,34 @@ const AdvancedSettingsPanel = ({
       key={key}
       reverseAnimation={reverseAnimation}
     >
-      <HeaderContainer>
-        <h1 className="header-text">{headerText}</h1>
-        <CloseButton
-          aria-label={closeButtonText}
-          onClick={closePanel}
-          title={closeButtonText}
-        >
-          <Close size={22} />
-        </CloseButton>
-      </HeaderContainer>
-      <PageTitle title={headerText} />
+      <FocusTrapWrapper closePopup={closePanel} id="advanced-settings">
+        <HeaderContainer>
+          <h1 className="header-text">{headerText}</h1>
+          <CloseButton
+            aria-label={closeButtonText}
+            onClick={closePanel}
+            title={closeButtonText}
+          >
+            <Close size={22} />
+          </CloseButton>
+        </HeaderContainer>
+        <PageTitle title={headerText} />
+        {/**
+         * Date time selector goes here
+         */}
+        <h2 className="header-text">
+          <FormattedMessage id="components.BatchSearchScreen.tripOptions" />
+        </h2>
+        {/**
+         * Trip options (walk speed, walk reluctance, accessible routing) go here
+         */}
+        <h2 className="header-text">
+          <FormattedMessage id="components.BatchSearchScreen.modeOptions" />
+        </h2>
+        {/**
+         * AdvancedModeSubsettingsContainer (import from Otp-ui) goes here
+         */}
+      </FocusTrapWrapper>
     </PanelOverlay>
   )
 }
