@@ -33,12 +33,13 @@ class BatchRoutingPanel extends Component<Props> {
   }
 
   componentDidUpdate(prevProps: Readonly<Props>): void {
+    // Close the advanced mode settings if we navigate to another page
     if (
       prevProps.mainPanelContent === null &&
       this.props.mainPanelContent !== null &&
       this.state.showAdvancedModeSettings
     ) {
-      this.handleCloseAdvanceSettings()
+      this.setState({ fade: false, showAdvancedModeSettings: false })
     }
   }
 
@@ -50,6 +51,7 @@ class BatchRoutingPanel extends Component<Props> {
 
   handleOpenAdvanceSettings = () => {
     this.setState({ showAdvancedModeSettings: true })
+    // Allow Advanced Settings panel to finish animation before removing form from DOM
     setTimeout(() => {
       this.setState({ fade: true })
     }, PANEL_ANIMATION_TIMING)
@@ -57,6 +59,7 @@ class BatchRoutingPanel extends Component<Props> {
 
   handleCloseAdvanceSettings = () => {
     this.setState({ fade: false })
+    // Allow Advanced Settings panel to finish animation before removing from DOM
     setTimeout(() => {
       this.setState({ showAdvancedModeSettings: false })
     }, PANEL_ANIMATION_TIMING)
@@ -92,7 +95,6 @@ class BatchRoutingPanel extends Component<Props> {
           onSubmit={this.handleSubmit}
           style={{ padding: '10px' }}
         >
-          {' '}
           {!this.state.fade && (
             <>
               <span className="batch-routing-panel-location-fields">

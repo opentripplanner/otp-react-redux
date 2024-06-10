@@ -39,6 +39,7 @@ class BatchSearchScreen extends Component<Props> {
 
   handleOpenAdvanceSettings = () => {
     this.setState({ showAdvancedModeSettings: true })
+    // Allow Advanced Settings panel to finish animation before removing form from DOM
     setTimeout(() => {
       this.setState({ fade: true })
     }, PANEL_ANIMATION_TIMING)
@@ -46,6 +47,7 @@ class BatchSearchScreen extends Component<Props> {
 
   handleCloseAdvanceSettings = () => {
     this.setState({ fade: false })
+    // Allow Advanced Settings panel to finish animation before removing from DOM
     setTimeout(() => {
       this.setState({ showAdvancedModeSettings: false })
     }, PANEL_ANIMATION_TIMING)
