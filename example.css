@@ -39,13 +39,12 @@
 .sidebar {
   height: 100%;
   padding: 0;
-  z-index: 99;
+  box-shadow: 3px 0px 12px #00000052;
+  z-index: 1000;
 }
 
 .map-container {
-  box-shadow: 3px 0px 12px #00000052;
   height: 100%;
   margin: 0px;
   padding: 0px;
-  z-index: 100;
 }
