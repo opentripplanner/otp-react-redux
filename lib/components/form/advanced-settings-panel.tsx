@@ -13,7 +13,7 @@ const panelFlyIn = keyframes`
 `
 
 const PanelOverlay = styled.div<{ reverseAnimation: boolean }>`
-  animation: ${panelFlyIn} ${PANEL_ANIMATION_TIMING}ms linear forwards;
+  animation: ${panelFlyIn} ${PANEL_ANIMATION_TIMING}ms ease-in-out forwards;
   animation-direction: ${(props) => props.reverseAnimation && 'reverse'};
   background: white;
   box-shadow: 3px 0px 12px #00000052;
