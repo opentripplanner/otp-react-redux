@@ -58,8 +58,8 @@ export interface Time {
 }
 
 export interface ViewedRouteState {
-  patternId?: string
-  routeId: string
+  patternId?: string | null
+  routeId: string | null
 }
 
 export interface RouteVehicle {

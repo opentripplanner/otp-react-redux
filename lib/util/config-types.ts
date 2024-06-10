@@ -71,6 +71,7 @@ export type MapillaryConfig = ApiKeyConfig
 export type NearbyViewConfig = {
   hideEmptyStops?: boolean
   radius?: number
+  showShadowDotOnMapDrag?: boolean
   useRouteViewSort?: boolean
 }
 
@@ -220,6 +221,7 @@ export type SupportedOverlays =
   | MapTileLayerConfig
 
 export interface MapConfig {
+  autoFlyOnTripFormUpdate?: boolean
   baseLayers?: BaseLayerConfig[]
   initLat?: number
   initLon?: number
@@ -276,6 +278,7 @@ export interface ItineraryConfig {
   onlyShowCountdownForRealtime?: boolean
   previewOverlay?: boolean
   renderRouteNamesInBlocks?: boolean
+  showAllWalkLegs?: boolean
   showFirstResultByDefault?: boolean
   showHeaderText?: boolean
   showLegDurations?: boolean

@@ -115,6 +115,7 @@ persistence:
 map:
   initLat: 45.52
   initLon: -122.682
+  # autoFlyOnTripFormUpdate: false
   baseLayers:
     - name: Streets
       # These tiles are free to use, but not in production
@@ -338,6 +339,8 @@ itinerary:
   # Whether the plan first/previous/next/last buttons should be shown along with
   # plan trip itineraries.
   showPlanFirstLastButtons: false
+  # Show all walking legs regardless of distance
+  showAllWalkLegs: false
   # Filters out trips returned by OTP by default, unless specifically requested.
   # e.g. filters out walk-only itineraries if user has not explicitly asked for them.
   strictItineraryFiltering: false
@@ -664,3 +667,5 @@ itinerary:
 #   radius: 600
 ### Setting this to true will use the route viewer sort algorithm on routes
 #   useRouteViewSort: false
+### Setting this to false will hide the shadowey dot that appears when dragging the map
+#   showShadowDotOnMapDrag: false
