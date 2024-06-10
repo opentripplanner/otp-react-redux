@@ -1,6 +1,7 @@
 import { Calendar } from '@styled-icons/fa-solid'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
+import { TransitOperator } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 
@@ -23,6 +24,7 @@ type Props = {
   fromToSlot: JSX.Element
   homeTimezone: string
   nearbyViewConfig?: NearbyViewConfig
+  routeSortComparator: (a: PatternStopTime, b: PatternStopTime) => number
   stopData: StopData
 }
 
@@ -30,6 +32,7 @@ const Stop = ({
   fromToSlot,
   homeTimezone,
   nearbyViewConfig,
+  routeSortComparator,
   stopData
 }: Props): JSX.Element => {
   const patternRows = (stopData.stoptimesForPatterns || [])
@@ -52,10 +55,7 @@ const Stop = ({
       }
       return acc
     }, [])
-    .sort(
-      (a: PatternStopTime, b: PatternStopTime) =>
-        fullTimestamp(a.stoptimes?.[0]) - fullTimestamp(b.stoptimes?.[0])
-    )
+    .sort(routeSortComparator)
     .map((st: any, index: number) => {
       const sortedStopTimes = st.stoptimes.sort(
         (a: StopTime, b: StopTime) => fullTimestamp(a) - fullTimestamp(b)
@@ -103,9 +103,26 @@ const Stop = ({
 
 const mapStateToProps = (state: AppReduxState) => {
   const { config } = state.otp
+  const nearbyViewConfig = config?.nearbyView
+  const transitOperators = config?.transitOperators || []
+
+  // Default sort: departure time
+  let routeSortComparator = (a: PatternStopTime, b: PatternStopTime) =>
+    fullTimestamp(a.stoptimes?.[0]) - fullTimestamp(b.stoptimes?.[0])
+
+  if (nearbyViewConfig?.useRouteViewSort) {
+    routeSortComparator = (a: PatternStopTime, b: PatternStopTime) =>
+      coreUtils.route.makeRouteComparator(transitOperators)(
+        // @ts-expect-error core-utils types are wrong!
+        a.pattern.route,
+        b.pattern.route
+      )
+  }
+
   return {
     homeTimezone: config.homeTimezone,
-    nearbyViewConfig: config?.nearbyView
+    nearbyViewConfig,
+    routeSortComparator
   }
 }
 

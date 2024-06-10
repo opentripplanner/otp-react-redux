@@ -18,13 +18,13 @@ import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
 import { useIntl } from 'react-intl'
 import React, { useCallback, useContext, useState } from 'react'
-import tinycolor from 'tinycolor2'
 
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
 import { ComponentContext } from '../../util/contexts'
 import { generateModeSettingValues } from '../../util/api'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
+import { getBaseColor, getDarkenedBaseColor } from '../util/colors'
 import { getFormattedMode } from '../../util/i18n'
 import { RoutingQueryCallResult } from '../../actions/api-constants'
 import { StyledIconWrapper } from '../util/styledIcon'
@@ -49,7 +49,7 @@ type Props = {
   modeSettingValues: ModeSettingValues
   onPlanTripClick: () => void
   routingQuery: any
-  setUrlSearch: (evt: any) => void
+  setQueryParam: (evt: any) => void
   spacedOutModeSelector?: boolean
   updateQueryTimeIfLeavingNow: () => void
 }
@@ -81,7 +81,7 @@ function BatchSettings({
   modeSettingValues,
   onPlanTripClick,
   routingQuery,
-  setUrlSearch,
+  setQueryParam,
   spacedOutModeSelector,
   updateQueryTimeIfLeavingNow
 }: Props) {
@@ -189,6 +189,17 @@ function BatchSettings({
     updateQueryTimeIfLeavingNow
   ])
 
+  /**
+   * Stores parameters in both the Redux `currentQuery` and URL
+   * @param params Params to store
+   */
+  const _onSettingsUpdate = useCallback(
+    (params: any) => {
+      setQueryParam({ queryParamData: params, ...params })
+    },
+    [setQueryParam]
+  )
+
   const _toggleModeButton = useCallback(
     (buttonId: string, newState: boolean) => {
       let newButtons
@@ -200,11 +211,11 @@ function BatchSettings({
 
       // encodeQueryParams serializes the mode buttons for the URL
       // to get nice looking URL params and consistency
-      setUrlSearch(
+      _onSettingsUpdate(
         encodeQueryParams(queryParamConfig, { modeButtons: newButtons })
       )
     },
-    [enabledModeButtons, setUrlSearch]
+    [enabledModeButtons, _onSettingsUpdate]
   )
 
   /**
@@ -217,11 +228,9 @@ function BatchSettings({
     setModeSelectorPopup(!!modeSelectorPopup)
   }, [setModeSelectorPopup])
 
-  // We can rely on this existing, as there is a default
-  const baseColor = getComputedStyle(document.documentElement).getPropertyValue(
-    '--main-base-color'
-  )
-  const accentColor = tinycolor(baseColor).darken(10)
+  const baseColor = getBaseColor()
+
+  const accentColor = getDarkenedBaseColor()
 
   return (
     <MainSettingsRow onMouseMove={checkModeSelectorPopup}>
@@ -244,7 +253,7 @@ function BatchSettings({
             id: 'components.BatchSearchScreen.modeSelectorLabel'
           })}
           modeButtons={processedModeButtons}
-          onSettingsUpdate={setUrlSearch}
+          onSettingsUpdate={_onSettingsUpdate}
           onToggleModeButton={_toggleModeButton}
         />
         <PlanTripButton
@@ -298,7 +307,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = {
   routingQuery: apiActions.routingQuery,
-  setUrlSearch: apiActions.setUrlSearch,
+  setQueryParam: formActions.setQueryParam,
   updateQueryTimeIfLeavingNow: formActions.updateQueryTimeIfLeavingNow
 }
 

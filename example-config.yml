@@ -70,10 +70,9 @@ api:
 persistence:
   enabled: true
   strategy: localStorage
-  ### This variable hides the "more info" link when accepting the terms of storage.
-  ### If no terms of storage page content is set, this removes an otherwise dead link
-  ### False is default in that if the value isn't set, the link isn't shown
-  # terms_of_storage: true
+  ### This variable defines the default state of the terms of storage checkbox.
+  ### Possible values: 'visible-unchecked' (default) | 'visible-checked' | 'hidden-unchecked' | 'hidden-checked'
+  # termsOfStorageDefault: 'visible-unchecked'
 
 ### If using the OTP Middleware to store user profiles
 ### with Auth0 as the authentication mechanism,
@@ -116,6 +115,7 @@ persistence:
 map:
   initLat: 45.52
   initLon: -122.682
+  # autoFlyOnTripFormUpdate: false
   baseLayers:
     - name: Streets
       # These tiles are free to use, but not in production
@@ -339,6 +339,8 @@ itinerary:
   # Whether the plan first/previous/next/last buttons should be shown along with
   # plan trip itineraries.
   showPlanFirstLastButtons: false
+  # Show all walking legs regardless of distance
+  showAllWalkLegs: false
   # Filters out trips returned by OTP by default, unless specifically requested.
   # e.g. filters out walk-only itineraries if user has not explicitly asked for them.
   strictItineraryFiltering: false
@@ -639,6 +641,8 @@ itinerary:
 #   vehicleIconHighlight: true
 #   # Customize vehicle icon padding (the default iconPadding is 2px in otp-ui)
 #   vehicleIconPadding: 0
+#   # Remove vehicles from map that haven't sent an update in this number of seconds
+#   maxRealtimeVehicleAge: 60
 #   # Interval for refreshing vehicle positions
 #   vehiclePositionRefreshSeconds: 30 # defaults to 30 seconds.
 
@@ -661,3 +665,7 @@ itinerary:
 #   hideEmptyStops: true
 ### What radius should the nearby query get results within? (in meters)
 #   radius: 600
+### Setting this to true will use the route viewer sort algorithm on routes
+#   useRouteViewSort: false
+### Setting this to false will hide the shadowey dot that appears when dragging the map
+#   showShadowDotOnMapDrag: false

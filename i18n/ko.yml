@@ -428,7 +428,6 @@ components:
     shortTitle: 경로 보기
     stopsInDirectionOfTravel: "이동편 이 방향의 정류장:"
     title: 경로 뷰어
-    toggleRouteOnMap: 지도에서 경로 토글
   SaveTripButton:
     cantSaveText: 저장할 수 없음
     cantSaveTooltip: 대중교통을 포함하고 렌트 또는 차량 호출을 포함하지 않는 트립 일정만 모니터링할 수 있습니다.
@@ -521,7 +520,6 @@ components:
     vehicleName: 차량 {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: 각 요일의 트립을 확인 중…
-    selectAtLeastOneDay: 모니터링하려면 최소 1일 이상을 선택하세요.
     tripDaysPrompt: 어느 요일에 이 트립을 사용하시나요?
     tripIsAvailableOnDaysIndicated: 트립은 위에 표시된 요일에 제공됩니다.
     tripNamePrompt: "이 트립의 이름을 입력하세요:"
@@ -592,9 +590,9 @@ components:
     arriveAt: "도착 "
     leaveAt: "출발 "
   TripSummaryPane:
-    happensOnDays: "발생: <strong>{days}</strong>"
-    notifications: "알림: <strong>출발 예정 시간 {leadTimeInMinutes} 분 전</strong>"
-    notificationsDisabled: "알림: <strong>비활성화됨</strong>"
+    happensOnDays: "발생: {days}"
+    notifications: 출발 예정 시간 {leadTimeInMinutes} 분 전
+    notificationsDisabled: "알림: 비활성화됨"
   TripTools:
     copyLink: 링크 복사
     header: 도구

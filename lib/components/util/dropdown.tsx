@@ -1,4 +1,3 @@
-import { NavbarButton } from '../app/nav-item'
 import React, {
   HTMLAttributes,
   KeyboardEvent,
@@ -7,6 +6,10 @@ import React, {
   useRef,
   useState
 } from 'react'
+
+import { DARK_TEXT_GREY } from './colors'
+import { getEntryRelativeTo } from './get-entry-relative-to'
+import { NavbarButton } from '../app/nav-item'
 import styled from 'styled-components'
 
 interface Props extends HTMLAttributes<HTMLElement> {
@@ -26,7 +29,7 @@ const DropdownMenu = styled.ul`
   border-radius: 4px;
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  color: #111;
+  color: ${DARK_TEXT_GREY};
   list-style: none;
   margin: 2px 0 0;
   min-width: 160px;
@@ -62,25 +65,6 @@ const DropdownMenu = styled.ul`
 `
 
 /**
- * Helper method to find the element within dropdown menu at the given offset
- * (e.g. previous or next) relative to the specified element.
- * The query is limited to the dropdown so that arrow navigation is contained within
- * (tab navigation is not restricted).
- */
-function getEntryRelativeTo(
-  id: string,
-  element: EventTarget,
-  offset: 1 | -1
-): HTMLElement {
-  const entries = Array.from(
-    document.querySelectorAll(`#${id} button, #${id}-label`)
-  )
-  const elementIndex = entries.indexOf(element as HTMLElement)
-
-  return entries[elementIndex + offset] as HTMLElement
-}
-
-/**
  * Renders a dropdown menu. By default, only a passed "name" is rendered. If clicked,
  * a floating div is rendered below the "name" with list contents inside. Clicking anywhere
  * outside the floating div will close the dropdown.
@@ -99,6 +83,9 @@ export const Dropdown = ({
   const containerRef = useRef<HTMLLIElement>(null)
 
   const toggleOpen = useCallback(() => setOpen(!open), [open, setOpen])
+
+  // Argument for document.querySelectorAll to target focusable elements.
+  const queryId = `#${id} button, #${id}-label`
 
   // Adding document event listeners allows us to close the dropdown
   // when the user interacts with any part of the page that isn't the dropdown
@@ -124,11 +111,11 @@ export const Dropdown = ({
       switch (e.key) {
         case 'ArrowUp':
           e.preventDefault()
-          getEntryRelativeTo(id, element, -1)?.focus()
+          getEntryRelativeTo(queryId, element, -1)?.focus()
           break
         case 'ArrowDown':
           e.preventDefault()
-          getEntryRelativeTo(id, element, 1)?.focus()
+          getEntryRelativeTo(queryId, element, 1)?.focus()
           break
         case 'Escape':
           setOpen(false)
@@ -190,25 +177,16 @@ export const Dropdown = ({
 }
 
 export const SortResultsDropdown = styled(Dropdown)`
-    position: relative;
+  position: relative;
 
-    ${DropdownButton} {
-      border-radius: 5px;
-      padding: 3px 7px;
-      background: #F8FAFB;
+  ${DropdownButton} {
+    background: #fff;
+    border-radius: 5px;
+    color: inherit;
+    padding: 3px 7px;
+
+    span.caret {
       color: inherit;
-
-      span.caret {
-        color: inherit;
-      }
-
-      &:hover {
-        background: #fff;
-        color: inherit;
-      }
-      &.active {
-        background: #fff;
-      }
     }
   }
 `

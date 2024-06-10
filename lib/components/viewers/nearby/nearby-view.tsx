@@ -30,8 +30,10 @@ const AUTO_REFRESH_INTERVAL = 15000
 
 // TODO: use lonlat package
 type LatLonObj = { lat: number; lon: number }
+type CurrentPosition = { coords?: { latitude: number; longitude: number } }
 
 type Props = {
+  currentPosition?: CurrentPosition
   displayedCoords?: LatLonObj
   entityId?: string
   fetchNearby: (latLon: LatLonObj, radius?: number) => void
@@ -68,13 +70,20 @@ const getNearbyItem = (place: any) => {
   }
 }
 
-function getNearbyCoordsFromUrlOrMapCenter(
+function getNearbyCoordsFromUrlOrLocationOrMapCenter(
   coordsFromUrl?: LatLonObj,
+  currentPosition?: CurrentPosition,
   map?: MapRef
 ): LatLonObj | null {
   if (coordsFromUrl) {
     return coordsFromUrl
   }
+
+  if (currentPosition?.coords) {
+    const { latitude: lat, longitude: lon } = currentPosition.coords
+    return { lat, lon }
+  }
+
   const rawMapCoords = map?.getCenter()
   const mapCoords = rawMapCoords !== undefined && {
     lat: rawMapCoords.lat,
@@ -87,6 +96,7 @@ function getNearbyCoordsFromUrlOrMapCenter(
 }
 
 function NearbyView({
+  currentPosition,
   displayedCoords,
   entityId,
   fetchNearby,
@@ -105,8 +115,13 @@ function NearbyView({
   const [loading, setLoading] = useState(true)
   const firstItemRef = useRef<HTMLDivElement>(null)
   const finalNearbyCoords = useMemo(
-    () => getNearbyCoordsFromUrlOrMapCenter(nearbyViewCoords, map),
-    [nearbyViewCoords, map]
+    () =>
+      getNearbyCoordsFromUrlOrLocationOrMapCenter(
+        nearbyViewCoords,
+        currentPosition,
+        map
+      ),
+    [nearbyViewCoords, currentPosition, map]
   )
 
   // Make sure the highlighted location is cleaned up when leaving nearby
@@ -200,7 +215,7 @@ function NearbyView({
           /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
           tabIndex={0}
         >
-          {getNearbyItem(n.place)}
+          {getNearbyItem({ ...n.place, distance: n.distance })}
         </div>
       </li>
     ))
@@ -266,11 +281,13 @@ function NearbyView({
 }
 
 const mapStateToProps = (state: AppReduxState) => {
-  const { config, transitIndex, ui } = state.otp
+  const { config, location, transitIndex, ui } = state.otp
   const { nearbyViewCoords } = ui
   const { nearby } = transitIndex
   const { entityId } = state.router.location.query
+  const { currentPosition } = location
   return {
+    currentPosition,
     displayedCoords: nearby?.coords,
     entityId: entityId && decodeURIComponent(entityId),
     homeTimezone: config.homeTimezone,

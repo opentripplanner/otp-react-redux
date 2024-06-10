@@ -1,7 +1,10 @@
 import { Panel } from 'react-bootstrap'
 import styled, { css } from 'styled-components'
 
-import { RED_ON_WHITE } from '../util/colors'
+import { getBaseColor, RED_ON_WHITE } from '../util/colors'
+import Link from '../util/link'
+
+const baseColor = getBaseColor()
 
 export const PageHeading = styled.h2`
   margin: 10px 0px 45px 0px;
@@ -46,11 +49,28 @@ export const TripHeader = styled.h3`
   margin-top: 0px;
 `
 
-export const TripPanelHeading = styled(Panel.Heading)`
-  background-color: white !important;
+export const TripPanelTitle = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
 `
 
-export const TripPanelAlert = styled.button`
+export const TripPanelHeading = styled(Panel.Heading)`
+  background-color: white !important;
+  border-color: #fff !important;
+  padding: 20px 25px 0 25px;
+  max-width: 670px;
+
+  a svg {
+    color: ${baseColor};
+  }
+
+  h3 {
+    margin: 0;
+  }
+`
+
+export const TripPanelAlert = styled.span`
   background: none;
   border: none;
   color: ${RED_ON_WHITE};
@@ -64,23 +84,8 @@ export const TripPanelAlert = styled.button`
 
 export const TripPanelFooter = styled(Panel.Footer)`
   background-color: white !important;
+  border: none;
   padding: 0px;
-  button {
-    border: 0px;
-    padding: 13px 0px;
-    width: 50%;
-  }
-
-  button:first-child {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  button:nth-child(2) {
-    border-radius: 0;
-    border-left: 1px solid #ddd;
-  }
 `
 
 /** Formats non-<label> elements like <label>s. */
@@ -112,4 +117,15 @@ export const phoneFieldStyle = css`
   display: inline-block;
   vertical-align: middle;
   width: 14em;
+`
+
+export const UnstyledLink = styled(Link)`
+  color: initial;
+  letter-spacing: initial;
+  text-transform: none;
+
+  &:hover {
+    color: initial;
+    text-decoration: none;
+  }
 `

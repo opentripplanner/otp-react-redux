@@ -476,7 +476,6 @@ components:
     shortTitle: Tingnan ang Mga Ruta
     stopsInDirectionOfTravel: "Mga hintuan sa direksyong ito ng paglalakbay:"
     title: Viewer ng Ruta
-    toggleRouteOnMap: I-toggle ang ruta sa mapa
   SaveTripButton:
     cantSaveText: Hindi ma-save
     cantSaveTooltip: >-
@@ -585,7 +584,6 @@ components:
     vehicleName: Sasakyan {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: Tinitingnan kung may itinerary para sa bawat araw ng linggo...
-    selectAtLeastOneDay: Pumili ng kahit isang araw lang na susubaybayan.
     tripDaysPrompt: Anong mga araw mo ginagawa ang biyaheng ito?
     tripIsAvailableOnDaysIndicated: Available ang iyong biyahe sa mga araw ng linggo na nakasaad sa itaas.
     tripNamePrompt: "Pangalanan ang biyaheng ito:"
@@ -670,11 +668,9 @@ components:
     arriveAt: "Darating nang "
     leaveAt: "Umalis sa "
   TripSummaryPane:
-    happensOnDays: "Mangyayari sa: <strong>{days}</strong>"
-    notifications: >-
-      Mga Notification: <strong>{leadTimeInMinutes} (na) minuto bago ang
-      nakaiskedyul na pag-alis</strong>
-    notificationsDisabled: "Mga Notification: <strong>Naka-disable</strong>"
+    happensOnDays: "Mangyayari sa: {days}"
+    notifications: "{leadTimeInMinutes} (na) minuto bago ang nakaiskedyul na pag-alis"
+    notificationsDisabled: "Mga Notification: Naka-disable"
   TripTools:
     copyLink: Kopyahin ang Link
     header: Mga Tool sa Biyahe

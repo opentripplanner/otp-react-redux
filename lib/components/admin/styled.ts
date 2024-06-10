@@ -1,13 +1,14 @@
 import { Button as BsButton } from 'react-bootstrap'
 import styled, { css } from 'styled-components'
 
+import { RED_ON_WHITE } from '../util/colors'
 import { StyledIconWrapper } from '../util/styledIcon'
 
 import DefaultCounter from './call-time-counter'
 
 // Call Taker Controls Components
 
-const RED = '#C35134'
+const RED = RED_ON_WHITE
 const BLUE = '#1C4D89'
 const GREEN = '#6B931B'
 const PURPLE = '#8134D3'

@@ -30,6 +30,7 @@ import {
   StopLink,
   Stop as StyledStop
 } from './styled'
+import { DEFAULT_ROUTE_COLOR } from '../util/colors'
 
 const PatternSelectButton = styled(UnstyledButton)`
   span {
@@ -80,6 +81,8 @@ class RouteDetails extends Component<Props> {
     const { intl, operator, patternId, route, setHoveredStop } = this.props
     const { agency, patterns = {}, shortName, url } = route
     const pattern = patterns[patternId]
+
+    const moreDetailsURL = url || route?.agency?.url
 
     const routeColor = getRouteColorBasedOnSettings(operator, route)
 
@@ -179,7 +182,7 @@ class RouteDetails extends Component<Props> {
                 />
               </>
             )}
-            {url && (
+            {moreDetailsURL && (
               <LinkOpensNewWindow
                 contents={
                   <FormattedMessage id="components.RouteDetails.moreDetails" />
@@ -187,7 +190,7 @@ class RouteDetails extends Component<Props> {
                 style={{
                   color: getMostReadableTextColor(routeColor, route?.textColor)
                 }}
-                url={url}
+                url={moreDetailsURL}
               />
             )}
           </LogoLinkContainer>
@@ -240,7 +243,9 @@ class RouteDetails extends Component<Props> {
                   onClick={() => this._stopLinkClicked(stop)}
                   onMouseOver={() => setHoveredStop(stop.id)}
                   routeColor={
-                    routeColor.includes('ffffff') ? '#333' : routeColor
+                    routeColor.includes('ffffff')
+                      ? DEFAULT_ROUTE_COLOR
+                      : routeColor
                   }
                   textColor={getMostReadableTextColor(
                     routeColor,

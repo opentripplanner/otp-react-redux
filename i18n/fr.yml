@@ -87,13 +87,13 @@ common:
     tuesday: mardi
     wednesday: mercredi
   daysOfWeekCompact:
-    friday: ven.
-    monday: lun.
-    saturday: sam.
-    sunday: dim.
-    thursday: jeu.
-    tuesday: mar.
-    wednesday: mer.
+    friday: V
+    monday: L
+    saturday: S
+    sunday: D
+    thursday: J
+    tuesday: M
+    wednesday: M
   daysOfWeekPlural:
     friday: vendredis
     monday: lundis
@@ -370,6 +370,7 @@ components:
       disponibles}}
     companyBicycle: Vélo {company}
     companyScooter: Trottinette {company}
+    distanceAway: à {localizedDistanceString}
     error: Erreur lors du chargement des services à proximité.
     header: À proximité
     nearbyListIntro: Liste de {count} entités à proximité.
@@ -518,7 +519,6 @@ components:
     shortTitle: Index des lignes
     stopsInDirectionOfTravel: "Arrêts dans cette direction :"
     title: Index des lignes
-    toggleRouteOnMap: Afficher ou masquer la ligne sur la carte
   SaveTripButton:
     cantSaveText: Impossible d'enregistrer
     cantSaveTooltip: >-
@@ -528,7 +528,7 @@ components:
     signInText: Connectez-vous pour enregistrer
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
   SavedTripEditor:
-    deleteSavedTrip: Supprimer le trajet enregistré
+    deleteSavedTrip: Supprimer ce trajet
     editSavedTrip: Modifier un trajet enregistré
     saveNewTrip: Enregistrer un nouveau trajet
     tripInformation: Informations sur le trajet
@@ -629,7 +629,8 @@ components:
     vehicleName: Véhicule {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: Vérification du trajet pour chaque jour de la semaine...
-    selectAtLeastOneDay: Veuillez choisir au moins un jour pour effectuer le suivi.
+    onlyOnDate: "{date, date, ::eeeee yyyyMMdd} uniquement"
+    recurringEachWeek: Certains jours chaque semaine
     tripDaysPrompt: Quels jours effectuez-vous ce trajet ?
     tripIsAvailableOnDaysIndicated: Votre trajet est possible les jours indiqués ci-dessus.
     tripNamePrompt: "Saisissez un nom pour ce trajet :"
@@ -692,6 +693,9 @@ components:
         Veuillez patienter pendant que les conditions du trajet sont
         déterminées.
       heading: Conditions du trajet indéterminées
+    past:
+      description: Le jour de ce trajet non-répété est passé.
+      heading: Trajet dans le passé
     snoozed:
       description: Reprenez le suivi pour obtenir des dernières conditions de votre trajet.
       heading: Suivi suspendu jusqu'à demain
@@ -710,11 +714,11 @@ components:
     arriveAt: "Arrivée à "
     leaveAt: "Partez à "
   TripSummaryPane:
-    happensOnDays: "Effectué : <strong>{days}</strong>"
-    notifications: >-
-      Notifications : <strong>{leadTimeInMinutes} mn avant l'heure de départ
-      prévue</strong>
-    notificationsDisabled: "Notifications : <strong>Désactivées</strong>"
+    happensOnDays: "Effectué : {days}"
+    monitoredTripDays: Jours de suivi de ce trajet
+    notifications: "{leadTimeInMinutes} mn avant l'heure de départ prévue"
+    notificationsDisabled: Notifications désactivées
+    timeAndDuration: Heure et durée du trajet
   TripTools:
     copyLink: Copier le lien
     header: Outils
