@@ -60,9 +60,9 @@ export function combineQueryParams(
 
 /**
  * Drops unused params so they don't show up in URL.
- * TODO: Remove those params from core-utils.
+ * TODO: Remove dependency on getDefaultQuery from core-utils.
  */
-export function removeUnusedQueryParams(params: any): void {
+export function removeUnusedQueryParams(params: Record<string, any>): void {
   delete params.showIntermediateStops
   delete params.otherThanPreferredRoutesPenalty
   delete params.ignoreRealtimeUpdates
