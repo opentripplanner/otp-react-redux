@@ -667,3 +667,5 @@ itinerary:
 #   radius: 600
 ### Setting this to true will use the route viewer sort algorithm on routes
 #   useRouteViewSort: false
+### Setting this to false will hide the shadowey dot that appears when dragging the map
+#   showShadowDotOnMapDrag: false
