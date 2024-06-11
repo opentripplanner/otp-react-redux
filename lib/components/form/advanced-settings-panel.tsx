@@ -8,15 +8,14 @@ import React, { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 
 const panelFlyIn = keyframes`
-  0% { left: 100%; opacity: 25% }
+  0% { left: 75px; opacity: 0 }
+  45% { opacity: 0}
  100% { left: 0; opacity: 100% }
 `
 
 const PanelOverlay = styled.div<{ reverseAnimation: boolean }>`
-  animation: ${panelFlyIn} ${PANEL_ANIMATION_TIMING}ms ease-in-out forwards;
+  animation: ${panelFlyIn} ${PANEL_ANIMATION_TIMING}ms linear forwards;
   animation-direction: ${(props) => props.reverseAnimation && 'reverse'};
-  background: white;
-  box-shadow: 3px 0px 12px #00000052;
   height: 100vh;
   left: 0;
   padding: 1.5em;

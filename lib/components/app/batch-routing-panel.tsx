@@ -10,6 +10,8 @@ import BatchSettings from '../form/batch-settings'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import LocationField from '../form/connected-location-field'
 import NarrativeItineraries from '../narrative/narrative-itineraries'
+import styled, { css, keyframes } from 'styled-components'
+
 import SwitchButton from '../form/switch-button'
 import UserSettings from '../form/user-settings'
 import ViewerContainer from '../viewers/viewer-container'
@@ -22,6 +24,22 @@ interface Props {
   showUserSettings: boolean
 }
 
+const wipeLeft = keyframes`
+  0% { transform: translateX(0); opacity: 100%;}
+  55% { opacity: 0% }
+  100% { transform: translateX(-75px); opacity: 0%;}
+`
+
+const animationString = css`
+  animation: ${wipeLeft} ${PANEL_ANIMATION_TIMING}ms linear forwards;
+`
+
+const WipeLeftContent = styled.div<{ fade: boolean; reverse: boolean }>`
+  ${(props) => props.fade && animationString};
+  animation-direction: ${(props) => props.reverse && 'reverse'};
+  height: 100%;
+`
+
 /**
  * Main panel for the batch/trip comparison form.
  */
@@ -29,6 +47,7 @@ class BatchRoutingPanel extends Component<Props> {
   state = {
     fade: false,
     planTripClicked: false,
+    reverse: false,
     showAdvancedModeSettings: false
   }
 
@@ -58,10 +77,10 @@ class BatchRoutingPanel extends Component<Props> {
   }
 
   handleCloseAdvanceSettings = () => {
-    this.setState({ fade: false })
+    this.setState({ fade: false, reverse: true })
     // Allow Advanced Settings panel to finish animation before removing from DOM
     setTimeout(() => {
-      this.setState({ showAdvancedModeSettings: false })
+      this.setState({ reverse: false, showAdvancedModeSettings: false })
     }, PANEL_ANIMATION_TIMING)
   }
 
@@ -75,6 +94,8 @@ class BatchRoutingPanel extends Component<Props> {
       : intl.formatMessage({
           id: 'common.searchForms.click'
         })
+
+    const reverseKey = !this.state.fade && this.state.reverse ? 'reverse' : ''
 
     return (
       <ViewerContainer
@@ -95,8 +116,17 @@ class BatchRoutingPanel extends Component<Props> {
           onSubmit={this.handleSubmit}
           style={{ padding: '10px' }}
         >
+          {this.state.showAdvancedModeSettings && (
+            <AdvancedSettingsPanel
+              closeAdvancedSettings={this.handleCloseAdvanceSettings}
+            />
+          )}
           {!this.state.fade && (
-            <>
+            <WipeLeftContent
+              fade={this.state.showAdvancedModeSettings}
+              key={`location-field-${reverseKey}`}
+              reverse={this.state.reverse}
+            >
               <span className="batch-routing-panel-location-fields">
                 <LocationField
                   inputPlaceholder={intl.formatMessage(
@@ -126,27 +156,30 @@ class BatchRoutingPanel extends Component<Props> {
                 onPlanTripClick={this.handlePlanTripClick}
                 openAdvancedSettings={this.handleOpenAdvanceSettings}
               />
-            </>
-          )}
-          {this.state.showAdvancedModeSettings && (
-            <AdvancedSettingsPanel
-              closeAdvancedSettings={this.handleCloseAdvanceSettings}
-            />
+            </WipeLeftContent>
           )}
         </form>
-        {!activeSearch && showUserSettings && !this.state.fade && (
-          <UserSettings style={{ margin: '0 10px', overflowY: 'auto' }} />
-        )}
         {!this.state.fade && (
-          <div
-            className="desktop-narrative-container"
-            style={{
-              flexGrow: 1,
-              overflowY: 'hidden'
-            }}
+          <WipeLeftContent
+            fade={this.state.showAdvancedModeSettings}
+            key={`user-settings-${reverseKey}`}
+            reverse={this.state.reverse}
           >
-            <NarrativeItineraries />
-          </div>
+            {!activeSearch && showUserSettings && (
+              <UserSettings style={{ margin: '0 10px', overflowY: 'auto' }} />
+            )}
+
+            <div
+              className="desktop-narrative-container"
+              style={{
+                flexGrow: 1,
+                height: '100%',
+                overflowY: 'hidden'
+              }}
+            >
+              <NarrativeItineraries />
+            </div>
+          </WipeLeftContent>
         )}
       </ViewerContainer>
     )
