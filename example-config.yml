@@ -115,6 +115,7 @@ persistence:
 map:
   initLat: 45.52
   initLon: -122.682
+  # autoFlyOnTripFormUpdate: false
   baseLayers:
     - name: Streets
       # These tiles are free to use, but not in production
@@ -666,3 +667,5 @@ itinerary:
 #   radius: 600
 ### Setting this to true will use the route viewer sort algorithm on routes
 #   useRouteViewSort: false
+### Setting this to false will hide the shadowey dot that appears when dragging the map
+#   showShadowDotOnMapDrag: false
