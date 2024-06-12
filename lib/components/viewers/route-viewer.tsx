@@ -3,13 +3,14 @@ import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { Filter } from '@styled-icons/fa-solid/Filter'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
-import { Route, TransitOperator } from '@opentripplanner/types'
+import { Route } from '@opentripplanner/types'
 import { Search } from '@styled-icons/fa-solid/Search'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component, FormEvent } from 'react'
 
 import * as apiActions from '../../actions/api'
 import * as uiActions from '../../actions/ui'
+import { AppReduxState } from '../../util/state-types'
 import {
   getAgenciesFromRoutes,
   getModesForActiveAgencyFilter,
@@ -17,15 +18,12 @@ import {
 } from '../../util/state'
 import { getFormattedMode } from '../../util/i18n'
 import { getRouteOrPatternViewerTitle } from '../../util/viewer'
-import {
-  SetViewedRouteHandler,
-  ViewedRouteObject,
-  ViewedRouteState
-} from '../util/types'
 import { StyledIconWrapper } from '../util/styledIcon'
+import { TransitOperatorConfig } from '../../util/config-types'
+import { ViewedRouteObject, ViewedRouteState } from '../util/types'
 import PageTitle from '../util/page-title'
 
-import { RouteRow } from './RouteRow'
+import { RouteRow } from './route-row'
 import VehiclePositionRetriever from './vehicle-position-retriever'
 
 interface FilterProps {
@@ -47,8 +45,7 @@ interface Props {
   routes: Route[]
   setMainPanelContent: (panelId: number | null) => void
   setRouteViewerFilter: (filter: FilterProps) => void
-  setViewedRoute: SetViewedRouteHandler
-  transitOperators: TransitOperator[]
+  transitOperators: TransitOperatorConfig[]
   viewedRoute?: ViewedRouteState
   viewedRouteObject?: ViewedRouteObject
 }
@@ -125,7 +122,6 @@ class RouteViewer extends Component<Props, State> {
       intl,
       modes,
       routes: sortedRoutes,
-      setViewedRoute,
       transitOperators,
       viewedRoute,
       viewedRouteObject
@@ -254,7 +250,6 @@ class RouteViewer extends Component<Props, State> {
                 key={route.id}
                 operator={operator}
                 route={route}
-                setViewedRoute={setViewedRoute}
               />
             )
           })}
@@ -272,14 +267,14 @@ class RouteViewer extends Component<Props, State> {
 
 // connect to redux store
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: AppReduxState) => {
   const { viewedRoute } = state.otp.ui
   return {
     agencies: getAgenciesFromRoutes(state),
     filter: state.otp.ui.routeViewer.filter,
     modes: getModesForActiveAgencyFilter(state),
     routes: getSortedFilteredRoutes(state),
-    transitOperators: state.otp.config.transitOperators,
+    transitOperators: state.otp.config.transitOperators || [],
     viewedRoute,
     viewedRouteObject: state.otp.transitIndex.routes?.[viewedRoute?.routeId]
   }
@@ -289,8 +284,7 @@ const mapDispatchToProps = {
   findRouteIfNeeded: apiActions.findRouteIfNeeded,
   findRoutesIfNeeded: apiActions.findRoutesIfNeeded,
   setMainPanelContent: uiActions.setMainPanelContent,
-  setRouteViewerFilter: uiActions.setRouteViewerFilter,
-  setViewedRoute: uiActions.setViewedRoute
+  setRouteViewerFilter: uiActions.setRouteViewerFilter
 }
 
 export default connect(

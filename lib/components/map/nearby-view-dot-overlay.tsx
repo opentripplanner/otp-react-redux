@@ -33,8 +33,11 @@ const NearbyViewDotOverlay = ({ location }: Props) => {
 
 const mapStateToProps = (state: AppReduxState) => {
   const { highlightedLocation } = state.otp.ui
+  const { nearbyView } = state.otp.config
+
   return {
-    location: highlightedLocation
+    location:
+      nearbyView?.showShadowDotOnMapDrag === false ? null : highlightedLocation
   }
 }
 

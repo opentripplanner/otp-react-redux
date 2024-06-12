@@ -12,6 +12,11 @@ interface OwnProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   tracking?: boolean
 }
 
+/** Determines whether the given path is a subpath of the 'to' prop. */
+export function isSubpath(path: string, to: string): boolean {
+  return !isBlank(to) && (path === to || path.startsWith(`${to}/`))
+}
+
 /**
  * Renders an anchor element <a> with specified path and query params,
  * that preserves other existing query params.
@@ -25,8 +30,7 @@ const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => {
   const queryParams = combineQueryParams(toParams)
   const href = `#${to}${isBlank(queryParams) ? '' : `?${queryParams}`}`
 
-  const isActive =
-    tracking && !isBlank(to) && state.router.location.pathname === to
+  const isActive = tracking && isSubpath(state.router.location.pathname, to)
   return {
     className:
       className && isActive

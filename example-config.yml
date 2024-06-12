@@ -57,7 +57,7 @@ api:
 ### The default query parameters can be overridden be uncommenting this object.
 ### Note: the override values must be valid values within otp-ui's query-params.js
 # defaultQueryParams:
-#   maxWalkDistance: 3219 # 2 miles in meters
+#   walkSpeed: 1.34 # 3 mph in meters per second
 
 ### The persistence setting is used to enable the storage of places (home, work),
 ### recent searches/places, user overrides, and favorite stops.
@@ -115,6 +115,7 @@ persistence:
 map:
   initLat: 45.52
   initLon: -122.682
+  # autoFlyOnTripFormUpdate: false
   baseLayers:
     - name: Streets
       # These tiles are free to use, but not in production
@@ -666,3 +667,5 @@ itinerary:
 #   radius: 600
 ### Setting this to true will use the route viewer sort algorithm on routes
 #   useRouteViewSort: false
+### Setting this to false will hide the shadowey dot that appears when dragging the map
+#   showShadowDotOnMapDrag: false
