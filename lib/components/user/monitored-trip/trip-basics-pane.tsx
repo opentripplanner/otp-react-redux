@@ -26,6 +26,7 @@ import {
 } from '../../../util/monitored-trip'
 import { AppReduxState } from '../../../util/state-types'
 import { FieldSet } from '../styled'
+import { getBaseColor } from '../../util/colors'
 import { getErrorStates } from '../../../util/ui'
 import { ItineraryExistence, MonitoredTrip } from '../types'
 import FormattedDayOfWeek from '../../util/formatted-day-of-week'
@@ -34,6 +35,7 @@ import FormattedValidationError from '../../util/formatted-validation-error'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 import { BORDER_COLOR } from './trip-summary-pane'
+import { MonitoredDayCircle } from './trip-monitored-days'
 import TripStatus from './trip-status'
 import TripSummary from './trip-duration-summary'
 
@@ -55,6 +57,9 @@ interface State {
 
 // Styles.
 const AvailableDays = styled(FieldSet)`
+  display: flex;
+  gap: 4px;
+
   // Targets the formik checkboxes to provide better contrast on focus styles
   input {
     &:focus-visible,
@@ -67,18 +72,7 @@ const AvailableDays = styled(FieldSet)`
     }
   }
   & > span {
-    border: 1px solid ${BORDER_COLOR};
-    border-left: none;
-    box-sizing: border-box;
-    display: inline-block;
-    height: 3em;
-    max-width: 150px;
-    min-width: 14.28%;
-    position: relative;
-    text-align: center;
-  }
-  & > span:first-of-type {
-    border-left: 1px solid ${BORDER_COLOR};
+    display: inline-flex;
   }
 
   .glyphicon {
@@ -88,14 +82,8 @@ const AvailableDays = styled(FieldSet)`
   }
 
   input {
-    display: block;
-  }
-
-  input,
-  .glyphicon {
-    bottom: 6px;
-    position: absolute;
-    width: 100%;
+    /* Remove bootstrap's vertical margin */
+    margin: 0;
   }
 
   /* Check boxes for disabled days are replaced with the cross mark. */
@@ -110,11 +98,18 @@ const AvailableDays = styled(FieldSet)`
     display: block;
   }
 
-  /* Make labels occupy the whole space, so the entire block is clickable. */
   label {
+    border-radius: 3rem;
     font-weight: inherit;
-    height: 100%;
-    width: 100%;
+    margin: 0;
+    height: 3rem;
+    min-width: 5rem;
+    width: auto;
+  }
+  label span[aria-hidden='true']::after {
+    content: '';
+    display: inline-block;
+    width: 0.25rem;
   }
 `
 
@@ -320,21 +315,19 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
                         )
                       : ''
 
+                    const baseColor = getBaseColor()
                     return (
                       <span
                         className={boxClass}
                         key={day}
                         title={notAvailableText}
                       >
-                        <Field
-                          // Let users save an existing trip, even though it may not be available on some days.
-                          // TODO: improve checking trip availability.
-                          disabled={isDayDisabled && isCreating}
-                          id={day}
-                          name={day}
-                          type="checkbox"
-                        />
-                        <label htmlFor={day}>
+                        <MonitoredDayCircle
+                          as="label"
+                          baseColor={baseColor}
+                          htmlFor={day}
+                          monitored={monitoredTrip[day]}
+                        >
                           <InvisibleA11yLabel>
                             <FormattedDayOfWeek day={day} />
                           </InvisibleA11yLabel>
@@ -342,7 +335,17 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
                             {/* The abbreviated text is visual only. Screen readers should read out the full day. */}
                             <FormattedDayOfWeekCompact day={day} />
                           </span>
-                        </label>
+
+                          <Field
+                            // Let users save an existing trip, even though it may not be available on some days.
+                            // TODO: improve checking trip availability.
+                            disabled={isDayDisabled && isCreating}
+                            id={day}
+                            name={day}
+                            type="checkbox"
+                          />
+                        </MonitoredDayCircle>
+
                         <Glyphicon aria-hidden glyph="ban-circle" />
                         <InvisibleA11yLabel>
                           {notAvailableText}

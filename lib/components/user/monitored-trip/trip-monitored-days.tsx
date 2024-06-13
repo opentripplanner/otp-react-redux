@@ -17,7 +17,7 @@ const DayCircleContainer = styled.div`
   gap: 4px;
 `
 
-const MonitoredDayCircle = styled.span<{
+export const MonitoredDayCircle = styled.span<{
   baseColor: string
   monitored: boolean
 }>`
