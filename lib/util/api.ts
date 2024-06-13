@@ -5,6 +5,7 @@ import coreUtils from '@opentripplanner/core-utils'
 import qs from 'qs'
 
 const { getUrlParams } = coreUtils.query
+const { getCurrentDate, getCurrentTime } = coreUtils.time
 
 export const SERVICE_BREAK = '03:30'
 
