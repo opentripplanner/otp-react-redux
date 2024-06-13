@@ -11,17 +11,10 @@ Object {
   },
   "localUser": Object {
     "defaults": Object {
-      "bikeSpeed": 3.58,
-      "endTime": "09:00",
       "intermediatePlaces": Array [],
-      "maxBikeTime": 20,
-      "maxEScooterDistance": 4828,
-      "maxWalkTime": 15,
       "mode": "WALK,TRANSIT",
       "numItineraries": 3,
       "routingType": "ITINERARY",
-      "startTime": "07:00",
-      "watts": 250,
       "wheelchair": false,
     },
     "favoriteStops": Array [],
