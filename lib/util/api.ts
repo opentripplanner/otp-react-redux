@@ -71,3 +71,17 @@ export function removeUnusedQueryParams(params: Record<string, any>): void {
   delete params.maxWalkDistance
   delete params.maxBikeDistance
 }
+
+/** Gets the default URL params when reinitializing search */
+export function getDefaultQuery() {
+  return {
+    date: getCurrentDate(),
+    departArrive: 'NOW',
+    intermediatePlaces: [], // required to avoid crash
+    mode: 'WALK,TRANSIT', // obsolete but required to avoid crash
+    numItineraries: 3,
+    routingType: 'ITINERARY', // obsolete but required to avoid crash
+    time: getCurrentTime(),
+    wheelchair: false
+  }
+}
