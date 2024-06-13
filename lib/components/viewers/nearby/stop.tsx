@@ -62,6 +62,7 @@ const Stop = ({
       )
       return (
         <PatternRow
+          alwaysShowLongName={nearbyViewConfig?.alwaysShowLongName}
           homeTimezone={homeTimezone}
           key={index}
           pattern={st.pattern}
