@@ -23,7 +23,6 @@ Object {
     "transitOperators": Array [],
   },
   "currentQuery": Object {
-    "bikeSpeed": 3.58,
     "date": "2019-08-04",
     "departArrive": "NOW",
     "endTime": "09:00",
@@ -44,8 +43,6 @@ Object {
     "showIntermediateStops": true,
     "startTime": "07:00",
     "time": "19:34",
-    "to": null,
-    "watts": 250,
     "wheelchair": false,
   },
   "filter": Object {
