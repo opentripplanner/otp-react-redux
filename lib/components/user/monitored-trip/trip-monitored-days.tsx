@@ -1,14 +1,12 @@
-import { FormattedList, FormattedMessage, useIntl } from 'react-intl'
-
-import InvisibleA11yLabel from '../../util/invisible-a11y-label'
+import { FormattedList, FormattedMessage } from 'react-intl'
 import React from 'react'
+import styled from 'styled-components'
 
 import { ALL_DAYS } from '../../../util/monitored-trip'
 import { getBaseColor } from '../../util/colors'
 import FormattedDayOfWeek from '../../util/formatted-day-of-week'
 import FormattedDayOfWeekCompact from '../../util/formatted-day-of-week-compact'
-
-import styled from 'styled-components'
+import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 interface Props {
   days: string[]
@@ -41,7 +39,7 @@ const MonitoredDayCircle = styled.span<{
   }
 `
 
-const MonitoredDays = ({ days }: Props) => {
+const MonitoredDays = ({ days }: Props): JSX.Element => {
   const monitoredDaysList = (
     <FormattedList
       type="conjunction"
