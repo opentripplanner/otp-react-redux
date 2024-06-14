@@ -1,9 +1,9 @@
+import { Ban } from '@styled-icons/fa-solid/Ban'
 import { connect } from 'react-redux'
 import {
   ControlLabel,
   FormControl,
   FormGroup,
-  Glyphicon,
   HelpBlock,
   ProgressBar,
   Radio
@@ -26,7 +26,7 @@ import {
 } from '../../../util/monitored-trip'
 import { AppReduxState } from '../../../util/state-types'
 import { FieldSet } from '../styled'
-import { getBaseColor } from '../../util/colors'
+import { getBaseColor, RED_ON_WHITE } from '../../util/colors'
 import { getErrorStates } from '../../../util/ui'
 import { ItineraryExistence, MonitoredTrip } from '../types'
 import FormattedDayOfWeek from '../../util/formatted-day-of-week'
@@ -34,7 +34,6 @@ import FormattedDayOfWeekCompact from '../../util/formatted-day-of-week-compact'
 import FormattedValidationError from '../../util/formatted-validation-error'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
-import { BORDER_COLOR } from './trip-summary-pane'
 import { MonitoredDayCircle } from './trip-monitored-days'
 import TripStatus from './trip-status'
 import TripSummary from './trip-duration-summary'
@@ -72,44 +71,71 @@ const AvailableDays = styled(FieldSet)`
     }
   }
   & > span {
+    align-items: center;
+    border-radius: 3rem;
+    box-sizing: border-box;
     display: inline-flex;
+    flex-direction: row-reverse;
+    height: 3rem;
+    min-width: 4.5rem;
+    position: relative;
+    text-align: center;
+    width: auto;
   }
-
   .glyphicon {
     display: none;
+    flex-shrink: 0;
+    margin: 0 3px;
+
     /* Remove top attribute set by Bootstrap. */
     top: inherit;
+    width: 1.3rem;
+    z-index: -1;
   }
 
   input {
+    flex-shrink: 0;
     /* Remove bootstrap's vertical margin */
-    margin: 0;
+    margin: 0 3px;
   }
 
   /* Check boxes for disabled days are replaced with the cross mark. */
   input[disabled] {
-    clip: rect(0, 0, 0, 0);
-    height: 0;
-    margin: 0;
-    width: 0;
-    z-index: -1;
+    display: none;
   }
   input[disabled] ~ .glyphicon {
     display: block;
   }
 
-  label {
-    border-radius: 3rem;
-    font-weight: inherit;
-    margin: 0;
-    height: 3rem;
-    min-width: 5rem;
-    width: auto;
+  label.disabled {
+    .glyphicon {
+      display: block;
+    }
   }
-  label span[aria-hidden='true']::after {
+
+  /* Add oblique strike for disabled days */
+  label.disabled::after {
     content: '';
-    display: inline-block;
-    width: 0.25rem;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 1.3rem;
+    border-top: 3px solid ${RED_ON_WHITE};
+    transform: rotate(-30deg);
+    transform-origin: center;
+  }
+
+  label {
+    flex-grow: 1;
+    font-weight: inherit;
+    height: 100%;
+    line-height: 3rem;
+    margin: 0;
+    width: 100%;
+  }
+  span.day {
+    flex-grow: 1;
+    text-align: center;
   }
 `
 
@@ -299,11 +325,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
                       day,
                       finalItineraryExistence
                     )
-                    const boxClass = isDayDisabled
-                      ? 'alert-danger'
-                      : monitoredTrip[day]
-                      ? 'bg-primary'
-                      : ''
+                    const labelClass = isDayDisabled ? 'disabled' : ''
                     const notAvailableText = isDayDisabled
                       ? intl.formatMessage(
                           {
@@ -317,17 +339,26 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
 
                     const baseColor = getBaseColor()
                     return (
-                      <span
-                        className={boxClass}
+                      <MonitoredDayCircle
+                        baseColor={baseColor}
                         key={day}
+                        monitored={!isDayDisabled && monitoredTrip[day]}
                         title={notAvailableText}
                       >
-                        <MonitoredDayCircle
-                          as="label"
-                          baseColor={baseColor}
-                          htmlFor={day}
-                          monitored={monitoredTrip[day]}
-                        >
+                        <Field
+                          // Let users save an existing trip, even though it may not be available on some days.
+                          // TODO: improve checking trip availability.
+                          disabled={isDayDisabled && isCreating}
+                          id={day}
+                          name={day}
+                          type="checkbox"
+                        />
+                        <Ban
+                          aria-hidden
+                          className="glyphicon"
+                          color={RED_ON_WHITE}
+                        />
+                        <label className={labelClass} htmlFor={day}>
                           <InvisibleA11yLabel>
                             <FormattedDayOfWeek day={day} />
                           </InvisibleA11yLabel>
@@ -335,22 +366,11 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
                             {/* The abbreviated text is visual only. Screen readers should read out the full day. */}
                             <FormattedDayOfWeekCompact day={day} />
                           </span>
-
-                          <Field
-                            // Let users save an existing trip, even though it may not be available on some days.
-                            // TODO: improve checking trip availability.
-                            disabled={isDayDisabled && isCreating}
-                            id={day}
-                            name={day}
-                            type="checkbox"
-                          />
-                        </MonitoredDayCircle>
-
-                        <Glyphicon aria-hidden glyph="ban-circle" />
+                        </label>
                         <InvisibleA11yLabel>
                           {notAvailableText}
                         </InvisibleA11yLabel>
-                      </span>
+                      </MonitoredDayCircle>
                     )
                   })}
                 </AvailableDays>
