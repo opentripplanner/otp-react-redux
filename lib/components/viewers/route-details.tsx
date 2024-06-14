@@ -169,7 +169,7 @@ class RouteDetails extends Component<Props> {
         full={pattern != null}
         textColor={getMostReadableTextColor(routeColor, route?.textColor)}
       >
-        <RouteNameContainer>
+        <RouteNameContainer className="operator-info">
           <LogoLinkContainer>
             {agency && (
               <>
@@ -196,7 +196,7 @@ class RouteDetails extends Component<Props> {
           </LogoLinkContainer>
         </RouteNameContainer>
         {headsigns && headsigns.length > 0 && (
-          <PatternContainer>
+          <PatternContainer className="pattern-picker">
             <HeadsignSelectLabel htmlFor="headsign-selector-label">
               <FormattedMessage id="components.RouteDetails.stopsTo" />
             </HeadsignSelectLabel>
