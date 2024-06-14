@@ -2,22 +2,12 @@ import { Close } from '@styled-icons/fa-solid'
 import { FocusTrapWrapper } from '@opentripplanner/map-popup/lib'
 import { FormattedMessage, useIntl } from 'react-intl'
 
-import { PANEL_ANIMATION_TIMING } from './styled'
 import PageTitle from '../util/page-title'
-import React, { useState } from 'react'
-import styled, { keyframes } from 'styled-components'
+import React, { RefObject } from 'react'
+import styled from 'styled-components'
 
-const panelFlyIn = keyframes`
-  0% { left: 75px; opacity: 0 }
-  45% { opacity: 0}
- 100% { left: 0; opacity: 100% }
-`
-
-const PanelOverlay = styled.div<{ reverseAnimation: boolean }>`
-  animation: ${panelFlyIn} ${PANEL_ANIMATION_TIMING}ms linear forwards;
-  animation-direction: ${(props) => props.reverseAnimation && 'reverse'};
+const PanelOverlay = styled.div`
   height: 100vh;
-  left: 0;
   padding: 1.5em;
   position: absolute;
   top: 0;
@@ -37,13 +27,13 @@ const HeaderContainer = styled.div`
 `
 
 const AdvancedSettingsPanel = ({
-  closeAdvancedSettings
+  closeAdvancedSettings,
+  innerRef
 }: {
   closeAdvancedSettings: () => void
+  innerRef: RefObject<HTMLDivElement>
 }): JSX.Element => {
-  const [reverseAnimation, setReverseAnimation] = useState(false)
   const intl = useIntl()
-  const key = reverseAnimation.toString()
   const closeButtonText = intl.formatMessage({
     id: 'components.BatchSearchScreen.closeAdvancedPreferences'
   })
@@ -53,15 +43,10 @@ const AdvancedSettingsPanel = ({
 
   const closePanel = () => {
     closeAdvancedSettings()
-    setReverseAnimation(true)
   }
 
   return (
-    <PanelOverlay
-      className="advanced-settings"
-      key={key}
-      reverseAnimation={reverseAnimation}
-    >
+    <PanelOverlay className="advanced-settings" ref={innerRef}>
       <FocusTrapWrapper closePopup={closePanel} id="advanced-settings">
         <HeaderContainer>
           <h1 className="header-text">{headerText}</h1>

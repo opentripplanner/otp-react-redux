@@ -1,17 +1,18 @@
 import { connect } from 'react-redux'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
-import React, { Component, FormEvent } from 'react'
 
 import { getActiveSearch, getShowUserSettings } from '../../util/state'
 import { getPersistenceMode } from '../../util/user'
-import { PANEL_ANIMATION_TIMING } from '../form/styled'
 import AdvancedSettingsPanel from '../form/advanced-settings-panel'
 import BatchSettings from '../form/batch-settings'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import LocationField from '../form/connected-location-field'
 import NarrativeItineraries from '../narrative/narrative-itineraries'
-import styled, { css, keyframes } from 'styled-components'
+import React, { Component, FormEvent } from 'react'
+import styled, { css } from 'styled-components'
 
+import { prefersReducedMotion } from '../util/prefersReducedMotion'
 import SwitchButton from '../form/switch-button'
 import UserSettings from '../form/user-settings'
 import ViewerContainer from '../viewers/viewer-container'
@@ -24,20 +25,59 @@ interface Props {
   showUserSettings: boolean
 }
 
-const wipeLeft = keyframes`
-  0% { transform: translateX(0); opacity: 100%;}
-  55% { opacity: 0% }
-  100% { transform: translateX(-75px); opacity: 0%;}
+const advancedPanelClassName = 'advanced-panel'
+const mainPanelClassName = 'main-panel'
+const wipeOffset = 7
+const transitionDuration = prefersReducedMotion ? 0 : 200
+
+const transitionMixin = css`
+  transition: all ${transitionDuration}ms ease-in;
 `
 
-const animationString = css`
-  animation: ${wipeLeft} ${PANEL_ANIMATION_TIMING}ms linear forwards;
+const wipeOutMixin = (offset: number) => css`
+  transform: translateX(${offset}px);
+  opacity: 0;
+`
+const wipeInMixin = css`
+  transform: translateX(0px);
+  opacity: 1;
 `
 
-const WipeLeftContent = styled.div<{ fade: boolean; reverse: boolean }>`
-  ${(props) => props.fade && animationString};
-  animation-direction: ${(props) => props.reverse && 'reverse'};
-  height: 100%;
+const TransitionStyles = styled.div`
+  display: contents;
+  .${advancedPanelClassName}-enter {
+    ${wipeOutMixin(wipeOffset)}
+  }
+  .${advancedPanelClassName}-enter-done {
+    ${wipeInMixin}
+    ${transitionMixin}
+  }
+
+  .${advancedPanelClassName}-exit {
+    ${wipeInMixin}
+  }
+
+  .${advancedPanelClassName}-exit-active {
+    ${wipeOutMixin(wipeOffset)}
+    ${transitionMixin}
+  }
+
+  .${mainPanelClassName}-enter {
+    ${wipeOutMixin(-wipeOffset)}
+  }
+  .${mainPanelClassName}-enter-done {
+    ${wipeInMixin}
+    ${transitionMixin}
+  }
+
+  .${mainPanelClassName}-exit {
+    ${wipeInMixin}
+  }
+
+  .${mainPanelClassName}-exit-active {
+    ${wipeOutMixin(-wipeOffset)}
+    ${transitionMixin}
+  }
 `
 
 /**
@@ -45,11 +85,14 @@ const WipeLeftContent = styled.div<{ fade: boolean; reverse: boolean }>`
  */
 class BatchRoutingPanel extends Component<Props> {
   state = {
-    fade: false,
     planTripClicked: false,
     reverse: false,
     showAdvancedModeSettings: false
   }
+
+  _advancedSettingRef = React.createRef<HTMLDivElement>()
+  _mainPanelContentRef = React.createRef<HTMLDivElement>()
+  _itinerariesAndUserRef = React.createRef<HTMLDivElement>()
 
   componentDidUpdate(prevProps: Readonly<Props>): void {
     // Close the advanced mode settings if we navigate to another page
@@ -58,7 +101,9 @@ class BatchRoutingPanel extends Component<Props> {
       this.props.mainPanelContent !== null &&
       this.state.showAdvancedModeSettings
     ) {
-      this.setState({ fade: false, showAdvancedModeSettings: false })
+      this.setState({
+        showAdvancedModeSettings: false
+      })
     }
   }
 
@@ -70,18 +115,10 @@ class BatchRoutingPanel extends Component<Props> {
 
   handleOpenAdvanceSettings = () => {
     this.setState({ showAdvancedModeSettings: true })
-    // Allow Advanced Settings panel to finish animation before removing form from DOM
-    setTimeout(() => {
-      this.setState({ fade: true })
-    }, PANEL_ANIMATION_TIMING)
   }
 
   handleCloseAdvanceSettings = () => {
-    this.setState({ fade: false, reverse: true })
-    // Allow Advanced Settings panel to finish animation before removing from DOM
-    setTimeout(() => {
-      this.setState({ reverse: false, showAdvancedModeSettings: false })
-    }, PANEL_ANIMATION_TIMING)
+    this.setState({ showAdvancedModeSettings: false })
   }
 
   render() {
@@ -95,8 +132,6 @@ class BatchRoutingPanel extends Component<Props> {
           id: 'common.searchForms.click'
         })
 
-    const reverseKey = !this.state.fade && this.state.reverse ? 'reverse' : ''
-
     return (
       <ViewerContainer
         className="batch-routing-panel"
@@ -106,81 +141,110 @@ class BatchRoutingPanel extends Component<Props> {
           height: '100%'
         }}
       >
-        <InvisibleA11yLabel>
-          <h1>
-            <FormattedMessage id="components.BatchSearchScreen.header" />
-          </h1>
-        </InvisibleA11yLabel>
-        <form
-          className="form"
-          onSubmit={this.handleSubmit}
-          style={{ padding: '10px' }}
-        >
-          {this.state.showAdvancedModeSettings && (
-            <AdvancedSettingsPanel
-              closeAdvancedSettings={this.handleCloseAdvanceSettings}
-            />
+        <TransitionStyles>
+          {!this.state.showAdvancedModeSettings && (
+            <InvisibleA11yLabel>
+              <h1>
+                <FormattedMessage id="components.BatchSearchScreen.header" />
+              </h1>
+            </InvisibleA11yLabel>
           )}
-          {!this.state.fade && (
-            <WipeLeftContent
-              fade={this.state.showAdvancedModeSettings}
-              key={`location-field-${reverseKey}`}
-              reverse={this.state.reverse}
-            >
-              <span className="batch-routing-panel-location-fields">
-                <LocationField
-                  inputPlaceholder={intl.formatMessage(
-                    { id: 'common.searchForms.enterStartLocation' },
-                    { mapAction }
-                  )}
-                  isRequired
-                  locationType="from"
-                  selfValidate={planTripClicked}
-                  showClearButton={!mobile}
-                />
-                <LocationField
-                  inputPlaceholder={intl.formatMessage(
-                    { id: 'common.searchForms.enterDestination' },
-                    { mapAction }
-                  )}
-                  isRequired
-                  locationType="to"
-                  selfValidate={planTripClicked}
-                  showClearButton={!mobile}
-                />
-                <div className="switch-button-container">
-                  <SwitchButton />
-                </div>
-              </span>
-              <BatchSettings
-                onPlanTripClick={this.handlePlanTripClick}
-                openAdvancedSettings={this.handleOpenAdvanceSettings}
-              />
-            </WipeLeftContent>
-          )}
-        </form>
-        {!this.state.fade && (
-          <WipeLeftContent
-            fade={this.state.showAdvancedModeSettings}
-            key={`user-settings-${reverseKey}`}
-            reverse={this.state.reverse}
+          <form
+            className="form"
+            onSubmit={this.handleSubmit}
+            style={{ padding: '10px' }}
           >
-            {!activeSearch && showUserSettings && (
-              <UserSettings style={{ margin: '0 10px', overflowY: 'auto' }} />
-            )}
+            <TransitionGroup style={{ display: 'content' }}>
+              {this.state.showAdvancedModeSettings && (
+                <CSSTransition
+                  classNames={advancedPanelClassName}
+                  nodeRef={this._advancedSettingRef}
+                  timeout={transitionDuration}
+                >
+                  <AdvancedSettingsPanel
+                    closeAdvancedSettings={this.handleCloseAdvanceSettings}
+                    innerRef={this._advancedSettingRef}
+                  />
+                </CSSTransition>
+              )}
 
-            <div
-              className="desktop-narrative-container"
-              style={{
-                flexGrow: 1,
-                height: '100%',
-                overflowY: 'hidden'
-              }}
-            >
-              <NarrativeItineraries />
-            </div>
-          </WipeLeftContent>
-        )}
+              {!this.state.showAdvancedModeSettings && (
+                <CSSTransition
+                  classNames={mainPanelClassName}
+                  nodeRef={this._mainPanelContentRef}
+                  onExit={
+                    () => this.setState({ showAdvancedModeSettings: true })
+                    // eslint-disable-next-line react/jsx-curly-newline
+                  }
+                  timeout={transitionDuration}
+                >
+                  <div ref={this._mainPanelContentRef}>
+                    <span className="batch-routing-panel-location-fields">
+                      <LocationField
+                        inputPlaceholder={intl.formatMessage(
+                          { id: 'common.searchForms.enterStartLocation' },
+                          { mapAction }
+                        )}
+                        isRequired
+                        locationType="from"
+                        selfValidate={planTripClicked}
+                        showClearButton={!mobile}
+                      />
+                      <LocationField
+                        inputPlaceholder={intl.formatMessage(
+                          { id: 'common.searchForms.enterDestination' },
+                          { mapAction }
+                        )}
+                        isRequired
+                        locationType="to"
+                        selfValidate={planTripClicked}
+                        showClearButton={!mobile}
+                      />
+                      <div className="switch-button-container">
+                        <SwitchButton />
+                      </div>
+                    </span>
+                    <BatchSettings
+                      onPlanTripClick={this.handlePlanTripClick}
+                      openAdvancedSettings={this.handleOpenAdvanceSettings}
+                    />
+                  </div>
+                </CSSTransition>
+              )}
+            </TransitionGroup>
+          </form>
+          <TransitionGroup style={{ height: '100%' }}>
+            {!this.state.showAdvancedModeSettings && (
+              <CSSTransition
+                classNames={mainPanelClassName}
+                nodeRef={this._itinerariesAndUserRef}
+                timeout={transitionDuration}
+              >
+                <div
+                  ref={this._itinerariesAndUserRef}
+                  style={{ height: '100%' }}
+                >
+                  {!activeSearch && showUserSettings && (
+                    <UserSettings
+                      style={{ margin: '0 10px', overflowY: 'auto' }}
+                    />
+                  )}
+
+                  <div
+                    className="desktop-narrative-container"
+                    style={{
+                      flexGrow: 1,
+                      height: '100%',
+                      overflowY: 'hidden'
+                    }}
+                  >
+                    <NarrativeItineraries />
+                  </div>
+                </div>
+              </CSSTransition>
+            )}
+          </TransitionGroup>
+        </TransitionStyles>
       </ViewerContainer>
     )
   }
