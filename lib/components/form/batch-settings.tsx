@@ -30,6 +30,12 @@ import { RoutingQueryCallResult } from '../../actions/api-constants'
 import { StyledIconWrapper } from '../util/styledIcon'
 
 import {
+  addCustomSettingLabels,
+  addModeButtonIcon,
+  pipe,
+  populateSettingWithIcon
+} from './util'
+import {
   MainSettingsRow,
   ModeSelectorContainer,
   PlanTripButton
@@ -54,11 +60,6 @@ type Props = {
   setQueryParam: (evt: any) => void
   spacedOutModeSelector?: boolean
   updateQueryTimeIfLeavingNow: () => void
-}
-
-// This method is used to daisy-chain a series of functions together on a given value
-function pipe<T>(...fns: Array<(arg: T) => T>) {
-  return (value: T) => fns.reduce((acc, fn) => fn(acc), value)
 }
 
 export function setModeButtonEnabled(enabledKeys: string[]) {
@@ -99,51 +100,17 @@ function BatchSettings({
   // @ts-expect-error Context not typed
   const { ModeIcon } = useContext(ComponentContext)
 
-  const addModeButtonIcon = useCallback(
-    (def: ModeButtonDefinition) => ({
-      ...def,
-      Icon: function ModeButtonIcon() {
-        return <ModeIcon mode={def.iconName} />
-      }
-    }),
-    [ModeIcon]
-  )
-
-  const populateSettingWithIcon = useCallback(
-    (msd: ModeSetting) => ({
-      ...msd,
-      icon: <ModeIcon mode={msd.iconName} width={16} />
-    }),
-    [ModeIcon]
-  )
-
-  const addCustomSettingLabels = useCallback(
-    (msd: ModeSetting) => {
-      let modeLabel
-      // If we're using route mode overrides, make sure we're using the custom mode name
-      if (msd.type === 'SUBMODE') {
-        modeLabel = msd.overrideMode || msd.addTransportMode.mode
-        return {
-          ...msd,
-          label: getFormattedMode(modeLabel, intl)
-        }
-      }
-      return msd
-    },
-    [intl]
-  )
-
   const processedModeSettings = modeSettingDefinitions.map(
     pipe(
-      populateSettingWithIcon,
+      populateSettingWithIcon(ModeIcon),
       populateSettingWithValue(modeSettingValues),
-      addCustomSettingLabels
+      addCustomSettingLabels(intl)
     )
   )
 
   const processedModeButtons = modeButtonOptions.map(
     pipe(
-      addModeButtonIcon,
+      addModeButtonIcon(ModeIcon),
       addSettingsToButton(processedModeSettings),
       setModeButtonEnabled(enabledModeButtons)
     )

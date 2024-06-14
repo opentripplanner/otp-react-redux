@@ -1,11 +1,36 @@
+import {
+  addSettingsToButton,
+  AdvancedModeSubsettingsContainer,
+  populateSettingWithValue
+} from '@opentripplanner/trip-form'
 import { Close } from '@styled-icons/fa-solid'
+import { connect } from 'react-redux'
+import { decodeQueryParams, DelimitedArrayParam } from 'serialize-query-params'
 import { FocusTrapWrapper } from '@opentripplanner/map-popup/lib'
 import { FormattedMessage, useIntl } from 'react-intl'
-
-import { PANEL_ANIMATION_TIMING } from './styled'
-import PageTitle from '../util/page-title'
-import React, { useState } from 'react'
+import {
+  ModeButtonDefinition,
+  ModeSetting,
+  ModeSettingValues
+} from '@opentripplanner/types'
+import React, { useContext, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
+
+import * as apiActions from '../../actions/api'
+import * as formActions from '../../actions/form'
+
+import {
+  addCustomSettingLabels,
+  addModeButtonIcon,
+  pipe,
+  populateSettingWithIcon
+} from './util'
+import { AppReduxState } from '../../util/state-types'
+import { ComponentContext } from '../../util/contexts'
+import { generateModeSettingValues } from '../../util/api'
+import { PANEL_ANIMATION_TIMING } from './styled'
+import { setModeButtonEnabled } from './batch-settings'
+import PageTitle from '../util/page-title'
 
 const panelFlyIn = keyframes`
   0% { left: 75px; opacity: 0 }
@@ -37,9 +62,19 @@ const HeaderContainer = styled.div`
 `
 
 const AdvancedSettingsPanel = ({
-  closeAdvancedSettings
+  closeAdvancedSettings,
+  enabledModeButtons,
+  modeButtonOptions,
+  modeSettingDefinitions,
+  modeSettingValues,
+  setQueryParam
 }: {
   closeAdvancedSettings: () => void
+  enabledModeButtons: string[]
+  modeButtonOptions: ModeButtonDefinition[]
+  modeSettingDefinitions: ModeSetting[]
+  modeSettingValues: ModeSettingValues
+  setQueryParam: (evt: any) => void
 }): JSX.Element => {
   const [reverseAnimation, setReverseAnimation] = useState(false)
   const intl = useIntl()
@@ -55,6 +90,25 @@ const AdvancedSettingsPanel = ({
     closeAdvancedSettings()
     setReverseAnimation(true)
   }
+
+  // @ts-expect-error Context not typed
+  const { ModeIcon } = useContext(ComponentContext)
+
+  const processedModeSettings = modeSettingDefinitions.map(
+    pipe(
+      populateSettingWithIcon(ModeIcon),
+      populateSettingWithValue(modeSettingValues),
+      addCustomSettingLabels(intl)
+    )
+  )
+
+  const processedModeButtons = modeButtonOptions.map(
+    pipe(
+      addModeButtonIcon(ModeIcon),
+      addSettingsToButton(processedModeSettings),
+      setModeButtonEnabled(enabledModeButtons)
+    )
+  )
 
   return (
     <PanelOverlay
@@ -89,9 +143,49 @@ const AdvancedSettingsPanel = ({
         {/**
          * AdvancedModeSubsettingsContainer (import from Otp-ui) goes here
          */}
+        <AdvancedModeSubsettingsContainer
+          fillModeIcons
+          label="test"
+          modeButtons={processedModeButtons}
+          onSettingsUpdate={setQueryParam}
+          onToggleModeButton={setQueryParam}
+        />
       </FocusTrapWrapper>
     </PanelOverlay>
   )
 }
 
-export default AdvancedSettingsPanel
+const queryParamConfig = { modeButtons: DelimitedArrayParam }
+
+const mapStateToProps = (state: AppReduxState) => {
+  const urlSearchParams = new URLSearchParams(state.router.location.search)
+  const modeSettingValues = generateModeSettingValues(
+    urlSearchParams,
+    state.otp?.modeSettingDefinitions || [],
+    state.otp.config.modes?.initialState?.modeSettingValues || {}
+  )
+  return {
+    currentQuery: state.otp.currentQuery,
+    // TODO: Duplicated in apiv2.js
+    enabledModeButtons:
+      decodeQueryParams(queryParamConfig, {
+        modeButtons: urlSearchParams.get('modeButtons')
+      })?.modeButtons?.filter((mb): mb is string => mb !== null) ||
+      state.otp.config?.modes?.initialState?.enabledModeButtons ||
+      [],
+    modeButtonOptions: state.otp.config?.modes?.modeButtons || [],
+    modeSettingDefinitions: state.otp?.modeSettingDefinitions || [],
+    modeSettingValues
+  }
+}
+
+const mapDispatchToProps = {
+  routingQuery: apiActions.routingQuery,
+  setQueryParam: formActions.setQueryParam,
+  updateQueryTimeIfLeavingNow: formActions.updateQueryTimeIfLeavingNow
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AdvancedSettingsPanel)
