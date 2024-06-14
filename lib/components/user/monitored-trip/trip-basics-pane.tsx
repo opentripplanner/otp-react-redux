@@ -82,18 +82,16 @@ const AvailableDays = styled(FieldSet)`
     text-align: center;
     width: auto;
   }
-  .glyphicon {
+  svg {
+    color: ${RED_ON_WHITE};
     display: none;
-    flex-shrink: 0;
-    margin: 0 3px;
-
     /* Remove top attribute set by Bootstrap. */
     top: inherit;
     width: 1.3rem;
-    z-index: -1;
   }
 
-  input {
+  input,
+  svg {
     flex-shrink: 0;
     /* Remove bootstrap's vertical margin */
     margin: 0 3px;
@@ -103,24 +101,18 @@ const AvailableDays = styled(FieldSet)`
   input[disabled] {
     display: none;
   }
-  input[disabled] ~ .glyphicon {
+  input[disabled] ~ svg {
     display: block;
   }
 
-  label.disabled {
-    .glyphicon {
-      display: block;
-    }
-  }
-
   /* Add oblique strike for disabled days */
-  label.disabled::after {
+  .disabled-day::after {
+    border-top: 2px solid ${RED_ON_WHITE};
     content: '';
-    position: absolute;
-    top: 40%;
     left: 0;
-    right: 1.3rem;
-    border-top: 3px solid ${RED_ON_WHITE};
+    position: absolute;
+    right: 0;
+    top: 40%;
     transform: rotate(-30deg);
     transform-origin: center;
   }
@@ -131,11 +123,8 @@ const AvailableDays = styled(FieldSet)`
     height: 100%;
     line-height: 3rem;
     margin: 0;
+    position: relative;
     width: 100%;
-  }
-  span.day {
-    flex-grow: 1;
-    text-align: center;
   }
 `
 
@@ -325,7 +314,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
                       day,
                       finalItineraryExistence
                     )
-                    const labelClass = isDayDisabled ? 'disabled' : ''
+                    const labelClass = isDayDisabled ? 'disabled-day' : ''
                     const notAvailableText = isDayDisabled
                       ? intl.formatMessage(
                           {
@@ -353,16 +342,12 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
                           name={day}
                           type="checkbox"
                         />
-                        <Ban
-                          aria-hidden
-                          className="glyphicon"
-                          color={RED_ON_WHITE}
-                        />
-                        <label className={labelClass} htmlFor={day}>
+                        <Ban aria-hidden />
+                        <label htmlFor={day}>
                           <InvisibleA11yLabel>
                             <FormattedDayOfWeek day={day} />
                           </InvisibleA11yLabel>
-                          <span aria-hidden>
+                          <span aria-hidden className={labelClass}>
                             {/* The abbreviated text is visual only. Screen readers should read out the full day. */}
                             <FormattedDayOfWeekCompact day={day} />
                           </span>
