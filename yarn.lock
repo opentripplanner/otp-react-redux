@@ -2606,19 +2606,21 @@
     flat "^5.0.2"
     react-animate-height "^3.0.4"
 
-"@opentripplanner/trip-form@^3.6.0":
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.6.0.tgz#e02996e3e21cee951a61522c1c01ea55f978c2b8"
-  integrity sha512-iV3bQkRhcJxvty7BZ+RUN/ylLmH+twUcveQgHj1HUCkPhEOz98m26ykDYXQhOXP68k/y9PtaLlt+Gzsa6p+8xQ==
+"@opentripplanner/trip-form@^3.7.0-alpha.1":
+  version "3.7.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.7.0-alpha.1.tgz#025c2e4f01f9e7689006eb266c73b48a9afba90c"
+  integrity sha512-V938paiKZhiKmrtOhAB4gA22LBWfgpLVE6RKzfdKWxVMLnbuGiUiJOWlgDVrdx/DL/IyB5L81GWcu5BIcWQBog==
   dependencies:
     "@floating-ui/react" "^0.19.2"
-    "@opentripplanner/core-utils" "^11.2.3"
+    "@opentripplanner/building-blocks" "^1.0.3"
+    "@opentripplanner/core-utils" "^11.4.0"
     "@styled-icons/bootstrap" "^10.34.0"
     "@styled-icons/boxicons-regular" "^10.38.0"
     "@styled-icons/fa-regular" "^10.37.0"
     "@styled-icons/fa-solid" "^10.37.0"
     date-fns "^2.28.0"
     flat "^5.0.2"
+    react-animate-height "^3.2.3"
     react-indiana-drag-scroll "^2.0.1"
     react-inlinesvg "^2.3.0"
 
@@ -15058,6 +15060,11 @@ react-animate-height@^3.0.4:
   integrity sha512-k+mBS8yCzpFp+7BdrHsL5bXd6CO/2bYO2SvRGKfxK+Ss3nzplAJLlgnd6Zhcxe/avdpy/CgcziicFj7pIHgG5g==
   dependencies:
     classnames "^2.3.1"
+
+react-animate-height@^3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/react-animate-height/-/react-animate-height-3.2.3.tgz#90929aadac1bd1851cb6a685acc105b50ccfda8c"
+  integrity sha512-R6DSvr7ud07oeCixScyvXWEMJY/Mt2+GyOWC1KMaRc69gOBw+SsCg4TJmrp4rKUM1hyd6p+YKw90brjPH93Y2A==
 
 react-app-polyfill@^2.0.0:
   version "2.0.0"
