@@ -8,10 +8,28 @@ import { connect } from 'react-redux'
 import { decodeQueryParams, DelimitedArrayParam } from 'serialize-query-params'
 import { FocusTrapWrapper } from '@opentripplanner/map-popup/lib'
 import { FormattedMessage, useIntl } from 'react-intl'
-
-import PageTitle from '../util/page-title'
-import React, { RefObject } from 'react'
+import {
+  ModeButtonDefinition,
+  ModeSetting,
+  ModeSettingValues
+} from '@opentripplanner/types'
+import React, { RefObject, useContext } from 'react'
 import styled from 'styled-components'
+
+import * as apiActions from '../../actions/api'
+import * as formActions from '../../actions/form'
+
+import {
+  addCustomSettingLabels,
+  addModeButtonIcon,
+  pipe,
+  populateSettingWithIcon
+} from './util'
+import { AppReduxState } from '../../util/state-types'
+import { ComponentContext } from '../../util/contexts'
+import { generateModeSettingValues } from '../../util/api'
+import { setModeButtonEnabled } from './batch-settings'
+import PageTitle from '../util/page-title'
 
 const PanelOverlay = styled.div`
   background-color: #fff;
@@ -37,10 +55,20 @@ const HeaderContainer = styled.div`
 
 const AdvancedSettingsPanel = ({
   closeAdvancedSettings,
-  innerRef
+  enabledModeButtons,
+  innerRef,
+  modeButtonOptions,
+  modeSettingDefinitions,
+  modeSettingValues,
+  setQueryParam
 }: {
   closeAdvancedSettings: () => void
+  enabledModeButtons: string[]
   innerRef: RefObject<HTMLDivElement>
+  modeButtonOptions: ModeButtonDefinition[]
+  modeSettingDefinitions: ModeSetting[]
+  modeSettingValues: ModeSettingValues
+  setQueryParam: (evt: any) => void
 }): JSX.Element => {
   const intl = useIntl()
   const closeButtonText = intl.formatMessage({
