@@ -14,7 +14,9 @@ import React, { RefObject } from 'react'
 import styled from 'styled-components'
 
 const PanelOverlay = styled.div`
+  background-color: #fff;
   height: 100vh;
+  left: 0;
   padding: 1.5em;
   position: absolute;
   top: 0;
