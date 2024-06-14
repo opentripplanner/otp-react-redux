@@ -10,8 +10,8 @@ import { FocusTrapWrapper } from '@opentripplanner/map-popup/lib'
 import { FormattedMessage, useIntl } from 'react-intl'
 
 import PageTitle from '../util/page-title'
-import React from 'react'
-import styled, { keyframes } from 'styled-components'
+import React, { RefObject } from 'react'
+import styled from 'styled-components'
 
 const PanelOverlay = styled.div`
   height: 100vh;
@@ -34,9 +34,11 @@ const HeaderContainer = styled.div`
 `
 
 const AdvancedSettingsPanel = ({
-  closeAdvancedSettings
+  closeAdvancedSettings,
+  innerRef
 }: {
   closeAdvancedSettings: () => void
+  innerRef: RefObject<HTMLDivElement>
 }): JSX.Element => {
   const intl = useIntl()
   const closeButtonText = intl.formatMessage({
