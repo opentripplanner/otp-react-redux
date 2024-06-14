@@ -55,7 +55,7 @@ type Props = {
   modeSettingDefinitions: ModeSetting[]
   modeSettingValues: ModeSettingValues
   onPlanTripClick: () => void
-  openAdvancedSettings?: () => void
+  openAdvancedSettings: () => void
   routingQuery: any
   setQueryParam: (evt: any) => void
   spacedOutModeSelector?: boolean
@@ -210,9 +210,7 @@ function BatchSettings({
         // Prevent the hover on date/time selector when mode selector has a popup open via keyboard.
         style={{ pointerEvents: modeSelectorPopup ? 'none' : undefined }}
       />
-      {openAdvancedSettings && (
-        <AdvancedSettingsButton onClick={openAdvancedSettings} />
-      )}
+      <AdvancedSettingsButton onClick={openAdvancedSettings} />
       <ModeSelectorContainer
         squashed={!spacedOutModeSelector}
         // Prevent hover effect on mode selector when date selector is activated via keyboard.

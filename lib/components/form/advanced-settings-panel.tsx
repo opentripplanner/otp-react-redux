@@ -75,6 +75,7 @@ const AdvancedSettingsPanel = ({
     <PanelOverlay className="advanced-settings" ref={innerRef}>
       <FocusTrapWrapper closePopup={closePanel} id="advanced-settings">
         <HeaderContainer>
+          <PageTitle title={headerText} />
           <h1 className="header-text">{headerText}</h1>
           <CloseButton
             aria-label={closeButtonText}
@@ -84,7 +85,6 @@ const AdvancedSettingsPanel = ({
             <Close size={22} />
           </CloseButton>
         </HeaderContainer>
-        <PageTitle title={headerText} />
         {/**
          * Date time selector goes here
          */}
