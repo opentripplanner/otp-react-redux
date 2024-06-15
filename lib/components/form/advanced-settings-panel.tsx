@@ -22,8 +22,10 @@ import * as formActions from '../../actions/form'
 import {
   addCustomSettingLabels,
   addModeButtonIcon,
+  onSettingsUpdate,
   pipe,
-  populateSettingWithIcon
+  populateSettingWithIcon,
+  setModeButton
 } from './util'
 import { AppReduxState } from '../../util/state-types'
 import { ComponentContext } from '../../util/contexts'
@@ -134,8 +136,11 @@ const AdvancedSettingsPanel = ({
           fillModeIcons
           label="test"
           modeButtons={processedModeButtons}
-          onSettingsUpdate={setQueryParam}
-          onToggleModeButton={setQueryParam}
+          onSettingsUpdate={onSettingsUpdate(setQueryParam)}
+          onToggleModeButton={setModeButton(
+            enabledModeButtons,
+            onSettingsUpdate(setQueryParam)
+          )}
         />
       </FocusTrapWrapper>
     </PanelOverlay>

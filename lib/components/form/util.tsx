@@ -1,3 +1,4 @@
+import { DelimitedArrayParam, encodeQueryParams } from 'serialize-query-params'
 import { IntlShape } from 'react-intl'
 import { ModeButtonDefinition, ModeSetting } from '@opentripplanner/types'
 import React from 'react'
@@ -8,6 +9,8 @@ import { getFormattedMode } from '../../util/i18n'
 export function pipe<T>(...fns: Array<(arg: T) => T>) {
   return (value: T) => fns.reduce((acc, fn) => fn(acc), value)
 }
+
+export const modesQueryParamConfig = { modeButtons: DelimitedArrayParam }
 
 export const populateSettingWithIcon =
   (ModeIcon: React.ComponentType<{ mode?: string; width?: number }>) =>
@@ -39,4 +42,30 @@ export const addCustomSettingLabels =
       }
     }
     return msd
+  }
+
+/**
+ * Stores parameters in both the Redux `currentQuery` and URL
+ * @param params Params to store
+ */
+export const onSettingsUpdate =
+  (setQueryParam: (evt: any) => void) => (params: any) => {
+    setQueryParam({ queryParamData: params, ...params })
+  }
+
+export const setModeButton =
+  (enabledModeButtons: string[], updateHandler: (params: any) => void) =>
+  (buttonId: string, newState: boolean) => {
+    let newButtons
+    if (newState) {
+      newButtons = [...enabledModeButtons, buttonId]
+    } else {
+      newButtons = enabledModeButtons.filter((c) => c !== buttonId)
+    }
+
+    // encodeQueryParams serializes the mode buttons for the URL
+    // to get nice looking URL params and consistency
+    updateHandler(
+      encodeQueryParams(modesQueryParamConfig, { modeButtons: newButtons })
+    )
   }

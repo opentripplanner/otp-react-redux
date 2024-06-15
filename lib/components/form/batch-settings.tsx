@@ -25,15 +25,17 @@ import { ComponentContext } from '../../util/contexts'
 import { generateModeSettingValues } from '../../util/api'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
 import { getBaseColor, getDarkenedBaseColor } from '../util/colors'
-import { getFormattedMode } from '../../util/i18n'
 import { RoutingQueryCallResult } from '../../actions/api-constants'
 import { StyledIconWrapper } from '../util/styledIcon'
 
 import {
   addCustomSettingLabels,
   addModeButtonIcon,
+  modesQueryParamConfig,
+  onSettingsUpdate,
   pipe,
-  populateSettingWithIcon
+  populateSettingWithIcon,
+  setModeButton
 } from './util'
 import {
   MainSettingsRow,
@@ -42,8 +44,6 @@ import {
 } from './batch-styled'
 import AdvancedSettingsButton from './advanced-settings-button'
 import DateTimeButton from './date-time-button'
-
-const queryParamConfig = { modeButtons: DelimitedArrayParam }
 
 // TYPESCRIPT TODO: better types
 type Props = {
@@ -160,35 +160,6 @@ function BatchSettings({
   ])
 
   /**
-   * Stores parameters in both the Redux `currentQuery` and URL
-   * @param params Params to store
-   */
-  const _onSettingsUpdate = useCallback(
-    (params: any) => {
-      setQueryParam({ queryParamData: params, ...params })
-    },
-    [setQueryParam]
-  )
-
-  const _toggleModeButton = useCallback(
-    (buttonId: string, newState: boolean) => {
-      let newButtons
-      if (newState) {
-        newButtons = [...enabledModeButtons, buttonId]
-      } else {
-        newButtons = enabledModeButtons.filter((c) => c !== buttonId)
-      }
-
-      // encodeQueryParams serializes the mode buttons for the URL
-      // to get nice looking URL params and consistency
-      _onSettingsUpdate(
-        encodeQueryParams(queryParamConfig, { modeButtons: newButtons })
-      )
-    },
-    [enabledModeButtons, _onSettingsUpdate]
-  )
-
-  /**
    * Check whether the mode selector is showing a popup.
    */
   const checkModeSelectorPopup = useCallback(() => {
@@ -224,8 +195,11 @@ function BatchSettings({
             id: 'components.BatchSearchScreen.modeSelectorLabel'
           })}
           modeButtons={processedModeButtons}
-          onSettingsUpdate={_onSettingsUpdate}
-          onToggleModeButton={_toggleModeButton}
+          onSettingsUpdate={onSettingsUpdate(setQueryParam)}
+          onToggleModeButton={setModeButton(
+            enabledModeButtons,
+            onSettingsUpdate(setQueryParam)
+          )}
         />
         <PlanTripButton
           id="plan-trip"
@@ -263,7 +237,7 @@ const mapStateToProps = (state: any) => {
     currentQuery: state.otp.currentQuery,
     // TODO: Duplicated in apiv2.js
     enabledModeButtons:
-      decodeQueryParams(queryParamConfig, {
+      decodeQueryParams(modesQueryParamConfig, {
         modeButtons: urlSearchParams.get('modeButtons')
       })?.modeButtons ||
       state.otp.config?.modes?.initialState?.enabledModeButtons ||
