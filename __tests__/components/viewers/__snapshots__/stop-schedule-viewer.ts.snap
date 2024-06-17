@@ -211,7 +211,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                         >
                           <Styled(styled.span)>
                             <span
-                              className="sc-dkAqVg sc-jifHHV dwdQnb czUBjn"
+                              className="sc-jifHHV sc-hkwmXC frJUIW gWGcte"
                             >
                               <ArrowLeft>
                                 <StyledIconBase
@@ -267,11 +267,11 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                 </div>
                 <styled.div>
                   <div
-                    className="sc-gUUBao kMeMAw"
+                    className="sc-hJxDiT dbjOgr"
                   >
                     <styled.div>
                       <div
-                        className="sc-edoYdd jGAQLh"
+                        className="sc-jlIlqL sdJoA"
                       >
                         <h1>
                           <FormattedMessage
