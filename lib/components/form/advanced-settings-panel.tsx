@@ -6,7 +6,6 @@ import {
 import { Close } from '@styled-icons/fa-solid'
 import { connect } from 'react-redux'
 import { decodeQueryParams, DelimitedArrayParam } from 'serialize-query-params'
-import { FocusTrapWrapper } from '@opentripplanner/map-popup/lib'
 import { FormattedMessage, useIntl } from 'react-intl'
 import {
   ModeButtonDefinition,
@@ -35,13 +34,14 @@ import PageTitle from '../util/page-title'
 
 const PanelOverlay = styled.div`
   background-color: #fff;
-  height: 100vh;
+  height: 100%;
   left: 0;
   padding: 1.5em;
   position: absolute;
   top: 0;
   width: 100%;
   z-index: 100;
+  overflow-y: scroll;
 `
 
 const CloseButton = styled.button`
@@ -105,44 +105,42 @@ const AdvancedSettingsPanel = ({
 
   return (
     <PanelOverlay className="advanced-settings" ref={innerRef}>
-      <FocusTrapWrapper closePopup={closePanel} id="advanced-settings">
-        <HeaderContainer>
-          <PageTitle title={headerText} />
-          <h1 className="header-text">{headerText}</h1>
-          <CloseButton
-            aria-label={closeButtonText}
-            onClick={closePanel}
-            title={closeButtonText}
-          >
-            <Close size={22} />
-          </CloseButton>
-        </HeaderContainer>
-        {/**
-         * Date time selector goes here
-         */}
-        <h2 className="header-text">
-          <FormattedMessage id="components.BatchSearchScreen.tripOptions" />
-        </h2>
-        {/**
-         * Trip options (walk speed, walk reluctance, accessible routing) go here
-         */}
-        <h2 className="header-text">
-          <FormattedMessage id="components.BatchSearchScreen.modeOptions" />
-        </h2>
-        {/**
-         * AdvancedModeSubsettingsContainer (import from Otp-ui) goes here
-         */}
-        <AdvancedModeSubsettingsContainer
-          fillModeIcons
-          label="test"
-          modeButtons={processedModeButtons}
-          onSettingsUpdate={onSettingsUpdate(setQueryParam)}
-          onToggleModeButton={setModeButton(
-            enabledModeButtons,
-            onSettingsUpdate(setQueryParam)
-          )}
-        />
-      </FocusTrapWrapper>
+      <HeaderContainer>
+        <PageTitle title={headerText} />
+        <h1 className="header-text">{headerText}</h1>
+        <CloseButton
+          aria-label={closeButtonText}
+          onClick={closePanel}
+          title={closeButtonText}
+        >
+          <Close size={22} />
+        </CloseButton>
+      </HeaderContainer>
+      {/**
+       * Date time selector goes here
+       */}
+      <h2 className="header-text">
+        <FormattedMessage id="components.BatchSearchScreen.tripOptions" />
+      </h2>
+      {/**
+       * Trip options (walk speed, walk reluctance, accessible routing) go here
+       */}
+      <h2 className="header-text">
+        <FormattedMessage id="components.BatchSearchScreen.modeOptions" />
+      </h2>
+      {/**
+       * AdvancedModeSubsettingsContainer (import from Otp-ui) goes here
+       */}
+      <AdvancedModeSubsettingsContainer
+        fillModeIcons
+        label="test"
+        modeButtons={processedModeButtons}
+        onSettingsUpdate={onSettingsUpdate(setQueryParam)}
+        onToggleModeButton={setModeButton(
+          enabledModeButtons,
+          onSettingsUpdate(setQueryParam)
+        )}
+      />
     </PanelOverlay>
   )
 }
