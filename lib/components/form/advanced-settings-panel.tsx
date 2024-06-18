@@ -62,6 +62,13 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `
+
+const Subheader = styled.h2`
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 1em 0;
+`
 const baseColor = getBaseColor() !== 'fff' ? getBaseColor() : blue[900]
 
 const AdvancedSettingsPanel = ({
@@ -128,15 +135,15 @@ const AdvancedSettingsPanel = ({
       {/**
        * Date time selector goes here
        */}
-      <h2 className="header-text">
+      <Subheader className="header-text">
         <FormattedMessage id="components.BatchSearchScreen.tripOptions" />
-      </h2>
+      </Subheader>
       {/**
        * Trip options (walk speed, walk reluctance, accessible routing) go here
        */}
-      <h2 className="header-text">
+      <Subheader className="header-text">
         <FormattedMessage id="components.BatchSearchScreen.modeOptions" />
-      </h2>
+      </Subheader>
       {/**
        * AdvancedModeSubsettingsContainer (import from Otp-ui) goes here
        */}

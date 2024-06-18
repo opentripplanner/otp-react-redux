@@ -68,13 +68,6 @@
   margin: 0;
 }
 
-.otp .advanced-settings h2.header-text {
-  display: block;
-  font-size: 18px;
-  margin: 1em 0;
-}
-
-
 .otp .route-viewer .header-text.route-expanded {
   display: flex;
   align-items: center;
