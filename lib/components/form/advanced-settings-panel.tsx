@@ -1,22 +1,32 @@
+import * as apiActions from '../../actions/api'
+import * as formActions from '../../actions/form'
 import {
   addSettingsToButton,
   AdvancedModeSubsettingsContainer,
   populateSettingWithValue
 } from '@opentripplanner/trip-form'
+import { AppReduxState } from '../../util/state-types'
+import { blue, getBaseColor } from '../util/colors'
+
 import { Close } from '@styled-icons/fa-solid'
+
+import { ComponentContext } from '../../util/contexts'
+
 import { connect } from 'react-redux'
 import { decodeQueryParams, DelimitedArrayParam } from 'serialize-query-params'
 import { FormattedMessage, useIntl } from 'react-intl'
+
+import { generateModeSettingValues } from '../../util/api'
+
 import {
   ModeButtonDefinition,
   ModeSetting,
   ModeSettingValues
 } from '@opentripplanner/types'
-import React, { RefObject, useContext } from 'react'
-import styled from 'styled-components'
 
-import * as apiActions from '../../actions/api'
-import * as formActions from '../../actions/form'
+import PageTitle from '../util/page-title'
+
+import React, { RefObject, useContext } from 'react'
 
 import {
   addCustomSettingLabels,
@@ -26,11 +36,9 @@ import {
   populateSettingWithIcon,
   setModeButton
 } from './util'
-import { AppReduxState } from '../../util/state-types'
-import { ComponentContext } from '../../util/contexts'
-import { generateModeSettingValues } from '../../util/api'
 import { setModeButtonEnabled } from './batch-settings'
-import PageTitle from '../util/page-title'
+
+import styled from 'styled-components'
 
 const PanelOverlay = styled.div`
   background-color: #fff;
@@ -54,6 +62,7 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `
+const baseColor = getBaseColor() !== 'fff' ? getBaseColor() : blue[900]
 
 const AdvancedSettingsPanel = ({
   closeAdvancedSettings,
@@ -132,6 +141,7 @@ const AdvancedSettingsPanel = ({
        * AdvancedModeSubsettingsContainer (import from Otp-ui) goes here
        */}
       <AdvancedModeSubsettingsContainer
+        accentColor={baseColor}
         fillModeIcons
         label="test"
         modeButtons={processedModeButtons}
