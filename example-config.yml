@@ -340,7 +340,7 @@ itinerary:
   # plan trip itineraries.
   showPlanFirstLastButtons: false
   # adds the 'about' and '~' prefixes to the duration of non transit legs and trip details panel
-  showApproximatePrefixNonTransitLegs: false
+  showApproximatePrefixAccessLegs: false
   # Show all walking legs regardless of distance
   showAllWalkLegs: false
   # Filters out trips returned by OTP by default, unless specifically requested.
