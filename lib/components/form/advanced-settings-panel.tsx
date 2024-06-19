@@ -136,13 +136,13 @@ const AdvancedSettingsPanel = ({
       {/**
        * Date time selector goes here
        */}
-      <Subheader className="header-text">
+      <Subheader>
         <FormattedMessage id="components.BatchSearchScreen.tripOptions" />
       </Subheader>
       {/**
        * Trip options (walk speed, walk reluctance, accessible routing) go here
        */}
-      <Subheader className="header-text">
+      <Subheader>
         <FormattedMessage id="components.BatchSearchScreen.modeOptions" />
       </Subheader>
       {/**
