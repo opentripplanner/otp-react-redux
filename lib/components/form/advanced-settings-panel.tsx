@@ -69,7 +69,8 @@ const Subheader = styled.h2`
   font-weight: 700;
   margin: 1em 0;
 `
-const baseColor = getBaseColor() !== 'fff' ? getBaseColor() : blue[900]
+const baseColor = getBaseColor()
+const accentColor = baseColor || blue[900]
 
 const AdvancedSettingsPanel = ({
   closeAdvancedSettings,
@@ -148,7 +149,7 @@ const AdvancedSettingsPanel = ({
        * AdvancedModeSubsettingsContainer (import from Otp-ui) goes here
        */}
       <AdvancedModeSubsettingsContainer
-        accentColor={baseColor}
+        accentColor={accentColor}
         fillModeIcons
         label="test"
         modeButtons={processedModeButtons}
