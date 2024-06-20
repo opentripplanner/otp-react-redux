@@ -15,7 +15,6 @@ Object {
       "mode": "WALK,TRANSIT",
       "numItineraries": 3,
       "routingType": "ITINERARY",
-      "wheelchair": false,
     },
     "favoriteStops": Array [],
     "recentPlaces": Array [],

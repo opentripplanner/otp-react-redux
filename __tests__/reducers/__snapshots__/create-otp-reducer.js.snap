@@ -30,7 +30,6 @@ Object {
     "numItineraries": 3,
     "routingType": "ITINERARY",
     "time": "19:34",
-    "wheelchair": false,
   },
   "filter": Object {
     "sort": Object {
