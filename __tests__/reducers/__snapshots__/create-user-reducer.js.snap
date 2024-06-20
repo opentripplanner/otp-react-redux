@@ -18,7 +18,6 @@ Object {
       "optimizeBike": "SAFE",
       "otherThanPreferredRoutesPenalty": 900,
       "routingType": "ITINERARY",
-      "wheelchair": false,
     },
     "favoriteStops": Array [],
     "recentPlaces": Array [],

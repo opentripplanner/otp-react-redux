@@ -43,7 +43,6 @@ Object {
     "showIntermediateStops": true,
     "startTime": "07:00",
     "time": "19:34",
-    "wheelchair": false,
   },
   "filter": Object {
     "sort": Object {
