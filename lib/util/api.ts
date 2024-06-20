@@ -64,10 +64,10 @@ export function getDefaultQuery() {
   return {
     date: getCurrentDate(),
     departArrive: 'NOW',
-    // TODO: rework the params below so we can remove them without causing a crash.
+    // TODO: Rework the crash-related params below so we can remove them.
     intermediatePlaces: [], // required to avoid crash
     mode: 'WALK,TRANSIT', // obsolete but required to avoid crash
-    numItineraries: 3,
+    numItineraries: 3, // instead of 7 per apiV2 if no limit defined in config
     routingType: 'ITINERARY', // obsolete but required to avoid crash
     time: getCurrentTime()
   }
