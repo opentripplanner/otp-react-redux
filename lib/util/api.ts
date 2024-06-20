@@ -58,3 +58,17 @@ export function combineQueryParams(
   }
   return qs.stringify(search, { arrayFormat: 'repeat' })
 }
+
+/** Gets the default URL params when reinitializing search */
+export function getDefaultQuery() {
+  return {
+    date: getCurrentDate(),
+    departArrive: 'NOW',
+    // TODO: rework the params below so we can remove them without causing a crash.
+    intermediatePlaces: [], // required to avoid crash
+    mode: 'WALK,TRANSIT', // obsolete but required to avoid crash
+    numItineraries: 3,
+    routingType: 'ITINERARY', // obsolete but required to avoid crash
+    time: getCurrentTime()
+  }
+}
