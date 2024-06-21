@@ -165,9 +165,6 @@ const AdvancedSettingsPanel = ({
       <Subheader>
         <FormattedMessage id="components.BatchSearchScreen.modeOptions" />
       </Subheader>
-      {/**
-       * AdvancedModeSubsettingsContainer (import from Otp-ui) goes here
-       */}
       <AdvancedModeSubsettingsContainer
         accentColor={accentColor}
         fillModeIcons
