@@ -38,9 +38,19 @@ const Stop = ({
   const patternRows = (stopData.stoptimesForPatterns || [])
     ?.reduce<PatternStopTime[]>((acc, cur) => {
       const currentHeadsign = extractHeadsignFromPattern(cur.pattern)
-      const dupe = acc.findIndex(
-        (p) => extractHeadsignFromPattern(p.pattern) === currentHeadsign
-      )
+      const dupe = acc.findIndex((p) => {
+        // TODO: use OTP_generated ids
+        let sameRoute = false
+        if (p.pattern.route?.shortName && cur.pattern.route?.shortName) {
+          sameRoute =
+            p.pattern.route?.shortName === cur.pattern.route?.shortName
+        } else if (p.pattern.route?.longName && cur.pattern.route?.longName) {
+          sameRoute = p.pattern.route?.longName === cur.pattern.route?.longName
+        }
+        return (
+          extractHeadsignFromPattern(p.pattern) === currentHeadsign && sameRoute
+        )
+      })
       if (dupe === -1) {
         acc.push(cur)
       } else {
