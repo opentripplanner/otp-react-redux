@@ -2606,19 +2606,21 @@
     flat "^5.0.2"
     react-animate-height "^3.0.4"
 
-"@opentripplanner/trip-form@^3.6.0":
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.6.0.tgz#e02996e3e21cee951a61522c1c01ea55f978c2b8"
-  integrity sha512-iV3bQkRhcJxvty7BZ+RUN/ylLmH+twUcveQgHj1HUCkPhEOz98m26ykDYXQhOXP68k/y9PtaLlt+Gzsa6p+8xQ==
+"@opentripplanner/trip-form@^3.7.0-alpha.4":
+  version "3.7.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-3.7.0-alpha.4.tgz#595b41c7d6d598939e2899a350ac0046acf131ce"
+  integrity sha512-uVkiP9qU1RSHo2ffm+tBIsnf/1pc8id0Giyy5Y61iQswDRmXh8ubTz/LUuhC3fiAYOwm3kYnHZ01tmwQ9XIvTQ==
   dependencies:
     "@floating-ui/react" "^0.19.2"
-    "@opentripplanner/core-utils" "^11.2.3"
+    "@opentripplanner/building-blocks" "^1.0.3"
+    "@opentripplanner/core-utils" "^11.4.0"
     "@styled-icons/bootstrap" "^10.34.0"
     "@styled-icons/boxicons-regular" "^10.38.0"
     "@styled-icons/fa-regular" "^10.37.0"
     "@styled-icons/fa-solid" "^10.37.0"
     date-fns "^2.28.0"
     flat "^5.0.2"
+    react-animate-height "^3.0.4"
     react-indiana-drag-scroll "^2.0.1"
     react-inlinesvg "^2.3.0"
 
@@ -3616,6 +3618,13 @@
   integrity sha512-jGjmu/ZqS7FjSH6owMcD5qpq19+1RS9DeVRqfl1FeBMxTDQAGwlMWOcs52NDoXaNKyG3d1cYQFMs9rCrb88o9Q==
   dependencies:
     "@types/history" "^4.7.11"
+    "@types/react" "*"
+
+"@types/react-transition-group@^4.4.10":
+  version "4.4.10"
+  resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-4.4.10.tgz#6ee71127bdab1f18f11ad8fb3322c6da27c327ac"
+  integrity sha512-hT/+s0VQs2ojCX823m60m5f0sL5idt9SO6Tj6Dg+rdphGPIeJbJ6CxvBYkgkGKrYeDjvIpKTR38UzmtHJOGW3Q==
+  dependencies:
     "@types/react" "*"
 
 "@types/react@*", "@types/react@17":
@@ -15449,6 +15458,16 @@ react-transition-group@^4.3.0:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.2.tgz#8b59a56f09ced7b55cbd53c36768b922890d5470"
   integrity sha512-/RNYfRAMlZwDSr6z4zNKV6xu53/e2BuaBbGhbyYIXTrmgu/bGHzmqOs7mJSJBHy9Ud+ApHx3QjrkKSp1pxvlFg==
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    dom-helpers "^5.0.1"
+    loose-envify "^1.4.0"
+    prop-types "^15.6.2"
+
+react-transition-group@^4.4.5:
+  version "4.4.5"
+  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.5.tgz#e53d4e3f3344da8521489fbef8f2581d42becdd1"
+  integrity sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==
   dependencies:
     "@babel/runtime" "^7.5.5"
     dom-helpers "^5.0.1"

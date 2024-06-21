@@ -5,6 +5,7 @@ import {
   Styled as TripFormClasses
 } from '@opentripplanner/trip-form'
 import { Input, MenuItemLi } from '@opentripplanner/location-field/lib/styled'
+import { prefersReducedMotion } from '../util/prefersReducedMotion'
 import LocationField from '@opentripplanner/location-field'
 import styled, { css } from 'styled-components'
 
@@ -228,5 +229,61 @@ export const StyledLocationField = styled(LocationField)`
     &:hover {
       color: inherit;
     }
+  }
+`
+
+export const advancedPanelClassName = 'advanced-panel'
+export const mainPanelClassName = 'main-panel'
+export const transitionDuration = prefersReducedMotion ? 0 : 175
+
+const wipeOffset = 7
+
+const transitionMixin = css`
+  transition: all ${transitionDuration}ms ease-in;
+`
+
+const wipeOutMixin = (offset: number) => css`
+  transform: translateX(${offset}px);
+  opacity: 0;
+`
+const wipeInMixin = css`
+  transform: translateX(0px);
+  opacity: 1;
+`
+
+export const TransitionStyles = styled.div`
+  display: contents;
+  .${advancedPanelClassName}-enter {
+    ${wipeOutMixin(wipeOffset)}
+  }
+  .${advancedPanelClassName}-enter-done {
+    ${wipeInMixin}
+    ${transitionMixin}
+  }
+
+  .${advancedPanelClassName}-exit {
+    ${wipeInMixin}
+  }
+
+  .${advancedPanelClassName}-exit-active {
+    ${wipeOutMixin(wipeOffset)}
+    ${transitionMixin}
+  }
+
+  .${mainPanelClassName}-enter {
+    ${wipeOutMixin(-wipeOffset)}
+  }
+  .${mainPanelClassName}-enter-done {
+    ${wipeInMixin}
+    ${transitionMixin}
+  }
+
+  .${mainPanelClassName}-exit {
+    ${wipeInMixin}
+  }
+
+  .${mainPanelClassName}-exit-active {
+    ${wipeOutMixin(-wipeOffset)}
+    ${transitionMixin}
   }
 `

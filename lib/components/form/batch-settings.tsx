@@ -25,18 +25,25 @@ import { ComponentContext } from '../../util/contexts'
 import { generateModeSettingValues } from '../../util/api'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
 import { getBaseColor, getDarkenedBaseColor } from '../util/colors'
-import { getFormattedMode } from '../../util/i18n'
 import { RoutingQueryCallResult } from '../../actions/api-constants'
 import { StyledIconWrapper } from '../util/styledIcon'
 
+import {
+  addCustomSettingLabels,
+  addModeButtonIcon,
+  modesQueryParamConfig,
+  onSettingsUpdate,
+  pipe,
+  populateSettingWithIcon,
+  setModeButton
+} from './util'
 import {
   MainSettingsRow,
   ModeSelectorContainer,
   PlanTripButton
 } from './batch-styled'
+import AdvancedSettingsButton from './advanced-settings-button'
 import DateTimeButton from './date-time-button'
-
-const queryParamConfig = { modeButtons: DelimitedArrayParam }
 
 // TYPESCRIPT TODO: better types
 type Props = {
@@ -48,15 +55,11 @@ type Props = {
   modeSettingDefinitions: ModeSetting[]
   modeSettingValues: ModeSettingValues
   onPlanTripClick: () => void
+  openAdvancedSettings: () => void
   routingQuery: any
   setQueryParam: (evt: any) => void
   spacedOutModeSelector?: boolean
   updateQueryTimeIfLeavingNow: () => void
-}
-
-// This method is used to daisy-chain a series of functions together on a given value
-function pipe<T>(...fns: Array<(arg: T) => T>) {
-  return (value: T) => fns.reduce((acc, fn) => fn(acc), value)
 }
 
 export function setModeButtonEnabled(enabledKeys: string[]) {
@@ -80,6 +83,7 @@ function BatchSettings({
   modeSettingDefinitions,
   modeSettingValues,
   onPlanTripClick,
+  openAdvancedSettings,
   routingQuery,
   setQueryParam,
   spacedOutModeSelector,
@@ -96,51 +100,17 @@ function BatchSettings({
   // @ts-expect-error Context not typed
   const { ModeIcon } = useContext(ComponentContext)
 
-  const addModeButtonIcon = useCallback(
-    (def: ModeButtonDefinition) => ({
-      ...def,
-      Icon: function ModeButtonIcon() {
-        return <ModeIcon mode={def.iconName} />
-      }
-    }),
-    [ModeIcon]
-  )
-
-  const populateSettingWithIcon = useCallback(
-    (msd: ModeSetting) => ({
-      ...msd,
-      icon: <ModeIcon mode={msd.iconName} width={16} />
-    }),
-    [ModeIcon]
-  )
-
-  const addCustomSettingLabels = useCallback(
-    (msd: ModeSetting) => {
-      let modeLabel
-      // If we're using route mode overrides, make sure we're using the custom mode name
-      if (msd.type === 'SUBMODE') {
-        modeLabel = msd.overrideMode || msd.addTransportMode.mode
-        return {
-          ...msd,
-          label: getFormattedMode(modeLabel, intl)
-        }
-      }
-      return msd
-    },
-    [intl]
-  )
-
   const processedModeSettings = modeSettingDefinitions.map(
     pipe(
-      populateSettingWithIcon,
+      populateSettingWithIcon(ModeIcon),
       populateSettingWithValue(modeSettingValues),
-      addCustomSettingLabels
+      addCustomSettingLabels(intl)
     )
   )
 
   const processedModeButtons = modeButtonOptions.map(
     pipe(
-      addModeButtonIcon,
+      addModeButtonIcon(ModeIcon),
       addSettingsToButton(processedModeSettings),
       setModeButtonEnabled(enabledModeButtons)
     )
@@ -190,35 +160,6 @@ function BatchSettings({
   ])
 
   /**
-   * Stores parameters in both the Redux `currentQuery` and URL
-   * @param params Params to store
-   */
-  const _onSettingsUpdate = useCallback(
-    (params: any) => {
-      setQueryParam({ queryParamData: params, ...params })
-    },
-    [setQueryParam]
-  )
-
-  const _toggleModeButton = useCallback(
-    (buttonId: string, newState: boolean) => {
-      let newButtons
-      if (newState) {
-        newButtons = [...enabledModeButtons, buttonId]
-      } else {
-        newButtons = enabledModeButtons.filter((c) => c !== buttonId)
-      }
-
-      // encodeQueryParams serializes the mode buttons for the URL
-      // to get nice looking URL params and consistency
-      _onSettingsUpdate(
-        encodeQueryParams(queryParamConfig, { modeButtons: newButtons })
-      )
-    },
-    [enabledModeButtons, _onSettingsUpdate]
-  )
-
-  /**
    * Check whether the mode selector is showing a popup.
    */
   const checkModeSelectorPopup = useCallback(() => {
@@ -240,6 +181,7 @@ function BatchSettings({
         // Prevent the hover on date/time selector when mode selector has a popup open via keyboard.
         style={{ pointerEvents: modeSelectorPopup ? 'none' : undefined }}
       />
+      <AdvancedSettingsButton onClick={openAdvancedSettings} />
       <ModeSelectorContainer
         squashed={!spacedOutModeSelector}
         // Prevent hover effect on mode selector when date selector is activated via keyboard.
@@ -253,8 +195,11 @@ function BatchSettings({
             id: 'components.BatchSearchScreen.modeSelectorLabel'
           })}
           modeButtons={processedModeButtons}
-          onSettingsUpdate={_onSettingsUpdate}
-          onToggleModeButton={_toggleModeButton}
+          onSettingsUpdate={onSettingsUpdate(setQueryParam)}
+          onToggleModeButton={setModeButton(
+            enabledModeButtons,
+            onSettingsUpdate(setQueryParam)
+          )}
         />
         <PlanTripButton
           id="plan-trip"
@@ -292,7 +237,7 @@ const mapStateToProps = (state: any) => {
     currentQuery: state.otp.currentQuery,
     // TODO: Duplicated in apiv2.js
     enabledModeButtons:
-      decodeQueryParams(queryParamConfig, {
+      decodeQueryParams(modesQueryParamConfig, {
         modeButtons: urlSearchParams.get('modeButtons')
       })?.modeButtons ||
       state.otp.config?.modes?.initialState?.enabledModeButtons ||
