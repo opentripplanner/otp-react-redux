@@ -280,6 +280,7 @@ components:
   MetroUI:
     arriveAt: You arrive
     itineraryDescription: "{time} itinerary using {routes}"
+    itinerarySummary: from {stopName} | {cost}
     leaveAt: You leave
     multipleOptions: Multiple Options
     orAlternatives: or other routes in the same direction

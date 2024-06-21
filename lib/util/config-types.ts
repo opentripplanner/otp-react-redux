@@ -281,6 +281,7 @@ export interface ItineraryConfig {
   showAllWalkLegs?: boolean
   showFirstResultByDefault?: boolean
   showHeaderText?: boolean
+  showInlineItinerarySummary?: boolean
   showLegDurations?: boolean
   showPlanFirstLastButtons?: boolean
   showRouteFares?: boolean
