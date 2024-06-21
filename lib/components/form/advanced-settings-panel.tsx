@@ -105,10 +105,6 @@ const AdvancedSettingsPanel = ({
     id: 'components.BatchSearchScreen.advancedHeader'
   })
 
-  const closePanel = () => {
-    closeAdvancedSettings()
-  }
-
   // @ts-expect-error Context not typed
   const { ModeIcon } = useContext(ComponentContext)
 
@@ -150,7 +146,7 @@ const AdvancedSettingsPanel = ({
         <h1 className="header-text">{headerText}</h1>
         <CloseButton
           aria-label={closeButtonText}
-          onClick={closePanel}
+          onClick={closeAdvancedSettings}
           title={closeButtonText}
         >
           <Close size={22} />
@@ -162,6 +158,7 @@ const AdvancedSettingsPanel = ({
       <Subheader>
         <FormattedMessage id="components.BatchSearchScreen.tripOptions" />
       </Subheader>
+
       <GlobalSettingsContainer>
         {globalSettingsComponents}
       </GlobalSettingsContainer>
