@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+import { Dropdown } from '@opentripplanner/building-blocks/lib/dropdown'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { User } from '@auth0/auth0-react'
 import { User as UserIcon } from '@styled-icons/fa-regular/User'
 import React, { HTMLAttributes } from 'react'
 import styled from 'styled-components'
 
-import { Dropdown } from '../util/dropdown'
 import { NewWindowIconA11y } from '../util/externalLink'
 import { UnstyledButton } from '../util/unstyled-button'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
