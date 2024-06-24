@@ -1,32 +1,18 @@
-import * as apiActions from '../../actions/api'
-import * as formActions from '../../actions/form'
 import {
   addSettingsToButton,
   AdvancedModeSubsettingsContainer,
   populateSettingWithValue
 } from '@opentripplanner/trip-form'
-import { AppReduxState } from '../../util/state-types'
-import { blue, getBaseColor } from '../util/colors'
-
 import { Close } from '@styled-icons/fa-solid'
 
+import * as apiActions from '../../actions/api'
+import * as formActions from '../../actions/form'
+import { AppReduxState } from '../../util/state-types'
+import { blue, getBaseColor } from '../util/colors'
 import { ComponentContext } from '../../util/contexts'
-
 import { connect } from 'react-redux'
-import { decodeQueryParams, DelimitedArrayParam } from 'serialize-query-params'
-import { FormattedMessage, useIntl } from 'react-intl'
-
 import { generateModeSettingValues } from '../../util/api'
-
-import {
-  ModeButtonDefinition,
-  ModeSetting,
-  ModeSettingValues
-} from '@opentripplanner/types'
-
 import PageTitle from '../util/page-title'
-
-import React, { RefObject, useContext } from 'react'
 
 import {
   addCustomSettingLabels,
@@ -36,8 +22,19 @@ import {
   populateSettingWithIcon,
   setModeButton
 } from './util'
-import { setModeButtonEnabled } from './batch-settings'
 
+import { decodeQueryParams, DelimitedArrayParam } from 'serialize-query-params'
+import { FormattedMessage, useIntl } from 'react-intl'
+import {
+  ModeButtonDefinition,
+  ModeSetting,
+  ModeSettingValues
+} from '@opentripplanner/types'
+
+import { setModeButtonEnabled } from './batch-settings'
+import DateTimeModal from './date-time-modal'
+
+import React, { RefObject, useContext } from 'react'
 import styled from 'styled-components'
 
 const PanelOverlay = styled.div`
@@ -129,6 +126,7 @@ const AdvancedSettingsPanel = ({
           <Close size={22} />
         </CloseButton>
       </HeaderContainer>
+      <DateTimeModal />
       {/**
        * Date time selector goes here
        */}
