@@ -103,7 +103,7 @@ const PatternRow = ({
             />
           </span>
           <span style={{ wordBreak: 'break-word' }} title={pattern.headsign}>
-            {alwaysShowLongName && (
+            {alwaysShowLongName && !!pattern.route.longName && (
               <strong style={{ display: 'block' }}>
                 {pattern.route.longName}
               </strong>
