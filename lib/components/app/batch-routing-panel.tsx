@@ -162,7 +162,7 @@ class BatchRoutingPanel extends Component<Props> {
               )}
             </TransitionGroup>
           </form>
-          <TransitionGroup style={{ height: '100%' }}>
+          <TransitionGroup style={{ display: 'contents' }}>
             {!this.state.showAdvancedModeSettings && (
               <CSSTransition
                 classNames={mainPanelClassName}
@@ -171,19 +171,17 @@ class BatchRoutingPanel extends Component<Props> {
               >
                 <div
                   ref={this._itinerariesAndUserRef}
-                  style={{ height: '100%' }}
+                  style={{ height: '100%', overflowY: 'scroll' }}
                 >
                   {!activeSearch && showUserSettings && (
                     <UserSettings
                       style={{ margin: '0 10px', overflowY: 'auto' }}
                     />
                   )}
-
                   <div
                     className="desktop-narrative-container"
                     style={{
                       flexGrow: 1,
-                      height: '100%',
                       overflowY: 'hidden'
                     }}
                   >
