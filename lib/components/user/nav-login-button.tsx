@@ -64,6 +64,7 @@ const NavLoginButton = ({
     return (
       <li>
         <Dropdown
+          className="navBarItem"
           id="user-selector"
           label={intl.formatMessage({ id: 'components.SubNav.userMenu' })}
           name={

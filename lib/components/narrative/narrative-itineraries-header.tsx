@@ -1,11 +1,11 @@
 /* eslint-disable complexity */
 import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
+import { Dropdown } from '@opentripplanner/building-blocks/lib/dropdown'
 import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Itinerary } from '@opentripplanner/types'
 import { SortAmountDown } from '@styled-icons/fa-solid/SortAmountDown'
 import { SortAmountUp } from '@styled-icons/fa-solid/SortAmountUp'
-import { SortResultsDropdown } from '@opentripplanner/building-blocks/lib/dropdown'
 import React, { useCallback } from 'react'
 import styled from 'styled-components'
 
@@ -206,7 +206,7 @@ export default function NarrativeItinerariesHeader({
                 )}
               </StyledIconWrapper>
             </button>
-            <SortResultsDropdown
+            <Dropdown
               id="sort-results"
               label={sortResultsLabel}
               name={sortText}
@@ -223,7 +223,7 @@ export default function NarrativeItinerariesHeader({
                   </UnstyledButton>
                 </li>
               ))}
-            </SortResultsDropdown>
+            </Dropdown>
           </ItinerariesHeaderContainer>
           <PlanFirstLastButtons />
         </>

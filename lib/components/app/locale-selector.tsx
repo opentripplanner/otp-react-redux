@@ -23,6 +23,7 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
   return languageOptions ? (
     <li>
       <Dropdown
+        className="navBarItem"
         id="locale-selector"
         label={intl.formatMessage({ id: 'components.SubNav.selectALanguage' })}
         listLabel={intl.formatMessage({ id: 'components.SubNav.languages' })}
