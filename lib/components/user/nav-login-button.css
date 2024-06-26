@@ -25,6 +25,11 @@
   background-color: #080808;
 }
 
+li.header {
+  padding: 5px 15px;
+  font-weight: 600;
+}
+
 #app-menu-locale-selector {
   display: none;
 }
