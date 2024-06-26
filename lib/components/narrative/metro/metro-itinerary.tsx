@@ -359,7 +359,10 @@ class MetroItinerary extends NarrativeItinerary {
               <ItineraryGrid className="itin-grid" role="group">
                 {/* TODO: a11y: add aria-label to parent element */}
                 {ItineraryPreviewSupplement && (
-                  <ItineraryPreviewSupplement itinerary={itinerary} />
+                  <ItineraryPreviewSupplement
+                    active={active}
+                    itinerary={itinerary}
+                  />
                 )}
                 <MetroItineraryRoutes
                   expanded={expanded}
