@@ -59,7 +59,7 @@ const GlobalSettingsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin: 2em 0;
+  margin-bottom: 2em;
 
   ${styledCheckboxCss}
 `
@@ -73,6 +73,7 @@ const HeaderContainer = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2em;
 `
 
 const Subheader = styled.h2`
@@ -156,13 +157,16 @@ const AdvancedSettingsPanel = ({
       {/**
        * Date time selector goes here
        */}
-      <Subheader>
-        <FormattedMessage id="components.BatchSearchScreen.tripOptions" />
-      </Subheader>
-
-      <GlobalSettingsContainer>
-        {globalSettingsComponents}
-      </GlobalSettingsContainer>
+      {processedGlobalSettings.length > 0 && (
+        <>
+          <Subheader>
+            <FormattedMessage id="components.BatchSearchScreen.tripOptions" />
+          </Subheader>
+          <GlobalSettingsContainer>
+            {globalSettingsComponents}
+          </GlobalSettingsContainer>
+        </>
+      )}
       <Subheader>
         <FormattedMessage id="components.BatchSearchScreen.modeOptions" />
       </Subheader>
