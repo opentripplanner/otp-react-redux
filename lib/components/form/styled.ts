@@ -1,4 +1,4 @@
-import { blue, grey } from '../util/colors'
+import { blue, getBaseColor, grey } from '../util/colors'
 import {
   DateTimeSelector,
   SettingsSelectorPanel,
@@ -235,6 +235,7 @@ export const StyledLocationField = styled(LocationField)`
 export const advancedPanelClassName = 'advanced-panel'
 export const mainPanelClassName = 'main-panel'
 export const transitionDuration = prefersReducedMotion ? 0 : 175
+const baseColor = getBaseColor()
 
 const wipeOffset = 7
 
@@ -338,7 +339,7 @@ export const styledCheckboxCss = css`
 
     &:checked + label {
       &::after {
-        background-color: ${blue[700]};
+        background-color: ${baseColor || blue[700]};
         ${toggleTransition};
       }
 

@@ -37,6 +37,9 @@ import {
   populateSettingWithIcon,
   setModeButton
 } from './util'
+
+import { invisibleCss } from '@opentripplanner/trip-form/lib/MetroModeSelector'
+
 import { setModeButtonEnabled } from './batch-settings'
 import { styledCheckboxCss } from './styled'
 
@@ -56,6 +59,7 @@ const GlobalSettingsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin: 2em 0;
 
   ${styledCheckboxCss}
 `
@@ -72,10 +76,7 @@ const HeaderContainer = styled.div`
 `
 
 const Subheader = styled.h2`
-  display: block;
-  font-size: 18px;
-  font-weight: 700;
-  margin: 1em 0;
+  ${invisibleCss}
 `
 const baseColor = getBaseColor()
 const accentColor = baseColor || blue[900]
@@ -108,7 +109,7 @@ const AdvancedSettingsPanel = ({
   // @ts-expect-error Context not typed
   const { ModeIcon } = useContext(ComponentContext)
 
-  const processSettings = (settings: any) =>
+  const processSettings = (settings: ModeSetting[]) =>
     settings.map(
       pipe(
         populateSettingWithIcon(ModeIcon),
@@ -121,7 +122,7 @@ const AdvancedSettingsPanel = ({
   const processedGlobalSettings = processSettings(globalSettings)
 
   const globalSettingsComponents = processedGlobalSettings.map(
-    (setting: any) => (
+    (setting: ModeSetting) => (
       <ModeSettingRenderer
         key={setting.key}
         onChange={onSettingsUpdate(setQueryParam)}
