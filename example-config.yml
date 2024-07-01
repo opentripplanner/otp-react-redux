@@ -669,3 +669,6 @@ itinerary:
 #   useRouteViewSort: false
 ### Setting this to false will hide the shadowey dot that appears when dragging the map
 #   showShadowDotOnMapDrag: false
+### In routes, this will always show the routeLongName before the headsign
+### !!! WARNING: in some feeds, this may show the long name twice. In some feeds, this may cause layout issues !!!
+#     alwaysShowLongName: false
