@@ -393,7 +393,7 @@ class MetroItinerary extends NarrativeItinerary {
                     </SecondaryInfo>
                   )}
                   {/* If inline summary is enabled, don't show fare in side */}
-                  {showInlineItinerarySummary === true && (
+                  {showInlineItinerarySummary !== true && (
                     <SecondaryInfo>{fareInfo}</SecondaryInfo>
                   )}
                   <SecondaryInfo>
