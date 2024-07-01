@@ -297,6 +297,7 @@ components:
   MetroUI:
     arriveAt: Vous arrivez à
     itineraryDescription: Trajet de {time} par les lignes {routes}
+    itinerarySummary: Partez à {stopName} | {cost}
     leaveAt: Partez à
     multipleOptions: Plusieurs options
     orAlternatives: ou autres lignes dans la même direction
