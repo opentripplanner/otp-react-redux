@@ -18,6 +18,9 @@ import {
   TransitionStyles
 } from '../form/styled'
 import SwitchButton from '../form/switch-button'
+
+import toast from 'react-hot-toast'
+
 import UserSettings from '../form/user-settings'
 import ViewerContainer from '../viewers/viewer-container'
 
@@ -67,6 +70,8 @@ class BatchRoutingPanel extends Component<Props> {
   }
 
   handleCloseAdvanceSettings = () => {
+    const { intl } = this.props
+    toast.success(intl.formatMessage({ id: 'actions.user.preferencesSaved' }))
     this.setState({ showAdvancedModeSettings: false })
   }
 
@@ -113,6 +118,7 @@ class BatchRoutingPanel extends Component<Props> {
                   <AdvancedSettingsPanel
                     closeAdvancedSettings={this.handleCloseAdvanceSettings}
                     innerRef={this._advancedSettingRef}
+                    onPlanTripClick={this.handlePlanTripClick}
                   />
                 </CSSTransition>
               )}

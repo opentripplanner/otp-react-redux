@@ -1,23 +1,15 @@
-import * as apiActions from '../../actions/api'
-import * as formActions from '../../actions/form'
 import {
   addSettingsToButton,
   AdvancedModeSubsettingsContainer,
   populateSettingWithValue
 } from '@opentripplanner/trip-form'
-import { AppReduxState } from '../../util/state-types'
-import { blue, getBaseColor } from '../util/colors'
-
 import { Close } from '@styled-icons/fa-solid'
-
-import { ComponentContext } from '../../util/contexts'
-
 import { connect } from 'react-redux'
 import { decodeQueryParams, DelimitedArrayParam } from 'serialize-query-params'
 import { FormattedMessage, useIntl } from 'react-intl'
+import { Search } from '@styled-icons/fa-solid/Search'
 
 import { generateModeSettingValues } from '../../util/api'
-
 import {
   ModeButtonDefinition,
   ModeSetting,
@@ -28,20 +20,30 @@ import PageTitle from '../util/page-title'
 
 import React, { RefObject, useContext } from 'react'
 
+import * as apiActions from '../../actions/api'
+import * as formActions from '../../actions/form'
+
 import {
   addCustomSettingLabels,
   addModeButtonIcon,
+  alertUserTripPlan,
   onSettingsUpdate,
   pipe,
   populateSettingWithIcon,
   setModeButton
 } from './util'
+import { AppReduxState } from '../../util/state-types'
 import { setModeButtonEnabled } from './batch-settings'
+
+import { blue, getBaseColor } from '../util/colors'
+import { ComponentContext } from '../../util/contexts'
 
 import styled from 'styled-components'
 
+const baseColor = getBaseColor()
+const accentColor = baseColor || blue[900]
+
 const PanelOverlay = styled.div`
-  background-color: #fff;
   height: 100%;
   left: 0;
   padding: 1.5em;
@@ -69,24 +71,52 @@ const Subheader = styled.h2`
   font-weight: 700;
   margin: 1em 0;
 `
-const baseColor = getBaseColor()
-const accentColor = baseColor || blue[900]
+
+const PlanTripButton = styled.button`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+  background-color: ${baseColor};
+  border: 0;
+  width: 45%;
+  height: 51px;
+  color: white;
+  font-weight: 700;
+`
+
+const ReturnToTripPlanButton = styled(PlanTripButton)`
+  border: 2px solid ${baseColor};
+  background-color: white;
+  color: ${baseColor};
+`
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2em;
+`
 
 const AdvancedSettingsPanel = ({
   closeAdvancedSettings,
+  currentQuery,
   enabledModeButtons,
   innerRef,
   modeButtonOptions,
   modeSettingDefinitions,
   modeSettingValues,
+  onPlanTripClick,
+  routingQuery,
   setQueryParam
 }: {
   closeAdvancedSettings: () => void
+  currentQuery: any
   enabledModeButtons: string[]
   innerRef: RefObject<HTMLDivElement>
   modeButtonOptions: ModeButtonDefinition[]
   modeSettingDefinitions: ModeSetting[]
   modeSettingValues: ModeSettingValues
+  onPlanTripClick: () => void
+  routingQuery: () => void
   setQueryParam: (evt: any) => void
 }): JSX.Element => {
   const intl = useIntl()
@@ -99,6 +129,11 @@ const AdvancedSettingsPanel = ({
 
   // @ts-expect-error Context not typed
   const { ModeIcon } = useContext(ComponentContext)
+
+  const planTrip = () => {
+    alertUserTripPlan(intl, currentQuery, onPlanTripClick, routingQuery)
+    closeAdvancedSettings()
+  }
 
   const processedModeSettings = modeSettingDefinitions.map(
     pipe(
@@ -155,6 +190,15 @@ const AdvancedSettingsPanel = ({
           onSettingsUpdate(setQueryParam)
         )}
       />
+      <ButtonContainer>
+        <ReturnToTripPlanButton onClick={closeAdvancedSettings}>
+          Back to Trip Plan
+        </ReturnToTripPlanButton>
+        <PlanTripButton onClick={planTrip}>
+          <Search size={18} />
+          <FormattedMessage id="components.BatchSettings.planTripTooltip" />
+        </PlanTripButton>
+      </ButtonContainer>
     </PanelOverlay>
   )
 }

@@ -4,6 +4,9 @@ import { ModeButtonDefinition, ModeSetting } from '@opentripplanner/types'
 import React from 'react'
 
 import { getFormattedMode } from '../../util/i18n'
+import { hasValidLocation } from '../../util/state'
+import { RoutingQueryCallResult } from '../../actions/api-constants'
+import { updateQueryTimeIfLeavingNow } from '../../actions/form'
 
 // This method is used to daisy-chain a series of functions together on a given value
 export function pipe<T>(...fns: Array<(arg: T) => T>) {
@@ -69,3 +72,45 @@ export const setModeButton =
       encodeQueryParams(modesQueryParamConfig, { modeButtons: newButtons })
     )
   }
+
+export const alertUserTripPlan = (
+  intl,
+  currentQuery,
+  onPlanTripClick,
+  routingQuery
+) => {
+  // Check for any validation issues in query.
+  const issues = []
+  if (!hasValidLocation(currentQuery, 'from')) {
+    issues.push(intl.formatMessage({ id: 'components.BatchSettings.origin' }))
+  }
+  if (!hasValidLocation(currentQuery, 'to')) {
+    issues.push(
+      intl.formatMessage({ id: 'components.BatchSettings.destination' })
+    )
+  }
+  onPlanTripClick && onPlanTripClick()
+  if (issues.length > 0) {
+    // TODO: replace with less obtrusive validation.
+    window.alert(
+      intl.formatMessage(
+        { id: 'components.BatchSettings.validationMessage' },
+        { issues: intl.formatList(issues, { type: 'conjunction' }) }
+      )
+    )
+    return
+  }
+
+  // Plan trip.
+  updateQueryTimeIfLeavingNow()
+  const routingQueryResult = routingQuery()
+
+  // If mode combination is not valid (i.e. produced no query), alert the user.
+  if (routingQueryResult === RoutingQueryCallResult.INVALID_MODE_SELECTION) {
+    window.alert(
+      intl.formatMessage({
+        id: 'components.BatchSettings.invalidModeSelection'
+      })
+    )
+  }
+}

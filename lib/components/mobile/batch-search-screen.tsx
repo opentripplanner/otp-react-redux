@@ -21,6 +21,8 @@ import SwitchButton from '../form/switch-button'
 import MobileContainer from './container'
 import MobileNavigationBar from './navigation-bar'
 
+import toast from 'react-hot-toast'
+
 const { SET_FROM_LOCATION, SET_TO_LOCATION } = MobileScreens
 
 interface Props {
@@ -51,7 +53,9 @@ class BatchSearchScreen extends Component<Props> {
   }
 
   handleCloseAdvanceSettings = () => {
+    const { intl } = this.props
     this.setState({ showAdvancedModeSettings: false })
+    toast.success(intl.formatMessage({ id: 'actions.user.preferencesSaved' }))
   }
 
   render() {
@@ -117,6 +121,7 @@ class BatchSearchScreen extends Component<Props> {
                     <AdvancedSettingsPanel
                       closeAdvancedSettings={this.handleCloseAdvanceSettings}
                       innerRef={this._advancedSettingRef}
+                      onPlanTripClick={this.handlePlanTripClick}
                     />
                   </CSSTransition>
                 )}
