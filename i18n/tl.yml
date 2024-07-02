@@ -45,7 +45,8 @@ actions:
     confirmDeletePlace: Gusto mo bang alisin ang lugar na ito?
     emailVerificationResent: Ipinadala ulit ang mensahe ng pag-verify sa email.
     genericError: "Nagka-error: {err}"
-    itineraryExistenceCheckFailed: Nagka-error sa pagtingin kung posible ang napili mong biyahe.
+    itineraryExistenceCheckFailed: Nagka-error sa pagtingin kung posible ang napili
+      mong biyahe.
     mustAcceptTermsToSavePlace: >-
       Pakitanggap ang Mga Tuntunin ng Paggamit (sa ilalim ng Aking Account) para
       mag-save ng mga lokasyon.
@@ -204,7 +205,8 @@ components:
       ang pampublikong transportasyon sa pagpili mo ng mode.
     origin: pinagmulan
     planTripTooltip: Planuhin ang biyahe
-    validationMessage: "Ilarawan ang mga sumusunod na field para makapagplano ng biyahe: {issues}"
+    validationMessage: "Ilarawan ang mga sumusunod na field para makapagplano ng biyahe:
+      {issues}"
   BeforeSignInScreen:
     mainTitle: Sina-sign in ka
     message: >
@@ -397,7 +399,8 @@ components:
     invalidPhone: Maglagay ng valid na numero ng telepono.
     pending: Nakabinbin
     phoneNumberSubmitted: Matagumpay na naisumite ang numero ng teleponong {phoneNumber}.
-    phoneNumberVerified: Matagumpay na na-verify ang numero ng teleponong {phoneNumber} .
+    phoneNumberVerified: Matagumpay na na-verify ang numero ng teleponong {phoneNumber}
+      .
     placeholder: Ilagay ang numero ng iyong telepono
     prompt: "Ilagay ang numero ng iyong telepono para sa mga SMS na notification:"
     requestNewCode: Humiling ng bagong code
@@ -583,9 +586,11 @@ components:
     travelingAt: Bumibiyahe nang {milesPerHour}
     vehicleName: Sasakyan {vehicleNumber}
   TripBasicsPane:
-    checkingItineraryExistence: Tinitingnan kung may itinerary para sa bawat araw ng linggo...
+    checkingItineraryExistence: Tinitingnan kung may itinerary para sa bawat araw
+      ng linggo...
     tripDaysPrompt: Anong mga araw mo ginagawa ang biyaheng ito?
-    tripIsAvailableOnDaysIndicated: Available ang iyong biyahe sa mga araw ng linggo na nakasaad sa itaas.
+    tripIsAvailableOnDaysIndicated: Available ang iyong biyahe sa mga araw ng linggo
+      na nakasaad sa itaas.
     tripNamePrompt: "Pangalanan ang biyaheng ito:"
     tripNotAvailableOnDay: Hindi available ang biyahe sa {repeatedDay}
     unsavedChangesExistingTrip: >-
@@ -630,7 +635,8 @@ components:
       unknownState: Hindi Alam ang Status ng Biyahe
       untogglePause: Ipagpatuloy
     inactive:
-      description: Ipagpatuloy ang pagsubaybay sa biyahe para makita ang updated na status
+      description: Ipagpatuloy ang pagsubaybay sa biyahe para makita ang updated na
+        status
       heading: Naka-pause ang pagsubaybay sa biyahe
     nextTripNotPossible:
       description: >
@@ -649,7 +655,8 @@ components:
       description: Hinihintay na makalkula ang biyahe.
       heading: Hindi pa nakakalkula ang biyahe
     snoozed:
-      description: I-unsnooze ang pagsubaybay sa biyahe para makita ang updated na status.
+      description: I-unsnooze ang pagsubaybay sa biyahe para makita ang updated na
+        status.
       heading: Naka-snooze ang pagsubaybay sa biyahe ngayong araw
     upcoming:
       nextTripBegins: >-
@@ -659,7 +666,8 @@ components:
         Magsisimula ang biyahe nang {tripStart, time, short}. (Magsisimula ang
         realtime na pagsubaybay nang {monitoringStart, time, short}.)
       tripStartIsDelayed: Naantala ang oras ng pagsisimula ng biyahe nang ${duration}!
-      tripStartIsEarly: Nagsisimula na ang biyahe ${duration} na mas maaga kaysa sa inaasahan!
+      tripStartIsEarly: Nagsisimula na ang biyahe ${duration} na mas maaga kaysa sa
+        inaasahan!
       tripStartsSoonNoUpdates: >-
         Malapit nang magsimula ang biyahe (walang realtime na update na
         available).
