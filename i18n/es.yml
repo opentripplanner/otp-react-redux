@@ -374,6 +374,7 @@ components:
     nearbyListIntro: Lista de {count} entidades cercanas.
     nothingNearby: No ubicaciónes cercanas.
     spacesAvailable: "{spacesAvailable} espacios libres disponibles"
+    distanceAway: '{localizedDistanceString} de distancia'
   NewAccountWizard:
     createNewAccount: Crear una nueva cuenta
     finish: ¡Configuración de la cuenta completa!
