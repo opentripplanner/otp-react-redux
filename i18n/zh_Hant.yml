@@ -223,19 +223,19 @@ components:
     timeWalking: 步行{time}
   OTP2ErrorRenderer:
     NO_STOPS_IN_RANGE:
-      body: '{inputFields} {inputFieldsCount}地點 未鄰近任何公共交通車站。'
+      body: '{inputFields} 地點 未鄰近任何公共交通車站。'
       header: 範圍內無車站
     NO_TRANSIT_CONNECTION:
       body: 在所選服務日當天使用所選車輛類型進行搜尋後，在您的出發地和目的地之間找不到公共交通連接路線。
       header: 無公共交通連接路線
     LOCATION_NOT_FOUND:
-      body: '{inputFields} {inputFieldsCount}地點 未鄰近任何街道。'
+      body: '{inputFields} 地點 未鄰近任何街道。'
       header: 地點無法到達
     NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
       body: 找到一個公共交通連接路線，但此路線超出搜尋視窗範圍，請使用您所選擇的車輛類型試著調整您的搜尋視窗。
       header: 搜尋視窗內無公共交通連接路線
     OUTSIDE_BOUNDS:
-      body: '{inputFields} {inputFieldsCount}地點 不在行程規劃器的範圍內。'
+      body: '{inputFields} 地點 不在行程規劃器的範圍內。'
       header: 地點超出範圍
     OUTSIDE_SERVICE_PERIOD:
       body: 指定的日期超出目前載入行程規劃器中的資料範圍。
