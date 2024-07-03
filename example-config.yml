@@ -609,8 +609,11 @@ itinerary:
 #   vi:
 #     name: Tiếng Việt
 
-#   zh:
-#     name: 中国人
+#   zh: # Chinese (Simplified) must be entered using 'zh'.
+#     name: 汉语
+
+#   zh_Hant: # Chinese (Traditional) must be entered using 'zh_Hant'.
+#     name: 漢語
 
 #   es:
 #     name: Español
