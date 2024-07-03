@@ -1,16 +1,12 @@
-import * as apiActions from '../../actions/api'
-import * as formActions from '../../actions/form'
 import {
   addSettingsToButton,
   AdvancedModeSubsettingsContainer,
+  ModeSettingRenderer,
   populateSettingWithValue
 } from '@opentripplanner/trip-form'
-import { AppReduxState } from '../../util/state-types'
+
 import { blue, getBaseColor } from '../util/colors'
-
 import { Close } from '@styled-icons/fa-solid'
-
-import { ComponentContext } from '../../util/contexts'
 
 import { connect } from 'react-redux'
 import { decodeQueryParams, DelimitedArrayParam } from 'serialize-query-params'
@@ -24,9 +20,14 @@ import {
   ModeSettingValues
 } from '@opentripplanner/types'
 
+import * as apiActions from '../../actions/api'
+import * as formActions from '../../actions/form'
+import { AppReduxState } from '../../util/state-types'
+import { ComponentContext } from '../../util/contexts'
 import PageTitle from '../util/page-title'
 
 import React, { RefObject, useContext } from 'react'
+import styled from 'styled-components'
 
 import {
   addCustomSettingLabels,
@@ -36,9 +37,11 @@ import {
   populateSettingWithIcon,
   setModeButton
 } from './util'
-import { setModeButtonEnabled } from './batch-settings'
 
-import styled from 'styled-components'
+import { invisibleCss } from '@opentripplanner/trip-form/lib/MetroModeSelector'
+
+import { setModeButtonEnabled } from './batch-settings'
+import { styledCheckboxCss } from './styled'
 
 const PanelOverlay = styled.div`
   background-color: #fff;
@@ -52,6 +55,15 @@ const PanelOverlay = styled.div`
   overflow-y: scroll;
 `
 
+const GlobalSettingsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 2em;
+
+  ${styledCheckboxCss}
+`
+
 const CloseButton = styled.button`
   background: transparent;
   border: none;
@@ -61,13 +73,11 @@ const HeaderContainer = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2em;
 `
 
 const Subheader = styled.h2`
-  display: block;
-  font-size: 18px;
-  font-weight: 700;
-  margin: 1em 0;
+  ${invisibleCss}
 `
 const baseColor = getBaseColor()
 const accentColor = baseColor || blue[900]
@@ -100,14 +110,29 @@ const AdvancedSettingsPanel = ({
   // @ts-expect-error Context not typed
   const { ModeIcon } = useContext(ComponentContext)
 
-  const processedModeSettings = modeSettingDefinitions.map(
-    pipe(
-      populateSettingWithIcon(ModeIcon),
-      populateSettingWithValue(modeSettingValues),
-      addCustomSettingLabels(intl)
+  const processSettings = (settings: ModeSetting[]) =>
+    settings.map(
+      pipe(
+        populateSettingWithIcon(ModeIcon),
+        populateSettingWithValue(modeSettingValues),
+        addCustomSettingLabels(intl)
+      )
+    )
+
+  const globalSettings = modeSettingDefinitions.filter((x) => !x.applicableMode)
+  const processedGlobalSettings = processSettings(globalSettings)
+
+  const globalSettingsComponents = processedGlobalSettings.map(
+    (setting: ModeSetting) => (
+      <ModeSettingRenderer
+        key={setting.key}
+        onChange={onSettingsUpdate(setQueryParam)}
+        setting={setting}
+      />
     )
   )
 
+  const processedModeSettings = processSettings(modeSettingDefinitions)
   const processedModeButtons = modeButtonOptions.map(
     pipe(
       addModeButtonIcon(ModeIcon),
@@ -132,18 +157,19 @@ const AdvancedSettingsPanel = ({
       {/**
        * Date time selector goes here
        */}
-      <Subheader>
-        <FormattedMessage id="components.BatchSearchScreen.tripOptions" />
-      </Subheader>
-      {/**
-       * Trip options (walk speed, walk reluctance, accessible routing) go here
-       */}
+      {processedGlobalSettings.length > 0 && (
+        <>
+          <Subheader>
+            <FormattedMessage id="components.BatchSearchScreen.tripOptions" />
+          </Subheader>
+          <GlobalSettingsContainer>
+            {globalSettingsComponents}
+          </GlobalSettingsContainer>
+        </>
+      )}
       <Subheader>
         <FormattedMessage id="components.BatchSearchScreen.modeOptions" />
       </Subheader>
-      {/**
-       * AdvancedModeSubsettingsContainer (import from Otp-ui) goes here
-       */}
       <AdvancedModeSubsettingsContainer
         accentColor={accentColor}
         fillModeIcons
