@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom'
 /**
  * This file performs some actions to setup the browser environment used in each
  * jest test.
