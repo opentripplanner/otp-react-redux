@@ -1,5 +1,6 @@
 import { AnchorHTMLAttributes, ComponentType } from 'react'
 import { connect } from 'react-redux'
+import cn from 'classnames'
 
 import { AppReduxState } from '../../util/state-types'
 import { combineQueryParams } from '../../util/api'
@@ -32,17 +33,8 @@ const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => {
 
   const isActive = tracking && isSubpath(state.router.location.pathname, to)
   return {
-    className:
-      className && isActive
-        ? `${className} active`
-        : isActive
-        ? 'active'
-        : className,
-    href,
-    // Remove the passed to, toParams, and tracking props from the rendered HTML.
-    to: undefined,
-    toParams: undefined,
-    tracking: undefined
+    className: cn(className, isActive && 'active'),
+    href
   }
 }
 
