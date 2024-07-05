@@ -2415,6 +2415,24 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
+"@opentripplanner/core-utils@^11.4.0":
+  version "11.4.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.4.2.tgz#cc6034fb80ccda44e50f7f0a1e80a7bad8387f84"
+  integrity sha512-EVYVN73Cgf9IC+uya49843MFJnVkmv0nHAjsQwmPGSx/w5fY49X4fSpDprL7Bn+MTzk58U2udDsn6OzKmV0JdA==
+  dependencies:
+    "@conveyal/lonlat" "^1.4.1"
+    "@mapbox/polyline" "^1.1.0"
+    "@opentripplanner/geocoder" "^3.0.0"
+    "@styled-icons/foundation" "^10.34.0"
+    "@turf/along" "^6.0.1"
+    chroma-js "^2.4.2"
+    date-fns "^2.28.0"
+    date-fns-tz "^1.2.2"
+    graphql "^16.6.0"
+    lodash.clonedeep "^4.5.0"
+    lodash.isequal "^4.5.0"
+    qs "^6.9.1"
+
 "@opentripplanner/endpoints-overlay@^2.0.12":
   version "2.0.12"
   resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-2.0.12.tgz#d320c23777008550f350f614798c4a6300f4dba6"
@@ -2445,7 +2463,7 @@
     isomorphic-mapzen-search "^1.6.1"
     lodash.memoize "^4.1.2"
 
-"@opentripplanner/geocoder@^3.0.1":
+"@opentripplanner/geocoder@^3.0.0", "@opentripplanner/geocoder@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-3.0.1.tgz#834960bc52f515e1223346a8002fb847674d33bc"
   integrity sha512-+LHTqY8pHmPE39IjVev5T5baa+BohEyvsLwVwFB2bYWzM+m/RgAJ188uBcDzXKdqk5y3dZR9ZODYVMtrvIiKzQ==
@@ -2461,20 +2479,16 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/humanize-distance/-/humanize-distance-1.2.0.tgz#71cf5d5d1b756adef15300edbba0995ccd4b35ee"
   integrity sha512-x0QRXMDhypFeazZ6r6vzrdU8vhiV56nZ/WX6zUbxpgp6T9Oclw0gwR2Zdw6DZiiFpSYVNeVNxVzZwsu6NRGjcA==
 
-"@opentripplanner/icons@^2.0.10", "@opentripplanner/icons@^2.0.9":
+"@opentripplanner/icons@../otp-ui/packages/icons", "@opentripplanner/icons@^2.0.10", "@opentripplanner/icons@^2.0.9":
   version "2.0.10"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/icons/-/icons-2.0.10.tgz#688e75190ebe772ad45bb852517e93bdde28df74"
-  integrity sha512-9X6kV6jDsNnQT4foZU9X530zTN7kjYLtWBjWmeA5EVHth0qZx5T3iFjzqeG4wK+rwZKUMLGS5lAhLIQdaXKZMQ==
   dependencies:
-    "@opentripplanner/core-utils" "^11.2.3"
+    "@opentripplanner/core-utils" "^11.4.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@^5.2.6", "@opentripplanner/itinerary-body@^5.3.0":
+"@opentripplanner/itinerary-body@../otp-ui/packages/itinerary-body", "@opentripplanner/itinerary-body@^5.2.6":
   version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-5.3.0.tgz#1a611dc6c49438666e58c34d0f1f88ab6ff48f2d"
-  integrity sha512-yNMluEX4jJMEdvObGcivnJCS8wMqzZ1j+zJ/40oE9uK9XNyT6o3ascpcsDPN45ZJTIUBoj1FVhItvrfLxaRYMA==
   dependencies:
-    "@opentripplanner/core-utils" "^11.3.1"
+    "@opentripplanner/core-utils" "^11.4.0"
     "@opentripplanner/humanize-distance" "^1.2.0"
     "@opentripplanner/icons" "^2.0.10"
     "@opentripplanner/location-icon" "^1.4.1"
