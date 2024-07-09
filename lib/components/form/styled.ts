@@ -1,4 +1,4 @@
-import { blue, grey } from '../util/colors'
+import { blue, getBaseColor, grey } from '../util/colors'
 import {
   DateTimeSelector,
   SettingsSelectorPanel,
@@ -235,6 +235,7 @@ export const StyledLocationField = styled(LocationField)`
 export const advancedPanelClassName = 'advanced-panel'
 export const mainPanelClassName = 'main-panel'
 export const transitionDuration = prefersReducedMotion ? 0 : 175
+const baseColor = getBaseColor()
 
 const wipeOffset = 7
 
@@ -285,5 +286,72 @@ export const TransitionStyles = styled.div`
   .${mainPanelClassName}-exit-active {
     ${wipeOutMixin(-wipeOffset)}
     ${transitionMixin}
+  }
+`
+
+const toggleTransition = css`
+  transition: all 150ms ease-in;
+`
+
+export const styledCheckboxCss = css`
+  & > div {
+    width: 100%;
+    margin-left: 0;
+  }
+  input[type='checkbox'] + label {
+    align-items: center;
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    width: 100%;
+
+    &::after {
+      content: '';
+      position: relative;
+      width: 33px;
+      height: 22px;
+      background-color: ${grey[600]};
+      border-radius: 20px;
+      ${toggleTransition};
+      cursor: pointer;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background-color: white;
+      border-radius: 100%;
+      right: 13px;
+      z-index: 99;
+      ${toggleTransition};
+      cursor: pointer;
+    }
+  }
+
+  input[type='checkbox'] {
+    clip: rect(0, 0, 0, 0);
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 0;
+
+    &:checked + label {
+      &::after {
+        background-color: ${baseColor || blue[700]};
+        ${toggleTransition};
+      }
+
+      &::before {
+        right: 2px;
+        ${toggleTransition};
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+      }
+    }
+
+    &:focus-visible + label {
+      outline: 1px solid blue;
+    }
   }
 `
