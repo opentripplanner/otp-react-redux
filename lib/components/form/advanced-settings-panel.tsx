@@ -7,21 +7,22 @@ import { Close } from '@styled-icons/fa-solid'
 import { connect } from 'react-redux'
 import { decodeQueryParams, DelimitedArrayParam } from 'serialize-query-params'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { Search } from '@styled-icons/fa-solid/Search'
-
-import { generateModeSettingValues } from '../../util/api'
 import {
   ModeButtonDefinition,
   ModeSetting,
   ModeSettingValues
 } from '@opentripplanner/types'
-
-import PageTitle from '../util/page-title'
-
+import { Search } from '@styled-icons/fa-solid/Search'
 import React, { RefObject, useContext } from 'react'
+import styled from 'styled-components'
 
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
+import { AppReduxState } from '../../util/state-types'
+import { blue, getBaseColor } from '../util/colors'
+import { ComponentContext } from '../../util/contexts'
+import { generateModeSettingValues } from '../../util/api'
+import PageTitle from '../util/page-title'
 
 import {
   addCustomSettingLabels,
@@ -32,13 +33,7 @@ import {
   populateSettingWithIcon,
   setModeButton
 } from './util'
-import { AppReduxState } from '../../util/state-types'
 import { setModeButtonEnabled } from './batch-settings'
-
-import { blue, getBaseColor } from '../util/colors'
-import { ComponentContext } from '../../util/contexts'
-
-import styled from 'styled-components'
 
 const baseColor = getBaseColor()
 const accentColor = baseColor || blue[900]

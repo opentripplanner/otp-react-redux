@@ -1,15 +1,8 @@
 import { connect } from 'react-redux'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
-
-import { getActiveSearch, getShowUserSettings } from '../../util/state'
-import { getPersistenceMode } from '../../util/user'
-import AdvancedSettingsPanel from '../form/advanced-settings-panel'
-import BatchSettings from '../form/batch-settings'
-import InvisibleA11yLabel from '../util/invisible-a11y-label'
-import LocationField from '../form/connected-location-field'
-import NarrativeItineraries from '../narrative/narrative-itineraries'
 import React, { Component, FormEvent } from 'react'
+import toast from 'react-hot-toast'
 
 import {
   advancedPanelClassName,
@@ -17,10 +10,14 @@ import {
   transitionDuration,
   TransitionStyles
 } from '../form/styled'
+import { getActiveSearch, getShowUserSettings } from '../../util/state'
+import { getPersistenceMode } from '../../util/user'
+import AdvancedSettingsPanel from '../form/advanced-settings-panel'
+import BatchSettings from '../form/batch-settings'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
+import LocationField from '../form/connected-location-field'
+import NarrativeItineraries from '../narrative/narrative-itineraries'
 import SwitchButton from '../form/switch-button'
-
-import toast from 'react-hot-toast'
-
 import UserSettings from '../form/user-settings'
 import ViewerContainer from '../viewers/viewer-container'
 
