@@ -39,9 +39,6 @@ import {
   setModeButton
 } from './util'
 
-const baseColor = getBaseColor()
-const accentColor = baseColor || blue[900]
-
 const PanelOverlay = styled.div`
   height: 100%;
   left: 0;
@@ -83,7 +80,7 @@ const PlanTripButton = styled.button`
   display: flex;
   justify-content: center;
   gap: 0.5em;
-  background-color: ${baseColor};
+  background-color: var(--main-base-color, ${blue[900]});
   border: 0;
   width: 45%;
   height: 51px;
@@ -92,9 +89,9 @@ const PlanTripButton = styled.button`
 `
 
 const ReturnToTripPlanButton = styled(PlanTripButton)`
-  border: 2px solid ${baseColor};
+  border: 2px solid var(--main-base-color, ${blue[900]});
   background-color: white;
-  color: ${baseColor};
+  color: var(--main-base-color, ${blue[900]});
 `
 const ButtonContainer = styled.div`
   display: flex;
@@ -125,6 +122,9 @@ const AdvancedSettingsPanel = ({
   routingQuery: () => void
   setQueryParam: (evt: any) => void
 }): JSX.Element => {
+  const baseColor = getBaseColor()
+  const accentColor = baseColor || blue[900]
+
   const intl = useIntl()
   const closeButtonText = intl.formatMessage({
     id: 'components.BatchSearchScreen.closeAdvancedPreferences'
