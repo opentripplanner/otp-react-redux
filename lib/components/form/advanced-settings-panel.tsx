@@ -82,7 +82,7 @@ const PlanTripButton = styled.button`
   gap: 0.5em;
   background-color: var(--main-base-color, ${blue[900]});
   border: 0;
-  width: 45%;
+  width: 47%;
   height: 51px;
   color: white;
   font-weight: 700;
