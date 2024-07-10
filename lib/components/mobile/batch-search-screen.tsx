@@ -51,9 +51,7 @@ class BatchSearchScreen extends Component<Props> {
   }
 
   handleCloseAdvanceSettings = () => {
-    const { intl } = this.props
     this.setState({ showAdvancedModeSettings: false })
-    toast.success(intl.formatMessage({ id: 'actions.user.preferencesSaved' }))
   }
 
   render() {
