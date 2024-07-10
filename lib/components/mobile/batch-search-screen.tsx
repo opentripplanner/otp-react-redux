@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { injectIntl, IntlShape } from 'react-intl'
 import React, { Component } from 'react'
-import toast from 'react-hot-toast'
+import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
 import {
@@ -22,6 +22,20 @@ import MobileContainer from './container'
 import MobileNavigationBar from './navigation-bar'
 
 const { SET_FROM_LOCATION, SET_TO_LOCATION } = MobileScreens
+
+const MobileSearchSettings = styled.div<{ advancedPanelOpen: boolean }>`
+  background: white;
+  box-shadow: 3px 0px 12px #00000052;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  transition: all 200ms ease;
+  height: ${(props) =>
+    props.advancedPanelOpen ? 'calc(100% - 50px)' : '230px'};
+  /* Must appear under the 'hamburger' dropdown which has z-index of 1000. */
+  z-index: 999;
+`
 
 interface Props {
   intl: IntlShape
@@ -56,7 +70,7 @@ class BatchSearchScreen extends Component<Props> {
 
   render() {
     const { intl } = this.props
-    const { planTripClicked } = this.state
+    const { planTripClicked, showAdvancedModeSettings } = this.state
     return (
       <MobileContainer>
         <MobileNavigationBar
@@ -65,10 +79,15 @@ class BatchSearchScreen extends Component<Props> {
           })}
         />
         <main tabIndex={-1}>
-          <div className="batch-search-settings mobile-padding">
+          <MobileSearchSettings
+            advancedPanelOpen={showAdvancedModeSettings}
+            className={`batch-search-settings mobile-padding ${
+              showAdvancedModeSettings && 'advanced-mode-open'
+            }`}
+          >
             <TransitionStyles>
               <TransitionGroup style={{ display: 'content' }}>
-                {!this.state.showAdvancedModeSettings && (
+                {!showAdvancedModeSettings && (
                   <CSSTransition
                     classNames={mainPanelClassName}
                     nodeRef={this._mainPanelContentRef}
@@ -108,7 +127,7 @@ class BatchSearchScreen extends Component<Props> {
                     </div>
                   </CSSTransition>
                 )}
-                {this.state.showAdvancedModeSettings && (
+                {showAdvancedModeSettings && (
                   <CSSTransition
                     classNames={advancedPanelClassName}
                     nodeRef={this._advancedSettingRef}
@@ -123,7 +142,7 @@ class BatchSearchScreen extends Component<Props> {
                 )}
               </TransitionGroup>
             </TransitionStyles>
-          </div>
+          </MobileSearchSettings>
           <div className="batch-search-map">
             <DefaultMap />
           </div>
