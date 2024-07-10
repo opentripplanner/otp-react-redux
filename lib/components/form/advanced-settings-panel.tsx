@@ -24,9 +24,6 @@ import { AppReduxState } from '../../util/state-types'
 import { blue, getBaseColor } from '../util/colors'
 import { ComponentContext } from '../../util/contexts'
 import { generateModeSettingValues } from '../../util/api'
-
-import { setModeButtonEnabled } from './batch-settings'
-import { styledCheckboxCss } from './styled'
 import PageTitle from '../util/page-title'
 
 import {
@@ -38,6 +35,8 @@ import {
   populateSettingWithIcon,
   setModeButton
 } from './util'
+import { setModeButtonEnabled } from './batch-settings'
+import { styledCheckboxCss } from './styled'
 
 const PanelOverlay = styled.div`
   height: 100%;
