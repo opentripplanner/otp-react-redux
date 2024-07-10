@@ -182,6 +182,7 @@ class BatchRoutingPanel extends Component<Props> {
                     className="desktop-narrative-container"
                     style={{
                       flexGrow: 1,
+                      height: '100%',
                       overflowY: 'hidden'
                     }}
                   >
