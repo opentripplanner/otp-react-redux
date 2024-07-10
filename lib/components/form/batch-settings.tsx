@@ -4,11 +4,7 @@ import {
   populateSettingWithValue
 } from '@opentripplanner/trip-form'
 import { connect } from 'react-redux'
-import {
-  decodeQueryParams,
-  DelimitedArrayParam,
-  encodeQueryParams
-} from 'use-query-params'
+import { decodeQueryParams } from 'use-query-params'
 import {
   ModeButtonDefinition,
   ModeSetting,
@@ -25,12 +21,12 @@ import { ComponentContext } from '../../util/contexts'
 import { generateModeSettingValues } from '../../util/api'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
 import { getBaseColor, getDarkenedBaseColor } from '../util/colors'
-import { RoutingQueryCallResult } from '../../actions/api-constants'
 import { StyledIconWrapper } from '../util/styledIcon'
 
 import {
   addCustomSettingLabels,
   addModeButtonIcon,
+  alertUserTripPlan,
   modesQueryParamConfig,
   onSettingsUpdate,
   pipe,
@@ -117,47 +113,8 @@ function BatchSettings({
   )
 
   const _planTrip = useCallback(() => {
-    // Check for any validation issues in query.
-    const issues = []
-    if (!hasValidLocation(currentQuery, 'from')) {
-      issues.push(intl.formatMessage({ id: 'components.BatchSettings.origin' }))
-    }
-    if (!hasValidLocation(currentQuery, 'to')) {
-      issues.push(
-        intl.formatMessage({ id: 'components.BatchSettings.destination' })
-      )
-    }
-    onPlanTripClick && onPlanTripClick()
-    if (issues.length > 0) {
-      // TODO: replace with less obtrusive validation.
-      window.alert(
-        intl.formatMessage(
-          { id: 'components.BatchSettings.validationMessage' },
-          { issues: intl.formatList(issues, { type: 'conjunction' }) }
-        )
-      )
-      return
-    }
-
-    // Plan trip.
-    updateQueryTimeIfLeavingNow()
-    const routingQueryResult = routingQuery()
-
-    // If mode combination is not valid (i.e. produced no query), alert the user.
-    if (routingQueryResult === RoutingQueryCallResult.INVALID_MODE_SELECTION) {
-      window.alert(
-        intl.formatMessage({
-          id: 'components.BatchSettings.invalidModeSelection'
-        })
-      )
-    }
-  }, [
-    currentQuery,
-    intl,
-    onPlanTripClick,
-    routingQuery,
-    updateQueryTimeIfLeavingNow
-  ])
+    alertUserTripPlan(intl, currentQuery, onPlanTripClick, routingQuery)
+  }, [currentQuery, intl, onPlanTripClick, routingQuery])
 
   /**
    * Check whether the mode selector is showing a popup.

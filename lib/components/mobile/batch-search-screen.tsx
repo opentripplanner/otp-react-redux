@@ -1,6 +1,8 @@
 import { connect } from 'react-redux'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { injectIntl, IntlShape } from 'react-intl'
 import React, { Component } from 'react'
+import toast from 'react-hot-toast'
 
 import * as uiActions from '../../actions/ui'
 import {
@@ -9,8 +11,6 @@ import {
   transitionDuration,
   TransitionStyles
 } from '../form/styled'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
-
 import { MobileScreens } from '../../actions/ui-constants'
 import AdvancedSettingsPanel from '../form/advanced-settings-panel'
 import BatchSettings from '../form/batch-settings'
@@ -117,6 +117,7 @@ class BatchSearchScreen extends Component<Props> {
                     <AdvancedSettingsPanel
                       closeAdvancedSettings={this.handleCloseAdvanceSettings}
                       innerRef={this._advancedSettingRef}
+                      onPlanTripClick={this.handlePlanTripClick}
                     />
                   </CSSTransition>
                 )}
