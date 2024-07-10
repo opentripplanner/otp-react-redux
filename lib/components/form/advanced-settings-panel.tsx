@@ -25,6 +25,7 @@ import { blue, getBaseColor } from '../util/colors'
 import { ComponentContext } from '../../util/contexts'
 import { generateModeSettingValues } from '../../util/api'
 import PageTitle from '../util/page-title'
+import toast from 'react-hot-toast'
 
 import {
   addCustomSettingLabels,
@@ -140,6 +141,11 @@ const AdvancedSettingsPanel = ({
     closeAdvancedSettings()
   }
 
+  const closeAndAnnounce = () => {
+    closeAdvancedSettings()
+    toast.success(intl.formatMessage({ id: 'actions.user.preferencesSaved' }))
+  }
+
   const processSettings = (settings: ModeSetting[]) =>
     settings.map(
       pipe(
@@ -178,7 +184,7 @@ const AdvancedSettingsPanel = ({
         <h1 className="header-text">{headerText}</h1>
         <CloseButton
           aria-label={closeButtonText}
-          onClick={closeAdvancedSettings}
+          onClick={closeAndAnnounce}
           title={closeButtonText}
         >
           <Close size={22} />
@@ -212,7 +218,7 @@ const AdvancedSettingsPanel = ({
         )}
       />
       <ButtonContainer>
-        <ReturnToTripPlanButton onClick={closeAdvancedSettings}>
+        <ReturnToTripPlanButton onClick={closeAndAnnounce}>
           Back to Trip Plan
         </ReturnToTripPlanButton>
         <PlanTripButton onClick={planTrip}>

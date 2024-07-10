@@ -2,7 +2,6 @@ import { connect } from 'react-redux'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import React, { Component, FormEvent } from 'react'
-import toast from 'react-hot-toast'
 
 import {
   advancedPanelClassName,
@@ -67,8 +66,6 @@ class BatchRoutingPanel extends Component<Props> {
   }
 
   handleCloseAdvanceSettings = () => {
-    const { intl } = this.props
-    toast.success(intl.formatMessage({ id: 'actions.user.preferencesSaved' }))
     this.setState({ showAdvancedModeSettings: false })
   }
 
