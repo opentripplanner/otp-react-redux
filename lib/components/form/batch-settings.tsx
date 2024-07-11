@@ -1,15 +1,7 @@
-import {
-  addSettingsToButton,
-  MetroModeSelector,
-  populateSettingWithValue
-} from '@opentripplanner/trip-form'
 import { connect } from 'react-redux'
 import { decodeQueryParams } from 'use-query-params'
-import {
-  ModeButtonDefinition,
-  ModeSetting,
-  ModeSettingValues
-} from '@opentripplanner/types'
+import { MetroModeSelector } from '@opentripplanner/trip-form'
+import { ModeButtonDefinition } from '@opentripplanner/types'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
 import { useIntl } from 'react-intl'
@@ -18,19 +10,16 @@ import React, { useCallback, useContext, useState } from 'react'
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
 import { ComponentContext } from '../../util/contexts'
-import { generateModeSettingValues } from '../../util/api'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
 import { getBaseColor, getDarkenedBaseColor } from '../util/colors'
 import { StyledIconWrapper } from '../util/styledIcon'
 
 import {
-  addCustomSettingLabels,
   addModeButtonIcon,
   alertUserTripPlan,
   modesQueryParamConfig,
   onSettingsUpdate,
   pipe,
-  populateSettingWithIcon,
   setModeButton
 } from './util'
 import {
@@ -48,14 +37,11 @@ type Props = {
   enabledModeButtons: string[]
   fillModeIcons?: boolean
   modeButtonOptions: ModeButtonDefinition[]
-  modeSettingDefinitions: ModeSetting[]
-  modeSettingValues: ModeSettingValues
   onPlanTripClick: () => void
   openAdvancedSettings: () => void
   routingQuery: any
   setQueryParam: (evt: any) => void
   spacedOutModeSelector?: boolean
-  updateQueryTimeIfLeavingNow: () => void
 }
 
 export function setModeButtonEnabled(enabledKeys: string[]) {
@@ -76,74 +62,37 @@ function BatchSettings({
   enabledModeButtons,
   fillModeIcons,
   modeButtonOptions,
-  modeSettingDefinitions,
-  modeSettingValues,
   onPlanTripClick,
   openAdvancedSettings,
   routingQuery,
   setQueryParam,
-  spacedOutModeSelector,
-  updateQueryTimeIfLeavingNow
+  spacedOutModeSelector
 }: Props) {
   const intl = useIntl()
 
   // Whether the date/time selector is open
   const [dateTimeOpen, setDateTimeOpen] = useState(false)
 
-  // Whether the mode selector has a popup open
-  const [modeSelectorPopup, setModeSelectorPopup] = useState(false)
-
   // @ts-expect-error Context not typed
   const { ModeIcon } = useContext(ComponentContext)
 
-  const processedModeSettings = modeSettingDefinitions.map(
-    pipe(
-      populateSettingWithIcon(ModeIcon),
-      populateSettingWithValue(modeSettingValues),
-      addCustomSettingLabels(intl)
-    )
-  )
-
   const processedModeButtons = modeButtonOptions.map(
-    pipe(
-      addModeButtonIcon(ModeIcon),
-      addSettingsToButton(processedModeSettings),
-      setModeButtonEnabled(enabledModeButtons)
-    )
+    pipe(addModeButtonIcon(ModeIcon), setModeButtonEnabled(enabledModeButtons))
   )
 
   const _planTrip = useCallback(() => {
     alertUserTripPlan(intl, currentQuery, onPlanTripClick, routingQuery)
   }, [currentQuery, intl, onPlanTripClick, routingQuery])
 
-  /**
-   * Check whether the mode selector is showing a popup.
-   */
-  const checkModeSelectorPopup = useCallback(() => {
-    const modeSelectorPopup = document.querySelector(
-      '.metro-mode-selector div[role="dialog"]'
-    )
-    setModeSelectorPopup(!!modeSelectorPopup)
-  }, [setModeSelectorPopup])
-
   const baseColor = getBaseColor()
 
   const accentColor = getDarkenedBaseColor()
 
   return (
-    <MainSettingsRow onMouseMove={checkModeSelectorPopup}>
-      <DateTimeButton
-        open={dateTimeOpen}
-        setOpen={setDateTimeOpen}
-        // Prevent the hover on date/time selector when mode selector has a popup open via keyboard.
-        style={{ pointerEvents: modeSelectorPopup ? 'none' : undefined }}
-      />
+    <MainSettingsRow>
+      <DateTimeButton open={dateTimeOpen} setOpen={setDateTimeOpen} />
       <AdvancedSettingsButton onClick={openAdvancedSettings} />
-      <ModeSelectorContainer
-        squashed={!spacedOutModeSelector}
-        // Prevent hover effect on mode selector when date selector is activated via keyboard.
-        style={{ pointerEvents: dateTimeOpen ? 'none' : undefined }}
-      >
+      <ModeSelectorContainer squashed={!spacedOutModeSelector}>
         <MetroModeSelector
           accentColor={baseColor}
           activeHoverColor={accentColor.toHexString()}
@@ -184,11 +133,6 @@ function BatchSettings({
 // TODO: Typescript
 const mapStateToProps = (state: any) => {
   const urlSearchParams = new URLSearchParams(state.router.location.search)
-  const modeSettingValues = generateModeSettingValues(
-    urlSearchParams,
-    state.otp?.modeSettingDefinitions || [],
-    state.otp.config.modes?.initialState?.modeSettingValues
-  )
   return {
     activeSearch: getActiveSearch(state),
     currentQuery: state.otp.currentQuery,
@@ -201,16 +145,13 @@ const mapStateToProps = (state: any) => {
       {},
     fillModeIcons: state.otp.config.itinerary?.fillModeIcons,
     modeButtonOptions: state.otp.config?.modes?.modeButtons || [],
-    modeSettingDefinitions: state.otp?.modeSettingDefinitions || [],
-    modeSettingValues,
     spacedOutModeSelector: state.otp?.config?.modes?.spacedOut
   }
 }
 
 const mapDispatchToProps = {
   routingQuery: apiActions.routingQuery,
-  setQueryParam: formActions.setQueryParam,
-  updateQueryTimeIfLeavingNow: formActions.updateQueryTimeIfLeavingNow
+  setQueryParam: formActions.setQueryParam
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BatchSettings)
