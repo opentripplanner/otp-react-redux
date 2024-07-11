@@ -198,7 +198,7 @@ const AdvancedSettingsPanel = ({
           <Subheader>
             <FormattedMessage id="components.BatchSearchScreen.tripOptions" />
           </Subheader>
-          <GlobalSettingsContainer>
+          <GlobalSettingsContainer className="global-settings-container">
             {globalSettingsComponents}
           </GlobalSettingsContainer>
         </>
