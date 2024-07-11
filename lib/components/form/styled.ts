@@ -247,7 +247,6 @@ const wipeOutMixin = (offset: number) => css`
   opacity: 0;
 `
 const wipeInMixin = css`
-  transform: translateX(0px);
   opacity: 1;
 `
 
