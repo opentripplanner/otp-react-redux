@@ -42,12 +42,21 @@
     "@bugsnag/js": "^7.17.0",
     "@bugsnag/plugin-react": "^7.17.0",
     "@floating-ui/react": "^0.19.2",
+<<<<<<< HEAD
     "@opentripplanner/base-map": "^3.2.0",
     "@opentripplanner/building-blocks": "^1.1.0",
     "@opentripplanner/core-utils": "^11.4.2",
     "@opentripplanner/endpoints-overlay": "^2.1.1",
     "@opentripplanner/from-to-location-picker": "^2.1.13",
     "@opentripplanner/geocoder": "^3.0.1",
+=======
+    "@opentripplanner/base-map": "^3.1.0",
+    "@opentripplanner/building-blocks": "^1.1.0",
+    "@opentripplanner/core-utils": "^11.4.0",
+    "@opentripplanner/endpoints-overlay": "^2.0.12",
+    "@opentripplanner/from-to-location-picker": "^2.1.12",
+    "@opentripplanner/geocoder": "^2.2.2",
+>>>>>>> 212ce196 (Update building-blocks with new dropdown import)
     "@opentripplanner/humanize-distance": "^1.2.0",
     "@opentripplanner/icons": "^2.0.11",
     "@opentripplanner/itinerary-body": "^5.3.3",
