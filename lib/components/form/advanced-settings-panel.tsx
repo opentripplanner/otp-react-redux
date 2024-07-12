@@ -38,6 +38,7 @@ import {
 } from './util'
 import { setModeButtonEnabled } from './batch-settings'
 import { styledCheckboxCss } from './styled'
+import DateTimeModal from './date-time-modal'
 
 const PanelOverlay = styled.div`
   height: 100%;
@@ -68,7 +69,6 @@ const HeaderContainer = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2em;
 `
 
 const Subheader = styled.h2`
@@ -97,6 +97,28 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 2em;
+`
+
+const DtSelectorContainer = styled.div`
+  padding: 1em;
+  margin: 2em 0;
+  background-color: ${blue[50]};
+
+  .date-time-modal {
+    padding: 0;
+
+    .main-panel {
+      margin: 0;
+
+      button {
+        padding: 6px 0;
+      }
+
+      .date-time-selector {
+        margin: 15px 0;
+      }
+    }
+  }
 `
 
 const AdvancedSettingsPanel = ({
@@ -190,9 +212,9 @@ const AdvancedSettingsPanel = ({
           <Close size={22} />
         </CloseButton>
       </HeaderContainer>
-      {/**
-       * Date time selector goes here
-       */}
+      <DtSelectorContainer>
+        <DateTimeModal />
+      </DtSelectorContainer>
       {processedGlobalSettings.length > 0 && (
         <>
           <Subheader>
