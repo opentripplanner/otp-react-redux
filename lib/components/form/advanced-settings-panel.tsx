@@ -110,6 +110,10 @@ const DtSelectorContainer = styled.div`
     .main-panel {
       margin: 0;
 
+      button {
+        padding: 6px 0;
+      }
+
       .date-time-selector {
         margin: 15px 0;
       }
