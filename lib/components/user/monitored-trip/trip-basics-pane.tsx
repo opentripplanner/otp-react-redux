@@ -77,7 +77,7 @@ const AvailableDays = styled(FieldSet)`
     display: inline-flex;
     flex-direction: row-reverse;
     height: 3rem;
-    min-width: 4.5rem;
+    min-width: 5rem;
     position: relative;
     text-align: center;
     width: auto;
@@ -94,7 +94,7 @@ const AvailableDays = styled(FieldSet)`
   svg {
     flex-shrink: 0;
     /* Remove bootstrap's vertical margin */
-    margin: 0 3px;
+    margin: 0 4px 0 2px;
   }
 
   /* Check boxes for disabled days are replaced with the cross mark. */
@@ -112,7 +112,7 @@ const AvailableDays = styled(FieldSet)`
     left: 0;
     position: absolute;
     right: 0;
-    top: 40%;
+    top: 45%;
     transform: rotate(-30deg);
     transform-origin: center;
   }
@@ -124,7 +124,7 @@ const AvailableDays = styled(FieldSet)`
     line-height: 3rem;
     margin: 0;
     position: relative;
-    width: 100%;
+    text-align: center;
   }
 `
 
