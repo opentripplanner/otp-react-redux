@@ -4,6 +4,8 @@ import { toDate } from 'date-fns-tz'
 import coreUtils from '@opentripplanner/core-utils'
 import qs from 'qs'
 
+import { AppConfig } from './config-types'
+
 const { getUrlParams } = coreUtils.query
 const { getCurrentDate, getCurrentTime } = coreUtils.time
 
@@ -60,14 +62,14 @@ export function combineQueryParams(
 }
 
 /** Gets the default URL params when reinitializing search */
-export function getDefaultQuery() {
+export function getDefaultQuery(config: AppConfig) {
   return {
     date: getCurrentDate(),
     departArrive: 'NOW',
     // TODO: Rework the crash-related params below so we can remove them.
     intermediatePlaces: [], // required to avoid crash
     mode: 'WALK,TRANSIT', // obsolete but required to avoid crash
-    numItineraries: 3, // instead of 7 per apiV2 if no limit defined in config
+    numItineraries: config.modes?.numItineraries || 3, // instead of 7 per apiV2 if no limit defined in config
     routingType: 'ITINERARY', // obsolete but required to avoid crash
     time: getCurrentTime()
   }
