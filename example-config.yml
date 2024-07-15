@@ -611,8 +611,15 @@ itinerary:
 #   vi:
 #     name: Tiếng Việt
 
-#   zh:
-#     name: 中国人
+#   # Chinese (Simplified) must be entered using 'zh-Hans',
+#   # or, if no other Chinese language is defined, using 'zh'.
+#   zh-Hans:
+#     name: 汉语
+
+#   # Chinese (Traditional) must be entered using 'zh-Hant'.
+#   # If Chinese (Simplified) is also used, it must be defined as 'zh-Hans'
+#   zh-Hant:
+#     name: 漢語
 
 #   es:
 #     name: Español
@@ -671,3 +678,6 @@ itinerary:
 #   useRouteViewSort: false
 ### Setting this to false will hide the shadowey dot that appears when dragging the map
 #   showShadowDotOnMapDrag: false
+### In routes, this will always show the routeLongName before the headsign
+### !!! WARNING: in some feeds, this may show the long name twice. In some feeds, this may cause layout issues !!!
+#     alwaysShowLongName: false
