@@ -1,3 +1,4 @@
+import { DARK_TEXT_GREY, grey } from '../../util/colors'
 import styled from 'styled-components'
 
 export const FloatingLoadingIndicator = styled.div`
@@ -22,7 +23,7 @@ export const NearbySidebarContainer = styled.ol`
 export const Card = styled.div`
   background: white;
   border-radius: 10px;
-  color: #222;
+  color: ${DARK_TEXT_GREY};
   display: flex;
   flex-direction: column;
 
@@ -36,23 +37,39 @@ export const Card = styled.div`
 `
 
 export const CardHeader = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 0 1.2rem;
-  padding-top: 1rem;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 25fr 1fr;
+  padding: 1rem 1.2rem 0;
 `
 
 export const CardTitle = styled.p`
+  align-items: center;
+  display: flex;
   font-size: 22px;
   font-weight: 600;
+  gap: 0.5ch;
+  grid-column: 1;
   margin: 0;
+  /* Prevent svg and images to be taller than the text. */
+  svg {
+    max-height: 1em;
+  }
 `
 
 export const CardSubheader = styled.p`
-  color: #444;
+  color: ${grey[900]};
   font-size: 16px;
   font-weight: 400;
+  grid-column: 1;
   margin: 0;
+`
+
+export const CardAside = styled.p`
+  color: ${grey[900]}ba;
+  grid-column: -1;
+  grid-row: 1;
+  text-align: right;
 `
 
 export const CardBody = styled.div`

@@ -12,6 +12,7 @@ import { AppReduxState } from '../../../util/state-types'
 import { IconWithText } from '../../util/styledIcon'
 
 import { Card, CardBody, CardHeader, CardTitle } from './styled'
+import DistanceDisplay from './distance-display'
 
 type VehicleFormFactor =
   | 'BICYCLE'
@@ -110,6 +111,7 @@ const Vehicle = ({
             {name}
           </IconWithText>
         </CardTitle>
+        <DistanceDisplay distance={vehicle.distance} />
       </CardHeader>
       <CardBody>
         {vehicle.name !== 'Default vehicle type' && vehicle.name !== name && (

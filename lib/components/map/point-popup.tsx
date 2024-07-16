@@ -1,8 +1,9 @@
 import { connect } from 'react-redux'
-import { MapRef, useMap } from 'react-map-gl'
+import { FocusTrapWrapper } from '@opentripplanner/map-popup/lib'
 import { Popup } from '@opentripplanner/base-map'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { useIntl, WrappedComponentProps } from 'react-intl'
+import { useMap } from 'react-map-gl'
 import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React, { useCallback } from 'react'
 import styled from 'styled-components'
@@ -11,7 +12,7 @@ import type { Location } from '@opentripplanner/types'
 import * as mapActions from '../../actions/map'
 import { Icon } from '../util/styledIcon'
 import { renderCoordinates } from '../../util/i18n'
-import { SetLocationHandler } from '../util/types'
+import { SetLocationHandler, ZoomToPlaceHandler } from '../util/types'
 
 const PopupTitleWrapper = styled.div`
   align-items: flex-start;
@@ -36,11 +37,7 @@ type Props = {
   clearMapPopupLocation: () => void
   mapPopupLocation: Location
   setLocation: SetLocationHandler
-  zoomToPlace: (
-    map?: MapRef,
-    place?: { lat: number; lon: number },
-    zoom?: number
-  ) => void
+  zoomToPlace: ZoomToPlaceHandler
 } & WrappedComponentProps
 
 const DEFAULT_ZOOM = 15
@@ -85,27 +82,30 @@ function MapPopup({
       // Override inline style supplied by react-map-gl to accommodate long "plan a trip" translations.
       style={{ maxWidth: '260px', width: '260px' }}
     >
-      <PopupTitleWrapper>
-        <PopupTitle>
-          {typeof popupName === 'string' && popupName.split(',').length > 3
-            ? popupName.split(',').splice(0, 3).join(',')
-            : popupName}
-        </PopupTitle>
-        <ZoomButton
-          aria-label={zoomButtonLabel}
-          onClick={() => zoomToPlace(map, mapPopupLocation, DEFAULT_ZOOM)}
-          title={zoomButtonLabel}
-        >
-          <Icon Icon={Search} />
-        </ZoomButton>
-      </PopupTitleWrapper>
-      <div>
-        <FromToLocationPicker
-          label
-          location={{ ...mapPopupLocation, name: popupName }}
-          setLocation={onSetLocationFromPopup}
-        />
-      </div>
+      <FocusTrapWrapper closePopup={clearMapPopupLocation} id="stop-popup">
+        <PopupTitleWrapper>
+          <PopupTitle>
+            {typeof popupName === 'string' && popupName.split(',').length > 3
+              ? popupName.split(',').splice(0, 3).join(',')
+              : popupName}
+          </PopupTitle>
+          <ZoomButton
+            aria-label={zoomButtonLabel}
+            id="zoom-btn"
+            onClick={() => zoomToPlace(map, mapPopupLocation, DEFAULT_ZOOM)}
+            title={zoomButtonLabel}
+          >
+            <Icon Icon={Search} />
+          </ZoomButton>
+        </PopupTitleWrapper>
+        <div id="from-to">
+          <FromToLocationPicker
+            label
+            location={{ ...mapPopupLocation, name: popupName }}
+            setLocation={onSetLocationFromPopup}
+          />
+        </div>
+      </FocusTrapWrapper>
     </Popup>
   )
 }

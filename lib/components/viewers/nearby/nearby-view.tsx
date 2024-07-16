@@ -1,15 +1,14 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { Location, Stop as StopType } from '@opentripplanner/types'
+import { Location } from '@opentripplanner/types'
 import { MapRef, useMap } from 'react-map-gl'
-import FromToLocationPicker from '@opentripplanner/from-to-location-picker'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import * as apiActions from '../../../actions/api'
 import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
-import { SetLocationHandler } from '../../util/types'
+import { SetLocationHandler, ZoomToPlaceHandler } from '../../util/types'
 import Loading from '../../narrative/loading'
 import MobileContainer from '../../mobile/container'
 import MobileNavigationBar from '../../mobile/navigation-bar'
@@ -21,6 +20,7 @@ import {
   NearbySidebarContainer,
   Scrollable
 } from './styled'
+import FromToPicker from './from-to-picker'
 import RentalStation from './rental-station'
 import Stop from './stop'
 import Vehicle from './vehicle-rent'
@@ -28,9 +28,13 @@ import VehicleParking from './vehicle-parking'
 
 const AUTO_REFRESH_INTERVAL = 15000
 
+// TODO: use lonlat package
 type LatLonObj = { lat: number; lon: number }
+type CurrentPosition = { coords?: { latitude: number; longitude: number } }
 
 type Props = {
+  currentPosition?: CurrentPosition
+  displayedCoords?: LatLonObj
   entityId?: string
   fetchNearby: (latLon: LatLonObj, radius?: number) => void
   hideBackButton?: boolean
@@ -43,47 +47,17 @@ type Props = {
   setLocation: SetLocationHandler
   setMainPanelContent: (content: number) => void
   setViewedNearbyCoords: (location: Location | null) => void
-  zoomToPlace: (map: MapRef, stopData: Location) => void
+  zoomToPlace: ZoomToPlaceHandler
 }
 
-const FromToPicker = ({
-  setLocation,
-  stopData
-}: {
-  setLocation: SetLocationHandler
-  stopData: StopType
-}) => {
-  const location = useMemo(
-    () => ({
-      lat: stopData.lat ?? 0,
-      lon: stopData.lon ?? 0,
-      name: stopData.name
-    }),
-    [stopData]
-  )
-  return (
-    <span role="group">
-      <FromToLocationPicker
-        label
-        onFromClick={useCallback(() => {
-          setLocation({ location, locationType: 'from', reverseGeocode: false })
-        }, [location, setLocation])}
-        onToClick={useCallback(() => {
-          setLocation({ location, locationType: 'to', reverseGeocode: false })
-        }, [location, setLocation])}
-      />
-    </span>
-  )
-}
-
-const getNearbyItem = (place: any, setLocation: SetLocationHandler) => {
-  const fromTo = <FromToPicker setLocation={setLocation} stopData={place} />
+const getNearbyItem = (place: any) => {
+  const fromTo = <FromToPicker place={place} />
 
   switch (place.__typename) {
     case 'RentalVehicle':
       return <Vehicle fromToSlot={fromTo} vehicle={place} />
     case 'Stop':
-      return <Stop fromToSlot={fromTo} showOperatorLogo stopData={place} />
+      return <Stop fromToSlot={fromTo} stopData={place} />
     case 'VehicleParking':
       return <VehicleParking fromToSlot={fromTo} place={place} />
     case 'BikeRentalStation':
@@ -96,7 +70,34 @@ const getNearbyItem = (place: any, setLocation: SetLocationHandler) => {
   }
 }
 
+function getNearbyCoordsFromUrlOrLocationOrMapCenter(
+  coordsFromUrl?: LatLonObj,
+  currentPosition?: CurrentPosition,
+  map?: MapRef
+): LatLonObj | null {
+  if (coordsFromUrl) {
+    return coordsFromUrl
+  }
+
+  if (currentPosition?.coords) {
+    const { latitude: lat, longitude: lon } = currentPosition.coords
+    return { lat, lon }
+  }
+
+  const rawMapCoords = map?.getCenter()
+  const mapCoords = rawMapCoords !== undefined && {
+    lat: rawMapCoords.lat,
+    lon: rawMapCoords.lng
+  }
+  if (mapCoords) {
+    return mapCoords
+  }
+  return null
+}
+
 function NearbyView({
+  currentPosition,
+  displayedCoords,
   entityId,
   fetchNearby,
   location,
@@ -105,7 +106,6 @@ function NearbyView({
   nearbyViewCoords,
   radius,
   setHighlightedLocation,
-  setLocation,
   setMainPanelContent,
   setViewedNearbyCoords,
   zoomToPlace
@@ -114,11 +114,15 @@ function NearbyView({
   const intl = useIntl()
   const [loading, setLoading] = useState(true)
   const firstItemRef = useRef<HTMLDivElement>(null)
-
-  const onClickSetLocation: SetLocationHandler = (payload) => {
-    setMainPanelContent(0)
-    setLocation(payload)
-  }
+  const finalNearbyCoords = useMemo(
+    () =>
+      getNearbyCoordsFromUrlOrLocationOrMapCenter(
+        nearbyViewCoords,
+        currentPosition,
+        map
+      ),
+    [nearbyViewCoords, currentPosition, map]
+  )
 
   // Make sure the highlighted location is cleaned up when leaving nearby
   useEffect(() => {
@@ -128,7 +132,7 @@ function NearbyView({
   }, [location, setHighlightedLocation])
 
   useEffect(() => {
-    const moveListener = (e: any) => {
+    const moveListener = (e: mapboxgl.EventData) => {
       if (e.geolocateSource) {
         setViewedNearbyCoords({
           lat: e.viewState.latitude,
@@ -137,7 +141,7 @@ function NearbyView({
       }
     }
 
-    const dragListener = (e: any) => {
+    const dragListener = (e: mapboxgl.EventData) => {
       const coords = {
         lat: e.viewState.latitude,
         lon: e.viewState.longitude
@@ -163,36 +167,18 @@ function NearbyView({
     if (typeof firstItemRef.current?.scrollIntoView === 'function') {
       firstItemRef.current?.scrollIntoView({ behavior: 'smooth' })
     }
-    // If nearby view coords are provided, use those. Otherwise use the map center.
-    if (nearbyViewCoords) {
-      fetchNearby(nearbyViewCoords, radius)
+    if (finalNearbyCoords) {
+      fetchNearby(finalNearbyCoords, radius)
       setLoading(true)
       const interval = setInterval(() => {
-        fetchNearby(nearbyViewCoords, radius)
+        fetchNearby(finalNearbyCoords, radius)
         setLoading(true)
       }, AUTO_REFRESH_INTERVAL)
       return function cleanup() {
         clearInterval(interval)
       }
-    } else {
-      const rawMapCoords = map?.getCenter()
-      const mapCoords = rawMapCoords !== undefined && {
-        lat: rawMapCoords.lat,
-        lon: rawMapCoords.lng
-      }
-      if (mapCoords) {
-        fetchNearby(mapCoords, radius)
-        setLoading(true)
-        const interval = setInterval(() => {
-          fetchNearby(mapCoords, radius)
-          setLoading(true)
-        }, AUTO_REFRESH_INTERVAL)
-        return function cleanup() {
-          clearInterval(interval)
-        }
-      }
     }
-  }, [nearbyViewCoords, map, fetchNearby, radius])
+  }, [finalNearbyCoords, fetchNearby, radius])
 
   const onMouseEnter = useCallback(
     (location: Location) => {
@@ -204,6 +190,12 @@ function NearbyView({
   const onMouseLeave = useCallback(() => {
     setHighlightedLocation(null)
   }, [setHighlightedLocation])
+
+  // Determine whether the data we have is stale based on whether the coords match the URL
+  // Sometimes Redux could have data from a previous load of the nearby view
+  const staleData =
+    finalNearbyCoords?.lat !== displayedCoords?.lat ||
+    finalNearbyCoords?.lon !== displayedCoords?.lon
 
   const nearbyItemList =
     nearby?.map &&
@@ -223,14 +215,16 @@ function NearbyView({
           /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
           tabIndex={0}
         >
-          {getNearbyItem(n.place, onClickSetLocation)}
+          {getNearbyItem({ ...n.place, distance: n.distance })}
         </div>
       </li>
     ))
 
   useEffect(() => {
-    setLoading(false)
-  }, [nearby])
+    if (!staleData) {
+      setLoading(false)
+    }
+  }, [nearby, staleData])
 
   const goBack = useCallback(
     () => setMainPanelContent(0),
@@ -272,6 +266,7 @@ function NearbyView({
           </FloatingLoadingIndicator>
         )}
         {nearby &&
+          !staleData &&
           (nearby.error ? (
             intl.formatMessage({ id: 'components.NearbyView.error' })
           ) : nearby.length > 0 ? (
@@ -286,15 +281,18 @@ function NearbyView({
 }
 
 const mapStateToProps = (state: AppReduxState) => {
-  const { config, transitIndex, ui } = state.otp
+  const { config, location, transitIndex, ui } = state.otp
   const { nearbyViewCoords } = ui
   const { nearby } = transitIndex
   const { entityId } = state.router.location.query
+  const { currentPosition } = location
   return {
+    currentPosition,
+    displayedCoords: nearby?.coords,
     entityId: entityId && decodeURIComponent(entityId),
     homeTimezone: config.homeTimezone,
     location: state.router.location.hash,
-    nearby,
+    nearby: nearby?.data,
     nearbyViewCoords,
     radius: config.nearbyView?.radius
   }

@@ -1,42 +1,21 @@
-import { Calendar, MapPin } from '@styled-icons/fa-solid'
+import { Calendar } from '@styled-icons/fa-solid'
 import { connect } from 'react-redux'
-import { FormattedMessage, useIntl } from 'react-intl'
-import { Place, TransitOperator } from '@opentripplanner/types'
+import { FormattedMessage } from 'react-intl'
+import { TransitOperator } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
-import React, { useCallback } from 'react'
+import React from 'react'
 
-import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
 import { extractHeadsignFromPattern } from '../../../util/viewer'
-import { IconWithText } from '../../util/styledIcon'
 import { NearbyViewConfig } from '../../../util/config-types'
-import { Pattern, StopTime } from '../../util/types'
-import OperatorLogo from '../../util/operator-logo'
+import { PatternStopTime, StopData, StopTime } from '../../util/types'
 import PatternRow from '../pattern-row'
-import Strong from '../../util/strong-text'
 import TimezoneWarning from '../timezone-warning'
 
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  CardTitle,
-  PatternRowContainer,
-  StyledAlert
-} from './styled'
+import { Card, PatternRowContainer, StyledAlert } from './styled'
+import StopCardHeader from './stop-card-header'
 
 const { getUserTimezone } = coreUtils.time
-
-type PatternStopTime = {
-  pattern: Pattern
-  stoptimes: StopTime[]
-}
-
-type StopData = Place & {
-  code: string
-  gtfsId: string
-  stoptimesForPatterns: PatternStopTime[]
-}
 
 const fullTimestamp = (stoptime: StopTime) =>
   (stoptime.serviceDay || 0) + (stoptime.realtimeDeparture || 0)
@@ -45,53 +24,33 @@ type Props = {
   fromToSlot: JSX.Element
   homeTimezone: string
   nearbyViewConfig?: NearbyViewConfig
-  setHoveredStop: (stopId?: string) => void
-  setViewedStop: (stop: any, nearby: string) => void
-  showOperatorLogo: boolean
+  routeSortComparator: (a: PatternStopTime, b: PatternStopTime) => number
   stopData: StopData
-  transitOperators?: TransitOperator[]
-}
-
-const Operator = ({ operator }: { operator?: TransitOperator }) => {
-  const intl = useIntl()
-  return operator && operator.logo ? (
-    <OperatorLogo
-      alt={intl.formatMessage(
-        {
-          id: 'components.StopViewer.operatorLogoAriaLabel'
-        },
-        {
-          operatorName: operator.name
-        }
-      )}
-      operator={operator}
-    />
-  ) : (
-    <MapPin />
-  )
 }
 
 const Stop = ({
   fromToSlot,
   homeTimezone,
   nearbyViewConfig,
-  setHoveredStop,
-  setViewedStop,
-  stopData,
-  transitOperators
+  routeSortComparator,
+  stopData
 }: Props): JSX.Element => {
-  const agencies = stopData.stoptimesForPatterns?.reduce<Set<string>>(
-    // @ts-expect-error The agency type is not yet compatible with OTP2
-    (prev, cur) => prev.add(cur.pattern.route.agency.gtfsId),
-    new Set()
-  )
-
-  const patternRows = stopData.stoptimesForPatterns
+  const patternRows = (stopData.stoptimesForPatterns || [])
     ?.reduce<PatternStopTime[]>((acc, cur) => {
       const currentHeadsign = extractHeadsignFromPattern(cur.pattern)
-      const dupe = acc.findIndex(
-        (p) => extractHeadsignFromPattern(p.pattern) === currentHeadsign
-      )
+      const dupe = acc.findIndex((p) => {
+        // TODO: use OTP_generated ids
+        let sameRoute = false
+        if (p.pattern.route?.shortName && cur.pattern.route?.shortName) {
+          sameRoute =
+            p.pattern.route?.shortName === cur.pattern.route?.shortName
+        } else if (p.pattern.route?.longName && cur.pattern.route?.longName) {
+          sameRoute = p.pattern.route?.longName === cur.pattern.route?.longName
+        }
+        return (
+          extractHeadsignFromPattern(p.pattern) === currentHeadsign && sameRoute
+        )
+      })
       if (dupe === -1) {
         acc.push(cur)
       } else {
@@ -106,16 +65,14 @@ const Stop = ({
       }
       return acc
     }, [])
-    .sort(
-      (a: PatternStopTime, b: PatternStopTime) =>
-        fullTimestamp(a.stoptimes?.[0]) - fullTimestamp(b.stoptimes?.[0])
-    )
+    .sort(routeSortComparator)
     .map((st: any, index: number) => {
       const sortedStopTimes = st.stoptimes.sort(
         (a: StopTime, b: StopTime) => fullTimestamp(a) - fullTimestamp(b)
       )
       return (
         <PatternRow
+          alwaysShowLongName={nearbyViewConfig?.alwaysShowLongName}
           homeTimezone={homeTimezone}
           key={index}
           pattern={st.pattern}
@@ -132,61 +89,21 @@ const Stop = ({
     </StyledAlert>
   )
 
-  const onMouseEnter = useCallback(() => {
-    setHoveredStop(stopData.gtfsId)
-  }, [setHoveredStop, stopData.gtfsId])
-
-  const onMouseLeave = useCallback(() => {
-    setHoveredStop(undefined)
-  }, [setHoveredStop])
-
   if (nearbyViewConfig?.hideEmptyStops && patternRows.length === 0) return <></>
 
   return (
-    <Card onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-      <CardHeader>
-        <CardTitle>
-          <IconWithText
-            icon={
-              <>
-                {transitOperators
-                  ?.filter((to) => Array.from(agencies).includes(to.agencyId))
-                  // Second pass to remove duplicates based on name
-                  .filter(
-                    (to, index, arr) =>
-                      index === arr.findIndex((t) => t?.name === to?.name)
-                  )
-                  .map((to) => (
-                    <Operator key={to.agencyId} operator={to} />
-                  ))}
-              </>
-            }
-          >
-            {stopData.name}
-          </IconWithText>
-        </CardTitle>
-      </CardHeader>
-      <CardBody>
-        <div>
-          <FormattedMessage
-            id="components.StopViewer.displayStopId"
-            values={{
-              stopId: stopData.code || stopData.gtfsId,
-              strong: Strong
-            }}
-          />
-          <button
-            className="link-button pull-right"
-            onClick={() => setViewedStop({ stopId: stopData.gtfsId }, 'stop')}
-            style={{ fontSize: 'small' }}
-          >
-            <IconWithText Icon={Calendar}>
-              <FormattedMessage id="components.StopViewer.viewSchedule" />
-            </IconWithText>
-          </button>
-        </div>
-        {fromToSlot}
-      </CardBody>
+    <Card>
+      <StopCardHeader
+        actionIcon={Calendar}
+        // Remove entityId URL parameter when leaving nearby view.
+        actionParams={{ entityId: undefined }}
+        actionPath={`/schedule/${stopData.gtfsId}`}
+        actionText={
+          <FormattedMessage id="components.StopViewer.viewSchedule" />
+        }
+        fromToSlot={fromToSlot}
+        stopData={stopData}
+      />
       <div>
         <div>{timezoneWarning}</div>
         <PatternRowContainer>{patternRows}</PatternRowContainer>
@@ -195,20 +112,29 @@ const Stop = ({
   )
 }
 
-const mapDispatchToProps = {
-  setHoveredStop: uiActions.setHoveredStop,
-  setMainPanelContent: uiActions.setMainPanelContent,
-  setViewedStop: uiActions.setViewedStop,
-  toggleAutoRefresh: uiActions.toggleAutoRefresh
-}
-
 const mapStateToProps = (state: AppReduxState) => {
   const { config } = state.otp
+  const nearbyViewConfig = config?.nearbyView
+  const transitOperators = config?.transitOperators || []
+
+  // Default sort: departure time
+  let routeSortComparator = (a: PatternStopTime, b: PatternStopTime) =>
+    fullTimestamp(a.stoptimes?.[0]) - fullTimestamp(b.stoptimes?.[0])
+
+  if (nearbyViewConfig?.useRouteViewSort) {
+    routeSortComparator = (a: PatternStopTime, b: PatternStopTime) =>
+      coreUtils.route.makeRouteComparator(transitOperators)(
+        // @ts-expect-error core-utils types are wrong!
+        a.pattern.route,
+        b.pattern.route
+      )
+  }
+
   return {
     homeTimezone: config.homeTimezone,
-    nearbyViewConfig: config?.nearbyView,
-    transitOperators: config.transitOperators
+    nearbyViewConfig,
+    routeSortComparator
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Stop)
+export default connect(mapStateToProps)(Stop)

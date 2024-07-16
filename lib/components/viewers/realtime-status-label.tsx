@@ -7,6 +7,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { AppReduxState } from '../../util/state-types'
+import { BLUE_ON_WHITE, grey, RED_ON_WHITE } from '../util/colors'
 import { getTripStatus, REALTIME_STATUS } from '../../util/viewer'
 import FormattedDuration from '../util/formatted-duration'
 import FormattedRealtimeStatusLabel from '../util/formatted-realtime-status-label'
@@ -37,11 +38,11 @@ const TimeBlock = styled.div`
 
 const STATUS = {
   EARLY: {
-    color: '#337ab7',
+    color: BLUE_ON_WHITE,
     label: 'early'
   },
   LATE: {
-    color: '#D92923',
+    color: RED_ON_WHITE,
     label: 'late'
   },
   ON_TIME: {
@@ -92,7 +93,7 @@ const RealtimeStatusLabel = ({
   // Use a default background color if the status object doesn't set a color
   // (e.g. for 'Scheduled' status), but only in withBackground mode.
   // @ts-ignore getTripStatus is not typed yet
-  const color = STATUS[status].color || (withBackground && '#6D6C6C')
+  const color = STATUS[status].color || (withBackground && grey[700])
   // Render time if provided.
   let renderedTime
   if (time) {

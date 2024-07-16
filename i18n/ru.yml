@@ -469,7 +469,6 @@ components:
     shortTitle: Просмотр маршрутов
     stopsInDirectionOfTravel: "Остановки в этом направлении движения:"
     title: Средство просмотра маршрутов
-    toggleRouteOnMap: Переключить маршрут на карте
   SaveTripButton:
     cantSaveText: Невозможно сохранить
     cantSaveTooltip: >-
@@ -570,7 +569,6 @@ components:
     vehicleName: Транспортное средство {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: Проверка маршрута на каждый день недели…
-    selectAtLeastOneDay: Для просмотра выберите хотя бы один день.
     tripDaysPrompt: В какие дни вы хотите совершать эту поездку?
     tripIsAvailableOnDaysIndicated: Поездка доступна для указанных выше дней.
     tripNamePrompt: "Укажите имя поездки:"
@@ -652,11 +650,9 @@ components:
     arriveAt: "Прибытие в "
     leaveAt: "Оставить "
   TripSummaryPane:
-    happensOnDays: "Проходит в такие дни: <strong>{days}</strong>"
-    notifications: >-
-      Уведомления: за <strong>{leadTimeInMinutes} мин до запланированного
-      времени отправления</strong>
-    notificationsDisabled: "Уведомления: <strong>отключены</strong>"
+    happensOnDays: "Проходит в такие дни: {days}"
+    notifications: за <strong>{leadTimeInMinutes} мин до запланированного времени отправления
+    notificationsDisabled: "Уведомления: отключены"
   TripTools:
     copyLink: Скопировать ссылку
     header: Инструменты маршрута

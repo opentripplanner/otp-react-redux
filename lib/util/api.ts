@@ -49,11 +49,25 @@ export function getServiceStart(
  * while preserving the other ones.
  */
 export function combineQueryParams(
-  addedParams: Record<string, unknown>
+  addedParams?: Record<string, unknown>
 ): string {
   const search = {
     ...getUrlParams(),
     ...addedParams
   }
   return qs.stringify(search, { arrayFormat: 'repeat' })
+}
+
+/**
+ * Drops unused params so they don't show up in URL.
+ * TODO: Remove dependency on getDefaultQuery from core-utils.
+ */
+export function removeUnusedQueryParams(params: Record<string, any>): void {
+  delete params.showIntermediateStops
+  delete params.otherThanPreferredRoutesPenalty
+  delete params.ignoreRealtimeUpdates
+  delete params.optimize
+  delete params.optimizeBike
+  delete params.maxWalkDistance
+  delete params.maxBikeDistance
 }

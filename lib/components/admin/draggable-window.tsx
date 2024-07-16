@@ -2,6 +2,7 @@ import { Times } from '@styled-icons/fa-solid/Times'
 import Draggable, { DraggableProps } from 'react-draggable'
 import React, { HTMLAttributes, ReactNode } from 'react'
 
+import { GREY_ON_WHITE } from '../util/colors'
 import { StyledIconWrapper } from '../util/styledIcon'
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -23,7 +24,7 @@ export default function DraggableWindow({
   scroll = true,
   style
 }: Props): React.ReactElement {
-  const GREY_BORDER = '#777 1.3px solid'
+  const GREY_BORDER = `${GREY_ON_WHITE} 1.3px solid`
   const overwrittenDraggableProps = {
     ...draggableProps,
     cancel: 'input',

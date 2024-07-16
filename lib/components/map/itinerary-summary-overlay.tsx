@@ -18,6 +18,7 @@ import {
   getActiveSearch,
   getVisibleItineraryIndex
 } from '../../util/state'
+import { isDefined } from '../../util/ui'
 import MetroItineraryRoutes from '../narrative/metro/metro-itinerary-routes'
 
 type ItinWithGeometry = Itinerary & {
@@ -156,7 +157,7 @@ const ItinerarySummaryOverlay = ({
           (mp) =>
             // If no itinerary is hovered, show all of them. If one is selected, show only that one
             // TODO: clean up conditionals, move these to a more appropriate place without breaking indexing
-            (visibleItinerary !== null && visibleItinerary !== undefined
+            (isDefined(visibleItinerary)
               ? visibleItinerary === mp.itin.index
               : true) &&
             mp.uniquePoint && (

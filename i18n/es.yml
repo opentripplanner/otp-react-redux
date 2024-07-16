@@ -81,13 +81,13 @@ common:
     tuesday: Martes
     wednesday: Miércoles
   daysOfWeekCompact:
-    friday: Vie.
-    monday: Lun.
-    saturday: Sáb.
-    sunday: Dom.
-    thursday: Jue.
-    tuesday: Mar.
-    wednesday: Mié.
+    friday: V
+    monday: L
+    saturday: S
+    sunday: D
+    thursday: J
+    tuesday: M
+    wednesday: X
   daysOfWeekPlural:
     friday: Viernes
     monday: Lunes
@@ -364,6 +364,7 @@ components:
       disponibles}}
     companyBicycle: Bicicleta {company}
     companyScooter: Scooter {company}
+    distanceAway: "{localizedDistanceString} de distancia"
     error: Se ha producido un error al cargar los servicios cercanos.
     header: Ver cerca
     nearbyListIntro: Lista de {count} entidades cercanas.
@@ -449,6 +450,9 @@ components:
       minutos.
     verified: Verificado
     verify: Verificar
+    verifySms: >-
+      Por favor, complete el proceso de verificación para configurar las
+      notificaciones por SMS.
   Place:
     deleteThisPlace: Borrar este lugar
     enterAlert: >
@@ -511,7 +515,6 @@ components:
     shortTitle: Ver rutas
     stopsInDirectionOfTravel: "Paradas en este sentido de la marcha:"
     title: Visor de rutas
-    toggleRouteOnMap: Cambiar la ruta en el mapa
   SaveTripButton:
     cantSaveText: No se puede guardar
     cantSaveTooltip: >-
@@ -521,6 +524,7 @@ components:
     signInText: Inicia sesión para guardar el viaje
     signInTooltip: Por favor, inicia sesión para guardar el viaje.
   SavedTripEditor:
+    deleteSavedTrip: Borrar viaje guardado
     editSavedTrip: Editar el viaje guardado
     saveNewTrip: Guardar un nuevo viaje
     tripInformation: Información sobre el viaje
@@ -617,7 +621,6 @@ components:
     vehicleName: Vehículo {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: Comprobación de la existencia de itinerarios para cada día de la semana…
-    selectAtLeastOneDay: Por favor, seleccione al menos un día para el seguimiento.
     tripDaysPrompt: ¿Qué días hace este viaje?
     tripIsAvailableOnDaysIndicated: Su viaje está disponible en los días de la semana indicados anteriormente.
     tripNamePrompt: "Por favor, indique un nombre para este viaje:"
@@ -702,11 +705,11 @@ components:
     arriveAt: "Llegue a las "
     leaveAt: "Salida a las "
   TripSummaryPane:
-    happensOnDays: "Ocurre en: <strong>{days}</strong>"
-    notifications: >-
-      Notificaciones: <strong>{leadTimeInMinutes} minutos antes de la salida
-      programada</strong>
-    notificationsDisabled: "Notificaciones: <strong>Desactivadas</strong>"
+    happensOnDays: "Ocurre en: {days}"
+    monitoredTripDays: Días de viaje monitoreados
+    notifications: "{leadTimeInMinutes} minutos antes de la salida programada"
+    notificationsDisabled: Notificaciones desactivadas
+    timeAndDuration: Tiempo y duración del viaje
   TripTools:
     copyLink: Copiar enlace
     header: Herramientas

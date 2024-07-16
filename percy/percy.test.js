@@ -105,7 +105,7 @@ async function executeTest(page, isMobile, isCallTaker) {
   // Triggers mock.har graphql query #1 and #2 (bike-only query, twice).
   // FIXME: Opening a url with non-default mode params triggers the plan query twice.
   await page.goto(
-    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=South%20Prado%20Northeast%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.78946214120528%2C-84.37663414886111&toPlace=1%20Copenhill%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.767060728439574%2C-84.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false&mode=BICYCLE&showIntermediateStops=true&walkSpeed=1.34&ignoreRealtimeUpdates=true&numItineraries=3&otherThanPreferredRoutesPenalty=900&modeButtons=walk_bike`
+    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=South%20Prado%20Northeast%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.78946214120528%2C-84.37663414886111&toPlace=1%20Copenhill%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.767060728439574%2C-84.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false&mode=BICYCLE&walkSpeed=1.34&numItineraries=3&modeButtons=walk_bike`
   )
   // FIXME: Network idle condition seems never met after navigating to above link.
   // await page.waitForNavigation({ waitUntil: 'networkidle2' })
@@ -261,8 +261,8 @@ async function executeTest(page, isMobile, isCallTaker) {
 
   // Open schedule view
   await page.waitForTimeout(2000)
-  await page.waitForSelector('button.link-button.pull-right')
-  await page.click('button.link-button.pull-right')
+  await page.waitForSelector('a.pull-right')
+  await page.click('a.pull-right')
   await page.waitForTimeout(500)
   // Request a schedule for a specific valid date in the past,
   // so it is different than today and triggers a full render of the schedule.
@@ -282,10 +282,8 @@ async function executeTest(page, isMobile, isCallTaker) {
     await percySnapshotWithWait(page, 'Mobile Sidebar')
   }
 
-  const [routeViewerButton] = await page.$x(
-    "//button[contains(., 'View Routes')]"
-  )
-  await routeViewerButton.click()
+  const [routeViewerLink] = await page.$x("//a[contains(., 'View Routes')]")
+  await routeViewerLink.click()
   await page.waitForSelector('.route-viewer')
   await page.waitForTimeout(5000)
 
@@ -349,10 +347,8 @@ async function executeTest(page, isMobile, isCallTaker) {
     // Wait for animation
     await page.waitForTimeout(200)
   }
-  const [planTripTabButton] = await page.$x(
-    "//button[contains(., 'Plan Trip')]"
-  )
-  await planTripTabButton.click()
+  const [planTripTabLink] = await page.$x("//a[contains(., 'Plan Trip')]")
+  await planTripTabLink.click()
   await page.waitForSelector('.option')
   await page.waitForTimeout(3000)
   const [viewAllOptionsButton] = await page.$x(

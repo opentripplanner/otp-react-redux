@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
-import { Form, Formik, FormikProps } from 'formik'
+import { Formik, FormikProps } from 'formik'
 import { injectIntl, IntlShape } from 'react-intl'
-import { RouteComponentProps } from 'react-router'
+import { Route, Switch } from 'react-router'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
 import clone from 'clone'
 import React, { ChangeEvent, Component } from 'react'
@@ -11,25 +11,26 @@ import toast from 'react-hot-toast'
 import * as userActions from '../../actions/user'
 import { AppReduxState } from '../../util/state-types'
 import { cleanupMobilityDevices } from '../../util/user'
-import { CREATE_ACCOUNT_PATH, MOBILITY_PATH } from '../../util/constants'
+import {
+  CREATE_ACCOUNT_PATH,
+  CREATE_ACCOUNT_VERIFY_PATH,
+  MOBILITY_PATH
+} from '../../util/constants'
 import { RETURN_TO_CURRENT_ROUTE } from '../../util/ui'
 import { toastSuccess } from '../util/toasts'
-import PageTitle from '../util/page-title'
 
 import { EditedUser, User } from './types'
 import AccountPage from './account-page'
 import ExistingAccountDisplay from './existing-account-display'
 import MobilityWizard from './mobility-profile/mobility-wizard'
 import NewAccountWizard from './new-account-wizard'
-import VerifyEmailPane from './verify-email-pane'
+import VerifyEmailScreen from './verify-email-screen'
 import withLoggedInUserSupport from './with-logged-in-user-support'
 
 interface Props {
-  basePath?: string
   createOrUpdateUser: (user: User, intl: IntlShape) => Promise<number>
   intl: IntlShape
   isWizard: boolean
-  itemId: string
   loggedInUser: User
 }
 
@@ -172,7 +173,7 @@ class UserAccountScreen extends Component<Props> {
   }
 
   render() {
-    const { basePath, intl, isWizard, itemId, loggedInUser } = this.props
+    const { isWizard, loggedInUser } = this.props
     const loggedInUserWithNotificationArray = {
       ...loggedInUser,
       notificationChannel: loggedInUser.notificationChannel?.split(',') || []
@@ -193,45 +194,30 @@ class UserAccountScreen extends Component<Props> {
               // We pass the Formik props below to the components rendered so that individual controls
               // can be wired to be managed by Formik.
               (formikProps) => {
-                if (itemId === 'verify') {
-                  const verifyEmail = intl.formatMessage({
-                    id: 'components.NewAccountWizard.verify'
-                  })
-                  return (
-                    <Form id="user-settings-form" noValidate>
-                      <PageTitle title={verifyEmail} />
-                      <h1>{verifyEmail}</h1>
-                      <VerifyEmailPane />
-                    </Form>
-                  )
-                }
-
                 const newFormikProps = {
                   ...formikProps,
                   // Use our own handleChange handler that wraps around Formik's.
                   handleChange: this._handleInputChange(formikProps)
                 }
-
-                if (basePath === CREATE_ACCOUNT_PATH) {
-                  return (
-                    <NewAccountWizard
-                      activePaneId={itemId}
-                      formikProps={newFormikProps}
-                      onCreate={this._handleCreateNewUser}
-                    />
-                  )
-                }
-
-                if (basePath === MOBILITY_PATH) {
-                  return (
-                    <MobilityWizard
-                      activePaneId={itemId}
-                      formikProps={newFormikProps}
-                    />
-                  )
-                }
-
-                return <ExistingAccountDisplay {...newFormikProps} />
+                return (
+                  <Switch>
+                    <Route exact path={CREATE_ACCOUNT_VERIFY_PATH}>
+                      <VerifyEmailScreen />
+                    </Route>
+                    <Route path={CREATE_ACCOUNT_PATH}>
+                      <NewAccountWizard
+                        formikProps={newFormikProps}
+                        onCreate={this._handleCreateNewUser}
+                      />
+                    </Route>
+                    <Route path={MOBILITY_PATH}>
+                      <MobilityWizard formikProps={newFormikProps} />
+                    </Route>
+                    <Route>
+                      <ExistingAccountDisplay {...newFormikProps} />
+                    </Route>
+                  </Switch>
+                )
               }
             }
           </Formik>
@@ -243,20 +229,13 @@ class UserAccountScreen extends Component<Props> {
 
 // connect to the redux store
 
-const mapStateToProps = (
-  state: AppReduxState,
-  ownProps: RouteComponentProps<{ step: string }>
-) => {
-  const { params, url } = ownProps.match
+const mapStateToProps = (state: AppReduxState) => {
+  const { pathname } = state.router.location
   const basePath = [CREATE_ACCOUNT_PATH, MOBILITY_PATH].find((path) =>
-    url.startsWith(path)
+    pathname.startsWith(path)
   )
-
-  const { step } = params
   return {
-    basePath,
     isWizard: !!basePath,
-    itemId: step,
     loggedInUser: state.user.loggedInUser
   }
 }

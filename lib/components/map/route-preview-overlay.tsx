@@ -5,6 +5,7 @@ import { Layer, Source, useMap } from 'react-map-gl'
 import polyline from '@mapbox/polyline'
 import React, { useEffect } from 'react'
 
+import { DARK_TEXT_GREY } from '../util/colors'
 import {
   getActiveItinerary,
   getActiveSearch,
@@ -14,6 +15,7 @@ import {
 type Props = {
   from: Location
   geometries: string[]
+  mainPanelContent: number | null
   to: Location
   visible?: boolean
 }
@@ -21,17 +23,23 @@ type Props = {
  * This overlay will display thin gray lines for a set of geometries. It's to be used
  * as a stopgap until we make full use of Transitive!
  */
-const RoutePreviewOverlay = ({ from, geometries, to, visible }: Props) => {
+const RoutePreviewOverlay = ({
+  from,
+  geometries,
+  mainPanelContent,
+  to,
+  visible
+}: Props) => {
   // Center the map over the endpoints when this overlay is shown.
   const { current: map } = useMap()
   useEffect(() => {
-    if (visible) {
+    if (visible && mainPanelContent === null) {
       map?.fitBounds([from, to], {
-        duration: 500,
+        duration: 600,
         padding: getFitBoundsPadding(map, 0.2)
       })
     }
-  }, [map, visible, from, to])
+  }, [map, visible, from, to, mainPanelContent])
 
   if (!geometries || !visible) return <></>
 
@@ -59,7 +67,7 @@ const RoutePreviewOverlay = ({ from, geometries, to, visible }: Props) => {
           }}
           paint={{
             'line-blur': 4,
-            'line-color': '#333',
+            'line-color': DARK_TEXT_GREY,
             'line-dasharray': [1, 2],
             'line-opacity': 0.6,
             'line-width': 4
@@ -76,7 +84,7 @@ const RoutePreviewOverlay = ({ from, geometries, to, visible }: Props) => {
 
 // TODO: Typescript state
 const mapStateToProps = (state: any) => {
-  const { activeSearchId, config } = state.otp
+  const { activeSearchId, config, ui } = state.otp
   // Only show this overlay if the metro UI is explicitly enabled
   if (config.itinerary?.showFirstResultByDefault !== false) {
     return {}
@@ -102,6 +110,7 @@ const mapStateToProps = (state: any) => {
   return {
     from,
     geometries,
+    mainPanelContent: ui.mainPanelContent,
     to,
     visible:
       // We need an explicit check for undefined and null because 0

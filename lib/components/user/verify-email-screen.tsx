@@ -7,6 +7,7 @@ import React, { useCallback, useEffect } from 'react'
 import * as uiActions from '../../actions/ui'
 import * as userActions from '../../actions/user'
 import { CREATE_ACCOUNT_TERMS_PATH } from '../../util/constants'
+import PageTitle from '../util/page-title'
 
 import DeleteUser from './delete-user'
 
@@ -19,14 +20,19 @@ interface Props {
  * This component contains the prompt for the user to verify their email address.
  * It also contains a button that lets the user finish account setup.
  *
- * (One way to make sure the parent page fetches the latest email verification status
- * is to simply reload the page.)
+ * (To force the user to update, logout and refresh the page - the user should
+ * automatically get logged back in)
  */
 const VerifyEmailPane = ({ resendVerificationEmail, routeTo }: Props) => {
   const intl = useIntl()
-  const emailVerified = useAuth0().user?.email_verified
+  const auth0 = useAuth0()
+  const emailVerified = auth0.user?.email_verified
+  const logout = auth0.logout
 
-  const handleEmailVerified = useCallback(() => window.location.reload(), [])
+  const handleEmailVerified = useCallback(() => {
+    logout()
+    window.location.reload()
+  }, [logout])
 
   const handleResend = useCallback(() => {
     resendVerificationEmail(intl)
@@ -41,8 +47,14 @@ const VerifyEmailPane = ({ resendVerificationEmail, routeTo }: Props) => {
     }
   }, [emailVerified, routeTo])
 
+  const verifyEmail = intl.formatMessage({
+    id: 'components.NewAccountWizard.verify'
+  })
+
   return (
-    <div>
+    <>
+      <PageTitle title={verifyEmail} />
+      <h1>{verifyEmail}</h1>
       <p>
         <FormattedMessage id="components.VerifyEmailPane.instructions1" />
       </p>
@@ -69,7 +81,7 @@ const VerifyEmailPane = ({ resendVerificationEmail, routeTo }: Props) => {
       <div style={{ marginTop: '3em' }}>
         <DeleteUser size="large" />
       </div>
-    </div>
+    </>
   )
 }
 

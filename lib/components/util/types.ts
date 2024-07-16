@@ -5,6 +5,7 @@ import {
   Route,
   Stop
 } from '@opentripplanner/types'
+import { MapRef } from 'react-map-gl'
 
 export interface StopTimeTrip {
   blockId?: string
@@ -57,8 +58,8 @@ export interface Time {
 }
 
 export interface ViewedRouteState {
-  patternId?: string
-  routeId: string
+  patternId?: string | null
+  routeId: string | null
 }
 
 export interface RouteVehicle {
@@ -101,3 +102,9 @@ export type SetViewedRouteHandler = (route?: ViewedRouteState) => void
 export type SetViewedStopHandler = (payload: Stop | null) => void
 
 export type SetLocationHandler = (payload: MapLocationActionArg) => void
+
+export type ZoomToPlaceHandler = (
+  map?: MapRef,
+  place?: { lat: number; lon: number },
+  zoom?: number
+) => void

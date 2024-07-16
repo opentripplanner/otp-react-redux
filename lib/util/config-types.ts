@@ -68,7 +68,13 @@ interface ApiKeyConfig {
 export type BugsnagConfig = ApiKeyConfig
 export type MapillaryConfig = ApiKeyConfig
 
-export type NearbyViewConfig = { hideEmptyStops?: boolean; radius?: number }
+export type NearbyViewConfig = {
+  alwaysShowLongName?: boolean
+  hideEmptyStops?: boolean
+  radius?: number
+  showShadowDotOnMapDrag?: boolean
+  useRouteViewSort?: boolean
+}
 
 /** TODO: Language settings */
 export type LanguageConfig = Record<string, any>
@@ -87,8 +93,6 @@ export interface Auth0Config {
 /** Local persistence setting */
 export interface LocalPersistenceConfig {
   strategy: 'localStorage'
-  // eslint-disable-next-line camelcase
-  terms_of_storage?: boolean
 }
 
 /** OTP Middleware (Personas) settings */
@@ -103,14 +107,27 @@ export interface MiddlewarePersistenceConfig {
   strategy: 'otp_middleware'
 }
 
+/**
+ * Enum to describe the layout state of checkboxes.
+ */
+export enum CheckboxDefaultState {
+  /** Checkbox is hidden and initially checked */
+  HIDDEN_CHECKED = 'hidden-checked',
+  /** Checkbox is hidden and initially unchecked */
+  HIDDEN_UNCHECKED = 'hidden-unchecked',
+  /** Checkbox is visible and initially checked */
+  VISIBLE_CHECKED = 'visible-checked',
+  /** Checkbox is visible and initially unchecked */
+  VISIBLE_UNCHECKED = 'visible-unchecked'
+}
+
 /** General persistence settings */
 export type PersistenceConfig = (
   | LocalPersistenceConfig
   | MiddlewarePersistenceConfig
 ) & {
   enabled?: boolean
-  // eslint-disable-next-line camelcase
-  terms_of_storage?: boolean
+  termsOfStorageDefault?: CheckboxDefaultState
 }
 
 /** Popup target settings */
@@ -205,6 +222,7 @@ export type SupportedOverlays =
   | MapTileLayerConfig
 
 export interface MapConfig {
+  autoFlyOnTripFormUpdate?: boolean
   baseLayers?: BaseLayerConfig[]
   initLat?: number
   initLon?: number
@@ -243,11 +261,13 @@ export interface ItineraryCostWeights {
 }
 
 export interface ItineraryConfig {
+  allowUserAlertCollapsing?: boolean
   costs?: ItineraryCostConfig
   customBatchUiBackground?: boolean
   defaultFareType?: FareProductSelector
   defaultSort?: ItinerarySortOption
   disableMetroSeperatorDot?: true
+  exclusiveErrors?: string[]
   fareDetailsLayout?: FareTableLayout[]
   fareKeyNameMap?: Record<string, string>
   fillModeIcons?: boolean
@@ -259,6 +279,7 @@ export interface ItineraryConfig {
   onlyShowCountdownForRealtime?: boolean
   previewOverlay?: boolean
   renderRouteNamesInBlocks?: boolean
+  showAllWalkLegs?: boolean
   showFirstResultByDefault?: boolean
   showHeaderText?: boolean
   showLegDurations?: boolean
@@ -315,6 +336,8 @@ export interface TransitOperatorConfig extends TransitOperator {
 export interface RouteViewerConfig {
   /** Whether to hide the route linear shape inside a flex zone of that route. */
   hideRouteShapesWithinFlexZones?: boolean
+  /** Remove vehicles from the map if they haven't sent an update in a number of seconds */
+  maxRealtimeVehicleAge?: number
   /** Disable vehicle highlight if necessary (e.g. custom or inverted icons) */
   vehicleIconHighlight?: boolean
   /** Customize vehicle icon padding (the default iconPadding is 2px in otp-ui) */
