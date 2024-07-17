@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { Dropdown } from '@opentripplanner/building-blocks/lib/dropdown'
+import { Dropdown } from '@opentripplanner/building-blocks'
 import { GlobeAmericas } from '@styled-icons/fa-solid/GlobeAmericas'
 import { useIntl } from 'react-intl'
 import React from 'react'
@@ -27,8 +27,8 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
         id="locale-selector"
         label={intl.formatMessage({ id: 'components.SubNav.selectALanguage' })}
         listLabel={intl.formatMessage({ id: 'components.SubNav.languages' })}
-        name={<GlobeAmericas />}
         style={{ display: 'block ruby' }}
+        text={<GlobeAmericas />}
       >
         {Object.keys(languageOptions).map((locale: string) => (
           <li key={locale} lang={locale}>

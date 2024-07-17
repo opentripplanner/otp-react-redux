@@ -1,12 +1,13 @@
 import { connect } from 'react-redux'
+import { Dropdown } from '@opentripplanner/building-blocks'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
-import { SortResultsDropdown } from '@opentripplanner/building-blocks/lib/dropdown'
 import { Stop, TransitOperator } from '@opentripplanner/types'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
+import { DEFAULT_ROUTE_COLOR } from '../util/colors'
 import {
   extractHeadsignFromPattern,
   getRouteColorBasedOnSettings
@@ -30,7 +31,6 @@ import {
   StopLink,
   Stop as StyledStop
 } from './styled'
-import { DEFAULT_ROUTE_COLOR } from '../util/colors'
 
 const PatternSelectButton = styled(UnstyledButton)`
   span {
@@ -200,12 +200,12 @@ class RouteDetails extends Component<Props> {
             <HeadsignSelectLabel htmlFor="headsign-selector-label">
               <FormattedMessage id="components.RouteDetails.stopsTo" />
             </HeadsignSelectLabel>
-            <SortResultsDropdown
+            <Dropdown
+              alignMenuLeft
               id="headsign-selector"
               label={patternSelectLabel}
-              name={patternSelectName}
-              pullRight
               style={{ color: 'black' }}
+              text={patternSelectName}
             >
               {headsigns.map((h: PatternSummary) => (
                 <li key={h.id}>
@@ -217,7 +217,7 @@ class RouteDetails extends Component<Props> {
                   </PatternSelectButton>
                 </li>
               ))}
-            </SortResultsDropdown>
+            </Dropdown>
           </PatternContainer>
         )}
         {pattern && (
