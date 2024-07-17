@@ -5,6 +5,7 @@ import {
   Styled as TripFormClasses
 } from '@opentripplanner/trip-form'
 import { Input, MenuItemLi } from '@opentripplanner/location-field/lib/styled'
+import { prefersReducedMotion } from '../util/prefersReducedMotion'
 import LocationField from '@opentripplanner/location-field'
 import styled, { css } from 'styled-components'
 
@@ -227,6 +228,128 @@ export const StyledLocationField = styled(LocationField)`
   ${MenuItemLi} {
     &:hover {
       color: inherit;
+    }
+  }
+`
+
+export const advancedPanelClassName = 'advanced-panel'
+export const mainPanelClassName = 'main-panel'
+export const transitionDuration = prefersReducedMotion ? 0 : 175
+
+const wipeOffset = 7
+
+const transitionMixin = css`
+  transition: all ${transitionDuration}ms ease-in;
+`
+
+const wipeOutMixin = (offset: number) => css`
+  transform: translateX(${offset}px);
+  opacity: 0;
+`
+const wipeInMixin = css`
+  opacity: 1;
+`
+
+export const TransitionStyles = styled.div`
+  display: contents;
+  .${advancedPanelClassName}-enter {
+    ${wipeOutMixin(wipeOffset)}
+  }
+  .${advancedPanelClassName}-enter-done {
+    ${wipeInMixin}
+    ${transitionMixin}
+  }
+
+  .${advancedPanelClassName}-exit {
+    ${wipeInMixin}
+  }
+
+  .${advancedPanelClassName}-exit-active {
+    ${wipeOutMixin(wipeOffset)}
+    ${transitionMixin}
+  }
+
+  .${mainPanelClassName}-enter {
+    ${wipeOutMixin(-wipeOffset)}
+  }
+  .${mainPanelClassName}-enter-done {
+    ${wipeInMixin}
+    ${transitionMixin}
+  }
+
+  .${mainPanelClassName}-exit {
+    ${wipeInMixin}
+  }
+
+  .${mainPanelClassName}-exit-active {
+    ${wipeOutMixin(-wipeOffset)}
+    ${transitionMixin}
+  }
+`
+
+const toggleTransition = css`
+  transition: all 150ms ease-in;
+`
+
+export const styledCheckboxCss = css`
+  & > div {
+    width: 100%;
+    margin-left: 0;
+  }
+  input[type='checkbox'] + label {
+    align-items: center;
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    width: 100%;
+
+    &::after {
+      content: '';
+      position: relative;
+      width: 33px;
+      height: 22px;
+      background-color: ${grey[600]};
+      border-radius: 20px;
+      ${toggleTransition};
+      cursor: pointer;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background-color: white;
+      border-radius: 100%;
+      right: 13px;
+      z-index: 99;
+      ${toggleTransition};
+      cursor: pointer;
+    }
+  }
+
+  input[type='checkbox'] {
+    clip: rect(0, 0, 0, 0);
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 0;
+
+    &:checked + label {
+      &::after {
+        background-color: var(--main-base-color, ${blue[700]});
+        ${toggleTransition};
+      }
+
+      &::before {
+        right: 2px;
+        ${toggleTransition};
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+      }
+    }
+
+    &:focus-visible + label {
+      outline: 1px solid blue;
     }
   }
 `

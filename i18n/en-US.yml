@@ -195,8 +195,13 @@ components:
   BatchRoutingPanel:
     shortTitle: Plan Trip
   BatchSearchScreen:
+    advancedHeader: Advanced Preferences
+    closeAdvancedPreferences: Close advanced preferences
     header: Plan Your Trip
+    modeOptions: Mode Options
     modeSelectorLabel: Select a travel mode
+    moreOptions: More options
+    tripOptions: Trip Options
   BatchSettings:
     destination: destination
     invalidModeSelection: >-
