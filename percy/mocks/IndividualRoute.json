@@ -2,6 +2,7 @@
   "data": {
     "route": {
       "gtfsId": "MARTA:19330",
+      "sortOrder": 1,
       "desc": null,
       "agency": {
         "gtfsId": "MARTA:MARTA",
@@ -84,10 +85,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4135,
-                    33.7359
-                  ]
+                  "coordinates": [-84.4135, 33.7359]
                 }
               },
               "routes": [
@@ -143,10 +141,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4161,
-                    33.7383
-                  ]
+                  "coordinates": [-84.4161, 33.7383]
                 }
               },
               "routes": [
@@ -174,10 +169,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4176,
-                    33.7384
-                  ]
+                  "coordinates": [-84.4176, 33.7384]
                 }
               },
               "routes": [
@@ -201,10 +193,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4176,
-                    33.7393
-                  ]
+                  "coordinates": [-84.4176, 33.7393]
                 }
               },
               "routes": [
@@ -228,10 +217,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4177,
-                    33.7402
-                  ]
+                  "coordinates": [-84.4177, 33.7402]
                 }
               },
               "routes": [
@@ -255,10 +241,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4175,
-                    33.7434
-                  ]
+                  "coordinates": [-84.4175, 33.7434]
                 }
               },
               "routes": [
@@ -278,10 +261,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4173,
-                    33.7453
-                  ]
+                  "coordinates": [-84.4173, 33.7453]
                 }
               },
               "routes": [
@@ -305,10 +285,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4173,
-                    33.7463
-                  ]
+                  "coordinates": [-84.4173, 33.7463]
                 }
               },
               "routes": [
@@ -332,10 +309,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4173,
-                    33.749
-                  ]
+                  "coordinates": [-84.4173, 33.749]
                 }
               },
               "routes": [
@@ -359,10 +333,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4173,
-                    33.7506
-                  ]
+                  "coordinates": [-84.4173, 33.7506]
                 }
               },
               "routes": [
@@ -386,10 +357,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4173,
-                    33.752
-                  ]
+                  "coordinates": [-84.4173, 33.752]
                 }
               },
               "routes": [
@@ -413,10 +381,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4175,
-                    33.7533
-                  ]
+                  "coordinates": [-84.4175, 33.7533]
                 }
               },
               "routes": [
@@ -440,10 +405,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4173,
-                    33.7545
-                  ]
+                  "coordinates": [-84.4173, 33.7545]
                 }
               },
               "routes": [
@@ -467,10 +429,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4174,
-                    33.7561
-                  ]
+                  "coordinates": [-84.4174, 33.7561]
                 }
               },
               "routes": [
@@ -494,10 +453,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4175,
-                    33.7584
-                  ]
+                  "coordinates": [-84.4175, 33.7584]
                 }
               },
               "routes": [
@@ -517,10 +473,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4174,
-                    33.7603
-                  ]
+                  "coordinates": [-84.4174, 33.7603]
                 }
               },
               "routes": [
@@ -540,10 +493,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4174,
-                    33.7635
-                  ]
+                  "coordinates": [-84.4174, 33.7635]
                 }
               },
               "routes": [
@@ -563,10 +513,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4174,
-                    33.767
-                  ]
+                  "coordinates": [-84.4174, 33.767]
                 }
               },
               "routes": [
@@ -586,10 +533,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4174,
-                    33.7699
-                  ]
+                  "coordinates": [-84.4174, 33.7699]
                 }
               },
               "routes": [
@@ -609,10 +553,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4173,
-                    33.7721
-                  ]
+                  "coordinates": [-84.4173, 33.7721]
                 }
               },
               "routes": [
@@ -632,10 +573,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4173,
-                    33.774
-                  ]
+                  "coordinates": [-84.4173, 33.774]
                 }
               },
               "routes": [
@@ -655,10 +593,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4173,
-                    33.78
-                  ]
+                  "coordinates": [-84.4173, 33.78]
                 }
               },
               "routes": [
@@ -678,10 +613,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4173,
-                    33.7823
-                  ]
+                  "coordinates": [-84.4173, 33.7823]
                 }
               },
               "routes": [
@@ -701,10 +633,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4218,
-                    33.7852
-                  ]
+                  "coordinates": [-84.4218, 33.7852]
                 }
               },
               "routes": [
@@ -728,10 +657,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4238,
-                    33.7855
-                  ]
+                  "coordinates": [-84.4238, 33.7855]
                 }
               },
               "routes": [
@@ -755,10 +681,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4285,
-                    33.7892
-                  ]
+                  "coordinates": [-84.4285, 33.7892]
                 }
               },
               "routes": [
@@ -778,10 +701,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4297,
-                    33.7912
-                  ]
+                  "coordinates": [-84.4297, 33.7912]
                 }
               },
               "routes": [
@@ -801,10 +721,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4319,
-                    33.7948
-                  ]
+                  "coordinates": [-84.4319, 33.7948]
                 }
               },
               "routes": [
@@ -824,10 +741,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4339,
-                    33.7982
-                  ]
+                  "coordinates": [-84.4339, 33.7982]
                 }
               },
               "routes": [
@@ -847,10 +761,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4355,
-                    33.8007
-                  ]
+                  "coordinates": [-84.4355, 33.8007]
                 }
               },
               "routes": [
@@ -870,10 +781,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4363,
-                    33.8023
-                  ]
+                  "coordinates": [-84.4363, 33.8023]
                 }
               },
               "routes": [
@@ -893,10 +801,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4373,
-                    33.8055
-                  ]
+                  "coordinates": [-84.4373, 33.8055]
                 }
               },
               "routes": [
@@ -916,10 +821,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4387,
-                    33.8103
-                  ]
+                  "coordinates": [-84.4387, 33.8103]
                 }
               },
               "routes": [
@@ -939,10 +841,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4393,
-                    33.8128
-                  ]
+                  "coordinates": [-84.4393, 33.8128]
                 }
               },
               "routes": [
@@ -966,10 +865,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4408,
-                    33.8145
-                  ]
+                  "coordinates": [-84.4408, 33.8145]
                 }
               },
               "routes": [
@@ -993,10 +889,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4458,
-                    33.8164
-                  ]
+                  "coordinates": [-84.4458, 33.8164]
                 }
               },
               "routes": [
@@ -1020,10 +913,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4478,
-                    33.8175
-                  ]
+                  "coordinates": [-84.4478, 33.8175]
                 }
               },
               "routes": [
@@ -1055,10 +945,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.451,
-                    33.8193
-                  ]
+                  "coordinates": [-84.451, 33.8193]
                 }
               },
               "routes": [
@@ -1102,10 +989,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.451,
-                    33.8193
-                  ]
+                  "coordinates": [-84.451, 33.8193]
                 }
               },
               "routes": [
@@ -1137,10 +1021,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4521,
-                    33.8207
-                  ]
+                  "coordinates": [-84.4521, 33.8207]
                 }
               },
               "routes": [
@@ -1172,10 +1053,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4499,
-                    33.8203
-                  ]
+                  "coordinates": [-84.4499, 33.8203]
                 }
               },
               "routes": [
@@ -1207,10 +1085,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4477,
-                    33.8184
-                  ]
+                  "coordinates": [-84.4477, 33.8184]
                 }
               },
               "routes": [
@@ -1242,10 +1117,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4468,
-                    33.8167
-                  ]
+                  "coordinates": [-84.4468, 33.8167]
                 }
               },
               "routes": [
@@ -1269,10 +1141,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4435,
-                    33.8153
-                  ]
+                  "coordinates": [-84.4435, 33.8153]
                 }
               },
               "routes": [
@@ -1296,10 +1165,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4398,
-                    33.8133
-                  ]
+                  "coordinates": [-84.4398, 33.8133]
                 }
               },
               "routes": [
@@ -1323,10 +1189,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4388,
-                    33.8105
-                  ]
+                  "coordinates": [-84.4388, 33.8105]
                 }
               },
               "routes": [
@@ -1346,10 +1209,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4375,
-                    33.8055
-                  ]
+                  "coordinates": [-84.4375, 33.8055]
                 }
               },
               "routes": [
@@ -1369,10 +1229,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4363,
-                    33.8022
-                  ]
+                  "coordinates": [-84.4363, 33.8022]
                 }
               },
               "routes": [
@@ -1392,10 +1249,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4355,
-                    33.8003
-                  ]
+                  "coordinates": [-84.4355, 33.8003]
                 }
               },
               "routes": [
@@ -1415,10 +1269,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4342,
-                    33.7983
-                  ]
+                  "coordinates": [-84.4342, 33.7983]
                 }
               },
               "routes": [
@@ -1438,10 +1289,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4321,
-                    33.7949
-                  ]
+                  "coordinates": [-84.4321, 33.7949]
                 }
               },
               "routes": [
@@ -1461,10 +1309,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4303,
-                    33.7918
-                  ]
+                  "coordinates": [-84.4303, 33.7918]
                 }
               },
               "routes": [
@@ -1484,10 +1329,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4268,
-                    33.7859
-                  ]
+                  "coordinates": [-84.4268, 33.7859]
                 }
               },
               "routes": [
@@ -1511,10 +1353,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4242,
-                    33.7853
-                  ]
+                  "coordinates": [-84.4242, 33.7853]
                 }
               },
               "routes": [
@@ -1538,10 +1377,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4215,
-                    33.7851
-                  ]
+                  "coordinates": [-84.4215, 33.7851]
                 }
               },
               "routes": [
@@ -1565,10 +1401,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4178,
-                    33.7834
-                  ]
+                  "coordinates": [-84.4178, 33.7834]
                 }
               },
               "routes": [
@@ -1592,10 +1425,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4174,
-                    33.7796
-                  ]
+                  "coordinates": [-84.4174, 33.7796]
                 }
               },
               "routes": [
@@ -1615,10 +1445,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4174,
-                    33.7743
-                  ]
+                  "coordinates": [-84.4174, 33.7743]
                 }
               },
               "routes": [
@@ -1638,10 +1465,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4174,
-                    33.772
-                  ]
+                  "coordinates": [-84.4174, 33.772]
                 }
               },
               "routes": [
@@ -1661,10 +1485,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4174,
-                    33.7701
-                  ]
+                  "coordinates": [-84.4174, 33.7701]
                 }
               },
               "routes": [
@@ -1684,10 +1505,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4175,
-                    33.7664
-                  ]
+                  "coordinates": [-84.4175, 33.7664]
                 }
               },
               "routes": [
@@ -1707,10 +1525,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4175,
-                    33.763
-                  ]
+                  "coordinates": [-84.4175, 33.763]
                 }
               },
               "routes": [
@@ -1730,10 +1545,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4175,
-                    33.7604
-                  ]
+                  "coordinates": [-84.4175, 33.7604]
                 }
               },
               "routes": [
@@ -1753,10 +1565,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4176,
-                    33.7581
-                  ]
+                  "coordinates": [-84.4176, 33.7581]
                 }
               },
               "routes": [
@@ -1776,10 +1585,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4177,
-                    33.7563
-                  ]
+                  "coordinates": [-84.4177, 33.7563]
                 }
               },
               "routes": [
@@ -1799,10 +1605,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4176,
-                    33.7526
-                  ]
+                  "coordinates": [-84.4176, 33.7526]
                 }
               },
               "routes": [
@@ -1826,10 +1629,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4178,
-                    33.7513
-                  ]
+                  "coordinates": [-84.4178, 33.7513]
                 }
               },
               "routes": [
@@ -1853,10 +1653,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4176,
-                    33.75
-                  ]
+                  "coordinates": [-84.4176, 33.75]
                 }
               },
               "routes": [
@@ -1880,10 +1677,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4176,
-                    33.7492
-                  ]
+                  "coordinates": [-84.4176, 33.7492]
                 }
               },
               "routes": [
@@ -1907,10 +1701,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4178,
-                    33.7467
-                  ]
+                  "coordinates": [-84.4178, 33.7467]
                 }
               },
               "routes": [
@@ -1934,10 +1725,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4178,
-                    33.7456
-                  ]
+                  "coordinates": [-84.4178, 33.7456]
                 }
               },
               "routes": [
@@ -1961,10 +1749,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4177,
-                    33.7424
-                  ]
+                  "coordinates": [-84.4177, 33.7424]
                 }
               },
               "routes": [
@@ -1984,10 +1769,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4177,
-                    33.7394
-                  ]
+                  "coordinates": [-84.4177, 33.7394]
                 }
               },
               "routes": [
@@ -2011,10 +1793,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4158,
-                    33.7382
-                  ]
+                  "coordinates": [-84.4158, 33.7382]
                 }
               },
               "routes": [
@@ -2042,10 +1821,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4132,
-                    33.7382
-                  ]
+                  "coordinates": [-84.4132, 33.7382]
                 }
               },
               "routes": [
@@ -2089,10 +1865,7 @@
               "geometries": {
                 "geoJson": {
                   "type": "Point",
-                  "coordinates": [
-                    -84.4135,
-                    33.7359
-                  ]
+                  "coordinates": [-84.4135, 33.7359]
                 }
               },
               "routes": [

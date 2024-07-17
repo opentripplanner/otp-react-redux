@@ -364,6 +364,7 @@ components:
       disponibles}}
     companyBicycle: Bicicleta {company}
     companyScooter: Scooter {company}
+    distanceAway: "{localizedDistanceString} de distancia"
     error: Se ha producido un error al cargar los servicios cercanos.
     header: Ver cerca
     nearbyListIntro: Lista de {count} entidades cercanas.
@@ -449,6 +450,9 @@ components:
       minutos.
     verified: Verificado
     verify: Verificar
+    verifySms: >-
+      Por favor, complete el proceso de verificación para configurar las
+      notificaciones por SMS.
   Place:
     deleteThisPlace: Borrar este lugar
     enterAlert: >
@@ -511,7 +515,6 @@ components:
     shortTitle: Ver rutas
     stopsInDirectionOfTravel: "Paradas en este sentido de la marcha:"
     title: Visor de rutas
-    toggleRouteOnMap: Cambiar la ruta en el mapa
   SaveTripButton:
     cantSaveText: No se puede guardar
     cantSaveTooltip: >-
@@ -703,8 +706,10 @@ components:
     leaveAt: "Salida a las "
   TripSummaryPane:
     happensOnDays: "Ocurre en: {days}"
+    monitoredTripDays: Días de viaje monitoreados
     notifications: "{leadTimeInMinutes} minutos antes de la salida programada"
     notificationsDisabled: Notificaciones desactivadas
+    timeAndDuration: Tiempo y duración del viaje
   TripTools:
     copyLink: Copiar enlace
     header: Herramientas

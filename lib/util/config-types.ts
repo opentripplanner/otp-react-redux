@@ -69,8 +69,10 @@ export type BugsnagConfig = ApiKeyConfig
 export type MapillaryConfig = ApiKeyConfig
 
 export type NearbyViewConfig = {
+  alwaysShowLongName?: boolean
   hideEmptyStops?: boolean
   radius?: number
+  showShadowDotOnMapDrag?: boolean
   useRouteViewSort?: boolean
 }
 
@@ -220,6 +222,7 @@ export type SupportedOverlays =
   | MapTileLayerConfig
 
 export interface MapConfig {
+  autoFlyOnTripFormUpdate?: boolean
   baseLayers?: BaseLayerConfig[]
   initLat?: number
   initLon?: number
