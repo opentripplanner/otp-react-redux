@@ -94,7 +94,7 @@ const AvailableDays = styled(FieldSet)`
   svg {
     flex-shrink: 0;
     /* Remove bootstrap's vertical margin */
-    margin: 0 4px 0 2px;
+    margin: 0 7px 0 2px;
   }
 
   /* Check boxes for disabled days are replaced with the cross mark. */
