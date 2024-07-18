@@ -77,10 +77,10 @@ const AvailableDays = styled(FieldSet)`
     display: inline-flex;
     flex-direction: row-reverse;
     height: 3rem;
-    min-width: 5rem;
+    min-width: 4.5rem;
     position: relative;
     text-align: center;
-    width: auto;
+    width: 5rem;
   }
   svg {
     color: ${RED_ON_WHITE};
