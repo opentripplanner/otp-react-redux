@@ -25,9 +25,16 @@
   background-color: #080808;
 }
 
-li.header {
-  padding: 5px 15px;
+h4 {
+  padding: 8px 15px;
+  margin: 0;
   font-weight: 600;
+  font-size: 16px;
+}
+
+ul {
+  list-style: none;
+  padding-inline-start: 0;
 }
 
 #app-menu-locale-selector {

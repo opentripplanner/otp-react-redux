@@ -77,49 +77,50 @@ const NavLoginButton = ({
             </span>
           }
         >
-          <li className="header">{displayedName}</li>
-
-          {links &&
-            links.map((link, i) => {
-              if (link.url.startsWith('http')) {
+          <h4>{displayedName}</h4>
+          <ul>
+            {links &&
+              links.map((link, i) => {
+                if (link.url.startsWith('http')) {
+                  return (
+                    <li key={link.url}>
+                      <NavUnstyledLink
+                        // Bypass our Link component and directly render an <a> element here,
+                        // so that the link works even when running the app locally.
+                        as="a"
+                        href={link.url}
+                        target="_blank"
+                      >
+                        <FormattedMessage id="components.NavLoginButton.help" />
+                        <NewWindowIconA11y
+                          size={12}
+                          style={{ marginLeft: '5px', marginTop: '-3px' }}
+                        />
+                      </NavUnstyledLink>
+                    </li>
+                  )
+                }
                 return (
                   <li key={link.url}>
-                    <NavUnstyledLink
-                      // Bypass our Link component and directly render an <a> element here,
-                      // so that the link works even when running the app locally.
-                      as="a"
-                      href={link.url}
-                      target="_blank"
-                    >
-                      <FormattedMessage id="components.NavLoginButton.help" />
-                      <NewWindowIconA11y
-                        size={12}
-                        style={{ marginLeft: '5px', marginTop: '-3px' }}
-                      />
+                    <NavUnstyledLink to={link.url}>
+                      {link.messageId === 'myAccount' ? ( // messageId is 'myAccount' or 'help'
+                        <FormattedMessage id="components.NavLoginButton.myAccount" />
+                      ) : (
+                        <FormattedMessage id="components.NavLoginButton.help" />
+                      )}
                     </NavUnstyledLink>
                   </li>
                 )
-              }
-              return (
-                <li key={link.url}>
-                  <NavUnstyledLink to={link.url}>
-                    {link.messageId === 'myAccount' ? ( // messageId is 'myAccount' or 'help'
-                      <FormattedMessage id="components.NavLoginButton.myAccount" />
-                    ) : (
-                      <FormattedMessage id="components.NavLoginButton.help" />
-                    )}
-                  </NavUnstyledLink>
-                </li>
-              )
-            })}
+              })}
 
-          <hr role="presentation" />
+            <hr role="presentation" />
 
-          <li>
-            <UnstyledButton onClick={onSignOutClick}>
-              <FormattedMessage id="components.NavLoginButton.signOut" />
-            </UnstyledButton>
-          </li>
+            <li>
+              <UnstyledButton onClick={onSignOutClick}>
+                <FormattedMessage id="components.NavLoginButton.signOut" />
+              </UnstyledButton>
+            </li>
+          </ul>{' '}
         </Dropdown>
       </li>
     )
