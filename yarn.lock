@@ -2398,7 +2398,7 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/building-blocks/-/building-blocks-1.1.0.tgz#ef9fe862ce0a3e92c9a6c2c2db749a9a02deebd5"
   integrity sha512-nx7pU1zIZzJcSkCFYyZ7gt+jd0gXj7bjx8rXn1msgF5uLWmtN/70dsmYNEApeA7haC076KOO3B/Jh44YfXG95g==
 
-"@opentripplanner/core-utils@^11.2.3", "@opentripplanner/core-utils@^11.3.1", "@opentripplanner/core-utils@^11.4.0", "@opentripplanner/core-utils@^11.4.2":
+"@opentripplanner/core-utils@^11.2.3", "@opentripplanner/core-utils@^11.4.0", "@opentripplanner/core-utils@^11.4.2":
   version "11.4.2"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.4.2.tgz#cc6034fb80ccda44e50f7f0a1e80a7bad8387f84"
   integrity sha512-EVYVN73Cgf9IC+uya49843MFJnVkmv0nHAjsQwmPGSx/w5fY49X4fSpDprL7Bn+MTzk58U2udDsn6OzKmV0JdA==
@@ -2435,17 +2435,6 @@
   dependencies:
     "@opentripplanner/location-icon" "^1.4.1"
     flat "^5.0.2"
-
-"@opentripplanner/geocoder@^2.2.2":
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-2.2.2.tgz#8ddc669287ccdfff1a5cce14d1fa8049421c6480"
-  integrity sha512-tJIOOE5N9kpMj0ji1YyVfWwg4yAFVs7Ks+EET67acql768bXwRE6rHoX6oaHvKhbCDjaQ7kuPIwi1BYWHQgg0Q==
-  dependencies:
-    "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
-    "@conveyal/lonlat" "^1.4.1"
-    "@leeoniya/ufuzzy" "^1.0.14"
-    isomorphic-mapzen-search "^1.6.1"
-    lodash.memoize "^4.1.2"
 
 "@opentripplanner/geocoder@^3.0.0", "@opentripplanner/geocoder@^3.0.1":
   version "3.0.1"
