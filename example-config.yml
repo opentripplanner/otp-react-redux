@@ -339,6 +339,8 @@ itinerary:
   # Whether the plan first/previous/next/last buttons should be shown along with
   # plan trip itineraries.
   showPlanFirstLastButtons: false
+  # adds the 'about' and '~' prefixes to the duration of non transit legs and trip details panel
+  showApproximatePrefixAccessLegs: false
   # Show all walking legs regardless of distance
   showAllWalkLegs: false
   # Filters out trips returned by OTP by default, unless specifically requested.
