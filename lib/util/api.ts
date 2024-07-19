@@ -61,21 +61,16 @@ export function combineQueryParams(
   return qs.stringify(search, { arrayFormat: 'repeat' })
 }
 
-/** Get the default number of itineraries to display for a search */
-export function getDefaultNumItineraries(config: AppConfig): number {
-  return config.modes?.numItineraries || 3 // instead of 7 per apiV2 if no limit defined in config
-}
-
-/** Gets the default URL params when reinitializing search */
-export function getDefaultQuery(config: AppConfig) {
-  return {
-    date: getCurrentDate(),
-    departArrive: 'NOW',
-    // TODO: Rework the crash-related params below so we can remove them.
-    intermediatePlaces: [], // required to avoid crash
-    mode: 'WALK,TRANSIT', // obsolete but required to avoid crash
-    numItineraries: getDefaultNumItineraries(config),
-    routingType: 'ITINERARY', // obsolete but required to avoid crash
-    time: getCurrentTime()
-  }
+/**
+ * Drops unused params so they don't show up in URL.
+ * TODO: Remove dependency on getDefaultQuery from core-utils.
+ */
+export function removeUnusedQueryParams(params: Record<string, any>): void {
+  delete params.showIntermediateStops
+  delete params.otherThanPreferredRoutesPenalty
+  delete params.ignoreRealtimeUpdates
+  delete params.optimize
+  delete params.optimizeBike
+  delete params.maxWalkDistance
+  delete params.maxBikeDistance
 }

@@ -69,6 +69,7 @@ export type BugsnagConfig = ApiKeyConfig
 export type MapillaryConfig = ApiKeyConfig
 
 export type NearbyViewConfig = {
+  alwaysShowLongName?: boolean
   hideEmptyStops?: boolean
   radius?: number
   showShadowDotOnMapDrag?: boolean
