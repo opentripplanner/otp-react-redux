@@ -60,14 +60,12 @@
 }
 
 .otp .trip-viewer .header-text,
-.otp .route-viewer .header-text,
-.otp .advanced-settings .header-text {
+.otp .route-viewer .header-text {
   display: contents;
   font-weight: 700;
   font-size: 24px;
   margin: 0;
 }
-
 .otp .route-viewer .header-text.route-expanded {
   display: flex;
   align-items: center;
