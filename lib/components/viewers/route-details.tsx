@@ -8,10 +8,7 @@ import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
 import { DEFAULT_ROUTE_COLOR } from '../util/colors'
-import {
-  extractHeadsignFromPattern,
-  getRouteColorBasedOnSettings
-} from '../../util/viewer'
+import { extractMainHeadsigns, PatternSummary } from '../../util/pattern-viewer'
 import { getOperatorName } from '../../util/state'
 import { LinkOpensNewWindow } from '../util/externalLink'
 import {
@@ -39,13 +36,6 @@ const PatternSelectButton = styled(UnstyledButton)`
     white-space: nowrap;
   }
 `
-
-interface PatternSummary {
-  geometryLength: number
-  headsign: string
-  id: string
-  lastStop?: string
-}
 
 interface Props {
   intl: IntlShape
@@ -77,6 +67,13 @@ class RouteDetails extends Component<Props> {
     setViewedStop(stop)
   }
 
+  _editHeadsign = (pattern: PatternSummary) => {
+    pattern.headsign = this.props.intl.formatMessage(
+      { id: 'components.RouteDetails.headsignTo' },
+      { ...pattern }
+    ) as string
+  }
+
   render() {
     const { intl, operator, patternId, route, setHoveredStop } = this.props
     const { agency, patterns = {}, shortName, url } = route
@@ -86,74 +83,25 @@ class RouteDetails extends Component<Props> {
 
     const routeColor = getRouteColorBasedOnSettings(operator, route)
 
-    const headsigns = Object.entries(patterns)
-      .map(
-        ([id, pat]): PatternSummary => ({
-          geometryLength: pat.patternGeometry?.length || 0,
-          headsign: extractHeadsignFromPattern(pat, shortName),
-          id,
-          lastStop: pat.stops?.[pat.stops?.length - 1]?.name
-        })
-      )
-      // Address duplicate headsigns.
-      .reduce((prev: PatternSummary[], cur) => {
-        const amended = prev
-        const alreadyExistingIndex = prev.findIndex(
-          (h) => h.headsign === cur.headsign
-        )
-        // If the headsign is a duplicate, and the last stop of the pattern is not the headsign,
-        // amend the headsign with the last stop name in parenthesis.
-        // e.g. "Headsign (Last Stop)"
-        if (
-          alreadyExistingIndex >= 0 &&
-          cur.lastStop &&
-          cur.headsign !== cur.lastStop
-        ) {
-          cur.headsign = intl.formatMessage(
-            { id: 'components.RouteDetails.headsignTo' },
-            { ...cur }
-          )
+    const headsigns = extractMainHeadsigns(
+      patterns,
+      shortName,
+      this._editHeadsign
+    ).sort((a, b) => {
+      // sort by number of vehicles on that pattern
+      const aVehicleCount =
+        route.vehicles?.filter((vehicle) => vehicle.patternId === a.id)
+          .length || 0
+      const bVehicleCount =
+        route.vehicles?.filter((vehicle) => vehicle.patternId === b.id)
+          .length || 0
 
-          // If there are only two total patterns, then we should rename
-          // both of them
-          if (amended.length === 1 && Object.entries(patterns).length === 2) {
-            amended[0].headsign = intl.formatMessage(
-              { id: 'components.RouteDetails.headsignTo' },
-              { ...amended[0] }
-            )
-            amended.push(cur)
-            return amended
-          }
-        }
-
-        // With all remaining duplicate headsigns, only keep the pattern with the
-        // longest geometry.
-        if (alreadyExistingIndex >= 0) {
-          if (
-            amended[alreadyExistingIndex].geometryLength < cur.geometryLength
-          ) {
-            amended[alreadyExistingIndex] = cur
-          }
-        } else {
-          amended.push(cur)
-        }
-        return amended
-      }, [])
-      .sort((a, b) => {
-        // sort by number of vehicles on that pattern
-        const aVehicleCount =
-          route.vehicles?.filter((vehicle) => vehicle.patternId === a.id)
-            .length || 0
-        const bVehicleCount =
-          route.vehicles?.filter((vehicle) => vehicle.patternId === b.id)
-            .length || 0
-
-        // if both have the same count, sort by pattern geometry length
-        if (aVehicleCount === bVehicleCount) {
-          return b.geometryLength - a.geometryLength
-        }
-        return bVehicleCount - aVehicleCount
-      })
+      // if both have the same count, sort by pattern geometry length
+      if (aVehicleCount === bVehicleCount) {
+        return b.geometryLength - a.geometryLength
+      }
+      return bVehicleCount - aVehicleCount
+    })
 
     const patternSelectLabel = intl.formatMessage({
       id: 'components.RouteDetails.selectADirection'
