@@ -280,6 +280,7 @@ export interface ItineraryConfig {
   previewOverlay?: boolean
   renderRouteNamesInBlocks?: boolean
   showAllWalkLegs?: boolean
+  showApproximatePrefixAccessLegs?: boolean
   showFirstResultByDefault?: boolean
   showHeaderText?: boolean
   showLegDurations?: boolean

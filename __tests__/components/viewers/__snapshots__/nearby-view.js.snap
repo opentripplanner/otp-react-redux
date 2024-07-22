@@ -4403,11 +4403,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <DotCircle
-                                                      className="sc-kmATbt bhVrag"
+                                                      className="sc-Azgjq cvPmYm"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-kmATbt bhVrag"
+                                                        className="sc-Azgjq cvPmYm"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -4419,7 +4419,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -4432,7 +4432,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -4480,11 +4480,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <MapMarkerAlt
-                                                      className="sc-dkmKIT cEQWzV"
+                                                      className="sc-hTZgZg kyAYqR"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-dkmKIT cEQWzV"
+                                                        className="sc-hTZgZg kyAYqR"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -4496,7 +4496,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -4509,7 +4509,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -4834,11 +4834,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <DotCircle
-                                                      className="sc-kmATbt bhVrag"
+                                                      className="sc-Azgjq cvPmYm"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-kmATbt bhVrag"
+                                                        className="sc-Azgjq cvPmYm"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -4850,7 +4850,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -4863,7 +4863,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -4911,11 +4911,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <MapMarkerAlt
-                                                      className="sc-dkmKIT cEQWzV"
+                                                      className="sc-hTZgZg kyAYqR"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-dkmKIT cEQWzV"
+                                                        className="sc-hTZgZg kyAYqR"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -4927,7 +4927,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -4940,7 +4940,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -5265,11 +5265,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <DotCircle
-                                                      className="sc-kmATbt bhVrag"
+                                                      className="sc-Azgjq cvPmYm"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-kmATbt bhVrag"
+                                                        className="sc-Azgjq cvPmYm"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -5281,7 +5281,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -5294,7 +5294,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -5342,11 +5342,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <MapMarkerAlt
-                                                      className="sc-dkmKIT cEQWzV"
+                                                      className="sc-hTZgZg kyAYqR"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-dkmKIT cEQWzV"
+                                                        className="sc-hTZgZg kyAYqR"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -5358,7 +5358,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -5371,7 +5371,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -11326,11 +11326,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <DotCircle
-                                                          className="sc-kmATbt bhVrag"
+                                                          className="sc-Azgjq cvPmYm"
                                                           size="0.9em"
                                                         >
                                                           <StyledIconBase
-                                                            className="sc-kmATbt bhVrag"
+                                                            className="sc-Azgjq cvPmYm"
                                                             iconAttrs={
                                                               Object {
                                                                 "fill": "currentColor",
@@ -11342,7 +11342,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             size="0.9em"
                                                           >
                                                             <ForwardRef
-                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                               iconAttrs={
                                                                 Object {
                                                                   "fill": "currentColor",
@@ -11355,7 +11355,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             >
                                                               <svg
                                                                 aria-hidden="true"
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                                 fill="currentColor"
                                                                 focusable="false"
                                                                 height="0.9em"
@@ -11403,11 +11403,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <MapMarkerAlt
-                                                          className="sc-dkmKIT cEQWzV"
+                                                          className="sc-hTZgZg kyAYqR"
                                                           size="0.9em"
                                                         >
                                                           <StyledIconBase
-                                                            className="sc-dkmKIT cEQWzV"
+                                                            className="sc-hTZgZg kyAYqR"
                                                             iconAttrs={
                                                               Object {
                                                                 "fill": "currentColor",
@@ -11419,7 +11419,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             size="0.9em"
                                                           >
                                                             <ForwardRef
-                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                               iconAttrs={
                                                                 Object {
                                                                   "fill": "currentColor",
@@ -11432,7 +11432,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             >
                                                               <svg
                                                                 aria-hidden="true"
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                                 fill="currentColor"
                                                                 focusable="false"
                                                                 height="0.9em"
@@ -17743,11 +17743,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <DotCircle
-                                                          className="sc-kmATbt bhVrag"
+                                                          className="sc-Azgjq cvPmYm"
                                                           size="0.9em"
                                                         >
                                                           <StyledIconBase
-                                                            className="sc-kmATbt bhVrag"
+                                                            className="sc-Azgjq cvPmYm"
                                                             iconAttrs={
                                                               Object {
                                                                 "fill": "currentColor",
@@ -17759,7 +17759,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             size="0.9em"
                                                           >
                                                             <ForwardRef
-                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                               iconAttrs={
                                                                 Object {
                                                                   "fill": "currentColor",
@@ -17772,7 +17772,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             >
                                                               <svg
                                                                 aria-hidden="true"
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                                 fill="currentColor"
                                                                 focusable="false"
                                                                 height="0.9em"
@@ -17820,11 +17820,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <MapMarkerAlt
-                                                          className="sc-dkmKIT cEQWzV"
+                                                          className="sc-hTZgZg kyAYqR"
                                                           size="0.9em"
                                                         >
                                                           <StyledIconBase
-                                                            className="sc-dkmKIT cEQWzV"
+                                                            className="sc-hTZgZg kyAYqR"
                                                             iconAttrs={
                                                               Object {
                                                                 "fill": "currentColor",
@@ -17836,7 +17836,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             size="0.9em"
                                                           >
                                                             <ForwardRef
-                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                               iconAttrs={
                                                                 Object {
                                                                   "fill": "currentColor",
@@ -17849,7 +17849,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             >
                                                               <svg
                                                                 aria-hidden="true"
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                                 fill="currentColor"
                                                                 focusable="false"
                                                                 height="0.9em"
@@ -20093,11 +20093,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <DotCircle
-                                                      className="sc-kmATbt bhVrag"
+                                                      className="sc-Azgjq cvPmYm"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-kmATbt bhVrag"
+                                                        className="sc-Azgjq cvPmYm"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -20109,7 +20109,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -20122,7 +20122,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -20170,11 +20170,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <MapMarkerAlt
-                                                      className="sc-dkmKIT cEQWzV"
+                                                      className="sc-hTZgZg kyAYqR"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-dkmKIT cEQWzV"
+                                                        className="sc-hTZgZg kyAYqR"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -20186,7 +20186,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -20199,7 +20199,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -20524,11 +20524,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <DotCircle
-                                                      className="sc-kmATbt bhVrag"
+                                                      className="sc-Azgjq cvPmYm"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-kmATbt bhVrag"
+                                                        className="sc-Azgjq cvPmYm"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -20540,7 +20540,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -20553,7 +20553,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -20601,11 +20601,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <MapMarkerAlt
-                                                      className="sc-dkmKIT cEQWzV"
+                                                      className="sc-hTZgZg kyAYqR"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-dkmKIT cEQWzV"
+                                                        className="sc-hTZgZg kyAYqR"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -20617,7 +20617,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -20630,7 +20630,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -20955,11 +20955,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <DotCircle
-                                                      className="sc-kmATbt bhVrag"
+                                                      className="sc-Azgjq cvPmYm"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-kmATbt bhVrag"
+                                                        className="sc-Azgjq cvPmYm"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -20971,7 +20971,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -20984,7 +20984,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -21032,11 +21032,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <MapMarkerAlt
-                                                      className="sc-dkmKIT cEQWzV"
+                                                      className="sc-hTZgZg kyAYqR"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-dkmKIT cEQWzV"
+                                                        className="sc-hTZgZg kyAYqR"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -21048,7 +21048,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -21061,7 +21061,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -27786,11 +27786,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <DotCircle
-                                                          className="sc-kmATbt bhVrag"
+                                                          className="sc-Azgjq cvPmYm"
                                                           size="0.9em"
                                                         >
                                                           <StyledIconBase
-                                                            className="sc-kmATbt bhVrag"
+                                                            className="sc-Azgjq cvPmYm"
                                                             iconAttrs={
                                                               Object {
                                                                 "fill": "currentColor",
@@ -27802,7 +27802,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             size="0.9em"
                                                           >
                                                             <ForwardRef
-                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                               iconAttrs={
                                                                 Object {
                                                                   "fill": "currentColor",
@@ -27815,7 +27815,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             >
                                                               <svg
                                                                 aria-hidden="true"
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                                 fill="currentColor"
                                                                 focusable="false"
                                                                 height="0.9em"
@@ -27863,11 +27863,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <MapMarkerAlt
-                                                          className="sc-dkmKIT cEQWzV"
+                                                          className="sc-hTZgZg kyAYqR"
                                                           size="0.9em"
                                                         >
                                                           <StyledIconBase
-                                                            className="sc-dkmKIT cEQWzV"
+                                                            className="sc-hTZgZg kyAYqR"
                                                             iconAttrs={
                                                               Object {
                                                                 "fill": "currentColor",
@@ -27879,7 +27879,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             size="0.9em"
                                                           >
                                                             <ForwardRef
-                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                               iconAttrs={
                                                                 Object {
                                                                   "fill": "currentColor",
@@ -27892,7 +27892,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             >
                                                               <svg
                                                                 aria-hidden="true"
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                                 fill="currentColor"
                                                                 focusable="false"
                                                                 height="0.9em"
@@ -30969,11 +30969,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <DotCircle
-                                                      className="sc-kmATbt bhVrag"
+                                                      className="sc-Azgjq cvPmYm"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-kmATbt bhVrag"
+                                                        className="sc-Azgjq cvPmYm"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -30985,7 +30985,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -30998,7 +30998,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -31046,11 +31046,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <MapMarkerAlt
-                                                      className="sc-dkmKIT cEQWzV"
+                                                      className="sc-hTZgZg kyAYqR"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-dkmKIT cEQWzV"
+                                                        className="sc-hTZgZg kyAYqR"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -31062,7 +31062,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -31075,7 +31075,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -31400,11 +31400,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <DotCircle
-                                                      className="sc-kmATbt bhVrag"
+                                                      className="sc-Azgjq cvPmYm"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-kmATbt bhVrag"
+                                                        className="sc-Azgjq cvPmYm"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -31416,7 +31416,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -31429,7 +31429,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -31477,11 +31477,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <MapMarkerAlt
-                                                      className="sc-dkmKIT cEQWzV"
+                                                      className="sc-hTZgZg kyAYqR"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-dkmKIT cEQWzV"
+                                                        className="sc-hTZgZg kyAYqR"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -31493,7 +31493,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -31506,7 +31506,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -31831,11 +31831,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <DotCircle
-                                                      className="sc-kmATbt bhVrag"
+                                                      className="sc-Azgjq cvPmYm"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-kmATbt bhVrag"
+                                                        className="sc-Azgjq cvPmYm"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -31847,7 +31847,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -31860,7 +31860,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -31908,11 +31908,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <MapMarkerAlt
-                                                      className="sc-dkmKIT cEQWzV"
+                                                      className="sc-hTZgZg kyAYqR"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-dkmKIT cEQWzV"
+                                                        className="sc-hTZgZg kyAYqR"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -31924,7 +31924,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -31937,7 +31937,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -32262,11 +32262,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <DotCircle
-                                                      className="sc-kmATbt bhVrag"
+                                                      className="sc-Azgjq cvPmYm"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-kmATbt bhVrag"
+                                                        className="sc-Azgjq cvPmYm"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -32278,7 +32278,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -32291,7 +32291,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -32339,11 +32339,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <MapMarkerAlt
-                                                      className="sc-dkmKIT cEQWzV"
+                                                      className="sc-hTZgZg kyAYqR"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-dkmKIT cEQWzV"
+                                                        className="sc-hTZgZg kyAYqR"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -32355,7 +32355,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -32368,7 +32368,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -32693,11 +32693,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <DotCircle
-                                                      className="sc-kmATbt bhVrag"
+                                                      className="sc-Azgjq cvPmYm"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-kmATbt bhVrag"
+                                                        className="sc-Azgjq cvPmYm"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -32709,7 +32709,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -32722,7 +32722,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -32770,11 +32770,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <MapMarkerAlt
-                                                      className="sc-dkmKIT cEQWzV"
+                                                      className="sc-hTZgZg kyAYqR"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-dkmKIT cEQWzV"
+                                                        className="sc-hTZgZg kyAYqR"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -32786,7 +32786,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -32799,7 +32799,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -36744,11 +36744,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <DotCircle
-                                                          className="sc-kmATbt bhVrag"
+                                                          className="sc-Azgjq cvPmYm"
                                                           size="0.9em"
                                                         >
                                                           <StyledIconBase
-                                                            className="sc-kmATbt bhVrag"
+                                                            className="sc-Azgjq cvPmYm"
                                                             iconAttrs={
                                                               Object {
                                                                 "fill": "currentColor",
@@ -36760,7 +36760,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             size="0.9em"
                                                           >
                                                             <ForwardRef
-                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                               iconAttrs={
                                                                 Object {
                                                                   "fill": "currentColor",
@@ -36773,7 +36773,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             >
                                                               <svg
                                                                 aria-hidden="true"
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                                 fill="currentColor"
                                                                 focusable="false"
                                                                 height="0.9em"
@@ -36821,11 +36821,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <MapMarkerAlt
-                                                          className="sc-dkmKIT cEQWzV"
+                                                          className="sc-hTZgZg kyAYqR"
                                                           size="0.9em"
                                                         >
                                                           <StyledIconBase
-                                                            className="sc-dkmKIT cEQWzV"
+                                                            className="sc-hTZgZg kyAYqR"
                                                             iconAttrs={
                                                               Object {
                                                                 "fill": "currentColor",
@@ -36837,7 +36837,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             size="0.9em"
                                                           >
                                                             <ForwardRef
-                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                               iconAttrs={
                                                                 Object {
                                                                   "fill": "currentColor",
@@ -36850,7 +36850,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             >
                                                               <svg
                                                                 aria-hidden="true"
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                                 fill="currentColor"
                                                                 focusable="false"
                                                                 height="0.9em"
@@ -39099,11 +39099,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <DotCircle
-                                                      className="sc-kmATbt bhVrag"
+                                                      className="sc-Azgjq cvPmYm"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-kmATbt bhVrag"
+                                                        className="sc-Azgjq cvPmYm"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -39115,7 +39115,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -39128,7 +39128,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -39176,11 +39176,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <MapMarkerAlt
-                                                      className="sc-dkmKIT cEQWzV"
+                                                      className="sc-hTZgZg kyAYqR"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-dkmKIT cEQWzV"
+                                                        className="sc-hTZgZg kyAYqR"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -39192,7 +39192,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -39205,7 +39205,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -44900,11 +44900,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <DotCircle
-                                                          className="sc-kmATbt bhVrag"
+                                                          className="sc-Azgjq cvPmYm"
                                                           size="0.9em"
                                                         >
                                                           <StyledIconBase
-                                                            className="sc-kmATbt bhVrag"
+                                                            className="sc-Azgjq cvPmYm"
                                                             iconAttrs={
                                                               Object {
                                                                 "fill": "currentColor",
@@ -44916,7 +44916,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             size="0.9em"
                                                           >
                                                             <ForwardRef
-                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                               iconAttrs={
                                                                 Object {
                                                                   "fill": "currentColor",
@@ -44929,7 +44929,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             >
                                                               <svg
                                                                 aria-hidden="true"
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                                 fill="currentColor"
                                                                 focusable="false"
                                                                 height="0.9em"
@@ -44977,11 +44977,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <MapMarkerAlt
-                                                          className="sc-dkmKIT cEQWzV"
+                                                          className="sc-hTZgZg kyAYqR"
                                                           size="0.9em"
                                                         >
                                                           <StyledIconBase
-                                                            className="sc-dkmKIT cEQWzV"
+                                                            className="sc-hTZgZg kyAYqR"
                                                             iconAttrs={
                                                               Object {
                                                                 "fill": "currentColor",
@@ -44993,7 +44993,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             size="0.9em"
                                                           >
                                                             <ForwardRef
-                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                               iconAttrs={
                                                                 Object {
                                                                   "fill": "currentColor",
@@ -45006,7 +45006,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             >
                                                               <svg
                                                                 aria-hidden="true"
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                                 fill="currentColor"
                                                                 focusable="false"
                                                                 height="0.9em"
@@ -52648,11 +52648,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <DotCircle
-                                                          className="sc-kmATbt bhVrag"
+                                                          className="sc-Azgjq cvPmYm"
                                                           size="0.9em"
                                                         >
                                                           <StyledIconBase
-                                                            className="sc-kmATbt bhVrag"
+                                                            className="sc-Azgjq cvPmYm"
                                                             iconAttrs={
                                                               Object {
                                                                 "fill": "currentColor",
@@ -52664,7 +52664,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             size="0.9em"
                                                           >
                                                             <ForwardRef
-                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                               iconAttrs={
                                                                 Object {
                                                                   "fill": "currentColor",
@@ -52677,7 +52677,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             >
                                                               <svg
                                                                 aria-hidden="true"
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                                 fill="currentColor"
                                                                 focusable="false"
                                                                 height="0.9em"
@@ -52725,11 +52725,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <MapMarkerAlt
-                                                          className="sc-dkmKIT cEQWzV"
+                                                          className="sc-hTZgZg kyAYqR"
                                                           size="0.9em"
                                                         >
                                                           <StyledIconBase
-                                                            className="sc-dkmKIT cEQWzV"
+                                                            className="sc-hTZgZg kyAYqR"
                                                             iconAttrs={
                                                               Object {
                                                                 "fill": "currentColor",
@@ -52741,7 +52741,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             size="0.9em"
                                                           >
                                                             <ForwardRef
-                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                               iconAttrs={
                                                                 Object {
                                                                   "fill": "currentColor",
@@ -52754,7 +52754,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             >
                                                               <svg
                                                                 aria-hidden="true"
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                                 fill="currentColor"
                                                                 focusable="false"
                                                                 height="0.9em"
@@ -57544,11 +57544,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <DotCircle
-                                                      className="sc-kmATbt bhVrag"
+                                                      className="sc-Azgjq cvPmYm"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-kmATbt bhVrag"
+                                                        className="sc-Azgjq cvPmYm"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -57560,7 +57560,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -57573,7 +57573,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -57621,11 +57621,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                     size="0.9em"
                                                   >
                                                     <MapMarkerAlt
-                                                      className="sc-dkmKIT cEQWzV"
+                                                      className="sc-hTZgZg kyAYqR"
                                                       size="0.9em"
                                                     >
                                                       <StyledIconBase
-                                                        className="sc-dkmKIT cEQWzV"
+                                                        className="sc-hTZgZg kyAYqR"
                                                         iconAttrs={
                                                           Object {
                                                             "fill": "currentColor",
@@ -57637,7 +57637,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <ForwardRef
-                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                          className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                           iconAttrs={
                                                             Object {
                                                               "fill": "currentColor",
@@ -57650,7 +57650,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         >
                                                           <svg
                                                             aria-hidden="true"
-                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                            className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                             fill="currentColor"
                                                             focusable="false"
                                                             height="0.9em"
@@ -63605,11 +63605,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <DotCircle
-                                                          className="sc-kmATbt bhVrag"
+                                                          className="sc-Azgjq cvPmYm"
                                                           size="0.9em"
                                                         >
                                                           <StyledIconBase
-                                                            className="sc-kmATbt bhVrag"
+                                                            className="sc-Azgjq cvPmYm"
                                                             iconAttrs={
                                                               Object {
                                                                 "fill": "currentColor",
@@ -63621,7 +63621,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             size="0.9em"
                                                           >
                                                             <ForwardRef
-                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                               iconAttrs={
                                                                 Object {
                                                                   "fill": "currentColor",
@@ -63634,7 +63634,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             >
                                                               <svg
                                                                 aria-hidden="true"
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-kmATbt bhVrag"
+                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-Azgjq cvPmYm"
                                                                 fill="currentColor"
                                                                 focusable="false"
                                                                 height="0.9em"
@@ -63682,11 +63682,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         size="0.9em"
                                                       >
                                                         <MapMarkerAlt
-                                                          className="sc-dkmKIT cEQWzV"
+                                                          className="sc-hTZgZg kyAYqR"
                                                           size="0.9em"
                                                         >
                                                           <StyledIconBase
-                                                            className="sc-dkmKIT cEQWzV"
+                                                            className="sc-hTZgZg kyAYqR"
                                                             iconAttrs={
                                                               Object {
                                                                 "fill": "currentColor",
@@ -63698,7 +63698,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             size="0.9em"
                                                           >
                                                             <ForwardRef
-                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                               iconAttrs={
                                                                 Object {
                                                                   "fill": "currentColor",
@@ -63711,7 +63711,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                             >
                                                               <svg
                                                                 aria-hidden="true"
-                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-dkmKIT cEQWzV"
+                                                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa sc-hTZgZg kyAYqR"
                                                                 fill="currentColor"
                                                                 focusable="false"
                                                                 height="0.9em"
