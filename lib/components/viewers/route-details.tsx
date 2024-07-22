@@ -10,6 +10,7 @@ import * as uiActions from '../../actions/ui'
 import { DEFAULT_ROUTE_COLOR } from '../util/colors'
 import { extractMainHeadsigns, PatternSummary } from '../../util/pattern-viewer'
 import { getOperatorName } from '../../util/state'
+import { getRouteColorBasedOnSettings } from '../../util/viewer'
 import { LinkOpensNewWindow } from '../util/externalLink'
 import {
   SetViewedRouteHandler,
