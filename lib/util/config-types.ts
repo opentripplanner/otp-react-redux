@@ -319,6 +319,7 @@ export interface ModesConfig {
   }
   modeButtons?: ModeButtonDefinition[]
   modeSettingDefinitions?: ModeSetting[]
+  numItineraries?: number
   transitModes: TransitModeConfig[]
 }
 
