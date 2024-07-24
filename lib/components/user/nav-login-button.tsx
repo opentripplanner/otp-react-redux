@@ -120,7 +120,7 @@ const NavLoginButton = ({
                 <FormattedMessage id="components.NavLoginButton.signOut" />
               </UnstyledButton>
             </li>
-          </ul>{' '}
+          </ul>
         </Dropdown>
       </li>
     )
