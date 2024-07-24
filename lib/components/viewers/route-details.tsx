@@ -38,6 +38,13 @@ const PatternSelectButton = styled(UnstyledButton)`
   }
 `
 
+const PatternSelectDropdown = styled(Dropdown)`
+  span,
+  span.caret {
+    color: #333;
+  }
+`
+
 interface Props {
   intl: IntlShape
   operator: TransitOperator
@@ -149,7 +156,7 @@ class RouteDetails extends Component<Props> {
             <HeadsignSelectLabel htmlFor="headsign-selector-label">
               <FormattedMessage id="components.RouteDetails.stopsTo" />
             </HeadsignSelectLabel>
-            <Dropdown
+            <PatternSelectDropdown
               alignMenuLeft
               id="headsign-selector"
               label={patternSelectLabel}
@@ -166,7 +173,7 @@ class RouteDetails extends Component<Props> {
                   </PatternSelectButton>
                 </li>
               ))}
-            </Dropdown>
+            </PatternSelectDropdown>
           </PatternContainer>
         )}
         {pattern && (
