@@ -77,7 +77,7 @@ const NavLoginButton = ({
             </span>
           }
         >
-          <h4>{displayedName}</h4>
+          <p>{displayedName}</p>
           <ul>
             {links &&
               links.map((link, i) => {
