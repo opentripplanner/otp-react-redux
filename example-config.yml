@@ -57,7 +57,7 @@ api:
 ### The default query parameters can be overridden be uncommenting this object.
 ### Note: the override values must be valid values within otp-ui's query-params.js
 # defaultQueryParams:
-#   walkSpeed: 1.34 # 3 mph in meters per second
+#   maxWalkDistance: 3219 # 2 miles in meters
 
 ### The persistence setting is used to enable the storage of places (home, work),
 ### recent searches/places, user overrides, and favorite stops.
@@ -613,15 +613,8 @@ itinerary:
 #   vi:
 #     name: Tiếng Việt
 
-#   # Chinese (Simplified) must be entered using 'zh-Hans',
-#   # or, if no other Chinese language is defined, using 'zh'.
-#   zh-Hans:
-#     name: 汉语
-
-#   # Chinese (Traditional) must be entered using 'zh-Hant'.
-#   # If Chinese (Simplified) is also used, it must be defined as 'zh-Hans'
-#   zh-Hant:
-#     name: 漢語
+#   zh:
+#     name: 中国人
 
 #   es:
 #     name: Español
@@ -680,6 +673,3 @@ itinerary:
 #   useRouteViewSort: false
 ### Setting this to false will hide the shadowey dot that appears when dragging the map
 #   showShadowDotOnMapDrag: false
-### In routes, this will always show the routeLongName before the headsign
-### !!! WARNING: in some feeds, this may show the long name twice. In some feeds, this may cause layout issues !!!
-#     alwaysShowLongName: false

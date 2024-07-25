@@ -93,17 +93,13 @@ interface UrlParams {
   ui_itineraryView: ItineraryView
 }
 
-export function isDefined(
-  subject: number | string | null | undefined
-): boolean {
-  return subject !== null && subject !== undefined
-}
-
 export function isDefinedAndNotEqual(
-  subject: number | string | null | undefined,
+  subject: number | string,
   value: number | string
 ): boolean {
-  return isDefined(subject) && `${subject}` !== `${value}`
+  return (
+    subject !== null && subject !== undefined && `${subject}` !== `${value}`
+  )
 }
 
 /**

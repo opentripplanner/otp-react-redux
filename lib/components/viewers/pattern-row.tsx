@@ -22,7 +22,6 @@ import { NextTripPreview, PatternRowItem } from './styled'
 import StopTimeCell from './stop-time-cell'
 
 type Props = {
-  alwaysShowLongName?: boolean
   homeTimezone?: string
   pattern: Pattern
   roundedTop?: boolean
@@ -59,7 +58,6 @@ const renderDay = (homeTimezone: string, day: number): JSX.Element => {
  * viewer.
  */
 const PatternRow = ({
-  alwaysShowLongName,
   homeTimezone,
   pattern,
   roundedTop = true,
@@ -103,11 +101,6 @@ const PatternRow = ({
             />
           </span>
           <span style={{ wordBreak: 'break-word' }} title={pattern.headsign}>
-            {alwaysShowLongName && !!pattern.route.longName && (
-              <strong style={{ display: 'block' }}>
-                {pattern.route.longName}
-              </strong>
-            )}
             {extractHeadsignFromPattern(pattern) ||
               (pattern.route.longName !== routeName && pattern.route.longName)}
           </span>

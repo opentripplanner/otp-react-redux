@@ -65,8 +65,6 @@ export const ModeSelectorContainer = styled.div<{ squashed?: boolean }>`
   align-items: flex-start;
   display: flex;
   float: right;
-  justify-content: space-between;
-  width: 100%;
 
   ${PlanTripButton} {
     border-bottom-left-radius: ${(props) => (props.squashed ? 0 : 'invalid')};
