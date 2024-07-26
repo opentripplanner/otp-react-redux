@@ -4,8 +4,10 @@ import styled, { css } from 'styled-components'
 export const buttonPixels = 51
 
 export const activeCss = css`
-  /* Make elements slightly darker on hover. */
-  filter: brightness(90%);
+  /* Make elements internal content slightly transparent on hover. */
+  & > * {
+    opacity: 90%;
+  }
 `
 
 const buttonTransitionCss = css`
