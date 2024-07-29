@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
+import { SortResultsDropdown } from '@opentripplanner/building-blocks/lib/dropdown'
 import { Stop, TransitOperator } from '@opentripplanner/types'
 import React, { Component } from 'react'
 import styled from 'styled-components'
@@ -16,7 +17,6 @@ import {
   SetViewedStopHandler,
   ViewedRouteObject
 } from '../util/types'
-import { SortResultsDropdown } from '../util/dropdown'
 import { UnstyledButton } from '../util/unstyled-button'
 
 import {

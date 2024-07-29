@@ -1,5 +1,6 @@
 /* eslint-disable complexity */
 import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
+import { Dropdown } from '@opentripplanner/building-blocks/lib/dropdown'
 import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Itinerary } from '@opentripplanner/types'
@@ -11,7 +12,6 @@ import styled from 'styled-components'
 import { IconWithText, StyledIconWrapper } from '../util/styledIcon'
 import { ItinerarySortOption } from '../../util/config-types'
 import { sortOptions } from '../util/sortOptions'
-import { SortResultsDropdown } from '../util/dropdown'
 import { UnstyledButton } from '../util/unstyled-button'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import PopupTriggerText from '../app/popup-trigger-text'
@@ -206,7 +206,7 @@ export default function NarrativeItinerariesHeader({
                 )}
               </StyledIconWrapper>
             </button>
-            <SortResultsDropdown
+            <Dropdown
               id="sort-results"
               label={sortResultsLabel}
               name={sortText}
@@ -223,7 +223,7 @@ export default function NarrativeItinerariesHeader({
                   </UnstyledButton>
                 </li>
               ))}
-            </SortResultsDropdown>
+            </Dropdown>
           </ItinerariesHeaderContainer>
           <PlanFirstLastButtons />
         </>
