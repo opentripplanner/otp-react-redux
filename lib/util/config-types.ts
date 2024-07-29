@@ -280,6 +280,7 @@ export interface ItineraryConfig {
   previewOverlay?: boolean
   renderRouteNamesInBlocks?: boolean
   showAllWalkLegs?: boolean
+  showApproximatePrefixAccessLegs?: boolean
   showFirstResultByDefault?: boolean
   showHeaderText?: boolean
   showInlineItinerarySummary?: boolean
@@ -319,6 +320,7 @@ export interface ModesConfig {
   }
   modeButtons?: ModeButtonDefinition[]
   modeSettingDefinitions?: ModeSetting[]
+  numItineraries?: number
   transitModes: TransitModeConfig[]
 }
 
