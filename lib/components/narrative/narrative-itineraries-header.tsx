@@ -1,6 +1,6 @@
 /* eslint-disable complexity */
 import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
-import { Dropdown } from '@opentripplanner/building-blocks/lib/dropdown'
+import { Dropdown } from '@opentripplanner/building-blocks'
 import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Itinerary } from '@opentripplanner/types'
@@ -209,7 +209,7 @@ export default function NarrativeItinerariesHeader({
             <Dropdown
               id="sort-results"
               label={sortResultsLabel}
-              name={sortText}
+              text={sortText}
               title={sortResultsLabel}
             >
               {sortOptionsArr.map((sortOption) => (

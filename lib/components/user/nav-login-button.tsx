@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-import { Dropdown } from '@opentripplanner/building-blocks/lib/dropdown'
+import { Dropdown } from '@opentripplanner/building-blocks'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { User } from '@auth0/auth0-react'
 import { User as UserIcon } from '@styled-icons/fa-regular/User'
@@ -67,7 +67,7 @@ const NavLoginButton = ({
           className="navBarItem"
           id="user-selector"
           label={intl.formatMessage({ id: 'components.SubNav.userMenu' })}
-          name={
+          text={
             <span>
               <Avatar
                 alt={displayedName}
@@ -76,7 +76,6 @@ const NavLoginButton = ({
               />
             </span>
           }
-          pullRight
         >
           <li className="header">{displayedName}</li>
 
