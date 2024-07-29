@@ -25,14 +25,14 @@
   background-color: #080808;
 }
 
-.navBarItem > p {
+.navBarItem p {
   padding: 5px 15px;
   margin: 0;
   font-weight: 600;
   font-size: 16px;
 }
 
-.navBarItem > ul {
+.navBarItem ul {
   list-style: none;
   padding-inline-start: 0;
 }
