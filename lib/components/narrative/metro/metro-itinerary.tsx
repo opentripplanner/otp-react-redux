@@ -4,6 +4,7 @@ import { FareProductSelector, Itinerary, Leg } from '@opentripplanner/types'
 import {
   FormattedMessage,
   FormattedNumber,
+  FormattedTime,
   injectIntl,
   IntlShape
 } from 'react-intl'
@@ -453,6 +454,15 @@ class MetroItinerary extends NarrativeItinerary {
                       />
                     </>
                   )}{' '}
+                  {expanded && showInlineItinerarySummary && (
+                    <div style={{ color: '#111' }}>
+                      <FormattedMessage id="components.TripSummary.leaveAt" />
+                      <FormattedTime value={itinerary.startTime} />
+                      <span style={{ marginLeft: '2ch' }}> </span>
+                      <FormattedMessage id="components.TripSummary.arriveAt" />
+                      <FormattedTime value={itinerary.endTime} />
+                    </div>
+                  )}
                 </DepartureTimes>
               </ItineraryGrid>
             )}
