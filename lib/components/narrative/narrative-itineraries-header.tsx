@@ -35,6 +35,12 @@ const ItinerariesHeaderContainer = styled.div<{ showHeaderText: boolean }>`
   margin-left: ${(props) => (props.showHeaderText ? 'inherit' : 'auto')};
 `
 
+const SortResultsDropdown = styled(Dropdown)`
+  button {
+    border: none;
+  }
+`
+
 export default function NarrativeItinerariesHeader({
   customBatchUiBackground,
   enabledSortModes,
@@ -206,7 +212,7 @@ export default function NarrativeItinerariesHeader({
                 )}
               </StyledIconWrapper>
             </button>
-            <Dropdown
+            <SortResultsDropdown
               id="sort-results"
               label={sortResultsLabel}
               text={sortText}
@@ -223,7 +229,7 @@ export default function NarrativeItinerariesHeader({
                   </UnstyledButton>
                 </li>
               ))}
-            </Dropdown>
+            </SortResultsDropdown>
           </ItinerariesHeaderContainer>
           <PlanFirstLastButtons />
         </>
