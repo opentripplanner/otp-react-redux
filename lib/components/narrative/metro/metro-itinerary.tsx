@@ -28,7 +28,12 @@ import ItineraryBody from '../line-itin/connected-itinerary-body'
 import NarrativeItinerary from '../narrative-itinerary'
 import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
 
-import { getFirstTransitLegStop, getFlexAttributes } from './attribute-utils'
+import {
+  getFirstTransitLeg,
+  getFirstTransitLegStop,
+  getFlexAttributes
+} from './attribute-utils'
+import DefaultRouteRenderer from './default-route-renderer'
 import DepartureTimesList, {
   SetActiveItineraryHandler
 } from './departure-times-list'
@@ -257,7 +262,8 @@ class MetroItinerary extends NarrativeItinerary {
       showLegDurations,
       showRealtimeAnnotation
     } = this.props
-    const { ItineraryPreviewSupplement, SvgIcon } = this.context
+    const { ItineraryPreviewSupplement, RouteRenderer, SvgIcon } = this.context
+    const Route = RouteRenderer || DefaultRouteRenderer
 
     const { isCallAhead, isContinuousDropoff, isFlexItinerary, phone } =
       getFlexAttributes(itinerary)
@@ -411,6 +417,17 @@ class MetroItinerary extends NarrativeItinerary {
                   </SecondaryInfo>
                 </ItineraryDetails>
                 <DepartureTimes>
+                  {showInlineItinerarySummary && getFirstTransitLeg(itinerary) && (
+                    <Route
+                      leg={getFirstTransitLeg(itinerary)}
+                      style={{
+                        margin: 0,
+                        marginLeft: -8,
+                        marginRight: -2,
+                        transform: 'scale(50%)'
+                      }}
+                    />
+                  )}
                   <span className="timeInfo">
                     {arrivesAt ? (
                       <FormattedMessage id="components.MetroUI.arriveAt" />
