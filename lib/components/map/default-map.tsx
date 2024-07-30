@@ -269,7 +269,8 @@ class DefaultMap extends Component {
     } = this.props
     const { getCustomMapOverlays, getTransitiveRouteLabel, ModeIcon } =
       this.context
-    const { baseLayers, maxZoom, overlays } = mapConfig || {}
+    const { baseLayers, maxZoom, navigationControlPosition, overlays } =
+      mapConfig || {}
     const { lat, lon, zoom } = this.state
     const vectorTilesEndpoint = `${assembleBasePath(config)}${
       config.api?.path
@@ -411,7 +412,9 @@ class DefaultMap extends Component {
           {/* If set, custom overlays are shown if no active itinerary is shown or pending. */}
           {typeof getCustomMapOverlays === 'function' &&
             getCustomMapOverlays(!itinerary && !pending)}
-          <NavigationControl position="bottom-right" />
+          <NavigationControl
+            position={navigationControlPosition || 'bottom-right'}
+          />
         </BaseMap>
       </MapContainer>
     )

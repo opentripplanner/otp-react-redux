@@ -228,6 +228,7 @@ export interface MapConfig {
   initLon?: number
   initZoom?: number
   maxZoom?: number
+  navigationControlPosition?: string
   overlays?: SupportedOverlays[]
   views?: MapViewConfig[]
 }
