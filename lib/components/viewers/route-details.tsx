@@ -39,11 +39,10 @@ const PatternSelectButton = styled(UnstyledButton)`
 `
 
 const PatternSelectDropdown = styled(Dropdown)`
-  float: right;
-
   button {
-    padding: 3px 7px;
+    float: right;
     line-height: 20px;
+    padding: 3px 7px;
   }
 
   span,
