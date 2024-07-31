@@ -39,9 +39,20 @@ const PatternSelectButton = styled(UnstyledButton)`
 `
 
 const PatternSelectDropdown = styled(Dropdown)`
+  float: right;
+
+  button {
+    padding: 3px 7px;
+    line-height: 20px;
+  }
+
   span,
   span.caret {
     color: #333;
+  }
+
+  span.caret {
+    margin-left: 2px;
   }
 `
 
@@ -157,7 +168,6 @@ class RouteDetails extends Component<Props> {
               <FormattedMessage id="components.RouteDetails.stopsTo" />
             </HeadsignSelectLabel>
             <PatternSelectDropdown
-              alignMenuLeft
               id="headsign-selector"
               label={patternSelectLabel}
               style={{ color: 'black' }}
