@@ -38,12 +38,6 @@ const ItinerariesHeaderContainer = styled.div<{ showHeaderText: boolean }>`
 const SortResultsDropdown = styled(Dropdown)`
   button {
     border: none;
-    padding: 3px 7px;
-    line-height: 20px;
-  }
-
-  span.caret {
-    margin-left: 2px;
   }
 `
 
