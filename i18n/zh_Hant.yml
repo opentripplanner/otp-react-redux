@@ -2,19 +2,17 @@ _id: zh-Hant
 _name: Chinese (Traditional)
 actions:
   callTaker:
+    queryFetchError: 擷取查詢時發生錯誤：{err}
     callQuerySaveError: 儲存通話查詢時發生錯誤：{err}
     callSaveError: 無法儲存通話：{err}
     checkSessionError: 建立授權工作階段時發生錯誤：{err}
     couldNotFindCallError: 找不到通話。正在取消儲存查詢請求。
     fetchCallsError: 擷取通話時發生錯誤：{err}
-    queryFetchError: 擷取查詢時發生錯誤：{err}
   fieldTrip:
     addNoteError: 新增實地考察備註時發生錯誤：
-    confirmOverwriteItineraries: |
-      此動作將覆蓋此請求之前規劃的{outbound, select,
-       true {外出}
-       other {返回}
-       }預定行程。您想繼續嗎？
+    confirmOverwriteItineraries: "此動作將覆蓋此請求之前規劃的{outbound, select,\n true {外出}\n other
+      {返回}\n }預定行程。您想繼續嗎？\n"
+    setGroupSizeError: 設定群組大小時發生錯誤：
     deleteItinerariesError: 刪除實地考察計畫時發生錯誤：
     deleteNoteError: 刪除實地考察備註時發生錯誤：
     editSubmitterNotesError: 編輯提交者備註時發生錯誤：
@@ -26,16 +24,8 @@ actions:
     maxTripRequestsExceeded: 行程請求數量過多，沒有有效結果
     saveItinerariesError: 無法儲存預定行程：{err}
     setDateError: 設定日期時發生錯誤：
-    setGroupSizeError: 設定群組大小時發生錯誤：
     setPaymentError: 設定付款資訊時發生錯誤：
     setRequestStatusError: 設定請求狀態時發生錯誤：
-  location:
-    deniedAccessAlert: |
-      系統已封鎖您存取地點的權限。
-      若要使用目前的地點，請從瀏覽器啟用地點權限，然後再重新載入頁面。 
-    geolocationNotSupportedError: 您的瀏覽器不支援地理位置
-    unknownPositionError: 取得位置時發生不明錯誤
-    userDeniedPermission: 使用者拒絕提供權限
   map:
     currentLocation: (目前位置)
   user:
@@ -45,16 +35,71 @@ actions:
     confirmDeletePlace: 是否要移除此地點？
     emailVerificationResent: 電子郵件驗證訊息已重新傳送。
     genericError: 發生錯誤：{err}
+    mustBeLoggedInToSavePlace: 請登入，以儲存地點。
     itineraryExistenceCheckFailed: 檢查您選取的行程是否可行時發生錯誤。
     mustAcceptTermsToSavePlace: 請接受使用條款 (在我的帳戶下)，以儲存地點。
-    mustBeLoggedInToSavePlace: 請登入，以儲存地點。
     placeRemembered: 此地點的設定已儲存。
     preferencesSaved: 您的偏好已儲存。
     smsInvalidCode: 您輸入的代碼無效。請再試一次。
     smsResendThrottled: 驗證簡訊已在不到一分鐘前傳送到指定的電話號碼。請稍後再試一次。
     smsVerificationFailed: 您的電話無法驗證。您輸入的代碼可能已失效。請要求新的代碼，然後再試一次。
+  location:
+    deniedAccessAlert: "系統已封鎖您存取地點的權限。\n若要使用目前的地點，請從瀏覽器啟用地點權限，然後再重新載入頁面。 \n"
+    geolocationNotSupportedError: 您的瀏覽器不支援地理位置
+    unknownPositionError: 取得位置時發生不明錯誤
+    userDeniedPermission: 使用者拒絕提供權限
 common:
-  coordinates: "{lat}; {lon}"
+  coordinates: '{lat}; {lon}'
+  daysOfWeekCompact:
+    sunday: 週日
+    thursday: 週四
+    tuesday: 週二
+    wednesday: 週三
+    friday: 週五
+    monday: 週一
+    saturday: 週六
+  daysOfWeekPlural:
+    friday: 每星期五
+    monday: 每星期一
+    saturday: 每星期六
+    sunday: 每星期日
+    thursday: 每星期四
+    tuesday: 每星期二
+    wednesday: 每星期三
+  modes:
+    car_park: 停車轉乘
+    drive: 駕車
+    ferry: 渡船
+    flex: 彈性路線
+    bicycle_rent: 自行車共享
+    bike: 騎行
+    bus: 搭乘公車
+    cable_car: 纜車
+    car: 汽車
+    funicular: 纜索鐵路
+    gondola: 空中纜車
+    micromobility: 電動滑板車
+    micromobility_rent: 電動滑板車
+    rail: 鐵路
+    rent: 租賃選項
+    subway: 捷運
+    tram: 西雅圖街車
+    transit: 公共交通
+    walk: 步行
+  notifications:
+    push: 推播通知
+    sms: 簡訊
+    email: 電子郵件
+  places:
+    custom: 自訂
+    dining: 餐廳
+    home: 住家
+    work: 工作
+  searchForms:
+    enterDestination: 輸入目的地或{mapAction} 地圖……
+    enterStartLocation: 輸入開始位置或{mapAction} 地圖……
+    click: 按一下
+    tap: 輕觸
   dateExpressions:
     today: 今天
     tomorrow: 明天
@@ -67,27 +112,11 @@ common:
     thursday: 星期四
     tuesday: 星期二
     wednesday: 星期三
-  daysOfWeekCompact:
-    friday: 週五
-    monday: 週一
-    saturday: 週六
-    sunday: 週日
-    thursday: 週四
-    tuesday: 週二
-    wednesday: 週三
-  daysOfWeekPlural:
-    friday: 每星期五
-    monday: 每星期一
-    saturday: 每星期六
-    sunday: 每星期日
-    thursday: 每星期四
-    tuesday: 每星期二
-    wednesday: 每星期三
   forms:
     back: 返回
     cancel: 取消
     close: 關閉
-    defaultValue: "{value} (預設)"
+    defaultValue: '{value} (預設)'
     edit: 編輯
     error: 錯誤！
     finish: 完成
@@ -99,65 +128,353 @@ common:
     submitting: 正在提交…
     "yes": 是
   itineraryDescriptions:
-    calories: "{calories, number}卡"
+    calories: '{calories, number}卡'
     fareUnknown: 無票價資訊
     noItineraryToDisplay: 沒有預定行程可顯示。
-    relativeCo2: |
-      {co2}比單獨開車排放的CO₂{isMore, select, true {要多} other {少}}
-    transfers: "{transfers}次轉乘"
+    relativeCo2: "{co2}比單獨開車排放的CO₂{isMore, select, true {要多} other {少}}\n"
+    transfers: '{transfers}次轉乘'
   linkOpensNewWindow: (開啟新視窗)
-  modes:
-    bicycle_rent: 自行車共享
-    bike: 騎行
-    bus: 搭乘公車
-    cable_car: 纜車
-    car: 汽車
-    car_park: 停車轉乘
-    drive: 駕車
-    ferry: 渡船
-    flex: 彈性路線
-    funicular: 纜索鐵路
-    gondola: 空中纜車
-    micromobility: 電動滑板車
-    micromobility_rent: 電動滑板車
-    rail: 鐵路
-    rent: 租賃選項
-    subway: 捷運
-    tram: 西雅圖街車
-    transit: 公共交通
-    walk: 步行
-  notifications:
-    email: 電子郵件
-    push: 推播通知
-    sms: 簡訊
-  places:
-    custom: 自訂
-    dining: 餐廳
-    home: 住家
-    work: 工作
   routing:
     routeAndNumber: 路線{routeId}
-  searchForms:
-    click: 按一下
-    enterDestination: 輸入目的地或{mapAction} 地圖……
-    enterStartLocation: 輸入開始位置或{mapAction} 地圖……
-    tap: 輕觸
   time:
-    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
+    departureArrivalTimes: '{startTime, time, short}—{endTime, time, short}'
     duration:
       aFewSeconds: 幾秒鐘
-      nDays: "{days}天"
-      nHours: "{hours}小時"
-      nMinutes: "{minutes}分鐘"
-    durationAgo: "{duration}前"
-    tripDurationFormat: >-
-      {hours, plural, =0 {} other {# 小時 }}{minutes} 分鐘 { seconds, plural, =0 {}
-      other {# 秒鐘}}
+      nDays: '{days}天'
+      nHours: '{hours}小時'
+      nMinutes: '{minutes}分鐘'
+    durationAgo: '{duration}前'
+    tripDurationFormat: '{hours, plural, =0 {} other {# 小時 }}{minutes} 分鐘 { seconds,
+      plural, =0 {} other {# 秒鐘}}'
 components:
-  A11yPrefs:
-    accessibilityRoutingByDefault: 預設優先選擇無障礙行程
   AccountSetupFinishPane:
     message: 您已經準備好開始規劃行程。
+  AfterSignInScreen:
+    mainTitle: 正在重新導向……
+    message: 如果頁面未在幾秒鐘後載入，請<redirectLink>按一下這裡</redirectLink>。
+  AppMenu:
+    callHistory: 通話記錄
+    closeMenu: 關閉功能表
+    mailables: 可郵寄
+    openMenu: 開啟功能表
+    skipNavigation: 跳過導航
+    fieldTrip: 實地考察
+  BackToTripPlanner:
+    backToTripPlanner: 返回行程規劃器
+  BatchResultsScreen:
+    showResults: 顯示結果
+    expandMap: 展開地圖
+  BatchRoutingPanel:
+    shortTitle: 規劃行程
+  BeforeSignInScreen:
+    mainTitle: 登入中
+    message: "您必須登入才能存取此頁面。我們正在將您重新導向到登入頁面，請稍候……\n"
+  DateTimeOptions:
+    departAt: 出發時間
+    now: 現在
+    arriveBy: 最晚抵達時間
+  DateTimePreview:
+    leaveNow: 現在出發
+    arriveAt: '{arriveTime, time, short}抵達'
+    dayLastWeek: 上{formattedDayOfWeek}
+    departAt: '{departTime, time, short}出發'
+    editDepartOrArrival: 編輯出發或抵達時間
+  DefaultItinerary:
+    clickDetails: 按一下以檢視詳細資料
+    nonTransit: 替代選項
+    multiModeSummary: '{accessMode} + {transitMode}'
+  ExistingAccountDisplay:
+    notifications: 通知
+    places: 最愛的地點
+    terms: 條款
+    a11y: 可到達性
+    mainTitle: 我的設定
+  FavoritePlaceList:
+    addAnotherPlace: 新增其他地點
+    editThisPlace: 編輯此地點
+    setAddressForPlaceType: 設定您的{placeType}地址
+    description: 新增您經常使用的地點，以節省規劃行程的時間：
+  FavoritePlaceScreen:
+    placeNotFound: 找不到地點
+    addNewPlace: 新增地點
+    editPlace: 編輯{placeName}
+    editPlaceGeneric: 編輯地點
+    invalidAddress: 請為此地點設定位置。
+    invalidName: 請為此地點輸入名稱。
+    nameAlreadyUsed: 您已經對其他地點使用此名稱。請輸入其他名稱。
+    placeNotFoundDescription: 很抱歉，找不到請求的地點。
+  MapLayers:
+    satellite: 衛星
+    shared-vehicles: 共享車輛
+    stops: 公共交通車站
+    streets: 街道
+    bike-rental: '{companies}共享自行車'
+    car-rental: 自行車租賃位置
+    micromobility-rental: '{companies}電動滑板車'
+    park-and-ride: 停車轉乘位置
+  MetroUI:
+    originallyScheduledTime: (原定 {originalTime})
+    singleModeItineraryDescription: '{time} {mode} 路線'
+    arriveAt: 您已抵達目的地
+    itineraryDescription: '{time}預定行程，使用{routes}'
+    leaveAt: 您出發
+    multipleOptions: 多個選項
+    orAlternatives: 或相同方向的其他路線
+    timeWalking: 步行{time}
+  OTP2ErrorRenderer:
+    NO_STOPS_IN_RANGE:
+      body: '{inputFields} 地點 未鄰近任何公共交通車站。'
+      header: 範圍內無車站
+    NO_TRANSIT_CONNECTION:
+      body: 在所選服務日當天使用所選車輛類型進行搜尋後，在您的出發地和目的地之間找不到公共交通連接路線。
+      header: 無公共交通連接路線
+    LOCATION_NOT_FOUND:
+      body: '{inputFields} 地點 未鄰近任何街道。'
+      header: 地點無法到達
+    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
+      body: 找到一個公共交通連接路線，但此路線超出搜尋視窗範圍，請使用您所選擇的車輛類型試著調整您的搜尋視窗。
+      header: 搜尋視窗內無公共交通連接路線
+    OUTSIDE_BOUNDS:
+      body: '{inputFields} 地點 不在行程規劃器的範圍內。'
+      header: 地點超出範圍
+    OUTSIDE_SERVICE_PERIOD:
+      body: 指定的日期超出目前載入行程規劃器中的資料範圍。
+      header: 超出服務期間
+    SYSTEM_ERROR:
+      body: 搜尋時發生不明錯誤。
+      header: 行程規劃器失敗
+    WALKING_BETTER_THAN_TRANSIT:
+      body: 在行程中避開公共交通路線會比採用公共交通路線更加快速。
+      header: 公共交通工具並非完成此行程的最快方式
+    inputFields:
+      FROM: 起點
+      TO: 目的地
+  PhoneNumberEditor:
+    requestNewCode: 要求新代碼
+    sendVerificationText: 傳送驗證簡訊
+    changeNumber: 變更號碼
+    invalidCode: 請輸入6位數的驗證碼。
+    invalidPhone: 請輸入有效的電話號碼。
+    pending: 待處理
+    phoneNumberSubmitted: 已順利提交電話號碼 {phoneNumber}。
+    phoneNumberVerified: 已順利驗證電話號碼 {phoneNumber} 。
+    placeholder: 輸入您的電話號碼
+    prompt: 輸入您用來接收簡訊通知的電話號碼：
+    smsConsent: "一旦提供您的電話號碼，即表示您同意接收驗證和行程監控簡訊。您的行動電信商可能會收取額外費用。\n"
+    verificationCode: 驗證碼：
+    verificationInstructions: "請查看您手機的簡訊應用程式是否收到含有驗證碼的簡訊，並在下方輸入該驗證碼 (驗證碼將在10分鐘後失效)。\n"
+    verified: 已驗證
+    verify: 驗證
+  PlaceEditor:
+    addressPrompt: 地址：
+    genericLocationPlaceholder: 搜尋位置
+    locationPlaceholder: 搜尋{placeName}位置
+    locationTypePrompt: 地點類型：
+    nameExample: 我的咖啡館
+    namePrompt: 定地名：
+  PlanFirstLastButtons:
+    previous: 上一個
+    first: 第一個
+    last: 最後一個
+    next: 前進
+  PlanTripButton:
+    planTrip: 規劃行程
+  PointPopup:
+    zoomToLocation: 縮放到位置
+  PrintLayout:
+    itinerary: 預定行程
+    toggleMap: 切換地圖
+  RealtimeStatusLabel:
+    early: 提早{minutes}
+    late: 延後{minutes}
+    onTime: 準時
+    scheduled: 預定
+  ResultsHeader:
+    noTripFound: 找不到行程
+    tripsFound: 我們找到了{count} 個選項
+    waiting: 等待中……
+  RouteViewer:
+    allAgencies: 所有機構
+    allModes: 所有模式
+    details: ' '
+    findARoute: 尋找路線
+    header: 路線檢視器
+    modeFilter: 模式篩選
+    noFilteredRoutesFound: 沒有路線符合您的篩選條件！
+    agencyFilter: 機構篩選
+    openPatternViewer: 檢視預定行程詳細資訊
+    shortTitle: 檢視路線
+    stopsInDirectionOfTravel: 此行駛方向的沿路車站：
+    title: 路線檢視器
+  SavedTripList:
+    fromTo: 從 {from} 到 {to}
+    myTrips: 我的行程
+    noSavedTrips: 您沒有儲存的行程
+    noSavedTripsInstructions: 請先從地圖進行行程搜尋。
+    pause: 暫停
+    resume: 繼續
+  SimpleRealtimeAnnotation:
+    usingRealtimeInfo: 此行程使用即時交通和延誤資訊。
+  StackedPaneDisplay:
+    savePreferences: 儲存偏好
+  StopScheduleTable:
+    block: 封鎖
+    departure: 出發
+    destination: 至
+    route: 路線
+  StopViewer:
+    displayStopId: <strong>車站ID</strong>：{stopId}
+    findSchedule: 依日期尋找排程
+    forStop: 針對 {stopName}
+    flexStop: 這是彈性車站。車輛將依要求在彈性區域讓乘客上下車。您在此地區可能需要事先呼叫服務。
+    header: 車站檢視器
+    loadingText: 正在載入車站……
+    noStopsFound: 此日期找不到車站時間。
+    operatorLogoAriaLabel: '{operatorName} 車站：'
+    schedule: 時程表
+    timezoneWarning: 出發時間是以{timezoneCode}顯示。
+    titleBarStopId: 車站{stopId}
+    viewNearby: 檢視附近
+    viewSchedule: 檢視時程
+    zoomToStop: 縮放到車站
+  SubNav:
+    selectALanguage: 選取語言
+    settings: 設定
+    trips: 行程
+    userMenu: 設定檔選項
+    languageSelector: 選取語言
+    languages: 語言
+    myAccount: 我的帳戶
+  SwitchButton:
+    defaultContent: 切換
+    switchLocations: 切換位置
+  TermsOfUsePane:
+    mustAgreeToTerms: 您必須同意服務條款才能繼續。
+    termsOfServiceStatement: "我確認我已年滿18歲，且我以閱讀並同意使用行程規劃器的<termsOfUseLink>服務條款</termsOfUseLink
+      >。\n"
+    termsOfStorageStatement: "選擇性：我同意行程規劃器儲存我的歷史規劃行程，以改善我所在地區的公共交通服務。<termsOfStorageLink>更多資訊……</termsOfStorageLink>\n"
+    confirmDeletionPrompt: "如果移除您對儲存歷史行程的同意，將導致系統刪除您的行程記錄。確定要繼續嗎？\n"
+  TransitVehicleOverlay:
+    travelingAt: 以{milesPerHour}前進
+    vehicleName: 車輛{vehicleNumber}
+    in_transit_to: 下一個車站：{stop}
+    incoming_at: 即將抵達：{stop}
+    stopped_at: 車門將在{stop}開啟
+  TripBasicsPane:
+    checkingItineraryExistence: 正在檢查一週中每一天是否存在預定行程……
+    tripDaysPrompt: 您在哪些日子使用此行程？
+    tripIsAvailableOnDaysIndicated: 您的行程可在上方指明的週間日期使用。
+    tripNamePrompt: 請為此行程提供名稱：
+    tripNotAvailableOnDay: 行程無法在{repeatedDay}使用
+    unsavedChangesExistingTrip: 您尚未儲存行程。如果離開，變更就會遺失。
+    unsavedChangesNewTrip: 您尚未儲存新的行程。如果離開，該行程就會遺失。
+  TripNotificationsPane:
+    advancedSettings: 進階設定
+    notifyViaChannelWhen: 以下情形時透過{channel}通知我：
+    altRouteRecommended: 建議使用備選方案路線或轉乘點
+    delaysAboveThreshold: 延誤或中斷超過
+    howToReceiveAlerts: "若要針對您儲存的行程接收警示，請在帳戶設定中啟用通知，然後嘗試再次儲存行程。\n"
+    monitorThisTrip: 開始前先監控此行程：
+    notificationsTurnedOff: 您的帳戶已關閉通知。
+    oneHour: 1小時
+    realtimeAlertFlagged: 我的旅程上有一個即時警示標記
+    timeBefore: '{time} 之前'
+  TripStatusRenderers:
+    active:
+      delayedHeading: 行程正在進行中，而且已延誤{formattedDuration}！
+      description: 行程預計在{arrivalTime, time, short}抵達目的地。
+      earlyHeading: 行程正在進行中，而且將比預期提早{formattedDuration}抵達！
+      noDataHeading: 行程正在進行中 (沒有可用的即時更新)。
+      onTimeHeading: 行程正在進行中，而且大約準時。
+    base:
+      lastCheckedText: 最後檢查時間：{formattedDuration}前
+      togglePause: 暫停
+      tripIsNotSnoozed: 今天整天延遲
+      tripIsSnoozed: 取消延遲行程分析
+      unknownState: 未知的行程狀態
+      untogglePause: 繼續
+      lastCheckedDefaultText: 最後檢查時間未知
+    inactive:
+      description: 繼續行程監控，以查看更新的狀態
+      heading: 行程監控已暫停
+    nextTripNotPossible:
+      description: "行程規劃器無法找到您今天的行程。請嘗試重新規劃預定行程，以尋找替代路線。\n"
+      heading: 行程今天不可行
+    noLongerPossible:
+      description: "行程規劃器無法找到您在週間任一選取日期的行程。請嘗試重新規劃預定行程，以尋找替代路線。\n"
+      heading: 行程已不再可行
+    notCalculated:
+      awaiting: 正在等待計算……
+      description: 請等待行程計算。
+      heading: 行程尚未計算
+    snoozed:
+      description: 取消延遲行程監控，以查看更新的狀態。
+      heading: 已為今天延遲行程監控
+    upcoming:
+      nextTripBegins: 下一個行程將在{tripDatetime, date, ::eeeee yyyyMMdd}的{tripDatetime,
+        time, short}開始。
+      tripBegins: 行程預計在{tripStart, time, short}開始。(即時監控將在{monitoringStart, time, short}開始。)
+      tripStartIsDelayed: 行程開始時間延誤${duration}！
+      tripStartIsEarly: 行程開始時間比預期提早${duration}！
+      tripStartsSoonNoUpdates: 行程即將開始 (沒有可用的即時更新)。
+      tripStartsSoonOnTime: 行程即將開始且大約準時。
+  TripSummary:
+    leaveAt: '離開點 '
+    arriveAt: '抵達 '
+  TripSummaryPane:
+    happensOnDays: 發生於：{days}
+    notifications: 預定出發前{leadTimeInMinutes}分鐘
+    notificationsDisabled: 通知已停用
+  TripTools:
+    copyLink: 複製連結
+    reportEmailSubject: 回報OpenTripPlanner的問題
+    header: 行程工具
+    linkCopied: 已複製
+    reportEmailTemplate: "\"*** 給使用者的指示 ***\n此功能可讓您透過電子郵件寄送報告給網站管理員進行審查。\n 請填寫下方的提示部分，並使用您平常的電子郵件程式寄送。\n
+      \n*** 請填寫以下內容 *** \n \n 遇到的問題：\n \n 您想要使用的行程類型 (例如步行+公共交通、自行車+公共交通、汽車+公共交通)：\n
+      \n*** 技術詳細資訊 ***\"\n"
+    reportIssue: 回報問題
+  TripViewer:
+    listOfRouteStops: 此路線上的車站清單
+    startOfTrip: 行程從這裡開始
+    accessible: 無障礙
+    bicyclesAllowed: 已允許
+    endOfTrip: 行程到此結束
+    header: 行程檢視器
+    routeHeader: 路線：<strong>{routeShortName}</strong> {routeLongName}
+    tripDescription: 在 {boardAtStop} 上車，在 {disembarkAtStop} 下車
+    viewStop: 檢視
+  UserAccountScreen:
+    confirmDelete: 您確定要刪除使用者帳戶嗎？一旦刪除，就無法復原。
+    errorUpdatingProfile: 更新設定檔時發生錯誤。
+    fieldUpdated: 此設定已更新。
+    updating: 正在更新
+    fields:
+      storeTripHistory: 儲存行程歷史紀錄
+  UserSettings:
+    mySavedPlaces: 我的已儲存地點 (<manageLink>管理</manageLink>)
+    noFavoriteStops: 沒有最愛的車站
+    recentPlaces: 最近的地點
+    recentSearchSummary: '{mode}，從{from}到{to}'
+    recentSearches: 最近的搜尋
+    rememberSearches: 要記住最近的搜尋/地點嗎？
+    stopId: 車站ID：{stopId}
+    confirmDeletion: 您有儲存的最近的搜尋和/或地點。停用儲存最近的地點/搜尋將移除這些項目。是否要繼續？
+    favoriteStops: 最愛的車站
+    myPreferences: 我的偏好
+    storageDisclaimer: "您選擇儲存的任何偏好、地點或設定都將儲存在您瀏覽器的本機儲存空間。TriMet無法存取有關您住家、工作或任何其他位置的資訊。您可以隨時選擇不要記住最近的地點/搜尋，並清除您的已儲存住家/工作位置和最愛的車站。\n"
+  VerifyEmailPane:
+    instructions2: 驗證之後，請按下方按鈕以繼續。
+    resendVerification: 重新寄送驗證電子郵件
+    emailIsVerified: 我的電子郵件已驗證！
+    instructions1: "請查看您的電子郵件收件匣，並前往信件中的連結以驗證您的電子郵件地址，再完成帳戶設定。\n"
+  ViewSwitcher:
+    nearby: 檢視附近
+    switcher: 切換工具
+  WelcomeScreen:
+    prompt: 您想要去哪裡？
+  A11yPrefs:
+    accessibilityRoutingByDefault: 預設優先選擇無障礙行程
   AddPlaceButton:
     addPlace: 新增地點
     needOriginDestination: 定義起點/目的地以新增中間地點
@@ -165,23 +482,6 @@ components:
   AdvancedOptions:
     bannedRoutes: 選取禁止的路線……
     preferredRoutes: 選取首選路線……
-  AfterSignInScreen:
-    mainTitle: 正在重新導向……
-    message: 如果頁面未在幾秒鐘後載入，請<redirectLink>按一下這裡</redirectLink>。
-  AppMenu:
-    callHistory: 通話記錄
-    closeMenu: 關閉功能表
-    fieldTrip: 實地考察
-    mailables: 可郵寄
-    openMenu: 開啟功能表
-    skipNavigation: 跳過導航
-  BackToTripPlanner:
-    backToTripPlanner: 返回行程規劃器
-  BatchResultsScreen:
-    expandMap: 展開地圖
-    showResults: 顯示結果
-  BatchRoutingPanel:
-    shortTitle: 規劃行程
   BatchSearchScreen:
     header: 規劃您的行程
     modeSelectorLabel: 選取出行模式
@@ -191,91 +491,35 @@ components:
     origin: 起點
     planTripTooltip: 規劃行程
     validationMessage: 請定義以下欄位以規劃行程：{issues}
-  BeforeSignInScreen:
-    mainTitle: 登入中
-    message: |
-      您必須登入才能存取此頁面。我們正在將您重新導向到登入頁面，請稍候……
   CallTakerPanel:
     advancedOptions: 進階選項
     groupSize: 群組大小：
     intermediateDestination: 輸入中間目的地
-  DateTimeOptions:
-    arriveBy: 最晚抵達時間
-    departAt: 出發時間
-    now: 現在
-  DateTimePreview:
-    arriveAt: "{arriveTime, time, short}抵達"
-    dayLastWeek: 上{formattedDayOfWeek}
-    departAt: "{departTime, time, short}出發"
-    editDepartOrArrival: 編輯出發或抵達時間
-    leaveNow: 現在出發
   DateTimeScreen:
     header: 設定日期/時間
-  DefaultItinerary:
-    clickDetails: 按一下以檢視詳細資料
-    multiModeSummary: "{accessMode} + {transitMode}"
-    nonTransit: 替代選項
   DeleteUser:
     deleteMyAccount: 刪除我的帳戶
   ErrorMessage:
     header: 無法規劃行程
     warning: 警告
-  ExistingAccountDisplay:
-    a11y: 可到達性
-    mainTitle: 我的設定
-    notifications: 通知
-    places: 最愛的地點
-    terms: 條款
-  FavoritePlaceList:
-    addAnotherPlace: 新增其他地點
-    description: 新增您經常使用的地點，以節省規劃行程的時間：
-    editThisPlace: 編輯此地點
-    setAddressForPlaceType: 設定您的{placeType}地址
-  FavoritePlaceScreen:
-    addNewPlace: 新增地點
-    editPlace: 編輯{placeName}
-    editPlaceGeneric: 編輯地點
-    invalidAddress: 請為此地點設定位置。
-    invalidName: 請為此地點輸入名稱。
-    nameAlreadyUsed: 您已經對其他地點使用此名稱。請輸入其他名稱。
-    placeNotFound: 找不到地點
-    placeNotFoundDescription: 很抱歉，找不到請求的地點。
   FormNavigationButtons:
     ariaLabel: 表單導航
   ItinerarySummary:
     itineraryDetails: 路線詳細資訊
-    minMaxFare: "{minTotalFare} - {maxTotalFare}"
+    minMaxFare: '{minTotalFare} - {maxTotalFare}'
   LocationSearch:
     enterLocation: 輸入位置
     setDestination: 設定目的地
     setOrigin: 設定起點
-  MapLayers:
-    bike-rental: "{companies}共享自行車"
-    car-rental: 自行車租賃位置
-    micromobility-rental: "{companies}電動滑板車"
-    park-and-ride: 停車轉乘位置
-    satellite: 衛星
-    shared-vehicles: 共享車輛
-    stops: 公共交通車站
-    streets: 街道
   MapillaryFrame:
     title: 街道圖像
-  MetroUI:
-    arriveAt: 您已抵達目的地
-    itineraryDescription: "{time}預定行程，使用{routes}"
-    leaveAt: 您出發
-    multipleOptions: 多個選項
-    orAlternatives: 或相同方向的其他路線
-    originallyScheduledTime: (原定 {originalTime})
-    singleModeItineraryDescription: "{time} {mode} 路線"
-    timeWalking: 步行{time}
   MobileOptions:
     header: 設定搜尋選項
   NarrativeItinerariesHeader:
     changeSortDir: 變更排序方向
     howToFindResults: 要檢視結果，請參閱下方「找到的預定行程」標題。
-    itinerariesFound: "{itineraryNum}個預定行程已找到"
-    numIssues: "{issueNum}個問題"
+    itinerariesFound: '{itineraryNum}個預定行程已找到'
+    numIssues: '{issueNum}個問題'
     resultsSortedBy: 行程結果目前依{sortSelected}排序。如需變更結果的排序方式，請使用下方「排序結果」按鈕。
     searching: 正在尋找您的選項……
     selectArrivalTime: 抵達時間
@@ -293,12 +537,12 @@ components:
     signOut: 登出
   NearbyView:
     bikeRentalStation: 自行車租車站
-    bikesAvailable: "{bikesAvailable}輛自行車可用"
-    companyBicycle: "{company} 自行車"
-    companyScooter: "{company} 滑板車"
+    bikesAvailable: '{bikesAvailable}輛自行車可用'
+    companyBicycle: '{company} 自行車'
+    companyScooter: '{company} 滑板車'
     error: 載入鄰近設施時發生錯誤。
     header: 檢視附近
-    spacesAvailable: "{spacesAvailable} 有未佔用的空間"
+    spacesAvailable: '{spacesAvailable} 有未佔用的空間'
   NewAccountWizard:
     createNewAccount: 建立新帳戶
     finish: 帳戶設定完成！
@@ -309,113 +553,24 @@ components:
     description: 您要求的內容無法使用。
     header: 找不到內容
   NotificationPrefsPane:
-    devicesRegistered: "{count}個裝置 已註冊"
+    devicesRegistered: '{count}個裝置 已註冊'
     noDeviceForPush: 使用行動應用程式註冊您的裝置以存取推播通知。
     notificationChannelPrompt: 透過以下方式接收有關您已儲存之行程的通知：
-  OTP2ErrorRenderer:
-    LOCATION_NOT_FOUND:
-      body: "{inputFields} 地點 未鄰近任何街道。"
-      header: 地點無法到達
-    NO_STOPS_IN_RANGE:
-      body: "{inputFields} 地點 未鄰近任何公共交通車站。"
-      header: 範圍內無車站
-    NO_TRANSIT_CONNECTION:
-      body: 在所選服務日當天使用所選車輛類型進行搜尋後，在您的出發地和目的地之間找不到公共交通連接路線。
-      header: 無公共交通連接路線
-    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
-      body: 找到一個公共交通連接路線，但此路線超出搜尋視窗範圍，請使用您所選擇的車輛類型試著調整您的搜尋視窗。
-      header: 搜尋視窗內無公共交通連接路線
-    OUTSIDE_BOUNDS:
-      body: "{inputFields} 地點 不在行程規劃器的範圍內。"
-      header: 地點超出範圍
-    OUTSIDE_SERVICE_PERIOD:
-      body: 指定的日期超出目前載入行程規劃器中的資料範圍。
-      header: 超出服務期間
-    SYSTEM_ERROR:
-      body: 搜尋時發生不明錯誤。
-      header: 行程規劃器失敗
-    WALKING_BETTER_THAN_TRANSIT:
-      body: 在行程中避開公共交通路線會比採用公共交通路線更加快速。
-      header: 公共交通工具並非完成此行程的最快方式
-    inputFields:
-      FROM: 起點
-      TO: 目的地
-  PhoneNumberEditor:
-    changeNumber: 變更號碼
-    invalidCode: 請輸入6位數的驗證碼。
-    invalidPhone: 請輸入有效的電話號碼。
-    pending: 待處理
-    phoneNumberSubmitted: 已順利提交電話號碼 {phoneNumber}。
-    phoneNumberVerified: 已順利驗證電話號碼 {phoneNumber} 。
-    placeholder: 輸入您的電話號碼
-    prompt: 輸入您用來接收簡訊通知的電話號碼：
-    requestNewCode: 要求新代碼
-    sendVerificationText: 傳送驗證簡訊
-    smsConsent: |
-      一旦提供您的電話號碼，即表示您同意接收驗證和行程監控簡訊。您的行動電信商可能會收取額外費用。
-    verificationCode: 驗證碼：
-    verificationInstructions: |
-      請查看您手機的簡訊應用程式是否收到含有驗證碼的簡訊，並在下方輸入該驗證碼 (驗證碼將在10分鐘後失效)。
-    verified: 已驗證
-    verify: 驗證
   Place:
     deleteThisPlace: 刪除此地點
-    enterAlert: |
-      請在表單內輸入起點/目的地 (或按一下地圖來設定)，然後按一下產生的標記以設定為{placeType}位置。
+    enterAlert: "請在表單內輸入起點/目的地 (或按一下地圖來設定)，然後按一下產生的標記以設定為{placeType}位置。\n"
     viewStop: 檢視車站
-  PlaceEditor:
-    addressPrompt: 地址：
-    genericLocationPlaceholder: 搜尋位置
-    locationPlaceholder: 搜尋{placeName}位置
-    locationTypePrompt: 地點類型：
-    nameExample: 我的咖啡館
-    namePrompt: 定地名：
-  PlanFirstLastButtons:
-    first: 第一個
-    last: 最後一個
-    next: 前進
-    previous: 上一個
-  PlanTripButton:
-    planTrip: 規劃行程
-  PointPopup:
-    zoomToLocation: 縮放到位置
-  PrintLayout:
-    itinerary: 預定行程
-    toggleMap: 切換地圖
   RealtimeAnnotation:
-    delaysShownInResults: |
-      您的行程結果已依據即時資訊調整。在一般情況下，此形成使用以下路線會需要{normalDuration}：{routes}。
+    delaysShownInResults: "您的行程結果已依據即時資訊調整。在一般情況下，此形成使用以下路線會需要{normalDuration}：{routes}。\n"
     serviceUpdate: 服務更新
-  RealtimeStatusLabel:
-    early: 提早{minutes}
-    late: 延後{minutes}
-    onTime: 準時
-    scheduled: 預定
   ResultsError:
     backToSearch: 返回搜尋
-  ResultsHeader:
-    noTripFound: 找不到行程
-    tripsFound: 我們找到了{count} 個選項
-    waiting: 等待中……
   RouteDetails:
-    headsignTo: "{headsign} ({lastStop})"
+    headsignTo: '{headsign} ({lastStop})'
     moreDetails: 更多詳細資訊
     operatedBy: 由{agencyName}營運
     selectADirection: 選取方向……
     stopsTo: 朝向
-  RouteViewer:
-    agencyFilter: 機構篩選
-    allAgencies: 所有機構
-    allModes: 所有模式
-    details: " "
-    findARoute: 尋找路線
-    header: 路線檢視器
-    modeFilter: 模式篩選
-    noFilteredRoutesFound: 沒有路線符合您的篩選條件！
-    openPatternViewer: 檢視預定行程詳細資訊
-    shortTitle: 檢視路線
-    stopsInDirectionOfTravel: 此行駛方向的沿路車站：
-    title: 路線檢視器
   SaveTripButton:
     cantSaveText: 無法儲存
     cantSaveTooltip: 僅能監控包括公共交通且沒有租賃或叫車服務的預定行程。
@@ -429,18 +584,10 @@ components:
     tripNotFound: 找不到行程
     tripNotFoundDescription: 很抱歉，找不到請求的行程。
     tripNotifications: 行程通知
-  SavedTripList:
-    fromTo: 從 {from} 到 {to}
-    myTrips: 我的行程
-    noSavedTrips: 您沒有儲存的行程
-    noSavedTripsInstructions: 請先從地圖進行行程搜尋。
-    pause: 暫停
-    resume: 繼續
   SavedTripScreen:
     itineraryLoaded: 路線已載入
     itineraryLoading: 正在載入路線
-    tooManyTrips: |
-      您已經達到五個儲存行程上限。請將未使用的行程從已儲存行程中移除，然後再試一次。
+    tooManyTrips: "您已經達到五個儲存行程上限。請將未使用的行程從已儲存行程中移除，然後再試一次。\n"
     tripNameAlreadyUsed: 已經有另一個儲存的行程使用此名稱。請選擇其他名稱。
     tripNameRequired: 請輸入行程名稱。
   SequentialPaneDisplay:
@@ -449,223 +596,44 @@ components:
     body: 您的工作階段將在一分鐘內失效。請按下「Continue Session」(繼續工作階段) 以保留搜尋。
     header: 工作階段即將逾時！
     keepSession: 繼續工作階段
-  SimpleRealtimeAnnotation:
-    usingRealtimeInfo: 此行程使用即時交通和延誤資訊。
-  StackedPaneDisplay:
-    savePreferences: 儲存偏好
-  StopScheduleTable:
-    block: 封鎖
-    departure: 出發
-    destination: 至
-    route: 路線
   StopTimeCell:
     imminentArrival: 到
     realtime: 依據即時資料
     scheduled: 依據排程資料
-  StopViewer:
-    displayStopId: <strong>車站ID</strong>：{stopId}
-    findSchedule: 依日期尋找排程
-    flexStop: 這是彈性車站。車輛將依要求在彈性區域讓乘客上下車。您在此地區可能需要事先呼叫服務。
-    forStop: 針對 {stopName}
-    header: 車站檢視器
-    loadingText: 正在載入車站……
-    noStopsFound: 此日期找不到車站時間。
-    operatorLogoAriaLabel: "{operatorName} 車站："
-    schedule: 時程表
-    timezoneWarning: 出發時間是以{timezoneCode}顯示。
-    titleBarStopId: 車站{stopId}
-    viewNearby: 檢視附近
-    viewSchedule: 檢視時程
-    zoomToStop: 縮放到車站
-  SubNav:
-    languageSelector: 選取語言
-    languages: 語言
-    myAccount: 我的帳戶
-    selectALanguage: 選取語言
-    settings: 設定
-    trips: 行程
-    userMenu: 設定檔選項
-  SwitchButton:
-    defaultContent: 切換
-    switchLocations: 切換位置
-  TermsOfUsePane:
-    confirmDeletionPrompt: |
-      如果移除您對儲存歷史行程的同意，將導致系統刪除您的行程記錄。確定要繼續嗎？
-    mustAgreeToTerms: 您必須同意服務條款才能繼續。
-    termsOfServiceStatement: |
-      我確認我已年滿18歲，且我以閱讀並同意使用行程規劃器的<termsOfUseLink>服務條款</termsOfUseLink >。
-    termsOfStorageStatement: >
-      選擇性：我同意行程規劃器儲存我的歷史規劃行程，以改善我所在地區的公共交通服務。<termsOfStorageLink>更多資訊……</termsOfStorageLink>
-  TransitVehicleOverlay:
-    in_transit_to: 下一個車站：{stop}
-    incoming_at: 即將抵達：{stop}
-    stopped_at: 車門將在{stop}開啟
-    travelingAt: 以{milesPerHour}前進
-    vehicleName: 車輛{vehicleNumber}
-  TripBasicsPane:
-    checkingItineraryExistence: 正在檢查一週中每一天是否存在預定行程……
-    tripDaysPrompt: 您在哪些日子使用此行程？
-    tripIsAvailableOnDaysIndicated: 您的行程可在上方指明的週間日期使用。
-    tripNamePrompt: 請為此行程提供名稱：
-    tripNotAvailableOnDay: 行程無法在{repeatedDay}使用
-    unsavedChangesExistingTrip: 您尚未儲存行程。如果離開，變更就會遺失。
-    unsavedChangesNewTrip: 您尚未儲存新的行程。如果離開，該行程就會遺失。
-  TripNotificationsPane:
-    advancedSettings: 進階設定
-    altRouteRecommended: 建議使用備選方案路線或轉乘點
-    delaysAboveThreshold: 延誤或中斷超過
-    howToReceiveAlerts: |
-      若要針對您儲存的行程接收警示，請在帳戶設定中啟用通知，然後嘗試再次儲存行程。
-    monitorThisTrip: 開始前先監控此行程：
-    notificationsTurnedOff: 您的帳戶已關閉通知。
-    notifyViaChannelWhen: 以下情形時透過{channel}通知我：
-    oneHour: 1小時
-    realtimeAlertFlagged: 我的旅程上有一個即時警示標記
-    timeBefore: "{time} 之前"
   TripStatus:
-    alerts: "{alerts}個警示！"
+    alerts: '{alerts}個警示！'
     deleteTrip: 刪除行程
     planNewTrip: 規劃新行程
-  TripStatusRenderers:
-    active:
-      delayedHeading: 行程正在進行中，而且已延誤{formattedDuration}！
-      description: 行程預計在{arrivalTime, time, short}抵達目的地。
-      earlyHeading: 行程正在進行中，而且將比預期提早{formattedDuration}抵達！
-      noDataHeading: 行程正在進行中 (沒有可用的即時更新)。
-      onTimeHeading: 行程正在進行中，而且大約準時。
-    base:
-      lastCheckedDefaultText: 最後檢查時間未知
-      lastCheckedText: 最後檢查時間：{formattedDuration}前
-      togglePause: 暫停
-      tripIsNotSnoozed: 今天整天延遲
-      tripIsSnoozed: 取消延遲行程分析
-      unknownState: 未知的行程狀態
-      untogglePause: 繼續
-    inactive:
-      description: 繼續行程監控，以查看更新的狀態
-      heading: 行程監控已暫停
-    nextTripNotPossible:
-      description: |
-        行程規劃器無法找到您今天的行程。請嘗試重新規劃預定行程，以尋找替代路線。
-      heading: 行程今天不可行
-    noLongerPossible:
-      description: |
-        行程規劃器無法找到您在週間任一選取日期的行程。請嘗試重新規劃預定行程，以尋找替代路線。
-      heading: 行程已不再可行
-    notCalculated:
-      awaiting: 正在等待計算……
-      description: 請等待行程計算。
-      heading: 行程尚未計算
-    snoozed:
-      description: 取消延遲行程監控，以查看更新的狀態。
-      heading: 已為今天延遲行程監控
-    upcoming:
-      nextTripBegins: >-
-        下一個行程將在{tripDatetime, date, ::eeeee yyyyMMdd}的{tripDatetime, time,
-        short}開始。
-      tripBegins: >-
-        行程預計在{tripStart, time, short}開始。(即時監控將在{monitoringStart, time,
-        short}開始。)
-      tripStartIsDelayed: 行程開始時間延誤${duration}！
-      tripStartIsEarly: 行程開始時間比預期提早${duration}！
-      tripStartsSoonNoUpdates: 行程即將開始 (沒有可用的即時更新)。
-      tripStartsSoonOnTime: 行程即將開始且大約準時。
-  TripSummary:
-    arriveAt: "抵達 "
-    leaveAt: "離開點 "
-  TripSummaryPane:
-    happensOnDays: 發生於：{days}
-    notifications: 預定出發前{leadTimeInMinutes}分鐘
-    notificationsDisabled: 通知已停用
-  TripTools:
-    copyLink: 複製連結
-    header: 行程工具
-    linkCopied: 已複製
-    reportEmailSubject: 回報OpenTripPlanner的問題
-    reportEmailTemplate: |
-      "*** 給使用者的指示 ***
-      此功能可讓您透過電子郵件寄送報告給網站管理員進行審查。
-       請填寫下方的提示部分，並使用您平常的電子郵件程式寄送。
-       
-      *** 請填寫以下內容 *** 
-       
-       遇到的問題：
-       
-       您想要使用的行程類型 (例如步行+公共交通、自行車+公共交通、汽車+公共交通)：
-       
-      *** 技術詳細資訊 ***"
-    reportIssue: 回報問題
-  TripViewer:
-    accessible: 無障礙
-    bicyclesAllowed: 已允許
-    endOfTrip: 行程到此結束
-    header: 行程檢視器
-    listOfRouteStops: 此路線上的車站清單
-    routeHeader: 路線：<strong>{routeShortName}</strong> {routeLongName}
-    startOfTrip: 行程從這裡開始
-    tripDescription: 在 {boardAtStop} 上車，在 {disembarkAtStop} 下車
-    viewStop: 檢視
-  UserAccountScreen:
-    confirmDelete: 您確定要刪除使用者帳戶嗎？一旦刪除，就無法復原。
-    errorUpdatingProfile: 更新設定檔時發生錯誤。
-    fieldUpdated: 此設定已更新。
-    fields:
-      storeTripHistory: 儲存行程歷史紀錄
-    updating: 正在更新
-  UserSettings:
-    confirmDeletion: 您有儲存的最近的搜尋和/或地點。停用儲存最近的地點/搜尋將移除這些項目。是否要繼續？
-    favoriteStops: 最愛的車站
-    myPreferences: 我的偏好
-    mySavedPlaces: 我的已儲存地點 (<manageLink>管理</manageLink>)
-    noFavoriteStops: 沒有最愛的車站
-    recentPlaces: 最近的地點
-    recentSearchSummary: "{mode}，從{from}到{to}"
-    recentSearches: 最近的搜尋
-    rememberSearches: 要記住最近的搜尋/地點嗎？
-    stopId: 車站ID：{stopId}
-    storageDisclaimer: >
-      您選擇儲存的任何偏好、地點或設定都將儲存在您瀏覽器的本機儲存空間。TriMet無法存取有關您住家、工作或任何其他位置的資訊。您可以隨時選擇不要記住最近的地點/搜尋，並清除您的已儲存住家/工作位置和最愛的車站。
   UserTripSettings:
     forgetOptions: 忘記我的選項
     rememberOptions: 記住行程選項
     restoreDefaults: 還原預設值
     restoreMyDefaults: 還原我的預設值
-  VerifyEmailPane:
-    emailIsVerified: 我的電子郵件已驗證！
-    instructions1: |
-      請查看您的電子郵件收件匣，並前往信件中的連結以驗證您的電子郵件地址，再完成帳戶設定。
-    instructions2: 驗證之後，請按下方按鈕以繼續。
-    resendVerification: 重新寄送驗證電子郵件
-  ViewSwitcher:
-    nearby: 檢視附近
-    switcher: 切換工具
-  WelcomeScreen:
-    prompt: 您想要去哪裡？
 config:
   accessModes:
-    bicycle: 公共交通+個人自行車
-    bicycle_rent: 公共交通+共享自行車
     car_hail: 叫車服務
     car_park: 停車轉乘
     micromobility: 公共交通+個人滑板車
     micromobility_rent: 公共交通+電動滑板車租賃
+    bicycle: 公共交通+個人自行車
+    bicycle_rent: 公共交通+共享自行車
   bicycleModes:
     bicycle: 自有自行車
     bicycle_rent: 自行車共享
+  micromobilityModes:
+    micromobility: 自有電動滑板車
+    micromobility_rent: 租賃電動滑板車
   flex:
     both: 請查看預定行程底部以瞭解詳細資訊
     call-ahead: 致電預約
     continuous-dropoff: 與業者溝通車站事宜
     flex-service: 彈性服務
     flex-service-colon: 彈性服務：
-  micromobilityModes:
-    micromobility: 自有電動滑板車
-    micromobility_rent: 租賃電動滑板車
 util:
   state:
+    noTripFoundReason: 指定的最大距離內或指定的時間可能沒有公共交通服務，或是您的起點或終點可能無法安全前往。
+    noTripFoundWithReason: '{noTripFound} {reason}'
     errorPlanningTrip: 規劃行程時發生錯誤。
-    networkUnavailable: "{network}網路目前無法使用。"
+    networkUnavailable: '{network}網路目前無法使用。'
     noTripFound: 找不到行程。
     noTripFoundForMode: 找不到{modes}的行程。
-    noTripFoundReason: 指定的最大距離內或指定的時間可能沒有公共交通服務，或是您的起點或終點可能無法安全前往。
-    noTripFoundWithReason: "{noTripFound} {reason}"
