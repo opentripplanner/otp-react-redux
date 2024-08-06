@@ -14,23 +14,19 @@ import {
   ModeSetting,
   ModeSettingValues
 } from '@opentripplanner/types'
-import { Search } from '@styled-icons/fa-solid/Search'
 import React, { RefObject, useContext } from 'react'
 import styled from 'styled-components'
 
-import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
 import { AppReduxState } from '../../util/state-types'
 import { blue, getBaseColor } from '../util/colors'
 import { ComponentContext } from '../../util/contexts'
 import { generateModeSettingValues } from '../../util/api'
 import PageTitle from '../util/page-title'
-import toast from 'react-hot-toast'
 
 import {
   addCustomSettingLabels,
   addModeButtonIcon,
-  alertUserTripPlan,
   onSettingsUpdate,
   pipe,
   populateSettingWithIcon,
@@ -54,7 +50,7 @@ const PanelOverlay = styled.div`
 const GlobalSettingsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 13px;
   margin-bottom: 2em;
 
   ${styledCheckboxCss}
@@ -75,34 +71,19 @@ const Subheader = styled.h2`
   ${invisibleCss}
 `
 
-const PlanTripButton = styled.button`
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  gap: 0.5em;
+const ReturnToTripPlanButton = styled.button`
   background-color: var(--main-base-color, ${blue[900]});
   border: 0;
-  width: 47%;
+  width: 100%;
   height: 51px;
   color: white;
   font-weight: 700;
-`
-
-const ReturnToTripPlanButton = styled(PlanTripButton)`
-  border: 2px solid var(--main-base-color, ${blue[900]});
-  background-color: white;
-  color: var(--main-base-color, ${blue[900]});
-`
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
   margin-top: 2em;
 `
 
 const DtSelectorContainer = styled.div`
   padding: 1em;
   margin: 2em 0;
-  background-color: ${blue[50]};
 
   .date-time-modal {
     padding: 0;
@@ -123,25 +104,20 @@ const DtSelectorContainer = styled.div`
 
 const AdvancedSettingsPanel = ({
   closeAdvancedSettings,
-  currentQuery,
   enabledModeButtons,
   innerRef,
   modeButtonOptions,
   modeSettingDefinitions,
   modeSettingValues,
-  onPlanTripClick,
-  routingQuery,
   setQueryParam
 }: {
   closeAdvancedSettings: () => void
-  currentQuery: any
   enabledModeButtons: string[]
   innerRef: RefObject<HTMLDivElement>
   modeButtonOptions: ModeButtonDefinition[]
   modeSettingDefinitions: ModeSetting[]
   modeSettingValues: ModeSettingValues
   onPlanTripClick: () => void
-  routingQuery: () => void
   setQueryParam: (evt: any) => void
 }): JSX.Element => {
   const baseColor = getBaseColor()
@@ -157,16 +133,6 @@ const AdvancedSettingsPanel = ({
 
   // @ts-expect-error Context not typed
   const { ModeIcon } = useContext(ComponentContext)
-
-  const planTrip = () => {
-    alertUserTripPlan(intl, currentQuery, onPlanTripClick, routingQuery)
-    closeAdvancedSettings()
-  }
-
-  const closeAndAnnounce = () => {
-    closeAdvancedSettings()
-    toast.success(intl.formatMessage({ id: 'actions.user.preferencesSaved' }))
-  }
 
   const processSettings = (settings: ModeSetting[]) =>
     settings.map(
@@ -206,7 +172,7 @@ const AdvancedSettingsPanel = ({
         <h1 className="header-text">{headerText}</h1>
         <CloseButton
           aria-label={closeButtonText}
-          onClick={closeAndAnnounce}
+          onClick={closeAdvancedSettings}
           title={closeButtonText}
         >
           <Close size={22} />
@@ -239,15 +205,9 @@ const AdvancedSettingsPanel = ({
           onSettingsUpdate(setQueryParam)
         )}
       />
-      <ButtonContainer>
-        <ReturnToTripPlanButton onClick={closeAndAnnounce}>
-          Back to Trip Plan
-        </ReturnToTripPlanButton>
-        <PlanTripButton onClick={planTrip}>
-          <Search size={18} />
-          <FormattedMessage id="components.BatchSettings.planTripTooltip" />
-        </PlanTripButton>
-      </ButtonContainer>
+      <ReturnToTripPlanButton onClick={closeAdvancedSettings}>
+        Save and return
+      </ReturnToTripPlanButton>
     </PanelOverlay>
   )
 }
@@ -277,7 +237,6 @@ const mapStateToProps = (state: AppReduxState) => {
 }
 
 const mapDispatchToProps = {
-  routingQuery: apiActions.routingQuery,
   setQueryParam: formActions.setQueryParam,
   updateQueryTimeIfLeavingNow: formActions.updateQueryTimeIfLeavingNow
 }
