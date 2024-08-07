@@ -70,7 +70,7 @@ const Card = styled.div`
     }
   }
   div {
-    margin-top: -0px!important;
+    margin-top: -0px !important;
     transform: scale(0.9);
   }
   .route-block-wrapper span {
