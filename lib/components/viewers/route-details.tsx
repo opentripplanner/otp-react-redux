@@ -185,7 +185,7 @@ class RouteDetails extends Component<Props> {
               style={{
                 fontSize: 'inherit',
                 fontWeight: 400,
-                margin: '0 0 10px 8px'
+                margin: '10px 0 10px 8px'
               }}
             >
               <FormattedMessage id="components.RouteViewer.stopsInDirectionOfTravel" />
