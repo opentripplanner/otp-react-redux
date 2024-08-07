@@ -19,6 +19,7 @@ import {
   getVisibleItineraryIndex
 } from '../../util/state'
 import { isDefined } from '../../util/ui'
+import FormattedDuration from '../util/formatted-duration'
 import MetroItineraryRoutes from '../narrative/metro/metro-itinerary-routes'
 
 type ItinWithGeometry = Itinerary & {
@@ -36,6 +37,18 @@ type Props = {
   visible?: boolean
   visibleItinerary?: number
 }
+
+const TimeWrapper = styled.span`
+  align-items: center;
+  background: black;
+  border-radius: 5px;
+  color: white;
+  display: inline-flex;
+  font-weight: 600;
+  justify-content: center;
+  margin-left: 8px;
+  padding: 0px 8px;
+`
 
 const Card = styled.div`
   ${boxShadowCss}
@@ -189,6 +202,9 @@ const ItinerarySummaryOverlay = ({
                     itinerary={mp.itin}
                     LegIcon={LegIcon}
                   />
+                  <TimeWrapper>
+                    <FormattedDuration duration={mp.itin.duration} />
+                  </TimeWrapper>
                 </Card>
               </Marker>
             )
