@@ -46,7 +46,7 @@ const TimeWrapper = styled.span`
   display: inline-flex;
   font-weight: 600;
   justify-content: center;
-  margin-left: 8px;
+  margin-left: 24px;
   padding: 0px 8px;
 `
 
@@ -55,7 +55,7 @@ const Card = styled.div`
 
   background: #fffffffa;
   border-radius: 5px;
-  padding: 6px;
+  padding: 8px;
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -71,6 +71,7 @@ const Card = styled.div`
   }
   div {
     margin-top: -0px!important;
+    transform: scale(0.9);
   }
   .route-block-wrapper span {
     padding: 0px;
@@ -125,7 +126,8 @@ function getUniquePoint(
 
     const selfDistance = distance(point, centerOfLine)
     // maximize distance from all other points while minimizing distance to center of our own line
-    const averageDistance = totalDistance / otherMidpoints.length - selfDistance
+    const averageDistance =
+      1.2 * (totalDistance / otherMidpoints.length) - selfDistance
 
     if (averageDistance > maxDistance) {
       maxDistance = averageDistance
