@@ -45,7 +45,7 @@ const PanelOverlay = styled.div`
   top: 0;
   width: 100%;
   z-index: 100;
-  overflow-y: scroll;
+  overflow-y: auto;
 `
 
 const GlobalSettingsContainer = styled.div`
@@ -92,7 +92,6 @@ const ReturnToTripPlanButton = styled.button`
 `
 
 const DtSelectorContainer = styled.div`
-  padding: 1em;
   margin: 2em 0;
 
   .date-time-modal {

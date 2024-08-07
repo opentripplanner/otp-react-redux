@@ -176,7 +176,7 @@ class BatchRoutingPanel extends Component<Props> {
               >
                 <div
                   ref={this._itinerariesAndUserRef}
-                  style={{ height: '100%', overflowY: 'scroll' }}
+                  style={{ height: '100%', overflowY: 'auto' }}
                 >
                   {!activeSearch && showUserSettings && (
                     <UserSettings
@@ -187,7 +187,7 @@ class BatchRoutingPanel extends Component<Props> {
                     className="desktop-narrative-container"
                     style={{
                       flexGrow: 1,
-                      height: '100%',
+                      height: activeSearch ? '100%' : 'auto',
                       overflowY: 'hidden'
                     }}
                   >
