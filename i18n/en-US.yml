@@ -273,6 +273,7 @@ components:
     park-and-ride: Park & Ride Locations
     satellite: Satellite
     shared-vehicles: Shared Vehicles
+    stations: Transit Stations
     stops: Transit Stops
     streets: Streets
   MapillaryFrame:
