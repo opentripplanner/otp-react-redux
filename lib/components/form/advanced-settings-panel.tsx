@@ -4,6 +4,7 @@ import {
   ModeSettingRenderer,
   populateSettingWithValue
 } from '@opentripplanner/trip-form'
+import { Check } from '@styled-icons/boxicons-regular'
 import { Close } from '@styled-icons/fa-solid'
 import { connect } from 'react-redux'
 import { decodeQueryParams, DelimitedArrayParam } from 'serialize-query-params'
@@ -14,7 +15,7 @@ import {
   ModeSetting,
   ModeSettingValues
 } from '@opentripplanner/types'
-import React, { RefObject, useContext } from 'react'
+import React, { RefObject, useContext, useState } from 'react'
 import styled from 'styled-components'
 
 import * as formActions from '../../actions/form'
@@ -65,6 +66,7 @@ const HeaderContainer = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
+  height: 30px;
 `
 
 const Subheader = styled.h2`
@@ -72,13 +74,21 @@ const Subheader = styled.h2`
 `
 
 const ReturnToTripPlanButton = styled.button`
+  align-items: center;
   background-color: var(--main-base-color, ${blue[900]});
   border: 0;
-  width: 100%;
-  height: 51px;
   color: white;
+  display: flex;
   font-weight: 700;
+  gap: 5px;
+  height: 51px;
+  justify-content: center;
   margin-top: 2em;
+  width: 100%;
+
+  svg {
+    margin-bottom: 7px;
+  }
 `
 
 const DtSelectorContainer = styled.div`
@@ -120,12 +130,14 @@ const AdvancedSettingsPanel = ({
   onPlanTripClick: () => void
   setQueryParam: (evt: any) => void
 }): JSX.Element => {
+  const [closingBySave, setClosingBySave] = useState(false)
+  const [closingByX, setClosingByX] = useState(false)
   const baseColor = getBaseColor()
   const accentColor = baseColor || blue[900]
 
   const intl = useIntl()
   const closeButtonText = intl.formatMessage({
-    id: 'components.BatchSearchScreen.closeAdvancedPreferences'
+    id: 'components.BatchSearchScreen.saveAndReturn'
   })
   const headerText = intl.formatMessage({
     id: 'components.BatchSearchScreen.advancedHeader'
@@ -172,10 +184,13 @@ const AdvancedSettingsPanel = ({
         <h1 className="header-text">{headerText}</h1>
         <CloseButton
           aria-label={closeButtonText}
-          onClick={closeAdvancedSettings}
+          onClick={() => {
+            setClosingByX(true)
+            closeAdvancedSettings()
+          }}
           title={closeButtonText}
         >
-          <Close size={22} />
+          {closingByX ? <Check size={30} /> : <Close size={22} />}
         </CloseButton>
       </HeaderContainer>
       <DtSelectorContainer>
@@ -205,8 +220,20 @@ const AdvancedSettingsPanel = ({
           onSettingsUpdate(setQueryParam)
         )}
       />
-      <ReturnToTripPlanButton onClick={closeAdvancedSettings}>
-        Save and return
+      <ReturnToTripPlanButton
+        onClick={() => {
+          setClosingBySave(true)
+          closeAdvancedSettings()
+        }}
+      >
+        {closingBySave ? (
+          <>
+            <FormattedMessage id="components.BatchSearchScreen.saved" />
+            <Check size={22} />
+          </>
+        ) : (
+          <FormattedMessage id="components.BatchSearchScreen.saveAndReturn" />
+        )}
       </ReturnToTripPlanButton>
     </PanelOverlay>
   )

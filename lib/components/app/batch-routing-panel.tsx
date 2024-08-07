@@ -6,6 +6,7 @@ import React, { Component, FormEvent } from 'react'
 import {
   advancedPanelClassName,
   mainPanelClassName,
+  transitionDelay,
   transitionDuration,
   TransitionStyles
 } from '../form/styled'
@@ -34,7 +35,6 @@ interface Props {
 class BatchRoutingPanel extends Component<Props> {
   state = {
     planTripClicked: false,
-    reverse: false,
     showAdvancedModeSettings: false
   }
 
@@ -80,6 +80,8 @@ class BatchRoutingPanel extends Component<Props> {
           id: 'common.searchForms.click'
         })
 
+    const transitionDurationWithDelay = transitionDuration + transitionDelay
+
     return (
       <ViewerContainer
         className="batch-routing-panel"
@@ -107,7 +109,10 @@ class BatchRoutingPanel extends Component<Props> {
                 <CSSTransition
                   classNames={advancedPanelClassName}
                   nodeRef={this._advancedSettingRef}
-                  timeout={transitionDuration}
+                  timeout={{
+                    enter: transitionDuration,
+                    exit: transitionDurationWithDelay
+                  }}
                 >
                   <AdvancedSettingsPanel
                     closeAdvancedSettings={this.handleCloseAdvanceSettings}
@@ -125,7 +130,7 @@ class BatchRoutingPanel extends Component<Props> {
                     () => this.setState({ showAdvancedModeSettings: true })
                     // eslint-disable-next-line react/jsx-curly-newline
                   }
-                  timeout={transitionDuration}
+                  timeout={transitionDurationWithDelay}
                 >
                   <div ref={this._mainPanelContentRef}>
                     <span className="batch-routing-panel-location-fields">
@@ -167,7 +172,7 @@ class BatchRoutingPanel extends Component<Props> {
               <CSSTransition
                 classNames={mainPanelClassName}
                 nodeRef={this._itinerariesAndUserRef}
-                timeout={transitionDuration}
+                timeout={transitionDurationWithDelay}
               >
                 <div
                   ref={this._itinerariesAndUserRef}

@@ -196,11 +196,12 @@ components:
     shortTitle: Plan Trip
   BatchSearchScreen:
     advancedHeader: Advanced Preferences
-    closeAdvancedPreferences: Close advanced preferences
     header: Plan Your Trip
     modeOptions: Mode Options
     modeSelectorLabel: Select a travel mode
     moreOptions: More options
+    saveAndReturn: Save and return
+    saved: Saved
     tripOptions: Trip Options
   BatchSettings:
     destination: destination
