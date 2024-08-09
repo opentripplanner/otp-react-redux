@@ -220,6 +220,7 @@ const AdvancedSettingsPanel = ({
         )}
       />
       <ReturnToTripPlanButton
+        className="save-settings-button"
         onClick={() => {
           setClosingBySave(true)
           closeAdvancedSettings()
