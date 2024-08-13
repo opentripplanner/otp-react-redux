@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { Dropdown } from '@opentripplanner/building-blocks'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
 import { Stop, TransitOperator } from '@opentripplanner/types'
@@ -16,7 +17,6 @@ import {
   SetViewedStopHandler,
   ViewedRouteObject
 } from '../util/types'
-import { SortResultsDropdown } from '../util/dropdown'
 import { UnstyledButton } from '../util/unstyled-button'
 
 import {
@@ -35,6 +35,17 @@ const PatternSelectButton = styled(UnstyledButton)`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+`
+
+const PatternSelectDropdown = styled(Dropdown)`
+  button {
+    float: right;
+  }
+
+  span,
+  span.caret {
+    color: #333;
   }
 `
 
@@ -149,12 +160,11 @@ class RouteDetails extends Component<Props> {
             <HeadsignSelectLabel htmlFor="headsign-selector-label">
               <FormattedMessage id="components.RouteDetails.stopsTo" />
             </HeadsignSelectLabel>
-            <SortResultsDropdown
+            <PatternSelectDropdown
               id="headsign-selector"
               label={patternSelectLabel}
-              name={patternSelectName}
-              pullRight
               style={{ color: 'black' }}
+              text={patternSelectName}
             >
               {headsigns.map((h: PatternSummary) => (
                 <li key={h.id}>
@@ -166,7 +176,7 @@ class RouteDetails extends Component<Props> {
                   </PatternSelectButton>
                 </li>
               ))}
-            </SortResultsDropdown>
+            </PatternSelectDropdown>
           </PatternContainer>
         )}
         {pattern && (
@@ -175,7 +185,7 @@ class RouteDetails extends Component<Props> {
               style={{
                 fontSize: 'inherit',
                 fontWeight: 400,
-                margin: '0 0 10px 8px'
+                margin: '10px 0 10px 8px'
               }}
             >
               <FormattedMessage id="components.RouteViewer.stopsInDirectionOfTravel" />

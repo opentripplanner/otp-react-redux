@@ -31,6 +31,26 @@ const StyledNav = styled(Nav)`
     margin-left: 5px;
     margin-right: -10px;
   }
+
+  .navBarItem {
+    position: static;
+    & > button {
+      background: transparent;
+      border: none;
+      color: white;
+      padding: 15px;
+      line-height: 20px;
+
+      @media (max-width: 768px) {
+        padding: 10px;
+      }
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.05);
+        color: #ececec;
+      }
+    }
+  }
 `
 
 const NavItemOnLargeScreens = styled(NavbarItem)`
