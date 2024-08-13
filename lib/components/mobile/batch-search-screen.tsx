@@ -60,14 +60,6 @@ class BatchSearchScreen extends Component<Props> {
     this.setState({ planTripClicked: true })
   }
 
-  handleOpenAdvanceSettings = () => {
-    this.setState({ showAdvancedModeSettings: true })
-  }
-
-  handleCloseAdvanceSettings = () => {
-    this.setState({ showAdvancedModeSettings: false })
-  }
-
   render() {
     const { intl } = this.props
     const { planTripClicked, showAdvancedModeSettings } = this.state
@@ -122,7 +114,11 @@ class BatchSearchScreen extends Component<Props> {
                       </div>
                       <BatchSettings
                         onPlanTripClick={this.handlePlanTripClick}
-                        openAdvancedSettings={this.handleOpenAdvanceSettings}
+                        openAdvancedSettings={
+                          () =>
+                            this.setState({ showAdvancedModeSettings: true })
+                          // eslint-disable-next-line react/jsx-curly-newline
+                        }
                       />
                     </div>
                   </CSSTransition>
@@ -134,7 +130,10 @@ class BatchSearchScreen extends Component<Props> {
                     timeout={transitionDuration}
                   >
                     <AdvancedSettingsPanel
-                      closeAdvancedSettings={this.handleCloseAdvanceSettings}
+                      closeAdvancedSettings={
+                        () => this.setState({ showAdvancedModeSettings: false })
+                        // eslint-disable-next-line prettier/prettier
+                      }
                       innerRef={this._advancedSettingRef}
                       onPlanTripClick={this.handlePlanTripClick}
                     />

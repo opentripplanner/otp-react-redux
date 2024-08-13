@@ -61,14 +61,6 @@ class BatchRoutingPanel extends Component<Props> {
     this.setState({ planTripClicked: true })
   }
 
-  handleOpenAdvanceSettings = () => {
-    this.setState({ showAdvancedModeSettings: true })
-  }
-
-  handleCloseAdvanceSettings = () => {
-    this.setState({ showAdvancedModeSettings: false })
-  }
-
   render() {
     const { activeSearch, intl, mobile, showUserSettings } = this.props
     const { planTripClicked } = this.state
@@ -115,7 +107,10 @@ class BatchRoutingPanel extends Component<Props> {
                   }}
                 >
                   <AdvancedSettingsPanel
-                    closeAdvancedSettings={this.handleCloseAdvanceSettings}
+                    closeAdvancedSettings={
+                      () => this.setState({ showAdvancedModeSettings: false })
+                      // eslint-disable-next-line react/jsx-curly-newline
+                    }
                     innerRef={this._advancedSettingRef}
                     onPlanTripClick={this.handlePlanTripClick}
                   />
@@ -160,7 +155,11 @@ class BatchRoutingPanel extends Component<Props> {
                     </span>
                     <BatchSettings
                       onPlanTripClick={this.handlePlanTripClick}
-                      openAdvancedSettings={this.handleOpenAdvanceSettings}
+                      openAdvancedSettings={() =>
+                        this.setState({
+                          showAdvancedModeSettings: true
+                          // eslint-disable-next-line prettier/prettier
+                        })}
                     />
                   </div>
                 </CSSTransition>
