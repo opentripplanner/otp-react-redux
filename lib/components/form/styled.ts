@@ -235,7 +235,7 @@ export const StyledLocationField = styled(LocationField)`
 export const advancedPanelClassName = 'advanced-panel'
 export const mainPanelClassName = 'main-panel'
 export const transitionDuration = prefersReducedMotion ? 0 : 175
-export const transitionDelay = prefersReducedMotion ? 0 : 300
+export const transitionDelay = 300
 
 const wipeOffset = 7
 
