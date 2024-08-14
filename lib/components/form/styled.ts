@@ -240,7 +240,7 @@ export const transitionDelay = 300
 const wipeOffset = 7
 
 const transitionMixin = css`
-  transition: all ${transitionDuration}ms ease-in;
+  transition: all ${transitionDuration}ms ease-in-out;
 `
 
 const wipeOutMixin = (offset: number) => css`
