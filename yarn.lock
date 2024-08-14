@@ -2398,10 +2398,10 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/building-blocks/-/building-blocks-1.1.0.tgz#ef9fe862ce0a3e92c9a6c2c2db749a9a02deebd5"
   integrity sha512-nx7pU1zIZzJcSkCFYyZ7gt+jd0gXj7bjx8rXn1msgF5uLWmtN/70dsmYNEApeA7haC076KOO3B/Jh44YfXG95g==
 
-"@opentripplanner/core-utils@11.4.2-mobility-profile":
-  version "11.4.2-mobility-profile"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.4.2-mobility-profile.tgz#aaee67e54c705bf533fcd143c3e8ed61a7f1f1e3"
-  integrity sha512-OJ0upp86oDpwplVlEFdakLgYNspwTfn03bzYL9vGKl+YRZR6EFcEgHYng/KJEqCiYA06Uz/xZBsc68Rx1BQiNQ==
+"@opentripplanner/core-utils@11.4.3-mobility-profile":
+  version "11.4.3-mobility-profile"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.4.3-mobility-profile.tgz#b1d5675c6c1f85a3454234b720059efa03ad6ed2"
+  integrity sha512-+6IjMwXCUZHNmTLnZZ+u23Awtm2v4DcRVmkyxy8m8Dd5GxB9tMxXBhvvwxuzD2KV6Wf4tk4j+HqiAf8gW0Dfbg==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.0"
