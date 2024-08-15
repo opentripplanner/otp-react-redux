@@ -91,7 +91,6 @@ class Wizard extends Component<Props> {
         }
         this._routeTo(nextId)
       }
-      this._focusHeader()
     } else {
       // Display a toast to acknowledge saved changes
       // (although in reality, changes quietly took effect in previous screens).
@@ -106,7 +105,6 @@ class Wizard extends Component<Props> {
       const prevId = pages[activePaneIndex - 1]
       prevId && this._routeTo(prevId)
     }
-    this._focusHeader()
   }
 
   componentDidMount(): void {
@@ -114,6 +112,12 @@ class Wizard extends Component<Props> {
     this._focusHeader()
     if (activePaneIndex === -1) {
       this._routeTo(pages[0], replace)
+    }
+  }
+
+  componentDidUpdate(prevProps: Readonly<Props>): void {
+    if (prevProps.activePane !== this.props.activePane) {
+      this._focusHeader()
     }
   }
 
