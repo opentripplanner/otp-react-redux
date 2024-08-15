@@ -11662,11 +11662,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -11743,11 +11739,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -12486,11 +12478,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -12567,11 +12555,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -13240,11 +13224,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -13321,11 +13301,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -18057,11 +18033,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -18138,11 +18110,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -18754,11 +18722,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -18835,11 +18799,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -19256,11 +19216,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -19337,11 +19293,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -28209,11 +28161,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -28290,11 +28238,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -29046,11 +28990,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -29127,11 +29067,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -29805,11 +29741,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -29886,11 +29818,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -30502,11 +30430,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -30583,11 +30507,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -37162,11 +37082,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -37243,11 +37159,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -37981,11 +37893,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -38062,11 +37970,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -38678,11 +38582,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -38759,11 +38659,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -45516,11 +45412,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -45597,11 +45489,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -53123,11 +53011,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -53204,11 +53088,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -53872,11 +53752,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -53953,11 +53829,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -54626,11 +54498,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -54707,11 +54575,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -55440,11 +55304,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -55521,11 +55381,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -56189,11 +56045,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -56270,11 +56122,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -56912,11 +56760,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -56993,11 +56837,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -64231,11 +64071,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -64312,11 +64148,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -65055,11 +64887,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -65136,11 +64964,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -65809,11 +65633,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       roundedTop={false}
                                     >
                                       <li
-<<<<<<< HEAD
-                                        className="sc-clhTte ctsdph pattern-row-item"
-=======
-                                        className="sc-lgqlnP fJJsyj"
->>>>>>> dev
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -65890,11 +65710,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             className="departure-times"
                                           >
                                             <ol
-<<<<<<< HEAD
-                                              className="sc-kJFuxL eQoNJh departure-times"
-=======
-                                              className="sc-huZMQ crhfPk"
->>>>>>> dev
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
