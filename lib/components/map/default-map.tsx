@@ -118,6 +118,8 @@ function getLayerName(overlay, config, intl) {
       return intl.formatMessage({ id: 'components.MapLayers.park-and-ride' })
     case 'stops':
       return intl.formatMessage({ id: 'components.MapLayers.stops' })
+    case 'stations':
+      return intl.formatMessage({ id: 'components.MapLayers.stations' })
     case 'rentalVehicles':
       if (overlay.network)
         return getCompanyNames([overlay.network], config, intl)
