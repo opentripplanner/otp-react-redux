@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
+import { MapPin } from '@styled-icons/fa-solid'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { TransitOperator } from '@opentripplanner/types'
 import React, { ComponentType } from 'react'
@@ -54,7 +55,10 @@ const Operator = ({ operator }: { operator?: TransitOperator }) => {
     ) : (
       // If operator exists but logo is missing,
       // we still need to announce the operator name to screen readers.
-      <InvisibleA11yLabel>{operatorLogoAriaLabel}</InvisibleA11yLabel>
+      <>
+        <MapPin />
+        <InvisibleA11yLabel>{operatorLogoAriaLabel}</InvisibleA11yLabel>
+      </>
     )
   }
 }

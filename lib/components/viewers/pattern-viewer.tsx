@@ -78,7 +78,7 @@ const PatternViewer = ({
 
     return (
       <div
-        className="route-viewer"
+        className="route-viewer pattern-viewer"
         style={{
           backgroundColor: routeColor,
           color: textColor,
