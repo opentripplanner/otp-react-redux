@@ -208,6 +208,7 @@ function NearbyView({
       >
         {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
         <div
+          className="nearby-view-card"
           onBlur={onMouseLeave}
           onFocus={() => onMouseEnter(n.place)}
           onMouseEnter={() => onMouseEnter(n.place)}

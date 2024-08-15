@@ -273,6 +273,7 @@ components:
     park-and-ride: Park & Ride Locations
     satellite: Satellite
     shared-vehicles: Shared Vehicles
+    stations: Transit Stations
     stops: Transit Stops
     streets: Streets
   MapillaryFrame:
@@ -280,6 +281,7 @@ components:
   MetroUI:
     arriveAt: You arrive
     itineraryDescription: "{time} itinerary using {routes}"
+    itinerarySummary: from {stopName} | {cost}
     leaveAt: You leave
     multipleOptions: Multiple Options
     orAlternatives: or other routes in the same direction
