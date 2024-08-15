@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
+import { Dropdown } from '@opentripplanner/building-blocks'
 import { GlobeAmericas } from '@styled-icons/fa-solid/GlobeAmericas'
 import { useIntl } from 'react-intl'
 import React from 'react'
 
 import * as uiActions from '../../actions/ui'
-import { Dropdown } from '../util/dropdown'
 import { getLanguageOptions } from '../../util/i18n'
 import { UnstyledButton } from '../util/unstyled-button'
 
@@ -23,11 +23,12 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
   return languageOptions ? (
     <li>
       <Dropdown
+        className="navBarItem"
         id="locale-selector"
         label={intl.formatMessage({ id: 'components.SubNav.selectALanguage' })}
         listLabel={intl.formatMessage({ id: 'components.SubNav.languages' })}
-        name={<GlobeAmericas />}
         style={{ display: 'block ruby' }}
+        text={<GlobeAmericas />}
       >
         {Object.keys(languageOptions).map((locale: string) => (
           <li key={locale} lang={locale}>
