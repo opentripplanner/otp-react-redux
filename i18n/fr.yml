@@ -290,6 +290,7 @@ components:
     park-and-ride: Parcs relais
     satellite: Satellite
     shared-vehicles: Véhicules en partage
+    stations: Arrêts et stations
     stops: Arrêts et stations
     streets: Plan des rues
   MapillaryFrame:
@@ -297,6 +298,7 @@ components:
   MetroUI:
     arriveAt: Vous arrivez à
     itineraryDescription: Trajet de {time} par les lignes {routes}
+    itinerarySummary: Partez à {stopName} | {cost}
     leaveAt: Partez à
     multipleOptions: Plusieurs options
     orAlternatives: ou autres lignes dans la même direction

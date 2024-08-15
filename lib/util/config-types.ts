@@ -228,6 +228,7 @@ export interface MapConfig {
   initLon?: number
   initZoom?: number
   maxZoom?: number
+  navigationControlPosition?: string
   overlays?: SupportedOverlays[]
   views?: MapViewConfig[]
 }
@@ -283,6 +284,7 @@ export interface ItineraryConfig {
   showApproximatePrefixAccessLegs?: boolean
   showFirstResultByDefault?: boolean
   showHeaderText?: boolean
+  showInlineItinerarySummary?: boolean
   showLegDurations?: boolean
   showPlanFirstLastButtons?: boolean
   showRouteFares?: boolean

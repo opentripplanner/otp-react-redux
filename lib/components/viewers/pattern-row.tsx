@@ -80,7 +80,7 @@ const PatternRow = ({
   const routeColor = getRouteColorBasedOnSettings(route.operator, route)
 
   return (
-    <PatternRowItem roundedTop={roundedTop}>
+    <PatternRowItem className="pattern-row-item" roundedTop={roundedTop}>
       {/* header row */}
       <div
         className="header stop-view"
@@ -114,13 +114,13 @@ const PatternRow = ({
         </div>
         {/* next departure preview (only shows up to 3 entries) */}
         {hasStopTimes && (
-          <NextTripPreview>
+          <NextTripPreview className="departure-times">
             {homeTimezone && renderDay(homeTimezone, stopTimes?.[0].serviceDay)}
             {[0, 1, 2].map(
               (index) =>
                 stopTimes?.[index] && (
                   // TODO: use stop time id as index
-                  <li key={index}>
+                  <li className="departure-time" key={index}>
                     <StopTimeCell
                       homeTimezone={homeTimezone}
                       key={index}
