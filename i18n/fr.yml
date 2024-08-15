@@ -290,6 +290,7 @@ components:
     park-and-ride: Parcs relais
     satellite: Satellite
     shared-vehicles: Véhicules en partage
+    stations: Arrêts et stations
     stops: Arrêts et stations
     streets: Plan des rues
   MapillaryFrame:
