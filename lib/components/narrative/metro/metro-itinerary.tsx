@@ -4,6 +4,7 @@ import { FareProductSelector, Itinerary, Leg } from '@opentripplanner/types'
 import {
   FormattedMessage,
   FormattedNumber,
+  FormattedTime,
   injectIntl,
   IntlShape
 } from 'react-intl'
@@ -14,6 +15,7 @@ import styled, { keyframes } from 'styled-components'
 import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
 import { ComponentContext } from '../../../util/contexts'
+import { DARK_TEXT_GREY } from '../../util/colors'
 import { FlexIndicator } from '../default/flex-indicator'
 import { getActiveSearch } from '../../../util/state'
 import { getFare } from '../../../util/itinerary'
@@ -27,7 +29,12 @@ import ItineraryBody from '../line-itin/connected-itinerary-body'
 import NarrativeItinerary from '../narrative-itinerary'
 import SimpleRealtimeAnnotation from '../simple-realtime-annotation'
 
-import { getFlexAttributes } from './attribute-utils'
+import {
+  getFirstTransitLeg,
+  getFirstTransitLegStop,
+  getFlexAttributes
+} from './attribute-utils'
+import DefaultRouteRenderer from './default-route-renderer'
 import DepartureTimesList, {
   SetActiveItineraryHandler
 } from './departure-times-list'
@@ -38,8 +45,8 @@ import RouteBlock from './route-block'
 const ItineraryWrapper = styled.div.attrs((props) => {
   return { 'aria-label': props['aria-label'] }
 })`
-  border-bottom: 0.1ch solid #33333333;
-  color: #333;
+  border-bottom: 0.1ch solid ${DARK_TEXT_GREY}33;
+  color: ${DARK_TEXT_GREY};
   display: grid; /* We don't use grid here, but "block" and "inline" cause problems with Firefox */
   padding: 0;
 `
@@ -252,10 +259,12 @@ class MetroItinerary extends NarrativeItinerary {
       setActiveItinerary,
       setActiveLeg,
       setItineraryView,
+      showInlineItinerarySummary,
       showLegDurations,
       showRealtimeAnnotation
     } = this.props
-    const { SvgIcon } = this.context
+    const { ItineraryPreviewSupplement, RouteRenderer, SvgIcon } = this.context
+    const Route = RouteRenderer || DefaultRouteRenderer
 
     const { isCallAhead, isContinuousDropoff, isFlexItinerary, phone } =
       getFlexAttributes(itinerary)
@@ -306,6 +315,22 @@ class MetroItinerary extends NarrativeItinerary {
       )
     }
 
+    const fareInfo =
+      // Hide the fare information entirely if the defaultFareType isn't specified.
+      transitFare === null || transitFare === undefined || transitFare < 0 ? (
+        <FormattedMessage id="common.itineraryDescriptions.fareUnknown" />
+      ) : (
+        // TODO: re-implement TNC fares for metro UI?
+        <FormattedNumber
+          currency={fareCurrency}
+          currencyDisplay="narrowSymbol"
+          // This isn't a "real" style prop
+          // eslint-disable-next-line react/style-prop-object
+          style="currency"
+          value={transitFare}
+        />
+      )
+
     // Use first leg's agency as a fallback
     return (
       <div
@@ -340,6 +365,12 @@ class MetroItinerary extends NarrativeItinerary {
             {!mini && (
               <ItineraryGrid className="itin-grid" role="group">
                 {/* TODO: a11y: add aria-label to parent element */}
+                {ItineraryPreviewSupplement && (
+                  <ItineraryPreviewSupplement
+                    active={active}
+                    itinerary={itinerary}
+                  />
+                )}
                 <MetroItineraryRoutes
                   expanded={expanded}
                   itinerary={itinerary}
@@ -368,26 +399,10 @@ class MetroItinerary extends NarrativeItinerary {
                       />
                     </SecondaryInfo>
                   )}
-                  {
-                    // Hide the fare information entirely if the defaultFareType isn't specified.
-                    <SecondaryInfo>
-                      {transitFare === null ||
-                      transitFare === undefined ||
-                      transitFare < 0 ? (
-                        <FormattedMessage id="common.itineraryDescriptions.fareUnknown" />
-                      ) : (
-                        // TODO: re-implement TNC fares for metro UI?
-                        <FormattedNumber
-                          currency={fareCurrency}
-                          currencyDisplay="narrowSymbol"
-                          // This isn't a "real" style prop
-                          // eslint-disable-next-line react/style-prop-object
-                          style="currency"
-                          value={transitFare}
-                        />
-                      )}
-                    </SecondaryInfo>
-                  }
+                  {/* If inline summary is enabled, don't show fare in side */}
+                  {showInlineItinerarySummary !== true && (
+                    <SecondaryInfo>{fareInfo}</SecondaryInfo>
+                  )}
                   <SecondaryInfo>
                     <FormattedMessage
                       id="components.MetroUI.timeWalking"
@@ -403,17 +418,51 @@ class MetroItinerary extends NarrativeItinerary {
                   </SecondaryInfo>
                 </ItineraryDetails>
                 <DepartureTimes>
-                  {arrivesAt ? (
-                    <FormattedMessage id="components.MetroUI.arriveAt" />
-                  ) : (
-                    <FormattedMessage id="components.MetroUI.leaveAt" />
-                  )}{' '}
+                  {showInlineItinerarySummary && getFirstTransitLeg(itinerary) && (
+                    <Route
+                      leg={getFirstTransitLeg(itinerary)}
+                      style={{
+                        margin: 0,
+                        marginLeft: -8,
+                        marginRight: -2,
+                        transform: 'scale(50%)'
+                      }}
+                    />
+                  )}
+                  <span className="timeInfo">
+                    {arrivesAt ? (
+                      <FormattedMessage id="components.MetroUI.arriveAt" />
+                    ) : (
+                      <FormattedMessage id="components.MetroUI.leaveAt" />
+                    )}
+                  </span>{' '}
                   <DepartureTimesList
                     expanded={expanded}
                     itinerary={itinerary}
                     setActiveItinerary={setActiveItinerary}
                     showArrivals={arrivesAt}
                   />
+                  {showInlineItinerarySummary && (
+                    <>
+                      {' '}
+                      <FormattedMessage
+                        id="components.MetroUI.itinerarySummary"
+                        values={{
+                          cost: fareInfo,
+                          stopName: getFirstTransitLegStop(itinerary)
+                        }}
+                      />
+                    </>
+                  )}{' '}
+                  {expanded && showInlineItinerarySummary && (
+                    <div style={{ color: '#111' }}>
+                      <FormattedMessage id="components.TripSummary.leaveAt" />
+                      <FormattedTime value={itinerary.startTime} />
+                      <span style={{ marginLeft: '2ch' }}> </span>
+                      <FormattedMessage id="components.TripSummary.arriveAt" />
+                      <FormattedTime value={itinerary.endTime} />
+                    </div>
+                  )}
                 </DepartureTimes>
               </ItineraryGrid>
             )}
@@ -463,6 +512,9 @@ const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
     enableDot: !state.otp.config.itinerary?.disableMetroSeperatorDot,
     // @ts-expect-error TODO: type activeSearch
     pending: activeSearch ? Boolean(activeSearch.pending) : false,
+
+    showInlineItinerarySummary:
+      state.otp.config.itinerary?.showInlineItinerarySummary,
     showLegDurations: state.otp.config.itinerary?.showLegDurations
   }
 }

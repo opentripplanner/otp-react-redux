@@ -87,13 +87,13 @@ common:
     tuesday: mardi
     wednesday: mercredi
   daysOfWeekCompact:
-    friday: ven.
-    monday: lun.
-    saturday: sam.
-    sunday: dim.
-    thursday: jeu.
-    tuesday: mar.
-    wednesday: mer.
+    friday: V
+    monday: L
+    saturday: S
+    sunday: D
+    thursday: J
+    tuesday: M
+    wednesday: M
   daysOfWeekPlural:
     friday: vendredis
     monday: lundis
@@ -158,7 +158,6 @@ common:
     work: lieu de travail
   routing:
     routeAndNumber: Ligne {routeId}
-    routeToHeadsign: Direction {headsign}
   searchForms:
     click: cliquez
     enterDestination: Entrez votre destination ou {mapAction} sur la carte…
@@ -194,40 +193,6 @@ components:
     message: >-
       Si la page ne s'affiche pas après quelques secondes, <redirectLink>cliquez
       ici</redirectLink>.
-  AmenitiesPanel:
-    bikesAtStation: |
-      {companyLength, plural,
-        =0 {vélo à {name}}
-        other {vélos {company} à {name}}
-      }
-    bikesAvailable: |
-      {count, plural,
-        =0 {Aucun vélo disponible}
-        one {# vélo disponible}
-        other {# vélos disponibles}
-      }
-    bikesNearby: |
-      {count, plural,
-        =0 {Aucun vélo partagé {company} à proximité}
-        one {# vélo partagé {company} à proximité}
-        other {# vélos partagés {company} à proximité}
-      }
-    nearbyAmenities: Services à proximité
-    noNearbyBikes: Aucun vélo en location à proximité.
-    noNearbyScooters: Aucune trottinette en location à proximité.
-    noPRLotsFound: Aucun parc relais à proximité.
-    scootersNearby: |
-      {count, plural,
-        =0 {Aucune trottinette {company} à proximité}
-        one {# trottinette {company} à proximité}
-        other {# trottinettes {company} à proximité}
-      }
-    spacesAvailable: |
-      {count, plural,
-        =0 {Aucun emplacement disponible}
-        one {# emplacement disponible}
-        other {# emplacements disponibles}
-      }
   AppMenu:
     callHistory: Historique des appels
     closeMenu: Fermer le menu
@@ -314,9 +279,6 @@ components:
   ItinerarySummary:
     itineraryDetails: Détails du trajet
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
-  LiveStopTimes:
-    autoRefresh: Mise à jour automatique ?
-    refresh: Mettre à jour les prochains passages
   LocationSearch:
     enterLocation: Entrez le lieu
     setDestination: Destination
@@ -328,6 +290,7 @@ components:
     park-and-ride: Parcs relais
     satellite: Satellite
     shared-vehicles: Véhicules en partage
+    stations: Arrêts et stations
     stops: Arrêts et stations
     streets: Plan des rues
   MapillaryFrame:
@@ -335,6 +298,7 @@ components:
   MetroUI:
     arriveAt: Vous arrivez à
     itineraryDescription: Trajet de {time} par les lignes {routes}
+    itinerarySummary: Partez à {stopName} | {cost}
     leaveAt: Partez à
     multipleOptions: Plusieurs options
     orAlternatives: ou autres lignes dans la même direction
@@ -408,6 +372,7 @@ components:
       disponibles}}
     companyBicycle: Vélo {company}
     companyScooter: Trottinette {company}
+    distanceAway: à {localizedDistanceString}
     error: Erreur lors du chargement des services à proximité.
     header: À proximité
     nearbyListIntro: Liste de {count} entités à proximité.
@@ -482,7 +447,7 @@ components:
     requestNewCode: Envoyer un nouveau code
     sendVerificationText: Envoyer le SMS de vérification
     smsConsent: >
-      En donnant votre numéro téléphone, vous acceptez de recevoir des SMS de
+      En donnant votre numéro de téléphone, vous acceptez de recevoir des SMS de
       vérification et de suivi de vos trajets. Frais applicables selon votre
       opérateur téléphonique.
     verificationCode: "Code de vérification :"
@@ -491,6 +456,9 @@ components:
       code ci-dessous (le code expire après 10 minutes).
     verified: Vérifié
     verify: Vérifier
+    verifySms: >-
+      Veuillez effectuer la vérification de votre numéro de téléphone afin de
+      recevoir des notifications par SMS.
   Place:
     deleteThisPlace: Supprimer ce lieu
     enterAlert: >
@@ -528,13 +496,6 @@ components:
     late: retard {minutes}
     onTime: à l'heure
     scheduled: horaire
-  RelatedPanel:
-    hideExtraStops: Masquer les arrêts à proximité
-    showExtraStops: Afficher {count} arrêts à proximité
-  RelatedStopsPanel:
-    noArrivalFound: Aucun passage prévu
-    relatedStops: Arrêts à proximité
-    viewDetails: Détails
   ResultsError:
     backToSearch: Retour à la recherche
   ResultsHeader:
@@ -560,7 +521,6 @@ components:
     shortTitle: Index des lignes
     stopsInDirectionOfTravel: "Arrêts dans cette direction :"
     title: Index des lignes
-    toggleRouteOnMap: Afficher ou masquer la ligne sur la carte
   SaveTripButton:
     cantSaveText: Impossible d'enregistrer
     cantSaveTooltip: >-
@@ -570,7 +530,7 @@ components:
     signInText: Connectez-vous pour enregistrer
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
   SavedTripEditor:
-    deleteSavedTrip: Supprimer le trajet enregistré
+    deleteSavedTrip: Supprimer ce trajet
     editSavedTrip: Modifier un trajet enregistré
     saveNewTrip: Enregistrer un nouveau trajet
     tripInformation: Informations sur le trajet
@@ -626,11 +586,10 @@ components:
     findSchedule: Rechercher les horaires par date
     flexStop: >-
       Cet arrêt fait partie d'une zone 'Flex' et est desservi à la demande. Une
-      réservation préalable peut être exigée pour obtenir la desserte.
+      réservation préalable peut être exigée pour obtenir la desserte.    
     forStop: pour {stopName}
     header: Info arrêt
     loadingText: Chargement de l'arrêt...
-    nextArrivals: Prochains passages
     noStopsFound: Aucun horaire pour la date choisie.
     operatorLogoAriaLabel: "Arrêt {operatorName} :"
     schedule: Horaires
@@ -672,7 +631,8 @@ components:
     vehicleName: Véhicule {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: Vérification du trajet pour chaque jour de la semaine...
-    selectAtLeastOneDay: Veuillez choisir au moins un jour pour effectuer le suivi.
+    onlyOnDate: "{date, date, ::eeeee yyyyMMdd} uniquement"
+    recurringEachWeek: Certains jours chaque semaine
     tripDaysPrompt: Quels jours effectuez-vous ce trajet ?
     tripIsAvailableOnDaysIndicated: Votre trajet est possible les jours indiqués ci-dessus.
     tripNamePrompt: "Saisissez un nom pour ce trajet :"
@@ -735,6 +695,9 @@ components:
         Veuillez patienter pendant que les conditions du trajet sont
         déterminées.
       heading: Conditions du trajet indéterminées
+    past:
+      description: Le jour de ce trajet non-répété est passé.
+      heading: Trajet dans le passé
     snoozed:
       description: Reprenez le suivi pour obtenir des dernières conditions de votre trajet.
       heading: Suivi suspendu jusqu'à demain
@@ -753,11 +716,11 @@ components:
     arriveAt: "Arrivée à "
     leaveAt: "Partez à "
   TripSummaryPane:
-    happensOnDays: "Effectué : <strong>{days}</strong>"
-    notifications: >-
-      Notifications : <strong>{leadTimeInMinutes} mn avant l'heure de départ
-      prévue</strong>
-    notificationsDisabled: "Notifications : <strong>Désactivées</strong>"
+    happensOnDays: "Effectué : {days}"
+    monitoredTripDays: Jours de suivi de ce trajet
+    notifications: "{leadTimeInMinutes} mn avant l'heure de départ prévue"
+    notificationsDisabled: Notifications désactivées
+    timeAndDuration: Heure et durée du trajet
   TripTools:
     copyLink: Copier le lien
     header: Outils

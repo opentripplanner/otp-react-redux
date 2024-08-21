@@ -137,7 +137,6 @@ common:
     work: 工作
   routing:
     routeAndNumber: 路线 {routeId}
-    routeToHeadsign: 到 {headsign}
   searchForms:
     click: 点击
     enterDestination: 输入目的地名称或{mapAction}地图…
@@ -169,36 +168,6 @@ components:
   AfterSignInScreen:
     mainTitle: 重新定向…
     message: 如果几秒钟后页面没有加载, 请 <redirectLink>点击这里</redirectLink>.
-  AmenitiesPanel:
-    bikesAtStation: |
-      {companyLength, plural,
-       =0 {{name} 有辆自行车 }
-       other {{name} 有 {company} 自行车 }
-       }
-    bikesAvailable: |
-      {count, plural,
-       =0 {自行车不可用}
-       other {# 辆自行车可用}
-       }
-    bikesNearby: |
-      {count, plural,
-       =0 {附近没有 {company} 自行车}
-       other {附近有 # 辆 {company} 自行车}
-       }
-    nearbyAmenities: 附近的设施
-    noNearbyBikes: 附近没有发现自行车出租.
-    noNearbyScooters: 附近没有微型交通工具出租.
-    noPRLotsFound: 附近没有Park-and-Ride.
-    scootersNearby: |
-      {count, plural,
-       =0 {附近没有 {company} 电动滑板车}
-       other {附近有 # {company} 电动滑板车}
-       }
-    spacesAvailable: |
-      {count, plural,
-       =0 {没有可用的车位}
-       other {# 个可车位}
-       }
   AppMenu:
     callHistory: 呼叫历史
     closeMenu: 关闭菜单
@@ -276,9 +245,6 @@ components:
   ItinerarySummary:
     itineraryDetails: 行程详情
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
-  LiveStopTimes:
-    autoRefresh: 自动刷新传入的到达?
-    refresh: 刷新到达时间
   LocationSearch:
     enterLocation: 输入位置
     setDestination: 设置目的地
@@ -436,13 +402,6 @@ components:
     late: 迟到 {minutes}
     onTime: 准时
     scheduled: 预定的
-  RelatedPanel:
-    hideExtraStops: 隐藏额外车站
-    showExtraStops: 显示 {count}个额外的车站
-  RelatedStopsPanel:
-    noArrivalFound: 未发现抵达者
-    relatedStops: 相关车站
-    viewDetails: 查看详情
   ResultsError:
     backToSearch: 返回搜索
   ResultsHeader:
@@ -468,7 +427,6 @@ components:
     shortTitle: 查看路线
     stopsInDirectionOfTravel: 行程此方向上的公车站：
     title: 路线查看器
-    toggleRouteOnMap: 在地图上切换路线
   SaveTripButton:
     cantSaveText: 无法保存
     cantSaveTooltip: 只有包括交通的行程而没有租车或叫车的行程可以被监控.
@@ -522,7 +480,6 @@ components:
     forStop: 为 {stopName}
     header: 车站查看器
     loadingText: 加载车站信息…
-    nextArrivals: 下一个到达点
     noStopsFound: 未找到该日期的车站时间.
     operatorLogoAriaLabel: "公交车站 {operatorName}:"
     schedule: 时刻表
@@ -560,7 +517,6 @@ components:
     vehicleName: 车辆 {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: 检查一周中每一天的行程存在…
-    selectAtLeastOneDay: 请至少选择一天进行监测.
     tripDaysPrompt: 您这次行程是在哪天进行的?
     tripIsAvailableOnDaysIndicated: 您的行程可以在上述一周的日子里进行.
     tripNamePrompt: "请为这次旅行提供一个名称:"
@@ -631,9 +587,9 @@ components:
     arriveAt: "到达 "
     leaveAt: "离开 "
   TripSummaryPane:
-    happensOnDays: "发生在: <strong>{days}</strong>"
-    notifications: "通知: <strong>预定出发前 {leadTimeInMinutes} </strong>"
-    notificationsDisabled: "通知: <strong>已禁用</strong>"
+    happensOnDays: "发生在: {days}"
+    notifications: 预定出发前 {leadTimeInMinutes}
+    notificationsDisabled: "通知: 已禁用"
   TripTools:
     copyLink: 复制链接
     header: 工具

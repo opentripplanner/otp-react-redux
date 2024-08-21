@@ -1,10 +1,13 @@
+import { grey } from '../util/colors'
 import styled, { css } from 'styled-components'
 
 export const buttonPixels = 51
 
 export const activeCss = css`
-  /* Make elements slightly darker on hover. */
-  filter: brightness(90%);
+  /* Make elements internal content slightly transparent on hover. */
+  & > * {
+    opacity: 90%;
+  }
 `
 
 const buttonTransitionCss = css`
@@ -25,7 +28,7 @@ export const buttonCss = css`
   ${buttonTransitionCss}
 
   &:active {
-    background: #e5e5e5;
+    background: ${grey[50]};
   }
 
   &:hover {

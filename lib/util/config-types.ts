@@ -68,7 +68,13 @@ interface ApiKeyConfig {
 export type BugsnagConfig = ApiKeyConfig
 export type MapillaryConfig = ApiKeyConfig
 
-export type NearbyViewConfig = { hideEmptyStops?: boolean }
+export type NearbyViewConfig = {
+  alwaysShowLongName?: boolean
+  hideEmptyStops?: boolean
+  radius?: number
+  showShadowDotOnMapDrag?: boolean
+  useRouteViewSort?: boolean
+}
 
 /** TODO: Language settings */
 export type LanguageConfig = Record<string, any>
@@ -87,8 +93,6 @@ export interface Auth0Config {
 /** Local persistence setting */
 export interface LocalPersistenceConfig {
   strategy: 'localStorage'
-  // eslint-disable-next-line camelcase
-  terms_of_storage?: boolean
 }
 
 /** OTP Middleware (Personas) settings */
@@ -103,14 +107,27 @@ export interface MiddlewarePersistenceConfig {
   strategy: 'otp_middleware'
 }
 
+/**
+ * Enum to describe the layout state of checkboxes.
+ */
+export enum CheckboxDefaultState {
+  /** Checkbox is hidden and initially checked */
+  HIDDEN_CHECKED = 'hidden-checked',
+  /** Checkbox is hidden and initially unchecked */
+  HIDDEN_UNCHECKED = 'hidden-unchecked',
+  /** Checkbox is visible and initially checked */
+  VISIBLE_CHECKED = 'visible-checked',
+  /** Checkbox is visible and initially unchecked */
+  VISIBLE_UNCHECKED = 'visible-unchecked'
+}
+
 /** General persistence settings */
 export type PersistenceConfig = (
   | LocalPersistenceConfig
   | MiddlewarePersistenceConfig
 ) & {
   enabled?: boolean
-  // eslint-disable-next-line camelcase
-  terms_of_storage?: boolean
+  termsOfStorageDefault?: CheckboxDefaultState
 }
 
 /** Popup target settings */
@@ -205,11 +222,13 @@ export type SupportedOverlays =
   | MapTileLayerConfig
 
 export interface MapConfig {
+  autoFlyOnTripFormUpdate?: boolean
   baseLayers?: BaseLayerConfig[]
   initLat?: number
   initLon?: number
   initZoom?: number
   maxZoom?: number
+  navigationControlPosition?: string
   overlays?: SupportedOverlays[]
   views?: MapViewConfig[]
 }
@@ -243,11 +262,13 @@ export interface ItineraryCostWeights {
 }
 
 export interface ItineraryConfig {
+  allowUserAlertCollapsing?: boolean
   costs?: ItineraryCostConfig
   customBatchUiBackground?: boolean
   defaultFareType?: FareProductSelector
   defaultSort?: ItinerarySortOption
   disableMetroSeperatorDot?: true
+  exclusiveErrors?: string[]
   fareDetailsLayout?: FareTableLayout[]
   fareKeyNameMap?: Record<string, string>
   fillModeIcons?: boolean
@@ -259,8 +280,11 @@ export interface ItineraryConfig {
   onlyShowCountdownForRealtime?: boolean
   previewOverlay?: boolean
   renderRouteNamesInBlocks?: boolean
+  showAllWalkLegs?: boolean
+  showApproximatePrefixAccessLegs?: boolean
   showFirstResultByDefault?: boolean
   showHeaderText?: boolean
+  showInlineItinerarySummary?: boolean
   showLegDurations?: boolean
   showPlanFirstLastButtons?: boolean
   showRouteFares?: boolean
@@ -297,6 +321,7 @@ export interface ModesConfig {
   }
   modeButtons?: ModeButtonDefinition[]
   modeSettingDefinitions?: ModeSetting[]
+  numItineraries?: number
   transitModes: TransitModeConfig[]
 }
 
@@ -315,6 +340,8 @@ export interface TransitOperatorConfig extends TransitOperator {
 export interface RouteViewerConfig {
   /** Whether to hide the route linear shape inside a flex zone of that route. */
   hideRouteShapesWithinFlexZones?: boolean
+  /** Remove vehicles from the map if they haven't sent an update in a number of seconds */
+  maxRealtimeVehicleAge?: number
   /** Disable vehicle highlight if necessary (e.g. custom or inverted icons) */
   vehicleIconHighlight?: boolean
   /** Customize vehicle icon padding (the default iconPadding is 2px in otp-ui) */
@@ -323,21 +350,10 @@ export interface RouteViewerConfig {
   vehiclePositionRefreshSeconds?: number
 }
 
-/** Stop Viewer Config */
-export interface StopViewerConfig {
-  /** Radius (in meters) for searching nearby stops, rental vehicles, park and rides etc. */
-  nearbyRadius?: number
-  /** The max. departures to show for each trip pattern in the Next Arrivals view */
-  numberOfDepartures?: number
+/** Stop Schedule Viewer Config */
+export interface StopScheduleViewerConfig {
   /** Whether to display block IDs with each departure in the schedule view. */
   showBlockIds?: boolean
-  /**
-   * Time window, in seconds, in which to search for next arrivals,
-   * so that, for example, if it is Friday and a route does
-   * not begin service again until Monday, we are showing its next
-   * departure and it is not entirely excluded from display.
-   */
-  timeRange?: number
 }
 
 /** The main application configuration object */
@@ -379,7 +395,7 @@ export interface AppConfig {
   sessionTimeoutSeconds?: number
   /** Whether to show the x minutes late/early in the itinerary body */
   showScheduleDeviation?: boolean
-  stopViewer?: StopViewerConfig
+  stopViewer?: StopScheduleViewerConfig
   /** Externally hosted terms of service URL */
   termsOfServiceLink?: string
   /** App title shown in the browser title bar. */

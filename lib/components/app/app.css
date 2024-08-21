@@ -33,12 +33,14 @@
 
 /* Don't show route viewer link in the app menu on desktop as it is in the navbar */
 .app-menu .app-menu-route-viewer-link,
+.app-menu .app-menu-nearby-viewer-link,
 .app-menu .app-menu-trip-planner-link,
 .app-menu #app-menu-locale-selector {
   display: none;
 }
 @media (max-width: 768px) {
   .app-menu .app-menu-route-viewer-link,
+  .app-menu .app-menu-nearby-viewer-link,
   .app-menu .app-menu-trip-planner-link,
   .app-menu #app-menu-locale-selector {
     display: flex;
@@ -72,21 +74,25 @@
   display: flex;
   justify-content: center;
 }
-.view-switcher button.btn-link {
+.view-switcher a {
   color: rgba(255, 255, 255, 0.85);
   border-radius: 15px;
+  font-size: 14px;
+  padding: 6px 12px;
+  user-select: none;
 }
-.view-switcher button.btn-link.active {
+.view-switcher a.active {
   background: rgba(0, 0, 0, 0.15);
   font-weight: 600;
 }
-.view-switcher button.btn-link:hover,
-.view-switcher button.btn-link:focus {
-  text-decoration: none;
+.view-switcher a:hover,
+.view-switcher a:focus {
   border-radius: 15px;
+  cursor: pointer;
+  text-decoration: none;
 }
 
-.view-switcher button.btn-link:hover {
+.view-switcher a:hover {
   color: #fff;
 }
 

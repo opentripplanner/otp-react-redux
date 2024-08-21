@@ -3,11 +3,12 @@ import { Itinerary, Leg } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 
+export const getFirstTransitLeg = (itinerary: Itinerary): Leg | undefined =>
+  itinerary.legs?.find((leg: Leg) => leg?.from?.vertexType === 'TRANSIT')
+
 export const getFirstTransitLegStop = (
   itinerary: Itinerary
-): string | undefined =>
-  itinerary.legs?.find((leg: Leg) => leg?.from?.vertexType === 'TRANSIT')?.from
-    ?.name
+): string | undefined => getFirstTransitLeg(itinerary)?.from?.name
 
 export const getFlexAttributes = (
   itinerary: Itinerary
@@ -43,7 +44,7 @@ export const getFlexAttributes = (
   }
 }
 
-export const removeInsignifigantWalkLegs = (leg: Leg): boolean =>
+export const removeInsignificantWalkLegs = (leg: Leg): boolean =>
   // Return true only for non walk-legs or walking legs over 400 meters
   // TODO: Make the 400 meters configurable?
   leg.mode !== 'WALK' || leg.distance > 400

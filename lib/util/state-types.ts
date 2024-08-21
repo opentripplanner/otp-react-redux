@@ -17,7 +17,12 @@ export interface OtpState {
       type: string
     }
   }
+  location: any
   overlay: any
+  serviceTimeRange?: {
+    end: number
+    start: number
+  }
   transitIndex: any
   // TODO: Add other OTP states
   ui: any // TODO
@@ -25,6 +30,7 @@ export interface OtpState {
 
 export interface UserState {
   itineraryExistence?: ItineraryExistence
+  localUser?: any
   loggedInUser: User
   loggedInUserMonitoredTrips?: MonitoredTrip[]
   // TODO: Add other user states.

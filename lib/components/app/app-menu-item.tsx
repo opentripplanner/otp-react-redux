@@ -1,6 +1,10 @@
 import { ChevronDown } from '@styled-icons/fa-solid/ChevronDown'
 import { ChevronUp } from '@styled-icons/fa-solid/ChevronUp'
+
+import { getEntryRelativeTo } from '../util/get-entry-relative-to'
 import AnimateHeight from 'react-animate-height'
+import Link from '../util/link'
+
 import React, { Component, HTMLAttributes, KeyboardEvent } from 'react'
 
 interface Props extends HTMLAttributes<HTMLElement> {
@@ -9,25 +13,14 @@ interface Props extends HTMLAttributes<HTMLElement> {
   onClick?: () => void
   subItems?: JSX.Element[]
   text: JSX.Element | string
+  to?: string
 }
 
 interface State {
   isExpanded: boolean
 }
-
-/**
- * Helper method to find the element within the app menu at the given offset
- * (e.g. previous or next) relative to the specified element.
- * The query is limited to the app menu so that arrow navigation is contained within
- * (tab navigation is not restricted).
- */
-function getEntryRelativeTo(element: EventTarget, offset: 1 | -1): HTMLElement {
-  const entries = Array.from(
-    document.querySelectorAll('.app-menu a, .app-menu button')
-  )
-  const elementIndex = entries.indexOf(element as HTMLElement)
-  return entries[elementIndex + offset] as HTMLElement
-}
+// Argument for document.querySelectorAll to target focusable elements.
+const queryId = '.app-menu a, .app-menu button'
 
 /**
  * Renders a single entry from the hamburger menu.
@@ -45,13 +38,13 @@ export default class AppMenuItem extends Component<Props, State> {
         subItems && this.setState({ isExpanded: false })
         break
       case 'ArrowUp':
-        getEntryRelativeTo(element, -1)?.focus()
+        getEntryRelativeTo(queryId, element, -1)?.focus()
         break
       case 'ArrowRight':
         subItems && this.setState({ isExpanded: true })
         break
       case 'ArrowDown':
-        getEntryRelativeTo(element, 1)?.focus()
+        getEntryRelativeTo(queryId, element, 1)?.focus()
         break
       case ' ':
         // For links (tagName "A" uppercase), trigger link on space for consistency with buttons.
@@ -70,7 +63,7 @@ export default class AppMenuItem extends Component<Props, State> {
     const { isExpanded } = this.state
     const hasHref = !!otherProps.href
     const isAbsolute = otherProps.href?.startsWith('http')
-    const Element = hasHref ? 'a' : 'button'
+    const Element = hasHref ? 'a' : otherProps.to ? Link : 'button'
     const containerId = `${id}-container`
     return (
       <>

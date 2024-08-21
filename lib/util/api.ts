@@ -1,5 +1,15 @@
 import { convertModeSettingValue } from '@opentripplanner/trip-form'
 import { ModeSetting, ModeSettingValues } from '@opentripplanner/types'
+import { toDate } from 'date-fns-tz'
+import coreUtils from '@opentripplanner/core-utils'
+import qs from 'qs'
+
+import { AppConfig } from './config-types'
+
+const { getUrlParams } = coreUtils.query
+const { getCurrentDate, getCurrentTime } = coreUtils.time
+
+export const SERVICE_BREAK = '03:30'
 
 /**
  * Generates a record of all mode setting keys and their values from (in order of priority):
@@ -27,4 +37,45 @@ export const generateModeSettingValues = (
   )
 
   return modeSettingValues
+}
+
+/** Gets a zoned time object for 03:30 am for the specified date and timezone. */
+export function getServiceStart(
+  date: string | number | Date,
+  timeZone: string
+): Date {
+  return toDate(`${date} ${SERVICE_BREAK}`, { timeZone })
+}
+
+/**
+ * Helper function to add/modify parameters from the URL bar
+ * while preserving the other ones.
+ */
+export function combineQueryParams(
+  addedParams?: Record<string, unknown>
+): string {
+  const search = {
+    ...getUrlParams(),
+    ...addedParams
+  }
+  return qs.stringify(search, { arrayFormat: 'repeat' })
+}
+
+/** Get the default number of itineraries to display for a search */
+export function getDefaultNumItineraries(config: AppConfig): number {
+  return config.modes?.numItineraries || 3 // instead of 7 per apiV2 if no limit defined in config
+}
+
+/** Gets the default URL params when reinitializing search */
+export function getDefaultQuery(config: AppConfig) {
+  return {
+    date: getCurrentDate(),
+    departArrive: 'NOW',
+    // TODO: Rework the crash-related params below so we can remove them.
+    intermediatePlaces: [], // required to avoid crash
+    mode: 'WALK,TRANSIT', // obsolete but required to avoid crash
+    numItineraries: getDefaultNumItineraries(config),
+    routingType: 'ITINERARY', // obsolete but required to avoid crash
+    time: getCurrentTime()
+  }
 }

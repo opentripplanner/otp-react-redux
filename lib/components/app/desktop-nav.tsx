@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { isMobile } from '@opentripplanner/core-utils/lib/ui'
 import { Nav, Navbar } from 'react-bootstrap'
 import { useIntl } from 'react-intl'
 import React from 'react'
@@ -29,6 +30,26 @@ const StyledNav = styled(Nav)`
   & .caret {
     margin-left: 5px;
     margin-right: -10px;
+  }
+
+  .navBarItem {
+    position: static;
+    & > button {
+      background: transparent;
+      border: none;
+      color: white;
+      padding: 15px;
+      line-height: 20px;
+
+      @media (max-width: 768px) {
+        padding: 10px;
+      }
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.05);
+        color: #ececec;
+      }
+    }
   }
 `
 
@@ -104,16 +125,21 @@ const DesktopNav = ({
         >
           <Navbar.Brand>
             <AppMenu />
-            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-            {/* @ts-ignore The dynamic tag is causing some trouble */}
-            <BrandingElement
-              className={branding && `with-icon icon-${branding}`}
-              {...brandingProps}
-            >
-              {/* A title is always rendered (e.g.for screen readers)
-                  but is visually-hidden if a branding icon is used. */}
-              <div className="navbar-title">{title}</div>
-            </BrandingElement>
+
+            {!isMobile() && (
+              <>
+                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                {/* @ts-ignore The dynamic tag is causing some trouble */}
+                <BrandingElement
+                  className={branding && `with-icon icon-${branding}`}
+                  {...brandingProps}
+                >
+                  {/* A title is always rendered (e.g.for screen readers)
+                    but is visually-hidden if a branding icon is used. */}
+                  <div className="navbar-title">{title}</div>
+                </BrandingElement>
+              </>
+            )}
           </Navbar.Brand>
 
           <ViewSwitcher sticky />

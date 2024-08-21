@@ -1,4 +1,6 @@
 import { connect } from 'react-redux'
+
+import { ELEVATION_BLUE } from '../util/colors'
 import { Leg } from '@opentripplanner/types'
 import { Marker } from 'react-map-gl'
 import coreUtils from '@opentripplanner/core-utils'
@@ -12,7 +14,7 @@ type Props = {
 }
 
 const ElevationMarker = styled.div`
-  background-color: #87cefa;
+  background-color: ${ELEVATION_BLUE};
   border: 2px solid #fff;
   border-radius: 50%;
   height: 15px;

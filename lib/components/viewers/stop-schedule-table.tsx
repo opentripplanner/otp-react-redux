@@ -5,13 +5,14 @@ import coreUtils from '@opentripplanner/core-utils'
 import React, { Component, createRef } from 'react'
 import styled from 'styled-components'
 
+import { BORDER_COLOR } from '../user/monitored-trip/trip-summary-pane'
 import { FETCH_STATUS } from '../../util/constants'
-import {
-  getFirstDepartureFromNow,
-  mergeAndSortStopTimes
-} from '../../util/viewer'
+import { getFirstDepartureFromNow } from '../../util/viewer'
+import { grey } from '../util/colors'
+import { isBlank } from '../../util/ui'
+import { mergeAndSortStopTimes } from '../../util/stop-times'
+import { StopData } from '../util/types'
 import Loading from '../narrative/loading'
-import type { StopData } from '../util/types'
 
 import DepartureTime from './departure-time'
 
@@ -22,13 +23,13 @@ const StyledTable = styled.table`
   width: 100%;
   th {
     background-color: var(--main-base-color, white);
-    box-shadow: 0 1px 0px 0px #ccc;
+    box-shadow: 0 1px 0px 0px ${grey[100]};
     font-size: 75%;
     position: sticky;
     top: 0px;
   }
   tr > * {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid ${BORDER_COLOR};
     padding: 2px 0 2px 10px;
     vertical-align: top;
   }
@@ -62,8 +63,7 @@ const TimeCell = styled.td`
 class StopScheduleTable extends Component<{
   date: string
   homeTimezone: string
-  showBlockIds: boolean
-  // TODO TYPESCRIPT: move this type to a shared type
+  showBlockIds?: boolean
   stopData: StopData
 }> {
   /**
@@ -143,7 +143,11 @@ class StopScheduleTable extends Component<{
             const scrollToRow = nextStopTime
               ? nextStopTime === highlightedStopTime
               : highlightRow
-            const routeName = route.shortName ? route.shortName : route.longName
+            const routeName = route
+              ? !isBlank(route.shortName)
+                ? route.shortName
+                : route.longName
+              : ''
 
             // Add ref to scroll to the first stop time departing from now.
             const refProp = scrollToRow ? this.targetDepartureRef : undefined

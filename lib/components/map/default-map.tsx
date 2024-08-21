@@ -17,6 +17,7 @@ import {
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
 import { getActiveItinerary, getActiveSearch } from '../../util/state'
+import { getCurrentPosition } from '../../actions/location'
 import { MainPanelContent } from '../../actions/ui-constants'
 import { setLocation, setMapPopupLocationAndGeocode } from '../../actions/map'
 import { setViewedStop } from '../../actions/ui'
@@ -117,6 +118,8 @@ function getLayerName(overlay, config, intl) {
       return intl.formatMessage({ id: 'components.MapLayers.park-and-ride' })
     case 'stops':
       return intl.formatMessage({ id: 'components.MapLayers.stops' })
+    case 'stations':
+      return intl.formatMessage({ id: 'components.MapLayers.stations' })
     case 'rentalVehicles':
       if (overlay.network)
         return getCompanyNames([overlay.network], config, intl)
@@ -255,6 +258,7 @@ class DefaultMap extends Component {
       carRentalQuery,
       carRentalStations,
       config,
+      getCurrentPosition,
       intl,
       itinerary,
       mapConfig,
@@ -267,7 +271,8 @@ class DefaultMap extends Component {
     } = this.props
     const { getCustomMapOverlays, getTransitiveRouteLabel, ModeIcon } =
       this.context
-    const { baseLayers, maxZoom, overlays } = mapConfig || {}
+    const { baseLayers, maxZoom, navigationControlPosition, overlays } =
+      mapConfig || {}
     const { lat, lon, zoom } = this.state
     const vectorTilesEndpoint = `${assembleBasePath(config)}${
       config.api?.path
@@ -317,7 +322,12 @@ class DefaultMap extends Component {
           <EndpointsOverlay />
           <RouteViewerOverlay />
           <TransitVehicleOverlay ModeIcon={ModeIcon} />
-          <GeolocateControl position="top-left" />
+          <GeolocateControl
+            onGeolocate={() => {
+              getCurrentPosition(intl)
+            }}
+            position="top-left"
+          />
           <TransitiveOverlay
             getTransitiveRouteLabel={getTransitiveRouteLabel}
           />
@@ -404,7 +414,9 @@ class DefaultMap extends Component {
           {/* If set, custom overlays are shown if no active itinerary is shown or pending. */}
           {typeof getCustomMapOverlays === 'function' &&
             getCustomMapOverlays(!itinerary && !pending)}
-          <NavigationControl position="bottom-right" />
+          <NavigationControl
+            position={navigationControlPosition || 'bottom-right'}
+          />
         </BaseMap>
       </MapContainer>
     )
@@ -433,6 +445,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   bikeRentalQuery,
   carRentalQuery,
+  getCurrentPosition,
   setLocation,
   setMapPopupLocationAndGeocode,
   setViewedStop,

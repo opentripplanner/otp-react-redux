@@ -1,32 +1,15 @@
 import {
+  Agency,
   MapLocationActionArg,
+  Place,
   Route,
-  Station,
   Stop
 } from '@opentripplanner/types'
+import { MapRef } from 'react-map-gl'
 
-// TYPESCRIPT TODO: move this to a larger shared types file, preferably within otp-ui
-export interface StopData {
-  bikeRental: BikeRental
-  fetchStatus: number
+export interface StopTimeTrip {
+  blockId?: string
   id: string
-  lat: number
-  locationType: number
-  lon: number
-  name: string
-  nearbyStops: string[]
-  parkAndRideLocations: any[]
-  routes: Route[]
-  stopTimes: StopTime[]
-  stopTimesLastUpdated: number
-  vehicleRental: VehicleRental
-  vehicleType: number
-  vehicleTypeSet: boolean
-  wheelchairBoarding: number
-}
-
-export interface BikeRental {
-  stations: any[]
 }
 
 export interface StopTime {
@@ -35,8 +18,10 @@ export interface StopTime {
   pattern: Pattern
   realtimeDeparture?: number
   realtimeState?: string
-  serviceDay?: number
+  scheduledDeparture: number
+  serviceDay: number
   times: Time[]
+  trip: StopTimeTrip
 }
 
 export interface Pattern {
@@ -72,32 +57,36 @@ export interface Time {
   tripId: string
 }
 
-export interface PatternStopTimes {
-  id: string
-  pattern: Pattern
-  route: Route
-  times: Time[]
-}
-
-export interface PatternDayStopTimes extends PatternStopTimes {
-  day: number
-}
-
-export interface VehicleRental {
-  errorsByNetwork: { [key: string]: { message?: string; severity?: string } }
-  stations: Station[]
-  systemInformationDataByNetwork: {
-    [key: string]: { message?: string; severity?: string }
-  }
-}
-
 export interface ViewedRouteState {
-  patternId?: string
-  routeId: string
+  patternId?: string | null
+  routeId: string | null
 }
 
 export interface RouteVehicle {
   patternId: string
+}
+
+export interface PatternStopTime {
+  pattern: Pattern
+  stoptimes: StopTime[]
+}
+
+// FIXME: add to OTP-UI types
+interface AgencyWithGtfsId extends Agency {
+  gtfsId: string
+}
+
+// FIXME: add to OTP-UI types
+interface RouteWithAgencyGtfsId extends Route {
+  agency: AgencyWithGtfsId
+}
+
+export interface StopData extends Place {
+  code?: string
+  fetchStatus: number
+  gtfsId?: string
+  routes?: RouteWithAgencyGtfsId[]
+  stoptimesForPatterns?: PatternStopTime[]
 }
 
 // Routes have many properties beside id, but none of these are guaranteed.
@@ -113,3 +102,9 @@ export type SetViewedRouteHandler = (route?: ViewedRouteState) => void
 export type SetViewedStopHandler = (payload: Stop | null) => void
 
 export type SetLocationHandler = (payload: MapLocationActionArg) => void
+
+export type ZoomToPlaceHandler = (
+  map?: MapRef,
+  place?: { lat: number; lon: number },
+  zoom?: number
+) => void

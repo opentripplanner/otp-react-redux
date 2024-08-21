@@ -9,7 +9,7 @@ import toast from 'react-hot-toast'
 
 import * as uiActions from '../../actions/ui'
 import { AppReduxState } from '../../util/state-types'
-import { GRAY_ON_WHITE } from '../util/colors'
+import { GREY_ON_WHITE } from '../util/colors'
 import PageTitle from '../util/page-title'
 
 import { EditedUser } from './types'
@@ -18,22 +18,18 @@ import FormNavigationButtons from './form-navigation-buttons'
 import standardPanes, { PaneProps } from './standard-panes'
 
 export interface WizardProps {
-  activePaneId: string
   formikProps: FormikProps<EditedUser>
 }
 
 export interface OwnProps {
-  activePaneId: string
   pages: string[]
 }
 
-interface Props extends OwnProps {
+interface Props extends OwnProps, WizardProps {
   activePane: PaneProps
   activePaneIndex: number
-  formikProps: FormikProps<EditedUser>
   intl: IntlShape
-  onNext?: () => void
-  pages: string[]
+  onNext?: (currentPage: string) => void
   parentPath: string
   returnTo?: string
   routeTo: (url: string, replace?: string, method?: any) => void
@@ -41,7 +37,7 @@ interface Props extends OwnProps {
 }
 
 const StepNumber = styled.p`
-  color: ${GRAY_ON_WHITE};
+  color: ${GREY_ON_WHITE};
   font-size: 40%;
   margin: -1em 0 0 0;
 `
@@ -91,11 +87,10 @@ class Wizard extends Component<Props> {
         // Execute any action that need to happen before going to the next pane
         // (e.g. save a user account).
         if (onNext) {
-          await onNext()
+          await onNext(pages[activePaneIndex])
         }
         this._routeTo(nextId)
       }
-      this._focusHeader()
     } else {
       // Display a toast to acknowledge saved changes
       // (although in reality, changes quietly took effect in previous screens).
@@ -110,14 +105,19 @@ class Wizard extends Component<Props> {
       const prevId = pages[activePaneIndex - 1]
       prevId && this._routeTo(prevId)
     }
-    this._focusHeader()
   }
 
   componentDidMount(): void {
+    const { activePaneIndex, pages } = this.props
     this._focusHeader()
+    if (activePaneIndex === -1) {
+      this._routeTo(pages[0], replace)
+    }
+  }
 
-    if (!this.props.activePaneId) {
-      this._routeTo(this.props.pages[0], replace)
+  componentDidUpdate(prevProps: Readonly<Props>): void {
+    if (prevProps.activePane !== this.props.activePane) {
+      this._focusHeader()
     }
   }
 
@@ -133,7 +133,7 @@ class Wizard extends Component<Props> {
     return (
       <Form id="user-settings-form" noValidate>
         <PageTitle title={title} />
-        <h1 aria-live="assertive" ref={this.h1Ref} tabIndex={-1}>
+        <h1 ref={this.h1Ref} tabIndex={-1}>
           <StepNumber>
             <FormattedMessage
               id="components.SequentialPaneDisplay.stepNumber"
@@ -177,14 +177,18 @@ class Wizard extends Component<Props> {
 // connect to the redux store
 
 const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => {
-  const { activePaneId, pages } = ownProps
+  const { pages } = ownProps
   const { pathname } = state.router.location
+  const lastSlashIndex = pathname.lastIndexOf('/')
+  const activePaneId = pathname.substr(
+    Math.min(lastSlashIndex + 1, pathname.length)
+  )
   const activePaneIndex = pages.indexOf(activePaneId)
   return {
     // This, instead of just standardPages[activePaneId], ensures no "foreign" page is accidentally shown.
     activePane: standardPanes[pages[activePaneIndex]],
     activePaneIndex,
-    parentPath: pathname.substr(0, pathname.lastIndexOf('/'))
+    parentPath: pathname.substr(0, lastSlashIndex)
   }
 }
 

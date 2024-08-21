@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { GRAY_ON_WHITE } from '../../util/colors'
+import { GREY_ON_WHITE } from '../../util/colors'
 
 import Place, {
   ActionButton,
@@ -9,6 +9,7 @@ import Place, {
   PlaceButton,
   PlaceContent,
   PlaceDetail,
+  PlaceLink,
   PlaceName
 } from './place'
 
@@ -25,7 +26,7 @@ export const StyledFavoritePlace = styled(Place).attrs({
   height: ${FAVORITE_PLACE_HEIGHT_PX};
   margin-bottom: 10px;
 
-  ${PlaceButton} {
+  ${PlaceLink} {
     align-items: center;
     display: flex;
     flex: 1 0 0;
@@ -40,7 +41,7 @@ export const StyledFavoritePlace = styled(Place).attrs({
     overflow: hidden;
   }
   ${PlaceDetail} {
-    color: ${GRAY_ON_WHITE};
+    color: ${GREY_ON_WHITE};
   }
 
   ${PlaceName},
@@ -51,7 +52,7 @@ export const StyledFavoritePlace = styled(Place).attrs({
     width: 100%;
   }
   ${IconWrapper} {
-    color: ${GRAY_ON_WHITE};
+    color: ${GREY_ON_WHITE};
     flex-shrink: 0;
   }
   ${ActionButton}, ${ActionButtonPlaceholder} {

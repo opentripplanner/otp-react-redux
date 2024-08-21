@@ -101,8 +101,6 @@ itinerary:
 dateTime:
   timeFormat: h:mm a
   dateFormat: MM/dd/yyyy
-stopViewer:
-  nearbyRadius: 250
 routeViewer:
   hideRouteShapesWithinFlexZones: true
 
@@ -120,6 +118,3 @@ accessibilityScore:
     1.0:
       color: "#a2e099"
       icon: thumbs-up
-
-defaultQueryParams:
-  maxWalkDistance: 1207 # 3/4 miles in meters

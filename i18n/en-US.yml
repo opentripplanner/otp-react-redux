@@ -78,13 +78,13 @@ common:
     tuesday: Tuesday
     wednesday: Wednesday
   daysOfWeekCompact:
-    friday: Fri.
-    monday: Mon.
-    saturday: Sat.
-    sunday: Sun.
-    thursday: Thu.
-    tuesday: Tue.
-    wednesday: Wed.
+    friday: F
+    monday: M
+    saturday: S
+    sunday: Su
+    thursday: Th
+    tuesday: T
+    wednesday: W
   daysOfWeekPlural:
     friday: Fridays
     monday: Mondays
@@ -147,7 +147,6 @@ common:
     work: work
   routing:
     routeAndNumber: Route {routeId}
-    routeToHeadsign: To {headsign}
   searchForms:
     click: click
     enterDestination: Enter destination or {mapAction} on map…
@@ -181,40 +180,6 @@ components:
     message: >-
       If the page doesn't load after a few seconds, <redirectLink>click
       here</redirectLink>.
-  AmenitiesPanel:
-    bikesAtStation: |
-      {companyLength, plural,
-        =0 {Bikes at {name}}
-        other {{company} bikes at {name}}
-      }
-    bikesAvailable: |
-      {count, plural,
-        =0 {No bikes available}
-        one {# bike available}
-        other {# bikes available}
-      }
-    bikesNearby: |
-      {count, plural,
-        =0 {no floating {company} bikes nearby}
-        one {# floating {company} bike nearby}
-        other {# floating {company} bikes nearby}
-      }
-    nearbyAmenities: Nearby Amenities
-    noNearbyBikes: No nearby bike rentals found.
-    noNearbyScooters: No nearby micromobility rentals found.
-    noPRLotsFound: No nearby park and ride lots found.
-    scootersNearby: |
-      {count, plural,
-        =0 {No {company} E-Scooters nearby}
-        one {# {company} E-Scooter nearby}
-        other {# {company} E-Scooters nearby}
-      }
-    spacesAvailable: |
-      {count, plural,
-        =0 {No spaces available}
-        one {# space available}
-        other {# spaces available}
-      }
   AppMenu:
     callHistory: Call History
     closeMenu: Close Menu
@@ -274,7 +239,7 @@ components:
     a11y: Accessibility
     mainTitle: My settings
     notifications: Notifications
-    places: Favorite places
+    places: Saved places
     terms: Terms
   FavoritePlaceList:
     addAnotherPlace: Add another place
@@ -297,9 +262,6 @@ components:
   ItinerarySummary:
     itineraryDetails: Itinerary details
     minMaxFare: "{minTotalFare} - {maxTotalFare}"
-  LiveStopTimes:
-    autoRefresh: Auto-refresh arrivals?
-    refresh: Refresh arrival times
   LocationSearch:
     enterLocation: Enter location
     setDestination: Set Destination
@@ -311,6 +273,7 @@ components:
     park-and-ride: Park & Ride Locations
     satellite: Satellite
     shared-vehicles: Shared Vehicles
+    stations: Transit Stations
     stops: Transit Stops
     streets: Streets
   MapillaryFrame:
@@ -318,6 +281,7 @@ components:
   MetroUI:
     arriveAt: You arrive
     itineraryDescription: "{time} itinerary using {routes}"
+    itinerarySummary: from {stopName} | {cost}
     leaveAt: You leave
     multipleOptions: Multiple Options
     orAlternatives: or other routes in the same direction
@@ -389,6 +353,7 @@ components:
     bikesAvailable: "{bikesAvailable, plural, one {# bike} other {# bikes}} available"
     companyBicycle: "{company} Bike"
     companyScooter: "{company} Scooter"
+    distanceAway: "{localizedDistanceString} away"
     error: An error occurred loading nearby amenities.
     header: Nearby View
     nearbyListIntro: List of {count} nearby entities.
@@ -398,7 +363,7 @@ components:
     createNewAccount: Create a new account
     finish: Account setup complete!
     notifications: Notification preferences
-    places: Add your locations
+    places: Add your saved places
     verify: Verify your email address
   NotFound:
     description: The content you requested is not available.
@@ -422,7 +387,7 @@ components:
       body: >-
         No transit connection was found between your origin and destination on
         the selected day of service, using the vehicle types you selected.
-      header: No transit connections
+      header: No itineraries found
     NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
       body: >-
         A transit connection was found, but it was outside the search window,
@@ -469,6 +434,9 @@ components:
       minutes).
     verified: Verified
     verify: Verify
+    verifySms: >-
+      Please complete the verification process in order to set up SMS
+      notifications.
   Place:
     deleteThisPlace: Delete this place
     enterAlert: >
@@ -505,13 +473,6 @@ components:
     late: "{minutes} late"
     onTime: on time
     scheduled: scheduled
-  RelatedPanel:
-    hideExtraStops: Hide extra stops
-    showExtraStops: Show {count} extra stops
-  RelatedStopsPanel:
-    noArrivalFound: No arrival found
-    relatedStops: Related Stops
-    viewDetails: View details
   ResultsError:
     backToSearch: Back to Search
   ResultsHeader:
@@ -537,7 +498,6 @@ components:
     shortTitle: View Routes
     stopsInDirectionOfTravel: "Stops in this direction of travel:"
     title: Route Viewer
-    toggleRouteOnMap: Toggle route on map
   SaveTripButton:
     cantSaveText: Cannot save
     cantSaveTooltip: >-
@@ -601,7 +561,6 @@ components:
     forStop: for {stopName}
     header: Stop Viewer
     loadingText: Loading Stop...
-    nextArrivals: Next Arrivals
     noStopsFound: No stop times found for date.
     operatorLogoAriaLabel: "{operatorName} stop:"
     schedule: Schedule
@@ -642,7 +601,8 @@ components:
     vehicleName: Vehicle {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: Checking itinerary existence for each day of the week...
-    selectAtLeastOneDay: Please select at least one day to monitor.
+    onlyOnDate: Only on {date, date, ::eeeee yyyyMMdd}
+    recurringEachWeek: On certain days each week
     tripDaysPrompt: What days do you take this trip?
     tripIsAvailableOnDaysIndicated: Your trip is available on the days of the week as indicated above.
     tripNamePrompt: "Please provide a name for this trip:"
@@ -701,6 +661,9 @@ components:
       awaiting: Awaiting calculation...
       description: Please wait a bit for the trip to calculate.
       heading: Trip not yet calculated
+    past:
+      description: This is a one-time trip that occurred in the past.
+      heading: Trip is in the past
     snoozed:
       description: Unsnooze trip monitoring to see the updated status.
       heading: Trip monitoring is snoozed for today
@@ -719,11 +682,11 @@ components:
     arriveAt: "Arrive at "
     leaveAt: "Leave at "
   TripSummaryPane:
-    happensOnDays: "Happens on: <strong>{days}</strong>"
-    notifications: >-
-      Notifications: <strong>{leadTimeInMinutes} min. before scheduled
-      departure</strong>
-    notificationsDisabled: "Notifications: <strong>Disabled</strong>"
+    happensOnDays: "Happens on: {days}"
+    monitoredTripDays: Trip monitored days
+    notifications: "{leadTimeInMinutes} min. before scheduled departure"
+    notificationsDisabled: Notifications disabled
+    timeAndDuration: Trip time and duration
   TripTools:
     copyLink: Copy Link
     header: Trip Tools

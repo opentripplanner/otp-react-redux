@@ -22,6 +22,7 @@ import { NextTripPreview, PatternRowItem } from './styled'
 import StopTimeCell from './stop-time-cell'
 
 type Props = {
+  alwaysShowLongName?: boolean
   homeTimezone?: string
   pattern: Pattern
   roundedTop?: boolean
@@ -58,6 +59,7 @@ const renderDay = (homeTimezone: string, day: number): JSX.Element => {
  * viewer.
  */
 const PatternRow = ({
+  alwaysShowLongName,
   homeTimezone,
   pattern,
   roundedTop = true,
@@ -78,7 +80,7 @@ const PatternRow = ({
   const routeColor = getRouteColorBasedOnSettings(route.operator, route)
 
   return (
-    <PatternRowItem roundedTop={roundedTop}>
+    <PatternRowItem className="pattern-row-item" roundedTop={roundedTop}>
       {/* header row */}
       <div
         className="header stop-view"
@@ -101,19 +103,24 @@ const PatternRow = ({
             />
           </span>
           <span style={{ wordBreak: 'break-word' }} title={pattern.headsign}>
+            {alwaysShowLongName && !!pattern.route.longName && (
+              <strong style={{ display: 'block' }}>
+                {pattern.route.longName}
+              </strong>
+            )}
             {extractHeadsignFromPattern(pattern) ||
               (pattern.route.longName !== routeName && pattern.route.longName)}
           </span>
         </div>
         {/* next departure preview (only shows up to 3 entries) */}
         {hasStopTimes && (
-          <NextTripPreview>
+          <NextTripPreview className="departure-times">
             {homeTimezone && renderDay(homeTimezone, stopTimes?.[0].serviceDay)}
             {[0, 1, 2].map(
               (index) =>
                 stopTimes?.[index] && (
                   // TODO: use stop time id as index
-                  <li key={index}>
+                  <li className="departure-time" key={index}>
                     <StopTimeCell
                       homeTimezone={homeTimezone}
                       key={index}
