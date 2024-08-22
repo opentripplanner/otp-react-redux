@@ -168,13 +168,34 @@ const AdvancedSettingsPanel = ({
   )
 
   const processedModeSettings = processSettings(modeSettingDefinitions)
+
+  const checkAllSubsettingsFalse = (modeButton: ModeButtonDefinition) => {
+    if (modeButton.modeSettings && modeButton.modeSettings.length > 0) {
+      const transportModeSettings = modeButton.modeSettings.filter(
+        (setting: ModeSetting) =>
+          // this checks if the setting is a transport mode
+          (setting.type === 'CHECKBOX' || setting.type === 'SUBMODE') &&
+          setting.addTransportMode
+      )
+      if (transportModeSettings.length === 0) return modeButton
+
+      console.log('transportModeSettings::::::', transportModeSettings)
+      const allFalse = transportModeSettings.every((setting) => !setting.value)
+      return { ...modeButton, enabled: modeButton.enabled && !allFalse }
+    }
+
+    return modeButton
+  }
+
   const processedModeButtons = modeButtonOptions.map(
     pipe(
       addModeButtonIcon(ModeIcon),
       addSettingsToButton(processedModeSettings),
-      setModeButtonEnabled(enabledModeButtons)
+      setModeButtonEnabled(enabledModeButtons),
+      checkAllSubsettingsFalse
     )
   )
+  console.log('processedModeButtons::::::', processedModeButtons)
 
   return (
     <PanelOverlay className="advanced-settings" ref={innerRef}>
