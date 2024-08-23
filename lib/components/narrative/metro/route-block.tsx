@@ -144,7 +144,9 @@ const RouteBlock = ({
 
   return (
     <>
-      {showDivider && previousLegMode && <Divider>•</Divider>}
+      {showDivider && previousLegMode && (
+        <Divider className="route-block-divider">•</Divider>
+      )}
       <Wrapper className="route-block-wrapper">
         {leg.mode !== previousLegMode && (
           <LegIconWrapper>

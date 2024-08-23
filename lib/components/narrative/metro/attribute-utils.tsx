@@ -3,11 +3,12 @@ import { Itinerary, Leg } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 
+export const getFirstTransitLeg = (itinerary: Itinerary): Leg | undefined =>
+  itinerary.legs?.find((leg: Leg) => leg?.from?.vertexType === 'TRANSIT')
+
 export const getFirstTransitLegStop = (
   itinerary: Itinerary
-): string | undefined =>
-  itinerary.legs?.find((leg: Leg) => leg?.from?.vertexType === 'TRANSIT')?.from
-    ?.name
+): string | undefined => getFirstTransitLeg(itinerary)?.from?.name
 
 export const getFlexAttributes = (
   itinerary: Itinerary
