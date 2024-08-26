@@ -114,6 +114,7 @@ common:
     noItineraryToDisplay: No itinerary to display.
     relativeCo2: |
       {co2} {isMore, select, true {more} other {less} } CO₂ than driving alone
+    timeStartEnd: "{start} – {end}"
     transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
   linkOpensNewWindow: (Opens new window)
   modes:

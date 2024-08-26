@@ -123,6 +123,7 @@ common:
     noItineraryToDisplay: Aucun trajet à afficher.
     relativeCo2: |
       {co2} de CO₂ en {isMore, select, true {plus} other {moins} } qu'en voiture
+    timeStartEnd: "{start} – {end}"
     transfers: >-
       {transfers, plural, =0 {} one {# correspondance} other {#
       correspondances}}
