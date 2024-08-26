@@ -116,6 +116,7 @@ map:
   initLat: 45.52
   initLon: -122.682
   # autoFlyOnTripFormUpdate: false
+  # navigationControlPosition: "bottom-right"
   baseLayers:
     - name: Streets
       # These tiles are free to use, but not in production
@@ -408,6 +409,8 @@ itinerary:
   previewOverlay: false
   # Whether to add a OTP_RR_A11Y_ROUTING_ENABLED error to all itineraries with accessibility scores
   displayA11yError: false
+  # Whether to display itinerary info in the side of the preview or next to the departure times
+  showInlineItinerarySummary: false
   # The sort option to use by default
   # Available sort options: 'BEST', 'DURATION', 'ARRIVALTIME', 'WALKTIME', 'COST', 'DEPARTURETIME'
   # defaultSort: "BEST" # Default

@@ -4132,6 +4132,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   key="UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6MDM1NDBhOWUtZTY1Ny00NTRlLWFlN2ItOGFkOWRhODZjZmVk"
                 >
                   <div
+                    className="nearby-view-card"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
@@ -4563,6 +4564,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   key="UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6NjliMWJmZmEtMzk0Yi00Mzc0LWIwN2MtMzdlMTA2MjAzMWU5"
                 >
                   <div
+                    className="nearby-view-card"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
@@ -4994,6 +4996,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   key="UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6MWQzN2RiMGEtMWM2MC00ZTgyLWEwY2YtNmFkNmE4NTEyNmEw"
                 >
                   <div
+                    className="nearby-view-card"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
@@ -5425,6 +5428,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   key="U3RvcDprY206MzY5NDA"
                 >
                   <div
+                    className="nearby-view-card"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
@@ -11654,10 +11658,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -11730,9 +11735,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               Loyal Heights Greenwood
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -11813,6 +11820,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -11973,6 +11981,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="1"
                                               >
                                                 <Connect(StopTimeCell)
@@ -12133,6 +12142,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="2"
                                               >
                                                 <Connect(StopTimeCell)
@@ -12464,10 +12474,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -12540,9 +12551,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               Downtown Seattle Fremont
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -12623,6 +12636,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -12783,6 +12797,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="1"
                                               >
                                                 <Connect(StopTimeCell)
@@ -12938,6 +12953,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="2"
                                               >
                                                 <Connect(StopTimeCell)
@@ -13204,10 +13220,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -13280,9 +13297,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               Roosevelt Station Sand Point
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -13363,6 +13382,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -13523,6 +13543,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="1"
                                               >
                                                 <Connect(StopTimeCell)
@@ -13678,6 +13699,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="2"
                                               >
                                                 <Connect(StopTimeCell)
@@ -13852,6 +13874,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   key="U3RvcDo0MDo5OTAwMDM"
                 >
                   <div
+                    className="nearby-view-card"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
@@ -18006,10 +18029,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -18082,9 +18106,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               Angle Lake
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -18165,6 +18191,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -18320,6 +18347,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="1"
                                               >
                                                 <Connect(StopTimeCell)
@@ -18475,6 +18503,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="2"
                                               >
                                                 <Connect(StopTimeCell)
@@ -18689,10 +18718,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -18765,9 +18795,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               Northgate
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -18848,6 +18880,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -19179,10 +19212,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -19255,9 +19289,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               Capitol Hill
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -19338,6 +19374,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -19493,6 +19530,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="1"
                                               >
                                                 <Connect(StopTimeCell)
@@ -19648,6 +19686,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="2"
                                               >
                                                 <Connect(StopTimeCell)
@@ -19822,6 +19861,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   key="UmVudGFsVmVoaWNsZTpiaXJkLXNlYXR0bGUtd2FzaGluZ3RvbjpjZTM4MDA4Ny1lMjU1LTQzYjgtYjM5ZC04MjY3Y2E3MmJjMGQ"
                 >
                   <div
+                    className="nearby-view-card"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
@@ -20253,6 +20293,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   key="UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6ODQ4M2VmZGUtZDRkMC00NWZkLWI0YzItZWNhOTg4MDhjMDQ4"
                 >
                   <div
+                    className="nearby-view-card"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
@@ -20684,6 +20725,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   key="UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6ZmUwZjM4ZjAtMjc3YS00MjQ4LTlkNzYtMTc4Y2UxZGQ0MDY0"
                 >
                   <div
+                    className="nearby-view-card"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
@@ -21115,6 +21157,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   key="U3RvcDprY206MTY0MzA"
                 >
                   <div
+                    className="nearby-view-card"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
@@ -28114,10 +28157,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -28190,9 +28234,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               University District Roosevelt Station
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -28273,6 +28319,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -28433,6 +28480,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="1"
                                               >
                                                 <Connect(StopTimeCell)
@@ -28593,6 +28641,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="2"
                                               >
                                                 <Connect(StopTimeCell)
@@ -28937,10 +28986,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -29013,9 +29063,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               Sand Point East Green Lake
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -29096,6 +29148,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -29256,6 +29309,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="1"
                                               >
                                                 <Connect(StopTimeCell)
@@ -29411,6 +29465,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="2"
                                               >
                                                 <Connect(StopTimeCell)
@@ -29682,10 +29737,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -29758,9 +29814,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               University District Sand Point
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -29841,6 +29899,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -29996,6 +30055,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="1"
                                               >
                                                 <Connect(StopTimeCell)
@@ -30151,6 +30211,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="2"
                                               >
                                                 <Connect(StopTimeCell)
@@ -30365,10 +30426,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -30441,9 +30503,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               Madrona Special
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -30524,6 +30588,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -30698,6 +30763,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   key="UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6YTg5MDZiYTctMmU2NC00ZDk4LWI0ZGYtNmJjNDBlZTVkYzc3"
                 >
                   <div
+                    className="nearby-view-card"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
@@ -31129,6 +31195,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   key="UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6NTU0NzM5MWEtMzZmNS00YjNkLWI3NWItZmI2YWExY2JjMjdh"
                 >
                   <div
+                    className="nearby-view-card"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
@@ -31560,6 +31627,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   key="UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6NmMyNDRhZjEtZjJjOC00N2JhLWIzOTMtNDhkMGVhY2ZlMDFj"
                 >
                   <div
+                    className="nearby-view-card"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
@@ -31991,6 +32059,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   key="UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6NDJjMjA0NWUtZDEyYS00MTg1LTlkNjEtM2ZkNjMwMzQyNjUz"
                 >
                   <div
+                    className="nearby-view-card"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
@@ -32422,6 +32491,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   key="UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6NTZkNTJkNzktOGMwZC00NzJiLThlMzgtZjgwMGJjZTBhN2Iy"
                 >
                   <div
+                    className="nearby-view-card"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
@@ -32853,6 +32923,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   key="U3RvcDprY206MTY0NDA"
                 >
                   <div
+                    className="nearby-view-card"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
@@ -37007,10 +37078,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -37083,9 +37155,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               University District Roosevelt
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -37166,6 +37240,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -37326,6 +37401,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="1"
                                               >
                                                 <Connect(StopTimeCell)
@@ -37481,6 +37557,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="2"
                                               >
                                                 <Connect(StopTimeCell)
@@ -37812,10 +37889,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -37888,9 +37966,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               University District Maple Leaf
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -37971,6 +38051,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -38126,6 +38207,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="1"
                                               >
                                                 <Connect(StopTimeCell)
@@ -38281,6 +38363,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="2"
                                               >
                                                 <Connect(StopTimeCell)
@@ -38495,10 +38578,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -38571,9 +38655,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               Downtown Seattle Special
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -38654,6 +38740,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -38828,6 +38915,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   key="UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6OWM3ZDZkYjEtYWJiMi00OWFlLTg3NzAtOGNkNjQ1MzcwMGUw"
                 >
                   <div
+                    className="nearby-view-card"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
@@ -39259,6 +39347,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   key="U3RvcDo0MDo5OTAwMDQ"
                 >
                   <div
+                    className="nearby-view-card"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
@@ -45319,10 +45408,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -45395,9 +45485,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               Northgate
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -45478,6 +45570,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -45638,6 +45731,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="1"
                                               >
                                                 <Connect(StopTimeCell)
@@ -45798,6 +45892,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="2"
                                               >
                                                 <Connect(StopTimeCell)
@@ -45977,6 +46072,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   key="U3RvcDprY206MjM1NjE"
                 >
                   <div
+                    className="nearby-view-card"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
@@ -52911,10 +53007,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -52987,9 +53084,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               Bothell
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -53070,6 +53169,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -53225,6 +53325,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="1"
                                               >
                                                 <Connect(StopTimeCell)
@@ -53380,6 +53481,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="2"
                                               >
                                                 <Connect(StopTimeCell)
@@ -53646,10 +53748,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -53722,9 +53825,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               Northgate Station Roosevelt Station
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -53805,6 +53910,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -53965,6 +54071,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="1"
                                               >
                                                 <Connect(StopTimeCell)
@@ -54120,6 +54227,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="2"
                                               >
                                                 <Connect(StopTimeCell)
@@ -54386,10 +54494,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -54462,9 +54571,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               Woodinville
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -54545,6 +54656,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -54700,6 +54812,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="1"
                                               >
                                                 <Connect(StopTimeCell)
@@ -54855,6 +54968,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="2"
                                               >
                                                 <Connect(StopTimeCell)
@@ -55186,10 +55300,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -55262,9 +55377,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               Jackson Park Maple Leaf
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -55345,6 +55462,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -55500,6 +55618,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="1"
                                               >
                                                 <Connect(StopTimeCell)
@@ -55655,6 +55774,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="2"
                                               >
                                                 <Connect(StopTimeCell)
@@ -55921,10 +56041,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -55997,9 +56118,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               Kenmore P&R Roosevelt Station
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -56080,6 +56203,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -56235,6 +56359,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="1"
                                               >
                                                 <Connect(StopTimeCell)
@@ -56390,6 +56515,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="2"
                                               >
                                                 <Connect(StopTimeCell)
@@ -56630,10 +56756,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -56706,9 +56833,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               Kenmore P&R
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -56789,6 +56918,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -56944,6 +57074,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="1"
                                               >
                                                 <Connect(StopTimeCell)
@@ -57099,6 +57230,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="2"
                                               >
                                                 <Connect(StopTimeCell)
@@ -57273,6 +57405,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   key="UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6YTM0YzhmNTUtMjY4Ny00MjhlLWJmZTMtYWZiODgwNjdmNDM2"
                 >
                   <div
+                    className="nearby-view-card"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
@@ -57704,6 +57837,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   key="U3RvcDprY206MzY5MzE"
                 >
                   <div
+                    className="nearby-view-card"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
@@ -63933,10 +64067,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -64009,9 +64144,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               Loyal Heights Greenwood
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -64092,6 +64229,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -64252,6 +64390,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="1"
                                               >
                                                 <Connect(StopTimeCell)
@@ -64412,6 +64551,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="2"
                                               >
                                                 <Connect(StopTimeCell)
@@ -64743,10 +64883,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -64819,9 +64960,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               Downtown Seattle Fremont
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -64902,6 +65045,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -65062,6 +65206,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="1"
                                               >
                                                 <Connect(StopTimeCell)
@@ -65217,6 +65362,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="2"
                                               >
                                                 <Connect(StopTimeCell)
@@ -65483,10 +65629,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     }
                                   >
                                     <styled.li
+                                      className="pattern-row-item"
                                       roundedTop={false}
                                     >
                                       <li
-                                        className="sc-lgqlnP fJJsyj"
+                                        className="sc-lgqlnP fJJsyj pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -65559,9 +65706,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               Roosevelt Station Sand Point
                                             </span>
                                           </div>
-                                          <styled.ol>
+                                          <styled.ol
+                                            className="departure-times"
+                                          >
                                             <ol
-                                              className="sc-huZMQ crhfPk"
+                                              className="sc-huZMQ crhfPk departure-times"
                                             >
                                               <p
                                                 aria-hidden={true}
@@ -65642,6 +65791,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </IconWithText>
                                               </p>
                                               <li
+                                                className="departure-time"
                                                 key="0"
                                               >
                                                 <Connect(StopTimeCell)
@@ -65802,6 +65952,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="1"
                                               >
                                                 <Connect(StopTimeCell)
@@ -65957,6 +66108,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 </Connect(StopTimeCell)>
                                               </li>
                                               <li
+                                                className="departure-time"
                                                 key="2"
                                               >
                                                 <Connect(StopTimeCell)
