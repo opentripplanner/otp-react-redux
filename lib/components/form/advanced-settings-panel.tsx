@@ -15,7 +15,7 @@ import {
   ModeSetting,
   ModeSettingValues
 } from '@opentripplanner/types'
-import React, { RefObject, useContext, useState } from 'react'
+import React, { RefObject, useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import * as formActions from '../../actions/form'
@@ -168,34 +168,58 @@ const AdvancedSettingsPanel = ({
   )
 
   const processedModeSettings = processSettings(modeSettingDefinitions)
+  // console.log('processedModeSettings::::', processedModeSettings)
 
-  const checkAllSubsettingsFalse = (modeButton: ModeButtonDefinition) => {
-    if (modeButton.modeSettings && modeButton.modeSettings.length > 0) {
-      const transportModeSettings = modeButton.modeSettings.filter(
-        (setting: ModeSetting) =>
-          // this checks if the setting is a transport mode
-          (setting.type === 'CHECKBOX' || setting.type === 'SUBMODE') &&
-          setting.addTransportMode
-      )
-      if (transportModeSettings.length === 0) return modeButton
-
-      console.log('transportModeSettings::::::', transportModeSettings)
-      const allFalse = transportModeSettings.every((setting) => !setting.value)
-      return { ...modeButton, enabled: modeButton.enabled && !allFalse }
-    }
-
-    return modeButton
-  }
+  const handleModeButtonToggle = setModeButton(
+    enabledModeButtons,
+    onSettingsUpdate(setQueryParam)
+  )
 
   const processedModeButtons = modeButtonOptions.map(
     pipe(
       addModeButtonIcon(ModeIcon),
       addSettingsToButton(processedModeSettings),
-      setModeButtonEnabled(enabledModeButtons),
-      checkAllSubsettingsFalse
+      setModeButtonEnabled(enabledModeButtons)
     )
   )
   console.log('processedModeButtons::::::', processedModeButtons)
+
+  useEffect(() => {
+    console.log('processedModeButtons CHANGED!!! ::::::', processedModeButtons)
+    const checkTransportModeSubsettings = (
+      modeButton: ModeButtonDefinition
+    ) => {
+      if (
+        modeButton.enabled &&
+        modeButton.modeSettings &&
+        modeButton.modeSettings.length > 0
+      ) {
+        const transportModeSettings = modeButton.modeSettings.filter(
+          (setting: ModeSetting) =>
+            (setting.type === 'CHECKBOX' || setting.type === 'SUBMODE') &&
+            setting.addTransportMode
+        )
+        if (transportModeSettings.length === 0) return modeButton
+
+        const allFalse = transportModeSettings.every(
+          (setting) => !setting.value
+        )
+        if (allFalse) {
+          console.log(
+            'subsettings are all false!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+          )
+          modeButton.enabled = false
+          handleModeButtonToggle(modeButton.key, false)
+          return modeButton
+        }
+        return { ...modeButton, enabled: modeButton.enabled && !allFalse }
+      }
+
+      return modeButton
+    }
+
+    processedModeButtons.map(pipe(checkTransportModeSubsettings))
+  }, [processedModeButtons, handleModeButtonToggle])
 
   return (
     <PanelOverlay className="advanced-settings" ref={innerRef}>
@@ -235,10 +259,7 @@ const AdvancedSettingsPanel = ({
         label="test"
         modeButtons={processedModeButtons}
         onSettingsUpdate={onSettingsUpdate(setQueryParam)}
-        onToggleModeButton={setModeButton(
-          enabledModeButtons,
-          onSettingsUpdate(setQueryParam)
-        )}
+        onToggleModeButton={handleModeButtonToggle}
       />
       <ReturnToTripPlanButton
         className="save-settings-button"
@@ -263,6 +284,10 @@ const AdvancedSettingsPanel = ({
 const queryParamConfig = { modeButtons: DelimitedArrayParam }
 
 const mapStateToProps = (state: AppReduxState) => {
+  /*   console.log(
+    'state.otp.modeSettingDefinitions::::',
+    state.otp.modeSettingDefinitions
+  ) */
   const urlSearchParams = new URLSearchParams(state.router.location.search)
   const modeSettingValues = generateModeSettingValues(
     urlSearchParams,
