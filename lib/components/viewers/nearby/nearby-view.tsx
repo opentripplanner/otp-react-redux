@@ -34,6 +34,7 @@ type CurrentPosition = { coords?: { latitude: number; longitude: number } }
 
 type Props = {
   currentPosition?: CurrentPosition
+  defaultLatLon: LatLonObj
   displayedCoords?: LatLonObj
   entityId?: string
   fetchNearby: (latLon: LatLonObj, radius?: number) => void
@@ -73,7 +74,8 @@ const getNearbyItem = (place: any) => {
 function getNearbyCoordsFromUrlOrLocationOrMapCenter(
   coordsFromUrl?: LatLonObj,
   currentPosition?: CurrentPosition,
-  map?: MapRef
+  map?: MapRef,
+  defaultLatLon?: LatLonObj
 ): LatLonObj | null {
   if (coordsFromUrl) {
     return coordsFromUrl
@@ -92,11 +94,15 @@ function getNearbyCoordsFromUrlOrLocationOrMapCenter(
   if (mapCoords) {
     return mapCoords
   }
+  if (defaultLatLon) {
+    return defaultLatLon
+  }
   return null
 }
 
 function NearbyView({
   currentPosition,
+  defaultLatLon,
   displayedCoords,
   entityId,
   fetchNearby,
@@ -119,7 +125,8 @@ function NearbyView({
       getNearbyCoordsFromUrlOrLocationOrMapCenter(
         nearbyViewCoords,
         currentPosition,
-        map
+        map,
+        defaultLatLon
       ),
     [nearbyViewCoords, currentPosition, map]
   )
@@ -283,12 +290,15 @@ function NearbyView({
 
 const mapStateToProps = (state: AppReduxState) => {
   const { config, location, transitIndex, ui } = state.otp
+  const { initLat, initLon } = state.otp.config.map
   const { nearbyViewCoords } = ui
   const { nearby } = transitIndex
   const { entityId } = state.router.location.query
   const { currentPosition } = location
+  const defaultLatLon = { lat: initLat || 0, lon: initLon || 0 }
   return {
     currentPosition,
+    defaultLatLon,
     displayedCoords: nearby?.coords,
     entityId: entityId && decodeURIComponent(entityId),
     homeTimezone: config.homeTimezone,
