@@ -708,8 +708,8 @@ components:
       tripBegins: >-
         Départ prévu à {tripStart, time, short}. (Le suivi en temps réel
         débutera à {monitoringStart, time, short}.)
-      tripStartIsDelayed: Départ retardé de ${duration}.
-      tripStartIsEarly: Départ avancé de ${duration} !
+      tripStartIsDelayed: Départ retardé de {duration}.
+      tripStartIsEarly: Départ avancé de {duration} !
       tripStartsSoonNoUpdates: Départ proche (pas de données en temps réel).
       tripStartsSoonOnTime: Départ proche et prévu à l'heure.
   TripSummary:
