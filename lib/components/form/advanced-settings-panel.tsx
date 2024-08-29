@@ -15,6 +15,7 @@ import {
   ModeSetting,
   ModeSettingValues
 } from '@opentripplanner/types'
+import { QueryParamChangeEvent } from '@opentripplanner/trip-form/lib/types'
 import React, { RefObject, useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
@@ -118,7 +119,8 @@ const AdvancedSettingsPanel = ({
   modeButtonOptions,
   modeSettingDefinitions,
   modeSettingValues,
-  setQueryParam
+  setQueryParam,
+  urlSearchParams
 }: {
   closeAdvancedSettings: () => void
   enabledModeButtons: string[]
@@ -127,7 +129,8 @@ const AdvancedSettingsPanel = ({
   modeSettingDefinitions: ModeSetting[]
   modeSettingValues: ModeSettingValues
   onPlanTripClick: () => void
-  setQueryParam: (evt: any) => void
+  setQueryParam: (evt: QueryParamChangeEvent) => void
+  urlSearchParams: URLSearchParams
 }): JSX.Element => {
   const [closingBySave, setClosingBySave] = useState(false)
   const [closingByX, setClosingByX] = useState(false)
@@ -189,11 +192,7 @@ const AdvancedSettingsPanel = ({
     const checkTransportModeSubsettings = (
       modeButton: ModeButtonDefinition
     ) => {
-      if (
-        modeButton.enabled &&
-        modeButton.modeSettings &&
-        modeButton.modeSettings.length > 0
-      ) {
+      if (modeButton.modeSettings && modeButton.modeSettings.length > 0) {
         const transportModeSettings = modeButton.modeSettings.filter(
           (setting: ModeSetting) =>
             (setting.type === 'CHECKBOX' || setting.type === 'SUBMODE') &&
@@ -204,14 +203,31 @@ const AdvancedSettingsPanel = ({
         const allFalse = transportModeSettings.every(
           (setting) => !setting.value
         )
-        if (allFalse) {
-          console.log(
-            'subsettings are all false!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
-          )
+        // modeButton is enabled, but all of its subsettings are false
+        if (allFalse && enabledModeButtons.includes(modeButton.key)) {
+          console.log('button on -> off')
           modeButton.enabled = false
+          console.log(
+            'before delete urlSerchParams::::: ',
+            urlSearchParams.toString()
+          )
+          urlSearchParams.forEach((value, key) => {
+            console.log('key:::::::::', key)
+            if (transportModeSettings.some((setting) => setting.key === key)) {
+              console.log('deleting key:::::::::', key)
+              urlSearchParams.delete(key)
+            }
+          })
+          console.log(
+            'after delete urlSerchParams::::: ',
+            urlSearchParams.toString()
+          )
           handleModeButtonToggle(modeButton.key, false)
+          console.log('transportModeSettings:::::::::', transportModeSettings)
+
           return modeButton
         }
+
         return { ...modeButton, enabled: modeButton.enabled && !allFalse }
       }
 
@@ -219,7 +235,12 @@ const AdvancedSettingsPanel = ({
     }
 
     processedModeButtons.map(pipe(checkTransportModeSubsettings))
-  }, [processedModeButtons, handleModeButtonToggle])
+  }, [
+    processedModeButtons,
+    handleModeButtonToggle,
+    enabledModeButtons,
+    urlSearchParams
+  ])
 
   return (
     <PanelOverlay className="advanced-settings" ref={innerRef}>
@@ -284,10 +305,6 @@ const AdvancedSettingsPanel = ({
 const queryParamConfig = { modeButtons: DelimitedArrayParam }
 
 const mapStateToProps = (state: AppReduxState) => {
-  /*   console.log(
-    'state.otp.modeSettingDefinitions::::',
-    state.otp.modeSettingDefinitions
-  ) */
   const urlSearchParams = new URLSearchParams(state.router.location.search)
   const modeSettingValues = generateModeSettingValues(
     urlSearchParams,
@@ -305,7 +322,8 @@ const mapStateToProps = (state: AppReduxState) => {
       [],
     modeButtonOptions: state.otp.config?.modes?.modeButtons || [],
     modeSettingDefinitions: state.otp?.modeSettingDefinitions || [],
-    modeSettingValues
+    modeSettingValues,
+    urlSearchParams
   }
 }
 
