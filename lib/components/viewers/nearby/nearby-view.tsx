@@ -290,12 +290,12 @@ function NearbyView({
 
 const mapStateToProps = (state: AppReduxState) => {
   const { config, location, transitIndex, ui } = state.otp
-  const { initLat, initLon } = state.otp.config.map
+  const { map } = state.otp.config
   const { nearbyViewCoords } = ui
   const { nearby } = transitIndex
   const { entityId } = state.router.location.query
   const { currentPosition } = location
-  const defaultLatLon = { lat: initLat || 0, lon: initLon || 0 }
+  const defaultLatLon = { lat: map?.initLat || 0, lon: map?.initLon || 0 }
   return {
     currentPosition,
     defaultLatLon,
