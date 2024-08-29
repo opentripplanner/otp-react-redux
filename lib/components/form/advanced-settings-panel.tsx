@@ -114,6 +114,7 @@ const DtSelectorContainer = styled.div`
 
 const AdvancedSettingsPanel = ({
   closeAdvancedSettings,
+  deleteQueryParams,
   enabledModeButtons,
   innerRef,
   modeButtonOptions,
@@ -123,6 +124,7 @@ const AdvancedSettingsPanel = ({
   urlSearchParams
 }: {
   closeAdvancedSettings: () => void
+  deleteQueryParams: (params: string[]) => void
   enabledModeButtons: string[]
   innerRef: RefObject<HTMLDivElement>
   modeButtonOptions: ModeButtonDefinition[]
@@ -205,25 +207,9 @@ const AdvancedSettingsPanel = ({
         )
         // modeButton is enabled, but all of its subsettings are false
         if (allFalse && enabledModeButtons.includes(modeButton.key)) {
-          console.log('button on -> off')
-          modeButton.enabled = false
-          console.log(
-            'before delete urlSerchParams::::: ',
-            urlSearchParams.toString()
-          )
-          urlSearchParams.forEach((value, key) => {
-            console.log('key:::::::::', key)
-            if (transportModeSettings.some((setting) => setting.key === key)) {
-              console.log('deleting key:::::::::', key)
-              urlSearchParams.delete(key)
-            }
-          })
-          console.log(
-            'after delete urlSerchParams::::: ',
-            urlSearchParams.toString()
-          )
+          console.log('all keys:::::', Object.keys(transportModeSettings))
+          deleteQueryParams(Object.keys(transportModeSettings))
           handleModeButtonToggle(modeButton.key, false)
-          console.log('transportModeSettings:::::::::', transportModeSettings)
 
           return modeButton
         }
@@ -239,7 +225,7 @@ const AdvancedSettingsPanel = ({
     processedModeButtons,
     handleModeButtonToggle,
     enabledModeButtons,
-    urlSearchParams
+    deleteQueryParams
   ])
 
   return (
@@ -328,6 +314,7 @@ const mapStateToProps = (state: AppReduxState) => {
 }
 
 const mapDispatchToProps = {
+  deleteQueryParams: formActions.deleteQueryParams,
   setQueryParam: formActions.setQueryParam,
   updateQueryTimeIfLeavingNow: formActions.updateQueryTimeIfLeavingNow
 }
