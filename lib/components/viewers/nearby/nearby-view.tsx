@@ -34,7 +34,7 @@ type CurrentPosition = { coords?: { latitude: number; longitude: number } }
 
 type Props = {
   currentPosition?: CurrentPosition
-  defaultLatLon: LatLonObj
+  defaultLatLon: LatLonObj | null
   displayedCoords?: LatLonObj
   entityId?: string
   fetchNearby: (latLon: LatLonObj, radius?: number) => void
@@ -75,7 +75,7 @@ function getNearbyCoordsFromUrlOrLocationOrMapCenter(
   coordsFromUrl?: LatLonObj,
   currentPosition?: CurrentPosition,
   map?: MapRef,
-  defaultLatLon?: LatLonObj
+  defaultLatLon?: LatLonObj | null
 ): LatLonObj | null {
   if (coordsFromUrl) {
     return coordsFromUrl
@@ -295,7 +295,8 @@ const mapStateToProps = (state: AppReduxState) => {
   const { nearby } = transitIndex
   const { entityId } = state.router.location.query
   const { currentPosition } = location
-  const defaultLatLon = { lat: map?.initLat || 0, lon: map?.initLon || 0 }
+  const defaultLatLon =
+    map?.initLat && map?.initLon ? { lat: map.initLat, lon: map.initLon } : null
   return {
     currentPosition,
     defaultLatLon,
