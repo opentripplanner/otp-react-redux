@@ -263,6 +263,7 @@ export interface ItineraryCostWeights {
 
 export interface ItineraryConfig {
   allowUserAlertCollapsing?: boolean
+  alwaysShowBothTimes?: boolean
   costs?: ItineraryCostConfig
   customBatchUiBackground?: boolean
   defaultFareType?: FareProductSelector
