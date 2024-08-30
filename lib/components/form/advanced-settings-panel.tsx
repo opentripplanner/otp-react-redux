@@ -207,8 +207,11 @@ const AdvancedSettingsPanel = ({
         )
         // modeButton is enabled, but all of its subsettings are false
         if (allFalse && enabledModeButtons.includes(modeButton.key)) {
-          console.log('all keys:::::', Object.keys(transportModeSettings))
-          deleteQueryParams(Object.keys(transportModeSettings))
+          console.log(
+            'all keys:::::',
+            transportModeSettings.map((setting) => setting.key)
+          )
+          deleteQueryParams(transportModeSettings.map((setting) => setting.key))
           handleModeButtonToggle(modeButton.key, false)
 
           return modeButton
