@@ -244,8 +244,8 @@ const transitionMixin = css`
 `
 
 const wipeOutMixin = (offset: number) => css`
-  transform: translateX(${offset}px);
   opacity: 0;
+  transform: translateX(${offset}px);
 `
 const wipeInMixin = css`
   opacity: 1;

@@ -18,9 +18,9 @@ export const modesQueryParamConfig = { modeButtons: DelimitedArrayParam }
 export const populateSettingWithIcon =
   (ModeIcon: React.ComponentType<{ mode?: string; width?: number }>) =>
   // eslint-disable-next-line react/display-name
-  (msd: ModeSetting): ModeSetting => ({
-    ...msd,
-    icon: <ModeIcon mode={msd.iconName} width={16} />
+  (modeSetting: ModeSetting): ModeSetting => ({
+    ...modeSetting,
+    icon: <ModeIcon mode={modeSetting.iconName} width={16} />
   })
 
 export const addModeButtonIcon =
@@ -34,17 +34,17 @@ export const addModeButtonIcon =
 
 export const addCustomSettingLabels =
   (intl: IntlShape) =>
-  (msd: ModeSetting): ModeSetting => {
+  (modeSetting: ModeSetting): ModeSetting => {
     let modeLabel
     // If we're using route mode overrides, make sure we're using the custom mode name
-    if (msd.type === 'SUBMODE') {
-      modeLabel = msd.overrideMode || msd.addTransportMode.mode
+    if (modeSetting.type === 'SUBMODE') {
+      modeLabel = modeSetting.overrideMode || modeSetting.addTransportMode.mode
       return {
-        ...msd,
+        ...modeSetting,
         label: getFormattedMode(modeLabel, intl)
       }
     }
-    return msd
+    return modeSetting
   }
 
 /**

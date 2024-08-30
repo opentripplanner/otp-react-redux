@@ -40,12 +40,12 @@ import DateTimeModal from './date-time-modal'
 const PanelOverlay = styled.div`
   height: 100%;
   left: 0;
+  overflow-y: auto;
   padding: 1.5em;
   position: absolute;
   top: 0;
   width: 100%;
   z-index: 100;
-  overflow-y: auto;
 `
 
 const GlobalSettingsContainer = styled.div`
@@ -65,8 +65,8 @@ const CloseButton = styled.button`
 const HeaderContainer = styled.div`
   align-items: center;
   display: flex;
-  justify-content: space-between;
   height: 30px;
+  justify-content: space-between;
 `
 
 const Subheader = styled.h2`
@@ -211,7 +211,9 @@ const AdvancedSettingsPanel = ({
       <AdvancedModeSubsettingsContainer
         accentColor={accentColor}
         fillModeIcons
-        label="test"
+        label={intl.formatMessage({
+          id: 'components.BatchSearchScreen.submodeSelectorLabel'
+        })}
         modeButtons={processedModeButtons}
         onSettingsUpdate={onSettingsUpdate(setQueryParam)}
         onToggleModeButton={setModeButton(
@@ -243,10 +245,11 @@ const queryParamConfig = { modeButtons: DelimitedArrayParam }
 
 const mapStateToProps = (state: AppReduxState) => {
   const urlSearchParams = new URLSearchParams(state.router.location.search)
+  const { modes } = state.otp.config
   const modeSettingValues = generateModeSettingValues(
     urlSearchParams,
-    state.otp?.modeSettingDefinitions || [],
-    state.otp.config.modes?.initialState?.modeSettingValues || {}
+    state.otp.modeSettingDefinitions || [],
+    modes?.initialState?.modeSettingValues || {}
   )
   return {
     currentQuery: state.otp.currentQuery,
@@ -255,9 +258,9 @@ const mapStateToProps = (state: AppReduxState) => {
       decodeQueryParams(queryParamConfig, {
         modeButtons: urlSearchParams.get('modeButtons')
       })?.modeButtons?.filter((mb): mb is string => mb !== null) ||
-      state.otp.config?.modes?.initialState?.enabledModeButtons ||
+      modes?.initialState?.enabledModeButtons ||
       [],
-    modeButtonOptions: state.otp.config?.modes?.modeButtons || [],
+    modeButtonOptions: modes?.modeButtons || [],
     modeSettingDefinitions: state.otp?.modeSettingDefinitions || [],
     modeSettingValues
   }

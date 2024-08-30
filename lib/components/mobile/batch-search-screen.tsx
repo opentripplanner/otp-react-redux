@@ -26,13 +26,13 @@ const { SET_FROM_LOCATION, SET_TO_LOCATION } = MobileScreens
 const MobileSearchSettings = styled.div<{ advancedPanelOpen: boolean }>`
   background: white;
   box-shadow: 3px 0px 12px #00000052;
-  position: fixed;
-  top: 50px;
-  left: 0;
-  right: 0;
-  transition: all 200ms ease;
   height: ${(props) =>
     props.advancedPanelOpen ? 'calc(100% - 50px)' : '230px'};
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 50px;
+  transition: all 200ms ease;
   /* Must appear under the 'hamburger' dropdown which has z-index of 1000. */
   z-index: 999;
 `

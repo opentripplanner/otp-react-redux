@@ -202,6 +202,7 @@ components:
     moreOptions: More options
     saveAndReturn: Save and return
     saved: Saved
+    submodeSelectorLabel: Select travel modes and submodes
     tripOptions: Trip Options
   BatchSettings:
     destination: destination

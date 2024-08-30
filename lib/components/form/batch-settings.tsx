@@ -133,6 +133,7 @@ function BatchSettings({
 // TODO: Typescript
 const mapStateToProps = (state: any) => {
   const urlSearchParams = new URLSearchParams(state.router.location.search)
+  const { modes } = state.otp.config
   return {
     activeSearch: getActiveSearch(state),
     currentQuery: state.otp.currentQuery,
@@ -141,11 +142,11 @@ const mapStateToProps = (state: any) => {
       decodeQueryParams(modesQueryParamConfig, {
         modeButtons: urlSearchParams.get('modeButtons')
       })?.modeButtons ||
-      state.otp.config?.modes?.initialState?.enabledModeButtons ||
+      modes?.initialState?.enabledModeButtons ||
       {},
     fillModeIcons: state.otp.config.itinerary?.fillModeIcons,
-    modeButtonOptions: state.otp.config?.modes?.modeButtons || [],
-    spacedOutModeSelector: state.otp?.config?.modes?.spacedOut
+    modeButtonOptions: modes?.modeButtons || [],
+    spacedOutModeSelector: modes?.spacedOut
   }
 }
 
