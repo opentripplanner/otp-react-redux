@@ -579,8 +579,8 @@ components:
       tripBegins: >-
         您的行程将于 {tripStart, time, short} 开始. (实时跟踪将于{monitoringStart, time,
         short}开始.)
-      tripStartIsDelayed: 行程开始时间延迟 ${duration}!
-      tripStartIsEarly: 开始时间比预期早 ${duration}!
+      tripStartIsDelayed: 行程开始时间延迟 {duration}!
+      tripStartIsEarly: 开始时间比预期早 {duration}!
       tripStartsSoonNoUpdates: 行程即将开始 (没有实时更新).
       tripStartsSoonOnTime: 行程即将开始而且大约是准时的.
   TripSummary:
