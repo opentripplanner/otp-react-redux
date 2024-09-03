@@ -289,6 +289,7 @@ export interface ItineraryConfig {
   showPlanFirstLastButtons?: boolean
   showRouteFares?: boolean
   sortModes?: ItinerarySortOption[]
+  syncSortWithDepartArrive?: boolean
   weights?: ItineraryCostWeights
 }
 

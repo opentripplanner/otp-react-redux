@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { connect } from 'react-redux'
 import coreUtils from '@opentripplanner/core-utils'
-import React from 'react'
+import React, { useCallback } from 'react'
 
 import { AppConfig } from '../../util/config-types'
 import { AppReduxState, FilterType, SortType } from '../../util/state-types'
@@ -42,20 +42,26 @@ function DateTimeModal(props: Props) {
     ? 'with-desktop-touchscreen'
     : ''
 
-  const setQueryParamMiddleware = (params: any) => {
-    switch (params.departArrive) {
-      case 'NOW':
-        updateItineraryFilter({ sort: { ...sort, type: 'DURATION' } })
-        break
-      case 'DEPART':
-        updateItineraryFilter({ sort: { ...sort, type: 'DEPARTURETIME' } })
-        break
-      case 'ARRIVE':
-        updateItineraryFilter({ sort: { ...sort, type: 'ARRIVALTIME' } })
-        break
-    }
-    setQueryParam(params)
-  }
+  const syncSortWithDepartArrive = config?.itinerary?.syncSortWithDepartArrive
+  const setQueryParamMiddleware = useCallback(
+    (params: any) => {
+      if (syncSortWithDepartArrive !== false) {
+        switch (params.departArrive) {
+          case 'NOW':
+            updateItineraryFilter({ sort: { ...sort, type: 'DURATION' } })
+            break
+          case 'DEPART':
+            updateItineraryFilter({ sort: { ...sort, type: 'DEPARTURETIME' } })
+            break
+          case 'ARRIVE':
+            updateItineraryFilter({ sort: { ...sort, type: 'ARRIVALTIME' } })
+            break
+        }
+      }
+      setQueryParam(params)
+    },
+    [setQueryParam, updateItineraryFilter, sort, syncSortWithDepartArrive]
+  )
   return (
     <div className="date-time-modal">
       <div className="main-panel">
