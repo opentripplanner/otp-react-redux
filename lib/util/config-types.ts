@@ -356,6 +356,11 @@ export interface StopScheduleViewerConfig {
   showBlockIds?: boolean
 }
 
+export interface DateTimeConfig {
+  dateFormat: string
+  timeFormat: string
+}
+
 /** The main application configuration object */
 export interface AppConfig {
   accessibilityScore?: AccessibilityScoreConfig
@@ -368,6 +373,7 @@ export interface AppConfig {
   bugsnag?: BugsnagConfig
   co2?: CO2Config
   companies?: Company[]
+  dateTime?: DateTimeConfig
   elevationProfile?: boolean
   extraMenuItems?: AppMenuItemConfig[]
   geocoder: GeocoderConfig
