@@ -29,6 +29,7 @@ import PageTitle from '../util/page-title'
 import {
   addCustomSettingLabels,
   addModeButtonIcon,
+  onAdvancedModeSubsettingsUpdate,
   onSettingsUpdate,
   pipe,
   populateSettingWithIcon,
@@ -114,7 +115,6 @@ const DtSelectorContainer = styled.div`
 
 const AdvancedSettingsPanel = ({
   closeAdvancedSettings,
-  deleteQueryParams,
   enabledModeButtons,
   innerRef,
   modeButtonOptions,
@@ -124,7 +124,6 @@ const AdvancedSettingsPanel = ({
   urlSearchParams
 }: {
   closeAdvancedSettings: () => void
-  deleteQueryParams: (params: string[]) => void
   enabledModeButtons: string[]
   innerRef: RefObject<HTMLDivElement>
   modeButtonOptions: ModeButtonDefinition[]
@@ -173,12 +172,6 @@ const AdvancedSettingsPanel = ({
   )
 
   const processedModeSettings = processSettings(modeSettingDefinitions)
-  // console.log('processedModeSettings::::', processedModeSettings)
-
-  const handleModeButtonToggle = setModeButton(
-    enabledModeButtons,
-    onSettingsUpdate(setQueryParam)
-  )
 
   const processedModeButtons = modeButtonOptions.map(
     pipe(
@@ -187,49 +180,11 @@ const AdvancedSettingsPanel = ({
       setModeButtonEnabled(enabledModeButtons)
     )
   )
-  console.log('processedModeButtons::::::', processedModeButtons)
 
-  useEffect(() => {
-    console.log('processedModeButtons CHANGED!!! ::::::', processedModeButtons)
-    const checkTransportModeSubsettings = (
-      modeButton: ModeButtonDefinition
-    ) => {
-      if (modeButton.modeSettings && modeButton.modeSettings.length > 0) {
-        const transportModeSettings = modeButton.modeSettings.filter(
-          (setting: ModeSetting) =>
-            (setting.type === 'CHECKBOX' || setting.type === 'SUBMODE') &&
-            setting.addTransportMode
-        )
-        if (transportModeSettings.length === 0) return modeButton
-
-        const allFalse = transportModeSettings.every(
-          (setting) => !setting.value
-        )
-        // modeButton is enabled, but all of its subsettings are false
-        if (allFalse && enabledModeButtons.includes(modeButton.key)) {
-          console.log(
-            'all keys:::::',
-            transportModeSettings.map((setting) => setting.key)
-          )
-          deleteQueryParams(transportModeSettings.map((setting) => setting.key))
-          handleModeButtonToggle(modeButton.key, false)
-
-          return modeButton
-        }
-
-        return { ...modeButton, enabled: modeButton.enabled && !allFalse }
-      }
-
-      return modeButton
-    }
-
-    processedModeButtons.map(pipe(checkTransportModeSubsettings))
-  }, [
-    processedModeButtons,
-    handleModeButtonToggle,
+  const handleModeButtonToggle = setModeButton(
     enabledModeButtons,
-    deleteQueryParams
-  ])
+    onSettingsUpdate(setQueryParam)
+  )
 
   return (
     <PanelOverlay className="advanced-settings" ref={innerRef}>
@@ -268,7 +223,11 @@ const AdvancedSettingsPanel = ({
         fillModeIcons
         label="test"
         modeButtons={processedModeButtons}
-        onSettingsUpdate={onSettingsUpdate(setQueryParam)}
+        onSettingsUpdate={onAdvancedModeSubsettingsUpdate(
+          setQueryParam,
+          processedModeButtons,
+          handleModeButtonToggle
+        )}
         onToggleModeButton={handleModeButtonToggle}
       />
       <ReturnToTripPlanButton
@@ -317,7 +276,6 @@ const mapStateToProps = (state: AppReduxState) => {
 }
 
 const mapDispatchToProps = {
-  deleteQueryParams: formActions.deleteQueryParams,
   setQueryParam: formActions.setQueryParam,
   updateQueryTimeIfLeavingNow: formActions.updateQueryTimeIfLeavingNow
 }
