@@ -111,6 +111,9 @@ persistence:
 #        iconType: 'car'
 #        iconUrl: ''
 #        href: ''
+dateTime:
+  timeFormat: h:mm a
+  dateFormat: MM/dd/yyyy
 
 map:
   initLat: 45.52
