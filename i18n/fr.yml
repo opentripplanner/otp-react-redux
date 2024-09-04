@@ -123,6 +123,7 @@ common:
     noItineraryToDisplay: Aucun trajet à afficher.
     relativeCo2: |
       {co2} de CO₂ en {isMore, select, true {plus} other {moins} } qu'en voiture
+    timeStartEnd: "{start} – {end}"
     transfers: >-
       {transfers, plural, =0 {} one {# correspondance} other {#
       correspondances}}
@@ -290,6 +291,7 @@ components:
     park-and-ride: Parcs relais
     satellite: Satellite
     shared-vehicles: Véhicules en partage
+    stations: Arrêts et stations
     stops: Arrêts et stations
     streets: Plan des rues
   MapillaryFrame:
@@ -297,6 +299,7 @@ components:
   MetroUI:
     arriveAt: Vous arrivez à
     itineraryDescription: Trajet de {time} par les lignes {routes}
+    itinerarySummary: Partez à {stopName} | {cost}
     leaveAt: Partez à
     multipleOptions: Plusieurs options
     orAlternatives: ou autres lignes dans la même direction
@@ -706,8 +709,8 @@ components:
       tripBegins: >-
         Départ prévu à {tripStart, time, short}. (Le suivi en temps réel
         débutera à {monitoringStart, time, short}.)
-      tripStartIsDelayed: Départ retardé de ${duration}.
-      tripStartIsEarly: Départ avancé de ${duration} !
+      tripStartIsDelayed: Départ retardé de {duration}.
+      tripStartIsEarly: Départ avancé de {duration} !
       tripStartsSoonNoUpdates: Départ proche (pas de données en temps réel).
       tripStartsSoonOnTime: Départ proche et prévu à l'heure.
   TripSummary:

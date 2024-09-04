@@ -658,8 +658,8 @@ components:
       tripBegins: >-
         Magsisimula ang biyahe nang {tripStart, time, short}. (Magsisimula ang
         realtime na pagsubaybay nang {monitoringStart, time, short}.)
-      tripStartIsDelayed: Naantala ang oras ng pagsisimula ng biyahe nang ${duration}!
-      tripStartIsEarly: Nagsisimula na ang biyahe ${duration} na mas maaga kaysa sa inaasahan!
+      tripStartIsDelayed: Naantala ang oras ng pagsisimula ng biyahe nang {duration}!
+      tripStartIsEarly: Nagsisimula na ang biyahe {duration} na mas maaga kaysa sa inaasahan!
       tripStartsSoonNoUpdates: >-
         Malapit nang magsimula ang biyahe (walang realtime na update na
         available).

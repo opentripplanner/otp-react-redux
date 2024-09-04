@@ -647,9 +647,9 @@ components:
       tripBegins: >-
         Chuyến đi sẽ bắt đầu lúc {tripStart, time, short}. (Việc theo dõi thời
         gian thực sẽ bắt đầu lúc {monitoringStart, time, short}.)
-      tripStartIsDelayed: Thời gian bắt đầu chuyến đi bị trì hoãn ${duration}!
+      tripStartIsDelayed: Thời gian bắt đầu chuyến đi bị trì hoãn {duration}!
       tripStartIsEarly: >-
-        Thời gian bắt đầu chuyến đi đang diễn ra sớm hơn ${duration} so với dự
+        Thời gian bắt đầu chuyến đi đang diễn ra sớm hơn {duration} so với dự
         kiến!
       tripStartsSoonNoUpdates: Chuyến đi đang bắt đầu sớm (không có cập nhật về thời gian thực).
       tripStartsSoonOnTime: Chuyến đi đang bắt đầu sớm và sắp đúng giờ.

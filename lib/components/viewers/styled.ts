@@ -28,10 +28,11 @@ export const LogoLinkContainer = styled.div`
 `
 export const HeadsignSelectLabel = styled.label`
   font-size: 18px;
+  margin-bottom: 0;
 `
 
 export const PatternContainer = styled.div`
-  align-items: flex-start;
+  align-items: center;
   background-color: inherit;
   color: inherit;
   display: flex;

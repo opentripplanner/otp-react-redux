@@ -114,6 +114,7 @@ common:
     noItineraryToDisplay: No itinerary to display.
     relativeCo2: |
       {co2} {isMore, select, true {more} other {less} } CO₂ than driving alone
+    timeStartEnd: "{start} – {end}"
     transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
   linkOpensNewWindow: (Opens new window)
   modes:
@@ -273,6 +274,7 @@ components:
     park-and-ride: Park & Ride Locations
     satellite: Satellite
     shared-vehicles: Shared Vehicles
+    stations: Transit Stations
     stops: Transit Stops
     streets: Streets
   MapillaryFrame:
@@ -280,6 +282,7 @@ components:
   MetroUI:
     arriveAt: You arrive
     itineraryDescription: "{time} itinerary using {routes}"
+    itinerarySummary: from {stopName} | {cost}
     leaveAt: You leave
     multipleOptions: Multiple Options
     orAlternatives: or other routes in the same direction
@@ -672,8 +675,8 @@ components:
       tripBegins: >-
         Trip is due to begin at {tripStart, time, short}. (Realtime monitoring
         will begin at {monitoringStart, time, short}.)
-      tripStartIsDelayed: Trip start time is delayed ${duration}!
-      tripStartIsEarly: Trip start time is happening ${duration} earlier than expected!
+      tripStartIsDelayed: Trip start time is delayed {duration}!
+      tripStartIsEarly: Trip start time is happening {duration} earlier than expected!
       tripStartsSoonNoUpdates: Trip is starting soon (no realtime updates available).
       tripStartsSoonOnTime: Trip is starting soon and is about on time.
   TripSummary:

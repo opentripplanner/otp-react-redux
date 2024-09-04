@@ -1,9 +1,11 @@
 import { FormattedMessage, useIntl } from 'react-intl'
 import React, { ComponentType } from 'react'
 
+import { BackButtonContent } from '../back-link'
 import { MonitoredTrip } from '../types'
-import BackLink from '../back-link'
+import { TRIPS_PATH } from '../../../util/constants'
 import DeleteForm from '../delete-form'
+import Link from '../../util/link'
 import PageTitle from '../../util/page-title'
 import StackedPanesWithSave from '../stacked-panes-with-save'
 
@@ -52,7 +54,11 @@ const SavedTripEditor = (props: Props): JSX.Element => {
     return (
       <>
         <PageTitle title={title} />
-        <BackLink />
+        {/* If creating, back button should return to trip planner. If not, it should return
+        to saved trips, just in case the user accessed this page through their email. */}
+        <Link to={isCreating ? '/' : TRIPS_PATH}>
+          <BackButtonContent />
+        </Link>
         <StackedPanesWithSave
           extraButton={
             monitoredTrip.id
