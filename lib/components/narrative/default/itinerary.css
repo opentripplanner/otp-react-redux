@@ -198,6 +198,13 @@
 .otp .option.default-itin > .header .title > .summary > .mode-block {
   height: 18px;
   width: 18px;
+}
+.otp
+  .option.default-itin
+  > .header
+  .title
+  > .summary
+  > .mode-block.non-company {
   color: #eee;
   fill: #eee;
 }
