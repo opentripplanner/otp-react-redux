@@ -68,7 +68,7 @@ export function ItineraryDescription({ itinerary }: Props): JSX.Element {
   let transitMode
   itinerary.legs.forEach((leg) => {
     const { duration, mode, rentedBike, rentedVehicle } = leg
-    if (isTransit(mode) && duration > primaryTransitDuration) {
+    if (leg.transitLeg && duration > primaryTransitDuration) {
       primaryTransitDuration = duration
 
       // If custom TransitModes have been defined for the given mode/leg, attempt to use them,

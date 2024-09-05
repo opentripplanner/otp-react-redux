@@ -373,7 +373,7 @@ export function getTotalFare(
     ) {
       hasBikeshare = true
     }
-    if (coreUtils.itinerary.isTransit(leg.mode) && transitFare == null) {
+    if (leg.transitLeg && transitFare == null) {
       transitFareNotProvided = true
     }
   })
