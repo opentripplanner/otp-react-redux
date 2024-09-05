@@ -12,10 +12,11 @@ import MobileContainer from './container'
 import MobileNavigationBar from './navigation-bar'
 
 interface Props {
+  renderOtherFirst: boolean
   setMobileScreen: (screen: number) => void
 }
 
-const MobileWelcomeScreen = ({ setMobileScreen }: Props) => {
+const MobileWelcomeScreen = ({ renderOtherFirst, setMobileScreen }: Props) => {
   const intl = useIntl()
 
   const toFieldClicked = useCallback(
@@ -38,6 +39,7 @@ const MobileWelcomeScreen = ({ setMobileScreen }: Props) => {
             })}
             locationType="to"
             onTextInputClick={toFieldClicked}
+            renderOtherFirst={renderOtherFirst}
             showClearButton={false}
           />
         </div>
@@ -56,4 +58,12 @@ const mapDispatchToProps = {
   setMobileScreen: uiActions.setMobileScreen
 }
 
-export default connect(null, mapDispatchToProps)(MobileWelcomeScreen)
+const mapStateToProps = (state: any) => {
+  const { renderOtherFirst } = state.otp.config.geocoder
+
+  return {
+    renderOtherFirst
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MobileWelcomeScreen)

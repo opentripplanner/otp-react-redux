@@ -16,6 +16,7 @@ interface Props {
   activeSearch: any
   intl: IntlShape
   mobile?: boolean
+  renderOtherFirst?: boolean
   showUserSettings: boolean
 }
 
@@ -34,7 +35,8 @@ class BatchRoutingPanel extends Component<Props> {
   }
 
   render() {
-    const { activeSearch, intl, mobile, showUserSettings } = this.props
+    const { activeSearch, intl, mobile, renderOtherFirst, showUserSettings } =
+      this.props
     const { planTripClicked } = this.state
     const mapAction = mobile
       ? intl.formatMessage({
@@ -71,6 +73,7 @@ class BatchRoutingPanel extends Component<Props> {
               )}
               isRequired
               locationType="from"
+              renderOtherFirst={renderOtherFirst}
               selfValidate={planTripClicked}
               showClearButton={!mobile}
             />
@@ -81,6 +84,7 @@ class BatchRoutingPanel extends Component<Props> {
               )}
               isRequired
               locationType="to"
+              renderOtherFirst={renderOtherFirst}
               selfValidate={planTripClicked}
               showClearButton={!mobile}
             />
@@ -115,8 +119,10 @@ const mapStateToProps = (state: any) => {
     getShowUserSettings(state) &&
     (state.user.loggedInUser?.hasConsentedToTerms ||
       getPersistenceMode(state.otp.config.persistence).isLocalStorage)
+  const { renderOtherFirst } = state.otp.config.geocoder
   return {
     activeSearch: getActiveSearch(state),
+    renderOtherFirst,
     showUserSettings
   }
 }

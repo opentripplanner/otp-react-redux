@@ -17,6 +17,7 @@ const { SET_FROM_LOCATION, SET_TO_LOCATION } = MobileScreens
 interface Props {
   intl: IntlShape
   map: React.ReactElement
+  renderOtherFirst: boolean
   setMobileScreen: (screen: number) => void
 }
 
@@ -34,7 +35,7 @@ class BatchSearchScreen extends Component<Props> {
   }
 
   render() {
-    const { intl } = this.props
+    const { intl, renderOtherFirst } = this.props
     const { planTripClicked } = this.state
     return (
       <MobileContainer>
@@ -52,6 +53,7 @@ class BatchSearchScreen extends Component<Props> {
               isRequired
               locationType="from"
               onTextInputClick={this._fromFieldClicked}
+              renderOtherFirst={renderOtherFirst}
               selfValidate={planTripClicked}
               showClearButton={false}
             />
@@ -62,6 +64,7 @@ class BatchSearchScreen extends Component<Props> {
               isRequired
               locationType="to"
               onTextInputClick={this._toFieldClicked}
+              renderOtherFirst={renderOtherFirst}
               selfValidate={planTripClicked}
               showClearButton={false}
             />
@@ -85,4 +88,15 @@ const mapDispatchToProps = {
   setMobileScreen: uiActions.setMobileScreen
 }
 
-export default connect(null, mapDispatchToProps)(injectIntl(BatchSearchScreen))
+const mapStateToProps = (state: any) => {
+  const { renderOtherFirst } = state.otp.config.geocoder
+
+  return {
+    renderOtherFirst
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(injectIntl(BatchSearchScreen))
