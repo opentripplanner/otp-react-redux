@@ -267,7 +267,8 @@ class DefaultMap extends Component {
       setLocation,
       setViewedStop,
       vehicleRentalQuery,
-      vehicleRentalStations
+      vehicleRentalStations,
+      viewedRouteStops
     } = this.props
     const { getCustomMapOverlays, getTransitiveRouteLabel, ModeIcon } =
       this.context
@@ -405,6 +406,7 @@ class DefaultMap extends Component {
                   vectorTilesEndpoint,
                   setLocation,
                   setViewedStop,
+                  viewedRouteStops,
                   config.companies
                 )
               default:
@@ -427,6 +429,19 @@ class DefaultMap extends Component {
 
 const mapStateToProps = (state) => {
   const activeSearch = getActiveSearch(state)
+  const viewedRoute = state.otp?.ui?.viewedRoute?.routeId
+  const nearbyViewerActive =
+    state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW
+  const viewedRouteStops =
+    viewedRoute && !nearbyViewerActive
+      ? Object.entries(
+          state.otp?.transitIndex?.routes?.[viewedRoute]?.patterns || {}
+        ).reduce((acc, cur) => {
+          return Array.from(
+            new Set([...cur?.[1]?.stops.map((s) => s.id), ...acc])
+          )
+        }, [])
+      : null
 
   return {
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
@@ -438,7 +453,8 @@ const mapStateToProps = (state) => {
       state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW,
     pending: activeSearch ? Boolean(activeSearch.pending) : false,
     query: state.otp.currentQuery,
-    vehicleRentalStations: state.otp.overlay.vehicleRental.stations
+    vehicleRentalStations: state.otp.overlay.vehicleRental.stations,
+    viewedRouteStops
   }
 }
 
