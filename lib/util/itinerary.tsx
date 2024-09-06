@@ -455,7 +455,7 @@ interface LegWithOriginalMode extends Leg {
   originalMode?: string
 }
 
-/** Applies route mode overrides to a list of itineraries. */
+/** Applies route mode overrides to an itinerary. */
 export function applyRouteModeOverrides(
   itinerary: Itinerary,
   routeModeOverrides: Record<string, string>
