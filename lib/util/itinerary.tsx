@@ -462,7 +462,7 @@ export function applyRouteModeOverrides(
 ): void {
   itinerary.legs.forEach((leg: LegWithOriginalMode) => {
     // Use OTP2 leg route first, fallback on legacy leg routeId.
-    const routeId = leg.route?.id || leg.routeId
+    const routeId = typeof leg.route === 'object' ? leg.route.id : leg.routeId
     if (routeId) {
       leg.originalMode = leg.mode
       leg.mode = checkForRouteModeOverride(
@@ -482,7 +482,7 @@ export function copyAndRemoveRouteModeOverrides(
 ): Itinerary {
   return {
     ...itinerary,
-    legs: itinerary.legs.map((leg) => ({
+    legs: itinerary.legs.map((leg: LegWithOriginalMode) => ({
       ...leg,
       mode: leg.originalMode || leg.mode
     }))
