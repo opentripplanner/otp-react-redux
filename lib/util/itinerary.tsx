@@ -475,3 +475,16 @@ export function applyRouteModeOverrides(
     }
   })
 }
+
+/** Remove mode overrides from an itinerary */
+export function copyAndRemoveRouteModeOverrides(
+  itinerary: Itinerary
+): Itinerary {
+  return {
+    ...itinerary,
+    legs: itinerary.legs.map((leg) => ({
+      ...leg,
+      mode: leg.originalMode || leg.mode
+    }))
+  }
+}
