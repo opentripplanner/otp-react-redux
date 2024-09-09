@@ -45,6 +45,7 @@ interface Props {
 
 class BatchSearchScreen extends Component<Props> {
   state = {
+    closeAdvancedSettingsWithDelay: false,
     planTripClicked: false,
     showAdvancedModeSettings: false
   }
@@ -63,6 +64,9 @@ class BatchSearchScreen extends Component<Props> {
   render() {
     const { intl } = this.props
     const { planTripClicked, showAdvancedModeSettings } = this.state
+
+    const transitionDelay = this.state.closeAdvancedSettingsWithDelay ? 300 : 0
+    const transitionDurationWithDelay = transitionDuration + transitionDelay
     return (
       <MobileContainer>
         <MobileNavigationBar
@@ -77,7 +81,7 @@ class BatchSearchScreen extends Component<Props> {
               showAdvancedModeSettings && 'advanced-mode-open'
             }`}
           >
-            <TransitionStyles>
+            <TransitionStyles transitionDelay={transitionDelay}>
               <TransitionGroup style={{ display: 'content' }}>
                 {!showAdvancedModeSettings && (
                   <CSSTransition
@@ -127,7 +131,10 @@ class BatchSearchScreen extends Component<Props> {
                   <CSSTransition
                     classNames={advancedPanelClassName}
                     nodeRef={this._advancedSettingRef}
-                    timeout={transitionDuration}
+                    timeout={{
+                      enter: transitionDuration,
+                      exit: transitionDurationWithDelay
+                    }}
                   >
                     <AdvancedSettingsPanel
                       closeAdvancedSettings={
@@ -135,7 +142,13 @@ class BatchSearchScreen extends Component<Props> {
                         // eslint-disable-next-line prettier/prettier
                       }
                       innerRef={this._advancedSettingRef}
-                      onPlanTripClick={this.handlePlanTripClick}
+                      setCloseAdvancedSettingsWithDelay={
+                        () =>
+                          this.setState({
+                            closeAdvancedSettingsWithDelay: true
+                          })
+                        // eslint-disable-next-line react/jsx-curly-newline
+                      }
                     />
                   </CSSTransition>
                 )}
