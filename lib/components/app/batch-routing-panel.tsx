@@ -6,7 +6,6 @@ import React, { Component, FormEvent } from 'react'
 import {
   advancedPanelClassName,
   mainPanelClassName,
-  transitionDelay,
   transitionDuration,
   TransitionStyles
 } from '../form/styled'
@@ -34,6 +33,7 @@ interface Props {
  */
 class BatchRoutingPanel extends Component<Props> {
   state = {
+    closeAdvancedSettingsWithDelay: false,
     planTripClicked: false,
     showAdvancedModeSettings: false
   }
@@ -72,6 +72,9 @@ class BatchRoutingPanel extends Component<Props> {
           id: 'common.searchForms.click'
         })
 
+    /* If there is a save button in advanced preferences, add a transition delay to allow
+    the saved state to be displayed to users */
+    const transitionDelay = this.state.closeAdvancedSettingsWithDelay ? 300 : 0
     const transitionDurationWithDelay = transitionDuration + transitionDelay
 
     return (
@@ -83,7 +86,7 @@ class BatchRoutingPanel extends Component<Props> {
           height: '100%'
         }}
       >
-        <TransitionStyles>
+        <TransitionStyles transitionDelay={transitionDelay}>
           {!this.state.showAdvancedModeSettings && (
             <InvisibleA11yLabel>
               <h1>
@@ -112,7 +115,13 @@ class BatchRoutingPanel extends Component<Props> {
                       // eslint-disable-next-line react/jsx-curly-newline
                     }
                     innerRef={this._advancedSettingRef}
-                    onPlanTripClick={this.handlePlanTripClick}
+                    setCloseAdvancedSettingsWithDelay={
+                      () =>
+                        this.setState({
+                          closeAdvancedSettingsWithDelay: true
+                        })
+                      // eslint-disable-next-line react/jsx-curly-newline
+                    }
                   />
                 </CSSTransition>
               )}
@@ -157,6 +166,7 @@ class BatchRoutingPanel extends Component<Props> {
                       onPlanTripClick={this.handlePlanTripClick}
                       openAdvancedSettings={() =>
                         this.setState({
+                          closeAdvancedSettingsWithDelay: false,
                           showAdvancedModeSettings: true
                           // eslint-disable-next-line prettier/prettier
                         })}

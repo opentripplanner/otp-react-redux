@@ -4,8 +4,8 @@ import {
   ModeSettingRenderer,
   populateSettingWithValue
 } from '@opentripplanner/trip-form'
+import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
 import { Check } from '@styled-icons/boxicons-regular'
-import { Close } from '@styled-icons/fa-solid'
 import { connect } from 'react-redux'
 import { decodeQueryParams, DelimitedArrayParam } from 'serialize-query-params'
 import { FormattedMessage, useIntl } from 'react-intl'
@@ -23,7 +23,6 @@ import { AppReduxState } from '../../util/state-types'
 import { blue, getBaseColor } from '../util/colors'
 import { ComponentContext } from '../../util/contexts'
 import { generateModeSettingValues } from '../../util/api'
-import PageTitle from '../util/page-title'
 
 import {
   addCustomSettingLabels,
@@ -65,8 +64,8 @@ const CloseButton = styled.button`
 const HeaderContainer = styled.div`
   align-items: center;
   display: flex;
+  gap: 10px;
   height: 30px;
-  justify-content: space-between;
 `
 
 const Subheader = styled.h2`
@@ -118,6 +117,8 @@ const AdvancedSettingsPanel = ({
   modeButtonOptions,
   modeSettingDefinitions,
   modeSettingValues,
+  saveAndReturnButton,
+  setCloseAdvancedSettingsWithDelay,
   setQueryParam
 }: {
   closeAdvancedSettings: () => void
@@ -126,11 +127,11 @@ const AdvancedSettingsPanel = ({
   modeButtonOptions: ModeButtonDefinition[]
   modeSettingDefinitions: ModeSetting[]
   modeSettingValues: ModeSettingValues
-  onPlanTripClick: () => void
+  saveAndReturnButton?: boolean
+  setCloseAdvancedSettingsWithDelay: () => void
   setQueryParam: (evt: any) => void
 }): JSX.Element => {
   const [closingBySave, setClosingBySave] = useState(false)
-  const [closingByX, setClosingByX] = useState(false)
   const baseColor = getBaseColor()
   const accentColor = baseColor || blue[900]
 
@@ -179,18 +180,16 @@ const AdvancedSettingsPanel = ({
   return (
     <PanelOverlay className="advanced-settings" ref={innerRef}>
       <HeaderContainer>
-        <PageTitle title={headerText} />
-        <h1 className="header-text">{headerText}</h1>
         <CloseButton
           aria-label={closeButtonText}
           onClick={() => {
-            setClosingByX(true)
             closeAdvancedSettings()
           }}
           title={closeButtonText}
         >
-          {closingByX ? <Check size={30} /> : <Close size={22} />}
+          <ArrowLeft size={22} />
         </CloseButton>
+        <h1 className="header-text">{headerText}</h1>
       </HeaderContainer>
       <DtSelectorContainer>
         <DateTimeModal />
@@ -221,22 +220,25 @@ const AdvancedSettingsPanel = ({
           onSettingsUpdate(setQueryParam)
         )}
       />
-      <ReturnToTripPlanButton
-        className="save-settings-button"
-        onClick={() => {
-          setClosingBySave(true)
-          closeAdvancedSettings()
-        }}
-      >
-        {closingBySave ? (
-          <>
-            <FormattedMessage id="components.BatchSearchScreen.saved" />
-            <Check size={22} />
-          </>
-        ) : (
-          <FormattedMessage id="components.BatchSearchScreen.saveAndReturn" />
-        )}
-      </ReturnToTripPlanButton>
+      {saveAndReturnButton && (
+        <ReturnToTripPlanButton
+          className="save-settings-button"
+          onClick={async () => {
+            await setCloseAdvancedSettingsWithDelay()
+            setClosingBySave(true)
+            closeAdvancedSettings()
+          }}
+        >
+          {closingBySave ? (
+            <>
+              <FormattedMessage id="components.BatchSearchScreen.saved" />
+              <Check size={22} />
+            </>
+          ) : (
+            <FormattedMessage id="components.BatchSearchScreen.saveAndReturn" />
+          )}
+        </ReturnToTripPlanButton>
+      )}
     </PanelOverlay>
   )
 }
@@ -251,6 +253,8 @@ const mapStateToProps = (state: AppReduxState) => {
     state.otp.modeSettingDefinitions || [],
     modes?.initialState?.modeSettingValues || {}
   )
+  const saveAndReturnButton =
+    state.otp.config?.advancedSettingsPanel?.saveAndReturnButton
   return {
     currentQuery: state.otp.currentQuery,
     // TODO: Duplicated in apiv2.js
@@ -262,7 +266,8 @@ const mapStateToProps = (state: AppReduxState) => {
       [],
     modeButtonOptions: modes?.modeButtons || [],
     modeSettingDefinitions: state.otp?.modeSettingDefinitions || [],
-    modeSettingValues
+    modeSettingValues,
+    saveAndReturnButton
   }
 }
 
