@@ -693,10 +693,8 @@ components:
       tripBegins: >-
         El viaje debe comenzar a las {tripStart, time, short}. (El seguimiento
         en tiempo real comenzará a las {monitoringStart, time, short}.)
-      tripStartIsDelayed: ¡La hora de inicio del viaje se retrasa ${duration}!
-      tripStartIsEarly: >-
-        ¡La hora de inicio del viaje se produce ${duration} antes de lo
-        previsto!
+      tripStartIsDelayed: ¡La hora de inicio del viaje se retrasa {duration}!
+      tripStartIsEarly: ¡La hora de inicio del viaje se produce {duration} antes de lo previsto!
       tripStartsSoonNoUpdates: >-
         El viaje comienza pronto (no hay actualizaciones disponibles en tiempo
         real).
