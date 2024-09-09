@@ -233,7 +233,7 @@ class AppMenu extends Component<
             {/* This item is duplicated by the view-switcher, but only shown on mobile
             when the view switcher isn't shown (using css) */}
             <AppMenuItem
-              className="app-menu-route-viewer-link"
+              className="app-menu-nearby-viewer-link"
               icon={<MapPin />}
               onClick={this._togglePane}
               text={intl.formatMessage({

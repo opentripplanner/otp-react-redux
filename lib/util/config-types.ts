@@ -228,6 +228,7 @@ export interface MapConfig {
   initLon?: number
   initZoom?: number
   maxZoom?: number
+  navigationControlPosition?: string
   overlays?: SupportedOverlays[]
   views?: MapViewConfig[]
 }
@@ -262,6 +263,7 @@ export interface ItineraryCostWeights {
 
 export interface ItineraryConfig {
   allowUserAlertCollapsing?: boolean
+  alwaysShowBothTimes?: boolean
   costs?: ItineraryCostConfig
   customBatchUiBackground?: boolean
   defaultFareType?: FareProductSelector
@@ -283,6 +285,7 @@ export interface ItineraryConfig {
   showApproximatePrefixAccessLegs?: boolean
   showFirstResultByDefault?: boolean
   showHeaderText?: boolean
+  showInlineItinerarySummary?: boolean
   showLegDurations?: boolean
   showPlanFirstLastButtons?: boolean
   showRouteFares?: boolean

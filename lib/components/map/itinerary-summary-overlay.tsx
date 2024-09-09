@@ -19,6 +19,7 @@ import {
   getVisibleItineraryIndex
 } from '../../util/state'
 import { isDefined } from '../../util/ui'
+import FormattedDuration from '../util/formatted-duration'
 import MetroItineraryRoutes from '../narrative/metro/metro-itinerary-routes'
 
 type ItinWithGeometry = Itinerary & {
@@ -37,12 +38,24 @@ type Props = {
   visibleItinerary?: number
 }
 
+const TimeWrapper = styled.span`
+  align-items: center;
+  background: black;
+  border-radius: 5px;
+  color: white;
+  display: inline-flex;
+  font-weight: 600;
+  justify-content: center;
+  margin-left: 24px;
+  padding: 0px 8px;
+`
+
 const Card = styled.div`
   ${boxShadowCss}
 
   background: #fffffffa;
   border-radius: 5px;
-  padding: 6px;
+  padding: 8px;
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -57,7 +70,8 @@ const Card = styled.div`
     }
   }
   div {
-    margin-top: -0px!important;
+    margin-top: -0px !important;
+    transform: scale(0.9);
   }
   .route-block-wrapper span {
     padding: 0px;
@@ -112,7 +126,8 @@ function getUniquePoint(
 
     const selfDistance = distance(point, centerOfLine)
     // maximize distance from all other points while minimizing distance to center of our own line
-    const averageDistance = totalDistance / otherMidpoints.length - selfDistance
+    const averageDistance =
+      1.2 * (totalDistance / otherMidpoints.length) - selfDistance
 
     if (averageDistance > maxDistance) {
       maxDistance = averageDistance
@@ -189,6 +204,9 @@ const ItinerarySummaryOverlay = ({
                     itinerary={mp.itin}
                     LegIcon={LegIcon}
                   />
+                  <TimeWrapper>
+                    <FormattedDuration duration={mp.itin.duration} />
+                  </TimeWrapper>
                 </Card>
               </Marker>
             )
