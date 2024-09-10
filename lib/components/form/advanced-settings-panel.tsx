@@ -29,7 +29,6 @@ import PageTitle from '../util/page-title'
 import {
   addCustomSettingLabels,
   addModeButtonIcon,
-  onAdvancedModeSubsettingsUpdate,
   onSettingsUpdate,
   pipe,
   populateSettingWithIcon,
@@ -186,6 +185,10 @@ const AdvancedSettingsPanel = ({
     onSettingsUpdate(setQueryParam)
   )
 
+  const handleAllSubmodesDisabled = (modeButton: ModeButtonDefinition) => {
+    handleModeButtonToggle(modeButton.key, false)
+  }
+
   return (
     <PanelOverlay className="advanced-settings" ref={innerRef}>
       <HeaderContainer>
@@ -223,11 +226,8 @@ const AdvancedSettingsPanel = ({
         fillModeIcons
         label="test"
         modeButtons={processedModeButtons}
-        onSettingsUpdate={onAdvancedModeSubsettingsUpdate(
-          setQueryParam,
-          processedModeButtons,
-          handleModeButtonToggle
-        )}
+        onAllSubmodesDisabled={handleAllSubmodesDisabled}
+        onSettingsUpdate={onSettingsUpdate(setQueryParam)}
         onToggleModeButton={handleModeButtonToggle}
       />
       <ReturnToTripPlanButton
