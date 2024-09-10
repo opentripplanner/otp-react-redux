@@ -119,8 +119,7 @@ const AdvancedSettingsPanel = ({
   modeButtonOptions,
   modeSettingDefinitions,
   modeSettingValues,
-  setQueryParam,
-  urlSearchParams
+  setQueryParam
 }: {
   closeAdvancedSettings: () => void
   enabledModeButtons: string[]
@@ -130,7 +129,6 @@ const AdvancedSettingsPanel = ({
   modeSettingValues: ModeSettingValues
   onPlanTripClick: () => void
   setQueryParam: (evt: QueryParamChangeEvent) => void
-  urlSearchParams: URLSearchParams
 }): JSX.Element => {
   const [closingBySave, setClosingBySave] = useState(false)
   const [closingByX, setClosingByX] = useState(false)
@@ -270,8 +268,7 @@ const mapStateToProps = (state: AppReduxState) => {
       [],
     modeButtonOptions: state.otp.config?.modes?.modeButtons || [],
     modeSettingDefinitions: state.otp?.modeSettingDefinitions || [],
-    modeSettingValues,
-    urlSearchParams
+    modeSettingValues
   }
 }
 
