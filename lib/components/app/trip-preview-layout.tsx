@@ -1,41 +1,35 @@
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
-import { Itinerary } from '@opentripplanner/types'
 import { Map } from '@styled-icons/fa-solid/Map'
 import { Print } from '@styled-icons/fa-solid/Print'
 import { Times } from '@styled-icons/fa-solid/Times'
+import { withAuthenticationRequired } from '@auth0/auth0-react'
 // @ts-expect-error not typescripted yet
 import PrintableItinerary from '@opentripplanner/printable-itinerary'
 import React, { Component } from 'react'
 
-import * as apiActions from '../../actions/api'
-import * as formActions from '../../actions/form'
 import {
   addPrintViewClassToRootHtml,
   clearClassFromRootHtml
 } from '../../util/print'
+import { AppConfig } from '../../util/config-types'
+import { AppReduxState } from '../../util/state-types'
 import { ComponentContext } from '../../util/contexts'
-import { getActiveItinerary, getActiveSearch } from '../../util/state'
 import { IconWithText } from '../util/styledIcon'
-import { summarizeQuery } from '../form/user-settings-i18n'
+import { MonitoredTrip } from '../user/types'
+import { RETURN_TO_CURRENT_ROUTE } from '../../util/ui'
+import AwaitingScreen from '../user/awaiting-screen'
 import DefaultMap from '../map/default-map'
 import PageTitle from '../util/page-title'
 import SpanWithSpace from '../util/span-with-space'
 import TripDetails from '../narrative/connected-trip-details'
+import withLoggedInUserSupport from '../user/with-logged-in-user-support'
 
 type Props = {
-  // TODO: Typescript activeSearch type
-  activeSearch: any
-  // TODO: Typescript config type
-  config: any
-  currentQuery: any
+  config: AppConfig
   intl: IntlShape
-  itinerary: Itinerary
-  location?: { search?: string }
-  parseUrlQueryString: (params?: any, source?: string) => any
-  // TODO: Typescript user type
-  user: any
+  tripId: string
 }
 
 type State = {
@@ -52,6 +46,14 @@ class TripPreviewLayout extends Component<Props, State> {
     }
   }
 
+  /**
+   * Gets the trip to view from the props.
+   */
+  _getTripToEdit = (): MonitoredTrip => {
+    const { monitoredTrips, tripId } = this.props
+    return monitoredTrips.find((trip) => trip.id === tripId)
+  }
+
   _toggleMap = () => {
     this.setState({ mapVisible: !this.state.mapVisible })
   }
@@ -64,7 +66,7 @@ class TripPreviewLayout extends Component<Props, State> {
     window.location.replace(String(window.location).replace('print/', ''))
   }
 
-  componentDidMount() {
+  componentDidUpdate() {
     const { itinerary, location, parseUrlQueryString } = this.props
 
     // Add print-view class to html tag to ensure that iOS scroll fix only applies
@@ -83,19 +85,22 @@ class TripPreviewLayout extends Component<Props, State> {
   }
 
   render() {
-    const { activeSearch, config, intl, itinerary, user } = this.props
+    const { config, intl, monitoredTrips } = this.props
     const { LegIcon } = this.context
     const printVerb = intl.formatMessage({ id: 'common.forms.print' })
+    const isAwaiting = !monitoredTrips
+    if (isAwaiting) {
+      // Flash an indication while the selected and saved user trips are being loaded.
+      return <AwaitingScreen />
+    }
+
+    const monitoredTrip = this._getTripToEdit()
+    const itinerary =
+      monitoredTrip.journeyState?.matchingItinerary || monitoredTrip.itinerary
 
     return (
       <div className="otp print-layout">
-        <PageTitle
-          title={[
-            printVerb,
-            activeSearch &&
-              summarizeQuery(activeSearch.query, intl, user.savedLocations)
-          ]}
-        />
+        <PageTitle title={[printVerb, monitoredTrip.tripName]} />
         {/* The header bar, including the Toggle Map and Print buttons */}
         <div className="header">
           <div style={{ float: 'right' }}>
@@ -151,25 +156,21 @@ class TripPreviewLayout extends Component<Props, State> {
 // connect to the redux store
 
 // TODO: Typescript state
-const mapStateToProps = (state: any) => {
-  const activeSearch = getActiveSearch(state)
-  const { localUser, loggedInUser } = state.user
-  const user = loggedInUser || localUser
+const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
+  const { loggedInUserMonitoredTrips: monitoredTrips } = state.user
+  const tripId = ownProps.match.params.id
+
   return {
-    activeSearch,
     config: state.otp.config,
-    currentQuery: state.otp.currentQuery,
-    itinerary: getActiveItinerary(state) as Itinerary,
-    user
+    monitoredTrips,
+    tripId
   }
 }
 
-const mapDispatchToProps = {
-  parseUrlQueryString: formActions.parseUrlQueryString,
-  routingQuery: apiActions.routingQuery
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(injectIntl(TripPreviewLayout))
+export default withLoggedInUserSupport(
+  withAuthenticationRequired(
+    connect(mapStateToProps)(injectIntl(TripPreviewLayout)),
+    RETURN_TO_CURRENT_ROUTE
+  ),
+  true
+)
