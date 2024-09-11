@@ -8,6 +8,7 @@ import { withAuthenticationRequired } from '@auth0/auth0-react'
 // @ts-expect-error not typescripted yet
 import PrintableItinerary from '@opentripplanner/printable-itinerary'
 import React, { Component } from 'react'
+import styled from 'styled-components'
 
 import {
   addPrintViewClassToRootHtml,
@@ -36,6 +37,16 @@ type Props = {
 type State = {
   mapVisible?: boolean
 }
+
+const MapContainer = styled.div`
+  height: 100%;
+  width: 100%;
+
+  .map {
+    height: 100%;
+    width: 100%;
+  }
+`
 
 class TripPreviewLayout extends Component<Props, State> {
   static contextType = ComponentContext
@@ -120,9 +131,9 @@ class TripPreviewLayout extends Component<Props, State> {
 
         {/* The map, if visible */}
         {this.state.mapVisible && (
-          <div className="map-container">
+          <MapContainer className="map-container percy-hide">
             <SimpleMap itinerary={itinerary} />
-          </div>
+          </MapContainer>
         )}
 
         {/* The main itinerary body */}
