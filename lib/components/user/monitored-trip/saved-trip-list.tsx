@@ -1,13 +1,15 @@
 import { connect } from 'react-redux'
+import { Edit, Map } from '@styled-icons/fa-solid'
 import { FormattedMessage, injectIntl, IntlShape, useIntl } from 'react-intl'
 import { Panel } from 'react-bootstrap'
 import { TriangleExclamation } from '@styled-icons/fa-solid/TriangleExclamation'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
 import React, { Component } from 'react'
+import styled from 'styled-components'
 
 import * as userActions from '../../../actions/user'
 import { AppReduxState } from '../../../util/state-types'
-import { Edit } from '@styled-icons/fa-solid'
+import { ComponentContext } from '../../../util/contexts'
 import { IconWithText } from '../../util/styledIcon'
 import { MonitoredTrip } from '../types'
 import {
@@ -19,23 +21,17 @@ import {
   TripPanelTitle
 } from '../styled'
 import { RETURN_TO_CURRENT_ROUTE } from '../../../util/ui'
-import { TRIPS_PATH } from '../../../util/constants'
+import { TRIP_PREVIEW_PATH, TRIPS_PATH } from '../../../util/constants'
 import AccountPage from '../account-page'
 import AwaitingScreen from '../awaiting-screen'
 import BackToTripPlanner from '../back-to-trip-planner'
+import InvisibleA11yLabel from '../../util/invisible-a11y-label'
+import Link from '../../util/link'
+import MetroItineraryRoutes from '../../narrative/metro/metro-itinerary-routes'
 import PageTitle from '../../util/page-title'
-
-import styled from 'styled-components'
-
 import withLoggedInUserSupport from '../with-logged-in-user-support'
 
 import getRenderData from './trip-status-rendering-strategies'
-import InvisibleA11yLabel from '../../util/invisible-a11y-label'
-
-import { ComponentContext } from '../../../util/contexts'
-import Link from '../../util/link'
-import MetroItineraryRoutes from '../../narrative/metro/metro-itinerary-routes'
-
 import TripSummaryPane from './trip-summary-pane'
 
 interface ItemOwnProps {
@@ -111,6 +107,7 @@ class TripListItem extends Component<ItemProps, ItemState> {
     const from = legs[0].from
     const to = legs[legs.length - 1].to
     const editTripPath = `${TRIPS_PATH}/${trip.id}`
+    const previewPath = `${TRIP_PREVIEW_PATH}/${trip.id}`
     const { LegIcon } = this.context
     return (
       <Panel>
@@ -119,6 +116,18 @@ class TripListItem extends Component<ItemProps, ItemState> {
             <Panel.Title>
               <TripHeader>{trip.tripName}</TripHeader>
             </Panel.Title>
+            <Link
+              title="**Preview Trip**" // {intl.formatMessage({
+              //  id: 'components.SavedTripEditor.editSavedTrip'
+              // })}
+              to={previewPath}
+            >
+              <Map height={18} />
+              <InvisibleA11yLabel>
+                Preview Trip
+                {/* <FormattedMessage id="components.SavedTripEditor.editSavedTrip" / */}
+              </InvisibleA11yLabel>
+            </Link>
             <Link
               title={intl.formatMessage({
                 id: 'components.SavedTripEditor.editSavedTrip'
