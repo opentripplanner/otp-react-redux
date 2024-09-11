@@ -3,6 +3,7 @@
 // @ts-nocheck
 import { connect } from 'react-redux'
 import { GeolocateControl, NavigationControl } from 'react-map-gl'
+import { getCurrentDate } from '@opentripplanner/core-utils/lib/time'
 import { injectIntl } from 'react-intl'
 import BaseMap from '@opentripplanner/base-map'
 import generateOTP2TileLayers from '@opentripplanner/otp2-tile-overlay'
@@ -13,6 +14,7 @@ import {
   assembleBasePath,
   bikeRentalQuery,
   carRentalQuery,
+  findStopTimesForStop,
   vehicleRentalQuery
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
@@ -34,6 +36,7 @@ import RoutePreviewOverlay from './route-preview-overlay'
 import RouteViewerOverlay from './connected-route-viewer-overlay'
 import StopsOverlay from './connected-stops-overlay'
 import TransitiveOverlay from './connected-transitive-overlay'
+import TransitOperatorLogos from '../util/connected-transit-operator-icons'
 import TransitVehicleOverlay from './connected-transit-vehicle-overlay'
 import TripViewerOverlay from './connected-trip-viewer-overlay'
 import VehicleRentalOverlay from './connected-vehicle-rental-overlay'
@@ -151,6 +154,14 @@ class DefaultMap extends Component {
       lon,
       zoom
     }
+  }
+
+  // Generate operator logos to pass through OTP tile layer to map-popup
+  getEntityPrefix = (entity) => {
+    // todo: only grab agency data, not stop times?. i'd do this by adding a new arugment to findStopTImesForStop that doesnt download all the scheeudle data. have it have a secondary graphql query that gets only fired if this random thing is set to true and then you can swap between the 2.
+    const stopId = entity.gtfsId
+    this.props.findStopTimesForStop({ date: getCurrentDate(), stopId })
+    return <TransitOperatorLogos stopId={stopId} />
   }
 
   /**
@@ -405,7 +416,8 @@ class DefaultMap extends Component {
                   vectorTilesEndpoint,
                   setLocation,
                   setViewedStop,
-                  config.companies
+                  config.companies,
+                  this.getEntityPrefix
                 )
               default:
                 return null
@@ -445,6 +457,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   bikeRentalQuery,
   carRentalQuery,
+  findStopTimesForStop,
   getCurrentPosition,
   setLocation,
   setMapPopupLocationAndGeocode,

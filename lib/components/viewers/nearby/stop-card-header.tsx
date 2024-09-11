@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { MapPin } from '@styled-icons/fa-solid'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { TransitOperator } from '@opentripplanner/types'
 import React, { ComponentType } from 'react'
@@ -10,8 +9,8 @@ import { Icon, IconWithText } from '../../util/styledIcon'
 import { StopData } from '../../util/types'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import Link from '../../util/link'
-import OperatorLogo from '../../util/operator-logo'
 import Strong from '../../util/strong-text'
+import TransitOperatorLogos from '../../util/transit-operator-icons'
 
 import { CardBody, CardHeader, CardTitle } from './styled'
 import DistanceDisplay from './distance-display'
@@ -28,41 +27,6 @@ type Props = {
   transitOperators?: TransitOperator[]
 }
 
-const Operator = ({ operator }: { operator?: TransitOperator }) => {
-  const intl = useIntl()
-  if (!operator) {
-    return null
-  } else {
-    const operatorLogoAriaLabel = intl.formatMessage(
-      {
-        id: 'components.StopViewer.operatorLogoAriaLabel'
-      },
-      {
-        operatorName: operator.name
-      }
-    )
-    return operator.logo ? (
-      // Span with agency classname allows optional contrast/customization in user
-      // config for logos with poor contrast. Class name is hyphenated agency name
-      // e.g. "sound-transit"
-      <span
-        className={
-          operator.name ? operator.name.replace(/\s+/g, '-').toLowerCase() : ''
-        }
-      >
-        <OperatorLogo alt={operatorLogoAriaLabel} operator={operator} />
-      </span>
-    ) : (
-      // If operator exists but logo is missing,
-      // we still need to announce the operator name to screen readers.
-      <>
-        <MapPin />
-        <InvisibleA11yLabel>{operatorLogoAriaLabel}</InvisibleA11yLabel>
-      </>
-    )
-  }
-}
-
 const StopCardHeader = ({
   actionIcon,
   actionParams,
@@ -75,12 +39,7 @@ const StopCardHeader = ({
   transitOperators
 }: Props): JSX.Element => {
   const intl = useIntl()
-  const agencies =
-    stopData.stoptimesForPatterns?.reduce<Set<string>>((prev, cur) => {
-      // @ts-expect-error The agency type is not yet compatible with OTP2
-      const agencyGtfsId = cur.pattern.route.agency?.gtfsId
-      return agencyGtfsId ? prev.add(agencyGtfsId) : prev
-    }, new Set()) || new Set()
+
   const zoomButtonText = onZoomClick
     ? intl.formatMessage({
         id: 'components.StopViewer.zoomToStop'
@@ -92,16 +51,10 @@ const StopCardHeader = ({
       <CardHeader>
         {/* @ts-expect-error The 'as' prop in styled-components is not listed for TypeScript. */}
         <CardTitle as={titleAs}>
-          {transitOperators
-            ?.filter((to) => Array.from(agencies).includes(to.agencyId))
-            // Second pass to remove duplicates based on name
-            .filter(
-              (to, index, arr) =>
-                index === arr.findIndex((t) => t?.name === to?.name)
-            )
-            .map((to) => (
-              <Operator key={to.agencyId} operator={to} />
-            ))}
+          <TransitOperatorLogos
+            stopData={stopData}
+            transitOperators={transitOperators}
+          />
           <span>{stopData.name}</span>
         </CardTitle>
         <DistanceDisplay distance={stopData.distance} />
