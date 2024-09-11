@@ -15,6 +15,7 @@ import {
   TransitOperator,
   VehicleRentalMapOverlaySymbol
 } from '@opentripplanner/types'
+import { ControlPosition } from 'react-map-gl'
 import { GeocoderConfig as GeocoderConfigOtpUI } from '@opentripplanner/geocoder'
 
 /** Accessibility threshold settings */
@@ -221,6 +222,15 @@ export type SupportedOverlays =
   | Otp1StopsOverlayConfig
   | MapTileLayerConfig
 
+export interface TransitiveConfig {
+  disableFlexArc?: boolean
+  labeledModes?: string[]
+  styles?: {
+    labels: Record<string, unknown>
+    segmentLabels: Record<string, unknown>
+  }
+}
+
 export interface MapConfig {
   autoFlyOnTripFormUpdate?: boolean
   baseLayers?: BaseLayerConfig[]
@@ -228,8 +238,9 @@ export interface MapConfig {
   initLon?: number
   initZoom?: number
   maxZoom?: number
-  navigationControlPosition?: string
+  navigationControlPosition?: ControlPosition
   overlays?: SupportedOverlays[]
+  transitive?: TransitiveConfig
   views?: MapViewConfig[]
 }
 

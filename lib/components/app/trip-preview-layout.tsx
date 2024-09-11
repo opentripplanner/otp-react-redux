@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { Map } from '@styled-icons/fa-solid/Map'
 import { Print } from '@styled-icons/fa-solid/Print'
+import { RouteComponentProps } from 'react-router'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
 // @ts-expect-error not typescripted yet
 import PrintableItinerary from '@opentripplanner/printable-itinerary'
@@ -28,6 +29,7 @@ import withLoggedInUserSupport from '../user/with-logged-in-user-support'
 type Props = {
   config: AppConfig
   intl: IntlShape
+  monitoredTrips?: MonitoredTrip[] | null
   tripId: string
 }
 
@@ -48,9 +50,9 @@ class TripPreviewLayout extends Component<Props, State> {
   /**
    * Gets the trip to view from the props.
    */
-  _getTripToEdit = (): MonitoredTrip => {
+  _getTripToEdit = (): MonitoredTrip | undefined => {
     const { monitoredTrips, tripId } = this.props
-    return monitoredTrips.find((trip) => trip.id === tripId)
+    return monitoredTrips?.find((trip) => trip.id === tripId)
   }
 
   _toggleMap = () => {
@@ -74,19 +76,19 @@ class TripPreviewLayout extends Component<Props, State> {
   }
 
   render() {
-    const { config, intl, monitoredTrips } = this.props
+    const { config, intl } = this.props
     const { LegIcon } = this.context
     const printVerb = intl.formatMessage({ id: 'common.forms.print' })
     const previewTripText = intl.formatMessage({
       id: 'components.TripPreviewLayout.previewTrip'
     })
-    const isAwaiting = !monitoredTrips
+    const monitoredTrip = this._getTripToEdit()
+    const isAwaiting = !monitoredTrip
     if (isAwaiting) {
       // Flash an indication while the selected and saved user trips are being loaded.
       return <AwaitingScreen />
     }
 
-    const monitoredTrip = this._getTripToEdit()
     const itinerary =
       monitoredTrip.journeyState?.matchingItinerary || monitoredTrip.itinerary
 
@@ -141,7 +143,10 @@ class TripPreviewLayout extends Component<Props, State> {
 
 // connect to the redux store
 
-const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
+const mapStateToProps = (
+  state: AppReduxState,
+  ownProps: Props & RouteComponentProps<{ id: string }>
+) => {
   const { loggedInUserMonitoredTrips: monitoredTrips } = state.user
   const tripId = ownProps.match.params.id
 

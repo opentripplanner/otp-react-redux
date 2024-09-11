@@ -35,25 +35,26 @@ function noop() {
 
 const DefaultMap = ({ config, itinerary }: Props): JSX.Element => {
   const intl = useIntl()
+  // @ts-expect-error ComponentContext not typed yet.
   const { getTransitiveRouteLabel } = useContext(ComponentContext)
   const {
     baseLayers,
-    initLat,
-    initLon,
+    initLat = 0,
+    initLon = 0,
     initZoom,
     maxZoom,
     navigationControlPosition,
     transitive
   } = config.map || {}
   const baseLayerUrls = baseLayers?.map((bl) => bl.url)
-  const { disableFlexArc, labeledModes, styles } = transitive || {}
+  const { disableFlexArc } = transitive || {}
   const { legs } = itinerary
 
   return (
     <MapContainer className="percy-hide">
       <BaseMap
         baseLayer={
-          baseLayerUrls?.length > 1 ? baseLayerUrls : baseLayerUrls?.[0]
+          (baseLayerUrls?.length || 0) > 1 ? baseLayerUrls : baseLayerUrls?.[0]
         }
         center={[initLat, initLon]}
         mapLibreProps={{ reuseMaps: true }}
@@ -67,9 +68,6 @@ const DefaultMap = ({ config, itinerary }: Props): JSX.Element => {
         />
         <GeolocateControl position="top-left" />
         <TransitiveOverlay
-          getTransitiveRouteLabel={getTransitiveRouteLabel}
-          labeledModes={labeledModes}
-          styles={styles}
           transitiveData={itineraryToTransitive(itinerary, {
             companies: config.companies,
             disableFlexArc,
