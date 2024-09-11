@@ -19,8 +19,8 @@ import { IconWithText } from '../util/styledIcon'
 import { MonitoredTrip } from '../user/types'
 import { RETURN_TO_CURRENT_ROUTE } from '../../util/ui'
 import AwaitingScreen from '../user/awaiting-screen'
-import DefaultMap from '../map/default-map'
 import PageTitle from '../util/page-title'
+import SimpleMap from '../map/simple-map'
 import SpanWithSpace from '../util/span-with-space'
 import TripDetails from '../narrative/connected-trip-details'
 import withLoggedInUserSupport from '../user/with-logged-in-user-support'
@@ -119,8 +119,7 @@ class TripPreviewLayout extends Component<Props, State> {
         {/* The map, if visible */}
         {this.state.mapVisible && (
           <div className="map-container">
-            {/* FIXME: Improve reframing/setting map bounds when itinerary is received. */}
-            <DefaultMap />
+            <SimpleMap itinerary={itinerary} />
           </div>
         )}
 
