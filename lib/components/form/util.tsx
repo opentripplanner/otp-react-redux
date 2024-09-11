@@ -59,16 +59,10 @@ export const onSettingsUpdate =
 export const setModeButton =
   (enabledModeButtons: string[], updateHandler: (params: any) => void) =>
   (buttonId: string, newState: boolean) => {
-    console.log('SET MODE BUTTON IS BEING CALLED. NEW STATE:::: ', newState)
     let newButtons
-
     if (newState) {
-      // enable modeButton
-      // we need to add it to the list of enabled buttons
       newButtons = [...enabledModeButtons, buttonId]
     } else {
-      // disable modeButton
-      // we need to remove it from the list of enabled buttons
       newButtons = enabledModeButtons.filter((c) => c !== buttonId)
     }
     // encodeQueryParams serializes the mode buttons for the URL
