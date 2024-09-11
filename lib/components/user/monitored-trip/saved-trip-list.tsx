@@ -107,7 +107,12 @@ class TripListItem extends Component<ItemProps, ItemState> {
     const from = legs[0].from
     const to = legs[legs.length - 1].to
     const editTripPath = `${TRIPS_PATH}/${trip.id}`
-    const previewPath = `${TRIP_PREVIEW_PATH}/${trip.id}`
+    const editTripText = intl.formatMessage({
+      id: 'components.SavedTripEditor.editSavedTrip'
+    })
+    const previewTripText = intl.formatMessage({
+      id: 'components.TripPreviewLayout.previewTrip'
+    })
     const { LegIcon } = this.context
     return (
       <Panel>
@@ -117,27 +122,15 @@ class TripListItem extends Component<ItemProps, ItemState> {
               <TripHeader>{trip.tripName}</TripHeader>
             </Panel.Title>
             <Link
-              title="**Preview Trip**" // {intl.formatMessage({
-              //  id: 'components.SavedTripEditor.editSavedTrip'
-              // })}
-              to={previewPath}
+              title={previewTripText}
+              to={`${TRIP_PREVIEW_PATH}/${trip.id}`}
             >
               <Map height={18} />
-              <InvisibleA11yLabel>
-                Preview Trip
-                {/* <FormattedMessage id="components.SavedTripEditor.editSavedTrip" / */}
-              </InvisibleA11yLabel>
+              <InvisibleA11yLabel>{previewTripText}</InvisibleA11yLabel>
             </Link>
-            <Link
-              title={intl.formatMessage({
-                id: 'components.SavedTripEditor.editSavedTrip'
-              })}
-              to={editTripPath}
-            >
+            <Link title={editTripText} to={editTripPath}>
               <Edit height={18} />
-              <InvisibleA11yLabel>
-                <FormattedMessage id="components.SavedTripEditor.editSavedTrip" />
-              </InvisibleA11yLabel>
+              <InvisibleA11yLabel>{editTripText}</InvisibleA11yLabel>
             </Link>
           </TripPanelTitle>
           <RouteBlockGrid>
