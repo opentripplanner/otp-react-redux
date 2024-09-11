@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { Map } from '@styled-icons/fa-solid/Map'
 import { Print } from '@styled-icons/fa-solid/Print'
-import { Times } from '@styled-icons/fa-solid/Times'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
 // @ts-expect-error not typescripted yet
 import PrintableItinerary from '@opentripplanner/printable-itinerary'
@@ -62,20 +61,10 @@ class TripPreviewLayout extends Component<Props, State> {
     window.print()
   }
 
-  _close = () => {
-    window.location.replace(String(window.location).replace('print/', ''))
-  }
-
   componentDidUpdate() {
-    const { itinerary, location, parseUrlQueryString } = this.props
-
     // Add print-view class to html tag to ensure that iOS scroll fix only applies
     // to non-print views.
     addPrintViewClassToRootHtml()
-    // Parse the URL query parameters, if present
-    if (!itinerary && location && location.search) {
-      parseUrlQueryString()
-    }
 
     // TODO: use currentQuery to pan/zoom to the correct part of the map
   }
@@ -120,13 +109,8 @@ class TripPreviewLayout extends Component<Props, State> {
                 <IconWithText Icon={Print}>{printVerb}</IconWithText>
               </Button>
             </SpanWithSpace>
-            <Button bsSize="small" onClick={this._close} role="link">
-              <IconWithText Icon={Times}>
-                <FormattedMessage id="common.forms.close" />
-              </IconWithText>
-            </Button>
           </div>
-          <FormattedMessage id="components.PrintLayout.itinerary" />
+          <FormattedMessage id="components.TripPreviewLayout.previewTrip" />
         </div>
 
         {/* The map, if visible */}
@@ -155,7 +139,6 @@ class TripPreviewLayout extends Component<Props, State> {
 
 // connect to the redux store
 
-// TODO: Typescript state
 const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
   const { loggedInUserMonitoredTrips: monitoredTrips } = state.user
   const tripId = ownProps.match.params.id
