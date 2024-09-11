@@ -77,6 +77,9 @@ class TripPreviewLayout extends Component<Props, State> {
     const { config, intl, monitoredTrips } = this.props
     const { LegIcon } = this.context
     const printVerb = intl.formatMessage({ id: 'common.forms.print' })
+    const previewTripText = intl.formatMessage({
+      id: 'components.TripPreviewLayout.previewTrip'
+    })
     const isAwaiting = !monitoredTrips
     if (isAwaiting) {
       // Flash an indication while the selected and saved user trips are being loaded.
@@ -89,7 +92,7 @@ class TripPreviewLayout extends Component<Props, State> {
 
     return (
       <div className="otp print-layout">
-        <PageTitle title={[printVerb, monitoredTrip.tripName]} />
+        <PageTitle title={[previewTripText, monitoredTrip.tripName]} />
         {/* The header bar, including the Toggle Map and Print buttons */}
         <div className="header">
           <div style={{ float: 'right' }}>
@@ -110,7 +113,7 @@ class TripPreviewLayout extends Component<Props, State> {
               </Button>
             </SpanWithSpace>
           </div>
-          <FormattedMessage id="components.TripPreviewLayout.previewTrip" />
+          {previewTripText}
         </div>
 
         {/* The map, if visible */}
