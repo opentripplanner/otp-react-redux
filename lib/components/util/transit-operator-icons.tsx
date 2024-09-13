@@ -30,7 +30,12 @@ const Operator = ({ operator }: { operator?: TransitOperator }) => {
           operator.name ? operator.name.replace(/\s+/g, '-').toLowerCase() : ''
         }
       >
-        <OperatorLogo alt={operatorLogoAriaLabel} operator={operator} />
+        <OperatorLogo
+          alt={operatorLogoAriaLabel}
+          marginRight={0.5}
+          maxHeight={1}
+          operator={operator}
+        />
       </span>
     ) : (
       // If operator exists but logo is missing,
