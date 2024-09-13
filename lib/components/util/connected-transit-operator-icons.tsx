@@ -3,6 +3,7 @@ import { TransitOperator } from '@opentripplanner/types'
 import React, { Component } from 'react'
 
 import { AppReduxState } from '../../util/state-types'
+import { FETCH_STATUS } from '../../util/constants'
 
 import { StopData } from './types'
 import TransitOperatorLogos from './transit-operator-icons'
@@ -13,10 +14,11 @@ interface Props {
 }
 
 class ConnectedTransitOperatorLogos extends Component<Props> {
-  // clean this up
   render() {
+    const loading = this.props.stopData?.fetchStatus === FETCH_STATUS.FETCHING
     return (
       <TransitOperatorLogos
+        loading={loading}
         stopData={this.props.stopData}
         transitOperators={this.props.transitOperators}
       />

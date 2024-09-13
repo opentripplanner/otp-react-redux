@@ -3,6 +3,8 @@ import { useIntl } from 'react-intl'
 import React from 'react'
 import type { TransitOperator } from '@opentripplanner/types'
 
+import { InlineLoading } from '../narrative/loading'
+
 import InvisibleA11yLabel from './invisible-a11y-label'
 import OperatorLogo from './operator-logo'
 import type { StopData } from './types'
@@ -49,9 +51,11 @@ const Operator = ({ operator }: { operator?: TransitOperator }) => {
 }
 
 const TransitOperatorLogos = ({
+  loading = false,
   stopData,
   transitOperators
 }: {
+  loading?: boolean
   stopData: StopData | undefined
   transitOperators?: TransitOperator[]
 }): JSX.Element => {
@@ -66,16 +70,21 @@ const TransitOperatorLogos = ({
 
   return (
     <>
-      {transitOperators
-        ?.filter((to) => Array.from(agencies).includes(to.agencyId))
-        // Second pass to remove duplicates based on name
-        .filter(
-          (to, index, arr) =>
-            index === arr.findIndex((t) => t?.name === to?.name)
-        )
-        .map((to) => (
-          <Operator key={to.agencyId} operator={to} />
-        ))}
+      {loading ? (
+        <>
+          <InlineLoading />
+          <span style={{ marginRight: '0.5ch' }} />
+        </>
+      ) : (
+        transitOperators
+          ?.filter((to) => Array.from(agencies).includes(to.agencyId))
+          // Second pass to remove duplicates based on name
+          .filter(
+            (to, index, arr) =>
+              index === arr.findIndex((t) => t?.name === to?.name)
+          )
+          .map((to) => <Operator key={to.agencyId} operator={to} />)
+      )}
     </>
   )
 }

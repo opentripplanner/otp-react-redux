@@ -158,7 +158,6 @@ class DefaultMap extends Component {
 
   // Generate operator logos to pass through OTP tile layer to map-popup
   getEntityPrefix = (entity) => {
-    // todo: only grab agency data, not stop times?. i'd do this by adding a new arugment to findStopTImesForStop that doesnt download all the scheeudle data. have it have a secondary graphql query that gets only fired if this random thing is set to true and then you can swap between the 2.
     const stopId = entity.gtfsId
     this.props.findStopTimesForStop({
       date: getCurrentDate(),
