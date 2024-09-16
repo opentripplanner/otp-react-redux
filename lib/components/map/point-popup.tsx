@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { FocusTrapWrapper } from '@opentripplanner/map-popup/lib'
+import { FocusTrapWrapper } from '@opentripplanner/building-blocks'
 import { Popup } from '@opentripplanner/base-map'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { useIntl, WrappedComponentProps } from 'react-intl'
