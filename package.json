@@ -53,7 +53,7 @@
     "@opentripplanner/itinerary-body": "^5.3.5",
     "@opentripplanner/location-field": "^2.0.22",
     "@opentripplanner/location-icon": "^1.4.1",
-    "@opentripplanner/map-popup": "^4.0.1",
+    "@opentripplanner/map-popup": "^3.1.1",
     "@opentripplanner/otp2-tile-overlay": "^1.0.16",
     "@opentripplanner/route-viewer-overlay": "^2.0.17",
     "@opentripplanner/park-and-ride-overlay": "^2.0.8",

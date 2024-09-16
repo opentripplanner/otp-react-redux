@@ -2555,7 +2555,16 @@
     "@opentripplanner/from-to-location-picker" "^2.1.12"
     flat "^5.0.2"
 
-"@opentripplanner/map-popup@^4.0.0", "@opentripplanner/map-popup@^4.0.1":
+"@opentripplanner/map-popup@^3.1.1":
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/map-popup/-/map-popup-3.1.3.tgz#70f0afde138642a60678f3c486ed48d2fe580790"
+  integrity sha512-IuWl+K/SP+WuzyYk9lDHTOFJi0irV3jayamKcGllEplnOe2wa4SxaKsvZxT+A+f/E0/rD2r3Jk7eUWnba5LVzw==
+  dependencies:
+    "@opentripplanner/core-utils" "^11.4.3"
+    "@opentripplanner/from-to-location-picker" "^2.1.13"
+    flat "^5.0.2"
+
+"@opentripplanner/map-popup@^4.0.0":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@opentripplanner/map-popup/-/map-popup-4.0.1.tgz#18d40f339b09e2ebd5f722a0734cc259013b3400"
   integrity sha512-FDgYkS0AvUCH4Em9kiZsMLhg6zvd1NKXXpNLVBPt3Xerq0weLpLZPP96TeP3JlXVMJ2wkMCr4AKtZ/9103HYTA==
