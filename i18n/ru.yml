@@ -642,8 +642,8 @@ components:
       tripBegins: >-
         Поездка должна начаться в {tripStart, time, short}. (Отслеживание в
         реальном времени запустится в {monitoringStart, time, short}.)
-      tripStartIsDelayed: Начало поездки откладывается на ${duration}!
-      tripStartIsEarly: Начало поездки произойдет на ${duration} раньше ожидаемого!
+      tripStartIsDelayed: Начало поездки откладывается на {duration}!
+      tripStartIsEarly: Начало поездки произойдет на {duration} раньше ожидаемого!
       tripStartsSoonNoUpdates: Поездка скоро начнется (обновления в реальном времени недоступны).
       tripStartsSoonOnTime: Поездка скоро начнется. Без задержек.
   TripSummary:

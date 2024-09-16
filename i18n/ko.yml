@@ -582,8 +582,8 @@ components:
       tripBegins: >-
         트립이 {tripStart, time, short}에 시작될 것으로 예정되어 있습니다. (실시간 모니터링은
         {monitoringStart, time, short}에 시작됩니다.)
-      tripStartIsDelayed: 트립 시작 시간이 ${duration} 지연됩니다!
-      tripStartIsEarly: 트립이 예상보다 ${duration} 일찍 시작됩니다!
+      tripStartIsDelayed: 트립 시작 시간이 {duration} 지연됩니다!
+      tripStartIsEarly: 트립이 예상보다 {duration} 일찍 시작됩니다!
       tripStartsSoonNoUpdates: 트립이 곧 시작됩니다 (실시간 업데이트를 사용할 수 없습니다).
       tripStartsSoonOnTime: 트립은 곧 정시에 시작됩니다.
   TripSummary:
