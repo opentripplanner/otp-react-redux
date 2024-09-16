@@ -179,6 +179,9 @@ map:
 # geocoder test account can be obtained from the Pelias maintainers at geocode.earth.
 geocoder:
   apiKey: PELIAS_API_KEY
+  # When set to true, geocoder results will be displayed with the "Other" section first,
+  # above transit stops and stations
+  renderOtherFirst: false
   boundary:
     rect:
       minLon: -123.2034
