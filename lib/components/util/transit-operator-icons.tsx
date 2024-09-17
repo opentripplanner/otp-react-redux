@@ -1,9 +1,8 @@
 import { MapPin } from '@styled-icons/fa-solid'
 import { useIntl } from 'react-intl'
 import React from 'react'
+import Skeleton from 'react-loading-skeleton'
 import type { TransitOperator } from '@opentripplanner/types'
-
-import { InlineLoading } from '../narrative/loading'
 
 import InvisibleA11yLabel from './invisible-a11y-label'
 import OperatorLogo from './operator-logo'
@@ -72,8 +71,7 @@ const TransitOperatorLogos = ({
     <>
       {loading ? (
         <>
-          <InlineLoading />
-          <span style={{ marginRight: '0.5ch' }} />
+          <Skeleton style={{ marginRight: '0.5ch' }} width={20} />
         </>
       ) : (
         transitOperators
