@@ -25,6 +25,15 @@ type Props = {
 
 type DepartArriveValue = 'NOW' | 'DEPART' | 'ARRIVE'
 
+const DepartArriveTypeMap: Record<
+  DepartArriveValue,
+  FilterType['sort']['type']
+> = {
+  ARRIVE: 'ARRIVALTIME',
+  DEPART: 'DEPARTURETIME',
+  NOW: 'DURATION'
+}
+
 function DateTimeModal(props: Props) {
   const {
     config,
@@ -45,18 +54,13 @@ function DateTimeModal(props: Props) {
   const syncSortWithDepartArrive = config?.itinerary?.syncSortWithDepartArrive
   const setQueryParamMiddleware = useCallback(
     (params: any) => {
-      if (syncSortWithDepartArrive !== false) {
-        switch (params.departArrive) {
-          case 'NOW':
-            updateItineraryFilter({ sort: { ...sort, type: 'DURATION' } })
-            break
-          case 'DEPART':
-            updateItineraryFilter({ sort: { ...sort, type: 'DEPARTURETIME' } })
-            break
-          case 'ARRIVE':
-            updateItineraryFilter({ sort: { ...sort, type: 'ARRIVALTIME' } })
-            break
-        }
+      if (syncSortWithDepartArrive) {
+        updateItineraryFilter({
+          sort: {
+            ...sort,
+            type: DepartArriveTypeMap[params.departArrive as DepartArriveValue]
+          }
+        })
       }
       setQueryParam(params)
     },
