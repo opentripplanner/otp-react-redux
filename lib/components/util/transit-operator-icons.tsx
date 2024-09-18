@@ -1,9 +1,8 @@
 import { MapPin } from '@styled-icons/fa-solid'
 import { useIntl } from 'react-intl'
 import React from 'react'
+import Skeleton from 'react-loading-skeleton'
 import type { TransitOperator } from '@opentripplanner/types'
-
-import { InlineLoading } from '../narrative/loading'
 
 import InvisibleA11yLabel from './invisible-a11y-label'
 import OperatorLogo from './operator-logo'
@@ -71,10 +70,7 @@ const TransitOperatorLogos = ({
   return (
     <>
       {loading ? (
-        <>
-          <InlineLoading />
-          <span style={{ marginRight: '0.5ch' }} />
-        </>
+        <Skeleton height={20} style={{ marginRight: '0.5ch' }} width={20} />
       ) : (
         transitOperators
           ?.filter((to) => Array.from(agencies).includes(to.agencyId))
