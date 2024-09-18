@@ -5,6 +5,7 @@ import React from 'react'
 
 import { getFormattedMode } from '../../util/i18n'
 import { hasValidLocation } from '../../util/state'
+import { QueryParamChangeHandler } from '../util/types'
 import { RoutingQueryCallResult } from '../../actions/api-constants'
 import { updateQueryTimeIfLeavingNow } from '../../actions/form'
 
@@ -52,13 +53,14 @@ export const addCustomSettingLabels =
  * @param params Params to store
  */
 export const onSettingsUpdate =
-  (setQueryParam: (evt: any) => void) => (params: any) => {
+  (setQueryParam: QueryParamChangeHandler) =>
+  (params: any): void => {
     setQueryParam({ queryParamData: params, ...params })
   }
 
 export const setModeButton =
   (enabledModeButtons: string[], updateHandler: (params: any) => void) =>
-  (buttonId: string, newState: boolean) => {
+  (buttonId: string, newState: boolean): void => {
     let newButtons
     if (newState) {
       newButtons = [...enabledModeButtons, buttonId]
