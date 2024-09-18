@@ -70,7 +70,7 @@ const TransitOperatorLogos = ({
   return (
     <>
       {loading ? (
-        <Skeleton style={{ marginRight: '0.5ch' }} width={20} />
+        <Skeleton height={20} style={{ marginRight: '0.5ch' }} width={20} />
       ) : (
         transitOperators
           ?.filter((to) => Array.from(agencies).includes(to.agencyId))
