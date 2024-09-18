@@ -108,3 +108,5 @@ export type ZoomToPlaceHandler = (
   place?: { lat: number; lon: number },
   zoom?: number
 ) => void
+
+export type QueryParamChangeHandler = (event: any) => void
