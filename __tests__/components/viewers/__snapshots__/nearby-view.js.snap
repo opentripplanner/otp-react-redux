@@ -11862,6 +11862,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -12023,6 +12024,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -12184,6 +12186,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -12678,6 +12681,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -12839,6 +12843,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -12995,6 +13000,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -13424,6 +13430,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -13585,6 +13592,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -13741,6 +13749,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -18233,6 +18242,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -18389,6 +18399,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -18545,6 +18556,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -18922,6 +18934,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -19416,6 +19429,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -19572,6 +19586,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -19728,6 +19743,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -28361,6 +28377,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -28522,6 +28539,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -28683,6 +28701,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -29190,6 +29209,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -29351,6 +29371,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -29507,6 +29528,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -29941,6 +29963,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -30097,6 +30120,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -30253,6 +30277,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -30630,6 +30655,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -37282,6 +37308,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -37443,6 +37470,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -37599,6 +37627,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -38093,6 +38122,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -38249,6 +38279,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -38405,6 +38436,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -38782,6 +38814,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -45612,6 +45645,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -45773,6 +45807,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -45934,6 +45969,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -53211,6 +53247,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -53367,6 +53404,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -53523,6 +53561,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -53952,6 +53991,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -54113,6 +54153,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -54269,6 +54310,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -54698,6 +54740,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -54854,6 +54897,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -55010,6 +55054,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -55504,6 +55549,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -55660,6 +55706,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -55816,6 +55863,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -56245,6 +56293,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -56401,6 +56450,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -56557,6 +56607,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -56960,6 +57011,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -57116,6 +57168,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -57272,6 +57325,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -64271,6 +64325,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -64432,6 +64487,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -64593,6 +64649,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -65087,6 +65144,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -65248,6 +65306,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -65404,6 +65463,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -65833,6 +65893,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -65994,6 +66055,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
@@ -66150,6 +66212,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                         },
                                                       }
                                                     }
+                                                    useArrivalTime={false}
                                                   >
                                                     <div
                                                       className="percy-hide"
