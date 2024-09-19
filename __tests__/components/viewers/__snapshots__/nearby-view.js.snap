@@ -11734,7 +11734,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="Loyal Heights Greenwood"
                                             >
-                                              Loyal Heights Greenwood
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "Loyal Heights Greenwood",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -12550,7 +12559,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="Downtown Seattle Fremont"
                                             >
-                                              Downtown Seattle Fremont
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "Downtown Seattle Fremont",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -13296,7 +13314,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="Roosevelt Station Sand Point"
                                             >
-                                              Roosevelt Station Sand Point
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "Roosevelt Station Sand Point",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -18105,7 +18132,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="Angle Lake"
                                             >
-                                              Angle Lake
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "Angle Lake",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -18794,7 +18830,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="Northgate"
                                             >
-                                              Northgate
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "Northgate",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -19288,7 +19333,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="Capitol Hill"
                                             >
-                                              Capitol Hill
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "Capitol Hill",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -28233,7 +28287,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="University District Roosevelt Station"
                                             >
-                                              University District Roosevelt Station
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "University District Roosevelt Station",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -29062,7 +29125,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="Sand Point East Green Lake"
                                             >
-                                              Sand Point East Green Lake
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "Sand Point East Green Lake",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -29813,7 +29885,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="University District Sand Point"
                                             >
-                                              University District Sand Point
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "University District Sand Point",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -30502,7 +30583,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="Madrona Special"
                                             >
-                                              Madrona Special
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "Madrona Special",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -37154,7 +37244,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="University District Roosevelt"
                                             >
-                                              University District Roosevelt
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "University District Roosevelt",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -37965,7 +38064,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="University District Maple Leaf"
                                             >
-                                              University District Maple Leaf
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "University District Maple Leaf",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -38654,7 +38762,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="Downtown Seattle Special"
                                             >
-                                              Downtown Seattle Special
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "Downtown Seattle Special",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -45484,7 +45601,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="Northgate"
                                             >
-                                              Northgate
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "Northgate",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -53083,7 +53209,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="Bothell"
                                             >
-                                              Bothell
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "Bothell",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -53824,7 +53959,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="Northgate Station Roosevelt Station"
                                             >
-                                              Northgate Station Roosevelt Station
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "Northgate Station Roosevelt Station",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -54570,7 +54714,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="Woodinville"
                                             >
-                                              Woodinville
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "Woodinville",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -55376,7 +55529,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="Jackson Park Maple Leaf"
                                             >
-                                              Jackson Park Maple Leaf
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "Jackson Park Maple Leaf",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -56117,7 +56279,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="Kenmore P&R Roosevelt Station"
                                             >
-                                              Kenmore P&R Roosevelt Station
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "Kenmore P&R Roosevelt Station",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -56832,7 +57003,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="Kenmore P&R"
                                             >
-                                              Kenmore P&R
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "Kenmore P&R",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -64143,7 +64323,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="Loyal Heights Greenwood"
                                             >
-                                              Loyal Heights Greenwood
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "Loyal Heights Greenwood",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -64959,7 +65148,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="Downtown Seattle Fremont"
                                             >
-                                              Downtown Seattle Fremont
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "Downtown Seattle Fremont",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
@@ -65705,7 +65903,16 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               }
                                               title="Roosevelt Station Sand Point"
                                             >
-                                              Roosevelt Station Sand Point
+                                              <FormattedMessage
+                                                id="components.NearbyView.headsign"
+                                                values={
+                                                  Object {
+                                                    "destination": "Roosevelt Station Sand Point",
+                                                  }
+                                                }
+                                              >
+                                                components.NearbyView.headsign
+                                              </FormattedMessage>
                                             </span>
                                           </div>
                                           <styled.ol
