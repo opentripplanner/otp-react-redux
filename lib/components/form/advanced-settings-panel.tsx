@@ -15,7 +15,7 @@ import {
   ModeSetting,
   ModeSettingValues
 } from '@opentripplanner/types'
-import React, { RefObject, useContext, useState } from 'react'
+import React, { RefObject, useCallback, useContext, useState } from 'react'
 import styled from 'styled-components'
 
 import * as formActions from '../../actions/form'
@@ -177,6 +177,12 @@ const AdvancedSettingsPanel = ({
     )
   )
 
+  const onSaveAndReturnClick = useCallback(async () => {
+    await setCloseAdvancedSettingsWithDelay()
+    setClosingBySave(true)
+    closeAdvancedSettings()
+  }, [closeAdvancedSettings, setCloseAdvancedSettingsWithDelay])
+
   return (
     <PanelOverlay className="advanced-settings" ref={innerRef}>
       <HeaderContainer>
@@ -223,11 +229,7 @@ const AdvancedSettingsPanel = ({
       {saveAndReturnButton && (
         <ReturnToTripPlanButton
           className="save-settings-button"
-          onClick={async () => {
-            await setCloseAdvancedSettingsWithDelay()
-            setClosingBySave(true)
-            closeAdvancedSettings()
-          }}
+          onClick={onSaveAndReturnClick}
         >
           {closingBySave ? (
             <>

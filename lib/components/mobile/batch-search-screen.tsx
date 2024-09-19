@@ -83,6 +83,7 @@ class BatchSearchScreen extends Component<Props> {
           >
             <TransitionStyles transitionDelay={transitionDelay}>
               <TransitionGroup style={{ display: 'content' }}>
+                {/* Unfortunately we can't use a ternary operator here because it is cancelling out the CSSTransition animations. */}
                 {!showAdvancedModeSettings && (
                   <CSSTransition
                     classNames={mainPanelClassName}

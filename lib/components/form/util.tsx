@@ -36,10 +36,10 @@ export const addModeButtonIcon =
 export const addCustomSettingLabels =
   (intl: IntlShape) =>
   (modeSetting: ModeSetting): ModeSetting => {
-    let modeLabel
     // If we're using route mode overrides, make sure we're using the custom mode name
     if (modeSetting.type === 'SUBMODE') {
-      modeLabel = modeSetting.overrideMode || modeSetting.addTransportMode.mode
+      const modeLabel =
+        modeSetting.overrideMode || modeSetting.addTransportMode.mode
       return {
         ...modeSetting,
         label: getFormattedMode(modeLabel, intl)
@@ -61,12 +61,9 @@ export const onSettingsUpdate =
 export const setModeButton =
   (enabledModeButtons: string[], updateHandler: (params: any) => void) =>
   (buttonId: string, newState: boolean): void => {
-    let newButtons
-    if (newState) {
-      newButtons = [...enabledModeButtons, buttonId]
-    } else {
-      newButtons = enabledModeButtons.filter((c) => c !== buttonId)
-    }
+    const newButtons = newState
+      ? [...enabledModeButtons, buttonId]
+      : enabledModeButtons.filter((c) => c !== buttonId)
 
     // encodeQueryParams serializes the mode buttons for the URL
     // to get nice looking URL params and consistency
