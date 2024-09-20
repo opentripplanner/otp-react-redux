@@ -2382,6 +2382,7 @@
   integrity sha512-RDxZBAFMtqs1ZPnbUu1e7ohPNfoNhTiep4fErY7tZs995BeHu369Vsh5woMIaFbllRWEZBfvTCS4hvDnMPiHrA==
   dependencies:
     "@octokit/openapi-types" "^10.0.0"
+
 "@opentripplanner/base-map@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-3.2.0.tgz#db4410319d9614077ec925d739165a998c4a2485"
@@ -2414,7 +2415,7 @@
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.0"
-    "@opentripplanner/geocoder" "^3.0.2"
+    "@opentripplanner/geocoder" "^3.0.0"
     "@styled-icons/foundation" "^10.34.0"
     "@turf/along" "^6.0.1"
     chroma-js "^2.4.2"
@@ -2481,7 +2482,6 @@
     "@leeoniya/ufuzzy" "^1.0.14"
     isomorphic-mapzen-search "^1.6.1"
     lodash.memoize "^4.1.2"
-
 
 "@opentripplanner/geocoder@^3.0.2":
   version "3.0.2"
@@ -2588,7 +2588,7 @@
   dependencies:
     "@opentripplanner/core-utils" "^11.4.4"
     "@opentripplanner/itinerary-body" "^5.3.6"
- 
+
 "@opentripplanner/route-viewer-overlay@^2.0.17":
   version "2.0.17"
   resolved "https://registry.yarnpkg.com/@opentripplanner/route-viewer-overlay/-/route-viewer-overlay-2.0.17.tgz#f34686fd965cf39650a10f64df599e7aca468415"
@@ -2609,7 +2609,6 @@
     glob "^8.0.3"
     glob-promise "^4.2.2"
     js-yaml "^4.1.0"
-
 
 "@opentripplanner/stop-viewer-overlay@^2.0.10":
   version "2.0.10"
