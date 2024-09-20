@@ -36,6 +36,8 @@ type Props = {
   onlyShowCountdownForRealtime?: boolean
   /** A stopTime object as received from a transit index API */
   stopTime: Time
+  /** Whether to use arrival time instead of departure time */
+  useArrivalTime?: boolean
 }
 
 /**
@@ -46,7 +48,8 @@ type Props = {
 const StopTimeCell = ({
   homeTimezone = getUserTimezone(),
   onlyShowCountdownForRealtime,
-  stopTime
+  stopTime,
+  useArrivalTime
 }: Props): JSX.Element => {
   const intl = useIntl()
 
@@ -72,7 +75,7 @@ const StopTimeCell = ({
   // Determine whether to show departure as countdown (e.g. "5 min") or as HH:mm
   // time, using realtime updates if available.
   const secondsUntilDeparture = Math.round(
-    getSecondsUntilDeparture(stopTime, false)
+    getSecondsUntilDeparture(stopTime, false, useArrivalTime)
   )
   // Determine if vehicle arrives after midnight in order to advance the day of
   // the week when showing arrival time/day.
@@ -151,7 +154,8 @@ const StopTimeCell = ({
 const mapStateToProps = (state: AppReduxState) => {
   return {
     onlyShowCountdownForRealtime:
-      state.otp.config?.itinerary?.onlyShowCountdownForRealtime || false
+      state.otp.config?.itinerary?.onlyShowCountdownForRealtime || false,
+    useArrivalTime: state.otp.config?.nearbyView?.useArrivalTime || false
   }
 }
 
