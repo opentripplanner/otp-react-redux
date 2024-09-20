@@ -73,6 +73,7 @@ export type NearbyViewConfig = {
   hideEmptyStops?: boolean
   radius?: number
   showShadowDotOnMapDrag?: boolean
+  useArrivalTime?: boolean
   useRouteViewSort?: boolean
 }
 
