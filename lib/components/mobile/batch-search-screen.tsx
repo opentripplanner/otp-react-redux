@@ -61,6 +61,23 @@ class BatchSearchScreen extends Component<Props> {
     this.setState({ planTripClicked: true })
   }
 
+  openAdvancedSettings = () => {
+    this.setState({
+      closeAdvancedSettingsWithDelay: false,
+      showAdvancedModeSettings: true
+    })
+  }
+
+  closeAdvancedSettings = () => {
+    this.setState({ showAdvancedModeSettings: false })
+  }
+
+  setCloseAdvancedSettingsWithDelay = () => {
+    this.setState({
+      closeAdvancedSettingsWithDelay: true
+    })
+  }
+
   render() {
     const { intl } = this.props
     const { planTripClicked, showAdvancedModeSettings } = this.state
@@ -119,11 +136,7 @@ class BatchSearchScreen extends Component<Props> {
                       </div>
                       <BatchSettings
                         onPlanTripClick={this.handlePlanTripClick}
-                        openAdvancedSettings={
-                          () =>
-                            this.setState({ showAdvancedModeSettings: true })
-                          // eslint-disable-next-line react/jsx-curly-newline
-                        }
+                        openAdvancedSettings={this.openAdvancedSettings}
                       />
                     </div>
                   </CSSTransition>
@@ -138,17 +151,10 @@ class BatchSearchScreen extends Component<Props> {
                     }}
                   >
                     <AdvancedSettingsPanel
-                      closeAdvancedSettings={
-                        () => this.setState({ showAdvancedModeSettings: false })
-                        // eslint-disable-next-line prettier/prettier
-                      }
+                      closeAdvancedSettings={this.closeAdvancedSettings}
                       innerRef={this._advancedSettingRef}
                       setCloseAdvancedSettingsWithDelay={
-                        () =>
-                          this.setState({
-                            closeAdvancedSettingsWithDelay: true
-                          })
-                        // eslint-disable-next-line react/jsx-curly-newline
+                        this.setCloseAdvancedSettingsWithDelay
                       }
                     />
                   </CSSTransition>

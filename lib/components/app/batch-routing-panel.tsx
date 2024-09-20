@@ -55,6 +55,23 @@ class BatchRoutingPanel extends Component<Props> {
     }
   }
 
+  openAdvancedSettings = () => {
+    this.setState({
+      closeAdvancedSettingsWithDelay: false,
+      showAdvancedModeSettings: true
+    })
+  }
+
+  closeAdvancedSettings = () => {
+    this.setState({ showAdvancedModeSettings: false })
+  }
+
+  setCloseAdvancedSettingsWithDelay = () => {
+    this.setState({
+      closeAdvancedSettingsWithDelay: true
+    })
+  }
+
   handleSubmit = (e: FormEvent) => e.preventDefault()
 
   handlePlanTripClick = () => {
@@ -110,17 +127,10 @@ class BatchRoutingPanel extends Component<Props> {
                   }}
                 >
                   <AdvancedSettingsPanel
-                    closeAdvancedSettings={
-                      () => this.setState({ showAdvancedModeSettings: false })
-                      // eslint-disable-next-line react/jsx-curly-newline
-                    }
+                    closeAdvancedSettings={this.closeAdvancedSettings}
                     innerRef={this._advancedSettingRef}
                     setCloseAdvancedSettingsWithDelay={
-                      () =>
-                        this.setState({
-                          closeAdvancedSettingsWithDelay: true
-                        })
-                      // eslint-disable-next-line react/jsx-curly-newline
+                      this.setCloseAdvancedSettingsWithDelay
                     }
                   />
                 </CSSTransition>
@@ -130,10 +140,7 @@ class BatchRoutingPanel extends Component<Props> {
                 <CSSTransition
                   classNames={mainPanelClassName}
                   nodeRef={this._mainPanelContentRef}
-                  onExit={
-                    () => this.setState({ showAdvancedModeSettings: true })
-                    // eslint-disable-next-line react/jsx-curly-newline
-                  }
+                  onExit={this.openAdvancedSettings}
                   timeout={transitionDurationWithDelay}
                 >
                   <div ref={this._mainPanelContentRef}>
@@ -164,12 +171,7 @@ class BatchRoutingPanel extends Component<Props> {
                     </span>
                     <BatchSettings
                       onPlanTripClick={this.handlePlanTripClick}
-                      openAdvancedSettings={() =>
-                        this.setState({
-                          closeAdvancedSettingsWithDelay: false,
-                          showAdvancedModeSettings: true
-                          // eslint-disable-next-line prettier/prettier
-                        })}
+                      openAdvancedSettings={this.openAdvancedSettings}
                     />
                   </div>
                 </CSSTransition>
