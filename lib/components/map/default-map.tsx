@@ -432,15 +432,22 @@ const mapStateToProps = (state) => {
   const viewedRoute = state.otp?.ui?.viewedRoute?.routeId
   const nearbyViewerActive =
     state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW
+
+  const viewedRoutePatterns = Object.entries(
+    state.otp?.transitIndex?.routes?.[viewedRoute]?.patterns || {}
+  )
   const viewedRouteStops =
     viewedRoute && !nearbyViewerActive
-      ? Object.entries(
-          state.otp?.transitIndex?.routes?.[viewedRoute]?.patterns || {}
-        ).reduce((acc, cur) => {
-          return Array.from(
-            new Set([...cur?.[1]?.stops.map((s) => s.id), ...acc])
+      ? // Ensure we don't have duplicates
+        Array.from(
+          new Set(
+            // Generate a list of every stop id the pattern stops at
+            viewedRoutePatterns.reduce((acc, cur) => {
+              // Convert pattern object to list of the pattern's stops
+              return [...cur?.[1]?.stops.map((s) => s.id), ...acc]
+            }, [])
           )
-        }, [])
+        )
       : null
 
   return {
