@@ -405,6 +405,7 @@ class DefaultMap extends Component {
                   vectorTilesEndpoint,
                   setLocation,
                   setViewedStop,
+                  null,
                   config.companies
                 )
               default:
