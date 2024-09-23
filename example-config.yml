@@ -682,6 +682,8 @@ itinerary:
 # sessionTimeoutSeconds: 180
 
 # nearbyView:
+### Setting to use arrival time instead of departure time in the nearby view.
+#   useArrivalTime: true
 ### Setting to hide stops with no depatures in the nearby view.
 #   hideEmptyStops: true
 ### What radius should the nearby query get results within? (in meters)
