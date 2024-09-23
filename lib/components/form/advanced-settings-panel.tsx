@@ -188,6 +188,7 @@ const AdvancedSettingsPanel = ({
       <HeaderContainer>
         <CloseButton
           aria-label={closeButtonText}
+          id="close-advanced-settings-button"
           onClick={() => {
             closeAdvancedSettings()
           }}

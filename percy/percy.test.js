@@ -133,15 +133,18 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.keyboard.press('Escape')
     await page.waitForTimeout(200)
 
-    // Check submode selector (this will have no effect on mock query)
-    await page.hover('label[title="Transit"]')
+    // Open advanced settings and wait for animation
+    await page.click('#open-advanced-settings-button')
     await page.waitForTimeout(500)
+
+    // Check submode selector (this will have no effect on mock query)
     await page.click('#id-query-param-tram')
 
     // Enable accessible routing (this will have no effect on mock query)
-    await page.hover('label[title="Transit"]')
-    await page.waitForTimeout(500)
     await page.click('#id-query-param-wheelchair')
+
+    // Close advanced settings
+    await page.click('#close-advanced-settings-button')
 
     // Delete both origin and destination
 
