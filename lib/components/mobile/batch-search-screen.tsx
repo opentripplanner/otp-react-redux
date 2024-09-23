@@ -23,7 +23,11 @@ import MobileNavigationBar from './navigation-bar'
 
 const { SET_FROM_LOCATION, SET_TO_LOCATION } = MobileScreens
 
-const MobileSearchSettings = styled.div<{ advancedPanelOpen: boolean }>`
+const MobileSearchSettings = styled.div<{
+  advancedPanelOpen: boolean
+  transitionDelay: number
+  transitionDuration: number
+}>`
   background: white;
   box-shadow: 3px 0px 12px #00000052;
   height: ${(props) =>
@@ -32,7 +36,8 @@ const MobileSearchSettings = styled.div<{ advancedPanelOpen: boolean }>`
   position: fixed;
   right: 0;
   top: 50px;
-  transition: all 200ms ease;
+  transition: ${(props) => `all ${props.transitionDuration}ms ease`};
+  transition-delay: ${(props) => props.transitionDelay}ms;
   /* Must appear under the 'hamburger' dropdown which has z-index of 1000. */
   z-index: 999;
 `
@@ -97,6 +102,8 @@ class BatchSearchScreen extends Component<Props> {
             className={`batch-search-settings mobile-padding ${
               showAdvancedModeSettings && 'advanced-mode-open'
             }`}
+            transitionDelay={transitionDelay}
+            transitionDuration={transitionDuration}
           >
             <TransitionStyles transitionDelay={transitionDelay}>
               <TransitionGroup style={{ display: 'content' }}>
@@ -105,7 +112,7 @@ class BatchSearchScreen extends Component<Props> {
                   <CSSTransition
                     classNames={mainPanelClassName}
                     nodeRef={this._mainPanelContentRef}
-                    timeout={transitionDuration}
+                    timeout={transitionDurationWithDelay}
                   >
                     <div
                       ref={this._mainPanelContentRef}
