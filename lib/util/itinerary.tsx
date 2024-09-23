@@ -1,4 +1,5 @@
 import { differenceInMinutes } from 'date-fns'
+import { isTransitLeg } from '@opentripplanner/core-utils/lib/itinerary'
 import { Itinerary, Leg, Place } from '@opentripplanner/types'
 import { toDate, utcToZonedTime } from 'date-fns-tz'
 import coreUtils from '@opentripplanner/core-utils'
@@ -81,7 +82,7 @@ export function getMinutesUntilItineraryStart(itinerary: Itinerary): number {
  * Gets the first transit leg of the given itinerary, or null if none found.
  */
 function getFirstTransitLeg(itinerary: Itinerary) {
-  return itinerary?.legs?.find((leg) => leg.transitLeg)
+  return itinerary?.legs?.find((leg) => isTransitLeg(leg))
 }
 
 /**
@@ -373,7 +374,7 @@ export function getTotalFare(
     ) {
       hasBikeshare = true
     }
-    if (leg.transitLeg && transitFare == null) {
+    if (isTransitLeg(leg) && transitFare == null) {
       transitFareNotProvided = true
     }
   })

@@ -9,7 +9,7 @@ import FormattedMode from '../../util/formatted-mode'
 
 const { isRideshareLeg } = coreUtils.itinerary
 
-const { isBicycle, isMicromobility, isTransit } = coreUtils.itinerary
+const { isBicycle, isMicromobility, isTransitLeg } = coreUtils.itinerary
 
 type Props = {
   combineTransitModes?: boolean
@@ -32,10 +32,7 @@ export function getMainItineraryModes({
   let transitMode
   itinerary.legs.forEach((leg, i) => {
     const { duration, mode, rentedBike, rentedVehicle } = leg
-    if (
-      (leg.transitLeg || isTransit(mode)) &&
-      duration > primaryTransitDuration
-    ) {
+    if (isTransitLeg(leg) && duration > primaryTransitDuration) {
       primaryTransitDuration = duration
       transitMode = getFormattedMode(
         combineTransitModes ? 'transit' : mode.toLowerCase(),
@@ -68,7 +65,7 @@ export function ItineraryDescription({ itinerary }: Props): JSX.Element {
   let transitMode
   itinerary.legs.forEach((leg) => {
     const { duration, mode, rentedBike, rentedVehicle } = leg
-    if (leg.transitLeg && duration > primaryTransitDuration) {
+    if (isTransitLeg(leg) && duration > primaryTransitDuration) {
       primaryTransitDuration = duration
 
       // If custom TransitModes have been defined for the given mode/leg, attempt to use them,

@@ -1,5 +1,5 @@
 import { FormattedTime } from 'react-intl'
-import { isTransit } from '@opentripplanner/core-utils/lib/itinerary'
+import { isTransitLeg } from '@opentripplanner/core-utils/lib/itinerary'
 import { Leg } from '@opentripplanner/types'
 import React, { ReactElement } from 'react'
 import styled from 'styled-components'
@@ -33,8 +33,7 @@ function RealtimeTimeColumn({ isDestination, leg }: Props): ReactElement {
   }
 
   const timeMillis = isDestination ? leg.endTime : leg.startTime
-  const isTransitLeg = leg.transitLeg
-  const isRealtimeTransitLeg = isTransitLeg && leg.realTime
+  const isRealtimeTransitLeg = isTransitLeg(leg) && leg.realTime
 
   // For non-transit legs show only the scheduled time.
   if (!isTransitLeg) {
