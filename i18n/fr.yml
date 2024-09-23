@@ -118,15 +118,11 @@ common:
     submitting: Envoi en cours…
     "yes": Oui
   itineraryDescriptions:
-    calories: "{calories, number} kcal"
     fareUnknown: Tarif inconnu
     noItineraryToDisplay: Aucun trajet à afficher.
     relativeCo2: |
       {co2} de CO₂ en {isMore, select, true {plus} other {moins} } qu'en voiture
     timeStartEnd: "{start} – {end}"
-    transfers: >-
-      {transfers, plural, =0 {} one {# correspondance} other {#
-      correspondances}}
   linkOpensNewWindow: (Ouvre une nouvelle fenêtre)
   modes:
     bicycle_rent: En vélo en libre-service
@@ -165,7 +161,6 @@ common:
     enterStartLocation: Entrez votre point de départ ou {mapAction} sur la carte…
     tap: appuyez
   time:
-    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
     duration:
       aFewSeconds: quelques secondes
       nDays: "{days, plural, =1 {un jour} other {# jours}}"
@@ -279,7 +274,6 @@ components:
     ariaLabel: Navigation du formulaire
   ItinerarySummary:
     itineraryDetails: Détails du trajet
-    minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LocationSearch:
     enterLocation: Entrez le lieu
     setDestination: Destination

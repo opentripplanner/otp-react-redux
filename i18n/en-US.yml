@@ -109,13 +109,11 @@ common:
     submitting: Submitting…
     "yes": "Yes"
   itineraryDescriptions:
-    calories: "{calories, number} Cal"
     fareUnknown: No fare information
     noItineraryToDisplay: No itinerary to display.
     relativeCo2: |
       {co2} {isMore, select, true {more} other {less} } CO₂ than driving alone
     timeStartEnd: "{start} – {end}"
-    transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
   linkOpensNewWindow: (Opens new window)
   modes:
     bicycle_rent: Bikeshare
@@ -154,7 +152,6 @@ common:
     enterStartLocation: Enter start location or {mapAction} on map…
     tap: tap
   time:
-    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
     duration:
       aFewSeconds: a few seconds
       nDays: "{days, plural, =1 {one day} other {# days}}"
@@ -262,7 +259,6 @@ components:
     ariaLabel: Form navigation
   ItinerarySummary:
     itineraryDetails: Itinerary details
-    minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LocationSearch:
     enterLocation: Enter location
     setDestination: Set Destination
