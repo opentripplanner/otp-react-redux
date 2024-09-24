@@ -2427,9 +2427,9 @@
     qs "^6.9.1"
 
 "@opentripplanner/core-utils@^11.4.4":
-  version "11.4.4"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.4.4.tgz#11c1be91a5e90afda4fc265831c761d3e044d933"
-  integrity sha512-WKhOuG7Q+Yxdm+P5MPmJyXndx+JUtGn44GTeilOnUqDdO8lTLTvqqt0hYeEWjA77jWP0u8tG7fAAsft8IZn2cg==
+  version "11.4.5"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.4.5.tgz#f568f5f60f153f0bd74fe47ed3134851067b0064"
+  integrity sha512-uYaVqZXZoRRVks05KdGMTIeGEC7ItKJvexZqKsEbZMjnnMphHRndv4aSDXM19iL7ynoau7JXjYfYEny1HDp7ig==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.0"
@@ -2555,10 +2555,10 @@
     "@opentripplanner/from-to-location-picker" "^2.1.12"
     flat "^5.0.2"
 
-"@opentripplanner/map-popup@^4.0.0", "@opentripplanner/map-popup@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/map-popup/-/map-popup-4.0.1.tgz#18d40f339b09e2ebd5f722a0734cc259013b3400"
-  integrity sha512-FDgYkS0AvUCH4Em9kiZsMLhg6zvd1NKXXpNLVBPt3Xerq0weLpLZPP96TeP3JlXVMJ2wkMCr4AKtZ/9103HYTA==
+"@opentripplanner/map-popup@^4.0.0", "@opentripplanner/map-popup@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/map-popup/-/map-popup-4.0.2.tgz#367ab7ce69d16d319988bb48d8f6d2db762623c7"
+  integrity sha512-RlHv9GE3Bk3++PwBcaPcALr6rZ+2AxY6Uj6W71AnLqz+wbeQO5rM3eEP99r0Sg1K3pAY0hXljBkVwKiUWhwxbQ==
   dependencies:
     "@opentripplanner/base-map" "^3.2.2"
     "@opentripplanner/building-blocks" "^1.2.2"
@@ -2566,10 +2566,10 @@
     "@opentripplanner/from-to-location-picker" "^2.1.14"
     flat "^5.0.2"
 
-"@opentripplanner/otp2-tile-overlay@^1.0.16":
-  version "1.0.16"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/otp2-tile-overlay/-/otp2-tile-overlay-1.0.16.tgz#4259b775b14078a697818e88ec61e19175232a61"
-  integrity sha512-BqWynzopdVrorQ75rn3zFTu40oOR/Y2sDE8jwip04KYqn3gJwgYzdi6q3saGKm4An49gVVxcxQTlk+fLizSmAQ==
+"@opentripplanner/otp2-tile-overlay@^1.0.17":
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/otp2-tile-overlay/-/otp2-tile-overlay-1.0.17.tgz#0e63bcb956778bbab6bd42d282aa9f5416881b74"
+  integrity sha512-mgMHprVVOXdzgU0D/50be57TeuEp1RP+b7xH/3Xt+rj0mF1PY+5GgLMuEul+1WqbzFwAefrmi9KRMs3MYJArrg==
   dependencies:
     "@opentripplanner/map-popup" "^4.0.0"
 
