@@ -145,7 +145,7 @@ async function executeTest(page, isMobile, isCallTaker) {
 
     // Close advanced settings
     await page.click('#close-advanced-settings-button')
-
+    await page.waitForTimeout(500)
     // Delete both origin and destination
 
     await page.click('.from-form-control')
