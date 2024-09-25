@@ -1,7 +1,6 @@
 import { Calendar } from '@styled-icons/fa-solid'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
-import { TransitOperator } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 
@@ -25,7 +24,7 @@ type Props = {
   homeTimezone: string
   nearbyViewConfig?: NearbyViewConfig
   routeSortComparator: (a: PatternStopTime, b: PatternStopTime) => number
-  stopData: StopData
+  stopData: StopData & { nearbyRoutes?: string[] }
 }
 
 const Stop = ({
@@ -70,6 +69,12 @@ const Stop = ({
       const sortedStopTimes = st.stoptimes.sort(
         (a: StopTime, b: StopTime) => fullTimestamp(a) - fullTimestamp(b)
       )
+      if (
+        stopData.nearbyRoutes &&
+        !stopData.nearbyRoutes.includes(st?.pattern?.route?.gtfsId)
+      ) {
+        return <></>
+      }
       return (
         <PatternRow
           alwaysShowLongName={nearbyViewConfig?.alwaysShowLongName}
