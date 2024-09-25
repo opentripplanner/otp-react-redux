@@ -1,5 +1,6 @@
 import { Calendar } from '@styled-icons/fa-regular'
 import { format, utcToZonedTime } from 'date-fns-tz'
+import { FormattedMessage } from 'react-intl'
 import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
 import { isSameDay } from 'date-fns'
 import React, { useContext } from 'react'
@@ -108,8 +109,15 @@ const PatternRow = ({
                 {pattern.route.longName}
               </strong>
             )}
-            {extractHeadsignFromPattern(pattern) ||
-              (pattern.route.longName !== routeName && pattern.route.longName)}
+            <FormattedMessage
+              id="components.NearbyView.headsign"
+              values={{
+                destination:
+                  extractHeadsignFromPattern(pattern) ||
+                  (pattern.route.longName !== routeName &&
+                    pattern.route.longName)
+              }}
+            />
           </span>
         </div>
         {/* next departure preview (only shows up to 3 entries) */}
