@@ -193,8 +193,15 @@ components:
   BatchRoutingPanel:
     shortTitle: Plan Trip
   BatchSearchScreen:
+    advancedHeader: Advanced Preferences
     header: Plan Your Trip
+    modeOptions: Mode Options
     modeSelectorLabel: Select a travel mode
+    moreOptions: More options
+    saveAndReturn: Save and return
+    saved: Saved
+    submodeSelectorLabel: Select travel modes and submodes
+    tripOptions: Trip Options
   BatchSettings:
     destination: destination
     invalidModeSelection: >-
@@ -353,6 +360,7 @@ components:
     distanceAway: "{localizedDistanceString} away"
     error: An error occurred loading nearby amenities.
     header: Nearby View
+    headsign: "{destination}"
     nearbyListIntro: List of {count} nearby entities.
     nothingNearby: There are no places nearby.
     spacesAvailable: "{spacesAvailable} empty spaces available"
