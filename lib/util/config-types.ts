@@ -339,6 +339,10 @@ export interface TransitOperatorConfig extends TransitOperator {
   routeIcons?: boolean
 }
 
+export interface AdvancedSettingsPanelConfig {
+  saveAndReturnButton?: boolean
+}
+
 /** Route Viewer config */
 export interface RouteViewerConfig {
   /** Whether to hide the route linear shape inside a flex zone of that route. */
@@ -367,6 +371,7 @@ export interface DateTimeConfig {
 /** The main application configuration object */
 export interface AppConfig {
   accessibilityScore?: AccessibilityScoreConfig
+  advancedSettingsPanel?: AdvancedSettingsPanelConfig
   api: ApiConfig
   // Optional on declaration, populated with defaults in reducer if not configured.
   autoPlan?: boolean | AutoPlanConfig

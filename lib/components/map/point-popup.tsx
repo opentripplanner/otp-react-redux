@@ -82,7 +82,7 @@ function MapPopup({
       // Override inline style supplied by react-map-gl to accommodate long "plan a trip" translations.
       style={{ maxWidth: '260px', width: '260px' }}
     >
-      <FocusTrapWrapper closePopup={clearMapPopupLocation} id="stop-popup">
+      <FocusTrapWrapper closePopup={clearMapPopupLocation} id="point-popup">
         <PopupTitleWrapper>
           <PopupTitle>
             {typeof popupName === 'string' && popupName.split(',').length > 3
