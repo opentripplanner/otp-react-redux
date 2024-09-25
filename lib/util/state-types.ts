@@ -5,6 +5,7 @@ import {
   MonitoredTrip,
   User
 } from '../components/user/types'
+import { ModeSetting } from '@opentripplanner/types'
 
 import { AppConfig } from './config-types'
 
@@ -15,6 +16,7 @@ export interface OtpState {
   currentQuery: any
   filter: FilterType
   location: any
+  modeSettingDefinitions: ModeSetting[]
   overlay: any
   serviceTimeRange?: {
     end: number
