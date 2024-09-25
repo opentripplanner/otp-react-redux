@@ -3,11 +3,11 @@ import coreUtils from '@opentripplanner/core-utils'
 import React, { useCallback } from 'react'
 
 import * as formActions from '../../actions/form'
+import * as narrativeActions from '../../actions/narrative'
 import { AppConfig } from '../../util/config-types'
 import { AppReduxState, FilterType, SortType } from '../../util/state-types'
 
 import { StyledDateTimeSelector } from './styled'
-import { updateItineraryFilter } from '../../actions/narrative'
 
 type Props = {
   config: AppConfig
@@ -110,7 +110,7 @@ const mapStateToProps = (state: AppReduxState) => {
 
 const mapDispatchToProps = {
   setQueryParam: formActions.setQueryParam,
-  updateItineraryFilter
+  updateItineraryFilter: narrativeActions.updateItineraryFilter
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DateTimeModal)
