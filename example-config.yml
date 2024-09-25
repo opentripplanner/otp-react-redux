@@ -111,6 +111,8 @@ persistence:
 #        iconType: 'car'
 #        iconUrl: ''
 #        href: ''
+
+### These settings are only used for the field trip features.
 dateTime:
   timeFormat: h:mm a
   dateFormat: MM/dd/yyyy
