@@ -357,6 +357,7 @@ components:
     distanceAway: "{localizedDistanceString} away"
     error: An error occurred loading nearby amenities.
     header: Nearby View
+    headsign: "{destination}"
     nearbyListIntro: List of {count} nearby entities.
     nothingNearby: There are no places nearby.
     spacesAvailable: "{spacesAvailable} empty spaces available"

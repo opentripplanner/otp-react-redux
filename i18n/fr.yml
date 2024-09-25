@@ -376,6 +376,7 @@ components:
     distanceAway: à {localizedDistanceString}
     error: Erreur lors du chargement des services à proximité.
     header: À proximité
+    headsign: "{destination}"
     nearbyListIntro: Liste de {count} entités à proximité.
     nothingNearby: Aucun lieu à proximité.
     spacesAvailable: "{spacesAvailable} emplacements libres disponibles"
