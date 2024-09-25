@@ -121,20 +121,9 @@
 
 /* Batch routing search screen */
 
-.otp.mobile .batch-search-settings {
-  position: fixed;
-  top: 50px;
-  left: 0;
-  right: 0;
-  height: 216px;
-  /* Must appear under the 'hamburger' dropdown which has z-index of 1000. */
-  z-index: 999;
-  box-shadow: 3px 0px 12px #00000052;
-}
-
 .otp.mobile .batch-search-map {
   position: fixed;
-  top: 266px;
+  top: 282px;
   left: 0;
   right: 0;
   bottom: 0;

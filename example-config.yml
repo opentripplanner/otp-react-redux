@@ -426,6 +426,9 @@ itinerary:
   #   - 'DEPARTURETIME'
   # In the batch itinerary UI, this setting will always show both departure/arrival times
   alwaysShowBothTimes: false
+advancedSettingsPanel:
+  # Show button in advanced panel that allows users to save and return
+  saveAndReturnButton: true
 
 # The transitOperators key is a list of transit operators that can be used to
 # order transit agencies when sorting by route. Also, this can optionally
