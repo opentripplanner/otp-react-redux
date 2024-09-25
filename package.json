@@ -44,7 +44,7 @@
     "@floating-ui/react": "^0.19.2",
     "@opentripplanner/base-map": "^3.2.2",
     "@opentripplanner/building-blocks": "^1.2.3",
-    "@opentripplanner/core-utils": "11.4.3-mobility-profile",
+    "@opentripplanner/core-utils": "11.4.4",
     "@opentripplanner/endpoints-overlay": "^2.1.4",
     "@opentripplanner/from-to-location-picker": "^2.1.14",
     "@opentripplanner/geocoder": "^3.0.2",

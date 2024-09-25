@@ -2408,14 +2408,14 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/building-blocks/-/building-blocks-1.2.3.tgz#404e8f9038867d66d55f51adf8855b1326c51ed5"
   integrity sha512-I0AxiZrTZu+e7+av4u0tHW2ijqpxH0AkLHrhf75BHf1Ep2FOGxaul/v+8UT18mNYiM5eHNstOX3XiXaDjtCUaw==
 
-"@opentripplanner/core-utils@11.4.3-mobility-profile":
-  version "11.4.3-mobility-profile"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.4.3-mobility-profile.tgz#b1d5675c6c1f85a3454234b720059efa03ad6ed2"
-  integrity sha512-+6IjMwXCUZHNmTLnZZ+u23Awtm2v4DcRVmkyxy8m8Dd5GxB9tMxXBhvvwxuzD2KV6Wf4tk4j+HqiAf8gW0Dfbg==
+"@opentripplanner/core-utils@11.4.4":
+  version "11.4.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.4.4.tgz#11c1be91a5e90afda4fc265831c761d3e044d933"
+  integrity sha512-WKhOuG7Q+Yxdm+P5MPmJyXndx+JUtGn44GTeilOnUqDdO8lTLTvqqt0hYeEWjA77jWP0u8tG7fAAsft8IZn2cg==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.0"
-    "@opentripplanner/geocoder" "^3.0.0"
+    "@opentripplanner/geocoder" "^3.0.2"
     "@styled-icons/foundation" "^10.34.0"
     "@turf/along" "^6.0.1"
     chroma-js "^2.4.2"
