@@ -192,14 +192,12 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.waitForTimeout(1000) // wait extra time for all results to load
 
     if (!isMobile) {
-      await page.hover('label[title="Transit"]')
-      await page.waitForTimeout(200)
-      await percySnapshotWithWait(
-        page,
-        'Metro Transit-Walk Itinerary Desktop with Mode Selector Expanded'
-      )
-      // Hover something else to unhover the mode selector.
-      await page.hover('#plan-trip')
+      await page.click('#open-advanced-settings-button')
+      await page.waitForTimeout(500)
+      await percySnapshotWithWait(page, 'Metro Advanced Settings Open')
+      // Close advanced settings
+      await page.click('#close-advanced-settings-button')
+      await page.waitForTimeout(500)
     } else {
       await percySnapshotWithWait(page, 'Metro Transit-Walk Itinerary Mobile')
     }
