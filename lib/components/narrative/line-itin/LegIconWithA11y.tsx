@@ -1,14 +1,12 @@
+import { isTransitLeg } from '@opentripplanner/core-utils/lib/itinerary'
 import { Leg } from '@opentripplanner/types'
-
-import { getFormattedMode } from '../../../util/i18n'
-import coreUtils from '@opentripplanner/core-utils'
-import InvisibleA11yLabel from '../../util/invisible-a11y-label'
-
-import React, { useContext } from 'react'
+import { useIntl } from 'react-intl'
 
 import { ComponentContext } from '../../../util/contexts'
+import { getFormattedMode } from '../../../util/i18n'
+import React, { useContext } from 'react'
 
-import { useIntl } from 'react-intl'
+import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 type Props = {
   leg: Leg
@@ -19,8 +17,8 @@ const LegIconWithA11y = (props: Props): JSX.Element => {
   const { LegIcon } = useContext(ComponentContext)
   const intl = useIntl()
   const { leg } = props
-  const { mode, transitLeg } = leg
-  const ariaLabel = transitLeg ? getFormattedMode(mode, intl) : null
+  const { mode } = leg
+  const ariaLabel = isTransitLeg(leg) ? getFormattedMode(mode, intl) : null
   return (
     <>
       <LegIcon {...props} />

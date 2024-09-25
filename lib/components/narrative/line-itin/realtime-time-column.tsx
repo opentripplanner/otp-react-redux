@@ -36,7 +36,7 @@ function RealtimeTimeColumn({ isDestination, leg }: Props): ReactElement {
   const isRealtimeTransitLeg = isTransitLeg(leg) && leg.realTime
 
   // For non-transit legs show only the scheduled time.
-  if (!isTransitLeg) {
+  if (!isTransitLeg(leg)) {
     return (
       <div>
         <FormattedTime timeStyle="short" value={timeMillis} />

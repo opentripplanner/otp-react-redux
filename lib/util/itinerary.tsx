@@ -82,7 +82,7 @@ export function getMinutesUntilItineraryStart(itinerary: Itinerary): number {
  * Gets the first transit leg of the given itinerary, or null if none found.
  */
 function getFirstTransitLeg(itinerary: Itinerary) {
-  return itinerary?.legs?.find((leg) => isTransitLeg(leg))
+  return itinerary?.legs?.find(isTransitLeg)
 }
 
 /**
