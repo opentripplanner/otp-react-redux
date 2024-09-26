@@ -1,9 +1,67 @@
-import { Button, ControlLabel, FormControl, FormGroup } from 'react-bootstrap'
+import { Label as BsLabel, ControlLabel, FormGroup } from 'react-bootstrap'
+import { FormattedMessage } from 'react-intl'
 import { FormikProps } from 'formik'
-import React, { useCallback } from 'react'
+import { Trash } from '@styled-icons/fa-solid/Trash'
+import React, { useCallback, useState } from 'react'
 
+import { StyledIconWrapper } from '../../util/styledIcon'
+import { UnstyledButton } from '../../util/unstyled-button'
 import { User } from '../types'
 import AddEmailForm from '../common/add-email-form'
+import InvisibleA11yLabel from '../../util/invisible-a11y-label'
+
+interface CompanionInfo {
+  email: string
+  status?: string
+}
+
+interface CompanionRowProps {
+  companionInfo: CompanionInfo
+  onDelete: (email: string) => void
+}
+
+const CompanionRow = ({
+  companionInfo,
+  onDelete
+}: CompanionRowProps): JSX.Element => {
+  const { email, status } = companionInfo
+  const [disabled, setDisabled] = useState(false)
+
+  const handleDelete = useCallback(async () => {
+    if (window.confirm(`Do you want to delete companion ${email}?`)) {
+      setDisabled(true)
+      await onDelete(email)
+      setDisabled(false)
+    }
+  }, [email, onDelete])
+
+  return (
+    <li>
+      {email}{' '}
+      {status === 'PENDING' ? (
+        <BsLabel bsStyle="warning">
+          <FormattedMessage id="components.PhoneNumberEditor.pending" />
+        </BsLabel>
+      ) : status === 'VERIFIED' ? (
+        <BsLabel style={{ background: 'green' }}>
+          <FormattedMessage id="components.PhoneNumberEditor.verified" />
+        </BsLabel>
+      ) : (
+        <BsLabel>Invalid</BsLabel>
+      )}{' '}
+      <UnstyledButton
+        disabled={disabled}
+        onClick={handleDelete}
+        title={`Delete ${email}`}
+      >
+        <StyledIconWrapper>
+          <Trash />
+        </StyledIconWrapper>
+        <InvisibleA11yLabel>Delete {email}</InvisibleA11yLabel>
+      </UnstyledButton>
+    </li>
+  )
+}
 
 /**
  * Companions pane, part of mobility profile.
@@ -16,22 +74,43 @@ const CompanionsPane = ({
   const { guardians: companions = [] } = userData
   const formId = 'add-companion-form'
 
-  const handleAddNewEmail = useCallback(
-    async (args) => {
-      setFieldValue('guardians', [
-        ...companions,
-        {
-          email: args.newEmail,
-          status: 'PENDING',
-          userId: ''
-        }
-      ])
+  const updateCompanions = useCallback(
+    async (newCompanions) => {
+      setFieldValue('guardians', newCompanions)
 
+      // Register the change (can include a submission).
       await handleChange({
         target: document.getElementById(formId)
       })
     },
-    [companions, handleChange, setFieldValue]
+    [handleChange, setFieldValue]
+  )
+
+  const handleAddNewEmail = useCallback(
+    async ({ newEmail }, { resetForm }) => {
+      // Submit the new email if it is not already listed
+      if (!companions.find((comp) => comp.email === newEmail)) {
+        await updateCompanions([
+          ...companions,
+          {
+            email: newEmail,
+            status: 'PENDING',
+            userId: ''
+          }
+        ])
+        resetForm()
+      } else {
+        alert(`You already have a companion with email ${newEmail}.`)
+      }
+    },
+    [companions, updateCompanions]
+  )
+
+  const handleDeleteEmail = useCallback(
+    async (email: string) => {
+      await updateCompanions(companions.filter((comp) => comp.email !== email))
+    },
+    [companions, updateCompanions]
   )
 
   return (
@@ -49,9 +128,11 @@ const CompanionsPane = ({
             <li>No companions</li>
           ) : (
             companions.map((comp) => (
-              <li key={comp.email}>
-                {comp.email} - {comp.status} - [delete]
-              </li>
+              <CompanionRow
+                companionInfo={comp}
+                key={comp.email}
+                onDelete={handleDeleteEmail}
+              />
             ))
           )}
         </ul>
