@@ -9,6 +9,7 @@ import { UnstyledButton } from '../../util/unstyled-button'
 import { User } from '../types'
 import AddEmailForm from '../common/add-email-form'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
+import SubmitButton from '../../util/submit-button'
 
 interface CompanionInfo {
   email: string
@@ -49,7 +50,8 @@ const CompanionRow = ({
       ) : (
         <BsLabel>Invalid</BsLabel>
       )}{' '}
-      <UnstyledButton
+      <SubmitButton
+        as={UnstyledButton}
         disabled={disabled}
         onClick={handleDelete}
         title={`Delete ${email}`}
@@ -58,7 +60,7 @@ const CompanionRow = ({
           <Trash />
         </StyledIconWrapper>
         <InvisibleA11yLabel>Delete {email}</InvisibleA11yLabel>
-      </UnstyledButton>
+      </SubmitButton>
     </li>
   )
 }

@@ -1,19 +1,16 @@
 import * as yup from 'yup'
 import {
-  Button,
   ControlLabel,
   FormControl,
   FormGroup,
   HelpBlock
 } from 'react-bootstrap'
 import { Field, Form, Formik } from 'formik'
-import { FormattedMessage } from 'react-intl'
 import React from 'react'
 import styled from 'styled-components'
 
 import { ControlStrip, phoneFieldStyle } from '../styled'
-import { InlineLoading } from '../../narrative/loading'
-import InvisibleA11yLabel from '../../util/invisible-a11y-label'
+import SubmitButton from '../../util/submit-button'
 
 interface Props {
   id: string
@@ -71,20 +68,7 @@ const AddEmailForm = ({
                 type="email"
               />
 
-              {/* TODO: Refactor submit button. */}
-              <Button
-                bsStyle="primary"
-                disabled={isSubmitting}
-                form={id}
-                type="submit"
-              >
-                {isSubmitting ? <InlineLoading /> : submitText}
-                <InvisibleA11yLabel role="status">
-                  {isSubmitting && (
-                    <FormattedMessage id="common.forms.submitting" />
-                  )}
-                </InvisibleA11yLabel>
-              </Button>
+              <SubmitButton form={id}>{submitText}</SubmitButton>
             </ControlStrip>
             <HelpBlock role="alert">{showError && 'Invalid email'}</HelpBlock>
           </FormGroup>
