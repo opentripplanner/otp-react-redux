@@ -375,6 +375,7 @@ export interface AppConfig {
   bugsnag?: BugsnagConfig
   co2?: CO2Config
   companies?: Company[]
+  disableSingleItineraryDays?: boolean
   elevationProfile?: boolean
   extraMenuItems?: AppMenuItemConfig[]
   geocoder: GeocoderConfig

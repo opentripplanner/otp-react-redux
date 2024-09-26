@@ -534,6 +534,7 @@ components:
   SavedTripScreen:
     itineraryLoaded: Itinerary loaded
     itineraryLoading: Loading itinerary
+    selectAtLeastOneDay: Please select at least one day to monitor.
     tooManyTrips: >
       You already have reached the maximum of five saved trips. Please remove
       unused trips from your saved trips, and try again.
