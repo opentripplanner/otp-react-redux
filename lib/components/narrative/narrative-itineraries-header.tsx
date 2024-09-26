@@ -46,7 +46,6 @@ export default function NarrativeItinerariesHeader({
   enabledSortModes,
   errors,
   itineraries,
-  itinerary,
   itineraryIsExpanded,
   onSortChange,
   onSortDirChange,
@@ -108,13 +107,6 @@ export default function NarrativeItinerariesHeader({
 
   const sortOptionsArr = sortOptions(intl, enabledSortModes)
   const sortText = sortOptionsArr.find((x) => x.value === sort.type)?.text
-
-  const handleSortClick = useCallback(
-    (value) => {
-      onSortChange(value)
-    },
-    [onSortChange]
-  )
 
   return (
     <div
@@ -222,7 +214,7 @@ export default function NarrativeItinerariesHeader({
                 <li className="sort-option" key={sortOption.value}>
                   <UnstyledButton
                     aria-selected={sortText === sortOption.text || undefined}
-                    onClick={() => handleSortClick(sortOption.value)}
+                    onClick={() => onSortChange(sortOption.value)}
                     role="option"
                   >
                     {sortOption.text}
