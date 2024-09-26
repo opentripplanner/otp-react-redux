@@ -291,6 +291,7 @@ export interface ItineraryConfig {
   showPlanFirstLastButtons?: boolean
   showRouteFares?: boolean
   sortModes?: ItinerarySortOption[]
+  syncSortWithDepartArrive?: boolean
   weights?: ItineraryCostWeights
 }
 
@@ -362,6 +363,11 @@ export interface StopScheduleViewerConfig {
   showBlockIds?: boolean
 }
 
+export interface DateTimeConfig {
+  dateFormat: string
+  timeFormat: string
+}
+
 /** The main application configuration object */
 export interface AppConfig {
   accessibilityScore?: AccessibilityScoreConfig
@@ -375,6 +381,7 @@ export interface AppConfig {
   bugsnag?: BugsnagConfig
   co2?: CO2Config
   companies?: Company[]
+  dateTime?: DateTimeConfig
   disableSingleItineraryDays?: boolean
   elevationProfile?: boolean
   extraMenuItems?: AppMenuItemConfig[]
