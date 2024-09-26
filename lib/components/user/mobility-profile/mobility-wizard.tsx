@@ -16,7 +16,7 @@ const MobilityWizard = ({ formikProps }: WizardProps): JSX.Element => {
   return (
     <Wizard
       formikProps={formikProps}
-      pages={['mobilityDevices', 'mobilityLimitations']}
+      pages={['mobilityDevices', 'mobilityLimitations', 'companions']}
       returnTo="/account/settings"
       title={title}
     />
