@@ -52,8 +52,9 @@ const AddEmailForm = ({
       validateOnChange={false}
       validationSchema={emailValidationSchema}
     >
-      {({ errors, isSubmitting, touched }) => {
-        const showError = errors.newEmail && touched.newEmail
+      {({ errors, isSubmitting, touched, values }) => {
+        const showError =
+          errors.newEmail && touched.newEmail && values.newEmail?.length > 0
         return (
           <FormGroup validationState={showError ? 'error' : null}>
             <ControlLabel>{label}</ControlLabel>
