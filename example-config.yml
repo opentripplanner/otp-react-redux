@@ -426,6 +426,9 @@ itinerary:
   #   - 'DEPARTURETIME'
   # In the batch itinerary UI, this setting will always show both departure/arrival times
   alwaysShowBothTimes: false
+advancedSettingsPanel:
+  # Show button in advanced panel that allows users to save and return
+  saveAndReturnButton: true
 
 # The transitOperators key is a list of transit operators that can be used to
 # order transit agencies when sorting by route. Also, this can optionally
@@ -677,6 +680,8 @@ itinerary:
 # sessionTimeoutSeconds: 180
 
 # nearbyView:
+### Setting to use arrival time instead of departure time in the nearby view.
+#   useArrivalTime: true
 ### Setting to hide stops with no depatures in the nearby view.
 #   hideEmptyStops: true
 ### What radius should the nearby query get results within? (in meters)

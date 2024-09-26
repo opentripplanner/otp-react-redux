@@ -5,6 +5,7 @@ import {
   Styled as TripFormClasses
 } from '@opentripplanner/trip-form'
 import { Input, MenuItemLi } from '@opentripplanner/location-field/lib/styled'
+import { prefersReducedMotion } from '../util/prefersReducedMotion'
 import LocationField from '@opentripplanner/location-field'
 import styled, { css } from 'styled-components'
 
@@ -227,6 +228,80 @@ export const StyledLocationField = styled(LocationField)`
   ${MenuItemLi} {
     &:hover {
       color: inherit;
+    }
+  }
+`
+
+export const advancedPanelClassName = 'advanced-panel'
+export const mainPanelClassName = 'main-panel'
+export const transitionDuration = prefersReducedMotion ? 0 : 175
+
+const wipeOffset = 7
+
+const transitionMixin = css`
+  transition: all ${transitionDuration}ms ease-in-out;
+`
+
+const wipeOutMixin = (offset: number) => css`
+  opacity: 0;
+  transform: translateX(${offset}px);
+`
+const wipeInMixin = css`
+  opacity: 1;
+`
+
+export const TransitionStyles = styled.div<{ transitionDelay: number }>`
+  display: contents;
+  .${advancedPanelClassName}-enter {
+    ${wipeOutMixin(wipeOffset)}
+  }
+  .${advancedPanelClassName}-enter-done {
+    ${wipeInMixin}
+    ${transitionMixin}
+  }
+
+  .${advancedPanelClassName}-exit {
+    ${wipeInMixin}
+  }
+
+  .${advancedPanelClassName}-exit-active {
+    ${wipeOutMixin(wipeOffset)}
+    ${transitionMixin}
+    transition-delay: ${(props) => props.transitionDelay}ms;
+  }
+
+  .${mainPanelClassName}-enter {
+    ${wipeOutMixin(-wipeOffset)}
+  }
+  .${mainPanelClassName}-enter-done {
+    ${wipeInMixin}
+    ${transitionMixin}
+  }
+
+  .${mainPanelClassName}-exit {
+    ${wipeInMixin}
+  }
+
+  .${mainPanelClassName}-exit-active {
+    ${wipeOutMixin(-wipeOffset)}
+    ${transitionMixin}
+  }
+`
+export const styledCheckboxCss = css`
+  div {
+    align-items: center;
+    justify-content: space-between;
+
+    label {
+      margin-bottom: 0;
+    }
+    input[type='checkbox'] {
+      margin-top: 0;
+      order: 2;
+
+      &:focus-visible + label {
+        outline: 1px solid blue;
+      }
     }
   }
 `

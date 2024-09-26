@@ -1,9 +1,17 @@
 import { connect } from 'react-redux'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import React, { Component, FormEvent } from 'react'
 
+import {
+  advancedPanelClassName,
+  mainPanelClassName,
+  transitionDuration,
+  TransitionStyles
+} from '../form/styled'
 import { getActiveSearch, getShowUserSettings } from '../../util/state'
 import { getPersistenceMode } from '../../util/user'
+import AdvancedSettingsPanel from '../form/advanced-settings-panel'
 import BatchSettings from '../form/batch-settings'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import LocationField from '../form/connected-location-field'
@@ -15,6 +23,7 @@ import ViewerContainer from '../viewers/viewer-container'
 interface Props {
   activeSearch: any
   intl: IntlShape
+  mainPanelContent: number
   mobile?: boolean
   showUserSettings: boolean
 }
@@ -24,7 +33,43 @@ interface Props {
  */
 class BatchRoutingPanel extends Component<Props> {
   state = {
-    planTripClicked: false
+    closeAdvancedSettingsWithDelay: false,
+    planTripClicked: false,
+    showAdvancedModeSettings: false
+  }
+
+  _advancedSettingRef = React.createRef<HTMLDivElement>()
+  _mainPanelContentRef = React.createRef<HTMLDivElement>()
+  _itinerariesAndUserRef = React.createRef<HTMLDivElement>()
+
+  componentDidUpdate(prevProps: Readonly<Props>): void {
+    // Close the advanced mode settings if we navigate to another page
+    if (
+      prevProps.mainPanelContent === null &&
+      this.props.mainPanelContent !== null &&
+      this.state.showAdvancedModeSettings
+    ) {
+      this.setState({
+        showAdvancedModeSettings: false
+      })
+    }
+  }
+
+  openAdvancedSettings = () => {
+    this.setState({
+      closeAdvancedSettingsWithDelay: false,
+      showAdvancedModeSettings: true
+    })
+  }
+
+  closeAdvancedSettings = () => {
+    this.setState({ showAdvancedModeSettings: false })
+  }
+
+  setCloseAdvancedSettingsWithDelay = () => {
+    this.setState({
+      closeAdvancedSettingsWithDelay: true
+    })
   }
 
   handleSubmit = (e: FormEvent) => e.preventDefault()
@@ -44,6 +89,11 @@ class BatchRoutingPanel extends Component<Props> {
           id: 'common.searchForms.click'
         })
 
+    /* If there is a save button in advanced preferences, add a transition delay to allow
+    the saved state to be displayed to users */
+    const transitionDelay = this.state.closeAdvancedSettingsWithDelay ? 300 : 0
+    const transitionDurationWithDelay = transitionDuration + transitionDelay
+
     return (
       <ViewerContainer
         className="batch-routing-panel"
@@ -53,55 +103,112 @@ class BatchRoutingPanel extends Component<Props> {
           height: '100%'
         }}
       >
-        <InvisibleA11yLabel>
-          <h1>
-            <FormattedMessage id="components.BatchSearchScreen.header" />
-          </h1>
-        </InvisibleA11yLabel>
-        <form
-          className="form"
-          onSubmit={this.handleSubmit}
-          style={{ padding: '10px' }}
-        >
-          <span className="batch-routing-panel-location-fields">
-            <LocationField
-              inputPlaceholder={intl.formatMessage(
-                { id: 'common.searchForms.enterStartLocation' },
-                { mapAction }
+        <TransitionStyles transitionDelay={transitionDelay}>
+          {!this.state.showAdvancedModeSettings && (
+            <InvisibleA11yLabel>
+              <h1>
+                <FormattedMessage id="components.BatchSearchScreen.header" />
+              </h1>
+            </InvisibleA11yLabel>
+          )}
+          <form
+            className="form"
+            onSubmit={this.handleSubmit}
+            style={{ padding: '10px' }}
+          >
+            <TransitionGroup style={{ display: 'content' }}>
+              {this.state.showAdvancedModeSettings && (
+                <CSSTransition
+                  classNames={advancedPanelClassName}
+                  nodeRef={this._advancedSettingRef}
+                  timeout={{
+                    enter: transitionDuration,
+                    exit: transitionDurationWithDelay
+                  }}
+                >
+                  <AdvancedSettingsPanel
+                    closeAdvancedSettings={this.closeAdvancedSettings}
+                    innerRef={this._advancedSettingRef}
+                    setCloseAdvancedSettingsWithDelay={
+                      this.setCloseAdvancedSettingsWithDelay
+                    }
+                  />
+                </CSSTransition>
               )}
-              isRequired
-              locationType="from"
-              selfValidate={planTripClicked}
-              showClearButton={!mobile}
-            />
-            <LocationField
-              inputPlaceholder={intl.formatMessage(
-                { id: 'common.searchForms.enterDestination' },
-                { mapAction }
+
+              {!this.state.showAdvancedModeSettings && (
+                <CSSTransition
+                  classNames={mainPanelClassName}
+                  nodeRef={this._mainPanelContentRef}
+                  onExit={this.openAdvancedSettings}
+                  timeout={transitionDurationWithDelay}
+                >
+                  <div ref={this._mainPanelContentRef}>
+                    <span className="batch-routing-panel-location-fields">
+                      <LocationField
+                        inputPlaceholder={intl.formatMessage(
+                          { id: 'common.searchForms.enterStartLocation' },
+                          { mapAction }
+                        )}
+                        isRequired
+                        locationType="from"
+                        selfValidate={planTripClicked}
+                        showClearButton={!mobile}
+                      />
+                      <LocationField
+                        inputPlaceholder={intl.formatMessage(
+                          { id: 'common.searchForms.enterDestination' },
+                          { mapAction }
+                        )}
+                        isRequired
+                        locationType="to"
+                        selfValidate={planTripClicked}
+                        showClearButton={!mobile}
+                      />
+                      <div className="switch-button-container">
+                        <SwitchButton />
+                      </div>
+                    </span>
+                    <BatchSettings
+                      onPlanTripClick={this.handlePlanTripClick}
+                      openAdvancedSettings={this.openAdvancedSettings}
+                    />
+                  </div>
+                </CSSTransition>
               )}
-              isRequired
-              locationType="to"
-              selfValidate={planTripClicked}
-              showClearButton={!mobile}
-            />
-            <div className="switch-button-container">
-              <SwitchButton />
-            </div>
-          </span>
-          <BatchSettings onPlanTripClick={this.handlePlanTripClick} />
-        </form>
-        {!activeSearch && showUserSettings && (
-          <UserSettings style={{ margin: '0 10px', overflowY: 'auto' }} />
-        )}
-        <div
-          className="desktop-narrative-container"
-          style={{
-            flexGrow: 1,
-            overflowY: 'hidden'
-          }}
-        >
-          <NarrativeItineraries />
-        </div>
+            </TransitionGroup>
+          </form>
+          <TransitionGroup style={{ display: 'contents' }}>
+            {!this.state.showAdvancedModeSettings && (
+              <CSSTransition
+                classNames={mainPanelClassName}
+                nodeRef={this._itinerariesAndUserRef}
+                timeout={transitionDurationWithDelay}
+              >
+                <div
+                  ref={this._itinerariesAndUserRef}
+                  style={{ height: '100%', overflowY: 'auto' }}
+                >
+                  {!activeSearch && showUserSettings && (
+                    <UserSettings
+                      style={{ margin: '0 10px', overflowY: 'auto' }}
+                    />
+                  )}
+                  <div
+                    className="desktop-narrative-container"
+                    style={{
+                      flexGrow: 1,
+                      height: activeSearch ? '100%' : 'auto',
+                      overflowY: 'hidden'
+                    }}
+                  >
+                    <NarrativeItineraries />
+                  </div>
+                </div>
+              </CSSTransition>
+            )}
+          </TransitionGroup>
+        </TransitionStyles>
       </ViewerContainer>
     )
   }
@@ -115,8 +222,11 @@ const mapStateToProps = (state: any) => {
     getShowUserSettings(state) &&
     (state.user.loggedInUser?.hasConsentedToTerms ||
       getPersistenceMode(state.otp.config.persistence).isLocalStorage)
+  const { mainPanelContent } = state.otp.ui
+
   return {
     activeSearch: getActiveSearch(state),
+    mainPanelContent,
     showUserSettings
   }
 }
