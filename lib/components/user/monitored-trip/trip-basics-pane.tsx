@@ -46,7 +46,7 @@ type TripBasicsProps = WrappedComponentProps &
       intl: IntlShape
     ) => void
     clearItineraryExistence: () => void
-    disableSingleItineraryDays: boolean | undefined
+    disableSingleItineraryDays?: boolean
     isCreating: boolean
     itineraryExistence?: ItineraryExistence
   }
