@@ -440,7 +440,6 @@ components:
     changeNumber: Changer de numéro
     invalidCode: Le code de vérification doit comporter 6 chiffres.
     invalidPhone: Veuillez entrer un numéro de téléphone valable.
-    pending: Non vérifié
     phoneNumberSubmitted: Le numéro {phoneNumber} a bien été envoyé.
     phoneNumberVerified: Le numéro {phoneNumber} a bien été vérifié.
     placeholder: Entrez votre numéro
@@ -455,7 +454,6 @@ components:
     verificationInstructions: >
       Un SMS vous a été envoyé avec un code de vérification. Veuillez taper ce
       code ci-dessous (le code expire après 10 minutes).
-    verified: Vérifié
     verify: Vérifier
     verifySms: >-
       Veuillez effectuer la vérification de votre numéro de téléphone afin de
@@ -573,6 +571,10 @@ components:
       retards
   StackedPaneDisplay:
     savePreferences: Enregistrer mes préférences
+  StatusBadge:
+    invalid: Non valable
+    pending: Non vérifié
+    verified: Vérifié
   StopScheduleTable:
     block: Bloc
     departure: Départ

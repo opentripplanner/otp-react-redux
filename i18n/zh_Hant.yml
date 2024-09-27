@@ -344,7 +344,6 @@ components:
     changeNumber: 變更號碼
     invalidCode: 請輸入6位數的驗證碼。
     invalidPhone: 請輸入有效的電話號碼。
-    pending: 待處理
     phoneNumberSubmitted: 已順利提交電話號碼 {phoneNumber}。
     phoneNumberVerified: 已順利驗證電話號碼 {phoneNumber} 。
     placeholder: 輸入您的電話號碼
@@ -356,7 +355,6 @@ components:
     verificationCode: 驗證碼：
     verificationInstructions: |
       請查看您手機的簡訊應用程式是否收到含有驗證碼的簡訊，並在下方輸入該驗證碼 (驗證碼將在10分鐘後失效)。
-    verified: 已驗證
     verify: 驗證
   Place:
     deleteThisPlace: 刪除此地點
@@ -453,6 +451,10 @@ components:
     usingRealtimeInfo: 此行程使用即時交通和延誤資訊。
   StackedPaneDisplay:
     savePreferences: 儲存偏好
+  StatusBadge:
+    invalid: Invalid
+    pending: 待處理
+    verified: 已驗證
   StopScheduleTable:
     block: 封鎖
     departure: 出發

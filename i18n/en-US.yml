@@ -417,7 +417,6 @@ components:
     changeNumber: Change number
     invalidCode: Please enter 6 digits for the validation code.
     invalidPhone: Please enter a valid phone number.
-    pending: Pending
     phoneNumberSubmitted: Phone number {phoneNumber} was successfully submitted.
     phoneNumberVerified: Phone number {phoneNumber} was successfully verified.
     placeholder: Enter your phone number
@@ -433,7 +432,6 @@ components:
       Please check the SMS messaging app on your mobile phone for a text message
       with a verification code, and enter the code below (code expires after 10
       minutes).
-    verified: Verified
     verify: Verify
     verifySms: >-
       Please complete the verification process in order to set up SMS
@@ -543,6 +541,10 @@ components:
     usingRealtimeInfo: This trip uses real-time traffic and delay information
   StackedPaneDisplay:
     savePreferences: Save preferences
+  StatusBadge:
+    invalid: Invalid
+    pending: Pending
+    verified: Verified
   StopScheduleTable:
     block: Block
     departure: Departure

@@ -1,5 +1,4 @@
-import { Label as BsLabel, ControlLabel, FormGroup } from 'react-bootstrap'
-import { FormattedMessage } from 'react-intl'
+import { ControlLabel, FormGroup } from 'react-bootstrap'
 import { FormikProps } from 'formik'
 import { Trash } from '@styled-icons/fa-solid/Trash'
 import React, { useCallback, useState } from 'react'
@@ -9,6 +8,7 @@ import { UnstyledButton } from '../../util/unstyled-button'
 import { User } from '../types'
 import AddEmailForm from '../common/add-email-form'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
+import StatusBadge from '../../util/status-badge'
 import SubmitButton from '../../util/submit-button'
 
 interface CompanionInfo {
@@ -38,18 +38,7 @@ const CompanionRow = ({
 
   return (
     <li>
-      {email}{' '}
-      {status === 'PENDING' ? (
-        <BsLabel bsStyle="warning">
-          <FormattedMessage id="components.PhoneNumberEditor.pending" />
-        </BsLabel>
-      ) : status === 'VERIFIED' ? (
-        <BsLabel style={{ background: 'green' }}>
-          <FormattedMessage id="components.PhoneNumberEditor.verified" />
-        </BsLabel>
-      ) : (
-        <BsLabel>Invalid</BsLabel>
-      )}{' '}
+      {email} <StatusBadge status={status} />
       <SubmitButton
         as={UnstyledButton}
         disabled={disabled}

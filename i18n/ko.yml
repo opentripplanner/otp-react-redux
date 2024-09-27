@@ -354,7 +354,6 @@ components:
     changeNumber: 번호 변경
     invalidCode: 확인 코드 6 자리를 입력하세요.
     invalidPhone: 유효한 전화번호를 입력하세요.
-    pending: 보류 중
     phoneNumberSubmitted: 전화번호 {phoneNumber} 이/가 성공적으로 제출되었습니다.
     phoneNumberVerified: 전화번호 {phoneNumber}가 성공적으로 확인되었습니다.
     placeholder: 전화번호를 입력하십시오
@@ -367,7 +366,6 @@ components:
     verificationCode: "확인 코드:"
     verificationInstructions: |
       휴대폰의 SMS 메시지 앱에서 인증 코드를 확인하고 아래에 코드를 입력하세요(코드는 10분 후에 만료됩니다).
-    verified: 확인됨
     verify: 확인
   Place:
     deleteThisPlace: 이 장소 삭제
@@ -465,6 +463,10 @@ components:
     usingRealtimeInfo: 이 트립은 실시간 교통 및 지체 정보를 사용합니다
   StackedPaneDisplay:
     savePreferences: 환경설정 저장
+  StatusBadge:
+    invalid: Invalid
+    pending: 보류 중
+    verified: 확인됨
   StopScheduleTable:
     block: 블록
     departure: 출발

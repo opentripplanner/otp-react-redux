@@ -391,7 +391,6 @@ components:
     changeNumber: Thay đổi số điện thoại
     invalidCode: Vui lòng nhập 6 chữ số cho mã xác thực.
     invalidPhone: Xin vui lòng nhập một số điện thoại hợp lệ.
-    pending: Chưa xác minh
     phoneNumberSubmitted: Gửi thành công số điện thoại {phoneNumber}.
     phoneNumberVerified: Số điện thoại {phoneNumber} đã được xác minh thành công.
     placeholder: Nhập số điện thoại của bạn
@@ -407,7 +406,6 @@ components:
       Vui lòng kiểm tra ứng dụng nhắn tin SMS trên điện thoại di động của bạn để
       thấy tin nhắn với mã xác minh và nhập mã bên dưới (mã hết hạn sau 10
       phút).
-    verified: Đã xác minh
     verify: Kiểm chứng
   Place:
     deleteThisPlace: Xóa nơi này
@@ -517,6 +515,10 @@ components:
       thực
   StackedPaneDisplay:
     savePreferences: Lưu lại những ưu tiên
+  StatusBadge:
+    invalid: Invalid
+    pending: Chưa xác minh
+    verified: Đã xác minh
   StopScheduleTable:
     block: Dãy nhà
     departure: Khởi hành
