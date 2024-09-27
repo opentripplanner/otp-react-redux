@@ -1,3 +1,4 @@
+// @ts-expect-error No TypeScript for yup.
 import * as yup from 'yup'
 import {
   ControlLabel,
@@ -6,7 +7,7 @@ import {
   HelpBlock
 } from 'react-bootstrap'
 import { Field, Form, Formik } from 'formik'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 
 import { ControlStrip, phoneFieldStyle } from '../styled'

@@ -1,13 +1,13 @@
 import { Button } from 'react-bootstrap'
 import { FormattedMessage } from 'react-intl'
-import React, { HTMLAttributes } from 'react'
+import React, { ButtonHTMLAttributes, ComponentType } from 'react'
 
 import { InlineLoading } from '../narrative/loading'
 
 import InvisibleA11yLabel from './invisible-a11y-label'
 
-interface Props extends HTMLAttributes<HTMLButtonElement> {
-  as?: string | ComponentType
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+  as?: 'button' | ComponentType
   isSubmitting?: boolean
 }
 
@@ -21,8 +21,9 @@ const SubmitButton = ({
   ...buttonProps
 }: Props): JSX.Element => (
   <Component
-    {...buttonProps}
+    // @ts-expect-error bsStyle 'primary' sets the button color to blue and can be overwritten in props.
     bsStyle="primary"
+    {...buttonProps}
     disabled={isSubmitting}
     type="submit"
   >

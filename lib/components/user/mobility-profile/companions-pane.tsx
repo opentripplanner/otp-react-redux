@@ -3,18 +3,13 @@ import { FormikProps } from 'formik'
 import { Trash } from '@styled-icons/fa-solid/Trash'
 import React, { useCallback, useState } from 'react'
 
+import { CompanionInfo, User } from '../types'
 import { StyledIconWrapper } from '../../util/styledIcon'
 import { UnstyledButton } from '../../util/unstyled-button'
-import { User } from '../types'
 import AddEmailForm from '../common/add-email-form'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import StatusBadge from '../../util/status-badge'
 import SubmitButton from '../../util/submit-button'
-
-interface CompanionInfo {
-  email: string
-  status?: string
-}
 
 interface CompanionRowProps {
   companionInfo: CompanionInfo

@@ -5,10 +5,10 @@ import React from 'react'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
 interface Props {
-  status: string
+  status?: string
 }
 
-function getStatusLabel(status: string) {
+function getStatusLabel(status?: string) {
   switch (status?.toLowerCase()) {
     case 'pending':
       return (

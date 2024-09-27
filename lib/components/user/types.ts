@@ -29,6 +29,11 @@ export interface MobilityProfile {
   visionLimitation: VisionLimitation
 }
 
+export interface CompanionInfo {
+  email: string
+  status?: string
+}
+
 /**
  * Type definition for an OTP-middleware (OTP-personas) user.
  */
@@ -36,6 +41,7 @@ export interface User {
   accessibilityRoutingByDefault?: boolean
   // email always exists per Auth0.
   email: string
+  guardians?: CompanionInfo[]
   hasConsentedToTerms?: boolean
   id?: string
   isPhoneNumberVerified?: boolean
