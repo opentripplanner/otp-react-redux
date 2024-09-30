@@ -382,6 +382,7 @@ export interface AppConfig {
   co2?: CO2Config
   companies?: Company[]
   dateTime?: DateTimeConfig
+  disableSingleItineraryDays?: boolean
   elevationProfile?: boolean
   extraMenuItems?: AppMenuItemConfig[]
   geocoder: GeocoderConfig
