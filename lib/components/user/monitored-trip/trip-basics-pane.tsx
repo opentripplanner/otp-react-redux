@@ -142,7 +142,7 @@ const RenderAvailableDays = ({
 }: {
   errorCheckingTrip: boolean
   errorSelectingDays?: 'error' | null
-  finalItineraryExistence: ItineraryExistence | undefined
+  finalItineraryExistence?: ItineraryExistence
   isCreating: boolean
   monitoredTrip: MonitoredTrip
 }) => {
