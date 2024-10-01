@@ -16,7 +16,6 @@ import TripPreviewLayoutBase from './trip-preview-layout-base'
 type Props = {
   // TODO: Typescript activeSearch type
   activeSearch: any
-  currentQuery: any
   intl: IntlShape
   itinerary: Itinerary
   location?: { search?: string }
@@ -32,14 +31,10 @@ class PrintLayout extends Component<Props> {
   componentDidMount() {
     const { itinerary, location, parseUrlQueryString } = this.props
 
-    console.log(itinerary, location)
-
     // Parse the URL query parameters, if present
     if (!itinerary && location && location.search) {
       parseUrlQueryString()
     }
-
-    // TODO: use currentQuery to pan/zoom to the correct part of the map
   }
 
   render() {
@@ -69,14 +64,12 @@ class PrintLayout extends Component<Props> {
 
 // connect to the redux store
 
-// TODO: Typescript state
 const mapStateToProps = (state: AppReduxState) => {
   const activeSearch = getActiveSearch(state)
   const { localUser, loggedInUser } = state.user
   const user = loggedInUser || localUser
   return {
     activeSearch,
-    currentQuery: state.otp.currentQuery,
     itinerary: getActiveItinerary(state) as Itinerary,
     user
   }

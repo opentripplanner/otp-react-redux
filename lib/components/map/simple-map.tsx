@@ -22,6 +22,7 @@ function noop() {
   return null
 }
 
+/** Renders an optional itinerary with a given config. */
 const SimpleMap = ({ config, itinerary }: Props): JSX.Element => {
   const intl = useIntl()
   // @ts-expect-error ComponentContext not typed yet.
