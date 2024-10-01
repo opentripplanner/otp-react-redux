@@ -66,6 +66,7 @@ class TripPreviewLayoutBase extends Component<Props, State> {
   render() {
     const {
       config,
+      header,
       itinerary,
       mapElement,
       onClose,
@@ -106,7 +107,7 @@ class TripPreviewLayoutBase extends Component<Props, State> {
               </Button>
             )}
           </div>
-          {title}
+          {header}
         </div>
 
         {/* The map, if visible */}
