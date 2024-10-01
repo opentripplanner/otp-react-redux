@@ -40,11 +40,9 @@ const TripPreviewLayout = ({ monitoredTrip }: Props) => {
       header={previewTripText}
       itinerary={itinerary}
       mapElement={
-        itinerary && (
-          <MapContainer className="map-container percy-hide">
-            <SimpleMap itinerary={itinerary} />
-          </MapContainer>
-        )
+        <MapContainer className="map-container percy-hide">
+          <SimpleMap itinerary={itinerary} />
+        </MapContainer>
       }
       subTitle={monitoredTrip?.tripName}
       title={previewTripText}

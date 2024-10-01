@@ -15,7 +15,7 @@ import { ComponentContext } from '../../util/contexts'
 
 interface Props {
   config: AppConfig
-  itinerary: Itinerary
+  itinerary?: Itinerary
 }
 
 function noop() {
@@ -37,7 +37,7 @@ const SimpleMap = ({ config, itinerary }: Props): JSX.Element => {
   } = config.map || {}
   const baseLayerUrls = baseLayers?.map((bl) => bl.url)
   const { disableFlexArc } = transitive || {}
-  const { legs } = itinerary
+  const { legs = [] } = itinerary || {}
 
   return (
     <BaseMap
@@ -55,14 +55,16 @@ const SimpleMap = ({ config, itinerary }: Props): JSX.Element => {
         toLocation={legs[legs.length - 1]?.to}
       />
       <GeolocateControl position="top-left" />
-      <TransitiveOverlay
-        transitiveData={itineraryToTransitive(itinerary, {
-          companies: config.companies,
-          disableFlexArc,
-          getRouteLabel: getTransitiveRouteLabel,
-          intl
-        })}
-      />
+      {itinerary && (
+        <TransitiveOverlay
+          transitiveData={itineraryToTransitive(itinerary, {
+            companies: config.companies,
+            disableFlexArc,
+            getRouteLabel: getTransitiveRouteLabel,
+            intl
+          })}
+        />
+      )}
 
       <NavigationControl
         position={navigationControlPosition || 'bottom-right'}
