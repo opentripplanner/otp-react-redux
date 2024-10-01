@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { FocusTrapWrapper } from '@opentripplanner/map-popup/lib'
+import { FocusTrapWrapper } from '@opentripplanner/building-blocks'
 import { Popup } from '@opentripplanner/base-map'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { useIntl, WrappedComponentProps } from 'react-intl'
@@ -82,7 +82,7 @@ function MapPopup({
       // Override inline style supplied by react-map-gl to accommodate long "plan a trip" translations.
       style={{ maxWidth: '260px', width: '260px' }}
     >
-      <FocusTrapWrapper closePopup={clearMapPopupLocation} id="stop-popup">
+      <FocusTrapWrapper closePopup={clearMapPopupLocation} id="point-popup">
         <PopupTitleWrapper>
           <PopupTitle>
             {typeof popupName === 'string' && popupName.split(',').length > 3
