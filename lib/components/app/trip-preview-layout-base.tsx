@@ -27,7 +27,7 @@ type Props = {
   itinerary?: Itinerary
   mapElement?: ReactNode
   onClose?: () => void
-  subTitle: string
+  subTitle?: string
   title: string
 }
 
@@ -64,8 +64,14 @@ class TripPreviewLayoutBase extends Component<Props, State> {
   }
 
   render() {
-    const { config, itinerary, mapElement, onClose, subTitle, title } =
-      this.props
+    const {
+      config,
+      itinerary,
+      mapElement,
+      onClose,
+      subTitle = '',
+      title
+    } = this.props
     const { LegIcon } = this.context
 
     return (
