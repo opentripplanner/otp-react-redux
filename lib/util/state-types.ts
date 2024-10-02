@@ -14,11 +14,7 @@ export interface OtpState {
   activeSearchId?: string
   config: AppConfig
   currentQuery: any
-  filter: {
-    sort: {
-      type: string
-    }
-  }
+  filter: FilterType
   location: any
   modeSettingDefinitions: ModeSetting[]
   overlay: any
@@ -29,6 +25,15 @@ export interface OtpState {
   transitIndex: any
   // TODO: Add other OTP states
   ui: any // TODO
+}
+
+export interface SortType {
+  direction: string
+  type: string
+}
+
+export interface FilterType {
+  sort: SortType
 }
 
 export interface UserState {

@@ -553,6 +553,7 @@ components:
   SavedTripScreen:
     itineraryLoaded: Trajet chargé
     itineraryLoading: Chargement du trajet
+    selectAtLeastOneDay: Veuillez choisir au moins un jour pour le suivi.
     tooManyTrips: >
       Vous avez déjà atteint le nombre maximum de 5 trajets enregistrés.
       Veuillez supprimer les trajets enregistrés qui sont inutilisés, puis
