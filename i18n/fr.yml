@@ -209,8 +209,15 @@ components:
   BatchRoutingPanel:
     shortTitle: Planifier un trajet
   BatchSearchScreen:
+    advancedHeader: Préférences avancées
     header: Votre trajet
+    modeOptions: Choix du mode
     modeSelectorLabel: Sélectionnez un mode de déplacement
+    moreOptions: Plus d'options
+    saveAndReturn: Enregistrer et fermer
+    saved: Enregistré
+    submodeSelectorLabel: Sélectionnez vos modes et sous-modes de déplacement
+    tripOptions: Options concernant le trajet
   BatchSettings:
     destination: destination
     invalidModeSelection: >-
@@ -376,6 +383,7 @@ components:
     distanceAway: à {localizedDistanceString}
     error: Erreur lors du chargement des services à proximité.
     header: À proximité
+    headsign: "{destination}"
     nearbyListIntro: Liste de {count} entités à proximité.
     nothingNearby: Aucun lieu à proximité.
     spacesAvailable: "{spacesAvailable} emplacements libres disponibles"
@@ -551,6 +559,7 @@ components:
   SavedTripScreen:
     itineraryLoaded: Trajet chargé
     itineraryLoading: Chargement du trajet
+    selectAtLeastOneDay: Veuillez choisir au moins un jour pour le suivi.
     tooManyTrips: >
       Vous avez déjà atteint le nombre maximum de 5 trajets enregistrés.
       Veuillez supprimer les trajets enregistrés qui sont inutilisés, puis

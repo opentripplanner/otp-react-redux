@@ -281,7 +281,8 @@ class DefaultMap extends Component {
       setLocation,
       setViewedStop,
       vehicleRentalQuery,
-      vehicleRentalStations
+      vehicleRentalStations,
+      viewedRouteStops
     } = this.props
     const { getCustomMapOverlays, getTransitiveRouteLabel, ModeIcon } =
       this.context
@@ -419,6 +420,7 @@ class DefaultMap extends Component {
                   vectorTilesEndpoint,
                   setLocation,
                   setViewedStop,
+                  viewedRouteStops,
                   config.companies,
                   this.getEntityPrefix
                 )
@@ -442,6 +444,26 @@ class DefaultMap extends Component {
 
 const mapStateToProps = (state) => {
   const activeSearch = getActiveSearch(state)
+  const viewedRoute = state.otp?.ui?.viewedRoute?.routeId
+  const nearbyViewerActive =
+    state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW
+
+  const viewedRoutePatterns = Object.entries(
+    state.otp?.transitIndex?.routes?.[viewedRoute]?.patterns || {}
+  )
+  const viewedRouteStops =
+    viewedRoute && !nearbyViewerActive
+      ? // Ensure we don't have duplicates
+        Array.from(
+          new Set(
+            // Generate a list of every stop id the pattern stops at
+            viewedRoutePatterns.reduce((acc, cur) => {
+              // Convert pattern object to list of the pattern's stops
+              return [...cur?.[1]?.stops.map((s) => s.id), ...acc]
+            }, [])
+          )
+        )
+      : null
 
   return {
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
@@ -453,7 +475,8 @@ const mapStateToProps = (state) => {
       state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW,
     pending: activeSearch ? Boolean(activeSearch.pending) : false,
     query: state.otp.currentQuery,
-    vehicleRentalStations: state.otp.overlay.vehicleRental.stations
+    vehicleRentalStations: state.otp.overlay.vehicleRental.stations,
+    viewedRouteStops
   }
 }
 
