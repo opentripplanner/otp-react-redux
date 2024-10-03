@@ -56,6 +56,7 @@ const TransitOperatorLogos = ({
   const agencies =
     (stopData &&
       stopData.stoptimesForPatterns?.reduce<Set<string>>((prev, cur) => {
+        // @ts-expect-error The agency type is not yet compatible with OTP2
         const agencyGtfsId = cur.pattern.route.agency?.gtfsId
         return agencyGtfsId ? prev.add(agencyGtfsId) : prev
       }, new Set())) ||
