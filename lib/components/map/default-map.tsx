@@ -24,6 +24,7 @@ import { MainPanelContent } from '../../actions/ui-constants'
 import { setLocation, setMapPopupLocationAndGeocode } from '../../actions/map'
 import { setViewedStop } from '../../actions/ui'
 import { updateOverlayVisibility } from '../../actions/config'
+import TransitOperatorIcons from '../util/connected-transit-operator-icons'
 
 import ElevationPointMarker from './elevation-point-marker'
 import EndpointsOverlay from './connected-endpoints-overlay'
@@ -36,7 +37,6 @@ import RoutePreviewOverlay from './route-preview-overlay'
 import RouteViewerOverlay from './connected-route-viewer-overlay'
 import StopsOverlay from './connected-stops-overlay'
 import TransitiveOverlay from './connected-transitive-overlay'
-import TransitOperatorLogos from '../util/connected-transit-operator-icons'
 import TransitVehicleOverlay from './connected-transit-vehicle-overlay'
 import TripViewerOverlay from './connected-trip-viewer-overlay'
 import VehicleRentalOverlay from './connected-vehicle-rental-overlay'
@@ -164,7 +164,7 @@ class DefaultMap extends Component {
       onlyRequestForOperators: true,
       stopId
     })
-    return <TransitOperatorLogos stopId={stopId} />
+    return <TransitOperatorIcons stopId={stopId} />
   }
 
   /**

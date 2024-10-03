@@ -6,35 +6,28 @@ const OperatorImg = styled.img<{ marginRight?: number; maxHeight?: number }>`
   &:not(:last-of-type) {
     margin-right: 0.5ch;
   }
-  margin-right: ${(props) => props.marginRight && props.marginRight}ch;
-  max-height: ${(props) => props.maxHeight && props.maxHeight}em;
-  // Make sure icons stay square
-  max-width: ${(props) => props.maxHeight && props.maxHeight}em;
   width: 25px;
+`
+
+const StyledOperatorImg = styled(OperatorImg)`
+  margin-right: 0.5ch;
+  max-height: 1em;
+  // Make sure icons stay square
+  max-width: 1em;
 `
 
 type Props = {
   alt?: string
-  marginRight?: number
-  maxHeight?: number
   operator?: TransitOperator
+  styled?: boolean
 }
 
-const OperatorLogo = ({
-  alt,
-  marginRight,
-  maxHeight,
-  operator
-}: Props): JSX.Element | null => {
+const OperatorLogo = ({ alt, operator, styled }: Props): JSX.Element | null => {
   if (!operator?.logo) return null
-  return (
-    <OperatorImg
-      alt={alt || operator.name}
-      marginRight={marginRight}
-      maxHeight={maxHeight}
-      src={operator.logo}
-    />
-  )
+  if (styled)
+    return <StyledOperatorImg alt={alt || operator.name} src={operator.logo} />
+
+  return <OperatorImg alt={alt || operator.name} src={operator.logo} />
 }
 
 export default OperatorLogo

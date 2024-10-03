@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { TransitOperator } from '@opentripplanner/types'
-import React, { Component } from 'react'
+import React from 'react'
 
 import { AppReduxState } from '../../util/state-types'
 import { FETCH_STATUS } from '../../util/constants'
@@ -13,34 +13,26 @@ interface Props {
   transitOperators: TransitOperator[]
 }
 
-class ConnectedTransitOperatorLogos extends Component<Props> {
-  render() {
-    const loading = this.props.stopData?.fetchStatus === FETCH_STATUS.FETCHING
-    return (
-      <TransitOperatorLogos
-        loading={loading}
-        stopData={this.props.stopData}
-        transitOperators={this.props.transitOperators}
-      />
-    )
-  }
+function TransitOperatorIcons({ stopData, transitOperators }: Props) {
+  const loading = stopData?.fetchStatus === FETCH_STATUS.FETCHING
+  return (
+    <TransitOperatorLogos
+      loading={loading}
+      stopData={stopData}
+      transitOperators={transitOperators}
+    />
+  )
 }
-
-const mapDispatchToProps = {}
 
 const mapStateToProps = (
   state: AppReduxState,
   ownProps: Props & { stopId: string }
 ) => {
   const stops = state.otp.transitIndex.stops
-  // clean this up
   return {
     stopData: stops?.[ownProps.stopId],
     transitOperators: state.otp.config.transitOperators || []
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ConnectedTransitOperatorLogos)
+export default connect(mapStateToProps)(TransitOperatorIcons)

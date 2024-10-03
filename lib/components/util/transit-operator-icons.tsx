@@ -31,12 +31,7 @@ const Operator = ({ operator }: { operator?: TransitOperator }) => {
           operator.name ? operator.name.replace(/\s+/g, '-').toLowerCase() : ''
         }
       >
-        <OperatorLogo
-          alt={operatorLogoAriaLabel}
-          marginRight={0.5}
-          maxHeight={1}
-          operator={operator}
-        />
+        <OperatorLogo alt={operatorLogoAriaLabel} operator={operator} styled />
       </span>
     ) : (
       // If operator exists but logo is missing,
@@ -55,13 +50,12 @@ const TransitOperatorLogos = ({
   transitOperators
 }: {
   loading?: boolean
-  stopData: StopData | undefined
+  stopData?: StopData
   transitOperators?: TransitOperator[]
 }): JSX.Element => {
   const agencies =
     (stopData &&
       stopData.stoptimesForPatterns?.reduce<Set<string>>((prev, cur) => {
-        // @ts-expect-error The agency type is not yet compatible with OTP2
         const agencyGtfsId = cur.pattern.route.agency?.gtfsId
         return agencyGtfsId ? prev.add(agencyGtfsId) : prev
       }, new Set())) ||
