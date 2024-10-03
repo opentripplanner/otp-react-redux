@@ -4,7 +4,8 @@ import { useCallback, useEffect, useState } from 'react'
 import * as apiActions from '../../actions/api'
 
 interface Props {
-  getVehiclePositionsForRoute: (id: string) => void
+  fetchAll?: boolean
+  getVehiclePositions: (id?: string) => void
   refreshSeconds: number
   routeId?: string
 }
@@ -13,21 +14,22 @@ interface Props {
  * Non-visual component that retrieves vehicle positions for the given route.
  */
 const VehiclePositionRetriever = ({
-  getVehiclePositionsForRoute,
+  fetchAll,
+  getVehiclePositions,
   refreshSeconds,
   routeId
 }: Props) => {
   const [refreshTimer, setRefreshTimer] = useState<NodeJS.Timeout | null>(null)
 
   const refreshVehiclePositions = useCallback(() => {
-    if (routeId) {
-      getVehiclePositionsForRoute(routeId)
+    if (routeId || fetchAll) {
+      getVehiclePositions(routeId)
     }
-  }, [routeId, getVehiclePositionsForRoute])
+  }, [routeId, getVehiclePositions, fetchAll])
 
   useEffect(() => {
     // Fetch vehicle positions when initially mounting component and a route id is available.
-    if (routeId) {
+    if (routeId || fetchAll) {
       refreshVehiclePositions()
 
       if (!refreshTimer) {
@@ -45,7 +47,7 @@ const VehiclePositionRetriever = ({
         setRefreshTimer(null)
       }
     }
-  }, [routeId, refreshVehiclePositions, refreshTimer, refreshSeconds])
+  }, [routeId, refreshVehiclePositions, refreshTimer, refreshSeconds, fetchAll])
 
   // Component renders nothing.
   return null
@@ -55,13 +57,13 @@ const VehiclePositionRetriever = ({
 const mapStateToProps = (state: any) => {
   return {
     refreshSeconds:
-      state.otp.config.routeViewer?.vehiclePositionRefreshSeconds || 30,
+      state.otp.config.routeViewer?.vehiclePositionRefreshSeconds || 10,
     routeId: state.otp.ui.viewedRoute?.routeId
   }
 }
 
 const mapDispatchToProps = {
-  getVehiclePositionsForRoute: apiActions.getVehiclePositionsForRoute
+  getVehiclePositions: apiActions.getVehiclePositions
 }
 
 export default connect(

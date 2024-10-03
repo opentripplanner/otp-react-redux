@@ -22,9 +22,11 @@ import { MainPanelContent } from '../../actions/ui-constants'
 import { setLocation, setMapPopupLocationAndGeocode } from '../../actions/map'
 import { setViewedStop } from '../../actions/ui'
 import { updateOverlayVisibility } from '../../actions/config'
+import VehiclePositionRetriever from '../viewers/vehicle-position-retriever'
 
 import ElevationPointMarker from './elevation-point-marker'
 import EndpointsOverlay from './connected-endpoints-overlay'
+import FullTransitVehicleOverlay from './connected-full-transit-vehicle-overlay'
 import GeoJsonLayer from './connected-geojson-layer'
 import ItinSummaryOverlay from './itinerary-summary-overlay'
 import NearbyViewDotOverlay from './nearby-view-dot-overlay'
@@ -409,6 +411,8 @@ class DefaultMap extends Component {
                   viewedRouteStops,
                   config.companies
                 )
+              case 'realtime-vehicles':
+                return <FullTransitVehicleOverlay {...namedLayerProps} />
               default:
                 return null
             }
@@ -419,6 +423,9 @@ class DefaultMap extends Component {
           <NavigationControl
             position={navigationControlPosition || 'bottom-right'}
           />
+          {overlays.map((o) => o.type).includes('realtime-vehicles') && (
+            <VehiclePositionRetriever fetchAll />
+          )}
         </BaseMap>
       </MapContainer>
     )
