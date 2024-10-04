@@ -2493,7 +2493,7 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/humanize-distance/-/humanize-distance-1.2.0.tgz#71cf5d5d1b756adef15300edbba0995ccd4b35ee"
   integrity sha512-x0QRXMDhypFeazZ6r6vzrdU8vhiV56nZ/WX6zUbxpgp6T9Oclw0gwR2Zdw6DZiiFpSYVNeVNxVzZwsu6NRGjcA==
 
-"@opentripplanner/icons@3.0.0":
+"@opentripplanner/icons@3.0.0", "@opentripplanner/icons@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/icons/-/icons-3.0.0.tgz#f7293fd4dd2625eace3a4c82ecd573d6000d85d3"
   integrity sha512-naSCdCsPwSyEiP7Vf6oN6dpgwpFIkeQFXfTJG7lp1Dg9emLTAYzRx/f+45e9Bh0zP0aA4DsN4VgHBQllyu82qQ==
@@ -2509,14 +2509,14 @@
     "@opentripplanner/core-utils" "^11.4.4"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-6.0.0.tgz#e261bcccd0d7a786f7f17be987a52ba1dc940229"
-  integrity sha512-j79byCefyEZuomvDlvBZJVZJ92+X6U4ivth3M62RKGmw1x8qW4nsbEKnzeQxXzGJcy3M+91eeIpcJnj98KHlRw==
+"@opentripplanner/itinerary-body@6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-6.0.1.tgz#74139536b34083af5b324fb94e69be267ea6bbeb"
+  integrity sha512-6Z+ZEW28MwtteOwZZUjkPkTnYQ0Aq1lMpfKMZW7F+OD6hfKhFBUx4NLMExTffXHswXQ3faYaHScOHxpalX73UQ==
   dependencies:
-    "@opentripplanner/core-utils" "^11.4.4"
+    "@opentripplanner/core-utils" "^12.0.0"
     "@opentripplanner/humanize-distance" "^1.2.0"
-    "@opentripplanner/icons" "^2.0.12"
+    "@opentripplanner/icons" "^3.0.0"
     "@opentripplanner/location-icon" "^1.4.1"
     "@styled-icons/fa-solid" "^10.34.0"
     "@styled-icons/foundation" "^10.34.0"
