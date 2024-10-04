@@ -48,7 +48,6 @@ export const CardTitle = styled.p`
   display: flex;
   font-size: 22px;
   font-weight: 600;
-  gap: 0.5ch;
   grid-column: 1;
   margin: 0;
   /* Prevent svg and images to be taller than the text. */
