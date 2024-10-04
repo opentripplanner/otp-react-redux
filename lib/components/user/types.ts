@@ -66,7 +66,8 @@ export type MonitoredTrip = Record<DaysOfWeek, boolean> & {
   itinerary: Itinerary
   itineraryExistence?: ItineraryExistence
   leadTimeInMinutes: number
-  queryParams: string
+  otp2QueryParams: Record<string, unknown>
+  queryParams: Record<string, unknown>
   tripName: string
   userId: string
 }
