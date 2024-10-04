@@ -2,7 +2,7 @@ import { Alert, FormControl } from 'react-bootstrap'
 import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
 import { FormattedList, FormattedMessage } from 'react-intl'
 import { FormikProps } from 'formik'
-import { Leg } from '@opentripplanner/types'
+import { isTransitLeg } from '@opentripplanner/core-utils/lib/itinerary'
 import React, { Component, FormEvent } from 'react'
 import styled from 'styled-components'
 
@@ -74,9 +74,7 @@ class TripNotificationsPane extends Component<Props> {
       values.arrivalVarianceMinutesThreshold,
       values.departureVarianceMinutesThreshold
     )
-    const hasTransit = values.itinerary?.legs?.some(
-      (leg: Leg) => leg.transitLeg
-    )
+    const hasTransit = values.itinerary?.legs?.some(isTransitLeg)
 
     let notificationSettingsContent
     if (areNotificationsDisabled) {

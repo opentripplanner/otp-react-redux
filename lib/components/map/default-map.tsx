@@ -3,6 +3,7 @@
 // @ts-nocheck
 import { connect } from 'react-redux'
 import { GeolocateControl, NavigationControl } from 'react-map-gl'
+import { getCurrentDate } from '@opentripplanner/core-utils/lib/time'
 import { injectIntl } from 'react-intl'
 import BaseMap from '@opentripplanner/base-map'
 import generateOTP2TileLayers from '@opentripplanner/otp2-tile-overlay'
@@ -13,6 +14,7 @@ import {
   assembleBasePath,
   bikeRentalQuery,
   carRentalQuery,
+  findStopTimesForStop,
   vehicleRentalQuery
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
@@ -22,6 +24,7 @@ import { MainPanelContent } from '../../actions/ui-constants'
 import { setLocation, setMapPopupLocationAndGeocode } from '../../actions/map'
 import { setViewedStop } from '../../actions/ui'
 import { updateOverlayVisibility } from '../../actions/config'
+import TransitOperatorIcons from '../util/connected-transit-operator-icons'
 
 import ElevationPointMarker from './elevation-point-marker'
 import EndpointsOverlay from './connected-endpoints-overlay'
@@ -151,6 +154,17 @@ class DefaultMap extends Component {
       lon,
       zoom
     }
+  }
+
+  // Generate operator logos to pass through OTP tile layer to map-popup
+  getEntityPrefix = (entity) => {
+    const stopId = entity.gtfsId
+    this.props.findStopTimesForStop({
+      date: getCurrentDate(),
+      onlyRequestForOperators: true,
+      stopId
+    })
+    return <TransitOperatorIcons stopId={stopId} />
   }
 
   /**
@@ -407,7 +421,8 @@ class DefaultMap extends Component {
                   setLocation,
                   setViewedStop,
                   viewedRouteStops,
-                  config.companies
+                  config.companies,
+                  this.getEntityPrefix
                 )
               default:
                 return null
@@ -468,6 +483,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   bikeRentalQuery,
   carRentalQuery,
+  findStopTimesForStop,
   getCurrentPosition,
   setLocation,
   setMapPopupLocationAndGeocode,

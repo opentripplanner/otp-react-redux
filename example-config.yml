@@ -436,6 +436,8 @@ itinerary:
 advancedSettingsPanel:
   # Show button in advanced panel that allows users to save and return
   saveAndReturnButton: true
+# Prevent users from selecting a single day for saving trips.
+disableSingleItineraryDays: false
 
 # The transitOperators key is a list of transit operators that can be used to
 # order transit agencies when sorting by route. Also, this can optionally
