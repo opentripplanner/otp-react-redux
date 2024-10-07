@@ -15,7 +15,6 @@ import {
   ModeSetting,
   ModeSettingValues
 } from '@opentripplanner/types'
-import { QueryParamChangeEvent } from '@opentripplanner/trip-form/lib/types'
 import React, { RefObject, useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
@@ -128,7 +127,7 @@ const AdvancedSettingsPanel = ({
   modeSettingDefinitions: ModeSetting[]
   modeSettingValues: ModeSettingValues
   onPlanTripClick: () => void
-  setQueryParam: (evt: QueryParamChangeEvent) => void
+  setQueryParam: (evt: any) => void
 }): JSX.Element => {
   const [closingBySave, setClosingBySave] = useState(false)
   const [closingByX, setClosingByX] = useState(false)

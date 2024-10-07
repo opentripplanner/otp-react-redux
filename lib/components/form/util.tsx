@@ -5,6 +5,7 @@ import React from 'react'
 
 import { getFormattedMode } from '../../util/i18n'
 import { hasValidLocation } from '../../util/state'
+import { QueryParamChangeHandler } from '../util/types'
 import { RoutingQueryCallResult } from '../../actions/api-constants'
 import { updateQueryTimeIfLeavingNow } from '../../actions/form'
 
@@ -18,9 +19,9 @@ export const modesQueryParamConfig = { modeButtons: DelimitedArrayParam }
 export const populateSettingWithIcon =
   (ModeIcon: React.ComponentType<{ mode?: string; width?: number }>) =>
   // eslint-disable-next-line react/display-name
-  (msd: ModeSetting): ModeSetting => ({
-    ...msd,
-    icon: <ModeIcon mode={msd.iconName} width={16} />
+  (modeSetting: ModeSetting): ModeSetting => ({
+    ...modeSetting,
+    icon: <ModeIcon mode={modeSetting.iconName} width={16} />
   })
 
 export const addModeButtonIcon =
@@ -34,17 +35,17 @@ export const addModeButtonIcon =
 
 export const addCustomSettingLabels =
   (intl: IntlShape) =>
-  (msd: ModeSetting): ModeSetting => {
-    let modeLabel
+  (modeSetting: ModeSetting): ModeSetting => {
     // If we're using route mode overrides, make sure we're using the custom mode name
-    if (msd.type === 'SUBMODE') {
-      modeLabel = msd.overrideMode || msd.addTransportMode.mode
+    if (modeSetting.type === 'SUBMODE') {
+      const modeLabel =
+        modeSetting.overrideMode || modeSetting.addTransportMode.mode
       return {
-        ...msd,
+        ...modeSetting,
         label: getFormattedMode(modeLabel, intl)
       }
     }
-    return msd
+    return modeSetting
   }
 
 /**
@@ -52,19 +53,18 @@ export const addCustomSettingLabels =
  * @param params Params to store
  */
 export const onSettingsUpdate =
-  (setQueryParam: (evt: any) => void) => (params: any) => {
+  (setQueryParam: QueryParamChangeHandler) =>
+  (params: any): void => {
     setQueryParam({ queryParamData: params, ...params })
   }
 
 export const setModeButton =
   (enabledModeButtons: string[], updateHandler: (params: any) => void) =>
-  (buttonId: string, newState: boolean) => {
-    let newButtons
-    if (newState) {
-      newButtons = [...enabledModeButtons, buttonId]
-    } else {
-      newButtons = enabledModeButtons.filter((c) => c !== buttonId)
-    }
+  (buttonId: string, newState: boolean): void => {
+    const newButtons = newState
+      ? [...enabledModeButtons, buttonId]
+      : enabledModeButtons.filter((c) => c !== buttonId)
+
     // encodeQueryParams serializes the mode buttons for the URL
     // to get nice looking URL params and consistency
     updateHandler(
