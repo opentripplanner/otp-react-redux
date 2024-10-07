@@ -23,16 +23,21 @@ import MobileNavigationBar from './navigation-bar'
 
 const { SET_FROM_LOCATION, SET_TO_LOCATION } = MobileScreens
 
-const MobileSearchSettings = styled.div<{ advancedPanelOpen: boolean }>`
+const MobileSearchSettings = styled.div<{
+  advancedPanelOpen: boolean
+  transitionDelay: number
+  transitionDuration: number
+}>`
   background: white;
   box-shadow: 3px 0px 12px #00000052;
-  position: fixed;
-  top: 50px;
-  left: 0;
-  right: 0;
-  transition: all 200ms ease;
   height: ${(props) =>
     props.advancedPanelOpen ? 'calc(100% - 50px)' : '230px'};
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 50px;
+  transition: ${(props) => `all ${props.transitionDuration}ms ease`};
+  transition-delay: ${(props) => props.transitionDelay}ms;
   /* Must appear under the 'hamburger' dropdown which has z-index of 1000. */
   z-index: 999;
 `
@@ -45,6 +50,7 @@ interface Props {
 
 class BatchSearchScreen extends Component<Props> {
   state = {
+    closeAdvancedSettingsWithDelay: false,
     planTripClicked: false,
     showAdvancedModeSettings: false
   }
@@ -60,9 +66,29 @@ class BatchSearchScreen extends Component<Props> {
     this.setState({ planTripClicked: true })
   }
 
+  openAdvancedSettings = () => {
+    this.setState({
+      closeAdvancedSettingsWithDelay: false,
+      showAdvancedModeSettings: true
+    })
+  }
+
+  closeAdvancedSettings = () => {
+    this.setState({ showAdvancedModeSettings: false })
+  }
+
+  setCloseAdvancedSettingsWithDelay = () => {
+    this.setState({
+      closeAdvancedSettingsWithDelay: true
+    })
+  }
+
   render() {
     const { intl } = this.props
     const { planTripClicked, showAdvancedModeSettings } = this.state
+
+    const transitionDelay = this.state.closeAdvancedSettingsWithDelay ? 300 : 0
+    const transitionDurationWithDelay = transitionDuration + transitionDelay
     return (
       <MobileContainer>
         <MobileNavigationBar
@@ -76,14 +102,17 @@ class BatchSearchScreen extends Component<Props> {
             className={`batch-search-settings mobile-padding ${
               showAdvancedModeSettings && 'advanced-mode-open'
             }`}
+            transitionDelay={transitionDelay}
+            transitionDuration={transitionDuration}
           >
-            <TransitionStyles>
+            <TransitionStyles transitionDelay={transitionDelay}>
               <TransitionGroup style={{ display: 'content' }}>
+                {/* Unfortunately we can't use a ternary operator here because it is cancelling out the CSSTransition animations. */}
                 {!showAdvancedModeSettings && (
                   <CSSTransition
                     classNames={mainPanelClassName}
                     nodeRef={this._mainPanelContentRef}
-                    timeout={transitionDuration}
+                    timeout={transitionDurationWithDelay}
                   >
                     <div
                       ref={this._mainPanelContentRef}
@@ -114,11 +143,7 @@ class BatchSearchScreen extends Component<Props> {
                       </div>
                       <BatchSettings
                         onPlanTripClick={this.handlePlanTripClick}
-                        openAdvancedSettings={
-                          () =>
-                            this.setState({ showAdvancedModeSettings: true })
-                          // eslint-disable-next-line react/jsx-curly-newline
-                        }
+                        openAdvancedSettings={this.openAdvancedSettings}
                       />
                     </div>
                   </CSSTransition>
@@ -127,15 +152,17 @@ class BatchSearchScreen extends Component<Props> {
                   <CSSTransition
                     classNames={advancedPanelClassName}
                     nodeRef={this._advancedSettingRef}
-                    timeout={transitionDuration}
+                    timeout={{
+                      enter: transitionDuration,
+                      exit: transitionDurationWithDelay
+                    }}
                   >
                     <AdvancedSettingsPanel
-                      closeAdvancedSettings={
-                        () => this.setState({ showAdvancedModeSettings: false })
-                        // eslint-disable-next-line prettier/prettier
-                      }
+                      closeAdvancedSettings={this.closeAdvancedSettings}
                       innerRef={this._advancedSettingRef}
-                      onPlanTripClick={this.handlePlanTripClick}
+                      setCloseAdvancedSettingsWithDelay={
+                        this.setCloseAdvancedSettingsWithDelay
+                      }
                     />
                   </CSSTransition>
                 )}

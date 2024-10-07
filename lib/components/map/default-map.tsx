@@ -3,6 +3,7 @@
 // @ts-nocheck
 import { connect } from 'react-redux'
 import { GeolocateControl, NavigationControl } from 'react-map-gl'
+import { getCurrentDate } from '@opentripplanner/core-utils/lib/time'
 import { injectIntl } from 'react-intl'
 import BaseMap from '@opentripplanner/base-map'
 import generateOTP2TileLayers from '@opentripplanner/otp2-tile-overlay'
@@ -13,6 +14,7 @@ import {
   assembleBasePath,
   bikeRentalQuery,
   carRentalQuery,
+  findStopTimesForStop,
   vehicleRentalQuery
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
@@ -22,6 +24,7 @@ import { MainPanelContent } from '../../actions/ui-constants'
 import { setLocation, setMapPopupLocationAndGeocode } from '../../actions/map'
 import { setViewedStop } from '../../actions/ui'
 import { updateOverlayVisibility } from '../../actions/config'
+import TransitOperatorIcons from '../util/connected-transit-operator-icons'
 
 import ElevationPointMarker from './elevation-point-marker'
 import EndpointsOverlay from './connected-endpoints-overlay'
@@ -118,6 +121,8 @@ function getLayerName(overlay, config, intl) {
       return intl.formatMessage({ id: 'components.MapLayers.park-and-ride' })
     case 'stops':
       return intl.formatMessage({ id: 'components.MapLayers.stops' })
+    case 'stations':
+      return intl.formatMessage({ id: 'components.MapLayers.stations' })
     case 'rentalVehicles':
       if (overlay.network)
         return getCompanyNames([overlay.network], config, intl)
@@ -149,6 +154,17 @@ class DefaultMap extends Component {
       lon,
       zoom
     }
+  }
+
+  // Generate operator logos to pass through OTP tile layer to map-popup
+  getEntityPrefix = (entity) => {
+    const stopId = entity.gtfsId
+    this.props.findStopTimesForStop({
+      date: getCurrentDate(),
+      onlyRequestForOperators: true,
+      stopId
+    })
+    return <TransitOperatorIcons stopId={stopId} />
   }
 
   /**
@@ -265,11 +281,13 @@ class DefaultMap extends Component {
       setLocation,
       setViewedStop,
       vehicleRentalQuery,
-      vehicleRentalStations
+      vehicleRentalStations,
+      viewedRouteStops
     } = this.props
     const { getCustomMapOverlays, getTransitiveRouteLabel, ModeIcon } =
       this.context
-    const { baseLayers, maxZoom, overlays } = mapConfig || {}
+    const { baseLayers, maxZoom, navigationControlPosition, overlays } =
+      mapConfig || {}
     const { lat, lon, zoom } = this.state
     const vectorTilesEndpoint = `${assembleBasePath(config)}${
       config.api?.path
@@ -402,7 +420,9 @@ class DefaultMap extends Component {
                   vectorTilesEndpoint,
                   setLocation,
                   setViewedStop,
-                  config.companies
+                  viewedRouteStops,
+                  config.companies,
+                  this.getEntityPrefix
                 )
               default:
                 return null
@@ -411,7 +431,9 @@ class DefaultMap extends Component {
           {/* If set, custom overlays are shown if no active itinerary is shown or pending. */}
           {typeof getCustomMapOverlays === 'function' &&
             getCustomMapOverlays(!itinerary && !pending)}
-          <NavigationControl position="bottom-right" />
+          <NavigationControl
+            position={navigationControlPosition || 'bottom-right'}
+          />
         </BaseMap>
       </MapContainer>
     )
@@ -422,6 +444,26 @@ class DefaultMap extends Component {
 
 const mapStateToProps = (state) => {
   const activeSearch = getActiveSearch(state)
+  const viewedRoute = state.otp?.ui?.viewedRoute?.routeId
+  const nearbyViewerActive =
+    state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW
+
+  const viewedRoutePatterns = Object.entries(
+    state.otp?.transitIndex?.routes?.[viewedRoute]?.patterns || {}
+  )
+  const viewedRouteStops =
+    viewedRoute && !nearbyViewerActive
+      ? // Ensure we don't have duplicates
+        Array.from(
+          new Set(
+            // Generate a list of every stop id the pattern stops at
+            viewedRoutePatterns.reduce((acc, cur) => {
+              // Convert pattern object to list of the pattern's stops
+              return [...cur?.[1]?.stops.map((s) => s.id), ...acc]
+            }, [])
+          )
+        )
+      : null
 
   return {
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
@@ -433,13 +475,15 @@ const mapStateToProps = (state) => {
       state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW,
     pending: activeSearch ? Boolean(activeSearch.pending) : false,
     query: state.otp.currentQuery,
-    vehicleRentalStations: state.otp.overlay.vehicleRental.stations
+    vehicleRentalStations: state.otp.overlay.vehicleRental.stations,
+    viewedRouteStops
   }
 }
 
 const mapDispatchToProps = {
   bikeRentalQuery,
   carRentalQuery,
+  findStopTimesForStop,
   getCurrentPosition,
   setLocation,
   setMapPopupLocationAndGeocode,

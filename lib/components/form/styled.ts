@@ -235,7 +235,6 @@ export const StyledLocationField = styled(LocationField)`
 export const advancedPanelClassName = 'advanced-panel'
 export const mainPanelClassName = 'main-panel'
 export const transitionDuration = prefersReducedMotion ? 0 : 175
-export const transitionDelay = 300
 
 const wipeOffset = 7
 
@@ -244,14 +243,14 @@ const transitionMixin = css`
 `
 
 const wipeOutMixin = (offset: number) => css`
-  transform: translateX(${offset}px);
   opacity: 0;
+  transform: translateX(${offset}px);
 `
 const wipeInMixin = css`
   opacity: 1;
 `
 
-export const TransitionStyles = styled.div`
+export const TransitionStyles = styled.div<{ transitionDelay: number }>`
   display: contents;
   .${advancedPanelClassName}-enter {
     ${wipeOutMixin(wipeOffset)}
@@ -268,7 +267,7 @@ export const TransitionStyles = styled.div`
   .${advancedPanelClassName}-exit-active {
     ${wipeOutMixin(wipeOffset)}
     ${transitionMixin}
-    transition-delay: ${transitionDelay}ms;
+    transition-delay: ${(props) => props.transitionDelay}ms;
   }
 
   .${mainPanelClassName}-enter {

@@ -73,6 +73,7 @@ export type NearbyViewConfig = {
   hideEmptyStops?: boolean
   radius?: number
   showShadowDotOnMapDrag?: boolean
+  useArrivalTime?: boolean
   useRouteViewSort?: boolean
 }
 
@@ -228,6 +229,7 @@ export interface MapConfig {
   initLon?: number
   initZoom?: number
   maxZoom?: number
+  navigationControlPosition?: string
   overlays?: SupportedOverlays[]
   views?: MapViewConfig[]
 }
@@ -262,6 +264,7 @@ export interface ItineraryCostWeights {
 
 export interface ItineraryConfig {
   allowUserAlertCollapsing?: boolean
+  alwaysShowBothTimes?: boolean
   costs?: ItineraryCostConfig
   customBatchUiBackground?: boolean
   defaultFareType?: FareProductSelector
@@ -283,10 +286,12 @@ export interface ItineraryConfig {
   showApproximatePrefixAccessLegs?: boolean
   showFirstResultByDefault?: boolean
   showHeaderText?: boolean
+  showInlineItinerarySummary?: boolean
   showLegDurations?: boolean
   showPlanFirstLastButtons?: boolean
   showRouteFares?: boolean
   sortModes?: ItinerarySortOption[]
+  syncSortWithDepartArrive?: boolean
   weights?: ItineraryCostWeights
 }
 
@@ -334,6 +339,10 @@ export interface TransitOperatorConfig extends TransitOperator {
   routeIcons?: boolean
 }
 
+export interface AdvancedSettingsPanelConfig {
+  saveAndReturnButton?: boolean
+}
+
 /** Route Viewer config */
 export interface RouteViewerConfig {
   /** Whether to hide the route linear shape inside a flex zone of that route. */
@@ -354,9 +363,15 @@ export interface StopScheduleViewerConfig {
   showBlockIds?: boolean
 }
 
+export interface DateTimeConfig {
+  dateFormat: string
+  timeFormat: string
+}
+
 /** The main application configuration object */
 export interface AppConfig {
   accessibilityScore?: AccessibilityScoreConfig
+  advancedSettingsPanel?: AdvancedSettingsPanelConfig
   api: ApiConfig
   // Optional on declaration, populated with defaults in reducer if not configured.
   autoPlan?: boolean | AutoPlanConfig
@@ -366,6 +381,8 @@ export interface AppConfig {
   bugsnag?: BugsnagConfig
   co2?: CO2Config
   companies?: Company[]
+  dateTime?: DateTimeConfig
+  disableSingleItineraryDays?: boolean
   elevationProfile?: boolean
   extraMenuItems?: AppMenuItemConfig[]
   geocoder: GeocoderConfig

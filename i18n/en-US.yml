@@ -109,12 +109,11 @@ common:
     submitting: Submitting…
     "yes": "Yes"
   itineraryDescriptions:
-    calories: "{calories, number} Cal"
     fareUnknown: No fare information
     noItineraryToDisplay: No itinerary to display.
     relativeCo2: |
       {co2} {isMore, select, true {more} other {less} } CO₂ than driving alone
-    transfers: "{transfers, plural, =0 {} one {# transfer} other {# transfers}}"
+    timeStartEnd: "{start} – {end}"
   linkOpensNewWindow: (Opens new window)
   modes:
     bicycle_rent: Bikeshare
@@ -153,7 +152,6 @@ common:
     enterStartLocation: Enter start location or {mapAction} on map…
     tap: tap
   time:
-    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
     duration:
       aFewSeconds: a few seconds
       nDays: "{days, plural, =1 {one day} other {# days}}"
@@ -202,6 +200,7 @@ components:
     moreOptions: More options
     saveAndReturn: Save and return
     saved: Saved
+    submodeSelectorLabel: Select travel modes and submodes
     tripOptions: Trip Options
   BatchSettings:
     destination: destination
@@ -267,7 +266,6 @@ components:
     ariaLabel: Form navigation
   ItinerarySummary:
     itineraryDetails: Itinerary details
-    minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LocationSearch:
     enterLocation: Enter location
     setDestination: Set Destination
@@ -279,6 +277,7 @@ components:
     park-and-ride: Park & Ride Locations
     satellite: Satellite
     shared-vehicles: Shared Vehicles
+    stations: Transit Stations
     stops: Transit Stops
     streets: Streets
   MapillaryFrame:
@@ -286,6 +285,7 @@ components:
   MetroUI:
     arriveAt: You arrive
     itineraryDescription: "{time} itinerary using {routes}"
+    itinerarySummary: from {stopName} | {cost}
     leaveAt: You leave
     multipleOptions: Multiple Options
     orAlternatives: or other routes in the same direction
@@ -360,6 +360,7 @@ components:
     distanceAway: "{localizedDistanceString} away"
     error: An error occurred loading nearby amenities.
     header: Nearby View
+    headsign: "{destination}"
     nearbyListIntro: List of {count} nearby entities.
     nothingNearby: There are no places nearby.
     spacesAvailable: "{spacesAvailable} empty spaces available"
@@ -529,6 +530,7 @@ components:
   SavedTripScreen:
     itineraryLoaded: Itinerary loaded
     itineraryLoading: Loading itinerary
+    selectAtLeastOneDay: Please select at least one day to monitor.
     tooManyTrips: >
       You already have reached the maximum of five saved trips. Please remove
       unused trips from your saved trips, and try again.
@@ -678,8 +680,8 @@ components:
       tripBegins: >-
         Trip is due to begin at {tripStart, time, short}. (Realtime monitoring
         will begin at {monitoringStart, time, short}.)
-      tripStartIsDelayed: Trip start time is delayed ${duration}!
-      tripStartIsEarly: Trip start time is happening ${duration} earlier than expected!
+      tripStartIsDelayed: Trip start time is delayed {duration}!
+      tripStartIsEarly: Trip start time is happening {duration} earlier than expected!
       tripStartsSoonNoUpdates: Trip is starting soon (no realtime updates available).
       tripStartsSoonOnTime: Trip is starting soon and is about on time.
   TripSummary:
