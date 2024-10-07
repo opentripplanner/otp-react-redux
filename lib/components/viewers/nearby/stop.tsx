@@ -70,6 +70,8 @@ const Stop = ({
         (a: StopTime, b: StopTime) => fullTimestamp(a) - fullTimestamp(b)
       )
       if (
+        // NearbyRoutes if present is populated with a list of routes that appear
+        // in the current service period.
         stopData.nearbyRoutes &&
         !stopData.nearbyRoutes.includes(st?.pattern?.route?.gtfsId)
       ) {
