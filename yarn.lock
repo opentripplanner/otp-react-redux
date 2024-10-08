@@ -2408,7 +2408,7 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/building-blocks/-/building-blocks-2.0.0.tgz#8282c01dff7db5c7e809f6ea91cb52df559a2f9d"
   integrity sha512-N07rDaZL8fp552eI9/0j1udKjc0uOpvO0Wv1P19Ge0a4roques463MJgWJ026fbopRCi3uwbc/gYTlh4/ske9A==
 
-"@opentripplanner/building-blocks@^1.0.3", "@opentripplanner/building-blocks@^1.2.2":
+"@opentripplanner/building-blocks@^1.2.2":
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/@opentripplanner/building-blocks/-/building-blocks-1.2.3.tgz#404e8f9038867d66d55f51adf8855b1326c51ed5"
   integrity sha512-I0AxiZrTZu+e7+av4u0tHW2ijqpxH0AkLHrhf75BHf1Ep2FOGxaul/v+8UT18mNYiM5eHNstOX3XiXaDjtCUaw==
@@ -2698,14 +2698,14 @@
     flat "^5.0.2"
     react-animate-height "^3.0.4"
 
-"@opentripplanner/trip-form@4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-4.0.0.tgz#27b36a0504e46cfda1cdf50c971b5cea03de8ae2"
-  integrity sha512-Cg8SlAVN8M+qoWpz8jAkwuqllIPgrL2PVewTPuDPsIQ8i5B7xo5KKE3TPo7cQUM+jE6WEshpvv0FIdMF+NAlNg==
+"@opentripplanner/trip-form@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-4.1.0.tgz#83bd7135d1c814f1ea0be4f6896dd2494c9ddba9"
+  integrity sha512-VOWoyAfnnmwNnsolYLk7vfXRQvF3rj2XW5pXJ+OKwplGTgOhxJGNMKjZxau4legRedauyf0MHBNRpD3M3vsqRg==
   dependencies:
     "@floating-ui/react" "^0.19.2"
-    "@opentripplanner/building-blocks" "^1.0.3"
-    "@opentripplanner/core-utils" "^11.4.4"
+    "@opentripplanner/building-blocks" "^2.0.0"
+    "@opentripplanner/core-utils" "^12.0.0"
     "@styled-icons/bootstrap" "^10.34.0"
     "@styled-icons/boxicons-regular" "^10.38.0"
     "@styled-icons/fa-regular" "^10.37.0"
