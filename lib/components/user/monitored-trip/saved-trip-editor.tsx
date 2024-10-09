@@ -12,6 +12,7 @@ import StackedPanesWithSave from '../stacked-panes-with-save'
 import TripNotFound from './trip-not-found'
 
 interface Props {
+  hasMobilityProfile: boolean
   isCreating: boolean
   onCancel: () => void
   panes: Record<string, ComponentType>
@@ -46,6 +47,17 @@ const SavedTripEditor = (props: Props): JSX.Element => {
         )
       }
     ]
+
+    // TODO: if mobility profile param is set, then add assign trusted companion pane
+    if (props.hasMobilityProfile) {
+      paneSequence.push({
+        pane: panes.travelCompanion,
+        props,
+        title: (
+          <FormattedMessage id="components.SavedTripEditor.travelCompanion" />
+        )
+      })
+    }
 
     const title = isCreating
       ? intl.formatMessage({ id: 'components.SavedTripEditor.saveNewTrip' })

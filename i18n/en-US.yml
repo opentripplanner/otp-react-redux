@@ -509,6 +509,7 @@ components:
     deleteSavedTrip: Delete saved trip
     editSavedTrip: Edit saved trip
     saveNewTrip: Save new trip
+    travelCompanion: Travel companions
     tripInformation: Trip information
     tripNotFound: Trip not found
     tripNotFoundDescription: Sorry, the requested trip was not found.
