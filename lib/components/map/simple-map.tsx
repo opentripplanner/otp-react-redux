@@ -42,7 +42,9 @@ const SimpleMap = ({ config, itinerary }: Props): JSX.Element => {
 
   return (
     <BaseMap
-      baseLayer={baseLayerUrls?.length > 1 ? baseLayerUrls : baseLayerUrls?.[0]}
+      baseLayer={
+        (baseLayerUrls?.length || 0) > 1 ? baseLayerUrls : baseLayerUrls?.[0]
+      }
       center={[initLat, initLon]}
       mapLibreProps={{ reuseMaps: true }}
       maxZoom={maxZoom}
