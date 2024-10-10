@@ -33,7 +33,7 @@ const SimpleMap = ({ config, itinerary }: Props): JSX.Element => {
     initLon = 0,
     initZoom,
     maxZoom,
-    navigationControlPosition,
+    navigationControlPosition = 'bottom-right',
     transitive
   } = config.map || {}
   const baseLayerUrls = baseLayers?.map((bl) => bl.url)
@@ -42,9 +42,7 @@ const SimpleMap = ({ config, itinerary }: Props): JSX.Element => {
 
   return (
     <BaseMap
-      baseLayer={
-        (baseLayerUrls?.length || 0) > 1 ? baseLayerUrls : baseLayerUrls?.[0]
-      }
+      baseLayer={baseLayerUrls?.length > 1 ? baseLayerUrls : baseLayerUrls?.[0]}
       center={[initLat, initLon]}
       mapLibreProps={{ reuseMaps: true }}
       maxZoom={maxZoom}
@@ -52,6 +50,7 @@ const SimpleMap = ({ config, itinerary }: Props): JSX.Element => {
     >
       <EndpointsOverlay
         fromLocation={legs[0]?.from}
+        // FIXME: Remove noop when setLocation becomes optional in OTP-UI.
         setLocation={noop}
         toLocation={legs[legs.length - 1]?.to}
       />
@@ -67,9 +66,7 @@ const SimpleMap = ({ config, itinerary }: Props): JSX.Element => {
         />
       )}
 
-      <NavigationControl
-        position={navigationControlPosition || 'bottom-right'}
-      />
+      <NavigationControl position={navigationControlPosition} />
     </BaseMap>
   )
 }
