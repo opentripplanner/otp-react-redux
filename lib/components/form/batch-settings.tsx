@@ -28,7 +28,7 @@ import {
   PlanTripButton
 } from './batch-styled'
 import AdvancedSettingsButton from './advanced-settings-button'
-import DateTimeButton from './date-time-button'
+import DateTimeModal from './date-time-modal'
 
 // TYPESCRIPT TODO: better types
 type Props = {
@@ -90,8 +90,7 @@ function BatchSettings({
 
   return (
     <MainSettingsRow>
-      <DateTimeButton open={dateTimeOpen} setOpen={setDateTimeOpen} />
-      <AdvancedSettingsButton onClick={openAdvancedSettings} />
+      <DateTimeModal />
       <ModeSelectorContainer squashed={!spacedOutModeSelector}>
         <MetroModeSelector
           accentColor={baseColor}
@@ -107,23 +106,26 @@ function BatchSettings({
             onSettingsUpdate(setQueryParam)
           )}
         />
-        <PlanTripButton
-          id="plan-trip"
-          onClick={_planTrip}
-          title={intl.formatMessage({
-            id: 'components.BatchSettings.planTripTooltip'
-          })}
-        >
-          <StyledIconWrapper style={{ fontSize: '1.6em' }}>
-            {hasValidLocation(currentQuery, 'from') &&
-            hasValidLocation(currentQuery, 'to') &&
-            !!activeSearch ? (
-              <SyncAlt />
-            ) : (
-              <Search />
-            )}
-          </StyledIconWrapper>
-        </PlanTripButton>
+        <div>
+          <AdvancedSettingsButton onClick={openAdvancedSettings} />
+          <PlanTripButton
+            id="plan-trip"
+            onClick={_planTrip}
+            title={intl.formatMessage({
+              id: 'components.BatchSettings.planTripTooltip'
+            })}
+          >
+            <StyledIconWrapper style={{ fontSize: '1.6em' }}>
+              {hasValidLocation(currentQuery, 'from') &&
+              hasValidLocation(currentQuery, 'to') &&
+              !!activeSearch ? (
+                <SyncAlt />
+              ) : (
+                <Search />
+              )}
+            </StyledIconWrapper>
+          </PlanTripButton>
+        </div>
       </ModeSelectorContainer>
     </MainSettingsRow>
   )

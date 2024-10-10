@@ -1,6 +1,7 @@
-import { ArrowRight } from '@styled-icons/fa-solid'
-import { FormattedMessage } from 'react-intl'
+import { Gear } from '@styled-icons/fa-solid'
+import { useIntl } from 'react-intl'
 
+import { Button } from './batch-styled'
 import { grey } from '../util/colors'
 import React from 'react'
 import styled from 'styled-components'
@@ -9,21 +10,29 @@ interface Props {
   onClick: () => void
 }
 
-const StyledTransparentButton = styled.button`
-  align-items: center;
-  background: transparent;
-  border: none;
-  color: ${grey[800]};
-  display: flex;
-  gap: 7px;
-  margin-bottom: 5px;
+const StyledAdvancedSettingsButton = styled(Button)`
+  border: 2px solid ${grey[700]};
+  color: ${grey[700]};
+  background: white;
 `
 
-const AdvancedSettingsButton = ({ onClick }: Props): JSX.Element => (
-  <StyledTransparentButton id="open-advanced-settings-button" onClick={onClick}>
-    <FormattedMessage id="components.BatchSearchScreen.moreOptions" />
-    <ArrowRight size={18} />
-  </StyledTransparentButton>
-)
+const AdvancedSettingsButton = ({ onClick }: Props): JSX.Element => {
+  const intl = useIntl()
+
+  const label = intl.formatMessage({
+    id: 'components.BatchSearchScreen.moreOptions'
+  })
+
+  return (
+    <StyledAdvancedSettingsButton
+      aria-label={label}
+      id="open-advanced-settings-button"
+      onClick={onClick}
+      title={label}
+    >
+      <Gear size={30} />
+    </StyledAdvancedSettingsButton>
+  )
+}
 
 export default AdvancedSettingsButton

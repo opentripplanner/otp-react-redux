@@ -92,7 +92,7 @@ export const MainSettingsRow = styled.div`
   align-items: top;
   display: flex;
   flex-flow: wrap;
-  gap: 5px 0;
+  gap: 10px 0;
   justify-content: space-between;
   margin-bottom: 5px;
 

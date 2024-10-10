@@ -95,16 +95,13 @@ const DtSelectorContainer = styled.div`
 
   .date-time-modal {
     padding: 0;
+    width: 100%;
 
     .main-panel {
       margin: 0;
 
       button {
         padding: 6px 0;
-      }
-
-      .date-time-selector {
-        margin: 15px 0;
       }
     }
   }
