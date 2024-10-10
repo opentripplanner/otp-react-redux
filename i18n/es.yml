@@ -30,7 +30,8 @@ actions:
       No se puede guardar el plan: este plan no se pudo guardar debido a la
       falta de capacidad en uno o más vehículos. Por favor, vuelva a planificar
       su viaje.
-    maxTripRequestsExceeded: Número de solicitudes de viaje superadas sin resultados válidos
+    maxTripRequestsExceeded: Número de solicitudes de viaje superadas sin resultados
+      válidos
     saveItinerariesError: "No se pudieron guardar los itinerarios: {err}"
     setDateError: "Error al establecer la fecha:"
     setGroupSizeError: "No se pudo establecer el tamaño del grupo:"
@@ -52,10 +53,13 @@ actions:
     authTokenError: Error al obtener un token de autorización.
     confirmDeleteMonitoredTrip: ¿Desea eliminar este viaje?
     confirmDeletePlace: ¿Quiere eliminar este lugar?
-    emailVerificationResent: El mensaje de verificación de correo electrónico ha sido reenviado.
+    emailVerificationResent: El mensaje de verificación de correo electrónico ha sido
+      reenviado.
     genericError: "Se ha encontrado un error: {err}"
-    itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje seleccionado es posible.
-    mustAcceptTermsToSavePlace: Acepte los Términos de uso (en Mi Cuenta) para guardar las ubicaciones.
+    itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje seleccionado
+      es posible.
+    mustAcceptTermsToSavePlace: Acepte los Términos de uso (en Mi Cuenta) para guardar
+      las ubicaciones.
     mustBeLoggedInToSavePlace: Por favor, inicia la sesión para guardar las ubicaciones.
     placeRemembered: La configuración de este lugar se ha guardado.
     preferencesSaved: Sus preferencias se han guardado.
@@ -112,13 +116,12 @@ common:
     submitting: Enviando…
     "yes": Sí
   itineraryDescriptions:
-    calories: "{calories, number} kcal"
     fareUnknown: No hay información de las tarifas
     noItineraryToDisplay: No hay itinerario que mostrar.
     relativeCo2: >
       {co2} de CO₂ en {isMore, select, true {más} other {menos} } que conducir
       solo
-    transfers: "{transfers, plural, =0 {} one {# transferencia} other {# transferencias}}"
+    timeStartEnd: '{start} – {end}'
   linkOpensNewWindow: (Abre una nueva ventana)
   modes:
     bicycle_rent: Compartir bicicleta
@@ -157,7 +160,6 @@ common:
     enterStartLocation: Introduzca la ubicación de inicio o {mapAction} en el mapa…
     tap: toque
   time:
-    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
     duration:
       aFewSeconds: unos segundos
       nDays: "{days, plural, =1 {un día} other {# días}}"
@@ -201,6 +203,13 @@ components:
   BatchSearchScreen:
     header: Planifique su viaje
     modeSelectorLabel: Seleccione un modo de desplazamiento
+    moreOptions: Más opciones
+    saveAndReturn: Guardar y volver
+    saved: Guardado
+    tripOptions: Opciones de ruta
+    submodeSelectorLabel: Seleccionar modos y submodos de desplazamiento
+    advancedHeader: Ajustes avanzados
+    modeOptions: Más opciones
   BatchSettings:
     destination: destino
     invalidModeSelection: >-
@@ -208,7 +217,8 @@ components:
       a incluir el transporte publico en la selección de modos.
     origin: origen
     planTripTooltip: Planificar viaje
-    validationMessage: "Por favor, defina los siguientes campos para planificar un viaje: {issues}"
+    validationMessage: "Por favor, defina los siguientes campos para planificar un
+      viaje: {issues}"
   BeforeSignInScreen:
     mainTitle: Iniciando sesión
     message: >
@@ -267,7 +277,6 @@ components:
     ariaLabel: Navegar por los formularios
   ItinerarySummary:
     itineraryDetails: Detalles del itinerario
-    minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LocationSearch:
     enterLocation: Introduzca la ubicación
     setDestination: Establecer el destino
@@ -281,6 +290,7 @@ components:
     shared-vehicles: Vehículos compartidos
     stops: Paradas de tránsito
     streets: Calles
+    stations: Estaciones de transporte
   MapillaryFrame:
     title: Imágenes de la calle
   MetroUI:
@@ -292,6 +302,7 @@ components:
     originallyScheduledTime: (originalmente {originalTime})
     singleModeItineraryDescription: Viaja {time} {mode}
     timeWalking: "{time} caminando"
+    itinerarySummary: Desde {stopName} | {cost}
   MobileOptions:
     header: Configurar las opciones de búsqueda
   MobilityProfile:
@@ -370,6 +381,7 @@ components:
     nearbyListIntro: Lista de {count} entidades cercanas.
     nothingNearby: No ubicaciónes cercanas.
     spacesAvailable: "{spacesAvailable} espacios libres disponibles"
+    headsign: '{destination}'
   NewAccountWizard:
     createNewAccount: Crear una nueva cuenta
     finish: ¡Configuración de la cuenta completa!
@@ -549,6 +561,7 @@ components:
       Otro viaje guardado ya utiliza este nombre. Por favor, elija un nombre
       diferente.
     tripNameRequired: Por favor, introduzca el nombre del viaje.
+    selectAtLeastOneDay: Por favor, seleccione al menos un día para realizar el seguimiento.
   SequentialPaneDisplay:
     stepNumber: Paso {step} de {total}
   SessionTimeout:
@@ -558,7 +571,8 @@ components:
     header: ¡La sesión está a punto de terminar!
     keepSession: Continuar sesión
   SimpleRealtimeAnnotation:
-    usingRealtimeInfo: Este viaje utiliza información de tráfico y retrasos en tiempo real
+    usingRealtimeInfo: Este viaje utiliza información de tráfico y retrasos en tiempo
+      real
   StackedPaneDisplay:
     savePreferences: Guardar preferencias
   StopScheduleTable:
@@ -620,15 +634,18 @@ components:
     travelingAt: Viajando a {milesPerHour}
     vehicleName: Vehículo {vehicleNumber}
   TripBasicsPane:
-    checkingItineraryExistence: Comprobación de la existencia de itinerarios para cada día de la semana…
+    checkingItineraryExistence: Comprobación de la existencia de itinerarios para
+      cada día de la semana…
     tripDaysPrompt: ¿Qué días hace este viaje?
-    tripIsAvailableOnDaysIndicated: Su viaje está disponible en los días de la semana indicados anteriormente.
+    tripIsAvailableOnDaysIndicated: Su viaje está disponible en los días de la semana
+      indicados anteriormente.
     tripNamePrompt: "Por favor, indique un nombre para este viaje:"
     tripNotAvailableOnDay: El viaje no está disponible el {repeatedDay}
     unsavedChangesExistingTrip: >-
       Todavía no ha guardado su viaje. Si abandona la página, los cambios se
       perderán.
-    unsavedChangesNewTrip: Todavía no ha guardado su nuevo viaje. Si abandona la página, se perderá.
+    unsavedChangesNewTrip: Todavía no ha guardado su nuevo viaje. Si abandona la página,
+      se perderá.
   TripNotificationsPane:
     advancedSettings: Configuración avanzada
     altRouteRecommended: Se recomienda una ruta alternativa o un punto de transferencia
@@ -694,11 +711,15 @@ components:
         El viaje debe comenzar a las {tripStart, time, short}. (El seguimiento
         en tiempo real comenzará a las {monitoringStart, time, short}.)
       tripStartIsDelayed: ¡La hora de inicio del viaje se retrasa {duration}!
-      tripStartIsEarly: ¡La hora de inicio del viaje se produce {duration} antes de lo previsto!
+      tripStartIsEarly: ¡La hora de inicio del viaje se produce {duration} antes de
+        lo previsto!
       tripStartsSoonNoUpdates: >-
         El viaje comienza pronto (no hay actualizaciones disponibles en tiempo
         real).
       tripStartsSoonOnTime: El viaje comienza pronto y es más o menos puntual.
+    past:
+      heading: Viaje realizado
+      description: Un viaje que ocurrió el pasado.
   TripSummary:
     arriveAt: "Llegue a las "
     leaveAt: "Salida a las "
