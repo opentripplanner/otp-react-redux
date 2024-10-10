@@ -646,6 +646,8 @@ components:
       perderán.
     unsavedChangesNewTrip: Todavía no ha guardado su nuevo viaje. Si abandona la página,
       se perderá.
+    onlyOnDate: Solo el {date, date, ::eeeee yyyyMMdd}
+    recurringEachWeek: En ciertos días de cada semana
   TripNotificationsPane:
     advancedSettings: Configuración avanzada
     altRouteRecommended: Se recomienda una ruta alternativa o un punto de transferencia
