@@ -1,8 +1,13 @@
 import { Label as BsLabel } from 'react-bootstrap'
 import { FormattedMessage } from 'react-intl'
 import React from 'react'
+import styled from 'styled-components'
 
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
+
+const StyledStatusLabel = styled(BsLabel)`
+  padding: 0.2em 0.5em 0.2em !important;
+`
 
 interface Props {
   status?: string
@@ -12,21 +17,21 @@ function getStatusLabel(status?: string) {
   switch (status?.toLowerCase()) {
     case 'pending':
       return (
-        <BsLabel bsStyle="warning">
+        <StyledStatusLabel bsStyle="warning">
           <FormattedMessage id="components.StatusBadge.pending" />
-        </BsLabel>
+        </StyledStatusLabel>
       )
     case 'verified':
       return (
-        <BsLabel style={{ background: 'green' }}>
+        <StyledStatusLabel style={{ background: 'green' }}>
           <FormattedMessage id="components.StatusBadge.verified" />
-        </BsLabel>
+        </StyledStatusLabel>
       )
     case 'invalid':
       return (
-        <BsLabel>
+        <StyledStatusLabel>
           <FormattedMessage id="components.StatusBadge.invalid" />
-        </BsLabel>
+        </StyledStatusLabel>
       )
     default:
       return null

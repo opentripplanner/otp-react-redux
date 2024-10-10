@@ -48,7 +48,7 @@ const SavedTripEditor = (props: Props): JSX.Element => {
       }
     ]
 
-    // TODO: if mobility profile param is set, then add assign trusted companion pane
+    // if mobility profile is present, then add travel companions pane
     if (props.hasMobilityProfile) {
       paneSequence.push({
         pane: panes.travelCompanion,

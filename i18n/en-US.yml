@@ -215,6 +215,9 @@ components:
     advancedOptions: Advanced options
     groupSize: "Group size:"
     intermediateDestination: Enter intermediate destination
+  CompanionsPane:
+    currentCompanionsLabel: Current travel companions:\
+    noCompanions: You do not have any existing travel companions.
   DateTimeOptions:
     arriveBy: Arrive by
     departAt: Depart at

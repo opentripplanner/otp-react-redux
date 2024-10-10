@@ -1,7 +1,9 @@
 import { ControlLabel, FormGroup } from 'react-bootstrap'
 import { FormikProps } from 'formik'
 import { Trash } from '@styled-icons/fa-solid/Trash'
+import { User as UserIcon } from '@styled-icons/fa-solid/User'
 import React, { useCallback, useState } from 'react'
+import styled from 'styled-components'
 
 import { CompanionInfo, User } from '../types'
 import { StyledIconWrapper } from '../../util/styledIcon'
@@ -10,6 +12,27 @@ import AddEmailForm from '../common/add-email-form'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import StatusBadge from '../../util/status-badge'
 import SubmitButton from '../../util/submit-button'
+
+const Companion = styled.li`
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+`
+
+const LeftGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 40px;
+`
+
+const RightGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`
 
 interface CompanionRowProps {
   companionInfo: CompanionInfo
@@ -32,20 +55,28 @@ const CompanionRow = ({
   }, [email, onDelete])
 
   return (
-    <li>
-      {email} <StatusBadge status={status} />
-      <SubmitButton
-        as={UnstyledButton}
-        disabled={disabled}
-        onClick={handleDelete}
-        title={`Delete ${email}`}
-      >
+    <Companion>
+      <LeftGroup>
         <StyledIconWrapper>
-          <Trash />
+          <UserIcon />
         </StyledIconWrapper>
-        <InvisibleA11yLabel>Delete {email}</InvisibleA11yLabel>
-      </SubmitButton>
-    </li>
+        {email}
+      </LeftGroup>
+      <RightGroup>
+        <StatusBadge status={status} />
+        <SubmitButton
+          as={UnstyledButton}
+          disabled={disabled}
+          onClick={handleDelete}
+          title={`Delete ${email}`}
+        >
+          <StyledIconWrapper>
+            <Trash />
+          </StyledIconWrapper>
+          <InvisibleA11yLabel>Delete {email}</InvisibleA11yLabel>
+        </SubmitButton>
+      </RightGroup>
+    </Companion>
   )
 }
 
@@ -103,25 +134,26 @@ const CompanionsPane = ({
     <div>
       <p>
         Invite an exiting GMAP user to be a travel companion by entering their
-        email. When they accept, their status will change to "Verified", and you
+        email. When they accept, their status will change to "verified", and you
         can share your trip status and plan trips based on one another's
         mobility profile.
       </p>
       <FormGroup>
-        <ControlLabel>Current travel companions</ControlLabel>
-        <ul>
-          {companions.length === 0 ? (
-            <li>No companions</li>
-          ) : (
-            companions.map((comp) => (
+        <ControlLabel>Current travel companions:</ControlLabel>
+
+        {companions.length === 0 ? (
+          <p>You do not have any existing travel companions for this trip.</p>
+        ) : (
+          <ul>
+            {companions.map((companion) => (
               <CompanionRow
-                companionInfo={comp}
-                key={comp.email}
+                companionInfo={companion}
+                key={companion.email}
                 onDelete={handleDeleteEmail}
               />
-            ))
-          )}
-        </ul>
+            ))}
+          </ul>
+        )}
       </FormGroup>
       <AddEmailForm
         id={formId}
