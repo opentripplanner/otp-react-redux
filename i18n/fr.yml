@@ -661,6 +661,8 @@ components:
     oneHour: 1 heure
     realtimeAlertFlagged: Une alerte en temps réel affecte mon trajet
     timeBefore: "{time} avant"
+  TripPreviewLayout:
+    previewTrip: Aperçu du trajet
   TripStatus:
     alerts: "{alerts, plural, =0 {# alerte !} one {# alerte !} other {# alertes !}}"
     deleteTrip: Supprimer le trajet

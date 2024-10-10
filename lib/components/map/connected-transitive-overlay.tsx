@@ -2,19 +2,14 @@ import { connect } from 'react-redux'
 import { injectIntl, IntlShape } from 'react-intl'
 import TransitiveCanvasOverlay from '@opentripplanner/transitive-overlay'
 
+import { AppReduxState } from '../../util/state-types'
 import { getActiveLeg, getTransitiveData } from '../../util/state'
+import { TransitiveConfig } from '../../util/config-types'
 
-type Props = {
-  intl?: IntlShape
-  labeledModes?: string[]
-  styles?: {
-    labels: Record<string, unknown>
-    segmentLabels: Record<string, unknown>
-  }
-}
+type Props = TransitiveConfig & IntlShape
 
 // connect to the redux store
-const mapStateToProps = (state: Record<string, any>, ownProps: Props) => {
+const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
   const { labeledModes, styles } = state.otp.config.map.transitive || {}
   const { viewedRoute } = state.otp.ui
 

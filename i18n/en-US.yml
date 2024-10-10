@@ -628,6 +628,8 @@ components:
     oneHour: 1 hour
     realtimeAlertFlagged: There is a realtime alert flagged on my journey
     timeBefore: "{time} before"
+  TripPreviewLayout:
+    previewTrip: Preview Trip
   TripStatus:
     alerts: "{alerts, plural, one {# alert!} other {# alerts!}}"
     deleteTrip: Delete Trip

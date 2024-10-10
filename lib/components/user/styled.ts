@@ -52,7 +52,11 @@ export const TripHeader = styled.h3`
 export const TripPanelTitle = styled.div`
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
+
+  & > div:first-child {
+    flex-grow: 1;
+  }
 `
 
 export const TripPanelHeading = styled(Panel.Heading)`
