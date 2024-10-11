@@ -22,6 +22,10 @@ const Companion = styled.li`
   margin-top: 20px;
 `
 
+const CompanionList = styled.ul`
+  margin-bottom: 30px;
+`
+
 const LeftGroup = styled.div`
   display: flex;
   align-items: center;
@@ -144,7 +148,7 @@ const CompanionsPane = ({
         {companions.length === 0 ? (
           <p>You do not have any existing travel companions for this trip.</p>
         ) : (
-          <ul>
+          <CompanionList>
             {companions.map((companion) => (
               <CompanionRow
                 companionInfo={companion}
@@ -152,7 +156,7 @@ const CompanionsPane = ({
                 onDelete={handleDeleteEmail}
               />
             ))}
-          </ul>
+          </CompanionList>
         )}
       </FormGroup>
       <AddEmailForm
