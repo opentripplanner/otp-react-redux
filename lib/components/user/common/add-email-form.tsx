@@ -27,8 +27,12 @@ const InlineInput = styled(FormControl)`
   width: 100%;
 `
 
-const StyledControlStrip = styled(ControlStrip)`
+const Controls = styled.span`
   display: flex;
+
+  input {
+    margin-right: 10px;
+  }
 `
 
 // The validation schema for email addresses
@@ -60,8 +64,7 @@ const AddEmailForm = ({
         return (
           <FormGroup validationState={showError ? 'error' : null}>
             <ControlLabel>{label}</ControlLabel>
-            <StyledControlStrip>
-              <Form id={id} noValidate />
+            <Controls>
               <Field
                 aria-invalid={showError}
                 aria-required
@@ -73,7 +76,7 @@ const AddEmailForm = ({
               />
 
               <SubmitButton form={id}>{submitText}</SubmitButton>
-            </StyledControlStrip>
+            </Controls>
             <HelpBlock role="alert">{showError && 'Invalid email'}</HelpBlock>
           </FormGroup>
         )
