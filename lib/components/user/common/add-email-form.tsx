@@ -24,7 +24,11 @@ interface Props {
 // Styles
 const InlineInput = styled(FormControl)`
   ${phoneFieldStyle}
-  width: 20em;
+  width: 100%;
+`
+
+const StyledControlStrip = styled(ControlStrip)`
+  display: flex;
 `
 
 // The validation schema for email addresses
@@ -56,8 +60,7 @@ const AddEmailForm = ({
         return (
           <FormGroup validationState={showError ? 'error' : null}>
             <ControlLabel>{label}</ControlLabel>
-            <ControlStrip>
-              {/* TODO: Make ControlStrip a flex element, add v-gap when multi-line. */}
+            <StyledControlStrip>
               <Form id={id} noValidate />
               <Field
                 aria-invalid={showError}
@@ -70,7 +73,7 @@ const AddEmailForm = ({
               />
 
               <SubmitButton form={id}>{submitText}</SubmitButton>
-            </ControlStrip>
+            </StyledControlStrip>
             <HelpBlock role="alert">{showError && 'Invalid email'}</HelpBlock>
           </FormGroup>
         )
