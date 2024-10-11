@@ -2413,10 +2413,10 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/building-blocks/-/building-blocks-1.2.3.tgz#404e8f9038867d66d55f51adf8855b1326c51ed5"
   integrity sha512-I0AxiZrTZu+e7+av4u0tHW2ijqpxH0AkLHrhf75BHf1Ep2FOGxaul/v+8UT18mNYiM5eHNstOX3XiXaDjtCUaw==
 
-"@opentripplanner/core-utils@12.0.0", "@opentripplanner/core-utils@^12.0.0":
-  version "12.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-12.0.0.tgz#cc40af92620b207f4dce817d08f99def0cdaea7a"
-  integrity sha512-udLF8XU+k7gxZ+yyyw7ASz6/4D540zYIv8a9GbUL61TF8HmgGhcMk3XOgBnm5jdOukuaNNpOFE4J3oJc5QsSBQ==
+"@opentripplanner/core-utils@12.0.1":
+  version "12.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-12.0.1.tgz#2bafb78133393213b4943c76fec5d46436c0fb6d"
+  integrity sha512-QUTxEcpiOnbqaoiu6RQngTLlQHjSHO4PCMJqR9IRiaei08FnlTx2jgpvIaRla6u7tRNr12YCzptc37+a10ryww==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.0"
@@ -2435,6 +2435,24 @@
   version "11.4.5"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-11.4.5.tgz#f568f5f60f153f0bd74fe47ed3134851067b0064"
   integrity sha512-uYaVqZXZoRRVks05KdGMTIeGEC7ItKJvexZqKsEbZMjnnMphHRndv4aSDXM19iL7ynoau7JXjYfYEny1HDp7ig==
+  dependencies:
+    "@conveyal/lonlat" "^1.4.1"
+    "@mapbox/polyline" "^1.1.0"
+    "@opentripplanner/geocoder" "^3.0.2"
+    "@styled-icons/foundation" "^10.34.0"
+    "@turf/along" "^6.0.1"
+    chroma-js "^2.4.2"
+    date-fns "^2.28.0"
+    date-fns-tz "^1.2.2"
+    graphql "^16.6.0"
+    lodash.clonedeep "^4.5.0"
+    lodash.isequal "^4.5.0"
+    qs "^6.9.1"
+
+"@opentripplanner/core-utils@^12.0.0":
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-12.0.0.tgz#cc40af92620b207f4dce817d08f99def0cdaea7a"
+  integrity sha512-udLF8XU+k7gxZ+yyyw7ASz6/4D540zYIv8a9GbUL61TF8HmgGhcMk3XOgBnm5jdOukuaNNpOFE4J3oJc5QsSBQ==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.0"
