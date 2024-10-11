@@ -18,10 +18,6 @@ interface Props {
   itinerary?: Itinerary
 }
 
-function noop() {
-  return null
-}
-
 /** Renders an optional itinerary with a given config. */
 const SimpleMap = ({ config, itinerary }: Props): JSX.Element => {
   const intl = useIntl()
@@ -52,8 +48,6 @@ const SimpleMap = ({ config, itinerary }: Props): JSX.Element => {
     >
       <EndpointsOverlay
         fromLocation={legs[0]?.from}
-        // FIXME: Remove noop when setLocation becomes optional in OTP-UI.
-        setLocation={noop}
         toLocation={legs[legs.length - 1]?.to}
       />
       <GeolocateControl position="top-left" />
