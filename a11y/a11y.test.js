@@ -60,6 +60,7 @@ beforeAll(async () => {
   browser = await puppeteer.launch({
     args: ['--disable-web-security']
   })
+  console.log('Headless browser started')
 })
 
 afterAll(async () => {
