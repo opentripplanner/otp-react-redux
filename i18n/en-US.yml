@@ -216,7 +216,12 @@ components:
     groupSize: "Group size:"
     intermediateDestination: Enter intermediate destination
   CompanionsPane:
-    currentCompanionsLabel: Current travel companions:\
+    companionExplanation: >
+      Invite an exiting GMAP user to be a travel companion by entering their
+      email. When they accept, their status will change to "verified", and you
+      can share your trip status and plan trips based on one another's mobility
+      profile.
+    currentCompanionsLabel: "Current travel companions:"
     noCompanions: You do not have any existing travel companions.
   DateTimeOptions:
     arriveBy: Arrive by

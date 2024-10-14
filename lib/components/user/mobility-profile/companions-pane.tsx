@@ -1,4 +1,5 @@
 import { ControlLabel, FormGroup } from 'react-bootstrap'
+import { FormattedMessage } from 'react-intl'
 import { FormikProps } from 'formik'
 import { Trash } from '@styled-icons/fa-solid/Trash'
 import { User as UserIcon } from '@styled-icons/fa-solid/User'
@@ -143,10 +144,14 @@ const CompanionsPane = ({
         mobility profile.
       </p>
       <FormGroup>
-        <ControlLabel>Current travel companions:</ControlLabel>
+        <ControlLabel>
+          <FormattedMessage id="components.CompanionsPane.currentCompanionsLabel" />
+        </ControlLabel>
 
         {companions.length === 0 ? (
-          <p>You do not have any existing travel companions for this trip.</p>
+          <p>
+            <FormattedMessage id="components.CompanionsPane.noCompanions" />
+          </p>
         ) : (
           <CompanionList>
             {companions.map((companion) => (
@@ -161,7 +166,7 @@ const CompanionsPane = ({
       </FormGroup>
       <AddEmailForm
         id={formId}
-        label="Add a travel companion"
+        label="Add a new travel companion"
         onSubmit={handleAddNewEmail}
         placeholder="friend.email@example.com"
         submitText="Send invitation"
