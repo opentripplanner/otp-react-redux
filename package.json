@@ -45,7 +45,7 @@
     "@opentripplanner/base-map": "4.0.0",
     "@opentripplanner/building-blocks": "2.0.0",
     "@opentripplanner/core-utils": "12.0.1",
-    "@opentripplanner/endpoints-overlay": "3.0.0",
+    "@opentripplanner/endpoints-overlay": "3.0.1",
     "@opentripplanner/from-to-location-picker": "3.0.0",
     "@opentripplanner/geocoder": "^3.0.2",
     "@opentripplanner/humanize-distance": "^1.2.0",
