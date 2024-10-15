@@ -1,5 +1,5 @@
 import { ControlLabel, FormGroup } from 'react-bootstrap'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
 import { FormikProps } from 'formik'
 import { Trash } from '@styled-icons/fa-solid/Trash'
 import { User as UserIcon } from '@styled-icons/fa-solid/User'
@@ -41,23 +41,32 @@ const RightGroup = styled.div`
 
 interface CompanionRowProps {
   companionInfo: CompanionInfo
+  intl: IntlShape
   onDelete: (email: string) => void
 }
 
 const CompanionRow = ({
   companionInfo,
+  intl,
   onDelete
 }: CompanionRowProps): JSX.Element => {
   const { email, status } = companionInfo
   const [disabled, setDisabled] = useState(false)
 
   const handleDelete = useCallback(async () => {
-    if (window.confirm(`Do you want to delete companion ${email}?`)) {
+    if (
+      window.confirm(
+        intl.formatMessage(
+          { id: 'components.CompanionsPane.confirmDeleteCompanion' },
+          { email: email }
+        )
+      )
+    ) {
       setDisabled(true)
       await onDelete(email)
       setDisabled(false)
     }
-  }, [email, onDelete])
+  }, [email, intl, onDelete])
 
   return (
     <Companion>
@@ -73,18 +82,25 @@ const CompanionRow = ({
           as={UnstyledButton}
           disabled={disabled}
           onClick={handleDelete}
-          title={`Delete ${email}`}
+          title={intl.formatMessage(
+            { id: 'components.CompanionsPane.deleteCompanion' },
+            { email: email }
+          )}
         >
           <StyledIconWrapper>
             <Trash />
           </StyledIconWrapper>
-          <InvisibleA11yLabel>Delete {email}</InvisibleA11yLabel>
+          <InvisibleA11yLabel>
+            <FormattedMessage
+              id="components.CompanionsPane.deleteCompanion"
+              values={{ email }}
+            />
+          </InvisibleA11yLabel>
         </SubmitButton>
       </RightGroup>
     </Companion>
   )
 }
-
 /**
  * Companions pane, part of mobility profile.
  */
@@ -95,6 +111,7 @@ const CompanionsPane = ({
 }: FormikProps<User>): JSX.Element => {
   const { guardians: companions = [] } = userData
   const formId = 'add-companion-form'
+  const intl = useIntl()
 
   const updateCompanions = useCallback(
     async (newCompanions) => {
@@ -122,10 +139,15 @@ const CompanionsPane = ({
         ])
         resetForm()
       } else {
-        alert(`You already have a companion with email ${newEmail}.`)
+        alert(
+          intl.formatMessage(
+            { id: 'components.CompanionsPane.companionAlreadyAdded' },
+            { email: newEmail }
+          )
+        )
       }
     },
-    [companions, updateCompanions]
+    [companions, intl, updateCompanions]
   )
 
   const handleDeleteEmail = useCallback(
@@ -138,10 +160,7 @@ const CompanionsPane = ({
   return (
     <div>
       <p>
-        Invite an exiting GMAP user to be a travel companion by entering their
-        email. When they accept, their status will change to "verified", and you
-        can share your trip status and plan trips based on one another's
-        mobility profile.
+        <FormattedMessage id="components.CompanionsPane.companionExplanation" />
       </p>
       <FormGroup>
         <ControlLabel>
@@ -157,6 +176,7 @@ const CompanionsPane = ({
             {companions.map((companion) => (
               <CompanionRow
                 companionInfo={companion}
+                intl={intl}
                 key={companion.email}
                 onDelete={handleDeleteEmail}
               />
@@ -166,10 +186,14 @@ const CompanionsPane = ({
       </FormGroup>
       <AddEmailForm
         id={formId}
-        label="Add a new travel companion"
+        label={
+          <FormattedMessage id="components.CompanionsPane.addNewCompanion" />
+        }
         onSubmit={handleAddNewEmail}
         placeholder="friend.email@example.com"
-        submitText="Send invitation"
+        submitText={
+          <FormattedMessage id="components.CompanionsPane.submitNewCompanion" />
+        }
       />
     </div>
   )
