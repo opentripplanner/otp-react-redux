@@ -57,10 +57,15 @@ beforeAll(async () => {
     )
   })
   // Web security is disabled to allow requests to the mock OTP server
-  browser = await puppeteer.launch({
-    args: ['--disable-web-security', '--user-data-dir=/tmp/chromium-a11y']
-  })
-  console.log('Headless browser created.')
+  try {
+    browser = await puppeteer.launch({
+      args: ['--disable-web-security', '--user-data-dir=/tmp/chromium-a11y']
+    })
+    console.log('Headless browser created.')
+  } catch (e) {
+    console.log(e)
+    console.log('Error creating browser')
+  }
 })
 
 afterAll(async () => {
