@@ -103,8 +103,6 @@ function addTrueIndex(array: ItinWithGeometry[]): ItinWithGeometry[] {
   return array
 }
 
-const getLegRoute = (leg: Leg) => leg.routeId
-
 type ItinUniquePoint = {
   itin: ItinWithGeometry
   uniquePoint: Position
