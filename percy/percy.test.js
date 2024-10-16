@@ -71,7 +71,7 @@ beforeAll(async () => {
 
     // Web security is disabled to allow requests to the mock OTP server
     browser = await puppeteer.launch({
-      args: ['--disable-web-security']
+      args: ['--disable-web-security', '--no-sandbox']
       //, headless: false
     })
   } catch (error) {
