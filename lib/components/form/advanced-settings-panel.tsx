@@ -111,8 +111,10 @@ const DtSelectorContainer = styled.div`
 `
 
 const AdvancedSettingsPanel = ({
+  autoPlan,
   closeAdvancedSettings,
   enabledModeButtons,
+  handlePlanTrip,
   innerRef,
   modeButtonOptions,
   modeSettingDefinitions,
@@ -121,8 +123,10 @@ const AdvancedSettingsPanel = ({
   setCloseAdvancedSettingsWithDelay,
   setQueryParam
 }: {
+  autoPlan: boolean
   closeAdvancedSettings: () => void
   enabledModeButtons: string[]
+  handlePlanTrip: () => void
   innerRef: RefObject<HTMLDivElement>
   modeButtonOptions: ModeButtonDefinition[]
   modeSettingDefinitions: ModeSetting[]
@@ -177,11 +181,16 @@ const AdvancedSettingsPanel = ({
     )
   )
 
+  const closePanel = useCallback(() => {
+    autoPlan && handlePlanTrip()
+    closeAdvancedSettings()
+  }, [autoPlan, closeAdvancedSettings, handlePlanTrip])
+
   const onSaveAndReturnClick = useCallback(async () => {
     await setCloseAdvancedSettingsWithDelay()
     setClosingBySave(true)
-    closeAdvancedSettings()
-  }, [closeAdvancedSettings, setCloseAdvancedSettingsWithDelay])
+    closePanel()
+  }, [closePanel, setCloseAdvancedSettingsWithDelay])
 
   return (
     <PanelOverlay className="advanced-settings" ref={innerRef}>
@@ -190,7 +199,7 @@ const AdvancedSettingsPanel = ({
           aria-label={closeButtonText}
           id="close-advanced-settings-button"
           onClick={() => {
-            closeAdvancedSettings()
+            closePanel()
           }}
           title={closeButtonText}
         >
@@ -256,9 +265,12 @@ const mapStateToProps = (state: AppReduxState) => {
     state.otp.modeSettingDefinitions || [],
     modes?.initialState?.modeSettingValues || {}
   )
+
+  const { autoPlan } = state.otp.config
   const saveAndReturnButton =
     state.otp.config?.advancedSettingsPanel?.saveAndReturnButton
   return {
+    autoPlan: autoPlan !== false,
     currentQuery: state.otp.currentQuery,
     // TODO: Duplicated in apiv2.js
     enabledModeButtons:

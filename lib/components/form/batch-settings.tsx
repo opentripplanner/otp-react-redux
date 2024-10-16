@@ -80,10 +80,6 @@ function BatchSettings({
     pipe(addModeButtonIcon(ModeIcon), setModeButtonEnabled(enabledModeButtons))
   )
 
-  const _planTrip = useCallback(() => {
-    alertUserTripPlan(intl, currentQuery, onPlanTripClick, routingQuery)
-  }, [currentQuery, intl, onPlanTripClick, routingQuery])
-
   const baseColor = getBaseColor()
 
   const accentColor = getDarkenedBaseColor()
@@ -109,7 +105,7 @@ function BatchSettings({
         />
         <PlanTripButton
           id="plan-trip"
-          onClick={_planTrip}
+          onClick={onPlanTripClick}
           title={intl.formatMessage({
             id: 'components.BatchSettings.planTripTooltip'
           })}
