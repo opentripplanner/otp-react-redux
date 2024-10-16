@@ -5,9 +5,8 @@ import { ModeButtonDefinition } from '@opentripplanner/types'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
 import { useIntl } from 'react-intl'
-import React, { useCallback, useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 
-import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
 import { ComponentContext } from '../../util/contexts'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
@@ -16,7 +15,6 @@ import { StyledIconWrapper } from '../util/styledIcon'
 
 import {
   addModeButtonIcon,
-  alertUserTripPlan,
   modesQueryParamConfig,
   onSettingsUpdate,
   pipe,
@@ -39,7 +37,6 @@ type Props = {
   modeButtonOptions: ModeButtonDefinition[]
   onPlanTripClick: () => void
   openAdvancedSettings: () => void
-  routingQuery: any
   setQueryParam: (evt: any) => void
   spacedOutModeSelector?: boolean
 }
@@ -64,7 +61,6 @@ function BatchSettings({
   modeButtonOptions,
   onPlanTripClick,
   openAdvancedSettings,
-  routingQuery,
   setQueryParam,
   spacedOutModeSelector
 }: Props) {
@@ -147,7 +143,6 @@ const mapStateToProps = (state: any) => {
 }
 
 const mapDispatchToProps = {
-  routingQuery: apiActions.routingQuery,
   setQueryParam: formActions.setQueryParam
 }
 
