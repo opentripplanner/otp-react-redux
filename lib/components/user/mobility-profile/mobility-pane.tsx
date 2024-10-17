@@ -1,24 +1,17 @@
-import { Button } from 'react-bootstrap'
-import { connect } from 'react-redux'
 import { FormattedList, FormattedMessage } from 'react-intl'
 import { FormikProps } from 'formik'
-import React, { useCallback } from 'react'
+import React from 'react'
 
-import * as uiActions from '../../../actions/ui'
 import { EditedUser } from '../types'
 import { NONE_SINGLETON } from '../../../util/user'
-
-interface Props extends FormikProps<EditedUser> {
-  routeTo: (url: string) => void
-}
+import Link from '../../util/link'
 
 /**
  * Renders a button to show the mobility profile settings.
  */
-const MobilityPane = ({ routeTo, values: userData }: Props): JSX.Element => {
-  const handleClick = useCallback(() => {
-    routeTo('/account/mobilityProfile/')
-  }, [routeTo])
+const MobilityPane = ({
+  values: userData
+}: FormikProps<EditedUser>): JSX.Element => {
   const {
     isMobilityLimited,
     mobilityDevices = [],
@@ -54,15 +47,11 @@ const MobilityPane = ({ routeTo, values: userData }: Props): JSX.Element => {
           id={`components.MobilityProfile.LimitationsPane.visionLimitations.${visionLimitation}`}
         />
       </p>
-      <Button bsStyle="primary" onClick={handleClick}>
+      <Link className="btn btn-primary" to="/account/mobilityProfile/">
         <FormattedMessage id="components.MobilityProfile.MobilityPane.button" />
-      </Button>
+      </Link>
     </div>
   )
 }
 
-const mapDispatchToProps = {
-  routeTo: uiActions.routeTo
-}
-
-export default connect(null, mapDispatchToProps)(MobilityPane)
+export default MobilityPane
