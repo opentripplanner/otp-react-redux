@@ -169,6 +169,7 @@ const AdvancedSettingsPanel = ({
   )
 
   const processedModeSettings = processSettings(modeSettingDefinitions)
+
   const processedModeButtons = modeButtonOptions.map(
     pipe(
       addModeButtonIcon(ModeIcon),
@@ -176,6 +177,15 @@ const AdvancedSettingsPanel = ({
       setModeButtonEnabled(enabledModeButtons)
     )
   )
+
+  const handleModeButtonToggle = setModeButton(
+    enabledModeButtons,
+    onSettingsUpdate(setQueryParam)
+  )
+
+  const handleAllSubmodesDisabled = (modeButton: ModeButtonDefinition) => {
+    handleModeButtonToggle(modeButton.key, false)
+  }
 
   const onSaveAndReturnClick = useCallback(async () => {
     await setCloseAdvancedSettingsWithDelay()
@@ -221,11 +231,9 @@ const AdvancedSettingsPanel = ({
           id: 'components.BatchSearchScreen.submodeSelectorLabel'
         })}
         modeButtons={processedModeButtons}
+        onAllSubmodesDisabled={handleAllSubmodesDisabled}
         onSettingsUpdate={onSettingsUpdate(setQueryParam)}
-        onToggleModeButton={setModeButton(
-          enabledModeButtons,
-          onSettingsUpdate(setQueryParam)
-        )}
+        onToggleModeButton={handleModeButtonToggle}
       />
       {saveAndReturnButton && (
         <ReturnToTripPlanButton
