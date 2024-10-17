@@ -15,9 +15,6 @@ api:
   # If your OTP server is at a path other than "/otp" (usually due to a proxy)
   # Then you can set the OPTIONAL property basePath. The default is "/otp"
   basePath: /otp
-  ### Custom GraphQL plan query to override the default one (it still needs to include expected variables).
-  # planQuery: |
-  #   query Plan(<insert custom query here>)
   port: 8080
   v2: true
 
