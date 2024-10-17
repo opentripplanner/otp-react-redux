@@ -323,7 +323,7 @@ export interface GeocoderConfig extends GeocoderConfigOtpUI {
 export interface TransitModeConfig {
   color?: string
   label?: string
-  mode: string
+  mode: string | string[]
   showWheelchairSetting?: boolean
 }
 
