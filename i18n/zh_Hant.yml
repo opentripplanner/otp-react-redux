@@ -99,12 +99,10 @@ common:
     submitting: 正在提交…
     "yes": 是
   itineraryDescriptions:
-    calories: "{calories, number}卡"
     fareUnknown: 無票價資訊
     noItineraryToDisplay: 沒有預定行程可顯示。
     relativeCo2: |
       {co2}比單獨開車排放的CO₂{isMore, select, true {要多} other {少}}
-    transfers: "{transfers}次轉乘"
   linkOpensNewWindow: (開啟新視窗)
   modes:
     bicycle_rent: 自行車共享
@@ -143,7 +141,6 @@ common:
     enterStartLocation: 輸入開始位置或{mapAction} 地圖……
     tap: 輕觸
   time:
-    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
     duration:
       aFewSeconds: 幾秒鐘
       nDays: "{days}天"
@@ -244,7 +241,6 @@ components:
     ariaLabel: 表單導航
   ItinerarySummary:
     itineraryDetails: 路線詳細資訊
-    minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LocationSearch:
     enterLocation: 輸入位置
     setDestination: 設定目的地
