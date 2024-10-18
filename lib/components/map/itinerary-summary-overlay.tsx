@@ -152,14 +152,18 @@ const ItinerarySummaryOverlay = ({
   )
 
   if (!itins || !visible) return <></>
-  const mergedItins: ItinWithGeometry[] = addTrueIndex(
-    doMergeItineraries(itins).mergedItineraries.map(addItinLineString)
+  const indexedItins: ItinWithGeometry[] = addTrueIndex(
+    itins.map(addItinLineString)
   )
+  const mergedItins = doMergeItineraries(indexedItins).mergedItineraries
 
-  const midPoints = mergedItins.reduce<ItinUniquePoint[]>((prev, curItin) => {
-    prev.push(getUniquePoint(curItin, prev))
-    return prev
-  }, [])
+  const midPoints = mergedItins.reduce(
+    (prev: ItinUniquePoint[], curItin: ItinWithGeometry) => {
+      prev.push(getUniquePoint(curItin, prev))
+      return prev
+    },
+    []
+  )
   // The first point is probably not well placed, so let's run the algorithm again
   if (midPoints.length > 1) {
     midPoints[0] = getUniquePoint(mergedItins[0], midPoints)
@@ -186,18 +190,8 @@ const ItinerarySummaryOverlay = ({
                   onClick={() => {
                     setActive({ index: mp.itin.index })
                   }}
-                  // TODO: useCallback here (getting weird errors?)
-                  onMouseEnter={() => {
-                    setSharedTimeout(
-                      setTimeout(() => {
-                        setVisible({ index: mp.itin.index })
-                      }, 150)
-                    )
-                  }}
-                  onMouseLeave={() => {
-                    sharedTimeout && clearTimeout(sharedTimeout)
-                    setVisible({ index: null })
-                  }}
+                  // TODO: restore setting visible itinerary on hover without
+                  // causing endless re-render?
                 >
                   <MetroItineraryRoutes
                     expanded={false}
