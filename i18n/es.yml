@@ -816,6 +816,8 @@ components:
     switcher: Botón de cambio
   WelcomeScreen:
     prompt: ¿A donde quiere ir?
+  TripPreviewLayout:
+    previewTrip: Vista previa del viaje
 config:
   accessModes:
     bicycle: Tránsito + Bicicleta Personal
