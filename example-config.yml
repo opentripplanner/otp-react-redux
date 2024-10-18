@@ -268,7 +268,11 @@ modes:
       iconName: wheelchair
       type: CHECKBOX # Possible options: CHECKBOX, SUBMODE, SLIDER, DROPDOWN
   transitModes:
-    - mode: BUS
+      # Mode can be a string or an array of strings.
+    - mode: ["TROLLEYBUS", "BUS"]
+      # When mode is an array an overrideMode must be provided.
+      # This specifies the displayed mode used for icon and URL param.
+      overrideMode: BUS
       label: Bus
       # A mode color can be added, used throughout the application,
       # most notably in the enhanced stop viewer bubble
