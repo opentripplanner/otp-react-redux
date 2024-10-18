@@ -166,7 +166,6 @@ class DefaultMap extends Component {
     const stopId = firstStopOfStationId || entity.gtfsId
     this.props.findStopTimesForStop({
       date: getCurrentDate(),
-      onlyRequestForOperators: true,
       stopId
     })
     return <TransitOperatorIcons stopId={stopId} />
