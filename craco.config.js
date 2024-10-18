@@ -48,6 +48,8 @@ module.exports = {
         findBackwardsCompatibleEnvVar('JS_CONFIG')
       backwardsCompatibleEnv.HTML_FILE =
         findBackwardsCompatibleEnvVar('HTML_FILE')
+      backwardsCompatibleEnv.PLAN_QUERY_RESOURCE_URI =
+        findBackwardsCompatibleEnvVar('PLAN_QUERY_RESOURCE_URI')
       backwardsCompatibleEnv.CUSTOM_CSS =
         findBackwardsCompatibleEnvVar('CUSTOM_CSS')
 
@@ -64,6 +66,13 @@ module.exports = {
         test: /\.(yml|yaml)$/
       }
       addBeforeLoader(webpackConfig, loaderByName('file-loader'), yamlLoader)
+
+      // Support YAML
+      const graphqlLoader = {
+        loader: ['raw-loader'],
+        test: /\.graphql$/
+      }
+      addBeforeLoader(webpackConfig, loaderByName('file-loader'), graphqlLoader)
 
       // Support webfonts (for font awesome)
       const webfontLoader = {
@@ -82,7 +91,7 @@ module.exports = {
         loader.exclude = /node_modules/
       })
 
-      // Gather the CSS, HTML, YAML, and JS override files.
+      // Gather the CSS, HTML, YAML, GraphQL, and JS override files.
       const CUSTOM_CSS =
         (process.env && process.env.CUSTOM_CSS) ||
         backwardsCompatibleEnv.CUSTOM_CSS ||
@@ -91,6 +100,22 @@ module.exports = {
         (process.env && process.env.HTML_FILE) ||
         backwardsCompatibleEnv.HTML_FILE ||
         'lib/index.tpl.html'
+      // resolve the custom GraphQL file. If it is present, copy the file to a
+      // temporary folder within this project so that it can be bundled and loaded at runtime.
+      let customPlanGraphQLFile = './planQuery.graphql'
+      const PLAN_QUERY_RESOURCE_URI =
+        (process.env && process.env.PLAN_QUERY_RESOURCE_URI) ||
+        backwardsCompatibleEnv.PLAN_QUERY_RESOURCE_URI ||
+        'node_modules/@opentripplanner/core-utils/src/planQuery.graphql'
+      if (PLAN_QUERY_RESOURCE_URI) {
+        const splitPath = PLAN_QUERY_RESOURCE_URI.split(path.sep)
+        customPlanGraphQLFile = `../tmp/${splitPath[splitPath.length - 1]}`
+        // copy location is relative to root, while js file for app is relative to lib
+        fs.copySync(
+          PLAN_QUERY_RESOURCE_URI,
+          `./tmp/${splitPath[splitPath.length - 1]}`
+        )
+      }
       const YAML_CONFIG =
         (process.env && process.env.YAML_CONFIG) ||
         backwardsCompatibleEnv.YAML_CONFIG ||
@@ -143,6 +168,7 @@ module.exports = {
         new webpack.DefinePlugin({
           CSS: JSON.stringify(CUSTOM_CSS),
           JS_CONFIG: JSON.stringify(customJsFile),
+          PLAN_QUERY_RESOURCE: JSON.stringify(customPlanGraphQLFile),
           // Optionally override the default config files with some other
           // files.
           YAML_CONFIG: JSON.stringify(YAML_CONFIG)
