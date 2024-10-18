@@ -99,12 +99,10 @@ common:
     submitting: 正在提交…
     "yes": 是
   itineraryDescriptions:
-    calories: "{calories, number} 大卡"
     fareUnknown: 无票价信息
     noItineraryToDisplay: 没有显示行程.
     relativeCo2: |
       {co2} {isMore, select, true {更多} other {更少} } CO₂ 比单独驾车
-    transfers: "{transfers, plural, =0 {} other {# 换乘}}"
   linkOpensNewWindow: （打开新窗口）
   modes:
     bicycle_rent: 共享单车
@@ -143,7 +141,6 @@ common:
     enterStartLocation: 输入出发地点或{mapAction}地图…
     tap: 点击
   time:
-    departureArrivalTimes: "{startTime, time, short}—{endTime, time, short}"
     duration:
       aFewSeconds: 几秒钟
       nDays: "{days} 天"
@@ -244,7 +241,6 @@ components:
     ariaLabel: 表格导航
   ItinerarySummary:
     itineraryDetails: 行程详情
-    minMaxFare: "{minTotalFare} - {maxTotalFare}"
   LocationSearch:
     enterLocation: 输入位置
     setDestination: 设置目的地
