@@ -57,6 +57,10 @@ export interface ItineraryExistenceDay {
 
 export type ItineraryExistence = Record<DaysOfWeek, ItineraryExistenceDay>
 
+export interface JourneyState {
+  matchingItinerary?: Itinerary
+}
+
 export type MonitoredTrip = Record<DaysOfWeek, boolean> & {
   arrivalVarianceMinutesThreshold: number
   departureVarianceMinutesThreshold: number
@@ -65,8 +69,10 @@ export type MonitoredTrip = Record<DaysOfWeek, boolean> & {
   isActive: boolean
   itinerary: Itinerary
   itineraryExistence?: ItineraryExistence
+  journeyState?: JourneyState
   leadTimeInMinutes: number
-  queryParams: string
+  otp2QueryParams: Record<string, unknown>
+  queryParams: Record<string, unknown>
   tripName: string
   userId: string
 }

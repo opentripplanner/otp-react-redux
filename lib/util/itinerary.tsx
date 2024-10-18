@@ -7,6 +7,7 @@ import hash from 'object-hash'
 import memoize from 'lodash.memoize'
 
 import { AppConfig, CO2Config } from './config-types'
+import { checkForRouteModeOverride } from './config'
 import { WEEKDAYS, WEEKEND_DAYS } from './monitored-trip'
 
 export interface ItineraryStartTime {
@@ -448,5 +449,43 @@ export function addSortingCosts<T extends Itinerary>(
     ...itinerary,
     rank,
     totalFare
+  }
+}
+
+interface LegWithOriginalMode extends Leg {
+  originalMode?: string
+}
+
+/** Applies route mode overrides to an itinerary. */
+export function applyRouteModeOverrides(
+  itinerary: Itinerary,
+  routeModeOverrides: Record<string, string>
+): void {
+  itinerary.legs.forEach((leg: LegWithOriginalMode) => {
+    // Use OTP2 leg route first, fallback on legacy leg routeId.
+    const routeId = typeof leg.route === 'object' ? leg.route.id : leg.routeId
+    if (routeId) {
+      leg.originalMode = leg.mode
+      leg.mode = checkForRouteModeOverride(
+        {
+          id: routeId,
+          mode: leg.mode
+        },
+        routeModeOverrides
+      )
+    }
+  })
+}
+
+/** Remove mode overrides from an itinerary */
+export function copyAndRemoveRouteModeOverrides(
+  itinerary: Itinerary
+): Itinerary {
+  return {
+    ...itinerary,
+    legs: itinerary.legs.map((leg: LegWithOriginalMode) => ({
+      ...leg,
+      mode: leg.originalMode || leg.mode
+    }))
   }
 }
