@@ -3,12 +3,14 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import React, { Component, FormEvent } from 'react'
 
+import * as apiActions from '../../actions/api'
 import {
   advancedPanelClassName,
   mainPanelClassName,
   transitionDuration,
   TransitionStyles
 } from '../form/styled'
+import { alertUserTripPlan } from '../form/util'
 import { getActiveSearch, getShowUserSettings } from '../../util/state'
 import { getPersistenceMode } from '../../util/user'
 import AdvancedSettingsPanel from '../form/advanced-settings-panel'
@@ -22,9 +24,11 @@ import ViewerContainer from '../viewers/viewer-container'
 
 interface Props {
   activeSearch: any
+  currentQuery: any
   intl: IntlShape
   mainPanelContent: number
   mobile?: boolean
+  routingQuery: () => void
   showUserSettings: boolean
 }
 
@@ -75,7 +79,13 @@ class BatchRoutingPanel extends Component<Props> {
   handleSubmit = (e: FormEvent) => e.preventDefault()
 
   handlePlanTripClick = () => {
-    this.setState({ planTripClicked: true })
+    const { currentQuery, intl, routingQuery } = this.props
+    alertUserTripPlan(
+      intl,
+      currentQuery,
+      () => this.setState({ planTripClicked: true }),
+      routingQuery
+    )
   }
 
   render() {
@@ -128,6 +138,7 @@ class BatchRoutingPanel extends Component<Props> {
                 >
                   <AdvancedSettingsPanel
                     closeAdvancedSettings={this.closeAdvancedSettings}
+                    handlePlanTrip={this.handlePlanTripClick}
                     innerRef={this._advancedSettingRef}
                     setCloseAdvancedSettingsWithDelay={
                       this.setCloseAdvancedSettingsWithDelay
@@ -223,12 +234,21 @@ const mapStateToProps = (state: any) => {
     (state.user.loggedInUser?.hasConsentedToTerms ||
       getPersistenceMode(state.otp.config.persistence).isLocalStorage)
   const { mainPanelContent } = state.otp.ui
+  const currentQuery = state.otp.currentQuery
 
   return {
     activeSearch: getActiveSearch(state),
+    currentQuery,
     mainPanelContent,
     showUserSettings
   }
 }
 
-export default connect(mapStateToProps)(injectIntl(BatchRoutingPanel))
+const mapDispatchToProps = {
+  routingQuery: apiActions.routingQuery
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(injectIntl(BatchRoutingPanel))

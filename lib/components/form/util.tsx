@@ -72,13 +72,10 @@ export const setModeButton =
     )
   }
 
-export const alertUserTripPlan = (
-  intl: IntlShape,
+export const tripPlannerValidationErrors = (
   currentQuery: any,
-  onPlanTripClick: () => void,
-  routingQuery: () => any
-): void => {
-  // Check for any validation issues in query.
+  intl: IntlShape
+): string[] => {
   const issues: string[] = []
   if (!hasValidLocation(currentQuery, 'from')) {
     issues.push(intl.formatMessage({ id: 'components.BatchSettings.origin' }))
@@ -88,6 +85,17 @@ export const alertUserTripPlan = (
       intl.formatMessage({ id: 'components.BatchSettings.destination' })
     )
   }
+  return issues
+}
+
+export const alertUserTripPlan = (
+  intl: IntlShape,
+  currentQuery: any,
+  onPlanTripClick: () => void,
+  routingQuery: () => any
+): void => {
+  // Check for any validation issues in query and alert user.
+  const issues = tripPlannerValidationErrors(currentQuery, intl)
   onPlanTripClick()
   if (issues.length > 0) {
     // TODO: replace with less obtrusive validation.

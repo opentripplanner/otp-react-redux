@@ -4,6 +4,7 @@ import { injectIntl, IntlShape } from 'react-intl'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
+import * as apiActions from '../../actions/api'
 import * as uiActions from '../../actions/ui'
 import {
   advancedPanelClassName,
@@ -11,6 +12,7 @@ import {
   transitionDuration,
   TransitionStyles
 } from '../form/styled'
+import { alertUserTripPlan } from '../form/util'
 import { MobileScreens } from '../../actions/ui-constants'
 import AdvancedSettingsPanel from '../form/advanced-settings-panel'
 import BatchSettings from '../form/batch-settings'
@@ -43,8 +45,10 @@ const MobileSearchSettings = styled.div<{
 `
 
 interface Props {
+  currentQuery: any
   intl: IntlShape
   map: React.ReactElement
+  routingQuery: any
   setMobileScreen: (screen: number) => void
 }
 
@@ -63,7 +67,10 @@ class BatchSearchScreen extends Component<Props> {
   _advancedSettingRef = React.createRef<HTMLDivElement>()
 
   handlePlanTripClick = () => {
-    this.setState({ planTripClicked: true })
+    const { currentQuery, intl, routingQuery } = this.props
+    alertUserTripPlan(intl, currentQuery, routingQuery, () =>
+      this.setState({ planTripClicked: true })
+    )
   }
 
   openAdvancedSettings = () => {
@@ -159,6 +166,7 @@ class BatchSearchScreen extends Component<Props> {
                   >
                     <AdvancedSettingsPanel
                       closeAdvancedSettings={this.closeAdvancedSettings}
+                      handlePlanTrip={this.handlePlanTripClick}
                       innerRef={this._advancedSettingRef}
                       setCloseAdvancedSettingsWithDelay={
                         this.setCloseAdvancedSettingsWithDelay
@@ -180,8 +188,19 @@ class BatchSearchScreen extends Component<Props> {
 
 // connect to the redux store
 
+const mapStateToProps = (state: any) => {
+  const { currentQuery } = state.otp.currentQuery
+  return {
+    currentQuery
+  }
+}
+
 const mapDispatchToProps = {
+  routingQuery: apiActions.routingQuery,
   setMobileScreen: uiActions.setMobileScreen
 }
 
-export default connect(null, mapDispatchToProps)(injectIntl(BatchSearchScreen))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(injectIntl(BatchSearchScreen))

@@ -30,7 +30,8 @@ import {
   onSettingsUpdate,
   pipe,
   populateSettingWithIcon,
-  setModeButton
+  setModeButton,
+  tripPlannerValidationErrors
 } from './util'
 import { setModeButtonEnabled } from './batch-settings'
 import { styledCheckboxCss } from './styled'
@@ -111,8 +112,11 @@ const DtSelectorContainer = styled.div`
 `
 
 const AdvancedSettingsPanel = ({
+  autoPlan,
   closeAdvancedSettings,
+  currentQuery,
   enabledModeButtons,
+  handlePlanTrip,
   innerRef,
   modeButtonOptions,
   modeSettingDefinitions,
@@ -121,8 +125,11 @@ const AdvancedSettingsPanel = ({
   setCloseAdvancedSettingsWithDelay,
   setQueryParam
 }: {
+  autoPlan: boolean
   closeAdvancedSettings: () => void
+  currentQuery: any
   enabledModeButtons: string[]
+  handlePlanTrip: () => void
   innerRef: RefObject<HTMLDivElement>
   modeButtonOptions: ModeButtonDefinition[]
   modeSettingDefinitions: ModeSetting[]
@@ -177,11 +184,19 @@ const AdvancedSettingsPanel = ({
     )
   )
 
+  const tripFormErrors = tripPlannerValidationErrors(currentQuery, intl)
+
+  const closePanel = useCallback(() => {
+    // Only autoplan if there are no validation errors
+    tripFormErrors.length === 0 && autoPlan && handlePlanTrip()
+    closeAdvancedSettings()
+  }, [autoPlan, closeAdvancedSettings, handlePlanTrip, tripFormErrors.length])
+
   const onSaveAndReturnClick = useCallback(async () => {
     await setCloseAdvancedSettingsWithDelay()
     setClosingBySave(true)
-    closeAdvancedSettings()
-  }, [closeAdvancedSettings, setCloseAdvancedSettingsWithDelay])
+    closePanel()
+  }, [closePanel, setCloseAdvancedSettingsWithDelay])
 
   return (
     <PanelOverlay className="advanced-settings" ref={innerRef}>
@@ -190,7 +205,7 @@ const AdvancedSettingsPanel = ({
           aria-label={closeButtonText}
           id="close-advanced-settings-button"
           onClick={() => {
-            closeAdvancedSettings()
+            closePanel()
           }}
           title={closeButtonText}
         >
@@ -256,9 +271,12 @@ const mapStateToProps = (state: AppReduxState) => {
     state.otp.modeSettingDefinitions || [],
     modes?.initialState?.modeSettingValues || {}
   )
+
+  const { autoPlan } = state.otp.config
   const saveAndReturnButton =
     state.otp.config?.advancedSettingsPanel?.saveAndReturnButton
   return {
+    autoPlan: autoPlan !== false,
     currentQuery: state.otp.currentQuery,
     // TODO: Duplicated in apiv2.js
     enabledModeButtons:
