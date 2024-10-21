@@ -158,7 +158,12 @@ class DefaultMap extends Component {
 
   // Generate operator logos to pass through OTP tile layer to map-popup
   getEntityPrefix = (entity) => {
-    const stopId = entity.gtfsId
+    // In the case that we are dealing with a station, use the first stop of the station
+    const firstStopOfStationId = entity.stops
+      ? JSON.parse(entity.stops)[0]
+      : false
+
+    const stopId = firstStopOfStationId || entity.gtfsId
     this.props.findStopTimesForStop({
       date: getCurrentDate(),
       stopId
