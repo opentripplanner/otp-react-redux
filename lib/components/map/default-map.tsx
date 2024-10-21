@@ -86,6 +86,8 @@ function getLayerName(overlay, config, intl) {
       return intl.formatMessage({ id: 'components.MapLayers.streets' })
     case 'Satellite':
       return intl.formatMessage({ id: 'components.MapLayers.satellite' })
+    case 'Stops':
+      return intl.formatMessage({ id: 'components.MapLayers.stops' })
     default:
       if (name) return name
   }
