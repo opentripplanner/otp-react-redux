@@ -228,6 +228,7 @@ components:
     deleteCompanion: Delete {email}
     noCompanions: You do not have any existing travel companions.
     submitNewCompanion: Send invitation
+    title: Travel companions
   DateTimeOptions:
     arriveBy: Arrive by
     departAt: Depart at

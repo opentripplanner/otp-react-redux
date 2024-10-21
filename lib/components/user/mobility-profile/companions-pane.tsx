@@ -1,5 +1,5 @@
 import { ControlLabel, FormGroup } from 'react-bootstrap'
-import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
 import { FormikProps } from 'formik'
 import { Trash } from '@styled-icons/fa-solid/Trash'
 import { User as UserIcon } from '@styled-icons/fa-solid/User'
@@ -15,12 +15,12 @@ import StatusBadge from '../../util/status-badge'
 import SubmitButton from '../../util/submit-button'
 
 const Companion = styled.li`
-  list-style-type: none;
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
-  width: 100%;
+  list-style-type: none;
   margin-top: 20px;
+  width: 100%;
 `
 
 const CompanionList = styled.ul`
@@ -28,28 +28,27 @@ const CompanionList = styled.ul`
 `
 
 const LeftGroup = styled.div`
-  display: flex;
   align-items: center;
+  display: flex;
   gap: 40px;
 `
 
 const RightGroup = styled.div`
-  display: flex;
   align-items: center;
+  display: flex;
   gap: 20px;
 `
 
 interface CompanionRowProps {
   companionInfo: CompanionInfo
-  intl: IntlShape
   onDelete: (email: string) => void
 }
 
 const CompanionRow = ({
   companionInfo,
-  intl,
   onDelete
 }: CompanionRowProps): JSX.Element => {
+  const intl = useIntl()
   const { email, status } = companionInfo
   const [disabled, setDisabled] = useState(false)
 
@@ -109,13 +108,13 @@ const CompanionsPane = ({
   setFieldValue,
   values: userData
 }: FormikProps<User>): JSX.Element => {
-  const { guardians: companions = [] } = userData
+  const { relatedUsers: companions = [] } = userData
   const formId = 'add-companion-form'
   const intl = useIntl()
 
   const updateCompanions = useCallback(
     async (newCompanions) => {
-      setFieldValue('guardians', newCompanions)
+      setFieldValue('relatedUsers', newCompanions)
 
       // Register the change (can include a submission).
       await handleChange({
@@ -176,7 +175,6 @@ const CompanionsPane = ({
             {companions.map((companion) => (
               <CompanionRow
                 companionInfo={companion}
-                intl={intl}
                 key={companion.email}
                 onDelete={handleDeleteEmail}
               />

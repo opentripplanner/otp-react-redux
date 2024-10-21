@@ -49,41 +49,39 @@ const AddEmailForm = ({
   onSubmit,
   placeholder,
   submitText
-}: Props): JSX.Element => {
-  return (
-    <Formik
-      initialValues={{ newEmail: '' }}
-      onSubmit={onSubmit}
-      validateOnBlur
-      validateOnChange={false}
-      validationSchema={emailValidationSchema}
-    >
-      {({ errors, isSubmitting, touched, values }) => {
-        const showError =
-          errors.newEmail && touched.newEmail && values.newEmail?.length > 0
-        return (
-          <FormGroup validationState={showError ? 'error' : null}>
-            <ControlLabel>{label}</ControlLabel>
-            <Controls>
-              <Form id={id} noValidate />
-              <Field
-                aria-invalid={showError}
-                aria-required
-                as={InlineInput}
-                form={id}
-                name="newEmail"
-                placeholder={placeholder}
-                type="email"
-              />
+}: Props): JSX.Element => (
+  <Formik
+    initialValues={{ newEmail: '' }}
+    onSubmit={onSubmit}
+    validateOnBlur
+    validateOnChange={false}
+    validationSchema={emailValidationSchema}
+  >
+    {({ errors, isSubmitting, touched, values }) => {
+      const showError =
+        errors.newEmail && touched.newEmail && values.newEmail?.length > 0
+      return (
+        <FormGroup validationState={showError ? 'error' : null}>
+          <ControlLabel>{label}</ControlLabel>
+          <Controls>
+            <Form id={id} noValidate />
+            <Field
+              aria-invalid={showError}
+              aria-required
+              as={InlineInput}
+              form={id}
+              name="newEmail"
+              placeholder={placeholder}
+              type="email"
+            />
 
-              <SubmitButton form={id}>{submitText}</SubmitButton>
-            </Controls>
-            <HelpBlock role="alert">{showError && 'Invalid email'}</HelpBlock>
-          </FormGroup>
-        )
-      }}
-    </Formik>
-  )
-}
+            <SubmitButton form={id}>{submitText}</SubmitButton>
+          </Controls>
+          <HelpBlock role="alert">{showError && 'Invalid email'}</HelpBlock>
+        </FormGroup>
+      )
+    }}
+  </Formik>
+)
 
 export default AddEmailForm

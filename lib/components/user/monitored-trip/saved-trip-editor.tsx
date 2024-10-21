@@ -3,6 +3,7 @@ import React, { ComponentType } from 'react'
 
 import { BackButtonContent } from '../back-link'
 import { MonitoredTrip } from '../types'
+import { PaneAttributes } from '../stacked-panes'
 import { TRIPS_PATH } from '../../../util/constants'
 import DeleteForm from '../delete-form'
 import Link from '../../util/link'
@@ -31,9 +32,8 @@ const SavedTripEditor = (props: Props): JSX.Element => {
   const intl = useIntl()
 
   if (monitoredTrip) {
-    const paneSequence = [
+    const paneSequence: PaneAttributes[] = [
       {
-        collapsible: false,
         pane: panes.basics,
         props,
         title: (
@@ -41,7 +41,6 @@ const SavedTripEditor = (props: Props): JSX.Element => {
         )
       },
       {
-        collapsible: false,
         pane: panes.notifications,
         props,
         title: (

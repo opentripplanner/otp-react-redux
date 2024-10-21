@@ -41,7 +41,6 @@ export interface User {
   accessibilityRoutingByDefault?: boolean
   // email always exists per Auth0.
   email: string
-  guardians?: CompanionInfo[]
   hasConsentedToTerms?: boolean
   id?: string
   isPhoneNumberVerified?: boolean
@@ -50,6 +49,7 @@ export interface User {
   phoneNumber?: string
   preferredLocale?: string
   pushDevices?: number
+  relatedUsers?: CompanionInfo[]
   savedLocations?: UserSavedLocation[]
   storeTripHistory?: boolean
 }

@@ -24,7 +24,7 @@ const standardPanes: Record<string, PaneProps> = {
   companions: {
     id: 'companions',
     pane: CompanionsPane,
-    title: 'Travel Companions' // TODO i18n
+    title: <FormattedMessage id="components.CompanionsPane.title" />
   },
   finish: {
     id: 'finish',

@@ -54,7 +54,7 @@ const ExistingAccountDisplay = (props: Props) => {
       hidden: !mobilityProfileEnabled,
       pane: CompanionsPane,
       props,
-      title: 'Travel companions'
+      title: <FormattedMessage id="components.CompanionsPane.title" />
     },
     {
       pane: NotificationPrefsPane,
