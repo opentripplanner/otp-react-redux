@@ -25,6 +25,7 @@ export type VisionLimitation = typeof visionLimitations[number]
 export interface MobilityProfile {
   isMobilityLimited: boolean
   mobilityDevices: string[]
+  mobilityMode: string
   visionLimitation: VisionLimitation
 }
 
