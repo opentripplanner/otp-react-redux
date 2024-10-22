@@ -169,7 +169,6 @@ const AdvancedSettingsPanel = ({
   )
 
   const processedModeSettings = processSettings(modeSettingDefinitions)
-
   const processedModeButtons = modeButtonOptions.map(
     pipe(
       addModeButtonIcon(ModeIcon),
