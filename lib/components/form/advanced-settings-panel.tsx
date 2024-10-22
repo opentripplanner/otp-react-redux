@@ -177,6 +177,15 @@ const AdvancedSettingsPanel = ({
     )
   )
 
+  const handleModeButtonToggle = setModeButton(
+    enabledModeButtons,
+    onSettingsUpdate(setQueryParam)
+  )
+
+  const handleAllSubmodesDisabled = (modeButton: ModeButtonDefinition) => {
+    handleModeButtonToggle(modeButton.key, false)
+  }
+
   const onSaveAndReturnClick = useCallback(async () => {
     await setCloseAdvancedSettingsWithDelay()
     setClosingBySave(true)
@@ -221,11 +230,9 @@ const AdvancedSettingsPanel = ({
           id: 'components.BatchSearchScreen.submodeSelectorLabel'
         })}
         modeButtons={processedModeButtons}
+        onAllSubmodesDisabled={handleAllSubmodesDisabled}
         onSettingsUpdate={onSettingsUpdate(setQueryParam)}
-        onToggleModeButton={setModeButton(
-          enabledModeButtons,
-          onSettingsUpdate(setQueryParam)
-        )}
+        onToggleModeButton={handleModeButtonToggle}
       />
       {saveAndReturnButton && (
         <ReturnToTripPlanButton
