@@ -7,6 +7,10 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { useEffect, useRef, useState } from 'react'
 
+import * as narriativeActions from '../../../actions/narrative'
+import { DepartArriveTypeMap, DepartArriveValue } from '../date-time-modal'
+import { FilterType, SortType } from '../../../util/state-types'
+
 const { getCurrentDate, OTP_API_DATE_FORMAT, OTP_API_TIME_FORMAT } =
   coreUtils.time
 
@@ -80,8 +84,11 @@ type Props = {
     departArrive: string
     time: string
   }) => void
+  sort: SortType
+  syncSortWithDepartArrive?: boolean
   time?: string
   timeFormat: string
+  updateItineraryFilter: (payload: FilterType) => void
 }
 /**
  * Contains depart/arrive selector and time/date inputs for the admin-oriented
@@ -103,8 +110,11 @@ const DateTimeOptions = ({
   homeTimezone,
   onKeyDown,
   setQueryParam,
+  sort,
+  syncSortWithDepartArrive,
   time: initialTime,
-  timeFormat
+  timeFormat,
+  updateItineraryFilter
 }: Props) => {
   const [departArrive, setDepartArrive] = useState(
     initialDate || initialTime ? 'DEPART' : 'NOW'
@@ -185,6 +195,18 @@ const DateTimeOptions = ({
         time: safeFormat(dateTime, OTP_API_TIME_FORMAT, {
           timeZone: homeTimezone
         })
+      })
+    }
+
+    if (
+      syncSortWithDepartArrive &&
+      DepartArriveTypeMap[departArrive as DepartArriveValue] !== sort.type
+    ) {
+      updateItineraryFilter({
+        sort: {
+          ...sort,
+          type: DepartArriveTypeMap[departArrive as DepartArriveValue]
+        }
       })
     }
   }, [dateTime, departArrive, homeTimezone, setQueryParam])
@@ -283,11 +305,18 @@ const DateTimeOptions = ({
 
 // connect to the redux store
 const mapStateToProps = (state: any) => {
-  const { dateTime, homeTimezone } = state.otp.config
+  const { dateTime, homeTimezone, itinerary } = state.otp.config
+  const { syncSortWithDepartArrive } = itinerary
+  const { sort } = state.otp.filter
   return {
     homeTimezone,
+    sort,
+    syncSortWithDepartArrive,
     timeFormat: dateTime?.timeFormat || 'h:mm a'
   }
 }
+const mapDispatchToProps = {
+  updateItineraryFilter: narriativeActions.updateItineraryFilter
+}
 
-export default connect(mapStateToProps)(DateTimeOptions)
+export default connect(mapStateToProps, mapDispatchToProps)(DateTimeOptions)
