@@ -21,9 +21,9 @@ type Props = {
   updateItineraryFilter: (payload: FilterType) => void
 }
 
-type DepartArriveValue = 'NOW' | 'DEPART' | 'ARRIVE'
+export type DepartArriveValue = 'NOW' | 'DEPART' | 'ARRIVE'
 
-const DepartArriveTypeMap: Record<
+export const DepartArriveTypeMap: Record<
   DepartArriveValue,
   FilterType['sort']['type']
 > = {
