@@ -3,6 +3,7 @@ import React, { ComponentType } from 'react'
 
 import { BackButtonContent } from '../back-link'
 import { MonitoredTrip } from '../types'
+import { PaneAttributes } from '../stacked-panes'
 import { TRIPS_PATH } from '../../../util/constants'
 import DeleteForm from '../delete-form'
 import Link from '../../util/link'
@@ -12,6 +13,7 @@ import StackedPanesWithSave from '../stacked-panes-with-save'
 import TripNotFound from './trip-not-found'
 
 interface Props {
+  hasMobilityProfile: boolean
   isCreating: boolean
   onCancel: () => void
   panes: Record<string, ComponentType>
@@ -30,7 +32,7 @@ const SavedTripEditor = (props: Props): JSX.Element => {
   const intl = useIntl()
 
   if (monitoredTrip) {
-    const paneSequence = [
+    const paneSequence: PaneAttributes[] = [
       {
         pane: panes.basics,
         props,
@@ -46,6 +48,18 @@ const SavedTripEditor = (props: Props): JSX.Element => {
         )
       }
     ]
+
+    // if mobility profile is present, then add travel companions pane
+    if (props.hasMobilityProfile) {
+      paneSequence.push({
+        collapsible: true,
+        pane: panes.travelCompanion,
+        props,
+        title: (
+          <FormattedMessage id="components.SavedTripEditor.travelCompanion" />
+        )
+      })
+    }
 
     const title = isCreating
       ? intl.formatMessage({ id: 'components.SavedTripEditor.saveNewTrip' })

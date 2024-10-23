@@ -395,7 +395,6 @@ components:
     changeNumber: Baguhin ang numero
     invalidCode: Maglagay ng 6 na digit para sa code sa pag-validate.
     invalidPhone: Maglagay ng valid na numero ng telepono.
-    pending: Nakabinbin
     phoneNumberSubmitted: Matagumpay na naisumite ang numero ng teleponong {phoneNumber}.
     phoneNumberVerified: Matagumpay na na-verify ang numero ng teleponong {phoneNumber} .
     placeholder: Ilagay ang numero ng iyong telepono
@@ -412,7 +411,6 @@ components:
       Tingnan ang app sa SMS messaging sa iyong mobile phone para sa isang text
       message na may code sa pag-verify, at ilagay ang code sa ibaba
       (mag-e-expire ang code pagkalipas ng 10 minuto).
-    verified: Na-verify
     verify: I-verify
   Place:
     deleteThisPlace: I-delete ang lugar na ito
@@ -523,6 +521,10 @@ components:
       pagkaantala
   StackedPaneDisplay:
     savePreferences: I-save ang mga kagustuhan
+  StatusBadge:
+    invalid: Invalid
+    pending: Nakabinbin
+    verified: Na-verify
   StopScheduleTable:
     block: I-block
     departure: Pag-alis

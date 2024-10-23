@@ -219,6 +219,20 @@ components:
     advancedOptions: Advanced options
     groupSize: "Group size:"
     intermediateDestination: Enter intermediate destination
+  CompanionsPane:
+    addNewCompanion: Add a new travel companion
+    companionAlreadyAdded: You already have a companion with email {email}
+    companionExplanation: >
+      Invite an exiting GMAP user to be a travel companion by entering their
+      email. When they accept, their status will change to "verified", and you
+      can share your trip status and plan trips based on one another's mobility
+      profile.
+    confirmDeleteCompanion: Do you want to delete companion {email}?
+    currentCompanionsLabel: "Current travel companions:"
+    deleteCompanion: Delete {email}
+    noCompanions: You do not have any existing travel companions.
+    submitNewCompanion: Send invitation
+    title: Travel companions
   DateTimeOptions:
     arriveBy: Arrive by
     departAt: Depart at
@@ -421,7 +435,6 @@ components:
     changeNumber: Change number
     invalidCode: Please enter 6 digits for the validation code.
     invalidPhone: Please enter a valid phone number.
-    pending: Pending
     phoneNumberSubmitted: Phone number {phoneNumber} was successfully submitted.
     phoneNumberVerified: Phone number {phoneNumber} was successfully verified.
     placeholder: Enter your phone number
@@ -437,7 +450,6 @@ components:
       Please check the SMS messaging app on your mobile phone for a text message
       with a verification code, and enter the code below (code expires after 10
       minutes).
-    verified: Verified
     verify: Verify
     verifySms: >-
       Please complete the verification process in order to set up SMS
@@ -515,6 +527,7 @@ components:
     deleteSavedTrip: Delete saved trip
     editSavedTrip: Edit saved trip
     saveNewTrip: Save new trip
+    travelCompanion: Travel companions
     tripInformation: Trip information
     tripNotFound: Trip not found
     tripNotFoundDescription: Sorry, the requested trip was not found.
@@ -548,6 +561,10 @@ components:
     usingRealtimeInfo: This trip uses real-time traffic and delay information
   StackedPaneDisplay:
     savePreferences: Save preferences
+  StatusBadge:
+    invalid: Invalid
+    pending: Pending
+    verified: Verified
   StopScheduleTable:
     block: Block
     departure: Departure

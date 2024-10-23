@@ -1,5 +1,5 @@
-import { Label as BsLabel, FormGroup } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { FormGroup } from 'react-bootstrap'
 // @ts-expect-error Package does not have type declaration
 import { formatPhoneNumber } from 'react-phone-number-input'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
@@ -13,6 +13,7 @@ import { GREY_ON_WHITE } from '../util/colors'
 import { isBlank } from '../../util/ui'
 import { PhoneFormatConfig } from '../../util/config-types'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
+import StatusBadge from '../util/status-badge'
 
 import { ControlStrip } from './styled'
 import PhoneChangeForm, { PhoneChangeSubmitHandler } from './phone-change-form'
@@ -253,17 +254,11 @@ class PhoneNumberEditor extends Component<Props, State> {
               </PlainLink>
               {/* Invisible parentheses for no-CSS and screen readers */}
               <InvisibleA11yLabel> (</InvisibleA11yLabel>
-              {isPending ? (
-                <BsLabel bsStyle="warning">
-                  <FormattedMessage id="components.PhoneNumberEditor.pending" />
-                </BsLabel>
-              ) : (
-                phoneNumberVerified && (
-                  <BsLabel style={{ background: 'green' }}>
-                    <FormattedMessage id="components.PhoneNumberEditor.verified" />
-                  </BsLabel>
-                )
-              )}
+              <StatusBadge
+                status={
+                  isPending ? 'pending' : phoneNumberVerified ? 'verified' : ''
+                }
+              />
               <InvisibleA11yLabel>)</InvisibleA11yLabel>
               <button
                 // "Downgrading" to a plain button so we can insert a ref to return keyboard focus on cancel.

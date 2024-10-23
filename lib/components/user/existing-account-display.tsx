@@ -10,6 +10,7 @@ import PageTitle from '../util/page-title'
 import { EditedUser } from './types'
 import A11yPrefs from './a11y-prefs'
 import BackToTripPlanner from './back-to-trip-planner'
+import CompanionsPane from './mobility-profile/companions-pane'
 import DeleteUser from './delete-user'
 import FavoritePlaceList from './places/favorite-place-list'
 import MobilityPane from './mobility-profile/mobility-pane'
@@ -47,6 +48,13 @@ const ExistingAccountDisplay = (props: Props) => {
       title: (
         <FormattedMessage id="components.MobilityProfile.MobilityPane.header" />
       )
+    },
+    {
+      collapsible: true,
+      hidden: !mobilityProfileEnabled,
+      pane: CompanionsPane,
+      props,
+      title: <FormattedMessage id="components.CompanionsPane.title" />
     },
     {
       pane: NotificationPrefsPane,

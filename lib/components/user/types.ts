@@ -25,7 +25,13 @@ export type VisionLimitation = typeof visionLimitations[number]
 export interface MobilityProfile {
   isMobilityLimited: boolean
   mobilityDevices: string[]
+  mobilityMode: string
   visionLimitation: VisionLimitation
+}
+
+export interface CompanionInfo {
+  email: string
+  status?: string
 }
 
 /**
@@ -43,6 +49,7 @@ export interface User {
   phoneNumber?: string
   preferredLocale?: string
   pushDevices?: number
+  relatedUsers?: CompanionInfo[]
   savedLocations?: UserSavedLocation[]
   storeTripHistory?: boolean
 }

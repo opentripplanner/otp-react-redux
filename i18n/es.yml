@@ -429,7 +429,6 @@ components:
     changeNumber: Cambiar número de teléfono
     invalidCode: Introduzca 6 dígitos para el código de validación.
     invalidPhone: Por favor, introduzca un número de teléfono válido.
-    pending: Pendiente
     phoneNumberSubmitted: El número de teléfono {phoneNumber} se ha enviado correctamente.
     phoneNumberVerified: El número de teléfono {phoneNumber} se ha verificado correctamente.
     placeholder: Introduzca su número de teléfono
@@ -448,7 +447,6 @@ components:
       teléfono móvil si hay un mensaje de texto con un código de verificación, e
       introduzca el código que aparece a continuación. El código caduca a los 10
       minutos.
-    verified: Verificado
     verify: Verificar
     verifySms: >-
       Por favor, complete el proceso de verificación para configurar las
@@ -561,6 +559,10 @@ components:
     usingRealtimeInfo: Este viaje utiliza información de tráfico y retrasos en tiempo real
   StackedPaneDisplay:
     savePreferences: Guardar preferencias
+  StatusBadge:
+    invalid: Inválido
+    pending: Pendiente
+    verified: Verificado
   StopScheduleTable:
     block: Bloquear
     departure: Salida

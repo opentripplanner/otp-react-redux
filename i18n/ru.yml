@@ -390,7 +390,6 @@ components:
     changeNumber: Изменить номер
     invalidCode: "Введите проверочный код из 6\_цифр."
     invalidPhone: Введите действительный номер телефона.
-    pending: Ожидание
     phoneNumberSubmitted: Номер телефона{phoneNumber} был успешно отправлен.
     phoneNumberVerified: Номер телефона{phoneNumber}  был успешно проверен.
     placeholder: Введите свой номер телефона
@@ -403,7 +402,6 @@ components:
       могут взиматься дополнительные пени.
     verificationCode: "Код подтверждения:"
     verificationInstructions: "Откройте приложение для обмена SMS на телефоне и найдите текстовое сообщение с кодом подтверждения. Затем введите код ниже (срок действия кода: 10\_минут).\n"
-    verified: Подтверждено
     verify: Подтвердить
   Place:
     deleteThisPlace: Удалить это место
@@ -514,6 +512,10 @@ components:
       режиме реального времени.
   StackedPaneDisplay:
     savePreferences: Сохранить параметры
+  StatusBadge:
+    invalid: Invalid
+    pending: Ожидание
+    verified: Подтверждено
   StopScheduleTable:
     block: Заблокировать
     departure: Отправление
