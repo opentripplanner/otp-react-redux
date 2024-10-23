@@ -123,7 +123,7 @@ const UnderlinedLink = styled(Link)`
 `
 
 const MobilityProfileDropdown = styled(DropdownSelector)`
-  margin: 10px 0px;
+  margin: 20px 0px;
 `
 
 const AdvancedSettingsPanel = ({
