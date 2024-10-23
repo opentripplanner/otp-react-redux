@@ -112,6 +112,11 @@ persistence:
 #        iconUrl: ''
 #        href: ''
 
+### These settings are only used for the field trip features.
+dateTime:
+  timeFormat: h:mm a
+  dateFormat: MM/dd/yyyy
+
 map:
   initLat: 45.52
   initLon: -122.682
@@ -411,6 +416,8 @@ itinerary:
   displayA11yError: false
   # Whether to display itinerary info in the side of the preview or next to the departure times
   showInlineItinerarySummary: false
+  # Whether to sync the sort type with the depart/arrive time in the date/time modal
+  syncSortWithDepartArrive: true
   # The sort option to use by default
   # Available sort options: 'BEST', 'DURATION', 'ARRIVALTIME', 'WALKTIME', 'COST', 'DEPARTURETIME'
   # defaultSort: "BEST" # Default
@@ -426,6 +433,11 @@ itinerary:
   #   - 'DEPARTURETIME'
   # In the batch itinerary UI, this setting will always show both departure/arrival times
   alwaysShowBothTimes: false
+advancedSettingsPanel:
+  # Show button in advanced panel that allows users to save and return
+  saveAndReturnButton: true
+# Prevent users from selecting a single day for saving trips.
+disableSingleItineraryDays: false
 
 # The transitOperators key is a list of transit operators that can be used to
 # order transit agencies when sorting by route. Also, this can optionally

@@ -1,4 +1,5 @@
 import { differenceInMinutes } from 'date-fns'
+import { isTransitLeg } from '@opentripplanner/core-utils/lib/itinerary'
 import { Itinerary, Leg, Place } from '@opentripplanner/types'
 import { toDate, utcToZonedTime } from 'date-fns-tz'
 import coreUtils from '@opentripplanner/core-utils'
@@ -6,6 +7,7 @@ import hash from 'object-hash'
 import memoize from 'lodash.memoize'
 
 import { AppConfig, CO2Config } from './config-types'
+import { checkForRouteModeOverride } from './config'
 import { WEEKDAYS, WEEKEND_DAYS } from './monitored-trip'
 
 export interface ItineraryStartTime {
@@ -81,7 +83,7 @@ export function getMinutesUntilItineraryStart(itinerary: Itinerary): number {
  * Gets the first transit leg of the given itinerary, or null if none found.
  */
 function getFirstTransitLeg(itinerary: Itinerary) {
-  return itinerary?.legs?.find((leg) => leg.transitLeg)
+  return itinerary?.legs?.find(isTransitLeg)
 }
 
 /**
@@ -373,7 +375,7 @@ export function getTotalFare(
     ) {
       hasBikeshare = true
     }
-    if (coreUtils.itinerary.isTransit(leg.mode) && transitFare == null) {
+    if (isTransitLeg(leg) && transitFare == null) {
       transitFareNotProvided = true
     }
   })
@@ -447,5 +449,43 @@ export function addSortingCosts<T extends Itinerary>(
     ...itinerary,
     rank,
     totalFare
+  }
+}
+
+interface LegWithOriginalMode extends Leg {
+  originalMode?: string
+}
+
+/** Applies route mode overrides to an itinerary. */
+export function applyRouteModeOverrides(
+  itinerary: Itinerary,
+  routeModeOverrides: Record<string, string>
+): void {
+  itinerary.legs.forEach((leg: LegWithOriginalMode) => {
+    // Use OTP2 leg route first, fallback on legacy leg routeId.
+    const routeId = typeof leg.route === 'object' ? leg.route.id : leg.routeId
+    if (routeId) {
+      leg.originalMode = leg.mode
+      leg.mode = checkForRouteModeOverride(
+        {
+          id: routeId,
+          mode: leg.mode
+        },
+        routeModeOverrides
+      )
+    }
+  })
+}
+
+/** Remove mode overrides from an itinerary */
+export function copyAndRemoveRouteModeOverrides(
+  itinerary: Itinerary
+): Itinerary {
+  return {
+    ...itinerary,
+    legs: itinerary.legs.map((leg: LegWithOriginalMode) => ({
+      ...leg,
+      mode: leg.originalMode || leg.mode
+    }))
   }
 }

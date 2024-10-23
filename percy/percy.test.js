@@ -71,7 +71,7 @@ beforeAll(async () => {
 
     // Web security is disabled to allow requests to the mock OTP server
     browser = await puppeteer.launch({
-      args: ['--disable-web-security']
+      args: ['--disable-web-security', '--no-sandbox']
       //, headless: false
     })
   } catch (error) {
@@ -133,16 +133,19 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.keyboard.press('Escape')
     await page.waitForTimeout(200)
 
-    // Check submode selector (this will have no effect on mock query)
-    await page.hover('label[title="Transit"]')
+    // Open advanced settings and wait for animation
+    await page.click('#open-advanced-settings-button')
     await page.waitForTimeout(500)
+
+    // Check submode selector (this will have no effect on mock query)
     await page.click('#id-query-param-tram')
 
     // Enable accessible routing (this will have no effect on mock query)
-    await page.hover('label[title="Transit"]')
-    await page.waitForTimeout(500)
     await page.click('#id-query-param-wheelchair')
 
+    // Close advanced settings
+    await page.click('#close-advanced-settings-button')
+    await page.waitForTimeout(500)
     // Delete both origin and destination
 
     await page.click('.from-form-control')
@@ -189,14 +192,12 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.waitForTimeout(1000) // wait extra time for all results to load
 
     if (!isMobile) {
-      await page.hover('label[title="Transit"]')
-      await page.waitForTimeout(200)
-      await percySnapshotWithWait(
-        page,
-        'Metro Transit-Walk Itinerary Desktop with Mode Selector Expanded'
-      )
-      // Hover something else to unhover the mode selector.
-      await page.hover('#plan-trip')
+      await page.click('#open-advanced-settings-button')
+      await page.waitForTimeout(500)
+      await percySnapshotWithWait(page, 'Metro Advanced Settings Open')
+      // Close advanced settings
+      await page.click('#close-advanced-settings-button')
+      await page.waitForTimeout(500)
     } else {
       await percySnapshotWithWait(page, 'Metro Transit-Walk Itinerary Mobile')
     }
