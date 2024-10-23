@@ -1,6 +1,7 @@
 import {
   addSettingsToButton,
   AdvancedModeSubsettingsContainer,
+  DropdownSelector,
   ModeSettingRenderer,
   populateSettingWithValue
 } from '@opentripplanner/trip-form'
@@ -115,6 +116,14 @@ const DtSelectorContainer = styled.div`
 
 const MobilityProfileContainer = styled.div`
   margin-bottom: 12px;
+`
+
+const UnderlinedLink = styled(Link)`
+  text-decoration: underline;
+`
+
+const MobilityProfileDropdown = styled(DropdownSelector)`
+  margin: 10px 0px;
 `
 
 const AdvancedSettingsPanel = ({
@@ -238,11 +247,18 @@ const AdvancedSettingsPanel = ({
             id="components.MobilityProfile.MobilityPane.planTripDescription"
             values={{
               manageLink: (linkText: string) => (
-                <span className="manage-link">
-                  <Link to="/account/settings">{linkText}</Link>
-                </span>
+                <UnderlinedLink to="/account/settings">
+                  {linkText}
+                </UnderlinedLink>
               )
             }}
+          />
+          <MobilityProfileDropdown
+            label="User mobility profile"
+            options={[
+              { text: 'Myself', value: 'test' },
+              { text: 'someone else', value: 'test2' }
+            ]}
           />
         </MobilityProfileContainer>
       )}
