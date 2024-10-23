@@ -23,6 +23,7 @@ import { AppReduxState } from '../../util/state-types'
 import { blue, getBaseColor } from '../util/colors'
 import { ComponentContext } from '../../util/contexts'
 import { generateModeSettingValues } from '../../util/api'
+import Link from '../util/link'
 
 import {
   addCustomSettingLabels,
@@ -68,10 +69,12 @@ const HeaderContainer = styled.div`
   height: 30px;
 `
 
-const Subheader = styled.h2`
-  ${invisibleCss}
+const Subheader = styled.h2<{ invisible?: boolean }>`
+  ${(props) =>
+    props.invisible !== false
+      ? invisibleCss
+      : 'display: block; font-size: 18px; font-weight: 700; height: auto; margin: 1em 0; position: static; width: auto;'}
 `
-
 const ReturnToTripPlanButton = styled.button`
   align-items: center;
   background-color: var(--main-base-color, ${blue[900]});
@@ -110,10 +113,15 @@ const DtSelectorContainer = styled.div`
   }
 `
 
+const MobilityProfileContainer = styled.div`
+  margin-bottom: 12px;
+`
+
 const AdvancedSettingsPanel = ({
   closeAdvancedSettings,
   enabledModeButtons,
   innerRef,
+  mobilityProfile,
   modeButtonOptions,
   modeSettingDefinitions,
   modeSettingValues,
@@ -124,6 +132,7 @@ const AdvancedSettingsPanel = ({
   closeAdvancedSettings: () => void
   enabledModeButtons: string[]
   innerRef: RefObject<HTMLDivElement>
+  mobilityProfile: boolean
   modeButtonOptions: ModeButtonDefinition[]
   modeSettingDefinitions: ModeSetting[]
   modeSettingValues: ModeSettingValues
@@ -220,9 +229,24 @@ const AdvancedSettingsPanel = ({
           </GlobalSettingsContainer>
         </>
       )}
-      <Subheader>
-        <FormattedMessage id="components.BatchSearchScreen.modeOptions" />
-      </Subheader>
+      {mobilityProfile && (
+        <MobilityProfileContainer>
+          <Subheader invisible={false}>
+            <FormattedMessage id="components.MobilityProfile.MobilityPane.header" />
+          </Subheader>
+          <FormattedMessage
+            id="components.MobilityProfile.MobilityPane.planTripDescription"
+            values={{
+              manageLink: (linkText: string) => (
+                <span className="manage-link">
+                  <Link to="/account/settings">{linkText}</Link>
+                </span>
+              )
+            }}
+          />
+        </MobilityProfileContainer>
+      )}
+
       <AdvancedModeSubsettingsContainer
         accentColor={accentColor}
         fillModeIcons
@@ -274,6 +298,7 @@ const mapStateToProps = (state: AppReduxState) => {
       })?.modeButtons?.filter((mb): mb is string => mb !== null) ||
       modes?.initialState?.enabledModeButtons ||
       [],
+    mobilityProfile: state.otp.config?.mobilityProfile || false,
     modeButtonOptions: modes?.modeButtons || [],
     modeSettingDefinitions: state.otp?.modeSettingDefinitions || [],
     modeSettingValues,

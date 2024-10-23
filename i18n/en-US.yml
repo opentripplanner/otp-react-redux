@@ -337,6 +337,10 @@ components:
       header: Mobility Profile
       mobilityDevices: "Mobility devices: "
       mobilityLimitations: "Mobility limitations: "
+      planTripDescription: >-
+        If you have a travel companion, you can choose to plan this trip
+        according  to their mobility profile. To add travel companions, visit
+        your <manageLink>account settings</manageLink>.
       visionLimitations: "Vision limitations: "
     intro: >-
       Please answer a few questions to customize the trip planning experience to
