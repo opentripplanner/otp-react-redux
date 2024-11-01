@@ -26,10 +26,7 @@ const MobileDateTimeScreen = ({ setMobileScreen }: Props) => {
         showBackButton
       />
       <main tabIndex={-1}>
-        <div className="options-main-content mobile-padding">
-          <DateTimeModal />
-        </div>
-
+        <DateTimeModal />
         <div className="options-lower-tray mobile-padding">
           <PlanTripButton
             onClick={useCallback(

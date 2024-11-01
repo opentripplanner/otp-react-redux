@@ -44,6 +44,11 @@ export const Button = styled.button`
   ${buttonCss}
 `
 
+export const TripFormButtonContainer = styled.div`
+  display: flex;
+  gap: 2px;
+`
+
 export const PlanTripButton = styled(Button)`
   background-color: green;
   color: #ffffffdd;
@@ -89,15 +94,7 @@ export const ModeSelectorContainer = styled.div<{ squashed?: boolean }>`
 `
 
 export const MainSettingsRow = styled.div`
-  align-items: top;
   display: flex;
-  flex-flow: wrap;
-  gap: 10px 0;
-  justify-content: space-between;
-  margin-bottom: 5px;
-
-  label {
-    /* Cancel bottom margin of bootstrap labels in mode selector. */
-    margin-bottom: 0;
-  }
+  flex-direction: column;
+  gap: 10px;
 `

@@ -26,16 +26,6 @@
   z-index: 100;
 }
 
-/* Date-Time Modal */
-
-.otp .date-time-modal .button-row {
-  margin-bottom: 20px;
-}
-
-.otp .date-time-modal .button-row .selected {
-  background-color: #ccc;
-}
-
 /* Date/Time selectors */
 
 /* Remove up/down arrows on date/time input (to save on width) */
@@ -51,34 +41,6 @@
 
 .otp input[type="time"].datetime-slim::-webkit-inner-spin-button {
   -webkit-appearance: none;
-}
-
-.otp .date-time-selector .col-xs-4,
-.otp .date-time-selector .col-xs-6 {
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-.otp .date-time-selector .date-option-button {
-  width: 100%;
-  font-size: 14px;
-}
-
-.otp .date-time-selector .date-selector,
-.otp .date-time-selector .time-selector {
-  font-size: 16px;
-  width: 100%;
-  -webkit-appearance: textfield;
-  -moz-appearance: textfield;
-  appearance: textfield;
-  box-shadow: none;
-  text-align: center;
-}
-
-.otp.mobile .date-time-selector .date-selector,
-.otp.mobile .date-time-selector .time-selector {
-  font-size: 20px;
-  padding-bottom: 10px;
 }
 
 /* switch button */
@@ -186,6 +148,26 @@
   border: none;
   background: none;
   outline: none;
+}
+
+.otp .main-settings-row {
+  container-type: inline-size;
+  container-name: main-settings-row;
+  display: flex;
+}
+
+
+
+@container main-settings-row (max-width: 370px) {
+
+  .mode-selector-container {
+    justify-content: end !important;
+  }
+
+  .otp .metro-mode-selector {
+    display: none;
+  }
+
 }
 
 /* General settings */

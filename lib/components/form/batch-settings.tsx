@@ -25,7 +25,8 @@ import {
 import {
   MainSettingsRow,
   ModeSelectorContainer,
-  PlanTripButton
+  PlanTripButton,
+  TripFormButtonContainer
 } from './batch-styled'
 import AdvancedSettingsButton from './advanced-settings-button'
 import DateTimeModal from './date-time-modal'
@@ -70,9 +71,6 @@ function BatchSettings({
 }: Props) {
   const intl = useIntl()
 
-  // Whether the date/time selector is open
-  const [dateTimeOpen, setDateTimeOpen] = useState(false)
-
   // @ts-expect-error Context not typed
   const { ModeIcon } = useContext(ComponentContext)
 
@@ -89,7 +87,7 @@ function BatchSettings({
   const accentColor = getDarkenedBaseColor()
 
   return (
-    <MainSettingsRow>
+    <MainSettingsRow className="main-settings-row">
       <DateTimeModal />
       <ModeSelectorContainer squashed={!spacedOutModeSelector}>
         <MetroModeSelector
@@ -106,7 +104,7 @@ function BatchSettings({
             onSettingsUpdate(setQueryParam)
           )}
         />
-        <div>
+        <TripFormButtonContainer className="trip-form-buttons">
           <AdvancedSettingsButton onClick={openAdvancedSettings} />
           <PlanTripButton
             id="plan-trip"
@@ -125,7 +123,7 @@ function BatchSettings({
               )}
             </StyledIconWrapper>
           </PlanTripButton>
-        </div>
+        </TripFormButtonContainer>
       </ModeSelectorContainer>
     </MainSettingsRow>
   )

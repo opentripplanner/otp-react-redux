@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { DateTimeSelector } from '@opentripplanner/trip-form'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { useCallback } from 'react'
 
@@ -6,8 +7,6 @@ import * as formActions from '../../actions/form'
 import * as narrativeActions from '../../actions/narrative'
 import { AppConfig } from '../../util/config-types'
 import { AppReduxState, FilterType, SortType } from '../../util/state-types'
-
-import { StyledDateTimeSelector } from './styled'
 
 type Props = {
   config: AppConfig
@@ -66,26 +65,22 @@ function DateTimeModal({
     [setQueryParam, updateItineraryFilter, sort, syncSortWithDepartArrive]
   )
   return (
-    <div className="date-time-modal">
-      <div className="main-panel">
-        <StyledDateTimeSelector
-          className={`date-time-selector ${touchClassName}`}
-          date={date}
-          dateFormatLegacy={dateFormatLegacy}
-          departArrive={departArrive}
-          onQueryParamChange={setQueryParamMiddleware}
-          time={time}
-          // These props below are for legacy browsers
-          // that don't support `<input type="time|date">`.
-          // These props are not relevant in modern browsers,
-          // where `<input type="time|date">` already
-          // formats the time|date according to the OS settings.
-          // eslint-disable-next-line react/jsx-sort-props
-          timeFormatLegacy={timeFormatLegacy}
-          timeZone={homeTimezone}
-        />
-      </div>
-    </div>
+    <DateTimeSelector
+      className={`date-time-selector ${touchClassName}`}
+      date={date}
+      dateFormatLegacy={dateFormatLegacy}
+      departArrive={departArrive}
+      onQueryParamChange={setQueryParamMiddleware}
+      time={time}
+      // These props below are for legacy browsers
+      // that don't support `<input type="time|date">`.
+      // These props are not relevant in modern browsers,
+      // where `<input type="time|date">` already
+      // formats the time|date according to the OS settings.
+      // eslint-disable-next-line react/jsx-sort-props
+      timeFormatLegacy={timeFormatLegacy}
+      timeZone={homeTimezone}
+    />
   )
 }
 

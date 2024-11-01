@@ -92,19 +92,6 @@ const ReturnToTripPlanButton = styled.button`
 
 const DtSelectorContainer = styled.div`
   margin: 2em 0;
-
-  .date-time-modal {
-    padding: 0;
-    width: 100%;
-
-    .main-panel {
-      margin: 0;
-
-      button {
-        padding: 6px 0;
-      }
-    }
-  }
 `
 
 const AdvancedSettingsPanel = ({

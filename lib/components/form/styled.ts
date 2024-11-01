@@ -1,11 +1,11 @@
+import { Input, MenuItemLi } from '@opentripplanner/location-field/lib/styled'
+
 import { blue, grey } from '../util/colors'
+import { prefersReducedMotion } from '../util/prefersReducedMotion'
 import {
-  DateTimeSelector,
   SettingsSelectorPanel,
   Styled as TripFormClasses
 } from '@opentripplanner/trip-form'
-import { Input, MenuItemLi } from '@opentripplanner/location-field/lib/styled'
-import { prefersReducedMotion } from '../util/prefersReducedMotion'
 import LocationField from '@opentripplanner/location-field'
 import styled, { css } from 'styled-components'
 
@@ -189,8 +189,6 @@ export const StyledSettingsSelectorPanel = styled(SettingsSelectorPanel)`
     }
   }
 `
-
-export const StyledDateTimeSelector = styled(DateTimeSelector)``
 
 export const UnpaddedList = styled.ul`
   padding: 0;
