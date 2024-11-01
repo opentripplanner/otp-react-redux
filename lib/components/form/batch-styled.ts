@@ -66,7 +66,7 @@ export const PlanTripButton = styled(Button)`
   }
 `
 
-export const ModeSelectorContainer = styled.div<{ squashed?: boolean }>`
+export const ModeSelectorContainer = styled.div`
   align-items: flex-start;
   display: flex;
   float: right;
@@ -74,14 +74,7 @@ export const ModeSelectorContainer = styled.div<{ squashed?: boolean }>`
   width: 100%;
 
   ${PlanTripButton} {
-    border-bottom-left-radius: ${(props) => (props.squashed ? 0 : 'invalid')};
-    border-top-left-radius: ${(props) => (props.squashed ? 0 : 'invalid')};
     margin-top: 0px;
-    margin-left: ${(props) => (props.squashed ? 0 : '3px')};
-  }
-  label:last-of-type {
-    border-bottom-right-radius: ${(props) => (props.squashed ? 0 : 'invalid')};
-    border-top-right-radius: ${(props) => (props.squashed ? 0 : 'invalid')};
   }
   fieldset {
     gap: 0 2px;

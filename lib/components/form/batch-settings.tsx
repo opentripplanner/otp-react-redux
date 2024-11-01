@@ -42,7 +42,6 @@ type Props = {
   openAdvancedSettings: () => void
   routingQuery: any
   setQueryParam: (evt: any) => void
-  spacedOutModeSelector?: boolean
 }
 
 export function setModeButtonEnabled(enabledKeys: string[]) {
@@ -66,8 +65,7 @@ function BatchSettings({
   onPlanTripClick,
   openAdvancedSettings,
   routingQuery,
-  setQueryParam,
-  spacedOutModeSelector
+  setQueryParam
 }: Props) {
   const intl = useIntl()
 
@@ -89,7 +87,7 @@ function BatchSettings({
   return (
     <MainSettingsRow className="main-settings-row">
       <DateTimeModal />
-      <ModeSelectorContainer squashed={!spacedOutModeSelector}>
+      <ModeSelectorContainer>
         <MetroModeSelector
           accentColor={baseColor}
           activeHoverColor={accentColor.toHexString()}
@@ -145,8 +143,7 @@ const mapStateToProps = (state: any) => {
       modes?.initialState?.enabledModeButtons ||
       {},
     fillModeIcons: state.otp.config.itinerary?.fillModeIcons,
-    modeButtonOptions: modes?.modeButtons || [],
-    spacedOutModeSelector: modes?.spacedOut
+    modeButtonOptions: modes?.modeButtons || []
   }
 }
 
