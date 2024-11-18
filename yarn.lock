@@ -2698,8 +2698,8 @@
     flat "^5.0.2"
     react-animate-height "^3.0.4"
 
-"@opentripplanner/trip-form@file:../otp-ui/packages/trip-form":
-  version "4.0.0"
+"@opentripplanner/trip-form@../otp-ui/packages/trip-form":
+  version "4.1.0"
   dependencies:
     "@floating-ui/react" "^0.19.2"
     "@opentripplanner/building-blocks" "^2.0.0"
