@@ -15,8 +15,7 @@ export function getMobilityProfileOptions(intl: IntlShape): {
       value: 'None'
     },
     {
-      // This text will be displayed as is.
-      device: 'Some mobility limitations but not using an assistive device',
+      device: ['some limitations', 'none'],
       value: 'Some'
     },
     {
@@ -82,10 +81,10 @@ export function getMobilityProfileOptions(intl: IntlShape): {
             })
           : ''),
       value:
-        p.value === 'None' && vision.level
-          ? vision.value
-          : p.value !== 'None'
+        p.value !== 'None'
           ? p.value + (vision.level ? '-' + vision.value : '')
+          : vision.level
+          ? vision.value
           : 'None'
     }))
   )
