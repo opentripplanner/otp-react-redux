@@ -83,7 +83,15 @@ const HeaderContainer = styled.div`
 const InvisibleSubheader = styled.h2`
   ${invisibleCss}
 `
-
+const VisibleSubheader = styled.h2`
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  height: auto;
+  margin: 1em 0;
+  position: static;
+  width: auto;
+`
 const ReturnToTripPlanButton = styled.button`
   align-items: center;
   background-color: var(--main-base-color, ${blue[900]});
@@ -120,6 +128,10 @@ const DtSelectorContainer = styled.div`
       }
     }
   }
+`
+
+const MobilityProfileContainer = styled.div`
+  margin: 60px 0 60px 5px;
 `
 
 const AdvancedSettingsPanel = ({
@@ -264,23 +276,29 @@ const AdvancedSettingsPanel = ({
         </>
       )}
       {loggedInUser?.dependentsInfo?.length && (
-        <MobilityProfileSelector
-          name="forEmail"
-          options={[
-            {
-              text: intl.formatMessage({
-                id: 'components.MobilityProfile.myself'
-              }),
-              value: loggedInUser?.email
-            },
-            ...(loggedInUser?.dependentsInfo?.map((user) => ({
-              text: getDependentName(user),
-              value: user.email
-            })) || [])
-          ]}
-          setQueryParam={setQueryParam}
-          value={currentQuery.forEmail || loggedInUser?.email}
-        />
+        <MobilityProfileContainer>
+          <VisibleSubheader>
+            <FormattedMessage id="components.MobilityProfile.MobilityPane.header" />
+          </VisibleSubheader>
+          <FormattedMessage id="components.MobilityProfile.MobilityPane.planTripDescription" />
+          <MobilityProfileSelector
+            name="forEmail"
+            options={[
+              {
+                text: intl.formatMessage({
+                  id: 'components.MobilityProfile.myself'
+                }),
+                value: loggedInUser?.email
+              },
+              ...(loggedInUser?.dependentsInfo?.map((user) => ({
+                text: getDependentName(user),
+                value: user.email
+              })) || [])
+            ]}
+            setQueryParam={setQueryParam}
+            value={currentQuery.forEmail || loggedInUser?.email}
+          />
+        </MobilityProfileContainer>
       )}
 
       <AdvancedModeSubsettingsContainer

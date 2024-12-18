@@ -1,22 +1,8 @@
 import { DropdownSelector } from '@opentripplanner/trip-form'
-import { FormattedMessage, useIntl } from 'react-intl'
 import { QueryParamChangeEvent } from '@opentripplanner/trip-form/lib/types'
+import { useIntl } from 'react-intl'
 import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
-
-const VisibleSubheader = styled.h2`
-  display: block;
-  font-size: 18px;
-  font-weight: 700;
-  height: auto;
-  margin: 1em 0;
-  position: static;
-  width: auto;
-`
-
-const MobilityProfileContainer = styled.div`
-  margin: 60px 0 60px 5px;
-`
 
 const MobilityProfileDropdown = styled(DropdownSelector)`
   margin: 20px 0px;
@@ -56,21 +42,15 @@ const MobilityProfileSelector = ({
   )
 
   return (
-    <MobilityProfileContainer>
-      <VisibleSubheader>
-        <FormattedMessage id="components.MobilityProfile.MobilityPane.header" />
-      </VisibleSubheader>
-      <FormattedMessage id="components.MobilityProfile.MobilityPane.planTripDescription" />
-      <MobilityProfileDropdown
-        label={intl.formatMessage({
-          id: 'components.MobilityProfile.dropdownLabel'
-        })}
-        name={name}
-        onChange={onMobilityProfileChange}
-        options={options}
-        value={selectedProfile}
-      />
-    </MobilityProfileContainer>
+    <MobilityProfileDropdown
+      label={intl.formatMessage({
+        id: 'components.MobilityProfile.dropdownLabel'
+      })}
+      name={name}
+      onChange={onMobilityProfileChange}
+      options={options}
+      value={selectedProfile}
+    />
   )
 }
 
