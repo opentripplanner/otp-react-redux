@@ -1,7 +1,6 @@
 import {
   addSettingsToButton,
   AdvancedModeSubsettingsContainer,
-  DropdownSelector,
   ModeSettingRenderer,
   populateSettingWithValue
 } from '@opentripplanner/trip-form'
@@ -16,7 +15,6 @@ import {
   ModeSetting,
   ModeSettingValues
 } from '@opentripplanner/types'
-import { QueryParamChangeEvent } from '@opentripplanner/trip-form/lib/types'
 import React, {
   RefObject,
   useCallback,
@@ -35,6 +33,7 @@ import { ComponentContext } from '../../util/contexts'
 import { generateModeSettingValues } from '../../util/api'
 import { getDependentName } from '../../util/user'
 import { User } from '../user/types'
+import MobilityProfileSelector from '../user/mobility-profile/mobility-profile-selector'
 
 import {
   addCustomSettingLabels,
@@ -84,15 +83,7 @@ const HeaderContainer = styled.div`
 const InvisibleSubheader = styled.h2`
   ${invisibleCss}
 `
-const VisibleSubheader = styled.h2`
-  display: block;
-  font-size: 18px;
-  font-weight: 700;
-  height: auto;
-  margin: 1em 0;
-  position: static;
-  width: auto;
-`
+
 const ReturnToTripPlanButton = styled.button`
   align-items: center;
   background-color: var(--main-base-color, ${blue[900]});
@@ -131,17 +122,6 @@ const DtSelectorContainer = styled.div`
   }
 `
 
-const MobilityProfileContainer = styled.div`
-  margin: 60px 0 60px 5px;
-`
-
-const MobilityProfileDropdown = styled(DropdownSelector)`
-  margin: 20px 0px;
-  label {
-    padding-left: 0;
-  }
-`
-
 const AdvancedSettingsPanel = ({
   autoPlan,
   closeAdvancedSettings,
@@ -173,12 +153,10 @@ const AdvancedSettingsPanel = ({
   modeSettingValues: ModeSettingValues
   saveAndReturnButton?: boolean
   setCloseAdvancedSettingsWithDelay: () => void
-  setQueryParam: (evt: any) => void
+  setQueryParam: (args: Record<string, unknown>) => void
 }): JSX.Element => {
   const intl = useIntl()
   const [closingBySave, setClosingBySave] = useState(false)
-  const [selectedMobilityProfile, setSelectedMobilityProfile] =
-    useState<string>(currentQuery.forEmail || loggedInUser?.email)
   const dependents = useMemo(
     () => loggedInUser?.dependents || [],
     [loggedInUser]
@@ -257,16 +235,6 @@ const AdvancedSettingsPanel = ({
     closePanel()
   }, [closePanel, setCloseAdvancedSettingsWithDelay])
 
-  const onMobilityProfileChange = useCallback(
-    (evt: QueryParamChangeEvent) => {
-      const value = evt.forEmail
-      setSelectedMobilityProfile(value as string)
-      setQueryParam({
-        forEmail: value
-      })
-    },
-    [setSelectedMobilityProfile, setQueryParam]
-  )
   return (
     <PanelOverlay className="advanced-settings" ref={innerRef}>
       <HeaderContainer>
@@ -296,32 +264,23 @@ const AdvancedSettingsPanel = ({
         </>
       )}
       {loggedInUser?.dependentsInfo?.length && (
-        <MobilityProfileContainer>
-          <VisibleSubheader>
-            <FormattedMessage id="components.MobilityProfile.MobilityPane.header" />
-          </VisibleSubheader>
-          <FormattedMessage id="components.MobilityProfile.MobilityPane.planTripDescription" />
-          <MobilityProfileDropdown
-            label={intl.formatMessage({
-              id: 'components.MobilityProfile.dropdownLabel'
-            })}
-            name="forEmail"
-            onChange={onMobilityProfileChange}
-            options={[
-              {
-                text: intl.formatMessage({
-                  id: 'components.MobilityProfile.myself'
-                }),
-                value: loggedInUser?.email
-              },
-              ...(loggedInUser?.dependentsInfo?.map((user) => ({
-                text: getDependentName(user),
-                value: user.email
-              })) || [])
-            ]}
-            value={selectedMobilityProfile}
-          />
-        </MobilityProfileContainer>
+        <MobilityProfileSelector
+          name="forEmail"
+          options={[
+            {
+              text: intl.formatMessage({
+                id: 'components.MobilityProfile.myself'
+              }),
+              value: loggedInUser?.email
+            },
+            ...(loggedInUser?.dependentsInfo?.map((user) => ({
+              text: getDependentName(user),
+              value: user.email
+            })) || [])
+          ]}
+          setQueryParam={setQueryParam}
+          value={currentQuery.forEmail || loggedInUser?.email}
+        />
       )}
 
       <AdvancedModeSubsettingsContainer
