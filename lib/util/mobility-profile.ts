@@ -8,13 +8,15 @@ export function getMobilityProfileOptions(intl: IntlShape): {
   text: string
   value: string
 }[] {
-  // Where applicable, device and vision codes used below are from DevicePane > devices in the language files.
+  // Device and vision codes used below are from DevicePane > devices and
+  // LimitationsPane > visionLimitation in the language files.
   const rawProfiles = [
     {
       device: 'none',
       value: 'None'
     },
     {
+      // 'some limitations' is not technically a device, but we've added in there to build the mobility profile.
       device: ['some limitations', 'none'],
       value: 'Some'
     },
@@ -61,19 +63,13 @@ export function getMobilityProfileOptions(intl: IntlShape): {
   return rawProfiles.flatMap((p) =>
     visionLevels.map((vision) => ({
       text:
-        (typeof p.device === 'string'
-          ? intl.formatMessage({
-              id: `components.MobilityProfile.DevicesPane.devices.${p.device}`
+        (typeof p.device === 'string' ? [p.device] : p.device)
+          .map((device) =>
+            intl.formatMessage({
+              id: `components.MobilityProfile.DevicesPane.devices.${device}`
             })
-          : 'length' in p.device
-          ? p.device
-              .map((d) =>
-                intl.formatMessage({
-                  id: `components.MobilityProfile.DevicesPane.devices.${d}`
-                })
-              )
-              .join('/')
-          : '') +
+          )
+          .join('/') +
         (vision.level
           ? ' + ' +
             intl.formatMessage({
