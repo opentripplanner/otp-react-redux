@@ -15,7 +15,7 @@ const MobilityProfileSelector = ({
   name,
   options,
   setQueryParam,
-  value
+  value = 'None'
 }: {
   name: string
   options: {
@@ -26,9 +26,7 @@ const MobilityProfileSelector = ({
   value?: string
 }): JSX.Element => {
   const intl = useIntl()
-  const [selectedProfile, setSelectedProfile] = useState<string | undefined>(
-    value
-  )
+  const [selectedProfile, setSelectedProfile] = useState<string>(value)
 
   const onMobilityProfileChange = useCallback(
     (evt: QueryParamChangeEvent) => {
