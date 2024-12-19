@@ -13,16 +13,16 @@ const MobilityProfileDropdown = styled(DropdownSelector)`
 
 const MobilityProfileSelector = ({
   name,
+  onSettingsUpdate,
   options,
-  setQueryParam,
   value = 'None'
 }: {
   name: string
+  onSettingsUpdate: (args: Record<string, unknown>) => void
   options: {
     text: string
     value: string
   }[]
-  setQueryParam: (args: Record<string, unknown>) => void
   value?: string
 }): JSX.Element => {
   const intl = useIntl()
@@ -32,11 +32,9 @@ const MobilityProfileSelector = ({
     (evt: QueryParamChangeEvent) => {
       const value = evt[name]
       setSelectedProfile(value as string)
-      setQueryParam({
-        [name]: value
-      })
+      onSettingsUpdate({ [name]: value })
     },
-    [name, setSelectedProfile, setQueryParam]
+    [name, setSelectedProfile, onSettingsUpdate]
   )
 
   return (

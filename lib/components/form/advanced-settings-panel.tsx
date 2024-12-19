@@ -283,6 +283,7 @@ const AdvancedSettingsPanel = ({
           <FormattedMessage id="components.MobilityProfile.MobilityPane.planTripDescription" />
           <MobilityProfileSelector
             name="forEmail"
+            onSettingsUpdate={setQueryParam}
             options={[
               {
                 text: intl.formatMessage({
@@ -295,7 +296,6 @@ const AdvancedSettingsPanel = ({
                 value: user.email
               })) || [])
             ]}
-            setQueryParam={setQueryParam}
             value={currentQuery.forEmail || loggedInUser?.email}
           />
         </MobilityProfileContainer>
