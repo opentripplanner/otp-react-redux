@@ -1,7 +1,7 @@
 import { DropdownSelector } from '@opentripplanner/trip-form'
 import { QueryParamChangeEvent } from '@opentripplanner/trip-form/lib/types'
 import { useIntl } from 'react-intl'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components'
 
 const MobilityProfileDropdown = styled(DropdownSelector)`
@@ -15,7 +15,7 @@ const MobilityProfileSelector = ({
   name,
   onSettingsUpdate,
   options,
-  value = 'None'
+  value
 }: {
   name: string
   onSettingsUpdate: (args: Record<string, unknown>) => void
@@ -23,18 +23,16 @@ const MobilityProfileSelector = ({
     text: string
     value: string
   }[]
-  value?: string
+  value: string
 }): JSX.Element => {
   const intl = useIntl()
-  const [selectedProfile, setSelectedProfile] = useState<string>(value)
 
   const onMobilityProfileChange = useCallback(
     (evt: QueryParamChangeEvent) => {
-      const value = evt[name]
-      setSelectedProfile(value as string)
-      onSettingsUpdate({ [name]: value })
+      const paramValue = evt[name]
+      onSettingsUpdate({ [name]: paramValue })
     },
-    [name, setSelectedProfile, onSettingsUpdate]
+    [name, onSettingsUpdate]
   )
 
   return (
@@ -45,7 +43,7 @@ const MobilityProfileSelector = ({
       name={name}
       onChange={onMobilityProfileChange}
       options={options}
-      value={selectedProfile}
+      value={value}
     />
   )
 }

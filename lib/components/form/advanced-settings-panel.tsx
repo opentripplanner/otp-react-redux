@@ -283,6 +283,7 @@ const AdvancedSettingsPanel = ({
           <FormattedMessage id="components.MobilityProfile.MobilityPane.planTripDescription" />
           <MobilityProfileSelector
             name="forEmail"
+            // Don't use onSettingsUpdate, so that the dependent's mobility profile doesn't appear in the URL.
             onSettingsUpdate={setQueryParam}
             options={[
               {
