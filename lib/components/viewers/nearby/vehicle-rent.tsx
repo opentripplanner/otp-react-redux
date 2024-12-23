@@ -2,8 +2,8 @@ import { Bicycle } from '@styled-icons/fa-solid/Bicycle'
 import { Company } from '@opentripplanner/types'
 import { connect } from 'react-redux'
 // @ts-expect-error icons doesn't have typescript?
+import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
 import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
-import { IntlShape, useIntl } from 'react-intl'
 // @ts-expect-error icons doesn't have typescript?
 import { Micromobility } from '@opentripplanner/icons'
 import React, { Suspense } from 'react'
@@ -11,7 +11,7 @@ import React, { Suspense } from 'react'
 import { AppReduxState } from '../../../util/state-types'
 import { IconWithText } from '../../util/styledIcon'
 
-import { Card, CardBody, CardHeader, CardTitle } from './styled'
+import { Card, CardBody, CardFooter, CardHeader, CardTitle } from './styled'
 import DistanceDisplay from './distance-display'
 
 type VehicleFormFactor =
@@ -101,6 +101,7 @@ const Vehicle = ({
     vehicle.name === 'Default vehicle type'
       ? getVehicleText(formFactor, companyLabel, intl)
       : vehicle.name
+
   return (
     <Card>
       <CardHeader>
@@ -119,6 +120,21 @@ const Vehicle = ({
         )}
         {fromToSlot}
       </CardBody>
+      {vehicle.additionalCount > 0 && (
+        <CardFooter>
+          <FormattedMessage
+            defaultMessage="+{count} more {vehicleType} nearby"
+            id="components.NearbyView.additionalVehicles"
+            values={{
+              count: vehicle.additionalCount,
+              vehicleType:
+                formFactor === 'BICYCLE' || formFactor === 'CARGO_BICYCLE'
+                  ? intl.formatMessage({ id: 'common.bikes' })
+                  : intl.formatMessage({ id: 'common.scooters' })
+            }}
+          />
+        </CardFooter>
+      )}
     </Card>
   )
 }
