@@ -117,26 +117,6 @@ function getNearbyCoordsFromUrlOrLocationOrMapCenter(
   return null
 }
 
-const groupScootersByNetwork = (nearby: any[]) => {
-  return nearby.reduce<Record<string, { count: number; nearest: any }>>(
-    (acc, item) => {
-      if (item.place.__typename === 'RentalVehicle') {
-        const network = item.place.network
-        if (!acc[network]) {
-          acc[network] = {
-            count: 1,
-            nearest: item
-          }
-        } else {
-          acc[network].count++
-        }
-      }
-      return acc
-    },
-    {}
-  )
-}
-
 function NearbyView({
   currentPosition,
   currentServiceWeek,
@@ -256,14 +236,39 @@ function NearbyView({
     )
   )
 
-  // If configured, filter out stops that don't have any patterns
-  const filteredNearby = nearby?.filter((n: any) => {
-    if (n.place.__typename === 'Stop' && nearbyViewConfig?.hideEmptyStops) {
-      const patternArray = patternArrayforStops(n.place, routeSortComparator)
-      return !(patternArray?.length === 0)
+  const scooterGroups = nearby?.reduce((acc, item) => {
+    if (item.place.__typename === 'RentalVehicle') {
+      const network = item.place.network
+      if (!acc[network]) {
+        acc[network] = {
+          count: 1,
+          nearest: item
+        }
+      } else {
+        acc[network].count++
+      }
     }
-    return true
-  })
+    return acc
+  }, {})
+
+  // If configured, filter out stops that don't have any patterns
+  const filteredNearby = nearby
+    ?.filter((n: any) => {
+      if (n.place.__typename === 'Stop' && nearbyViewConfig?.hideEmptyStops) {
+        const patternArray = patternArrayforStops(n.place, routeSortComparator)
+        return !(patternArray?.length === 0)
+      }
+      return true
+    })
+    .filter((n: any) => {
+      if (
+        Object.keys(scooterGroups).length > 0 &&
+        n.place.__typename === 'RentalVehicle'
+      ) {
+        return scooterGroups[n.place?.network].nearest.id === n.id
+      }
+      return true
+    })
 
   const nearbyItemList =
     filteredNearby?.map &&
@@ -284,50 +289,15 @@ function NearbyView({
           /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
           tabIndex={0}
         >
-          {getNearbyItem({ ...n.place, distance: n.distance, nearbyRoutes })}
+          {getNearbyItem({
+            ...n.place,
+            additionalCount: scooterGroups?.[n.place?.network]?.count,
+            distance: n.distance,
+            nearbyRoutes
+          })}
         </div>
       </li>
     ))
-  nearby?.map &&
-    (() => {
-      const scooterGroups = groupScootersByNetwork(nearby)
-
-      return nearby.map((n: any) => {
-        // Skip additional scooters from the same network
-        if (n.place.__typename === 'RentalVehicle') {
-          const group = scooterGroups[n.place.network]
-          console.log(n, scooterGroups, n.id, group.nearest.id)
-          n.place.additionalCount = group.count - 1
-          // Only show the nearest scooter for each network
-          if (n.id !== group.nearest.id) return null
-        }
-
-        return (
-          <li
-            className={
-              (n.place.gtfsId ?? n.place.id) === entityId ? 'highlighted' : ''
-            }
-            key={n.place.id}
-          >
-            <div
-              className="nearby-view-card"
-              onBlur={onMouseLeave}
-              onFocus={() => onMouseEnter(n.place)}
-              onMouseEnter={() => onMouseEnter(n.place)}
-              onMouseLeave={onMouseLeave}
-              role="button"
-              tabIndex={0}
-            >
-              {getNearbyItem({
-                ...n.place,
-                distance: n.distance,
-                nearbyRoutes
-              })}
-            </div>
-          </li>
-        )
-      })
-    })()
 
   useEffect(() => {
     if (!staleData) {

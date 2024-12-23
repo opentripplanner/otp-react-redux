@@ -1,5 +1,6 @@
-import { DARK_TEXT_GREY, grey } from '../../util/colors'
 import styled from 'styled-components'
+
+import { DARK_TEXT_GREY, grey } from '../../util/colors'
 
 export const FloatingLoadingIndicator = styled.div`
   aspect-ratio: 1;
@@ -38,8 +39,6 @@ export const Card = styled.div`
   color: ${DARK_TEXT_GREY};
   display: flex;
   flex-direction: column;
-  position: relative;
-  height: 100%;
 
   &:hover {
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -87,7 +86,8 @@ export const CardAside = styled.p`
 
 export const CardBody = styled.div`
   margin-top: 1rem;
-  padding: 0rem 1.2rem 1rem;
+  margin-bottom: 1rem;
+  padding: 0rem 1.2rem;
 `
 
 export const StyledAlert = styled.div`
@@ -114,21 +114,25 @@ export const CardFooter = styled.div`
   background: rgba(0, 0, 0, 0.2);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  border-top-left-radius: -10px;
-  border-top-right-radius: -10px;
   color: ${grey[700]};
-  /*font-size: 14px; */
-  padding: 8px 12px;
-  position: relative;
+  font-size: 15px;
+  padding: 5px 12px;
+  margin-top: -6px;
+
+  span {
+    padding-top: 5px;
+    display: block;
+  }
 
   &::before {
-    display: block;
+    background: white;
+    border-radius: 10px;
     content: '';
-    width: 500%;
-    overflow-x: hidden; /* todo: cleaner way to get entire width */
-    height: 10px;
-    background: pink;
-    margin: -20px;
-    /* todo add border */
+    display: block;
+    height: 12px;
+    margin-left: -12px;
+    margin-top: -12px;
+    padding: 0;
+    width: calc(100% + 24px);
   }
 `

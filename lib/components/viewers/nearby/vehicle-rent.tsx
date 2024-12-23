@@ -122,17 +122,14 @@ const Vehicle = ({
       </CardBody>
       {vehicle.additionalCount > 0 && (
         <CardFooter>
-          <FormattedMessage
-            defaultMessage="+{count} more {vehicleType} nearby"
-            id="components.NearbyView.additionalVehicles"
-            values={{
-              count: vehicle.additionalCount,
-              vehicleType:
-                formFactor === 'BICYCLE' || formFactor === 'CARGO_BICYCLE'
-                  ? intl.formatMessage({ id: 'common.bikes' })
-                  : intl.formatMessage({ id: 'common.scooters' })
-            }}
-          />
+          <span>
+            <FormattedMessage
+              id="components.NearbyView.additionalVehicles"
+              values={{
+                count: vehicle.additionalCount
+              }}
+            />
+          </span>
         </CardFooter>
       )}
     </Card>
