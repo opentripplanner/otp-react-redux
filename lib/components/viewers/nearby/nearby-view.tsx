@@ -236,7 +236,7 @@ function NearbyView({
     )
   )
 
-  const scooterGroups = nearby?.reduce((acc, item) => {
+  const scooterGroups = nearby?.reduce((acc: any, item: any) => {
     if (item.place.__typename === 'RentalVehicle') {
       const network = item.place.network
       if (!acc[network]) {
