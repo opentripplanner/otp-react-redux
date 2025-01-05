@@ -81,6 +81,7 @@ export interface JourneyState {
 
 export type MonitoredTrip = Record<DaysOfWeek, boolean> & {
   arrivalVarianceMinutesThreshold: number
+  companion?: CompanionInfo
   departureVarianceMinutesThreshold: number
   excludeFederalHolidays?: boolean
   id: string
@@ -89,8 +90,11 @@ export type MonitoredTrip = Record<DaysOfWeek, boolean> & {
   itineraryExistence?: ItineraryExistence
   journeyState?: JourneyState
   leadTimeInMinutes: number
+  observers?: CompanionInfo[]
   otp2QueryParams: Record<string, unknown>
+  primary?: DependentInfo
   queryParams: Record<string, unknown>
+  secondary?: CompanionInfo
   tripName: string
   userId: string
 }
@@ -98,6 +102,7 @@ export type MonitoredTrip = Record<DaysOfWeek, boolean> & {
 export interface MonitoredTripProps {
   from?: Place
   handleTogglePauseMonitoring?: () => void
+  isReadOnly?: boolean
   monitoredTrip: MonitoredTrip
   pendingRequest?: boolean | string
   to?: Place

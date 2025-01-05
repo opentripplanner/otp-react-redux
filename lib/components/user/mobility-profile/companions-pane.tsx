@@ -7,6 +7,7 @@ import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
 
 import { CompanionInfo, User } from '../types'
+import { getUserWithEmail } from '../../../util/user'
 import { StyledIconWrapper } from '../../util/styledIcon'
 import { UnstyledButton } from '../../util/unstyled-button'
 import AddEmailForm from '../common/add-email-form'
@@ -57,7 +58,7 @@ const CompanionRow = ({
       window.confirm(
         intl.formatMessage(
           { id: 'components.CompanionsPane.confirmDeleteCompanion' },
-          { email: email }
+          { email }
         )
       )
     ) {
@@ -127,7 +128,7 @@ const CompanionsPane = ({
   const handleAddNewEmail = useCallback(
     async ({ newEmail }, { resetForm }) => {
       // Submit the new email if it is not already listed
-      if (!companions.find((comp) => comp.email === newEmail)) {
+      if (!getUserWithEmail(companions, newEmail)) {
         await updateCompanions([
           ...companions,
           {

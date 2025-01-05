@@ -358,8 +358,7 @@ components:
       mobilityLimitations: "Handicaps moteurs : "
       planTripDescription: >-
         Vous pouvez rechercher des trajets adaptés au profil mobilité des
-        personnes que vous accompagnez. Pour ajouter des personnes
-        accompagnatrices, allez dans <manageLink>Préférences</manageLink>.
+        personnes que vous accompagnez.
       visionLimitations: "Handicaps visuels : "
     dropdownLabel: "Profil à utiliser :"
     intro: >-
@@ -555,6 +554,9 @@ components:
   SavedTripEditor:
     deleteSavedTrip: Supprimer ce trajet
     editSavedTrip: Modifier un trajet enregistré
+    readOnlyBanner: >-
+      {creator} a créé et vous a ajouté sur ce trajet. Vous ne pouvez donc pas
+      faire de modifications.
     saveNewTrip: Enregistrer un nouveau trajet
     travelCompanions: Accompagnateurs
     tripInformation: Informations sur le trajet
@@ -672,6 +674,10 @@ components:
     unsavedChangesNewTrip: >-
       Vous n'avez pas encore enregistré votre nouveau trajet. Si vous annulez,
       ce trajet sera perdu.
+  TripCompanionsPane:
+    companionLabel: "Accompagnateurs sur ce trajet :"
+    observersLabel: "Observateurs suivant ce trajet :"
+    primaryLabel: "Voyageur principal : "
   TripNotificationsPane:
     advancedSettings: Paramètres avancés
     altRouteRecommended: Un·e autre trajet ou correspondance est conseillé·e

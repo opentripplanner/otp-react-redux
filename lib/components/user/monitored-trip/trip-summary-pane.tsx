@@ -114,6 +114,7 @@ const ToggleNotificationButton = styled.button`
 const TripSummaryPane = ({
   from,
   handleTogglePauseMonitoring,
+  isReadOnly,
   monitoredTrip,
   pendingRequest,
   to
@@ -224,20 +225,24 @@ const TripSummaryPane = ({
                     values={{ leadTimeInMinutes }}
                   />
                 )}
-                <br />
-                <ToggleNotificationButton
-                  disabled={pendingRequest === 'pause'}
-                  onClick={testHandle}
-                >
-                  {pendingRequest === 'pause' ? (
-                    /* Make loader fit */
-                    <InlineLoading />
-                  ) : monitoredTrip.isActive ? (
-                    <FormattedMessage id="components.SavedTripList.pause" />
-                  ) : (
-                    <FormattedMessage id="components.SavedTripList.resume" />
-                  )}
-                </ToggleNotificationButton>
+                {!isReadOnly && (
+                  <>
+                    <br />
+                    <ToggleNotificationButton
+                      disabled={pendingRequest === 'pause'}
+                      onClick={testHandle}
+                    >
+                      {pendingRequest === 'pause' ? (
+                        /* Make loader fit */
+                        <InlineLoading />
+                      ) : monitoredTrip.isActive ? (
+                        <FormattedMessage id="components.SavedTripList.pause" />
+                      ) : (
+                        <FormattedMessage id="components.SavedTripList.resume" />
+                      )}
+                    </ToggleNotificationButton>
+                  </>
+                )}
               </span>
             </TripDetailWithIcon>
           </TripDetailsList>

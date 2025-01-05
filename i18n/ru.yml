@@ -22,6 +22,16 @@ actions:
       результатов
     saveItinerariesError: "Не удалось сохранить маршруты: {err}"
     setDateError: "Ошибка введения данных:"
+    addNoteError: 'Ошибка добавления заметки о поездке:'
+    confirmOverwriteItineraries: "This action will overwrite a previously planned
+      {outbound, select,\n    true {outbound}\n    other {inbound}\n  } itinerary
+      for this request. Do you wish to continue?\n"
+    deleteItinerariesError: 'Ошибка удаления плана поездки:'
+    deleteNoteError: 'Ошибка удаления заметки о поездке:'
+    editSubmitterNotesError: 'Ошибка редактирования заметок отправителя:'
+    setGroupSizeError: 'Ошибка указания размера группы:'
+    setPaymentError: 'Ошибка указания информации об оплате:'
+    setRequestStatusError: 'Ошибка указания состояния запроса:'
   location:
     deniedAccessAlert: >
       Доступ к вашему местоположению заблокирован.
@@ -107,6 +117,7 @@ common:
     relativeCo2: >
       {co2} {isMore, select, true {больше } other {меньше} } CO₂, чем при
       вождении в одиночку
+    timeStartEnd: '{start} – {end}'
   linkOpensNewWindow: (Открывает новое окно)
   modes:
     bicycle_rent: Прокат велосипедов
@@ -190,6 +201,12 @@ components:
   BatchSearchScreen:
     header: Запланируйте поездку
     modeSelectorLabel: Выбрать способ передвижения
+    submodeSelectorLabel: Выбор режимов и подрежимов путешествия
+    tripOptions: Варианты поездок
+    advancedHeader: Дополнительные настройки
+    moreOptions: Другие варианты
+    saveAndReturn: Сохранить и вернуться
+    saved: Сохранено
   BatchSettings:
     destination: место назначения
     invalidModeSelection: >-
@@ -267,6 +284,7 @@ components:
     shared-vehicles: Общие транспортные средства
     stops: Остановки общественного транспорта
     streets: Улицы
+    stations: Транзитные станции
   MapillaryFrame:
     title: Изображения с улицы
   MetroUI:
@@ -278,6 +296,7 @@ components:
     originallyScheduledTime: (изначально {originalTime})
     singleModeItineraryDescription: "{time} {mode} маршрут"
     timeWalking: "{time} пешком"
+    itinerarySummary: из {stopName} | {cost}
   MobileOptions:
     header: Задать параметры поиска
   NarrativeItinerariesHeader:
@@ -324,6 +343,8 @@ components:
     nearbyListIntro: Список {count} ближайших объектов.
     nothingNearby: Поблизости нет мест.
     spacesAvailable: "{spacesAvailable} есть свободные места"
+    distanceAway: На расстоянии {localizedDistanceString}
+    headsign: '{destination}'
   NewAccountWizard:
     createNewAccount: Создайте учетную запись
     finish: Настройка учетной записи завершена!
@@ -403,6 +424,8 @@ components:
       текстовое сообщение с кодом подтверждения. Затем введите код ниже (срок действия
       кода: 10 минут).\n"
     verify: Подтвердить
+    verifySms: Чтобы настроить отправку уведомлений с помощью SMS-сообщений, пройдите
+      процедуру верификации.
   Place:
     deleteThisPlace: Удалить это место
     enterAlert: >
@@ -483,6 +506,8 @@ components:
     tripNotFound: Поездка не найдена
     tripNotFoundDescription: Не удалось найти требуемую поездку.
     tripNotifications: Уведомления о поездке
+    deleteSavedTrip: Удалить сохраненную поездку
+    travelCompanions: Попутчики
   SavedTripList:
     fromTo: Из {from} в {to}
     myTrips: Мои поездки
@@ -490,6 +515,7 @@ components:
     noSavedTripsInstructions: Сперва выполните поиск поездок на карте.
     pause: Приостановить
     resume: Возобновить
+    alertTag: '{alert, plural, one {View one alert} other {View # alerts}}'
   SavedTripScreen:
     itineraryLoaded: Маршрут загружен
     itineraryLoading: Загрузка маршрута
@@ -499,6 +525,7 @@ components:
     tripNameAlreadyUsed: У вас уже сохранена поездка с таким именем. Укажите другое
       имя.
     tripNameRequired: Укажите имя поездки.
+    selectAtLeastOneDay: Для просмотра выберите хотя бы один день.
   SequentialPaneDisplay:
     stepNumber: Шаг {шаг} из {общее кол-во}
   SessionTimeout:
@@ -584,6 +611,8 @@ components:
       будут утеряны.
     unsavedChangesNewTrip: Вы не сохранили новую поездку. Если вы выйдете, она будет
       удалена.
+    recurringEachWeek: В определенные дни каждой недели
+    onlyOnDate: Только {date, date, ::eeeee yyyyMMdd}
   TripNotificationsPane:
     advancedSettings: Расширенные настройки
     altRouteRecommended: Рекомендуется использовать пересадку или альтернативный маршрут
@@ -656,6 +685,9 @@ components:
       tripStartsSoonNoUpdates: Поездка скоро начнется (обновления в реальном времени
         недоступны).
       tripStartsSoonOnTime: Поездка скоро начнется. Без задержек.
+    past:
+      description: Это одноразовая поездка, которая состоялась в прошлом.
+      heading: Поездка в прошлом
   TripSummary:
     arriveAt: "Прибытие в "
     leaveAt: "Оставить "
@@ -664,6 +696,8 @@ components:
     notifications: за <strong>{leadTimeInMinutes} мин до запланированного времени
       отправления
     notificationsDisabled: "Уведомления: отключены"
+    timeAndDuration: Время и продолжительность поездки
+    monitoredTripDays: Дни наблюдения за поездками
   TripTools:
     copyLink: Скопировать ссылку
     header: Инструменты маршрута
@@ -738,6 +772,54 @@ components:
     switcher: Переключатель
   WelcomeScreen:
     prompt: Куда вы хотите отправиться?
+  MobilityProfile:
+    DevicesPane:
+      prompt: Вы регулярно пользуетесь вспомогательным устройством для передвижения?
+        (Отметьте все подходящие варианты.)
+      devices:
+        electric wheelchair: Кресло-коляска с электроприводом
+        stroller: Коляска
+        wheeled walker: Ходунки на колесах
+        crutches: Костыли
+        manual walker: Ручные ходунки
+        white cane: Трость для слепых
+        cane: Трость
+        manual wheelchair: Кресло-коляска с ручным управлением/обычное кресло-коляска
+        mobility scooter: Электроскутер для маломобильных людей
+        none: Без вспомогательного устройства
+        service animal: Служебное животное
+    title: Определите ваш профиль мобильности
+    LimitationsPane:
+      visionLimitations:
+        legally-blind: Официально признанный слепым
+        low-vision: Слабовидящий
+        none: Ничего
+      visionPrompt: Есть ли у вас проблемы со зрением?
+      mobilityPrompt: Есть ли у вас проблемы с передвижением, из-за которых вам приходится
+        ходить медленнее или осторожнее, чем другим людям?
+    MobilityPane:
+      mobilityLimitations: 'Ограничения подвижности: '
+      visionLimitations: 'Проблемы со зрением: '
+      header: Профиль мобильности
+      mobilityDevices: 'Устройства для передвижения: '
+      button: Отредактируйте ваш профиль мобильности
+    intro: Ответьте на несколько вопросов, чтобы спланировать поездку в соответствии
+      с вашими потребностями и предпочтениями.
+  CompanionsPane:
+    addNewCompanion: Добавить нового попутчика
+    confirmDeleteCompanion: Удалить попутчика {email}?
+    deleteCompanion: Удалить {email}
+    companionAlreadyAdded: У вас уже есть попутчик с адресом электронной почты {email}.
+    companionExplanation: "Invite an exiting G-MAP user to be a travel companion by
+      entering their email. When they accept, their status will change to \"verified\"\
+      , and you can share your trip status and plan trips based on one another's mobility
+      profile.\n"
+    currentCompanionsLabel: 'Нынешние попутчики:'
+    noCompanions: У вас нет попутчиков.
+    submitNewCompanion: Отправить приглашение
+    title: Попутчики
+  TripPreviewLayout:
+    previewTrip: Предварительный просмотр поездки
 config:
   accessModes:
     bicycle: "Общественный транспорт + личный велосипед"

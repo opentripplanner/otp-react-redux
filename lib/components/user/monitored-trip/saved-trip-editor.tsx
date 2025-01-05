@@ -15,6 +15,7 @@ import TripNotFound from './trip-not-found'
 interface Props {
   hasMobilityProfile: boolean
   isCreating: boolean
+  isReadOnly: boolean
   onCancel: () => void
   panes: Record<string, ComponentType>
   values: MonitoredTrip
@@ -33,6 +34,10 @@ const SavedTripEditor = (props: Props): JSX.Element => {
 
   if (monitoredTrip) {
     const paneSequence: PaneAttributes[] = [
+      {
+        pane: panes.readOnlyAlert,
+        props
+      },
       {
         pane: panes.basics,
         props,
@@ -60,7 +65,9 @@ const SavedTripEditor = (props: Props): JSX.Element => {
       })
     }
 
-    const title = isCreating
+    const title = props.isReadOnly
+      ? intl.formatMessage({ id: 'otpUi.TripDetails.title' })
+      : isCreating
       ? intl.formatMessage({ id: 'components.SavedTripEditor.saveNewTrip' })
       : intl.formatMessage({ id: 'components.SavedTripEditor.editSavedTrip' })
 
@@ -78,6 +85,7 @@ const SavedTripEditor = (props: Props): JSX.Element => {
               ? { content: <DeleteForm tripId={monitoredTrip.id} /> }
               : undefined
           }
+          isReadOnly={props.isReadOnly}
           onCancel={onCancel}
           panes={paneSequence}
           title={title}

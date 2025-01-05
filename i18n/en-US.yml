@@ -534,6 +534,9 @@ components:
   SavedTripEditor:
     deleteSavedTrip: Delete saved trip
     editSavedTrip: Edit saved trip
+    readOnlyBanner: >-
+      {creator} created and added you to this trip. Therefore, you cannot make
+      changes.
     saveNewTrip: Save new trip
     travelCompanions: Travel companions
     tripInformation: Trip information
@@ -640,6 +643,10 @@ components:
     tripNotAvailableOnDay: Trip not available on {repeatedDay}
     unsavedChangesExistingTrip: You haven't saved your trip yet. If you leave, changes will be lost.
     unsavedChangesNewTrip: You haven't saved your new trip yet. If you leave, it will be lost.
+  TripCompanionsPane:
+    companionLabel: "Companion on this trip:"
+    observersLabel: "Observers watching this trip:"
+    primaryLabel: "Primary traveler: "
   TripNotificationsPane:
     advancedSettings: Advanced settings
     altRouteRecommended: An alternative route or transfer point is recommended

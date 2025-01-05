@@ -120,6 +120,7 @@ common:
     noItineraryToDisplay: Không có hành trình để hiển thị.
     relativeCo2: |
       {co2} CO₂ {isMore, select, true {nhiều} other {ít} } hơn so với xe hơi
+    timeStartEnd: '{start} – {end}'
   linkOpensNewWindow: (Mở khoảng thời gian mới)
   modes:
     bicycle_rent: Chia sẻ xe đạp
@@ -203,6 +204,12 @@ components:
   BatchSearchScreen:
     header: Kế hoạch chuyến đi
     modeSelectorLabel: Chọn phương thức di chuyển
+    advancedHeader: Tùy Chọn Nâng Cao
+    moreOptions: Tùy chọn khác
+    saveAndReturn: Lưu và quay lại
+    saved: Đã lưu
+    submodeSelectorLabel: Chọn phương thức di chuyển và phương thức phụ
+    tripOptions: Tùy Chọn Chuyến Đi
   BatchSettings:
     destination: điểm đến
     invalidModeSelection: >-
@@ -283,6 +290,7 @@ components:
     shared-vehicles: Phương Tiện Đi Chung
     stops: Điểm dừng của phương tiện công cộng
     streets: Đường phố
+    stations: Trạm Trung Chuyển
   MapillaryFrame:
     title: Hình ảnh đường phố
   MetroUI:
@@ -294,6 +302,7 @@ components:
     originallyScheduledTime: (ban đầu là {originalTime})
     singleModeItineraryDescription: Hành trình {mode} kéo dài {time}
     timeWalking: "{time} đi bộ"
+    itinerarySummary: từ {stopName} | {cost}
   MobileOptions:
     header: Cài đặt tùy chọn tìm kiếm
   NarrativeItinerariesHeader:
@@ -328,6 +337,8 @@ components:
     nearbyListIntro: Danh sách {count} thực thể lân cận.
     nothingNearby: Không có nơi nào gần đây.
     spacesAvailable: "{spacesAvailable} chỗ trống có sẵn"
+    distanceAway: cách {localizedDistanceString}
+    headsign: '{destination}'
   NewAccountWizard:
     createNewAccount: Tạo tài khoản mới
     finish: Hoàn tất việc thiết lập tài khoản!
@@ -412,6 +423,7 @@ components:
       thấy tin nhắn với mã xác minh và nhập mã bên dưới (mã hết hạn sau 10
       phút).
     verify: Kiểm chứng
+    verifySms: Vui lòng hoàn tất quy trình xác minh để thiết lập thông báo qua SMS.
   Place:
     deleteThisPlace: Xóa nơi này
     enterAlert: >
@@ -489,6 +501,8 @@ components:
     tripNotFound: Không tìm thấy chuyến đi
     tripNotFoundDescription: Xin lỗi, không tìm thấy chuyến đi được yêu cầu.
     tripNotifications: Thông báo chuyến đi
+    travelCompanions: Người đồng hành đi lại
+    deleteSavedTrip: Xóa chuyến đi đã lưu
   SavedTripList:
     fromTo: Từ {from} đến {to}
     myTrips: Chuyến đi của tôi
@@ -496,6 +510,7 @@ components:
     noSavedTripsInstructions: Trước tiên, thực hiện tìm kiếm chuyến đi từ bản đồ.
     pause: Tạm ngừng
     resume: Tiếp tục
+    alertTag: '{alert, plural, one {View one alert} other {View # alerts}}'
   SavedTripScreen:
     itineraryLoaded: Đã tải hành trình
     itineraryLoading: Đang tải hành trình
@@ -506,6 +521,7 @@ components:
       Một chuyến đi được lưu khác đã sử dụng tên này. Vui lòng chọn một tên
       khác.
     tripNameRequired: Vui lòng nhập tên chuyến đi.
+    selectAtLeastOneDay: Vui lòng chọn ít nhất một ngày để theo dõi.
   SequentialPaneDisplay:
     stepNumber: Bước {step} trên {total}
   SessionTimeout:
@@ -595,6 +611,8 @@ components:
       thay đổi sẽ bị mất.
     unsavedChangesNewTrip: Bạn chưa lưu chuyến đi mới của mình. Nếu bạn rời đi, nó
       sẽ bị mất.
+    recurringEachWeek: Vào những ngày nhất định trong tuần
+    onlyOnDate: Chỉ vào {date, date, ::eeeee yyyyMMdd}
   TripNotificationsPane:
     advancedSettings: Cài đặt nâng cao
     altRouteRecommended: Một tuyến đường hoặc điểm trung chuyển thay thế được khuyến
@@ -668,6 +686,9 @@ components:
       tripStartsSoonNoUpdates: Chuyến đi đang bắt đầu sớm (không có cập nhật về thời
         gian thực).
       tripStartsSoonOnTime: Chuyến đi đang bắt đầu sớm và sắp đúng giờ.
+    past:
+      description: Đây là chuyến đi một lần đã diễn ra trong quá khứ.
+      heading: Chuyến đi trong quá khứ
   TripSummary:
     arriveAt: "Đến nơi "
     leaveAt: "Rời đi lúc "
@@ -675,6 +696,8 @@ components:
     happensOnDays: "Xảy ra vào: {days}"
     notifications: "{leadTimeInMinutes} phút trước khi khởi hành theo lịch trình"
     notificationsDisabled: Thông báo đã tắt
+    timeAndDuration: Thời gian và thời lượng chuyến đi
+    monitoredTripDays: Số ngày theo dõi chuyến đi
   TripTools:
     copyLink: Sao chép URL
     header: Công cụ
@@ -751,6 +774,50 @@ components:
     switcher: Nút bật tắt
   WelcomeScreen:
     prompt: Bạn muốn đi đâu?
+  MobilityProfile:
+    DevicesPane:
+      devices:
+        electric wheelchair: Xe lăn điện
+        stroller: Xe đẩy trẻ em
+        manual wheelchair: Xe lăn thủ công/truyền thống
+        cane: Gậy chống
+        crutches: Nạng
+        manual walker: Khung tập đi
+        service animal: Động vật hỗ trợ
+        mobility scooter: Xe điện ba/bốn bánh
+        none: Không có thiết bị hỗ trợ
+        wheeled walker: Khung tập đi có bánh xe
+        white cane: Gậy cho người khiếm thị
+      prompt: Quý vị có thường xuyên sử dụng thiết bị hỗ trợ di chuyển không? (Chọn
+        tất cả câu trả lời phù hợp)
+    LimitationsPane:
+      visionLimitations:
+        none: Không có
+        low-vision: Thị lực kém
+        legally-blind: Mù theo quy định pháp luật
+      mobilityPrompt: Quý vị có gặp phải hạn chế nào về khả năng vận động khiến quý
+        vị đi chậm hơn hoặc cẩn thận hơn những người khác không?
+      visionPrompt: Quý vị có gặp phải hạn chế nào về thị lực không?
+    MobilityPane:
+      button: Chỉnh sửa hồ sơ vận động của quý vị
+      header: Hồ Sơ Vận Động
+      mobilityLimitations: 'Hạn chế về khả năng vận động: '
+      mobilityDevices: 'Thiết bị di chuyển: '
+      visionLimitations: 'Hạn chế về thị lực: '
+    title: Xác Định Hồ Sơ Vận Động của Quý Vị
+    intro: Vui lòng trả lời một số câu hỏi để tùy chỉnh trải nghiệm lập kế hoạch chuyến
+      đi theo nhu cầu và tùy chọn của quý vị.
+  CompanionsPane:
+    confirmDeleteCompanion: Quý vị có muốn xóa người đồng hành {email} không?
+    currentCompanionsLabel: 'Người đồng hành đi lại hiện tại:'
+    deleteCompanion: Xóa {email}
+    noCompanions: Quý vị hiện không có người đồng hành đi lại nào.
+    submitNewCompanion: Gửi lời mời
+    title: Người đồng hành đi lại
+    addNewCompanion: Thêm người đồng hành đi lại mới
+    companionAlreadyAdded: Quý vị đã có bạn đồng hành có email {email}
+  TripPreviewLayout:
+    previewTrip: Xem Trước Chuyến Đi
 config:
   accessModes:
     bicycle: Giao thông công cộng + Xe đạp cá nhân

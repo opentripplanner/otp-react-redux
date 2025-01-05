@@ -209,7 +209,6 @@ components:
     tripOptions: Opciones de ruta
     submodeSelectorLabel: Seleccionar modos y submodos de desplazamiento
     advancedHeader: Ajustes avanzados
-    modeOptions: Más opciones
   BatchSettings:
     destination: destino
     invalidModeSelection: >-
@@ -541,6 +540,7 @@ components:
     tripNotFound: No se encontró el viaje
     tripNotFoundDescription: Lo sentimos, no se encontró el viaje solicitado.
     tripNotifications: Notificaciones de viaje
+    travelCompanions: Acompañantes de viaje
   SavedTripList:
     alertTag: "{alerta, plural, one {Ver una alerta} other {Ver # alertas}}"
     fromTo: De {from} al {to}
@@ -820,6 +820,19 @@ components:
     prompt: ¿A donde quiere ir?
   TripPreviewLayout:
     previewTrip: Vista previa del viaje
+  CompanionsPane:
+    companionAlreadyAdded: Ya tienes un compañero con correo electrónico {email}
+    addNewCompanion: Añadir un nuevo compañero de viaje
+    confirmDeleteCompanion: ¿Desea eliminar al compañero {email}?
+    currentCompanionsLabel: 'Compañeros de viaje actuales:'
+    title: Acompañantes de viaje
+    submitNewCompanion: Enviar invitación
+    companionExplanation: "Invite a un usuario de G-MAP a ser compañero de viaje introduciendo
+      su correo electrónico. Cuando acepte, su estado cambiará a \"verificado\", y
+      podréis compartir vuestro estado de viaje y planificar viajes basándoos en el
+      perfil de movilidad del otro.\n"
+    deleteCompanion: Borrar {email}
+    noCompanions: No tiene compañeros de viaje.
 config:
   accessModes:
     bicycle: Tránsito + Bicicleta Personal

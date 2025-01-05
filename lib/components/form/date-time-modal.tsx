@@ -32,6 +32,15 @@ export const DepartArriveTypeMap: Record<
   NOW: 'DURATION'
 }
 
+export const DepartArriveDefaultSortDirectionMap: Record<
+  DepartArriveValue,
+  FilterType['sort']['direction']
+> = {
+  ARRIVE: 'ASC',
+  DEPART: 'DESC',
+  NOW: 'DESC'
+}
+
 function DateTimeModal({
   config,
   date,
@@ -57,6 +66,10 @@ function DateTimeModal({
         updateItineraryFilter({
           sort: {
             ...sort,
+            direction:
+              DepartArriveDefaultSortDirectionMap[
+                params.departArrive as DepartArriveValue
+              ] || sort.direction,
             type: DepartArriveTypeMap[params.departArrive as DepartArriveValue]
           }
         })

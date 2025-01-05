@@ -33,8 +33,8 @@ import { AppReduxState } from '../../util/state-types'
 import { blue, getBaseColor } from '../util/colors'
 import { ComponentContext } from '../../util/contexts'
 import { generateModeSettingValues } from '../../util/api'
+import { getDependentName } from '../../util/user'
 import { User } from '../user/types'
-import Link from '../util/link'
 
 import {
   addCustomSettingLabels,
@@ -178,11 +178,7 @@ const AdvancedSettingsPanel = ({
   const intl = useIntl()
   const [closingBySave, setClosingBySave] = useState(false)
   const [selectedMobilityProfile, setSelectedMobilityProfile] =
-    useState<string>(
-      currentQuery.mobilityProfile ||
-        loggedInUser?.mobilityProfile?.mobilityMode ||
-        ''
-    )
+    useState<string>(currentQuery.forEmail || loggedInUser?.email)
   const dependents = useMemo(
     () => loggedInUser?.dependents || [],
     [loggedInUser]
@@ -263,10 +259,10 @@ const AdvancedSettingsPanel = ({
 
   const onMobilityProfileChange = useCallback(
     (evt: QueryParamChangeEvent) => {
-      const value = evt.mobilityProfile
+      const value = evt.forEmail
       setSelectedMobilityProfile(value as string)
       setQueryParam({
-        mobilityProfile: value
+        forEmail: value
       })
     },
     [setSelectedMobilityProfile, setQueryParam]
@@ -309,18 +305,18 @@ const AdvancedSettingsPanel = ({
             label={intl.formatMessage({
               id: 'components.MobilityProfile.dropdownLabel'
             })}
-            name="mobilityProfile"
+            name="forEmail"
             onChange={onMobilityProfileChange}
             options={[
               {
                 text: intl.formatMessage({
                   id: 'components.MobilityProfile.myself'
                 }),
-                value: loggedInUser.mobilityProfile?.mobilityMode || ''
+                value: loggedInUser?.email
               },
-              ...(loggedInUser.dependentsInfo?.map((user) => ({
-                text: user.name || user.email,
-                value: user.mobilityMode || ''
+              ...(loggedInUser?.dependentsInfo?.map((user) => ({
+                text: getDependentName(user),
+                value: user.email
               })) || [])
             ]}
             value={selectedMobilityProfile}
