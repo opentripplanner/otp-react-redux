@@ -249,7 +249,8 @@ class RouteDetails extends Component<Props> {
 }
 
 const mapStateToProps = (state: any) => {
-  const { sortRoutePatternsByVehicleCount } = state.otp.config.routeViewer
+  const sortRoutePatternsByVehicleCount =
+    state.otp?.config?.routeViewer?.sortRoutePatternsByVehicleCount
 
   return {
     sortPatternsByVehicleCount: sortRoutePatternsByVehicleCount !== false
