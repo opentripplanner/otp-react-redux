@@ -100,8 +100,8 @@ exports[`components > viewers > stop viewer should render with initial stop id a
           }
         >
           <StopScheduleViewer
-            calendarMax="2025-12-31"
-            calendarMin="2024-01-01"
+            calendarMax="2026-12-31"
+            calendarMin="2025-01-01"
             findStopTimesForStop={[Function]}
             homeTimezone="America/Los_Angeles"
             intl={
