@@ -36,8 +36,6 @@ const ConnectedEndpointsOverlay = ({
     [forgetPlace, intl]
   )
 
-  const { fromLocation, toLocation } = otherProps
-
   const _rememberPlace = useCallback(
     async (placeTypeLocation) => {
       const result = await rememberPlace(placeTypeLocation, intl)
@@ -52,12 +50,7 @@ const ConnectedEndpointsOverlay = ({
       {...otherProps}
       forgetPlace={_forgetPlace}
       rememberPlace={_rememberPlace}
-      viewNearbyDestination={() => {
-        toLocation && setViewedStop(toLocation)
-      }}
-      viewNearbyOrigin={() => {
-        fromLocation && setViewedStop(fromLocation)
-      }}
+      setViewNearby={setViewedStop}
     />
   )
 }
