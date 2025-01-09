@@ -1,4 +1,4 @@
-import { Calendar } from '@styled-icons/fa-regular'
+import { Calendar } from '@styled-icons/fa-regular/Calendar'
 import { format, utcToZonedTime } from 'date-fns-tz'
 import { FormattedMessage } from 'react-intl'
 import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'

@@ -1,4 +1,7 @@
-import { Bell, BellSlash, Calendar, Clock } from '@styled-icons/fa-regular'
+import { Bell } from '@styled-icons/fa-regular/Bell'
+import { BellSlash } from '@styled-icons/fa-regular/BellSlash'
+import { Calendar } from '@styled-icons/fa-regular/Calendar'
+import { Clock } from '@styled-icons/fa-regular/Clock'
 import { FormattedDate, FormattedMessage, useIntl } from 'react-intl'
 import LocationIcon from '@opentripplanner/location-icon'
 import React from 'react'

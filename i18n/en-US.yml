@@ -384,6 +384,7 @@ components:
     headsign: "{destination}"
     nearbyListIntro: List of {count} nearby entities.
     nothingNearby: There are no places nearby.
+    searchNearby: Search nearby...
     spacesAvailable: "{spacesAvailable} empty spaces available"
   NewAccountWizard:
     createNewAccount: Create a new account

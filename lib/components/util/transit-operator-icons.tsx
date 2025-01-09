@@ -1,4 +1,4 @@
-import { MapPin } from '@styled-icons/fa-solid'
+import { MapPin } from '@styled-icons/fa-solid/MapPin'
 import { useIntl } from 'react-intl'
 import React from 'react'
 import Skeleton from 'react-loading-skeleton'

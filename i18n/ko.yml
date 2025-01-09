@@ -22,8 +22,7 @@ actions:
     fetchFieldTripsError: "트립을 가져오는 중에 오류가 발생했습니다: {err}"
     fetchTripsForDateError: "필트 트립 날짜에 대한 트립을 가져오는 중에 오류가 발생했습니다: {err}"
     incompatibleTripDateError: 계획한 트립 날짜({tripDate})가 요청한 트립 날짜({requestDate})가 아닙니다
-    itineraryCapacityError: "플랜을 저장할 수 없습니다: 하나 이상의 차량의 용량이 부족하여 이 플랜을 저장할 수 없습니다.
-      트립을 다시 계획하세요."
+    itineraryCapacityError: "플랜을 저장할 수 없습니다: 하나 이상의 차량의 용량이 부족하여 이 플랜을 저장할 수 없습니다. 트립을 다시 계획하세요."
     maxTripRequestsExceeded: 유효한 결과없이 초과된 트립 요청의 개수
     saveItinerariesError: "트립을 저장하는 데 실패했습니다: {err}"
     setDateError: "날짜를 설정하는 중에 오류가 발생했습니다:"
@@ -104,7 +103,7 @@ common:
     noItineraryToDisplay: 표시할 일정이 없습니다.
     relativeCo2: |
       {co2} CO₂ 를 자동차보다 {isMore, select, true {더} other {덜} } 사용합니다
-    timeStartEnd: '{start}~{end}'
+    timeStartEnd: "{start}~{end}"
   linkOpensNewWindow: (새 창 열림)
   modes:
     bicycle_rent: 공유자전거
@@ -182,14 +181,14 @@ components:
   BatchRoutingPanel:
     shortTitle: 트립 계획
   BatchSearchScreen:
+    advancedHeader: 고급 환경 설정
     header: 트립 계획
     modeSelectorLabel: 이동 수단을 선택합니다
-    advancedHeader: 고급 환경 설정
     moreOptions: 자세한 옵션
+    saveAndReturn: 저장 및 반송
     saved: 저장됨
     submodeSelectorLabel: 여행 모드 및 하위 모드 선택
     tripOptions: 여행 옵션
-    saveAndReturn: 저장 및 반송
   BatchSettings:
     destination: 목적지
     invalidModeSelection: 선택된 수단을 사용해 이동편을 계획할 수 없습니다. 수단 선택에 대중교통을 포함해 보십시오.
@@ -204,6 +203,18 @@ components:
     advancedOptions: 고급 옵션
     groupSize: "그룹 크기:"
     intermediateDestination: 중간 목적지 입력
+  CompanionsPane:
+    addNewCompanion: 새로운 여행 동행 추가
+    companionAlreadyAdded: 이미 {email} 이메일을 사용하는 동행이 있습니다
+    companionExplanation: >
+      기존 G-MAP 사용자의 이메일 주소를 입력하여 여행 동행으로 초대합니다. 상대방이 수락하면 상태가 "확인됨"으로 변경되고, 서로의
+      이동성 프로필에 따라 여행 상태를 공유하고 여행을 계획할 수 있습니다.
+    confirmDeleteCompanion: 동행 {email}을 삭제하시겠습니까?
+    currentCompanionsLabel: "현재 여행 동행:"
+    deleteCompanion: "{email} 삭제"
+    noCompanions: 기존 여행 동행이 없습니다.
+    submitNewCompanion: 초대장 보내기
+    title: 여행 동행
   DateTimeOptions:
     arriveBy: 도착 시간
     departAt: 출발 시간
@@ -260,23 +271,53 @@ components:
     park-and-ride: 파크 앤 라이드 위치
     satellite: 위성
     shared-vehicles: 공유 차량
+    stations: 환승역
     stops: 대중 교통 정류장
     streets: 거리
-    stations: 환승역
   MapillaryFrame:
     title: 거리 보기
   MetroUI:
     arriveAt: 도착합니다
     itineraryDescription: "{routes}을(를) 이용한 {time} 일정"
+    itinerarySummary: "출발: {stopName} | {cost}"
     leaveAt: 출발
     multipleOptions: 여러 옵션
     orAlternatives: 또는 같은 방향의 다른 경로
     originallyScheduledTime: (기존 {originalTime})
     singleModeItineraryDescription: "{time} {mode} 일정표"
     timeWalking: "{time} 걷기"
-    itinerarySummary: '출발: {stopName} | {cost}'
   MobileOptions:
     header: 검색 옵션 설정
+  MobilityProfile:
+    DevicesPane:
+      devices:
+        cane: 지팡이
+        crutches: 목발
+        electric wheelchair: 전동 휠체어
+        manual walker: 수동 보행기
+        manual wheelchair: 수동/전통 휠체어
+        mobility scooter: 기동성 스쿠터
+        none: 보조 장치 없음
+        service animal: 도우미 동물
+        stroller: 유모차
+        wheeled walker: 바퀴가 달린 보행기
+        white cane: 흰색 지팡이
+      prompt: 이동 보조 장치를 정기적으로 사용하십니까?  (해당 항목에 모두 표시)
+    LimitationsPane:
+      mobilityPrompt: 다른 사람보다 더 느리게 또는 더 조심스럽게 걷는 원인이 되는 이동성 제한이 있습니까?
+      visionLimitations:
+        legally-blind: 법적 시각 장애
+        low-vision: 시력이 낮음
+        none: 없음
+      visionPrompt: 시력이 제한적입니까?
+    MobilityPane:
+      button: 이동성 프로필을 편집
+      header: 이동성 프로필
+      mobilityDevices: "이동성 장치: "
+      mobilityLimitations: "이동성 제한: "
+      visionLimitations: "시력 제한: "
+    intro: 귀하의 필요 사항과 선호도에 맞게 여행 계획 경험을 맞춤화하기 위해 몇 가지 질문에 답해 주십시오.
+    title: 이동성 프로필 정의하기
   NarrativeItinerariesHeader:
     changeSortDir: 정렬 방향 변경
     howToFindResults: 결과를 보려면, 아래 검색된 일정표 제목을 보십시오.
@@ -304,13 +345,13 @@ components:
     bikesAvailable: "{bikesAvailable} 자전거 이용 가능"
     companyBicycle: "{company} 자전거"
     companyScooter: "{company} 스쿠터"
+    distanceAway: "{localizedDistanceString} 떨어져 있음"
     error: 인근 부대시설 로드 중 오류가 발생했습니다.
     header: 근처 보기
+    headsign: "{destination}"
     nearbyListIntro: 주변 개체 {count}개 목록
     nothingNearby: 근처에 장소가 없습니다.
     spacesAvailable: "{spacesAvailable} 빈 자리 있음"
-    distanceAway: '{localizedDistanceString} 떨어져 있음'
-    headsign: '{destination}'
   NewAccountWizard:
     createNewAccount: 새 계정 생성
     finish: 계정 설정을 완료하셨습니다!
@@ -442,30 +483,30 @@ components:
     signInText: 로그인하여 트립 저장
     signInTooltip: 트립을 저장하려면 로그인하십시오.
   SavedTripEditor:
+    deleteSavedTrip: 저장된 여행 삭제
     editSavedTrip: 저장된 트립 수정
     saveNewTrip: 새 트립 저장
+    travelCompanions: 여행 동행
     tripInformation: 트립 정보
     tripNotFound: 트립을 찾을 수 없음
     tripNotFoundDescription: 죄송합니다. 요청된 트립을 찾을 수 없습니다.
     tripNotifications: 트립 알림
-    deleteSavedTrip: 저장된 여행 삭제
-    travelCompanions: 여행 동행
   SavedTripList:
+    alertTag: "{alert, plural, one {알림 한 개 보기} other {알림 #개 보기}}"
     fromTo: "{from}에서 {to}까지"
     myTrips: 내 트립
     noSavedTrips: 저장된 트립이 없음
     noSavedTripsInstructions: 지도에서 먼저 트립을 검색하세요.
     pause: 일시 정지
     resume: 다시 시작
-    alertTag: '{alert, plural, one {알림 한 개 보기} other {알림 #개 보기}}'
   SavedTripScreen:
     itineraryLoaded: 일정표 로드됨
     itineraryLoading: 일정표 로드 중
+    selectAtLeastOneDay: 모니터링할 날짜를 하나 이상 선택하십시오.
     tooManyTrips: |
       저장된 트립의 최대 개수인 5개에 도달했습니다. 저장된 트립에서 사용하지 않는 트립을 제거한 후, 다시 시도하세요.
     tripNameAlreadyUsed: 저장된 다른 트립이 이 이름을 사용하고 있습니다. 다른 이름을 선택하세요.
     tripNameRequired: 트립의 이름을 입력하세요.
-    selectAtLeastOneDay: 모니터링할 날짜를 하나 이상 선택하십시오.
   SequentialPaneDisplay:
     stepNumber: "{step} / {total}단계"
   SessionTimeout:
@@ -535,14 +576,14 @@ components:
     vehicleName: 차량 {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: 각 요일의 트립을 확인 중…
+    onlyOnDate: "{date, date, ::eeeee yyyyMMdd} 한정"
+    recurringEachWeek: 매주 특정 날짜
     tripDaysPrompt: 어느 요일에 이 트립을 사용하시나요?
     tripIsAvailableOnDaysIndicated: 트립은 위에 표시된 요일에 제공됩니다.
     tripNamePrompt: "이 트립의 이름을 입력하세요:"
     tripNotAvailableOnDay: "{repeatedDay}에는 트립을 이용할 수 없음"
     unsavedChangesExistingTrip: 트립을 아직 저장하지 않았습니다. 나가시면 변경내용이 사라집니다.
     unsavedChangesNewTrip: 새 트립을 저장하지 않았습니다. 나가시면 변경내용이 사라집니다.
-    recurringEachWeek: 매주 특정 날짜
-    onlyOnDate: '{date, date, ::eeeee yyyyMMdd} 한정'
   TripNotificationsPane:
     advancedSettings: 고급 설정
     altRouteRecommended: 대체 경로 또는 환승 지점이 권장됩니다
@@ -555,6 +596,8 @@ components:
     oneHour: 1 시간
     realtimeAlertFlagged: 내 트립 일정에 실시간 경고가 있습니다
     timeBefore: "{time} 전"
+  TripPreviewLayout:
+    previewTrip: 여행 미리 보기
   TripStatus:
     alerts: "{alerts} 경고!"
     deleteTrip: 트립 삭제
@@ -589,6 +632,9 @@ components:
       awaiting: 계산을 기다리는 중…
       description: 트립이 계산되는 동안 잠시 기다려 주십시오.
       heading: 트립이 아직 계산되지 않음
+    past:
+      description: 과거에 있었던 일회성 여행입니다.
+      heading: 과거의 여행
     snoozed:
       description: 트립 모니터링의 스누즈를 해제하여 상태 업데이트를 확인하세요.
       heading: 오늘 트립 모니터링이 일시 중지되었습니다.
@@ -603,17 +649,14 @@ components:
       tripStartIsEarly: 트립이 예상보다 {duration} 일찍 시작됩니다!
       tripStartsSoonNoUpdates: 트립이 곧 시작됩니다 (실시간 업데이트를 사용할 수 없습니다).
       tripStartsSoonOnTime: 트립은 곧 정시에 시작됩니다.
-    past:
-      description: 과거에 있었던 일회성 여행입니다.
-      heading: 과거의 여행
   TripSummary:
     arriveAt: "도착 "
     leaveAt: "출발 "
   TripSummaryPane:
     happensOnDays: "발생: {days}"
+    monitoredTripDays: 여행을 모니터링한 일수
     notifications: 출발 예정 시간 {leadTimeInMinutes} 분 전
     notificationsDisabled: "알림: 비활성화됨"
-    monitoredTripDays: 여행을 모니터링한 일수
     timeAndDuration: 여행 시간 및 기간
   TripTools:
     copyLink: 링크 복사
@@ -681,49 +724,6 @@ components:
     switcher: 변경
   WelcomeScreen:
     prompt: 어디로 가고 싶으신가요?
-  MobilityProfile:
-    DevicesPane:
-      devices:
-        none: 보조 장치 없음
-        cane: 지팡이
-        crutches: 목발
-        electric wheelchair: 전동 휠체어
-        service animal: 도우미 동물
-        manual walker: 수동 보행기
-        manual wheelchair: 수동/전통 휠체어
-        mobility scooter: 기동성 스쿠터
-        stroller: 유모차
-        wheeled walker: 바퀴가 달린 보행기
-        white cane: 흰색 지팡이
-      prompt: 이동 보조 장치를 정기적으로 사용하십니까?  (해당 항목에 모두 표시)
-    MobilityPane:
-      header: 이동성 프로필
-      mobilityDevices: '이동성 장치: '
-      visionLimitations: '시력 제한: '
-      button: 이동성 프로필을 편집
-      mobilityLimitations: '이동성 제한: '
-    LimitationsPane:
-      visionLimitations:
-        none: 없음
-        legally-blind: 법적 시각 장애
-        low-vision: 시력이 낮음
-      visionPrompt: 시력이 제한적입니까?
-      mobilityPrompt: 다른 사람보다 더 느리게 또는 더 조심스럽게 걷는 원인이 되는 이동성 제한이 있습니까?
-    intro: 귀하의 필요 사항과 선호도에 맞게 여행 계획 경험을 맞춤화하기 위해 몇 가지 질문에 답해 주십시오.
-    title: 이동성 프로필 정의하기
-  CompanionsPane:
-    addNewCompanion: 새로운 여행 동행 추가
-    submitNewCompanion: 초대장 보내기
-    companionAlreadyAdded: 이미 {email} 이메일을 사용하는 동행이 있습니다
-    companionExplanation: "기존 G-MAP 사용자의 이메일 주소를 입력하여 여행 동행으로 초대합니다. 상대방이 수락하면 상태가
-      \"확인됨\"으로 변경되고, 서로의 이동성 프로필에 따라 여행 상태를 공유하고 여행을 계획할 수 있습니다.\n"
-    confirmDeleteCompanion: 동행 {email}을 삭제하시겠습니까?
-    currentCompanionsLabel: '현재 여행 동행:'
-    deleteCompanion: '{email} 삭제'
-    noCompanions: 기존 여행 동행이 없습니다.
-    title: 여행 동행
-  TripPreviewLayout:
-    previewTrip: 여행 미리 보기
 config:
   accessModes:
     bicycle: 대중교통 + 개인 자전거
@@ -750,6 +750,5 @@ util:
     networkUnavailable: 현재 {network} 네트워크를 사용할 수 없습니다.
     noTripFound: 트립을 찾을 수 없습니다.
     noTripFoundForMode: "{modes}의 트립을 찾을 수 없습니다."
-    noTripFoundReason: 지정된 최대 거리 내 또는 지정된 시간에 대중 교통 서비스가 없거나, 출발지 또는 도착지가 안전하게 접근가능하지
-      못할 수 있습니다.
+    noTripFoundReason: 지정된 최대 거리 내 또는 지정된 시간에 대중 교통 서비스가 없거나, 출발지 또는 도착지가 안전하게 접근가능하지 못할 수 있습니다.
     noTripFoundWithReason: "{noTripFound} {reason}"

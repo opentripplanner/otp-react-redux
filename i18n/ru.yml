@@ -9,6 +9,15 @@ actions:
     fetchCallsError: "Ошибка получения вызовов: {err}"
     queryFetchError: "Ошибка получения запросов: {err}"
   fieldTrip:
+    addNoteError: "Ошибка добавления заметки о поездке:"
+    confirmOverwriteItineraries: |
+      This action will overwrite a previously planned {outbound, select,
+          true {outbound}
+          other {inbound}
+        } itinerary for this request. Do you wish to continue?
+    deleteItinerariesError: "Ошибка удаления плана поездки:"
+    deleteNoteError: "Ошибка удаления заметки о поездке:"
+    editSubmitterNotesError: "Ошибка редактирования заметок отправителя:"
     fetchFieldTripError: "Ошибка получения поездки: {err}"
     fetchFieldTripsError: "Ошибка получения поездок: {err}"
     fetchTripsForDateError: "Ошибка получения поездок на дату поездки: {err}"
@@ -18,20 +27,12 @@ actions:
     itineraryCapacityError: >-
       Невозможно сохранить план. Этот план невозможно сохранить из-за нехватки
       мест в одном или нескольких транспортных средствах. Измените план поездки.
-    maxTripRequestsExceeded: Превышено количество запросов на поездку без действительных
-      результатов
+    maxTripRequestsExceeded: Превышено количество запросов на поездку без действительных результатов
     saveItinerariesError: "Не удалось сохранить маршруты: {err}"
     setDateError: "Ошибка введения данных:"
-    addNoteError: 'Ошибка добавления заметки о поездке:'
-    confirmOverwriteItineraries: "This action will overwrite a previously planned
-      {outbound, select,\n    true {outbound}\n    other {inbound}\n  } itinerary
-      for this request. Do you wish to continue?\n"
-    deleteItinerariesError: 'Ошибка удаления плана поездки:'
-    deleteNoteError: 'Ошибка удаления заметки о поездке:'
-    editSubmitterNotesError: 'Ошибка редактирования заметок отправителя:'
-    setGroupSizeError: 'Ошибка указания размера группы:'
-    setPaymentError: 'Ошибка указания информации об оплате:'
-    setRequestStatusError: 'Ошибка указания состояния запроса:'
+    setGroupSizeError: "Ошибка указания размера группы:"
+    setPaymentError: "Ошибка указания информации об оплате:"
+    setRequestStatusError: "Ошибка указания состояния запроса:"
   location:
     deniedAccessAlert: >
       Доступ к вашему местоположению заблокирован.
@@ -48,11 +49,9 @@ actions:
     authTokenError: Ошибка получения токена на авторизацию.
     confirmDeleteMonitoredTrip: Удалить эту поездку?
     confirmDeletePlace: Удалить это место?
-    emailVerificationResent: Сообщение с подтверждением адреса электронной почты отправлено
-      повторно.
+    emailVerificationResent: Сообщение с подтверждением адреса электронной почты отправлено повторно.
     genericError: "Произошла ошибка: {err}"
-    itineraryExistenceCheckFailed: При проверке возможности выбранной поездки произошла
-      ошибка.
+    itineraryExistenceCheckFailed: При проверке возможности выбранной поездки произошла ошибка.
     mustAcceptTermsToSavePlace: >-
       Примите «Условия использования» (в разделе «Моя учетная запись»), чтобы
       сохранять местоположения.
@@ -117,7 +116,7 @@ common:
     relativeCo2: >
       {co2} {isMore, select, true {больше } other {меньше} } CO₂, чем при
       вождении в одиночку
-    timeStartEnd: '{start} – {end}'
+    timeStartEnd: "{start} – {end}"
   linkOpensNewWindow: (Открывает новое окно)
   modes:
     bicycle_rent: Прокат велосипедов
@@ -199,14 +198,14 @@ components:
   BatchRoutingPanel:
     shortTitle: Запланировать поездку
   BatchSearchScreen:
+    advancedHeader: Дополнительные настройки
     header: Запланируйте поездку
     modeSelectorLabel: Выбрать способ передвижения
-    submodeSelectorLabel: Выбор режимов и подрежимов путешествия
-    tripOptions: Варианты поездок
-    advancedHeader: Дополнительные настройки
     moreOptions: Другие варианты
     saveAndReturn: Сохранить и вернуться
     saved: Сохранено
+    submodeSelectorLabel: Выбор режимов и подрежимов путешествия
+    tripOptions: Варианты поездок
   BatchSettings:
     destination: место назначения
     invalidModeSelection: >-
@@ -224,6 +223,20 @@ components:
     advancedOptions: Расширенные опции
     groupSize: "Размер группы:"
     intermediateDestination: Введите промежуточное место назначения
+  CompanionsPane:
+    addNewCompanion: Добавить нового попутчика
+    companionAlreadyAdded: У вас уже есть попутчик с адресом электронной почты {email}.
+    companionExplanation: >
+      Invite an exiting G-MAP user to be a travel companion by entering their
+      email. When they accept, their status will change to "verified", and you
+      can share your trip status and plan trips based on one another's mobility
+      profile.
+    confirmDeleteCompanion: Удалить попутчика {email}?
+    currentCompanionsLabel: "Нынешние попутчики:"
+    deleteCompanion: Удалить {email}
+    noCompanions: У вас нет попутчиков.
+    submitNewCompanion: Отправить приглашение
+    title: Попутчики
   DateTimeOptions:
     arriveBy: Прибытие к
     departAt: Отправление в
@@ -282,27 +295,62 @@ components:
     park-and-ride: Места парковки
     satellite: Спутник
     shared-vehicles: Общие транспортные средства
+    stations: Транзитные станции
     stops: Остановки общественного транспорта
     streets: Улицы
-    stations: Транзитные станции
   MapillaryFrame:
     title: Изображения с улицы
   MetroUI:
     arriveAt: Вы прибываете
     itineraryDescription: "{time}, маршрут с {routes}"
+    itinerarySummary: из {stopName} | {cost}
     leaveAt: Отправление
     multipleOptions: Несколько вариантов
     orAlternatives: или другие маршруты в том же направлении
     originallyScheduledTime: (изначально {originalTime})
     singleModeItineraryDescription: "{time} {mode} маршрут"
     timeWalking: "{time} пешком"
-    itinerarySummary: из {stopName} | {cost}
   MobileOptions:
     header: Задать параметры поиска
+  MobilityProfile:
+    DevicesPane:
+      devices:
+        cane: Трость
+        crutches: Костыли
+        electric wheelchair: Кресло-коляска с электроприводом
+        manual walker: Ручные ходунки
+        manual wheelchair: Кресло-коляска с ручным управлением/обычное кресло-коляска
+        mobility scooter: Электроскутер для маломобильных людей
+        none: Без вспомогательного устройства
+        service animal: Служебное животное
+        stroller: Коляска
+        wheeled walker: Ходунки на колесах
+        white cane: Трость для слепых
+      prompt: >-
+        Вы регулярно пользуетесь вспомогательным устройством для передвижения?
+        (Отметьте все подходящие варианты.)
+    LimitationsPane:
+      mobilityPrompt: >-
+        Есть ли у вас проблемы с передвижением, из-за которых вам приходится
+        ходить медленнее или осторожнее, чем другим людям?
+      visionLimitations:
+        legally-blind: Официально признанный слепым
+        low-vision: Слабовидящий
+        none: Ничего
+      visionPrompt: Есть ли у вас проблемы со зрением?
+    MobilityPane:
+      button: Отредактируйте ваш профиль мобильности
+      header: Профиль мобильности
+      mobilityDevices: "Устройства для передвижения: "
+      mobilityLimitations: "Ограничения подвижности: "
+      visionLimitations: "Проблемы со зрением: "
+    intro: >-
+      Ответьте на несколько вопросов, чтобы спланировать поездку в соответствии
+      с вашими потребностями и предпочтениями.
+    title: Определите ваш профиль мобильности
   NarrativeItinerariesHeader:
     changeSortDir: Изменить направление сортировки
-    howToFindResults: Чтобы просмотреть результаты, см. заголовок «Найденные маршруты»
-      ниже.
+    howToFindResults: Чтобы просмотреть результаты, см. заголовок «Найденные маршруты» ниже.
     itinerariesFound: |-
       {itineraryNum, plural,
        one {найден # маршрут}
@@ -338,13 +386,13 @@ components:
       несколько велосипедов (#)}}
     companyBicycle: "{company} Велосипед"
     companyScooter: "{company} Скутер"
+    distanceAway: На расстоянии {localizedDistanceString}
     error: Произошла ошибка при загрузке близлежащих объектов.
     header: Посмотреть рядом
+    headsign: "{destination}"
     nearbyListIntro: Список {count} ближайших объектов.
     nothingNearby: Поблизости нет мест.
     spacesAvailable: "{spacesAvailable} есть свободные места"
-    distanceAway: На расстоянии {localizedDistanceString}
-    headsign: '{destination}'
   NewAccountWizard:
     createNewAccount: Создайте учетную запись
     finish: Настройка учетной записи завершена!
@@ -407,7 +455,7 @@ components:
       TO: Mесто назначения
   PhoneNumberEditor:
     changeNumber: Изменить номер
-    invalidCode: "Введите проверочный код из 6 цифр."
+    invalidCode: "Введите проверочный код из 6\_цифр."
     invalidPhone: Введите действительный номер телефона.
     phoneNumberSubmitted: Номер телефона{phoneNumber} был успешно отправлен.
     phoneNumberVerified: Номер телефона{phoneNumber}  был успешно проверен.
@@ -420,11 +468,10 @@ components:
       подтверждением и мониторингом поездки. Вашим оператором мобильной связи
       могут взиматься дополнительные пени.
     verificationCode: "Код подтверждения:"
-    verificationInstructions: "Откройте приложение для обмена SMS на телефоне и найдите
-      текстовое сообщение с кодом подтверждения. Затем введите код ниже (срок действия
-      кода: 10 минут).\n"
+    verificationInstructions: "Откройте приложение для обмена SMS на телефоне и найдите текстовое сообщение с кодом подтверждения. Затем введите код ниже (срок действия кода: 10\_минут).\n"
     verify: Подтвердить
-    verifySms: Чтобы настроить отправку уведомлений с помощью SMS-сообщений, пройдите
+    verifySms: >-
+      Чтобы настроить отправку уведомлений с помощью SMS-сообщений, пройдите
       процедуру верификации.
   Place:
     deleteThisPlace: Удалить это место
@@ -500,32 +547,31 @@ components:
     signInText: Войдите, чтобы сохранить поездку
     signInTooltip: Войдите, чтобы сохранить поездку.
   SavedTripEditor:
+    deleteSavedTrip: Удалить сохраненную поездку
     editSavedTrip: Редактировать сохраненную поездку
     saveNewTrip: Сохранить поездку
+    travelCompanions: Попутчики
     tripInformation: Информация о поездке
     tripNotFound: Поездка не найдена
     tripNotFoundDescription: Не удалось найти требуемую поездку.
     tripNotifications: Уведомления о поездке
-    deleteSavedTrip: Удалить сохраненную поездку
-    travelCompanions: Попутчики
   SavedTripList:
+    alertTag: "{alert, plural, one {View one alert} other {View # alerts}}"
     fromTo: Из {from} в {to}
     myTrips: Мои поездки
     noSavedTrips: У вас нет сохраненных поездок
     noSavedTripsInstructions: Сперва выполните поиск поездок на карте.
     pause: Приостановить
     resume: Возобновить
-    alertTag: '{alert, plural, one {View one alert} other {View # alerts}}'
   SavedTripScreen:
     itineraryLoaded: Маршрут загружен
     itineraryLoading: Загрузка маршрута
+    selectAtLeastOneDay: Для просмотра выберите хотя бы один день.
     tooManyTrips: >
       Можно сохранить не более пяти поездок. Удалите неиспользуемые поездки из
       раздела сохраненных и попробуйте еще раз.
-    tripNameAlreadyUsed: У вас уже сохранена поездка с таким именем. Укажите другое
-      имя.
+    tripNameAlreadyUsed: У вас уже сохранена поездка с таким именем. Укажите другое имя.
     tripNameRequired: Укажите имя поездки.
-    selectAtLeastOneDay: Для просмотра выберите хотя бы один день.
   SequentialPaneDisplay:
     stepNumber: Шаг {шаг} из {общее кол-во}
   SessionTimeout:
@@ -583,13 +629,9 @@ components:
     defaultContent: Переключить
     switchLocations: Переключить местоположения
   TermsOfUsePane:
-    confirmDeletionPrompt: "Недавние поисковые запросы и (или) места сохранены. Отключение
-      сохранения недавних мест и (или) поисковых запросов приведет к удалению этих
-      элементов. Продолжить?\n"
+    confirmDeletionPrompt: "Недавние поисковые запросы и\_(или) места сохранены. Отключение сохранения недавних мест и\_(или) поисковых запросов приведет к удалению этих элементов. Продолжить?\n"
     mustAgreeToTerms: Для продолжения примите условия использования.
-    termsOfServiceStatement: "Я подтверждаю, что мне исполнилось 18 лет и что я прочитал
-      и принимаю <termsOfUseLink>Условия использования</termsOfUseLink > планировщика
-      поездок.\n"
+    termsOfServiceStatement: "Я подтверждаю, что мне исполнилось 18\_лет и что я прочитал и принимаю <termsOfUseLink>Условия использования</termsOfUseLink > планировщика поездок.\n"
     termsOfStorageStatement: >
       Необязательно: я даю согласие на то, чтобы планировщик поездок хранил
       архивные данные о моих запланированных поездках с целью улучшения услуг
@@ -603,16 +645,14 @@ components:
     vehicleName: Транспортное средство {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: Проверка маршрута на каждый день недели…
+    onlyOnDate: Только {date, date, ::eeeee yyyyMMdd}
+    recurringEachWeek: В определенные дни каждой недели
     tripDaysPrompt: В какие дни вы хотите совершать эту поездку?
     tripIsAvailableOnDaysIndicated: Поездка доступна для указанных выше дней.
     tripNamePrompt: "Укажите имя поездки:"
     tripNotAvailableOnDay: "Поездка недоступна для следующих дней: {repeatedDay}"
-    unsavedChangesExistingTrip: Вы не сохранили поездку. Если вы выйдете, все изменения
-      будут утеряны.
-    unsavedChangesNewTrip: Вы не сохранили новую поездку. Если вы выйдете, она будет
-      удалена.
-    recurringEachWeek: В определенные дни каждой недели
-    onlyOnDate: Только {date, date, ::eeeee yyyyMMdd}
+    unsavedChangesExistingTrip: Вы не сохранили поездку. Если вы выйдете, все изменения будут утеряны.
+    unsavedChangesNewTrip: Вы не сохранили новую поездку. Если вы выйдете, она будет удалена.
   TripNotificationsPane:
     advancedSettings: Расширенные настройки
     altRouteRecommended: Рекомендуется использовать пересадку или альтернативный маршрут
@@ -623,9 +663,11 @@ components:
     monitorThisTrip: "Мониторинг данной поездки до ее начала:"
     notificationsTurnedOff: Уведомления отключены в настройках вашей учетной записи.
     notifyViaChannelWhen: "Использовать канал «{channel}» для уведомлений, когда:"
-    oneHour: "1 ч"
+    oneHour: "1\_ч"
     realtimeAlertFlagged: Для моего пути есть предупреждение в режиме реального времени
     timeBefore: "{time} до"
+  TripPreviewLayout:
+    previewTrip: Предварительный просмотр поездки
   TripStatus:
     alerts: >-
       {alerts, plural, one {# предупреждение!} other {несколько предупреждений
@@ -668,6 +710,9 @@ components:
       awaiting: Ожидание расчета…
       description: Подождите, пока завершится расчет поездки.
       heading: Поездка еще не рассчитана.
+    past:
+      description: Это одноразовая поездка, которая состоялась в прошлом.
+      heading: Поездка в прошлом
     snoozed:
       description: >-
         Восстановите отслеживание поездки, чтобы просматривать изменение ее
@@ -682,22 +727,17 @@ components:
         реальном времени запустится в {monitoringStart, time, short}.)
       tripStartIsDelayed: Начало поездки откладывается на {duration}!
       tripStartIsEarly: Начало поездки произойдет на {duration} раньше ожидаемого!
-      tripStartsSoonNoUpdates: Поездка скоро начнется (обновления в реальном времени
-        недоступны).
+      tripStartsSoonNoUpdates: Поездка скоро начнется (обновления в реальном времени недоступны).
       tripStartsSoonOnTime: Поездка скоро начнется. Без задержек.
-    past:
-      description: Это одноразовая поездка, которая состоялась в прошлом.
-      heading: Поездка в прошлом
   TripSummary:
     arriveAt: "Прибытие в "
     leaveAt: "Оставить "
   TripSummaryPane:
     happensOnDays: "Проходит в такие дни: {days}"
-    notifications: за <strong>{leadTimeInMinutes} мин до запланированного времени
-      отправления
+    monitoredTripDays: Дни наблюдения за поездками
+    notifications: за <strong>{leadTimeInMinutes} мин до запланированного времени отправления
     notificationsDisabled: "Уведомления: отключены"
     timeAndDuration: Время и продолжительность поездки
-    monitoredTripDays: Дни наблюдения за поездками
   TripTools:
     copyLink: Скопировать ссылку
     header: Инструменты маршрута
@@ -736,23 +776,17 @@ components:
       storeTripHistory: Сохранять историю поездок
     updating: Обновляется
   UserSettings:
-    confirmDeletion: "Недавние поисковые запросы и (или) места сохранены. Отключение
-      сохранения недавних мест и (или) поисковых запросов приведет к удалению этих
-      элементов. Продолжить?"
+    confirmDeletion: "Недавние поисковые запросы и\_(или) места сохранены. Отключение сохранения недавних мест и\_(или) поисковых запросов приведет к удалению этих элементов. Продолжить?"
     favoriteStops: Избранные остановки
     myPreferences: Мои параметры
     mySavedPlaces: Мои сохраненные места (<manageLink>изменить</manageLink>)
     noFavoriteStops: Избранные остановки
     recentPlaces: Недавние места
-    recentSearchSummary: "Режим «{mode}». {from} — {to}"
+    recentSearchSummary: "Режим «{mode}». {from}\_— {to}"
     recentSearches: Недавние поисковые запросы
-    rememberSearches: "Сохранить недавние места / поисковые запросы?"
+    rememberSearches: "Сохранить недавние места\_/ поисковые запросы?"
     stopId: "Идентификатор остановки: {stopId}"
-    storageDisclaimer: "Все сохраненные параметры, места и настройки будут храниться
-      в локальном хранилище браузера. TriMet не получит доступ к данным о вашем доме,
-      месте работы или другим местоположениям. В любой момент вы можете отключить
-      сохранение недавних мест / поисковых запросов и очистить список местоположений
-      дома/работы, а также избранных остановок.\n"
+    storageDisclaimer: "Все сохраненные параметры, места и настройки будут храниться в локальном хранилище браузера. TriMet не получит доступ к данным о вашем доме, месте работы или другим местоположениям. В любой момент вы можете отключить сохранение недавних мест\_/ поисковых запросов и очистить список местоположений дома/работы, а также избранных остановок.\n"
   UserTripSettings:
     forgetOptions: Удалить варианты
     rememberOptions: Сохранить варианты поездки
@@ -772,62 +806,14 @@ components:
     switcher: Переключатель
   WelcomeScreen:
     prompt: Куда вы хотите отправиться?
-  MobilityProfile:
-    DevicesPane:
-      prompt: Вы регулярно пользуетесь вспомогательным устройством для передвижения?
-        (Отметьте все подходящие варианты.)
-      devices:
-        electric wheelchair: Кресло-коляска с электроприводом
-        stroller: Коляска
-        wheeled walker: Ходунки на колесах
-        crutches: Костыли
-        manual walker: Ручные ходунки
-        white cane: Трость для слепых
-        cane: Трость
-        manual wheelchair: Кресло-коляска с ручным управлением/обычное кресло-коляска
-        mobility scooter: Электроскутер для маломобильных людей
-        none: Без вспомогательного устройства
-        service animal: Служебное животное
-    title: Определите ваш профиль мобильности
-    LimitationsPane:
-      visionLimitations:
-        legally-blind: Официально признанный слепым
-        low-vision: Слабовидящий
-        none: Ничего
-      visionPrompt: Есть ли у вас проблемы со зрением?
-      mobilityPrompt: Есть ли у вас проблемы с передвижением, из-за которых вам приходится
-        ходить медленнее или осторожнее, чем другим людям?
-    MobilityPane:
-      mobilityLimitations: 'Ограничения подвижности: '
-      visionLimitations: 'Проблемы со зрением: '
-      header: Профиль мобильности
-      mobilityDevices: 'Устройства для передвижения: '
-      button: Отредактируйте ваш профиль мобильности
-    intro: Ответьте на несколько вопросов, чтобы спланировать поездку в соответствии
-      с вашими потребностями и предпочтениями.
-  CompanionsPane:
-    addNewCompanion: Добавить нового попутчика
-    confirmDeleteCompanion: Удалить попутчика {email}?
-    deleteCompanion: Удалить {email}
-    companionAlreadyAdded: У вас уже есть попутчик с адресом электронной почты {email}.
-    companionExplanation: "Invite an exiting G-MAP user to be a travel companion by
-      entering their email. When they accept, their status will change to \"verified\"\
-      , and you can share your trip status and plan trips based on one another's mobility
-      profile.\n"
-    currentCompanionsLabel: 'Нынешние попутчики:'
-    noCompanions: У вас нет попутчиков.
-    submitNewCompanion: Отправить приглашение
-    title: Попутчики
-  TripPreviewLayout:
-    previewTrip: Предварительный просмотр поездки
 config:
   accessModes:
-    bicycle: "Общественный транспорт + личный велосипед"
-    bicycle_rent: "Общественный транспорт + прокат велосипеда"
+    bicycle: "Общественный транспорт\_+\_личный велосипед"
+    bicycle_rent: "Общественный транспорт\_+\_прокат велосипеда"
     car_hail: Заказная поездка
     car_park: Парковочное место
-    micromobility: "Общественный транспорт + личный самокат"
-    micromobility_rent: "Общественный транспорт + прокат электросамоката"
+    micromobility: "Общественный транспорт\_+\_личный самокат"
+    micromobility_rent: "Общественный транспорт\_+\_прокат электросамоката"
   bicycleModes:
     bicycle: Личный велосипед
     bicycle_rent: Прокат велосипедов
