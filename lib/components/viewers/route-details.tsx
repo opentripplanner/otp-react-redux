@@ -108,29 +108,26 @@ class RouteDetails extends Component<Props> {
 
     const routeColor = getRouteColorBasedOnSettings(operator, route)
 
-    const unsortedHeadsigns = extractMainHeadsigns(
+    const headsigns = extractMainHeadsigns(
       patterns,
       shortName,
       this._editHeadsign
-    )
+    ).sort((a, b) => {
+      if (!sortPatternsByVehicleCount) return 0
+      // sort by number of vehicles on that pattern
+      const aVehicleCount =
+        route.vehicles?.filter((vehicle) => vehicle.patternId === a.id)
+          .length || 0
+      const bVehicleCount =
+        route.vehicles?.filter((vehicle) => vehicle.patternId === b.id)
+          .length || 0
 
-    const headsigns = sortPatternsByVehicleCount
-      ? unsortedHeadsigns.sort((a, b) => {
-          // sort by number of vehicles on that pattern
-          const aVehicleCount =
-            route.vehicles?.filter((vehicle) => vehicle.patternId === a.id)
-              .length || 0
-          const bVehicleCount =
-            route.vehicles?.filter((vehicle) => vehicle.patternId === b.id)
-              .length || 0
-
-          // if both have the same count, sort by pattern geometry length
-          if (aVehicleCount === bVehicleCount) {
-            return b.geometryLength - a.geometryLength
-          }
-          return bVehicleCount - aVehicleCount
-        })
-      : unsortedHeadsigns
+      // if both have the same count, sort by pattern geometry length
+      if (aVehicleCount === bVehicleCount) {
+        return b.geometryLength - a.geometryLength
+      }
+      return bVehicleCount - aVehicleCount
+    })
 
     const patternSelectLabel = intl.formatMessage({
       id: 'components.RouteDetails.selectADirection'
