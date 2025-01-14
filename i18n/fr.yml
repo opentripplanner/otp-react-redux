@@ -389,6 +389,7 @@ components:
     signIn: Se connecter
     signOut: Déconnexion
   NearbyView:
+    additionalVehicles: +{count} autres à proximité
     bikeRentalStation: Borne de location de vélos
     bikesAvailable: >-
       {bikesAvailable, plural, one {# vélo disponible} other {# vélos
