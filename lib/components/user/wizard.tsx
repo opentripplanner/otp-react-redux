@@ -5,11 +5,11 @@ import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { push, replace } from 'connected-react-router'
 import React, { Component, MouseEvent } from 'react'
 import styled from 'styled-components'
-import toast from 'react-hot-toast'
 
 import * as uiActions from '../../actions/ui'
 import { AppReduxState } from '../../util/state-types'
 import { GREY_ON_WHITE } from '../util/colors'
+import { toastSuccess } from '../util/toasts'
 import PageTitle from '../util/page-title'
 
 import { EditedUser } from './types'
@@ -69,7 +69,8 @@ class Wizard extends Component<Props> {
       onNext,
       pages,
       returnTo = '/',
-      routeTo
+      routeTo,
+      title
     } = this.props
 
     if (activePaneIndex < pages.length - 1) {
@@ -94,7 +95,10 @@ class Wizard extends Component<Props> {
     } else {
       // Display a toast to acknowledge saved changes
       // (although in reality, changes quietly took effect in previous screens).
-      toast.success(intl.formatMessage({ id: 'actions.user.preferencesSaved' }))
+      toastSuccess(
+        title,
+        intl.formatMessage({ id: 'actions.user.preferencesSaved' })
+      )
       routeTo(returnTo)
     }
   }

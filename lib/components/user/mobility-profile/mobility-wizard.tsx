@@ -10,7 +10,7 @@ const MobilityWizard = ({ formikProps }: WizardProps): JSX.Element => {
   const intl = useIntl()
 
   const title = intl.formatMessage({
-    id: 'components.MobilityProfile.title'
+    id: 'components.MobilityProfile.MobilityPane.header'
   })
 
   return (
