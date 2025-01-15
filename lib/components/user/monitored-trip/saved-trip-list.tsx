@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
-import { Edit, Map } from '@styled-icons/fa-solid'
+import { Edit } from '@styled-icons/fa-solid/Edit'
 import { FormattedMessage, injectIntl, IntlShape, useIntl } from 'react-intl'
+import { Map } from '@styled-icons/fa-solid/Map'
 import { Panel } from 'react-bootstrap'
 import { TriangleExclamation } from '@styled-icons/fa-solid/TriangleExclamation'
 import { withAuthenticationRequired } from '@auth0/auth0-react'

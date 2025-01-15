@@ -3,7 +3,7 @@ import {
   LocationFieldProps,
   LocationSelectedEvent
 } from '@opentripplanner/location-field/lib/types'
-import { MapPin } from '@styled-icons/fa-solid'
+import { MapPin } from '@styled-icons/fa-solid/MapPin'
 import React, { useCallback, useContext, useState } from 'react'
 
 import * as formActions from '../../actions/form'

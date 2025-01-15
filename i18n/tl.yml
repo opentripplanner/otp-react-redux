@@ -11,6 +11,15 @@ actions:
     fetchCallsError: "Nagka-error sa pag-fetch ng mga tawag: {err}"
     queryFetchError: "Nagka-error sa pag-fetch ng mga query: {err}"
   fieldTrip:
+    addNoteError: "Error sa pagdaragdag ng tala sa field trip:"
+    confirmOverwriteItineraries: |
+      This action will overwrite a previously planned {outbound, select,
+          true {outbound}
+          other {inbound}
+        } itinerary for this request. Do you wish to continue?
+    deleteItinerariesError: "Error sa pag-delete ng plano sa field trip:"
+    deleteNoteError: "Error sa pag-delete ng tala sa field trip:"
+    editSubmitterNotesError: "Error sa pag-edit ng mga tala ng nagsumite:"
     fetchFieldTripError: "Nagka-error sa pag-fetch sa field trip: {err}"
     fetchFieldTripsError: "Nagka-error sa pag-fetch sa mga field trip: {err}"
     fetchTripsForDateError: >-
@@ -27,16 +36,9 @@ actions:
       resulta
     saveItinerariesError: "Hindi na-save ang mga itinerary: {err}"
     setDateError: "Nagka-error sa pagtatakda ng petsa:"
-    addNoteError: 'Error sa pagdaragdag ng tala sa field trip:'
-    confirmOverwriteItineraries: "This action will overwrite a previously planned
-      {outbound, select,\n    true {outbound}\n    other {inbound}\n  } itinerary
-      for this request. Do you wish to continue?\n"
-    deleteItinerariesError: 'Error sa pag-delete ng plano sa field trip:'
-    deleteNoteError: 'Error sa pag-delete ng tala sa field trip:'
-    editSubmitterNotesError: 'Error sa pag-edit ng mga tala ng nagsumite:'
-    setGroupSizeError: 'Error sa pag-set up ng laki ng grupo:'
-    setPaymentError: 'Error sa pagtatakda ng impormasyon sa pagbabayad:'
-    setRequestStatusError: 'Error sa pagtatakda ng status ng kahilingan:'
+    setGroupSizeError: "Error sa pag-set up ng laki ng grupo:"
+    setPaymentError: "Error sa pagtatakda ng impormasyon sa pagbabayad:"
+    setRequestStatusError: "Error sa pagtatakda ng status ng kahilingan:"
   location:
     deniedAccessAlert: >
       Naka-block ang access sa lokasyon mo.
@@ -55,8 +57,7 @@ actions:
     confirmDeletePlace: Gusto mo bang alisin ang lugar na ito?
     emailVerificationResent: Ipinadala ulit ang mensahe ng pag-verify sa email.
     genericError: "Nagka-error: {err}"
-    itineraryExistenceCheckFailed: Nagka-error sa pagtingin kung posible ang napili
-      mong biyahe.
+    itineraryExistenceCheckFailed: Nagka-error sa pagtingin kung posible ang napili mong biyahe.
     mustAcceptTermsToSavePlace: >-
       Pakitanggap ang Mga Tuntunin ng Paggamit (sa ilalim ng Aking Account) para
       mag-save ng mga lokasyon.
@@ -122,7 +123,7 @@ common:
     relativeCo2: >
       {co2} {isMore, select, true {mas maraming} other {mas kaunting} } CO₂
       kaysa magmaneho nang mag-isa
-    timeStartEnd: '{start} – {end}'
+    timeStartEnd: "{start} – {end}"
   linkOpensNewWindow: (Magbubukas sa bagong window)
   modes:
     bicycle_rent: Bikeshare
@@ -204,14 +205,14 @@ components:
   BatchRoutingPanel:
     shortTitle: Planuhin ang Biyahe
   BatchSearchScreen:
+    advancedHeader: Mga Advanced na Kagustuhan
     header: Planuhin ang Iyong Biyahe
     modeSelectorLabel: Pumili ng paraan ng pagbiyahe
-    advancedHeader: Mga Advanced na Kagustuhan
-    saved: Na-save na
-    tripOptions: Mga Opsyon sa Biyahe
     moreOptions: Higit pang opsyon
     saveAndReturn: I-save at bumalik
+    saved: Na-save na
     submodeSelectorLabel: Piliin ang mga mode at submode ng pagbiyahe
+    tripOptions: Mga Opsyon sa Biyahe
   BatchSettings:
     destination: patutunguhan
     invalidModeSelection: >-
@@ -219,8 +220,7 @@ components:
       ang pampublikong transportasyon sa pagpili mo ng mode.
     origin: pinagmulan
     planTripTooltip: Planuhin ang biyahe
-    validationMessage: "Ilarawan ang mga sumusunod na field para makapagplano ng biyahe:
-      {issues}"
+    validationMessage: "Ilarawan ang mga sumusunod na field para makapagplano ng biyahe: {issues}"
   BeforeSignInScreen:
     mainTitle: Sina-sign in ka
     message: >
@@ -230,6 +230,21 @@ components:
     advancedOptions: Mga advanced na opsyon
     groupSize: "Laki ng grupo:"
     intermediateDestination: Ilagay ang intermediate na patutunguhan
+  CompanionsPane:
+    addNewCompanion: Magdagdag ng bagong kasama sa pagbiyahe
+    companionAlreadyAdded: Mayroon ka nang kasamang may email na {email}
+    companionExplanation: >
+      Mag-imbita ng aalis na G-MAP user na magiging kasama sa pagbiyahe sa
+      pamamagitan ng paglalagay ng kanyang email. Kapag tinanggap niya ito,
+      magiging "na-verify" ang kanyang status, at magagawa mong ibahagi ang
+      iyong status ng biyahe at magplano ng mga biyahe batay sa mobility profile
+      ng isa't isa.
+    confirmDeleteCompanion: Gusto mo bang i-delete ang kasamang si {email}?
+    currentCompanionsLabel: "Mga kasalukuyang kasama sa pagbiyahe:"
+    deleteCompanion: I-delete si {email}
+    noCompanions: Wala kang sinumang kasama sa pagbiyahe sa kasalukuyan.
+    submitNewCompanion: Magpadala ng imbitasyon
+    title: Mga kasama sa pagbiyahe
   DateTimeOptions:
     arriveBy: Dumating bago ang
     departAt: Umalis nang
@@ -290,23 +305,59 @@ components:
     park-and-ride: Mga Lokasyon ng Park & Ride
     satellite: Satellite
     shared-vehicles: Mga Nakabahaging Sasakyan
+    stations: Mga Istasyon ng Pampublikong Sasakyan
     stops: Mga Hintuan ng Pampublikong Transportasyon
     streets: Mga Kalye
-    stations: Mga Istasyon ng Pampublikong Sasakyan
   MapillaryFrame:
     title: Larawan ng kalsada
   MetroUI:
     arriveAt: Dumating ka na
     itineraryDescription: "{time} (na) itinerary gamit ang {routes}"
+    itinerarySummary: mula sa {stopName} | {cost}
     leaveAt: Aalis ka
     multipleOptions: Maraming Opsyon
     orAlternatives: o ang iba pang ruta sa parehong direksyon
     originallyScheduledTime: (orihinal na {originalTime})
     singleModeItineraryDescription: "{time} {mode} itinerary"
     timeWalking: "{time} (na) paglalakad"
-    itinerarySummary: mula sa {stopName} | {cost}
   MobileOptions:
     header: Itakda ang Mga Opsyon sa Paghahanap
+  MobilityProfile:
+    DevicesPane:
+      devices:
+        cane: Tungkod
+        crutches: Saklay
+        electric wheelchair: Electric na wheelchair
+        manual walker: Manual na walker
+        manual wheelchair: Manual/tradisyonal na wheelchair
+        mobility scooter: Mobility scooter
+        none: Walang pantulong na device
+        service animal: Panserbisyong hayop
+        stroller: Stroller
+        wheeled walker: Walker na may gulong
+        white cane: Puting tungkod
+      prompt: >-
+        Regular ka bang gumagamit ng device na pantulong sa paggalaw? (Lagyan ng
+        check ang lahat ng naaangkop)
+    LimitationsPane:
+      mobilityPrompt: >-
+        Mayroon ka bang anumang limitasyon sa paggalaw na nagdudulot sa iyong
+        maglakad nang mas mabagal at mas maingat kaysa sa iba pang tao?
+      visionLimitations:
+        legally-blind: Legal na bulag
+        low-vision: Low-vision
+        none: Wala
+      visionPrompt: Mayroon ka bang anumang limitasyon sa paningin?
+    MobilityPane:
+      button: I-edit ang iyong mobility profile
+      header: Mobility Profile
+      mobilityDevices: "Mga device para sa paggalaw: "
+      mobilityLimitations: "Mga limitasyon sa paggalaw: "
+      visionLimitations: "Mga limitasyon sa paningin: "
+    intro: >-
+      Pakisagot ang ilang tanong para i-customize ang karanasan sa pagpaplano ng
+      biyahe ayon sa iyong mga pangangailangan at kagustuhan.
+    title: Tukuyin ang iyong Mobility Pofile
   NarrativeItinerariesHeader:
     changeSortDir: Baguhin ang pagkakaayos ng direksyon
     howToFindResults: >-
@@ -339,13 +390,13 @@ components:
     bikesAvailable: "{bikesAvailable, plural, one {# bike} other {# bikes}} available"
     companyBicycle: "{company} Bisikleta"
     companyScooter: "{company} Scooter"
+    distanceAway: "{localizedDistanceString} ang layo"
     error: May naganap na error sa paglo-load ng mga kalapit na amenity.
     header: Tingnan ang Malapit
+    headsign: "{destination}"
     nearbyListIntro: List of {count} nearby entities.
     nothingNearby: There are no places nearby.
     spacesAvailable: "{spacesAvailable} mga available na bakanteng espasyo"
-    distanceAway: '{localizedDistanceString} ang layo'
-    headsign: '{destination}'
   NewAccountWizard:
     createNewAccount: Gumawa ng bagong account
     finish: Tapos nang i-set up ang account!
@@ -415,8 +466,7 @@ components:
     invalidCode: Maglagay ng 6 na digit para sa code sa pag-validate.
     invalidPhone: Maglagay ng valid na numero ng telepono.
     phoneNumberSubmitted: Matagumpay na naisumite ang numero ng teleponong {phoneNumber}.
-    phoneNumberVerified: Matagumpay na na-verify ang numero ng teleponong {phoneNumber}
-      .
+    phoneNumberVerified: Matagumpay na na-verify ang numero ng teleponong {phoneNumber} .
     placeholder: Ilagay ang numero ng iyong telepono
     prompt: "Ilagay ang numero ng iyong telepono para sa mga SMS na notification:"
     requestNewCode: Humiling ng bagong code
@@ -432,7 +482,9 @@ components:
       message na may code sa pag-verify, at ilagay ang code sa ibaba
       (mag-e-expire ang code pagkalipas ng 10 minuto).
     verify: I-verify
-    verifySms: Please complete the verification process in order to set up SMS notifications.
+    verifySms: >-
+      Please complete the verification process in order to set up SMS
+      notifications.
   Place:
     deleteThisPlace: I-delete ang lugar na ito
     enterAlert: >
@@ -504,25 +556,26 @@ components:
     signInText: Mag-log in para i-save ang biyahe
     signInTooltip: Mag-log in para i-save ang biyahe.
   SavedTripEditor:
+    deleteSavedTrip: I-delete ang naka-save na biyahe
     editSavedTrip: I-edit ang na-save na biyahe
     saveNewTrip: I-save ang bagong biyahe
+    travelCompanions: Mga kasama sa pagbiyahe
     tripInformation: Impormasyon ng biyahe
     tripNotFound: Hindi nakita ang biyahe
     tripNotFoundDescription: Pasensya na, hindi nakita ang hiniling na biyahe.
     tripNotifications: Mga notification sa biyahe
-    deleteSavedTrip: I-delete ang naka-save na biyahe
-    travelCompanions: Mga kasama sa pagbiyahe
   SavedTripList:
+    alertTag: "{alert, plural, one {View one alert} other {View # alerts}}"
     fromTo: Mula sa {from} papuntang {to}
     myTrips: Aking mga biyahe
     noSavedTrips: Wala kang naka-save na biyahe
     noSavedTripsInstructions: Maghanap muna ng biyahe sa mapa.
     pause: I-pause
     resume: Ipagpatuloy
-    alertTag: '{alert, plural, one {View one alert} other {View # alerts}}'
   SavedTripScreen:
     itineraryLoaded: Na-load na ang itinerary
     itineraryLoading: Nilo-load ang itinerary
+    selectAtLeastOneDay: Pumili ng kahit isang araw lang na susubaybayan.
     tooManyTrips: >
       Naabot mo na ang maximum na limang naka-save na biyahe. Alisin ang mga
       hindi pa nagagamit na biyahe sa iyong mga naka-save na biyahe, at subukan
@@ -531,7 +584,6 @@ components:
       May gumagamit nang naka-save na biyahe sa pangalang ito. Gumamit ng ibang
       pangalan.
     tripNameRequired: Maglagay ng pangalan ng biyahe.
-    selectAtLeastOneDay: Pumili ng kahit isang araw lang na susubaybayan.
   SequentialPaneDisplay:
     stepNumber: Hakbang {hakbang} ng {kabuuan}
   SessionTimeout:
@@ -610,11 +662,11 @@ components:
     travelingAt: Bumibiyahe nang {milesPerHour}
     vehicleName: Sasakyan {vehicleNumber}
   TripBasicsPane:
-    checkingItineraryExistence: Tinitingnan kung may itinerary para sa bawat araw
-      ng linggo...
+    checkingItineraryExistence: Tinitingnan kung may itinerary para sa bawat araw ng linggo...
+    onlyOnDate: Sa {date, date, ::eeeee yyyyMMdd} lang
+    recurringEachWeek: Sa ilang partikular na araw sa bawat linggo
     tripDaysPrompt: Anong mga araw mo ginagawa ang biyaheng ito?
-    tripIsAvailableOnDaysIndicated: Available ang iyong biyahe sa mga araw ng linggo
-      na nakasaad sa itaas.
+    tripIsAvailableOnDaysIndicated: Available ang iyong biyahe sa mga araw ng linggo na nakasaad sa itaas.
     tripNamePrompt: "Pangalanan ang biyaheng ito:"
     tripNotAvailableOnDay: Hindi available ang biyahe sa {repeatedDay}
     unsavedChangesExistingTrip: >-
@@ -623,8 +675,6 @@ components:
     unsavedChangesNewTrip: >-
       Hindi mo pa nase-save ang iyong bagong biyahe. Kung aalis ka, mawawala
       ito.
-    onlyOnDate: Sa {date, date, ::eeeee yyyyMMdd} lang
-    recurringEachWeek: Sa ilang partikular na araw sa bawat linggo
   TripNotificationsPane:
     advancedSettings: Mga advanced na setting
     altRouteRecommended: Inirerekomenda ang isang alternatibong ruta o transfer point
@@ -639,6 +689,8 @@ components:
     oneHour: 1 oras
     realtimeAlertFlagged: May realtime na alertong na-flag sa aking paglalakbay
     timeBefore: "{time} dati"
+  TripPreviewLayout:
+    previewTrip: I-preview ang Biyahe
   TripStatus:
     alerts: "{alerts, plural, one {# alert!} other {# alerts!}}"
     deleteTrip: I-delete ang Biyahe
@@ -661,8 +713,7 @@ components:
       unknownState: Hindi Alam ang Status ng Biyahe
       untogglePause: Ipagpatuloy
     inactive:
-      description: Ipagpatuloy ang pagsubaybay sa biyahe para makita ang updated na
-        status
+      description: Ipagpatuloy ang pagsubaybay sa biyahe para makita ang updated na status
       heading: Naka-pause ang pagsubaybay sa biyahe
     nextTripNotPossible:
       description: >
@@ -680,9 +731,11 @@ components:
       awaiting: Hinihintay na makalkula...
       description: Hinihintay na makalkula ang biyahe.
       heading: Hindi pa nakakalkula ang biyahe
+    past:
+      description: Isa itong pang-isang beses na biyaheng nangyari dati.
+      heading: Dati na ang biyahe
     snoozed:
-      description: I-unsnooze ang pagsubaybay sa biyahe para makita ang updated na
-        status.
+      description: I-unsnooze ang pagsubaybay sa biyahe para makita ang updated na status.
       heading: Naka-snooze ang pagsubaybay sa biyahe ngayong araw
     upcoming:
       nextTripBegins: >-
@@ -692,23 +745,19 @@ components:
         Magsisimula ang biyahe nang {tripStart, time, short}. (Magsisimula ang
         realtime na pagsubaybay nang {monitoringStart, time, short}.)
       tripStartIsDelayed: Naantala ang oras ng pagsisimula ng biyahe nang {duration}!
-      tripStartIsEarly: Nagsisimula na ang biyahe {duration} na mas maaga kaysa sa
-        inaasahan!
+      tripStartIsEarly: Nagsisimula na ang biyahe {duration} na mas maaga kaysa sa inaasahan!
       tripStartsSoonNoUpdates: >-
         Malapit nang magsimula ang biyahe (walang realtime na update na
         available).
       tripStartsSoonOnTime: Malapit nang magsimula at nasa oras ang biyahe.
-    past:
-      heading: Dati na ang biyahe
-      description: Isa itong pang-isang beses na biyaheng nangyari dati.
   TripSummary:
     arriveAt: "Darating nang "
     leaveAt: "Umalis sa "
   TripSummaryPane:
     happensOnDays: "Mangyayari sa: {days}"
+    monitoredTripDays: Mga sinusubaybayang araw ng biyahe
     notifications: "{leadTimeInMinutes} (na) minuto bago ang nakaiskedyul na pag-alis"
     notificationsDisabled: "Mga Notification: Naka-disable"
-    monitoredTripDays: Mga sinusubaybayang araw ng biyahe
     timeAndDuration: Oras at tagal ng biyahe
   TripTools:
     copyLink: Kopyahin ang Link
@@ -785,55 +834,6 @@ components:
     switcher: Switcher
   WelcomeScreen:
     prompt: Saan mo gustong pumunta?
-  MobilityProfile:
-    DevicesPane:
-      devices:
-        crutches: Saklay
-        electric wheelchair: Electric na wheelchair
-        mobility scooter: Mobility scooter
-        none: Walang pantulong na device
-        cane: Tungkod
-        manual wheelchair: Manual/tradisyonal na wheelchair
-        white cane: Puting tungkod
-        manual walker: Manual na walker
-        service animal: Panserbisyong hayop
-        stroller: Stroller
-        wheeled walker: Walker na may gulong
-      prompt: Regular ka bang gumagamit ng device na pantulong sa paggalaw? (Lagyan
-        ng check ang lahat ng naaangkop)
-    LimitationsPane:
-      visionLimitations:
-        none: Wala
-        legally-blind: Legal na bulag
-        low-vision: Low-vision
-      visionPrompt: Mayroon ka bang anumang limitasyon sa paningin?
-      mobilityPrompt: Mayroon ka bang anumang limitasyon sa paggalaw na nagdudulot
-        sa iyong maglakad nang mas mabagal at mas maingat kaysa sa iba pang tao?
-    MobilityPane:
-      button: I-edit ang iyong mobility profile
-      header: Mobility Profile
-      mobilityDevices: 'Mga device para sa paggalaw: '
-      visionLimitations: 'Mga limitasyon sa paningin: '
-      mobilityLimitations: 'Mga limitasyon sa paggalaw: '
-    intro: Pakisagot ang ilang tanong para i-customize ang karanasan sa pagpaplano
-      ng biyahe ayon sa iyong mga pangangailangan at kagustuhan.
-    title: Tukuyin ang iyong Mobility Pofile
-  CompanionsPane:
-    companionExplanation: "Mag-imbita ng aalis na G-MAP user na magiging kasama sa
-      pagbiyahe sa pamamagitan ng paglalagay ng kanyang email. Kapag tinanggap niya
-      ito, magiging \"na-verify\" ang kanyang status, at magagawa mong ibahagi ang
-      iyong status ng biyahe at magplano ng mga biyahe batay sa mobility profile ng
-      isa't isa.\n"
-    companionAlreadyAdded: Mayroon ka nang kasamang may email na {email}
-    deleteCompanion: I-delete si {email}
-    addNewCompanion: Magdagdag ng bagong kasama sa pagbiyahe
-    confirmDeleteCompanion: Gusto mo bang i-delete ang kasamang si {email}?
-    currentCompanionsLabel: 'Mga kasalukuyang kasama sa pagbiyahe:'
-    noCompanions: Wala kang sinumang kasama sa pagbiyahe sa kasalukuyan.
-    submitNewCompanion: Magpadala ng imbitasyon
-    title: Mga kasama sa pagbiyahe
-  TripPreviewLayout:
-    previewTrip: I-preview ang Biyahe
 config:
   accessModes:
     bicycle: Pampublikong transportasyon + personal na bisikleta

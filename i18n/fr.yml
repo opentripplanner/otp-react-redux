@@ -401,6 +401,7 @@ components:
     headsign: "{destination}"
     nearbyListIntro: Liste de {count} entités à proximité.
     nothingNearby: Aucun lieu à proximité.
+    searchNearby: Search nearby...
     spacesAvailable: "{spacesAvailable} emplacements libres disponibles"
   NewAccountWizard:
     createNewAccount: Créez un nouveau compte
@@ -801,6 +802,7 @@ components:
     errorUpdatingProfile: Erreur dans la mise à jour de votre profil.
     fieldUpdated: Ce paramètre a été mis à jour.
     fields:
+      add-companion-form: Accompagnateurs
       storeTripHistory: Enregistrement des recherches
     updating: Mise à jour
   UserSettings:

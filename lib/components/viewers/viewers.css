@@ -249,3 +249,25 @@
   justify-content: center;
   padding-top: 10px;
 }
+
+/* Nearby View Location Field Styles */
+.nearby-view-location-field {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  border: none !important;
+  box-shadow: 0px 0px 5px 1px inset rgb(0 0 0 / 0.05);
+  color: #111;
+  display: flex !important;
+  height: 50px;
+  margin-bottom: -5px !important;
+  transition: background-color 0.1s ease-out;
+}
+.nearby-view-location-field:hover,
+.nearby-view-location-field:active {
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+.nearby-view-location-field input {
+  width: 100% !important;
+  background: transparent !important;
+}

@@ -1,4 +1,4 @@
-import { ArrowRight } from '@styled-icons/fa-solid'
+import { ArrowRight } from '@styled-icons/fa-solid/ArrowRight'
 import { FormattedMessage } from 'react-intl'
 
 import { grey } from '../util/colors'

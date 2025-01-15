@@ -384,6 +384,7 @@ components:
     headsign: "{destination}"
     nearbyListIntro: List of {count} nearby entities.
     nothingNearby: There are no places nearby.
+    searchNearby: Search nearby...
     spacesAvailable: "{spacesAvailable} empty spaces available"
   NewAccountWizard:
     createNewAccount: Create a new account
@@ -770,6 +771,7 @@ components:
     errorUpdatingProfile: Error updating profile.
     fieldUpdated: This setting has been updated.
     fields:
+      add-companion-form: Travel Companions
       storeTripHistory: Store trip history
     updating: Updating
   UserSettings:
