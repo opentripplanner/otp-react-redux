@@ -7,6 +7,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
+import { AppReduxState } from '../../util/state-types'
 import { DEFAULT_ROUTE_COLOR } from '../util/colors'
 import { extractMainHeadsigns, PatternSummary } from '../../util/pattern-viewer'
 import { getOperatorName } from '../../util/state'
@@ -245,9 +246,9 @@ class RouteDetails extends Component<Props> {
   }
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: AppReduxState) => {
   const sortRoutePatternsByVehicleCount =
-    state.otp?.config?.routeViewer?.sortRoutePatternsByVehicleCount
+    state.otp.config.routeViewer?.sortRoutePatternsByVehicleCount
 
   return {
     sortPatternsByVehicleCount: sortRoutePatternsByVehicleCount !== false
