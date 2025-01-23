@@ -6,6 +6,7 @@
       "push"
     ],
     "components.UserAccountScreen.fields.*": [
+      "add-companion-form",
       "storeTripHistory"
     ],
     "components.OTP2ErrorRenderer.*.body": [

@@ -802,6 +802,7 @@ components:
     errorUpdatingProfile: Erreur dans la mise à jour de votre profil.
     fieldUpdated: Ce paramètre a été mis à jour.
     fields:
+      add-companion-form: Accompagnateurs
       storeTripHistory: Enregistrement des recherches
     updating: Mise à jour
   UserSettings:
