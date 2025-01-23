@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { IntlShape, useIntl } from 'react-intl'
-import { UserLocationAndType } from '@opentripplanner/types'
+import { Location, UserLocationAndType } from '@opentripplanner/types'
 import EndpointsOverlay from '@opentripplanner/endpoints-overlay'
 import React, { ComponentProps, useCallback } from 'react'
 
@@ -13,16 +13,19 @@ import {
 } from '../../actions/user'
 import { getActiveSearch, getShowUserSettings } from '../../util/state'
 import { setLocation } from '../../actions/map'
+import { setViewedStop } from '../../actions/ui'
 import { toastOnPlaceSaved } from '../util/toasts'
 
 type Props = ComponentProps<typeof EndpointsOverlay> & {
   forgetPlace: (place: string, intl: IntlShape) => void
   rememberPlace: (arg: UserLocationAndType, intl: IntlShape) => number
+  setViewedStop: (arg: Location) => void
 }
 
 const ConnectedEndpointsOverlay = ({
   forgetPlace,
   rememberPlace,
+  setViewedStop,
   ...otherProps
 }: Props): JSX.Element => {
   const intl = useIntl()
@@ -47,6 +50,7 @@ const ConnectedEndpointsOverlay = ({
       {...otherProps}
       forgetPlace={_forgetPlace}
       rememberPlace={_rememberPlace}
+      setViewNearby={setViewedStop}
     />
   )
 }
@@ -89,7 +93,8 @@ const mapDispatchToProps = {
   clearLocation,
   forgetPlace,
   rememberPlace,
-  setLocation
+  setLocation,
+  setViewedStop
 }
 
 export default connect(
