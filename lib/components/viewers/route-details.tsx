@@ -7,6 +7,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
+import { AppReduxState } from '../../util/state-types'
 import { DEFAULT_ROUTE_COLOR } from '../util/colors'
 import { extractMainHeadsigns, PatternSummary } from '../../util/pattern-viewer'
 import { getOperatorName } from '../../util/state'
@@ -47,6 +48,11 @@ const PatternSelectDropdown = styled(Dropdown)`
   span.caret {
     color: #333;
   }
+
+  ul li button span {
+    width: 100%;
+    display: block;
+  }
 `
 
 interface Props {
@@ -57,6 +63,7 @@ interface Props {
   setHoveredStop: (id: string | null) => void
   setViewedRoute: SetViewedRouteHandler
   setViewedStop: SetViewedStopHandler
+  sortPatternsByVehicleCount: boolean
 }
 
 class RouteDetails extends Component<Props> {
@@ -87,7 +94,14 @@ class RouteDetails extends Component<Props> {
   }
 
   render() {
-    const { intl, operator, patternId, route, setHoveredStop } = this.props
+    const {
+      intl,
+      operator,
+      patternId,
+      route,
+      setHoveredStop,
+      sortPatternsByVehicleCount
+    } = this.props
     const { agency, patterns = {}, shortName, url } = route
     const pattern = patterns[patternId]
 
@@ -100,6 +114,7 @@ class RouteDetails extends Component<Props> {
       shortName,
       this._editHeadsign
     ).sort((a, b) => {
+      if (!sortPatternsByVehicleCount) return 0
       // sort by number of vehicles on that pattern
       const aVehicleCount =
         route.vehicles?.filter((vehicle) => vehicle.patternId === a.id)
@@ -231,6 +246,15 @@ class RouteDetails extends Component<Props> {
   }
 }
 
+const mapStateToProps = (state: AppReduxState) => {
+  const sortRoutePatternsByVehicleCount =
+    state.otp.config.routeViewer?.sortRoutePatternsByVehicleCount
+
+  return {
+    sortPatternsByVehicleCount: sortRoutePatternsByVehicleCount !== false
+  }
+}
+
 // connect to redux store
 const mapDispatchToProps = {
   setHoveredStop: uiActions.setHoveredStop,
@@ -238,4 +262,7 @@ const mapDispatchToProps = {
   setViewedStop: uiActions.setViewedStop
 }
 
-export default connect(null, mapDispatchToProps)(injectIntl(RouteDetails))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(injectIntl(RouteDetails))

@@ -674,6 +674,8 @@ disableSingleItineraryDays: false
 #   # Whether to render routes within flex zones of a route's patterns. If set to true,
 #   # routes will not be rendered within flex zones.
 #   hideRouteShapesWithinFlexZones: true
+#   # Setting to sort routes by the number of vehicles on each pattern
+#   sortRoutePatternsByVehicleCount: true
 #   # Disable vehicle highlight if necessary (e.g. custom or inverted icons)
 #   vehicleIconHighlight: true
 #   # Customize vehicle icon padding (the default iconPadding is 2px in otp-ui)

@@ -36,8 +36,7 @@ export const PatternContainer = styled.div`
   background-color: inherit;
   color: inherit;
   display: flex;
-  gap: 16px;
-  justify-content: flex-start;
+  justify-content: space-between;
   margin: 0;
   padding: 8px;
 
@@ -48,7 +47,7 @@ export const PatternContainer = styled.div`
   // Styling for SortResultsDropdown
 
   & > span {
-    width: 85%;
+    width: 80%;
 
     button#headsign-selector-label {
       align-items: center;
