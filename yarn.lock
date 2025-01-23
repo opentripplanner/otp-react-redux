@@ -2451,10 +2451,10 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/endpoints-overlay@3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-3.0.1.tgz#b6b8e2f08ae41fbaad475fc0f0fe3e72d7d36463"
-  integrity sha512-X3T0GM8U+VU/mOOSNUgj6fVcjAKMeciKFYnQNbKiNgNeDHa5JltwvtXsM4x3wCLP2xAF6jH/HTWJmYmsfLPlAw==
+"@opentripplanner/endpoints-overlay@3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-3.1.0.tgz#92ad54ed9445385e25c2a968f700945ae4fc9315"
+  integrity sha512-FxQrd/nDIP9Tq5yfMFVgWx0QIXmy64y521r6yFCNsY/rBLSAtnLCVMLNUW+bCtdo3IUpeSpqshJDLYHHDHpa/g==
   dependencies:
     "@opentripplanner/base-map" "^4.0.0"
     "@opentripplanner/building-blocks" "^2.0.0"
