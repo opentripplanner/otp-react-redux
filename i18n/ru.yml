@@ -227,7 +227,7 @@ components:
     addNewCompanion: Добавить нового попутчика
     companionAlreadyAdded: У вас уже есть попутчик с адресом электронной почты {email}.
     companionExplanation: >
-      Invite an exiting G-MAP user to be a travel companion by entering their
+      Invite an existing G-MAP user to be a travel companion by entering their
       email. When they accept, their status will change to "verified", and you
       can share your trip status and plan trips based on one another's mobility
       profile.
