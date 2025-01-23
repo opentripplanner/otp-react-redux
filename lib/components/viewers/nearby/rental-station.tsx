@@ -2,13 +2,12 @@ import { Bicycle } from '@styled-icons/fa-solid/Bicycle'
 import { Company } from '@opentripplanner/types'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
-// @ts-expect-error icons doesn't have typescript?
-import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
 import { Parking } from '@styled-icons/fa-solid/Parking'
-import React, { Suspense } from 'react'
+import React from 'react'
 
 import { AppReduxState } from '../../../util/state-types'
 import { IconWithText } from '../../util/styledIcon'
+import CompanyIcon from '../../util/company-icon'
 
 import { Card, CardBody, CardHeader, CardSubheader, CardTitle } from './styled'
 import DistanceDisplay from './distance-display'
@@ -24,22 +23,15 @@ const RentalStation = ({ companies, fromToSlot, place }: Props) => {
   const company = companies?.find((c) => c.id === network)?.label
   const { bikesAvailable, spacesAvailable } = place
 
-  const StationIcon = () => {
-    const CompanyIcon = getCompanyIcon(network)
-    return CompanyIcon ? (
-      <Suspense fallback={<span>{company}</span>}>
-        <CompanyIcon height={22} style={{ marginRight: '5px' }} width={22} />
-      </Suspense>
-    ) : (
-      <Bicycle />
-    )
-  }
+  const stationIcon = (
+    <CompanyIcon company={company} fallbackIcon={<Bicycle />} />
+  )
 
   return (
     <Card>
       <CardHeader>
         <CardTitle>
-          <IconWithText Icon={StationIcon}>{place.name}</IconWithText>
+          <IconWithText icon={stationIcon}>{place.name}</IconWithText>
         </CardTitle>
         <CardSubheader>
           {company || (

@@ -1,15 +1,14 @@
 import { Bicycle } from '@styled-icons/fa-solid/Bicycle'
 import { Company } from '@opentripplanner/types'
 import { connect } from 'react-redux'
-// @ts-expect-error icons doesn't have typescript?
-import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
 import { IntlShape, useIntl } from 'react-intl'
 // @ts-expect-error icons doesn't have typescript?
 import { Micromobility } from '@opentripplanner/icons'
-import React, { Suspense } from 'react'
+import React from 'react'
 
 import { AppReduxState } from '../../../util/state-types'
 import { IconWithText } from '../../util/styledIcon'
+import CompanyIcon from '../../util/company-icon'
 
 import { Card, CardBody, CardHeader, CardTitle } from './styled'
 import DistanceDisplay from './distance-display'
@@ -67,23 +66,6 @@ const getVehicleText = (
   }
 }
 
-const StationIcon = ({
-  companyLabel,
-  vehicle
-}: {
-  companyLabel: string
-  vehicle: any
-}) => {
-  const CompanyIcon = getCompanyIcon(vehicle.network)
-  return CompanyIcon ? (
-    <Suspense fallback={<span>{companyLabel}</span>}>
-      <CompanyIcon height={22} style={{ marginRight: '5px' }} width={22} />
-    </Suspense>
-  ) : (
-    <span>{getVehicleIcon(vehicle.vehicleType.formFactor)}</span>
-  )
-}
-
 const Vehicle = ({
   companies,
   fromToSlot,
@@ -106,7 +88,12 @@ const Vehicle = ({
       <CardHeader>
         <CardTitle>
           <IconWithText
-            icon={<StationIcon companyLabel={companyLabel} vehicle={vehicle} />}
+            icon={
+              <CompanyIcon
+                company={vehicle.network}
+                fallbackIcon={getVehicleIcon(vehicle.vehicleType.formFactor)}
+              />
+            }
           >
             {name}
           </IconWithText>
