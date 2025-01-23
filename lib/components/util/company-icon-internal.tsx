@@ -1,17 +1,21 @@
 // @ts-expect-error icons doesn't have typescript?
 import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
-import React, { Suspense } from 'react'
+import React, { ReactElement, Suspense, SVGAttributes } from 'react'
 
-type Props = {
-  company: string
-  fallbackIcon?: ReactNode
+export interface Props extends SVGAttributes<unknown> {
+  company?: string
+  fallbackIcon: ReactElement | null
 }
 
-const CompanyIcon = ({ company, fallbackIcon = null }: Props): ReactNode => {
+const CompanyIcon = ({
+  company,
+  fallbackIcon = null,
+  ...otherProps
+}: Props): ReactElement | null => {
   const CompanyIcon = getCompanyIcon ? getCompanyIcon(company) : null
   return CompanyIcon ? (
     <Suspense fallback={<span>{company}</span>}>
-      <CompanyIcon height={22} style={{ marginRight: '5px' }} width={22} />
+      <CompanyIcon {...otherProps} />
     </Suspense>
   ) : (
     fallbackIcon

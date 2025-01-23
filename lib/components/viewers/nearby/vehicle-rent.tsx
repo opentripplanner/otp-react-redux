@@ -73,7 +73,14 @@ const Vehicle = ({
 }: {
   companies?: Company[]
   fromToSlot: JSX.Element
-  vehicle: any
+  vehicle: {
+    distance: number
+    name: string
+    network: string
+    vehicleType: {
+      formFactor: VehicleFormFactor
+    }
+  }
 }): JSX.Element => {
   const intl = useIntl()
   const companyLabel =
@@ -91,7 +98,10 @@ const Vehicle = ({
             icon={
               <CompanyIcon
                 company={vehicle.network}
-                fallbackIcon={getVehicleIcon(vehicle.vehicleType.formFactor)}
+                fallbackIcon={<span>{getVehicleIcon(formFactor)}</span>}
+                height={22}
+                style={{ marginRight: '5px' }}
+                width={22}
               />
             }
           >
