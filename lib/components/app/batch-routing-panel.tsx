@@ -84,13 +84,13 @@ class BatchRoutingPanel extends Component<Props> {
   handlePlanTripClick = () => {
     const { currentQuery, intl, routingQuery, updateQueryTimeIfLeavingNow } =
       this.props
+    updateQueryTimeIfLeavingNow()
     alertUserTripPlan(
       intl,
       currentQuery,
       () => this.setState({ planTripClicked: true }),
       routingQuery
     )
-    updateQueryTimeIfLeavingNow()
   }
 
   render() {
