@@ -45,7 +45,6 @@ const SortResultsDropdown = styled(Dropdown)`
 export default function NarrativeItinerariesHeader({
   customBatchUiBackground,
   enabledSortModes,
-  errors,
   itineraries,
   itineraryIsExpanded,
   onSortChange,
@@ -61,7 +60,6 @@ export default function NarrativeItinerariesHeader({
 }: {
   customBatchUiBackground?: boolean
   enabledSortModes: ItinerarySortOption[]
-  errors: unknown[]
   itineraries: unknown[]
   itinerary: Itinerary
   itineraryIsExpanded: boolean
@@ -90,12 +88,6 @@ export default function NarrativeItinerariesHeader({
     },
     { itineraryNum: itineraries.length }
   )
-  const numIssues = intl.formatMessage(
-    {
-      id: 'components.NarrativeItinerariesHeader.numIssues'
-    },
-    { issueNum: errors.length }
-  )
 
   const sortResultsLabel = intl.formatMessage({
     id: 'components.NarrativeItinerariesHeader.sortResults'
@@ -109,8 +101,6 @@ export default function NarrativeItinerariesHeader({
     id: 'components.NarrativeItinerariesHeader.searching'
   })
   const narrativeUiStatus = pending
-    ? searching
-    : intl.formatList([itinerariesFound, numIssues], { type: 'conjunction' })
 
   const sortOptionsArr = sortOptions(intl, enabledSortModes)
   const sortText = sortOptionsArr.find((x) => x.value === sort.type)?.text
@@ -175,13 +165,6 @@ export default function NarrativeItinerariesHeader({
               >
                 {pending ? searching : itinerariesFound}
               </h1>
-              {errors.length > 0 && (
-                <IssueButton onClick={onToggleShowErrors}>
-                  <IconWithText Icon={ExclamationTriangle}>
-                    <span>{numIssues}</span>
-                  </IconWithText>
-                </IssueButton>
-              )}
             </div>
           ) : (
             // The "n Itineraries Found" a11y header is an <h2> element
