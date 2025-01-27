@@ -73,10 +73,10 @@ class BatchSearchScreen extends Component<Props> {
   handlePlanTripClick = () => {
     const { currentQuery, intl, routingQuery, updateQueryTimeIfLeavingNow } =
       this.props
+    updateQueryTimeIfLeavingNow()
     alertUserTripPlan(intl, currentQuery, routingQuery, () =>
       this.setState({ planTripClicked: true })
     )
-    updateQueryTimeIfLeavingNow()
   }
 
   openAdvancedSettings = () => {
