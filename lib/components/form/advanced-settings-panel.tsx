@@ -388,8 +388,7 @@ const mapStateToProps = (state: AppReduxState) => {
 
 const mapDispatchToProps = {
   getDependentUserInfo: userActions.getDependentUserInfo,
-  setQueryParam: formActions.setQueryParam,
-  updateQueryTimeIfLeavingNow: formActions.updateQueryTimeIfLeavingNow
+  setQueryParam: formActions.setQueryParam
 }
 
 export default connect(

@@ -7,7 +7,6 @@ import { getFormattedMode } from '../../util/i18n'
 import { hasValidLocation } from '../../util/state'
 import { QueryParamChangeHandler } from '../util/types'
 import { RoutingQueryCallResult } from '../../actions/api-constants'
-import { updateQueryTimeIfLeavingNow } from '../../actions/form'
 
 // This method is used to daisy-chain a series of functions together on a given value
 export function pipe<T>(...fns: Array<(arg: T) => T>) {
@@ -109,7 +108,6 @@ export const alertUserTripPlan = (
   }
 
   // Plan trip.
-  updateQueryTimeIfLeavingNow()
   const routingQueryResult = routingQuery()
 
   // If mode combination is not valid (i.e. produced no query), alert the user.
