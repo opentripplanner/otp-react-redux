@@ -41,7 +41,7 @@ export default function NarrativeItinerariesErrors({
       <IssueIconContainer>
         <CompanyIcon
           company={error.network}
-          fallbackIcon={
+          fallbackContent={
             <StyledIconWrapper className="text-warning">
               <ExclamationTriangle />
             </StyledIconWrapper>

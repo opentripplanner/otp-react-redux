@@ -4,12 +4,12 @@ import React, { ReactElement, Suspense, SVGAttributes } from 'react'
 
 export interface Props extends SVGAttributes<unknown> {
   company?: string
-  fallbackIcon: ReactElement | null
+  fallbackContent: ReactElement | null
 }
 
 const CompanyIcon = ({
   company,
-  fallbackIcon = null,
+  fallbackContent = null,
   ...otherProps
 }: Props): ReactElement | null => {
   const CompanyIcon = getCompanyIcon ? getCompanyIcon(company) : null
@@ -18,7 +18,7 @@ const CompanyIcon = ({
       <CompanyIcon {...otherProps} />
     </Suspense>
   ) : (
-    fallbackIcon
+    fallbackContent
   )
 }
 
