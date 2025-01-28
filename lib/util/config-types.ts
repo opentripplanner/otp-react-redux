@@ -362,6 +362,8 @@ export interface RouteViewerConfig {
   maxRealtimeVehicleAge?: number
   /** Use OTP date limiting to only show current service week in list */
   onlyShowCurrentServiceWeek?: boolean
+  /** Setting to sort routes by the number of vehicles on each pattern */
+  sortRoutePatternsByVehicleCount?: boolean
   /** Disable vehicle highlight if necessary (e.g. custom or inverted icons) */
   vehicleIconHighlight?: boolean
   /** Customize vehicle icon padding (the default iconPadding is 2px in otp-ui) */
