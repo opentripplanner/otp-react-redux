@@ -355,7 +355,6 @@ components:
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerary found} other {# itineraries found}
       }
-    numIssues: "{issueNum, plural, one {# issue} other {# issues} }"
     resultsSortedBy: >-
       Trip results currently sorted by {sortSelected}. To change the way results
       are sorted, use the "Sort Results" button below.
