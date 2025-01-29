@@ -53,6 +53,7 @@ actions:
     smsInvalidCode: 您输入的代码无效. 请再试一次.
     smsResendThrottled: 不到一分钟前一条验证短信已经发送到指定的电话号码上. 请稍后再试.
     smsVerificationFailed: 您的手机无法被验证. 也许你输入的代码已经过期. 请申请一个新的代码并重新尝试.
+    getDependentUserInfoFailed: 获取移动配置文件信息出错。
 common:
   coordinates: "{lat}, {lon}"
   dateExpressions:
@@ -103,6 +104,7 @@ common:
     noItineraryToDisplay: 没有显示行程.
     relativeCo2: |
       {co2} {isMore, select, true {更多} other {更少} } CO₂ 比单独驾车
+    timeStartEnd: '{start} – {end}'
   linkOpensNewWindow: （打开新窗口）
   modes:
     bicycle_rent: 共享单车
@@ -172,6 +174,8 @@ components:
     mailables: 准备发布
     openMenu: 打开菜单
     skipNavigation: 跳过导航
+    networkConnectionLost: 网络连接中断
+    networkConnectionRestored: 网络连接已恢复
   BackToTripPlanner:
     backToTripPlanner: 返回到行程计划表
   BatchResultsScreen:
@@ -182,6 +186,12 @@ components:
   BatchSearchScreen:
     header: 计划您的行程
     modeSelectorLabel: 选择出行模式
+    moreOptions: 更多选项
+    saveAndReturn: 保存并返回
+    saved: 保存
+    submodeSelectorLabel: 选择主要出行方式和次要出行方式
+    tripOptions: 行程选项
+    advancedHeader: 高级偏好设置
   BatchSettings:
     destination: 目的地
     invalidModeSelection: 无法使用所选模式计划行程。尝试在模式选择中包括公交。
@@ -254,6 +264,7 @@ components:
     shared-vehicles: 共享车辆
     stops: 公共交通站点
     streets: 街道
+    stations: 交通站点
   MapillaryFrame:
     title: 街道图像
   MetroUI:
@@ -265,6 +276,7 @@ components:
     originallyScheduledTime: （最初{originalTime}）
     singleModeItineraryDescription: "{time} {mode} 行程"
     timeWalking: "{time} 步行"
+    itinerarySummary: 出发点：{stopName} | {cost}
   MobileOptions:
     header: 设置搜索选项
   NarrativeItinerariesHeader:
@@ -302,6 +314,9 @@ components:
     nearbyListIntro: 附近 {count} 个实体的列表。
     nothingNearby: 附近没有地方。
     spacesAvailable: "{spacesAvailable} 可用空位"
+    headsign: '{destination}'
+    distanceAway: 距您 {localizedDistanceString}
+    searchNearby: 搜索附近…
   NewAccountWizard:
     createNewAccount: 创建一个新账户
     finish: 账户设置完成!
@@ -364,6 +379,7 @@ components:
     verificationInstructions: |
       请检查您手机上的短信应用查看是否有验证码的短信并输入以下代码 (代码在10分钟后失效).
     verify: 核实
+    verifySms: 请完成验证流程，以便设置短信通知。
   Place:
     deleteThisPlace: 删除这个地点
     enterAlert: |
@@ -435,6 +451,9 @@ components:
     tripNotFound: 未找到行程
     tripNotFoundDescription: 对不起, 没有找到所要求的行程.
     tripNotifications: 行程通知
+    deleteSavedTrip: 删除已保存的行程
+    travelCompanions: 出行伙伴
+    readOnlyBanner: '{creator} 创建并将您添加到了此行程。因此，您无法进行更改。'
   SavedTripList:
     fromTo: 从 {from} 到 {to}
     myTrips: 我的行程
@@ -442,6 +461,7 @@ components:
     noSavedTripsInstructions: 首先从地图上进行行程搜索.
     pause: 暂停
     resume: 继续
+    alertTag: '{alert, plural, one {View one alert} other {View # alerts}}'
   SavedTripScreen:
     itineraryLoaded: 行程已加载
     itineraryLoading: 加载行程
@@ -449,6 +469,7 @@ components:
       你已经达到了五次保存行程的上限. 请从你保存行程中删除未使用的行程然后再试一次.
     tripNameAlreadyUsed: 另一个保存行程已经使用了这个名字. 请选择一个不同的名字.
     tripNameRequired: 请输入一个行程名称.
+    selectAtLeastOneDay: 请至少选择一天进行监测。
   SequentialPaneDisplay:
     stepNumber: 步骤{step}/{total}
   SessionTimeout:
@@ -522,6 +543,8 @@ components:
     tripNotAvailableOnDay: 此行程每 {repeatedDay} 不举行!
     unsavedChangesExistingTrip: 您还没有保存你的行程. 如果您离开了，变更就会消失.
     unsavedChangesNewTrip: 您还没有保存您的新旅行. 如果您离开，它就会消失.
+    onlyOnDate: 仅限{date, date, ::eeeee yyyyMMdd}
+    recurringEachWeek: 每周特定几天
   TripNotificationsPane:
     advancedSettings: 进阶设置
     altRouteRecommended: 建议采用替代路线或换乘点
@@ -582,6 +605,9 @@ components:
       tripStartIsEarly: 开始时间比预期早 {duration}!
       tripStartsSoonNoUpdates: 行程即将开始 (没有实时更新).
       tripStartsSoonOnTime: 行程即将开始而且大约是准时的.
+    past:
+      heading: 行程已过期
+      description: 这是一次已结束的单次行程。
   TripSummary:
     arriveAt: "到达 "
     leaveAt: "离开 "
@@ -589,6 +615,8 @@ components:
     happensOnDays: "发生在: {days}"
     notifications: 预定出发前 {leadTimeInMinutes}
     notificationsDisabled: "通知: 已禁用"
+    timeAndDuration: 行程时间与时长
+    monitoredTripDays: 行程监测日期
   TripTools:
     copyLink: 复制链接
     header: 工具
@@ -622,6 +650,7 @@ components:
     fieldUpdated: 此设置已更新。
     fields:
       storeTripHistory: 存储行程历史记录
+      add-companion-form: 出行伙伴
     updating: 正在更新
   UserSettings:
     confirmDeletion: 您有最近的搜索或地点存储.若停止存储最近的地点或搜索的功能，则这些项目将被删除.要继续吗?
@@ -653,6 +682,54 @@ components:
     switcher: 切换按钮
   WelcomeScreen:
     prompt: 你想去哪里？
+  MobilityProfile:
+    LimitationsPane:
+      visionPrompt: 您是否有任何视力限制？
+      mobilityPrompt: 您是否有任何行动限制，导致您比他人走路更慢或更谨慎？
+      visionLimitations:
+        legally-blind: 法定盲人
+        low-vision: 低视力
+        none: 无
+    DevicesPane:
+      devices:
+        electric wheelchair: 电动轮椅
+        manual walker: 手动助行器
+        service animal: 服务性动物
+        wheeled walker: 带轮助行器
+        cane: 手杖
+        crutches: 拐杖
+        manual wheelchair: 手动/传统轮椅
+        none: 无辅助设备
+        stroller: 婴儿车
+        white cane: 白色盲杖
+        mobility scooter: 代步车
+      prompt: 您是否经常使用辅助移动设备？（勾选所有适用项）
+    MobilityPane:
+      visionLimitations: '视力限制： '
+      button: 编辑您的移动配置文件
+      header: 移动配置文件
+      mobilityDevices: '移动设备： '
+      mobilityLimitations: '行动限制： '
+      planTripDescription: 如果您有出行伙伴，您可以选择根据他们的移动配置文件规划此行程。
+    dropdownLabel: 用户移动配置文件：
+    intro: 请回答几个问题，以根据您的需求和偏好自定义行程规划体验。
+    myself: 本人
+    title: 定义您的移动配置文件
+  CompanionsPane:
+    addNewCompanion: 添加新的出行伙伴
+    companionAlreadyAdded: 您已添加一位电子邮箱为 {email} 的出行伙伴
+    currentCompanionsLabel: 当前出行伙伴：
+    deleteCompanion: 删除 {email}
+    noCompanions: 您当前未添加任何出行伙伴。
+    submitNewCompanion: 发送邀请
+    confirmDeleteCompanion: 是否要删除电子邮箱为 {email} 的出行伙伴？
+    title: 出行伙伴
+  TripCompanionsPane:
+    observersLabel: 观察此行程的人员：
+    primaryLabel: '主要出行人： '
+    companionLabel: 此行程中的伙伴：
+  TripPreviewLayout:
+    previewTrip: 预览行程
 config:
   accessModes:
     bicycle: 公共交通 + 我的自行车
