@@ -23,7 +23,7 @@ const Container = styled.li`
   margin: 0;
   padding: 0 1em;
 
-  h3 {
+  h2 {
     grid-column: 2;
     grid-row: 1;
   }
@@ -83,11 +83,11 @@ const ErrorRenderer = ({
           return (
             <Container key={error}>
               <Icon Icon={ExclamationCircle} size="3x" />
-              <h3>
+              <h2>
                 <FormattedMessage
                   id={`components.OTP2ErrorRenderer.${error}.header`}
                 />
-              </h3>
+              </h2>
               <p>
                 <FormattedMessage
                   id={`components.OTP2ErrorRenderer.${error}.body`}
