@@ -70,6 +70,7 @@ actions:
     smsVerificationFailed: >-
       Su teléfono no ha podido ser verificado. Quizás el código que has
       introducido ha caducado. Solicita un nuevo código e inténtalo de nuevo.
+    getDependentUserInfoFailed: Error al obtener la información del perfil de movilidad.
 common:
   coordinates: "{lat}; {lon}"
   dateExpressions:
@@ -193,6 +194,8 @@ components:
     mailables: Lista para publicar
     openMenu: Abrir Menú
     skipNavigation: Saltar navegación
+    networkConnectionLost: Se perdió la conexión de red
+    networkConnectionRestored: Conexión de red restaurada
   BackToTripPlanner:
     backToTripPlanner: Volver al planificador de viajes
   BatchResultsScreen:
@@ -350,10 +353,14 @@ components:
       mobilityDevices: "Dispositivos de movilidad: "
       mobilityLimitations: "Limitaciones de la movilidad: "
       visionLimitations: "Limitaciones visuales: "
+      planTripDescription: Si tiene un compañero de viaje, puede optar por planificar
+        este viaje según su perfil de movilidad.
     intro: >-
       Por favor, responda a algunas preguntas para adaptar la planificación del
       viaje a sus necesidades y preferencias.
     title: Defina su perfil de movilidad
+    myself: Yo
+    dropdownLabel: 'Perfil de movilidad del usuario:'
   NarrativeItinerariesHeader:
     changeSortDir: Cambiar la dirección de clasificación
     howToFindResults: >-
@@ -395,6 +402,7 @@ components:
     nearbyListIntro: Lista de {count} entidades cercanas.
     nothingNearby: No ubicaciónes cercanas.
     spacesAvailable: "{spacesAvailable} espacios libres disponibles"
+    searchNearby: Buscar cerca...
   NewAccountWizard:
     createNewAccount: Crear una nueva cuenta
     finish: ¡Configuración de la cuenta completa!
@@ -555,6 +563,8 @@ components:
     tripNotFound: No se encontró el viaje
     tripNotFoundDescription: Lo sentimos, no se encontró el viaje solicitado.
     tripNotifications: Notificaciones de viaje
+    readOnlyBanner: '{creator} creó y te agregó a este viaje. Por lo tanto, no es
+      posible hacer cambios.'
   SavedTripList:
     alertTag: "{alert, plural, one {Ver una alerta} other {Ver # alertas}}"
     fromTo: De {from} al {to}
@@ -794,6 +804,7 @@ components:
     fieldUpdated: Este ajuste se actualizó.
     fields:
       storeTripHistory: Almacenar historial de viajes
+      add-companion-form: Compañeros de viaje
     updating: Actualizando
   UserSettings:
     confirmDeletion: >-
@@ -834,6 +845,10 @@ components:
     switcher: Botón de cambio
   WelcomeScreen:
     prompt: ¿A donde quiere ir?
+  TripCompanionsPane:
+    primaryLabel: 'Viajero principal: '
+    companionLabel: 'Compañero en este viaje:'
+    observersLabel: 'Observadores que presenciaron este viaje:'
 config:
   accessModes:
     bicycle: Tránsito + Bicicleta Personal
