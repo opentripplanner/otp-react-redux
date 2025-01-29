@@ -73,6 +73,8 @@ actions:
     smsVerificationFailed: >-
       Hindi ma-verify ang iyong telepono. Posibleng nag-expire na ang inilagay
       mong code. Humiling ng bagong code at subukan ulit.
+    getDependentUserInfoFailed: Pagkakamali sa pagkuha ng impormasyon sa profile sa
+      kadaliang kumilos.
 common:
   coordinates: "{lat}, {lon}"
   dateExpressions:
@@ -198,6 +200,8 @@ components:
     mailables: Mga Mailable
     openMenu: Buksan ang Menu
     skipNavigation: I-skip ang pag-navigate
+    networkConnectionLost: Nawala ang koneksyon sa network
+    networkConnectionRestored: Naibalik na ang koneksyon sa network
   BackToTripPlanner:
     backToTripPlanner: Bumalik sa planner ng biyahe
   BatchResultsScreen:
@@ -355,10 +359,14 @@ components:
       mobilityDevices: "Mga device para sa paggalaw: "
       mobilityLimitations: "Mga limitasyon sa paggalaw: "
       visionLimitations: "Mga limitasyon sa paningin: "
+      planTripDescription: Kung mayroon kang kasama sa paglalakbay, maaari mong piliing
+        planuhin ang biyaheng ito ayon sa kanilang profile sa kadaliang kumilos.
     intro: >-
       Pakisagot ang ilang tanong para i-customize ang karanasan sa pagpaplano ng
       biyahe ayon sa iyong mga pangangailangan at kagustuhan.
     title: Tukuyin ang iyong Mobility Pofile
+    dropdownLabel: 'Profile sa kadaliang kumilos ng user:'
+    myself: Sarili ko
   NarrativeItinerariesHeader:
     changeSortDir: Baguhin ang pagkakaayos ng direksyon
     howToFindResults: >-
@@ -398,6 +406,7 @@ components:
     nearbyListIntro: List of {count} nearby entities.
     nothingNearby: There are no places nearby.
     spacesAvailable: "{spacesAvailable} mga available na bakanteng espasyo"
+    searchNearby: Maghanap sa malapit...
   NewAccountWizard:
     createNewAccount: Gumawa ng bagong account
     finish: Tapos nang i-set up ang account!
@@ -566,6 +575,8 @@ components:
     tripNotFound: Hindi nakita ang biyahe
     tripNotFoundDescription: Pasensya na, hindi nakita ang hiniling na biyahe.
     tripNotifications: Mga notification sa biyahe
+    readOnlyBanner: Ginawa at idinagdag ka ni {creator} sa biyaheng ito. Samakatuwid,
+      hindi ka makakagawa ng mga pagbabago.
   SavedTripList:
     alertTag: "{alert, plural, one {View one alert} other {View # alerts}}"
     fromTo: Mula sa {from} papuntang {to}
@@ -802,6 +813,7 @@ components:
     fieldUpdated: Na-update na ang setting na ito.
     fields:
       storeTripHistory: History ng biyahe sa tindahan
+      add-companion-form: Mga Kasama sa Biyahe
     updating: Nag-a-update
   UserSettings:
     confirmDeletion: >-
@@ -841,6 +853,10 @@ components:
     switcher: Switcher
   WelcomeScreen:
     prompt: Saan mo gustong pumunta?
+  TripCompanionsPane:
+    primaryLabel: 'Pangunahing manlalakbay: '
+    companionLabel: 'Kasama sa biyaheng ito:'
+    observersLabel: 'Mga tagamasid na nanonood ng biyaheng ito:'
 config:
   accessModes:
     bicycle: Pampublikong transportasyon + personal na bisikleta
