@@ -34,7 +34,7 @@ const FormattedRealtimeStatusLabel = ({
     case 'scheduled':
       return <FormattedMessage id="components.RealtimeStatusLabel.scheduled" />
     default:
-      return null
+      return minutes
   }
 }
 
