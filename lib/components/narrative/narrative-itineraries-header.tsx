@@ -6,9 +6,10 @@ import { FormattedMessage, useIntl } from 'react-intl'
 import { Itinerary } from '@opentripplanner/types'
 import { SortAmountDown } from '@styled-icons/fa-solid/SortAmountDown'
 import { SortAmountUp } from '@styled-icons/fa-solid/SortAmountUp'
-import React, { useCallback } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
+import { ComponentContext } from '../../util/contexts'
 import { IconWithText, StyledIconWrapper } from '../util/styledIcon'
 import { ItinerarySortOption } from '../../util/config-types'
 import { sortOptions } from '../util/sortOptions'
@@ -76,6 +77,12 @@ export default function NarrativeItinerariesHeader({
   sort: { direction: string; type: string }
 }): JSX.Element {
   const intl = useIntl()
+
+  // Use customized sort icons or fall back to the defaults
+  // @ts-expect-error Context not typed
+  const { SortIconDown, SortIconUp } = useContext(ComponentContext)
+  const SortUp = SortIconUp || SortAmountUp
+  const SortDown = SortIconDown || SortAmountDown
 
   const itinerariesFound = intl.formatMessage(
     {
@@ -198,9 +205,9 @@ export default function NarrativeItinerariesHeader({
                 className={`${customBatchUiBackground && 'base-color-bg'}`}
               >
                 {sort.direction.toLowerCase() === 'asc' ? (
-                  <SortAmountUp />
+                  <SortUp />
                 ) : (
-                  <SortAmountDown />
+                  <SortDown />
                 )}
               </StyledIconWrapper>
             </button>

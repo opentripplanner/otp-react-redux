@@ -551,7 +551,7 @@ components:
     tripNotFoundDescription: Lo sentimos, no se encontró el viaje solicitado.
     tripNotifications: Notificaciones de viaje
   SavedTripList:
-    alertTag: "{alerta, plural, one {Ver una alerta} other {Ver # alertas}}"
+    alertTag: "{alert, plural, one {Ver una alerta} other {Ver # alertas}}"
     fromTo: De {from} al {to}
     myTrips: Mis viajes
     noSavedTrips: No tiene viajes guardados
