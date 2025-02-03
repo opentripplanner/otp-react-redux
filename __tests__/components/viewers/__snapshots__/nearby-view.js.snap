@@ -4736,28 +4736,20 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <IconWithText
                                       icon={
-                                        <StationIcon
-                                          companyLabel=""
-                                          vehicle={
+                                        <suspensedComponent
+                                          company="lime_seattle"
+                                          fallbackContent={
+                                            <span>
+                                              <Bicycle />
+                                            </span>
+                                          }
+                                          height={22}
+                                          style={
                                             Object {
-                                              "__typename": "RentalVehicle",
-                                              "allowPickupNow": true,
-                                              "distance": 24,
-                                              "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6MDM1NDBhOWUtZTY1Ny00NTRlLWFlN2ItOGFkOWRhODZjZmVk",
-                                              "lat": 47.6759,
-                                              "lon": -122.3158,
-                                              "name": "Default vehicle type",
-                                              "nearbyRoutes": Array [
-                                                undefined,
-                                              ],
-                                              "network": "lime_seattle",
-                                              "operative": true,
-                                              "rentalUris": null,
-                                              "vehicleType": Object {
-                                                "formFactor": "BICYCLE",
-                                              },
+                                              "marginRight": "5px",
                                             }
                                           }
+                                          width={22}
                                         />
                                       }
                                     >
@@ -4772,39 +4764,27 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           <span
                                             className="sc-bSFUlv sc-jvfqPk gFxSud bAWwqY"
                                           >
-                                            <StationIcon
-                                              companyLabel=""
-                                              vehicle={
+                                            <suspensedComponent
+                                              company="lime_seattle"
+                                              fallbackContent={
+                                                <span>
+                                                  <Bicycle />
+                                                </span>
+                                              }
+                                              height={22}
+                                              style={
                                                 Object {
-                                                  "__typename": "RentalVehicle",
-                                                  "allowPickupNow": true,
-                                                  "distance": 24,
-                                                  "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6MDM1NDBhOWUtZTY1Ny00NTRlLWFlN2ItOGFkOWRhODZjZmVk",
-                                                  "lat": 47.6759,
-                                                  "lon": -122.3158,
-                                                  "name": "Default vehicle type",
-                                                  "nearbyRoutes": Array [
-                                                    undefined,
-                                                  ],
-                                                  "network": "lime_seattle",
-                                                  "operative": true,
-                                                  "rentalUris": null,
-                                                  "vehicleType": Object {
-                                                    "formFactor": "BICYCLE",
-                                                  },
+                                                  "marginRight": "5px",
                                                 }
                                               }
+                                              width={22}
                                             >
                                               <Suspense
-                                                fallback={
-                                                  <span>
-                                                    
-                                                  </span>
-                                                }
+                                                fallback={<span />}
                                               >
                                                 <span />
                                               </Suspense>
-                                            </StationIcon>
+                                            </suspensedComponent>
                                           </span>
                                         </Styled(styled.span)>
                                         <span>
@@ -5192,28 +5172,20 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <IconWithText
                                       icon={
-                                        <StationIcon
-                                          companyLabel=""
-                                          vehicle={
+                                        <suspensedComponent
+                                          company="lime_seattle"
+                                          fallbackContent={
+                                            <span>
+                                              <Bicycle />
+                                            </span>
+                                          }
+                                          height={22}
+                                          style={
                                             Object {
-                                              "__typename": "RentalVehicle",
-                                              "allowPickupNow": true,
-                                              "distance": 26,
-                                              "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6NjliMWJmZmEtMzk0Yi00Mzc0LWIwN2MtMzdlMTA2MjAzMWU5",
-                                              "lat": 47.6758,
-                                              "lon": -122.3157,
-                                              "name": "Default vehicle type",
-                                              "nearbyRoutes": Array [
-                                                undefined,
-                                              ],
-                                              "network": "lime_seattle",
-                                              "operative": true,
-                                              "rentalUris": null,
-                                              "vehicleType": Object {
-                                                "formFactor": "BICYCLE",
-                                              },
+                                              "marginRight": "5px",
                                             }
                                           }
+                                          width={22}
                                         />
                                       }
                                     >
@@ -5228,39 +5200,27 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           <span
                                             className="sc-bSFUlv sc-jvfqPk gFxSud bAWwqY"
                                           >
-                                            <StationIcon
-                                              companyLabel=""
-                                              vehicle={
+                                            <suspensedComponent
+                                              company="lime_seattle"
+                                              fallbackContent={
+                                                <span>
+                                                  <Bicycle />
+                                                </span>
+                                              }
+                                              height={22}
+                                              style={
                                                 Object {
-                                                  "__typename": "RentalVehicle",
-                                                  "allowPickupNow": true,
-                                                  "distance": 26,
-                                                  "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6NjliMWJmZmEtMzk0Yi00Mzc0LWIwN2MtMzdlMTA2MjAzMWU5",
-                                                  "lat": 47.6758,
-                                                  "lon": -122.3157,
-                                                  "name": "Default vehicle type",
-                                                  "nearbyRoutes": Array [
-                                                    undefined,
-                                                  ],
-                                                  "network": "lime_seattle",
-                                                  "operative": true,
-                                                  "rentalUris": null,
-                                                  "vehicleType": Object {
-                                                    "formFactor": "BICYCLE",
-                                                  },
+                                                  "marginRight": "5px",
                                                 }
                                               }
+                                              width={22}
                                             >
                                               <Suspense
-                                                fallback={
-                                                  <span>
-                                                    
-                                                  </span>
-                                                }
+                                                fallback={<span />}
                                               >
                                                 <span />
                                               </Suspense>
-                                            </StationIcon>
+                                            </suspensedComponent>
                                           </span>
                                         </Styled(styled.span)>
                                         <span>
@@ -5648,28 +5608,20 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <IconWithText
                                       icon={
-                                        <StationIcon
-                                          companyLabel=""
-                                          vehicle={
+                                        <suspensedComponent
+                                          company="lime_seattle"
+                                          fallbackContent={
+                                            <span>
+                                              <Bicycle />
+                                            </span>
+                                          }
+                                          height={22}
+                                          style={
                                             Object {
-                                              "__typename": "RentalVehicle",
-                                              "allowPickupNow": true,
-                                              "distance": 34,
-                                              "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6MWQzN2RiMGEtMWM2MC00ZTgyLWEwY2YtNmFkNmE4NTEyNmEw",
-                                              "lat": 47.6759,
-                                              "lon": -122.3159,
-                                              "name": "Default vehicle type",
-                                              "nearbyRoutes": Array [
-                                                undefined,
-                                              ],
-                                              "network": "lime_seattle",
-                                              "operative": true,
-                                              "rentalUris": null,
-                                              "vehicleType": Object {
-                                                "formFactor": "BICYCLE",
-                                              },
+                                              "marginRight": "5px",
                                             }
                                           }
+                                          width={22}
                                         />
                                       }
                                     >
@@ -5684,39 +5636,27 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           <span
                                             className="sc-bSFUlv sc-jvfqPk gFxSud bAWwqY"
                                           >
-                                            <StationIcon
-                                              companyLabel=""
-                                              vehicle={
+                                            <suspensedComponent
+                                              company="lime_seattle"
+                                              fallbackContent={
+                                                <span>
+                                                  <Bicycle />
+                                                </span>
+                                              }
+                                              height={22}
+                                              style={
                                                 Object {
-                                                  "__typename": "RentalVehicle",
-                                                  "allowPickupNow": true,
-                                                  "distance": 34,
-                                                  "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6MWQzN2RiMGEtMWM2MC00ZTgyLWEwY2YtNmFkNmE4NTEyNmEw",
-                                                  "lat": 47.6759,
-                                                  "lon": -122.3159,
-                                                  "name": "Default vehicle type",
-                                                  "nearbyRoutes": Array [
-                                                    undefined,
-                                                  ],
-                                                  "network": "lime_seattle",
-                                                  "operative": true,
-                                                  "rentalUris": null,
-                                                  "vehicleType": Object {
-                                                    "formFactor": "BICYCLE",
-                                                  },
+                                                  "marginRight": "5px",
                                                 }
                                               }
+                                              width={22}
                                             >
                                               <Suspense
-                                                fallback={
-                                                  <span>
-                                                    
-                                                  </span>
-                                                }
+                                                fallback={<span />}
                                               >
                                                 <span />
                                               </Suspense>
-                                            </StationIcon>
+                                            </suspensedComponent>
                                           </span>
                                         </Styled(styled.span)>
                                         <span>
@@ -21606,28 +21546,20 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <IconWithText
                                       icon={
-                                        <StationIcon
-                                          companyLabel=""
-                                          vehicle={
+                                        <suspensedComponent
+                                          company="bird-seattle-washington"
+                                          fallbackContent={
+                                            <span>
+                                              <Bicycle />
+                                            </span>
+                                          }
+                                          height={22}
+                                          style={
                                             Object {
-                                              "__typename": "RentalVehicle",
-                                              "allowPickupNow": true,
-                                              "distance": 52,
-                                              "id": "UmVudGFsVmVoaWNsZTpiaXJkLXNlYXR0bGUtd2FzaGluZ3RvbjpjZTM4MDA4Ny1lMjU1LTQzYjgtYjM5ZC04MjY3Y2E3MmJjMGQ",
-                                              "lat": 47.675873,
-                                              "lon": -122.316137,
-                                              "name": "Default vehicle type",
-                                              "nearbyRoutes": Array [
-                                                undefined,
-                                              ],
-                                              "network": "bird-seattle-washington",
-                                              "operative": true,
-                                              "rentalUris": null,
-                                              "vehicleType": Object {
-                                                "formFactor": "BICYCLE",
-                                              },
+                                              "marginRight": "5px",
                                             }
                                           }
+                                          width={22}
                                         />
                                       }
                                     >
@@ -21642,39 +21574,27 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           <span
                                             className="sc-bSFUlv sc-jvfqPk gFxSud bAWwqY"
                                           >
-                                            <StationIcon
-                                              companyLabel=""
-                                              vehicle={
+                                            <suspensedComponent
+                                              company="bird-seattle-washington"
+                                              fallbackContent={
+                                                <span>
+                                                  <Bicycle />
+                                                </span>
+                                              }
+                                              height={22}
+                                              style={
                                                 Object {
-                                                  "__typename": "RentalVehicle",
-                                                  "allowPickupNow": true,
-                                                  "distance": 52,
-                                                  "id": "UmVudGFsVmVoaWNsZTpiaXJkLXNlYXR0bGUtd2FzaGluZ3RvbjpjZTM4MDA4Ny1lMjU1LTQzYjgtYjM5ZC04MjY3Y2E3MmJjMGQ",
-                                                  "lat": 47.675873,
-                                                  "lon": -122.316137,
-                                                  "name": "Default vehicle type",
-                                                  "nearbyRoutes": Array [
-                                                    undefined,
-                                                  ],
-                                                  "network": "bird-seattle-washington",
-                                                  "operative": true,
-                                                  "rentalUris": null,
-                                                  "vehicleType": Object {
-                                                    "formFactor": "BICYCLE",
-                                                  },
+                                                  "marginRight": "5px",
                                                 }
                                               }
+                                              width={22}
                                             >
                                               <Suspense
-                                                fallback={
-                                                  <span>
-                                                    
-                                                  </span>
-                                                }
+                                                fallback={<span />}
                                               >
                                                 <span />
                                               </Suspense>
-                                            </StationIcon>
+                                            </suspensedComponent>
                                           </span>
                                         </Styled(styled.span)>
                                         <span>
@@ -22062,28 +21982,20 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <IconWithText
                                       icon={
-                                        <StationIcon
-                                          companyLabel=""
-                                          vehicle={
+                                        <suspensedComponent
+                                          company="lime_seattle"
+                                          fallbackContent={
+                                            <span>
+                                              <Bicycle />
+                                            </span>
+                                          }
+                                          height={22}
+                                          style={
                                             Object {
-                                              "__typename": "RentalVehicle",
-                                              "allowPickupNow": true,
-                                              "distance": 57,
-                                              "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6ODQ4M2VmZGUtZDRkMC00NWZkLWI0YzItZWNhOTg4MDhjMDQ4",
-                                              "lat": 47.6759,
-                                              "lon": -122.3162,
-                                              "name": "Default vehicle type",
-                                              "nearbyRoutes": Array [
-                                                undefined,
-                                              ],
-                                              "network": "lime_seattle",
-                                              "operative": true,
-                                              "rentalUris": null,
-                                              "vehicleType": Object {
-                                                "formFactor": "BICYCLE",
-                                              },
+                                              "marginRight": "5px",
                                             }
                                           }
+                                          width={22}
                                         />
                                       }
                                     >
@@ -22098,39 +22010,27 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           <span
                                             className="sc-bSFUlv sc-jvfqPk gFxSud bAWwqY"
                                           >
-                                            <StationIcon
-                                              companyLabel=""
-                                              vehicle={
+                                            <suspensedComponent
+                                              company="lime_seattle"
+                                              fallbackContent={
+                                                <span>
+                                                  <Bicycle />
+                                                </span>
+                                              }
+                                              height={22}
+                                              style={
                                                 Object {
-                                                  "__typename": "RentalVehicle",
-                                                  "allowPickupNow": true,
-                                                  "distance": 57,
-                                                  "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6ODQ4M2VmZGUtZDRkMC00NWZkLWI0YzItZWNhOTg4MDhjMDQ4",
-                                                  "lat": 47.6759,
-                                                  "lon": -122.3162,
-                                                  "name": "Default vehicle type",
-                                                  "nearbyRoutes": Array [
-                                                    undefined,
-                                                  ],
-                                                  "network": "lime_seattle",
-                                                  "operative": true,
-                                                  "rentalUris": null,
-                                                  "vehicleType": Object {
-                                                    "formFactor": "BICYCLE",
-                                                  },
+                                                  "marginRight": "5px",
                                                 }
                                               }
+                                              width={22}
                                             >
                                               <Suspense
-                                                fallback={
-                                                  <span>
-                                                    
-                                                  </span>
-                                                }
+                                                fallback={<span />}
                                               >
                                                 <span />
                                               </Suspense>
-                                            </StationIcon>
+                                            </suspensedComponent>
                                           </span>
                                         </Styled(styled.span)>
                                         <span>
@@ -22518,28 +22418,20 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <IconWithText
                                       icon={
-                                        <StationIcon
-                                          companyLabel=""
-                                          vehicle={
+                                        <suspensedComponent
+                                          company="lime_seattle"
+                                          fallbackContent={
+                                            <span>
+                                              <Bicycle />
+                                            </span>
+                                          }
+                                          height={22}
+                                          style={
                                             Object {
-                                              "__typename": "RentalVehicle",
-                                              "allowPickupNow": true,
-                                              "distance": 57,
-                                              "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6ZmUwZjM4ZjAtMjc3YS00MjQ4LTlkNzYtMTc4Y2UxZGQ0MDY0",
-                                              "lat": 47.6759,
-                                              "lon": -122.3162,
-                                              "name": "Default vehicle type",
-                                              "nearbyRoutes": Array [
-                                                undefined,
-                                              ],
-                                              "network": "lime_seattle",
-                                              "operative": true,
-                                              "rentalUris": null,
-                                              "vehicleType": Object {
-                                                "formFactor": "BICYCLE",
-                                              },
+                                              "marginRight": "5px",
                                             }
                                           }
+                                          width={22}
                                         />
                                       }
                                     >
@@ -22554,39 +22446,27 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           <span
                                             className="sc-bSFUlv sc-jvfqPk gFxSud bAWwqY"
                                           >
-                                            <StationIcon
-                                              companyLabel=""
-                                              vehicle={
+                                            <suspensedComponent
+                                              company="lime_seattle"
+                                              fallbackContent={
+                                                <span>
+                                                  <Bicycle />
+                                                </span>
+                                              }
+                                              height={22}
+                                              style={
                                                 Object {
-                                                  "__typename": "RentalVehicle",
-                                                  "allowPickupNow": true,
-                                                  "distance": 57,
-                                                  "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6ZmUwZjM4ZjAtMjc3YS00MjQ4LTlkNzYtMTc4Y2UxZGQ0MDY0",
-                                                  "lat": 47.6759,
-                                                  "lon": -122.3162,
-                                                  "name": "Default vehicle type",
-                                                  "nearbyRoutes": Array [
-                                                    undefined,
-                                                  ],
-                                                  "network": "lime_seattle",
-                                                  "operative": true,
-                                                  "rentalUris": null,
-                                                  "vehicleType": Object {
-                                                    "formFactor": "BICYCLE",
-                                                  },
+                                                  "marginRight": "5px",
                                                 }
                                               }
+                                              width={22}
                                             >
                                               <Suspense
-                                                fallback={
-                                                  <span>
-                                                    
-                                                  </span>
-                                                }
+                                                fallback={<span />}
                                               >
                                                 <span />
                                               </Suspense>
-                                            </StationIcon>
+                                            </suspensedComponent>
                                           </span>
                                         </Styled(styled.span)>
                                         <span>
@@ -33303,28 +33183,20 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <IconWithText
                                       icon={
-                                        <StationIcon
-                                          companyLabel=""
-                                          vehicle={
+                                        <suspensedComponent
+                                          company="lime_seattle"
+                                          fallbackContent={
+                                            <span>
+                                              <Bicycle />
+                                            </span>
+                                          }
+                                          height={22}
+                                          style={
                                             Object {
-                                              "__typename": "RentalVehicle",
-                                              "allowPickupNow": true,
-                                              "distance": 115,
-                                              "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6YTg5MDZiYTctMmU2NC00ZDk4LWI0ZGYtNmJjNDBlZTVkYzc3",
-                                              "lat": 47.675,
-                                              "lon": -122.3157,
-                                              "name": "Default vehicle type",
-                                              "nearbyRoutes": Array [
-                                                undefined,
-                                              ],
-                                              "network": "lime_seattle",
-                                              "operative": true,
-                                              "rentalUris": null,
-                                              "vehicleType": Object {
-                                                "formFactor": "BICYCLE",
-                                              },
+                                              "marginRight": "5px",
                                             }
                                           }
+                                          width={22}
                                         />
                                       }
                                     >
@@ -33339,39 +33211,27 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           <span
                                             className="sc-bSFUlv sc-jvfqPk gFxSud bAWwqY"
                                           >
-                                            <StationIcon
-                                              companyLabel=""
-                                              vehicle={
+                                            <suspensedComponent
+                                              company="lime_seattle"
+                                              fallbackContent={
+                                                <span>
+                                                  <Bicycle />
+                                                </span>
+                                              }
+                                              height={22}
+                                              style={
                                                 Object {
-                                                  "__typename": "RentalVehicle",
-                                                  "allowPickupNow": true,
-                                                  "distance": 115,
-                                                  "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6YTg5MDZiYTctMmU2NC00ZDk4LWI0ZGYtNmJjNDBlZTVkYzc3",
-                                                  "lat": 47.675,
-                                                  "lon": -122.3157,
-                                                  "name": "Default vehicle type",
-                                                  "nearbyRoutes": Array [
-                                                    undefined,
-                                                  ],
-                                                  "network": "lime_seattle",
-                                                  "operative": true,
-                                                  "rentalUris": null,
-                                                  "vehicleType": Object {
-                                                    "formFactor": "BICYCLE",
-                                                  },
+                                                  "marginRight": "5px",
                                                 }
                                               }
+                                              width={22}
                                             >
                                               <Suspense
-                                                fallback={
-                                                  <span>
-                                                    
-                                                  </span>
-                                                }
+                                                fallback={<span />}
                                               >
                                                 <span />
                                               </Suspense>
-                                            </StationIcon>
+                                            </suspensedComponent>
                                           </span>
                                         </Styled(styled.span)>
                                         <span>
@@ -33759,28 +33619,20 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <IconWithText
                                       icon={
-                                        <StationIcon
-                                          companyLabel=""
-                                          vehicle={
+                                        <suspensedComponent
+                                          company="lime_seattle"
+                                          fallbackContent={
+                                            <span>
+                                              <Bicycle />
+                                            </span>
+                                          }
+                                          height={22}
+                                          style={
                                             Object {
-                                              "__typename": "RentalVehicle",
-                                              "allowPickupNow": true,
-                                              "distance": 118,
-                                              "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6NTU0NzM5MWEtMzZmNS00YjNkLWI3NWItZmI2YWExY2JjMjdh",
-                                              "lat": 47.6757,
-                                              "lon": -122.3174,
-                                              "name": "Default vehicle type",
-                                              "nearbyRoutes": Array [
-                                                undefined,
-                                              ],
-                                              "network": "lime_seattle",
-                                              "operative": true,
-                                              "rentalUris": null,
-                                              "vehicleType": Object {
-                                                "formFactor": "BICYCLE",
-                                              },
+                                              "marginRight": "5px",
                                             }
                                           }
+                                          width={22}
                                         />
                                       }
                                     >
@@ -33795,39 +33647,27 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           <span
                                             className="sc-bSFUlv sc-jvfqPk gFxSud bAWwqY"
                                           >
-                                            <StationIcon
-                                              companyLabel=""
-                                              vehicle={
+                                            <suspensedComponent
+                                              company="lime_seattle"
+                                              fallbackContent={
+                                                <span>
+                                                  <Bicycle />
+                                                </span>
+                                              }
+                                              height={22}
+                                              style={
                                                 Object {
-                                                  "__typename": "RentalVehicle",
-                                                  "allowPickupNow": true,
-                                                  "distance": 118,
-                                                  "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6NTU0NzM5MWEtMzZmNS00YjNkLWI3NWItZmI2YWExY2JjMjdh",
-                                                  "lat": 47.6757,
-                                                  "lon": -122.3174,
-                                                  "name": "Default vehicle type",
-                                                  "nearbyRoutes": Array [
-                                                    undefined,
-                                                  ],
-                                                  "network": "lime_seattle",
-                                                  "operative": true,
-                                                  "rentalUris": null,
-                                                  "vehicleType": Object {
-                                                    "formFactor": "BICYCLE",
-                                                  },
+                                                  "marginRight": "5px",
                                                 }
                                               }
+                                              width={22}
                                             >
                                               <Suspense
-                                                fallback={
-                                                  <span>
-                                                    
-                                                  </span>
-                                                }
+                                                fallback={<span />}
                                               >
                                                 <span />
                                               </Suspense>
-                                            </StationIcon>
+                                            </suspensedComponent>
                                           </span>
                                         </Styled(styled.span)>
                                         <span>
@@ -34215,28 +34055,20 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <IconWithText
                                       icon={
-                                        <StationIcon
-                                          companyLabel=""
-                                          vehicle={
+                                        <suspensedComponent
+                                          company="lime_seattle"
+                                          fallbackContent={
+                                            <span>
+                                              <Bicycle />
+                                            </span>
+                                          }
+                                          height={22}
+                                          style={
                                             Object {
-                                              "__typename": "RentalVehicle",
-                                              "allowPickupNow": true,
-                                              "distance": 121,
-                                              "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6NmMyNDRhZjEtZjJjOC00N2JhLWIzOTMtNDhkMGVhY2ZlMDFj",
-                                              "lat": 47.6764,
-                                              "lon": -122.3162,
-                                              "name": "Default vehicle type",
-                                              "nearbyRoutes": Array [
-                                                undefined,
-                                              ],
-                                              "network": "lime_seattle",
-                                              "operative": true,
-                                              "rentalUris": null,
-                                              "vehicleType": Object {
-                                                "formFactor": "BICYCLE",
-                                              },
+                                              "marginRight": "5px",
                                             }
                                           }
+                                          width={22}
                                         />
                                       }
                                     >
@@ -34251,39 +34083,27 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           <span
                                             className="sc-bSFUlv sc-jvfqPk gFxSud bAWwqY"
                                           >
-                                            <StationIcon
-                                              companyLabel=""
-                                              vehicle={
+                                            <suspensedComponent
+                                              company="lime_seattle"
+                                              fallbackContent={
+                                                <span>
+                                                  <Bicycle />
+                                                </span>
+                                              }
+                                              height={22}
+                                              style={
                                                 Object {
-                                                  "__typename": "RentalVehicle",
-                                                  "allowPickupNow": true,
-                                                  "distance": 121,
-                                                  "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6NmMyNDRhZjEtZjJjOC00N2JhLWIzOTMtNDhkMGVhY2ZlMDFj",
-                                                  "lat": 47.6764,
-                                                  "lon": -122.3162,
-                                                  "name": "Default vehicle type",
-                                                  "nearbyRoutes": Array [
-                                                    undefined,
-                                                  ],
-                                                  "network": "lime_seattle",
-                                                  "operative": true,
-                                                  "rentalUris": null,
-                                                  "vehicleType": Object {
-                                                    "formFactor": "BICYCLE",
-                                                  },
+                                                  "marginRight": "5px",
                                                 }
                                               }
+                                              width={22}
                                             >
                                               <Suspense
-                                                fallback={
-                                                  <span>
-                                                    
-                                                  </span>
-                                                }
+                                                fallback={<span />}
                                               >
                                                 <span />
                                               </Suspense>
-                                            </StationIcon>
+                                            </suspensedComponent>
                                           </span>
                                         </Styled(styled.span)>
                                         <span>
@@ -34671,28 +34491,20 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <IconWithText
                                       icon={
-                                        <StationIcon
-                                          companyLabel=""
-                                          vehicle={
+                                        <suspensedComponent
+                                          company="lime_seattle"
+                                          fallbackContent={
+                                            <span>
+                                              <Bicycle />
+                                            </span>
+                                          }
+                                          height={22}
+                                          style={
                                             Object {
-                                              "__typename": "RentalVehicle",
-                                              "allowPickupNow": true,
-                                              "distance": 143,
-                                              "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6NDJjMjA0NWUtZDEyYS00MTg1LTlkNjEtM2ZkNjMwMzQyNjUz",
-                                              "lat": 47.6754,
-                                              "lon": -122.3173,
-                                              "name": "Default vehicle type",
-                                              "nearbyRoutes": Array [
-                                                undefined,
-                                              ],
-                                              "network": "lime_seattle",
-                                              "operative": true,
-                                              "rentalUris": null,
-                                              "vehicleType": Object {
-                                                "formFactor": "BICYCLE",
-                                              },
+                                              "marginRight": "5px",
                                             }
                                           }
+                                          width={22}
                                         />
                                       }
                                     >
@@ -34707,39 +34519,27 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           <span
                                             className="sc-bSFUlv sc-jvfqPk gFxSud bAWwqY"
                                           >
-                                            <StationIcon
-                                              companyLabel=""
-                                              vehicle={
+                                            <suspensedComponent
+                                              company="lime_seattle"
+                                              fallbackContent={
+                                                <span>
+                                                  <Bicycle />
+                                                </span>
+                                              }
+                                              height={22}
+                                              style={
                                                 Object {
-                                                  "__typename": "RentalVehicle",
-                                                  "allowPickupNow": true,
-                                                  "distance": 143,
-                                                  "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6NDJjMjA0NWUtZDEyYS00MTg1LTlkNjEtM2ZkNjMwMzQyNjUz",
-                                                  "lat": 47.6754,
-                                                  "lon": -122.3173,
-                                                  "name": "Default vehicle type",
-                                                  "nearbyRoutes": Array [
-                                                    undefined,
-                                                  ],
-                                                  "network": "lime_seattle",
-                                                  "operative": true,
-                                                  "rentalUris": null,
-                                                  "vehicleType": Object {
-                                                    "formFactor": "BICYCLE",
-                                                  },
+                                                  "marginRight": "5px",
                                                 }
                                               }
+                                              width={22}
                                             >
                                               <Suspense
-                                                fallback={
-                                                  <span>
-                                                    
-                                                  </span>
-                                                }
+                                                fallback={<span />}
                                               >
                                                 <span />
                                               </Suspense>
-                                            </StationIcon>
+                                            </suspensedComponent>
                                           </span>
                                         </Styled(styled.span)>
                                         <span>
@@ -35127,28 +34927,20 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <IconWithText
                                       icon={
-                                        <StationIcon
-                                          companyLabel=""
-                                          vehicle={
+                                        <suspensedComponent
+                                          company="lime_seattle"
+                                          fallbackContent={
+                                            <span>
+                                              <Bicycle />
+                                            </span>
+                                          }
+                                          height={22}
+                                          style={
                                             Object {
-                                              "__typename": "RentalVehicle",
-                                              "allowPickupNow": true,
-                                              "distance": 151,
-                                              "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6NTZkNTJkNzktOGMwZC00NzJiLThlMzgtZjgwMGJjZTBhN2Iy",
-                                              "lat": 47.6754,
-                                              "lon": -122.3174,
-                                              "name": "Default vehicle type",
-                                              "nearbyRoutes": Array [
-                                                undefined,
-                                              ],
-                                              "network": "lime_seattle",
-                                              "operative": true,
-                                              "rentalUris": null,
-                                              "vehicleType": Object {
-                                                "formFactor": "BICYCLE",
-                                              },
+                                              "marginRight": "5px",
                                             }
                                           }
+                                          width={22}
                                         />
                                       }
                                     >
@@ -35163,39 +34955,27 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           <span
                                             className="sc-bSFUlv sc-jvfqPk gFxSud bAWwqY"
                                           >
-                                            <StationIcon
-                                              companyLabel=""
-                                              vehicle={
+                                            <suspensedComponent
+                                              company="lime_seattle"
+                                              fallbackContent={
+                                                <span>
+                                                  <Bicycle />
+                                                </span>
+                                              }
+                                              height={22}
+                                              style={
                                                 Object {
-                                                  "__typename": "RentalVehicle",
-                                                  "allowPickupNow": true,
-                                                  "distance": 151,
-                                                  "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6NTZkNTJkNzktOGMwZC00NzJiLThlMzgtZjgwMGJjZTBhN2Iy",
-                                                  "lat": 47.6754,
-                                                  "lon": -122.3174,
-                                                  "name": "Default vehicle type",
-                                                  "nearbyRoutes": Array [
-                                                    undefined,
-                                                  ],
-                                                  "network": "lime_seattle",
-                                                  "operative": true,
-                                                  "rentalUris": null,
-                                                  "vehicleType": Object {
-                                                    "formFactor": "BICYCLE",
-                                                  },
+                                                  "marginRight": "5px",
                                                 }
                                               }
+                                              width={22}
                                             >
                                               <Suspense
-                                                fallback={
-                                                  <span>
-                                                    
-                                                  </span>
-                                                }
+                                                fallback={<span />}
                                               >
                                                 <span />
                                               </Suspense>
-                                            </StationIcon>
+                                            </suspensedComponent>
                                           </span>
                                         </Styled(styled.span)>
                                         <span>
@@ -42008,28 +41788,20 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <IconWithText
                                       icon={
-                                        <StationIcon
-                                          companyLabel=""
-                                          vehicle={
+                                        <suspensedComponent
+                                          company="lime_seattle"
+                                          fallbackContent={
+                                            <span>
+                                              <Bicycle />
+                                            </span>
+                                          }
+                                          height={22}
+                                          style={
                                             Object {
-                                              "__typename": "RentalVehicle",
-                                              "allowPickupNow": true,
-                                              "distance": 156,
-                                              "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6OWM3ZDZkYjEtYWJiMi00OWFlLTg3NzAtOGNkNjQ1MzcwMGUw",
-                                              "lat": 47.675,
-                                              "lon": -122.3164,
-                                              "name": "Default vehicle type",
-                                              "nearbyRoutes": Array [
-                                                undefined,
-                                              ],
-                                              "network": "lime_seattle",
-                                              "operative": true,
-                                              "rentalUris": null,
-                                              "vehicleType": Object {
-                                                "formFactor": "BICYCLE",
-                                              },
+                                              "marginRight": "5px",
                                             }
                                           }
+                                          width={22}
                                         />
                                       }
                                     >
@@ -42044,39 +41816,27 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           <span
                                             className="sc-bSFUlv sc-jvfqPk gFxSud bAWwqY"
                                           >
-                                            <StationIcon
-                                              companyLabel=""
-                                              vehicle={
+                                            <suspensedComponent
+                                              company="lime_seattle"
+                                              fallbackContent={
+                                                <span>
+                                                  <Bicycle />
+                                                </span>
+                                              }
+                                              height={22}
+                                              style={
                                                 Object {
-                                                  "__typename": "RentalVehicle",
-                                                  "allowPickupNow": true,
-                                                  "distance": 156,
-                                                  "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6OWM3ZDZkYjEtYWJiMi00OWFlLTg3NzAtOGNkNjQ1MzcwMGUw",
-                                                  "lat": 47.675,
-                                                  "lon": -122.3164,
-                                                  "name": "Default vehicle type",
-                                                  "nearbyRoutes": Array [
-                                                    undefined,
-                                                  ],
-                                                  "network": "lime_seattle",
-                                                  "operative": true,
-                                                  "rentalUris": null,
-                                                  "vehicleType": Object {
-                                                    "formFactor": "BICYCLE",
-                                                  },
+                                                  "marginRight": "5px",
                                                 }
                                               }
+                                              width={22}
                                             >
                                               <Suspense
-                                                fallback={
-                                                  <span>
-                                                    
-                                                  </span>
-                                                }
+                                                fallback={<span />}
                                               >
                                                 <span />
                                               </Suspense>
-                                            </StationIcon>
+                                            </suspensedComponent>
                                           </span>
                                         </Styled(styled.span)>
                                         <span>
@@ -61857,28 +61617,20 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <IconWithText
                                       icon={
-                                        <StationIcon
-                                          companyLabel=""
-                                          vehicle={
+                                        <suspensedComponent
+                                          company="lime_seattle"
+                                          fallbackContent={
+                                            <span>
+                                              <Bicycle />
+                                            </span>
+                                          }
+                                          height={22}
+                                          style={
                                             Object {
-                                              "__typename": "RentalVehicle",
-                                              "allowPickupNow": true,
-                                              "distance": 181,
-                                              "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6YTM0YzhmNTUtMjY4Ny00MjhlLWJmZTMtYWZiODgwNjdmNDM2",
-                                              "lat": 47.6772,
-                                              "lon": -122.3159,
-                                              "name": "Default vehicle type",
-                                              "nearbyRoutes": Array [
-                                                undefined,
-                                              ],
-                                              "network": "lime_seattle",
-                                              "operative": true,
-                                              "rentalUris": null,
-                                              "vehicleType": Object {
-                                                "formFactor": "BICYCLE",
-                                              },
+                                              "marginRight": "5px",
                                             }
                                           }
+                                          width={22}
                                         />
                                       }
                                     >
@@ -61893,39 +61645,27 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           <span
                                             className="sc-bSFUlv sc-jvfqPk gFxSud bAWwqY"
                                           >
-                                            <StationIcon
-                                              companyLabel=""
-                                              vehicle={
+                                            <suspensedComponent
+                                              company="lime_seattle"
+                                              fallbackContent={
+                                                <span>
+                                                  <Bicycle />
+                                                </span>
+                                              }
+                                              height={22}
+                                              style={
                                                 Object {
-                                                  "__typename": "RentalVehicle",
-                                                  "allowPickupNow": true,
-                                                  "distance": 181,
-                                                  "id": "UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6YTM0YzhmNTUtMjY4Ny00MjhlLWJmZTMtYWZiODgwNjdmNDM2",
-                                                  "lat": 47.6772,
-                                                  "lon": -122.3159,
-                                                  "name": "Default vehicle type",
-                                                  "nearbyRoutes": Array [
-                                                    undefined,
-                                                  ],
-                                                  "network": "lime_seattle",
-                                                  "operative": true,
-                                                  "rentalUris": null,
-                                                  "vehicleType": Object {
-                                                    "formFactor": "BICYCLE",
-                                                  },
+                                                  "marginRight": "5px",
                                                 }
                                               }
+                                              width={22}
                                             >
                                               <Suspense
-                                                fallback={
-                                                  <span>
-                                                    
-                                                  </span>
-                                                }
+                                                fallback={<span />}
                                               >
                                                 <span />
                                               </Suspense>
-                                            </StationIcon>
+                                            </suspensedComponent>
                                           </span>
                                         </Styled(styled.span)>
                                         <span>
