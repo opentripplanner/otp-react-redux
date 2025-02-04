@@ -98,7 +98,7 @@ const Vehicle = ({
             icon={
               <CompanyIcon
                 company={vehicle.network}
-                fallbackContent={<span>{getVehicleIcon(formFactor)}</span>}
+                fallbackContent={getVehicleIcon(formFactor)}
                 height={22}
                 style={{ marginRight: '5px' }}
                 width={22}

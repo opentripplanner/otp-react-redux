@@ -4738,11 +4738,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       icon={
                                         <suspensedComponent
                                           company="lime_seattle"
-                                          fallbackContent={
-                                            <span>
-                                              <Bicycle />
-                                            </span>
-                                          }
+                                          fallbackContent={<Bicycle />}
                                           height={22}
                                           style={
                                             Object {
@@ -4766,11 +4762,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           >
                                             <suspensedComponent
                                               company="lime_seattle"
-                                              fallbackContent={
-                                                <span>
-                                                  <Bicycle />
-                                                </span>
-                                              }
+                                              fallbackContent={<Bicycle />}
                                               height={22}
                                               style={
                                                 Object {
@@ -5174,11 +5166,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       icon={
                                         <suspensedComponent
                                           company="lime_seattle"
-                                          fallbackContent={
-                                            <span>
-                                              <Bicycle />
-                                            </span>
-                                          }
+                                          fallbackContent={<Bicycle />}
                                           height={22}
                                           style={
                                             Object {
@@ -5202,11 +5190,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           >
                                             <suspensedComponent
                                               company="lime_seattle"
-                                              fallbackContent={
-                                                <span>
-                                                  <Bicycle />
-                                                </span>
-                                              }
+                                              fallbackContent={<Bicycle />}
                                               height={22}
                                               style={
                                                 Object {
@@ -5610,11 +5594,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       icon={
                                         <suspensedComponent
                                           company="lime_seattle"
-                                          fallbackContent={
-                                            <span>
-                                              <Bicycle />
-                                            </span>
-                                          }
+                                          fallbackContent={<Bicycle />}
                                           height={22}
                                           style={
                                             Object {
@@ -5638,11 +5618,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           >
                                             <suspensedComponent
                                               company="lime_seattle"
-                                              fallbackContent={
-                                                <span>
-                                                  <Bicycle />
-                                                </span>
-                                              }
+                                              fallbackContent={<Bicycle />}
                                               height={22}
                                               style={
                                                 Object {
@@ -21548,11 +21524,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       icon={
                                         <suspensedComponent
                                           company="bird-seattle-washington"
-                                          fallbackContent={
-                                            <span>
-                                              <Bicycle />
-                                            </span>
-                                          }
+                                          fallbackContent={<Bicycle />}
                                           height={22}
                                           style={
                                             Object {
@@ -21576,11 +21548,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           >
                                             <suspensedComponent
                                               company="bird-seattle-washington"
-                                              fallbackContent={
-                                                <span>
-                                                  <Bicycle />
-                                                </span>
-                                              }
+                                              fallbackContent={<Bicycle />}
                                               height={22}
                                               style={
                                                 Object {
@@ -21984,11 +21952,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       icon={
                                         <suspensedComponent
                                           company="lime_seattle"
-                                          fallbackContent={
-                                            <span>
-                                              <Bicycle />
-                                            </span>
-                                          }
+                                          fallbackContent={<Bicycle />}
                                           height={22}
                                           style={
                                             Object {
@@ -22012,11 +21976,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           >
                                             <suspensedComponent
                                               company="lime_seattle"
-                                              fallbackContent={
-                                                <span>
-                                                  <Bicycle />
-                                                </span>
-                                              }
+                                              fallbackContent={<Bicycle />}
                                               height={22}
                                               style={
                                                 Object {
@@ -22420,11 +22380,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       icon={
                                         <suspensedComponent
                                           company="lime_seattle"
-                                          fallbackContent={
-                                            <span>
-                                              <Bicycle />
-                                            </span>
-                                          }
+                                          fallbackContent={<Bicycle />}
                                           height={22}
                                           style={
                                             Object {
@@ -22448,11 +22404,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           >
                                             <suspensedComponent
                                               company="lime_seattle"
-                                              fallbackContent={
-                                                <span>
-                                                  <Bicycle />
-                                                </span>
-                                              }
+                                              fallbackContent={<Bicycle />}
                                               height={22}
                                               style={
                                                 Object {
@@ -33185,11 +33137,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       icon={
                                         <suspensedComponent
                                           company="lime_seattle"
-                                          fallbackContent={
-                                            <span>
-                                              <Bicycle />
-                                            </span>
-                                          }
+                                          fallbackContent={<Bicycle />}
                                           height={22}
                                           style={
                                             Object {
@@ -33213,11 +33161,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           >
                                             <suspensedComponent
                                               company="lime_seattle"
-                                              fallbackContent={
-                                                <span>
-                                                  <Bicycle />
-                                                </span>
-                                              }
+                                              fallbackContent={<Bicycle />}
                                               height={22}
                                               style={
                                                 Object {
@@ -33621,11 +33565,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       icon={
                                         <suspensedComponent
                                           company="lime_seattle"
-                                          fallbackContent={
-                                            <span>
-                                              <Bicycle />
-                                            </span>
-                                          }
+                                          fallbackContent={<Bicycle />}
                                           height={22}
                                           style={
                                             Object {
@@ -33649,11 +33589,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           >
                                             <suspensedComponent
                                               company="lime_seattle"
-                                              fallbackContent={
-                                                <span>
-                                                  <Bicycle />
-                                                </span>
-                                              }
+                                              fallbackContent={<Bicycle />}
                                               height={22}
                                               style={
                                                 Object {
@@ -34057,11 +33993,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       icon={
                                         <suspensedComponent
                                           company="lime_seattle"
-                                          fallbackContent={
-                                            <span>
-                                              <Bicycle />
-                                            </span>
-                                          }
+                                          fallbackContent={<Bicycle />}
                                           height={22}
                                           style={
                                             Object {
@@ -34085,11 +34017,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           >
                                             <suspensedComponent
                                               company="lime_seattle"
-                                              fallbackContent={
-                                                <span>
-                                                  <Bicycle />
-                                                </span>
-                                              }
+                                              fallbackContent={<Bicycle />}
                                               height={22}
                                               style={
                                                 Object {
@@ -34493,11 +34421,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       icon={
                                         <suspensedComponent
                                           company="lime_seattle"
-                                          fallbackContent={
-                                            <span>
-                                              <Bicycle />
-                                            </span>
-                                          }
+                                          fallbackContent={<Bicycle />}
                                           height={22}
                                           style={
                                             Object {
@@ -34521,11 +34445,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           >
                                             <suspensedComponent
                                               company="lime_seattle"
-                                              fallbackContent={
-                                                <span>
-                                                  <Bicycle />
-                                                </span>
-                                              }
+                                              fallbackContent={<Bicycle />}
                                               height={22}
                                               style={
                                                 Object {
@@ -34929,11 +34849,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       icon={
                                         <suspensedComponent
                                           company="lime_seattle"
-                                          fallbackContent={
-                                            <span>
-                                              <Bicycle />
-                                            </span>
-                                          }
+                                          fallbackContent={<Bicycle />}
                                           height={22}
                                           style={
                                             Object {
@@ -34957,11 +34873,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           >
                                             <suspensedComponent
                                               company="lime_seattle"
-                                              fallbackContent={
-                                                <span>
-                                                  <Bicycle />
-                                                </span>
-                                              }
+                                              fallbackContent={<Bicycle />}
                                               height={22}
                                               style={
                                                 Object {
@@ -41790,11 +41702,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       icon={
                                         <suspensedComponent
                                           company="lime_seattle"
-                                          fallbackContent={
-                                            <span>
-                                              <Bicycle />
-                                            </span>
-                                          }
+                                          fallbackContent={<Bicycle />}
                                           height={22}
                                           style={
                                             Object {
@@ -41818,11 +41726,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           >
                                             <suspensedComponent
                                               company="lime_seattle"
-                                              fallbackContent={
-                                                <span>
-                                                  <Bicycle />
-                                                </span>
-                                              }
+                                              fallbackContent={<Bicycle />}
                                               height={22}
                                               style={
                                                 Object {
@@ -61619,11 +61523,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       icon={
                                         <suspensedComponent
                                           company="lime_seattle"
-                                          fallbackContent={
-                                            <span>
-                                              <Bicycle />
-                                            </span>
-                                          }
+                                          fallbackContent={<Bicycle />}
                                           height={22}
                                           style={
                                             Object {
@@ -61647,11 +61547,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           >
                                             <suspensedComponent
                                               company="lime_seattle"
-                                              fallbackContent={
-                                                <span>
-                                                  <Bicycle />
-                                                </span>
-                                              }
+                                              fallbackContent={<Bicycle />}
                                               height={22}
                                               style={
                                                 Object {
