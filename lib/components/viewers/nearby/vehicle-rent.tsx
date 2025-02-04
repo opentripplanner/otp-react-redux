@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { IntlShape, useIntl } from 'react-intl'
 // @ts-expect-error icons doesn't have typescript?
 import { Micromobility } from '@opentripplanner/icons'
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import { AppReduxState } from '../../../util/state-types'
 import { IconWithText } from '../../util/styledIcon'
@@ -24,7 +24,7 @@ type VehicleFormFactor =
 
 export const getVehicleIcon = (
   vehicleType: VehicleFormFactor
-): React.ReactNode => {
+): ReactElement => {
   switch (vehicleType) {
     case 'SCOOTER':
     case 'SCOOTER_SEATED':
