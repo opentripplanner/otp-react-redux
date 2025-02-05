@@ -13,7 +13,7 @@ const ServiceTimeRangeResponse =
 const RoutesResponse = require('./mocks/Routes.json').data.routes
 const IndividualRouteResponse = require('./mocks/IndividualRoute.json').data
   .route
-
+const PlanResponseBlank = require('./mocks/PlanResponseBlank.json').data.plan
 function getPlanResponseMock(transportModes) {
   const transportModesString = transportModes
     .map((tm) => tm.mode)
@@ -29,6 +29,9 @@ function getPlanResponseMock(transportModes) {
       return PlanResponseBike
     case 'WALK':
       return PlanResponseWalk
+    case 'BUSSUBWAYTRAM':
+    case 'BUSCARSUBWAYTRAM':
+      return PlanResponseBlank
     default:
       return PlanResponseBike
   }
