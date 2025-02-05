@@ -26,6 +26,7 @@ const Container = styled.li`
   h2 {
     grid-column: 2;
     grid-row: 1;
+    font-size: 24px;
   }
 
   span {
