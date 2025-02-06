@@ -1,12 +1,11 @@
 import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
-// @ts-expect-error No typescript
-import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
 import { useIntl } from 'react-intl'
-import React, { Suspense } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import { getErrorMessage } from '../../util/state'
 import { StyledIconWrapper } from '../util/styledIcon'
+import CompanyIcon from '../util/company-icon'
 
 const IssueContainer = styled.div`
   border-top: 1px solid grey;
@@ -37,28 +36,19 @@ export default function NarrativeItinerariesErrors({
 }): JSX.Element {
   const intl = useIntl()
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return errors.map((error: { network: any }, idx: number) => {
-    let icon = (
-      <StyledIconWrapper className="text-warning">
-        <ExclamationTriangle />
-      </StyledIconWrapper>
-    )
-    if (error.network) {
-      const CompanyIcon = getCompanyIcon(error.network)
-      // check if company icon exists to avoid rendering undefined
-      if (CompanyIcon) {
-        icon = (
-          <Suspense fallback={<span>Loading...</span>}>
-            <CompanyIcon />
-          </Suspense>
-        )
-      }
-    }
-    return (
-      <IssueContainer key={idx}>
-        <IssueIconContainer>{icon}</IssueIconContainer>
-        <IssueContents>{getErrorMessage(error, intl)}</IssueContents>
-      </IssueContainer>
-    )
-  })
+  return errors.map((error: { network: any }, idx: number) => (
+    <IssueContainer key={idx}>
+      <IssueIconContainer>
+        <CompanyIcon
+          company={error.network}
+          fallbackContent={
+            <StyledIconWrapper className="text-warning">
+              <ExclamationTriangle />
+            </StyledIconWrapper>
+          }
+        />
+      </IssueIconContainer>
+      <IssueContents>{getErrorMessage(error, intl)}</IssueContents>
+    </IssueContainer>
+  ))
 }
