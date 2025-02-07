@@ -1,4 +1,4 @@
-import { Calendar } from '@styled-icons/fa-solid'
+import { Calendar } from '@styled-icons/fa-solid/Calendar'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import coreUtils from '@opentripplanner/core-utils'

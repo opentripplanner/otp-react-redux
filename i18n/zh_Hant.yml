@@ -294,6 +294,7 @@ components:
     companyScooter: "{company} 滑板車"
     error: 載入鄰近設施時發生錯誤。
     header: 檢視附近
+    headsign: "{destination}"
     spacesAvailable: "{spacesAvailable} 有未佔用的空間"
   NewAccountWizard:
     createNewAccount: 建立新帳戶

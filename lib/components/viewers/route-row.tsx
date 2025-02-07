@@ -1,4 +1,4 @@
-import { ArrowRight } from '@styled-icons/fa-solid'
+import { ArrowRight } from '@styled-icons/fa-solid/ArrowRight'
 import { IntlShape } from 'react-intl'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'

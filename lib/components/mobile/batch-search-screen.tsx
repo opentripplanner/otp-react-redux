@@ -5,6 +5,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import * as apiActions from '../../actions/api'
+import * as formActions from '../../actions/form'
 import * as uiActions from '../../actions/ui'
 import {
   advancedPanelClassName,
@@ -52,6 +53,7 @@ interface Props {
   map: React.ReactElement
   routingQuery: any
   setMobileScreen: (screen: number) => void
+  updateQueryTimeIfLeavingNow: () => void
 }
 
 class BatchSearchScreen extends Component<Props> {
@@ -69,7 +71,9 @@ class BatchSearchScreen extends Component<Props> {
   _advancedSettingRef = React.createRef<HTMLDivElement>()
 
   handlePlanTripClick = () => {
-    const { currentQuery, intl, routingQuery } = this.props
+    const { currentQuery, intl, routingQuery, updateQueryTimeIfLeavingNow } =
+      this.props
+    updateQueryTimeIfLeavingNow()
     alertUserTripPlan(intl, currentQuery, routingQuery, () =>
       this.setState({ planTripClicked: true })
     )
@@ -203,7 +207,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = {
   routingQuery: apiActions.routingQuery,
-  setMobileScreen: uiActions.setMobileScreen
+  setMobileScreen: uiActions.setMobileScreen,
+  updateQueryTimeIfLeavingNow: formActions.updateQueryTimeIfLeavingNow
 }
 
 export default connect(

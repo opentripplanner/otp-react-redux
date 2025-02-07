@@ -3,13 +3,12 @@ import { Company } from '@opentripplanner/types'
 import { connect } from 'react-redux'
 import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
 // @ts-expect-error icons doesn't have typescript?
-import { getCompanyIcon } from '@opentripplanner/icons/lib/companies'
-// @ts-expect-error icons doesn't have typescript?
 import { Micromobility } from '@opentripplanner/icons'
-import React, { Suspense } from 'react'
+import React, { ReactElement } from 'react'
 
 import { AppReduxState } from '../../../util/state-types'
 import { IconWithText } from '../../util/styledIcon'
+import CompanyIcon from '../../util/company-icon'
 
 import { Card, CardBody, CardFooter, CardHeader, CardTitle } from './styled'
 import DistanceDisplay from './distance-display'
@@ -25,7 +24,7 @@ type VehicleFormFactor =
 
 export const getVehicleIcon = (
   vehicleType: VehicleFormFactor
-): React.ReactNode => {
+): ReactElement => {
   switch (vehicleType) {
     case 'SCOOTER':
     case 'SCOOTER_SEATED':
@@ -67,23 +66,6 @@ const getVehicleText = (
   }
 }
 
-const StationIcon = ({
-  companyLabel,
-  vehicle
-}: {
-  companyLabel: string
-  vehicle: any
-}) => {
-  const CompanyIcon = getCompanyIcon(vehicle.network)
-  return CompanyIcon ? (
-    <Suspense fallback={<span>{companyLabel}</span>}>
-      <CompanyIcon height={22} style={{ marginRight: '5px' }} width={22} />
-    </Suspense>
-  ) : (
-    <span>{getVehicleIcon(vehicle.vehicleType.formFactor)}</span>
-  )
-}
-
 const Vehicle = ({
   companies,
   fromToSlot,
@@ -91,7 +73,15 @@ const Vehicle = ({
 }: {
   companies?: Company[]
   fromToSlot: JSX.Element
-  vehicle: any
+  vehicle: {
+    additionalCount: number
+    distance: number
+    name: string
+    network: string
+    vehicleType: {
+      formFactor: VehicleFormFactor
+    }
+  }
 }): JSX.Element => {
   const intl = useIntl()
   const companyLabel =
@@ -107,7 +97,15 @@ const Vehicle = ({
       <CardHeader>
         <CardTitle>
           <IconWithText
-            icon={<StationIcon companyLabel={companyLabel} vehicle={vehicle} />}
+            icon={
+              <CompanyIcon
+                company={vehicle.network}
+                fallbackContent={getVehicleIcon(formFactor)}
+                height={22}
+                style={{ marginRight: '5px' }}
+                width={22}
+              />
+            }
           >
             {name}
           </IconWithText>

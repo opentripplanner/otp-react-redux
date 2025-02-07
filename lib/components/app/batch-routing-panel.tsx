@@ -4,6 +4,7 @@ import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import React, { Component, FormEvent } from 'react'
 
 import * as apiActions from '../../actions/api'
+import * as formActions from '../../actions/form'
 import {
   advancedPanelClassName,
   mainPanelClassName,
@@ -31,6 +32,7 @@ interface Props {
   mobile?: boolean
   routingQuery: () => void
   showUserSettings: boolean
+  updateQueryTimeIfLeavingNow: () => void
 }
 
 /**
@@ -80,7 +82,9 @@ class BatchRoutingPanel extends Component<Props> {
   handleSubmit = (e: FormEvent) => e.preventDefault()
 
   handlePlanTripClick = () => {
-    const { currentQuery, intl, routingQuery } = this.props
+    const { currentQuery, intl, routingQuery, updateQueryTimeIfLeavingNow } =
+      this.props
+    updateQueryTimeIfLeavingNow()
     alertUserTripPlan(
       intl,
       currentQuery,
@@ -256,7 +260,8 @@ const mapStateToProps = (state: any) => {
 }
 
 const mapDispatchToProps = {
-  routingQuery: apiActions.routingQuery
+  routingQuery: apiActions.routingQuery,
+  updateQueryTimeIfLeavingNow: formActions.updateQueryTimeIfLeavingNow
 }
 
 export default connect(

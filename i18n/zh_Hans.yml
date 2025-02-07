@@ -298,6 +298,7 @@ components:
     companyScooter: "{company}滑板车"
     error: 加载附近设施时发生错误。
     header: 查看附近
+    headsign: "{destination}"
     nearbyListIntro: 附近 {count} 个实体的列表。
     nothingNearby: 附近没有地方。
     spacesAvailable: "{spacesAvailable} 可用空位"

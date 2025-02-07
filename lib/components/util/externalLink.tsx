@@ -1,4 +1,4 @@
-import { ExternalLinkAlt } from '@styled-icons/fa-solid'
+import { ExternalLinkAlt } from '@styled-icons/fa-solid/ExternalLinkAlt'
 import { useIntl } from 'react-intl'
 import React, { HTMLAttributes } from 'react'
 

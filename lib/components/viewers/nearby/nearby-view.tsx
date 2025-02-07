@@ -1,16 +1,21 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Location } from '@opentripplanner/types'
+import { LonLatInput } from '@conveyal/lonlat'
 import { MapRef, useMap } from 'react-map-gl'
+import { Search } from '@styled-icons/fa-solid/Search'
 import coreUtils from '@opentripplanner/core-utils'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import getGeocoder from '@opentripplanner/geocoder'
+import LocationField from '@opentripplanner/location-field'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import * as apiActions from '../../../actions/api'
+import * as locationActions from '../../../actions/location'
 import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
+import { GeocoderConfig, NearbyViewConfig } from '../../../util/config-types'
 import { getCurrentServiceWeek } from '../../../util/current-service-week'
-import { NearbyViewConfig } from '../../../util/config-types'
 import {
   PatternStopTime,
   SetLocationHandler,
@@ -23,11 +28,7 @@ import MobileNavigationBar from '../../mobile/navigation-bar'
 import PageTitle from '../../util/page-title'
 import VehiclePositionRetriever from '../vehicle-position-retriever'
 
-import {
-  FloatingLoadingIndicator,
-  NearbySidebarContainer,
-  Scrollable
-} from './styled'
+import { NearbySidebarContainer, Scrollable } from './styled'
 import FromToPicker from './from-to-picker'
 import RentalStation from './rental-station'
 import Stop, { fullTimestamp, patternArrayforStops } from './stop'
@@ -52,7 +53,11 @@ type Props = {
     radius?: number,
     currentServiceWeek?: ServiceWeek
   ) => void
+  geocoderConfig: GeocoderConfig
+  getCurrentPosition: any
+  // TODO
   hideBackButton?: boolean
+  hideEmptyStops?: boolean
   location: string
   mobile?: boolean
   // Todo: type nearby results
@@ -124,6 +129,9 @@ function NearbyView({
   displayedCoords,
   entityId,
   fetchNearby,
+  geocoderConfig,
+  getCurrentPosition,
+  hideEmptyStops,
   location,
   mobile,
   nearby,
@@ -139,6 +147,8 @@ function NearbyView({
   const map = useMap().default
   const intl = useIntl()
   const [loading, setLoading] = useState(true)
+  const [reversedPoint, setReversedPoint] = useState('')
+  const firstItemRef = useRef<HTMLDivElement>(null)
   const finalNearbyCoords = useMemo(
     () =>
       getNearbyCoordsFromUrlOrLocationOrMapCenter(
@@ -150,6 +160,12 @@ function NearbyView({
     [nearbyViewCoords, currentPosition, map]
   )
 
+  const reverseCoords = (coords: LonLatInput) => {
+    getGeocoder(geocoderConfig)
+      .reverse({ point: coords })
+      .then((result: Location) => setReversedPoint(result?.name || ''))
+  }
+
   // Make sure the highlighted location is cleaned up when leaving nearby
   useEffect(() => {
     return function cleanup() {
@@ -160,10 +176,12 @@ function NearbyView({
   useEffect(() => {
     const moveListener = (e: mapboxgl.EventData) => {
       if (e.geolocateSource) {
-        setViewedNearbyCoords({
+        const coords = {
           lat: e.viewState.latitude,
           lon: e.viewState.longitude
-        })
+        }
+        setViewedNearbyCoords(coords)
+        reverseCoords(coords)
       }
     }
 
@@ -173,9 +191,11 @@ function NearbyView({
         lon: e.viewState.longitude
       }
       setViewedNearbyCoords(coords)
+      reverseCoords(coords)
 
       // Briefly flash the highlight to alert the user that we've moved
       setHighlightedLocation(coords)
+
       setTimeout(() => {
         setHighlightedLocation(null)
       }, 500)
@@ -342,11 +362,41 @@ function NearbyView({
         className="base-color-bg"
         style={{ marginBottom: 0 }}
       >
-        {loading && (
-          <FloatingLoadingIndicator>
-            <Loading extraSmall />
-          </FloatingLoadingIndicator>
-        )}
+        {/* This is used to scroll to top */}
+        <div aria-hidden ref={firstItemRef} />
+        <LocationField
+          className="nearby-view-location-field"
+          // TODO: why does this cause the jump to the trip planner when selecting location
+          currentPosition={currentPosition}
+          geocoderConfig={geocoderConfig}
+          getCurrentPosition={getCurrentPosition}
+          inputPlaceholder={intl.formatMessage({
+            id: 'components.NearbyView.searchNearby'
+          })}
+          location={{
+            // Provide a 0 default in case the nearby view coords are null
+            lat: 0,
+            lon: 0,
+            ...nearbyViewCoords,
+            name: reversedPoint
+          }}
+          LocationIconComponent={() => (
+            <Search style={{ marginRight: 5, padding: 5 }} />
+          )}
+          locationType="to"
+          onLocationSelected={(selection) => {
+            const { location } = selection
+            setViewedNearbyCoords(location)
+            map && zoomToPlace(map, location)
+
+            setReversedPoint(location.name || '')
+            if (!location.name) {
+              reverseCoords([location.lon, location.lat])
+            }
+          }}
+          sortByDistance
+        />
+        {loading && <Loading extraSmall />}
         {nearby &&
           !staleData &&
           (nearby.error ? (
@@ -398,6 +448,8 @@ const mapStateToProps = (state: AppReduxState) => {
     defaultLatLon,
     displayedCoords: nearby?.coords,
     entityId: entityId && decodeURIComponent(entityId),
+    geocoderConfig: config.geocoder,
+    hideEmptyStops: config.nearbyView?.hideEmptyStops,
     homeTimezone: config.homeTimezone,
     location: state.router.location.hash,
     nearby: nearby?.data,
@@ -410,6 +462,7 @@ const mapStateToProps = (state: AppReduxState) => {
 
 const mapDispatchToProps = {
   fetchNearby: apiActions.fetchNearby,
+  getCurrentPosition: locationActions.getCurrentPosition,
   setHighlightedLocation: uiActions.setHighlightedLocation,
   setLocation: mapActions.setLocation,
   setMainPanelContent: uiActions.setMainPanelContent,

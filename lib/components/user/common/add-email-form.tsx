@@ -10,7 +10,7 @@ import { Field, Form, Formik } from 'formik'
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 
-import { ControlStrip, phoneFieldStyle } from '../styled'
+import { phoneFieldStyle } from '../styled'
 import SubmitButton from '../../util/submit-button'
 
 interface Props {
@@ -64,7 +64,7 @@ const AddEmailForm = ({
         <FormGroup validationState={showError ? 'error' : null}>
           <ControlLabel>{label}</ControlLabel>
           <Controls>
-            <Form id={id} noValidate />
+            <Form id={id} name={id} noValidate />
             <Field
               aria-invalid={showError}
               aria-required
