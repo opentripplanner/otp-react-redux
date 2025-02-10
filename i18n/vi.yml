@@ -305,8 +305,6 @@ components:
     originallyScheduledTime: (ban đầu là {originalTime})
     singleModeItineraryDescription: Hành trình {mode} kéo dài {time}
     timeWalking: "{time} đi bộ"
-  MobileOptions:
-    header: Cài đặt tùy chọn tìm kiếm
   MobilityProfile:
     DevicesPane:
       devices:
@@ -786,11 +784,6 @@ components:
       thời điểm nào, bạn có thể chọn tắt ghi nhớ các địa điểm/tìm kiếm gần đây
       và xóa các địa điểm nhà ở/chỗ làm đã lưu của bạn và các điểm dừng yêu
       thích.
-  UserTripSettings:
-    forgetOptions: Hãy quên các tùy chọn của tôi
-    rememberOptions: Hãy nhớ các tùy chọn chuyến đi
-    restoreDefaults: Khôi phục mặc định
-    restoreMyDefaults: Khôi phục mặc định của tôi
   VerifyEmailPane:
     emailIsVerified: Email của tôi đã được xác minh!
     instructions1: >
@@ -806,24 +799,13 @@ components:
     prompt: Bạn muốn đi đâu?
 config:
   accessModes:
-    bicycle: Giao thông công cộng + Xe đạp cá nhân
-    bicycle_rent: Giao thông công cộng + Xe đạp chung
     car_hail: Đi taxi
-    car_park: Đậu xe và đi xe công cộng
-    micromobility: Giao thông công cộng + Xe tay ga điện của tôi
-    micromobility_rent: Giao thông công cộng + Xe tay ga điện cho thuê
-  bicycleModes:
-    bicycle: Xe đạp của tôi
-    bicycle_rent: Xe đạp chung
   flex:
     both: Xem dưới cùng của hành trình để biết chi tiết
     call-ahead: Gọi để đặt trước.
     continuous-dropoff: Giao tiếp với người vận hành về điểm dừng
     flex-service: Dịch vụ linh hoạt
     flex-service-colon: "Dịch vụ flex:"
-  micromobilityModes:
-    micromobility: Xe tay ga điện của tôi
-    micromobility_rent: Xe tay ga điện cho thuê
 util:
   state:
     errorPlanningTrip: Đã xảy ra lỗi khi lập kế hoạch chuyến đi.

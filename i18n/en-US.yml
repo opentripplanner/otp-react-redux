@@ -308,8 +308,6 @@ components:
     originallyScheduledTime: (originally {originalTime})
     singleModeItineraryDescription: "{time} {mode} itinerary"
     timeWalking: "{time} walking"
-  MobileOptions:
-    header: Set Search Options
   MobilityProfile:
     DevicesPane:
       devices:
@@ -793,11 +791,6 @@ components:
       knowledge about your home, work,  or any other location. At any point you
       can opt to turn off  remembering recent places/searches and clear your
       saved home/work locations and favorite stops.
-  UserTripSettings:
-    forgetOptions: Forget my options
-    rememberOptions: Remember trip options
-    restoreDefaults: Restore defaults
-    restoreMyDefaults: Restore my defaults
   VerifyEmailPane:
     emailIsVerified: My email is verified!
     instructions1: >
@@ -812,24 +805,13 @@ components:
     prompt: Where do you want to go?
 config:
   accessModes:
-    bicycle: Transit + Personal bike
-    bicycle_rent: Transit + Bikeshare
     car_hail: Ride Hail
-    car_park: Park & Ride
-    micromobility: Transit + Personal scooter
-    micromobility_rent: Transit + E-scooter rental
-  bicycleModes:
-    bicycle: Own Bike
-    bicycle_rent: Bikeshare
   flex:
     both: See bottom of itinerary for details
     call-ahead: Call to reserve
     continuous-dropoff: Communicate with operator about stop
     flex-service: Flex Service
     flex-service-colon: "Flex Service:"
-  micromobilityModes:
-    micromobility: Own E-scooter
-    micromobility_rent: Rented E-scooter
 util:
   state:
     errorPlanningTrip: An error occurred while planning a trip.

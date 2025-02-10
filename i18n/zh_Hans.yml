@@ -265,8 +265,6 @@ components:
     originallyScheduledTime: （最初{originalTime}）
     singleModeItineraryDescription: "{time} {mode} 行程"
     timeWalking: "{time} 步行"
-  MobileOptions:
-    header: 设置搜索选项
   NarrativeItinerariesHeader:
     changeSortDir: 改变排序方向
     howToFindResults: 要查看结果，请参阅下面的“找到的行程”标题。
@@ -637,11 +635,6 @@ components:
     storageDisclaimer: >
       您选择保存的任何偏好, 地点或设置将被保存在您的浏览器的当地存储中. TriMet将无法获得关于您住家、工作或任何其他地点的信息. 在任何时候,
       您都可以选择关闭记忆最近的地方或搜索, 并清除您保存的住家或工作地点和最喜欢的车站.
-  UserTripSettings:
-    forgetOptions: 忘记我的选择
-    rememberOptions: 记住行程选择
-    restoreDefaults: 恢复默认设置
-    restoreMyDefaults: 恢复我的默认值
   VerifyEmailPane:
     emailIsVerified: 我的电子邮件被验证了!
     instructions1: |
@@ -655,24 +648,13 @@ components:
     prompt: 你想去哪里？
 config:
   accessModes:
-    bicycle: 公共交通 + 我的自行车
-    bicycle_rent: 公共交通 + 共享单车
     car_hail: Ride Hail
-    car_park: Park & Ride
-    micromobility: 公共交通 + 我的电动滑板车
-    micromobility_rent: 公共交通 + 租用的电动滑板车
-  bicycleModes:
-    bicycle: 我的自行车
-    bicycle_rent: 共享单车
   flex:
     both: 详见行程表底部
     call-ahead: 打电话预约
     continuous-dropoff: 与操作人员沟通停止事宜
     flex-service: 灵活的服务
     flex-service-colon: "灵活的服务:"
-  micromobilityModes:
-    micromobility: 我的电动滑板车
-    micromobility_rent: 租用的电动滑板车
 util:
   state:
     errorPlanningTrip: 在计划行程时发生一个错误.

@@ -323,8 +323,6 @@ components:
     originallyScheduledTime: (initialement {originalTime})
     singleModeItineraryDescription: Trajet de {time} {mode}
     timeWalking: "{time} de marche"
-  MobileOptions:
-    header: Options de recherche
   MobilityProfile:
     DevicesPane:
       devices:
@@ -824,11 +822,6 @@ components:
       données concernant votre domicile, lieu de travail, ou autre endroit. Vous
       pouvez à tout moment désactiver la collecte de vos recherches/lieux
       récents et effacer vos domicile, lieu de travail, et arrêts favoris.
-  UserTripSettings:
-    forgetOptions: Oublier mes options
-    rememberOptions: Enregistrer les options de trajet
-    restoreDefaults: Paramètres par défaut
-    restoreMyDefaults: Restaurer mes paramètres
   VerifyEmailPane:
     emailIsVerified: Mon email est vérifié
     instructions1: >
@@ -846,24 +839,13 @@ components:
     prompt: Où désirez-vous aller ?
 config:
   accessModes:
-    bicycle: Transports + Vélo personnel
-    bicycle_rent: Transports + Vélo partagé
     car_hail: Course en voiture
-    car_park: Parc relais
-    micromobility: Transports + Trottinnette pers.
-    micromobility_rent: Transports + Trottinette louée
-  bicycleModes:
-    bicycle: Vélo pers.
-    bicycle_rent: Vélo partagé
   flex:
     both: Plus de détails au bas de l'itinéraire
     call-ahead: Appelez pour réserver
     continuous-dropoff: Demandez l'arrêt au conducteur
     flex-service: Service Flex
     flex-service-colon: "Service Flex :"
-  micromobilityModes:
-    micromobility: Trottinnette pers.
-    micromobility_rent: Trottinette louée
 util:
   state:
     errorPlanningTrip: Une erreur s'est produite lors de la planification du trajet.
