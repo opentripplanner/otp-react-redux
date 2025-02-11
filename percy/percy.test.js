@@ -107,6 +107,7 @@ async function executeTest(page, isMobile, isCallTaker) {
   // Make sure that the main UI (incl. map controls) has loaded.
   await page.waitForSelector('.maplibregl-ctrl-zoom-in')
 
+  // Go to a URL that will trigger an error message.
   await page.goto(
     `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=TestLocation%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A34.78946214120528%2C-86.37663414886111&toPlace=1%20TestLocation2%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A35.767060728439574%2C-86.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false&mode=BICYCLE&walkSpeed=1.34&numItineraries=3&modeButtons=car_transit`
   )
@@ -121,7 +122,9 @@ async function executeTest(page, isMobile, isCallTaker) {
   await page.goto(
     `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=South%20Prado%20Northeast%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.78946214120528%2C-84.37663414886111&toPlace=1%20Copenhill%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.767060728439574%2C-84.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false&mode=BICYCLE&walkSpeed=1.34&numItineraries=3&modeButtons=walk_bike`
   )
-  await page.click('#plan-trip')
+  if (!isMobile) {
+    await page.click('#plan-trip')
+  }
   // FIXME: Network idle condition seems never met after navigating to above link.
   // await page.waitForNavigation({ waitUntil: 'networkidle2' })
   await page.waitForTimeout(4000)
