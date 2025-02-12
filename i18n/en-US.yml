@@ -269,6 +269,12 @@ components:
     setAddressForPlaceType: Set your {placeType} address
   FavoritePlaceScreen:
     addNewPlace: Add new place
+    charactersOverLimit: >-
+      {chars, plural, one {# character over limit} other {# characters over
+      limit} }
+    charactersRemaining: >-
+      {chars, plural, one {# character remaining} other {# characters remaining}
+      }
     editPlace: Edit {placeName}
     editPlaceGeneric: Edit place
     invalidAddress: Please set a location for this place.
@@ -276,6 +282,7 @@ components:
     nameAlreadyUsed: >-
       You are already using this name for another place. Please enter a
       different name.
+    nameTooLong: Name must be fewer than {char} characters.
     placeNotFound: Place not found
     placeNotFoundDescription: Sorry, the requested place was not found.
   FormNavigationButtons:
