@@ -29,21 +29,20 @@ const SavedTripEditor = (props: Props): JSX.Element => {
   // and to its own blur/change/submit event handlers that automate the state.
   // We forward the props to each pane so that their individual controls
   // can be wired to be managed by Formik.
-  const { isCreating, onCancel, panes, values: monitoredTrip } = props
+  const {
+    isCreating,
+    isReadOnly,
+    onCancel,
+    panes,
+    values: monitoredTrip
+  } = props
   const intl = useIntl()
 
   if (monitoredTrip) {
     const paneSequence: PaneAttributes[] = [
       {
-        pane: panes.readOnlyAlert,
-        props
-      },
-      {
         pane: panes.basics,
-        props,
-        title: (
-          <FormattedMessage id="components.SavedTripEditor.tripInformation" />
-        )
+        props
       },
       {
         pane: panes.notifications,
@@ -53,6 +52,13 @@ const SavedTripEditor = (props: Props): JSX.Element => {
         )
       }
     ]
+
+    if (isReadOnly) {
+      paneSequence.push({
+        pane: panes.readOnlyAlert,
+        props
+      })
+    }
 
     // if mobility profile is present, then add travel companions pane
     if (props.hasMobilityProfile) {
@@ -71,6 +77,8 @@ const SavedTripEditor = (props: Props): JSX.Element => {
       ? intl.formatMessage({ id: 'components.SavedTripEditor.saveNewTrip' })
       : intl.formatMessage({ id: 'components.SavedTripEditor.editSavedTrip' })
 
+    console.log(intl.formatMessage({ id: 'otpUi.TripDetails.title' }))
+
     return (
       <>
         <PageTitle title={title} />
@@ -88,7 +96,7 @@ const SavedTripEditor = (props: Props): JSX.Element => {
           isReadOnly={props.isReadOnly}
           onCancel={onCancel}
           panes={paneSequence}
-          title={title}
+          title={isCreating || props.isReadOnly ? title : undefined}
         />
       </>
     )

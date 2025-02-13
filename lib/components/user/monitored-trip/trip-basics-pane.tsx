@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import { Ban } from '@styled-icons/fa-solid/Ban'
 import { connect } from 'react-redux'
 import {
@@ -8,6 +9,7 @@ import {
   ProgressBar,
   Radio
 } from 'react-bootstrap'
+import { Edit } from '@styled-icons/fa-solid/Edit'
 import { Field, FormikProps } from 'formik'
 import { FormattedMessage, injectIntl, useIntl } from 'react-intl'
 import { Prompt } from 'react-router'
@@ -25,8 +27,8 @@ import {
   getFormattedDayOfWeekPlural
 } from '../../../util/monitored-trip'
 import { AppReduxState } from '../../../util/state-types'
-import { FieldSet } from '../styled'
-import { getBaseColor, RED_ON_WHITE } from '../../util/colors'
+import { blue, getBaseColor, RED_ON_WHITE } from '../../util/colors'
+import { FieldSet, PageHeading } from '../styled'
 import { getErrorStates } from '../../../util/ui'
 import { ItineraryExistence, MonitoredTrip } from '../types'
 import FormattedDayOfWeek from '../../util/formatted-day-of-week'
@@ -36,7 +38,7 @@ import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 import MonitoredDays, { MonitoredDayCircle } from './trip-monitored-days'
 import TripStatus from './trip-status'
-import TripSummary from './trip-duration-summary'
+import TripSummaryPane from './trip-summary-pane'
 
 type TripBasicsProps = WrappedComponentProps &
   FormikProps<MonitoredTrip> & {
@@ -53,6 +55,7 @@ type TripBasicsProps = WrappedComponentProps &
   }
 
 interface State {
+  editingName: boolean
   selectedDays: string[] | null
 }
 
@@ -127,6 +130,27 @@ const AvailableDays = styled(FieldSet)`
     margin: 0;
     position: relative;
     text-align: center;
+  }
+`
+
+const EditNameConatiner = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 10px 0px 30px;
+
+  h2 {
+    margin: 0;
+  }
+  button {
+    border: none;
+    background: none;
+    color: ${blue[700]};
+    cursor: pointer;
+
+    &:hover {
+      color: ${blue[900]};
+    }
   }
 `
 
@@ -237,6 +261,7 @@ const RenderAvailableDays = ({
  */
 class TripBasicsPane extends Component<TripBasicsProps, State> {
   state = {
+    editingName: false,
     selectedDays: null
   }
 
@@ -315,6 +340,49 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
     this.props.clearItineraryExistence()
   }
 
+  _renderItineraryHeader = () => {
+    const { errors, isCreating, isReadOnly, values: monitoredTrip } = this.props
+    const { editingName } = this.state
+    const errorStates = getErrorStates(this.props)
+    const nameIsSaved = !isCreating && !isReadOnly
+    return (
+      nameIsSaved &&
+      (!editingName ? (
+        <EditNameConatiner>
+          <PageHeading>{monitoredTrip.tripName}</PageHeading>
+          <button
+            onClick={(e) => {
+              e.preventDefault()
+              this.setState({ editingName: true })
+            }}
+          >
+            <Edit size={20} />
+          </button>
+        </EditNameConatiner>
+      ) : (
+        <FormGroup validationState={errorStates.tripName}>
+          <ControlLabel htmlFor="tripName">
+            <FormattedMessage id="components.TripBasicsPane.tripNamePrompt" />
+          </ControlLabel>
+          {/* onBlur, onChange, and value are passed automatically. */}
+          <Field
+            aria-invalid={!!errorStates.tripName}
+            as={FormControl}
+            disabled={isReadOnly}
+            id="tripName"
+            name="tripName"
+          />
+          <FormControl.Feedback />
+          <HelpBlock role="alert">
+            {errors.tripName && (
+              <FormattedValidationError type={errors.tripName} />
+            )}
+          </HelpBlock>
+        </FormGroup>
+      ))
+    )
+  }
+
   render() {
     const {
       canceled,
@@ -331,6 +399,13 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
     const { itinerary } = monitoredTrip
     const finalItineraryExistence =
       monitoredTrip.itineraryExistence || itineraryExistence
+
+    const toPlace =
+      monitoredTrip.to ||
+      monitoredTrip.itinerary?.legs[monitoredTrip.itinerary?.legs.length - 1]
+        ?.to
+    const fromPlace =
+      monitoredTrip.from || monitoredTrip.itinerary?.legs[0]?.from
 
     // Prevent user from leaving when form has been changed,
     // but don't show it when they click submit or cancel.
@@ -366,33 +441,19 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
           {/* TODO: This component does not block navigation on reload or using the back button.
           This will have to be done at a higher level. See #376 */}
           <Prompt message={unsavedChangesMessage} when={unsavedChanges} />
-
+          {this._renderItineraryHeader()}
           {/* Do not show trip status when saving trip for the first time
               (it doesn't exist in backend yet). */}
           {!isCreating && (
             <TripStatus isReadOnly={isReadOnly} monitoredTrip={monitoredTrip} />
           )}
-          <TripSummary monitoredTrip={monitoredTrip} />
+          <TripSummaryPane
+            editingTrip
+            from={fromPlace}
+            monitoredTrip={monitoredTrip}
+            to={toPlace}
+          />
 
-          <FormGroup validationState={errorStates.tripName}>
-            <ControlLabel htmlFor="tripName">
-              <FormattedMessage id="components.TripBasicsPane.tripNamePrompt" />
-            </ControlLabel>
-            {/* onBlur, onChange, and value are passed automatically. */}
-            <Field
-              aria-invalid={!!errorStates.tripName}
-              as={FormControl}
-              disabled={isReadOnly}
-              id="tripName"
-              name="tripName"
-            />
-            <FormControl.Feedback />
-            <HelpBlock role="alert">
-              {errors.tripName && (
-                <FormattedValidationError type={errors.tripName} />
-              )}
-            </HelpBlock>
-          </FormGroup>
           {disableSingleItineraryDays ? (
             <FormGroup validationState={selectOneDayError}>
               <ControlLabel>

@@ -4,14 +4,16 @@ import { Calendar } from '@styled-icons/fa-regular/Calendar'
 import { Clock } from '@styled-icons/fa-regular/Clock'
 import { FormattedDate, FormattedMessage, useIntl } from 'react-intl'
 import LocationIcon from '@opentripplanner/location-icon'
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
+import { ComponentContext } from '../../../util/contexts'
 import { dayFieldsToArray } from '../../../util/monitored-trip'
 import { grey } from '../../util/colors'
 import { InlineLoading } from '../../narrative/loading'
 import { MonitoredTripProps } from '../types'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
+import MetroItineraryRoutes from '../../narrative/metro/metro-itinerary-routes'
 
 import MonitoredDays from './trip-monitored-days'
 import TripSummary from './trip-duration-summary'
@@ -22,9 +24,10 @@ export const BORDER_COLOR = grey[100]
  * Displays the summary information of a monitored trip.
  */
 
-const SavedTripBody = styled.div`
+const SavedTripBody = styled.div<{ editingTrip?: boolean }>`
   display: flex;
   justify-content: center;
+  margin-bottom: ${(props) => (props.editingTrip ? '30px' : '0px')};
   padding: 0 0 0 15px;
 
   @media (max-width: 768px) {
@@ -115,6 +118,7 @@ const ToggleNotificationButton = styled.button`
 `
 
 const TripSummaryPane = ({
+  editingTrip,
   from,
   handleTogglePauseMonitoring,
   isReadOnly,
@@ -122,6 +126,7 @@ const TripSummaryPane = ({
   pendingRequest,
   to
 }: MonitoredTripProps): JSX.Element => {
+  const { LegIcon } = useContext(ComponentContext)
   const intl = useIntl()
   const { itinerary, leadTimeInMinutes } = monitoredTrip
   if (!itinerary) {
@@ -154,7 +159,7 @@ const TripSummaryPane = ({
     const ICON_SIZE = 14
 
     return (
-      <SavedTripBody>
+      <SavedTripBody editingTrip={editingTrip}>
         <InvisibleA11yLabel>
           <FormattedMessage
             id="components.SavedTripList.fromTo"
@@ -186,6 +191,15 @@ const TripSummaryPane = ({
         </LocationDetails>
         <ItineraryDetails>
           <TripDetailsList>
+            {editingTrip && (
+              <div style={{ marginTop: '-20px' }}>
+                <MetroItineraryRoutes
+                  expanded={false}
+                  itinerary={itinerary}
+                  LegIcon={LegIcon}
+                />
+              </div>
+            )}
             {/* Trip time and duration */}
             <TripDetailWithIcon as="li">
               <Clock
@@ -197,57 +211,61 @@ const TripSummaryPane = ({
               <TripSummary monitoredTrip={monitoredTrip} />
             </TripDetailWithIcon>
             {/* Available trip days */}
-            <TripDetailWithIcon as="li">
-              <Calendar
-                aria-hidden
-                title={intl.formatMessage({
-                  id: 'components.TripSummaryPane.monitoredTripDays'
-                })}
-              />
-              {displayedDays}
-            </TripDetailWithIcon>
-            {/* Trip notification info */}
-            <TripDetailWithIcon as="li">
-              {monitoredTrip.isActive ? (
-                <Bell
-                  aria-label={notificationLabel}
-                  title={notificationLabel}
+            {!editingTrip && (
+              <TripDetailWithIcon as="li">
+                <Calendar
+                  aria-hidden
+                  title={intl.formatMessage({
+                    id: 'components.TripSummaryPane.monitoredTripDays'
+                  })}
                 />
-              ) : (
-                <BellSlash width={20} />
-              )}
-              <span>
+                {displayedDays}
+              </TripDetailWithIcon>
+            )}
+            {/* Trip notification info */}
+            {!editingTrip && (
+              <TripDetailWithIcon as="li">
                 {monitoredTrip.isActive ? (
-                  <FormattedMessage
-                    id="components.TripSummaryPane.notifications"
-                    values={{ leadTimeInMinutes }}
+                  <Bell
+                    aria-label={notificationLabel}
+                    title={notificationLabel}
                   />
                 ) : (
-                  <FormattedMessage
-                    id="components.TripSummaryPane.notificationsDisabled"
-                    values={{ leadTimeInMinutes }}
-                  />
+                  <BellSlash width={20} />
                 )}
-                {!isReadOnly && (
-                  <>
-                    <br />
-                    <ToggleNotificationButton
-                      disabled={pendingRequest === 'pause'}
-                      onClick={testHandle}
-                    >
-                      {pendingRequest === 'pause' ? (
-                        /* Make loader fit */
-                        <InlineLoading />
-                      ) : monitoredTrip.isActive ? (
-                        <FormattedMessage id="components.SavedTripList.pause" />
-                      ) : (
-                        <FormattedMessage id="components.SavedTripList.resume" />
-                      )}
-                    </ToggleNotificationButton>
-                  </>
-                )}
-              </span>
-            </TripDetailWithIcon>
+                <span>
+                  {monitoredTrip.isActive ? (
+                    <FormattedMessage
+                      id="components.TripSummaryPane.notifications"
+                      values={{ leadTimeInMinutes }}
+                    />
+                  ) : (
+                    <FormattedMessage
+                      id="components.TripSummaryPane.notificationsDisabled"
+                      values={{ leadTimeInMinutes }}
+                    />
+                  )}
+                  {!isReadOnly && (
+                    <>
+                      <br />
+                      <ToggleNotificationButton
+                        disabled={pendingRequest === 'pause'}
+                        onClick={testHandle}
+                      >
+                        {pendingRequest === 'pause' ? (
+                          /* Make loader fit */
+                          <InlineLoading />
+                        ) : monitoredTrip.isActive ? (
+                          <FormattedMessage id="components.SavedTripList.pause" />
+                        ) : (
+                          <FormattedMessage id="components.SavedTripList.resume" />
+                        )}
+                      </ToggleNotificationButton>
+                    </>
+                  )}
+                </span>
+              </TripDetailWithIcon>
+            )}
           </TripDetailsList>
         </ItineraryDetails>
       </SavedTripBody>

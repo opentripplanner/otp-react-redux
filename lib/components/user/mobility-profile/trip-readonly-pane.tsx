@@ -16,13 +16,7 @@ type Props = FormikProps<MonitoredTrip> & {
 /**
  * Displays a banner for read-only state.
  */
-const TripReadOnlyPane = ({
-  isReadOnly,
-  loggedInUser,
-  values: trip
-}: Props) => {
-  if (!isReadOnly) return null
-
+const TripReadOnlyPane = ({ loggedInUser, values: trip }: Props) => {
   const { companion, primary } = trip
 
   const iAmThePrimaryTraveler =
