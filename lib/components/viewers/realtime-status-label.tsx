@@ -65,6 +65,7 @@ const STATUS = {
 const RealtimeStatusLabel = ({
   className,
   delay,
+  isFlex = false,
   isRealtime,
   onTimeThresholdSeconds,
   originalTime,
@@ -74,6 +75,7 @@ const RealtimeStatusLabel = ({
 }: {
   className?: string
   delay: number
+  isFlex: boolean
   isRealtime?: boolean
   onTimeThresholdSeconds?: number
   originalTime?: number
@@ -125,7 +127,9 @@ const RealtimeStatusLabel = ({
         {showScheduleDeviation && (
           <FormattedRealtimeStatusLabel
             minutes={
-              isEarlyOrLate ? (
+              isFlex ? (
+                <FormattedMessage id="config.flex.flex-service" />
+              ) : isEarlyOrLate ? (
                 <DelayText>
                   <FormattedDuration
                     duration={Math.abs(delay)}
@@ -137,10 +141,10 @@ const RealtimeStatusLabel = ({
               )
             }
             // @ts-ignore getTripStatus is not typed yet
-            status={STATUS[status].label}
+            status={!isFlex && STATUS[status].label}
           />
         )}
-        {isEarlyOrLate && (
+        {isEarlyOrLate && !isFlex && (
           <InvisibleAdditionalDetails>
             <FormattedMessage
               id="components.MetroUI.originallyScheduledTime"
@@ -159,7 +163,7 @@ const RealtimeStatusLabel = ({
 
 const mapStateToProps = (state: AppReduxState) => ({
   onTimeThresholdSeconds: state.otp.config.onTimeThresholdSeconds,
-  showScheduleDeviation: state.otp.config.showScheduleDeviation
+  showScheduleDeviation: state.otp.config?.itinerary?.showScheduleDeviation
 })
 
 export default connect(mapStateToProps)(RealtimeStatusLabel)
