@@ -138,6 +138,7 @@ common:
     walk: Walk
   notifications:
     email: email
+    haptic: haptic feedback (mobile app only)
     push: push notifications
     sms: SMS
   places:

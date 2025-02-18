@@ -17,7 +17,7 @@ interface Props extends FormikProps<User> {
   loggedInUser: User
 }
 
-const allNotificationChannels = ['email', 'sms', 'push']
+const allNotificationChannels = ['email', 'sms', 'push', 'haptic']
 const emailAndSms = ['email', 'sms']
 
 // Styles
@@ -90,7 +90,7 @@ const NotificationPrefsPane = ({
                     initialPhoneNumber={phoneNumber}
                     initialPhoneNumberVerified={isPhoneNumberVerified}
                   />
-                ) : (
+                ) : type === 'push' ? (
                   <span id={inputDescriptionId}>
                     {pushDevices ? (
                       <FormattedMessage
@@ -103,7 +103,7 @@ const NotificationPrefsPane = ({
                       <FormattedMessage id="components.NotificationPrefsPane.noDeviceForPush" />
                     )}
                   </span>
-                )}
+                ) : null}
               </span>
             </NotificationOption>
           )

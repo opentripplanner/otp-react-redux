@@ -147,6 +147,7 @@ common:
     walk: À pied
   notifications:
     email: e-mail
+    haptic: retour haptique (application mobile uniquement)
     push: notifications push
     sms: SMS
   places:
