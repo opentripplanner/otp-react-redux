@@ -3,7 +3,8 @@
     "common.notifications.*": [
       "email",
       "sms",
-      "push"
+      "push",
+      "haptic"
     ],
     "components.UserAccountScreen.fields.*": [
       "add-companion-form",
