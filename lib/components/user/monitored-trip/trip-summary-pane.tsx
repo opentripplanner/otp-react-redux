@@ -126,6 +126,7 @@ const TripSummaryPane = ({
   pendingRequest,
   to
 }: MonitoredTripProps): JSX.Element => {
+  // @ts-expect-error No type on ComponentContext
   const { LegIcon } = useContext(ComponentContext)
   const intl = useIntl()
   const { itinerary, leadTimeInMinutes } = monitoredTrip

@@ -1,4 +1,3 @@
-/* eslint-disable complexity */
 import { Ban } from '@styled-icons/fa-solid/Ban'
 import { connect } from 'react-redux'
 import {

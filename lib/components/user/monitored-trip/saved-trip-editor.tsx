@@ -77,8 +77,6 @@ const SavedTripEditor = (props: Props): JSX.Element => {
       ? intl.formatMessage({ id: 'components.SavedTripEditor.saveNewTrip' })
       : intl.formatMessage({ id: 'components.SavedTripEditor.editSavedTrip' })
 
-    console.log(intl.formatMessage({ id: 'otpUi.TripDetails.title' }))
-
     return (
       <>
         <PageTitle title={title} />
