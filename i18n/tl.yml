@@ -57,8 +57,8 @@ actions:
     confirmDeletePlace: Gusto mo bang alisin ang lugar na ito?
     emailVerificationResent: Ipinadala ulit ang mensahe ng pag-verify sa email.
     genericError: "Nagka-error: {err}"
-    itineraryExistenceCheckFailed: Nagka-error sa pagtingin kung posible ang napili
-      mong biyahe.
+    getDependentUserInfoFailed: Pagkakamali sa pagkuha ng impormasyon sa profile sa kadaliang kumilos.
+    itineraryExistenceCheckFailed: Nagka-error sa pagtingin kung posible ang napili mong biyahe.
     mustAcceptTermsToSavePlace: >-
       Pakitanggap ang Mga Tuntunin ng Paggamit (sa ilalim ng Aking Account) para
       mag-save ng mga lokasyon.
@@ -198,6 +198,8 @@ components:
     closeMenu: Isara ang Menu
     fieldTrip: Field Trip
     mailables: Mga Mailable
+    networkConnectionLost: Nawala ang koneksyon sa network
+    networkConnectionRestored: Naibalik na ang koneksyon sa network
     openMenu: Buksan ang Menu
     skipNavigation: I-skip ang pag-navigate
     networkConnectionLost: Nawala ang koneksyon sa network
@@ -358,12 +360,15 @@ components:
       header: Mobility Profile
       mobilityDevices: "Mga device para sa paggalaw: "
       mobilityLimitations: "Mga limitasyon sa paggalaw: "
+      planTripDescription: >-
+        Kung mayroon kang kasama sa paglalakbay, maaari mong piliing planuhin
+        ang biyaheng ito ayon sa kanilang profile sa kadaliang kumilos.
       visionLimitations: "Mga limitasyon sa paningin: "
-      planTripDescription: Kung mayroon kang kasama sa paglalakbay, maaari mong piliing
-        planuhin ang biyaheng ito ayon sa kanilang profile sa kadaliang kumilos.
+    dropdownLabel: "Profile sa kadaliang kumilos ng user:"
     intro: >-
       Pakisagot ang ilang tanong para i-customize ang karanasan sa pagpaplano ng
       biyahe ayon sa iyong mga pangangailangan at kagustuhan.
+    myself: Sarili ko
     title: Tukuyin ang iyong Mobility Pofile
     dropdownLabel: 'Profile sa kadaliang kumilos ng user:'
     myself: Sarili ko
@@ -405,6 +410,7 @@ components:
     headsign: "{destination}"
     nearbyListIntro: List of {count} nearby entities.
     nothingNearby: There are no places nearby.
+    searchNearby: Maghanap sa malapit...
     spacesAvailable: "{spacesAvailable} mga available na bakanteng espasyo"
     searchNearby: Maghanap sa malapit...
   NewAccountWizard:
@@ -569,6 +575,9 @@ components:
   SavedTripEditor:
     deleteSavedTrip: I-delete ang naka-save na biyahe
     editSavedTrip: I-edit ang na-save na biyahe
+    readOnlyBanner: >-
+      Ginawa at idinagdag ka ni {creator} sa biyaheng ito. Samakatuwid, hindi ka
+      makakagawa ng mga pagbabago.
     saveNewTrip: I-save ang bagong biyahe
     travelCompanions: Mga kasama sa pagbiyahe
     tripInformation: Impormasyon ng biyahe
@@ -690,6 +699,10 @@ components:
     unsavedChangesNewTrip: >-
       Hindi mo pa nase-save ang iyong bagong biyahe. Kung aalis ka, mawawala
       ito.
+  TripCompanionsPane:
+    companionLabel: "Kasama sa biyaheng ito:"
+    observersLabel: "Mga tagamasid na nanonood ng biyaheng ito:"
+    primaryLabel: "Pangunahing manlalakbay: "
   TripNotificationsPane:
     advancedSettings: Mga advanced na setting
     altRouteRecommended: Inirerekomenda ang isang alternatibong ruta o transfer point
@@ -812,6 +825,7 @@ components:
     errorUpdatingProfile: Error sa pag-update ng profile
     fieldUpdated: Na-update na ang setting na ito.
     fields:
+      add-companion-form: Mga Kasama sa Biyahe
       storeTripHistory: History ng biyahe sa tindahan
       add-companion-form: Mga Kasama sa Biyahe
     updating: Nag-a-update

@@ -53,8 +53,8 @@ actions:
     emailVerificationResent: Сообщение с подтверждением адреса электронной почты отправлено
       повторно.
     genericError: "Произошла ошибка: {err}"
-    itineraryExistenceCheckFailed: При проверке возможности выбранной поездки произошла
-      ошибка.
+    getDependentUserInfoFailed: Ошибка при получении информации о профиле мобильности.
+    itineraryExistenceCheckFailed: При проверке возможности выбранной поездки произошла ошибка.
     mustAcceptTermsToSavePlace: >-
       Примите «Условия использования» (в разделе «Моя учетная запись»), чтобы
       сохранять местоположения.
@@ -192,6 +192,8 @@ components:
     closeMenu: Закрыть меню
     fieldTrip: Поездка
     mailables: Почтовые отправления
+    networkConnectionLost: Сетевое подключение потеряно
+    networkConnectionRestored: Сетевое подключение восстановлено
     openMenu: Открыть меню
     skipNavigation: Пропустить навигацию
     networkConnectionLost: Сетевое подключение потеряно
@@ -349,12 +351,15 @@ components:
       header: Профиль мобильности
       mobilityDevices: "Устройства для передвижения: "
       mobilityLimitations: "Ограничения подвижности: "
+      planTripDescription: >-
+        Если у вас есть попутчик, вы можете спланировать эту поездку в
+        соответствии с его профилем мобильности.
       visionLimitations: "Проблемы со зрением: "
-      planTripDescription: Если у вас есть попутчик, вы можете спланировать эту поездку
-        в соответствии с его профилем мобильности.
+    dropdownLabel: "Профиль мобильности пользователя:"
     intro: >-
       Ответьте на несколько вопросов, чтобы спланировать поездку в соответствии
       с вашими потребностями и предпочтениями.
+    myself: Я
     title: Определите ваш профиль мобильности
     myself: Я
     dropdownLabel: 'Профиль мобильности пользователя:'
@@ -403,6 +408,7 @@ components:
     headsign: "{destination}"
     nearbyListIntro: Список {count} ближайших объектов.
     nothingNearby: Поблизости нет мест.
+    searchNearby: Искать поблизости...
     spacesAvailable: "{spacesAvailable} есть свободные места"
     searchNearby: Искать поблизости...
   NewAccountWizard:
@@ -563,6 +569,9 @@ components:
   SavedTripEditor:
     deleteSavedTrip: Удалить сохраненную поездку
     editSavedTrip: Редактировать сохраненную поездку
+    readOnlyBanner: >-
+      {creator} создал эту поездку и добавил вас в нее. Поэтому вы не сможете
+      внести изменения.
     saveNewTrip: Сохранить поездку
     travelCompanions: Попутчики
     tripInformation: Информация о поездке
@@ -672,10 +681,12 @@ components:
     tripIsAvailableOnDaysIndicated: Поездка доступна для указанных выше дней.
     tripNamePrompt: "Укажите имя поездки:"
     tripNotAvailableOnDay: "Поездка недоступна для следующих дней: {repeatedDay}"
-    unsavedChangesExistingTrip: Вы не сохранили поездку. Если вы выйдете, все изменения
-      будут утеряны.
-    unsavedChangesNewTrip: Вы не сохранили новую поездку. Если вы выйдете, она будет
-      удалена.
+    unsavedChangesExistingTrip: Вы не сохранили поездку. Если вы выйдете, все изменения будут утеряны.
+    unsavedChangesNewTrip: Вы не сохранили новую поездку. Если вы выйдете, она будет удалена.
+  TripCompanionsPane:
+    companionLabel: "Попутчик в этой поездке:"
+    observersLabel: "Наблюдатели следят за этой поездкой:"
+    primaryLabel: "Основной путешественник: "
   TripNotificationsPane:
     advancedSettings: Расширенные настройки
     altRouteRecommended: Рекомендуется использовать пересадку или альтернативный маршрут
@@ -798,6 +809,7 @@ components:
     errorUpdatingProfile: Ошибка редактирования профиля.
     fieldUpdated: Этот параметр был обновлен.
     fields:
+      add-companion-form: Попутчики
       storeTripHistory: Сохранять историю поездок
       add-companion-form: Попутчики
     updating: Обновляется

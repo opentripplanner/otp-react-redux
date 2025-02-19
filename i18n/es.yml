@@ -56,10 +56,9 @@ actions:
     emailVerificationResent: El mensaje de verificación de correo electrónico ha sido
       reenviado.
     genericError: "Se ha encontrado un error: {err}"
-    itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje seleccionado
-      es posible.
-    mustAcceptTermsToSavePlace: Acepte los Términos de uso (en Mi Cuenta) para guardar
-      las ubicaciones.
+    getDependentUserInfoFailed: Error al obtener la información del perfil de movilidad.
+    itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje seleccionado es posible.
+    mustAcceptTermsToSavePlace: Acepte los Términos de uso (en Mi Cuenta) para guardar las ubicaciones.
     mustBeLoggedInToSavePlace: Por favor, inicia la sesión para guardar las ubicaciones.
     placeRemembered: La configuración de este lugar se ha guardado.
     preferencesSaved: Sus preferencias se han guardado.
@@ -192,6 +191,8 @@ components:
     closeMenu: Cerrar Menú
     fieldTrip: Título del viaje
     mailables: Lista para publicar
+    networkConnectionLost: Se perdió la conexión de red
+    networkConnectionRestored: Conexión de red restaurada
     openMenu: Abrir Menú
     skipNavigation: Saltar navegación
     networkConnectionLost: Se perdió la conexión de red
@@ -352,12 +353,15 @@ components:
       header: Perfil de movilidad
       mobilityDevices: "Dispositivos de movilidad: "
       mobilityLimitations: "Limitaciones de la movilidad: "
+      planTripDescription: >-
+        Si tiene un compañero de viaje, puede optar por planificar este viaje
+        según su perfil de movilidad.
       visionLimitations: "Limitaciones visuales: "
-      planTripDescription: Si tiene un compañero de viaje, puede optar por planificar
-        este viaje según su perfil de movilidad.
+    dropdownLabel: "Perfil de movilidad del usuario:"
     intro: >-
       Por favor, responda a algunas preguntas para adaptar la planificación del
       viaje a sus necesidades y preferencias.
+    myself: Yo
     title: Defina su perfil de movilidad
     myself: Yo
     dropdownLabel: 'Perfil de movilidad del usuario:'
@@ -401,6 +405,7 @@ components:
     headsign: "{destination}"
     nearbyListIntro: Lista de {count} entidades cercanas.
     nothingNearby: No ubicaciónes cercanas.
+    searchNearby: Buscar cerca...
     spacesAvailable: "{spacesAvailable} espacios libres disponibles"
     searchNearby: Buscar cerca...
   NewAccountWizard:
@@ -557,6 +562,9 @@ components:
   SavedTripEditor:
     deleteSavedTrip: Borrar viaje guardado
     editSavedTrip: Editar el viaje guardado
+    readOnlyBanner: >-
+      {creator} creó y te agregó a este viaje. Por lo tanto, no es posible hacer
+      cambios.
     saveNewTrip: Guardar un nuevo viaje
     travelCompanions: Acompañantes de viaje
     tripInformation: Información sobre el viaje
@@ -672,8 +680,11 @@ components:
     unsavedChangesExistingTrip: >-
       Todavía no ha guardado su viaje. Si abandona la página, los cambios se
       perderán.
-    unsavedChangesNewTrip: Todavía no ha guardado su nuevo viaje. Si abandona la página,
-      se perderá.
+    unsavedChangesNewTrip: Todavía no ha guardado su nuevo viaje. Si abandona la página, se perderá.
+  TripCompanionsPane:
+    companionLabel: "Compañero en este viaje:"
+    observersLabel: "Observadores que presenciaron este viaje:"
+    primaryLabel: "Viajero principal: "
   TripNotificationsPane:
     advancedSettings: Configuración avanzada
     altRouteRecommended: Se recomienda una ruta alternativa o un punto de transferencia
@@ -803,6 +814,7 @@ components:
     errorUpdatingProfile: Error al actualizar el perfil.
     fieldUpdated: Este ajuste se actualizó.
     fields:
+      add-companion-form: Compañeros de viaje
       storeTripHistory: Almacenar historial de viajes
       add-companion-form: Compañeros de viaje
     updating: Actualizando
