@@ -13,12 +13,10 @@ import { User } from './types'
 import PhoneNumberEditor from './phone-number-editor'
 
 interface Props extends FormikProps<User> {
-  allowedNotificationChannels: string[]
   loggedInUser: User
+  supportsHaptic?: boolean
+  supportsPush?: boolean
 }
-
-const allNotificationChannels = ['email', 'sms', 'push', 'haptic']
-const emailAndSms = ['email', 'sms']
 
 // Styles
 const NotificationOption = styled(ListGroupItem)`
@@ -48,11 +46,15 @@ const NotificationOption = styled(ListGroupItem)`
  * User notification preferences pane.
  */
 const NotificationPrefsPane = ({
-  allowedNotificationChannels,
   handleChange, // Formik or custom handler
+  supportsHaptic,
+  supportsPush,
   values: userData // Formik prop
 }: Props): JSX.Element => {
   const { email, isPhoneNumberVerified, phoneNumber, pushDevices } = userData
+  const allowedNotificationChannels = ['email', 'sms']
+  if (supportsPush) allowedNotificationChannels.push('push')
+  if (supportsHaptic) allowedNotificationChannels.push('haptic')
 
   return (
     <FieldSet>
@@ -114,15 +116,14 @@ const NotificationPrefsPane = ({
 }
 
 const mapStateToProps = (state: AppReduxState) => {
-  const { persistence } = state.otp.config
-  const supportsPushNotifications =
+  const { mobilityProfile: supportsHaptic, persistence } = state.otp.config
+  const supportsPush =
     persistence && 'otp_middleware' in persistence
       ? persistence.otp_middleware?.supportsPushNotifications
       : false
   return {
-    allowedNotificationChannels: supportsPushNotifications
-      ? allNotificationChannels
-      : emailAndSms
+    supportsHaptic,
+    supportsPush
   }
 }
 
