@@ -22,7 +22,8 @@ actions:
     fetchFieldTripsError: "트립을 가져오는 중에 오류가 발생했습니다: {err}"
     fetchTripsForDateError: "필트 트립 날짜에 대한 트립을 가져오는 중에 오류가 발생했습니다: {err}"
     incompatibleTripDateError: 계획한 트립 날짜({tripDate})가 요청한 트립 날짜({requestDate})가 아닙니다
-    itineraryCapacityError: "플랜을 저장할 수 없습니다: 하나 이상의 차량의 용량이 부족하여 이 플랜을 저장할 수 없습니다. 트립을 다시 계획하세요."
+    itineraryCapacityError: "플랜을 저장할 수 없습니다: 하나 이상의 차량의 용량이 부족하여 이 플랜을 저장할 수 없습니다.
+      트립을 다시 계획하세요."
     maxTripRequestsExceeded: 유효한 결과없이 초과된 트립 요청의 개수
     saveItinerariesError: "트립을 저장하는 데 실패했습니다: {err}"
     setDateError: "날짜를 설정하는 중에 오류가 발생했습니다:"
@@ -53,6 +54,7 @@ actions:
     smsInvalidCode: 입력한 코드가 유효하지 않습니다. 다시 시도하세요.
     smsResendThrottled: 확인 SMS가 1분 미만 전에 표시된 전화번호로 전송되었습니다. 잠시 후 다시 시도하세요.
     smsVerificationFailed: 번호가 확인되지 않습니다. 입력한 코드가 만료되었을 수 있습니다. 새 코드를 요청한 후 다시 시도하세요.
+    getDependentUserInfoFailed: 모빌리티 프로필 정보를 가져오는 중 오류가 발생했습니다.
 common:
   coordinates: "{lat}, {lon}"
   dateExpressions:
@@ -173,6 +175,8 @@ components:
     mailables: 발송 가능
     openMenu: 메뉴 열기
     skipNavigation: 내비게이션 건너뛰기
+    networkConnectionLost: 네트워크 연결이 끊어짐
+    networkConnectionRestored: 네트워크 연결이 복구됨
   BackToTripPlanner:
     backToTripPlanner: 트립 플래너로 돌아가기
   BatchResultsScreen:
@@ -207,8 +211,8 @@ components:
     addNewCompanion: 새로운 여행 동행 추가
     companionAlreadyAdded: 이미 {email} 이메일을 사용하는 동행이 있습니다
     companionExplanation: >
-      기존 G-MAP 사용자의 이메일 주소를 입력하여 여행 동행으로 초대합니다. 상대방이 수락하면 상태가 "확인됨"으로 변경되고, 서로의
-      이동성 프로필에 따라 여행 상태를 공유하고 여행을 계획할 수 있습니다.
+      기존 G-MAP 사용자의 이메일 주소를 입력하여 여행 동행으로 초대합니다. 상대방이 수락하면 상태가 "확인됨"으로 변경되고, 서로의 이동성
+      프로필에 따라 여행 상태를 공유하고 여행을 계획할 수 있습니다.
     confirmDeleteCompanion: 동행 {email}을 삭제하시겠습니까?
     currentCompanionsLabel: "현재 여행 동행:"
     deleteCompanion: "{email} 삭제"
@@ -316,8 +320,11 @@ components:
       mobilityDevices: "이동성 장치: "
       mobilityLimitations: "이동성 제한: "
       visionLimitations: "시력 제한: "
+      planTripDescription: 여정 동반자가 있는 경우, 동반자의 모빌리티 프로필에 따라 여정을 계획하도록 선택할 수 있습니다.
     intro: 귀하의 필요 사항과 선호도에 맞게 여행 계획 경험을 맞춤화하기 위해 몇 가지 질문에 답해 주십시오.
     title: 이동성 프로필 정의하기
+    myself: 본인
+    dropdownLabel: '사용자 모빌리티 프로필:'
   NarrativeItinerariesHeader:
     changeSortDir: 정렬 방향 변경
     howToFindResults: 결과를 보려면, 아래 검색된 일정표 제목을 보십시오.
@@ -352,6 +359,7 @@ components:
     nearbyListIntro: 주변 개체 {count}개 목록
     nothingNearby: 근처에 장소가 없습니다.
     spacesAvailable: "{spacesAvailable} 빈 자리 있음"
+    searchNearby: 주변 검색...
   NewAccountWizard:
     createNewAccount: 새 계정 생성
     finish: 계정 설정을 완료하셨습니다!
@@ -491,6 +499,7 @@ components:
     tripNotFound: 트립을 찾을 수 없음
     tripNotFoundDescription: 죄송합니다. 요청된 트립을 찾을 수 없습니다.
     tripNotifications: 트립 알림
+    readOnlyBanner: '{creator} 님이 이 여정을 만들고 귀하를 추가했습니다. 따라서 귀하는 이 여정을 변경할 수 없습니다.'
   SavedTripList:
     alertTag: "{alert, plural, one {알림 한 개 보기} other {알림 #개 보기}}"
     fromTo: "{from}에서 {to}까지"
@@ -692,6 +701,7 @@ components:
     fieldUpdated: 이 설정이 업데이트되었습니다.
     fields:
       storeTripHistory: 이동편 이력 저장
+      add-companion-form: '여정 동반자:'
     updating: 업데이트 중
   UserSettings:
     confirmDeletion: 최근 검색이나 장소가 저장되어 있습니다. 최근 장소 또는 검색을 비활성화하면 이러한 항목이 제거됩니다. 계속하시겠습니까?
@@ -724,6 +734,10 @@ components:
     switcher: 변경
   WelcomeScreen:
     prompt: 어디로 가고 싶으신가요?
+  TripCompanionsPane:
+    companionLabel: '이 여정의 동반자:'
+    observersLabel: '이 여정을 지켜보는 관찰자:'
+    primaryLabel: '주요 이동하는 사람: '
 config:
   accessModes:
     bicycle: 대중교통 + 개인 자전거
@@ -750,5 +764,6 @@ util:
     networkUnavailable: 현재 {network} 네트워크를 사용할 수 없습니다.
     noTripFound: 트립을 찾을 수 없습니다.
     noTripFoundForMode: "{modes}의 트립을 찾을 수 없습니다."
-    noTripFoundReason: 지정된 최대 거리 내 또는 지정된 시간에 대중 교통 서비스가 없거나, 출발지 또는 도착지가 안전하게 접근가능하지 못할 수 있습니다.
+    noTripFoundReason: 지정된 최대 거리 내 또는 지정된 시간에 대중 교통 서비스가 없거나, 출발지 또는 도착지가 안전하게 접근가능하지
+      못할 수 있습니다.
     noTripFoundWithReason: "{noTripFound} {reason}"
