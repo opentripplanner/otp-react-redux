@@ -1,5 +1,5 @@
 import { FormattedTime } from 'react-intl'
-import { isTransitLeg } from '@opentripplanner/core-utils/lib/itinerary'
+import { isFlex, isTransitLeg } from '@opentripplanner/core-utils/lib/itinerary'
 import { Leg } from '@opentripplanner/types'
 import React, { ReactElement } from 'react'
 import styled from 'styled-components'
@@ -50,6 +50,7 @@ function RealtimeTimeColumn({ isDestination, leg }: Props): ReactElement {
   return (
     <StyledStatusLabel
       delay={delaySeconds}
+      isFlex={isFlex(leg)}
       isRealtime={isRealtimeTransitLeg}
       originalTime={originalTimeMillis}
       time={timeMillis}
