@@ -660,6 +660,7 @@ components:
     oneHour: 1 hour
     realtimeAlertFlagged: There is a realtime alert flagged on my journey
     timeBefore: "{time} before"
+    tripMonitoring: "Trip monitoring:"
   TripPreviewLayout:
     previewTrip: Preview Trip
   TripStatus:
