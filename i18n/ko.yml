@@ -453,10 +453,6 @@ components:
     scheduled: 예정
   ResultsError:
     backToSearch: 검색으로 돌아가기
-  ResultsHeader:
-    noTripFound: 트립을 찾을 수 없음
-    tripsFound: "{count} 개의 옵션 을 찾았습니다"
-    waiting: 기다리는 중...
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: 더 자세한 내용

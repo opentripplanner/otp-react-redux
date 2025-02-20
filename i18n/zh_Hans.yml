@@ -399,10 +399,6 @@ components:
     scheduled: 预定的
   ResultsError:
     backToSearch: 返回搜索
-  ResultsHeader:
-    noTripFound: 没有找到行程
-    tripsFound: 我们发现了 {count} 选项
-    waiting: 等待...
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: 更多细节
