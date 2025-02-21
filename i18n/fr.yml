@@ -521,10 +521,6 @@ components:
     scheduled: horaire
   ResultsError:
     backToSearch: Retour à la recherche
-  ResultsHeader:
-    noTripFound: Aucun trajet trouvé
-    tripsFound: "{count, plural, one {# trajet trouvé} other {# trajets trouvés}}"
-    waiting: Patientez...
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: Plus d'infos

@@ -524,10 +524,6 @@ components:
     scheduled: nakaiskedyul
   ResultsError:
     backToSearch: Bumalik sa Paghahanap
-  ResultsHeader:
-    noTripFound: Walang Nakitang Biyahe
-    tripsFound: Nakakita kami ng {count} {count, plural, one {Option} other {Options}}
-    waiting: Naghihintay...
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: Higit Pang Detalye
