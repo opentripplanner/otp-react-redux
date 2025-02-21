@@ -301,6 +301,8 @@ export interface ItineraryConfig {
   showLegDurations?: boolean
   showPlanFirstLastButtons?: boolean
   showRouteFares?: boolean
+  /** Whether to show the x minutes late/early in the itinerary body */
+  showScheduleDeviation?: boolean
   sortModes?: ItinerarySortOption[]
   syncSortWithDepartArrive?: boolean
   weights?: ItineraryCostWeights
@@ -423,8 +425,6 @@ export interface AppConfig {
   routeViewer?: RouteViewerConfig
   /** Approx delay in seconds to reset the UI to an initial URL if there is no user activity */
   sessionTimeoutSeconds?: number
-  /** Whether to show the x minutes late/early in the itinerary body */
-  showScheduleDeviation?: boolean
   stopViewer?: StopScheduleViewerConfig
   /** Externally hosted terms of service URL */
   termsOfServiceLink?: string
