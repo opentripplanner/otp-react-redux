@@ -357,7 +357,6 @@ components:
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerario encontrado} other {# itinerarios
       encontrados}}
-    numIssues: "{issueNum, plural, one {# problema} other {# problemas}}"
     resultsSortedBy: >-
       Los resultados del viaje están actualmente ordenados por {sortSelected}.
       Para cambiar la forma en que se ordenan los resultados, utiliza el botón

@@ -347,7 +347,6 @@ components:
     changeSortDir: Thay đổi hướng sắp xếp
     howToFindResults: Để xem kết quả, xem phần các hành trình đã tìm thấy ở phía dưới.
     itinerariesFound: "{itineraryNum} hành trình được tìm thấy"
-    numIssues: "{issueNum} vấn đề"
     resultsSortedBy: >-
       Kết quả chuyến đi hiện được sắp xếp theo {sortSelected}. Để thay đổi cách
       sắp xếp kết quả, hãy sử dụng nút "Sắp Xếp Kết Quả" bên dưới.
