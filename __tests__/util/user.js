@@ -1,6 +1,10 @@
 /* globals describe, expect, it */
 
-import { convertToLegacyLocation, convertToPlace } from '../../lib/util/user'
+import {
+  convertToLegacyLocation,
+  convertToPlace,
+  tidyRecentSearches
+} from '../../lib/util/user'
 
 describe('util > user', () => {
   describe('convertToPlace', () => {
@@ -80,6 +84,153 @@ describe('util > user', () => {
           testCase.expected
         )
       })
+    })
+  })
+  describe('tidyRecentSearches', () => {
+    it('should remove duplicate search entries', () => {
+      const intlDistrict = {
+        lat: 47.598365,
+        lon: -122.327994,
+        name: 'International District/Chinatown, International District, Seattle, WA'
+      }
+      const pikePlace = {
+        lat: 47.609541,
+        lon: -122.342621,
+        name: 'Pike Place Market, Pike Place Market, Seattle, WA'
+      }
+      const spaceNeedle = {
+        lat: 47.620336,
+        lon: -122.349314,
+        name: 'Space Needle, Broad Street, Lower Queen Anne, Seattle, WA'
+      }
+
+      const recentSearches = [
+        {
+          id: '5033e199-f196-4bd8-b590-86c6e9c81a14',
+          query: {
+            date: '2025-02-25',
+            departArrive: 'NOW',
+            from: pikePlace,
+            modes: [
+              {
+                mode: 'BUS',
+                qualifier: null
+              },
+              {
+                mode: 'TRAM',
+                qualifier: null
+              },
+              {
+                mode: 'RAIL',
+                qualifier: null
+              }
+            ],
+            time: '05:22',
+            to: spaceNeedle
+          },
+          timestamp: 1740489995245
+        },
+        {
+          id: '68d6f576-c039-4cd0-a528-94ad3f1868b9',
+          query: {
+            date: '2025-02-25',
+            departArrive: 'NOW',
+            from: pikePlace,
+            modes: [
+              {
+                mode: 'TRANSIT',
+                qualifier: null
+              }
+            ],
+            time: '05:22',
+            to: intlDistrict
+          },
+          timestamp: 1740490006473
+        },
+        {
+          id: '31de440b-c412-439f-b759-6b687a54762f',
+          query: {
+            date: '2025-02-25',
+            departArrive: 'NOW',
+            from: pikePlace,
+            modes: [
+              {
+                mode: 'BUS',
+                qualifier: null
+              },
+              {
+                mode: 'TRAM',
+                qualifier: null
+              },
+              {
+                mode: 'RAIL',
+                qualifier: null
+              }
+            ],
+            time: '05:22',
+            to: spaceNeedle
+          },
+          timestamp: 1740490025388
+        },
+        {
+          id: '452e68d9-df7c-41ce-894e-4754908d7646',
+          query: {
+            date: '2025-02-25',
+            departArrive: 'NOW',
+            from: spaceNeedle,
+            modes: [
+              {
+                mode: 'TRANSIT',
+                qualifier: null
+              },
+              {
+                mode: 'BUS',
+                qualifier: null
+              },
+              {
+                mode: 'TRAM',
+                qualifier: null
+              },
+              {
+                mode: 'RAIL',
+                qualifier: null
+              }
+            ],
+            time: '05:22',
+            to: intlDistrict
+          },
+          timestamp: 1740490040300
+        },
+        {
+          id: '4fa6d241-f0ac-43ae-963a-e7e418810a8b',
+          query: {
+            date: '2025-02-25',
+            departArrive: 'NOW',
+            from: spaceNeedle,
+            modes: [
+              {
+                mode: 'BUS',
+                qualifier: null
+              },
+              {
+                mode: 'TRAM',
+                qualifier: null
+              },
+              {
+                mode: 'RAIL',
+                qualifier: null
+              }
+            ],
+            time: '05:22',
+            to: intlDistrict
+          },
+          timestamp: 1740490470013
+        }
+      ]
+
+      const expected = [recentSearches[0], recentSearches[1], recentSearches[3]]
+
+      expect(tidyRecentSearches(recentSearches)).toEqual(expected)
     })
   })
 })
