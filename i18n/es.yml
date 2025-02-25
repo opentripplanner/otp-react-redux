@@ -509,10 +509,6 @@ components:
     scheduled: programado
   ResultsError:
     backToSearch: Volver a la búsqueda
-  ResultsHeader:
-    noTripFound: No se encontró ningún viaje
-    tripsFound: Encontramos {count, plural, one {# opción} other {# opciones}}
-    waiting: Espera...
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: Más detalles

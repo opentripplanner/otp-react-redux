@@ -507,12 +507,6 @@ components:
     scheduled: по расписанию
   ResultsError:
     backToSearch: Вернуться к поиску
-  ResultsHeader:
-    noTripFound: Не удалось найти поездку
-    tripsFound: >-
-      {count, plural, one {Найден {count} вариант} other {Найдено несколько
-      вариантов ({count})}}
-    waiting: Ожидание…
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: Подробнее

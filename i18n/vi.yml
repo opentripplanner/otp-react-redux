@@ -498,10 +498,6 @@ components:
     scheduled: lên kế hoạch
   ResultsError:
     backToSearch: Quay lại tìm kiếm
-  ResultsHeader:
-    noTripFound: Không tìm thấy chuyến đi nào
-    tripsFound: Đã tìm thấy {count} tùy chọn
-    waiting: Đang chờ đợi...
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: Thêm chi tiết

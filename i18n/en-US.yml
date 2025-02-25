@@ -499,10 +499,6 @@ components:
     scheduled: scheduled
   ResultsError:
     backToSearch: Back to Search
-  ResultsHeader:
-    noTripFound: No Trip Found
-    tripsFound: We Found {count, plural, one {# Option} other {# Options}}
-    waiting: Waiting...
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: More Details

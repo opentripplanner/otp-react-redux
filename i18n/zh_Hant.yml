@@ -387,10 +387,6 @@ components:
     scheduled: 預定
   ResultsError:
     backToSearch: 返回搜尋
-  ResultsHeader:
-    noTripFound: 找不到行程
-    tripsFound: 我們找到了{count} 個選項
-    waiting: 等待中……
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: 更多詳細資訊
