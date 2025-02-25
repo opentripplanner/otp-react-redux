@@ -228,7 +228,9 @@ describe('util > user', () => {
         }
       ]
 
-      const expected = [recentSearches[0], recentSearches[1], recentSearches[3]]
+      // Entries are given in ascending time order (most recent last),
+      // but we want to display the most recents first.
+      const expected = [recentSearches[4], recentSearches[2], recentSearches[1]]
 
       expect(tidyRecentSearches(recentSearches)).toEqual(expected)
     })
