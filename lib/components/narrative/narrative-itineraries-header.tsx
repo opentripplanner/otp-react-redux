@@ -1,9 +1,7 @@
 /* eslint-disable complexity */
 import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
 import { Dropdown } from '@opentripplanner/building-blocks'
-import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { Itinerary } from '@opentripplanner/types'
 import { SortAmountDown } from '@styled-icons/fa-solid/SortAmountDown'
 import { SortAmountUp } from '@styled-icons/fa-solid/SortAmountUp'
 import React, { useContext } from 'react'
@@ -19,15 +17,6 @@ import PopupTriggerText from '../app/popup-trigger-text'
 
 import PlanFirstLastButtons from './plan-first-last-buttons'
 import SaveTripButton from './save-trip-button'
-
-const IssueButton = styled.button`
-  background-color: #ecbe03;
-  border: none;
-  border-radius: 5px;
-  display: inline-block;
-  font-size: 12px;
-  padding: 2px 4px;
-`
 
 const ItinerariesHeaderContainer = styled.div<{ showHeaderText: boolean }>`
   display: flex;
@@ -49,29 +38,24 @@ export default function NarrativeItinerariesHeader({
   itineraryIsExpanded,
   onSortChange,
   onSortDirChange,
-  onToggleShowErrors,
   onViewAllOptions,
   pending,
   popupTarget,
   setPopupContent,
   showHeaderText = true,
-  showingErrors,
   sort
 }: {
   customBatchUiBackground?: boolean
   enabledSortModes: ItinerarySortOption[]
   itineraries: unknown[]
-  itinerary: Itinerary
   itineraryIsExpanded: boolean
   onSortChange: (type: string) => VoidFunction
   onSortDirChange: () => void
-  onToggleShowErrors: () => void
   onViewAllOptions: () => void
   pending: boolean
   popupTarget: string
   setPopupContent: (url: string) => void
   showHeaderText: boolean
-  showingErrors: boolean
   sort: { direction: string; type: string }
 }): JSX.Element {
   const intl = useIntl()
@@ -133,7 +117,7 @@ export default function NarrativeItinerariesHeader({
         )}
       </InvisibleA11yLabel>
 
-      {itineraryIsExpanded || showingErrors ? (
+      {itineraryIsExpanded ? (
         <>
           <button
             className="clear-button-formatting"

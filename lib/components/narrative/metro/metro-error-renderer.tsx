@@ -24,9 +24,9 @@ const Container = styled.li`
   padding: 0 1em;
 
   h2 {
+    font-size: 24px;
     grid-column: 2;
     grid-row: 1;
-    font-size: 24px;
   }
 
   span {
