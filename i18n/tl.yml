@@ -366,7 +366,6 @@ components:
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerary found} other {# itineraries found}
       }
-    numIssues: "{issueNum, plural, one {# issue} other {# issues} }"
     resultsSortedBy: >-
       Kasalukuyang nakaayos ayon sa {sortSelected} ang mga resulta ng biyahe.
       Para palitan ang paraan kung paano nakaayos ang mga resulta, gamitin ang
@@ -524,10 +523,6 @@ components:
     scheduled: nakaiskedyul
   ResultsError:
     backToSearch: Bumalik sa Paghahanap
-  ResultsHeader:
-    noTripFound: Walang Nakitang Biyahe
-    tripsFound: Nakakita kami ng {count} {count, plural, one {Option} other {Options}}
-    waiting: Naghihintay...
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: Higit Pang Detalye

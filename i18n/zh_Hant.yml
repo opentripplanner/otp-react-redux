@@ -271,7 +271,6 @@ components:
     changeSortDir: 變更排序方向
     howToFindResults: 要檢視結果，請參閱下方「找到的預定行程」標題。
     itinerariesFound: "{itineraryNum}個預定行程已找到"
-    numIssues: "{issueNum}個問題"
     resultsSortedBy: 行程結果目前依{sortSelected}排序。如需變更結果的排序方式，請使用下方「排序結果」按鈕。
     searching: 正在尋找您的選項……
     selectArrivalTime: 抵達時間
@@ -388,10 +387,6 @@ components:
     scheduled: 預定
   ResultsError:
     backToSearch: 返回搜尋
-  ResultsHeader:
-    noTripFound: 找不到行程
-    tripsFound: 我們找到了{count} 個選項
-    waiting: 等待中……
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: 更多詳細資訊
