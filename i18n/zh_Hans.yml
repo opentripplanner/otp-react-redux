@@ -269,11 +269,6 @@ components:
     changeSortDir: 改变排序方向
     howToFindResults: 要查看结果，请参阅下面的“找到的行程”标题。
     itinerariesFound: 发现{itineraryNum}条行程
-    numIssues: |-
-      {issueNum, plural,
-       one {# 问题}
-       other {# 个问题}
-       }
     resultsSortedBy: 当前按{sortSelected}排序的行程结果。要更改结果的排序方式，请使用下面的“排序结果”按钮。
     searching: 寻找你的选择…
     selectArrivalTime: 抵达时间
@@ -397,10 +392,6 @@ components:
     scheduled: 预定的
   ResultsError:
     backToSearch: 返回搜索
-  ResultsHeader:
-    noTripFound: 没有找到行程
-    tripsFound: 我们发现了 {count} 选项
-    waiting: 等待...
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: 更多细节

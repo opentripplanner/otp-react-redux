@@ -355,7 +355,6 @@ components:
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerario encontrado} other {# itinerarios
       encontrados}}
-    numIssues: "{issueNum, plural, one {# problema} other {# problemas}}"
     resultsSortedBy: >-
       Los resultados del viaje están actualmente ordenados por {sortSelected}.
       Para cambiar la forma en que se ordenan los resultados, utiliza el botón
@@ -508,10 +507,6 @@ components:
     scheduled: programado
   ResultsError:
     backToSearch: Volver a la búsqueda
-  ResultsHeader:
-    noTripFound: No se encontró ningún viaje
-    tripsFound: Encontramos {count, plural, one {# opción} other {# opciones}}
-    waiting: Espera...
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: Más detalles

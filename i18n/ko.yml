@@ -320,7 +320,6 @@ components:
     changeSortDir: 정렬 방향 변경
     howToFindResults: 결과를 보려면, 아래 검색된 일정표 제목을 보십시오.
     itinerariesFound: "{itineraryNum} 개의 여정을 찾았습니다"
-    numIssues: "{issueNum} 문제"
     resultsSortedBy: >-
       이동편 결고가 현재 {sortSelected}(으)로 정렬되었습니다. 결과 정렬 방식을 변경하려면, 아래 "결과 정렬" 버튼을
       사용하십시오.
@@ -451,10 +450,6 @@ components:
     scheduled: 예정
   ResultsError:
     backToSearch: 검색으로 돌아가기
-  ResultsHeader:
-    noTripFound: 트립을 찾을 수 없음
-    tripsFound: "{count} 개의 옵션 을 찾았습니다"
-    waiting: 기다리는 중...
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: 더 자세한 내용

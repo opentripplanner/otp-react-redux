@@ -353,7 +353,6 @@ components:
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerary found} other {# itineraries found}
       }
-    numIssues: "{issueNum, plural, one {# issue} other {# issues} }"
     resultsSortedBy: >-
       Trip results currently sorted by {sortSelected}. To change the way results
       are sorted, use the "Sort Results" button below.
@@ -498,10 +497,6 @@ components:
     scheduled: scheduled
   ResultsError:
     backToSearch: Back to Search
-  ResultsHeader:
-    noTripFound: No Trip Found
-    tripsFound: We Found {count, plural, one {# Option} other {# Options}}
-    waiting: Waiting...
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: More Details
