@@ -146,31 +146,31 @@ class PlaceEditor extends Component<Props> {
         {!isFixed && (
           <>
             <StyledFormGroup validationState={errorStates.name}>
-              <ControlLabel
-                htmlFor="name"
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between'
-                }}
-              >
+              <ControlLabel htmlFor="name">
                 <>
                   <FormattedMessage id="components.PlaceEditor.namePrompt" />
                 </>
-                <div style={{ fontWeight: 300 }}>
-                  {charactersOverLimit > 0 ? (
-                    <FormattedMessage
-                      id="components.FavoritePlaceScreen.charactersOverLimit"
-                      values={{ chars: charactersOverLimit }}
-                    />
-                  ) : (
-                    <FormattedMessage
-                      id="components.FavoritePlaceScreen.charactersRemaining"
-                      values={{ chars: characterRemaining }}
-                    />
-                  )}
-                </div>
               </ControlLabel>
+              <div
+                style={{
+                  fontWeight: 300,
+                  position: 'absolute',
+                  right: 0,
+                  top: 0
+                }}
+              >
+                {charactersOverLimit > 0 ? (
+                  <FormattedMessage
+                    id="components.FavoritePlaceScreen.charactersOverLimit"
+                    values={{ chars: charactersOverLimit }}
+                  />
+                ) : (
+                  <FormattedMessage
+                    id="components.FavoritePlaceScreen.charactersRemaining"
+                    values={{ chars: characterRemaining }}
+                  />
+                )}
+              </div>
               {/* onBlur, onChange, and value are passed automatically. */}
               <Field
                 aria-invalid={!!errors.name}
