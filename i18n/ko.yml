@@ -286,8 +286,6 @@ components:
     originallyScheduledTime: (기존 {originalTime})
     singleModeItineraryDescription: "{time} {mode} 일정표"
     timeWalking: "{time} 걷기"
-  MobileOptions:
-    header: 검색 옵션 설정
   MobilityProfile:
     DevicesPane:
       devices:
@@ -322,7 +320,6 @@ components:
     changeSortDir: 정렬 방향 변경
     howToFindResults: 결과를 보려면, 아래 검색된 일정표 제목을 보십시오.
     itinerariesFound: "{itineraryNum} 개의 여정을 찾았습니다"
-    numIssues: "{issueNum} 문제"
     resultsSortedBy: >-
       이동편 결고가 현재 {sortSelected}(으)로 정렬되었습니다. 결과 정렬 방식을 변경하려면, 아래 "결과 정렬" 버튼을
       사용하십시오.
@@ -453,10 +450,6 @@ components:
     scheduled: 예정
   ResultsError:
     backToSearch: 검색으로 돌아가기
-  ResultsHeader:
-    noTripFound: 트립을 찾을 수 없음
-    tripsFound: "{count} 개의 옵션 을 찾았습니다"
-    waiting: 기다리는 중...
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: 더 자세한 내용
@@ -708,11 +701,6 @@ components:
       저장하기로 선택한 환경설정, 장소 또는 설정은 브라우저의 로컬 저장소에 저장됩니다. TriMet은 귀하의 집, 직장 또는 기타 위치에
       대한 정보에 접근할 수 없습니다. 언제든지 최근 장소/검색 기억을 끄고 저장된 집/직장 위치 및 즐겨찾는 정류장을 지우실 수
       있습니다.
-  UserTripSettings:
-    forgetOptions: 내 옵션 잊기
-    rememberOptions: 트립 옵션 기억하기
-    restoreDefaults: 기본 설정 복원
-    restoreMyDefaults: 내 기본 설정 복원
   VerifyEmailPane:
     emailIsVerified: 내 이메일이 확인되었습니다!
     instructions1: |
@@ -726,24 +714,13 @@ components:
     prompt: 어디로 가고 싶으신가요?
 config:
   accessModes:
-    bicycle: 대중교통 + 개인 자전거
-    bicycle_rent: 대중교통 + 공유자전거
     car_hail: 승차 공유
-    car_park: 파크 앤 라이드
-    micromobility: 대중교통 + 개인 전동스쿠터
-    micromobility_rent: 대중교통 + 전동스쿠터 대여
-  bicycleModes:
-    bicycle: 내 자전거
-    bicycle_rent: 공유자전거
   flex:
     both: 자세한 내용은 일정의 하단을 참조하십시오
     call-ahead: 전화로 예약
     continuous-dropoff: 정류장에 대한 정보는 상담원과 연락
     flex-service: 플렉스 서비스
     flex-service-colon: "플렉스 서비스:"
-  micromobilityModes:
-    micromobility: 내 전동스쿠터
-    micromobility_rent: 대여한 전동스쿠터
 util:
   state:
     errorPlanningTrip: 트립을 계획하는 중에 오류가 발생했습니다.
