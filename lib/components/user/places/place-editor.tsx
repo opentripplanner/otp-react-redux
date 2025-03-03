@@ -150,6 +150,7 @@ class PlaceEditor extends Component<Props> {
                 <FormattedMessage id="components.PlaceEditor.namePrompt" />
               </ControlLabel>
               <div
+                aria-hidden
                 style={{
                   fontWeight: 300,
                   position: 'absolute',
