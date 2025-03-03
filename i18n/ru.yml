@@ -68,7 +68,6 @@ actions:
     smsVerificationFailed: >-
       Не удалось подтвердить ваш телефон. Возможно, истек срок действия кода,
       который вы ввели. Запросите новый код и попробуйте еще раз.
-    getDependentUserInfoFailed: Ошибка при получении информации о профиле мобильности.
 common:
   coordinates: "{lat}; {lon}"
   dateExpressions:
@@ -196,8 +195,6 @@ components:
     networkConnectionRestored: Сетевое подключение восстановлено
     openMenu: Открыть меню
     skipNavigation: Пропустить навигацию
-    networkConnectionLost: Сетевое подключение потеряно
-    networkConnectionRestored: Сетевое подключение восстановлено
   BackToTripPlanner:
     backToTripPlanner: Вернуться в планировщик поездок
   BatchResultsScreen:
@@ -359,8 +356,6 @@ components:
       с вашими потребностями и предпочтениями.
     myself: Я
     title: Определите ваш профиль мобильности
-    myself: Я
-    dropdownLabel: 'Профиль мобильности пользователя:'
   NarrativeItinerariesHeader:
     changeSortDir: Изменить направление сортировки
     howToFindResults: Чтобы просмотреть результаты, см. заголовок «Найденные маршруты»
@@ -403,7 +398,6 @@ components:
     nothingNearby: Поблизости нет мест.
     searchNearby: Искать поблизости...
     spacesAvailable: "{spacesAvailable} есть свободные места"
-    searchNearby: Искать поблизости...
   NewAccountWizard:
     createNewAccount: Создайте учетную запись
     finish: Настройка учетной записи завершена!
@@ -565,8 +559,6 @@ components:
     tripNotFound: Поездка не найдена
     tripNotFoundDescription: Не удалось найти требуемую поездку.
     tripNotifications: Уведомления о поездке
-    readOnlyBanner: '{creator} создал эту поездку и добавил вас в нее. Поэтому вы
-      не сможете внести изменения.'
   SavedTripList:
     alertTag: "{alert, plural, one {View one alert} other {View # alerts}}"
     fromTo: Из {from} в {to}
@@ -798,7 +790,6 @@ components:
     fields:
       add-companion-form: Попутчики
       storeTripHistory: Сохранять историю поездок
-      add-companion-form: Попутчики
     updating: Обновляется
   UserSettings:
     confirmDeletion: "Недавние поисковые запросы и (или) места сохранены. Отключение
@@ -828,10 +819,6 @@ components:
     switcher: Переключатель
   WelcomeScreen:
     prompt: Куда вы хотите отправиться?
-  TripCompanionsPane:
-    observersLabel: 'Наблюдатели следят за этой поездкой:'
-    primaryLabel: 'Основной путешественник: '
-    companionLabel: 'Попутчик в этой поездке:'
 config:
   accessModes:
     car_hail: Заказная поездка

@@ -70,7 +70,6 @@ actions:
     smsVerificationFailed: >-
       Điện thoại của bạn không thể được xác minh. Có lẽ mã bạn đã nhập đã hết
       hạn. Vui lòng yêu cầu một mã mới và thử lại.
-    getDependentUserInfoFailed: Đã xảy ra lỗi khi thu thập thông tin hồ sơ di chuyển.
 common:
   coordinates: "{lat}, {lon}"
   dateExpressions:
@@ -197,8 +196,6 @@ components:
     networkConnectionRestored: Kết nối mạng đã được khôi phục
     openMenu: Mở danh mục
     skipNavigation: Bỏ qua điều hướng
-    networkConnectionLost: Mất kết nối mạng
-    networkConnectionRestored: Kết nối mạng đã được khôi phục
   BackToTripPlanner:
     backToTripPlanner: Quay lại phần lên kế hoạch chuyến đi
   BatchResultsScreen:
@@ -358,8 +355,6 @@ components:
       chuyến đi theo nhu cầu và tùy chọn của quý vị.
     myself: Bản thân thôi
     title: Xác Định Hồ Sơ Vận Động của Quý Vị
-    dropdownLabel: 'Hồ sơ di chuyển của người dùng:'
-    myself: Bản thân thôi
   NarrativeItinerariesHeader:
     changeSortDir: Thay đổi hướng sắp xếp
     howToFindResults: Để xem kết quả, xem phần các hành trình đã tìm thấy ở phía dưới.
@@ -394,7 +389,6 @@ components:
     nothingNearby: Không có nơi nào gần đây.
     searchNearby: Tìm kiếm gần đây...
     spacesAvailable: "{spacesAvailable} chỗ trống có sẵn"
-    searchNearby: Tìm kiếm gần đây...
   NewAccountWizard:
     createNewAccount: Tạo tài khoản mới
     finish: Hoàn tất việc thiết lập tài khoản!
@@ -558,8 +552,6 @@ components:
     tripNotFound: Không tìm thấy chuyến đi
     tripNotFoundDescription: Xin lỗi, không tìm thấy chuyến đi được yêu cầu.
     tripNotifications: Thông báo chuyến đi
-    readOnlyBanner: '{creator} đã tạo và thêm quý vị vào chuyến đi này. Vì thế, quý
-      vị không thể thay đổi.'
   SavedTripList:
     alertTag: "{alert, plural, one {View one alert} other {View # alerts}}"
     fromTo: Từ {from} đến {to}
@@ -796,7 +788,6 @@ components:
     fields:
       add-companion-form: Bạn Đồng Hành
       storeTripHistory: Lưu trữ lịch sử chuyến đi
-      add-companion-form: Bạn Đồng Hành
     updating: Đang cập nhật
   UserSettings:
     confirmDeletion: >-
@@ -832,10 +823,6 @@ components:
     switcher: Nút bật tắt
   WelcomeScreen:
     prompt: Bạn muốn đi đâu?
-  TripCompanionsPane:
-    companionLabel: 'Người đồng hành trên chuyến đi này:'
-    observersLabel: 'Người quan sát đang theo dõi chuyến đi này:'
-    primaryLabel: 'Người di chuyển chính: '
 config:
   accessModes:
     car_hail: Đi taxi

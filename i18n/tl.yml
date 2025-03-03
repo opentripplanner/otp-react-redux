@@ -57,7 +57,8 @@ actions:
     confirmDeletePlace: Gusto mo bang alisin ang lugar na ito?
     emailVerificationResent: Ipinadala ulit ang mensahe ng pag-verify sa email.
     genericError: "Nagka-error: {err}"
-    getDependentUserInfoFailed: Pagkakamali sa pagkuha ng impormasyon sa profile sa kadaliang kumilos.
+    getDependentUserInfoFailed: Pagkakamali sa pagkuha ng impormasyon sa profile sa
+      kadaliang kumilos.
     itineraryExistenceCheckFailed: Nagka-error sa pagtingin kung posible ang napili mong biyahe.
     mustAcceptTermsToSavePlace: >-
       Pakitanggap ang Mga Tuntunin ng Paggamit (sa ilalim ng Aking Account) para
@@ -73,8 +74,6 @@ actions:
     smsVerificationFailed: >-
       Hindi ma-verify ang iyong telepono. Posibleng nag-expire na ang inilagay
       mong code. Humiling ng bagong code at subukan ulit.
-    getDependentUserInfoFailed: Pagkakamali sa pagkuha ng impormasyon sa profile sa
-      kadaliang kumilos.
 common:
   coordinates: "{lat}, {lon}"
   dateExpressions:
@@ -202,8 +201,6 @@ components:
     networkConnectionRestored: Naibalik na ang koneksyon sa network
     openMenu: Buksan ang Menu
     skipNavigation: I-skip ang pag-navigate
-    networkConnectionLost: Nawala ang koneksyon sa network
-    networkConnectionRestored: Naibalik na ang koneksyon sa network
   BackToTripPlanner:
     backToTripPlanner: Bumalik sa planner ng biyahe
   BatchResultsScreen:
@@ -368,8 +365,6 @@ components:
       biyahe ayon sa iyong mga pangangailangan at kagustuhan.
     myself: Sarili ko
     title: Tukuyin ang iyong Mobility Pofile
-    dropdownLabel: 'Profile sa kadaliang kumilos ng user:'
-    myself: Sarili ko
   NarrativeItinerariesHeader:
     changeSortDir: Baguhin ang pagkakaayos ng direksyon
     howToFindResults: >-
@@ -409,7 +404,6 @@ components:
     nothingNearby: There are no places nearby.
     searchNearby: Maghanap sa malapit...
     spacesAvailable: "{spacesAvailable} mga available na bakanteng espasyo"
-    searchNearby: Maghanap sa malapit...
   NewAccountWizard:
     createNewAccount: Gumawa ng bagong account
     finish: Tapos nang i-set up ang account!
@@ -577,8 +571,6 @@ components:
     tripNotFound: Hindi nakita ang biyahe
     tripNotFoundDescription: Pasensya na, hindi nakita ang hiniling na biyahe.
     tripNotifications: Mga notification sa biyahe
-    readOnlyBanner: Ginawa at idinagdag ka ni {creator} sa biyaheng ito. Samakatuwid,
-      hindi ka makakagawa ng mga pagbabago.
   SavedTripList:
     alertTag: "{alert, plural, one {View one alert} other {View # alerts}}"
     fromTo: Mula sa {from} papuntang {to}
@@ -820,7 +812,6 @@ components:
     fields:
       add-companion-form: Mga Kasama sa Biyahe
       storeTripHistory: History ng biyahe sa tindahan
-      add-companion-form: Mga Kasama sa Biyahe
     updating: Nag-a-update
   UserSettings:
     confirmDeletion: >-
@@ -855,10 +846,6 @@ components:
     switcher: Switcher
   WelcomeScreen:
     prompt: Saan mo gustong pumunta?
-  TripCompanionsPane:
-    primaryLabel: 'Pangunahing manlalakbay: '
-    companionLabel: 'Kasama sa biyaheng ito:'
-    observersLabel: 'Mga tagamasid na nanonood ng biyaheng ito:'
 config:
   accessModes:
     car_hail: Ride Hail
