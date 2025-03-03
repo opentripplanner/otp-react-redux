@@ -310,8 +310,6 @@ components:
     originallyScheduledTime: (изначально {originalTime})
     singleModeItineraryDescription: "{time} {mode} маршрут"
     timeWalking: "{time} пешком"
-  MobileOptions:
-    header: Задать параметры поиска
   MobilityProfile:
     DevicesPane:
       devices:
@@ -355,11 +353,6 @@ components:
       {itineraryNum, plural,
        one {найден # маршрут}
        other {найдено несколько маршрутов (#)}
-       }
-    numIssues: |-
-      {issueNum, plural,
-       one {# проблема}
-       other {несколько проблем (#)}
        }
     resultsSortedBy: >-
       Результаты маршрута на данный момент отсортированы по {sortSelected}.
@@ -781,11 +774,6 @@ components:
     rememberSearches: "Сохранить недавние места\_/ поисковые запросы?"
     stopId: "Идентификатор остановки: {stopId}"
     storageDisclaimer: "Все сохраненные параметры, места и настройки будут храниться в локальном хранилище браузера. TriMet не получит доступ к данным о вашем доме, месте работы или другим местоположениям. В любой момент вы можете отключить сохранение недавних мест\_/ поисковых запросов и очистить список местоположений дома/работы, а также избранных остановок.\n"
-  UserTripSettings:
-    forgetOptions: Удалить варианты
-    rememberOptions: Сохранить варианты поездки
-    restoreDefaults: Исходные настройки по умолчанию
-    restoreMyDefaults: Mои настройки по умолчанию
   VerifyEmailPane:
     emailIsVerified: Адрес электронной почты подтвержден.
     instructions1: >
@@ -802,24 +790,13 @@ components:
     prompt: Куда вы хотите отправиться?
 config:
   accessModes:
-    bicycle: "Общественный транспорт\_+\_личный велосипед"
-    bicycle_rent: "Общественный транспорт\_+\_прокат велосипеда"
     car_hail: Заказная поездка
-    car_park: Парковочное место
-    micromobility: "Общественный транспорт\_+\_личный самокат"
-    micromobility_rent: "Общественный транспорт\_+\_прокат электросамоката"
-  bicycleModes:
-    bicycle: Личный велосипед
-    bicycle_rent: Прокат велосипедов
   flex:
     both: Подробные сведения приведены в нижней части экрана маршрута
     call-ahead: Позвоните, чтобы забронировать
     continuous-dropoff: Сообщите оператору об остановке
     flex-service: Гибкое обслуживание
     flex-service-colon: "Гибкое обслуживание:"
-  micromobilityModes:
-    micromobility: Личный электросамокат
-    micromobility_rent: Прокат электросамокатов
 util:
   state:
     errorPlanningTrip: Во время планирования поездки произошла ошибка.

@@ -320,8 +320,6 @@ components:
     originallyScheduledTime: (orihinal na {originalTime})
     singleModeItineraryDescription: "{time} {mode} itinerary"
     timeWalking: "{time} (na) paglalakad"
-  MobileOptions:
-    header: Itakda ang Mga Opsyon sa Paghahanap
   MobilityProfile:
     DevicesPane:
       devices:
@@ -366,7 +364,6 @@ components:
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerary found} other {# itineraries found}
       }
-    numIssues: "{issueNum, plural, one {# issue} other {# issues} }"
     resultsSortedBy: >-
       Kasalukuyang nakaayos ayon sa {sortSelected} ang mga resulta ng biyahe.
       Para palitan ang paraan kung paano nakaayos ang mga resulta, gamitin ang
@@ -812,11 +809,6 @@ components:
       tungkol sa iyong tirahan, trabaho, o iba pang lokasyon. Puwede mong i-off
       ang pag-alala sa mga lugar/paghahanap kamakailan at i-clear ang iyong mga
       na-save na lokasyon ng tirahan/trabaho at paboritong hintuan.
-  UserTripSettings:
-    forgetOptions: Kalimutan ang aking mga opsyon
-    rememberOptions: Tandaan ang mga opsyon sa biyahe
-    restoreDefaults: I-restore defaults
-    restoreMyDefaults: I-restore my defaults
   VerifyEmailPane:
     emailIsVerified: Na-verify ang aking email!
     instructions1: >
@@ -832,24 +824,13 @@ components:
     prompt: Saan mo gustong pumunta?
 config:
   accessModes:
-    bicycle: Pampublikong transportasyon + personal na bisikleta
-    bicycle_rent: Pampublikong transportasyon + Bikeshare
     car_hail: Ride Hail
-    car_park: Park & Ride
-    micromobility: Pampublikong transportasyon + Personal na scooter
-    micromobility_rent: Pampublikong transportasyon + Pinaparentahang e-scooter
-  bicycleModes:
-    bicycle: Sariling Bisikleta
-    bicycle_rent: Bikeshare
   flex:
     both: Tingnan ang ibaba ng itinerary para sa mga detalye
     call-ahead: Tumawag para magpareserba
     continuous-dropoff: Makipag-ugnayan sa operator tungkol sa hintuan
     flex-service: Flexible na Serbisyo
     flex-service-colon: "Flexible na Serbisyo:"
-  micromobilityModes:
-    micromobility: Sariling E-scooter
-    micromobility_rent: Pinaparentahang E-scooter
 util:
   state:
     errorPlanningTrip: Nagka-error habang nagpaplano ng biyahe.
