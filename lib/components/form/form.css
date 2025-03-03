@@ -53,6 +53,8 @@
   -webkit-appearance: none;
 }
 
+/* The calendar icon on the date/time input fields does not have the pointer cursor by default so apply it here.
+    This will not work for Firefox. */
 .otp input[type="date"]::-webkit-calendar-picker-indicator, .otp input[type="time"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
