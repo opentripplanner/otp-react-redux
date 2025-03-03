@@ -147,9 +147,7 @@ class PlaceEditor extends Component<Props> {
           <>
             <StyledFormGroup validationState={errorStates.name}>
               <ControlLabel htmlFor="name">
-                <>
-                  <FormattedMessage id="components.PlaceEditor.namePrompt" />
-                </>
+                <FormattedMessage id="components.PlaceEditor.namePrompt" />
               </ControlLabel>
               <div
                 style={{
