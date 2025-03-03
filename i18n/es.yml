@@ -311,8 +311,6 @@ components:
     originallyScheduledTime: (originalmente {originalTime})
     singleModeItineraryDescription: Viaja {time} {mode}
     timeWalking: "{time} caminando"
-  MobileOptions:
-    header: Configurar las opciones de búsqueda
   MobilityProfile:
     DevicesPane:
       devices:
@@ -357,7 +355,6 @@ components:
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerario encontrado} other {# itinerarios
       encontrados}}
-    numIssues: "{issueNum, plural, one {# problema} other {# problemas}}"
     resultsSortedBy: >-
       Los resultados del viaje están actualmente ordenados por {sortSelected}.
       Para cambiar la forma en que se ordenan los resultados, utiliza el botón
@@ -802,11 +799,6 @@ components:
       cualquier momento puedes optar por desactivar el recuerdo de lugares o
       búsquedas recientes y borrar las ubicaciones de casa o del trabajo y las
       paradas favoritas guardadas.
-  UserTripSettings:
-    forgetOptions: Olvidar mis opciones
-    rememberOptions: Recordar las opciones de viaje
-    restoreDefaults: Restaurar los valores predeterminados
-    restoreMyDefaults: Restaurar mis valores predeterminados
   VerifyEmailPane:
     emailIsVerified: ¡Mi correo electrónico está verificado!
     instructions1: >
@@ -822,24 +814,13 @@ components:
     prompt: ¿A donde quiere ir?
 config:
   accessModes:
-    bicycle: Tránsito + Bicicleta Personal
-    bicycle_rent: Tránsito + Compartir Bicicleta
     car_hail: VTC
-    car_park: Aparcamiento disuasorio
-    micromobility: Tránsito + Scooter Personal
-    micromobility_rent: Tránsito + Alquiler de scooter eléctrico
-  bicycleModes:
-    bicycle: Bicicleta propia
-    bicycle_rent: Compartir bicicleta
   flex:
     both: Ver detalles al final del itinerario
     call-ahead: Llame para reservar
     continuous-dropoff: Comunicar al operador sobre la parada
     flex-service: Servicio Flex
     flex-service-colon: "Servicio Flex:"
-  micromobilityModes:
-    micromobility: Mi E-Scooter
-    micromobility_rent: Alquiler de scooter eléctrico
 util:
   state:
     errorPlanningTrip: Se ha producido un error al planificar un viaje.
