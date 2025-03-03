@@ -265,13 +265,10 @@ components:
     originallyScheduledTime: (原定 {originalTime})
     singleModeItineraryDescription: "{time} {mode} 路線"
     timeWalking: 步行{time}
-  MobileOptions:
-    header: 設定搜尋選項
   NarrativeItinerariesHeader:
     changeSortDir: 變更排序方向
     howToFindResults: 要檢視結果，請參閱下方「找到的預定行程」標題。
     itinerariesFound: "{itineraryNum}個預定行程已找到"
-    numIssues: "{issueNum}個問題"
     resultsSortedBy: 行程結果目前依{sortSelected}排序。如需變更結果的排序方式，請使用下方「排序結果」按鈕。
     searching: 正在尋找您的選項……
     selectArrivalTime: 抵達時間
@@ -388,10 +385,6 @@ components:
     scheduled: 預定
   ResultsError:
     backToSearch: 返回搜尋
-  ResultsHeader:
-    noTripFound: 找不到行程
-    tripsFound: 我們找到了{count} 個選項
-    waiting: 等待中……
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: 更多詳細資訊
@@ -624,11 +617,6 @@ components:
     stopId: 車站ID：{stopId}
     storageDisclaimer: >
       您選擇儲存的任何偏好、地點或設定都將儲存在您瀏覽器的本機儲存空間。TriMet無法存取有關您住家、工作或任何其他位置的資訊。您可以隨時選擇不要記住最近的地點/搜尋，並清除您的已儲存住家/工作位置和最愛的車站。
-  UserTripSettings:
-    forgetOptions: 忘記我的選項
-    rememberOptions: 記住行程選項
-    restoreDefaults: 還原預設值
-    restoreMyDefaults: 還原我的預設值
   VerifyEmailPane:
     emailIsVerified: 我的電子郵件已驗證！
     instructions1: |
@@ -642,12 +630,7 @@ components:
     prompt: 您想要去哪裡？
 config:
   accessModes:
-    bicycle: 公共交通+個人自行車
-    bicycle_rent: 公共交通+共享自行車
     car_hail: 叫車服務
-    car_park: 停車轉乘
-    micromobility: 公共交通+個人滑板車
-    micromobility_rent: 公共交通+電動滑板車租賃
   bicycleModes:
     bicycle: 自有自行車
     bicycle_rent: 自行車共享
@@ -657,9 +640,6 @@ config:
     continuous-dropoff: 與業者溝通車站事宜
     flex-service: 彈性服務
     flex-service-colon: 彈性服務：
-  micromobilityModes:
-    micromobility: 自有電動滑板車
-    micromobility_rent: 租賃電動滑板車
 util:
   state:
     errorPlanningTrip: 規劃行程時發生錯誤。

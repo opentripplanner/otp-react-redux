@@ -1,13 +1,13 @@
-import { blue, grey } from '../util/colors'
 import {
   DateTimeSelector,
-  SettingsSelectorPanel,
   Styled as TripFormClasses
 } from '@opentripplanner/trip-form'
 import { Input, MenuItemLi } from '@opentripplanner/location-field/lib/styled'
-import { prefersReducedMotion } from '../util/prefersReducedMotion'
 import LocationField from '@opentripplanner/location-field'
 import styled, { css } from 'styled-components'
+
+import { blue, grey } from '../util/colors'
+import { prefersReducedMotion } from '../util/prefersReducedMotion'
 
 const commonButtonCss = css`
   -webkit-user-select: none;
@@ -48,145 +48,6 @@ export const commonInputCss = css`
 export const modeButtonButtonCss = css`
   ${TripFormClasses.ModeButton.Button} {
     ${commonButtonCss}
-  }
-`
-
-export const Dot = styled.div`
-  position: absolute;
-  top: -3px;
-  right: -3px;
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
-  background-color: #f00;
-`
-
-export const StyledSettingsSelectorPanel = styled(SettingsSelectorPanel)`
-  ${modeButtonButtonCss}
-
-  ${TripFormClasses.SettingLabel} {
-    color: ${grey[700]};
-    font-size: 14px;
-    font-weight: inherit;
-    letter-spacing: 1px;
-    padding-top: 8px;
-    text-transform: uppercase;
-  }
-  ${TripFormClasses.SettingsHeader} {
-    color: ${grey[900]};
-    font-size: 18px;
-    margin: 16px 0px;
-  }
-  ${TripFormClasses.SettingsSection} {
-    margin-bottom: 16px;
-  }
-  ${TripFormClasses.DropdownSelector} {
-    select {
-      ${commonInputCss}
-      -webkit-appearance: none;
-      border-radius: 3px;
-      font-size: 14px;
-      height: 34px;
-      line-height: 1.42857;
-      margin-bottom: 20px;
-
-      &:focus {
-        border-color: ${blue[400]};
-        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-          0 0 8px rgba(102, 175, 233, 0.6);
-        outline: 0;
-      }
-    }
-    > div:last-child::after {
-      box-sizing: border-box;
-      color: #000;
-      content: '▼';
-      font-size: 67%;
-      pointer-events: none;
-      position: absolute;
-      right: 8px;
-      top: 10px;
-    }
-  }
-
-  ${TripFormClasses.ModeSelector} {
-    font-weight: 300;
-    ${TripFormClasses.ModeButton.Button} {
-      box-shadow: none;
-      outline: none;
-      padding: 3px;
-    }
-    ${TripFormClasses.ModeButton.Title} {
-      font-size: 10px;
-      line-height: 12px;
-      padding: 4px 0px 0px;
-
-      &.active {
-        font-weight: 600;
-      }
-    }
-  }
-  ${TripFormClasses.ModeSelector.MainRow} {
-    box-sizing: border-box;
-    font-size: 170%;
-    margin: 0px -10px 18px;
-    padding: 0px 5px;
-    ${TripFormClasses.ModeButton.Button} {
-      height: 54px;
-      width: 100%;
-      &.active {
-        font-weight: 600;
-      }
-    }
-  }
-  ${TripFormClasses.ModeSelector.SecondaryRow} {
-    margin: 0px -10px 10px;
-    ${TripFormClasses.ModeButton.Button} {
-      font-size: 130%;
-      font-weight: 800;
-      height: 46px;
-      > svg {
-        margin: 0 0.2em;
-      }
-    }
-  }
-  ${TripFormClasses.ModeSelector.TertiaryRow} {
-    font-size: 80%;
-    font-weight: 300;
-    margin: 0px -10px 10px;
-    text-align: center;
-    ${TripFormClasses.ModeButton.Button} {
-      height: 36px;
-    }
-  }
-  ${TripFormClasses.SubmodeSelector.Row} {
-    font-size: 12px;
-    > * {
-      padding: 3px 5px 3px 0px;
-    }
-    > :last-child {
-      padding-right: 0px;
-    }
-    ${TripFormClasses.ModeButton.Button} {
-      height: 35px;
-    }
-    svg,
-    img {
-      margin-left: 0px;
-    }
-  }
-  ${TripFormClasses.SubmodeSelector} {
-    ${TripFormClasses.SettingLabel} {
-      margin-bottom: 0;
-    }
-  }
-  ${TripFormClasses.SubmodeSelector.InlineRow} {
-    margin: -3px 0px;
-    svg,
-    img {
-      height: 18px;
-      max-width: 32px;
-    }
   }
 `
 
