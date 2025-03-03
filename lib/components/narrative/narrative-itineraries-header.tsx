@@ -1,9 +1,7 @@
 /* eslint-disable complexity */
 import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
 import { Dropdown } from '@opentripplanner/building-blocks'
-import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { Itinerary } from '@opentripplanner/types'
 import { SortAmountDown } from '@styled-icons/fa-solid/SortAmountDown'
 import { SortAmountUp } from '@styled-icons/fa-solid/SortAmountUp'
 import React, { useContext } from 'react'
@@ -19,15 +17,6 @@ import PopupTriggerText from '../app/popup-trigger-text'
 
 import PlanFirstLastButtons from './plan-first-last-buttons'
 import SaveTripButton from './save-trip-button'
-
-const IssueButton = styled.button`
-  background-color: #ecbe03;
-  border: none;
-  border-radius: 5px;
-  display: inline-block;
-  font-size: 12px;
-  padding: 2px 4px;
-`
 
 const ItinerariesHeaderContainer = styled.div<{ showHeaderText: boolean }>`
   display: flex;
@@ -45,35 +34,28 @@ const SortResultsDropdown = styled(Dropdown)`
 export default function NarrativeItinerariesHeader({
   customBatchUiBackground,
   enabledSortModes,
-  errors,
   itineraries,
   itineraryIsExpanded,
   onSortChange,
   onSortDirChange,
-  onToggleShowErrors,
   onViewAllOptions,
   pending,
   popupTarget,
   setPopupContent,
   showHeaderText = true,
-  showingErrors,
   sort
 }: {
   customBatchUiBackground?: boolean
   enabledSortModes: ItinerarySortOption[]
-  errors: unknown[]
   itineraries: unknown[]
-  itinerary: Itinerary
   itineraryIsExpanded: boolean
   onSortChange: (type: string) => VoidFunction
   onSortDirChange: () => void
-  onToggleShowErrors: () => void
   onViewAllOptions: () => void
   pending: boolean
   popupTarget: string
   setPopupContent: (url: string) => void
   showHeaderText: boolean
-  showingErrors: boolean
   sort: { direction: string; type: string }
 }): JSX.Element {
   const intl = useIntl()
@@ -90,12 +72,6 @@ export default function NarrativeItinerariesHeader({
     },
     { itineraryNum: itineraries.length }
   )
-  const numIssues = intl.formatMessage(
-    {
-      id: 'components.NarrativeItinerariesHeader.numIssues'
-    },
-    { issueNum: errors.length }
-  )
 
   const sortResultsLabel = intl.formatMessage({
     id: 'components.NarrativeItinerariesHeader.sortResults'
@@ -109,8 +85,6 @@ export default function NarrativeItinerariesHeader({
     id: 'components.NarrativeItinerariesHeader.searching'
   })
   const narrativeUiStatus = pending
-    ? searching
-    : intl.formatList([itinerariesFound, numIssues], { type: 'conjunction' })
 
   const sortOptionsArr = sortOptions(intl, enabledSortModes)
   const sortText = sortOptionsArr.find((x) => x.value === sort.type)?.text
@@ -143,7 +117,7 @@ export default function NarrativeItinerariesHeader({
         )}
       </InvisibleA11yLabel>
 
-      {itineraryIsExpanded || showingErrors ? (
+      {itineraryIsExpanded ? (
         <>
           <button
             className="clear-button-formatting"
@@ -175,13 +149,6 @@ export default function NarrativeItinerariesHeader({
               >
                 {pending ? searching : itinerariesFound}
               </h1>
-              {errors.length > 0 && (
-                <IssueButton onClick={onToggleShowErrors}>
-                  <IconWithText Icon={ExclamationTriangle}>
-                    <span>{numIssues}</span>
-                  </IconWithText>
-                </IssueButton>
-              )}
             </div>
           ) : (
             // The "n Itineraries Found" a11y header is an <h2> element

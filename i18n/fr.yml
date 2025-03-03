@@ -328,8 +328,6 @@ components:
     originallyScheduledTime: (initialement {originalTime})
     singleModeItineraryDescription: Trajet de {time} {mode}
     timeWalking: "{time} de marche"
-  MobileOptions:
-    header: Options de recherche
   MobilityProfile:
     DevicesPane:
       devices:
@@ -373,11 +371,8 @@ components:
     title: Spécifiez votre profil de mobilité
   NarrativeItinerariesHeader:
     changeSortDir: Changer l'ordre de tri
-    howToFindResults: Pour afficher les résultats, utilisez l'en-tête Trajets trouvés
-      plus bas.
-    itinerariesFound: "{itineraryNum, plural, one {# trajet trouvé} other {# trajets
-      trouvés} }"
-    numIssues: "{issueNum, plural, one {# problème} other {# problèmes} }"
+    howToFindResults: Pour afficher les résultats, utilisez l'en-tête Trajets trouvés plus bas.
+    itinerariesFound: "{itineraryNum, plural, one {# trajet trouvé} other {# trajets trouvés} }"
     resultsSortedBy: >-
       Résultats triés par {sortSelected}. Pour modifier l'ordre, utilisez le
       bouton "Trier les résultats" plus bas.
@@ -528,10 +523,6 @@ components:
     scheduled: horaire
   ResultsError:
     backToSearch: Retour à la recherche
-  ResultsHeader:
-    noTripFound: Aucun trajet trouvé
-    tripsFound: "{count, plural, one {# trajet trouvé} other {# trajets trouvés}}"
-    waiting: Patientez...
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: Plus d'infos
@@ -833,11 +824,6 @@ components:
       données concernant votre domicile, lieu de travail, ou autre endroit. Vous
       pouvez à tout moment désactiver la collecte de vos recherches/lieux
       récents et effacer vos domicile, lieu de travail, et arrêts favoris.
-  UserTripSettings:
-    forgetOptions: Oublier mes options
-    rememberOptions: Enregistrer les options de trajet
-    restoreDefaults: Paramètres par défaut
-    restoreMyDefaults: Restaurer mes paramètres
   VerifyEmailPane:
     emailIsVerified: Mon email est vérifié
     instructions1: >
@@ -855,24 +841,13 @@ components:
     prompt: Où désirez-vous aller ?
 config:
   accessModes:
-    bicycle: Transports + Vélo personnel
-    bicycle_rent: Transports + Vélo partagé
     car_hail: Course en voiture
-    car_park: Parc relais
-    micromobility: Transports + Trottinnette pers.
-    micromobility_rent: Transports + Trottinette louée
-  bicycleModes:
-    bicycle: Vélo pers.
-    bicycle_rent: Vélo partagé
   flex:
     both: Plus de détails au bas de l'itinéraire
     call-ahead: Appelez pour réserver
     continuous-dropoff: Demandez l'arrêt au conducteur
     flex-service: Service Flex
     flex-service-colon: "Service Flex :"
-  micromobilityModes:
-    micromobility: Trottinnette pers.
-    micromobility_rent: Trottinette louée
 util:
   state:
     errorPlanningTrip: Une erreur s'est produite lors de la planification du trajet.
