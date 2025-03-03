@@ -289,6 +289,8 @@ components:
     setAddressForPlaceType: Entrez l'adresse de votre {placeType}
   FavoritePlaceScreen:
     addNewPlace: Ajouter un nouveau lieu
+    charactersOverLimit: "{chars, plural, one {# caractère en trop} other {# caractères en trop}}"
+    charactersRemaining: "{chars, plural, one {# caractère restant} other {# caractères restant}}"
     editPlace: Modifier le {placeName}
     editPlaceGeneric: Modifier le lieu
     invalidAddress: Veuillez entrer l'adresse du lieu.
@@ -296,6 +298,7 @@ components:
     nameAlreadyUsed: >-
       Ce nom est déjà utilisé avec un autre lieu. Veuillez saisir un nom
       différent.
+    nameTooLong: Le nom doit comporter {char} caractères maximum.
     placeNotFound: Lieu introuvable
     placeNotFoundDescription: Le lieu recherché est introuvable.
   FormNavigationButtons:
