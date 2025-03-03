@@ -5,7 +5,8 @@ actions:
     callQuerySaveError: "அழைப்பு வினவல்களை சேமிப்பதில் பிழை: {err}"
     callSaveError: "அழைப்பைச் சேமிக்க முடியவில்லை: {err}"
     checkSessionError: "அங்கீகார அமர்வை நிறுவுவதில் பிழை: {err}"
-    couldNotFindCallError: அழைப்பைக் கண்டுபிடிக்க முடியவில்லை. சேமி வினவல் கோரிக்கையை ரத்து செய்தல்.
+    couldNotFindCallError: அழைப்பைக் கண்டுபிடிக்க முடியவில்லை. சேமி வினவல் கோரிக்கையை
+      ரத்து செய்தல்.
     fetchCallsError: "அழைப்புகளைப் பெறுவதில் பிழை: {err}"
     queryFetchError: "வினவல்களைப் பெறுவதில் பிழை: {err}"
   fieldTrip:
@@ -28,7 +29,8 @@ actions:
       திட்டத்தை சேமிக்க முடியாது: ஒன்று அல்லது அதற்கு மேற்பட்ட வாகனங்களில் திறன்
       இல்லாததால் இந்த திட்டத்தை சேமிக்க முடியவில்லை. உங்கள் பயணத்தை மீண்டும்
       திட்டமிடுங்கள்.
-    maxTripRequestsExceeded: சரியான முடிவுகள் இல்லாமல் பயணக் கோரிக்கைகளின் எண்ணிக்கை மீறியது
+    maxTripRequestsExceeded: சரியான முடிவுகள் இல்லாமல் பயணக் கோரிக்கைகளின் எண்ணிக்கை
+      மீறியது
     saveItinerariesError: "பயணத்திட்டங்களைச் சேமிப்பதில் தோல்வி: {err}"
     setDateError: "அமைத்தல் தேதி:"
     setGroupSizeError: "குழு அளவை அமைப்பதில் பிழை:"
@@ -51,7 +53,8 @@ actions:
     emailVerificationResent: மின்னஞ்சல் சரிபார்ப்பு செய்தி கோபமடைந்தது.
     genericError: "பிழை ஏற்பட்டது: {err}"
     getDependentUserInfoFailed: இயக்கம் சுயவிவரத் தகவலைப் பெறுவதில் பிழை.
-    itineraryExistenceCheckFailed: நீங்கள் தேர்ந்தெடுத்த பயணம் சாத்தியமா என்பதை சரிபார்க்க பிழை.
+    itineraryExistenceCheckFailed: நீங்கள் தேர்ந்தெடுத்த பயணம் சாத்தியமா என்பதை சரிபார்க்க
+      பிழை.
     mustAcceptTermsToSavePlace: >-
       இருப்பிடங்களைச் சேமிக்க பயன்பாட்டு விதிமுறைகளை (எனது கணக்கின் கீழ்)
       ஏற்றுக்கொள்ளுங்கள்.
@@ -227,7 +230,8 @@ components:
     intermediateDestination: இடைநிலை இலக்கை உள்ளிடவும்
   CompanionsPane:
     addNewCompanion: ஒரு புதிய பயணத் தோழரைச் சேர்க்கவும்
-    companionAlreadyAdded: உங்களிடம் ஏற்கனவே மின்னஞ்சல் {மின்னஞ்சல் with உடன் ஒரு தோழர் இருக்கிறார்
+    companionAlreadyAdded: உங்களிடம் ஏற்கனவே மின்னஞ்சல் {மின்னஞ்சல் with உடன் ஒரு
+      தோழர் இருக்கிறார்
     companionExplanation: >
       ஏற்கனவே உள்ள சி-மேப் பயனரை அவர்களின் மின்னஞ்சலை உள்ளிட்டு பயணத் தோழராக
       அழைக்க அழைக்கவும். அவர்கள் ஏற்றுக்கொள்ளும்போது, அவர்களின் நிலை
@@ -315,8 +319,6 @@ components:
     originallyScheduledTime: (முதலில் {originalTime})
     singleModeItineraryDescription: "{time} {mode} பயணம்"
     timeWalking: "{time} நடைபயிற்சி"
-  MobileOptions:
-    header: தேடல் விருப்பங்களை அமைக்கவும்
   MobilityProfile:
     DevicesPane:
       devices:
@@ -364,7 +366,6 @@ components:
     itinerariesFound: >-
       {பயணத்திட்டம், பன்மை, ஒன்று {# பயணம் காணப்படுகிறது} பிற {# பயணத்திட்டங்கள்
       காணப்படுகின்றன}}
-    numIssues: "{வெளியீடு, பன்மை, ஒன்று {# வெளியீடு} மற்ற {# சிக்கல்கள்}}"
     resultsSortedBy: >-
       பயண முடிவுகள் தற்போது {sorteledected by ஆல் வரிசைப்படுத்தப்பட்டுள்ளன.
       முடிவுகளை வரிசைப்படுத்தும் முறையை மாற்ற, கீழே உள்ள "வரிசைப்படுத்தப்பட்ட
@@ -385,7 +386,8 @@ components:
     signOut: விடுபதிகை
   NearbyView:
     bikeRentalStation: பைக் வாடகை நிலையம்
-    bikesAvailable: "{பைக்ச்வெயிலபிள், பன்மை, ஒன்று {# பைக்} மற்ற {# பைக்குகள்}}} கிடைக்கிறது"
+    bikesAvailable: "{பைக்ச்வெயிலபிள், பன்மை, ஒன்று {# பைக்} மற்ற {# பைக்குகள்}}}
+      கிடைக்கிறது"
     companyBicycle: "{company} பைக்"
     companyScooter: "{company} ச்கூட்டர்"
     distanceAway: "{localizedDistanceString} தொலைவில்"
@@ -517,12 +519,6 @@ components:
     scheduled: திட்டமிடப்பட்டுள்ளது
   ResultsError:
     backToSearch: தேட திரும்பவும்
-  ResultsHeader:
-    noTripFound: எந்த பயணமும் கிடைக்கவில்லை
-    tripsFound: >-
-      {எண்ணிக்கை, பன்மை, ஒன்று {# விருப்பம்} மற்ற {# விருப்பங்கள்}} ஐக்
-      கண்டறிந்தோம்
-    waiting: காத்திருக்கிறது ...
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: மேலும் விவரங்கள்
@@ -658,11 +654,13 @@ components:
     travelingAt: "{milesPerHour} இல் பயணம்"
     vehicleName: வண்டி {vehicleNumber}
   TripBasicsPane:
-    checkingItineraryExistence: வாரத்தின் ஒவ்வொரு நாளுக்கும் பயணத்தின் இருப்பை சரிபார்க்கிறது ...
+    checkingItineraryExistence: வாரத்தின் ஒவ்வொரு நாளுக்கும் பயணத்தின் இருப்பை சரிபார்க்கிறது
+      ...
     onlyOnDate: "{தேதி, தேதியில் மட்டுமே, :: eeeee yyyymmdd}"
     recurringEachWeek: ஒவ்வொரு வாரமும் சில நாட்களில்
     tripDaysPrompt: இந்த பயணத்தை நீங்கள் என்ன நாட்கள் எடுக்கிறீர்கள்?
-    tripIsAvailableOnDaysIndicated: மேலே குறிப்பிட்டுள்ளபடி உங்கள் பயணம் வாரத்தின் நாட்களில் கிடைக்கிறது.
+    tripIsAvailableOnDaysIndicated: மேலே குறிப்பிட்டுள்ளபடி உங்கள் பயணம் வாரத்தின்
+      நாட்களில் கிடைக்கிறது.
     tripNamePrompt: "இந்த பயணத்திற்கு ஒரு பெயரை வழங்கவும்:"
     tripNotAvailableOnDay: பயணம் {repeatedDay}
     unsavedChangesExistingTrip: >-
@@ -818,11 +816,6 @@ components:
       நேரத்திலும் நீங்கள் அண்மைக் கால இடங்கள்/தேடல்களை நினைவில் வைத்துக்
       கொள்ளலாம் மற்றும் உங்கள் சேமித்த வீடு/வேலை இருப்பிடங்கள் மற்றும் பிடித்த
       நிறுத்தங்களை அழிக்கலாம்.
-  UserTripSettings:
-    forgetOptions: எனது விருப்பங்களை மறந்து விடுங்கள்
-    rememberOptions: பயண விருப்பங்களை நினைவில் கொள்ளுங்கள்
-    restoreDefaults: இயல்புநிலைகளை மீட்டெடுங்கள்
-    restoreMyDefaults: எனது இயல்புநிலைகளை மீட்டெடுக்கவும்
   VerifyEmailPane:
     emailIsVerified: எனது மின்னஞ்சல் சரிபார்க்கப்பட்டது!
     instructions1: >
@@ -838,24 +831,13 @@ components:
     prompt: நீங்கள் எங்கு செல்ல விரும்புகிறீர்கள்?
 config:
   accessModes:
-    bicycle: போக்குவரத்து + தனிப்பட்ட பைக்
-    bicycle_rent: போக்குவரத்து + பிக்சிரே
     car_hail: சவாரி ஆலங்கட்டி
-    car_park: பூங்கா & சவாரி
-    micromobility: போக்குவரத்து + தனிப்பட்ட ச்கூட்டர்
-    micromobility_rent: போக்குவரத்து + மின்-ச்கூட்டர் வாடகை
-  bicycleModes:
-    bicycle: சொந்த பைக்
-    bicycle_rent: பிக்ச்ரே
   flex:
     both: விவரங்களுக்கு பயணத்தின் கீழே பார்க்கவும்
     call-ahead: முன்பதிவு செய்ய அழைக்கவும்
     continuous-dropoff: நிறுத்தத்தைப் பற்றி ஆபரேட்டருடன் தொடர்பு கொள்ளுங்கள்
     flex-service: நெகிழ்வு பணி
     flex-service-colon: "நெகிழ்வு சேவை:"
-  micromobilityModes:
-    micromobility: சொந்த மின்-ச்கூட்டர்
-    micromobility_rent: வாடகை மின்-ச்கூட்டர்
 util:
   state:
     errorPlanningTrip: பயணத்தைத் திட்டமிடும்போது பிழை ஏற்பட்டது.

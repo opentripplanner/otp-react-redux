@@ -631,9 +631,6 @@ components:
 config:
   accessModes:
     car_hail: 叫車服務
-  bicycleModes:
-    bicycle: 自有自行車
-    bicycle_rent: 自行車共享
   flex:
     both: 請查看預定行程底部以瞭解詳細資訊
     call-ahead: 致電預約

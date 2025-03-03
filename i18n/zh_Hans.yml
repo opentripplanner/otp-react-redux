@@ -286,8 +286,6 @@ components:
     originallyScheduledTime: （最初{originalTime}）
     singleModeItineraryDescription: "{time} {mode} 行程"
     timeWalking: "{time} 步行"
-  MobileOptions:
-    header: 设置搜索选项
   MobilityProfile:
     DevicesPane:
       devices:
