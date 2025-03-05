@@ -1,0 +1,851 @@
+_id: en-us
+_name: ஆங்கிலம்
+actions:
+  callTaker:
+    callQuerySaveError: "அழைப்பு வினவல்களை சேமிப்பதில் பிழை: {err}"
+    callSaveError: "அழைப்பைச் சேமிக்க முடியவில்லை: {err}"
+    checkSessionError: "அங்கீகார அமர்வை நிறுவுவதில் பிழை: {err}"
+    couldNotFindCallError: அழைப்பைக் கண்டுபிடிக்க முடியவில்லை. சேமி வினவல் கோரிக்கையை
+      ரத்து செய்தல்.
+    fetchCallsError: "அழைப்புகளைப் பெறுவதில் பிழை: {err}"
+    queryFetchError: "வினவல்களைப் பெறுவதில் பிழை: {err}"
+  fieldTrip:
+    addNoteError: "புல பயணத்தைச் சேர்ப்பதில் பிழை குறிப்பு:"
+    confirmOverwriteItineraries: |
+      இந்த நடவடிக்கை முன்னர் திட்டமிடப்பட்ட {வெளிச்செல்லும், தேர்ந்தெடு,
+       உண்மை {outbound}
+       பிற {inbound}
+       கோரிக்கைக்கான} பயணம். நீங்கள் தொடர விரும்புகிறீர்களா?
+    deleteItinerariesError: "புல பயணத் திட்டத்தை நீக்குவதில் பிழை:"
+    deleteNoteError: "புல பயணத்தை நீக்குவதில் பிழை குறிப்பு:"
+    editSubmitterNotesError: "சமர்ப்பிப்பாளரின் குறிப்புகளைத் திருத்துதல்:"
+    fetchFieldTripError: "புல பயணத்தைப் பெறுவதில் பிழை: {err}"
+    fetchFieldTripsError: "புலப் பயணங்களைப் பெறுவதில் பிழை: {err}"
+    fetchTripsForDateError: "கள பயண பயண தேதிக்கான பயணங்களைப் பெறுவதில் பிழை: {err}"
+    incompatibleTripDateError: >-
+      திட்டமிடப்பட்ட பயண தேதி ({tripDate}) பயணத்தின் கோரப்பட்ட நாள் அல்ல
+      ({requestDate})
+    itineraryCapacityError: >-
+      திட்டத்தை சேமிக்க முடியாது: ஒன்று அல்லது அதற்கு மேற்பட்ட வாகனங்களில் திறன்
+      இல்லாததால் இந்த திட்டத்தை சேமிக்க முடியவில்லை. உங்கள் பயணத்தை மீண்டும்
+      திட்டமிடுங்கள்.
+    maxTripRequestsExceeded: சரியான முடிவுகள் இல்லாமல் பயணக் கோரிக்கைகளின் எண்ணிக்கை
+      மீறியது
+    saveItinerariesError: "பயணத்திட்டங்களைச் சேமிப்பதில் தோல்வி: {err}"
+    setDateError: "அமைத்தல் தேதி:"
+    setGroupSizeError: "குழு அளவை அமைப்பதில் பிழை:"
+    setPaymentError: "கட்டண தகவலை அமைப்பதில் பிழை:"
+    setRequestStatusError: "கோரிக்கை நிலையை அமைப்பதில் பிழை:"
+  location:
+    deniedAccessAlert: |
+      உங்கள் இருப்பிடத்திற்கான அணுகல் தடுக்கப்பட்டுள்ளது.
+       உங்கள் தற்போதைய இருப்பிடத்தைப் பயன்படுத்த, உங்கள் உலாவியில் இருந்து இருப்பிட அனுமதிகளை இயக்கவும், பக்கத்தை மீண்டும் ஏற்றவும். 
+    geolocationNotSupportedError: உங்கள் உலாவியால் புவிஇருப்பிடத்தை ஆதரிக்கவில்லை
+    unknownPositionError: தெரியாத பிழை நிலையைப் பெறுகிறது
+    userDeniedPermission: பயனர் இசைவு மறுத்தார்
+  map:
+    currentLocation: (தற்போதைய இடம்)
+  user:
+    accountDeleted: உங்கள் பயனர் கணக்கு ({email}) நீக்கப்பட்டது.
+    authTokenError: அங்கீகார கிள்ளாக்கைப் பெறுவதில் பிழை.
+    confirmDeleteMonitoredTrip: இந்த பயணத்தை அகற்ற விரும்புகிறீர்களா?
+    confirmDeletePlace: இந்த இடத்தை அகற்ற விரும்புகிறீர்களா?
+    emailVerificationResent: மின்னஞ்சல் சரிபார்ப்பு செய்தி கோபமடைந்தது.
+    genericError: "பிழை ஏற்பட்டது: {err}"
+    getDependentUserInfoFailed: இயக்கம் சுயவிவரத் தகவலைப் பெறுவதில் பிழை.
+    itineraryExistenceCheckFailed: நீங்கள் தேர்ந்தெடுத்த பயணம் சாத்தியமா என்பதை சரிபார்க்க
+      பிழை.
+    mustAcceptTermsToSavePlace: >-
+      இருப்பிடங்களைச் சேமிக்க பயன்பாட்டு விதிமுறைகளை (எனது கணக்கின் கீழ்)
+      ஏற்றுக்கொள்ளுங்கள்.
+    mustBeLoggedInToSavePlace: இருப்பிடங்களைச் சேமிக்க உள்நுழைக.
+    placeRemembered: இந்த இடத்திற்கான அமைப்புகள் சேமிக்கப்பட்டுள்ளன.
+    preferencesSaved: உங்கள் விருப்பத்தேர்வுகள் சேமிக்கப்பட்டுள்ளன.
+    smsInvalidCode: நீங்கள் உள்ளிட்ட குறியீடு தவறானது. மீண்டும் முயற்சிக்கவும்.
+    smsResendThrottled: >-
+      ஒரு சரிபார்ப்பு எச்எம்எச் ஒரு நிமிடத்திற்கு முன்பு சுட்டிக்காட்டப்பட்ட
+      தொலைபேசி எண்ணுக்கு அனுப்பப்பட்டது. சில தருணங்களில் மீண்டும்
+      முயற்சிக்கவும்.
+    smsVerificationFailed: >-
+      உங்கள் தொலைபேசியை சரிபார்க்க முடியவில்லை. ஒருவேளை நீங்கள் உள்ளிட்ட
+      குறியீடு காலாவதியானது. தயவுசெய்து ஒரு புதிய குறியீடு மற்றும் மீண்டும்
+      முயற்சிக்கவும்.
+common:
+  coordinates: "{lat}, {lon}"
+  dateExpressions:
+    today: இன்று
+    tomorrow: நாளை
+    yesterday: நேற்று
+  daysOfWeek:
+    friday: வெள்ளிக்கிழமை
+    monday: திங்கள்
+    saturday: காரிக்கிழமை
+    sunday: ஞாயிற்றுக்கிழமை
+    thursday: வியாழக்கிழமை
+    tuesday: செவ்வாய்க்கிழமை
+    wednesday: புதன்கிழமை
+  daysOfWeekCompact:
+    friday: F
+    monday: மீ
+    saturday: கள்
+    sunday: அவை
+    thursday: வது
+    tuesday: டி
+    wednesday: W
+  daysOfWeekPlural:
+    friday: வெள்ளி
+    monday: திங்கள்
+    saturday: சனிக்கிழமைகள்
+    sunday: ஞாயிற்றுக்கிழமை
+    thursday: வியாழக்கிழமைகள்
+    tuesday: செவ்வாய்
+    wednesday: புதன்கிழமை
+  forms:
+    back: பின்
+    cancel: ரத்துசெய்
+    close: மூடு
+    defaultValue: "{value} (இயல்புநிலை)"
+    edit: தொகு
+    error: பிழை!
+    finish: முடிக்க
+    next: அடுத்தது
+    "no": இல்லை
+    print: அச்சிடுக
+    save: சேமி
+    startOver: தொடக்க
+    submitting: சமர்ப்பித்தல்…
+    "yes": ஆம்
+  itineraryDescriptions:
+    fareUnknown: கட்டண செய்தி இல்லை
+    noItineraryToDisplay: காண்பிக்க பயணம் இல்லை.
+    relativeCo2: >
+      {co2} {ismore, தேர்ந்தெடுக்கவும், உண்மை {more} பிற {less}} co₂ தனியாக
+      வண்டி ஓட்டுவதை விட
+    timeStartEnd: "{start} - {end}"
+  linkOpensNewWindow: (புதிய சாளரத்தைத் திறக்கிறது)
+  modes:
+    bicycle_rent: பிக்ச்ரே
+    bike: பைக்
+    bus: பச்
+    cable_car: கேபிள் கார்
+    car: கார்
+    car_park: பூங்கா மற்றும் சவாரி
+    drive: ஓட்டு
+    ferry: படகு
+    flex: நெகிழ்வு வழிகள்
+    funicular: ஃபனிகுலர்
+    gondola: கோண்டோலா
+    micromobility: மின்-ச்கூட்டர்
+    micromobility_rent: மின்-ச்கூட்டர்
+    rail: ரெயில்
+    rent: வாடகை விருப்பங்கள்
+    subway: சுரங்கப்பாதை
+    tram: ச்ட்ரீட்கார்
+    transit: போக்குவரத்து
+    walk: நடை
+  notifications:
+    email: மின்னஞ்சல்
+    push: அறிவிப்புகளை அழுத்தவும்
+    sms: எச்.எம்.எச்
+  places:
+    custom: தனிப்பயன்
+    dining: சாப்பாட்டு
+    home: வீடு
+    work: வேலை
+  routing:
+    routeAndNumber: பாதை {routeId}
+  searchForms:
+    click: சொடுக்கு செய்க
+    enterDestination: வரைபடத்தில் இலக்கு அல்லது {mapAction} ஐ உள்ளிடவும்…
+    enterStartLocation: வரைபடத்தில் தொடக்க இருப்பிடத்தை அல்லது {mapAction} ஐ உள்ளிடவும்…
+    tap: தட்டவும்
+  time:
+    duration:
+      aFewSeconds: சில வினாடிகள்
+      nDays: "{நாட்கள், பன்மை, = 1 {one day} மற்ற {# நாட்கள்}}"
+      nHours: "{மணிநேரம், பன்மை, = 1 {an hour} பிற {# மணிநேரம்}}"
+      nMinutes: "{நிமிடங்கள், பன்மை, = 1 {one minute} பிற {# நிமிடங்கள்}}"
+    durationAgo: "{duration} முன்பு"
+    tripDurationFormat: >-
+      {மணிநேரம், பன்மை, = 0 {} பிற {# hr}} {minutes} மணித்துளி {விநாடிகள்,
+      பன்மை, = 0 {} பிற {# நொடி}}
+components:
+  A11yPrefs:
+    accessibilityRoutingByDefault: இயல்பாக அணுகக்கூடிய பயணங்களை விரும்புங்கள்
+  AccountSetupFinishPane:
+    message: உங்கள் பயணங்களைத் திட்டமிடத் தொடங்க நீங்கள் தயாராக உள்ளீர்கள்.
+  AddPlaceButton:
+    addPlace: இடம் சேர்க்கவும்
+    needOriginDestination: இடைநிலை இடங்களைச் சேர்க்க தோற்றம்/இலக்கை வரையறுக்கவும்
+    tooManyPlaces: அதிகபட்ச இடைநிலை இடங்கள் எட்டப்பட்டன
+  AdvancedOptions:
+    bannedRoutes: தடைசெய்யப்பட்ட பாதைகளைத் தேர்ந்தெடுக்கவும்…
+    preferredRoutes: விருப்பமான வழிகளைத் தேர்ந்தெடுக்கவும் ...
+  AfterSignInScreen:
+    mainTitle: திருப்பிவிடுதல் ...
+    message: >-
+      சில விநாடிகளுக்குப் பிறகு பக்கம் ஏற்றப்படாவிட்டால், <RedirectLink> இங்கே
+      சொடுக்கு செய்க </RedirectLink>.
+  AppMenu:
+    callHistory: வரலாற்றை அழைக்கவும்
+    closeMenu: பட்டியல் மூடு
+    fieldTrip: கள பயணம்
+    mailables: அஞ்சல்கள்
+    networkConnectionLost: பிணைய இணைப்பு இழந்தது
+    networkConnectionRestored: பிணைய இணைப்பு மீட்டெடுக்கப்பட்டது
+    openMenu: திறந்த பட்டியல்
+    skipNavigation: வழிசெலுத்தலைத் தவிர்க்கவும்
+  BackToTripPlanner:
+    backToTripPlanner: பயணத் திட்டத்திற்குத் திரும்பு
+  BatchResultsScreen:
+    expandMap: வரைபடத்தை விரிவாக்கு
+    showResults: முடிவுகளை காட்டு
+  BatchRoutingPanel:
+    shortTitle: திட்ட பயணம்
+  BatchSearchScreen:
+    advancedHeader: மேம்பட்ட விருப்பத்தேர்வுகள்
+    header: உங்கள் பயணத்தைத் திட்டமிடுங்கள்
+    modeSelectorLabel: பயண பயன்முறையைத் தேர்ந்தெடுக்கவும்
+    moreOptions: மேலும் விருப்பங்கள்
+    saveAndReturn: சேமித்து திரும்பவும்
+    saved: சேமிக்கப்பட்டது
+    submodeSelectorLabel: பயண முறைகள் மற்றும் சப்மோட்களைத் தேர்ந்தெடுக்கவும்
+    tripOptions: பயண விருப்பங்கள்
+  BatchSettings:
+    destination: இலக்கு
+    invalidModeSelection: >-
+      தேர்ந்தெடுக்கப்பட்ட முறைகளைப் பயன்படுத்தி ஒரு பயணத்தைத் திட்டமிட முடியாது.
+      உங்கள் பயன்முறை தேர்வில் போக்குவரத்தை சேர்க்க முயற்சிக்கவும்.
+    origin: தோற்றம்
+    planTripTooltip: திட்ட பயணம்
+    validationMessage: "ஒரு பயணத்தைத் திட்டமிட பின்வரும் துறைகளை வரையறுக்கவும்: {issues}"
+  BeforeSignInScreen:
+    mainTitle: உங்களை கையொப்பமிடுவது
+    message: >
+      இந்த பக்கத்தை அணுக நீங்கள் உள்நுழைய வேண்டும். உள்நுழைவு பக்கத்திற்கு
+      நாங்கள் உங்களை திருப்பி விடும்போது காத்திருங்கள் ...
+  CallTakerPanel:
+    advancedOptions: மேம்பட்ட விருப்பங்கள்
+    groupSize: "குழு அளவு:"
+    intermediateDestination: இடைநிலை இலக்கை உள்ளிடவும்
+  CompanionsPane:
+    addNewCompanion: ஒரு புதிய பயணத் தோழரைச் சேர்க்கவும்
+    companionAlreadyAdded: உங்களிடம் ஏற்கனவே மின்னஞ்சல் {மின்னஞ்சல் with உடன் ஒரு
+      தோழர் இருக்கிறார்
+    companionExplanation: >
+      ஏற்கனவே உள்ள சி-மேப் பயனரை அவர்களின் மின்னஞ்சலை உள்ளிட்டு பயணத் தோழராக
+      அழைக்க அழைக்கவும். அவர்கள் ஏற்றுக்கொள்ளும்போது, அவர்களின் நிலை
+      "சரிபார்க்கப்பட்ட" ஆக மாறும், மேலும் உங்கள் பயண நிலையை நீங்கள் பகிர்ந்து
+      கொள்ளலாம் மற்றும் ஒருவருக்கொருவர் இயக்கம் சுயவிவரத்தின் அடிப்படையில்
+      பயணங்களைத் திட்டமிடலாம்.
+    confirmDeleteCompanion: நீங்கள் துணை {email} நீக்க விரும்புகிறீர்களா?
+    currentCompanionsLabel: "தற்போதைய பயண தோழர்கள்:"
+    deleteCompanion: "{email} நீக்கு"
+    noCompanions: உங்களிடம் தற்போதுள்ள பயணத் தோழர்கள் எதுவும் இல்லை.
+    submitNewCompanion: அழைப்பை அனுப்புங்கள்
+    title: பயண தோழர்கள்
+  DateTimeOptions:
+    arriveBy: மூலம் வந்து
+    departAt: புறப்படுங்கள்
+    now: இப்போது
+  DateTimePreview:
+    arriveAt: வருகை {வருகை நேரம், நேரம், குறுகிய}
+    dayLastWeek: கடைசி {formattedDayOfWeek}
+    departAt: புறப்படுதல் {புறப்பாடு, நேரம், குறுகிய}
+    editDepartOrArrival: புறப்படும் அல்லது வருகை நேரத்தைத் திருத்தவும்
+    leaveNow: இப்போது விடுங்கள்
+  DateTimeScreen:
+    header: தேதி/நேரத்தை அமைக்கவும்
+  DefaultItinerary:
+    clickDetails: விவரங்களைக் காண சொடுக்கு செய்க
+    multiModeSummary: "{accessMode} + {transitMode}"
+    nonTransit: மாற்று விருப்பங்கள்
+  DeleteUser:
+    deleteMyAccount: எனது கணக்கை நீக்கு
+  ErrorMessage:
+    header: பயணத்தைத் திட்டமிட முடியவில்லை
+    warning: எச்சரிக்கை
+  ExistingAccountDisplay:
+    a11y: அணுகல்
+    mainTitle: எனது அமைப்புகள்
+    notifications: அறிவிப்புகள்
+    places: சேமித்த இடங்கள்
+    terms: விதிமுறைகள்
+  FavoritePlaceList:
+    addAnotherPlace: மற்றொரு இடத்தைச் சேர்க்கவும்
+    description: >-
+      நேர திட்டமிடல் பயணங்களைச் சேமிக்க நீங்கள் அடிக்கடி அடிக்கடி வரும்
+      இடங்களைச் சேர்க்கவும்:
+    editThisPlace: இந்த இடத்தைத் திருத்தவும்
+    setAddressForPlaceType: உங்கள் {placeType} முகவரியை அமைக்கவும்
+  FavoritePlaceScreen:
+    addNewPlace: புதிய இடத்தைச் சேர்க்கவும்
+    editPlace: திருத்து {placeName}
+    editPlaceGeneric: இடத்தைத் திருத்து
+    invalidAddress: இந்த இடத்திற்கு ஒரு இடத்தை அமைக்கவும்.
+    invalidName: இந்த இடத்திற்கு ஒரு பெயரை உள்ளிடவும்.
+    nameAlreadyUsed: >-
+      நீங்கள் ஏற்கனவே இந்த பெயரை வேறொரு இடத்திற்கு பயன்படுத்துகிறீர்கள்.
+      தயவுசெய்து வேறு பெயரை உள்ளிடவும்.
+    placeNotFound: இந்த இடம் இல்லை
+    placeNotFoundDescription: மன்னிக்கவும், கோரப்பட்ட இடம் கிடைக்கவில்லை.
+  FormNavigationButtons:
+    ariaLabel: படிவ வழிசெலுத்தல்
+  ItinerarySummary:
+    itineraryDetails: பயண விவரங்கள்
+  LocationSearch:
+    enterLocation: இருப்பிடத்தை உள்ளிடவும்
+    setDestination: இலக்கை அமைக்கவும்
+    setOrigin: தோற்றம்
+  MapLayers:
+    bike-rental: "{companies} பகிரப்பட்ட பைக்குகள்"
+    car-rental: வாடகை கார் இருப்பிடங்கள்
+    micromobility-rental: "{companies} மின்-ச்கூட்டர்கள்"
+    park-and-ride: பூங்கா & சவாரி இடங்கள்
+    satellite: செயற்கைக் கோள்
+    shared-vehicles: பகிரப்பட்ட வாகனங்கள்
+    stations: போக்குவரத்து நிலையங்கள்
+    stops: போக்குவரத்து நிறுத்தப்படும்
+    streets: வீதிகள்
+  MapillaryFrame:
+    title: தெருவின் படங்கள்
+  MetroUI:
+    arriveAt: நீங்கள் வருகிறீர்கள்
+    itineraryDescription: "{நேரம் {time}"
+    itinerarySummary: "{stopName} | இலிருந்து {cost}"
+    leaveAt: நீங்கள் வெளியேறுகிறீர்கள்
+    multipleOptions: பல விருப்பங்கள்
+    orAlternatives: அல்லது அதே திசையில் பிற வழிகள்
+    originallyScheduledTime: (முதலில் {originalTime})
+    singleModeItineraryDescription: "{time} {mode} பயணம்"
+    timeWalking: "{time} நடைபயிற்சி"
+  MobilityProfile:
+    DevicesPane:
+      devices:
+        cane: கரும்பு
+        crutches: ஊன்றுகோல்
+        electric wheelchair: மின்சார சக்கர நாற்காலி
+        manual walker: கையேடு வாக்கர்
+        manual wheelchair: கையேடு/பாரம்பரிய சக்கர நாற்காலி
+        mobility scooter: மொபிலிட்டி ச்கூட்டர்
+        none: உதவி சாதனம் இல்லை
+        service animal: பணி விலங்கு
+        stroller: இழுபெட்டி
+        wheeled walker: சக்கர வாக்கர்
+        white cane: வெள்ளை கரும்பு
+      prompt: >-
+        இயக்கம் உதவி சாதனத்தை நீங்கள் தவறாமல் பயன்படுத்துகிறீர்களா? (பொருந்தும்
+        அனைத்தையும் சரிபார்க்கவும்)
+    LimitationsPane:
+      mobilityPrompt: >-
+        உங்களிடம் ஏதேனும் இயக்கம் வரம்புகள் உள்ளதா, அது மற்றவர்களை விட மெதுவாகவோ
+        அல்லது கவனமாகவோ நடக்க காரணமாகிறது?
+      visionLimitations:
+        legally-blind: சட்டப்பூர்வமாக பார்வையற்றவர்
+        low-vision: குறைந்த பார்வை
+        none: எதுவுமில்லை
+      visionPrompt: உங்களிடம் ஏதேனும் பார்வை வரம்புகள் உள்ளதா?
+    MobilityPane:
+      button: உங்கள் இயக்கம் சுயவிவரத்தைத் திருத்தவும்
+      header: இயக்கம் சுயவிவரம்
+      mobilityDevices: "இயக்கம் சாதனங்கள்: "
+      mobilityLimitations: "இயக்கம் வரம்புகள்: "
+      planTripDescription: >-
+        உங்களிடம் பயணத் தோழர் இருந்தால், அவர்களின் இயக்கம் சுயவிவரத்திற்கு ஏற்ப
+        இந்த பயணத்தைத் திட்டமிட நீங்கள் தேர்வு செய்யலாம்.
+      visionLimitations: "பார்வை வரம்புகள்: "
+    dropdownLabel: "பயனர் இயக்கம் சுயவிவரம்:"
+    intro: >-
+      உங்கள் தேவைகள் மற்றும் விருப்பங்களுக்கு பயண திட்டமிடல் அனுபவத்தைத்
+      தனிப்பயனாக்க சில கேள்விகளுக்கு பதிலளிக்கவும்.
+    myself: நானே
+    title: உங்கள் இயக்கம் சுயவிவரத்தை வரையறுக்கவும்
+  NarrativeItinerariesHeader:
+    changeSortDir: வரிசைப்படுத்தல் திசையை மாற்றவும்
+    howToFindResults: முடிவுகளைக் காண, கீழே காணப்படும் பயணத்திட்டங்களைக் காண்க.
+    itinerariesFound: >-
+      {பயணத்திட்டம், பன்மை, ஒன்று {# பயணம் காணப்படுகிறது} பிற {# பயணத்திட்டங்கள்
+      காணப்படுகின்றன}}
+    resultsSortedBy: >-
+      பயண முடிவுகள் தற்போது {sorteledected by ஆல் வரிசைப்படுத்தப்பட்டுள்ளன.
+      முடிவுகளை வரிசைப்படுத்தும் முறையை மாற்ற, கீழே உள்ள "வரிசைப்படுத்தப்பட்ட
+      முடிவுகள்" பொத்தானைப் பயன்படுத்தவும்.
+    searching: உங்கள் விருப்பங்களைக் கண்டறிதல் ...
+    selectArrivalTime: வருகை நேரம்
+    selectBest: சிறந்த வழி
+    selectCost: செலவு
+    selectDepartureTime: புறப்படும் நேரம்
+    selectDuration: காலம்
+    selectWalkTime: நடை நேரம்
+    sortResults: முடிவுகளை வரிசைப்படுத்துங்கள்
+    viewAll: அனைத்து விருப்பங்களையும் காண்க
+  NavLoginButton:
+    help: உதவி
+    myAccount: எனது கணக்கு
+    signIn: புகுபதிகை
+    signOut: விடுபதிகை
+  NearbyView:
+    bikeRentalStation: பைக் வாடகை நிலையம்
+    bikesAvailable: "{பைக்ச்வெயிலபிள், பன்மை, ஒன்று {# பைக்} மற்ற {# பைக்குகள்}}}
+      கிடைக்கிறது"
+    companyBicycle: "{company} பைக்"
+    companyScooter: "{company} ச்கூட்டர்"
+    distanceAway: "{localizedDistanceString} தொலைவில்"
+    error: அருகிலுள்ள வசதிகளை ஏற்றுவதில் பிழை ஏற்பட்டது.
+    header: அருகிலுள்ள பார்வை
+    headsign: "{destination}"
+    nearbyListIntro: அருகிலுள்ள நிறுவனங்களின் பட்டியல்.
+    nothingNearby: அருகிலேயே இடங்கள் இல்லை.
+    searchNearby: அருகிலேயே தேடுங்கள் ...
+    spacesAvailable: "{spacesAvailable} வெற்று இடங்கள் கிடைக்கின்றன"
+  NewAccountWizard:
+    createNewAccount: புதிய கணக்கை உருவாக்கவும்
+    finish: கணக்கு அமைப்பு முடிந்தது!
+    notifications: அறிவிப்பு விருப்பத்தேர்வுகள்
+    places: நீங்கள் சேமித்த இடங்களைச் சேர்க்கவும்
+    verify: உங்கள் மின்னஞ்சல் முகவரியை சரிபார்க்கவும்
+  NotFound:
+    description: நீங்கள் கோரிய உள்ளடக்கம் கிடைக்கவில்லை.
+    header: உள்ளடக்கம் கிடைக்கவில்லை
+  NotificationPrefsPane:
+    devicesRegistered: >-
+      {எண்ணிக்கை, பன்மை, ஒன்று {# சாதனம்} பிற {# சாதனங்கள்}} பதிவு
+      செய்யப்பட்டுள்ளன
+    noDeviceForPush: >-
+      புச் அறிவிப்புகளை அணுக மொபைல் பயன்பாட்டைப் பயன்படுத்தி உங்கள் சாதனத்தை
+      பதிவு செய்யுங்கள்.
+    notificationChannelPrompt: "நீங்கள் சேமித்த பயணங்களைப் பற்றிய அறிவிப்புகளைப் பெறுங்கள்:"
+  OTP2ErrorRenderer:
+    LOCATION_NOT_FOUND:
+      body: >-
+        {inputFields} {inputfieldScount, பன்மை, = 0 {} ஒன்று {location is} பிற
+        {locations are}} எந்த வீதிகளுக்கும் அருகில் இல்லை.
+      header: இடம் அணுக முடியாது
+    NO_STOPS_IN_RANGE:
+      body: >-
+        {inputFields} {inputfieldScount, பன்மை, = 0 {} ஒன்று {location is} பிற
+        {locations are}} எந்த போக்குவரத்து நிறுத்தங்களுக்கும் அருகில் இல்லை.
+      header: வரம்பில் நிறுத்தப்படவில்லை
+    NO_TRANSIT_CONNECTION:
+      body: >-
+        இல்லை transit connection was found between your origin and destination
+        on the தேர்ந்தெடுக்கப்பட்டது நாள் of service, using the vehicle வகைகள்
+        you selected.
+      header: பயணத்திட்டங்கள் இல்லை
+    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
+      body: >-
+        ஒரு போக்குவரத்து இணைப்பு கண்டுபிடிக்கப்பட்டது, ஆனால் அது தேடல்
+        சாளரத்திற்கு வெளியே இருந்தது, நீங்கள் தேர்ந்தெடுத்த வாகன வகைகளைப்
+        பயன்படுத்தி உங்கள் தேடல் சாளரத்தை சரிசெய்ய முயற்சிக்கவும்.
+      header: தேடல் சாளரத்தில் போக்குவரத்து இணைப்பு இல்லை
+    OUTSIDE_BOUNDS:
+      body: >-
+        {inputFields} {inputfieldScount, பன்மை, = 0 {} ஒன்று {location is} பிற
+        {locations are}} பயணத் திட்டத்தின் எல்லையில் இல்லை.
+      header: எல்லைக்கு வெளியே இருப்பிடம்
+    OUTSIDE_SERVICE_PERIOD:
+      body: >-
+        குறிப்பிடப்பட்ட தேதி தற்போது பயணத் திட்டத்தில் ஏற்றப்பட்ட தரவுகளின்
+        எல்லைக்கு வெளியே உள்ளது.
+      header: பணி காலம் வெளியே
+    SYSTEM_ERROR:
+      body: தேடலின் போது அறியப்படாத பிழை ஏற்பட்டது.
+      header: பயணத் திட்டமிடுபவர் தோல்வி
+    WALKING_BETTER_THAN_TRANSIT:
+      body: >-
+        உங்கள் பயணத்தில் போக்குவரத்தைத் தவிர்ப்பது போக்குவரத்தை எடுப்பதை விட
+        வேகமாக இருக்கும்.
+      header: இந்த பயணத்தை மேற்கொள்வதற்கான விரைவான வழி போக்குவரத்து அல்ல
+    inputFields:
+      FROM: தோற்றம்
+      TO: இலக்கு
+  PhoneNumberEditor:
+    changeNumber: எண்ணை மாற்றவும்
+    invalidCode: சரிபார்ப்புக் குறியீட்டிற்கு 6 இலக்கங்களை உள்ளிடவும்.
+    invalidPhone: செல்லுபடியாகும் தொலைபேசி எண்ணை உள்ளிடவும்.
+    phoneNumberSubmitted: தொலைபேசி எண் {phoneNumber} வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது.
+    phoneNumberVerified: தொலைபேசி எண் {phoneNumber} வெற்றிகரமாக சரிபார்க்கப்பட்டது.
+    placeholder: உங்கள் தொலைபேசி எண்ணை உள்ளிடவும்
+    prompt: "எச்எம்எச் அறிவிப்புகளுக்கு உங்கள் தொலைபேசி எண்ணை உள்ளிடவும்:"
+    requestNewCode: புதிய குறியீட்டைக் கோருங்கள்
+    sendVerificationText: சரிபார்ப்பு உரையை அனுப்பவும்
+    smsConsent: >
+      உங்கள் தொலைபேசி எண்ணை வழங்குவதன் மூலம், சரிபார்ப்பு மற்றும் பயண
+      கண்காணிப்பு எச்எம்எச் செய்திகளைப் பெற ஒப்புக்கொள்கிறீர்கள். உங்கள்
+      தொலைபேசி கேரியரிடமிருந்து கூடுதல் செலவுகள் பொருந்தும்.
+    verificationCode: "சரிபார்ப்பு குறியீடு:"
+    verificationInstructions: >
+      சரிபார்ப்புக் குறியீட்டைக் கொண்ட உரை செய்திக்கு உங்கள் மொபைல் தொலைபேசியில்
+      எச்எம்எச் செய்தி பயன்பாட்டை சரிபார்க்கவும், கீழே உள்ள குறியீட்டை
+      உள்ளிடவும் (குறியீடு 10 நிமிடங்களுக்குப் பிறகு காலாவதியாகிறது).
+    verify: சரிபார்க்கவும்
+    verifySms: எச்எம்எச் அறிவிப்புகளை அமைக்க சரிபார்ப்பு செயல்முறையை முடிக்கவும்.
+  Place:
+    deleteThisPlace: இந்த இடத்தை நீக்கு
+    enterAlert: >
+      படிவத்தில் தோற்றம்/இலக்கை உள்ளிடவும் (அல்லது வரைபடக் சொடுக்கு வழியாக
+      அமைக்கவும்) மற்றும் இதன் விளைவாக வரும் மார்க்கரை {placeType} இருப்பிடமாக
+      அமைக்க சொடுக்கு செய்க.
+    viewStop: நிறுத்து காண்க
+  PlaceEditor:
+    addressPrompt: "முகவரி:"
+    genericLocationPlaceholder: இருப்பிடத்தைத் தேடுங்கள்
+    locationPlaceholder: "{placeName} இருப்பிடத்தைத் தேடுங்கள்"
+    locationTypePrompt: "இருப்பிட வகை:"
+    nameExample: என் காபி கடை
+    namePrompt: "இட பெயர்:"
+  PlanFirstLastButtons:
+    first: முதல்
+    last: கடைசி
+    next: அடுத்தது
+    previous: முந்தைய
+  PlanTripButton:
+    planTrip: திட்ட பயணம்
+  PointPopup:
+    zoomToLocation: இருப்பிடத்திற்கு பெரிதாக்கு
+  PrintLayout:
+    itinerary: பயணநிரல்
+    toggleMap: வரைபடத்தை மாற்றவும்
+  RealtimeAnnotation:
+    delaysShownInResults: >
+      நிகழ்நேர தகவல்களின் அடிப்படையில் உங்கள் பயண முடிவுகள் சரிசெய்யப்பட்டுள்ளன.
+      சாதாரண நிலைமைகளின் கீழ், இந்த பயணம் பின்வரும் பாதைகளைப் பயன்படுத்தி
+      {normalDuration} எடுக்கும்: {routes}.
+    serviceUpdate: பணி புதுப்பிப்பு
+  RealtimeStatusLabel:
+    early: "{minutes} ஆரம்பத்தில்"
+    late: "{minutes} தாமதமாக"
+    onTime: சரியான நேரத்தில்
+    scheduled: திட்டமிடப்பட்டுள்ளது
+  ResultsError:
+    backToSearch: தேட திரும்பவும்
+  RouteDetails:
+    headsignTo: "{headsign} ({lastStop})"
+    moreDetails: மேலும் விவரங்கள்
+    operatedBy: "{Angencyname by ஆல் இயக்கப்படுகிறது"
+    selectADirection: ஒரு திசையைத் தேர்ந்தெடுக்கவும் ...
+    stopsTo: நோக்கி
+  RouteViewer:
+    agencyFilter: ஏசென்சி வடிகட்டி
+    allAgencies: அனைத்து ஏசென்சிகளும்
+    allModes: அனைத்து முறைகளும்
+    findARoute: ஒரு வழியைக் கண்டறியவும்
+    header: பாதை பார்வையாளர்
+    modeFilter: பயன்முறை வடிகட்டி
+    noFilteredRoutesFound: உங்கள் வடிப்பானுடன் எந்த வழிகளும் பொருந்தவில்லை!
+    openPatternViewer: பாதை விவரங்களைக் காண்க
+    shortTitle: வழிகளைக் காண்க
+    stopsInDirectionOfTravel: "பயணத்தின் இந்த திசையில் நிறுத்தப்படும்:"
+    title: பாதை பார்வையாளர்
+  SaveTripButton:
+    cantSaveText: சேமிக்க முடியாது
+    cantSaveTooltip: >-
+      போக்குவரத்து மற்றும் வாடகைகள் அல்லது சவாரி ஐலிங் ஆகியவற்றை உள்ளடக்கிய
+      பயணத்திட்டங்களை மட்டுமே கண்காணிக்க முடியும்.
+    saveTripText: பயணத்தை சேமிக்கவும்
+    signInText: பயணத்தை சேமிக்க உள்நுழைக
+    signInTooltip: பயணத்தை சேமிக்க உள்நுழைக.
+  SavedTripEditor:
+    deleteSavedTrip: சேமித்த பயணத்தை நீக்கு
+    editSavedTrip: சேமித்த பயணத்தைத் திருத்து
+    readOnlyBanner: >-
+      {creator} இந்த பயணத்தில் உங்களை உருவாக்கி சேர்த்துள்ளார். எனவே, நீங்கள்
+      மாற்றங்களைச் செய்ய முடியாது.
+    saveNewTrip: புதிய பயணத்தை சேமிக்கவும்
+    travelCompanions: பயண தோழர்கள்
+    tripInformation: பயண செய்தி
+    tripNotFound: பயணம் கிடைக்கவில்லை
+    tripNotFoundDescription: மன்னிக்கவும், கோரப்பட்ட பயணம் காணப்படவில்லை.
+    tripNotifications: பயண அறிவிப்புகள்
+  SavedTripList:
+    alertTag: >-
+      {எச்சரிக்கை, பன்மை, ஒன்று {View one alert} மற்றொன்று {காண்க #
+      எச்சரிக்கைகள்}}
+    fromTo: "{from} முதல் {to}"
+    myTrips: என் பயணங்கள்
+    noSavedTrips: உங்களிடம் சேமிக்கப்பட்ட பயணங்கள் எதுவும் இல்லை
+    noSavedTripsInstructions: முதலில் வரைபடத்திலிருந்து பயணத் தேடலைச் செய்யுங்கள்.
+    pause: இடைநிறுத்தம்
+    resume: மீண்டும் தொடங்குங்கள்
+  SavedTripScreen:
+    itineraryLoaded: பயணம் ஏற்றப்பட்டது
+    itineraryLoading: பயணத்திட்டத்தை ஏற்றுகிறது
+    selectAtLeastOneDay: கண்காணிக்க குறைந்தது ஒரு நாளையாவது தேர்ந்தெடுக்கவும்.
+    tooManyTrips: >
+      நீங்கள் ஏற்கனவே அதிகபட்சம் ஐந்து சேமிக்கப்பட்ட பயணங்களை எட்டியுள்ளீர்கள்.
+      நீங்கள் சேமித்த பயணங்களிலிருந்து பயன்படுத்தப்படாத பயணங்களை அகற்றி,
+      மீண்டும் முயற்சிக்கவும்.
+    tripNameAlreadyUsed: >-
+      சேமித்த மற்றொரு பயணம் ஏற்கனவே இந்த பெயரைப் பயன்படுத்துகிறது. வேறு பெயரைத்
+      தேர்வுசெய்க.
+    tripNameRequired: பயணப் பெயரை உள்ளிடவும்.
+  SequentialPaneDisplay:
+    stepNumber: "{step} இன் படி {total}"
+  SessionTimeout:
+    body: >-
+      உங்கள் அமர்வு ஒரு நிமிடத்திற்குள் காலாவதியாகும். உங்கள் தேடலை வைத்திருக்க
+      'தொடர அமர்வு' அழுத்தவும்.
+    header: காலக்கெடு வரை அமர்வு!
+    keepSession: அமர்வைத் தொடரவும்
+  SimpleRealtimeAnnotation:
+    usingRealtimeInfo: இந்த பயணம் நிகழ்நேர போக்குவரத்து மற்றும் தாமத தகவல்களைப் பயன்படுத்துகிறது
+  StackedPaneDisplay:
+    savePreferences: விருப்பங்களை சேமிக்கவும்
+  StatusBadge:
+    invalid: செல்லுபடியாகாத
+    pending: நிலுவையில் உள்ளது
+    verified: சரிபார்க்கப்பட்டது
+  StopScheduleTable:
+    block: தொகுதி
+    departure: புறப்படுதல்
+    destination: பெறுநர்
+    route: பாதை
+  StopTimeCell:
+    imminentArrival: காரணமாக
+    realtime: நிகழ்நேர தரவின் அடிப்படையில்
+    scheduled: அட்டவணை தரவின் அடிப்படையில்
+  StopViewer:
+    displayStopId: "<strong> ஐடி நிறுத்து </strong>: {stopId}"
+    findSchedule: தேதியின்படி அட்டவணையைக் கண்டறியவும்
+    flexStop: >-
+      இது ஒரு நெகிழ்வு நிறுத்தமாகும். கோரிக்கையின் மூலம் இந்த நெகிழ்வான
+      மண்டலத்தில் வாகனங்கள் கைவிடப்பட்டு பயணிகளை அழைத்துச் செல்லும். இந்த
+      பகுதியில் சேவைக்கு நீங்கள் முன்னால் அழைக்க வேண்டியிருக்கும்.
+    forStop: "{stopName க்கு க்கு"
+    header: பார்வையாளரை நிறுத்துங்கள்
+    loadingText: ஏற்றுதல் நிறுத்தம் ...
+    noStopsFound: தேதிக்கு நிறுத்த நேரங்கள் எதுவும் கிடைக்கவில்லை.
+    operatorLogoAriaLabel: "{operatorName} நிறுத்து:"
+    schedule: அட்டவணை
+    timezoneWarning: புறப்படும் நேரங்கள் {timezoneCode} இல் காட்டப்பட்டுள்ளன.
+    titleBarStopId: நிறுத்த {stopId}
+    viewNearby: அருகிலேயே காண்க
+    viewSchedule: அட்டவணையைக் காண்க
+    zoomToStop: நிறுத்த பெரிதாக்கவும்
+  SubNav:
+    languageSelector: மொழியைத் தேர்ந்தெடுக்கவும்
+    languages: மொழிகள்
+    myAccount: எனது கணக்கு
+    selectALanguage: ஒரு மொழியைத் தேர்ந்தெடுக்கவும்
+    settings: அமைப்புகள்
+    trips: பயணங்கள்
+    userMenu: சுயவிவர விருப்பங்கள்
+  SwitchButton:
+    defaultContent: ஆளி, நிலைமாறி
+    switchLocations: இருப்பிடங்களை மாற்றவும்
+  TermsOfUsePane:
+    confirmDeletionPrompt: >
+      வரலாற்று பயணங்களை சேமிப்பதற்கான உங்கள் சம்மதத்தை நீக்குவது உங்கள் பயண
+      வரலாற்றை நீக்கிவிடும். நீங்கள் தொடர விரும்புகிறீர்களா?
+    mustAgreeToTerms: தொடர பணி விதிமுறைகளை நீங்கள் ஒப்புக் கொள்ள வேண்டும்.
+    termsOfServiceStatement: >
+      நான் குறைந்தது 18 வயதாகிவிட்டேன் என்பதை உறுதிப்படுத்துகிறேன், மேலும் பயணத்
+      திட்டத்தைப் பயன்படுத்துவதற்காக <neffetsorofuselink> பணி விதிமுறைகள்
+      </nemsofuselink> ஐப் படித்து ஒப்புக்கொள்கிறேன்.
+    termsOfStorageStatement: >
+      விரும்பினால்: எனது பகுதியில் போக்குவரத்து சேவைகளை மேம்படுத்துவதற்காக எனது
+      வரலாற்று திட்டமிடப்பட்ட பயணங்களை சேமித்து வைக்கும் பயணத் திட்டத்திற்கு
+      நான் ஒப்புக்கொள்கிறேன். <ச்டோராகெலிங்கின் விதிமுறைகள்> மேலும் செய்தி ...
+      </சேமிப்பக இணைப்பின் விதிமுறைகள்>
+  TransitVehicleOverlay:
+    in_transit_to: "அடுத்த நிறுத்தம்: {stop}"
+    incoming_at: "அணுகும்: {stop}"
+    stopped_at: "{STOP bத்தில் கதவுகள் திறக்கப்படுகின்றன"
+    travelingAt: "{milesPerHour} இல் பயணம்"
+    vehicleName: வண்டி {vehicleNumber}
+  TripBasicsPane:
+    checkingItineraryExistence: வாரத்தின் ஒவ்வொரு நாளுக்கும் பயணத்தின் இருப்பை சரிபார்க்கிறது
+      ...
+    onlyOnDate: "{தேதி, தேதியில் மட்டுமே, :: eeeee yyyymmdd}"
+    recurringEachWeek: ஒவ்வொரு வாரமும் சில நாட்களில்
+    tripDaysPrompt: இந்த பயணத்தை நீங்கள் என்ன நாட்கள் எடுக்கிறீர்கள்?
+    tripIsAvailableOnDaysIndicated: மேலே குறிப்பிட்டுள்ளபடி உங்கள் பயணம் வாரத்தின்
+      நாட்களில் கிடைக்கிறது.
+    tripNamePrompt: "இந்த பயணத்திற்கு ஒரு பெயரை வழங்கவும்:"
+    tripNotAvailableOnDay: பயணம் {repeatedDay}
+    unsavedChangesExistingTrip: >-
+      உங்கள் பயணத்தை நீங்கள் இன்னும் சேமிக்கவில்லை. நீங்கள் வெளியேறினால்,
+      மாற்றங்கள் இழக்கப்படும்.
+    unsavedChangesNewTrip: >-
+      உங்கள் புதிய பயணத்தை நீங்கள் இன்னும் சேமிக்கவில்லை. நீங்கள் வெளியேறினால்,
+      அது இழக்கப்படும்.
+  TripCompanionsPane:
+    companionLabel: "இந்த பயணத்தில் தோழர்:"
+    observersLabel: "இந்த பயணத்தைப் பார்க்கும் பார்வையாளர்கள்:"
+    primaryLabel: "முதன்மை பயணி: "
+  TripNotificationsPane:
+    advancedSettings: மேம்பட்ட அமைப்புகள்
+    altRouteRecommended: மாற்று பாதை அல்லது பரிமாற்ற புள்ளி பரிந்துரைக்கப்படுகிறது
+    delaysAboveThreshold: விட தாமதங்கள் அல்லது இடையூறுகள் உள்ளன
+    howToReceiveAlerts: >
+      நீங்கள் சேமித்த பயணங்களுக்கான விழிப்பூட்டல்களைப் பெற, உங்கள் கணக்கு
+      அமைப்புகளில் அறிவிப்புகளை இயக்கவும், மீண்டும் ஒரு பயணத்தை சேமிக்கவும்
+      முயற்சிக்கவும்.
+    monitorThisTrip: "இந்த பயணம் தொடங்குவதற்கு முன்பு கண்காணிக்கவும்:"
+    notificationsTurnedOff: உங்கள் கணக்கிற்கு அறிவிப்புகள் அணைக்கப்படுகின்றன.
+    notifyViaChannelWhen: "{channel} வழியாக எனக்கு அறிவிக்கவும்:"
+    oneHour: 1 மணி நேரம்
+    realtimeAlertFlagged: எனது பயணத்தில் ஒரு நிகழ்நேர எச்சரிக்கை கொடியிடப்பட்டுள்ளது
+    timeBefore: "{time} முன்"
+  TripPreviewLayout:
+    previewTrip: முன்னோட்டம் பயணம்
+  TripStatus:
+    alerts: "{எச்சரிக்கைகள், பன்மை, ஒன்று {# எச்சரிக்கை!} மற்ற {# எச்சரிக்கைகள்!}}"
+    deleteTrip: பயணத்தை நீக்கு
+    planNewTrip: புதிய பயணத்தைத் திட்டமிடுங்கள்
+  TripStatusRenderers:
+    active:
+      delayedHeading: பயணம் நடந்து கொண்டிருக்கிறது மற்றும் தாமதமானது {formattedDuration}!
+      description: பயணம் இலக்கு மற்றும் {வருகை நேரம், நேரம், குறுகிய}.
+      earlyHeading: >-
+        பயணம் நடந்து கொண்டிருக்கிறது மற்றும் எதிர்பார்த்ததை விட
+        {formattedDuration} முன்னதாக வந்து வருகிறது!
+      noDataHeading: பயணம் நடந்து வருகிறது (நிகழ்நேர புதுப்பிப்புகள் எதுவும் கிடைக்கவில்லை).
+      onTimeHeading: பயணம் நடந்து வருகிறது, சரியான நேரத்தில் உள்ளது.
+    base:
+      lastCheckedDefaultText: கடைசியாக சரிபார்க்கப்பட்ட நேரம் தெரியவில்லை
+      lastCheckedText: "கடைசியாக சரிபார்க்கப்பட்டது: {formattedDuration} முன்பு"
+      togglePause: இடைநிறுத்தம்
+      tripIsNotSnoozed: இன்றைய மீதமுள்ள உறக்கநிலை
+      tripIsSnoozed: பயண பயண பகுப்பாய்வு
+      unknownState: தெரியாத பயண நிலை
+      untogglePause: மீண்டும் தொடங்குங்கள்
+    inactive:
+      description: புதுப்பிக்கப்பட்ட நிலையைக் காண பயண கண்காணிப்பை மீண்டும் தொடங்குங்கள்
+      heading: பயண கண்காணிப்பு இடைநிறுத்தப்பட்டுள்ளது
+    nextTripNotPossible:
+      description: >
+        பயணத் திட்டத்தால் இன்று உங்கள் பயணத்தை கண்டுபிடிக்க முடியவில்லை. மாற்று
+        வழியைக் கண்டுபிடிக்க உங்கள் பயணத்திட்டத்தை மீண்டும் திட்டமிட
+        முயற்சிக்கவும்.
+      heading: பயணம் இன்று சாத்தியமில்லை
+    noLongerPossible:
+      description: >
+        வாரத்தின் தேர்ந்தெடுக்கப்பட்ட நாட்களில் உங்கள் பயணத்தை பயணத் திட்டத்தால்
+        கண்டுபிடிக்க முடியவில்லை. மாற்று வழியைக் கண்டுபிடிக்க உங்கள்
+        பயணத்திட்டத்தை மீண்டும் திட்டமிட முயற்சிக்கவும்.
+      heading: பயணம் இனி சாத்தியமில்லை
+    notCalculated:
+      awaiting: கணக்கீட்டிற்காக காத்திருக்கிறது ...
+      description: பயணத்தை கணக்கிட கொஞ்சம் காத்திருங்கள்.
+      heading: பயணம் இன்னும் கணக்கிடப்படவில்லை
+    past:
+      description: இது கடந்த காலங்களில் நிகழ்ந்த ஒரு முறை பயணம்.
+      heading: பயணம் கடந்த காலத்தில் உள்ளது
+    snoozed:
+      description: புதுப்பிக்கப்பட்ட நிலையைக் காண பயண கண்காணிப்பு.
+      heading: பயண கண்காணிப்பு இன்று உறக்கநிலையில் உள்ளது
+    upcoming:
+      nextTripBegins: >-
+        அடுத்த பயணம் {பயண தேதிநேரம், தேதி, :: eeee yyyymmdd the {பயண தேதிநேரம்,
+        நேரம், குறுகிய} இல் தொடங்குகிறது.
+      tripBegins: >-
+        பயணம் {டிரிப்ச்டார்ட், நேரம், குறுகிய} இல் தொடங்க உள்ளது. (நிகழ்நேர
+        கண்காணிப்பு {மானிட்டரிங்ச்டார்ட், நேரம், குறுகிய} இல் தொடங்கும்.)
+      tripStartIsDelayed: பயண தொடக்க நேரம் தாமதமானது {duration}!
+      tripStartIsEarly: பயண தொடக்க நேரம் நடக்கிறது {duration} எதிர்பார்த்ததை விட முன்னதாக!
+      tripStartsSoonNoUpdates: >-
+        பயணம் விரைவில் தொடங்குகிறது (நிகழ்நேர புதுப்பிப்புகள் எதுவும்
+        கிடைக்கவில்லை).
+      tripStartsSoonOnTime: பயணம் விரைவில் தொடங்குகிறது, சரியான நேரத்தில்.
+  TripSummary:
+    arriveAt: "வாருங்கள் "
+    leaveAt: "விடுங்கள் "
+  TripSummaryPane:
+    happensOnDays: "நடக்கும்: {days}"
+    monitoredTripDays: பயணம் கண்காணிக்கப்பட்ட நாட்கள்
+    notifications: "{leadTimeInMinutes} min. திட்டமிடப்பட்ட புறப்படுவதற்கு முன்"
+    notificationsDisabled: அறிவிப்புகள் முடக்கப்பட்டன
+    timeAndDuration: பயண நேரம் மற்றும் காலம்
+  TripTools:
+    copyLink: இணைப்பை நகலெடுக்கவும்
+    header: பயண கருவிகள்
+    linkCopied: நகலெடுக்கப்பட்டது
+    reportEmailSubject: Opentripplanner உடன் சிக்கலைப் புகாரளித்தல்
+    reportEmailTemplate: |
+      *** பயனருக்கு வழிமுறைகள் ***
+       இந்த நற்பொருத்தம் ஒரு அறிக்கையை தள நிர்வாகிகளுக்கு மதிப்பாய்வு செய்ய மின்னஞ்சல் செய்ய உங்களை அனுமதிக்கிறது.
+       தயவுசெய்து கீழே உள்ள கேட்கல்களை நிரப்பவும், உங்கள் வழக்கமான மின்னஞ்சல் நிரலைப் பயன்படுத்தி அனுப்பவும்.
+
+       *** தயவுசெய்து பின்வரும் ***
+
+       சந்தித்த பிரச்சினை:
+       
+       நீங்கள் எடுக்க விரும்பிய பயண வகை (எ.கா. நடை + போக்குவரத்து, பைக் + போக்குவரத்து, கார் + போக்குவரத்து):
+
+       *** தொழில்நுட்ப விவரங்கள் ***
+    reportIssue: சிக்கல் அறிக்கை
+  TripViewer:
+    accessible: அணுகக்கூடியது
+    bicyclesAllowed: அனுமதிக்கப்படுகிறது
+    endOfTrip: பயணம் இங்கே முடிகிறது
+    header: பயண பார்வையாளர்
+    listOfRouteStops: இந்த வழியில் நிறுத்தங்களின் பட்டியல்
+    routeHeader: "பாதை: <strong> {routeShortName} </strong> {routeLongName}"
+    startOfTrip: பயணம் இங்கே தொடங்குகிறது
+    tripDescription: "{boardAtStop} இல் பலகை மற்றும் {disembarkAtStop} இல் இறங்கவும்"
+    viewStop: பார்வை
+  UserAccountScreen:
+    confirmDelete: >-
+      உங்கள் பயனர் கணக்கை நீக்க விரும்புகிறீர்களா? நீங்கள் அவ்வாறு செய்தவுடன்,
+      அதை மீட்டெடுக்க முடியாது.
+    errorUpdatingProfile: சுயவிவரத்தைப் புதுப்பிப்பதில் பிழை.
+    fieldUpdated: இந்த அமைப்பு புதுப்பிக்கப்பட்டுள்ளது.
+    fields:
+      add-companion-form: பயண தோழர்கள்
+      storeTripHistory: பயண வரலாற்றை சேமிக்கவும்
+    updating: புதுப்பித்தல்
+  UserSettings:
+    confirmDeletion: >-
+      உங்களிடம் அண்மைக் கால தேடல்கள் மற்றும்/அல்லது இடங்கள் சேமிக்கப்பட்டுள்ளன.
+      அண்மைக் கால இடங்கள்/தேடல்களின் சேமிப்பகத்தை முடக்குவது இந்த உருப்படிகளை
+      அகற்றும். தொடரவா?
+    favoriteStops: பிடித்த நிறுத்தங்கள்
+    myPreferences: எனது விருப்பத்தேர்வுகள்
+    mySavedPlaces: எனது சேமித்த இடங்கள் (<agenelink> நிர்வகி </MangeneLink>)
+    noFavoriteStops: பிடித்த நிறுத்தங்கள் இல்லை
+    recentPlaces: அண்மைக் கால இடங்கள்
+    recentSearchSummary: "{{mode} முதல் {வரை {from}"
+    recentSearches: அண்மைக் கால தேடல்கள்
+    rememberSearches: அண்மைக் கால தேடல்கள்/இடங்களை நினைவில் கொள்கிறீர்களா?
+    stopId: "ஐடியை நிறுத்து: {stopId}"
+    storageDisclaimer: >
+      நீங்கள் சேமிக்க விரும்பும் விருப்பத்தேர்வுகள், இடங்கள் அல்லது அமைப்புகள்
+      உங்கள் உலாவியின் உள்ளக சேமிப்பகத்தில் சேமிக்கப்படும். ட்ரைமெட் உங்கள்
+      வீடு, வேலை அல்லது வேறு எந்த இடத்தையும் பற்றிய அறிவை அணுகாது. எந்த
+      நேரத்திலும் நீங்கள் அண்மைக் கால இடங்கள்/தேடல்களை நினைவில் வைத்துக்
+      கொள்ளலாம் மற்றும் உங்கள் சேமித்த வீடு/வேலை இருப்பிடங்கள் மற்றும் பிடித்த
+      நிறுத்தங்களை அழிக்கலாம்.
+  VerifyEmailPane:
+    emailIsVerified: எனது மின்னஞ்சல் சரிபார்க்கப்பட்டது!
+    instructions1: >
+      தயவுசெய்து உங்கள் மின்னஞ்சல் இன்பாக்சைச் சரிபார்த்து, உங்கள் கணக்கு
+      அமைப்பை முடிப்பதற்கு முன் உங்கள் மின்னஞ்சல் முகவரியை சரிபார்க்க செய்தியில்
+      உள்ள இணைப்பைப் பின்தொடரவும்.
+    instructions2: நீங்கள் சரிபார்க்கியதும், தொடர கீழே உள்ள பொத்தானைக் சொடுக்கு செய்க.
+    resendVerification: சரிபார்ப்பு மின்னஞ்சல் மீண்டும் அனுப்பவும்
+  ViewSwitcher:
+    nearby: அருகில்
+    switcher: ச்விட்சர்
+  WelcomeScreen:
+    prompt: நீங்கள் எங்கு செல்ல விரும்புகிறீர்கள்?
+config:
+  accessModes:
+    car_hail: சவாரி ஆலங்கட்டி
+  flex:
+    both: விவரங்களுக்கு பயணத்தின் கீழே பார்க்கவும்
+    call-ahead: முன்பதிவு செய்ய அழைக்கவும்
+    continuous-dropoff: நிறுத்தத்தைப் பற்றி ஆபரேட்டருடன் தொடர்பு கொள்ளுங்கள்
+    flex-service: நெகிழ்வு பணி
+    flex-service-colon: "நெகிழ்வு சேவை:"
+util:
+  state:
+    errorPlanningTrip: பயணத்தைத் திட்டமிடும்போது பிழை ஏற்பட்டது.
+    networkUnavailable: "{network} பிணையம் இந்த நேரத்தில் கிடைக்கவில்லை."
+    noTripFound: எந்த பயணமும் கிடைக்கவில்லை.
+    noTripFoundForMode: "{முறைகள் க்கு க்கு எந்த பயணமும் கிடைக்கவில்லை."
+    noTripFoundReason: >-
+      அதிகபட்ச குறிப்பிட்ட தூரத்திற்கு அல்லது குறிப்பிட்ட நேரத்தில் போக்குவரத்து
+      பணி எதுவும் இருக்கலாம், அல்லது உங்கள் தொடக்க அல்லது இறுதி புள்ளி
+      பாதுகாப்பாக அணுக முடியாது.
+    noTripFoundWithReason: "{noTripFound} {reason}"
