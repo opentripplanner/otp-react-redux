@@ -36,6 +36,7 @@ import Vehicle from './vehicle-rent'
 import VehicleParking from './vehicle-parking'
 
 const AUTO_REFRESH_INTERVAL = 15000000
+const ADDITIONAL_COUNT_RADIUS_MERGE_DISTANCE_IN_METERS = 300
 
 // TODO: use lonlat package
 type LatLonObj = { lat: number; lon: number }
@@ -72,6 +73,10 @@ type Props = {
   setViewedNearbyCoords: (location: Location | null) => void
   zoomToPlace: ZoomToPlaceHandler
 }
+
+const generateMergedNetworkName = (distance: number) =>
+  Math.round(distance / ADDITIONAL_COUNT_RADIUS_MERGE_DISTANCE_IN_METERS) *
+  ADDITIONAL_COUNT_RADIUS_MERGE_DISTANCE_IN_METERS
 
 const getNearbyItem = (place: any) => {
   const fromTo = <FromToPicker place={place} />
@@ -259,13 +264,16 @@ function NearbyView({
   const scooterGroups = nearby?.reduce((acc: any, item: any) => {
     if (item.place.__typename === 'RentalVehicle') {
       const network = item.place.network
-      if (!acc[network]) {
-        acc[network] = {
+      const mergedNetwork = `${network}_${generateMergedNetworkName(
+        item.distance
+      )}`
+      if (!acc[mergedNetwork]) {
+        acc[mergedNetwork] = {
           count: 1,
           nearest: item
         }
       } else {
-        acc[network].count++
+        acc[mergedNetwork].count++
       }
     }
     return acc
@@ -285,7 +293,10 @@ function NearbyView({
         Object.keys(scooterGroups).length > 0 &&
         n.place.__typename === 'RentalVehicle'
       ) {
-        return scooterGroups[n.place?.network].nearest.id === n.id
+        const mergedNetwork = `${n.place?.network}_${generateMergedNetworkName(
+          n?.distance
+        )}`
+        return scooterGroups[mergedNetwork]?.nearest?.id === n.id
       }
       return true
     })
@@ -311,7 +322,10 @@ function NearbyView({
         >
           {getNearbyItem({
             ...n.place,
-            additionalCount: scooterGroups?.[n.place?.network]?.count,
+            additionalCount:
+              scooterGroups?.[
+                `${n.place?.network}_${generateMergedNetworkName(n?.distance)}`
+              ]?.count,
             distance: n.distance,
             nearbyRoutes
           })}
