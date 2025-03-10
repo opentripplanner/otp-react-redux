@@ -269,6 +269,12 @@ components:
     setAddressForPlaceType: Set your {placeType} address
   FavoritePlaceScreen:
     addNewPlace: Add new place
+    charactersOverLimit: >-
+      {chars, plural, one {# character over limit} other {# characters over
+      limit} }
+    charactersRemaining: >-
+      {chars, plural, one {# character remaining} other {# characters remaining}
+      }
     editPlace: Edit {placeName}
     editPlaceGeneric: Edit place
     invalidAddress: Please set a location for this place.
@@ -276,6 +282,7 @@ components:
     nameAlreadyUsed: >-
       You are already using this name for another place. Please enter a
       different name.
+    nameTooLong: Name must be fewer than {char} characters.
     placeNotFound: Place not found
     placeNotFoundDescription: Sorry, the requested place was not found.
   FormNavigationButtons:
@@ -308,8 +315,6 @@ components:
     originallyScheduledTime: (originally {originalTime})
     singleModeItineraryDescription: "{time} {mode} itinerary"
     timeWalking: "{time} walking"
-  MobileOptions:
-    header: Set Search Options
   MobilityProfile:
     DevicesPane:
       devices:
@@ -500,10 +505,6 @@ components:
     scheduled: scheduled
   ResultsError:
     backToSearch: Back to Search
-  ResultsHeader:
-    noTripFound: No Trip Found
-    tripsFound: We Found {count, plural, one {# Option} other {# Options}}
-    waiting: Waiting...
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: More Details
@@ -793,11 +794,6 @@ components:
       knowledge about your home, work,  or any other location. At any point you
       can opt to turn off  remembering recent places/searches and clear your
       saved home/work locations and favorite stops.
-  UserTripSettings:
-    forgetOptions: Forget my options
-    rememberOptions: Remember trip options
-    restoreDefaults: Restore defaults
-    restoreMyDefaults: Restore my defaults
   VerifyEmailPane:
     emailIsVerified: My email is verified!
     instructions1: >
@@ -812,24 +808,13 @@ components:
     prompt: Where do you want to go?
 config:
   accessModes:
-    bicycle: Transit + Personal bike
-    bicycle_rent: Transit + Bikeshare
     car_hail: Ride Hail
-    car_park: Park & Ride
-    micromobility: Transit + Personal scooter
-    micromobility_rent: Transit + E-scooter rental
-  bicycleModes:
-    bicycle: Own Bike
-    bicycle_rent: Bikeshare
   flex:
     both: See bottom of itinerary for details
     call-ahead: Call to reserve
     continuous-dropoff: Communicate with operator about stop
     flex-service: Flex Service
     flex-service-colon: "Flex Service:"
-  micromobilityModes:
-    micromobility: Own E-scooter
-    micromobility_rent: Rented E-scooter
 util:
   state:
     errorPlanningTrip: An error occurred while planning a trip.

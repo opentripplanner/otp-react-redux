@@ -12,6 +12,7 @@ import {
   IntlShape,
   WrappedComponentProps
 } from 'react-intl'
+import { InvisibleAdditionalDetails } from '@opentripplanner/itinerary-body/lib/styled'
 import { Location } from '@opentripplanner/types'
 import { LocationSelectedEvent } from '@opentripplanner/location-field/lib/types'
 import coreUtils from '@opentripplanner/core-utils'
@@ -24,6 +25,7 @@ import { capitalizeFirst, getErrorStates } from '../../../util/ui'
 import { ComponentContext } from '../../../util/contexts'
 import { CUSTOM_PLACE_TYPES, isHomeOrWork } from '../../../util/user'
 import { getFormattedPlaces } from '../../../util/i18n'
+import { PLACE_NAME_MAX_LENGTH } from '../../../util/constants'
 import { StyledIconWrapper } from '../../util/styledIcon'
 import { UserSavedLocation } from '../types'
 import ButtonGroup from '../../util/button-group'
@@ -135,6 +137,9 @@ class PlaceEditor extends Component<Props> {
     const nameExample = intl.formatMessage({
       id: 'components.PlaceEditor.nameExample'
     })
+    const placeCharacterCount = place.name?.length || 0
+    const characterRemaining = PLACE_NAME_MAX_LENGTH - placeCharacterCount
+    const charactersOverLimit = 0 - characterRemaining
 
     return (
       <div>
@@ -144,6 +149,27 @@ class PlaceEditor extends Component<Props> {
               <ControlLabel htmlFor="name">
                 <FormattedMessage id="components.PlaceEditor.namePrompt" />
               </ControlLabel>
+              <div
+                aria-hidden
+                style={{
+                  fontWeight: 300,
+                  position: 'absolute',
+                  right: 0,
+                  top: 0
+                }}
+              >
+                {charactersOverLimit > 0 ? (
+                  <FormattedMessage
+                    id="components.FavoritePlaceScreen.charactersOverLimit"
+                    values={{ chars: charactersOverLimit }}
+                  />
+                ) : (
+                  <FormattedMessage
+                    id="components.FavoritePlaceScreen.charactersRemaining"
+                    values={{ chars: characterRemaining }}
+                  />
+                )}
+              </div>
               {/* onBlur, onChange, and value are passed automatically. */}
               <Field
                 aria-invalid={!!errors.name}
@@ -158,6 +184,15 @@ class PlaceEditor extends Component<Props> {
                 {errorStates.name && (
                   <FormattedValidationError type={errors.name} />
                 )}
+                {/* Invisible alert for AT to how many characters are over the limit. */}
+                <InvisibleAdditionalDetails>
+                  {charactersOverLimit > 0 && (
+                    <FormattedMessage
+                      id="components.FavoritePlaceScreen.charactersOverLimit"
+                      values={{ chars: charactersOverLimit }}
+                    />
+                  )}
+                </InvisibleAdditionalDetails>
               </HelpBlock>
             </StyledFormGroup>
             <FormGroup>
