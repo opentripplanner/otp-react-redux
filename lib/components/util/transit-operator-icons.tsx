@@ -6,7 +6,14 @@ import type { TransitOperator } from '@opentripplanner/types'
 
 import InvisibleA11yLabel from './invisible-a11y-label'
 import OperatorLogo from './operator-logo'
+import styled from 'styled-components'
 import type { StopData } from './types'
+
+const OperatorContainer = styled.span`
+  &:not(:last-of-type) {
+    margin-right: 0.5ch;
+  }
+`
 
 const Operator = ({ operator }: { operator?: TransitOperator }) => {
   const intl = useIntl()
@@ -26,13 +33,13 @@ const Operator = ({ operator }: { operator?: TransitOperator }) => {
       // Span with agency classname allows optional contrast/customization in user
       // config for logos with poor contrast. Class name is hyphenated agency name
       // e.g. "sound-transit"
-      <span
+      <OperatorContainer
         className={
           operator.name ? operator.name.replace(/\s+/g, '-').toLowerCase() : ''
         }
       >
         <OperatorLogo alt={operatorLogoAriaLabel} operator={operator} styled />
-      </span>
+      </OperatorContainer>
     ) : (
       // If operator exists but logo is missing,
       // we still need to announce the operator name to screen readers.

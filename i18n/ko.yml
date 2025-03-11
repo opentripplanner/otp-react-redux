@@ -22,7 +22,8 @@ actions:
     fetchFieldTripsError: "트립을 가져오는 중에 오류가 발생했습니다: {err}"
     fetchTripsForDateError: "필트 트립 날짜에 대한 트립을 가져오는 중에 오류가 발생했습니다: {err}"
     incompatibleTripDateError: 계획한 트립 날짜({tripDate})가 요청한 트립 날짜({requestDate})가 아닙니다
-    itineraryCapacityError: "플랜을 저장할 수 없습니다: 하나 이상의 차량의 용량이 부족하여 이 플랜을 저장할 수 없습니다. 트립을 다시 계획하세요."
+    itineraryCapacityError: "플랜을 저장할 수 없습니다: 하나 이상의 차량의 용량이 부족하여 이 플랜을 저장할 수 없습니다.
+      트립을 다시 계획하세요."
     maxTripRequestsExceeded: 유효한 결과없이 초과된 트립 요청의 개수
     saveItinerariesError: "트립을 저장하는 데 실패했습니다: {err}"
     setDateError: "날짜를 설정하는 중에 오류가 발생했습니다:"
@@ -45,6 +46,7 @@ actions:
     confirmDeletePlace: 이 장소를 제거하시겠습니까?
     emailVerificationResent: 이메일 확인 메시지가 다시 전송되었습니다.
     genericError: "오류가 발견되었습니다: {err}"
+    getDependentUserInfoFailed: 모빌리티 프로필 정보를 가져오는 중 오류가 발생했습니다.
     itineraryExistenceCheckFailed: 선택한 트립이 가능한지 확인하는 중에 오류가 발생했습니다.
     mustAcceptTermsToSavePlace: 위치를 저장하려면 사용 약관(내 계정 아래)을 수락하십시오.
     mustBeLoggedInToSavePlace: 위치를 저장하려면 로그인하십시오.
@@ -171,6 +173,8 @@ components:
     closeMenu: 메뉴 닫기
     fieldTrip: 필드 트립
     mailables: 발송 가능
+    networkConnectionLost: 네트워크 연결이 끊어짐
+    networkConnectionRestored: 네트워크 연결이 복구됨
     openMenu: 메뉴 열기
     skipNavigation: 내비게이션 건너뛰기
   BackToTripPlanner:
@@ -207,8 +211,8 @@ components:
     addNewCompanion: 새로운 여행 동행 추가
     companionAlreadyAdded: 이미 {email} 이메일을 사용하는 동행이 있습니다
     companionExplanation: >
-      기존 G-MAP 사용자의 이메일 주소를 입력하여 여행 동행으로 초대합니다. 상대방이 수락하면 상태가 "확인됨"으로 변경되고, 서로의
-      이동성 프로필에 따라 여행 상태를 공유하고 여행을 계획할 수 있습니다.
+      기존 G-MAP 사용자의 이메일 주소를 입력하여 여행 동행으로 초대합니다. 상대방이 수락하면 상태가 "확인됨"으로 변경되고, 서로의 이동성
+      프로필에 따라 여행 상태를 공유하고 여행을 계획할 수 있습니다.
     confirmDeleteCompanion: 동행 {email}을 삭제하시겠습니까?
     currentCompanionsLabel: "현재 여행 동행:"
     deleteCompanion: "{email} 삭제"
@@ -286,8 +290,6 @@ components:
     originallyScheduledTime: (기존 {originalTime})
     singleModeItineraryDescription: "{time} {mode} 일정표"
     timeWalking: "{time} 걷기"
-  MobileOptions:
-    header: 검색 옵션 설정
   MobilityProfile:
     DevicesPane:
       devices:
@@ -315,8 +317,11 @@ components:
       header: 이동성 프로필
       mobilityDevices: "이동성 장치: "
       mobilityLimitations: "이동성 제한: "
+      planTripDescription: 여정 동반자가 있는 경우, 동반자의 모빌리티 프로필에 따라 여정을 계획하도록 선택할 수 있습니다.
       visionLimitations: "시력 제한: "
+    dropdownLabel: "사용자 모빌리티 프로필:"
     intro: 귀하의 필요 사항과 선호도에 맞게 여행 계획 경험을 맞춤화하기 위해 몇 가지 질문에 답해 주십시오.
+    myself: 본인
     title: 이동성 프로필 정의하기
   NarrativeItinerariesHeader:
     changeSortDir: 정렬 방향 변경
@@ -350,6 +355,7 @@ components:
     headsign: "{destination}"
     nearbyListIntro: 주변 개체 {count}개 목록
     nothingNearby: 근처에 장소가 없습니다.
+    searchNearby: 주변 검색...
     spacesAvailable: "{spacesAvailable} 빈 자리 있음"
   NewAccountWizard:
     createNewAccount: 새 계정 생성
@@ -480,6 +486,7 @@ components:
   SavedTripEditor:
     deleteSavedTrip: 저장된 여행 삭제
     editSavedTrip: 저장된 트립 수정
+    readOnlyBanner: "{creator} 님이 이 여정을 만들고 귀하를 추가했습니다. 따라서 귀하는 이 여정을 변경할 수 없습니다."
     saveNewTrip: 새 트립 저장
     travelCompanions: 여행 동행
     tripInformation: 트립 정보
@@ -579,6 +586,10 @@ components:
     tripNotAvailableOnDay: "{repeatedDay}에는 트립을 이용할 수 없음"
     unsavedChangesExistingTrip: 트립을 아직 저장하지 않았습니다. 나가시면 변경내용이 사라집니다.
     unsavedChangesNewTrip: 새 트립을 저장하지 않았습니다. 나가시면 변경내용이 사라집니다.
+  TripCompanionsPane:
+    companionLabel: "이 여정의 동반자:"
+    observersLabel: "이 여정을 지켜보는 관찰자:"
+    primaryLabel: "주요 이동하는 사람: "
   TripNotificationsPane:
     advancedSettings: 고급 설정
     altRouteRecommended: 대체 경로 또는 환승 지점이 권장됩니다
@@ -686,6 +697,7 @@ components:
     errorUpdatingProfile: 프로필 업데이트 중 오류.
     fieldUpdated: 이 설정이 업데이트되었습니다.
     fields:
+      add-companion-form: "여정 동반자:"
       storeTripHistory: 이동편 이력 저장
     updating: 업데이트 중
   UserSettings:
@@ -703,11 +715,6 @@ components:
       저장하기로 선택한 환경설정, 장소 또는 설정은 브라우저의 로컬 저장소에 저장됩니다. TriMet은 귀하의 집, 직장 또는 기타 위치에
       대한 정보에 접근할 수 없습니다. 언제든지 최근 장소/검색 기억을 끄고 저장된 집/직장 위치 및 즐겨찾는 정류장을 지우실 수
       있습니다.
-  UserTripSettings:
-    forgetOptions: 내 옵션 잊기
-    rememberOptions: 트립 옵션 기억하기
-    restoreDefaults: 기본 설정 복원
-    restoreMyDefaults: 내 기본 설정 복원
   VerifyEmailPane:
     emailIsVerified: 내 이메일이 확인되었습니다!
     instructions1: |
@@ -721,29 +728,19 @@ components:
     prompt: 어디로 가고 싶으신가요?
 config:
   accessModes:
-    bicycle: 대중교통 + 개인 자전거
-    bicycle_rent: 대중교통 + 공유자전거
     car_hail: 승차 공유
-    car_park: 파크 앤 라이드
-    micromobility: 대중교통 + 개인 전동스쿠터
-    micromobility_rent: 대중교통 + 전동스쿠터 대여
-  bicycleModes:
-    bicycle: 내 자전거
-    bicycle_rent: 공유자전거
   flex:
     both: 자세한 내용은 일정의 하단을 참조하십시오
     call-ahead: 전화로 예약
     continuous-dropoff: 정류장에 대한 정보는 상담원과 연락
     flex-service: 플렉스 서비스
     flex-service-colon: "플렉스 서비스:"
-  micromobilityModes:
-    micromobility: 내 전동스쿠터
-    micromobility_rent: 대여한 전동스쿠터
 util:
   state:
     errorPlanningTrip: 트립을 계획하는 중에 오류가 발생했습니다.
     networkUnavailable: 현재 {network} 네트워크를 사용할 수 없습니다.
     noTripFound: 트립을 찾을 수 없습니다.
     noTripFoundForMode: "{modes}의 트립을 찾을 수 없습니다."
-    noTripFoundReason: 지정된 최대 거리 내 또는 지정된 시간에 대중 교통 서비스가 없거나, 출발지 또는 도착지가 안전하게 접근가능하지 못할 수 있습니다.
+    noTripFoundReason: 지정된 최대 거리 내 또는 지정된 시간에 대중 교통 서비스가 없거나, 출발지 또는 도착지가 안전하게 접근가능하지
+      못할 수 있습니다.
     noTripFoundWithReason: "{noTripFound} {reason}"
