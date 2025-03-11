@@ -78,6 +78,11 @@ const Vehicle = ({
     distance: number
     name: string
     network: string
+    rentalUris?: {
+      android?: string
+      ios?: string
+      web?: string
+    }
     vehicleType: {
       formFactor: VehicleFormFactor
     }
@@ -117,6 +122,21 @@ const Vehicle = ({
           <div>{vehicle.name}</div>
         )}
         {fromToSlot}
+        {vehicle.rentalUris && (
+          <div>
+            <a
+              href={
+                // This is a bit of a hack but I have yet to see data that
+                // uses different urls for each OS
+                vehicle.rentalUris.web ||
+                vehicle.rentalUris.android ||
+                vehicle.rentalUris.ios
+              }
+            >
+              <FormattedMessage id="components.NearbyView.rentVehicle" />
+            </a>
+          </div>
+        )}
       </CardBody>
       {vehicle.additionalCount > 0 && (
         <CardFooter>

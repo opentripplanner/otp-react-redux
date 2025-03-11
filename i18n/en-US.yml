@@ -389,6 +389,7 @@ components:
     headsign: "{destination}"
     nearbyListIntro: List of {count} nearby entities.
     nothingNearby: There are no places nearby.
+    rentVehicle: Rent vehicle
     searchNearby: Search nearby...
     spacesAvailable: "{spacesAvailable} empty spaces available"
   NewAccountWizard:
