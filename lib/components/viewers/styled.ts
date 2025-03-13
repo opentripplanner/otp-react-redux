@@ -129,7 +129,10 @@ export const Stop = styled.li<RenderProps>`
   }
 `
 
-export const PatternRowItem = styled.li<{ roundedTop?: boolean }>`
+export const PatternRowItem = styled.li<{
+  noRoundedBottom?: boolean
+  roundedTop?: boolean
+}>`
   list-style-type: none;
 
   & .header {
@@ -145,8 +148,10 @@ export const PatternRowItem = styled.li<{ roundedTop?: boolean }>`
   }
 
   &:last-of-type .header.stop-view {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: ${({ noRoundedBottom }) =>
+      noRoundedBottom ? '0' : '10px'};
+    border-bottom-right-radius: ${({ noRoundedBottom }) =>
+      noRoundedBottom ? '0' : '10px'};
   }
 `
 

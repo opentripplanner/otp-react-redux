@@ -25,6 +25,7 @@ import StopTimeCell from './stop-time-cell'
 type Props = {
   alwaysShowLongName?: boolean
   homeTimezone?: string
+  noRoundedBottom?: boolean
   pattern: Pattern
   roundedTop?: boolean
   route: Route & { operator?: TransitOperator & { colorMode?: string } }
@@ -59,9 +60,11 @@ const renderDay = (homeTimezone: string, day: number): JSX.Element => {
  * Represents a single pattern row for displaying arrival times in the stop
  * viewer.
  */
+// eslint-disable-next-line complexity
 const PatternRow = ({
   alwaysShowLongName,
   homeTimezone,
+  noRoundedBottom = false,
   pattern,
   roundedTop = true,
   route,
@@ -81,7 +84,11 @@ const PatternRow = ({
   const routeColor = getRouteColorBasedOnSettings(route.operator, route)
 
   return (
-    <PatternRowItem className="pattern-row-item" roundedTop={roundedTop}>
+    <PatternRowItem
+      className="pattern-row-item"
+      noRoundedBottom={noRoundedBottom}
+      roundedTop={roundedTop}
+    >
       {/* header row */}
       <div
         className="header stop-view"
