@@ -93,7 +93,7 @@ const SaveTripButton = ({
   }
 
   return (
-    <UnstyledLink className="pull-right" to={CREATE_TRIP_PATH}>
+    <UnstyledLink className="pull-right" id="save-trip" to={CREATE_TRIP_PATH}>
       <IconWithText Icon={PlusCircle}>
         <FormattedMessage id="components.SaveTripButton.saveTripText" />
       </IconWithText>
