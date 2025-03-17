@@ -1,6 +1,5 @@
 @import url(node_modules/bootstrap/dist/css/bootstrap.min.css);
 @import url(react-sliding-pane/dist/react-sliding-pane.css);
-@import url(lib/bike-rental.css);
 @import url(node_modules/maplibre-gl/dist/maplibre-gl.css);
 
 @import url(lib/components/admin/call-taker.css);
