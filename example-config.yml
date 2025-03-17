@@ -363,6 +363,9 @@ itinerary:
   # Filters out trips returned by OTP by default, unless specifically requested.
   # e.g. filters out walk-only itineraries if user has not explicitly asked for them.
   strictItineraryFiltering: false
+  # Whether to filter out itineraries that do not match our list of valid mode combinations
+  # (e.g. "WALK" + "DRIVE")
+  strictValidCombos: false
   # Whether to render route names and colors in the blocks inside
   # the batch ui rows
   renderRouteNamesInBlocks: true
