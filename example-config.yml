@@ -350,7 +350,7 @@ routingTypes:
 itinerary:
   # Provides an array of valid mode combinations that returned itineraries will be filtered against
   # If left blank, all itineraries deemed valid by OTP will be returned
-  acceptableValidModeCombos: [ 
+  validModeCombinations: [ 
     ['WALK'],
     ['WALK', 'PERSONAL'],
     ['WALK', 'TRANSIT', 'SHARED'],
