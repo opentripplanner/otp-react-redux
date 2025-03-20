@@ -1,7 +1,11 @@
 /* globals describe, expect, it */
 
 import '../test-utils/mock-window-url'
-import { isValidSubsequence, queryIsValid } from '../../lib/util/state'
+import {
+  addToSearches,
+  isValidSubsequence,
+  queryIsValid
+} from '../../lib/util/state'
 
 describe('util > state', () => {
   describe('isValidSubsequence', () => {
@@ -63,6 +67,36 @@ describe('util > state', () => {
           testCase.expected ? 'toBeTruthy' : 'toBeFalsy'
         ]()
       })
+    })
+  })
+  describe('addToSearches', () => {
+    it('should add the most recent entry and remove other identical ones', () => {
+      const spaceNeedle = {
+        lat: 47.620336,
+        lon: -122.349314,
+        main: 'Space Needle',
+        name: 'Space Needle, Broad Street, Lower Queen Anne, Seattle, WA',
+        secondary: 'Broad Street, Lower Queen Anne, Seattle, WA'
+      }
+      const unionStation = {
+        lat: 47.598665,
+        lon: -122.328498,
+        main: 'Union Station',
+        name: 'Union Station, South Jackson Street, International District, Seattle, WA',
+        secondary: 'South Jackson Street, International District, Seattle, WA'
+      }
+      const pikePlace = {
+        lat: 47.609541,
+        lon: -122.342621,
+        main: 'Pike Place Market',
+        name: 'Pike Place Market, Pike Place Market, Seattle, WA',
+        secondary: 'Pike Place Market, Seattle, WA'
+      }
+
+      // Entries, most recent first.
+      const entries = [unionStation, spaceNeedle, pikePlace]
+      const tidiedEntries = [spaceNeedle, unionStation, pikePlace]
+      expect(addToSearches(entries, spaceNeedle)).toEqual(tidiedEntries)
     })
   })
 })
