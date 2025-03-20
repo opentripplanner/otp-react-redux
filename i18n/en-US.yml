@@ -378,7 +378,7 @@ components:
     signIn: Log in
     signOut: Log out
   NearbyView:
-    additionalVehicles: +{count} more nearby
+    additionalVehicles: +{count} others
     bikeRentalStation: Bike Rental Station
     bikesAvailable: "{bikesAvailable, plural, one {# bike} other {# bikes}} available"
     companyBicycle: "{company} Bike"
