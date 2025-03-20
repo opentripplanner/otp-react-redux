@@ -25,7 +25,7 @@ const RentalStation = ({ companies, fromToSlot, place }: Props) => {
 
   const stationIcon = (
     <CompanyIcon
-      company={company}
+      company={company || ''}
       fallbackContent={<Bicycle />}
       height={22}
       style={{ marginRight: '5px' }}

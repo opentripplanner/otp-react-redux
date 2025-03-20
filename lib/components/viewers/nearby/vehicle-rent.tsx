@@ -97,7 +97,7 @@ const Vehicle = ({
           <IconWithText
             icon={
               <CompanyIcon
-                company={vehicle.network}
+                company={vehicle.network || ''}
                 fallbackContent={getVehicleIcon(formFactor)}
                 height={22}
                 style={{ marginRight: '5px' }}
