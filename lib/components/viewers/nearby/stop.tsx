@@ -42,6 +42,12 @@ export const patternArrayforStops = (
             p.pattern.route?.shortName === cur.pattern.route?.shortName
         } else if (p.pattern.route?.longName && cur.pattern.route?.longName) {
           sameRoute = p.pattern.route?.longName === cur.pattern.route?.longName
+        } else if (
+          p?.stoptimes?.[0]?.headsign &&
+          cur?.stoptimes?.[0]?.headsign
+        ) {
+          sameRoute =
+            p?.stoptimes?.[0]?.headsign === cur?.stoptimes?.[0]?.headsign
         }
         return (
           extractHeadsignFromPattern(p.pattern) === currentHeadsign && sameRoute
