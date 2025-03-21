@@ -239,6 +239,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                         onKeyDown={[Function]}
                         placeholder="components.NearbyView.searchNearby"
                         role="combobox"
+                        spellCheck={false}
                         value=""
                       >
                         <input
@@ -257,6 +258,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                           onKeyDown={[Function]}
                           placeholder="components.NearbyView.searchNearby"
                           role="combobox"
+                          spellCheck={false}
                           value=""
                         />
                       </styled__Input>
@@ -4517,6 +4519,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                         onKeyDown={[Function]}
                         placeholder="components.NearbyView.searchNearby"
                         role="combobox"
+                        spellCheck={false}
                         value=""
                       >
                         <input
@@ -4535,6 +4538,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           onKeyDown={[Function]}
                           placeholder="components.NearbyView.searchNearby"
                           role="combobox"
+                          spellCheck={false}
                           value=""
                         />
                       </styled__Input>
