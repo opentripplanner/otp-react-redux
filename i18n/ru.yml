@@ -551,7 +551,6 @@ components:
     editSavedTrip: Редактировать сохраненную поездку
     saveNewTrip: Сохранить поездку
     travelCompanions: Попутчики
-    tripInformation: Информация о поездке
     tripNotFound: Поездка не найдена
     tripNotFoundDescription: Не удалось найти требуемую поездку.
     tripNotifications: Уведомления о поездке
@@ -654,7 +653,6 @@ components:
     unsavedChangesExistingTrip: Вы не сохранили поездку. Если вы выйдете, все изменения будут утеряны.
     unsavedChangesNewTrip: Вы не сохранили новую поездку. Если вы выйдете, она будет удалена.
   TripNotificationsPane:
-    advancedSettings: Расширенные настройки
     altRouteRecommended: Рекомендуется использовать пересадку или альтернативный маршрут
     delaysAboveThreshold: Задержки или сбои в работе более чем на
     howToReceiveAlerts: >

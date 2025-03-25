@@ -127,7 +127,6 @@ components:
   SavedTripEditor:
     editSavedTrip: Rediger lagret tur
     saveNewTrip: Lagre ny tur
-    tripInformation: Turinfo
     tripNotifications: Turmerknader
   SavedTripList:
     myTrips: Mine turer

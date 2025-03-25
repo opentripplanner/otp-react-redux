@@ -539,7 +539,6 @@ components:
       changes.
     saveNewTrip: Save new trip
     travelCompanions: Travel companions
-    tripInformation: Trip information
     tripNotFound: Trip not found
     tripNotFoundDescription: Sorry, the requested trip was not found.
     tripNotifications: Trip notifications
@@ -648,7 +647,6 @@ components:
     observersLabel: "Observers watching this trip:"
     primaryLabel: "Primary traveler: "
   TripNotificationsPane:
-    advancedSettings: Advanced settings
     altRouteRecommended: An alternative route or transfer point is recommended
     delaysAboveThreshold: There are delays or disruptions of more than
     howToReceiveAlerts: >

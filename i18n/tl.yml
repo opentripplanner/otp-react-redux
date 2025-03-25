@@ -560,7 +560,6 @@ components:
     editSavedTrip: I-edit ang na-save na biyahe
     saveNewTrip: I-save ang bagong biyahe
     travelCompanions: Mga kasama sa pagbiyahe
-    tripInformation: Impormasyon ng biyahe
     tripNotFound: Hindi nakita ang biyahe
     tripNotFoundDescription: Pasensya na, hindi nakita ang hiniling na biyahe.
     tripNotifications: Mga notification sa biyahe
@@ -676,7 +675,6 @@ components:
       Hindi mo pa nase-save ang iyong bagong biyahe. Kung aalis ka, mawawala
       ito.
   TripNotificationsPane:
-    advancedSettings: Mga advanced na setting
     altRouteRecommended: Inirerekomenda ang isang alternatibong ruta o transfer point
     delaysAboveThreshold: May mga pagkaantala o abalang mahigit sa
     howToReceiveAlerts: >

@@ -431,7 +431,6 @@ components:
   SavedTripEditor:
     editSavedTrip: 编辑已保存的行程
     saveNewTrip: 保存新的行程
-    tripInformation: 行程信息
     tripNotFound: 未找到行程
     tripNotFoundDescription: 对不起, 没有找到所要求的行程.
     tripNotifications: 行程通知
@@ -523,7 +522,6 @@ components:
     unsavedChangesExistingTrip: 您还没有保存你的行程. 如果您离开了，变更就会消失.
     unsavedChangesNewTrip: 您还没有保存您的新旅行. 如果您离开，它就会消失.
   TripNotificationsPane:
-    advancedSettings: 进阶设置
     altRouteRecommended: 建议采用替代路线或换乘点
     delaysAboveThreshold: 延误或中断超过
     howToReceiveAlerts: |

@@ -535,7 +535,6 @@ components:
     editSavedTrip: Chỉnh sửa chuyến đi được lưu
     saveNewTrip: Lưu chuyến đi mới
     travelCompanions: Người đồng hành đi lại
-    tripInformation: Thông tin chuyến đi
     tripNotFound: Không tìm thấy chuyến đi
     tripNotFoundDescription: Xin lỗi, không tìm thấy chuyến đi được yêu cầu.
     tripNotifications: Thông báo chuyến đi
@@ -646,7 +645,6 @@ components:
     unsavedChangesExistingTrip: Bạn chưa lưu chuyến đi của mình. Nếu bạn rời đi, những thay đổi sẽ bị mất.
     unsavedChangesNewTrip: Bạn chưa lưu chuyến đi mới của mình. Nếu bạn rời đi, nó sẽ bị mất.
   TripNotificationsPane:
-    advancedSettings: Cài đặt nâng cao
     altRouteRecommended: Một tuyến đường hoặc điểm trung chuyển thay thế được khuyến nghị
     delaysAboveThreshold: Có sự chậm trễ hoặc gián đoạn của hơn
     howToReceiveAlerts: >
