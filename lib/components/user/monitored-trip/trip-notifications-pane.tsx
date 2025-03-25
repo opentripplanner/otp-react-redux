@@ -36,14 +36,6 @@ const SettingsList = styled.ul`
   }
 `
 
-const Summary = styled.summary`
-  /* Revert display:block set by Bootstrap that hides the native expand/collapse caret. */
-  display: revert-layer;
-  /* Format summary as labels */
-  font-weight: 700;
-  margin-bottom: 5px;
-`
-
 interface Props extends FormikProps<MonitoredTrip> {
   isReadOnly: boolean
   notificationChannel: string
@@ -104,68 +96,69 @@ class TripNotificationsPane extends Component<Props> {
           />
         ))
       notificationSettingsContent = (
-        <FieldSet disabled={isReadOnly}>
-          {hasTransit ? (
-            <>
-              <legend>
-                <FormattedMessage
-                  id="components.TripNotificationsPane.notifyViaChannelWhen"
-                  values={{
-                    channel: (
-                      <FormattedList
-                        type="conjunction"
-                        value={selectedChannels}
+        <>
+          <FieldSet disabled={isReadOnly}>
+            {hasTransit ? (
+              <>
+                <legend>
+                  <FormattedMessage
+                    id="components.TripNotificationsPane.notifyViaChannelWhen"
+                    values={{
+                      channel: (
+                        <FormattedList
+                          type="conjunction"
+                          value={selectedChannels}
+                        />
+                      )
+                    }}
+                  />
+                </legend>
+                <SettingsList>
+                  <li>
+                    <Select
+                      label={
+                        <FormattedMessage id="components.TripNotificationsPane.realtimeAlertFlagged" />
+                      }
+                      name="notifyOnAlert"
+                    >
+                      <YesNoOptions defaultValue />
+                    </Select>
+                  </li>
+                  <li>
+                    <Select
+                      label={
+                        <FormattedMessage id="components.TripNotificationsPane.altRouteRecommended" />
+                      }
+                      name="notifyOnItineraryChange"
+                    >
+                      <YesNoOptions defaultValue />
+                    </Select>
+                  </li>
+                  <li>
+                    <label htmlFor="commonDelayThreshold">
+                      <FormattedMessage id="components.TripNotificationsPane.delaysAboveThreshold" />
+                    </label>
+                    <FormControl
+                      componentClass="select"
+                      id="commonDelayThreshold"
+                      // Special event handler, hence not using <Select> as above.
+                      onChange={this._handleDelayThresholdChange}
+                      value={commonDelayThreshold}
+                    >
+                      <DurationOptions
+                        defaultValue={5}
+                        minuteOptions={[5, 10, 15]}
                       />
-                    )
-                  }}
-                />
-              </legend>
-              <SettingsList>
-                <li>
-                  <Select
-                    label={
-                      <FormattedMessage id="components.TripNotificationsPane.realtimeAlertFlagged" />
-                    }
-                    name="notifyOnAlert"
-                  >
-                    <YesNoOptions defaultValue />
-                  </Select>
-                </li>
-                <li>
-                  <Select
-                    label={
-                      <FormattedMessage id="components.TripNotificationsPane.altRouteRecommended" />
-                    }
-                    name="notifyOnItineraryChange"
-                  >
-                    <YesNoOptions defaultValue />
-                  </Select>
-                </li>
-                <li>
-                  <label htmlFor="commonDelayThreshold">
-                    <FormattedMessage id="components.TripNotificationsPane.delaysAboveThreshold" />
-                  </label>
-                  <FormControl
-                    componentClass="select"
-                    id="commonDelayThreshold"
-                    // Special event handler, hence not using <Select> as above.
-                    onChange={this._handleDelayThresholdChange}
-                    value={commonDelayThreshold}
-                  >
-                    <DurationOptions
-                      defaultValue={5}
-                      minuteOptions={[5, 10, 15]}
-                    />
-                  </FormControl>
-                </li>
-              </SettingsList>
-            </>
-          ) : null}
-
-          <details>
-            <Summary>
-              <FormattedMessage id="components.TripNotificationsPane.advancedSettings" />
-            </Summary>
+                    </FormControl>
+                  </li>
+                </SettingsList>
+              </>
+            ) : null}
+          </FieldSet>
+          <FieldSet disabled={isReadOnly}>
+            <legend>
+              <FormattedMessage id="components.TripNotificationsPane.tripMonitoring" />
+            </legend>
             <SettingsList>
               <li>
                 <Select
@@ -187,8 +180,8 @@ class TripNotificationsPane extends Component<Props> {
                 </Select>
               </li>
             </SettingsList>
-          </details>
-        </FieldSet>
+          </FieldSet>
+        </>
       )
     }
 

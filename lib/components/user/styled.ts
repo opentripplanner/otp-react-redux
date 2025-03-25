@@ -7,7 +7,7 @@ import Link from '../util/link'
 const baseColor = getBaseColor()
 
 export const PageHeading = styled.h2`
-  margin: 10px 0px 45px 0px;
+  margin: 10px 0px 30px 0px;
 `
 
 export const SequentialPaneContainer = styled.div`

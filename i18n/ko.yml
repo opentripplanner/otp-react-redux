@@ -487,7 +487,6 @@ components:
     editSavedTrip: 저장된 트립 수정
     saveNewTrip: 새 트립 저장
     travelCompanions: 여행 동행
-    tripInformation: 트립 정보
     tripNotFound: 트립을 찾을 수 없음
     tripNotFoundDescription: 죄송합니다. 요청된 트립을 찾을 수 없습니다.
     tripNotifications: 트립 알림
@@ -585,7 +584,6 @@ components:
     unsavedChangesExistingTrip: 트립을 아직 저장하지 않았습니다. 나가시면 변경내용이 사라집니다.
     unsavedChangesNewTrip: 새 트립을 저장하지 않았습니다. 나가시면 변경내용이 사라집니다.
   TripNotificationsPane:
-    advancedSettings: 고급 설정
     altRouteRecommended: 대체 경로 또는 환승 지점이 권장됩니다
     delaysAboveThreshold: "다음 시간 이상의 지연 또는 차질이 있습니다:"
     howToReceiveAlerts: |

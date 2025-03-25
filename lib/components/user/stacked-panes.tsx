@@ -30,7 +30,7 @@ export interface PaneAttributes {
 export interface Props {
   canceling?: boolean
   panes: PaneAttributes[]
-  title: string | JSX.Element
+  title?: string | JSX.Element
 }
 
 /**
@@ -38,7 +38,7 @@ export interface Props {
  */
 const StackedPanes = ({ canceling, panes, title }: Props): JSX.Element => (
   <>
-    <PageHeading>{title}</PageHeading>
+    {title && <PageHeading>{title}</PageHeading>}
     {panes.map(
       ({ collapsible, hidden, pane: Pane, props, title }, index) =>
         !hidden && (

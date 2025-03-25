@@ -84,6 +84,7 @@ export type MonitoredTrip = Record<DaysOfWeek, boolean> & {
   companion?: CompanionInfo
   departureVarianceMinutesThreshold: number
   excludeFederalHolidays?: boolean
+  from?: Place
   id: string
   isActive: boolean
   itinerary: Itinerary
@@ -95,11 +96,13 @@ export type MonitoredTrip = Record<DaysOfWeek, boolean> & {
   primary?: DependentInfo
   queryParams: Record<string, unknown>
   secondary?: CompanionInfo
+  to?: Place
   tripName: string
   userId: string
 }
 
 export interface MonitoredTripProps {
+  editingTrip?: boolean
   from?: Place
   handleTogglePauseMonitoring?: () => void
   isReadOnly?: boolean

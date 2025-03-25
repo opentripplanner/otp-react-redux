@@ -546,7 +546,6 @@ components:
     editSavedTrip: Editar el viaje guardado
     saveNewTrip: Guardar un nuevo viaje
     travelCompanions: Acompañantes de viaje
-    tripInformation: Información sobre el viaje
     tripNotFound: No se encontró el viaje
     tripNotFoundDescription: Lo sentimos, no se encontró el viaje solicitado.
     tripNotifications: Notificaciones de viaje
@@ -656,7 +655,6 @@ components:
       perderán.
     unsavedChangesNewTrip: Todavía no ha guardado su nuevo viaje. Si abandona la página, se perderá.
   TripNotificationsPane:
-    advancedSettings: Configuración avanzada
     altRouteRecommended: Se recomienda una ruta alternativa o un punto de transferencia
     delaysAboveThreshold: Hay retrasos o interrupciones de más de
     howToReceiveAlerts: >
