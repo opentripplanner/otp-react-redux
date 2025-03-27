@@ -8,11 +8,10 @@ import { AppReduxState } from '../../../util/state-types'
 import { Icon, IconWithText } from '../../util/styledIcon'
 import { StopData } from '../../util/types'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
-import Link from '../../util/link'
 import Strong from '../../util/strong-text'
 import TransitOperatorLogos from '../../util/transit-operator-icons'
 
-import { CardBody, CardHeader, CardTitle } from './styled'
+import { ActionLink, CardBody, CardHeader, CardTitle } from './styled'
 import DistanceDisplay from './distance-display'
 
 type Props = {
@@ -79,14 +78,9 @@ const StopCardHeader = ({
             </button>
           ) : null}
           {actionPath && actionText ? (
-            <Link
-              className="pull-right"
-              style={{ color: 'inherit', fontSize: 'small' }}
-              to={actionPath}
-              toParams={actionParams}
-            >
+            <ActionLink to={actionPath} toParams={actionParams}>
               <IconWithText Icon={actionIcon}>{actionText}</IconWithText>
-            </Link>
+            </ActionLink>
           ) : null}
         </div>
         {fromToSlot}

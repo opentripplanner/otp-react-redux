@@ -7,12 +7,11 @@ import styled from 'styled-components'
 
 import { AppReduxState } from '../../../util/state-types'
 
-import { Card, PatternRowContainer, StyledAlert } from './styled'
+import { ActionLink, Card, PatternRowContainer, StyledAlert } from './styled'
 import { extractHeadsignFromPattern } from '../../../util/viewer'
 import { IconWithText } from '../../util/styledIcon'
 import { NearbyViewConfig } from '../../../util/config-types'
 import { PatternStopTime, StopData, StopTime } from '../../util/types'
-import Link from '../../util/link'
 import PatternRow from '../pattern-row'
 import TimezoneWarning from '../timezone-warning'
 
@@ -183,15 +182,11 @@ const Stop = ({
             <React.Fragment key={childStop.gtfsId || index}>
               <ChildStopHeader>
                 {childStop.name}
-                <Link
-                  className="pull-right"
-                  style={{ color: 'inherit', fontSize: 'small' }}
-                  to={`/schedule/${childStop.gtfsId}`}
-                >
+                <ActionLink to={`/schedule/${childStop.gtfsId}`}>
                   <IconWithText Icon={Calendar}>
                     <FormattedMessage id="components.StopViewer.viewSchedule" />
                   </IconWithText>
-                </Link>
+                </ActionLink>
               </ChildStopHeader>
               <PatternRowContainer>{childPatternRows}</PatternRowContainer>
             </React.Fragment>

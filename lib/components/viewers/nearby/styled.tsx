@@ -1,5 +1,7 @@
-import { DARK_TEXT_GREY, grey } from '../../util/colors'
 import styled from 'styled-components'
+
+import { DARK_TEXT_GREY, grey } from '../../util/colors'
+import Link from '../../util/link'
 
 export const FloatingLoadingIndicator = styled.div`
   aspect-ratio: 1;
@@ -109,4 +111,10 @@ export const PatternRowContainer = styled.ul`
 export const Scrollable = styled.div`
   height: 100%;
   overflow-y: scroll;
+`
+
+export const ActionLink = styled(Link)`
+  color: inherit;
+  font-size: small;
+  float: right;
 `
