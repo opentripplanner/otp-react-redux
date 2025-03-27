@@ -109,7 +109,6 @@ const renderPatternRows = (
         homeTimezone={homeTimezone}
         key={index}
         pattern={st.pattern}
-        roundedTop={false}
         route={st.pattern.route}
         stopTimes={sortedStopTimes}
       />

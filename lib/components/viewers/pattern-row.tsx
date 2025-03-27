@@ -25,9 +25,7 @@ import StopTimeCell from './stop-time-cell'
 type Props = {
   alwaysShowLongName?: boolean
   homeTimezone?: string
-  noRoundedBottom?: boolean
   pattern: Pattern
-  roundedTop?: boolean
   route: Route & { operator?: TransitOperator & { colorMode?: string } }
   showOperatorLogo?: boolean
   stopTimes: Time[]
