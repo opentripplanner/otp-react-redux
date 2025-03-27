@@ -28,7 +28,8 @@ const ChildStopHeader = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 400;
   padding: 8px 16px;
 `
 
