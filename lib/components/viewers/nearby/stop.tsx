@@ -27,9 +27,12 @@ const ChildStopHeader = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 16px;
-  font-weight: 400;
   padding: 8px 16px;
+
+  .child-stop-name {
+    font-size: 16px;
+    font-weight: 600;
+  }
 `
 
 type Props = {
@@ -181,7 +184,7 @@ const Stop = ({
           return (
             <React.Fragment key={childStop.gtfsId || index}>
               <ChildStopHeader>
-                {childStop.name}
+                <span className="child-stop-name">{childStop.name}</span>
                 <ActionLink to={`/schedule/${childStop.gtfsId}`}>
                   <IconWithText Icon={Calendar}>
                     <FormattedMessage id="components.StopViewer.viewSchedule" />
