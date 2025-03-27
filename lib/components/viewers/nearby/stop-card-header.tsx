@@ -18,8 +18,8 @@ import DistanceDisplay from './distance-display'
 type Props = {
   actionIcon: ComponentType
   actionParams?: Record<string, unknown>
-  actionPath: string
-  actionText: JSX.Element
+  actionPath?: string
+  actionText?: JSX.Element
   fromToSlot: JSX.Element
   onZoomClick?: () => void
   stopData: StopData & { distance?: number }
@@ -78,14 +78,16 @@ const StopCardHeader = ({
               <InvisibleA11yLabel>{zoomButtonText}</InvisibleA11yLabel>
             </button>
           ) : null}
-          <Link
-            className="pull-right"
-            style={{ color: 'inherit', fontSize: 'small' }}
-            to={actionPath}
-            toParams={actionParams}
-          >
-            <IconWithText Icon={actionIcon}>{actionText}</IconWithText>
-          </Link>
+          {actionPath && actionText ? (
+            <Link
+              className="pull-right"
+              style={{ color: 'inherit', fontSize: 'small' }}
+              to={actionPath}
+              toParams={actionParams}
+            >
+              <IconWithText Icon={actionIcon}>{actionText}</IconWithText>
+            </Link>
+          ) : null}
         </div>
         {fromToSlot}
       </CardBody>

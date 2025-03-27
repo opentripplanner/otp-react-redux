@@ -64,9 +64,7 @@ const renderDay = (homeTimezone: string, day: number): JSX.Element => {
 const PatternRow = ({
   alwaysShowLongName,
   homeTimezone,
-  noRoundedBottom = false,
   pattern,
-  roundedTop = true,
   route,
   showOperatorLogo,
   stopTimes
@@ -84,11 +82,7 @@ const PatternRow = ({
   const routeColor = getRouteColorBasedOnSettings(route.operator, route)
 
   return (
-    <PatternRowItem
-      className="pattern-row-item"
-      noRoundedBottom={noRoundedBottom}
-      roundedTop={roundedTop}
-    >
+    <PatternRowItem className="pattern-row-item">
       {/* header row */}
       <div
         className="header stop-view"
