@@ -4728,7 +4728,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh kxBipD"
+                            className="sc-ehsPLh cXmnDo"
                           >
                             <styled.div>
                               <div
@@ -5156,7 +5156,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh kxBipD"
+                            className="sc-ehsPLh cXmnDo"
                           >
                             <styled.div>
                               <div
@@ -5584,7 +5584,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh kxBipD"
+                            className="sc-ehsPLh cXmnDo"
                           >
                             <styled.div>
                               <div
@@ -8202,7 +8202,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh kxBipD"
+                            className="sc-ehsPLh cXmnDo"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -12567,7 +12567,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               <div />
                               <styled.ul>
                                 <ul
-                                  className="sc-liccgK cELqZs"
+                                  className="sc-liccgK cUVBtg"
                                 >
                                   <PatternRow
                                     homeTimezone="America/Los_Angeles"
@@ -12741,10 +12741,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -13569,10 +13568,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -14327,10 +14325,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -16480,7 +16477,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh kxBipD"
+                            className="sc-ehsPLh cXmnDo"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -19438,7 +19435,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               <div />
                               <styled.ul>
                                 <ul
-                                  className="sc-liccgK cELqZs"
+                                  className="sc-liccgK cUVBtg"
                                 >
                                   <PatternRow
                                     homeTimezone="America/Los_Angeles"
@@ -19547,10 +19544,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -20248,10 +20244,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -20752,10 +20747,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -21514,7 +21508,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh kxBipD"
+                            className="sc-ehsPLh cXmnDo"
                           >
                             <styled.div>
                               <div
@@ -21942,7 +21936,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh kxBipD"
+                            className="sc-ehsPLh cXmnDo"
                           >
                             <styled.div>
                               <div
@@ -22370,7 +22364,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh kxBipD"
+                            className="sc-ehsPLh cXmnDo"
                           >
                             <styled.div>
                               <div
@@ -25296,7 +25290,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh kxBipD"
+                            className="sc-ehsPLh cXmnDo"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -30200,7 +30194,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               <div />
                               <styled.ul>
                                 <ul
-                                  className="sc-liccgK cELqZs"
+                                  className="sc-liccgK cUVBtg"
                                 >
                                   <PatternRow
                                     homeTimezone="America/Los_Angeles"
@@ -30374,10 +30368,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -31215,10 +31208,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -31978,10 +31970,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -32679,10 +32670,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -33127,7 +33117,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh kxBipD"
+                            className="sc-ehsPLh cXmnDo"
                           >
                             <styled.div>
                               <div
@@ -33555,7 +33545,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh kxBipD"
+                            className="sc-ehsPLh cXmnDo"
                           >
                             <styled.div>
                               <div
@@ -33983,7 +33973,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh kxBipD"
+                            className="sc-ehsPLh cXmnDo"
                           >
                             <styled.div>
                               <div
@@ -34411,7 +34401,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh kxBipD"
+                            className="sc-ehsPLh cXmnDo"
                           >
                             <styled.div>
                               <div
@@ -34839,7 +34829,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh kxBipD"
+                            className="sc-ehsPLh cXmnDo"
                           >
                             <styled.div>
                               <div
@@ -36653,7 +36643,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh kxBipD"
+                            className="sc-ehsPLh cXmnDo"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -39611,7 +39601,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               <div />
                               <styled.ul>
                                 <ul
-                                  className="sc-liccgK cELqZs"
+                                  className="sc-liccgK cUVBtg"
                                 >
                                   <PatternRow
                                     homeTimezone="America/Los_Angeles"
@@ -39720,10 +39710,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -40543,10 +40532,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -41244,10 +41232,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -41692,7 +41679,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh kxBipD"
+                            className="sc-ehsPLh cXmnDo"
                           >
                             <styled.div>
                               <div
@@ -44206,7 +44193,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh kxBipD"
+                            className="sc-ehsPLh cXmnDo"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -48389,7 +48376,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               <div />
                               <styled.ul>
                                 <ul
-                                  className="sc-liccgK cELqZs"
+                                  className="sc-liccgK cUVBtg"
                                 >
                                   <PatternRow
                                     homeTimezone="America/Los_Angeles"
@@ -48654,10 +48641,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -51929,7 +51915,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh kxBipD"
+                            className="sc-ehsPLh cXmnDo"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -56833,7 +56819,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               <div />
                               <styled.ul>
                                 <ul
-                                  className="sc-liccgK cELqZs"
+                                  className="sc-liccgK cUVBtg"
                                 >
                                   <PatternRow
                                     homeTimezone="America/Los_Angeles"
@@ -56942,10 +56928,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -57695,10 +57680,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -58453,10 +58437,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -59271,10 +59254,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -60024,10 +60006,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -60751,10 +60732,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -61513,7 +61493,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh kxBipD"
+                            className="sc-ehsPLh cXmnDo"
                           >
                             <styled.div>
                               <div
@@ -64131,7 +64111,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-ehsPLh kxBipD"
+                            className="sc-ehsPLh cXmnDo"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -68496,7 +68476,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               <div />
                               <styled.ul>
                                 <ul
-                                  className="sc-liccgK cELqZs"
+                                  className="sc-liccgK cUVBtg"
                                 >
                                   <PatternRow
                                     homeTimezone="America/Los_Angeles"
@@ -68670,10 +68650,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -69498,10 +69477,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
@@ -70256,10 +70234,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   >
                                     <styled.li
                                       className="pattern-row-item"
-                                      roundedTop={false}
                                     >
                                       <li
-                                        className="sc-clhTte ctsdph pattern-row-item"
+                                        className="sc-clhTte caJabd pattern-row-item"
                                       >
                                         <div
                                           className="header stop-view"
