@@ -78,7 +78,11 @@ const StopCardHeader = ({
             </button>
           ) : null}
           {actionPath && actionText ? (
-            <ActionLink to={actionPath} toParams={actionParams}>
+            <ActionLink
+              className="stop-header-action"
+              to={actionPath}
+              toParams={actionParams}
+            >
               <IconWithText Icon={actionIcon}>{actionText}</IconWithText>
             </ActionLink>
           ) : null}
