@@ -348,6 +348,18 @@ routingTypes:
 
 # Itinerary options
 itinerary:
+  # Provides an array of valid mode combinations that returned itineraries will be filtered against
+  # If left blank, all itineraries deemed valid by OTP will be returned
+  validModeCombinations: [ 
+    ['WALK'],
+    ['WALK', 'PERSONAL'],
+    ['WALK', 'TRANSIT', 'SHARED'],
+    ['WALK', 'SHARED'],
+    ['WALK', 'TRANSIT'],
+    ['WALK', 'TRANSIT', 'PERSONAL'],
+    ['WALK', 'TRANSIT', 'CAR'],
+    ['CAR'] 
+  ]
   # Show fares for each transit leg (false if omitted).
   # (Requires using LineItinerary.)
   showRouteFares: false
