@@ -12,7 +12,7 @@ const CompanyIcon = ({
   fallbackContent = null,
   ...otherProps
 }: Props): ReactElement | null => {
-  const CompanyIcon = getCompanyIcon ? getCompanyIcon(company) : null
+  const CompanyIcon = getCompanyIcon && company ? getCompanyIcon(company) : null
   return CompanyIcon ? (
     <Suspense fallback={<span>{company}</span>}>
       <CompanyIcon {...otherProps} />
