@@ -359,7 +359,7 @@ itinerary:
     ['WALK', 'TRANSIT', 'PERSONAL'],
     ['WALK', 'TRANSIT', 'CAR'],
     ['CAR'] 
-    ]
+  ]
   # Show fares for each transit leg (false if omitted).
   # (Requires using LineItinerary.)
   showRouteFares: false
