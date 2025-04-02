@@ -24,6 +24,7 @@ export const fullTimestamp = (stoptime: StopTime) =>
 
 // Style for child stop headers
 const ChildStopHeader = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
