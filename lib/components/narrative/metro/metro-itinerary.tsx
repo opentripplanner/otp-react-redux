@@ -417,6 +417,8 @@ class MetroItinerary extends NarrativeItinerary {
                         time: (
                           <FormattedDuration
                             duration={
+                              /* If the walk time is truly zero, show 0. But if the walk time is just less 
+                              than a minute, round up to the nearest minute to avoid showing no walk time. */
                               itinerary.walkTime > 0
                                 ? ensureAtLeastOneMinute(itinerary.walkTime)
                                 : itinerary.walkTime
