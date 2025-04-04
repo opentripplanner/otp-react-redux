@@ -25,13 +25,18 @@ export const fullTimestamp = (stoptime: StopTime) =>
 // Style for child stop headers
 const ChildStopHeader = styled.div`
   display: flex;
+  align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  padding: 8px 16px;
+  padding: 10px 16px;
 
   .child-stop-name {
     font-size: 16px;
     font-weight: 600;
+  }
+
+  &:first-of-type {
+    border-top: 1px solid #999999;
   }
 `
 
@@ -157,9 +162,8 @@ const Stop = ({
         fromToSlot={fromToSlot}
         stopData={stopData}
       />
+      <div>{timezoneWarning}</div>
       <div>
-        <div>{timezoneWarning}</div>
-
         {/* Main stop patterns */}
         {!isParentStop && (
           <PatternRowContainer>{patternRows}</PatternRowContainer>
