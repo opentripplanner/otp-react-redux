@@ -12561,8 +12561,8 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                               </StopCardHeader>
                             </Connect(StopCardHeader)>
+                            <div />
                             <div>
-                              <div />
                               <styled.ul>
                                 <ul
                                   className="sc-liccgK cUVBtg"
@@ -19424,8 +19424,8 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                               </StopCardHeader>
                             </Connect(StopCardHeader)>
+                            <div />
                             <div>
-                              <div />
                               <styled.ul>
                                 <ul
                                   className="sc-liccgK cUVBtg"
@@ -30178,8 +30178,8 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                               </StopCardHeader>
                             </Connect(StopCardHeader)>
+                            <div />
                             <div>
-                              <div />
                               <styled.ul>
                                 <ul
                                   className="sc-liccgK cUVBtg"
@@ -39579,8 +39579,8 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                               </StopCardHeader>
                             </Connect(StopCardHeader)>
+                            <div />
                             <div>
-                              <div />
                               <styled.ul>
                                 <ul
                                   className="sc-liccgK cUVBtg"
@@ -48349,8 +48349,8 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                               </StopCardHeader>
                             </Connect(StopCardHeader)>
+                            <div />
                             <div>
-                              <div />
                               <styled.ul>
                                 <ul
                                   className="sc-liccgK cUVBtg"
@@ -56789,8 +56789,8 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                               </StopCardHeader>
                             </Connect(StopCardHeader)>
+                            <div />
                             <div>
-                              <div />
                               <styled.ul>
                                 <ul
                                   className="sc-liccgK cUVBtg"
@@ -68438,8 +68438,8 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                               </StopCardHeader>
                             </Connect(StopCardHeader)>
+                            <div />
                             <div>
-                              <div />
                               <styled.ul>
                                 <ul
                                   className="sc-liccgK cUVBtg"
