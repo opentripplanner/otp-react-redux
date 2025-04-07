@@ -36,7 +36,7 @@ const ChildStopHeader = styled.div`
   }
 
   &:first-of-type {
-    border-top: 1px solid #999999;
+    border-top: 1px solid var(--main-base-color);
   }
 `
 
