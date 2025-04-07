@@ -9,6 +9,7 @@ import {
   IntlShape
 } from 'react-intl'
 import { Leaf } from '@styled-icons/fa-solid/Leaf'
+import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
@@ -40,6 +41,8 @@ import DepartureTimesList, {
 } from './departure-times-list'
 import MetroItineraryRoutes from './metro-itinerary-routes'
 import RouteBlock from './route-block'
+
+const { ensureAtLeastOneMinute } = coreUtils.time
 
 // Styled components
 const ItineraryWrapper = styled.div.attrs((props) => {
@@ -232,7 +235,11 @@ class MetroItinerary extends NarrativeItinerary {
         aria-hidden
         footer={
           showLegDurations &&
-          mainLeg?.duration && <FormattedDuration duration={mainLeg.duration} />
+          mainLeg?.duration && (
+            <FormattedDuration
+              duration={ensureAtLeastOneMinute(mainLeg.duration)}
+            />
+          )
         }
         hideLongName
         leg={mainLeg}
@@ -384,7 +391,7 @@ class MetroItinerary extends NarrativeItinerary {
                 >
                   <PrimaryInfo>
                     <FormattedDuration
-                      duration={itinerary.duration}
+                      duration={ensureAtLeastOneMinute(itinerary.duration)}
                       includeSeconds={false}
                     />
                   </PrimaryInfo>
@@ -409,7 +416,13 @@ class MetroItinerary extends NarrativeItinerary {
                       values={{
                         time: (
                           <FormattedDuration
-                            duration={itinerary.walkTime}
+                            duration={
+                              /* If the walk time is truly zero, show 0. But if the walk time is just less 
+                              than a minute, round up to the nearest minute to avoid showing no walk time. */
+                              itinerary.walkTime > 0
+                                ? ensureAtLeastOneMinute(itinerary.walkTime)
+                                : itinerary.walkTime
+                            }
                             includeSeconds={false}
                           />
                         )
@@ -470,7 +483,7 @@ class MetroItinerary extends NarrativeItinerary {
               <ItineraryGridSmall className="other-itin">
                 <PrimaryInfo as="span">
                   <FormattedDuration
-                    duration={itinerary.duration}
+                    duration={ensureAtLeastOneMinute(itinerary.duration)}
                     includeSeconds={false}
                   />
                 </PrimaryInfo>
