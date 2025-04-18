@@ -2,7 +2,8 @@ import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Location } from '@opentripplanner/types'
 import { LonLatInput } from '@conveyal/lonlat'
-import { MapRef, useMap } from 'react-map-gl/maplibre'
+import { MapLibreEvent } from 'maplibre-gl'
+import { MapRef, useMap, ViewStateChangeEvent } from 'react-map-gl/maplibre'
 import { Search } from '@styled-icons/fa-solid/Search'
 import coreUtils from '@opentripplanner/core-utils'
 import getGeocoder from '@opentripplanner/geocoder'
@@ -173,7 +174,8 @@ function NearbyView({
   }, [location, setHighlightedLocation])
 
   useEffect(() => {
-    const moveListener = (e: mapboxgl.EventData) => {
+    const moveListener = (e: ViewStateChangeEvent) => {
+      // @ts-expect-error TODO: What is this condition supposed to capture?
       if (e.geolocateSource) {
         const coords = {
           lat: e.viewState.latitude,
@@ -184,7 +186,7 @@ function NearbyView({
       }
     }
 
-    const dragListener = (e: mapboxgl.EventData) => {
+    const dragListener = (e: ViewStateChangeEvent) => {
       const coords = {
         lat: e.viewState.latitude,
         lon: e.viewState.longitude
