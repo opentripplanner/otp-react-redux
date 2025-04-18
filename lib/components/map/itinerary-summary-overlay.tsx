@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { Feature, lineString, LineString, Position } from '@turf/helpers'
 import { Itinerary, Location } from '@opentripplanner/types'
-import { Marker } from 'react-map-gl'
+import { Marker } from 'react-map-gl/maplibre'
 import centroid from '@turf/centroid'
 import distance from '@turf/distance'
 import polyline from '@mapbox/polyline'

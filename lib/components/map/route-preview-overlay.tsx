@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { getFitBoundsPadding } from '@opentripplanner/base-map/lib/util'
 import { Itinerary, Location } from '@opentripplanner/types'
-import { Layer, Source, useMap } from 'react-map-gl'
+import { Layer, Source, useMap } from 'react-map-gl/maplibre'
 import polyline from '@mapbox/polyline'
 import React, { useEffect } from 'react'
 

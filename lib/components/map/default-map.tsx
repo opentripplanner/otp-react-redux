@@ -2,7 +2,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import { connect } from 'react-redux'
-import { GeolocateControl, NavigationControl } from 'react-map-gl'
+import { GeolocateControl, NavigationControl } from 'react-map-gl/maplibre'
 import { getCurrentDate } from '@opentripplanner/core-utils/lib/time'
 import { injectIntl } from 'react-intl'
 import BaseMap from '@opentripplanner/base-map'
