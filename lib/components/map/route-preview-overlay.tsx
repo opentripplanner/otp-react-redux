@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
-import { getFitBoundsPadding } from '@opentripplanner/base-map/lib/util'
 import { Itinerary, Location } from '@opentripplanner/types'
 import { Layer, Source, useMap } from 'react-map-gl/maplibre'
+import { util } from '@opentripplanner/base-map'
 import polyline from '@mapbox/polyline'
 import React, { useEffect } from 'react'
 
@@ -36,7 +36,7 @@ const RoutePreviewOverlay = ({
     if (visible && mainPanelContent === null) {
       map?.fitBounds([from, to], {
         duration: 600,
-        padding: getFitBoundsPadding(map, 0.2)
+        padding: util.getFitBoundsPadding(map, 0.2)
       })
     }
   }, [map, visible, from, to, mainPanelContent])
