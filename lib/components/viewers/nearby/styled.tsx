@@ -1,5 +1,7 @@
-import { DARK_TEXT_GREY, grey } from '../../util/colors'
 import styled from 'styled-components'
+
+import { DARK_TEXT_GREY, grey } from '../../util/colors'
+import Link from '../../util/link'
 
 export const FloatingLoadingIndicator = styled.div`
   aspect-ratio: 1;
@@ -38,6 +40,7 @@ export const Card = styled.div`
   color: ${DARK_TEXT_GREY};
   display: flex;
   flex-direction: column;
+  box-shadow: 2px 2px 5px 1px rgb(0 0 0/10%);
 
   &:hover {
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -46,6 +49,8 @@ export const Card = styled.div`
   .highlighted & {
     box-shadow: 0 0 6px 0px #facc15, 0 0 0 4px #facc15;
   }
+
+  overflow: hidden;
 `
 
 export const CardHeader = styled.div`
@@ -99,7 +104,6 @@ export const StyledAlert = styled.div`
 
 export const PatternRowContainer = styled.ul`
   border-radius: 10px;
-  box-shadow: 2px 2px 5px 1px rgb(0 0 0/10%);
   list-style-type: none;
   margin: 0;
   padding-left: 0;
@@ -107,4 +111,10 @@ export const PatternRowContainer = styled.ul`
 export const Scrollable = styled.div`
   height: 100%;
   overflow-y: scroll;
+`
+
+export const ActionLink = styled(Link)`
+  color: inherit;
+  font-size: small;
+  float: right;
 `
