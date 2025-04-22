@@ -272,8 +272,8 @@ async function executeTest(page, isMobile, isCallTaker) {
 
   // Open schedule view
   await page.waitForTimeout(2000)
-  await page.waitForSelector('a.pull-right')
-  await page.click('a.pull-right')
+  await page.waitForSelector('a.stop-header-action')
+  await page.click('a.stop-header-action')
   await page.waitForTimeout(500)
   // Request a schedule for a specific valid date in the past,
   // so it is different than today and triggers a full render of the schedule.

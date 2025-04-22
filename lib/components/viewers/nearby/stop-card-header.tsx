@@ -8,18 +8,17 @@ import { AppReduxState } from '../../../util/state-types'
 import { Icon, IconWithText } from '../../util/styledIcon'
 import { StopData } from '../../util/types'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
-import Link from '../../util/link'
 import Strong from '../../util/strong-text'
 import TransitOperatorLogos from '../../util/transit-operator-icons'
 
-import { CardBody, CardHeader, CardTitle } from './styled'
+import { ActionLink, CardBody, CardHeader, CardTitle } from './styled'
 import DistanceDisplay from './distance-display'
 
 type Props = {
   actionIcon: ComponentType
   actionParams?: Record<string, unknown>
-  actionPath: string
-  actionText: JSX.Element
+  actionPath?: string
+  actionText?: JSX.Element
   fromToSlot: JSX.Element
   onZoomClick?: () => void
   stopData: StopData & { distance?: number }
@@ -78,14 +77,15 @@ const StopCardHeader = ({
               <InvisibleA11yLabel>{zoomButtonText}</InvisibleA11yLabel>
             </button>
           ) : null}
-          <Link
-            className="pull-right"
-            style={{ color: 'inherit', fontSize: 'small' }}
-            to={actionPath}
-            toParams={actionParams}
-          >
-            <IconWithText Icon={actionIcon}>{actionText}</IconWithText>
-          </Link>
+          {actionPath && actionText ? (
+            <ActionLink
+              className="stop-header-action"
+              to={actionPath}
+              toParams={actionParams}
+            >
+              <IconWithText Icon={actionIcon}>{actionText}</IconWithText>
+            </ActionLink>
+          ) : null}
         </div>
         {fromToSlot}
       </CardBody>

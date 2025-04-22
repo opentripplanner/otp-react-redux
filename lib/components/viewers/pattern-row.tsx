@@ -26,7 +26,6 @@ type Props = {
   alwaysShowLongName?: boolean
   homeTimezone?: string
   pattern: Pattern
-  roundedTop?: boolean
   route: Route & { operator?: TransitOperator & { colorMode?: string } }
   showOperatorLogo?: boolean
   stopTimes: Time[]
@@ -59,11 +58,11 @@ const renderDay = (homeTimezone: string, day: number): JSX.Element => {
  * Represents a single pattern row for displaying arrival times in the stop
  * viewer.
  */
+// eslint-disable-next-line complexity
 const PatternRow = ({
   alwaysShowLongName,
   homeTimezone,
   pattern,
-  roundedTop = true,
   route,
   showOperatorLogo,
   stopTimes
@@ -81,7 +80,7 @@ const PatternRow = ({
   const routeColor = getRouteColorBasedOnSettings(route.operator, route)
 
   return (
-    <PatternRowItem className="pattern-row-item" roundedTop={roundedTop}>
+    <PatternRowItem className="pattern-row-item">
       {/* header row */}
       <div
         className="header stop-view"
