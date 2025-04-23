@@ -3,15 +3,18 @@ import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
+import styled from 'styled-components'
 
 import { AppReduxState } from '../../../util/state-types'
+
+import { ActionLink, Card, PatternRowContainer, StyledAlert } from './styled'
 import { extractHeadsignFromPattern } from '../../../util/viewer'
+import { IconWithText } from '../../util/styledIcon'
 import { NearbyViewConfig } from '../../../util/config-types'
 import { PatternStopTime, StopData, StopTime } from '../../util/types'
 import PatternRow from '../pattern-row'
 import TimezoneWarning from '../timezone-warning'
 
-import { Card, PatternRowContainer, StyledAlert } from './styled'
 import StopCardHeader from './stop-card-header'
 
 const { getUserTimezone } = coreUtils.time
@@ -19,12 +22,30 @@ const { getUserTimezone } = coreUtils.time
 export const fullTimestamp = (stoptime: StopTime) =>
   (stoptime.serviceDay || 0) + (stoptime.realtimeDeparture || 0)
 
+// Style for child stop headers
+const ChildStopHeader = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 16px;
+
+  .child-stop-name {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &:first-of-type {
+    border-top: 1px solid rgba(var(--main-base-color), 0.8);
+  }
+`
+
 type Props = {
   fromToSlot: JSX.Element
   homeTimezone: string
   nearbyViewConfig?: NearbyViewConfig
   routeSortComparator: (a: PatternStopTime, b: PatternStopTime) => number
-  stopData: StopData & { nearbyRoutes?: string[] }
+  stopData: StopData & { nearbyRoutes?: string[]; stops?: StopData[] }
 }
 
 export const patternArrayforStops = (
@@ -70,15 +91,14 @@ export const patternArrayforStops = (
     .sort(routeSortComparator)
 }
 
-const Stop = ({
-  fromToSlot,
-  homeTimezone,
-  nearbyViewConfig,
-  routeSortComparator,
-  stopData
-}: Props): JSX.Element => {
-  const patternArray = patternArrayforStops(stopData, routeSortComparator)
-  const patternRows = patternArray?.map((st: any, index: number) => {
+// Helper function to render pattern rows for a stop
+const renderPatternRows = (
+  stopData: StopData & { nearbyRoutes?: string[] },
+  patternArray: Array<PatternStopTime> | undefined,
+  homeTimezone: string,
+  nearbyViewConfig?: NearbyViewConfig
+) => {
+  return patternArray?.map((st: any, index: number) => {
     const sortedStopTimes = st.stoptimes.sort(
       (a: StopTime, b: StopTime) => fullTimestamp(a) - fullTimestamp(b)
     )
@@ -96,12 +116,28 @@ const Stop = ({
         homeTimezone={homeTimezone}
         key={index}
         pattern={st.pattern}
-        roundedTop={false}
         route={st.pattern.route}
         stopTimes={sortedStopTimes}
       />
     )
   })
+}
+
+const Stop = ({
+  fromToSlot,
+  homeTimezone,
+  nearbyViewConfig,
+  routeSortComparator,
+  stopData
+}: Props): JSX.Element => {
+  const patternArray = patternArrayforStops(stopData, routeSortComparator)
+  const patternRows = renderPatternRows(
+    stopData,
+    patternArray,
+    homeTimezone,
+    nearbyViewConfig
+  )
+
   const inHomeTimezone = homeTimezone && homeTimezone === getUserTimezone()
   const timezoneWarning = !inHomeTimezone && (
     <StyledAlert>
@@ -109,22 +145,60 @@ const Stop = ({
     </StyledAlert>
   )
 
+  const isParentStop = stopData.stops?.length && stopData.stops?.length > 0
+
   return (
     <Card>
       <StopCardHeader
         actionIcon={Calendar}
         // Remove entityId URL parameter when leaving nearby view.
         actionParams={{ entityId: undefined }}
-        actionPath={`/schedule/${stopData.gtfsId}`}
+        actionPath={!isParentStop ? `/schedule/${stopData.gtfsId}` : undefined}
         actionText={
-          <FormattedMessage id="components.StopViewer.viewSchedule" />
+          !isParentStop ? (
+            <FormattedMessage id="components.StopViewer.viewSchedule" />
+          ) : undefined
         }
         fromToSlot={fromToSlot}
         stopData={stopData}
       />
+      <div>{timezoneWarning}</div>
       <div>
-        <div>{timezoneWarning}</div>
-        <PatternRowContainer>{patternRows}</PatternRowContainer>
+        {/* Main stop patterns */}
+        {!isParentStop && (
+          <PatternRowContainer>{patternRows}</PatternRowContainer>
+        )}
+
+        {/* Child stops */}
+        {stopData.stops?.map((childStop, index) => {
+          const childPatternArray = patternArrayforStops(
+            childStop,
+            routeSortComparator
+          )
+          const childPatternRows = renderPatternRows(
+            childStop,
+            childPatternArray,
+            homeTimezone,
+            nearbyViewConfig
+          )
+
+          // Only render child stops that have patterns
+          if (!childPatternArray?.length) return null
+
+          return (
+            <React.Fragment key={childStop.gtfsId || index}>
+              <ChildStopHeader>
+                <span className="child-stop-name">{childStop.name}</span>
+                <ActionLink to={`/schedule/${childStop.gtfsId}`}>
+                  <IconWithText Icon={Calendar}>
+                    <FormattedMessage id="components.StopViewer.viewSchedule" />
+                  </IconWithText>
+                </ActionLink>
+              </ChildStopHeader>
+              <PatternRowContainer>{childPatternRows}</PatternRowContainer>
+            </React.Fragment>
+          )
+        })}
       </div>
     </Card>
   )
