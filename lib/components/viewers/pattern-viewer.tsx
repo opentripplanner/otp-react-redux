@@ -67,6 +67,23 @@ const PatternViewer = ({
   // @ts-expect-error TODO: add type to ComponentContext
   const { ModeIcon, RouteRenderer } = useContext(ComponentContext)
 
+  const routePatternKeys = route?.patterns && Object.keys(route?.patterns)
+
+  // If the patternId does not exist in the route, course correct back to a valid pattern.
+  // (ex. the URL was /route/123/undefined)
+  if (
+    viewedRoute?.patternId &&
+    !routePatternKeys?.includes(viewedRoute?.patternId) &&
+    routePatternKeys &&
+    routePatternKeys.length > 0
+  ) {
+    // Set the patternId to the first pattern in the route (this will reload the page).
+    setViewedRoute({
+      patternId: routePatternKeys[0],
+      routeId: viewedRoute?.routeId
+    })
+  }
+
   // If patternId is present and route data have been fetched, we're looking at a specific pattern's stops.
   if (viewedRoute?.patternId && route) {
     const { patternId } = viewedRoute
@@ -136,7 +153,7 @@ const PatternViewer = ({
     )
   }
 
-  return null
+  return <p>oops we cannot find this pattern.</p>
 }
 
 // connect to redux store
