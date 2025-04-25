@@ -271,3 +271,8 @@
   width: 100% !important;
   background: transparent !important;
 }
+
+.nearby-view-location-field ul {
+  overflow-x: scroll;
+  max-width: 100%;
+}

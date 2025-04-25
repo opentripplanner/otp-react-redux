@@ -325,12 +325,7 @@ function NearbyView({
           />
         </InvisibleA11yLabel>
       )}
-      <NearbySidebarContainer
-        className="base-color-bg"
-        style={{ marginBottom: 0 }}
-      >
-        {/* This is used to scroll to top */}
-        <div aria-hidden ref={firstItemRef} />
+      <div style={{ padding: '1em' }}>
         <LocationField
           className="nearby-view-location-field"
           // TODO: why does this cause the jump to the trip planner when selecting location
@@ -363,7 +358,15 @@ function NearbyView({
           }}
           sortByDistance
         />
-        {loading && <Loading extraSmall />}
+      </div>
+
+      {loading && <Loading extraSmall />}
+      <NearbySidebarContainer
+        className="base-color-bg"
+        style={{ marginBottom: 0 }}
+      >
+        {/* This is used to scroll to top */}
+        <div aria-hidden ref={firstItemRef} />
         {nearby &&
           !staleData &&
           (nearby.error ? (
