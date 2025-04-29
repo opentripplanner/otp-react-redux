@@ -325,7 +325,7 @@ function NearbyView({
           />
         </InvisibleA11yLabel>
       )}
-      <div style={{ padding: '1em' }}>
+      <div style={{ padding: '1em 1em 0 1em' }}>
         <LocationField
           className="nearby-view-location-field"
           // TODO: why does this cause the jump to the trip planner when selecting location
