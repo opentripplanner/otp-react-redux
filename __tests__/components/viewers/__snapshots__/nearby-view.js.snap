@@ -90,7 +90,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
             <div
               style={
                 Object {
-                  "padding": "1em",
+                  "padding": "1em 1em 0 1em",
                 }
               }
             >
@@ -4378,7 +4378,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
             <div
               style={
                 Object {
-                  "padding": "1em",
+                  "padding": "1em 1em 0 1em",
                 }
               }
             >
