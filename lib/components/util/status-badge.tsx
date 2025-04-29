@@ -22,6 +22,7 @@ function getStatusLabel(status?: string) {
         </StyledStatusLabel>
       )
     case 'confirmed':
+    case 'verified':
       return (
         <StyledStatusLabel style={{ background: 'green' }}>
           <FormattedMessage id="components.StatusBadge.verified" />
