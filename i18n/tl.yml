@@ -57,8 +57,7 @@ actions:
     confirmDeletePlace: Gusto mo bang alisin ang lugar na ito?
     emailVerificationResent: Ipinadala ulit ang mensahe ng pag-verify sa email.
     genericError: "Nagka-error: {err}"
-    getDependentUserInfoFailed: Pagkakamali sa pagkuha ng impormasyon sa profile sa
-      kadaliang kumilos.
+    getDependentUserInfoFailed: Pagkakamali sa pagkuha ng impormasyon sa profile sa kadaliang kumilos.
     itineraryExistenceCheckFailed: Nagka-error sa pagtingin kung posible ang napili mong biyahe.
     mustAcceptTermsToSavePlace: >-
       Pakitanggap ang Mga Tuntunin ng Paggamit (sa ilalim ng Aking Account) para
@@ -224,8 +223,7 @@ components:
       ang pampublikong transportasyon sa pagpili mo ng mode.
     origin: pinagmulan
     planTripTooltip: Planuhin ang biyahe
-    validationMessage: "Ilarawan ang mga sumusunod na field para makapagplano ng biyahe:
-      {issues}"
+    validationMessage: "Ilarawan ang mga sumusunod na field para makapagplano ng biyahe: {issues}"
   BeforeSignInScreen:
     mainTitle: Sina-sign in ka
     message: >
@@ -239,10 +237,11 @@ components:
     addNewCompanion: Magdagdag ng bagong kasama sa pagbiyahe
     companionAlreadyAdded: Mayroon ka nang kasamang may email na {email}
     companionExplanation: >
-      Mag-imbita ng aalis na G-MAP user na magiging kasama sa pagbiyahe sa pamamagitan
-      ng paglalagay ng kanyang email. Kapag tinanggap niya ito, magiging "na-verify"
-      ang kanyang status, at magagawa mong ibahagi ang iyong status ng biyahe at magplano
-      ng mga biyahe batay sa mobility profile ng isa't isa.
+      Mag-imbita ng aalis na G-MAP user na magiging kasama sa pagbiyahe sa
+      pamamagitan ng paglalagay ng kanyang email. Kapag tinanggap niya ito,
+      magiging "na-verify" ang kanyang status, at magagawa mong ibahagi ang
+      iyong status ng biyahe at magplano ng mga biyahe batay sa mobility profile
+      ng isa't isa.
     confirmDeleteCompanion: Gusto mo bang i-delete ang kasamang si {email}?
     currentCompanionsLabel: "Mga kasalukuyang kasama sa pagbiyahe:"
     deleteCompanion: I-delete si {email}
@@ -316,6 +315,7 @@ components:
     title: Larawan ng kalsada
   MetroUI:
     arriveAt: Dumating ka na
+    fare: "{fare}"
     itineraryDescription: "{time} (na) itinerary gamit ang {routes}"
     itinerarySummary: mula sa {stopName} | {cost}
     leaveAt: Aalis ka
@@ -473,8 +473,7 @@ components:
     invalidCode: Maglagay ng 6 na digit para sa code sa pag-validate.
     invalidPhone: Maglagay ng valid na numero ng telepono.
     phoneNumberSubmitted: Matagumpay na naisumite ang numero ng teleponong {phoneNumber}.
-    phoneNumberVerified: Matagumpay na na-verify ang numero ng teleponong {phoneNumber}
-      .
+    phoneNumberVerified: Matagumpay na na-verify ang numero ng teleponong {phoneNumber} .
     placeholder: Ilagay ang numero ng iyong telepono
     prompt: "Ilagay ang numero ng iyong telepono para sa mga SMS na notification:"
     requestNewCode: Humiling ng bagong code
@@ -669,13 +668,11 @@ components:
     travelingAt: Bumibiyahe nang {milesPerHour}
     vehicleName: Sasakyan {vehicleNumber}
   TripBasicsPane:
-    checkingItineraryExistence: Tinitingnan kung may itinerary para sa bawat araw
-      ng linggo...
+    checkingItineraryExistence: Tinitingnan kung may itinerary para sa bawat araw ng linggo...
     onlyOnDate: Sa {date, date, ::eeeee yyyyMMdd} lang
     recurringEachWeek: Sa ilang partikular na araw sa bawat linggo
     tripDaysPrompt: Anong mga araw mo ginagawa ang biyaheng ito?
-    tripIsAvailableOnDaysIndicated: Available ang iyong biyahe sa mga araw ng linggo
-      na nakasaad sa itaas.
+    tripIsAvailableOnDaysIndicated: Available ang iyong biyahe sa mga araw ng linggo na nakasaad sa itaas.
     tripNamePrompt: "Pangalanan ang biyaheng ito:"
     tripNotAvailableOnDay: Hindi available ang biyahe sa {repeatedDay}
     unsavedChangesExistingTrip: >-
@@ -726,8 +723,7 @@ components:
       unknownState: Hindi Alam ang Status ng Biyahe
       untogglePause: Ipagpatuloy
     inactive:
-      description: Ipagpatuloy ang pagsubaybay sa biyahe para makita ang updated na
-        status
+      description: Ipagpatuloy ang pagsubaybay sa biyahe para makita ang updated na status
       heading: Naka-pause ang pagsubaybay sa biyahe
     nextTripNotPossible:
       description: >
@@ -749,8 +745,7 @@ components:
       description: Isa itong pang-isang beses na biyaheng nangyari dati.
       heading: Dati na ang biyahe
     snoozed:
-      description: I-unsnooze ang pagsubaybay sa biyahe para makita ang updated na
-        status.
+      description: I-unsnooze ang pagsubaybay sa biyahe para makita ang updated na status.
       heading: Naka-snooze ang pagsubaybay sa biyahe ngayong araw
     upcoming:
       nextTripBegins: >-
@@ -760,8 +755,7 @@ components:
         Magsisimula ang biyahe nang {tripStart, time, short}. (Magsisimula ang
         realtime na pagsubaybay nang {monitoringStart, time, short}.)
       tripStartIsDelayed: Naantala ang oras ng pagsisimula ng biyahe nang {duration}!
-      tripStartIsEarly: Nagsisimula na ang biyahe {duration} na mas maaga kaysa sa
-        inaasahan!
+      tripStartIsEarly: Nagsisimula na ang biyahe {duration} na mas maaga kaysa sa inaasahan!
       tripStartsSoonNoUpdates: >-
         Malapit nang magsimula ang biyahe (walang realtime na update na
         available).

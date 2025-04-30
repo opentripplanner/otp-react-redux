@@ -5,8 +5,7 @@ actions:
     callQuerySaveError: "அழைப்பு வினவல்களை சேமிப்பதில் பிழை: {err}"
     callSaveError: "அழைப்பைச் சேமிக்க முடியவில்லை: {err}"
     checkSessionError: "அங்கீகார அமர்வை நிறுவுவதில் பிழை: {err}"
-    couldNotFindCallError: அழைப்பைக் கண்டுபிடிக்க முடியவில்லை. சேமி வினவல் கோரிக்கையை
-      ரத்து செய்தல்.
+    couldNotFindCallError: அழைப்பைக் கண்டுபிடிக்க முடியவில்லை. சேமி வினவல் கோரிக்கையை ரத்து செய்தல்.
     fetchCallsError: "அழைப்புகளைப் பெறுவதில் பிழை: {err}"
     queryFetchError: "வினவல்களைப் பெறுவதில் பிழை: {err}"
   fieldTrip:
@@ -29,8 +28,7 @@ actions:
       திட்டத்தை சேமிக்க முடியாது: ஒன்று அல்லது அதற்கு மேற்பட்ட வாகனங்களில் திறன்
       இல்லாததால் இந்த திட்டத்தை சேமிக்க முடியவில்லை. உங்கள் பயணத்தை மீண்டும்
       திட்டமிடுங்கள்.
-    maxTripRequestsExceeded: சரியான முடிவுகள் இல்லாமல் பயணக் கோரிக்கைகளின் எண்ணிக்கை
-      மீறியது
+    maxTripRequestsExceeded: சரியான முடிவுகள் இல்லாமல் பயணக் கோரிக்கைகளின் எண்ணிக்கை மீறியது
     saveItinerariesError: "பயணத்திட்டங்களைச் சேமிப்பதில் தோல்வி: {err}"
     setDateError: "அமைத்தல் தேதி:"
     setGroupSizeError: "குழு அளவை அமைப்பதில் பிழை:"
@@ -53,8 +51,7 @@ actions:
     emailVerificationResent: மின்னஞ்சல் சரிபார்ப்பு செய்தி கோபமடைந்தது.
     genericError: "பிழை ஏற்பட்டது: {err}"
     getDependentUserInfoFailed: இயக்கம் சுயவிவரத் தகவலைப் பெறுவதில் பிழை.
-    itineraryExistenceCheckFailed: நீங்கள் தேர்ந்தெடுத்த பயணம் சாத்தியமா என்பதை சரிபார்க்க
-      பிழை.
+    itineraryExistenceCheckFailed: நீங்கள் தேர்ந்தெடுத்த பயணம் சாத்தியமா என்பதை சரிபார்க்க பிழை.
     mustAcceptTermsToSavePlace: >-
       இருப்பிடங்களைச் சேமிக்க பயன்பாட்டு விதிமுறைகளை (எனது கணக்கின் கீழ்)
       ஏற்றுக்கொள்ளுங்கள்.
@@ -230,8 +227,7 @@ components:
     intermediateDestination: இடைநிலை இலக்கை உள்ளிடவும்
   CompanionsPane:
     addNewCompanion: ஒரு புதிய பயணத் தோழரைச் சேர்க்கவும்
-    companionAlreadyAdded: உங்களிடம் ஏற்கனவே மின்னஞ்சல் {மின்னஞ்சல் with உடன் ஒரு
-      தோழர் இருக்கிறார்
+    companionAlreadyAdded: உங்களிடம் ஏற்கனவே மின்னஞ்சல் {மின்னஞ்சல் with உடன் ஒரு தோழர் இருக்கிறார்
     companionExplanation: >
       ஏற்கனவே உள்ள சி-மேப் பயனரை அவர்களின் மின்னஞ்சலை உள்ளிட்டு பயணத் தோழராக
       அழைக்க அழைக்கவும். அவர்கள் ஏற்றுக்கொள்ளும்போது, அவர்களின் நிலை
@@ -311,6 +307,7 @@ components:
     title: தெருவின் படங்கள்
   MetroUI:
     arriveAt: நீங்கள் வருகிறீர்கள்
+    fare: "{fare}"
     itineraryDescription: "{நேரம் {time}"
     itinerarySummary: "{stopName} | இலிருந்து {cost}"
     leaveAt: நீங்கள் வெளியேறுகிறீர்கள்
@@ -386,8 +383,7 @@ components:
     signOut: விடுபதிகை
   NearbyView:
     bikeRentalStation: பைக் வாடகை நிலையம்
-    bikesAvailable: "{பைக்ச்வெயிலபிள், பன்மை, ஒன்று {# பைக்} மற்ற {# பைக்குகள்}}}
-      கிடைக்கிறது"
+    bikesAvailable: "{பைக்ச்வெயிலபிள், பன்மை, ஒன்று {# பைக்} மற்ற {# பைக்குகள்}}} கிடைக்கிறது"
     companyBicycle: "{company} பைக்"
     companyScooter: "{company} ச்கூட்டர்"
     distanceAway: "{localizedDistanceString} தொலைவில்"
@@ -654,13 +650,11 @@ components:
     travelingAt: "{milesPerHour} இல் பயணம்"
     vehicleName: வண்டி {vehicleNumber}
   TripBasicsPane:
-    checkingItineraryExistence: வாரத்தின் ஒவ்வொரு நாளுக்கும் பயணத்தின் இருப்பை சரிபார்க்கிறது
-      ...
+    checkingItineraryExistence: வாரத்தின் ஒவ்வொரு நாளுக்கும் பயணத்தின் இருப்பை சரிபார்க்கிறது ...
     onlyOnDate: "{தேதி, தேதியில் மட்டுமே, :: eeeee yyyymmdd}"
     recurringEachWeek: ஒவ்வொரு வாரமும் சில நாட்களில்
     tripDaysPrompt: இந்த பயணத்தை நீங்கள் என்ன நாட்கள் எடுக்கிறீர்கள்?
-    tripIsAvailableOnDaysIndicated: மேலே குறிப்பிட்டுள்ளபடி உங்கள் பயணம் வாரத்தின்
-      நாட்களில் கிடைக்கிறது.
+    tripIsAvailableOnDaysIndicated: மேலே குறிப்பிட்டுள்ளபடி உங்கள் பயணம் வாரத்தின் நாட்களில் கிடைக்கிறது.
     tripNamePrompt: "இந்த பயணத்திற்கு ஒரு பெயரை வழங்கவும்:"
     tripNotAvailableOnDay: பயணம் {repeatedDay}
     unsavedChangesExistingTrip: >-
