@@ -259,7 +259,7 @@
   color: #111;
   display: flex !important;
   height: 50px;
-  margin-bottom: -5px !important;
+  margin-bottom: 0px !important;
   transition: background-color 0.1s ease-out;
 }
 .nearby-view-location-field:hover,
@@ -272,7 +272,3 @@
   background: transparent !important;
 }
 
-.nearby-view-location-field ul {
-  overflow-x: scroll;
-  max-width: 100%;
-}

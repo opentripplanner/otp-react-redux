@@ -28,7 +28,7 @@ import MobileNavigationBar from '../../mobile/navigation-bar'
 import PageTitle from '../../util/page-title'
 import VehiclePositionRetriever from '../vehicle-position-retriever'
 
-import { NearbySidebarContainer, Scrollable } from './styled'
+import { FullHeightContainer, NearbySidebarContainer } from './styled'
 import FromToPicker from './from-to-picker'
 import RentalStation from './rental-station'
 import Stop, { fullTimestamp, patternArrayforStops } from './stop'
@@ -304,7 +304,7 @@ function NearbyView({
     [setMainPanelContent]
   )
 
-  const MainContainer = mobile ? MobileContainer : Scrollable
+  const MainContainer = mobile ? MobileContainer : FullHeightContainer
 
   return (
     <MainContainer className="nearby-view base-color-bg">
@@ -327,7 +327,7 @@ function NearbyView({
           />
         </InvisibleA11yLabel>
       )}
-      <div style={{ padding: '1em 1em 0 1em' }}>
+      <div style={{ padding: '1em' }}>
         <LocationField
           className="nearby-view-location-field"
           // TODO: why does this cause the jump to the trip planner when selecting location
@@ -367,12 +367,12 @@ function NearbyView({
       </div>
 
       {loading && <Loading extraSmall />}
+      {/* This is used to scroll to top */}
+      <div aria-hidden ref={firstItemRef} />
       <NearbySidebarContainer
         className="base-color-bg"
         style={{ marginBottom: 0 }}
       >
-        {/* This is used to scroll to top */}
-        <div aria-hidden ref={firstItemRef} />
         {nearby &&
           !staleData &&
           (nearby.error ? (
