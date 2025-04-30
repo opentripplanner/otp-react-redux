@@ -55,6 +55,9 @@ const VerifyEmailPane = ({ resendVerificationEmail, routeTo }: Props) => {
     <>
       <PageTitle title={verifyEmail} />
       <h1>{verifyEmail}</h1>
+      <p style={{ marginTop: '2em' }}>
+        <strong>{auth0.user?.email}</strong>
+      </p>
       <p>
         <FormattedMessage id="components.VerifyEmailPane.instructions1" />
       </p>
