@@ -2448,10 +2448,21 @@
     "@opentripplanner/location-icon" "2.0.0"
     flat "^5.0.2"
 
-"@opentripplanner/geocoder@3.0.4", "@opentripplanner/geocoder@^3.0.4":
+"@opentripplanner/geocoder@3.0.4":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-3.0.4.tgz#99f4a6ac66cf850f5e2defffd0d04bf3ca2b98f7"
   integrity sha512-MDNKlDQacmddYHZnNm7TPNWXrPXspxWnmYFa2IL4V1t2KVdQ1Z3U6yurEsIsw9TaD00sa0KlbNo9M0h9lXqWCg==
+  dependencies:
+    "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
+    "@conveyal/lonlat" "^1.4.1"
+    "@leeoniya/ufuzzy" "^1.0.14"
+    isomorphic-mapzen-search "^1.6.1"
+    lodash.memoize "^4.1.2"
+
+"@opentripplanner/geocoder@3.0.5", "@opentripplanner/geocoder@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-3.0.5.tgz#e1faacc0bfe76060b7a08f8c835232f611fa4bf3"
+  integrity sha512-bxFO42xlV3utyI/wwQIPzkL9osiUMAvyfdVfIvYDvabcKEFyYNAVOerz8vjOHryViZ3p7eALWeC77HBMOIYdHg==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
     "@conveyal/lonlat" "^1.4.1"
@@ -2508,14 +2519,14 @@
     react-resize-detector "^4.2.1"
     string-similarity "^4.0.4"
 
-"@opentripplanner/location-field@4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-4.0.0.tgz#1e2ba8f51a4f13979c70782da1f234b81762a2b8"
-  integrity sha512-E0Kpbp9UJ+NfW1lNseWKBKp2jAA8pMtzd2ItLjVRg9o9sSZqW8BktAvWIYXFQ/qi5L7qhAWCsZsA56TNEjVt8g==
+"@opentripplanner/location-field@4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-4.0.1.tgz#f114d311ef16b74d381a5dc91ed4401c7f0b3c0e"
+  integrity sha512-nGpNJYkZ/pYiKpDzTUEMJZl4333inajQTUSm8TGFDrcx6aW8bmgVJTxAlWkpCrs+ZIjzJcYq6IzfCu1eJqYD2w==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
     "@opentripplanner/core-utils" "13.0.0"
-    "@opentripplanner/geocoder" "3.0.4"
+    "@opentripplanner/geocoder" "3.0.5"
     "@opentripplanner/humanize-distance" "2.0.0"
     "@opentripplanner/location-icon" "2.0.0"
     "@styled-icons/fa-solid" "^10.34.0"
