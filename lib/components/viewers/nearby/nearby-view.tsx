@@ -64,6 +64,7 @@ type Props = {
   nearbyViewCoords?: LatLonObj
   radius?: number
   routeSortComparator: (a: PatternStopTime, b: PatternStopTime) => number
+  sessionSearches: any
   setHighlightedLocation: (location: Location | null) => void
   setLocation: SetLocationHandler
   setMainPanelContent: (content: number) => void
@@ -136,6 +137,7 @@ function NearbyView({
   nearbyViewCoords,
   radius,
   routeSortComparator,
+  sessionSearches,
   setHighlightedLocation,
   setMainPanelContent,
   setViewedNearbyCoords,
@@ -336,10 +338,12 @@ function NearbyView({
           // TODO: why does this cause the jump to the trip planner when selecting location
           currentPosition={currentPosition}
           geocoderConfig={geocoderConfig}
+          geocoderResultsOrder={geocoderConfig?.geocoderResultsOrder}
           getCurrentPosition={getCurrentPosition}
           inputPlaceholder={intl.formatMessage({
             id: 'components.NearbyView.searchNearby'
           })}
+          layerColorMap={geocoderConfig?.resultsColors}
           location={{
             // Provide a 0 default in case the nearby view coords are null
             lat: 0,
@@ -361,7 +365,9 @@ function NearbyView({
               reverseCoords([location.lon, location.lat])
             }
           }}
+          sessionSearches={sessionSearches}
           sortByDistance
+          suggestionCount={geocoderConfig?.resultsCount}
         />
         {loading && <Loading extraSmall />}
         {nearby &&
@@ -386,7 +392,7 @@ const mapStateToProps = (state: AppReduxState) => {
   const { nearbyViewCoords } = ui
   const { nearby } = transitIndex
   const { entityId } = state.router.location.query
-  const { currentPosition } = location
+  const { currentPosition, sessionSearches } = location
   const defaultLatLon =
     map?.initLat && map?.initLon ? { lat: map.initLat, lon: map.initLon } : null
 
@@ -422,7 +428,8 @@ const mapStateToProps = (state: AppReduxState) => {
     nearby: nearby?.data,
     nearbyViewCoords,
     radius: config.nearbyView?.radius,
-    routeSortComparator
+    routeSortComparator,
+    sessionSearches
   }
 }
 
