@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig, transformWithEsbuild } from 'vite'
 import fs from 'fs-extra'
 import path from 'path'
 import react from '@vitejs/plugin-react'
@@ -36,7 +36,7 @@ fs.copySync(PLAN_QUERY_RESOURCE_URI, './tmp/planQuery.graphql')
 export default defineConfig({
   optimizeDeps: {
     esbuildOptions: {
-      // Point JS files to the JSX loader
+      // Point JS files to the JSX loader (neededin addition to the JS-JSX conversion plugin below)
       // From https://stackoverflow.com/questions/74620427/how-to-configure-vite-to-allow-jsx-syntax-in-js-files
       loader: {
         '.js': 'jsx'
@@ -48,6 +48,21 @@ export default defineConfig({
     force: true
   },
   plugins: [
+    {
+      name: 'treat-js-files-as-jsx',
+      async transform(code, id) {
+        if (!id.match(/lib\/.*\.js$/))  return null
+
+        // Use the exposed transform from vite, instead of directly
+        // transforming with esbuild (needed in addition to the esbuild js loader option above)
+        // From https://stackoverflow.com/questions/74620427/how-to-configure-vite-to-allow-jsx-syntax-in-js-files
+        return transformWithEsbuild(code, id, {
+          loader: 'jsx',
+          jsx: 'automatic',
+        })
+      },
+    },
+
     react()
   ],
   server: {
