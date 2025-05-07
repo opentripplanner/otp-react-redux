@@ -1,6 +1,5 @@
-import { Button } from 'react-bootstrap'
-import { Search } from '@styled-icons/fa-solid/Search'
-import { TrashAlt } from '@styled-icons/fa-solid/TrashAlt'
+import { Button, Panel } from 'react-bootstrap'
+import { Edit } from '@styled-icons/fa-solid/Edit'
 import { useIntl } from 'react-intl'
 import React, { HTMLAttributes, ReactNode, useContext } from 'react'
 import styled, { css } from 'styled-components'
@@ -34,37 +33,38 @@ interface Props extends HTMLAttributes<HTMLLIElement> {
   /** The title for the main button */
   title?: string
 }
-/*
-interface ConfigContext extends Context {
-  SvgIcon: ComponentType<{ iconName?: string }>
-}
-*/
 const Container = styled.li`
-  align-items: stretch;
-  display: flex;
+  list-style: none;
 `
 
 // Definitions below are for customizable subcomponents referenced in
 // styled.js to define multiple flavors of the Place component,
 // without creating circular references between that file and this file.
 
-const placeButtonCss = css`
+const placeCss = css`
   background: none;
-  flex: 1 0 0;
-  overflow: hidden;
   text-align: left;
-  text-overflow: ellipsis;
+  width: 100%;
 `
 
 export const PlaceButton = styled(Button)`
-  ${placeButtonCss}
+  ${placeCss}
 `
 
-export const PlaceLink = styled(Link)`
-  ${placeButtonCss}
+export const PlaceContainer = styled(Panel.Body)`
+  display: grid;
+  align-items: center;
+  gap: 15px;
+  grid-template-columns: 30px auto 30px;
+  ${placeCss}
 `
 
-export const PlaceDetail = styled.span``
+export const PlaceDetail = styled.span`
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+`
 
 export const PlaceContent = styled.span``
 
@@ -72,7 +72,10 @@ export const PlaceName = styled.span``
 
 export const PlaceText = styled.span``
 
-export const IconWrapper = styled(StyledIconWrapper)``
+export const IconWrapper = styled(StyledIconWrapper)`
+  justify-self: center;
+  grid-column: 1;
+`
 
 export const ActionButton = styled(Button)`
   background: none;
@@ -80,6 +83,15 @@ export const ActionButton = styled(Button)`
 `
 
 export const ActionButtonPlaceholder = styled.span``
+
+const SavedPlacePanel = styled(Panel)`
+  margin-bottom: 10px;
+
+  .panel-body:before,
+  .panel-body:after {
+    display: none !important;
+  }
+`
 
 /**
  * Renders a stylable clickable button for editing/selecting a user's favorite place,
@@ -93,8 +105,6 @@ const Place = ({
   largeIcon,
   mainText,
   onClick,
-  onDelete,
-  onView,
   path,
   tag = 'li',
   title = `${mainText}${detailText && ` (${detailText})`}`
@@ -102,16 +112,10 @@ const Place = ({
   const intl = useIntl()
   // @ts-expect-error TODO: Add types to ComponentContext
   const { SvgIcon } = useContext(ComponentContext)
-  const viewStopLabel = intl.formatMessage({ id: 'components.Place.viewStop' })
-  const deletePlaceLabel = intl.formatMessage({
-    id: 'components.Place.deleteThisPlace'
-  })
-  const iconSize = largeIcon ? '2x' : undefined
-
   const placeContent = (
     <>
       {largeIcon && (
-        <IconWrapper size="2x">
+        <IconWrapper size="1.5x">
           <SvgIcon iconName={icon} />
         </IconWrapper>
       )}
@@ -141,30 +145,17 @@ const Place = ({
       {onClick ? (
         <PlaceButton onClick={onClick}>{placeContent}</PlaceButton>
       ) : (
-        <PlaceLink className="btn btn-default" to={path}>
-          {placeContent}
-        </PlaceLink>
+        <SavedPlacePanel style={{ marginBottom: '10px' }}>
+          <PlaceContainer>
+            {placeContent}
+            <Link to={path}>
+              <Edit height={18} />
+            </Link>
+          </PlaceContainer>
+        </SavedPlacePanel>
       )}
 
       {/* Action buttons. If none, render a placeholder. */}
-      {!onView && !onDelete && <ActionButtonPlaceholder />}
-      {onView && (
-        // This button is only used for viewing stops.
-        <ActionButton onClick={onView} title={viewStopLabel}>
-          <IconWrapper size={iconSize}>
-            <Search />
-          </IconWrapper>
-          <InvisibleA11yLabel>{viewStopLabel}</InvisibleA11yLabel>
-        </ActionButton>
-      )}
-      {onDelete && (
-        <ActionButton onClick={onDelete} title={deletePlaceLabel}>
-          <IconWrapper size={iconSize}>
-            <TrashAlt />
-          </IconWrapper>
-          <InvisibleA11yLabel>{deletePlaceLabel}</InvisibleA11yLabel>
-        </ActionButton>
-      )}
     </Container>
   )
 }
