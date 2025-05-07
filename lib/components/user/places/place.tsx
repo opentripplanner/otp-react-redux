@@ -42,7 +42,6 @@ const Container = styled.li`
 // without creating circular references between that file and this file.
 
 const placeCss = css`
-  background: none;
   text-align: left;
   width: 100%;
 `
@@ -52,21 +51,10 @@ export const PlaceButton = styled(Button)`
 `
 
 export const PlaceContainer = styled(Panel.Body)`
-  display: grid;
-  align-items: center;
-  font-size: 14px;
-  gap: 15px;
-  grid-template-columns: 30px auto 30px;
-  padding: 10px;
   ${placeCss}
 `
 
-export const PlaceDetail = styled.span`
-  width: 100%;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-`
+export const PlaceDetail = styled.span``
 
 export const PlaceContent = styled.span``
 
@@ -150,7 +138,7 @@ const Place = ({
         <SavedPlacePanel style={{ marginBottom: '10px' }}>
           <PlaceContainer>
             {placeContent}
-            <Link to={path}>
+            <Link aria-label={actionText} title={actionText} to={path}>
               <Edit height={18} />
             </Link>
           </PlaceContainer>

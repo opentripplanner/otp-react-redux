@@ -15,13 +15,16 @@ import Place, {
 // Styles and exports for favorite place components
 // used in the My account page.
 
-// const FAVORITE_PLACE_HEIGHT_PX = '60px'
-
 export const StyledFavoritePlace = styled(Place).attrs({
   largeIcon: true
 })`
   ${PlaceContainer} {
-    text-align: left;
+    align-items: center;
+    display: grid;
+    font-size: 14px;
+    gap: 15px;
+    grid-template-columns: 30px auto 30px;
+    padding: 10px;
   }
   ${PlaceContent} {
     display: flex;
@@ -32,6 +35,10 @@ export const StyledFavoritePlace = styled(Place).attrs({
   }
   ${PlaceDetail} {
     color: ${GREY_ON_WHITE};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
   }
 
   ${PlaceName},
@@ -53,7 +60,12 @@ export const StyledFavoritePlace = styled(Place).attrs({
 
 export const StyledMainPanelPlace = styled(Place)`
   ${PlaceButton} {
+    background: none;
     border: none;
+
+    &:hover {
+      background-color: #e6e6e6;
+    }
   }
   ${PlaceName} {
     margin-left: 0.25em;
