@@ -54,8 +54,10 @@ export const PlaceButton = styled(Button)`
 export const PlaceContainer = styled(Panel.Body)`
   display: grid;
   align-items: center;
+  font-size: 14px;
   gap: 15px;
   grid-template-columns: 30px auto 30px;
+  padding: 10px;
   ${placeCss}
 `
 
