@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import fs from 'fs-extra'
 import path from 'path'
 import react from '@vitejs/plugin-react'
-import ViteYaml from '@modyfi/vite-plugin-yaml'
+import { yamlPlugin } from 'esbuild-plugin-yaml'
 
 // Empty tmp folder before copying stuff.
 fs.emptyDirSync('./tmp')
@@ -40,13 +40,15 @@ export default defineConfig({
       // From https://stackoverflow.com/questions/74620427/how-to-configure-vite-to-allow-jsx-syntax-in-js-files
       loader: {
         '.js': 'jsx'
-      }
+      },
+      plugins: [
+        yamlPlugin()
+      ]
     },
     force: true
   },
   plugins: [
-    react(),
-    ViteYaml()
+    react()
   ],
   server: {
     port: 9966,
