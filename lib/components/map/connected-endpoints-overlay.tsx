@@ -14,7 +14,7 @@ import {
 import { getActiveSearch, getShowUserSettings } from '../../util/state'
 import { setLocation } from '../../actions/map'
 import { setViewedStop } from '../../actions/ui'
-import { toastOnPlaceSaved } from '../util/toasts'
+import { toastOnPlaceChanged } from '../util/toasts'
 
 type Props = ComponentProps<typeof EndpointsOverlay> & {
   forgetPlace: (place: string, intl: IntlShape) => void
@@ -40,7 +40,11 @@ const ConnectedEndpointsOverlay = ({
     async (placeTypeLocation) => {
       const result = await rememberPlace(placeTypeLocation, intl)
       if (result === UserActionResult.SUCCESS) {
-        toastOnPlaceSaved(convertToPlace(placeTypeLocation.location), intl)
+        toastOnPlaceChanged(
+          convertToPlace(placeTypeLocation.location),
+          intl,
+          'Remembered'
+        )
       }
     },
     [rememberPlace, intl]

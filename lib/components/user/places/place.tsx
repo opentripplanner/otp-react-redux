@@ -99,7 +99,6 @@ const Place = ({
   tag = 'li',
   title = `${mainText}${detailText && ` (${detailText})`}`
 }: Props): JSX.Element => {
-  const intl = useIntl()
   // @ts-expect-error TODO: Add types to ComponentContext
   const { SvgIcon } = useContext(ComponentContext)
   const placeContent = (
