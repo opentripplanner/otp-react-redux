@@ -121,7 +121,11 @@ class TripPreviewLayoutBase extends Component<Props, State> {
               itinerary={itinerary}
               LegIcon={LegIcon}
             />
-            <TripDetails className="percy-hide" itinerary={itinerary} />
+            <TripDetails
+              className="percy-hide"
+              displayTimeActive={false}
+              itinerary={itinerary}
+            />
           </>
         )}
       </div>
