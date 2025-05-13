@@ -321,6 +321,11 @@ class MetroItinerary extends NarrativeItinerary {
         10
       )
     }
+    const formattedFare = intl.formatNumber(transitFare, {
+      currency: fareCurrency,
+      currencyDisplay: 'narrowSymbol',
+      style: 'currency'
+    })
 
     const fareInfo =
       // Hide the fare information entirely if the defaultFareType isn't specified.
@@ -328,13 +333,9 @@ class MetroItinerary extends NarrativeItinerary {
         <FormattedMessage id="common.itineraryDescriptions.fareUnknown" />
       ) : (
         // TODO: re-implement TNC fares for metro UI?
-        <FormattedNumber
-          currency={fareCurrency}
-          currencyDisplay="narrowSymbol"
-          // This isn't a "real" style prop
-          // eslint-disable-next-line react/style-prop-object
-          style="currency"
-          value={transitFare}
+        <FormattedMessage
+          id="components.MetroUI.fare"
+          values={{ fare: formattedFare }}
         />
       )
 
