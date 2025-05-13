@@ -36,7 +36,9 @@ import { PlaceLocationField } from './place-location-field'
 
 type Props = WrappedComponentProps &
   FormikProps<UserSavedLocation> & {
-    geocoderConfig: GeocoderConfig
+    geocoderConfig: GeocoderConfig & {
+      geocoderResultsOrder?: Array<string>
+    }
     getCurrentPosition: (
       ...args: Parameters<typeof locationActions.getCurrentPosition>
     ) => void
@@ -130,7 +132,7 @@ class PlaceEditor extends Component<Props> {
   }
 
   render() {
-    const { errors, intl, values: place } = this.props
+    const { errors, geocoderConfig, intl, values: place } = this.props
     const { SvgIcon } = this.context
     const isFixed = isHomeOrWork(place)
     const errorStates = getErrorStates(this.props)
@@ -140,6 +142,8 @@ class PlaceEditor extends Component<Props> {
     const placeCharacterCount = place.name?.length || 0
     const characterRemaining = PLACE_NAME_MAX_LENGTH - placeCharacterCount
     const charactersOverLimit = 0 - characterRemaining
+
+    const { geocoderResultsOrder } = geocoderConfig
 
     return (
       <div>
@@ -251,6 +255,7 @@ class PlaceEditor extends Component<Props> {
 
             <PlaceLocationField
               className="form-control"
+              geocoderResultsOrder={geocoderResultsOrder}
               getCurrentPosition={this._handleGetCurrentPosition}
               inputPlaceholder={
                 isFixed
