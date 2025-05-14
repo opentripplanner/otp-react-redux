@@ -307,6 +307,7 @@ components:
     title: Imagery of the street
   MetroUI:
     arriveAt: You arrive
+    fare: "{fare}"
     itineraryDescription: "{time} itinerary using {routes}"
     itinerarySummary: from {stopName} | {cost}
     leaveAt: You leave

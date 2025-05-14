@@ -88,19 +88,38 @@ class PlaceEditor extends Component<Props> {
   static contextType = ComponentContext
 
   _setLocation = (location: Location) => {
-    const { intl, setValues, values } = this.props
+    const { geocoderConfig, intl, setValues, values } = this.props
     const { category, lat, lon, name } = location
-    setValues({
-      ...values,
-      address:
-        // If the raw current location is passed without a name attribute (i.e. the address),
-        // set the "address" as the formatted coordinates of the current location at that time.
-        category === 'CURRENT_LOCATION'
-          ? intl.formatMessage({ id: 'common.coordinates' }, { lat, lon })
-          : name,
-      lat,
-      lon
-    })
+
+    // Helper function to update the form values.
+    const updateFormValues = (newAddress?: string) => {
+      setValues({
+        ...values,
+        address: newAddress,
+        lat,
+        lon
+      })
+    }
+
+    // If the location is a current location, reverse geocode the coordinates.
+    if (category === 'CURRENT_LOCATION') {
+      const initialAddress = intl.formatMessage(
+        { id: 'common.coordinates' },
+        { lat, lon }
+      )
+      updateFormValues(initialAddress)
+
+      getGeocoder(geocoderConfig)
+        .reverse({ point: { lat, lon } })
+        .then((geocodedLocation: Location) => {
+          updateFormValues(geocodedLocation.name)
+        })
+        .catch((err: Error) => {
+          console.warn('Reverse geocode failed:', err)
+        })
+    } else {
+      updateFormValues(name)
+    }
   }
 
   _handleLocationChange = (e: LocationSelectedEvent) => {

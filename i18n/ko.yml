@@ -22,8 +22,7 @@ actions:
     fetchFieldTripsError: "트립을 가져오는 중에 오류가 발생했습니다: {err}"
     fetchTripsForDateError: "필트 트립 날짜에 대한 트립을 가져오는 중에 오류가 발생했습니다: {err}"
     incompatibleTripDateError: 계획한 트립 날짜({tripDate})가 요청한 트립 날짜({requestDate})가 아닙니다
-    itineraryCapacityError: "플랜을 저장할 수 없습니다: 하나 이상의 차량의 용량이 부족하여 이 플랜을 저장할 수 없습니다.
-      트립을 다시 계획하세요."
+    itineraryCapacityError: "플랜을 저장할 수 없습니다: 하나 이상의 차량의 용량이 부족하여 이 플랜을 저장할 수 없습니다. 트립을 다시 계획하세요."
     maxTripRequestsExceeded: 유효한 결과없이 초과된 트립 요청의 개수
     saveItinerariesError: "트립을 저장하는 데 실패했습니다: {err}"
     setDateError: "날짜를 설정하는 중에 오류가 발생했습니다:"
@@ -211,8 +210,8 @@ components:
     addNewCompanion: 새로운 여행 동행 추가
     companionAlreadyAdded: 이미 {email} 이메일을 사용하는 동행이 있습니다
     companionExplanation: >
-      기존 G-MAP 사용자의 이메일 주소를 입력하여 여행 동행으로 초대합니다. 상대방이 수락하면 상태가 "확인됨"으로 변경되고, 서로의 이동성
-      프로필에 따라 여행 상태를 공유하고 여행을 계획할 수 있습니다.
+      기존 G-MAP 사용자의 이메일 주소를 입력하여 여행 동행으로 초대합니다. 상대방이 수락하면 상태가 "확인됨"으로 변경되고, 서로의
+      이동성 프로필에 따라 여행 상태를 공유하고 여행을 계획할 수 있습니다.
     confirmDeleteCompanion: 동행 {email}을 삭제하시겠습니까?
     currentCompanionsLabel: "현재 여행 동행:"
     deleteCompanion: "{email} 삭제"
@@ -282,6 +281,7 @@ components:
     title: 거리 보기
   MetroUI:
     arriveAt: 도착합니다
+    fare: "{fare}"
     itineraryDescription: "{routes}을(를) 이용한 {time} 일정"
     itinerarySummary: "출발: {stopName} | {cost}"
     leaveAt: 출발
@@ -741,6 +741,5 @@ util:
     networkUnavailable: 현재 {network} 네트워크를 사용할 수 없습니다.
     noTripFound: 트립을 찾을 수 없습니다.
     noTripFoundForMode: "{modes}의 트립을 찾을 수 없습니다."
-    noTripFoundReason: 지정된 최대 거리 내 또는 지정된 시간에 대중 교통 서비스가 없거나, 출발지 또는 도착지가 안전하게 접근가능하지
-      못할 수 있습니다.
+    noTripFoundReason: 지정된 최대 거리 내 또는 지정된 시간에 대중 교통 서비스가 없거나, 출발지 또는 도착지가 안전하게 접근가능하지 못할 수 있습니다.
     noTripFoundWithReason: "{noTripFound} {reason}"

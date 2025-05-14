@@ -258,6 +258,7 @@ components:
     title: 街道圖像
   MetroUI:
     arriveAt: 您已抵達目的地
+    fare: "{fare}"
     itineraryDescription: "{time}預定行程，使用{routes}"
     leaveAt: 您出發
     multipleOptions: 多個選項
