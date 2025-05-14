@@ -288,6 +288,7 @@ export interface ItineraryConfig {
   groupByMode?: boolean
   groupTransitModes?: boolean
   hideSkeletons?: boolean
+  hideTimeActive?: boolean
   mergeItineraries?: boolean
   mutedErrors?: string[]
   onlyShowCountdownForRealtime?: boolean
