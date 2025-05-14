@@ -372,6 +372,8 @@ itinerary:
   showAlertEffectiveDateTimeText: true
   # Show all walking legs regardless of distance
   showAllWalkLegs: false
+  # show time spent active in an itinerary
+  showTimeActive: true
   # Filters out trips returned by OTP by default, unless specifically requested.
   # e.g. filters out walk-only itineraries if user has not explicitly asked for them.
   strictItineraryFiltering: false
