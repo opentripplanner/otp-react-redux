@@ -303,6 +303,7 @@ export interface ItineraryConfig {
   showRouteFares?: boolean
   /** Whether to show the x minutes late/early in the itinerary body */
   showScheduleDeviation?: boolean
+  showTimeActive?: boolean
   sortModes?: ItinerarySortOption[]
   syncSortWithDepartArrive?: boolean
   weights?: ItineraryCostWeights

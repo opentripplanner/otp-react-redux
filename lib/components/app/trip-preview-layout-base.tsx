@@ -74,6 +74,7 @@ class TripPreviewLayoutBase extends Component<Props, State> {
       title
     } = this.props
     const { LegIcon } = this.context
+    const displayTimeActive = config?.itinerary?.showTimeActive
 
     return (
       <div className="otp print-layout">
@@ -123,7 +124,7 @@ class TripPreviewLayoutBase extends Component<Props, State> {
             />
             <TripDetails
               className="percy-hide"
-              displayTimeActive={false}
+              displayTimeActive={displayTimeActive}
               itinerary={itinerary}
             />
           </>
