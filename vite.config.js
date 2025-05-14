@@ -2,6 +2,7 @@ import { defineConfig, transformWithEsbuild } from 'vite'
 import fs from 'fs-extra'
 import path from 'path'
 import react from '@vitejs/plugin-react'
+import yaml from 'js-yaml'
 import { yamlPlugin } from 'esbuild-plugin-yaml'
 
 // Empty tmp folder before copying stuff.
@@ -12,18 +13,21 @@ fs.emptyDirSync('./tmp')
 const CUSTOM_CSS = (process.env && process.env.CUSTOM_CSS) || './example.css'
 fs.copySync(CUSTOM_CSS, './tmp/custom-styles.css')
 
+// For the config.yml file, convert to JSON for direct import
+// because existing YAML plugins are not able to handle special characters in the YML file.
+// TODO: Put this into a config inline plugin.
 const YAML_CONFIG =
   (process.env && process.env.YAML_CONFIG) || './example-config.yml'
-fs.copySync(YAML_CONFIG, './tmp/config.yml')
+const config = yaml.load(fs.readFileSync(YAML_CONFIG, 'utf8'))
+fs.writeJSONSync('./tmp/config.json', config)
 
 const JS_CONFIG = process.env && process.env.JS_CONFIG
 if (JS_CONFIG) {
-  fs.ensureDirSync('./tmp/js/')
-  // JS config can be one file or a folder. Files are placed in the ./tmp/js subfolder.
+  // JS config can be one file or the content of a folder. Files are placed in the ./tmp subfolder.
   if (JS_CONFIG.endsWith('.js')) {
-    fs.copySync(JS_CONFIG, './tmp/js/config.js')
+    fs.copySync(JS_CONFIG, './tmp/config.js')
   } else {
-    fs.copySync(JS_CONFIG, './tmp/js/')
+    fs.copySync(JS_CONFIG, './tmp/')
   }
 }
 
@@ -51,7 +55,7 @@ export default defineConfig({
     {
       name: 'treat-js-files-as-jsx',
       async transform(code, id) {
-        if (!id.match(/lib\/.*\.js$/))  return null
+        if (!id.match(/(lib|tmp)\/.*\.js$/))  return null
 
         // Use the exposed transform from vite, instead of directly
         // transforming with esbuild (needed in addition to the esbuild js loader option above)

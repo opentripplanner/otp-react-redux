@@ -194,6 +194,7 @@
     "husky": "^6.0.0",
     "jest-transform-stub": "^2.0.0",
     "jest-yaml-transform": "^0.2.0",
+    "js-yaml": "^4.1.0",
     "json-loader": "^0.5.7",
     "lint-staged": "^11.1.2",
     "nock": "^9.0.9",
