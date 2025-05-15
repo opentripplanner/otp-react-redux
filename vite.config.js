@@ -1,6 +1,5 @@
 import { defineConfig, transformWithEsbuild } from 'vite'
 import fs from 'fs-extra'
-import path from 'path'
 import react from '@vitejs/plugin-react'
 import ViteYaml from '@modyfi/vite-plugin-yaml';
 import { yamlPlugin } from 'esbuild-plugin-yaml'
