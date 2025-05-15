@@ -122,6 +122,9 @@ map:
   initLon: -122.682
   # autoFlyOnTripFormUpdate: false
   # navigationControlPosition: "bottom-right"
+
+  # Enable the following option to show the endpoints popup even with persistence disabled
+  # forceDisplayEndpointsPopup: false
   baseLayers:
     - name: Streets
       # These tiles are free to use, but not in production

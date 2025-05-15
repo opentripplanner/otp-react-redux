@@ -235,6 +235,7 @@ export interface TransitiveConfig {
 export interface MapConfig {
   autoFlyOnTripFormUpdate?: boolean
   baseLayers?: BaseLayerConfig[]
+  forceDisplayEndpointsPopup?: boolean
   initLat?: number
   initLon?: number
   initZoom?: number
