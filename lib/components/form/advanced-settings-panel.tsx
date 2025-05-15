@@ -58,6 +58,10 @@ const PanelOverlay = styled.div`
   top: 0;
   width: 100%;
   z-index: 100;
+
+  @media (max-width: 768px) {
+    padding: 1em;
+  }
 `
 
 const GlobalSettingsContainer = styled.div`

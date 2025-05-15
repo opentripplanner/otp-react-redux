@@ -44,6 +44,26 @@ export const Button = styled.button`
   ${buttonCss}
 `
 
+export const TripFormButtonContainer = styled.div`
+  display: flex;
+  gap: 2px;
+`
+
+export const AdvancedOptionsContainer = styled.div`
+  align-items: center;
+  color: ${grey[800]};
+  display: flex;
+  justify-content: space-between;
+
+  #date-time-depart-arrive-wrapper {
+    order: 0;
+  }
+
+  #open-advanced-settings-button {
+    order: 1;
+  }
+`
+
 export const PlanTripButton = styled(Button)`
   background-color: green;
   color: #ffffffdd;
@@ -61,7 +81,7 @@ export const PlanTripButton = styled(Button)`
   }
 `
 
-export const ModeSelectorContainer = styled.div<{ squashed?: boolean }>`
+export const ModeSelectorContainer = styled.div`
   align-items: flex-start;
   display: flex;
   float: right;
@@ -69,14 +89,7 @@ export const ModeSelectorContainer = styled.div<{ squashed?: boolean }>`
   width: 100%;
 
   ${PlanTripButton} {
-    border-bottom-left-radius: ${(props) => (props.squashed ? 0 : 'invalid')};
-    border-top-left-radius: ${(props) => (props.squashed ? 0 : 'invalid')};
     margin-top: 0px;
-    margin-left: ${(props) => (props.squashed ? 0 : '3px')};
-  }
-  label:last-of-type {
-    border-bottom-right-radius: ${(props) => (props.squashed ? 0 : 'invalid')};
-    border-top-right-radius: ${(props) => (props.squashed ? 0 : 'invalid')};
   }
   fieldset {
     gap: 0 2px;
@@ -89,15 +102,7 @@ export const ModeSelectorContainer = styled.div<{ squashed?: boolean }>`
 `
 
 export const MainSettingsRow = styled.div`
-  align-items: top;
   display: flex;
-  flex-flow: wrap;
-  gap: 5px 0;
-  justify-content: space-between;
-  margin-bottom: 5px;
-
-  label {
-    /* Cancel bottom margin of bootstrap labels in mode selector. */
-    margin-bottom: 0;
-  }
+  flex-direction: column;
+  gap: 10px;
 `

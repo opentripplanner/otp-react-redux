@@ -14,6 +14,7 @@ type Props = {
   date: string
   dateFormatLegacy?: string
   departArrive: DepartArriveValue
+  externalDepartArrive: boolean
   setQueryParam: (params: any) => void
   sort: SortType
   time: string
@@ -41,11 +42,34 @@ export const DepartArriveDefaultSortDirectionMap: Record<
   NOW: 'DESC'
 }
 
+export const setQueryParamMiddleware = (
+  syncSortWithDepartArrive,
+  updateItineraryFilter,
+  params,
+  setQueryParam,
+  sort
+): void => {
+  if (syncSortWithDepartArrive) {
+    updateItineraryFilter({
+      sort: {
+        ...sort,
+        direction:
+          DepartArriveDefaultSortDirectionMap[
+            params.departArrive as DepartArriveValue
+          ] || sort.direction,
+        type: DepartArriveTypeMap[params.departArrive as DepartArriveValue]
+      }
+    })
+  }
+  return setQueryParam(params)
+}
+
 function DateTimeModal({
   config,
   date,
   dateFormatLegacy,
   departArrive,
+  externalDepartArrive,
   setQueryParam,
   sort,
   time,
@@ -60,45 +84,38 @@ function DateTimeModal({
   const syncSortWithDepartArrive = config?.itinerary?.syncSortWithDepartArrive
   // Note the side effect that this will resort the results of a previous query
   // if the user changes the depart/arrive setting before the query is run.
-  const setQueryParamMiddleware = useCallback(
+
+  const onQueryParamChange = useCallback(
     (params: any) => {
-      if (syncSortWithDepartArrive) {
-        updateItineraryFilter({
-          sort: {
-            ...sort,
-            direction:
-              DepartArriveDefaultSortDirectionMap[
-                params.departArrive as DepartArriveValue
-              ] || sort.direction,
-            type: DepartArriveTypeMap[params.departArrive as DepartArriveValue]
-          }
-        })
-      }
-      setQueryParam(params)
+      setQueryParamMiddleware(
+        syncSortWithDepartArrive,
+        updateItineraryFilter,
+        params,
+        setQueryParam,
+        sort
+      )
     },
-    [setQueryParam, updateItineraryFilter, sort, syncSortWithDepartArrive]
+    [syncSortWithDepartArrive, updateItineraryFilter, setQueryParam, sort]
   )
+
   return (
-    <div className="date-time-modal">
-      <div className="main-panel">
-        <StyledDateTimeSelector
-          className={`date-time-selector ${touchClassName}`}
-          date={date}
-          dateFormatLegacy={dateFormatLegacy}
-          departArrive={departArrive}
-          onQueryParamChange={setQueryParamMiddleware}
-          time={time}
-          // These props below are for legacy browsers
-          // that don't support `<input type="time|date">`.
-          // These props are not relevant in modern browsers,
-          // where `<input type="time|date">` already
-          // formats the time|date according to the OS settings.
-          // eslint-disable-next-line react/jsx-sort-props
-          timeFormatLegacy={timeFormatLegacy}
-          timeZone={homeTimezone}
-        />
-      </div>
-    </div>
+    <StyledDateTimeSelector
+      className={`date-time-selector ${touchClassName}`}
+      date={date}
+      dateFormatLegacy={dateFormatLegacy}
+      departArrive={departArrive}
+      externalDepartArriveSelector={externalDepartArrive}
+      onQueryParamChange={onQueryParamChange}
+      time={time}
+      // These props below are for legacy browsers
+      // that don't support `<input type="time|date">`.
+      // These props are not relevant in modern browsers,
+      // where `<input type="time|date">` already
+      // formats the time|date according to the OS settings.
+      // eslint-disable-next-line react/jsx-sort-props
+      timeFormatLegacy={timeFormatLegacy}
+      timeZone={homeTimezone}
+    />
   )
 }
 

@@ -16,7 +16,6 @@ const StyledTransparentButton = styled.button`
   color: ${grey[800]};
   display: flex;
   gap: 7px;
-  margin-bottom: 5px;
 `
 
 const AdvancedSettingsButton = ({ onClick }: Props): JSX.Element => (
