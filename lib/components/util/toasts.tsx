@@ -39,7 +39,10 @@ export function toastOnPlaceChanged(
   toastSuccess(
     getPlaceMainText(place, intl),
     intl.formatMessage({
-      id: `actions.user.place${change}`
+      id:
+        change === 'Remembered'
+          ? 'components.UserSavedLocations.placeRemembered'
+          : 'components.UserSavedLocations.placeDeleted'
     })
   )
 }
