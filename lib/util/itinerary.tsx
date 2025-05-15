@@ -1,6 +1,11 @@
 import { differenceInMinutes } from 'date-fns'
+import {
+  FareProductSelector,
+  Itinerary,
+  Leg,
+  Place
+} from '@opentripplanner/types'
 import { isTransitLeg } from '@opentripplanner/core-utils/lib/itinerary'
-import { Itinerary, Leg, Place } from '@opentripplanner/types'
 import { toDate, utcToZonedTime } from 'date-fns-tz'
 import coreUtils from '@opentripplanner/core-utils'
 import hash from 'object-hash'
@@ -131,9 +136,12 @@ function legLocationsAreEqual(legLocation: Place, other: Place) {
 
 export function itinerariesAreEqual(
   itinerary: Itinerary,
-  other: Itinerary
+  other: Itinerary,
+  defaultFareType: FareProductSelector
 ): boolean {
   return (
+    getFare(itinerary, defaultFareType).transitFare ===
+      getFare(other, defaultFareType).transitFare &&
     itinerary.legs.length === other.legs.length &&
     itinerary.legs.every((leg, index) => {
       const otherLeg = other?.legs?.[index]

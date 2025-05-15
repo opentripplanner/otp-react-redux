@@ -235,6 +235,7 @@ export interface TransitiveConfig {
 export interface MapConfig {
   autoFlyOnTripFormUpdate?: boolean
   baseLayers?: BaseLayerConfig[]
+  forceDisplayEndpointsPopup?: boolean
   initLat?: number
   initLon?: number
   initZoom?: number
@@ -316,8 +317,10 @@ export interface CO2Config extends CO2ConfigType {
 }
 
 export interface GeocoderConfig extends GeocoderConfigOtpUI {
+  // TODO: This is a terrible key name. OTP-UI should just pull this from the geocoder config...
+  geocoderResultsOrder?: Array<'STATIONS' | 'STOPS' | 'OTHER'>
   maxNearbyStops?: number
-  resultColors?: Record<string, string>
+  resultsColors?: Record<string, string>
   resultsCount?: number
   type: string
 }

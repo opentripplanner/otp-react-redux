@@ -37,6 +37,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
         homeTimezone="America/Los_Angeles"
         nearby={Array []}
         routeSortComparator={[Function]}
+        sessionSearches={Array []}
         setHighlightedLocation={[Function]}
         setLocation={[Function]}
         setMainPanelContent={[Function]}
@@ -127,6 +128,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                   }
                   locationType="to"
                   onLocationSelected={[Function]}
+                  sessionSearches={Array []}
                   sortByDistance={true}
                 >
                   <styled__InputGroup
@@ -4317,6 +4319,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
           ]
         }
         routeSortComparator={[Function]}
+        sessionSearches={Array []}
         setHighlightedLocation={[Function]}
         setLocation={[Function]}
         setMainPanelContent={[Function]}
@@ -4407,6 +4410,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                   }
                   locationType="to"
                   onLocationSelected={[Function]}
+                  sessionSearches={Array []}
                   sortByDistance={true}
                 >
                   <styled__InputGroup

@@ -278,6 +278,7 @@ components:
     title: 街道图像
   MetroUI:
     arriveAt: 到达
+    fare: "{fare}"
     itineraryDescription: "{time} 行程使用 {routes}"
     itinerarySummary: 出发点：{stopName} | {cost}
     leaveAt: 您已离开
