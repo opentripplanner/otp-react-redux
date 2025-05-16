@@ -139,7 +139,6 @@
     "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-typescript": "^7.15.0",
     "@craco/craco": "^6.3.0",
-    "@eslint/js": "^9.22.0",
     "@graphql-tools/schema": "^10.0.0",
     "@jackwilsdon/craco-use-babelrc": "^1.0.0",
     "@modyfi/vite-plugin-yaml": "^1.1.1",
