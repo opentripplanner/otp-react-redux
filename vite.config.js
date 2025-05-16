@@ -1,8 +1,8 @@
 import { defineConfig, transformWithEsbuild } from 'vite'
+import { yamlPlugin } from 'esbuild-plugin-yaml'
 import fs from 'fs-extra'
 import react from '@vitejs/plugin-react'
-import ViteYaml from '@modyfi/vite-plugin-yaml';
-import { yamlPlugin } from 'esbuild-plugin-yaml'
+import ViteYaml from '@modyfi/vite-plugin-yaml'
 
 // Empty tmp folder before copying stuff.
 fs.emptyDirSync('./tmp')
@@ -16,10 +16,11 @@ fs.copySync(CUSTOM_CSS, './tmp/custom-styles.css')
 // because existing YAML plugins are not able to handle special characters in the YML file.
 // TODO: Put this into a config inline plugin.
 const YAML_CONFIG =
-  (process.env && process.env.YAML_CONFIG) || './example-config.yml'
+  (process.env && process.env.YAML_CONFIG) || './example/example-config.yml'
 fs.copySync(YAML_CONFIG, './tmp/config.yml')
 
-const JS_CONFIG = process.env && process.env.JS_CONFIG
+const JS_CONFIG =
+  (process.env && process.env.JS_CONFIG) || './example/config.js'
 if (JS_CONFIG) {
   // JS config can be one file or the content of a folder. Files are placed in the ./tmp subfolder.
   if (JS_CONFIG.endsWith('.js')) {
@@ -43,9 +44,7 @@ export default defineConfig({
       loader: {
         '.js': 'jsx'
       },
-      plugins: [
-        yamlPlugin()
-      ]
+      plugins: [yamlPlugin()]
     },
     force: true
   },
@@ -53,16 +52,16 @@ export default defineConfig({
     {
       name: 'treat-js-files-as-jsx',
       async transform(code, id) {
-        if (!id.match(/(lib|tmp)\/.*\.js$/))  return null
+        if (!id.match(/(lib|tmp)\/.*\.js$/)) return null
 
         // Use the exposed transform from vite, instead of directly
         // transforming with esbuild (needed in addition to the esbuild js loader option above)
         // From https://stackoverflow.com/questions/74620427/how-to-configure-vite-to-allow-jsx-syntax-in-js-files
         return transformWithEsbuild(code, id, {
-          loader: 'jsx',
           jsx: 'automatic',
+          loader: 'jsx'
         })
-      },
+      }
     },
 
     ViteYaml(),

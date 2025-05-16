@@ -15,7 +15,7 @@ import {
   BatchRoutingPanel,
   BatchSearchScreen,
   MetroItinerary
-} from './index'
+} from '../lib/index'
 
 const ItineraryBody = MetroItinerary
 const LegIcon = ClassicLegIcon
