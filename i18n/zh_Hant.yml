@@ -182,6 +182,8 @@ components:
   BatchSearchScreen:
     header: 規劃您的行程
     modeSelectorLabel: 選取出行模式
+    moreOptions: 更多選擇
+    tripOptions: 行程選擇
   BatchSettings:
     destination: 目的地
     invalidModeSelection: 無法使用所選模式規劃行程。嘗試將公共交通納入您的模式選取內容。
@@ -258,6 +260,7 @@ components:
     title: 街道圖像
   MetroUI:
     arriveAt: 您已抵達目的地
+    fare: "{fare}"
     itineraryDescription: "{time}預定行程，使用{routes}"
     leaveAt: 您出發
     multipleOptions: 多個選項
@@ -293,6 +296,8 @@ components:
     header: 檢視附近
     headsign: "{destination}"
     spacesAvailable: "{spacesAvailable} 有未佔用的空間"
+    distanceAway: '{localizedDistanceString} 距離'
+    searchNearby: 搜尋附近...
   NewAccountWizard:
     createNewAccount: 建立新帳戶
     finish: 帳戶設定完成！
@@ -628,6 +633,8 @@ components:
     switcher: 切換工具
   WelcomeScreen:
     prompt: 您想要去哪裡？
+  TripPreviewLayout:
+    previewTrip: 預覽行程
 config:
   accessModes:
     car_hail: 叫車服務

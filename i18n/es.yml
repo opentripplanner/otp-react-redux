@@ -30,8 +30,7 @@ actions:
       No se puede guardar el plan: este plan no se pudo guardar debido a la
       falta de capacidad en uno o más vehículos. Por favor, vuelva a planificar
       su viaje.
-    maxTripRequestsExceeded: Número de solicitudes de viaje superadas sin resultados
-      válidos
+    maxTripRequestsExceeded: Número de solicitudes de viaje superadas sin resultados válidos
     saveItinerariesError: "No se pudieron guardar los itinerarios: {err}"
     setDateError: "Error al establecer la fecha:"
     setGroupSizeError: "No se pudo establecer el tamaño del grupo:"
@@ -53,8 +52,7 @@ actions:
     authTokenError: Error al obtener un token de autorización.
     confirmDeleteMonitoredTrip: ¿Desea eliminar este viaje?
     confirmDeletePlace: ¿Quiere eliminar este lugar?
-    emailVerificationResent: El mensaje de verificación de correo electrónico ha sido
-      reenviado.
+    emailVerificationResent: El mensaje de verificación de correo electrónico ha sido reenviado.
     genericError: "Se ha encontrado un error: {err}"
     getDependentUserInfoFailed: Error al obtener la información del perfil de movilidad.
     itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje seleccionado es posible.
@@ -217,8 +215,7 @@ components:
       a incluir el transporte publico en la selección de modos.
     origin: origen
     planTripTooltip: Planificar viaje
-    validationMessage: "Por favor, defina los siguientes campos para planificar un
-      viaje: {issues}"
+    validationMessage: "Por favor, defina los siguientes campos para planificar un viaje: {issues}"
   BeforeSignInScreen:
     mainTitle: Iniciando sesión
     message: >
@@ -232,10 +229,10 @@ components:
     addNewCompanion: Añadir un nuevo compañero de viaje
     companionAlreadyAdded: Ya tienes un compañero con correo electrónico {email}
     companionExplanation: >
-      Invite a un usuario de G-MAP a ser compañero de viaje introduciendo su correo
-      electrónico. Cuando acepte, su estado cambiará a "verificado", y podréis compartir
-      vuestro estado de viaje y planificar viajes basándoos en el perfil de movilidad
-      del otro.
+      Invite a un usuario de G-MAP a ser compañero de viaje introduciendo su
+      correo electrónico. Cuando acepte, su estado cambiará a "verificado", y
+      podréis compartir vuestro estado de viaje y planificar viajes basándoos en
+      el perfil de movilidad del otro.
     confirmDeleteCompanion: ¿Desea eliminar al compañero {email}?
     currentCompanionsLabel: "Compañeros de viaje actuales:"
     deleteCompanion: Borrar {email}
@@ -309,6 +306,7 @@ components:
     title: Imágenes de la calle
   MetroUI:
     arriveAt: Llegaste
+    fare: "{fare}"
     itineraryDescription: "{time} itinerario en {routes}"
     itinerarySummary: Desde {stopName} | {cost}
     leaveAt: Su salida
@@ -586,8 +584,7 @@ components:
     header: ¡La sesión está a punto de terminar!
     keepSession: Continuar sesión
   SimpleRealtimeAnnotation:
-    usingRealtimeInfo: Este viaje utiliza información de tráfico y retrasos en tiempo
-      real
+    usingRealtimeInfo: Este viaje utiliza información de tráfico y retrasos en tiempo real
   StackedPaneDisplay:
     savePreferences: Guardar preferencias
   StatusBadge:
@@ -653,13 +650,11 @@ components:
     travelingAt: Viajando a {milesPerHour}
     vehicleName: Vehículo {vehicleNumber}
   TripBasicsPane:
-    checkingItineraryExistence: Comprobación de la existencia de itinerarios para
-      cada día de la semana…
+    checkingItineraryExistence: Comprobación de la existencia de itinerarios para cada día de la semana…
     onlyOnDate: Solo el {date, date, ::eeeee yyyyMMdd}
     recurringEachWeek: Algunos días de la semana
     tripDaysPrompt: ¿Qué días hace este viaje?
-    tripIsAvailableOnDaysIndicated: Su viaje está disponible en los días de la semana
-      indicados anteriormente.
+    tripIsAvailableOnDaysIndicated: Su viaje está disponible en los días de la semana indicados anteriormente.
     tripNamePrompt: "Por favor, indique un nombre para este viaje:"
     tripNotAvailableOnDay: El viaje no está disponible el {repeatedDay}
     unsavedChangesExistingTrip: >-
@@ -740,8 +735,7 @@ components:
         El viaje debe comenzar a las {tripStart, time, short}. (El seguimiento
         en tiempo real comenzará a las {monitoringStart, time, short}.)
       tripStartIsDelayed: ¡La hora de inicio del viaje se retrasa {duration}!
-      tripStartIsEarly: ¡La hora de inicio del viaje se produce {duration} antes de
-        lo previsto!
+      tripStartIsEarly: ¡La hora de inicio del viaje se produce {duration} antes de lo previsto!
       tripStartsSoonNoUpdates: >-
         El viaje comienza pronto (no hay actualizaciones disponibles en tiempo
         real).
