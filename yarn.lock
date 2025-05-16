@@ -19036,6 +19036,11 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
+vite-raw-plugin@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/vite-raw-plugin/-/vite-raw-plugin-1.0.2.tgz#7be8a6e1275b7a0eb6753d066337957c15f438cd"
+  integrity sha512-gdp/OFVXBiVq1UwPujVb7+4mmgYHTGrzslMbQvxmgzTN4/HC+3j4GNrumsIKSWfA/y3hktII7XqY38muRaGjhw==
+
 vite@^6.3.1:
   version "6.3.3"
   resolved "https://registry.yarnpkg.com/vite/-/vite-6.3.3.tgz#497392c3f2243194e4dbf09ea83e9a3dddf49b88"

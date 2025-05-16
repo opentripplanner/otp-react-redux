@@ -1,6 +1,7 @@
 import { defineConfig, transformWithEsbuild } from 'vite'
 import { yamlPlugin } from 'esbuild-plugin-yaml'
 import fs from 'fs-extra'
+import raw from 'vite-raw-plugin'
 import react from '@vitejs/plugin-react'
 import ViteYaml from '@modyfi/vite-plugin-yaml'
 
@@ -31,9 +32,10 @@ if (JS_CONFIG) {
 }
 
 const PLAN_QUERY_RESOURCE_URI =
-  (process.env && process.env.PLAN_QUERY_RESOURCE_URI) ||
-  'node_modules/@opentripplanner/core-utils/src/planQuery.graphql'
-fs.copySync(PLAN_QUERY_RESOURCE_URI, './tmp/planQuery.graphql')
+  process.env && process.env.PLAN_QUERY_RESOURCE_URI
+if (PLAN_QUERY_RESOURCE_URI) {
+  fs.copySync(PLAN_QUERY_RESOURCE_URI, './tmp/planQuery.graphql')
+}
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -65,6 +67,9 @@ export default defineConfig({
     },
 
     ViteYaml(),
+    raw({
+      fileRegex: /\.graphql$/
+    }),
     react()
   ],
   server: {
