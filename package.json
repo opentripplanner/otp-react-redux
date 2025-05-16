@@ -7,6 +7,7 @@
     "build": "NODE_OPTIONS=--openssl-legacy-provider craco build",
     "check:i18n-en-fr": "node node_modules/@opentripplanner/scripts/lib/run-validate-i18n.js lib i18n/en-US.yml i18n/fr.yml",
     "unit": "jest __tests__/",
+    "lint": "lint-staged",
     "lint-all": "eslint lib __tests__ a11y --quiet",
     "postinstall": "patch-package && husky install",
     "prepublishOnly": "pinst --disable",
@@ -250,7 +251,7 @@
     "not dead",
     "not op_mini all"
   ],
-  "lint-staged-skipped": {
+  "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix"
     ],
