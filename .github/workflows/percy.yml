@@ -46,15 +46,15 @@ jobs:
       - name: Install npm packages using cache
         uses: bahmutov/npm-install@v1
       - name: Download OTP2 config file
-        # Download into a folder that is not /tmp (/tmp gets wiped at the beginning of the build process)
-        run: curl $PERCY_OTP2_CONFIG_URL --output /tmp2/otp2config.yml
+        # Download into repo root, not not /tmp (/tmp gets wiped at the beginning of the build process)
+        run: curl $PERCY_OTP2_CONFIG_URL --output ./otp2config.yml
         env:
           PERCY_OTP2_CONFIG_URL: ${{ secrets.PERCY_MOCK_OTP2_GEOCODER_CALLTAKER_CONFIG }}
       - name: Build OTP-RR Calltaker
         # Calltaker has a separate config file, so another build should be produced.
         run: yarn build
         env:
-          YAML_CONFIG: /tmp2/otp2config.yml
+          YAML_CONFIG: ./otp2config.yml
           JS_CONFIG: ./percy/har-mock-config-call-taker.js
       - name: Take Percy Snapshots (Calltaker)
         run: npx percy exec -- npx jest percy/percy.test.js --force-exit
