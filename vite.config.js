@@ -48,8 +48,7 @@ export default defineConfig({
         '.js': 'jsx'
       },
       plugins: [yamlPlugin()]
-    },
-    force: true
+    }
   },
   plugins: [
     {
