@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`actions > api routingQuery should gracefully handle bad response 1`] = `
-Array [
-  Array [
+[
+  [
     [Function],
   ],
-  Array [
+  [
     [Function],
   ],
 ]
 `;
 
 exports[`actions > api routingQuery should make a query to OTP 1`] = `
-Array [
-  Array [
+[
+  [
     [Function],
   ],
 ]

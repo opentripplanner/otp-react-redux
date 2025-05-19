@@ -2,17 +2,17 @@
 
 exports[`components > form > call-taker > date time options should correctly handle "12a" 1`] = `
 <IntlProvider
-  defaultFormats={Object {}}
+  defaultFormats={{}}
   defaultLocale="en-US"
-  formats={Object {}}
+  formats={{}}
   locale="en-US"
-  messages={Object {}}
+  messages={{}}
   onError={[Function]}
   textComponent={Symbol(react.fragment)}
 >
   <Provider
     store={
-      Object {
+      {
         "clearActions": [Function],
         "dispatch": [Function],
         "getActions": [Function],
@@ -31,7 +31,7 @@ exports[`components > form > call-taker > date time options should correctly han
         homeTimezone="America/Los_Angeles"
         importedUpdateItineraryFilter={[Function]}
         sort={
-          Object {
+          {
             "direction": "ASC",
             "type": "BEST",
           }
@@ -76,7 +76,7 @@ exports[`components > form > call-taker > date time options should correctly han
           }
           placement="bottom"
           trigger={
-            Array [
+            [
               "focus",
               "hover",
             ]
@@ -91,7 +91,7 @@ exports[`components > form > call-taker > date time options should correctly han
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             style={
-              Object {
+              {
                 "fontSize": "inherit",
                 "lineHeight": ".8em",
                 "marginLeft": "3px",
@@ -107,7 +107,7 @@ exports[`components > form > call-taker > date time options should correctly han
           disabled={false}
           onChange={[Function]}
           style={
-            Object {
+            {
               "fontSize": "14px",
               "lineHeight": "1em",
               "outline": "none",
@@ -125,17 +125,17 @@ exports[`components > form > call-taker > date time options should correctly han
 
 exports[`components > form > call-taker > date time options should correctly handle "12p" 1`] = `
 <IntlProvider
-  defaultFormats={Object {}}
+  defaultFormats={{}}
   defaultLocale="en-US"
-  formats={Object {}}
+  formats={{}}
   locale="en-US"
-  messages={Object {}}
+  messages={{}}
   onError={[Function]}
   textComponent={Symbol(react.fragment)}
 >
   <Provider
     store={
-      Object {
+      {
         "clearActions": [Function],
         "dispatch": [Function],
         "getActions": [Function],
@@ -154,7 +154,7 @@ exports[`components > form > call-taker > date time options should correctly han
         homeTimezone="America/Los_Angeles"
         importedUpdateItineraryFilter={[Function]}
         sort={
-          Object {
+          {
             "direction": "ASC",
             "type": "BEST",
           }
@@ -199,7 +199,7 @@ exports[`components > form > call-taker > date time options should correctly han
           }
           placement="bottom"
           trigger={
-            Array [
+            [
               "focus",
               "hover",
             ]
@@ -214,7 +214,7 @@ exports[`components > form > call-taker > date time options should correctly han
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             style={
-              Object {
+              {
                 "fontSize": "inherit",
                 "lineHeight": ".8em",
                 "marginLeft": "3px",
@@ -230,7 +230,7 @@ exports[`components > form > call-taker > date time options should correctly han
           disabled={false}
           onChange={[Function]}
           style={
-            Object {
+            {
               "fontSize": "14px",
               "lineHeight": "1em",
               "outline": "none",
@@ -248,17 +248,17 @@ exports[`components > form > call-taker > date time options should correctly han
 
 exports[`components > form > call-taker > date time options should correctly handle "133" 1`] = `
 <IntlProvider
-  defaultFormats={Object {}}
+  defaultFormats={{}}
   defaultLocale="en-US"
-  formats={Object {}}
+  formats={{}}
   locale="en-US"
-  messages={Object {}}
+  messages={{}}
   onError={[Function]}
   textComponent={Symbol(react.fragment)}
 >
   <Provider
     store={
-      Object {
+      {
         "clearActions": [Function],
         "dispatch": [Function],
         "getActions": [Function],
@@ -277,7 +277,7 @@ exports[`components > form > call-taker > date time options should correctly han
         homeTimezone="America/Los_Angeles"
         importedUpdateItineraryFilter={[Function]}
         sort={
-          Object {
+          {
             "direction": "ASC",
             "type": "BEST",
           }
@@ -322,7 +322,7 @@ exports[`components > form > call-taker > date time options should correctly han
           }
           placement="bottom"
           trigger={
-            Array [
+            [
               "focus",
               "hover",
             ]
@@ -337,7 +337,7 @@ exports[`components > form > call-taker > date time options should correctly han
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             style={
-              Object {
+              {
                 "fontSize": "inherit",
                 "lineHeight": ".8em",
                 "marginLeft": "3px",
@@ -353,7 +353,7 @@ exports[`components > form > call-taker > date time options should correctly han
           disabled={false}
           onChange={[Function]}
           style={
-            Object {
+            {
               "fontSize": "14px",
               "lineHeight": "1em",
               "outline": "none",
@@ -371,17 +371,17 @@ exports[`components > form > call-taker > date time options should correctly han
 
 exports[`components > form > call-taker > date time options should correctly handle "133p" 1`] = `
 <IntlProvider
-  defaultFormats={Object {}}
+  defaultFormats={{}}
   defaultLocale="en-US"
-  formats={Object {}}
+  formats={{}}
   locale="en-US"
-  messages={Object {}}
+  messages={{}}
   onError={[Function]}
   textComponent={Symbol(react.fragment)}
 >
   <Provider
     store={
-      Object {
+      {
         "clearActions": [Function],
         "dispatch": [Function],
         "getActions": [Function],
@@ -400,7 +400,7 @@ exports[`components > form > call-taker > date time options should correctly han
         homeTimezone="America/Los_Angeles"
         importedUpdateItineraryFilter={[Function]}
         sort={
-          Object {
+          {
             "direction": "ASC",
             "type": "BEST",
           }
@@ -445,7 +445,7 @@ exports[`components > form > call-taker > date time options should correctly han
           }
           placement="bottom"
           trigger={
-            Array [
+            [
               "focus",
               "hover",
             ]
@@ -460,7 +460,7 @@ exports[`components > form > call-taker > date time options should correctly han
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             style={
-              Object {
+              {
                 "fontSize": "inherit",
                 "lineHeight": ".8em",
                 "marginLeft": "3px",
@@ -476,7 +476,7 @@ exports[`components > form > call-taker > date time options should correctly han
           disabled={false}
           onChange={[Function]}
           style={
-            Object {
+            {
               "fontSize": "14px",
               "lineHeight": "1em",
               "outline": "none",
@@ -494,17 +494,17 @@ exports[`components > form > call-taker > date time options should correctly han
 
 exports[`components > form > call-taker > date time options should correctly handle "135p" 1`] = `
 <IntlProvider
-  defaultFormats={Object {}}
+  defaultFormats={{}}
   defaultLocale="en-US"
-  formats={Object {}}
+  formats={{}}
   locale="en-US"
-  messages={Object {}}
+  messages={{}}
   onError={[Function]}
   textComponent={Symbol(react.fragment)}
 >
   <Provider
     store={
-      Object {
+      {
         "clearActions": [Function],
         "dispatch": [Function],
         "getActions": [Function],
@@ -523,7 +523,7 @@ exports[`components > form > call-taker > date time options should correctly han
         homeTimezone="America/Los_Angeles"
         importedUpdateItineraryFilter={[Function]}
         sort={
-          Object {
+          {
             "direction": "ASC",
             "type": "BEST",
           }
@@ -568,7 +568,7 @@ exports[`components > form > call-taker > date time options should correctly han
           }
           placement="bottom"
           trigger={
-            Array [
+            [
               "focus",
               "hover",
             ]
@@ -583,7 +583,7 @@ exports[`components > form > call-taker > date time options should correctly han
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             style={
-              Object {
+              {
                 "fontSize": "inherit",
                 "lineHeight": ".8em",
                 "marginLeft": "3px",
@@ -599,7 +599,7 @@ exports[`components > form > call-taker > date time options should correctly han
           disabled={false}
           onChange={[Function]}
           style={
-            Object {
+            {
               "fontSize": "14px",
               "lineHeight": "1em",
               "outline": "none",
@@ -617,17 +617,17 @@ exports[`components > form > call-taker > date time options should correctly han
 
 exports[`components > form > call-taker > date time options should correctly handle "1335" 1`] = `
 <IntlProvider
-  defaultFormats={Object {}}
+  defaultFormats={{}}
   defaultLocale="en-US"
-  formats={Object {}}
+  formats={{}}
   locale="en-US"
-  messages={Object {}}
+  messages={{}}
   onError={[Function]}
   textComponent={Symbol(react.fragment)}
 >
   <Provider
     store={
-      Object {
+      {
         "clearActions": [Function],
         "dispatch": [Function],
         "getActions": [Function],
@@ -646,7 +646,7 @@ exports[`components > form > call-taker > date time options should correctly han
         homeTimezone="America/Los_Angeles"
         importedUpdateItineraryFilter={[Function]}
         sort={
-          Object {
+          {
             "direction": "ASC",
             "type": "BEST",
           }
@@ -691,7 +691,7 @@ exports[`components > form > call-taker > date time options should correctly han
           }
           placement="bottom"
           trigger={
-            Array [
+            [
               "focus",
               "hover",
             ]
@@ -706,7 +706,7 @@ exports[`components > form > call-taker > date time options should correctly han
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             style={
-              Object {
+              {
                 "fontSize": "inherit",
                 "lineHeight": ".8em",
                 "marginLeft": "3px",
@@ -722,7 +722,7 @@ exports[`components > form > call-taker > date time options should correctly han
           disabled={false}
           onChange={[Function]}
           style={
-            Object {
+            {
               "fontSize": "14px",
               "lineHeight": "1em",
               "outline": "none",
@@ -740,17 +740,17 @@ exports[`components > form > call-taker > date time options should correctly han
 
 exports[`components > form > call-taker > date time options should render 1`] = `
 <IntlProvider
-  defaultFormats={Object {}}
+  defaultFormats={{}}
   defaultLocale="en-US"
-  formats={Object {}}
+  formats={{}}
   locale="en-US"
-  messages={Object {}}
+  messages={{}}
   onError={[Function]}
   textComponent={Symbol(react.fragment)}
 >
   <Provider
     store={
-      Object {
+      {
         "clearActions": [Function],
         "dispatch": [Function],
         "getActions": [Function],
@@ -769,7 +769,7 @@ exports[`components > form > call-taker > date time options should render 1`] = 
         homeTimezone="America/Los_Angeles"
         importedUpdateItineraryFilter={[Function]}
         sort={
-          Object {
+          {
             "direction": "ASC",
             "type": "BEST",
           }
@@ -814,7 +814,7 @@ exports[`components > form > call-taker > date time options should render 1`] = 
           }
           placement="bottom"
           trigger={
-            Array [
+            [
               "focus",
               "hover",
             ]
@@ -829,7 +829,7 @@ exports[`components > form > call-taker > date time options should render 1`] = 
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             style={
-              Object {
+              {
                 "fontSize": "inherit",
                 "lineHeight": ".8em",
                 "marginLeft": "3px",
@@ -845,7 +845,7 @@ exports[`components > form > call-taker > date time options should render 1`] = 
           disabled={false}
           onChange={[Function]}
           style={
-            Object {
+            {
               "fontSize": "14px",
               "lineHeight": "1em",
               "outline": "none",

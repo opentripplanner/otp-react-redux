@@ -2,17 +2,17 @@
 
 exports[`components > viewers > stop viewer should render with initial stop id and no stop times 1`] = `
 <IntlProvider
-  defaultFormats={Object {}}
+  defaultFormats={{}}
   defaultLocale="en-US"
-  formats={Object {}}
+  formats={{}}
   locale="en-US"
-  messages={Object {}}
+  messages={{}}
   onError={[Function]}
   textComponent={Symbol(react.fragment)}
 >
   <Provider
     store={
-      Object {
+      {
         "clearActions": [Function],
         "dispatch": [Function],
         "getActions": [Function],
@@ -25,8 +25,8 @@ exports[`components > viewers > stop viewer should render with initial stop id a
     <injectIntl(WrappedComponent)>
       <WrappedComponent
         intl={
-          Object {
-            "defaultFormats": Object {},
+          {
+            "defaultFormats": {},
             "defaultLocale": "en-US",
             "defaultRichTextElements": undefined,
             "formatDate": [Function],
@@ -42,8 +42,8 @@ exports[`components > viewers > stop viewer should render with initial stop id a
             "formatRelativeTime": [Function],
             "formatTime": [Function],
             "formatTimeToParts": [Function],
-            "formats": Object {},
-            "formatters": Object {
+            "formats": {},
+            "formatters": {
               "getDateTimeFormat": [Function],
               "getDisplayNames": [Function],
               "getListFormat": [Function],
@@ -53,7 +53,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
               "getRelativeTimeFormat": [Function],
             },
             "locale": "en-US",
-            "messages": Object {},
+            "messages": {},
             "onError": [Function],
             "textComponent": Symbol(react.fragment),
             "timeZone": undefined,
@@ -63,8 +63,8 @@ exports[`components > viewers > stop viewer should render with initial stop id a
       >
         <Connect(StopScheduleViewer)
           intl={
-            Object {
-              "defaultFormats": Object {},
+            {
+              "defaultFormats": {},
               "defaultLocale": "en-US",
               "defaultRichTextElements": undefined,
               "formatDate": [Function],
@@ -80,8 +80,8 @@ exports[`components > viewers > stop viewer should render with initial stop id a
               "formatRelativeTime": [Function],
               "formatTime": [Function],
               "formatTimeToParts": [Function],
-              "formats": Object {},
-              "formatters": Object {
+              "formats": {},
+              "formatters": {
                 "getDateTimeFormat": [Function],
                 "getDisplayNames": [Function],
                 "getListFormat": [Function],
@@ -91,7 +91,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                 "getRelativeTimeFormat": [Function],
               },
               "locale": "en-US",
-              "messages": Object {},
+              "messages": {},
               "onError": [Function],
               "textComponent": Symbol(react.fragment),
               "timeZone": undefined,
@@ -105,8 +105,8 @@ exports[`components > viewers > stop viewer should render with initial stop id a
             findStopTimesForStop={[Function]}
             homeTimezone="America/Los_Angeles"
             intl={
-              Object {
-                "defaultFormats": Object {},
+              {
+                "defaultFormats": {},
                 "defaultLocale": "en-US",
                 "defaultRichTextElements": undefined,
                 "formatDate": [Function],
@@ -122,8 +122,8 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                 "formatRelativeTime": [Function],
                 "formatTime": [Function],
                 "formatTimeToParts": [Function],
-                "formats": Object {},
-                "formatters": Object {
+                "formats": {},
+                "formatters": {
                   "getDateTimeFormat": [Function],
                   "getDisplayNames": [Function],
                   "getListFormat": [Function],
@@ -133,7 +133,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                   "getRelativeTimeFormat": [Function],
                 },
                 "locale": "en-US",
-                "messages": Object {},
+                "messages": {},
                 "onError": [Function],
                 "textComponent": Symbol(react.fragment),
                 "timeZone": undefined,
@@ -142,7 +142,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
             }
             showBlockIds={false}
             stopId="TriMet:13170"
-            transitOperators={Array []}
+            transitOperators={[]}
             zoomToPlace={[Function]}
           >
             <div
@@ -150,7 +150,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
             >
               <Connect(PageTitle)
                 title={
-                  Array [
+                  [
                     "components.StopViewer.titleBarStopId",
                     "components.StopViewer.schedule",
                   ]
@@ -160,7 +160,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                   appTitle=""
                   dispatch={[Function]}
                   title={
-                    Array [
+                    [
                       "components.StopViewer.titleBarStopId",
                       "components.StopViewer.schedule",
                     ]
@@ -195,7 +195,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                     >
                       <IconWithText
                         Icon={
-                          Object {
+                          {
                             "$$typeof": Symbol(react.forward_ref),
                             "displayName": "ArrowLeft",
                             "render": [Function],
@@ -204,7 +204,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                       >
                         <div
                           style={
-                            Object {
+                            {
                               "display": "contents",
                             }
                           }
@@ -216,7 +216,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                               <ArrowLeft>
                                 <StyledIconBase
                                   iconAttrs={
-                                    Object {
+                                    {
                                       "fill": "currentColor",
                                       "xmlns": "http://www.w3.org/2000/svg",
                                     }
@@ -227,7 +227,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                                   <ForwardRef
                                     className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
                                     iconAttrs={
-                                      Object {
+                                      {
                                         "fill": "currentColor",
                                         "xmlns": "http://www.w3.org/2000/svg",
                                       }
@@ -293,7 +293,7 @@ exports[`components > viewers > stop viewer should render with initial stop id a
                 </Connect(FavoriteStopToggle)>
                 <div
                   style={
-                    Object {
+                    {
                       "clear": "both",
                     }
                   }

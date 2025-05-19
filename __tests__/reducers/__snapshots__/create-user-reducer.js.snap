@@ -1,25 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`lib > reducers > create-user-reducer should be able to create the initial state 1`] = `
-Object {
+{
   "accessToken": null,
   "itineraryExistence": null,
-  "lastPhoneSmsRequest": Object {
+  "lastPhoneSmsRequest": {
     "number": null,
     "status": null,
     "timestamp": 1970-01-01T00:00:00.000Z,
   },
-  "localUser": Object {
-    "defaults": Object {
-      "intermediatePlaces": Array [],
+  "localUser": {
+    "defaults": {
+      "intermediatePlaces": [],
       "mode": "WALK,TRANSIT",
       "numItineraries": 3,
       "routingType": "ITINERARY",
     },
-    "favoriteStops": Array [],
-    "recentPlaces": Array [],
-    "recentSearches": Array [],
-    "savedLocations": Array [],
+    "favoriteStops": [],
+    "recentPlaces": [],
+    "recentSearches": [],
+    "savedLocations": [],
     "storeTripHistory": false,
   },
   "loggedInUser": null,

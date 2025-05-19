@@ -1,101 +1,101 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`lib > reducers > create-otp-reducer should be able to create the initial state 1`] = `
-Object {
+{
   "activeSearchId": 0,
-  "config": Object {
-    "autoPlan": Object {
+  "config": {
+    "autoPlan": {
       "default": "ONE_LOCATION_CHANGED",
       "mobile": "BOTH_LOCATIONS_CHANGED",
     },
     "debouncePlanTimeMs": 0,
     "homeTimezone": "America/Los_Angeles",
-    "language": Object {},
+    "language": {},
     "onTimeThresholdSeconds": 60,
-    "phoneFormatOptions": Object {
+    "phoneFormatOptions": {
       "countryCode": "US",
     },
     "realtimeEffectsDisplayThreshold": 120,
-    "routingTypes": Array [],
-    "stopViewer": Object {
+    "routingTypes": [],
+    "stopViewer": {
       "showBlockIds": false,
     },
-    "transitOperators": Array [],
+    "transitOperators": [],
   },
-  "currentQuery": Object {
+  "currentQuery": {
     "date": "2019-08-04",
     "departArrive": "NOW",
-    "intermediatePlaces": Array [],
+    "intermediatePlaces": [],
     "mode": "WALK,TRANSIT",
     "numItineraries": 3,
     "routingType": "ITINERARY",
     "time": "19:34",
   },
-  "filter": Object {
-    "sort": Object {
+  "filter": {
+    "sort": {
       "direction": "ASC",
       "type": "BEST",
     },
   },
   "initialUrl": "/",
   "lastActionMillis": 0,
-  "location": Object {
-    "currentPosition": Object {
+  "location": {
+    "currentPosition": {
       "coords": null,
       "error": null,
       "fetching": false,
     },
-    "nearbyStops": Array [],
-    "sessionSearches": Array [],
+    "nearbyStops": [],
+    "sessionSearches": [],
   },
-  "modeSettingDefinitions": Array [],
-  "overlay": Object {
-    "bikeRental": Object {
-      "stations": Array [],
+  "modeSettingDefinitions": [],
+  "overlay": {
+    "bikeRental": {
+      "stations": [],
     },
-    "carRental": Object {
-      "stations": Array [],
+    "carRental": {
+      "stations": [],
     },
-    "parkAndRide": Object {
+    "parkAndRide": {
       "locations": null,
     },
-    "transit": Object {
-      "stops": Array [],
+    "transit": {
+      "stops": [],
     },
     "transitive": null,
-    "vehicleRental": Object {
-      "stations": Array [],
+    "vehicleRental": {
+      "stations": [],
     },
-    "zipcar": Object {
-      "locations": Array [],
+    "zipcar": {
+      "locations": [],
     },
   },
-  "searches": Object {},
-  "tnc": Object {
-    "etaEstimates": Object {},
-    "rideEstimates": Object {},
+  "searches": {},
+  "tnc": {
+    "etaEstimates": {},
+    "rideEstimates": {},
   },
-  "transitIndex": Object {
-    "routes": Object {},
+  "transitIndex": {
+    "routes": {},
     "routesFetchStatus": 0,
-    "stops": Object {},
-    "trips": Object {},
+    "stops": {},
+    "trips": {},
   },
-  "ui": Object {
+  "ui": {
     "diagramLeg": null,
-    "errors": Object {
+    "errors": {
       "networkConnectionLost": false,
     },
     "locale": null,
     "localizedMessages": null,
     "mainPanelContent": null,
     "mobileScreen": 1,
-    "popup": Object {
+    "popup": {
       "id": null,
     },
     "printView": false,
-    "routeViewer": Object {
-      "filter": Object {
+    "routeViewer": {
+      "filter": {
         "agency": null,
         "mode": null,
         "search": "",
