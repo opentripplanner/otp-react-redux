@@ -50,8 +50,8 @@ const openEditIfNeeded = async (page, isMobile) => {
 
 beforeAll(async () => {
   try {
-    // Launch OTP-RR web server
-    execa('yarn', ['percy-serve', 'dist', '-p', MOCK_SERVER_PORT], {
+    // Launch OTP-RR vite preview server
+    execa('yarn', ['percy-preview', '--port', MOCK_SERVER_PORT], {
       signal: serveAbortController.signal
     }).stdout.pipe(process.stdout)
 
