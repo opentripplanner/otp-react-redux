@@ -207,6 +207,7 @@
     "tsdx": "https://github.com/ibi-group/tsdx",
     "typescript": "^4.4.2",
     "vite": "^6.3.1",
+    "vite-plugin-node-polyfills": "^0.23.0",
     "vite-raw-plugin": "^1.0.2",
     "yaml-jest": "^1.2.0",
     "yaml-sort": "^2.0.0"

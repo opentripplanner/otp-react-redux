@@ -1,11 +1,12 @@
 import { defineConfig, transformWithEsbuild } from 'vite'
+import { nodePolyfills } from 'vite-plugin-node-polyfills'
 import { yamlPlugin } from 'esbuild-plugin-yaml'
 import fs from 'fs-extra'
 import raw from 'vite-raw-plugin'
 import react from '@vitejs/plugin-react'
 import ViteYaml from '@modyfi/vite-plugin-yaml'
 
-// Empty tmp folder before copying stuff.
+// Empty tmp folder before copying stuff there.
 fs.emptyDirSync('./tmp')
 
 // TODO: Handle custom index.html
@@ -67,6 +68,10 @@ export default defineConfig({
     },
 
     ViteYaml(),
+    // Support old libraries such as blob and its dependencies
+    nodePolyfills({
+      protocolImports: true
+    }),
     raw({
       fileRegex: /\.graphql$/
     }),

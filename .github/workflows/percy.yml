@@ -46,7 +46,7 @@ jobs:
       - name: Install npm packages using cache
         uses: bahmutov/npm-install@v1
       - name: Download OTP2 config file
-        # Download into repo root, not not /tmp (/tmp gets wiped at the beginning of the build process)
+        # Download into repo root, not /tmp (/tmp gets wiped at the beginning of the build process)
         run: curl $PERCY_OTP2_CONFIG_URL --output ./otp2config.yml
         env:
           PERCY_OTP2_CONFIG_URL: ${{ secrets.PERCY_MOCK_OTP2_GEOCODER_CALLTAKER_CONFIG }}
