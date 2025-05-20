@@ -40,11 +40,10 @@ customFile(
   './example/config.js'
 )
 
-// https://vite.dev/config/
 export default defineConfig({
   optimizeDeps: {
     esbuildOptions: {
-      // Point JS files to the JSX loader (neededin addition to the JS-JSX conversion plugin below)
+      // Point JS files to the JSX loader (needed in addition to the JS-JSX conversion plugin below)
       // From https://stackoverflow.com/questions/74620427/how-to-configure-vite-to-allow-jsx-syntax-in-js-files
       loader: {
         '.js': 'jsx'
@@ -58,9 +57,9 @@ export default defineConfig({
       async transform(code, id) {
         if (!id.match(/(lib|tmp)\/.*\.js$/)) return null
 
-        // Use the exposed transform from vite, instead of directly
-        // transforming with esbuild (needed in addition to the esbuild js loader option above)
-        // From https://stackoverflow.com/questions/74620427/how-to-configure-vite-to-allow-jsx-syntax-in-js-files
+        // Use the exposed transform from Vite, instead of directly transforming with esbuild.
+        // This is needed in addition to the esbuild js loader option above.
+        // See https://stackoverflow.com/questions/74620427/how-to-configure-vite-to-allow-jsx-syntax-in-js-files
         return transformWithEsbuild(code, id, {
           jsx: 'automatic',
           loader: 'jsx'
@@ -69,7 +68,7 @@ export default defineConfig({
     },
 
     ViteYaml(),
-    // Support old libraries such as blob and its dependencies
+    // Support very old libraries such as blob-stream and its dependencies
     nodePolyfills({
       protocolImports: true
     }),
