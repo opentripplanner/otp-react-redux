@@ -136,6 +136,8 @@
     "@opentripplanner/types": "^6.5.2",
     "@percy/cli": "^1.20.3",
     "@percy/puppeteer": "^2.0.2",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
     "@types/clone": "^2.1.1",
     "@types/lodash.memoize": "^4.1.8",
     "@types/mapbox__polyline": "^1.0.2",
