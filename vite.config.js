@@ -6,37 +6,39 @@ import raw from 'vite-raw-plugin'
 import react from '@vitejs/plugin-react'
 import ViteYaml from '@modyfi/vite-plugin-yaml'
 
-// Empty tmp folder before copying stuff there.
-fs.emptyDirSync('./tmp')
-
-// TODO: Handle custom index.html
-
-const CUSTOM_CSS = (process.env && process.env.CUSTOM_CSS) || './example.css'
-fs.copySync(CUSTOM_CSS, './tmp/custom-styles.css')
-
-// For the config.yml file, convert to JSON for direct import
-// because existing YAML plugins are not able to handle special characters in the YML file.
-// TODO: Put this into a config inline plugin.
-const YAML_CONFIG =
-  (process.env && process.env.YAML_CONFIG) || './example/example-config.yml'
-fs.copySync(YAML_CONFIG, './tmp/config.yml')
-
-const JS_CONFIG =
-  (process.env && process.env.JS_CONFIG) || './example/config.js'
-if (JS_CONFIG) {
-  // JS config can be one file or the content of a folder. Files are placed in the ./tmp subfolder.
-  if (JS_CONFIG.endsWith('.js')) {
-    fs.copySync(JS_CONFIG, './tmp/config.js')
-  } else {
-    fs.copySync(JS_CONFIG, './tmp/')
+/**
+ * Helper function to copy file based on an env variable.
+ * @param {string} envVar The name of the environment variable that contains the custom file.
+ * @param {string|(arg: string) => string} getDestFile The destination file or a function that computes it based on the extracted custom file.
+ * @param {string} defaultFile Optional file to fall back on if no custom file is extracted from the environment variable.
+ */
+function customFile(envVar, getDestFile, defaultFile) {
+  const fileName = (process.env && process.env[envVar]) || defaultFile
+  if (fileName) {
+    let destFile = getDestFile
+    if (typeof getDestFile === 'function') {
+      destFile = getDestFile(fileName)
+    }
+    fs.copySync(fileName, destFile)
   }
 }
 
-const PLAN_QUERY_RESOURCE_URI =
-  process.env && process.env.PLAN_QUERY_RESOURCE_URI
-if (PLAN_QUERY_RESOURCE_URI) {
-  fs.copySync(PLAN_QUERY_RESOURCE_URI, './tmp/planQuery.graphql')
-}
+// Empty tmp folder before copying stuff there.
+fs.emptyDirSync('./tmp')
+
+// TODO: Insert a script tag just below the <div id="main"></div> tag.
+
+// index.html is placed at the root of the repo for Vite to pick up.
+customFile('HTML_FILE', './index.html', './lib/index.tpl.html')
+customFile('CUSTOM_CSS', './tmp/custom-styles.css', './example/example.css')
+customFile('YAML_CONFIG', './tmp/config.yml', './example/example-config.yml')
+customFile('PLAN_QUERY_RESOURCE_URI', './tmp/planQuery.graphql')
+// JS_CONFIG can be a single file or a folder.
+customFile(
+  'JS_CONFIG',
+  (file) => (file.endsWith('.js') ? './tmp/config.js' : '/tmp/'),
+  './example/config.js'
+)
 
 // https://vite.dev/config/
 export default defineConfig({
