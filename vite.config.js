@@ -24,8 +24,6 @@ function customFile(envVar, getDestFile, defaultFile) {
 // Empty tmp folder before copying stuff there.
 fs.emptyDirSync('./tmp')
 
-// TODO: Insert a script tag just below the <div id="main"></div> tag.
-
 // index.html is placed at the root of the repo for Vite to pick up.
 customFile('HTML_FILE', './index.html', './lib/index.tpl.html')
 customFile('CUSTOM_CSS', './tmp/custom-styles.css', './example/example.css')
@@ -63,6 +61,7 @@ export default defineConfig({
             )
             // Strip out single-line comments
             .replace(/<!--.*-->/g, ''),
+        // Make the changes above before index.html is processed by Vite's build process.
         order: 'pre'
       }
     },
