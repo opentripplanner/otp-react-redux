@@ -37,6 +37,9 @@ customFile(
 )
 
 export default defineConfig({
+  build: {
+    assetsDir: ''
+  },
   optimizeDeps: {
     esbuildOptions: {
       // Point JS files to the JSX loader (needed in addition to the JS-JSX conversion plugin below)
