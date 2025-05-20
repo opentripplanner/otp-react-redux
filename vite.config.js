@@ -15,10 +15,8 @@ import ViteYaml from '@modyfi/vite-plugin-yaml'
 function customFile(envVar, getDestFile, defaultFile) {
   const fileName = (process.env && process.env[envVar]) || defaultFile
   if (fileName) {
-    let destFile = getDestFile
-    if (typeof getDestFile === 'function') {
-      destFile = getDestFile(fileName)
-    }
+    const destFile =
+      typeof getDestFile === 'function' ? getDestFile(fileName) : getDestFile
     fs.copySync(fileName, destFile)
   }
 }
