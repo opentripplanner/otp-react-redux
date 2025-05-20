@@ -51,16 +51,24 @@ export default defineConfig({
     {
       name: 'inject-main-script-to-html',
       transformIndexHtml: {
-        handler: (html) =>
-          html
-            // Inject the app script tag after the main div tag.
-            // This is done so that existing custom HTML files don't need to be touched.
-            .replace(
-              '<div id="main"></div>',
-              '<div id="main"></div><script type="module" src="/lib/main.js"></script>'
-            )
-            // Strip out single-line comments
-            .replace(/<!--.*-->/g, ''),
+        handler: (html) => {
+          // Inject the app script tag after the main div tag.
+          // This is done so that existing custom HTML files don't need to be touched.
+          html = html.replace(
+            '<div id="main"></div>',
+            '<div id="main"></div><script type="module" src="/lib/main.js"></script>'
+          )
+
+          // Strip out all HTML comments, including nested or consecutive ones.
+          // (GH co-pilot suggestion)
+          let previous
+          do {
+            previous = html
+            html = html.replace(/<!--[\s\S]*?-->/g, '')
+          } while (html !== previous)
+
+          return html
+        },
         // Make the changes above before index.html is processed by Vite's build process.
         order: 'pre'
       }
