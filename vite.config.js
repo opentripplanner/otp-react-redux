@@ -51,6 +51,22 @@ export default defineConfig({
   },
   plugins: [
     {
+      name: 'inject-main-script-to-html',
+      transformIndexHtml: {
+        handler: (html) =>
+          html
+            // Inject the app script tag after the main div tag.
+            // This is done so that existing custom HTML files don't need to be touched.
+            .replace(
+              '<div id="main"></div>',
+              '<div id="main"></div><script type="module" src="/lib/main.js"></script>'
+            )
+            // Strip out single-line comments
+            .replace(/<!--.*-->/g, ''),
+        order: 'pre'
+      }
+    },
+    {
       name: 'treat-js-files-as-jsx',
       async transform(code, id) {
         if (!id.match(/(lib|tmp)\/.*\.js$/)) return null
