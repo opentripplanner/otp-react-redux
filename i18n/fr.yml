@@ -537,7 +537,9 @@ components:
     header: Index des lignes
     modeFilter: Filtre pour les modes
     noFilteredRoutesFound: Aucune ligne ne correspond à vos critères
+    noRouteFilter: Aucun filtre n'est appliqué à la liste de lignes.
     openPatternViewer: Voir les dessertes
+    routesFilteredBy: "Les filtres suivants sont appliqués à la liste de lignes : {list}."
     shortTitle: Index des lignes
     stopsInDirectionOfTravel: "Arrêts dans cette direction :"
     title: Index des lignes
