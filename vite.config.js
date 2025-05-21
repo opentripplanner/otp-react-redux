@@ -38,7 +38,7 @@ customFile(
 
 export default defineConfig({
   build: {
-    // Flatten the output for mastarm deploy (mastarm does't support uploading subfolders).
+    // Flatten the output for mastarm deploy (mastarm doesn't support uploading subfolders).
     assetsDir: ''
   },
   optimizeDeps: {
