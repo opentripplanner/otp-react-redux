@@ -96,7 +96,7 @@ class Wizard extends Component<Props> {
       // Display a toast to acknowledge saved changes
       // (although in reality, changes quietly took effect in previous screens).
       toastPromise(
-        // Fake promise to make sure toast is announced to screenreaders. See PR for details.
+        // Fake promise to make sure toast is announced to screenreaders. See https://github.com/opentripplanner/otp-react-redux/pull/1400 for details.
         new Promise((resolve) => setTimeout(resolve, 100)),
         formattedToastSuccessMessage(
           title,
