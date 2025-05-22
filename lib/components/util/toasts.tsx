@@ -41,8 +41,8 @@ export function toastOnPlaceChanged(
     intl.formatMessage({
       id:
         change === 'Remembered'
-          ? 'components.UserSavedLocations.placeRemembered'
-          : 'components.UserSavedLocations.placeDeleted'
+          ? 'actions.user.placeRemembered'
+          : 'actions.user.placeDeleted'
     })
   )
 }
