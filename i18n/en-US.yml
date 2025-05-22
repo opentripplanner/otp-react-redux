@@ -102,6 +102,7 @@ common:
     edit: Edit
     error: error!
     finish: Finish
+    loading: Loading
     next: Next
     "no": "No"
     print: Print

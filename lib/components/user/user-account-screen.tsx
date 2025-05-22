@@ -6,7 +6,6 @@ import { withAuthenticationRequired } from '@auth0/auth0-react'
 import clone from 'clone'
 import React, { ChangeEvent, Component } from 'react'
 import styled, { css } from 'styled-components'
-import toast from 'react-hot-toast'
 
 import * as userActions from '../../actions/user'
 import { AppReduxState } from '../../util/state-types'
@@ -16,8 +15,8 @@ import {
   CREATE_ACCOUNT_VERIFY_PATH,
   MOBILITY_PATH
 } from '../../util/constants'
+import { formattedToastSuccessMessage, toastPromise } from '../util/toasts'
 import { RETURN_TO_CURRENT_ROUTE } from '../../util/ui'
-import { toastSuccess } from '../util/toasts'
 
 import { EditedUser, User } from './types'
 import AccountPage from './account-page'
@@ -71,12 +70,13 @@ class UserAccountScreen extends Component<Props> {
       loggedInUser.mobilityProfile?.mobilityDevices
     )
 
-    const result = await createOrUpdateUser(passedUserData, intl)
-
-    // If needed, display a toast notification on success.
-    if (result === userActions.UserActionResult.SUCCESS && !silentOnSucceed) {
-      toast.success(intl.formatMessage({ id: 'actions.user.preferencesSaved' }))
-    }
+    const result = await toastPromise(
+      createOrUpdateUser(passedUserData, intl),
+      intl.formatMessage({ id: 'actions.user.preferencesSaved' }),
+      intl,
+      undefined,
+      silentOnSucceed
+    )
 
     return result
   }
@@ -97,7 +97,7 @@ class UserAccountScreen extends Component<Props> {
     t: HTMLInputElement,
     submitForm: () => Promise<void>
   ) => {
-    const { intl, isWizard } = this.props
+    const { intl } = this.props
     const firstLabel = t.labels?.[0]
 
     // Disable input (adds a visual effect) during submission
@@ -106,36 +106,19 @@ class UserAccountScreen extends Component<Props> {
     t.style.animation = 'dive-in 1s linear infinite'
     const initialCursor = firstLabel ? firstLabel.style.cursor : ''
     if (firstLabel) firstLabel.style.cursor = 'wait'
-    const loadingToast = !isWizard
-      ? toast.loading(
-          intl.formatMessage({ id: 'components.UserAccountScreen.updating' })
-        )
-      : undefined
+    const submitSuccessMessage = formattedToastSuccessMessage(
+      intl.formatMessage({
+        // Use a summary text for the field, if defined (e.g. to replace long labels),
+        // otherwise, fall back on the first label of the input.
+        defaultMessage: firstLabel?.innerText,
+        id: `components.UserAccountScreen.fields.${t.name}`
+      }),
+      intl.formatMessage({
+        id: 'components.UserAccountScreen.fieldUpdated'
+      })
+    )
     try {
-      await submitForm()
-      // On success, display a toast notification for existing accounts.
-      if (!isWizard) {
-        toastSuccess(
-          intl.formatMessage({
-            // Use a summary text for the field, if defined (e.g. to replace long labels),
-            // otherwise, fall back on the first label of the input.
-            defaultMessage: firstLabel?.innerText,
-            id: `components.UserAccountScreen.fields.${t.name}`
-          }),
-          intl.formatMessage({
-            id: 'components.UserAccountScreen.fieldUpdated'
-          }),
-          loadingToast
-        )
-      }
-    } catch {
-      // Remove any toasts before showing alert.
-      toast.remove()
-      alert(
-        intl.formatMessage({
-          id: 'components.UserAccountScreen.errorUpdatingProfile'
-        })
-      )
+      await toastPromise(submitForm(), submitSuccessMessage, intl)
     } finally {
       // Re-enable input (remove visuals) and refocus after submission.
       if (firstLabel) firstLabel.style.cursor = initialCursor
