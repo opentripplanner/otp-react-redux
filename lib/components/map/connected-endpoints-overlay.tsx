@@ -36,7 +36,7 @@ const ConnectedEndpointsOverlay = ({
     async (placeTypeLocation) => {
       const place = convertToPlace(placeTypeLocation.location)
       await toastPromise(
-        // @ts-expect-error Toast doesnt like that this returns a number
+        // @ts-expect-error Toast doesn't like that this returns a number
         rememberPlace(placeTypeLocation, intl),
         toastMessageOnPlaceChanged(place, intl),
         intl
