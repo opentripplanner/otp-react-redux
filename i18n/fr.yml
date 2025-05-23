@@ -111,6 +111,7 @@ common:
     edit: Modifier
     error: erreur !
     finish: Terminer
+    loading: Chargement
     next: Suivant
     "no": Non
     print: Imprimer
