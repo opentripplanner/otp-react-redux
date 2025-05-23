@@ -804,7 +804,6 @@ components:
     fields:
       add-companion-form: Accompagnateurs
       storeTripHistory: Enregistrement des recherches
-    updating: Mise à jour
   UserSettings:
     confirmDeletion: >-
       Vous avez des recherches et/ou lieux récemment enregistrés qui vont être

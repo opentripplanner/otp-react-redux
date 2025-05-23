@@ -777,7 +777,6 @@ components:
     fields:
       add-companion-form: Travel Companions
       storeTripHistory: Store trip history
-    updating: Updating
   UserSettings:
     confirmDeletion: >-
       You have recent searches and/or places stored. Disabling storage of recent

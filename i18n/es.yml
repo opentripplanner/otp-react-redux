@@ -795,7 +795,6 @@ components:
     fields:
       add-companion-form: Compañeros de viaje
       storeTripHistory: Almacenar historial de viajes
-    updating: Actualizando
   UserSettings:
     confirmDeletion: >-
       Tiene almacenadas búsquedas o lugares recientes. Si desactiva el

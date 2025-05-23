@@ -688,7 +688,6 @@ components:
     fields:
       add-companion-form: 出行伙伴
       storeTripHistory: 存储行程历史记录
-    updating: 正在更新
   UserSettings:
     confirmDeletion: 您有最近的搜索或地点存储.若停止存储最近的地点或搜索的功能，则这些项目将被删除.要继续吗?
     favoriteStops: 最喜爱的车站
