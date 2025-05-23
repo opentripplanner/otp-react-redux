@@ -97,7 +97,7 @@ class UserAccountScreen extends Component<Props> {
     t: HTMLInputElement,
     submitForm: () => Promise<void>
   ) => {
-    const { intl } = this.props
+    const { intl, isWizard } = this.props
     const firstLabel = t.labels?.[0]
 
     // Disable input (adds a visual effect) during submission
@@ -118,7 +118,13 @@ class UserAccountScreen extends Component<Props> {
       })
     )
     try {
-      await toastPromise(submitForm(), submitSuccessMessage, intl)
+      await toastPromise(
+        submitForm(),
+        submitSuccessMessage,
+        intl,
+        undefined,
+        isWizard
+      )
     } finally {
       // Re-enable input (remove visuals) and refocus after submission.
       if (firstLabel) firstLabel.style.cursor = initialCursor
