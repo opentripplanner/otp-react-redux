@@ -308,6 +308,7 @@ components:
     title: Imagery of the street
   MetroUI:
     arriveAt: You arrive
+    fare: "{fare}"
     itineraryDescription: "{time} itinerary using {routes}"
     itinerarySummary: from {stopName} | {cost}
     leaveAt: You leave
@@ -520,7 +521,9 @@ components:
     header: Route Viewer
     modeFilter: Mode Filter
     noFilteredRoutesFound: No routes match your filter!
+    noRouteFilter: No filters are currently applied to the route list.
     openPatternViewer: View route details
+    routesFilteredBy: "The following filters are currently applied to the route list: {list}."
     shortTitle: View Routes
     stopsInDirectionOfTravel: "Stops in this direction of travel:"
     title: Route Viewer
