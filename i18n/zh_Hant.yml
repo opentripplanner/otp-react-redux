@@ -359,7 +359,6 @@ components:
     deleteThisPlace: 刪除此地點
     enterAlert: |
       請在表單內輸入起點/目的地 (或按一下地圖來設定)，然後按一下產生的標記以設定為{placeType}位置。
-    viewStop: 檢視車站
   PlaceEditor:
     addressPrompt: 地址：
     genericLocationPlaceholder: 搜尋位置

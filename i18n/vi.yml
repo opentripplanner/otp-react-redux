@@ -473,7 +473,6 @@ components:
       Nhập điểm xuất phát/điểm đến vào biểu mẫu này (hoặc cài đặt qua việc nhấp
       vào bản đồ) và nhấp vào điểm đánh dấu kết quả để cài đặt vị trí
       {placeType}.
-    viewStop: Xem điểm dừng
   PlaceEditor:
     addressPrompt: "Địa chỉ:"
     genericLocationPlaceholder: Tìm kiếm vị trí

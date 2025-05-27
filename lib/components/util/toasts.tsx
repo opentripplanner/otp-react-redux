@@ -75,9 +75,14 @@ export const toastMessageOnPlaceChanged = (
   intl: IntlShape
 ): JSX.Element => {
   return formattedToastSuccessMessage(
+
     getPlaceMainText(place, intl),
-    intl.formatMessage({
-      id: 'actions.user.placeRemembered'
-    })
+    change === 'Remembered'
+      ? intl.formatMessage({
+          id: 'actions.user.placeRemembered'
+        })
+      : intl.formatMessage({
+          id: 'actions.user.placeDeleted'
+        })
   )
 }

@@ -12,6 +12,7 @@ import { setLocation } from '../../actions/map'
 import { setViewedStop } from '../../actions/ui'
 import { toastMessageOnPlaceChanged, toastPromise } from '../util/toasts'
 
+
 type Props = ComponentProps<typeof EndpointsOverlay> & {
   forgetPlace: (place: string, intl: IntlShape) => void
   rememberPlace: (arg: UserLocationAndType, intl: IntlShape) => number
@@ -41,6 +42,7 @@ const ConnectedEndpointsOverlay = ({
         toastMessageOnPlaceChanged(place, intl),
         intl
       )
+
     },
     [rememberPlace, intl]
   )

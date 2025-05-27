@@ -498,7 +498,6 @@ components:
       Ilagay ang pinagmulan/patutunguhan sa form (o itakda ito sa pamamagitan ng
       pag-click sa mapa) at i-click ang resultang marker para itakda ito bilang
       lokasyon ng {placeType}.
-    viewStop: Tingnan ang Hintuan
   PlaceEditor:
     addressPrompt: "Address:"
     genericLocationPlaceholder: Maghanap ng lokasyon
