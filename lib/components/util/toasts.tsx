@@ -72,10 +72,10 @@ export const toastPromise = async (
 
 export const toastMessageOnPlaceChanged = (
   place: UserSavedLocation,
-  intl: IntlShape
+  intl: IntlShape,
+  change: 'Remembered' | 'Deleted'
 ): JSX.Element => {
   return formattedToastSuccessMessage(
-
     getPlaceMainText(place, intl),
     change === 'Remembered'
       ? intl.formatMessage({
