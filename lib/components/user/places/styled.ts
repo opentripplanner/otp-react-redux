@@ -1,47 +1,44 @@
+import Link from '../../util/link'
 import styled from 'styled-components'
 
 import { GREY_ON_WHITE } from '../../util/colors'
 
 import Place, {
-  ActionButton,
-  ActionButtonPlaceholder,
   IconWrapper,
   PlaceButton,
+  PlaceContainer,
   PlaceContent,
   PlaceDetail,
-  PlaceLink,
   PlaceName
 } from './place'
 
 // Styles and exports for favorite place components
 // used in the My account page.
 
-const FAVORITE_PLACE_HEIGHT_PX = '60px'
-
 export const StyledFavoritePlace = styled(Place).attrs({
   largeIcon: true
 })`
-  align-items: stretch;
-  display: flex;
-  height: ${FAVORITE_PLACE_HEIGHT_PX};
-  margin-bottom: 10px;
-
-  ${PlaceLink} {
+  ${PlaceContainer} {
     align-items: center;
-    display: flex;
-    flex: 1 0 0;
-    text-align: left;
+    display: grid;
+    font-size: 14px;
+    gap: 15px;
+    grid-template-columns: 30px auto 30px;
+    padding: 10px;
   }
   ${PlaceContent} {
     display: flex;
     flex: 1 0 0;
     flex-direction: column;
-    margin-left: 10px;
     /* overflow is needed here for the nested overflow to take effect. */
     overflow: hidden;
   }
   ${PlaceDetail} {
     color: ${GREY_ON_WHITE};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
   }
 
   ${PlaceName},
@@ -49,15 +46,12 @@ export const StyledFavoritePlace = styled(Place).attrs({
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
     width: 100%;
   }
   ${IconWrapper} {
     color: ${GREY_ON_WHITE};
     flex-shrink: 0;
-  }
-  ${ActionButton}, ${ActionButtonPlaceholder} {
-    margin-left: 4px;
-    width: ${FAVORITE_PLACE_HEIGHT_PX};
   }
 `
 
@@ -66,17 +60,22 @@ export const StyledFavoritePlace = styled(Place).attrs({
 
 export const StyledMainPanelPlace = styled(Place)`
   ${PlaceButton} {
+    background: none;
     border: none;
+
+    &:hover {
+      background-color: #e6e6e6;
+    }
   }
   ${PlaceName} {
     margin-left: 0.25em;
   }
-  ${PlaceDetail} {
-    display: block;
-    height: 100%;
-  }
-  ${ActionButton} {
-    border: none;
-    width: 40px;
-  }
+`
+
+export const NewPlaceButton = styled(Link)`
+  align-items: center;
+  display: flex;
+  margin-top: 15px;
+  width: fit-content;
+  gap: 10px;
 `

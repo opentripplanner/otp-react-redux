@@ -31,14 +31,19 @@ export function toastSuccess(
 /**
  * Helper that will display a toast notification when a place is saved.
  */
-export function toastOnPlaceSaved(
+export function toastOnPlaceChanged(
   place: UserSavedLocation,
-  intl: IntlShape
+  intl: IntlShape,
+  change: 'Remembered' | 'Deleted'
 ): void {
   toastSuccess(
     getPlaceMainText(place, intl),
-    intl.formatMessage({
-      id: 'actions.user.placeRemembered'
-    })
+    change === 'Remembered'
+      ? intl.formatMessage({
+          id: 'actions.user.placeRemembered'
+        })
+      : intl.formatMessage({
+          id: 'actions.user.placeDeleted'
+        })
   )
 }

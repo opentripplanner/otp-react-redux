@@ -292,12 +292,12 @@ components:
     bikesAvailable: "{bikesAvailable}輛自行車可用"
     companyBicycle: "{company} 自行車"
     companyScooter: "{company} 滑板車"
+    distanceAway: "{localizedDistanceString} 距離"
     error: 載入鄰近設施時發生錯誤。
     header: 檢視附近
     headsign: "{destination}"
-    spacesAvailable: "{spacesAvailable} 有未佔用的空間"
-    distanceAway: '{localizedDistanceString} 距離'
     searchNearby: 搜尋附近...
+    spacesAvailable: "{spacesAvailable} 有未佔用的空間"
   NewAccountWizard:
     createNewAccount: 建立新帳戶
     finish: 帳戶設定完成！
@@ -359,7 +359,6 @@ components:
     deleteThisPlace: 刪除此地點
     enterAlert: |
       請在表單內輸入起點/目的地 (或按一下地圖來設定)，然後按一下產生的標記以設定為{placeType}位置。
-    viewStop: 檢視車站
   PlaceEditor:
     addressPrompt: 地址：
     genericLocationPlaceholder: 搜尋位置
@@ -519,6 +518,8 @@ components:
     oneHour: 1小時
     realtimeAlertFlagged: 我的旅程上有一個即時警示標記
     timeBefore: "{time} 之前"
+  TripPreviewLayout:
+    previewTrip: 預覽行程
   TripStatus:
     alerts: "{alerts}個警示！"
     deleteTrip: 刪除行程
@@ -633,8 +634,6 @@ components:
     switcher: 切換工具
   WelcomeScreen:
     prompt: 您想要去哪裡？
-  TripPreviewLayout:
-    previewTrip: 預覽行程
 config:
   accessModes:
     car_hail: 叫車服務

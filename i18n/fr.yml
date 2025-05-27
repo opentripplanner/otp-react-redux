@@ -63,6 +63,7 @@ actions:
       Veuillez accepter les conditions d'utilisation (dans Mon compte) pour
       enregistrer des lieux.
     mustBeLoggedInToSavePlace: Veuillez vous connecter pour enregistrer des lieux.
+    placeDeleted: Votre lieu a été supprimé
     placeRemembered: Les informations pour ce lieu ont été enregistrées.
     preferencesSaved: Vos préférences ont été enregistrées.
     smsInvalidCode: Le code saisi est incorrect. Veuillez réessayer.
@@ -489,7 +490,6 @@ components:
       Entrez votre point de départ/destination dans le formulaire (ou cliquez
       sur la carte), puis cliquez sur le marqueur qui apparaît afin de définir
       votre {placeType}.
-    viewStop: Voir cet arrêt
   PlaceEditor:
     addressPrompt: "Adresse :"
     genericLocationPlaceholder: Adresse du lieu

@@ -15,7 +15,7 @@ interface DeleteFormProps {
   tripId: string
 }
 
-const DeleteFormButton = styled(Button)`
+export const DeleteFormButton = styled(Button)`
   background-color: white;
   border-color: ${RED_ON_WHITE};
   color: ${RED_ON_WHITE};
