@@ -357,3 +357,7 @@
     overflow-y: unset !important;
   }
 }
+
+.toast-hidden {
+  display: none !important;
+}

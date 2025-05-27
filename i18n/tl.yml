@@ -805,7 +805,6 @@ components:
     fields:
       add-companion-form: Mga Kasama sa Biyahe
       storeTripHistory: History ng biyahe sa tindahan
-    updating: Nag-a-update
   UserSettings:
     confirmDeletion: >-
       May mga na-store kang paghahanap at/o lugar kamakailan. Kapag na-disable

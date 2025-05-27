@@ -609,7 +609,6 @@ components:
     fieldUpdated: 此設定已更新。
     fields:
       storeTripHistory: 儲存行程歷史紀錄
-    updating: 正在更新
   UserSettings:
     confirmDeletion: 您有儲存的最近的搜尋和/或地點。停用儲存最近的地點/搜尋將移除這些項目。是否要繼續？
     favoriteStops: 最愛的車站

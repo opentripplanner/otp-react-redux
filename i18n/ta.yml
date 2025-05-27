@@ -787,7 +787,6 @@ components:
     fields:
       add-companion-form: பயண தோழர்கள்
       storeTripHistory: பயண வரலாற்றை சேமிக்கவும்
-    updating: புதுப்பித்தல்
   UserSettings:
     confirmDeletion: >-
       உங்களிடம் அண்மைக் கால தேடல்கள் மற்றும்/அல்லது இடங்கள் சேமிக்கப்பட்டுள்ளன.
