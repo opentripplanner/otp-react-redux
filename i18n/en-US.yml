@@ -473,7 +473,6 @@ components:
     enterAlert: >
       Enter origin/destination in the form (or set via map click)  and click the
       resulting marker to set as {placeType} location.
-    viewStop: View Stop
   PlaceEditor:
     addressPrompt: "Address:"
     genericLocationPlaceholder: Search for location

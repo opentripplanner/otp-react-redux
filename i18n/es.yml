@@ -484,7 +484,6 @@ components:
       Introduzca el origen/destino en el formulario (o establezca mediante un
       clic en el mapa) y haga clic en el marcador resultante para establecerlo
       como lugar de {placeType}.
-    viewStop: Ver parada
   PlaceEditor:
     addressPrompt: "Dirección:"
     genericLocationPlaceholder: Buscar ubicación

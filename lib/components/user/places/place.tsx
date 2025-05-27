@@ -143,8 +143,6 @@ const Place = ({
           </PlaceContainer>
         </SavedPlacePanel>
       )}
-
-      {/* Action buttons. If none, render a placeholder. */}
     </Container>
   )
 }

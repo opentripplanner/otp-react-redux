@@ -426,7 +426,6 @@ components:
     deleteThisPlace: 이 장소 삭제
     enterAlert: |
       양식에 출발지/목적지를 입력하고(또는 지도를 클릭하여 설정), 생성된 마커를 클릭하여 {placeType} 위치로 설정하세요.
-    viewStop: 정류장 보기
   PlaceEditor:
     addressPrompt: "주소:"
     genericLocationPlaceholder: 위치 검색

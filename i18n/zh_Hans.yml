@@ -419,7 +419,6 @@ components:
     deleteThisPlace: 删除这个地点
     enterAlert: |
       在表格中输入出发地/目的地(或通过地图点击设置)并点击产生的标记设置为 {placeType} 地点.
-    viewStop: 查看车站
   PlaceEditor:
     addressPrompt: "地址:"
     genericLocationPlaceholder: 搜索地点
