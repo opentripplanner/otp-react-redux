@@ -38,11 +38,12 @@ export function toastOnPlaceChanged(
 ): void {
   toastSuccess(
     getPlaceMainText(place, intl),
-    intl.formatMessage({
-      id:
-        change === 'Remembered'
-          ? 'actions.user.placeRemembered'
-          : 'actions.user.placeDeleted'
-    })
+    change === 'Remembered'
+      ? intl.formatMessage({
+          id: 'actions.user.placeRemembered'
+        })
+      : intl.formatMessage({
+          id: 'actions.user.placeDeleted'
+        })
   )
 }
