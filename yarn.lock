@@ -2555,13 +2555,13 @@
     react-resize-detector "^4.2.1"
     string-similarity "^4.0.4"
 
-"@opentripplanner/location-field@4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-4.0.2.tgz#a08ee127abc8e63b7524ed1216f336555dd6db6d"
-  integrity sha512-Y3Z5UtGr50yuxS6VTRGXGHEAqdXPpRhgrxcURm5lAq8EUbcVFfY1oe4adx/RIEgNBFTfXmaVbZmHNDvsGXTdag==
+"@opentripplanner/location-field@4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-4.0.1.tgz#f114d311ef16b74d381a5dc91ed4401c7f0b3c0e"
+  integrity sha512-nGpNJYkZ/pYiKpDzTUEMJZl4333inajQTUSm8TGFDrcx6aW8bmgVJTxAlWkpCrs+ZIjzJcYq6IzfCu1eJqYD2w==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
-    "@opentripplanner/core-utils" "13.0.1"
+    "@opentripplanner/core-utils" "13.0.0"
     "@opentripplanner/geocoder" "3.0.5"
     "@opentripplanner/humanize-distance" "2.0.0"
     "@opentripplanner/location-icon" "2.0.0"
