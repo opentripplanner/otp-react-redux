@@ -498,7 +498,6 @@ components:
       Ilagay ang pinagmulan/patutunguhan sa form (o itakda ito sa pamamagitan ng
       pag-click sa mapa) at i-click ang resultang marker para itakda ito bilang
       lokasyon ng {placeType}.
-    viewStop: Tingnan ang Hintuan
   PlaceEditor:
     addressPrompt: "Address:"
     genericLocationPlaceholder: Maghanap ng lokasyon
@@ -806,7 +805,6 @@ components:
     fields:
       add-companion-form: Mga Kasama sa Biyahe
       storeTripHistory: History ng biyahe sa tindahan
-    updating: Nag-a-update
   UserSettings:
     confirmDeletion: >-
       May mga na-store kang paghahanap at/o lugar kamakailan. Kapag na-disable

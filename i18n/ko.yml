@@ -426,7 +426,6 @@ components:
     deleteThisPlace: 이 장소 삭제
     enterAlert: |
       양식에 출발지/목적지를 입력하고(또는 지도를 클릭하여 설정), 생성된 마커를 클릭하여 {placeType} 위치로 설정하세요.
-    viewStop: 정류장 보기
   PlaceEditor:
     addressPrompt: "주소:"
     genericLocationPlaceholder: 위치 검색
@@ -699,7 +698,6 @@ components:
     fields:
       add-companion-form: "여정 동반자:"
       storeTripHistory: 이동편 이력 저장
-    updating: 업데이트 중
   UserSettings:
     confirmDeletion: 최근 검색이나 장소가 저장되어 있습니다. 최근 장소 또는 검색을 비활성화하면 이러한 항목이 제거됩니다. 계속하시겠습니까?
     favoriteStops: 좋아하는 정류장

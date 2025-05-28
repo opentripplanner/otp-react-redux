@@ -117,7 +117,7 @@ class TripListItem extends Component<ItemProps, ItemState> {
     })
     const { LegIcon } = this.context
     return (
-      <Panel>
+      <Panel className="saved-trip-panel">
         <TripPanelHeading>
           <TripPanelTitle>
             <Panel.Title>

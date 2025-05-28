@@ -6,15 +6,11 @@ import React, { ComponentProps, useCallback } from 'react'
 
 import { clearLocation } from '../../actions/form'
 import { convertToPlace, getUserLocations } from '../../util/user'
-import {
-  forgetPlace,
-  rememberPlace,
-  UserActionResult
-} from '../../actions/user'
+import { forgetPlace, rememberPlace } from '../../actions/user'
 import { getActiveSearch, getShowUserSettings } from '../../util/state'
 import { setLocation } from '../../actions/map'
 import { setViewedStop } from '../../actions/ui'
-import { toastOnPlaceSaved } from '../util/toasts'
+import { toastMessageOnPlaceChanged, toastPromise } from '../util/toasts'
 
 type Props = ComponentProps<typeof EndpointsOverlay> & {
   forgetPlace: (place: string, intl: IntlShape) => void
@@ -38,10 +34,13 @@ const ConnectedEndpointsOverlay = ({
 
   const _rememberPlace = useCallback(
     async (placeTypeLocation) => {
-      const result = await rememberPlace(placeTypeLocation, intl)
-      if (result === UserActionResult.SUCCESS) {
-        toastOnPlaceSaved(convertToPlace(placeTypeLocation.location), intl)
-      }
+      const place = convertToPlace(placeTypeLocation.location)
+      await toastPromise(
+        // @ts-expect-error Toast doesn't like that this returns a number
+        rememberPlace(placeTypeLocation, intl),
+        toastMessageOnPlaceChanged(place, intl, 'Remembered'),
+        intl
+      )
     },
     [rememberPlace, intl]
   )
