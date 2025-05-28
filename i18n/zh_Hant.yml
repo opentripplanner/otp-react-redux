@@ -182,6 +182,8 @@ components:
   BatchSearchScreen:
     header: 規劃您的行程
     modeSelectorLabel: 選取出行模式
+    moreOptions: 更多選擇
+    tripOptions: 行程選擇
   BatchSettings:
     destination: 目的地
     invalidModeSelection: 無法使用所選模式規劃行程。嘗試將公共交通納入您的模式選取內容。
@@ -290,9 +292,11 @@ components:
     bikesAvailable: "{bikesAvailable}輛自行車可用"
     companyBicycle: "{company} 自行車"
     companyScooter: "{company} 滑板車"
+    distanceAway: "{localizedDistanceString} 距離"
     error: 載入鄰近設施時發生錯誤。
     header: 檢視附近
     headsign: "{destination}"
+    searchNearby: 搜尋附近...
     spacesAvailable: "{spacesAvailable} 有未佔用的空間"
   NewAccountWizard:
     createNewAccount: 建立新帳戶
@@ -355,7 +359,6 @@ components:
     deleteThisPlace: 刪除此地點
     enterAlert: |
       請在表單內輸入起點/目的地 (或按一下地圖來設定)，然後按一下產生的標記以設定為{placeType}位置。
-    viewStop: 檢視車站
   PlaceEditor:
     addressPrompt: 地址：
     genericLocationPlaceholder: 搜尋位置
@@ -515,6 +518,8 @@ components:
     oneHour: 1小時
     realtimeAlertFlagged: 我的旅程上有一個即時警示標記
     timeBefore: "{time} 之前"
+  TripPreviewLayout:
+    previewTrip: 預覽行程
   TripStatus:
     alerts: "{alerts}個警示！"
     deleteTrip: 刪除行程
@@ -604,7 +609,6 @@ components:
     fieldUpdated: 此設定已更新。
     fields:
       storeTripHistory: 儲存行程歷史紀錄
-    updating: 正在更新
   UserSettings:
     confirmDeletion: 您有儲存的最近的搜尋和/或地點。停用儲存最近的地點/搜尋將移除這些項目。是否要繼續？
     favoriteStops: 最愛的車站

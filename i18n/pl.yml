@@ -1,1 +1,17 @@
-{}
+_id: pl
+_name: Polski
+actions:
+  callTaker:
+    callQuerySaveError: "Błąd podczas zapisywania zapytań o połączenia: {err}"
+    callSaveError: "Nie można zapisać połączenia: {err}"
+    checkSessionError: "Błąd podczas nawiązywania sesji uwierzytelniania: {err}"
+    couldNotFindCallError: Nie można odnaleźć połączenia. Anulowanie żądania zapisania zapytań.
+    fetchCallsError: "Błąd podczas pobierania połączeń: {err}"
+    queryFetchError: "Błąd podczas pobierania zapytań: {err}"
+  fieldTrip:
+    addNoteError: "\"Błąd podczas dodawania notatki wycieczki:"
+    confirmOverwriteItineraries: |
+      Ta akcja nadpisze wcześniej zaplanowany {outbound, select,
+          true {wyjazd}
+          other {powrót}
+        } plan podróży dla tego zgłoszenia. Czy chcesz kontynuować?

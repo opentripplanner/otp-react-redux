@@ -2448,7 +2448,7 @@
     "@opentripplanner/location-icon" "2.0.0"
     flat "^5.0.2"
 
-"@opentripplanner/geocoder@3.0.4", "@opentripplanner/geocoder@^3.0.4":
+"@opentripplanner/geocoder@3.0.4":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-3.0.4.tgz#99f4a6ac66cf850f5e2defffd0d04bf3ca2b98f7"
   integrity sha512-MDNKlDQacmddYHZnNm7TPNWXrPXspxWnmYFa2IL4V1t2KVdQ1Z3U6yurEsIsw9TaD00sa0KlbNo9M0h9lXqWCg==
@@ -2459,7 +2459,7 @@
     isomorphic-mapzen-search "^1.6.1"
     lodash.memoize "^4.1.2"
 
-"@opentripplanner/geocoder@3.0.5":
+"@opentripplanner/geocoder@3.0.5", "@opentripplanner/geocoder@^3.0.5":
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-3.0.5.tgz#e1faacc0bfe76060b7a08f8c835232f611fa4bf3"
   integrity sha512-bxFO42xlV3utyI/wwQIPzkL9osiUMAvyfdVfIvYDvabcKEFyYNAVOerz8vjOHryViZ3p7eALWeC77HBMOIYdHg==

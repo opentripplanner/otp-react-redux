@@ -63,6 +63,7 @@ actions:
       Veuillez accepter les conditions d'utilisation (dans Mon compte) pour
       enregistrer des lieux.
     mustBeLoggedInToSavePlace: Veuillez vous connecter pour enregistrer des lieux.
+    placeDeleted: Votre lieu a été supprimé
     placeRemembered: Les informations pour ce lieu ont été enregistrées.
     preferencesSaved: Vos préférences ont été enregistrées.
     smsInvalidCode: Le code saisi est incorrect. Veuillez réessayer.
@@ -111,6 +112,7 @@ common:
     edit: Modifier
     error: erreur !
     finish: Terminer
+    loading: Chargement
     next: Suivant
     "no": Non
     print: Imprimer
@@ -489,7 +491,6 @@ components:
       Entrez votre point de départ/destination dans le formulaire (ou cliquez
       sur la carte), puis cliquez sur le marqueur qui apparaît afin de définir
       votre {placeType}.
-    viewStop: Voir cet arrêt
   PlaceEditor:
     addressPrompt: "Adresse :"
     genericLocationPlaceholder: Adresse du lieu
@@ -537,7 +538,9 @@ components:
     header: Index des lignes
     modeFilter: Filtre pour les modes
     noFilteredRoutesFound: Aucune ligne ne correspond à vos critères
+    noRouteFilter: Aucun filtre n'est appliqué à la liste de lignes.
     openPatternViewer: Voir les dessertes
+    routesFilteredBy: "Les filtres suivants sont appliqués à la liste de lignes : {list}."
     shortTitle: Index des lignes
     stopsInDirectionOfTravel: "Arrêts dans cette direction :"
     title: Index des lignes
@@ -801,7 +804,6 @@ components:
     fields:
       add-companion-form: Accompagnateurs
       storeTripHistory: Enregistrement des recherches
-    updating: Mise à jour
   UserSettings:
     confirmDeletion: >-
       Vous avez des recherches et/ou lieux récemment enregistrés qui vont être
