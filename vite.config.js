@@ -19,12 +19,14 @@ function customFile(envVar, getDestFile, defaultFile) {
     const destFile =
       typeof getDestFile === 'function' ? getDestFile(fileName) : getDestFile
     fs.copySync(fileName, destFile)
-    // Watch the original custom file. When the file is modified, copy that file again over.
-    fs.watch(fileName, { recursive: true }, (eventType) => {
-      if (eventType === 'change') {
-        fs.copySync(fileName, destFile)
-      }
-    })
+    // In development mode only, copy the original custom file to tmp whenever it is changed for hot reloading.
+    if (process.env.NODE_ENV === 'development') {
+      fs.watch(fileName, { recursive: true }, (eventType) => {
+        if (eventType === 'change') {
+          fs.copySync(fileName, destFile)
+        }
+      })
+    }
   }
 }
 
