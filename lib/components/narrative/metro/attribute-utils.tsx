@@ -58,11 +58,11 @@ export const getItineraryRoutes = (
 ): React.ReactNode => {
   return intl.formatList(
     itinerary.legs
-      .map((leg: Leg & { alternateRoutes?: any }) => {
+      .map((leg: Leg & { alternateRoutes?: { [id: string]: Leg } }) => {
         const alternateRouteNames =
           leg.alternateRoutes &&
           Object.entries(leg.alternateRoutes).map(
-            (route: any) => route[1].routeShortName
+            (route) => route[1].routeShortName
           )
 
         return !alternateRouteNames
