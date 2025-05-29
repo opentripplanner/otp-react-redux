@@ -51,7 +51,6 @@ export const removeInsignificantWalkLegs = (leg: Leg): boolean =>
 
 /**
  * Generate text for all routes used in an itinerary.
- * TODO: include all alternate routes inside alternateRoutes as well!
  */
 export const getItineraryRoutes = (
   itinerary: Itinerary,
@@ -59,8 +58,18 @@ export const getItineraryRoutes = (
 ): React.ReactNode => {
   return intl.formatList(
     itinerary.legs
-      .map((leg: Leg) => {
-        return leg.routeShortName
+      .map((leg: Leg & { alternateRoutes?: any }) => {
+        const alternateRouteNames =
+          leg.alternateRoutes &&
+          Object.entries(leg.alternateRoutes).map(
+            (route: any) => route[1].routeShortName
+          )
+
+        return !alternateRouteNames
+          ? leg.routeShortName
+          : intl.formatList([leg.routeShortName, ...alternateRouteNames], {
+              type: 'disjunction'
+            })
       })
       .filter((name) => !!name)
   )
