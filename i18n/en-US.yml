@@ -55,6 +55,7 @@ actions:
     itineraryExistenceCheckFailed: Error checking whether your selected trip is possible.
     mustAcceptTermsToSavePlace: Please accept the Terms of Use (under My Account) to save locations.
     mustBeLoggedInToSavePlace: Please log in to save locations.
+    placeDeleted: Your place has been deleted.
     placeRemembered: The settings for this place have been saved.
     preferencesSaved: Your preferences have been saved.
     smsInvalidCode: The code you entered is invalid. Please try again.
@@ -102,6 +103,7 @@ common:
     edit: Edit
     error: error!
     finish: Finish
+    loading: Loading
     next: Next
     "no": "No"
     print: Print
@@ -472,7 +474,6 @@ components:
     enterAlert: >
       Enter origin/destination in the form (or set via map click)  and click the
       resulting marker to set as {placeType} location.
-    viewStop: View Stop
   PlaceEditor:
     addressPrompt: "Address:"
     genericLocationPlaceholder: Search for location
@@ -520,7 +521,9 @@ components:
     header: Route Viewer
     modeFilter: Mode Filter
     noFilteredRoutesFound: No routes match your filter!
+    noRouteFilter: No filters are currently applied to the route list.
     openPatternViewer: View route details
+    routesFilteredBy: "The following filters are currently applied to the route list: {list}."
     shortTitle: View Routes
     stopsInDirectionOfTravel: "Stops in this direction of travel:"
     title: Route Viewer
@@ -533,7 +536,7 @@ components:
     signInText: Log in to save trip
     signInTooltip: Please log in to save trip.
   SavedTripEditor:
-    deleteSavedTrip: Delete saved trip
+    deleteSavedTrip: Delete
     editSavedTrip: Edit saved trip
     readOnlyBanner: >-
       {creator} created and added you to this trip. Therefore, you cannot make
@@ -774,7 +777,6 @@ components:
     fields:
       add-companion-form: Travel Companions
       storeTripHistory: Store trip history
-    updating: Updating
   UserSettings:
     confirmDeletion: >-
       You have recent searches and/or places stored. Disabling storage of recent

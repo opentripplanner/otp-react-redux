@@ -482,7 +482,6 @@ components:
       படிவத்தில் தோற்றம்/இலக்கை உள்ளிடவும் (அல்லது வரைபடக் சொடுக்கு வழியாக
       அமைக்கவும்) மற்றும் இதன் விளைவாக வரும் மார்க்கரை {placeType} இருப்பிடமாக
       அமைக்க சொடுக்கு செய்க.
-    viewStop: நிறுத்து காண்க
   PlaceEditor:
     addressPrompt: "முகவரி:"
     genericLocationPlaceholder: இருப்பிடத்தைத் தேடுங்கள்
@@ -788,7 +787,6 @@ components:
     fields:
       add-companion-form: பயண தோழர்கள்
       storeTripHistory: பயண வரலாற்றை சேமிக்கவும்
-    updating: புதுப்பித்தல்
   UserSettings:
     confirmDeletion: >-
       உங்களிடம் அண்மைக் கால தேடல்கள் மற்றும்/அல்லது இடங்கள் சேமிக்கப்பட்டுள்ளன.

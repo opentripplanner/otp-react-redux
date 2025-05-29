@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { InlineLoading } from '../narrative/loading'
 
 import FormNavigationButtons, { ButtonType } from './form-navigation-buttons'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import StackedPanes, { Props as StackedPanesProps } from './stacked-panes'
 
 interface Props extends StackedPanesProps {
@@ -35,6 +36,13 @@ const StackedPanesWithSave = ({
   return (
     <>
       <StackedPanes canceling={isBeingCanceled} panes={panes} title={title} />
+
+      {/* Announces when page is loading to AT users */}
+      <InvisibleA11yLabel aria-live="polite" role="status">
+        {buttonClicked === 'okay' && (
+          <FormattedMessage id="common.forms.loading" />
+        )}
+      </InvisibleA11yLabel>
 
       <FormNavigationButtons
         backButton={{
