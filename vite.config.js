@@ -7,7 +7,8 @@ import react from '@vitejs/plugin-react'
 import ViteYaml from '@modyfi/vite-plugin-yaml'
 
 /**
- * Helper function to copy file based on an env variable.
+ * Helper function to copy a file based on an env variable.
+ * Copy occurs upon startup and each time the file is modified for hot reloading.
  * @param {string} envVar The name of the environment variable that contains the custom file.
  * @param {string|(arg: string) => string} getDestFile The destination file or a function that computes it based on the extracted custom file.
  * @param {string} defaultFile Optional file to fall back on if no custom file is extracted from the environment variable.
@@ -18,6 +19,12 @@ function customFile(envVar, getDestFile, defaultFile) {
     const destFile =
       typeof getDestFile === 'function' ? getDestFile(fileName) : getDestFile
     fs.copySync(fileName, destFile)
+    // Watch the original custom file. When the file is modified, copy that file again over.
+    fs.watch(fileName, (eventType) => {
+      if (eventType === 'change') {
+        fs.copySync(fileName, destFile)
+      }
+    })
   }
 }
 
