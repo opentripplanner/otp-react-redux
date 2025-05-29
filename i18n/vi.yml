@@ -473,7 +473,6 @@ components:
       Nhập điểm xuất phát/điểm đến vào biểu mẫu này (hoặc cài đặt qua việc nhấp
       vào bản đồ) và nhấp vào điểm đánh dấu kết quả để cài đặt vị trí
       {placeType}.
-    viewStop: Xem điểm dừng
   PlaceEditor:
     addressPrompt: "Địa chỉ:"
     genericLocationPlaceholder: Tìm kiếm vị trí
@@ -775,7 +774,6 @@ components:
     fields:
       add-companion-form: Bạn Đồng Hành
       storeTripHistory: Lưu trữ lịch sử chuyến đi
-    updating: Đang cập nhật
   UserSettings:
     confirmDeletion: >-
       Bạn có các tìm kiếm và/hoặc địa điểm gần đây được lưu trữ. Việc vô hiệu
