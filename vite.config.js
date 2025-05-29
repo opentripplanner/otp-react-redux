@@ -20,7 +20,7 @@ function customFile(envVar, getDestFile, defaultFile) {
       typeof getDestFile === 'function' ? getDestFile(fileName) : getDestFile
     fs.copySync(fileName, destFile)
     // Watch the original custom file. When the file is modified, copy that file again over.
-    fs.watch(fileName, (eventType) => {
+    fs.watch(fileName, { recursive: true }, (eventType) => {
       if (eventType === 'change') {
         fs.copySync(fileName, destFile)
       }
@@ -37,9 +37,11 @@ customFile('CUSTOM_CSS', './tmp/custom-styles.css', './example/example.css')
 customFile('YAML_CONFIG', './tmp/config.yml', './example/example-config.yml')
 customFile('PLAN_QUERY_RESOURCE_URI', './tmp/planQuery.graphql')
 // JS_CONFIG can be a single file or a folder.
+// If using a folder, its content (including subfolders) will be copied into ./tmp/.
+// That folder should contain a config.js file and not contain any of the other custom files above.
 customFile(
   'JS_CONFIG',
-  (file) => (file.endsWith('.js') ? './tmp/config.js' : '/tmp/'),
+  (file) => (file.endsWith('.js') ? './tmp/config.js' : './tmp/'),
   './example/config.js'
 )
 
