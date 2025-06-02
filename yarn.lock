@@ -2519,24 +2519,6 @@
     react-resize-detector "^4.2.1"
     string-similarity "^4.0.4"
 
-"@opentripplanner/itinerary-body@7.0.1":
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-7.0.1.tgz#6e40c8bfd280bb187407e05e3edb583bceebeb04"
-  integrity sha512-6CbQ2RN51QWAKM0tgOk9D6PYJ18BC+eljcZIv+pumkQsgUgFDUwzaG7J6U8mxBw9bvcbrAzWwcmco6/d4yfrNg==
-  dependencies:
-    "@opentripplanner/core-utils" "13.0.0"
-    "@opentripplanner/humanize-distance" "2.0.0"
-    "@opentripplanner/icons" "4.0.0"
-    "@opentripplanner/location-icon" "2.0.0"
-    "@styled-icons/fa-solid" "^10.34.0"
-    "@styled-icons/foundation" "^10.34.0"
-    date-fns "^2.28.0"
-    date-fns-tz "^1.2.2"
-    flat "^5.0.2"
-    react-animate-height "^3.0.4"
-    react-resize-detector "^4.2.1"
-    string-similarity "^4.0.4"
-
 "@opentripplanner/itinerary-body@7.0.3":
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-7.0.3.tgz#35e23c275c57ee5444d368fc8c59c10d055d6ab1"
@@ -2671,15 +2653,15 @@
     "@opentripplanner/icons" "4.0.0"
     flat "^5.0.2"
 
-"@opentripplanner/transitive-overlay@5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-5.0.2.tgz#e87d46fa6c9e1415e72893acac5ed3f0b4ebe0a2"
-  integrity sha512-tVoxyi7ZM37sNFChmKrzbC6r9sIENeA4ZcEUjodKEPoJpqRvj4dY+GCtQv6xaKRZ2hKhbcGJp0gFEzCnTLz/Bw==
+"@opentripplanner/transitive-overlay@6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-6.0.0.tgz#be041140ec852253a4c9128169878e7ba0303cf9"
+  integrity sha512-2wPTIZDmcmq9Ar+6i6to8puAZIdUt3CGgNOEyLHL11ocyo54LW8mZMp5Jh/Hk6N2wTUvMi5DraRwlDxUKYn8nw==
   dependencies:
     "@mapbox/polyline" "^1.1.1"
     "@opentripplanner/base-map" "5.0.2"
-    "@opentripplanner/core-utils" "13.0.0"
-    "@opentripplanner/itinerary-body" "7.0.1"
+    "@opentripplanner/core-utils" "13.0.1"
+    "@opentripplanner/itinerary-body" "7.0.3"
     "@turf/bbox" "^6.5.0"
     "@turf/bearing" "^6.5.0"
     "@turf/destination" "^6.5.0"
