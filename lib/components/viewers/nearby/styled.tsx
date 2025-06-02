@@ -20,8 +20,6 @@ export const NearbySidebarContainer = styled.ol`
   gap: 1em;
   padding: 0 1em;
   list-style: none;
-  overflow-y: scroll;
-  height: 90%;
 
   & > li:last-of-type {
     margin-bottom: 1em;
@@ -108,6 +106,7 @@ export const PatternRowContainer = styled.ul`
 `
 export const FullHeightContainer = styled.div`
   height: 100%;
+  overflow-y: scroll;
 `
 
 export const ActionLink = styled(Link)`
