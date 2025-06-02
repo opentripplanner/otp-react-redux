@@ -67,7 +67,7 @@ export const getItineraryRoutes = (
         const alternateRouteNames =
           leg.alternateRoutes &&
           getAlternateRoutesFromLeg(leg)
-            .map((route) => route[1].routeShortName)
+            .map((route) => route[1].routeShortName || undefined)
             .filter((name) => !!name)
 
         return !alternateRouteNames
