@@ -52,7 +52,6 @@ export const removeInsignificantWalkLegs = (leg: Leg): boolean =>
 export const getAlternateRoutesFromLeg = (
   leg: Leg & { alternateRoutes?: { [id: string]: Leg } }
 ): Array<[string, Leg]> => {
-  console.log(Object.entries(leg.alternateRoutes || {}))
   return Object.entries(leg.alternateRoutes || {})
 }
 /**
