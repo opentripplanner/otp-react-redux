@@ -20,7 +20,11 @@ const StyledTransparentButton = styled.button`
 `
 
 const AdvancedSettingsButton = ({ onClick }: Props): JSX.Element => (
-  <StyledTransparentButton id="open-advanced-settings-button" onClick={onClick}>
+  <StyledTransparentButton
+    id="open-advanced-settings-button"
+    onClick={onClick}
+    type="button"
+  >
     <FormattedMessage id="components.BatchSearchScreen.moreOptions" />
     <ArrowRight size={18} />
   </StyledTransparentButton>
