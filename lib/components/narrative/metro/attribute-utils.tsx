@@ -49,6 +49,12 @@ export const removeInsignificantWalkLegs = (leg: Leg): boolean =>
   // TODO: Make the 400 meters configurable?
   leg.mode !== 'WALK' || leg.distance > 400
 
+export const getAlternateRoutesFromLeg = (
+  leg: Leg & { alternateRoutes?: { [id: string]: Leg } }
+): Array<[string, Leg]> => {
+  console.log(Object.entries(leg.alternateRoutes || {}))
+  return Object.entries(leg.alternateRoutes || {})
+}
 /**
  * Generate text for all routes used in an itinerary.
  */
@@ -61,9 +67,9 @@ export const getItineraryRoutes = (
       .map((leg: Leg & { alternateRoutes?: { [id: string]: Leg } }) => {
         const alternateRouteNames =
           leg.alternateRoutes &&
-          Object.entries(leg.alternateRoutes).map(
-            (route) => route[1].routeShortName
-          )
+          getAlternateRoutesFromLeg(leg)
+            .map((route) => route[1].routeShortName)
+            .filter((name) => !!name)
 
         return !alternateRouteNames
           ? leg.routeShortName
