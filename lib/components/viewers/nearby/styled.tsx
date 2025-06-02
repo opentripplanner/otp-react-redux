@@ -18,7 +18,7 @@ export const NearbySidebarContainer = styled.ol`
   display: flex;
   flex-direction: column;
   gap: 1em;
-  padding: 0 1em;
+  padding: 0.5em 1em;
   list-style: none;
   overflow-y: scroll;
   height: 90%;
