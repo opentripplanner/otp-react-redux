@@ -256,7 +256,7 @@
 }
 
 @media (max-width: 768px){
-  .panel-default {
+  .saved-trip-panel .panel-default {
     width: 90%;
   }
 }

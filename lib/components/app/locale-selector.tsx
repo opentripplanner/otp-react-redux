@@ -12,7 +12,7 @@ interface LocaleSelectorProps {
   // Typescript TODO languageOptions based on configLanguage type.
   languageOptions: Record<string, any> | null
   locale: string
-  setLocale: (locale: string) => void
+  setLocale: (locale: string, isUpdatingLocale: boolean) => void
 }
 
 const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
@@ -34,7 +34,7 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
           <li key={locale} lang={locale}>
             <UnstyledButton
               aria-selected={locale === currentLocale || undefined}
-              onClick={() => setLocale(locale)}
+              onClick={() => setLocale(locale, true)}
               role="option"
             >
               {languageOptions[locale].name}

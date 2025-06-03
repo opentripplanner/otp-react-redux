@@ -44,7 +44,7 @@ const Operator = ({ operator }: { operator?: TransitOperator }) => {
       // If operator exists but logo is missing,
       // we still need to announce the operator name to screen readers.
       <>
-        <MapPin />
+        <MapPin style={{ maxHeight: 24, padding: '0 0.25ch' }} />
         <InvisibleA11yLabel>{operatorLogoAriaLabel}</InvisibleA11yLabel>
       </>
     )
