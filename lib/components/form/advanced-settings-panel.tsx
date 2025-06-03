@@ -287,7 +287,7 @@ const AdvancedSettingsPanel = ({
         <h1 className="header-text">{headerText}</h1>
       </HeaderContainer>
       <DtSelectorContainer>
-        <DateTimeModal />
+        <DateTimeModal departArriveDropdown />
       </DtSelectorContainer>
       {processedGlobalSettings.length > 0 && (
         <>

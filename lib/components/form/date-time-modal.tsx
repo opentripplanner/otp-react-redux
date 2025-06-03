@@ -14,7 +14,7 @@ type Props = {
   date: string
   dateFormatLegacy?: string
   departArrive: DepartArriveValue
-  externalDepartArrive: boolean
+  departArriveDropdown?: boolean
   setQueryParam: (params: any) => void
   sort: SortType
   time: string
@@ -69,7 +69,7 @@ function DateTimeModal({
   date,
   dateFormatLegacy,
   departArrive,
-  externalDepartArrive,
+  departArriveDropdown,
   setQueryParam,
   sort,
   time,
@@ -104,7 +104,7 @@ function DateTimeModal({
       date={date}
       dateFormatLegacy={dateFormatLegacy}
       departArrive={departArrive}
-      externalDepartArriveSelector={externalDepartArrive}
+      departArriveDropdown={departArriveDropdown}
       onQueryParamChange={onQueryParamChange}
       time={time}
       // These props below are for legacy browsers
