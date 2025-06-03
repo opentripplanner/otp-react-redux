@@ -54,14 +54,6 @@ export const AdvancedOptionsContainer = styled.div`
   color: ${grey[800]};
   display: flex;
   justify-content: space-between;
-
-  #date-time-depart-arrive-wrapper {
-    order: 0;
-  }
-
-  #open-advanced-settings-button {
-    order: 1;
-  }
 `
 
 export const PlanTripButton = styled(Button)`
@@ -104,5 +96,5 @@ export const ModeSelectorContainer = styled.div`
 export const MainSettingsRow = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 `

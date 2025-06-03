@@ -8,7 +8,7 @@ import { ModeButtonDefinition } from '@opentripplanner/types'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
 import { useIntl } from 'react-intl'
-import React, { useCallback, useContext, useState } from 'react'
+import React, { useCallback, useContext, useEffect } from 'react'
 
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
@@ -115,21 +115,38 @@ function BatchSettings({
     [syncSortWithDepartArrive, updateItineraryFilter, setQueryParam, sort]
   )
 
+  const dtSelectorOpen = departArrive !== 'NOW'
+  const dtTimeInput = document.querySelector(
+    ".date-time-selector input[type='time']"
+  )
+
+  // If the user selects depart or arrive, set the focus to the time input
+  useEffect(() => {
+    if (dtSelectorOpen) {
+      // eslint-disable-next-line prettier/prettier
+      (dtTimeInput as HTMLElement)?.focus()
+    }
+  }, [dtSelectorOpen, dtTimeInput, departArrive])
+
   return (
     <MainSettingsRow className="main-settings-row">
       <AdvancedOptionsContainer>
-        <AdvancedSettingsButton onClick={openAdvancedSettings} />
         <DepartArriveDropdown
           departArrive={departArrive}
           onQueryParamChange={onQueryParamChange}
           timeZone={homeTimezone}
         />
+        <AdvancedSettingsButton onClick={openAdvancedSettings} />
       </AdvancedOptionsContainer>
       <AnimateHeight
         duration={250}
-        height={departArrive !== 'NOW' ? 'auto' : 0}
+        height={dtSelectorOpen ? 'auto' : 0}
+        style={{
+          marginBottom: dtSelectorOpen ? '10px' : 0,
+          transition: 'ease all 150ms'
+        }}
       >
-        <DateTimeModal externalDepartArrive />
+        <DateTimeModal />
       </AnimateHeight>
 
       <ModeSelectorContainer>
