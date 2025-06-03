@@ -36,6 +36,7 @@ import PointPopup from './point-popup'
 import RoutePreviewOverlay from './route-preview-overlay'
 import RouteViewerOverlay from './connected-route-viewer-overlay'
 import StopsOverlay from './connected-stops-overlay'
+import StopViewerOverlay from './connected-stop-viewer-overlay'
 import TransitiveOverlay from './connected-transitive-overlay'
 import TransitVehicleOverlay from './connected-transit-vehicle-overlay'
 import TripViewerOverlay from './connected-trip-viewer-overlay'
@@ -364,6 +365,7 @@ class DefaultMap extends Component {
             getTransitiveRouteLabel={getTransitiveRouteLabel}
           />
           <TripViewerOverlay />
+          <StopViewerOverlay />
           <ElevationPointMarker />
 
           {/* The configurable overlays */}
