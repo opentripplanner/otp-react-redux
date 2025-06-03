@@ -1,5 +1,5 @@
 import { ArrowRight } from '@styled-icons/fa-solid/ArrowRight'
-import { IntlShape } from 'react-intl'
+import { FormattedMessage, IntlShape } from 'react-intl'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 
@@ -10,6 +10,7 @@ import { getModeFromRoute } from '../../util/viewer'
 import { Icon } from '../util/styledIcon'
 import { TransitOperatorConfig } from '../../util/config-types'
 import { ViewedRouteObject } from '../util/types'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import Link from '../util/link'
 import OperatorLogo from '../util/operator-logo'
 
@@ -205,6 +206,13 @@ export class RouteRow extends PureComponent<Props> {
               </ModeIconElement>
             )}
             <RouteName route={route} RouteRenderer={RouteRenderer} />
+            {isActive && (
+              <InvisibleA11yLabel>
+                (
+                <FormattedMessage id="components.RouteViewer.currentlySelected" />
+                )
+              </InvisibleA11yLabel>
+            )}
           </RouteDetailsContainer>
         </RouteRowLink>
         <PatternViewerLink
