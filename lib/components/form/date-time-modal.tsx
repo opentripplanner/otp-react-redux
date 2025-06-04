@@ -43,11 +43,11 @@ export const DepartArriveDefaultSortDirectionMap: Record<
 }
 
 export const setQueryParamMiddleware = (
-  syncSortWithDepartArrive,
-  updateItineraryFilter,
-  params,
-  setQueryParam,
-  sort
+  syncSortWithDepartArrive: boolean | undefined,
+  updateItineraryFilter: (payload: FilterType) => void,
+  params: any,
+  setQueryParam: (params: any) => void,
+  sort: SortType
 ): void => {
   if (syncSortWithDepartArrive) {
     updateItineraryFilter({
