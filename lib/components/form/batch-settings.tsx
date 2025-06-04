@@ -139,11 +139,11 @@ function BatchSettings({
         <AdvancedSettingsButton onClick={openAdvancedSettings} />
       </AdvancedOptionsContainer>
       <AnimateHeight
-        duration={250}
+        duration={200}
         height={dtSelectorOpen ? 'auto' : 0}
         style={{
           marginBottom: dtSelectorOpen ? '10px' : 0,
-          transition: 'ease all 150ms'
+          transition: 'ease all 200ms'
         }}
       >
         <DateTimeModal />

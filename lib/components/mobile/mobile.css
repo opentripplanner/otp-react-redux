@@ -116,8 +116,9 @@
   left: 0;
   position: fixed;
   right: 0;
-  top: 280px;
-  transition: all 200ms ease;
+  top: 270px;
+  transition: all 225ms ease;
+  transition-delay: 50ms;
 }
 
 .otp.mobile .batch-search-map.dt-open {
