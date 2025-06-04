@@ -761,7 +761,7 @@ components:
     copyLink: Копировать ссылку
     header: Инструменты маршрута
     linkCopied: Скопировано
-    reportEmailSubject: Сообщение о проблеме с OpenTripPlanner
+    reportEmailSubject: Сообщение о проблеме
     reportEmailTemplate: |
       "*** ИНСТРУКЦИЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ ***
        Эта функция позволяет отправлять отчеты о проблемах администраторам сайта по электронной почте.
