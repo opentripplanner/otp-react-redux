@@ -372,6 +372,7 @@ components:
     selectCost: Cost
     selectDepartureTime: Departure time
     selectDuration: Duration
+    selectFare: Fare
     selectWalkTime: Walk time
     sortResults: Sort results
     viewAll: View all options

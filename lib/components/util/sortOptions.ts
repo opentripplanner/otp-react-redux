@@ -12,7 +12,8 @@ export const sortOptions = (
     'ARRIVALTIME',
     'WALKTIME',
     'COST',
-    'DEPARTURETIME'
+    'DEPARTURETIME',
+    'FARE'
   ]
 ): SortOptionEntry[] => {
   const sortOptionsArray: SortOptionEntry[] = [
@@ -51,6 +52,12 @@ export const sortOptions = (
         id: 'components.NarrativeItinerariesHeader.selectCost'
       }),
       value: 'COST'
+    },
+    {
+      text: intl.formatMessage({
+        id: 'components.NarrativeItinerariesHeader.selectFare'
+      }),
+      value: 'FARE'
     }
   ]
 
