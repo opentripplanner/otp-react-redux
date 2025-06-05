@@ -2537,10 +2537,10 @@
     react-resize-detector "^4.2.1"
     string-similarity "^4.0.4"
 
-"@opentripplanner/location-field@4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-4.0.2.tgz#a08ee127abc8e63b7524ed1216f336555dd6db6d"
-  integrity sha512-Y3Z5UtGr50yuxS6VTRGXGHEAqdXPpRhgrxcURm5lAq8EUbcVFfY1oe4adx/RIEgNBFTfXmaVbZmHNDvsGXTdag==
+"@opentripplanner/location-field@4.0.3":
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-4.0.3.tgz#4dee7e06446eff241400cd5c117e2e6e65e33403"
+  integrity sha512-BjO2VyDdK+mtGgaSIK48Nwie0zzABheo/fEdhy/nQCoq7a1pb/edMADRIdATrSUkmXvhTSJ84bVf8tMQmFQK7A==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
     "@opentripplanner/core-utils" "13.0.1"
