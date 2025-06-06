@@ -286,6 +286,8 @@ components:
     nameAlreadyUsed: Это имя уже используется для другого места. Укажите другое имя.
     placeNotFound: Место не найдено
     placeNotFoundDescription: Не удалось найти требуемое место.
+    charactersRemaining: '{chars, plural, one {# символов осталось} other {# символов
+      осталось}}'
   FormNavigationButtons:
     ariaLabel: Навигационная форма
   ItinerarySummary:
