@@ -240,6 +240,7 @@ components:
     nameAlreadyUsed: 您已經對其他地點使用此名稱。請輸入其他名稱。
     placeNotFound: 找不到地點
     placeNotFoundDescription: 很抱歉，找不到請求的地點。
+    charactersRemaining: '{chars, plural, one {# 剩餘字元} other {# 剩餘字元}}'
   FormNavigationButtons:
     ariaLabel: 表單導航
   ItinerarySummary:
@@ -423,6 +424,7 @@ components:
     tripNotFound: 找不到行程
     tripNotFoundDescription: 很抱歉，找不到請求的行程。
     tripNotifications: 行程通知
+    deleteSavedTrip: 刪除已儲存的行程
   SavedTripList:
     fromTo: 從 {from} 到 {to}
     myTrips: 我的行程
