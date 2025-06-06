@@ -525,7 +525,7 @@ components:
     noRouteFilter: No filters are currently applied to the route list.
     openPatternViewer: View route details
     routesFilteredBy: "The following filters are currently applied to the route list: {list}."
-    shortTitle: View Routes
+    shortTitle: Routes
     stopsInDirectionOfTravel: "Stops in this direction of travel:"
     title: Route Viewer
   SaveTripButton:
