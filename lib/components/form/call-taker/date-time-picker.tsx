@@ -201,8 +201,11 @@ const DateTimeOptions = ({
   }, [dateTime, departArrive, homeTimezone, setQueryParam])
 
   const handleDepartArriveChange = useCallback(
-    (e: ChangeEvent<HTMLSelectElement>) => {
-      const newValue = e.target.value as DepartArriveValue
+    (e: ChangeEvent<HTMLSelectElement> | string) => {
+      const newValue =
+        typeof e === 'string'
+          ? (e as DepartArriveValue)
+          : (e.target.value as DepartArriveValue)
       setDepartArrive(newValue)
 
       // Handler for updating the time and date fields when NOW is selected
@@ -256,6 +259,7 @@ const DateTimeOptions = ({
 
   return (
     <>
+      <button onClick={() => handleDepartArriveChange('NOW')}>Now</button>
       <select
         onBlur={handleDepartArriveChange}
         onChange={handleDepartArriveChange}
