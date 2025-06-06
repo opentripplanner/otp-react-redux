@@ -40,7 +40,13 @@ exports[`components > form > call-taker > date time options should correctly han
         timeFormat="h:mm a"
       >
         <button
+          className="calltaker-now"
           onClick={[Function]}
+          style={
+            Object {
+              "display": "none",
+            }
+          }
         >
           Now
         </button>
@@ -168,7 +174,13 @@ exports[`components > form > call-taker > date time options should correctly han
         timeFormat="h:mm a"
       >
         <button
+          className="calltaker-now"
           onClick={[Function]}
+          style={
+            Object {
+              "display": "none",
+            }
+          }
         >
           Now
         </button>
@@ -296,7 +308,13 @@ exports[`components > form > call-taker > date time options should correctly han
         timeFormat="h:mm a"
       >
         <button
+          className="calltaker-now"
           onClick={[Function]}
+          style={
+            Object {
+              "display": "none",
+            }
+          }
         >
           Now
         </button>
@@ -424,7 +442,13 @@ exports[`components > form > call-taker > date time options should correctly han
         timeFormat="h:mm a"
       >
         <button
+          className="calltaker-now"
           onClick={[Function]}
+          style={
+            Object {
+              "display": "none",
+            }
+          }
         >
           Now
         </button>
@@ -552,7 +576,13 @@ exports[`components > form > call-taker > date time options should correctly han
         timeFormat="h:mm a"
       >
         <button
+          className="calltaker-now"
           onClick={[Function]}
+          style={
+            Object {
+              "display": "none",
+            }
+          }
         >
           Now
         </button>
@@ -680,7 +710,13 @@ exports[`components > form > call-taker > date time options should correctly han
         timeFormat="h:mm a"
       >
         <button
+          className="calltaker-now"
           onClick={[Function]}
+          style={
+            Object {
+              "display": "none",
+            }
+          }
         >
           Now
         </button>
@@ -808,7 +844,13 @@ exports[`components > form > call-taker > date time options should render 1`] = 
         timeFormat="h:mm a"
       >
         <button
+          className="calltaker-now"
           onClick={[Function]}
+          style={
+            Object {
+              "display": "none",
+            }
+          }
         >
           Now
         </button>
