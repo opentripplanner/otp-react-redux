@@ -262,7 +262,7 @@ const DateTimeOptions = ({
       <button
         className="calltaker-now"
         onClick={() => handleDepartArriveChange('NOW')}
-        // Button is dissabled by default unless a config activates it
+        // Button is disabled by default unless a config activates it
         style={{ display: 'none' }}
       >
         Now
