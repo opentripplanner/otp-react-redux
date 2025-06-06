@@ -296,6 +296,8 @@ components:
       pangalan.
     placeNotFound: Hindi nakita ang lugar
     placeNotFoundDescription: Pasensya na, hindi nakita ang hiniling na lugar.
+    charactersRemaining: '{chars, plural, one {# natitirang character} other {# natitirang
+      character}}'
   FormNavigationButtons:
     ariaLabel: Pag-navigate sa form
   ItinerarySummary:
