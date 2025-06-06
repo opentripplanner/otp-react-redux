@@ -256,6 +256,7 @@ components:
     nameAlreadyUsed: 您已经在另一个地点使用这个名字. 请输入一个不同的名字.
     placeNotFound: 未找到地点
     placeNotFoundDescription: 对不起, 没有找到要求的地方.
+    charactersRemaining: '{chars, plural, one {# 剩餘字元} other {# 剩餘字元}}'
   FormNavigationButtons:
     ariaLabel: 表格导航
   ItinerarySummary:
