@@ -259,7 +259,14 @@ const DateTimeOptions = ({
 
   return (
     <>
-      <button onClick={() => handleDepartArriveChange('NOW')}>Now</button>
+      <button
+        className="calltaker-now"
+        onClick={() => handleDepartArriveChange('NOW')}
+        // Button is dissabled by default unless a config activates it
+        style={{ display: 'none' }}
+      >
+        Now
+      </button>
       <select
         onBlur={handleDepartArriveChange}
         onChange={handleDepartArriveChange}
