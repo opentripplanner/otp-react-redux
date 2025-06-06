@@ -285,6 +285,8 @@ components:
       khác.
     placeNotFound: Không tìm thấy địa điểm
     placeNotFoundDescription: Xin lỗi, địa điểm được yêu cầu không được tìm thấy.
+    charactersRemaining: '{chars, plural, one {# số ký tự còn lại} other {# số ký
+      tự còn lại}}'
   FormNavigationButtons:
     ariaLabel: Điều hướng hình thức
   ItinerarySummary:
