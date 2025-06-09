@@ -516,7 +516,7 @@ components:
     agencyFilter: Agency Filter
     allAgencies: All Agencies
     allModes: All Modes
-    currentlySelected: Currently selected
+    currentlySelected: (Currently selected)
     details: " "
     findARoute: Find A Route
     header: Route Viewer
