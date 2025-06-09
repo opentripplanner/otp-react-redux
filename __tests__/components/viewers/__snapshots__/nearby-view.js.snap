@@ -49,7 +49,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
           className="nearby-view base-color-bg"
         >
           <div
-            className="sc-cuWdqJ ctgsMZ nearby-view base-color-bg"
+            className="sc-cuWdqJ cZFGA-D nearby-view base-color-bg"
           >
             <Connect(PageTitle)
               title="components.NearbyView.header"
@@ -344,7 +344,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
               }
             >
               <ol
-                className="sc-dcwqsv bvgzlH base-color-bg"
+                className="sc-dcwqsv feLfQq base-color-bg"
                 style={
                   Object {
                     "marginBottom": 0,
@@ -4339,7 +4339,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
           className="nearby-view base-color-bg"
         >
           <div
-            className="sc-cuWdqJ ctgsMZ nearby-view base-color-bg"
+            className="sc-cuWdqJ cZFGA-D nearby-view base-color-bg"
           >
             <Connect(PageTitle)
               title="components.NearbyView.header"
@@ -4634,7 +4634,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
               }
             >
               <ol
-                className="sc-dcwqsv bvgzlH base-color-bg"
+                className="sc-dcwqsv feLfQq base-color-bg"
                 style={
                   Object {
                     "marginBottom": 0,
