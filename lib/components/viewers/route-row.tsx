@@ -208,7 +208,7 @@ export class RouteRow extends PureComponent<Props> {
             <RouteName route={route} RouteRenderer={RouteRenderer} />
             {isActive && (
               <InvisibleA11yLabel>
-                <FormattedMessage id="components.RouteViewer.currentlySelected" />
+                <FormattedMessage id="common.currentlySelected" />
               </InvisibleA11yLabel>
             )}
           </RouteDetailsContainer>

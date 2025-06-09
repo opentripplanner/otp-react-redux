@@ -192,6 +192,11 @@ export default function NarrativeItinerariesHeader({
                     role="option"
                   >
                     {sortOption.text}
+                    {sortText === sortOption.text && (
+                      <InvisibleA11yLabel>
+                        <FormattedMessage id="coommon.currentlySelected" />
+                      </InvisibleA11yLabel>
+                    )}
                   </UnstyledButton>
                 </li>
               ))}

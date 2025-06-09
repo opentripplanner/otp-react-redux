@@ -76,6 +76,7 @@ actions:
       réessayez.
 common:
   coordinates: "{lat}; {lon}"
+  currentlySelected: (actuellement sélectionné)
   dateExpressions:
     today: Aujourd'hui
     tomorrow: Demain
