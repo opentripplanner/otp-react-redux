@@ -14,7 +14,6 @@ import {
   TransitionStyles
 } from '../form/styled'
 import { alertUserTripPlan } from '../form/util'
-import { DepartArriveValue } from '../form/date-time-modal'
 import { MobileScreens } from '../../actions/ui-constants'
 import AdvancedSettingsPanel from '../form/advanced-settings-panel'
 import BatchSettings from '../form/batch-settings'
@@ -49,7 +48,6 @@ const MobileSearchSettings = styled.div<{
 
 interface Props {
   currentQuery: any
-  departArrive: DepartArriveValue
   intl: IntlShape
   map: React.ReactElement
   routingQuery: any
@@ -100,9 +98,9 @@ class BatchSearchScreen extends Component<Props> {
   render() {
     const { intl } = this.props
     const { planTripClicked, showAdvancedModeSettings } = this.state
-    const dateTimeSelectorOpen = this.props.departArrive !== 'NOW'
+    const { departArrive } = this.props.currentQuery
+    const dateTimeSelectorOpen = departArrive !== 'NOW'
 
-    console.log(this.props.departArrive)
     const transitionDelay = this.state.closeAdvancedSettingsWithDelay ? 300 : 0
     const transitionDurationWithDelay = transitionDuration + transitionDelay
     return (
@@ -202,11 +200,9 @@ class BatchSearchScreen extends Component<Props> {
 // connect to the redux store
 
 const mapStateToProps = (state: any) => {
-  const { departArrive } = state.otp.currentQuery
   const currentQuery = state.otp.currentQuery
   return {
-    currentQuery,
-    departArrive
+    currentQuery
   }
 }
 

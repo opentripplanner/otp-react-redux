@@ -102,7 +102,6 @@ function DateTimeModal({
     <StyledDateTimeSelector
       className={`date-time-selector ${touchClassName}`}
       date={date}
-      dateFormatLegacy={dateFormatLegacy}
       departArrive={departArrive}
       departArriveDropdown={departArriveDropdown}
       onQueryParamChange={onQueryParamChange}
@@ -113,6 +112,7 @@ function DateTimeModal({
       // where `<input type="time|date">` already
       // formats the time|date according to the OS settings.
       // eslint-disable-next-line react/jsx-sort-props
+      dateFormatLegacy={dateFormatLegacy}
       timeFormatLegacy={timeFormatLegacy}
       timeZone={homeTimezone}
     />

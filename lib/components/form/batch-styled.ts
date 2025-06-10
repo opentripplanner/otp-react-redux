@@ -80,9 +80,6 @@ export const ModeSelectorContainer = styled.div`
   justify-content: space-between;
   width: 100%;
 
-  ${PlanTripButton} {
-    margin-top: 0px;
-  }
   fieldset {
     gap: 0 2px;
     margin: 0 2px 0 0;

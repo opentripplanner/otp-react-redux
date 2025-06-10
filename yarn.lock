@@ -2685,7 +2685,6 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-6.0.0.tgz#1c0c09ea675b8254faf20f656f68252bc291f168"
   integrity sha512-LrgVx6HmABot0hB8owlYvvzG2vO4eEdGFiiQR3Cs2zeUxz22qArAJoTDSLRuLhys0xYlLv8VB+J3ICWJaY7UnA==
   dependencies:
-    "@floating-ui/react" "^0.19.2"
     "@opentripplanner/building-blocks" "3.0.0"
     "@opentripplanner/core-utils" "13.0.1"
     "@opentripplanner/icons" "4.0.0"
