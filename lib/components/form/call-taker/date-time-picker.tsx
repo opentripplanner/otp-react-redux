@@ -201,7 +201,7 @@ const DateTimeOptions = ({
   }, [dateTime, departArrive, homeTimezone, setQueryParam])
 
   const handleDepartArriveChange = useCallback(
-    (e: ChangeEvent<HTMLSelectElement> | string) => {
+    (e: ChangeEvent<HTMLSelectElement> | DepartArriveValue) => {
       const newValue =
         typeof e === 'string'
           ? (e as DepartArriveValue)
