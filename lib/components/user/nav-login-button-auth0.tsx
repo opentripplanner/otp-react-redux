@@ -32,8 +32,7 @@ const NavLoginButtonAuth0 = ({
   let auth0Locale = locale
   if (locale === 'zh-Hant') {
     auth0Locale = 'zh-TW'
-  }
-  if (locale === 'zh-Hans') {
+  } else if (locale === 'zh-Hans') {
     auth0Locale = 'zh-CN'
   }
 
