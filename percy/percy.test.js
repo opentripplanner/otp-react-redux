@@ -293,7 +293,7 @@ async function executeTest(page, isMobile, isCallTaker) {
     await percySnapshotWithWait(page, 'Mobile Sidebar')
   }
 
-  const [routeViewerLink] = await page.$x("//a[contains(., 'View Routes')]")
+  const [routeViewerLink] = await page.$x("//a[contains(., 'Routes')]")
   await routeViewerLink.click()
   await page.waitForSelector('.route-viewer')
   await page.waitForTimeout(5000)

@@ -262,3 +262,7 @@
   }
 }
 
+.otp.mobile .nearby-view-location-field ul {
+  overflow-x: scroll;
+  max-width: 100%;
+}
