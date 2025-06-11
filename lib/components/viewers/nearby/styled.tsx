@@ -18,15 +18,13 @@ export const NearbySidebarContainer = styled.ol`
   display: flex;
   flex-direction: column;
   gap: 1em;
-  padding: 0 1em;
+  padding: 0.5em 1em;
   list-style: none;
+  overflow-y: scroll;
+  height: 90%;
 
   & > li:last-of-type {
     margin-bottom: 1em;
-  }
-
-  & > li:first-of-type {
-    margin-top: 1em;
   }
 
   @media (max-width: 768px) {
@@ -108,9 +106,8 @@ export const PatternRowContainer = styled.ul`
   margin: 0;
   padding-left: 0;
 `
-export const Scrollable = styled.div`
+export const FullHeightContainer = styled.div`
   height: 100%;
-  overflow-y: scroll;
 `
 
 export const ActionLink = styled(Link)`
