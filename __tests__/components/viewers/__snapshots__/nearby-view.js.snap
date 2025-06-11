@@ -135,6 +135,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                       aria-label="Open the list of location suggestions"
                       onClick={[Function]}
                       tabIndex={-1}
+                      type="button"
                     >
                       <button
                         aria-controls="to-listbox"
@@ -143,6 +144,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                         className="styled__BaseButton-sc-xahsq2-1 styled__DropdownButton-sc-xahsq2-4 coKZWn dGsLHu"
                         onClick={[Function]}
                         tabIndex={-1}
+                        type="button"
                       >
                         <LocationIconComponent
                           locationType="to"
@@ -255,11 +257,13 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                     <styled__ClearButton
                       aria-label="otpUi.LocationField.clearLocation"
                       onClick={[Function]}
+                      type="button"
                     >
                       <button
                         aria-label="otpUi.LocationField.clearLocation"
                         className="styled__BaseButton-sc-xahsq2-1 styled__ClearButton-sc-xahsq2-2 coKZWn dHubbh"
                         onClick={[Function]}
+                        type="button"
                       >
                         <Times
                           size={13}
@@ -4425,6 +4429,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       aria-label="Open the list of location suggestions"
                       onClick={[Function]}
                       tabIndex={-1}
+                      type="button"
                     >
                       <button
                         aria-controls="to-listbox"
@@ -4433,6 +4438,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                         className="styled__BaseButton-sc-xahsq2-1 styled__DropdownButton-sc-xahsq2-4 coKZWn dGsLHu"
                         onClick={[Function]}
                         tabIndex={-1}
+                        type="button"
                       >
                         <LocationIconComponent
                           locationType="to"
@@ -4545,11 +4551,13 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                     <styled__ClearButton
                       aria-label="otpUi.LocationField.clearLocation"
                       onClick={[Function]}
+                      type="button"
                     >
                       <button
                         aria-label="otpUi.LocationField.clearLocation"
                         className="styled__BaseButton-sc-xahsq2-1 styled__ClearButton-sc-xahsq2-2 coKZWn dHubbh"
                         onClick={[Function]}
+                        type="button"
                       >
                         <Times
                           size={13}
