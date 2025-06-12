@@ -21,7 +21,7 @@ const Container = styled.li`
   grid-template-rows: 1fr max-content;
   list-style-type: none;
   margin: 0;
-  padding: 1em 1em;
+  padding: 1em;
 
   h2 {
     font-size: 24px;
