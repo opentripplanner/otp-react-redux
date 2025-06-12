@@ -39,6 +39,17 @@ exports[`components > form > call-taker > date time options should correctly han
         time="12a"
         timeFormat="h:mm a"
       >
+        <button
+          className="calltaker-now"
+          onClick={[Function]}
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        >
+          Now
+        </button>
         <select
           onBlur={[Function]}
           onChange={[Function]}
@@ -162,6 +173,17 @@ exports[`components > form > call-taker > date time options should correctly han
         time="12p"
         timeFormat="h:mm a"
       >
+        <button
+          className="calltaker-now"
+          onClick={[Function]}
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        >
+          Now
+        </button>
         <select
           onBlur={[Function]}
           onChange={[Function]}
@@ -285,6 +307,17 @@ exports[`components > form > call-taker > date time options should correctly han
         time="133"
         timeFormat="h:mm a"
       >
+        <button
+          className="calltaker-now"
+          onClick={[Function]}
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        >
+          Now
+        </button>
         <select
           onBlur={[Function]}
           onChange={[Function]}
@@ -408,6 +441,17 @@ exports[`components > form > call-taker > date time options should correctly han
         time="133p"
         timeFormat="h:mm a"
       >
+        <button
+          className="calltaker-now"
+          onClick={[Function]}
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        >
+          Now
+        </button>
         <select
           onBlur={[Function]}
           onChange={[Function]}
@@ -531,6 +575,17 @@ exports[`components > form > call-taker > date time options should correctly han
         time="135p"
         timeFormat="h:mm a"
       >
+        <button
+          className="calltaker-now"
+          onClick={[Function]}
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        >
+          Now
+        </button>
         <select
           onBlur={[Function]}
           onChange={[Function]}
@@ -654,6 +709,17 @@ exports[`components > form > call-taker > date time options should correctly han
         time="1335"
         timeFormat="h:mm a"
       >
+        <button
+          className="calltaker-now"
+          onClick={[Function]}
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        >
+          Now
+        </button>
         <select
           onBlur={[Function]}
           onChange={[Function]}
@@ -777,6 +843,17 @@ exports[`components > form > call-taker > date time options should render 1`] = 
         time="12:34"
         timeFormat="h:mm a"
       >
+        <button
+          className="calltaker-now"
+          onClick={[Function]}
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        >
+          Now
+        </button>
         <select
           onBlur={[Function]}
           onChange={[Function]}
