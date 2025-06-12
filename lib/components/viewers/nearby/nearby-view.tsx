@@ -390,7 +390,6 @@ function NearbyView({
       >
         {nearbyViewError && !loading && (
           <IconMessageContainer
-            // header={intl.formatMessage({ id: 'components.NearbyView.error' })}
             body={intl.formatMessage({ id: 'components.NearbyView.error' })}
           />
         )}
