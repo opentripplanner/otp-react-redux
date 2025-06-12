@@ -6,15 +6,15 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { AppReduxState } from '../../../util/state-types'
-
-import { ActionLink, Card, PatternRowContainer, StyledAlert } from './styled'
 import { extractHeadsignFromPattern } from '../../../util/viewer'
 import { IconWithText } from '../../util/styledIcon'
 import { NearbyViewConfig } from '../../../util/config-types'
 import { PatternStopTime, StopData, StopTime } from '../../util/types'
 import PatternRow from '../pattern-row'
+import Strong from '../../util/strong-text'
 import TimezoneWarning from '../timezone-warning'
 
+import { ActionLink, Card, PatternRowContainer, StyledAlert } from './styled'
 import StopCardHeader from './stop-card-header'
 
 const { getUserTimezone } = coreUtils.time
@@ -33,6 +33,14 @@ const ChildStopHeader = styled.div`
   .child-stop-name {
     font-size: 16px;
     font-weight: 600;
+  }
+  .child-stop-code {
+    font-size: 14px;
+    line-height: 1.15;
+
+    strong {
+      font-weight: 500;
+    }
   }
 
   &:first-of-type {
@@ -188,7 +196,20 @@ const Stop = ({
           return (
             <React.Fragment key={childStop.gtfsId || index}>
               <ChildStopHeader>
-                <span className="child-stop-name">{childStop.name}</span>
+                <div>
+                  <span className="child-stop-name">{childStop.name}</span>
+                  {childStop.code ? (
+                    <div className="child-stop-code">
+                      <FormattedMessage
+                        id="components.StopViewer.displayStopId"
+                        values={{
+                          stopId: childStop.code,
+                          strong: Strong
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                </div>
                 <ActionLink to={`/schedule/${childStop.gtfsId}`}>
                   <IconWithText Icon={Calendar}>
                     <FormattedMessage id="components.StopViewer.viewSchedule" />
