@@ -16,6 +16,7 @@ import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
 import { GeocoderConfig } from '../../../util/config-types'
 import { getCurrentServiceWeek } from '../../../util/current-service-week'
+import { IconMessageContainer } from '../../narrative/metro/metro-error-renderer'
 import {
   PatternStopTime,
   SetLocationHandler,
@@ -62,6 +63,7 @@ type Props = {
   // Todo: type nearby results
   nearby: any
   nearbyViewCoords?: LatLonObj
+  nearbyViewError?: any
   radius?: number
   routeSortComparator: (a: PatternStopTime, b: PatternStopTime) => number
   sessionSearches: any
@@ -135,6 +137,7 @@ function NearbyView({
   mobile,
   nearby,
   nearbyViewCoords,
+  nearbyViewError,
   radius,
   routeSortComparator,
   sessionSearches,
@@ -226,6 +229,13 @@ function NearbyView({
       }
     }
   }, [finalNearbyCoords, fetchNearby, radius])
+
+  console.log('nearbyViewError', nearbyViewError)
+  useEffect(() => {
+    if (nearbyViewError) {
+      setLoading(false)
+    }
+  }, [nearbyViewError])
 
   const onMouseEnter = useCallback(
     (location: Location) => {
@@ -373,6 +383,12 @@ function NearbyView({
         className="base-color-bg"
         style={{ marginBottom: 0 }}
       >
+        {nearbyViewError && !loading && (
+          <IconMessageContainer
+            // header={intl.formatMessage({ id: 'components.NearbyView.error' })}
+            body={intl.formatMessage({ id: 'components.NearbyView.error' })}
+          />
+        )}
         {nearby &&
           !staleData &&
           (nearby.error ? (
@@ -430,6 +446,7 @@ const mapStateToProps = (state: AppReduxState) => {
     location: state.router.location.hash,
     nearby: nearby?.data,
     nearbyViewCoords,
+    nearbyViewError: nearby?.error,
     radius: config.nearbyView?.radius,
     routeSortComparator,
     sessionSearches
