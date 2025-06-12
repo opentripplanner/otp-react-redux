@@ -162,10 +162,15 @@ function NearbyView({
     [nearbyViewCoords, currentPosition, map]
   )
 
-  const reverseCoords = (coords: LonLatInput) => {
-    getGeocoder(geocoderConfig)
-      .reverse({ point: coords })
-      .then((result: Location) => setReversedPoint(result?.name || ''))
+  const reverseCoords = async (coords: LonLatInput) => {
+    try {
+      const location = await getGeocoder(geocoderConfig).reverse({
+        point: coords
+      })
+      setReversedPoint(location?.name || '')
+    } catch (error) {
+      console.error('Error reversing coordinates:', error)
+    }
   }
 
   // Make sure the highlighted location is cleaned up when leaving nearby
