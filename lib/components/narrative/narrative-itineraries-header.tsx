@@ -194,7 +194,7 @@ export default function NarrativeItinerariesHeader({
                     {sortOption.text}
                     {sortText === sortOption.text && (
                       <InvisibleA11yLabel>
-                        <FormattedMessage id="commmon.currentlySelected" />
+                        <FormattedMessage id="common.currentlySelected" />
                       </InvisibleA11yLabel>
                     )}
                   </UnstyledButton>
