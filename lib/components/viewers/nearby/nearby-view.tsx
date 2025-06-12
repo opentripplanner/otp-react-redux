@@ -235,7 +235,6 @@ function NearbyView({
     }
   }, [finalNearbyCoords, fetchNearby, radius])
 
-  console.log('nearbyViewError', nearbyViewError)
   useEffect(() => {
     if (nearbyViewError) {
       setLoading(false)
