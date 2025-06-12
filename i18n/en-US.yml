@@ -359,7 +359,9 @@ components:
     title: Define Your Mobility Profile
   NarrativeItinerariesHeader:
     changeSortDir: Change sort direction
-    howToFindResults: To view results, see the Itineraries Found heading below.
+    howToFindResults: >-
+      To view results, see the Itineraries Found heading below. Select a time
+      button to open itinerary details.
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerary found} other {# itineraries found}
       }
