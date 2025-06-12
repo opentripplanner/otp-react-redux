@@ -18425,17 +18425,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="sc-hJxDiT gGpYuf"
                                   >
                                     <div>
-                                      <FormattedMessage
-                                        id="components.StopViewer.displayStopId"
-                                        values={
-                                          Object {
-                                            "stopId": "40:990003",
-                                            "strong": [Function],
-                                          }
-                                        }
-                                      >
-                                        components.StopViewer.displayStopId
-                                      </FormattedMessage>
                                       <Styled(Connect(Component))
                                         className="stop-header-action"
                                         to="/schedule/40:990003"
@@ -47000,17 +46989,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="sc-hJxDiT gGpYuf"
                                   >
                                     <div>
-                                      <FormattedMessage
-                                        id="components.StopViewer.displayStopId"
-                                        values={
-                                          Object {
-                                            "stopId": "40:990004",
-                                            "strong": [Function],
-                                          }
-                                        }
-                                      >
-                                        components.StopViewer.displayStopId
-                                      </FormattedMessage>
                                       <Styled(Connect(Component))
                                         className="stop-header-action"
                                         to="/schedule/40:990004"
