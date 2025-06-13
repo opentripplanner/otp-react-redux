@@ -72,6 +72,7 @@ actions:
     smsVerificationFailed: >-
       Не удалось подтвердить ваш телефон. Возможно, истек срок действия кода,
       который вы ввели. Запросите новый код и попробуйте еще раз.
+    placeDeleted: Ваша позиция удалена.
 common:
   coordinates: "{lat}; {lon}"
   dateExpressions:
@@ -117,6 +118,7 @@ common:
     startOver: Начать сначала
     submitting: Отправка…
     "yes": Да
+    loading: Загрузка
   itineraryDescriptions:
     fareUnknown: Информации о стоимости поездки нет.
     noItineraryToDisplay: Нет маршрута для отображения.
@@ -291,6 +293,7 @@ components:
       имя.
     placeNotFound: Место не найдено
     placeNotFoundDescription: Не удалось найти требуемое место.
+    charactersRemaining: '{chars, plural, one {# символ слева} other {# символов осталось}}'
   FormNavigationButtons:
     ariaLabel: Навигационная форма
   ItinerarySummary:
