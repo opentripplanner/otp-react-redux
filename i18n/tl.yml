@@ -77,6 +77,7 @@ actions:
     smsVerificationFailed: >-
       Hindi ma-verify ang iyong telepono. Posibleng nag-expire na ang inilagay
       mong code. Humiling ng bagong code at subukan ulit.
+    placeDeleted: Na-delete na ang iyong lugar.
 common:
   coordinates: "{lat}, {lon}"
   dateExpressions:
@@ -122,6 +123,7 @@ common:
     startOver: Magsimula sa Umpisa
     submitting: Isinusumite…
     "yes": Oo
+    loading: Loading
   itineraryDescriptions:
     fareUnknown: Walang impormasyon sa pamasahe
     noItineraryToDisplay: Walang ipapakitang itinerary.
@@ -300,6 +302,8 @@ components:
       pangalan.
     placeNotFound: Hindi nakita ang lugar
     placeNotFoundDescription: Pasensya na, hindi nakita ang hiniling na lugar.
+    charactersRemaining: '{chars, plural, one {# natitirang karakter} other {# natitirang
+      character}}'
   FormNavigationButtons:
     ariaLabel: Pag-navigate sa form
   ItinerarySummary:
