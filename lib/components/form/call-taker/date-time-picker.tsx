@@ -201,8 +201,11 @@ const DateTimeOptions = ({
   }, [dateTime, departArrive, homeTimezone, setQueryParam])
 
   const handleDepartArriveChange = useCallback(
-    (e: ChangeEvent<HTMLSelectElement>) => {
-      const newValue = e.target.value as DepartArriveValue
+    (e: ChangeEvent<HTMLSelectElement> | DepartArriveValue) => {
+      const newValue =
+        typeof e === 'string'
+          ? (e as DepartArriveValue)
+          : (e.target.value as DepartArriveValue)
       setDepartArrive(newValue)
 
       // Handler for updating the time and date fields when NOW is selected
@@ -256,6 +259,14 @@ const DateTimeOptions = ({
 
   return (
     <>
+      <button
+        className="calltaker-now"
+        onClick={() => handleDepartArriveChange('NOW')}
+        // Button is disabled by default unless a config activates it
+        style={{ display: 'none' }}
+      >
+        Now
+      </button>
       <select
         onBlur={handleDepartArriveChange}
         onChange={handleDepartArriveChange}

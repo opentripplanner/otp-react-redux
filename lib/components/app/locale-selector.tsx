@@ -1,12 +1,13 @@
 import { connect } from 'react-redux'
 import { Dropdown } from '@opentripplanner/building-blocks'
+import { FormattedMessage, useIntl } from 'react-intl'
 import { GlobeAmericas } from '@styled-icons/fa-solid/GlobeAmericas'
-import { useIntl } from 'react-intl'
 import React from 'react'
 
 import * as uiActions from '../../actions/ui'
 import { getLanguageOptions } from '../../util/i18n'
 import { UnstyledButton } from '../util/unstyled-button'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
 interface LocaleSelectorProps {
   // Typescript TODO languageOptions based on configLanguage type.
@@ -38,6 +39,11 @@ const LocaleSelector = (props: LocaleSelectorProps): JSX.Element | null => {
               role="option"
             >
               {languageOptions[locale].name}
+              {locale === currentLocale && (
+                <InvisibleA11yLabel>
+                  <FormattedMessage id="common.currentlySelected" />
+                </InvisibleA11yLabel>
+              )}
             </UnstyledButton>
           </li>
         ))}
