@@ -72,6 +72,7 @@ actions:
     smsVerificationFailed: >-
       Điện thoại của bạn không thể được xác minh. Có lẽ mã bạn đã nhập đã hết
       hạn. Vui lòng yêu cầu một mã mới và thử lại.
+    placeDeleted: Địa điểm của bạn đã bị xóa.
 common:
   coordinates: "{lat}, {lon}"
   dateExpressions:
@@ -117,6 +118,7 @@ common:
     startOver: Bắt đầu lại
     submitting: Đang gửi…
     "yes": Đúng
+    loading: Đang tải
   itineraryDescriptions:
     fareUnknown: Không có thông tin giá vé
     noItineraryToDisplay: Không có hành trình để hiển thị.
@@ -287,6 +289,8 @@ components:
     placeNotFound: Không tìm thấy địa điểm
     placeNotFoundDescription: Xin lỗi, địa điểm được yêu cầu không được tìm 
       thấy.
+    charactersRemaining: '{chars, plural, one {# ký tự còn lại} other {# số ký tự
+      còn lại}}'
   FormNavigationButtons:
     ariaLabel: Điều hướng hình thức
   ItinerarySummary:
