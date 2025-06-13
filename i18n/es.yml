@@ -74,6 +74,7 @@ actions:
     smsVerificationFailed: >-
       Su teléfono no ha podido ser verificado. Quizás el código que has
       introducido ha caducado. Solicita un nuevo código e inténtalo de nuevo.
+    placeDeleted: Se ha eliminado su ubicación.
 common:
   coordinates: "{lat}; {lon}"
   dateExpressions:
@@ -119,6 +120,7 @@ common:
     startOver: Reiniciar
     submitting: Enviando…
     "yes": Sí
+    loading: Cargando
   itineraryDescriptions:
     fareUnknown: No hay información de las tarifas
     noItineraryToDisplay: No hay itinerario que mostrar.
@@ -294,6 +296,8 @@ components:
       nombre diferente.
     placeNotFound: No se encontró el lugar
     placeNotFoundDescription: Lo sentimos, no se encontró el lugar solicitado.
+    charactersRemaining: '{chars, plural, one {# caracter que quedan} other {# caracteres
+      que quedan}}'
   FormNavigationButtons:
     ariaLabel: Navegar por los formularios
   ItinerarySummary:
