@@ -60,13 +60,15 @@ const StopCardHeader = ({
       </CardHeader>
       <CardBody>
         <div>
-          <FormattedMessage
-            id="components.StopViewer.displayStopId"
-            values={{
-              stopId: stopData.code || stopData.gtfsId,
-              strong: Strong
-            }}
-          />
+          {stopData.code ? (
+            <FormattedMessage
+              id="components.StopViewer.displayStopId"
+              values={{
+                stopId: stopData.code,
+                strong: Strong
+              }}
+            />
+          ) : null}
           {onZoomClick ? (
             <button
               className="link-button"
