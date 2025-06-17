@@ -67,6 +67,7 @@ actions:
       expired. Please request a new code and try again.
 common:
   coordinates: "{lat}, {lon}"
+  currentlySelected: " (Currently selected)"
   dateExpressions:
     today: Today
     tomorrow: Tomorrow
