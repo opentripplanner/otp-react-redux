@@ -63,7 +63,7 @@
     "@opentripplanner/transit-vehicle-overlay": "6.0.1",
     "@opentripplanner/transitive-overlay": "6.0.0",
     "@opentripplanner/trip-details": "7.0.0",
-    "@opentripplanner/trip-form": "6.0.0",
+    "@opentripplanner/trip-form": "6.0.1",
     "@opentripplanner/trip-viewer-overlay": "4.0.1",
     "@opentripplanner/vehicle-rental-overlay": "4.0.2",
     "@styled-icons/fa-regular": "^10.34.0",
