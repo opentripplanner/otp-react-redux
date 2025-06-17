@@ -454,7 +454,7 @@ export function addSortingCosts<T extends Itinerary>(
     totalFareResult === null ? Number.MAX_VALUE : totalFareResult
 
   const rank = calculateItineraryCost(itinerary, config)
-  const transitFare = 0 // getFare(itinerary).transitFare || 0
+  const transitFare = getFare(itinerary).transitFare || 0
   return {
     ...itinerary,
     rank,
