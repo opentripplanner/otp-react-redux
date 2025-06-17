@@ -1,3 +1,5 @@
+import path from 'path'
+
 import { defineConfig, transformWithEsbuild } from 'vite'
 import { nodePolyfills } from 'vite-plugin-node-polyfills'
 import { yamlPlugin } from 'esbuild-plugin-yaml'
@@ -35,12 +37,24 @@ fs.emptyDirSync('./tmp')
 
 // index.html is placed at the root of the repo for Vite to pick up.
 customFile('HTML_FILE', './index.html', './lib/index.tpl.html')
+// The CSS and YML file are copied with a fixed name, that name is being used for import.
 customFile('CUSTOM_CSS', './tmp/custom-styles.css', './example/example.css')
 customFile('YAML_CONFIG', './tmp/config.yml', './example/example-config.yml')
-customFile('PLAN_QUERY_RESOURCE_URI', './tmp/planQuery.graphql')
+// Don't rename the .graphql file because, if used, the original name is referenced in one of the JS files.
+// Constraint: the .graphql file must be in the same original folder as config.js (see below).
+customFile('PLAN_QUERY_RESOURCE_URI', (file) => {
+  const fileParts = file.split(path.sep)
+  if (fileParts.length > 0) {
+    const fileName = fileParts[fileParts.length - 1]
+    return `./tmp/${fileName}`
+  }
+  return './tmp/'
+})
 // JS_CONFIG can be a single file or a folder.
 // If using a folder, its content (including subfolders) will be copied into ./tmp/.
-// That folder should contain a config.js file and not contain any of the other custom files above.
+// Constraint: That folder should contain a config.js file and not contain any of the other custom files above.
+// Alternately, if the folder that holds the JS config files also contains the graphql file,
+// you can try passing JS_CONFIG as a folder and omit PLAN_QUERY_RESOURCE_URI.
 customFile(
   'JS_CONFIG',
   (file) => (file.endsWith('.js') ? './tmp/config.js' : './tmp/'),
