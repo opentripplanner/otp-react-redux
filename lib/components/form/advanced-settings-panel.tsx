@@ -58,6 +58,10 @@ const PanelOverlay = styled.div`
   top: 0;
   width: 100%;
   z-index: 100;
+
+  @media (max-width: 768px) {
+    padding: 1em;
+  }
 `
 
 const GlobalSettingsContainer = styled.div`
@@ -283,7 +287,7 @@ const AdvancedSettingsPanel = ({
         <h1 className="header-text">{headerText}</h1>
       </HeaderContainer>
       <DtSelectorContainer>
-        <DateTimeModal />
+        <DateTimeModal departArriveDropdown />
       </DtSelectorContainer>
       {processedGlobalSettings.length > 0 && (
         <>
