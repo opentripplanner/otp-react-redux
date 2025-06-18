@@ -31,6 +31,7 @@ interface Props {
   mobile?: boolean
   routingQuery: () => void
   showUserSettings: boolean
+  updateDateTimeIfEmpty: () => void
   updateQueryTimeIfLeavingNow: () => void
 }
 
@@ -81,9 +82,15 @@ class BatchRoutingPanel extends Component<Props> {
   handleSubmit = (e: FormEvent) => e.preventDefault()
 
   handlePlanTripClick = () => {
-    const { currentQuery, intl, routingQuery, updateQueryTimeIfLeavingNow } =
-      this.props
+    const {
+      currentQuery,
+      intl,
+      routingQuery,
+      updateDateTimeIfEmpty,
+      updateQueryTimeIfLeavingNow
+    } = this.props
     updateQueryTimeIfLeavingNow()
+    updateDateTimeIfEmpty()
     alertUserTripPlan(
       intl,
       currentQuery,
@@ -259,6 +266,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = {
   routingQuery: apiActions.routingQuery,
+  updateDateTimeIfEmpty: formActions.updateDateTimeIfEmpty,
   updateQueryTimeIfLeavingNow: formActions.updateQueryTimeIfLeavingNow
 }
 

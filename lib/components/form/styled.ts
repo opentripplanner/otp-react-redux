@@ -52,24 +52,9 @@ export const modeButtonButtonCss = css`
 `
 
 export const StyledDateTimeSelector = styled(DateTimeSelector)`
-  margin: 0 -15px 15px;
-
-  ${TripFormClasses.DateTimeSelector.DateTimeRow} {
-    margin: 20px 0px 15px;
-    input {
-      ${commonInputCss}
-      background-color: #fff;
-      border: 0;
-      border-bottom: 1px solid #000;
-      box-shadow: none;
-      outline: none;
-      text-align: center;
-    }
-  }
-  ${TripFormClasses.ModeButton.Button} {
-    ${commonButtonCss}
-    font-size: 14px;
-    height: 35px;
+  font-size: 14px;
+  div {
+    max-width: 33%;
   }
 `
 

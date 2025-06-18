@@ -130,13 +130,15 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.click('label[title="Bike"]')
     await page.waitForTimeout(200)
     // Change the date
-    await page.hover('#date-time-button')
+    await page.click('#date-time-depart-arrive-label')
+    await page.keyboard.press('ArrowDown')
+    await page.keyboard.press('ArrowDown')
+    await page.keyboard.press('Enter')
+
     await page.waitForTimeout(200)
     await page.focus('input[type="date"]')
     // FIXME: Puppeteer only: On Wednesday 08/09/2023, Monday 08/07/2023 was shown as "Last Sunday"!...
     await page.keyboard.type('08072023') // MMDDYYYY format.
-    await page.keyboard.press('Escape')
-    await page.waitForTimeout(200)
 
     // Open advanced settings and wait for animation
     await page.click('#open-advanced-settings-button')
