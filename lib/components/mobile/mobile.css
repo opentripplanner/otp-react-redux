@@ -116,7 +116,14 @@
   left: 0;
   position: fixed;
   right: 0;
-  top: 282px;
+  top: 270px;
+  transition: all 225ms ease;
+  transition-delay: 50ms;
+}
+
+.otp.mobile .batch-search-map.dt-open {
+  top: 325px;
+  transition: all 200ms ease;
 }
 
 /* Detailed options screen */
