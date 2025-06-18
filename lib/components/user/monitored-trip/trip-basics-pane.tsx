@@ -370,11 +370,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
           {/* Do not show trip status when saving trip for the first time
               (it doesn't exist in backend yet). */}
           {!isCreating && (
-            <TripStatus
-              intl={intl}
-              isReadOnly={isReadOnly}
-              monitoredTrip={monitoredTrip}
-            />
+            <TripStatus isReadOnly={isReadOnly} monitoredTrip={monitoredTrip} />
           )}
           <TripSummary monitoredTrip={monitoredTrip} />
 
@@ -472,7 +468,6 @@ const mapDispatchToProps = {
   clearItineraryExistence: userActions.clearItineraryExistence
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(injectIntl(TripBasicsPane))
+export default injectIntl(
+  connect(mapStateToProps, mapDispatchToProps)(TripBasicsPane)
+)
