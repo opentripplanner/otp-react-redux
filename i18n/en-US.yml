@@ -361,8 +361,8 @@ components:
   NarrativeItinerariesHeader:
     changeSortDir: Change sort direction
     howToFindResults: >-
-      To view results, see the Itineraries Found heading below. Select a time
-      button to open itinerary details.
+      To view results, see the Itineraries Found heading below. To see itinerary
+      details, select a time button.
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerary found} other {# itineraries found}
       }
