@@ -97,12 +97,20 @@ class Wizard extends Component<Props> {
       // (although in reality, changes quietly took effect in previous screens).
       toastPromise(
         // Fake promise to make sure toast is announced to screenreaders. See https://github.com/opentripplanner/otp-react-redux/pull/1400 for details.
-        new Promise((resolve) => resolve(null)),
+        new Promise((resolve) => setTimeout(resolve, 500)),
         formattedToastSuccessMessage(
           title,
           intl.formatMessage({ id: 'actions.user.preferencesSaved' })
         ),
-        intl
+        intl,
+        undefined,
+        false,
+        {
+          ariaProps: {
+            'aria-live': 'polite',
+            role: 'status'
+          }
+        }
       )
       routeTo(returnTo)
     }

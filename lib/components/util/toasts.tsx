@@ -43,7 +43,7 @@ export const toastSettings = (
   const settings: DefaultToastOptions = {
     ariaProps: {
       'aria-live': 'assertive',
-      role: 'status'
+      role: 'alert'
     }
   }
   if (silentOnSuccess) {
@@ -60,12 +60,13 @@ export const toastPromise = async (
   successMessage: JSX.Element | string,
   intl: IntlShape,
   id?: string,
-  silentOnSuccess = false
+  silentOnSuccess = false,
+  settings: DefaultToastOptions = toastSettings(id, silentOnSuccess)
 ): Promise<any> => {
   const result = await toast.promise(
     promise,
     toastStatusMessages(successMessage, intl),
-    toastSettings(id, silentOnSuccess)
+    settings
   )
   return result
 }
