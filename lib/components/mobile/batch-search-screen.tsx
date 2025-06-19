@@ -34,7 +34,7 @@ const MobileSearchSettings = styled.div<{
   background: white;
   box-shadow: 3px 0px 12px #00000052;
   height: ${(props) =>
-    props.advancedPanelOpen ? 'calc(100% - 50px)' : '230px'};
+    props.advancedPanelOpen ? 'calc(100% - 50px)' : 'auto'};
   left: 0;
   position: fixed;
   right: 0;
@@ -98,6 +98,8 @@ class BatchSearchScreen extends Component<Props> {
   render() {
     const { intl } = this.props
     const { planTripClicked, showAdvancedModeSettings } = this.state
+    const { departArrive } = this.props.currentQuery
+    const dateTimeSelectorOpen = departArrive !== 'NOW'
 
     const transitionDelay = this.state.closeAdvancedSettingsWithDelay ? 300 : 0
     const transitionDurationWithDelay = transitionDuration + transitionDelay
@@ -182,7 +184,11 @@ class BatchSearchScreen extends Component<Props> {
               </TransitionGroup>
             </TransitionStyles>
           </MobileSearchSettings>
-          <div className="batch-search-map">
+          <div
+            className={`batch-search-map ${
+              dateTimeSelectorOpen ? 'dt-open' : ''
+            }`}
+          >
             <DefaultMap />
           </div>
         </main>
