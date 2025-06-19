@@ -373,8 +373,8 @@ components:
   NarrativeItinerariesHeader:
     changeSortDir: Cambiar la dirección de clasificación
     howToFindResults: >-
-      Para ver los resultados, consulta el encabezado de los itinerarios
-      encontrados a continuación.
+      Para ver los resultados, consulta el encabezado de los itinerarios encontrados
+      a continuación.
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerario encontrado} other {# itinerarios
       encontrados}}
