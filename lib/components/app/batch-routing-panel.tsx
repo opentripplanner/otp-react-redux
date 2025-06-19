@@ -224,6 +224,15 @@ class BatchRoutingPanel extends Component<Props> {
                       overflowY: 'hidden'
                     }}
                   >
+                    <InvisibleA11yLabel
+                      aria-live="assertive"
+                      as="div"
+                      role="alert"
+                    >
+                      {activeSearch?.pending > 0 && (
+                        <FormattedMessage id="common.forms.loading" />
+                      )}
+                    </InvisibleA11yLabel>
                     <NarrativeItineraries />
                   </div>
                 </div>
