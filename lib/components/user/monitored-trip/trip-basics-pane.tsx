@@ -468,6 +468,7 @@ const mapDispatchToProps = {
   clearItineraryExistence: userActions.clearItineraryExistence
 }
 
-export default injectIntl(
-  connect(mapStateToProps, mapDispatchToProps)(TripBasicsPane)
-)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(injectIntl(TripBasicsPane))
