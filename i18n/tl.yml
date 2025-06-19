@@ -379,8 +379,8 @@ components:
   NarrativeItinerariesHeader:
     changeSortDir: Baguhin ang pagkakaayos ng direksyon
     howToFindResults: >-
-      Para tingnan ang mga resulta, tingnan ang heading na Mga Nakitang
-      Itinerary sa ibaba.
+      Para tingnan ang mga resulta, tingnan ang heading na Mga Nakitang Itinerary
+      sa ibaba.
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerary found} other {# itineraries found}
       }
