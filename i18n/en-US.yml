@@ -169,7 +169,9 @@ components:
   A11yPrefs:
     accessibilityRoutingByDefault: Prefer accessible trips by default
   AccountSetupFinishPane:
-    message: You are ready to start planning your trips.
+    message: >-
+      Your changes have been saved. You are ready to start planning trips. Click
+      the "Finish" button to return to trip planner.
   AddPlaceButton:
     addPlace: Add place
     needOriginDestination: Define origin/destination to add intermediate places

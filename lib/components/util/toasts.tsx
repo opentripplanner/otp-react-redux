@@ -60,13 +60,12 @@ export const toastPromise = async (
   successMessage: JSX.Element | string,
   intl: IntlShape,
   id?: string,
-  silentOnSuccess = false,
-  settings: DefaultToastOptions = toastSettings(id, silentOnSuccess)
+  silentOnSuccess = false
 ): Promise<any> => {
   const result = await toast.promise(
     promise,
     toastStatusMessages(successMessage, intl),
-    settings
+    toastSettings(id, silentOnSuccess)
   )
   return result
 }
