@@ -8,7 +8,6 @@ import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
 import { AppReduxState } from '../../util/state-types'
-import { formattedToastSuccessMessage, toastPromise } from '../util/toasts'
 import { GREY_ON_WHITE } from '../util/colors'
 import PageTitle from '../util/page-title'
 
