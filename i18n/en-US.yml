@@ -695,9 +695,11 @@ components:
       heading: Trip monitoring is paused
     nextTripNotPossible:
       description: >
-        The trip planner was unable to find your trip today. Please try
-        re-planning your itinerary to find an alternative route.
-      heading: Trip is not possible today
+        The trip planner was unable to find your trip today after a few attempts
+        and has snoozed monitoring as a result. To resume monitoring now, click
+        Unsnooze. If this happens again, consider planning and saving your
+        itinerary again.
+      heading: Unable to monitor trip
     noLongerPossible:
       description: >
         The trip planner was unable to find your trip on any selected days of

@@ -743,9 +743,11 @@ components:
       heading: Suivi suspendu
     nextTripNotPossible:
       description: >
-        Le planificateur n'a pas pu trouver votre trajet aujourd'hui. Veuillez
-        replanifier votre trajet pour trouver une alternative.
-      heading: Trajet infaisable aujourd'hui
+        Votre trajet d'aujourd'hui est introuvable après plusieurs tentatives.
+        Le suivi a donc été suspendu jusqu'à demain. Pour poursuivre le suivi,
+        cliquez sur Reprendre. Si cela se reproduit, essayez de replanifier et
+        re-enregistrer votre trajet.
+      heading: Trajet introuvable aujourd'hui
     noLongerPossible:
       description: >
         Le planificateur n'a pas pu trouver votre trajet pour aucun des jours
