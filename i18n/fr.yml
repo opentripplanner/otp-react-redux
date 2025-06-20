@@ -743,10 +743,10 @@ components:
       heading: Suivi suspendu
     nextTripNotPossible:
       description: >
-        Votre trajet d'aujourd'hui est introuvable après plusieurs tentatives.
-        Le suivi a donc été suspendu jusqu'à demain. Pour poursuivre le suivi,
-        cliquez sur Reprendre. Si cela se reproduit, essayez de replanifier et
-        re-enregistrer votre trajet.
+        Votre trajet est introuvable après plusieurs tentatives, et le suivi a
+        donc été suspendu jusqu'à demain. Pour relancer le suivi, cliquez sur
+        Reprendre. Si le suivi n'est toujours pas disponible, cliquez sur
+        Planifier un trajet pour enregistrer un trajet à jour.
       heading: Trajet introuvable aujourd'hui
     noLongerPossible:
       description: >
