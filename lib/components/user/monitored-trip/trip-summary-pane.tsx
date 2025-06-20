@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import { Bell } from '@styled-icons/fa-regular/Bell'
 import { BellSlash } from '@styled-icons/fa-regular/BellSlash'
 import { Calendar } from '@styled-icons/fa-regular/Calendar'
@@ -208,7 +209,7 @@ const TripSummaryPane = ({
             </TripDetailWithIcon>
             {/* Trip notification info */}
             <TripDetailWithIcon as="li">
-              {monitoredTrip.isActive ? (
+              {monitoredTrip.isActive && !monitoredTrip.snoozed ? (
                 <Bell
                   aria-label={notificationLabel}
                   title={notificationLabel}
@@ -217,18 +218,25 @@ const TripSummaryPane = ({
                 <BellSlash width={20} />
               )}
               <span>
-                {monitoredTrip.isActive ? (
+                {monitoredTrip.isActive && !monitoredTrip.snoozed && (
                   <FormattedMessage
                     id="components.TripSummaryPane.notifications"
                     values={{ leadTimeInMinutes }}
                   />
-                ) : (
+                )}
+                {monitoredTrip.snoozed && monitoredTrip.isActive && (
+                  <FormattedMessage
+                    id="components.TripStatusRenderers.snoozed.heading"
+                    values={{ leadTimeInMinutes }}
+                  />
+                )}
+                {!monitoredTrip.isActive && (
                   <FormattedMessage
                     id="components.TripSummaryPane.notificationsDisabled"
                     values={{ leadTimeInMinutes }}
                   />
                 )}
-                {!isReadOnly && (
+                {!isReadOnly && !monitoredTrip.snoozed && (
                   <>
                     <br />
                     <ToggleNotificationButton
@@ -238,7 +246,7 @@ const TripSummaryPane = ({
                       {pendingRequest === 'pause' ? (
                         /* Make loader fit */
                         <InlineLoading />
-                      ) : monitoredTrip.isActive ? (
+                      ) : monitoredTrip.isActive && !monitoredTrip.snoozed ? (
                         <FormattedMessage id="components.SavedTripList.pause" />
                       ) : (
                         <FormattedMessage id="components.SavedTripList.resume" />
