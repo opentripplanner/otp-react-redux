@@ -438,8 +438,8 @@ itinerary:
   previewOverlay: false
   # Whether to add a OTP_RR_A11Y_ROUTING_ENABLED error to all itineraries with accessibility scores
   displayA11yError: false
-  # Whether to caution users that micromobility locations may change depending.
-  displayMicromobilityRentalWarning: false
+  # Whether to add OTP_RR_MICROBILITY_SUBJECT_TO_CHANGE error to all searches that include micromobiity rental.
+  displayMicromobilityRentalError: false
   # Whether to display itinerary info in the side of the preview or next to the departure times
   showInlineItinerarySummary: false
   # Whether to sync the sort type with the depart/arrive time in the date/time modal
