@@ -178,7 +178,9 @@ components:
   A11yPrefs:
     accessibilityRoutingByDefault: Privilégier par défaut les trajets accessibles
   AccountSetupFinishPane:
-    message: Vous pouvez maintenant commencer à planifier vos trajets.
+    message: >-
+      Vos changements ont été enregistrés. Vous pouvez maintenant planifier vos
+      trajets. Cliquez sur Terminer pour retourner au planificateur.
   AddPlaceButton:
     addPlace: Ajouter un point intermédiaire
     needOriginDestination: >-
