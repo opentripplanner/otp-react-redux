@@ -70,7 +70,7 @@
 
 .otp .trip-tools .tool-button {
   font-size: 12px;
-  width: 110px;
+  min-width: 110px;
   padding: 4px;
 }
 
