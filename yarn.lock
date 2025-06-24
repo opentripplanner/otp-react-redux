@@ -2695,12 +2695,12 @@
     "@turf/midpoint" "^6.5.0"
     lodash.isequal "^4.5.0"
 
-"@opentripplanner/trip-details@8.0.0":
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-8.0.0.tgz#4dc55012d72744b1ee9fcf7a1ba587061a9b53bb"
-  integrity sha512-Pd4q8j43z/9T+Asw8+ASMnLSHfzg7UiUwSFZlw/OPTafPpjWwdG5OMTQEcBmTU1MzehYD+L5bfUdS5cJLUs/NQ==
+"@opentripplanner/trip-details@7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-7.0.0.tgz#01f93075040da0ee314424e9180e63ee4be97372"
+  integrity sha512-VpOMVk7RBfH0jv4kFJXAVdYDg/skYatoIO7Sam4rPI5Z22lJZORtEbuCs/6DN+7iTPI0A5irzfl7MZBcPTd63w==
   dependencies:
-    "@opentripplanner/core-utils" "13.0.1"
+    "@opentripplanner/core-utils" "13.0.0"
     "@styled-icons/fa-solid" "^10.34.0"
     flat "^5.0.2"
     react-animate-height "^3.0.4"
