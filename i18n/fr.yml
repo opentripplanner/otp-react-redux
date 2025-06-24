@@ -2,7 +2,8 @@ _id: fr
 _name: Exemple de traduction pour OTP-react-redux en français
 actions:
   callTaker:
-    callQuerySaveError: "Erreur lors de l'enregistrement des requêtes pour l'appel : {err}"
+    callQuerySaveError: "Erreur lors de l'enregistrement des requêtes pour l'appel
+      : {err}"
     callSaveError: "Impossible d'enregistrer l'appel : {err}"
     checkSessionError: "Erreur durant la session d'authentification : {err}"
     couldNotFindCallError: >-
@@ -17,9 +18,11 @@ actions:
         true {aller}
         other {retour}
       } planifié préalablement pour cette demande. Voulez-vous continuer ?
-    deleteItinerariesError: "Erreur lors de la suppression du trajet pour le groupe :"
+    deleteItinerariesError: "Erreur lors de la suppression du trajet pour le groupe
+      :"
     deleteNoteError: "Erreur lors de la suppression d'une note sur le groupe :"
-    editSubmitterNotesError: "Erreur lors de la modification des notes du demandeur :"
+    editSubmitterNotesError: "Erreur lors de la modification des notes du demandeur
+      :"
     fetchFieldTripError: "Erreur de chargement du groupe scolaire : {err}"
     fetchFieldTripsError: "Erreur lors du chargement des groupes scolaires : {err}"
     fetchTripsForDateError: >-
@@ -31,7 +34,8 @@ actions:
     itineraryCapacityError: >-
       Impossible d'enregistrer les trajets : Capacité insuffisante dans un ou
       plusieurs véhicules. Veuillez réorganiser votre trajet.
-    maxTripRequestsExceeded: Le nombre de requêtes sans résultats valables a été dépassé.
+    maxTripRequestsExceeded: Le nombre de requêtes sans résultats valables a été
+      dépassé.
     saveItinerariesError: "Erreur lors de l'enregistrement des trajets : {err}"
     setDateError: "Erreur sur la date :"
     setGroupSizeError: "Erreur sur la taille du groupe :"
@@ -43,8 +47,10 @@ actions:
 
       Pour utiliser votre emplacement actuel, permettez-en l'accès depuis votre
       navigateur, et ouvrez de nouveau cette page.
-    geolocationNotSupportedError: La géolocalisation n'est pas prise en charge par votre navigateur.
-    unknownPositionError: Erreur inconnue lors de la détection de votre emplacement.
+    geolocationNotSupportedError: La géolocalisation n'est pas prise en charge 
+      par votre navigateur.
+    unknownPositionError: Erreur inconnue lors de la détection de votre 
+      emplacement.
     userDeniedPermission: Refusé par l'utilisateur
   map:
     currentLocation: (Emplacement actuel)
@@ -57,12 +63,15 @@ actions:
       Le message de vérification de votre adresse e-mail a été envoyé de
       nouveau.
     genericError: "Une erreur s'est produite : {err}"
-    getDependentUserInfoFailed: Erreur lors de l'obtention des profils de mobilité.
-    itineraryExistenceCheckFailed: Erreur lors de la vérification de la validité du trajet choisi.
+    getDependentUserInfoFailed: Erreur lors de l'obtention des profils de 
+      mobilité.
+    itineraryExistenceCheckFailed: Erreur lors de la vérification de la validité
+      du trajet choisi.
     mustAcceptTermsToSavePlace: >-
       Veuillez accepter les conditions d'utilisation (dans Mon compte) pour
       enregistrer des lieux.
-    mustBeLoggedInToSavePlace: Veuillez vous connecter pour enregistrer des lieux.
+    mustBeLoggedInToSavePlace: Veuillez vous connecter pour enregistrer des 
+      lieux.
     placeDeleted: Votre lieu a été supprimé
     placeRemembered: Les informations pour ce lieu ont été enregistrées.
     preferencesSaved: Vos préférences ont été enregistrées.
@@ -162,7 +171,8 @@ common:
   searchForms:
     click: cliquez
     enterDestination: Entrez votre destination ou {mapAction} sur la carte…
-    enterStartLocation: Entrez votre point de départ ou {mapAction} sur la carte…
+    enterStartLocation: Entrez votre point de départ ou {mapAction} sur la 
+      carte…
     tap: appuyez
   time:
     duration:
@@ -176,7 +186,8 @@ common:
       other {# s}}
 components:
   A11yPrefs:
-    accessibilityRoutingByDefault: Privilégier par défaut les trajets accessibles
+    accessibilityRoutingByDefault: Privilégier par défaut les trajets 
+      accessibles
   AccountSetupFinishPane:
     message: Vous pouvez maintenant commencer à planifier vos trajets.
   AddPlaceButton:
@@ -287,8 +298,10 @@ components:
     setAddressForPlaceType: Entrez l'adresse de votre {placeType}
   FavoritePlaceScreen:
     addNewPlace: Ajouter un nouveau lieu
-    charactersOverLimit: "{chars, plural, one {# caractère en trop} other {# caractères en trop}}"
-    charactersRemaining: "{chars, plural, one {# caractère restant} other {# caractères restant}}"
+    charactersOverLimit: "{chars, plural, one {# caractère en trop} other {# caractères
+      en trop}}"
+    charactersRemaining: "{chars, plural, one {# caractère restant} other {# caractères
+      restant}}"
     editPlace: Modifier le {placeName}
     editPlaceGeneric: Modifier le lieu
     invalidAddress: Veuillez entrer l'adresse du lieu.
@@ -373,8 +386,10 @@ components:
     title: Spécifiez votre profil de mobilité
   NarrativeItinerariesHeader:
     changeSortDir: Changer l'ordre de tri
-    howToFindResults: Pour afficher les résultats, utilisez l'en-tête Trajets trouvés plus bas.
-    itinerariesFound: "{itineraryNum, plural, one {# trajet trouvé} other {# trajets trouvés} }"
+    howToFindResults: Pour afficher les résultats, utilisez l'en-tête Trajets 
+      trouvés plus bas.
+    itinerariesFound: "{itineraryNum, plural, one {# trajet trouvé} other {# trajets
+      trouvés} }"
     resultsSortedBy: >-
       Résultats triés par {sortSelected}. Pour modifier l'ordre, utilisez le
       bouton "Trier les résultats" plus bas.
@@ -420,7 +435,8 @@ components:
     devicesRegistered: >-
       {count, plural, one {# appareil enregistré} other {# appareils
       enregistrés}}
-    noDeviceForPush: Inscrivez-vous avec l'application mobile pour accéder à ce paramètre.
+    noDeviceForPush: Inscrivez-vous avec l'application mobile pour accéder à ce 
+      paramètre.
     notificationChannelPrompt: "Recevoir des notifications sur vos trajets par :"
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
@@ -541,7 +557,8 @@ components:
     noFilteredRoutesFound: Aucune ligne ne correspond à vos critères
     noRouteFilter: Aucun filtre n'est appliqué à la liste de lignes.
     openPatternViewer: Voir les dessertes
-    routesFilteredBy: "Les filtres suivants sont appliqués à la liste de lignes : {list}."
+    routesFilteredBy: "Les filtres suivants sont appliqués à la liste de lignes :
+      {list}."
     shortTitle: Index des lignes
     stopsInDirectionOfTravel: "Arrêts dans cette direction :"
     title: Index des lignes
@@ -647,7 +664,8 @@ components:
       En révoquant votre accord sur l'enregistrement de vos recherches de
       trajets, tout l'historique de vos de trajets sera supprimé. Voulez-vous
       continuer ?
-    mustAgreeToTerms: Vous devez accepter les conditions d'utilisation avant de continuer.
+    mustAgreeToTerms: Vous devez accepter les conditions d'utilisation avant de 
+      continuer.
     termsOfServiceStatement: >
       J'atteste avoir au moins 18 ans et j'ai lu et consens aux
       <termsOfUseLink>Conditions de service</termsOfUseLink> pour utiliser the
@@ -663,11 +681,13 @@ components:
     travelingAt: "Vitesse : {milesPerHour}"
     vehicleName: Véhicule {vehicleNumber}
   TripBasicsPane:
-    checkingItineraryExistence: Vérification du trajet pour chaque jour de la semaine...
+    checkingItineraryExistence: Vérification du trajet pour chaque jour de la 
+      semaine...
     onlyOnDate: "{date, date, ::eeeee yyyyMMdd} uniquement"
     recurringEachWeek: Certains jours chaque semaine
     tripDaysPrompt: Quels jours effectuez-vous ce trajet ?
-    tripIsAvailableOnDaysIndicated: Votre trajet est possible les jours indiqués ci-dessus.
+    tripIsAvailableOnDaysIndicated: Votre trajet est possible les jours indiqués
+      ci-dessus.
     tripNamePrompt: "Saisissez un nom pour ce trajet :"
     tripNotAvailableOnDay: Ce trajet n'est pas possible les {repeatedDay}.
     unsavedChangesExistingTrip: >-
@@ -689,7 +709,8 @@ components:
       notifications dans la section Préférences de votre compte, et essayez
       d'enregistrer un trajet à nouveau.
     monitorThisTrip: "Faire le suivi du trajet avant le départ :"
-    notificationsTurnedOff: Les notifications sont désactivées pour votre compte.
+    notificationsTurnedOff: Les notifications sont désactivées pour votre 
+      compte.
     notifyViaChannelWhen: "Recevoir des notifications par {channel} lorsque :"
     oneHour: 1 heure
     realtimeAlertFlagged: Une alerte en temps réel affecte mon trajet
@@ -709,14 +730,16 @@ components:
       onTimeHeading: Trajet en cours et prévu à l'heure.
     base:
       lastCheckedDefaultText: Dernière vérification inconnue
-      lastCheckedText: Dernière vérification effectuée il y a {formattedDuration}
+      lastCheckedText: Dernière vérification effectuée il y a 
+        {formattedDuration}
       togglePause: Suspendre le suivi
       tripIsNotSnoozed: Suspendre jusqu'à demain
       tripIsSnoozed: Reprendre le suivi du trajet
       unknownState: État du trajet inconnu
       untogglePause: Reprendre
     inactive:
-      description: Reprenez le suivi pour obtenir des dernières conditions de votre trajet.
+      description: Reprenez le suivi pour obtenir des dernières conditions de 
+        votre trajet.
       heading: Suivi suspendu
     nextTripNotPossible:
       description: >
@@ -738,7 +761,8 @@ components:
       description: Le jour de ce trajet non-répété est passé.
       heading: Trajet dans le passé
     snoozed:
-      description: Reprenez le suivi pour obtenir des dernières conditions de votre trajet.
+      description: Reprenez le suivi pour obtenir des dernières conditions de 
+        votre trajet.
       heading: Suivi suspendu jusqu'à demain
     upcoming:
       nextTripBegins: >-
@@ -850,8 +874,10 @@ config:
     flex-service-colon: "Service Flex :"
 util:
   state:
-    errorPlanningTrip: Une erreur s'est produite lors de la planification du trajet.
-    networkUnavailable: Le système {network} n'est pas disponible pour le moment.
+    errorPlanningTrip: Une erreur s'est produite lors de la planification du 
+      trajet.
+    networkUnavailable: Le système {network} n'est pas disponible pour le 
+      moment.
     noTripFound: Aucun trajet trouvé.
     noTripFoundForMode: Aucun trajet {modes} n'a été trouvé.
     noTripFoundReason: >-
