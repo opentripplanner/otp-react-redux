@@ -154,6 +154,11 @@ const TripSummaryPane = ({
 
     const ICON_SIZE = 14
 
+    const isActiveAndNotSnoozed =
+      monitoredTrip.isActive && !monitoredTrip.snoozed
+
+    const isActiveAndSnoozed = monitoredTrip.isActive && monitoredTrip.snoozed
+
     return (
       <SavedTripBody>
         <InvisibleA11yLabel>
@@ -209,7 +214,7 @@ const TripSummaryPane = ({
             </TripDetailWithIcon>
             {/* Trip notification info */}
             <TripDetailWithIcon as="li">
-              {monitoredTrip.isActive && !monitoredTrip.snoozed ? (
+              {isActiveAndNotSnoozed ? (
                 <Bell
                   aria-label={notificationLabel}
                   title={notificationLabel}
@@ -218,13 +223,13 @@ const TripSummaryPane = ({
                 <BellSlash width={20} />
               )}
               <span>
-                {monitoredTrip.isActive && !monitoredTrip.snoozed && (
+                {isActiveAndNotSnoozed && (
                   <FormattedMessage
                     id="components.TripSummaryPane.notifications"
                     values={{ leadTimeInMinutes }}
                   />
                 )}
-                {monitoredTrip.snoozed && monitoredTrip.isActive && (
+                {isActiveAndSnoozed && (
                   <FormattedMessage
                     id="components.TripStatusRenderers.snoozed.heading"
                     values={{ leadTimeInMinutes }}
@@ -246,7 +251,7 @@ const TripSummaryPane = ({
                       {pendingRequest === 'pause' ? (
                         /* Make loader fit */
                         <InlineLoading />
-                      ) : monitoredTrip.isActive && !monitoredTrip.snoozed ? (
+                      ) : isActiveAndNotSnoozed ? (
                         <FormattedMessage id="components.SavedTripList.pause" />
                       ) : (
                         <FormattedMessage id="components.SavedTripList.resume" />
