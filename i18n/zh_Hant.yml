@@ -53,6 +53,7 @@ actions:
     smsInvalidCode: 您輸入的代碼無效。請再試一次。
     smsResendThrottled: 驗證簡訊已在不到一分鐘前傳送到指定的電話號碼。請稍後再試一次。
     smsVerificationFailed: 您的電話無法驗證。您輸入的代碼可能已失效。請要求新的代碼，然後再試一次。
+    placeDeleted: 您的地點已被刪除。
 common:
   coordinates: "{lat}; {lon}"
   dateExpressions:
@@ -98,6 +99,7 @@ common:
     startOver: 重新開始
     submitting: 正在提交…
     "yes": 是
+    loading: 載入中
   itineraryDescriptions:
     fareUnknown: 無票價資訊
     noItineraryToDisplay: 沒有預定行程可顯示。
@@ -239,6 +241,7 @@ components:
     nameAlreadyUsed: 您已經對其他地點使用此名稱。請輸入其他名稱。
     placeNotFound: 找不到地點
     placeNotFoundDescription: 很抱歉，找不到請求的地點。
+    charactersRemaining: '{chars, plural, one {# 剩餘字元} other {# 剩餘字元}}'
   FormNavigationButtons:
     ariaLabel: 表單導航
   ItinerarySummary:
