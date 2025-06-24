@@ -62,6 +62,7 @@ const STATUS = {
  * will be rendered above the status. Also, this can optionally be rendered with
  * a background color for a label-like presentation.
  */
+// eslint-disable-next-line complexity
 const RealtimeStatusLabel = ({
   className,
   delay,
@@ -122,7 +123,14 @@ const RealtimeStatusLabel = ({
       color={color}
       withBackground={withBackground}
     >
-      {renderedTime}
+      <div
+        className={
+          // @ts-ignore getTripStatus is not typed yet
+          status === REALTIME_STATUS.ON_TIME ? 'realtime-status-label' : ''
+        }
+      >
+        {renderedTime}
+      </div>
       <MainContent>
         {showScheduleDeviation && (
           <FormattedRealtimeStatusLabel
