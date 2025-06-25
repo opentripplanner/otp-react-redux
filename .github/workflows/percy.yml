@@ -32,13 +32,15 @@ jobs:
           node-version: 22.x
       - name: Install npm packages using cache
         uses: bahmutov/npm-install@v1
-      - name: Build OTP-RR ${{ matrix.title }}
+      - name: Build OTP-RR
         run: yarn build
         env:
           YAML_CONFIG: ./percy/har-mock-config${{ matrix.suffix }}.yml
           JS_CONFIG: ./percy/har-mock-config${{ matrix.suffix }}.js
-      - name: Take Percy Snapshots ${{ matrix.title }}
+      - name: Take Percy Snapshots
         run: npx percy exec -- npx jest percy/percy.test.js --force-exit
+        with:
+          name:  ${{ matrix.title }}
         env:
           PERCY_TOKEN: ${{ matrix.token }}
           OTP_RR_UI_MODE: ${{ matrix.ui-mode }}
