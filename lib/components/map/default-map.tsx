@@ -9,6 +9,7 @@ import BaseMap from '@opentripplanner/base-map'
 import generateOTP2TileLayers from '@opentripplanner/otp2-tile-overlay'
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import type { StopIdAgencyMap } from '@opentripplanner/map-popup/lib'
 
 import {
   assembleBasePath,
@@ -81,6 +82,7 @@ function getCompanyNames(companyIds, config, intl) {
 /**
  * Determines the localized name of a map layer by its type.
  */
+// eslint-disable-next-line complexity
 function getLayerName(overlay, config, intl) {
   const { companies, name, type } = overlay
 
@@ -198,6 +200,13 @@ class DefaultMap extends Component {
     return <TransitOperatorIcons stopId={stopId} />
   }
 
+  getAgencyFromStopId = async (stopId: string) => {
+    this.props.findStopTimesForStop({
+      date: getCurrentDate(),
+      stopId
+    })
+  }
+
   /**
    * Checks whether the modes have changed between old and new queries and
    * whether to update the map overlays accordingly (e.g., to show rental vehicle
@@ -207,6 +216,7 @@ class DefaultMap extends Component {
    * as that UI mode sets the access mode and company in the query params.
    * TODO: Implement for the batch interface.
    */
+  // eslint-disable-next-line complexity
   _handleQueryChange = (oldQuery, newQuery) => {
     const { overlays = [] } = this.props.mapConfig || {}
     if (oldQuery.mode) {
@@ -472,7 +482,9 @@ class DefaultMap extends Component {
                   setViewedStop,
                   viewedRouteStops,
                   config.companies,
-                  this.getEntityPrefix
+                  this.getEntityPrefix,
+                  this.getAgencyFromStopId,
+                  this.props.stopIdAgencies
                 )
               default:
                 return null
@@ -497,6 +509,7 @@ const mapStateToProps = (state) => {
   const viewedRoute = state.otp?.ui?.viewedRoute?.routeId
   const activeNearbyFilters = state.otp?.ui?.nearbyView?.filters
   const nearbyFilters = state.otp.config?.nearbyView?.filters
+  const stops = state.otp.transitIndex.stops
   const nearbyViewerActive =
     state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW
 
@@ -517,6 +530,14 @@ const mapStateToProps = (state) => {
         )
       : null
 
+  const stopIdAgencies: StopIdAgencyMap = Object.values(stops).reduce(
+    (acc, stop) => {
+      acc[stop.gtfsId] = stop.stoptimesForPatterns?.[0]?.pattern.route.agency
+      return acc
+    },
+    {}
+  )
+
   return {
     activeNearbyFilters,
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
@@ -529,6 +550,7 @@ const mapStateToProps = (state) => {
       state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW,
     pending: activeSearch ? Boolean(activeSearch.pending) : false,
     query: state.otp.currentQuery,
+    stopIdAgencies,
     vehicleRentalStations: state.otp.overlay.vehicleRental.stations,
     viewedRouteStops
   }
