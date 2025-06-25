@@ -63,6 +63,7 @@ actions:
       Pakitanggap ang Mga Tuntunin ng Paggamit (sa ilalim ng Aking Account) para
       mag-save ng mga lokasyon.
     mustBeLoggedInToSavePlace: Mangyaring mag-log in para mag-save ng mga lokasyon.
+    placeDeleted: Na-delete na ang iyong lugar.
     placeRemembered: Na-save na ang mga setting para sa lugar na ito.
     preferencesSaved: Na-save ang iyong mga kagustuhan.
     smsInvalidCode: Invalid ang inilagay mong code. Subukan ulit.
@@ -111,6 +112,7 @@ common:
     edit: I-edit
     error: nagka-error!
     finish: Tapos na
+    loading: Loading
     next: Susunod
     "no": Hindi
     print: I-print
@@ -284,6 +286,9 @@ components:
     setAddressForPlaceType: Itakda ang address ng iyong {placeType}
   FavoritePlaceScreen:
     addNewPlace: Magdagdag ng bagong lugar
+    charactersRemaining: >-
+      {chars, plural, one {# natitirang karakter} other {# natitirang
+      character}}
     editPlace: I-edit ang {placeName}
     editPlaceGeneric: I-edit ang lugar
     invalidAddress: Magtakda ng lokasyon para sa lugar na ito.
