@@ -107,12 +107,12 @@ const RealtimeStatusLabel = ({
         <TimeStruck aria-hidden>
           <FormattedTime timeStyle="short" value={originalTime} />
         </TimeStruck>
-        <div>
+        <div className={isRealtime ? 'realtime-icon realtime' : ''}>
           <FormattedTime timeStyle="short" value={time} />
         </div>
       </TimeBlock>
     ) : (
-      <div>
+      <div className={isRealtime ? 'realtime-icon realtime' : ''}>
         <FormattedTime timeStyle="short" value={time} />
       </div>
     )
@@ -123,12 +123,7 @@ const RealtimeStatusLabel = ({
       color={color}
       withBackground={withBackground}
     >
-      <div
-        className={
-          // @ts-ignore getTripStatus is not typed yet
-          status === REALTIME_STATUS.ON_TIME ? 'realtime-status-label' : ''
-        }
-      >
+      <div className={isRealtime ? 'itin-time-realtime' : ''}>
         {renderedTime}
       </div>
       <MainContent>
