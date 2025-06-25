@@ -15,10 +15,10 @@ jobs:
         include:
           - mode: normal
             suffix: ''
-            token: ${{ secrets.PERCY_TOKEN_OTP2 }}
+            token: PERCY_TOKEN_OTP2
           - mode: calltaker
             suffix: '-call-taker'
-            token: ${{ secrets.PERCY_TOKEN_CALL_TAKER_OTP2 }}
+            token: PERCY_TOKEN_CALL_TAKER_OTP2
     steps:
       - uses: actions/checkout@v2
         with:
@@ -38,5 +38,5 @@ jobs:
       - name: Take Percy Snapshots
         run: npx percy exec -- npx jest percy/percy.test.js --force-exit
         env:
-          PERCY_TOKEN: ${{ matrix.token }}
+          PERCY_TOKEN: ${{ secrets[matrix.token] }}
           OTP_RR_UI_MODE: ${{ matrix.mode }}
