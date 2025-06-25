@@ -12,7 +12,7 @@
 @import url(lib/components/user/nav-login-button.css);
 @import url(lib/components/viewers/viewers.css);
 
-
+@import url(tmp/custom-styles.css);
 
 /* Hide IE/Edge clear button in text input fields. */
 input[type="text"]::-ms-clear {
