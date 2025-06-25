@@ -48,12 +48,12 @@ actions:
     itineraryExistenceCheckFailed: 檢查您選取的行程是否可行時發生錯誤。
     mustAcceptTermsToSavePlace: 請接受使用條款 (在我的帳戶下)，以儲存地點。
     mustBeLoggedInToSavePlace: 請登入，以儲存地點。
+    placeDeleted: 您的地點已被刪除。
     placeRemembered: 此地點的設定已儲存。
     preferencesSaved: 您的偏好已儲存。
     smsInvalidCode: 您輸入的代碼無效。請再試一次。
     smsResendThrottled: 驗證簡訊已在不到一分鐘前傳送到指定的電話號碼。請稍後再試一次。
     smsVerificationFailed: 您的電話無法驗證。您輸入的代碼可能已失效。請要求新的代碼，然後再試一次。
-    placeDeleted: 您的地點已被刪除。
 common:
   coordinates: "{lat}; {lon}"
   dateExpressions:
@@ -92,6 +92,7 @@ common:
     edit: 編輯
     error: 錯誤！
     finish: 完成
+    loading: 載入中
     next: 前進
     "no": 否
     print: 列印
@@ -99,7 +100,6 @@ common:
     startOver: 重新開始
     submitting: 正在提交…
     "yes": 是
-    loading: 載入中
   itineraryDescriptions:
     fareUnknown: 無票價資訊
     noItineraryToDisplay: 沒有預定行程可顯示。
@@ -234,6 +234,7 @@ components:
     setAddressForPlaceType: 設定您的{placeType}地址
   FavoritePlaceScreen:
     addNewPlace: 新增地點
+    charactersRemaining: "{chars, plural, one {# 剩餘字元} other {# 剩餘字元}}"
     editPlace: 編輯{placeName}
     editPlaceGeneric: 編輯地點
     invalidAddress: 請為此地點設定位置。
@@ -241,7 +242,6 @@ components:
     nameAlreadyUsed: 您已經對其他地點使用此名稱。請輸入其他名稱。
     placeNotFound: 找不到地點
     placeNotFoundDescription: 很抱歉，找不到請求的地點。
-    charactersRemaining: '{chars, plural, one {# 剩餘字元} other {# 剩餘字元}}'
   FormNavigationButtons:
     ariaLabel: 表單導航
   ItinerarySummary:

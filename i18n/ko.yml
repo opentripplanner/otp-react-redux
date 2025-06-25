@@ -21,10 +21,8 @@ actions:
     fetchFieldTripError: "트립을 가져오는 중에 오류가 발생했습니다: {err}"
     fetchFieldTripsError: "트립을 가져오는 중에 오류가 발생했습니다: {err}"
     fetchTripsForDateError: "필트 트립 날짜에 대한 트립을 가져오는 중에 오류가 발생했습니다: {err}"
-    incompatibleTripDateError: 계획한 트립 날짜({tripDate})가 요청한 트립 날짜({requestDate})가 
-      아닙니다
-    itineraryCapacityError: "플랜을 저장할 수 없습니다: 하나 이상의 차량의 용량이 부족하여 이 플랜을 저장할 수 없습니다.
-      트립을 다시 계획하세요."
+    incompatibleTripDateError: 계획한 트립 날짜({tripDate})가 요청한 트립 날짜({requestDate})가 아닙니다
+    itineraryCapacityError: "플랜을 저장할 수 없습니다: 하나 이상의 차량의 용량이 부족하여 이 플랜을 저장할 수 없습니다. 트립을 다시 계획하세요."
     maxTripRequestsExceeded: 유효한 결과없이 초과된 트립 요청의 개수
     saveItinerariesError: "트립을 저장하는 데 실패했습니다: {err}"
     setDateError: "날짜를 설정하는 중에 오류가 발생했습니다:"
@@ -51,13 +49,12 @@ actions:
     itineraryExistenceCheckFailed: 선택한 트립이 가능한지 확인하는 중에 오류가 발생했습니다.
     mustAcceptTermsToSavePlace: 위치를 저장하려면 사용 약관(내 계정 아래)을 수락하십시오.
     mustBeLoggedInToSavePlace: 위치를 저장하려면 로그인하십시오.
+    placeDeleted: 내 장소가 삭제되었습니다.
     placeRemembered: 이 장소에 대한 설정이 저장되었습니다.
     preferencesSaved: 선호사항이 저장되었습니다.
     smsInvalidCode: 입력한 코드가 유효하지 않습니다. 다시 시도하세요.
     smsResendThrottled: 확인 SMS가 1분 미만 전에 표시된 전화번호로 전송되었습니다. 잠시 후 다시 시도하세요.
-    smsVerificationFailed: 번호가 확인되지 않습니다. 입력한 코드가 만료되었을 수 있습니다. 새 코드를 요청한 후 다시 
-      시도하세요.
-    placeDeleted: 내 장소가 삭제되었습니다.
+    smsVerificationFailed: 번호가 확인되지 않습니다. 입력한 코드가 만료되었을 수 있습니다. 새 코드를 요청한 후 다시 시도하세요.
 common:
   coordinates: "{lat}, {lon}"
   dateExpressions:
@@ -96,6 +93,7 @@ common:
     edit: 수정
     error: 오류!
     finish: 마침
+    loading: 로딩
     next: 다음
     "no": 아니요
     print: 인쇄
@@ -103,7 +101,6 @@ common:
     startOver: 다시 시작
     submitting: 제출 중…
     "yes": 예
-    loading: 로딩
   itineraryDescriptions:
     fareUnknown: 운임 정보 없음
     noItineraryToDisplay: 표시할 일정이 없습니다.
@@ -257,6 +254,7 @@ components:
     setAddressForPlaceType: "{placeType}의 주소 설정"
   FavoritePlaceScreen:
     addNewPlace: 새 장소 추가
+    charactersRemaining: "{chars, plural, one {# 남은 문자 수} other {# 남은 글자수}}"
     editPlace: "{placeName} 수정"
     editPlaceGeneric: 장소 수정
     invalidAddress: 이 장소의 위치를 설정하세요.
@@ -264,7 +262,6 @@ components:
     nameAlreadyUsed: 이 이름은 이미 다른 장소에 사용되고 있습니다. 다른 이름을 입력해 주세요.
     placeNotFound: 장소를 찾을 수 없음
     placeNotFoundDescription: 죄송합니다. 요청하신 장소를 찾을 수 없습니다.
-    charactersRemaining: '{chars, plural, one {# 남은 문자 수} other {# 남은 글자수}}'
   FormNavigationButtons:
     ariaLabel: 내비게이션 양식
   ItinerarySummary:
@@ -323,8 +320,7 @@ components:
       header: 이동성 프로필
       mobilityDevices: "이동성 장치: "
       mobilityLimitations: "이동성 제한: "
-      planTripDescription: 여정 동반자가 있는 경우, 동반자의 모빌리티 프로필에 따라 여정을 계획하도록 선택할 수 
-        있습니다.
+      planTripDescription: 여정 동반자가 있는 경우, 동반자의 모빌리티 프로필에 따라 여정을 계획하도록 선택할 수 있습니다.
       visionLimitations: "시력 제한: "
     dropdownLabel: "사용자 모빌리티 프로필:"
     intro: 귀하의 필요 사항과 선호도에 맞게 여행 계획 경험을 맞춤화하기 위해 몇 가지 질문에 답해 주십시오.
@@ -706,8 +702,7 @@ components:
       add-companion-form: "여정 동반자:"
       storeTripHistory: 이동편 이력 저장
   UserSettings:
-    confirmDeletion: 최근 검색이나 장소가 저장되어 있습니다. 최근 장소 또는 검색을 비활성화하면 이러한 항목이 제거됩니다. 
-      계속하시겠습니까?
+    confirmDeletion: 최근 검색이나 장소가 저장되어 있습니다. 최근 장소 또는 검색을 비활성화하면 이러한 항목이 제거됩니다. 계속하시겠습니까?
     favoriteStops: 좋아하는 정류장
     myPreferences: 내 환경설정
     mySavedPlaces: 내 저장 장소 (<manageLink>관리</manageLink>)
@@ -747,6 +742,5 @@ util:
     networkUnavailable: 현재 {network} 네트워크를 사용할 수 없습니다.
     noTripFound: 트립을 찾을 수 없습니다.
     noTripFoundForMode: "{modes}의 트립을 찾을 수 없습니다."
-    noTripFoundReason: 지정된 최대 거리 내 또는 지정된 시간에 대중 교통 서비스가 없거나, 출발지 또는 도착지가 안전하게 
-      접근가능하지 못할 수 있습니다.
+    noTripFoundReason: 지정된 최대 거리 내 또는 지정된 시간에 대중 교통 서비스가 없거나, 출발지 또는 도착지가 안전하게 접근가능하지 못할 수 있습니다.
     noTripFoundWithReason: "{noTripFound} {reason}"
