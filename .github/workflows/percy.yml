@@ -13,14 +13,12 @@ jobs:
     strategy:
       matrix:
         include:
-          - title: Desktop + Mobile
+          - mode: normal
             suffix: ''
             token: ${{ secrets.PERCY_TOKEN_OTP2 }}
-            ui-mode: normal
-          - title: Calltaker
-            suffix: -call-taker
+          - mode: calltaker
+            suffix: '-call-taker'
             token: ${{ secrets.PERCY_TOKEN_CALL_TAKER_OTP2 }}
-            ui-mode: calltaker
     steps:
       - uses: actions/checkout@v2
         with:
@@ -39,8 +37,6 @@ jobs:
           JS_CONFIG: ./percy/har-mock-config${{ matrix.suffix }}.js
       - name: Take Percy Snapshots
         run: npx percy exec -- npx jest percy/percy.test.js --force-exit
-        with:
-          name:  ${{ matrix.title }}
         env:
           PERCY_TOKEN: ${{ matrix.token }}
-          OTP_RR_UI_MODE: ${{ matrix.ui-mode }}
+          OTP_RR_UI_MODE: ${{ matrix.mode }}
