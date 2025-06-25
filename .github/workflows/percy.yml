@@ -10,6 +10,17 @@ on:
 jobs:
   run-pixel-tests:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - title: Desktop + Mobile
+            suffix: ''
+            token: ${{ secrets.PERCY_TOKEN_OTP2 }}
+            ui-mode: normal
+          - title: Calltaker
+            suffix: -call-taker
+            token: ${{ secrets.PERCY_TOKEN_CALL_TAKER_OTP2 }}
+            ui-mode: calltaker
     steps:
       - uses: actions/checkout@v2
         with:
@@ -21,39 +32,13 @@ jobs:
           node-version: 22.x
       - name: Install npm packages using cache
         uses: bahmutov/npm-install@v1
-      - name: Build OTP-RR
-        # Artifacts are shared between desktop and mobile tests (but not call-taker).
+      - name: Build OTP-RR ${{ matrix.title }}
         run: yarn build
         env:
-          YAML_CONFIG: ./percy/har-mock-config.yml
-          JS_CONFIG: ./percy/har-mock-config.js
-      - name: Take Percy Snapshots (Desktop + Mobile)
+          YAML_CONFIG: ./percy/har-mock-config${{ matrix.suffix }}.yml
+          JS_CONFIG: ./percy/har-mock-config${{ matrix.suffix }}.js
+      - name: Take Percy Snapshots ${{ matrix.title }}
         run: npx percy exec -- npx jest percy/percy.test.js --force-exit
         env:
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_OTP2 }}
-          OTP_RR_UI_MODE: normal
-  run-pixel-tests-calltaker:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          # This allows us to work with the repository during the lint step
-          fetch-depth: 2
-      - name: Use Node.js 22.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 22.x
-      - name: Install npm packages using cache
-        uses: bahmutov/npm-install@v1
-      - name: Build OTP-RR Calltaker
-        # Calltaker has a separate config file, so another build should be produced.
-        run: yarn build
-        env:
-          YAML_CONFIG: ./percy/har-mock-config-call-taker.yml
-          JS_CONFIG: ./percy/har-mock-config-call-taker.js
-      - name: Take Percy Snapshots (Calltaker)
-        run: npx percy exec -- npx jest percy/percy.test.js --force-exit
-        env:
-          # Calltaker has a separate key because the calltaker-specific snapshots are different.
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_CALL_TAKER_OTP2 }}
-          OTP_RR_UI_MODE: calltaker
+          PERCY_TOKEN: ${{ matrix.token }}
+          OTP_RR_UI_MODE: ${{ matrix.ui-mode }}
