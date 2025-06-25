@@ -58,6 +58,7 @@ actions:
       Vui lòng chấp nhận Điều Khoản Sử Dụng (trong phần Tài Khoản Của Tôi) để
       lưu lại địa điểm.
     mustBeLoggedInToSavePlace: Vui lòng đăng nhập để lưu lại địa điểm.
+    placeDeleted: Địa điểm của bạn đã bị xóa.
     placeRemembered: Cài đặt cho vị trí này đã được lưu lại.
     preferencesSaved: Những sở thích của bạn đã được lưu lại.
     smsInvalidCode: Mã bạn nhập không hợp lệ. Vui lòng thử lại.
@@ -105,6 +106,7 @@ common:
     edit: Chỉnh sửa
     error: lỗi!
     finish: Kết thúc
+    loading: Đang tải
     next: Tiếp theo
     "no": Không
     print: In
@@ -271,6 +273,7 @@ components:
     setAddressForPlaceType: Cài đặt địa chỉ {placeType} của bạn
   FavoritePlaceScreen:
     addNewPlace: Thêm địa điểm mới
+    charactersRemaining: "{chars, plural, one {# ký tự còn lại} other {# số ký tự còn lại}}"
     editPlace: Chỉnh sửa {placeName}
     editPlaceGeneric: Chỉnh sửa vị trí
     invalidAddress: Vui lòng cài đặt một vị trí cho nơi này.

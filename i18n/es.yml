@@ -58,6 +58,7 @@ actions:
     itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje seleccionado es posible.
     mustAcceptTermsToSavePlace: Acepte los Términos de uso (en Mi Cuenta) para guardar las ubicaciones.
     mustBeLoggedInToSavePlace: Por favor, inicia la sesión para guardar las ubicaciones.
+    placeDeleted: Se ha eliminado su ubicación.
     placeRemembered: La configuración de este lugar se ha guardado.
     preferencesSaved: Sus preferencias se han guardado.
     smsInvalidCode: El código introducido no es válido. Por favor, inténtelo de nuevo.
@@ -105,6 +106,7 @@ common:
     edit: Editar
     error: ¡error!
     finish: Finalizar
+    loading: Cargando
     next: Siguiente
     "no": "No"
     print: Imprimir
@@ -275,6 +277,9 @@ components:
     setAddressForPlaceType: Establezca su dirección de {placeType}
   FavoritePlaceScreen:
     addNewPlace: Agregar un nuevo lugar
+    charactersRemaining: >-
+      {chars, plural, one {# caracter que quedan} other {# caracteres que
+      quedan}}
     editPlace: Editar {placeName}
     editPlaceGeneric: Editar lugar
     invalidAddress: Por favor, establezca una ubicación para este lugar.

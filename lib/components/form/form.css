@@ -26,16 +26,6 @@
   z-index: 100;
 }
 
-/* Date-Time Modal */
-
-.otp .date-time-modal .button-row {
-  margin-bottom: 20px;
-}
-
-.otp .date-time-modal .button-row .selected {
-  background-color: #ccc;
-}
-
 /* Date/Time selectors */
 
 /* Remove up/down arrows on date/time input (to save on width) */
@@ -57,17 +47,6 @@
     This will not work for Firefox. */
 .otp input[type="date"]::-webkit-calendar-picker-indicator, .otp input[type="time"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
-}
-
-.otp .date-time-selector .col-xs-4,
-.otp .date-time-selector .col-xs-6 {
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-.otp .date-time-selector .date-option-button {
-  width: 100%;
-  font-size: 14px;
 }
 
 /* switch button */

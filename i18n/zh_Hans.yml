@@ -49,6 +49,7 @@ actions:
     itineraryExistenceCheckFailed: 检查你选择的旅行是否可行时出现错误.
     mustAcceptTermsToSavePlace: 请接受使用条款（在“我的帐户”下）以保存位置。
     mustBeLoggedInToSavePlace: 请登录以保存位置。
+    placeDeleted: 您的位置已被删除。
     placeRemembered: 针对此地点的设置已保存。
     preferencesSaved: 您的偏好已被保存.
     smsInvalidCode: 您输入的代码无效. 请再试一次.
@@ -92,6 +93,7 @@ common:
     edit: 编辑
     error: 错误!
     finish: 完成
+    loading: 正在加载
     next: 下一页
     "no": 否
     print: 打印
@@ -249,6 +251,7 @@ components:
     setAddressForPlaceType: 设置您的 {placeType} 地址
   FavoritePlaceScreen:
     addNewPlace: 添加新地点
+    charactersRemaining: "{chars, plural, one {# 剩余字符} other {# 剩餘字元}}"
     editPlace: 编辑 {placeName}
     editPlaceGeneric: 编辑地点
     invalidAddress: 请为这个地点设定一个位置.
