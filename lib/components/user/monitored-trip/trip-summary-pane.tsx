@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import { Bell } from '@styled-icons/fa-regular/Bell'
 import { BellSlash } from '@styled-icons/fa-regular/BellSlash'
 import { Calendar } from '@styled-icons/fa-regular/Calendar'
@@ -153,6 +154,11 @@ const TripSummaryPane = ({
 
     const ICON_SIZE = 14
 
+    const isActiveAndNotSnoozed =
+      monitoredTrip.isActive && !monitoredTrip.snoozed
+
+    const isActiveAndSnoozed = monitoredTrip.isActive && monitoredTrip.snoozed
+
     return (
       <SavedTripBody>
         <InvisibleA11yLabel>
@@ -208,7 +214,7 @@ const TripSummaryPane = ({
             </TripDetailWithIcon>
             {/* Trip notification info */}
             <TripDetailWithIcon as="li">
-              {monitoredTrip.isActive ? (
+              {isActiveAndNotSnoozed ? (
                 <Bell
                   aria-label={notificationLabel}
                   title={notificationLabel}
@@ -217,18 +223,25 @@ const TripSummaryPane = ({
                 <BellSlash width={20} />
               )}
               <span>
-                {monitoredTrip.isActive ? (
+                {isActiveAndNotSnoozed && (
                   <FormattedMessage
                     id="components.TripSummaryPane.notifications"
                     values={{ leadTimeInMinutes }}
                   />
-                ) : (
+                )}
+                {isActiveAndSnoozed && (
+                  <FormattedMessage
+                    id="components.TripStatusRenderers.snoozed.heading"
+                    values={{ leadTimeInMinutes }}
+                  />
+                )}
+                {!monitoredTrip.isActive && (
                   <FormattedMessage
                     id="components.TripSummaryPane.notificationsDisabled"
                     values={{ leadTimeInMinutes }}
                   />
                 )}
-                {!isReadOnly && (
+                {!isReadOnly && !monitoredTrip.snoozed && (
                   <>
                     <br />
                     <ToggleNotificationButton
@@ -238,7 +251,7 @@ const TripSummaryPane = ({
                       {pendingRequest === 'pause' ? (
                         /* Make loader fit */
                         <InlineLoading />
-                      ) : monitoredTrip.isActive ? (
+                      ) : isActiveAndNotSnoozed ? (
                         <FormattedMessage id="components.SavedTripList.pause" />
                       ) : (
                         <FormattedMessage id="components.SavedTripList.resume" />
