@@ -57,6 +57,7 @@ actions:
       Примите «Условия использования» (в разделе «Моя учетная запись»), чтобы
       сохранять местоположения.
     mustBeLoggedInToSavePlace: Пожалуйста, войдите в систему, чтобы сохранять местоположения.
+    placeDeleted: Ваша позиция удалена.
     placeRemembered: Настройки этого места сохранены.
     preferencesSaved: Ваши параметры сохранены.
     smsInvalidCode: Введен недействительный код. Попробуйте еще раз.
@@ -104,6 +105,7 @@ common:
     edit: Редактировать
     error: Ошибка!
     finish: Завершить
+    loading: Загрузка
     next: Далее
     "no": Нет
     print: Печать
@@ -276,6 +278,7 @@ components:
     setAddressForPlaceType: Укажите адрес места «{placeType}»
   FavoritePlaceScreen:
     addNewPlace: Добавить новое место
+    charactersRemaining: "{chars, plural, one {# символ слева} other {# символов осталось}}"
     editPlace: Редактировать место «{placeName}»
     editPlaceGeneric: Редактировать место
     invalidAddress: Выберите местоположение для этого места.

@@ -10,9 +10,6 @@
     "@babel/preset-react"
   ],
   "env": {
-    "development": {
-      "plugins": ["react-refresh/babel"]
-    },
     "test": {
       "presets": [["@babel/preset-env", { "targets": { "node": "current" } }]]
     }

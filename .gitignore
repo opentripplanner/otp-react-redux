@@ -21,5 +21,8 @@ dist
 !test-config.yml
 !har-mock-config.yml
 
+# Ignore index.html at the root (it gets copied over during build)
+index.html
+
 # vscode extensions
 .vscode
