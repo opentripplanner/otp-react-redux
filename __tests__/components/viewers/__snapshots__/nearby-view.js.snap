@@ -49,7 +49,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
           className="nearby-view base-color-bg"
         >
           <div
-            className="sc-cuWdqJ cZFGA-D nearby-view base-color-bg"
+            className="sc-cuWdqJ ctgsMZ nearby-view base-color-bg"
           >
             <Connect(PageTitle)
               title="components.NearbyView.header"
@@ -88,78 +88,84 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                 </FormattedMessage>
               </h3>
             </styled.span>
-            <styled.ol
-              className="base-color-bg"
+            <div
               style={
                 Object {
-                  "marginBottom": 0,
+                  "padding": "1em",
                 }
               }
             >
-              <ol
-                className="sc-dcwqsv hldTAQ base-color-bg"
-                style={
+              <LocationField
+                LocationIconComponent={[Function]}
+                className="nearby-view-location-field"
+                currentPosition={
                   Object {
-                    "marginBottom": 0,
+                    "coords": null,
+                    "error": null,
+                    "fetching": false,
                   }
                 }
+                getCurrentPosition={[Function]}
+                inputPlaceholder="components.NearbyView.searchNearby"
+                location={
+                  Object {
+                    "lat": 0,
+                    "lon": 0,
+                    "name": "",
+                  }
+                }
+                locationType="to"
+                onLocationSelected={[Function]}
+                sessionSearches={Array []}
+                sortByDistance={true}
               >
-                <div
-                  aria-hidden={true}
-                />
-                <LocationField
-                  LocationIconComponent={[Function]}
+                <styled__InputGroup
                   className="nearby-view-location-field"
-                  currentPosition={
-                    Object {
-                      "coords": null,
-                      "error": null,
-                      "fetching": false,
-                    }
-                  }
-                  getCurrentPosition={[Function]}
-                  inputPlaceholder="components.NearbyView.searchNearby"
-                  location={
-                    Object {
-                      "lat": 0,
-                      "lon": 0,
-                      "name": "",
-                    }
-                  }
-                  locationType="to"
-                  onLocationSelected={[Function]}
-                  sessionSearches={Array []}
-                  sortByDistance={true}
+                  onBlur={[Function]}
+                  role="group"
                 >
-                  <styled__InputGroup
-                    className="nearby-view-location-field"
+                  <div
+                    className="styled__InputGroup-sc-xahsq2-7 juNRgv nearby-view-location-field"
                     onBlur={[Function]}
                     role="group"
                   >
-                    <div
-                      className="styled__InputGroup-sc-xahsq2-7 juNRgv nearby-view-location-field"
-                      onBlur={[Function]}
-                      role="group"
+                    <styled__DropdownButton
+                      aria-controls="to-listbox"
+                      aria-expanded={false}
+                      aria-label="Open the list of location suggestions"
+                      onClick={[Function]}
+                      tabIndex={-1}
+                      type="button"
                     >
-                      <styled__DropdownButton
+                      <button
                         aria-controls="to-listbox"
                         aria-expanded={false}
                         aria-label="Open the list of location suggestions"
+                        className="styled__BaseButton-sc-xahsq2-1 styled__DropdownButton-sc-xahsq2-4 coKZWn dGsLHu"
                         onClick={[Function]}
                         tabIndex={-1}
+                        type="button"
                       >
-                        <button
-                          aria-controls="to-listbox"
-                          aria-expanded={false}
-                          aria-label="Open the list of location suggestions"
-                          className="styled__BaseButton-sc-xahsq2-1 styled__DropdownButton-sc-xahsq2-4 coKZWn dGsLHu"
-                          onClick={[Function]}
-                          tabIndex={-1}
+                        <LocationIconComponent
+                          locationType="to"
                         >
-                          <LocationIconComponent
-                            locationType="to"
+                          <Search
+                            style={
+                              Object {
+                                "marginRight": 5,
+                                "padding": 5,
+                              }
+                            }
                           >
-                            <Search
+                            <StyledIconBase
+                              iconAttrs={
+                                Object {
+                                  "fill": "currentColor",
+                                  "xmlns": "http://www.w3.org/2000/svg",
+                                }
+                              }
+                              iconVerticalAlign="middle"
+                              iconViewBox="0 0 512 512"
                               style={
                                 Object {
                                   "marginRight": 5,
@@ -167,7 +173,8 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                                 }
                               }
                             >
-                              <StyledIconBase
+                              <ForwardRef
+                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
                                 iconAttrs={
                                   Object {
                                     "fill": "currentColor",
@@ -183,49 +190,51 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                                   }
                                 }
                               >
-                                <ForwardRef
+                                <svg
+                                  aria-hidden="true"
                                   className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                  iconAttrs={
-                                    Object {
-                                      "fill": "currentColor",
-                                      "xmlns": "http://www.w3.org/2000/svg",
-                                    }
-                                  }
-                                  iconVerticalAlign="middle"
-                                  iconViewBox="0 0 512 512"
+                                  fill="currentColor"
+                                  focusable="false"
                                   style={
                                     Object {
                                       "marginRight": 5,
                                       "padding": 5,
                                     }
                                   }
+                                  viewBox="0 0 512 512"
+                                  xmlns="http://www.w3.org/2000/svg"
                                 >
-                                  <svg
-                                    aria-hidden="true"
-                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                  <path
+                                    d="M416 208c0 45.9-14.9 88.3-40 122.7l126.6 126.7c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208zM208 352c79.5 0 144-64.5 144-144S287.5 64 208 64 64 128.5 64 208s64.5 144 144 144z"
                                     fill="currentColor"
-                                    focusable="false"
-                                    style={
-                                      Object {
-                                        "marginRight": 5,
-                                        "padding": 5,
-                                      }
-                                    }
-                                    viewBox="0 0 512 512"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <path
-                                      d="M416 208c0 45.9-14.9 88.3-40 122.7l126.6 126.7c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208zM208 352c79.5 0 144-64.5 144-144S287.5 64 208 64 64 128.5 64 208s64.5 144 144 144z"
-                                      fill="currentColor"
-                                    />
-                                  </svg>
-                                </ForwardRef>
-                              </StyledIconBase>
-                            </Search>
-                          </LocationIconComponent>
-                        </button>
-                      </styled__DropdownButton>
-                      <styled__Input
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </StyledIconBase>
+                          </Search>
+                        </LocationIconComponent>
+                      </button>
+                    </styled__DropdownButton>
+                    <styled__Input
+                      aria-activedescendant={null}
+                      aria-autocomplete="list"
+                      aria-controls="to-listbox"
+                      aria-expanded={false}
+                      aria-haspopup="listbox"
+                      aria-invalid={false}
+                      aria-label="components.NearbyView.searchNearby"
+                      aria-required={false}
+                      autoFocus={false}
+                      className="to-form-control"
+                      onChange={[Function]}
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      placeholder="components.NearbyView.searchNearby"
+                      role="combobox"
+                      spellCheck={false}
+                      value=""
+                    >
+                      <input
                         aria-activedescendant={null}
                         aria-autocomplete="list"
                         aria-controls="to-listbox"
@@ -235,7 +244,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                         aria-label="components.NearbyView.searchNearby"
                         aria-required={false}
                         autoFocus={false}
-                        className="to-form-control"
+                        className="styled__Input-sc-xahsq2-6 gKJkbm to-form-control"
                         onChange={[Function]}
                         onClick={[Function]}
                         onKeyDown={[Function]}
@@ -243,40 +252,35 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                         role="combobox"
                         spellCheck={false}
                         value=""
-                      >
-                        <input
-                          aria-activedescendant={null}
-                          aria-autocomplete="list"
-                          aria-controls="to-listbox"
-                          aria-expanded={false}
-                          aria-haspopup="listbox"
-                          aria-invalid={false}
-                          aria-label="components.NearbyView.searchNearby"
-                          aria-required={false}
-                          autoFocus={false}
-                          className="styled__Input-sc-xahsq2-6 gKJkbm to-form-control"
-                          onChange={[Function]}
-                          onClick={[Function]}
-                          onKeyDown={[Function]}
-                          placeholder="components.NearbyView.searchNearby"
-                          role="combobox"
-                          spellCheck={false}
-                          value=""
-                        />
-                      </styled__Input>
-                      <styled__ClearButton
+                      />
+                    </styled__Input>
+                    <styled__ClearButton
+                      aria-label="otpUi.LocationField.clearLocation"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <button
                         aria-label="otpUi.LocationField.clearLocation"
+                        className="styled__BaseButton-sc-xahsq2-1 styled__ClearButton-sc-xahsq2-2 coKZWn dHubbh"
                         onClick={[Function]}
+                        type="button"
                       >
-                        <button
-                          aria-label="otpUi.LocationField.clearLocation"
-                          className="styled__BaseButton-sc-xahsq2-1 styled__ClearButton-sc-xahsq2-2 coKZWn dHubbh"
-                          onClick={[Function]}
+                        <Times
+                          size={13}
                         >
-                          <Times
+                          <StyledIconBase
+                            iconAttrs={
+                              Object {
+                                "fill": "currentColor",
+                                "xmlns": "http://www.w3.org/2000/svg",
+                              }
+                            }
+                            iconVerticalAlign="middle"
+                            iconViewBox="0 0 320 512"
                             size={13}
                           >
-                            <StyledIconBase
+                            <ForwardRef
+                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
                               iconAttrs={
                                 Object {
                                   "fill": "currentColor",
@@ -287,62 +291,70 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                               iconViewBox="0 0 320 512"
                               size={13}
                             >
-                              <ForwardRef
+                              <svg
+                                aria-hidden="true"
                                 className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                iconAttrs={
-                                  Object {
-                                    "fill": "currentColor",
-                                    "xmlns": "http://www.w3.org/2000/svg",
-                                  }
-                                }
-                                iconVerticalAlign="middle"
-                                iconViewBox="0 0 320 512"
-                                size={13}
+                                fill="currentColor"
+                                focusable="false"
+                                height={13}
+                                viewBox="0 0 320 512"
+                                width={13}
+                                xmlns="http://www.w3.org/2000/svg"
                               >
-                                <svg
-                                  aria-hidden="true"
-                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                <path
+                                  d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3l105.4 105.3c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256l105.3-105.4z"
                                   fill="currentColor"
-                                  focusable="false"
-                                  height={13}
-                                  viewBox="0 0 320 512"
-                                  width={13}
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3l105.4 105.3c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256l105.3-105.4z"
-                                    fill="currentColor"
-                                  />
-                                </svg>
-                              </ForwardRef>
-                            </StyledIconBase>
-                          </Times>
-                        </button>
-                      </styled__ClearButton>
-                      <styled__HiddenContent
+                                />
+                              </svg>
+                            </ForwardRef>
+                          </StyledIconBase>
+                        </Times>
+                      </button>
+                    </styled__ClearButton>
+                    <styled__HiddenContent
+                      role="status"
+                    >
+                      <span
+                        className="styled__HiddenContent-sc-xahsq2-0 TBlMu"
                         role="status"
-                      >
-                        <span
-                          className="styled__HiddenContent-sc-xahsq2-0 TBlMu"
-                          role="status"
-                        />
-                      </styled__HiddenContent>
-                      <styled__MenuItemList
+                      />
+                    </styled__HiddenContent>
+                    <styled__MenuItemList
+                      aria-hidden={true}
+                      aria-label="Suggested locations"
+                      id="to-listbox"
+                    >
+                      <ul
                         aria-hidden={true}
                         aria-label="Suggested locations"
+                        className="styled__MenuItemList-sc-xahsq2-5 yspTS"
                         id="to-listbox"
-                      >
-                        <ul
-                          aria-hidden={true}
-                          aria-label="Suggested locations"
-                          className="styled__MenuItemList-sc-xahsq2-5 yspTS"
-                          id="to-listbox"
-                          role="listbox"
-                        />
-                      </styled__MenuItemList>
-                    </div>
-                  </styled__InputGroup>
-                </LocationField>
+                        role="listbox"
+                      />
+                    </styled__MenuItemList>
+                  </div>
+                </styled__InputGroup>
+              </LocationField>
+            </div>
+            <div
+              aria-hidden={true}
+            />
+            <styled.ol
+              className="base-color-bg"
+              style={
+                Object {
+                  "marginBottom": 0,
+                }
+              }
+            >
+              <ol
+                className="sc-dcwqsv bvgzlH base-color-bg"
+                style={
+                  Object {
+                    "marginBottom": 0,
+                  }
+                }
+              >
                 <FormattedMessage
                   id="components.NearbyView.nothingNearby"
                 >
@@ -4331,7 +4343,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
           className="nearby-view base-color-bg"
         >
           <div
-            className="sc-cuWdqJ cZFGA-D nearby-view base-color-bg"
+            className="sc-cuWdqJ ctgsMZ nearby-view base-color-bg"
           >
             <Connect(PageTitle)
               title="components.NearbyView.header"
@@ -4370,78 +4382,84 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                 </FormattedMessage>
               </h3>
             </styled.span>
-            <styled.ol
-              className="base-color-bg"
+            <div
               style={
                 Object {
-                  "marginBottom": 0,
+                  "padding": "1em",
                 }
               }
             >
-              <ol
-                className="sc-dcwqsv hldTAQ base-color-bg"
-                style={
+              <LocationField
+                LocationIconComponent={[Function]}
+                className="nearby-view-location-field"
+                currentPosition={
                   Object {
-                    "marginBottom": 0,
+                    "coords": null,
+                    "error": null,
+                    "fetching": false,
                   }
                 }
+                getCurrentPosition={[Function]}
+                inputPlaceholder="components.NearbyView.searchNearby"
+                location={
+                  Object {
+                    "lat": 0,
+                    "lon": 0,
+                    "name": "",
+                  }
+                }
+                locationType="to"
+                onLocationSelected={[Function]}
+                sessionSearches={Array []}
+                sortByDistance={true}
               >
-                <div
-                  aria-hidden={true}
-                />
-                <LocationField
-                  LocationIconComponent={[Function]}
+                <styled__InputGroup
                   className="nearby-view-location-field"
-                  currentPosition={
-                    Object {
-                      "coords": null,
-                      "error": null,
-                      "fetching": false,
-                    }
-                  }
-                  getCurrentPosition={[Function]}
-                  inputPlaceholder="components.NearbyView.searchNearby"
-                  location={
-                    Object {
-                      "lat": 0,
-                      "lon": 0,
-                      "name": "",
-                    }
-                  }
-                  locationType="to"
-                  onLocationSelected={[Function]}
-                  sessionSearches={Array []}
-                  sortByDistance={true}
+                  onBlur={[Function]}
+                  role="group"
                 >
-                  <styled__InputGroup
-                    className="nearby-view-location-field"
+                  <div
+                    className="styled__InputGroup-sc-xahsq2-7 juNRgv nearby-view-location-field"
                     onBlur={[Function]}
                     role="group"
                   >
-                    <div
-                      className="styled__InputGroup-sc-xahsq2-7 juNRgv nearby-view-location-field"
-                      onBlur={[Function]}
-                      role="group"
+                    <styled__DropdownButton
+                      aria-controls="to-listbox"
+                      aria-expanded={false}
+                      aria-label="Open the list of location suggestions"
+                      onClick={[Function]}
+                      tabIndex={-1}
+                      type="button"
                     >
-                      <styled__DropdownButton
+                      <button
                         aria-controls="to-listbox"
                         aria-expanded={false}
                         aria-label="Open the list of location suggestions"
+                        className="styled__BaseButton-sc-xahsq2-1 styled__DropdownButton-sc-xahsq2-4 coKZWn dGsLHu"
                         onClick={[Function]}
                         tabIndex={-1}
+                        type="button"
                       >
-                        <button
-                          aria-controls="to-listbox"
-                          aria-expanded={false}
-                          aria-label="Open the list of location suggestions"
-                          className="styled__BaseButton-sc-xahsq2-1 styled__DropdownButton-sc-xahsq2-4 coKZWn dGsLHu"
-                          onClick={[Function]}
-                          tabIndex={-1}
+                        <LocationIconComponent
+                          locationType="to"
                         >
-                          <LocationIconComponent
-                            locationType="to"
+                          <Search
+                            style={
+                              Object {
+                                "marginRight": 5,
+                                "padding": 5,
+                              }
+                            }
                           >
-                            <Search
+                            <StyledIconBase
+                              iconAttrs={
+                                Object {
+                                  "fill": "currentColor",
+                                  "xmlns": "http://www.w3.org/2000/svg",
+                                }
+                              }
+                              iconVerticalAlign="middle"
+                              iconViewBox="0 0 512 512"
                               style={
                                 Object {
                                   "marginRight": 5,
@@ -4449,7 +4467,8 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 }
                               }
                             >
-                              <StyledIconBase
+                              <ForwardRef
+                                className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
                                 iconAttrs={
                                   Object {
                                     "fill": "currentColor",
@@ -4465,49 +4484,51 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   }
                                 }
                               >
-                                <ForwardRef
+                                <svg
+                                  aria-hidden="true"
                                   className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                  iconAttrs={
-                                    Object {
-                                      "fill": "currentColor",
-                                      "xmlns": "http://www.w3.org/2000/svg",
-                                    }
-                                  }
-                                  iconVerticalAlign="middle"
-                                  iconViewBox="0 0 512 512"
+                                  fill="currentColor"
+                                  focusable="false"
                                   style={
                                     Object {
                                       "marginRight": 5,
                                       "padding": 5,
                                     }
                                   }
+                                  viewBox="0 0 512 512"
+                                  xmlns="http://www.w3.org/2000/svg"
                                 >
-                                  <svg
-                                    aria-hidden="true"
-                                    className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                  <path
+                                    d="M416 208c0 45.9-14.9 88.3-40 122.7l126.6 126.7c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208zM208 352c79.5 0 144-64.5 144-144S287.5 64 208 64 64 128.5 64 208s64.5 144 144 144z"
                                     fill="currentColor"
-                                    focusable="false"
-                                    style={
-                                      Object {
-                                        "marginRight": 5,
-                                        "padding": 5,
-                                      }
-                                    }
-                                    viewBox="0 0 512 512"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <path
-                                      d="M416 208c0 45.9-14.9 88.3-40 122.7l126.6 126.7c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208zM208 352c79.5 0 144-64.5 144-144S287.5 64 208 64 64 128.5 64 208s64.5 144 144 144z"
-                                      fill="currentColor"
-                                    />
-                                  </svg>
-                                </ForwardRef>
-                              </StyledIconBase>
-                            </Search>
-                          </LocationIconComponent>
-                        </button>
-                      </styled__DropdownButton>
-                      <styled__Input
+                                  />
+                                </svg>
+                              </ForwardRef>
+                            </StyledIconBase>
+                          </Search>
+                        </LocationIconComponent>
+                      </button>
+                    </styled__DropdownButton>
+                    <styled__Input
+                      aria-activedescendant={null}
+                      aria-autocomplete="list"
+                      aria-controls="to-listbox"
+                      aria-expanded={false}
+                      aria-haspopup="listbox"
+                      aria-invalid={false}
+                      aria-label="components.NearbyView.searchNearby"
+                      aria-required={false}
+                      autoFocus={false}
+                      className="to-form-control"
+                      onChange={[Function]}
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      placeholder="components.NearbyView.searchNearby"
+                      role="combobox"
+                      spellCheck={false}
+                      value=""
+                    >
+                      <input
                         aria-activedescendant={null}
                         aria-autocomplete="list"
                         aria-controls="to-listbox"
@@ -4517,7 +4538,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                         aria-label="components.NearbyView.searchNearby"
                         aria-required={false}
                         autoFocus={false}
-                        className="to-form-control"
+                        className="styled__Input-sc-xahsq2-6 gKJkbm to-form-control"
                         onChange={[Function]}
                         onClick={[Function]}
                         onKeyDown={[Function]}
@@ -4525,40 +4546,35 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                         role="combobox"
                         spellCheck={false}
                         value=""
-                      >
-                        <input
-                          aria-activedescendant={null}
-                          aria-autocomplete="list"
-                          aria-controls="to-listbox"
-                          aria-expanded={false}
-                          aria-haspopup="listbox"
-                          aria-invalid={false}
-                          aria-label="components.NearbyView.searchNearby"
-                          aria-required={false}
-                          autoFocus={false}
-                          className="styled__Input-sc-xahsq2-6 gKJkbm to-form-control"
-                          onChange={[Function]}
-                          onClick={[Function]}
-                          onKeyDown={[Function]}
-                          placeholder="components.NearbyView.searchNearby"
-                          role="combobox"
-                          spellCheck={false}
-                          value=""
-                        />
-                      </styled__Input>
-                      <styled__ClearButton
+                      />
+                    </styled__Input>
+                    <styled__ClearButton
+                      aria-label="otpUi.LocationField.clearLocation"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <button
                         aria-label="otpUi.LocationField.clearLocation"
+                        className="styled__BaseButton-sc-xahsq2-1 styled__ClearButton-sc-xahsq2-2 coKZWn dHubbh"
                         onClick={[Function]}
+                        type="button"
                       >
-                        <button
-                          aria-label="otpUi.LocationField.clearLocation"
-                          className="styled__BaseButton-sc-xahsq2-1 styled__ClearButton-sc-xahsq2-2 coKZWn dHubbh"
-                          onClick={[Function]}
+                        <Times
+                          size={13}
                         >
-                          <Times
+                          <StyledIconBase
+                            iconAttrs={
+                              Object {
+                                "fill": "currentColor",
+                                "xmlns": "http://www.w3.org/2000/svg",
+                              }
+                            }
+                            iconVerticalAlign="middle"
+                            iconViewBox="0 0 320 512"
                             size={13}
                           >
-                            <StyledIconBase
+                            <ForwardRef
+                              className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
                               iconAttrs={
                                 Object {
                                   "fill": "currentColor",
@@ -4569,62 +4585,70 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               iconViewBox="0 0 320 512"
                               size={13}
                             >
-                              <ForwardRef
+                              <svg
+                                aria-hidden="true"
                                 className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
-                                iconAttrs={
-                                  Object {
-                                    "fill": "currentColor",
-                                    "xmlns": "http://www.w3.org/2000/svg",
-                                  }
-                                }
-                                iconVerticalAlign="middle"
-                                iconViewBox="0 0 320 512"
-                                size={13}
+                                fill="currentColor"
+                                focusable="false"
+                                height={13}
+                                viewBox="0 0 320 512"
+                                width={13}
+                                xmlns="http://www.w3.org/2000/svg"
                               >
-                                <svg
-                                  aria-hidden="true"
-                                  className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
+                                <path
+                                  d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3l105.4 105.3c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256l105.3-105.4z"
                                   fill="currentColor"
-                                  focusable="false"
-                                  height={13}
-                                  viewBox="0 0 320 512"
-                                  width={13}
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3l105.4 105.3c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256l105.3-105.4z"
-                                    fill="currentColor"
-                                  />
-                                </svg>
-                              </ForwardRef>
-                            </StyledIconBase>
-                          </Times>
-                        </button>
-                      </styled__ClearButton>
-                      <styled__HiddenContent
+                                />
+                              </svg>
+                            </ForwardRef>
+                          </StyledIconBase>
+                        </Times>
+                      </button>
+                    </styled__ClearButton>
+                    <styled__HiddenContent
+                      role="status"
+                    >
+                      <span
+                        className="styled__HiddenContent-sc-xahsq2-0 TBlMu"
                         role="status"
-                      >
-                        <span
-                          className="styled__HiddenContent-sc-xahsq2-0 TBlMu"
-                          role="status"
-                        />
-                      </styled__HiddenContent>
-                      <styled__MenuItemList
+                      />
+                    </styled__HiddenContent>
+                    <styled__MenuItemList
+                      aria-hidden={true}
+                      aria-label="Suggested locations"
+                      id="to-listbox"
+                    >
+                      <ul
                         aria-hidden={true}
                         aria-label="Suggested locations"
+                        className="styled__MenuItemList-sc-xahsq2-5 yspTS"
                         id="to-listbox"
-                      >
-                        <ul
-                          aria-hidden={true}
-                          aria-label="Suggested locations"
-                          className="styled__MenuItemList-sc-xahsq2-5 yspTS"
-                          id="to-listbox"
-                          role="listbox"
-                        />
-                      </styled__MenuItemList>
-                    </div>
-                  </styled__InputGroup>
-                </LocationField>
+                        role="listbox"
+                      />
+                    </styled__MenuItemList>
+                  </div>
+                </styled__InputGroup>
+              </LocationField>
+            </div>
+            <div
+              aria-hidden={true}
+            />
+            <styled.ol
+              className="base-color-bg"
+              style={
+                Object {
+                  "marginBottom": 0,
+                }
+              }
+            >
+              <ol
+                className="sc-dcwqsv bvgzlH base-color-bg"
+                style={
+                  Object {
+                    "marginBottom": 0,
+                  }
+                }
+              >
                 <li
                   className=""
                   key="UmVudGFsVmVoaWNsZTpsaW1lX3NlYXR0bGU6MDM1NDBhOWUtZTY1Ny00NTRlLWFlN2ItOGFkOWRhODZjZmVk"
@@ -18401,17 +18425,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="sc-gUUBao dCmAkv"
                                   >
                                     <div>
-                                      <FormattedMessage
-                                        id="components.StopViewer.displayStopId"
-                                        values={
-                                          Object {
-                                            "stopId": "40:990003",
-                                            "strong": [Function],
-                                          }
-                                        }
-                                      >
-                                        components.StopViewer.displayStopId
-                                      </FormattedMessage>
                                       <Styled(Connect(Component))
                                         className="stop-header-action"
                                         to="/schedule/40:990003"
@@ -46976,17 +46989,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="sc-gUUBao dCmAkv"
                                   >
                                     <div>
-                                      <FormattedMessage
-                                        id="components.StopViewer.displayStopId"
-                                        values={
-                                          Object {
-                                            "stopId": "40:990004",
-                                            "strong": [Function],
-                                          }
-                                        }
-                                      >
-                                        components.StopViewer.displayStopId
-                                      </FormattedMessage>
                                       <Styled(Connect(Component))
                                         className="stop-header-action"
                                         to="/schedule/40:990004"

@@ -10,7 +10,8 @@ import routes from '../lib/util/webapp-routes'
 
 import { mockServer } from './mock-server'
 
-const OTP_RR_TEST_CONFIG_PATH = '../a11y/test-config.yml'
+// Path relative to OTP-RR repo root.
+const OTP_RR_TEST_CONFIG_PATH = './a11y/test-config.yml'
 
 const MOCK_SERVER_PORT = 9999
 
