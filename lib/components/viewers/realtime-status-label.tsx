@@ -107,12 +107,12 @@ const RealtimeStatusLabel = ({
         <TimeStruck aria-hidden>
           <FormattedTime timeStyle="short" value={originalTime} />
         </TimeStruck>
-        <div className={isRealtime ? 'realtime-icon realtime' : ''}>
+        <div className={isRealtime ? 'realtime-icon' : ''}>
           <FormattedTime timeStyle="short" value={time} />
         </div>
       </TimeBlock>
     ) : (
-      <div className={isRealtime ? 'realtime-icon realtime' : ''}>
+      <div className={isRealtime ? 'realtime-icon' : ''}>
         <FormattedTime timeStyle="short" value={time} />
       </div>
     )
