@@ -1,5 +1,5 @@
 branding: HAR Test
-title: Percy Mock Config
+title: Percy Calltaker Mock Config
 homeTimezone: America/New_York
 
 api:
@@ -12,6 +12,11 @@ routingTypes:
     text: Exact Time
   - key: BATCH
     text: Multiple Mode Combinations
+
+# Declare the calltaker module, although it will only be used during the calltaker portion of the percy tests.
+# and not in the "normal" OTP-RR portion.
+modules:
+- id: call
 
 elevationProfile: true
 map:
