@@ -49,6 +49,7 @@ actions:
     itineraryExistenceCheckFailed: 선택한 트립이 가능한지 확인하는 중에 오류가 발생했습니다.
     mustAcceptTermsToSavePlace: 위치를 저장하려면 사용 약관(내 계정 아래)을 수락하십시오.
     mustBeLoggedInToSavePlace: 위치를 저장하려면 로그인하십시오.
+    placeDeleted: 내 장소가 삭제되었습니다.
     placeRemembered: 이 장소에 대한 설정이 저장되었습니다.
     preferencesSaved: 선호사항이 저장되었습니다.
     smsInvalidCode: 입력한 코드가 유효하지 않습니다. 다시 시도하세요.
@@ -92,6 +93,7 @@ common:
     edit: 수정
     error: 오류!
     finish: 마침
+    loading: 로딩
     next: 다음
     "no": 아니요
     print: 인쇄
@@ -252,6 +254,7 @@ components:
     setAddressForPlaceType: "{placeType}의 주소 설정"
   FavoritePlaceScreen:
     addNewPlace: 새 장소 추가
+    charactersRemaining: "{chars, plural, one {# 남은 문자 수} other {# 남은 글자수}}"
     editPlace: "{placeName} 수정"
     editPlaceGeneric: 장소 수정
     invalidAddress: 이 장소의 위치를 설정하세요.
