@@ -11155,9 +11155,20 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     </DistanceDisplay>
                                   </div>
                                 </styled.div>
-                                <styled.div>
+                                <styled.div
+                                  style={
+                                    Object {
+                                      "marginTop": "inherit",
+                                    }
+                                  }
+                                >
                                   <div
                                     className="sc-gUUBao dCmAkv"
+                                    style={
+                                      Object {
+                                        "marginTop": "inherit",
+                                      }
+                                    }
                                   >
                                     <div>
                                       <FormattedMessage
@@ -18420,9 +18431,20 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     </DistanceDisplay>
                                   </div>
                                 </styled.div>
-                                <styled.div>
+                                <styled.div
+                                  style={
+                                    Object {
+                                      "marginTop": 5,
+                                    }
+                                  }
+                                >
                                   <div
                                     className="sc-gUUBao dCmAkv"
+                                    style={
+                                      Object {
+                                        "marginTop": 5,
+                                      }
+                                    }
                                   >
                                     <div>
                                       <Styled(Connect(Component))
@@ -28607,9 +28629,20 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     </DistanceDisplay>
                                   </div>
                                 </styled.div>
-                                <styled.div>
+                                <styled.div
+                                  style={
+                                    Object {
+                                      "marginTop": "inherit",
+                                    }
+                                  }
+                                >
                                   <div
                                     className="sc-gUUBao dCmAkv"
+                                    style={
+                                      Object {
+                                        "marginTop": "inherit",
+                                      }
+                                    }
                                   >
                                     <div>
                                       <FormattedMessage
@@ -38564,9 +38597,20 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     </DistanceDisplay>
                                   </div>
                                 </styled.div>
-                                <styled.div>
+                                <styled.div
+                                  style={
+                                    Object {
+                                      "marginTop": "inherit",
+                                    }
+                                  }
+                                >
                                   <div
                                     className="sc-gUUBao dCmAkv"
+                                    style={
+                                      Object {
+                                        "marginTop": "inherit",
+                                      }
+                                    }
                                   >
                                     <div>
                                       <FormattedMessage
@@ -46984,9 +47028,20 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     </DistanceDisplay>
                                   </div>
                                 </styled.div>
-                                <styled.div>
+                                <styled.div
+                                  style={
+                                    Object {
+                                      "marginTop": 5,
+                                    }
+                                  }
+                                >
                                   <div
                                     className="sc-gUUBao dCmAkv"
+                                    style={
+                                      Object {
+                                        "marginTop": 5,
+                                      }
+                                    }
                                   >
                                     <div>
                                       <Styled(Connect(Component))
@@ -55207,9 +55262,20 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     </DistanceDisplay>
                                   </div>
                                 </styled.div>
-                                <styled.div>
+                                <styled.div
+                                  style={
+                                    Object {
+                                      "marginTop": "inherit",
+                                    }
+                                  }
+                                >
                                   <div
                                     className="sc-gUUBao dCmAkv"
+                                    style={
+                                      Object {
+                                        "marginTop": "inherit",
+                                      }
+                                    }
                                   >
                                     <div>
                                       <FormattedMessage
@@ -67010,9 +67076,20 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     </DistanceDisplay>
                                   </div>
                                 </styled.div>
-                                <styled.div>
+                                <styled.div
+                                  style={
+                                    Object {
+                                      "marginTop": "inherit",
+                                    }
+                                  }
+                                >
                                   <div
                                     className="sc-gUUBao dCmAkv"
+                                    style={
+                                      Object {
+                                        "marginTop": "inherit",
+                                      }
+                                    }
                                   >
                                     <div>
                                       <FormattedMessage
