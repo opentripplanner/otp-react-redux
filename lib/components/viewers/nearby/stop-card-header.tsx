@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { Search } from '@styled-icons/fa-solid/Search'
+import { MagnifyingGlassPlus } from '@styled-icons/fa-solid/MagnifyingGlassPlus'
 import { TransitOperator } from '@opentripplanner/types'
 import React, { ComponentType } from 'react'
 
@@ -55,10 +55,28 @@ const StopCardHeader = ({
             transitOperators={transitOperators}
           />
           <span>{stopData.name}</span>
+          {onZoomClick ? (
+            <button
+              className="link-button"
+              onClick={onZoomClick}
+              title={zoomButtonText}
+            >
+              <Icon
+                Icon={MagnifyingGlassPlus}
+                style={{
+                  bottom: 3,
+                  fontSize: 16,
+                  marginLeft: '0.3em',
+                  position: 'relative'
+                }}
+              />
+              <InvisibleA11yLabel>{zoomButtonText}</InvisibleA11yLabel>
+            </button>
+          ) : null}
         </CardTitle>
         <DistanceDisplay distance={stopData.distance} />
       </CardHeader>
-      <CardBody>
+      <CardBody style={{ marginTop: !stopData.code ? 5 : 'inherit' }}>
         <div>
           {stopData.code ? (
             <FormattedMessage
@@ -68,16 +86,6 @@ const StopCardHeader = ({
                 strong: Strong
               }}
             />
-          ) : null}
-          {onZoomClick ? (
-            <button
-              className="link-button"
-              onClick={onZoomClick}
-              title={zoomButtonText}
-            >
-              <Icon Icon={Search} style={{ marginLeft: '0.2em' }} />
-              <InvisibleA11yLabel>{zoomButtonText}</InvisibleA11yLabel>
-            </button>
           ) : null}
           {actionPath && actionText ? (
             <ActionLink
