@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { ExclamationCircle } from '@styled-icons/fa-solid/ExclamationCircle'
 import { format, parse } from 'date-fns'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
-import { MagnifyingGlass } from '@styled-icons/fa-solid/MagnifyingGlass'
 import { MapRef } from 'react-map-gl'
+import { SatelliteDish } from '@styled-icons/fa-solid/SatelliteDish'
 import { utcToZonedTime } from 'date-fns-tz'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component, FormEvent } from 'react'
@@ -214,8 +214,7 @@ class StopScheduleViewer extends Component<Props, State> {
         <HeaderCard>
           {stopData?.name ? (
             <StopCardHeader
-              // FIXME: What icon should we use?
-              actionIcon={MagnifyingGlass}
+              actionIcon={SatelliteDish}
               actionParams={{ entityId: stopId }}
               actionPath={`/nearby/${stopData.lat},${stopData.lon}`}
               actionText={
