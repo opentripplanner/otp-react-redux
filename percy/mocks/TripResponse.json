@@ -29,7 +29,6 @@
       "shapeId": "MARTA:109181",
       "wheelchairAccessible": "POSSIBLE",
       "bikesAllowed": "NO_INFORMATION",
-      "tripBikesAllowed": "NO_INFORMATION",
       "stops": [
         {
           "gtfsId": "MARTA:802",
