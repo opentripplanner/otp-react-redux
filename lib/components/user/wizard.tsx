@@ -8,7 +8,6 @@ import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
 import { AppReduxState } from '../../util/state-types'
-import { formattedToastSuccessMessage, toastPromise } from '../util/toasts'
 import { GREY_ON_WHITE } from '../util/colors'
 import PageTitle from '../util/page-title'
 
@@ -93,17 +92,6 @@ class Wizard extends Component<Props> {
         this._routeTo(nextId)
       }
     } else {
-      // Display a toast to acknowledge saved changes
-      // (although in reality, changes quietly took effect in previous screens).
-      toastPromise(
-        // Fake promise to make sure toast is announced to screenreaders. See https://github.com/opentripplanner/otp-react-redux/pull/1400 for details.
-        new Promise((resolve) => resolve(null)),
-        formattedToastSuccessMessage(
-          title,
-          intl.formatMessage({ id: 'actions.user.preferencesSaved' })
-        ),
-        intl
-      )
       routeTo(returnTo)
     }
   }
