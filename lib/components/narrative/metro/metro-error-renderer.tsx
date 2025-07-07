@@ -38,13 +38,12 @@ const Container = styled.li`
   p {
     grid-column: 2;
     grid-row: 2;
-    padding-bottom: 10px;
   }
 
+  /* Center the body text if there is no header */
   p:not(h2 ~ p) {
     grid-row: 1 / -1;
     place-self: center start;
-    padding-bottom: 0;
     margin-bottom: 0;
   }
 `
@@ -57,7 +56,7 @@ export const IconMessageContainer = ({
 }: {
   body?: React.ReactNode
   header?: React.ReactNode
-  icon?: React.ComponentType<any>
+  icon?: React.ElementType
   iconSize?: string
 }): JSX.Element => (
   <Container>
