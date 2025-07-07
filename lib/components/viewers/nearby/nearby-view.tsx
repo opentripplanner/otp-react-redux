@@ -123,6 +123,7 @@ function getNearbyCoordsFromUrlOrLocationOrMapCenter(
   return null
 }
 
+// eslint-disable-next-line complexity
 function NearbyView({
   currentPosition,
   currentServiceWeek,
@@ -399,7 +400,11 @@ function NearbyView({
           ) : filteredNearby?.length > 0 ? (
             nearbyItemList
           ) : (
-            <FormattedMessage id="components.NearbyView.nothingNearby" />
+            <IconMessageContainer
+              body={intl.formatMessage({
+                id: 'components.NearbyView.nothingNearby'
+              })}
+            />
           ))}
       </NearbySidebarContainer>
       <VehiclePositionRetriever />
