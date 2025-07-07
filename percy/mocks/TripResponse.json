@@ -42,8 +42,7 @@
 						"stopId": "MARTA:802",
 						"wheelchairBoarding": "POSSIBLE",
 						"zoneId": null
-					},
-					"stopPositionInPattern": 0
+					}
 				},
 				{
 					"scheduledDeparture": 43320,
@@ -57,8 +56,7 @@
 						"stopId": "MARTA:224",
 						"wheelchairBoarding": "POSSIBLE",
 						"zoneId": null
-					},
-					"stopPositionInPattern": 1
+					}
 				},
 				{
 					"scheduledDeparture": 43500,
@@ -72,8 +70,7 @@
 						"stopId": "MARTA:803",
 						"wheelchairBoarding": "POSSIBLE",
 						"zoneId": null
-					},
-					"stopPositionInPattern": 2
+					}
 				},
 				{
 					"scheduledDeparture": 43740,
@@ -87,8 +84,7 @@
 						"stopId": "MARTA:193",
 						"wheelchairBoarding": "POSSIBLE",
 						"zoneId": null
-					},
-					"stopPositionInPattern": 3
+					}
 				},
 				{
 					"scheduledDeparture": 43920,
@@ -102,8 +98,7 @@
 						"stopId": "MARTA:186",
 						"wheelchairBoarding": "POSSIBLE",
 						"zoneId": null
-					},
-					"stopPositionInPattern": 4
+					}
 				},
 				{
 					"scheduledDeparture": 44100,
@@ -117,8 +112,7 @@
 						"stopId": "MARTA:195",
 						"wheelchairBoarding": "POSSIBLE",
 						"zoneId": null
-					},
-					"stopPositionInPattern": 5
+					}
 				},
 				{
 					"scheduledDeparture": 44220,
@@ -132,8 +126,7 @@
 						"stopId": "MARTA:804",
 						"wheelchairBoarding": "POSSIBLE",
 						"zoneId": null
-					},
-					"stopPositionInPattern": 6
+					}
 				},
 				{
 					"scheduledDeparture": 44400,
@@ -147,8 +140,7 @@
 						"stopId": "MARTA:805",
 						"wheelchairBoarding": "POSSIBLE",
 						"zoneId": "0"
-					},
-					"stopPositionInPattern": 7
+					}
 				},
 				{
 					"scheduledDeparture": 44520,
@@ -162,8 +154,7 @@
 						"stopId": "MARTA:198",
 						"wheelchairBoarding": "POSSIBLE",
 						"zoneId": null
-					},
-					"stopPositionInPattern": 8
+					}
 				},
 				{
 					"scheduledDeparture": 44580,
@@ -177,8 +168,7 @@
 						"stopId": "MARTA:806",
 						"wheelchairBoarding": "POSSIBLE",
 						"zoneId": null
-					},
-					"stopPositionInPattern": 9
+					}
 				},
 				{
 					"scheduledDeparture": 44640,
@@ -192,8 +182,7 @@
 						"stopId": "MARTA:807",
 						"wheelchairBoarding": "POSSIBLE",
 						"zoneId": null
-					},
-					"stopPositionInPattern": 10
+					}
 				},
 				{
 					"scheduledDeparture": 44700,
@@ -207,8 +196,7 @@
 						"stopId": "MARTA:471",
 						"wheelchairBoarding": "POSSIBLE",
 						"zoneId": null
-					},
-					"stopPositionInPattern": 11
+					}
 				},
 				{
 					"scheduledDeparture": 44760,
@@ -222,8 +210,7 @@
 						"stopId": "MARTA:486",
 						"wheelchairBoarding": "POSSIBLE",
 						"zoneId": null
-					},
-					"stopPositionInPattern": 12
+					}
 				},
 				{
 					"scheduledDeparture": 44940,
@@ -237,8 +224,7 @@
 						"stopId": "MARTA:39",
 						"wheelchairBoarding": "POSSIBLE",
 						"zoneId": null
-					},
-					"stopPositionInPattern": 13
+					}
 				},
 				{
 					"scheduledDeparture": 45120,
@@ -252,8 +238,7 @@
 						"stopId": "MARTA:40",
 						"wheelchairBoarding": "POSSIBLE",
 						"zoneId": null
-					},
-					"stopPositionInPattern": 14
+					}
 				}
 			],
       "geometry": {
