@@ -76,6 +76,7 @@ actions:
       réessayez.
 common:
   coordinates: "{lat}; {lon}"
+  currentlySelected: " (actuellement sélectionné)"
   dateExpressions:
     today: Aujourd'hui
     tomorrow: Demain
@@ -719,9 +720,12 @@ components:
       heading: Suivi suspendu
     nextTripNotPossible:
       description: >
-        Le planificateur n'a pas pu trouver votre trajet aujourd'hui. Veuillez
-        replanifier votre trajet pour trouver une alternative.
-      heading: Trajet infaisable aujourd'hui
+        Votre trajet étant introuvable après plusieurs tentatives, le suivi a
+        été suspendu jusqu'à demain, votre itinéraire ayant probablement changé.
+        Pour relancer le suivi, cliquez sur Reprendre. Si le suivi n'est
+        toujours pas disponible, cliquez sur Planifier un trajet pour
+        enregistrer un trajet valable.
+      heading: Suivi impossible
     noLongerPossible:
       description: >
         Le planificateur n'a pas pu trouver votre trajet pour aucun des jours
