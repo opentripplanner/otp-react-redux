@@ -5,7 +5,8 @@ actions:
     callQuerySaveError: "அழைப்பு வினவல்களை சேமிப்பதில் பிழை: {err}"
     callSaveError: "அழைப்பைச் சேமிக்க முடியவில்லை: {err}"
     checkSessionError: "அங்கீகார அமர்வை நிறுவுவதில் பிழை: {err}"
-    couldNotFindCallError: அழைப்பைக் கண்டுபிடிக்க முடியவில்லை. சேமி வினவல் கோரிக்கையை ரத்து செய்தல்.
+    couldNotFindCallError: அழைப்பைக் கண்டுபிடிக்க முடியவில்லை. சேமி வினவல் 
+      கோரிக்கையை ரத்து செய்தல்.
     fetchCallsError: "அழைப்புகளைப் பெறுவதில் பிழை: {err}"
     queryFetchError: "வினவல்களைப் பெறுவதில் பிழை: {err}"
   fieldTrip:
@@ -20,7 +21,7 @@ actions:
     editSubmitterNotesError: "சமர்ப்பிப்பாளரின் குறிப்புகளைத் திருத்துதல்:"
     fetchFieldTripError: "புல பயணத்தைப் பெறுவதில் பிழை: {err}"
     fetchFieldTripsError: "புலப் பயணங்களைப் பெறுவதில் பிழை: {err}"
-    fetchTripsForDateError: "கள பயண பயண தேதிக்கான பயணங்களைப் பெறுவதில் பிழை: {err}"
+    fetchTripsForDateError: "கள பயண தேதிக்கான பயணங்களைப் பெறுவதில் பிழை: {err}"
     incompatibleTripDateError: >-
       திட்டமிடப்பட்ட பயண தேதி ({tripDate}) பயணத்தின் கோரப்பட்ட நாள் அல்ல
       ({requestDate})
@@ -28,7 +29,8 @@ actions:
       திட்டத்தை சேமிக்க முடியாது: ஒன்று அல்லது அதற்கு மேற்பட்ட வாகனங்களில் திறன்
       இல்லாததால் இந்த திட்டத்தை சேமிக்க முடியவில்லை. உங்கள் பயணத்தை மீண்டும்
       திட்டமிடுங்கள்.
-    maxTripRequestsExceeded: சரியான முடிவுகள் இல்லாமல் பயணக் கோரிக்கைகளின் எண்ணிக்கை மீறியது
+    maxTripRequestsExceeded: சரியான முடிவுகள் இல்லாமல் பயணக் கோரிக்கைகளின் 
+      எண்ணிக்கை மீறியது
     saveItinerariesError: "பயணத்திட்டங்களைச் சேமிப்பதில் தோல்வி: {err}"
     setDateError: "அமைத்தல் தேதி:"
     setGroupSizeError: "குழு அளவை அமைப்பதில் பிழை:"
@@ -38,7 +40,8 @@ actions:
     deniedAccessAlert: |
       உங்கள் இருப்பிடத்திற்கான அணுகல் தடுக்கப்பட்டுள்ளது.
        உங்கள் தற்போதைய இருப்பிடத்தைப் பயன்படுத்த, உங்கள் உலாவியில் இருந்து இருப்பிட அனுமதிகளை இயக்கவும், பக்கத்தை மீண்டும் ஏற்றவும். 
-    geolocationNotSupportedError: உங்கள் உலாவியால் புவிஇருப்பிடத்தை ஆதரிக்கவில்லை
+    geolocationNotSupportedError: உங்கள் உலாவியால் புவிஇருப்பிடத்தை 
+      ஆதரிக்கவில்லை
     unknownPositionError: தெரியாத பிழை நிலையைப் பெறுகிறது
     userDeniedPermission: பயனர் இசைவு மறுத்தார்
   map:
@@ -51,11 +54,13 @@ actions:
     emailVerificationResent: மின்னஞ்சல் சரிபார்ப்பு செய்தி கோபமடைந்தது.
     genericError: "பிழை ஏற்பட்டது: {err}"
     getDependentUserInfoFailed: இயக்கம் சுயவிவரத் தகவலைப் பெறுவதில் பிழை.
-    itineraryExistenceCheckFailed: நீங்கள் தேர்ந்தெடுத்த பயணம் சாத்தியமா என்பதை சரிபார்க்க பிழை.
+    itineraryExistenceCheckFailed: நீங்கள் தேர்ந்தெடுத்த பயணம் சாத்தியமா என்பதை 
+      சரிபார்க்க பிழை.
     mustAcceptTermsToSavePlace: >-
       இருப்பிடங்களைச் சேமிக்க பயன்பாட்டு விதிமுறைகளை (எனது கணக்கின் கீழ்)
       ஏற்றுக்கொள்ளுங்கள்.
     mustBeLoggedInToSavePlace: இருப்பிடங்களைச் சேமிக்க உள்நுழைக.
+    placeDeleted: உங்கள் இடம் நீக்கப்பட்டது.
     placeRemembered: இந்த இடத்திற்கான அமைப்புகள் சேமிக்கப்பட்டுள்ளன.
     preferencesSaved: உங்கள் விருப்பத்தேர்வுகள் சேமிக்கப்பட்டுள்ளன.
     smsInvalidCode: நீங்கள் உள்ளிட்ட குறியீடு தவறானது. மீண்டும் முயற்சிக்கவும்.
@@ -69,6 +74,7 @@ actions:
       முயற்சிக்கவும்.
 common:
   coordinates: "{lat}, {lon}"
+  currentlySelected: " (தற்போது தேர்ந்தெடுக்கப்பட்டுள்ளது)"
   dateExpressions:
     today: இன்று
     tomorrow: நாளை
@@ -105,6 +111,7 @@ common:
     edit: தொகு
     error: பிழை!
     finish: முடிக்க
+    loading: ஏற்றுகிறது
     next: அடுத்தது
     "no": இல்லை
     print: அச்சிடுக
@@ -154,7 +161,8 @@ common:
   searchForms:
     click: சொடுக்கு செய்க
     enterDestination: வரைபடத்தில் இலக்கு அல்லது {mapAction} ஐ உள்ளிடவும்…
-    enterStartLocation: வரைபடத்தில் தொடக்க இருப்பிடத்தை அல்லது {mapAction} ஐ உள்ளிடவும்…
+    enterStartLocation: வரைபடத்தில் தொடக்க இருப்பிடத்தை அல்லது {mapAction} ஐ 
+      உள்ளிடவும்…
     tap: தட்டவும்
   time:
     duration:
@@ -173,7 +181,8 @@ components:
     message: உங்கள் பயணங்களைத் திட்டமிடத் தொடங்க நீங்கள் தயாராக உள்ளீர்கள்.
   AddPlaceButton:
     addPlace: இடம் சேர்க்கவும்
-    needOriginDestination: இடைநிலை இடங்களைச் சேர்க்க தோற்றம்/இலக்கை வரையறுக்கவும்
+    needOriginDestination: இடைநிலை இடங்களைச் சேர்க்க தோற்றம்/இலக்கை 
+      வரையறுக்கவும்
     tooManyPlaces: அதிகபட்ச இடைநிலை இடங்கள் எட்டப்பட்டன
   AdvancedOptions:
     bannedRoutes: தடைசெய்யப்பட்ட பாதைகளைத் தேர்ந்தெடுக்கவும்…
@@ -181,8 +190,8 @@ components:
   AfterSignInScreen:
     mainTitle: திருப்பிவிடுதல் ...
     message: >-
-      சில விநாடிகளுக்குப் பிறகு பக்கம் ஏற்றப்படாவிட்டால், <RedirectLink> இங்கே
-      சொடுக்கு செய்க </RedirectLink>.
+      சில விநாடிகளுக்குப் பிறகு பக்கம் ஏற்றப்படாவிட்டால், <redirectLink>இங்கே
+      சொடுக்கு செய்க</redirectLink>.
   AppMenu:
     callHistory: வரலாற்றை அழைக்கவும்
     closeMenu: பட்டியல் மூடு
@@ -227,7 +236,8 @@ components:
     intermediateDestination: இடைநிலை இலக்கை உள்ளிடவும்
   CompanionsPane:
     addNewCompanion: ஒரு புதிய பயணத் தோழரைச் சேர்க்கவும்
-    companionAlreadyAdded: உங்களிடம் ஏற்கனவே மின்னஞ்சல் {மின்னஞ்சல் with உடன் ஒரு தோழர் இருக்கிறார்
+    companionAlreadyAdded: உங்களிடம் ஏற்கனவே மின்னஞ்சல்{email} உடன் ஒரு தோழர் 
+      இருக்கிறார்
     companionExplanation: >
       ஏற்கனவே உள்ள சி-மேப் பயனரை அவர்களின் மின்னஞ்சலை உள்ளிட்டு பயணத் தோழராக
       அழைக்க அழைக்கவும். அவர்கள் ஏற்றுக்கொள்ளும்போது, அவர்களின் நிலை
@@ -245,7 +255,7 @@ components:
     departAt: புறப்படுங்கள்
     now: இப்போது
   DateTimePreview:
-    arriveAt: வருகை {வருகை நேரம், நேரம், குறுகிய}
+    arriveAt: வருகை {வருகைநேரம், நேரம், குறுகிய}
     dayLastWeek: கடைசி {formattedDayOfWeek}
     departAt: புறப்படுதல் {புறப்பாடு, நேரம், குறுகிய}
     editDepartOrArrival: புறப்படும் அல்லது வருகை நேரத்தைத் திருத்தவும்
@@ -270,12 +280,18 @@ components:
   FavoritePlaceList:
     addAnotherPlace: மற்றொரு இடத்தைச் சேர்க்கவும்
     description: >-
-      நேர திட்டமிடல் பயணங்களைச் சேமிக்க நீங்கள் அடிக்கடி அடிக்கடி வரும்
-      இடங்களைச் சேர்க்கவும்:
+      நேர திட்டமிடல் பயணங்களைச் சேமிக்க நீங்கள் அடிக்கடி வரும் இடங்களைச்
+      சேர்க்கவும்:
     editThisPlace: இந்த இடத்தைத் திருத்தவும்
     setAddressForPlaceType: உங்கள் {placeType} முகவரியை அமைக்கவும்
   FavoritePlaceScreen:
     addNewPlace: புதிய இடத்தைச் சேர்க்கவும்
+    charactersOverLimit: >-
+      {எழுத்துக்கள், பன்மை, ஒன்று {# எழுத்துக்குறி வரம்புக்கு மேல்} பிற {#
+      எழுத்துக்கள் வரம்புக்கு மேல்}}
+    charactersRemaining: >-
+      {எழுத்துக்கள், பன்மை, ஒன்று {# எழுத்து மீதமுள்ள} மற்ற {# எழுத்துக்கள்
+      மீதமுள்ள}}
     editPlace: திருத்து {placeName}
     editPlaceGeneric: இடத்தைத் திருத்து
     invalidAddress: இந்த இடத்திற்கு ஒரு இடத்தை அமைக்கவும்.
@@ -283,6 +299,7 @@ components:
     nameAlreadyUsed: >-
       நீங்கள் ஏற்கனவே இந்த பெயரை வேறொரு இடத்திற்கு பயன்படுத்துகிறீர்கள்.
       தயவுசெய்து வேறு பெயரை உள்ளிடவும்.
+    nameTooLong: பெயர் {char} எழுத்துக்களை விட குறைவாக இருக்க வேண்டும்.
     placeNotFound: இந்த இடம் இல்லை
     placeNotFoundDescription: மன்னிக்கவும், கோரப்பட்ட இடம் கிடைக்கவில்லை.
   FormNavigationButtons:
@@ -308,7 +325,7 @@ components:
   MetroUI:
     arriveAt: நீங்கள் வருகிறீர்கள்
     fare: "{fare}"
-    itineraryDescription: "{நேரம் {time}"
+    itineraryDescription: "{time} பயணத்திட்டம் {routes} பயன்படுத்தி"
     itinerarySummary: "{stopName} | இலிருந்து {cost}"
     leaveAt: நீங்கள் வெளியேறுகிறீர்கள்
     multipleOptions: பல விருப்பங்கள்
@@ -364,7 +381,7 @@ components:
       {பயணத்திட்டம், பன்மை, ஒன்று {# பயணம் காணப்படுகிறது} பிற {# பயணத்திட்டங்கள்
       காணப்படுகின்றன}}
     resultsSortedBy: >-
-      பயண முடிவுகள் தற்போது {sorteledected by ஆல் வரிசைப்படுத்தப்பட்டுள்ளன.
+      பயண முடிவுகள் தற்போது {sortSelected}ஆல் வரிசைப்படுத்தப்பட்டுள்ளன.
       முடிவுகளை வரிசைப்படுத்தும் முறையை மாற்ற, கீழே உள்ள "வரிசைப்படுத்தப்பட்ட
       முடிவுகள்" பொத்தானைப் பயன்படுத்தவும்.
     searching: உங்கள் விருப்பங்களைக் கண்டறிதல் ...
@@ -383,14 +400,15 @@ components:
     signOut: விடுபதிகை
   NearbyView:
     bikeRentalStation: பைக் வாடகை நிலையம்
-    bikesAvailable: "{பைக்ச்வெயிலபிள், பன்மை, ஒன்று {# பைக்} மற்ற {# பைக்குகள்}}} கிடைக்கிறது"
+    bikesAvailable: "{பைக்ச்வெயிலபிள், பன்மை, ஒன்று {# பைக்} மற்ற {# பைக்குகள்}}}
+      கிடைக்கிறது"
     companyBicycle: "{company} பைக்"
     companyScooter: "{company} ச்கூட்டர்"
     distanceAway: "{localizedDistanceString} தொலைவில்"
     error: அருகிலுள்ள வசதிகளை ஏற்றுவதில் பிழை ஏற்பட்டது.
     header: அருகிலுள்ள பார்வை
     headsign: "{destination}"
-    nearbyListIntro: அருகிலுள்ள நிறுவனங்களின் பட்டியல்.
+    nearbyListIntro: அருகில் உள்ள {count} நிறுவனங்களின் பட்டியல்.
     nothingNearby: அருகிலேயே இடங்கள் இல்லை.
     searchNearby: அருகிலேயே தேடுங்கள் ...
     spacesAvailable: "{spacesAvailable} வெற்று இடங்கள் கிடைக்கின்றன"
@@ -459,8 +477,10 @@ components:
     changeNumber: எண்ணை மாற்றவும்
     invalidCode: சரிபார்ப்புக் குறியீட்டிற்கு 6 இலக்கங்களை உள்ளிடவும்.
     invalidPhone: செல்லுபடியாகும் தொலைபேசி எண்ணை உள்ளிடவும்.
-    phoneNumberSubmitted: தொலைபேசி எண் {phoneNumber} வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது.
-    phoneNumberVerified: தொலைபேசி எண் {phoneNumber} வெற்றிகரமாக சரிபார்க்கப்பட்டது.
+    phoneNumberSubmitted: தொலைபேசி எண் {phoneNumber} வெற்றிகரமாக 
+      சமர்ப்பிக்கப்பட்டது.
+    phoneNumberVerified: தொலைபேசி எண் {phoneNumber} வெற்றிகரமாக 
+      சரிபார்க்கப்பட்டது.
     placeholder: உங்கள் தொலைபேசி எண்ணை உள்ளிடவும்
     prompt: "எச்எம்எச் அறிவிப்புகளுக்கு உங்கள் தொலைபேசி எண்ணை உள்ளிடவும்:"
     requestNewCode: புதிய குறியீட்டைக் கோருங்கள்
@@ -475,7 +495,8 @@ components:
       எச்எம்எச் செய்தி பயன்பாட்டை சரிபார்க்கவும், கீழே உள்ள குறியீட்டை
       உள்ளிடவும் (குறியீடு 10 நிமிடங்களுக்குப் பிறகு காலாவதியாகிறது).
     verify: சரிபார்க்கவும்
-    verifySms: எச்எம்எச் அறிவிப்புகளை அமைக்க சரிபார்ப்பு செயல்முறையை முடிக்கவும்.
+    verifySms: எச்எம்எச் அறிவிப்புகளை அமைக்க சரிபார்ப்பு செயல்முறையை 
+      முடிக்கவும்.
   Place:
     deleteThisPlace: இந்த இடத்தை நீக்கு
     enterAlert: >
@@ -517,19 +538,25 @@ components:
   RouteDetails:
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: மேலும் விவரங்கள்
-    operatedBy: "{Angencyname by ஆல் இயக்கப்படுகிறது"
+    operatedBy: "{agencyName}ஆல் இயக்கப்படுகிறது"
     selectADirection: ஒரு திசையைத் தேர்ந்தெடுக்கவும் ...
     stopsTo: நோக்கி
   RouteViewer:
     agencyFilter: ஏசென்சி வடிகட்டி
     allAgencies: அனைத்து ஏசென்சிகளும்
     allModes: அனைத்து முறைகளும்
+    details: " "
     findARoute: ஒரு வழியைக் கண்டறியவும்
     header: பாதை பார்வையாளர்
     modeFilter: பயன்முறை வடிகட்டி
     noFilteredRoutesFound: உங்கள் வடிப்பானுடன் எந்த வழிகளும் பொருந்தவில்லை!
+    noRouteFilter: பாதை பட்டியலில் தற்போது வடிப்பான்கள் எதுவும் 
+      பயன்படுத்தப்படவில்லை.
     openPatternViewer: பாதை விவரங்களைக் காண்க
-    shortTitle: வழிகளைக் காண்க
+    routesFilteredBy: >-
+      பின்வரும் வடிப்பான்கள் தற்போது பாதை பட்டியலில் பயன்படுத்தப்படுகின்றன:
+      {list}.
+    shortTitle: வழிகள்
     stopsInDirectionOfTravel: "பயணத்தின் இந்த திசையில் நிறுத்தப்படும்:"
     title: பாதை பார்வையாளர்
   SaveTripButton:
@@ -541,7 +568,7 @@ components:
     signInText: பயணத்தை சேமிக்க உள்நுழைக
     signInTooltip: பயணத்தை சேமிக்க உள்நுழைக.
   SavedTripEditor:
-    deleteSavedTrip: சேமித்த பயணத்தை நீக்கு
+    deleteSavedTrip: நீக்கு
     editSavedTrip: சேமித்த பயணத்தைத் திருத்து
     readOnlyBanner: >-
       {creator} இந்த பயணத்தில் உங்களை உருவாக்கி சேர்த்துள்ளார். எனவே, நீங்கள்
@@ -559,7 +586,8 @@ components:
     fromTo: "{from} முதல் {to}"
     myTrips: என் பயணங்கள்
     noSavedTrips: உங்களிடம் சேமிக்கப்பட்ட பயணங்கள் எதுவும் இல்லை
-    noSavedTripsInstructions: முதலில் வரைபடத்திலிருந்து பயணத் தேடலைச் செய்யுங்கள்.
+    noSavedTripsInstructions: முதலில் வரைபடத்திலிருந்து பயணத் தேடலைச் 
+      செய்யுங்கள்.
     pause: இடைநிறுத்தம்
     resume: மீண்டும் தொடங்குங்கள்
   SavedTripScreen:
@@ -583,7 +611,8 @@ components:
     header: காலக்கெடு வரை அமர்வு!
     keepSession: அமர்வைத் தொடரவும்
   SimpleRealtimeAnnotation:
-    usingRealtimeInfo: இந்த பயணம் நிகழ்நேர போக்குவரத்து மற்றும் தாமத தகவல்களைப் பயன்படுத்துகிறது
+    usingRealtimeInfo: இந்த பயணம் நிகழ்நேர போக்குவரத்து மற்றும் தாமத தகவல்களைப் 
+      பயன்படுத்துகிறது
   StackedPaneDisplay:
     savePreferences: விருப்பங்களை சேமிக்கவும்
   StatusBadge:
@@ -606,7 +635,7 @@ components:
       இது ஒரு நெகிழ்வு நிறுத்தமாகும். கோரிக்கையின் மூலம் இந்த நெகிழ்வான
       மண்டலத்தில் வாகனங்கள் கைவிடப்பட்டு பயணிகளை அழைத்துச் செல்லும். இந்த
       பகுதியில் சேவைக்கு நீங்கள் முன்னால் அழைக்க வேண்டியிருக்கும்.
-    forStop: "{stopName க்கு க்கு"
+    forStop: "{stopName} க்கு"
     header: பார்வையாளரை நிறுத்துங்கள்
     loadingText: ஏற்றுதல் நிறுத்தம் ...
     noStopsFound: தேதிக்கு நிறுத்த நேரங்கள் எதுவும் கிடைக்கவில்லை.
@@ -635,25 +664,27 @@ components:
     mustAgreeToTerms: தொடர பணி விதிமுறைகளை நீங்கள் ஒப்புக் கொள்ள வேண்டும்.
     termsOfServiceStatement: >
       நான் குறைந்தது 18 வயதாகிவிட்டேன் என்பதை உறுதிப்படுத்துகிறேன், மேலும் பயணத்
-      திட்டத்தைப் பயன்படுத்துவதற்காக <neffetsorofuselink> பணி விதிமுறைகள்
-      </nemsofuselink> ஐப் படித்து ஒப்புக்கொள்கிறேன்.
+      திட்டத்தைப் பயன்படுத்துவதற்காக <termsOfUseLink> பணி
+      விதிமுறைகள்</termsOfUseLink > ஐப் படித்து ஒப்புக்கொள்கிறேன்.
     termsOfStorageStatement: >
       விரும்பினால்: எனது பகுதியில் போக்குவரத்து சேவைகளை மேம்படுத்துவதற்காக எனது
-      வரலாற்று திட்டமிடப்பட்ட பயணங்களை சேமித்து வைக்கும் பயணத் திட்டத்திற்கு
-      நான் ஒப்புக்கொள்கிறேன். <ச்டோராகெலிங்கின் விதிமுறைகள்> மேலும் செய்தி ...
-      </சேமிப்பக இணைப்பின் விதிமுறைகள்>
+      வரலாற்று திட்டமிடப்பட்ட பயணங்களைச் சேமித்து வைக்கும் பயணத் திட்டத்திற்கு
+      நான் ஒப்புக்கொள்கிறேன். <termsOfStorageLink>மேலும் செய்தி ...
+      </termsOfStorageLink>
   TransitVehicleOverlay:
     in_transit_to: "அடுத்த நிறுத்தம்: {stop}"
     incoming_at: "அணுகும்: {stop}"
-    stopped_at: "{STOP bத்தில் கதவுகள் திறக்கப்படுகின்றன"
+    stopped_at: "{stop}இல் கதவுகள் திறக்கப்படுகின்றன"
     travelingAt: "{milesPerHour} இல் பயணம்"
     vehicleName: வண்டி {vehicleNumber}
   TripBasicsPane:
-    checkingItineraryExistence: வாரத்தின் ஒவ்வொரு நாளுக்கும் பயணத்தின் இருப்பை சரிபார்க்கிறது ...
+    checkingItineraryExistence: வாரத்தின் ஒவ்வொரு நாளுக்கும் பயணத்தின் இருப்பை 
+      சரிபார்க்கிறது ...
     onlyOnDate: "{தேதி, தேதியில் மட்டுமே, :: eeeee yyyymmdd}"
     recurringEachWeek: ஒவ்வொரு வாரமும் சில நாட்களில்
     tripDaysPrompt: இந்த பயணத்தை நீங்கள் என்ன நாட்கள் எடுக்கிறீர்கள்?
-    tripIsAvailableOnDaysIndicated: மேலே குறிப்பிட்டுள்ளபடி உங்கள் பயணம் வாரத்தின் நாட்களில் கிடைக்கிறது.
+    tripIsAvailableOnDaysIndicated: மேலே குறிப்பிட்டுள்ளபடி உங்கள் பயணம் 
+      வாரத்தின் நாட்களில் கிடைக்கிறது.
     tripNamePrompt: "இந்த பயணத்திற்கு ஒரு பெயரை வழங்கவும்:"
     tripNotAvailableOnDay: பயணம் {repeatedDay}
     unsavedChangesExistingTrip: >-
@@ -668,7 +699,8 @@ components:
     primaryLabel: "முதன்மை பயணி: "
   TripNotificationsPane:
     advancedSettings: மேம்பட்ட அமைப்புகள்
-    altRouteRecommended: மாற்று பாதை அல்லது பரிமாற்ற புள்ளி பரிந்துரைக்கப்படுகிறது
+    altRouteRecommended: மாற்று பாதை அல்லது பரிமாற்ற புள்ளி 
+      பரிந்துரைக்கப்படுகிறது
     delaysAboveThreshold: விட தாமதங்கள் அல்லது இடையூறுகள் உள்ளன
     howToReceiveAlerts: >
       நீங்கள் சேமித்த பயணங்களுக்கான விழிப்பூட்டல்களைப் பெற, உங்கள் கணக்கு
@@ -678,7 +710,8 @@ components:
     notificationsTurnedOff: உங்கள் கணக்கிற்கு அறிவிப்புகள் அணைக்கப்படுகின்றன.
     notifyViaChannelWhen: "{channel} வழியாக எனக்கு அறிவிக்கவும்:"
     oneHour: 1 மணி நேரம்
-    realtimeAlertFlagged: எனது பயணத்தில் ஒரு நிகழ்நேர எச்சரிக்கை கொடியிடப்பட்டுள்ளது
+    realtimeAlertFlagged: எனது பயணத்தில் ஒரு நிகழ்நேர எச்சரிக்கை 
+      கொடியிடப்பட்டுள்ளது
     timeBefore: "{time} முன்"
   TripPreviewLayout:
     previewTrip: முன்னோட்டம் பயணம்
@@ -688,29 +721,31 @@ components:
     planNewTrip: புதிய பயணத்தைத் திட்டமிடுங்கள்
   TripStatusRenderers:
     active:
-      delayedHeading: பயணம் நடந்து கொண்டிருக்கிறது மற்றும் தாமதமானது {formattedDuration}!
-      description: பயணம் இலக்கு மற்றும் {வருகை நேரம், நேரம், குறுகிய}.
+      delayedHeading: பயணம் நடந்து கொண்டிருக்கிறது மற்றும் தாமதமானது 
+        {formattedDuration}!
+      description: பயணம் இலக்கு மற்றும் {வருகைநேரம், நேரம், குறுகிய}.
       earlyHeading: >-
         பயணம் நடந்து கொண்டிருக்கிறது மற்றும் எதிர்பார்த்ததை விட
         {formattedDuration} முன்னதாக வந்து வருகிறது!
-      noDataHeading: பயணம் நடந்து வருகிறது (நிகழ்நேர புதுப்பிப்புகள் எதுவும் கிடைக்கவில்லை).
+      noDataHeading: பயணம் நடந்து வருகிறது (நிகழ்நேர புதுப்பிப்புகள் எதுவும் 
+        கிடைக்கவில்லை).
       onTimeHeading: பயணம் நடந்து வருகிறது, சரியான நேரத்தில் உள்ளது.
     base:
       lastCheckedDefaultText: கடைசியாக சரிபார்க்கப்பட்ட நேரம் தெரியவில்லை
       lastCheckedText: "கடைசியாக சரிபார்க்கப்பட்டது: {formattedDuration} முன்பு"
       togglePause: இடைநிறுத்தம்
       tripIsNotSnoozed: இன்றைய மீதமுள்ள உறக்கநிலை
-      tripIsSnoozed: பயண பயண பகுப்பாய்வு
+      tripIsSnoozed: பயண பகுப்பாய்வுத் தொடர்
       unknownState: தெரியாத பயண நிலை
       untogglePause: மீண்டும் தொடங்குங்கள்
     inactive:
-      description: புதுப்பிக்கப்பட்ட நிலையைக் காண பயண கண்காணிப்பை மீண்டும் தொடங்குங்கள்
+      description: புதுப்பிக்கப்பட்ட நிலையைக் காண பயண கண்காணிப்பை மீண்டும் 
+        தொடங்குங்கள்
       heading: பயண கண்காணிப்பு இடைநிறுத்தப்பட்டுள்ளது
     nextTripNotPossible:
       description: >
-        பயணத் திட்டத்தால் இன்று உங்கள் பயணத்தை கண்டுபிடிக்க முடியவில்லை. மாற்று
-        வழியைக் கண்டுபிடிக்க உங்கள் பயணத்திட்டத்தை மீண்டும் திட்டமிட
-        முயற்சிக்கவும்.
+        பயணத் திட்டத்தால் இன்று உங்கள் பயணத்தை கண்டுபிடிக்க முடியவில்லை. மாற்று வழியைக்
+        கண்டுபிடிக்க உங்கள் பயணத்திட்டத்தை மீண்டும் திட்டமிட முயற்சிக்கவும்.
       heading: பயணம் இன்று சாத்தியமில்லை
     noLongerPossible:
       description: >
@@ -736,7 +771,8 @@ components:
         பயணம் {டிரிப்ச்டார்ட், நேரம், குறுகிய} இல் தொடங்க உள்ளது. (நிகழ்நேர
         கண்காணிப்பு {மானிட்டரிங்ச்டார்ட், நேரம், குறுகிய} இல் தொடங்கும்.)
       tripStartIsDelayed: பயண தொடக்க நேரம் தாமதமானது {duration}!
-      tripStartIsEarly: பயண தொடக்க நேரம் நடக்கிறது {duration} எதிர்பார்த்ததை விட முன்னதாக!
+      tripStartIsEarly: பயண தொடக்க நேரம் நடக்கிறது {duration} எதிர்பார்த்ததை விட
+        முன்னதாக!
       tripStartsSoonNoUpdates: >-
         பயணம் விரைவில் தொடங்குகிறது (நிகழ்நேர புதுப்பிப்புகள் எதுவும்
         கிடைக்கவில்லை).
@@ -794,10 +830,10 @@ components:
       அகற்றும். தொடரவா?
     favoriteStops: பிடித்த நிறுத்தங்கள்
     myPreferences: எனது விருப்பத்தேர்வுகள்
-    mySavedPlaces: எனது சேமித்த இடங்கள் (<agenelink> நிர்வகி </MangeneLink>)
+    mySavedPlaces: எனது சேமித்த இடங்கள் (<manageLink> நிர்வகி </manageLink>)
     noFavoriteStops: பிடித்த நிறுத்தங்கள் இல்லை
     recentPlaces: அண்மைக் கால இடங்கள்
-    recentSearchSummary: "{{mode} முதல் {வரை {from}"
+    recentSearchSummary: "{mode} {from} முதல் {to} வரை"
     recentSearches: அண்மைக் கால தேடல்கள்
     rememberSearches: அண்மைக் கால தேடல்கள்/இடங்களை நினைவில் கொள்கிறீர்களா?
     stopId: "ஐடியை நிறுத்து: {stopId}"
@@ -814,7 +850,8 @@ components:
       தயவுசெய்து உங்கள் மின்னஞ்சல் இன்பாக்சைச் சரிபார்த்து, உங்கள் கணக்கு
       அமைப்பை முடிப்பதற்கு முன் உங்கள் மின்னஞ்சல் முகவரியை சரிபார்க்க செய்தியில்
       உள்ள இணைப்பைப் பின்தொடரவும்.
-    instructions2: நீங்கள் சரிபார்க்கியதும், தொடர கீழே உள்ள பொத்தானைக் சொடுக்கு செய்க.
+    instructions2: நீங்கள் சரிபார்க்கியதும், தொடர கீழே உள்ள பொத்தானைக் சொடுக்கு 
+      செய்க.
     resendVerification: சரிபார்ப்பு மின்னஞ்சல் மீண்டும் அனுப்பவும்
   ViewSwitcher:
     nearby: அருகில்
@@ -835,7 +872,7 @@ util:
     errorPlanningTrip: பயணத்தைத் திட்டமிடும்போது பிழை ஏற்பட்டது.
     networkUnavailable: "{network} பிணையம் இந்த நேரத்தில் கிடைக்கவில்லை."
     noTripFound: எந்த பயணமும் கிடைக்கவில்லை.
-    noTripFoundForMode: "{முறைகள் க்கு க்கு எந்த பயணமும் கிடைக்கவில்லை."
+    noTripFoundForMode: "{modes} க்கு எந்தப் பயணமும் கிடைக்கவில்லை."
     noTripFoundReason: >-
       அதிகபட்ச குறிப்பிட்ட தூரத்திற்கு அல்லது குறிப்பிட்ட நேரத்தில் போக்குவரத்து
       பணி எதுவும் இருக்கலாம், அல்லது உங்கள் தொடக்க அல்லது இறுதி புள்ளி

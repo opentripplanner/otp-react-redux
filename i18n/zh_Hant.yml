@@ -48,6 +48,7 @@ actions:
     itineraryExistenceCheckFailed: 檢查您選取的行程是否可行時發生錯誤。
     mustAcceptTermsToSavePlace: 請接受使用條款 (在我的帳戶下)，以儲存地點。
     mustBeLoggedInToSavePlace: 請登入，以儲存地點。
+    placeDeleted: 您的地點已被刪除。
     placeRemembered: 此地點的設定已儲存。
     preferencesSaved: 您的偏好已儲存。
     smsInvalidCode: 您輸入的代碼無效。請再試一次。
@@ -91,6 +92,7 @@ common:
     edit: 編輯
     error: 錯誤！
     finish: 完成
+    loading: 載入中
     next: 前進
     "no": 否
     print: 列印
@@ -184,6 +186,8 @@ components:
     modeSelectorLabel: 選取出行模式
     moreOptions: 更多選擇
     tripOptions: 行程選擇
+    advancedHeader: 進階選項
+    saveAndReturn: 儲存並返回
   BatchSettings:
     destination: 目的地
     invalidModeSelection: 無法使用所選模式規劃行程。嘗試將公共交通納入您的模式選取內容。
@@ -232,6 +236,7 @@ components:
     setAddressForPlaceType: 設定您的{placeType}地址
   FavoritePlaceScreen:
     addNewPlace: 新增地點
+    charactersRemaining: "{chars, plural, one {# 剩餘字元} other {# 剩餘字元}}"
     editPlace: 編輯{placeName}
     editPlaceGeneric: 編輯地點
     invalidAddress: 請為此地點設定位置。

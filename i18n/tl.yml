@@ -45,7 +45,8 @@ actions:
 
       Para gamitin ang kasalukuyang lokasyon mo, i-enable ang mga pahintulot sa
       lokasyon mula sa browser mo, at i-reload ang page. 
-    geolocationNotSupportedError: Hindi sinusuportahan ng iyong browser ang geolocation
+    geolocationNotSupportedError: Hindi sinusuportahan ng iyong browser ang 
+      geolocation
     unknownPositionError: Nagka-error sa pagkuha sa posisyon
     userDeniedPermission: Tinanggihan ng user ang pahintulot
   map:
@@ -57,12 +58,16 @@ actions:
     confirmDeletePlace: Gusto mo bang alisin ang lugar na ito?
     emailVerificationResent: Ipinadala ulit ang mensahe ng pag-verify sa email.
     genericError: "Nagka-error: {err}"
-    getDependentUserInfoFailed: Pagkakamali sa pagkuha ng impormasyon sa profile sa kadaliang kumilos.
-    itineraryExistenceCheckFailed: Nagka-error sa pagtingin kung posible ang napili mong biyahe.
+    getDependentUserInfoFailed: Pagkakamali sa pagkuha ng impormasyon sa profile
+      sa kadaliang kumilos.
+    itineraryExistenceCheckFailed: Nagka-error sa pagtingin kung posible ang 
+      napili mong biyahe.
     mustAcceptTermsToSavePlace: >-
       Pakitanggap ang Mga Tuntunin ng Paggamit (sa ilalim ng Aking Account) para
       mag-save ng mga lokasyon.
-    mustBeLoggedInToSavePlace: Mangyaring mag-log in para mag-save ng mga lokasyon.
+    mustBeLoggedInToSavePlace: Mangyaring mag-log in para mag-save ng mga 
+      lokasyon.
+    placeDeleted: Na-delete na ang iyong lugar.
     placeRemembered: Na-save na ang mga setting para sa lugar na ito.
     preferencesSaved: Na-save ang iyong mga kagustuhan.
     smsInvalidCode: Invalid ang inilagay mong code. Subukan ulit.
@@ -111,6 +116,7 @@ common:
     edit: I-edit
     error: nagka-error!
     finish: Tapos na
+    loading: Loading
     next: Susunod
     "no": Hindi
     print: I-print
@@ -160,7 +166,8 @@ common:
   searchForms:
     click: click
     enterDestination: Ilagay ang destinasyon o {mapAction} sa mapa…
-    enterStartLocation: Ilagay ang lokasyon ng pagsisimula o {mapAction} sa mapa…
+    enterStartLocation: Ilagay ang lokasyon ng pagsisimula o {mapAction} sa 
+      mapa…
     tap: tap
   time:
     duration:
@@ -174,7 +181,8 @@ common:
       other {# sec}}
 components:
   A11yPrefs:
-    accessibilityRoutingByDefault: Mas gusto ang mga accessible na biyahe bilang default
+    accessibilityRoutingByDefault: Mas gusto ang mga accessible na biyahe bilang
+      default
   AccountSetupFinishPane:
     message: Handa ka nang simulan na planuhin ang mga biyahe mo.
   AddPlaceButton:
@@ -223,7 +231,8 @@ components:
       ang pampublikong transportasyon sa pagpili mo ng mode.
     origin: pinagmulan
     planTripTooltip: Planuhin ang biyahe
-    validationMessage: "Ilarawan ang mga sumusunod na field para makapagplano ng biyahe: {issues}"
+    validationMessage: "Ilarawan ang mga sumusunod na field para makapagplano ng biyahe:
+      {issues}"
   BeforeSignInScreen:
     mainTitle: Sina-sign in ka
     message: >
@@ -284,6 +293,9 @@ components:
     setAddressForPlaceType: Itakda ang address ng iyong {placeType}
   FavoritePlaceScreen:
     addNewPlace: Magdagdag ng bagong lugar
+    charactersRemaining: >-
+      {chars, plural, one {# natitirang karakter} other {# natitirang
+      character}}
     editPlace: I-edit ang {placeName}
     editPlaceGeneric: I-edit ang lugar
     invalidAddress: Magtakda ng lokasyon para sa lugar na ito.
@@ -444,7 +456,8 @@ components:
         May nakitang koneksyon sa pampublikong sasakyan, pero nasa labas ito ng
         search window, subukang iayos ang iyong search window, gamit ang mga uri
         ng sasakyang pinili mo.
-      header: Walang koneksyon sa pampublikong transportasyon sa window ng paghahanap
+      header: Walang koneksyon sa pampublikong transportasyon sa window ng 
+        paghahanap
     OUTSIDE_BOUNDS:
       body: >-
         {inputFields} {inputFieldsCount, plural, =0 {} one {ang lokasyon ay}
@@ -472,8 +485,10 @@ components:
     changeNumber: Baguhin ang numero
     invalidCode: Maglagay ng 6 na digit para sa code sa pag-validate.
     invalidPhone: Maglagay ng valid na numero ng telepono.
-    phoneNumberSubmitted: Matagumpay na naisumite ang numero ng teleponong {phoneNumber}.
-    phoneNumberVerified: Matagumpay na na-verify ang numero ng teleponong {phoneNumber} .
+    phoneNumberSubmitted: Matagumpay na naisumite ang numero ng teleponong 
+      {phoneNumber}.
+    phoneNumberVerified: Matagumpay na na-verify ang numero ng teleponong 
+      {phoneNumber} .
     placeholder: Ilagay ang numero ng iyong telepono
     prompt: "Ilagay ang numero ng iyong telepono para sa mga SMS na notification:"
     requestNewCode: Humiling ng bagong code
@@ -650,7 +665,8 @@ components:
       May mga na-store kang paghahanap at/o lugar kamakailan. Kapag na-disable
       ang pag-store ng mga lugar/paghahanap kamakailan, maaalis ang mga item na
       ito. Magpatuloy?
-    mustAgreeToTerms: Dapat kang sumang-ayon sa mga tuntunin ng serbisyo para magpatuloy.
+    mustAgreeToTerms: Dapat kang sumang-ayon sa mga tuntunin ng serbisyo para 
+      magpatuloy.
     termsOfServiceStatement: >
       Kinukumpirma kong ako ay may edad na hindi bababa sa 18 taong gulang, at
       nabasa at pinapahintulutan ko ang <termsOfUseLink>Mga Tuntunin ng
@@ -667,11 +683,13 @@ components:
     travelingAt: Bumibiyahe nang {milesPerHour}
     vehicleName: Sasakyan {vehicleNumber}
   TripBasicsPane:
-    checkingItineraryExistence: Tinitingnan kung may itinerary para sa bawat araw ng linggo...
+    checkingItineraryExistence: Tinitingnan kung may itinerary para sa bawat 
+      araw ng linggo...
     onlyOnDate: Sa {date, date, ::eeeee yyyyMMdd} lang
     recurringEachWeek: Sa ilang partikular na araw sa bawat linggo
     tripDaysPrompt: Anong mga araw mo ginagawa ang biyaheng ito?
-    tripIsAvailableOnDaysIndicated: Available ang iyong biyahe sa mga araw ng linggo na nakasaad sa itaas.
+    tripIsAvailableOnDaysIndicated: Available ang iyong biyahe sa mga araw ng 
+      linggo na nakasaad sa itaas.
     tripNamePrompt: "Pangalanan ang biyaheng ito:"
     tripNotAvailableOnDay: Hindi available ang biyahe sa {repeatedDay}
     unsavedChangesExistingTrip: >-
@@ -686,7 +704,8 @@ components:
     primaryLabel: "Pangunahing manlalakbay: "
   TripNotificationsPane:
     advancedSettings: Mga advanced na setting
-    altRouteRecommended: Inirerekomenda ang isang alternatibong ruta o transfer point
+    altRouteRecommended: Inirerekomenda ang isang alternatibong ruta o transfer 
+      point
     delaysAboveThreshold: May mga pagkaantala o abalang mahigit sa
     howToReceiveAlerts: >
       Para makatanggap ng mga alerto para sa iyong mga naka-save na biyahe,
@@ -706,12 +725,14 @@ components:
     planNewTrip: Magplano ng Bagong Biyahe
   TripStatusRenderers:
     active:
-      delayedHeading: Nasa biyahe sa kasalukuyan at naantala ito nang {formattedDuration}!
+      delayedHeading: Nasa biyahe sa kasalukuyan at naantala ito nang 
+        {formattedDuration}!
       description: Darating sa patutunguhan nang {arrivalTime, time, short}.
       earlyHeading: >-
         Nasa biyahe sa kasalukuyan at darating nang {formattedDuration} na mas
         maaga kaysa sa inaasahan!
-      noDataHeading: Nasa biyahe sa kasalukuyan (walang realtime na update na available).
+      noDataHeading: Nasa biyahe sa kasalukuyan (walang realtime na update na 
+        available).
       onTimeHeading: Nasa biyahe sa kasalukuyan at nasa oras ito.
     base:
       lastCheckedDefaultText: Hindi alam ang oras kung kailan huling tiningnan
@@ -722,13 +743,14 @@ components:
       unknownState: Hindi Alam ang Status ng Biyahe
       untogglePause: Ipagpatuloy
     inactive:
-      description: Ipagpatuloy ang pagsubaybay sa biyahe para makita ang updated na status
+      description: Ipagpatuloy ang pagsubaybay sa biyahe para makita ang updated
+        na status
       heading: Naka-pause ang pagsubaybay sa biyahe
     nextTripNotPossible:
       description: >
-        Hindi nakita ng planner ng biyahe ang iyong biyahe sa anumang napiling
-        araw ng linggo. Subukang planuhin ulit ang iyong itinerary para makakita
-        ng alternatibong ruta.
+        Hindi nakita ng planner ng biyahe ang iyong biyahe sa anumang napiling araw
+        ng linggo. Subukang planuhin ulit ang iyong itinerary para makakita ng alternatibong
+        ruta.
       heading: Hindi posible ang biyahe ngayong araw
     noLongerPossible:
       description: >
@@ -744,7 +766,8 @@ components:
       description: Isa itong pang-isang beses na biyaheng nangyari dati.
       heading: Dati na ang biyahe
     snoozed:
-      description: I-unsnooze ang pagsubaybay sa biyahe para makita ang updated na status.
+      description: I-unsnooze ang pagsubaybay sa biyahe para makita ang updated 
+        na status.
       heading: Naka-snooze ang pagsubaybay sa biyahe ngayong araw
     upcoming:
       nextTripBegins: >-
@@ -753,8 +776,10 @@ components:
       tripBegins: >-
         Magsisimula ang biyahe nang {tripStart, time, short}. (Magsisimula ang
         realtime na pagsubaybay nang {monitoringStart, time, short}.)
-      tripStartIsDelayed: Naantala ang oras ng pagsisimula ng biyahe nang {duration}!
-      tripStartIsEarly: Nagsisimula na ang biyahe {duration} na mas maaga kaysa sa inaasahan!
+      tripStartIsDelayed: Naantala ang oras ng pagsisimula ng biyahe nang 
+        {duration}!
+      tripStartIsEarly: Nagsisimula na ang biyahe {duration} na mas maaga kaysa 
+        sa inaasahan!
       tripStartsSoonNoUpdates: >-
         Malapit nang magsimula ang biyahe (walang realtime na update na
         available).
@@ -831,7 +856,8 @@ components:
       Tingnan ang inbox ng iyong email at sundan ang link sa mensahe para
       i-verify ang iyong email address bago tapusin ang pag-set up sa iyong
       account.
-    instructions2: Kapag na-verify ka na, i-click ang button sa ibaba para magpatuloy.
+    instructions2: Kapag na-verify ka na, i-click ang button sa ibaba para 
+      magpatuloy.
     resendVerification: Ipadala ulit ang email ng pag-verify
   ViewSwitcher:
     nearby: Tingnan ang Malapit

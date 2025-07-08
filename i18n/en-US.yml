@@ -169,7 +169,9 @@ components:
   A11yPrefs:
     accessibilityRoutingByDefault: Prefer accessible trips by default
   AccountSetupFinishPane:
-    message: You are ready to start planning your trips.
+    message: >-
+      Your changes have been saved. You are ready to start planning trips. Click
+      the "Finish" button to return to trip planner.
   AddPlaceButton:
     addPlace: Add place
     needOriginDestination: Define origin/destination to add intermediate places
@@ -360,7 +362,9 @@ components:
     title: Define Your Mobility Profile
   NarrativeItinerariesHeader:
     changeSortDir: Change sort direction
-    howToFindResults: To view results, see the Itineraries Found heading below.
+    howToFindResults: >-
+      To view results, see the Itineraries Found heading below. To see itinerary
+      details, select a time button.
     itinerariesFound: >-
       {itineraryNum, plural, one {# itinerary found} other {# itineraries found}
       }
@@ -694,9 +698,12 @@ components:
       heading: Trip monitoring is paused
     nextTripNotPossible:
       description: >
-        The trip planner was unable to find your trip today. Please try
-        re-planning your itinerary to find an alternative route.
-      heading: Trip is not possible today
+        After multiple failed attempts to locate your itinerary, monitoring has
+        been snoozed for today as one or more changes to the itinerary may have
+        occurred.  To resume trip monitoring, click Unsnooze. If monitoring is
+        still not available, click Plan New Trip to save an up to date itinerary
+        to monitor.
+      heading: Unable to monitor trip
     noLongerPossible:
       description: >
         The trip planner was unable to find your trip on any selected days of
