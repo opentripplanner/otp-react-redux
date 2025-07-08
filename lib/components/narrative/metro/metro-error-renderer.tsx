@@ -21,7 +21,7 @@ const Container = styled.li`
   grid-template-rows: 1fr max-content;
   list-style-type: none;
   margin: 0;
-  padding: 1em;
+  padding: 0 1em;
 
   h2 {
     font-size: 24px;
@@ -45,6 +45,10 @@ const Container = styled.li`
     grid-row: 1 / -1;
     place-self: center start;
     margin-bottom: 0;
+  }
+
+  svg {
+    margin: 0.25em;
   }
 `
 
