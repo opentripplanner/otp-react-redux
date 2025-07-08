@@ -2378,7 +2378,7 @@
     rw "^1.3.3"
     sort-object "^3.0.3"
 
-"@maplibre/maplibre-gl-style-spec@^23.2.2":
+"@maplibre/maplibre-gl-style-spec@^23.2.2", "@maplibre/maplibre-gl-style-spec@^23.3.0":
   version "23.3.0"
   resolved "https://registry.yarnpkg.com/@maplibre/maplibre-gl-style-spec/-/maplibre-gl-style-spec-23.3.0.tgz#b69ab48cb3abead4e49213396c8f83492638b97c"
   integrity sha512-IGJtuBbaGzOUgODdBRg66p8stnwj9iDXkgbYKoYcNiiQmaez5WVRfXm4b03MCDwmZyX93csbfHFWEJJYHnn5oA==
@@ -2673,32 +2673,22 @@
   dependencies:
     "@octokit/openapi-types" "^10.0.0"
 
-"@opentripplanner/base-map@5.0.2", "@opentripplanner/base-map@file:../../../../tmp/otp-ui-pkg/base-map":
-  version "5.0.2"
-  dependencies:
-    "@opentripplanner/building-blocks" "3.0.0"
-    maplibre-gl "^5.5.0"
-    react-map-gl "^8.0.4"
-
-"@opentripplanner/base-map@5.2.0":
+"@opentripplanner/base-map@5.2.0", "@opentripplanner/base-map@file:../../../../tmp/otp-ui-pkg/base-map":
   version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-5.2.0.tgz#67992efcf9ed492d478e03d1e505f9a03b189028"
-  integrity sha512-UoPkmbDyiKO7Fm3vtsEFFgTLa6SLN6cFd9UdPjoJbhpjXB36ihEreE+DKvVUGPOdzBeT4EY+Hl2NNzkLRSYrtg==
   dependencies:
     "@opentripplanner/building-blocks" "3.0.1"
-    mapbox-gl "npm:empty-npm-package@1.0.0"
-    maplibre-gl "^2.1.9"
-    react-map-gl "^7.0.15"
+    maplibre-gl "^5.6.0"
+    react-map-gl "^8.0.4"
 
-"@opentripplanner/building-blocks@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/building-blocks/-/building-blocks-3.0.0.tgz#79952990a3ea8fdcbc4ac718d2d5e8793605aa9a"
-  integrity sha512-ThwCeWL4qZalayM3zg/D+Vzl4a+xY+289WWAU2D5lwI5f8/CAj8XDlLWuU6vcEYPI7pEf/GWnz01hBJ7KLeMrg==
+"@opentripplanner/building-blocks@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/building-blocks/-/building-blocks-3.0.1.tgz#c75be7d0af3404ea9c8df23373d0b8f03827393b"
+  integrity sha512-0kJQiIcquFltl320Ht4uHbA+21u7sYjC8uGp4R6DzEVFLMDajogP7lPulSUx+qPQMES0cj5XjE3PRi5TRCWZ3Q==
   dependencies:
     "@styled-icons/bootstrap" "^10.47.0"
 
 "@opentripplanner/building-blocks@file:../../../../tmp/otp-ui-pkg/building-blocks":
-  version "3.0.0"
+  version "3.0.1"
   dependencies:
     "@styled-icons/bootstrap" "^10.47.0"
 
@@ -2739,8 +2729,8 @@
 "@opentripplanner/endpoints-overlay@file:../../../../tmp/otp-ui-pkg/endpoints-overlay":
   version "4.0.1"
   dependencies:
-    "@opentripplanner/base-map" "5.0.2"
-    "@opentripplanner/building-blocks" "3.0.0"
+    "@opentripplanner/base-map" "5.2.0"
+    "@opentripplanner/building-blocks" "3.0.1"
     "@opentripplanner/core-utils" "13.0.1"
     "@opentripplanner/location-icon" "2.0.0"
     "@styled-icons/fa-solid" "^10.34.0"
@@ -2806,12 +2796,12 @@
     "@opentripplanner/core-utils" "13.0.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@7.0.3":
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-7.0.3.tgz#35e23c275c57ee5444d368fc8c59c10d055d6ab1"
-  integrity sha512-7btQvQWNTVMXyGe34+zgsehPlZAb6oq53ujPwCEXbcdXzhBjz9T4GG5pQ1FLH0XpbVsePMZCEgFjiKLlzk3dfw==
+"@opentripplanner/itinerary-body@7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-7.0.0.tgz#1128760bb4a8dee672d0492a17b5400102670fc7"
+  integrity sha512-VeEFHRPmYp6CgA5QVyWTnnlYkWPEUQPU6eWgVpxb/6aBUnS7TrquDmiJeByNaEl4EISbpewbimdfegJPijZ2tw==
   dependencies:
-    "@opentripplanner/core-utils" "13.0.1"
+    "@opentripplanner/core-utils" "13.0.0"
     "@opentripplanner/humanize-distance" "2.0.0"
     "@opentripplanner/icons" "4.0.0"
     "@opentripplanner/location-icon" "2.0.0"
@@ -2842,28 +2832,10 @@
     react-resize-detector "^4.2.1"
     string-similarity "^4.0.4"
 
-"@opentripplanner/itinerary-body@7.0.3":
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-7.0.3.tgz#35e23c275c57ee5444d368fc8c59c10d055d6ab1"
-  integrity sha512-7btQvQWNTVMXyGe34+zgsehPlZAb6oq53ujPwCEXbcdXzhBjz9T4GG5pQ1FLH0XpbVsePMZCEgFjiKLlzk3dfw==
-  dependencies:
-    "@opentripplanner/core-utils" "13.0.1"
-    "@opentripplanner/humanize-distance" "2.0.0"
-    "@opentripplanner/icons" "4.0.0"
-    "@opentripplanner/location-icon" "2.0.0"
-    "@styled-icons/fa-solid" "^10.34.0"
-    "@styled-icons/foundation" "^10.34.0"
-    date-fns "^2.28.0"
-    date-fns-tz "^1.2.2"
-    flat "^5.0.2"
-    react-animate-height "^3.0.4"
-    react-resize-detector "^4.2.1"
-    string-similarity "^4.0.4"
-
-"@opentripplanner/location-field@4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-4.0.1.tgz#f114d311ef16b74d381a5dc91ed4401c7f0b3c0e"
-  integrity sha512-nGpNJYkZ/pYiKpDzTUEMJZl4333inajQTUSm8TGFDrcx6aW8bmgVJTxAlWkpCrs+ZIjzJcYq6IzfCu1eJqYD2w==
+"@opentripplanner/location-field@4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-4.0.4.tgz#8e1ed4db74b8b919355d22cb1a55fe51b1915319"
+  integrity sha512-RQQxdvwrzvmBWijeU1iZN0ceYk29QxN46PfHsxh7EA9yrg5vPBhuTPcxXQyefKU5+cIzYgXtIai1iz+qIM3+jQ==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
     "@opentripplanner/core-utils" "13.0.1"
@@ -2881,40 +2853,40 @@
     "@styled-icons/fa-regular" "^10.34.0"
     "@styled-icons/fa-solid" "^10.34.0"
 
-"@opentripplanner/map-popup@6.0.2", "@opentripplanner/map-popup@file:../../../../tmp/otp-ui-pkg/map-popup":
-  version "6.0.2"
+"@opentripplanner/map-popup@6.0.4", "@opentripplanner/map-popup@file:../../../../tmp/otp-ui-pkg/map-popup":
+  version "6.0.4"
   dependencies:
-    "@opentripplanner/base-map" "5.0.2"
-    "@opentripplanner/building-blocks" "3.0.0"
+    "@opentripplanner/base-map" "5.2.0"
+    "@opentripplanner/building-blocks" "3.0.1"
     "@opentripplanner/core-utils" "13.0.1"
-    "@opentripplanner/from-to-location-picker" "4.0.0"
+    "@opentripplanner/from-to-location-picker" "4.0.1"
     flat "^5.0.2"
 
 "@opentripplanner/otp2-tile-overlay@file:../../../../tmp/otp-ui-pkg/otp2-tile-overlay":
-  version "3.0.3"
+  version "3.1.0"
   dependencies:
-    "@opentripplanner/map-popup" "6.0.2"
+    "@opentripplanner/map-popup" "6.0.4"
 
 "@opentripplanner/park-and-ride-overlay@file:../../../../tmp/otp-ui-pkg/park-and-ride-overlay":
   version "4.0.1"
   dependencies:
-    "@opentripplanner/base-map" "5.0.2"
-    "@opentripplanner/from-to-location-picker" "4.0.0"
+    "@opentripplanner/base-map" "5.2.0"
+    "@opentripplanner/from-to-location-picker" "4.0.1"
     "@opentripplanner/types" "6.5.3"
 
-"@opentripplanner/printable-itinerary@4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/printable-itinerary/-/printable-itinerary-4.0.1.tgz#0fda9284ecaa1298b6f6a7a22ff51712f8c90e8f"
-  integrity sha512-Fn9lVpKVi3GdLbVwdQ0gt42loqUwFSUsQX4Ndj1yVsSLAjDGjZz0YmY5AhF3YVNtFEmOSacyqB6+EovNbmL5cg==
+"@opentripplanner/printable-itinerary@4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/printable-itinerary/-/printable-itinerary-4.0.0.tgz#b165f3005251c526beb20b238392a37cec86619c"
+  integrity sha512-hgaDRSckf3QipXLnIFTFUTQb08Tg08sGW+hZR1J9/npyNAcceczPVMnAJn7lrZ1NQCP73tsQ3iw3xnYblPRWbw==
   dependencies:
-    "@opentripplanner/core-utils" "13.0.1"
-    "@opentripplanner/itinerary-body" "7.0.4"
+    "@opentripplanner/core-utils" "13.0.0"
+    "@opentripplanner/itinerary-body" "7.0.0"
 
 "@opentripplanner/route-viewer-overlay@file:../../../../tmp/otp-ui-pkg/route-viewer-overlay":
   version "4.0.1"
   dependencies:
     "@mapbox/polyline" "^1.1.1"
-    "@opentripplanner/base-map" "5.0.2"
+    "@opentripplanner/base-map" "5.2.0"
     "@opentripplanner/core-utils" "13.0.1"
     point-in-polygon "^1.1.0"
 
@@ -2932,32 +2904,32 @@
 "@opentripplanner/stop-viewer-overlay@file:../../../../tmp/otp-ui-pkg/stop-viewer-overlay":
   version "4.0.1"
   dependencies:
-    "@opentripplanner/base-map" "5.0.2"
+    "@opentripplanner/base-map" "5.2.0"
     "@opentripplanner/core-utils" "13.0.1"
 
 "@opentripplanner/stops-overlay@file:../../../../tmp/otp-ui-pkg/stops-overlay":
   version "7.0.2"
   dependencies:
-    "@opentripplanner/base-map" "5.0.2"
-    "@opentripplanner/from-to-location-picker" "4.0.0"
-    "@opentripplanner/map-popup" "6.0.2"
+    "@opentripplanner/base-map" "5.2.0"
+    "@opentripplanner/from-to-location-picker" "4.0.1"
+    "@opentripplanner/map-popup" "6.0.4"
     flat "^5.0.2"
 
 "@opentripplanner/transit-vehicle-overlay@file:../../../../tmp/otp-ui-pkg/transit-vehicle-overlay":
-  version "6.0.1"
+  version "6.0.2"
   dependencies:
-    "@opentripplanner/base-map" "5.0.2"
+    "@opentripplanner/base-map" "5.2.0"
     "@opentripplanner/core-utils" "13.0.1"
     "@opentripplanner/icons" "4.0.0"
     flat "^5.0.2"
 
 "@opentripplanner/transitive-overlay@file:../../../../tmp/otp-ui-pkg/transitive-overlay":
-  version "5.0.2"
+  version "6.0.1"
   dependencies:
     "@mapbox/polyline" "^1.1.1"
-    "@opentripplanner/base-map" "5.0.2"
+    "@opentripplanner/base-map" "5.2.0"
     "@opentripplanner/core-utils" "13.0.1"
-    "@opentripplanner/itinerary-body" "7.0.3"
+    "@opentripplanner/itinerary-body" "7.0.4"
     "@turf/bbox" "^6.5.0"
     "@turf/bearing" "^6.5.0"
     "@turf/destination" "^6.5.0"
@@ -2976,10 +2948,8 @@
     flat "^5.0.2"
     react-animate-height "^3.0.4"
 
-"@opentripplanner/trip-form@6.0.1":
+"@opentripplanner/trip-form@file:../../../../tmp/otp-ui-pkg/trip-form":
   version "6.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-6.0.1.tgz#262079589e056bf49c285a5b38257c54c59f088f"
-  integrity sha512-7o8frpL7rhieQmkrSaAxj+kqp8ocHyxmyB2l2LH8jJmoGgGevtQ5VxEmXaVctwpGJ12Fi1P/yiqD08PqnPG49w==
   dependencies:
     "@floating-ui/react" "^0.19.2"
     "@opentripplanner/building-blocks" "3.0.1"
@@ -2999,10 +2969,10 @@
   version "4.0.1"
   dependencies:
     "@mapbox/polyline" "^1.1.1"
-    "@opentripplanner/base-map" "5.0.2"
+    "@opentripplanner/base-map" "5.2.0"
     "@opentripplanner/core-utils" "13.0.1"
 
-"@opentripplanner/types@6.5.3", "@opentripplanner/types@^6.5.2":
+"@opentripplanner/types@6.5.3", "@opentripplanner/types@^6.5.3":
   version "6.5.3"
   resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-6.5.3.tgz#cde99b1b5a1f16b88cfd1baa7005918151cebde3"
   integrity sha512-zcr/IIkZ9P9U5G0j9IsT4nbxplIEc1NQRpfgvEqqI3GPAkr7wTPe2KtyjgxcTIszZ2qLzUwwhmVWkNYjekcMyA==
@@ -3010,10 +2980,10 @@
 "@opentripplanner/vehicle-rental-overlay@file:../../../../tmp/otp-ui-pkg/vehicle-rental-overlay":
   version "4.0.2"
   dependencies:
-    "@opentripplanner/base-map" "5.0.2"
+    "@opentripplanner/base-map" "5.2.0"
     "@opentripplanner/core-utils" "13.0.1"
-    "@opentripplanner/from-to-location-picker" "4.0.0"
-    "@opentripplanner/map-popup" "6.0.2"
+    "@opentripplanner/from-to-location-picker" "4.0.1"
+    "@opentripplanner/map-popup" "6.0.4"
     "@styled-icons/fa-solid" "^10.34.0"
     flat "^5.0.2"
     lodash.memoize "^4.1.2"
@@ -13025,6 +12995,38 @@ maplibre-gl@^5.5.0:
     "@mapbox/vector-tile" "^1.3.1"
     "@mapbox/whoots-js" "^3.1.0"
     "@maplibre/maplibre-gl-style-spec" "^23.2.2"
+    "@types/geojson" "^7946.0.16"
+    "@types/geojson-vt" "3.2.5"
+    "@types/mapbox__point-geometry" "^0.1.4"
+    "@types/mapbox__vector-tile" "^1.3.4"
+    "@types/pbf" "^3.0.5"
+    "@types/supercluster" "^7.1.3"
+    earcut "^3.0.1"
+    geojson-vt "^4.0.2"
+    gl-matrix "^3.4.3"
+    global-prefix "^4.0.0"
+    kdbush "^4.0.2"
+    murmurhash-js "^1.0.0"
+    pbf "^3.3.0"
+    potpack "^2.0.0"
+    quickselect "^3.0.0"
+    supercluster "^8.0.1"
+    tinyqueue "^3.0.0"
+    vt-pbf "^3.1.3"
+
+maplibre-gl@^5.6.0:
+  version "5.6.1"
+  resolved "https://registry.yarnpkg.com/maplibre-gl/-/maplibre-gl-5.6.1.tgz#d6fd215f14274aef9b695cd2a34eb3b4ad788049"
+  integrity sha512-TTSfoTaF7RqKUR9wR5qDxCHH2J1XfZ1E85luiLOx0h8r50T/LnwAwwfV0WVNh9o8dA7rwt57Ucivf1emyeukXg==
+  dependencies:
+    "@mapbox/geojson-rewind" "^0.5.2"
+    "@mapbox/jsonlint-lines-primitives" "^2.0.2"
+    "@mapbox/point-geometry" "^0.1.0"
+    "@mapbox/tiny-sdf" "^2.0.6"
+    "@mapbox/unitbezier" "^0.0.1"
+    "@mapbox/vector-tile" "^1.3.1"
+    "@mapbox/whoots-js" "^3.1.0"
+    "@maplibre/maplibre-gl-style-spec" "^23.3.0"
     "@types/geojson" "^7946.0.16"
     "@types/geojson-vt" "3.2.5"
     "@types/mapbox__point-geometry" "^0.1.4"
