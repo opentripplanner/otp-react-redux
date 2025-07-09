@@ -144,7 +144,7 @@ const TripSummaryPane = ({
     )
 
     const handleNotificationToggle = () => {
-      if (handleTogglePauseMonitoring && isActiveAndNotSnoozed) {
+      if (handleTogglePauseMonitoring && !monitoredTrip.snoozed) {
         handleTogglePauseMonitoring()
         return
       }
