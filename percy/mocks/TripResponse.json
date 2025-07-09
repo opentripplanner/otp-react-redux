@@ -30,7 +30,7 @@
       "bikesAllowed": "NO_INFORMATION",
 			"stoptimes": [
 				{
-					"scheduledDeparture": 43200,
+					"scheduledDeparture": 61200,
 					"stop": {
 						"code": "908516",
 						"gtfsId": "MARTA:802",
@@ -43,7 +43,7 @@
 					}
 				},
 				{
-					"scheduledDeparture": 43320,
+					"scheduledDeparture": 61320,
 					"stop": {
 						"code": "908709",
 						"gtfsId": "MARTA:224",
@@ -56,7 +56,7 @@
 					}
 				},
 				{
-					"scheduledDeparture": 43500,
+					"scheduledDeparture": 61500,
 					"stop": {
 						"code": "908691",
 						"gtfsId": "MARTA:803",
@@ -69,7 +69,7 @@
 					}
 				},
 				{
-					"scheduledDeparture": 43740,
+					"scheduledDeparture": 61740,
 					"stop": {
 						"code": "908475",
 						"gtfsId": "MARTA:193",
@@ -82,7 +82,7 @@
 					}
 				},
 				{
-					"scheduledDeparture": 43920,
+					"scheduledDeparture": 61920,
 					"stop": {
 						"code": "908567",
 						"gtfsId": "MARTA:186",
@@ -95,7 +95,7 @@
 					}
 				},
 				{
-					"scheduledDeparture": 44100,
+					"scheduledDeparture": 62100,
 					"stop": {
 						"code": "908476",
 						"gtfsId": "MARTA:195",
@@ -108,7 +108,7 @@
 					}
 				},
 				{
-					"scheduledDeparture": 44220,
+					"scheduledDeparture": 62220,
 					"stop": {
 						"code": "908692",
 						"gtfsId": "MARTA:804",
@@ -121,7 +121,7 @@
 					}
 				},
 				{
-					"scheduledDeparture": 44400,
+					"scheduledDeparture": 62400,
 					"stop": {
 						"code": "908693",
 						"gtfsId": "MARTA:805",
@@ -134,7 +134,7 @@
 					}
 				},
 				{
-					"scheduledDeparture": 44520,
+					"scheduledDeparture": 62520,
 					"stop": {
 						"code": "908618",
 						"gtfsId": "MARTA:198",
@@ -147,7 +147,7 @@
 					}
 				},
 				{
-					"scheduledDeparture": 44580,
+					"scheduledDeparture": 62580,
 					"stop": {
 						"code": "908990",
 						"gtfsId": "MARTA:806",
@@ -160,7 +160,7 @@
 					}
 				},
 				{
-					"scheduledDeparture": 44640,
+					"scheduledDeparture": 62640,
 					"stop": {
 						"code": "908694",
 						"gtfsId": "MARTA:807",
@@ -173,7 +173,7 @@
 					}
 				},
 				{
-					"scheduledDeparture": 44700,
+					"scheduledDeparture": 62700,
 					"stop": {
 						"code": "908959",
 						"gtfsId": "MARTA:471",
@@ -186,7 +186,7 @@
 					}
 				},
 				{
-					"scheduledDeparture": 44760,
+					"scheduledDeparture": 62760,
 					"stop": {
 						"code": "908964",
 						"gtfsId": "MARTA:486",
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"scheduledDeparture": 44940,
+					"scheduledDeparture": 62940,
 					"stop": {
 						"code": "907906",
 						"gtfsId": "MARTA:39",
@@ -212,7 +212,7 @@
 					}
 				},
 				{
-					"scheduledDeparture": 45120,
+					"scheduledDeparture": 63120,
 					"stop": {
 						"code": "907907",
 						"gtfsId": "MARTA:40",
