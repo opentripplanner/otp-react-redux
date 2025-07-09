@@ -19,7 +19,7 @@ import * as uiActions from '../../actions/ui'
 import { AppMenuItemConfig, LanguageConfig } from '../../util/config-types'
 import { AppReduxState } from '../../util/state-types'
 import { ComponentContext } from '../../util/contexts'
-import { getLanguageOptions } from '../../util/i18n'
+import { convertChineseLanguageCode, getLanguageOptions } from '../../util/i18n'
 import { isModuleEnabled, Modules } from '../../util/config'
 
 import AppMenuItem from './app-menu-item'
@@ -117,8 +117,9 @@ class AppMenu extends Component<
         // Override the config label if a localized label exists
         const label = useLocalizedLabel ? localizedLabel : configLabel
 
+        const languageCode = convertChineseLanguageCode(activeLocale)
         const url = translateExternalLinks
-          ? href + `/#googtrans(${activeLocale})`
+          ? href + `/#googtrans(${languageCode})`
           : href
         return (
           <AppMenuItem
