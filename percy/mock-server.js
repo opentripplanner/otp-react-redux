@@ -4,9 +4,9 @@ const express = require('express')
 const har = require('har-express')
 const { buildClientSchema, graphql } = require('graphql')
 const { addResolversToSchema } = require('@graphql-tools/schema')
+const otpSchema = require('@opentripplanner/core-utils/src/otpSchema.json').data
 
 const mocks = require('./graphql-mocks')
-const otpSchema = require('./otpSchema.json').data
 
 const port = process.env.PORT || 9999
 const harPath = process.env.HAR || './percy/mock.har'
