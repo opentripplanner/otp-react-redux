@@ -118,6 +118,7 @@ const ToggleNotificationButton = styled.button`
 const TripSummaryPane = ({
   from,
   handleTogglePauseMonitoring,
+  handleToggleSnoozeMonitoring,
   isReadOnly,
   monitoredTrip,
   pendingRequest,
@@ -142,9 +143,14 @@ const TripSummaryPane = ({
       <MonitoredDays days={monitoredDays} />
     )
 
-    const testHandle = () => {
-      if (handleTogglePauseMonitoring) {
+    const handleNotificationToggle = () => {
+      if (handleTogglePauseMonitoring && isActiveAndNotSnoozed) {
         handleTogglePauseMonitoring()
+        return
+      }
+      // trip can only be unsnoozed from the trip summary pane
+      if (handleToggleSnoozeMonitoring && monitoredTrip.snoozed) {
+        handleToggleSnoozeMonitoring()
       }
     }
 
@@ -241,12 +247,12 @@ const TripSummaryPane = ({
                     values={{ leadTimeInMinutes }}
                   />
                 )}
-                {!isReadOnly && !monitoredTrip.snoozed && (
+                {!isReadOnly && (
                   <>
                     <br />
                     <ToggleNotificationButton
                       disabled={pendingRequest === 'pause'}
-                      onClick={testHandle}
+                      onClick={handleNotificationToggle}
                     >
                       {pendingRequest === 'pause' ? (
                         /* Make loader fit */
