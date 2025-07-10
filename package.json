@@ -60,7 +60,7 @@
     "@opentripplanner/transit-vehicle-overlay": "/tmp/otp-ui-pkg/transit-vehicle-overlay",
     "@opentripplanner/transitive-overlay": "/tmp/otp-ui-pkg/transitive-overlay",
     "@opentripplanner/trip-details": "7.0.0",
-    "@opentripplanner/trip-form": "/tmp/otp-ui-pkg/trip-form",
+    "@opentripplanner/trip-form": "6.0.2",
     "@opentripplanner/trip-viewer-overlay": "/tmp/otp-ui-pkg/trip-viewer-overlay",
     "@opentripplanner/vehicle-rental-overlay": "/tmp/otp-ui-pkg/vehicle-rental-overlay",
     "@styled-icons/fa-regular": "^10.34.0",

@@ -2948,8 +2948,10 @@
     flat "^5.0.2"
     react-animate-height "^3.0.4"
 
-"@opentripplanner/trip-form@file:../../../../tmp/otp-ui-pkg/trip-form":
-  version "6.0.1"
+"@opentripplanner/trip-form@6.0.2":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-6.0.2.tgz#8db1dbf7da12957f718289e3030a68cc16969e89"
+  integrity sha512-cn0FqCIwtkSELng9a3Br4ispd6BNC/VAw6S3UPC850mt9BkCKK4RdBhtSitX0FGiwLy50cERKxJFA68xNka9ew==
   dependencies:
     "@floating-ui/react" "^0.19.2"
     "@opentripplanner/building-blocks" "3.0.1"
