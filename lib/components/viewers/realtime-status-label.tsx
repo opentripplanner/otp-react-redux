@@ -62,6 +62,7 @@ const STATUS = {
  * will be rendered above the status. Also, this can optionally be rendered with
  * a background color for a label-like presentation.
  */
+// eslint-disable-next-line complexity
 const RealtimeStatusLabel = ({
   className,
   delay,
@@ -106,12 +107,12 @@ const RealtimeStatusLabel = ({
         <TimeStruck aria-hidden>
           <FormattedTime timeStyle="short" value={originalTime} />
         </TimeStruck>
-        <div>
+        <div className={isRealtime ? 'realtime-icon' : ''}>
           <FormattedTime timeStyle="short" value={time} />
         </div>
       </TimeBlock>
     ) : (
-      <div>
+      <div className={isRealtime ? 'realtime-icon' : ''}>
         <FormattedTime timeStyle="short" value={time} />
       </div>
     )
@@ -122,7 +123,9 @@ const RealtimeStatusLabel = ({
       color={color}
       withBackground={withBackground}
     >
-      {renderedTime}
+      <div className={isRealtime ? 'itin-time-realtime' : ''}>
+        {renderedTime}
+      </div>
       <MainContent>
         {showScheduleDeviation && (
           <FormattedRealtimeStatusLabel
