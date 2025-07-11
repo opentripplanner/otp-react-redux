@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
 import { Itinerary, Location } from '@opentripplanner/types'
 import { Layer, Source, useMap } from 'react-map-gl/maplibre'
-import { util } from '@opentripplanner/base-map'
 import polyline from '@mapbox/polyline'
 import React, { useEffect } from 'react'
 
 import { DARK_TEXT_GREY } from '../util/colors'
+import { fitMapToEndpoints } from '../../util/ui'
 import {
   getActiveItinerary,
   getActiveSearch,
@@ -34,16 +34,7 @@ const RoutePreviewOverlay = ({
   const { current: map } = useMap()
   useEffect(() => {
     if (visible && mainPanelContent === null) {
-      // Recent versions of maplibre enforce the order of coordinates (i.e., sw, ne).
-      const minlat = Math.min(from.lat, to.lat)
-      const maxlat = Math.max(from.lat, to.lat)
-      const minlon = Math.min(from.lon, to.lon)
-      const maxlon = Math.max(from.lon, to.lon)
-
-      map?.fitBounds([minlon, minlat, maxlon, maxlat], {
-        duration: 600,
-        padding: util.getFitBoundsPadding(map, 0.2)
-      })
+      fitMapToEndpoints(map, from, to)
     }
   }, [map, visible, from, to, mainPanelContent])
 
