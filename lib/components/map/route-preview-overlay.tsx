@@ -28,8 +28,6 @@ const RoutePreviewOverlay = ({ from, geometries, to, visible }: Props) => {
   const { current: map } = useMap()
   useEffect(() => {
     if (visible) {
-      // console.log('Route Preview Overlay fit bounds', [from, to], visible, new Date().valueOf())
-
       fitMapToEndpoints(map, from, to)
     }
   }, [map, visible, from, to])
