@@ -151,7 +151,7 @@ export function getMapToggleNewItineraryView(
  * Fit map bounds so that both the from and to endpoints are visible.
  */
 export function fitMapToEndpoints(
-  map: MapRef,
+  map: MapRef | undefined,
   from: Location,
   to: Location
 ): void {
