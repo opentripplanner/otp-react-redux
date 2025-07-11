@@ -34,7 +34,13 @@ const RoutePreviewOverlay = ({
   const { current: map } = useMap()
   useEffect(() => {
     if (visible && mainPanelContent === null) {
-      map?.fitBounds([from, to], {
+      // Recent versions of maplibre enforce the order of coordinates (i.e., sw, ne).
+      const minlat = Math.min(from.lat, to.lat)
+      const maxlat = Math.max(from.lat, to.lat)
+      const minlon = Math.min(from.lon, to.lon)
+      const maxlon = Math.max(from.lon, to.lon)
+
+      map?.fitBounds([minlon, minlat, maxlon, maxlat], {
         duration: 600,
         padding: util.getFitBoundsPadding(map, 0.2)
       })
