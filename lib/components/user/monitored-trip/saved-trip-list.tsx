@@ -44,6 +44,7 @@ interface ItemProps extends ItemOwnProps {
   isReadOnly: boolean
   renderData: any
   togglePauseTrip: (trip: MonitoredTrip, intl: IntlShape) => void
+  toggleSnoozeTrip: (trip: MonitoredTrip, intl: IntlShape) => void
 }
 
 interface ItemState {
@@ -84,7 +85,10 @@ class TripListItem extends Component<ItemProps, ItemState> {
   static contextType = ComponentContext
 
   componentDidUpdate = (prevProps: ItemProps) => {
-    if (prevProps.trip.isActive !== this.props.trip.isActive) {
+    if (
+      prevProps.trip.isActive !== this.props.trip.isActive ||
+      prevProps.trip.snoozed !== this.props.trip.snoozed
+    ) {
       this.setState({ pendingRequest: false })
     }
   }
@@ -96,6 +100,12 @@ class TripListItem extends Component<ItemProps, ItemState> {
     const { intl, togglePauseTrip, trip } = this.props
     this.setState({ pendingRequest: 'pause' })
     togglePauseTrip(trip, intl)
+  }
+
+  _handleToggleSnoozeMonitoring = () => {
+    const { intl, toggleSnoozeTrip, trip } = this.props
+    this.setState({ pendingRequest: 'pause' })
+    toggleSnoozeTrip(trip, intl)
   }
 
   render() {
@@ -148,6 +158,7 @@ class TripListItem extends Component<ItemProps, ItemState> {
           <TripSummaryPane
             from={from}
             handleTogglePauseMonitoring={this._handleTogglePauseMonitoring}
+            handleToggleSnoozeMonitoring={this._handleToggleSnoozeMonitoring}
             isReadOnly={isReadOnly}
             monitoredTrip={trip}
             pendingRequest={this.state.pendingRequest}
@@ -184,7 +195,8 @@ const itemMapStateToProps = (state: AppReduxState, { trip }: ItemOwnProps) => {
 }
 
 const itemMapDispatchToProps = {
-  togglePauseTrip: userActions.togglePauseTrip
+  togglePauseTrip: userActions.togglePauseTrip,
+  toggleSnoozeTrip: userActions.toggleSnoozeTrip
 }
 const ConnectedTripListItem = connect(
   itemMapStateToProps,
