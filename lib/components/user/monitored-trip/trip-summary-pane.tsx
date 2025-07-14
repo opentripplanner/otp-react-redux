@@ -148,7 +148,7 @@ const TripSummaryPane = ({
         handleTogglePauseMonitoring()
         return
       }
-      // trip can only be unsnoozed from the trip summary pane
+      // trip can only be snoozed from the trip editor
       if (handleToggleSnoozeMonitoring && monitoredTrip.snoozed) {
         handleToggleSnoozeMonitoring()
       }
