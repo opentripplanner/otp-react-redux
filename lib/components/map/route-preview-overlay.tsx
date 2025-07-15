@@ -1,12 +1,12 @@
 import { connect } from 'react-redux'
 import { Itinerary, Location } from '@opentripplanner/types'
 import { Layer, Source, useMap } from 'react-map-gl/maplibre'
+import { util } from '@opentripplanner/base-map'
 import polyline from '@mapbox/polyline'
 import React, { useEffect } from 'react'
 
 import { AppReduxState } from '../../util/state-types'
 import { DARK_TEXT_GREY } from '../util/colors'
-import { fitMapToEndpoints } from '../../util/ui'
 import {
   getActiveItinerary,
   getActiveSearch,
@@ -27,8 +27,8 @@ const RoutePreviewOverlay = ({ from, geometries, to, visible }: Props) => {
   // Center the map over the endpoints when this overlay is shown.
   const { current: map } = useMap()
   useEffect(() => {
-    if (visible) {
-      fitMapToEndpoints(map, from, to)
+    if (visible && map) {
+      util.fitMapToPoints(map, from, to, 0.2, 600)
     }
   }, [map, visible, from, to])
 
