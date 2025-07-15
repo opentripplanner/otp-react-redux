@@ -43,7 +43,7 @@ export const toastSettings = (
   const settings: DefaultToastOptions = {
     ariaProps: {
       'aria-live': 'assertive',
-      role: 'status'
+      role: 'alert'
     }
   }
   if (silentOnSuccess) {

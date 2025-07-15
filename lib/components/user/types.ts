@@ -102,6 +102,7 @@ export type MonitoredTrip = Record<DaysOfWeek, boolean> & {
 export interface MonitoredTripProps {
   from?: Place
   handleTogglePauseMonitoring?: () => void
+  handleToggleSnoozeMonitoring?: () => void
   isReadOnly?: boolean
   monitoredTrip: MonitoredTrip
   pendingRequest?: boolean | string

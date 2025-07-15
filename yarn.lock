@@ -2796,24 +2796,6 @@
     "@opentripplanner/core-utils" "13.0.0"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-7.0.0.tgz#1128760bb4a8dee672d0492a17b5400102670fc7"
-  integrity sha512-VeEFHRPmYp6CgA5QVyWTnnlYkWPEUQPU6eWgVpxb/6aBUnS7TrquDmiJeByNaEl4EISbpewbimdfegJPijZ2tw==
-  dependencies:
-    "@opentripplanner/core-utils" "13.0.0"
-    "@opentripplanner/humanize-distance" "2.0.0"
-    "@opentripplanner/icons" "4.0.0"
-    "@opentripplanner/location-icon" "2.0.0"
-    "@styled-icons/fa-solid" "^10.34.0"
-    "@styled-icons/foundation" "^10.34.0"
-    date-fns "^2.28.0"
-    date-fns-tz "^1.2.2"
-    flat "^5.0.2"
-    react-animate-height "^3.0.4"
-    react-resize-detector "^4.2.1"
-    string-similarity "^4.0.4"
-
 "@opentripplanner/itinerary-body@7.0.4":
   version "7.0.4"
   resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-7.0.4.tgz#d4d2022707f776cb26108a228c09da839dc264fc"
@@ -2874,13 +2856,13 @@
     "@opentripplanner/from-to-location-picker" "4.0.1"
     "@opentripplanner/types" "6.5.3"
 
-"@opentripplanner/printable-itinerary@4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/printable-itinerary/-/printable-itinerary-4.0.0.tgz#b165f3005251c526beb20b238392a37cec86619c"
-  integrity sha512-hgaDRSckf3QipXLnIFTFUTQb08Tg08sGW+hZR1J9/npyNAcceczPVMnAJn7lrZ1NQCP73tsQ3iw3xnYblPRWbw==
+"@opentripplanner/printable-itinerary@4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/printable-itinerary/-/printable-itinerary-4.0.1.tgz#0fda9284ecaa1298b6f6a7a22ff51712f8c90e8f"
+  integrity sha512-Fn9lVpKVi3GdLbVwdQ0gt42loqUwFSUsQX4Ndj1yVsSLAjDGjZz0YmY5AhF3YVNtFEmOSacyqB6+EovNbmL5cg==
   dependencies:
-    "@opentripplanner/core-utils" "13.0.0"
-    "@opentripplanner/itinerary-body" "7.0.0"
+    "@opentripplanner/core-utils" "13.0.1"
+    "@opentripplanner/itinerary-body" "7.0.4"
 
 "@opentripplanner/route-viewer-overlay@file:../../../../tmp/otp-ui-pkg/route-viewer-overlay":
   version "4.0.1"
@@ -2938,12 +2920,12 @@
     "@turf/midpoint" "^6.5.0"
     lodash.isequal "^4.5.0"
 
-"@opentripplanner/trip-details@7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-7.0.0.tgz#01f93075040da0ee314424e9180e63ee4be97372"
-  integrity sha512-VpOMVk7RBfH0jv4kFJXAVdYDg/skYatoIO7Sam4rPI5Z22lJZORtEbuCs/6DN+7iTPI0A5irzfl7MZBcPTd63w==
+"@opentripplanner/trip-details@8.0.1":
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-8.0.1.tgz#bae7e22f4bcc805a906e7daf570a10bd0d2cc9e9"
+  integrity sha512-eCp2zI/VmE/RvD8JyGvrD8wBJeGNcJjh+QP2XTEXuwxZO+ZrubPOAwPI1n/NUXje5K7pUFRJUUrd7NeaLEnk/w==
   dependencies:
-    "@opentripplanner/core-utils" "13.0.0"
+    "@opentripplanner/core-utils" "13.0.1"
     "@styled-icons/fa-solid" "^10.34.0"
     flat "^5.0.2"
     react-animate-height "^3.0.4"

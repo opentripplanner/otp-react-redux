@@ -443,7 +443,7 @@ class MetroItinerary extends NarrativeItinerary {
                       }}
                     />
                   )}
-                  <span className="timeInfo">
+                  <span>
                     {arrivesAt ? (
                       <FormattedMessage id="components.MetroUI.arriveAt" />
                     ) : (

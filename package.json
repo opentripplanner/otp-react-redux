@@ -53,13 +53,13 @@
     "@opentripplanner/map-popup": "/tmp/otp-ui-pkg/map-popup",
     "@opentripplanner/otp2-tile-overlay": "/tmp/otp-ui-pkg/otp2-tile-overlay",
     "@opentripplanner/park-and-ride-overlay": "/tmp/otp-ui-pkg/park-and-ride-overlay",
-    "@opentripplanner/printable-itinerary": "4.0.0",
+    "@opentripplanner/printable-itinerary": "4.0.1",
     "@opentripplanner/route-viewer-overlay": "/tmp/otp-ui-pkg/route-viewer-overlay",
     "@opentripplanner/stop-viewer-overlay": "/tmp/otp-ui-pkg/stop-viewer-overlay",
     "@opentripplanner/stops-overlay": "/tmp/otp-ui-pkg/stops-overlay",
     "@opentripplanner/transit-vehicle-overlay": "/tmp/otp-ui-pkg/transit-vehicle-overlay",
     "@opentripplanner/transitive-overlay": "/tmp/otp-ui-pkg/transitive-overlay",
-    "@opentripplanner/trip-details": "7.0.0",
+    "@opentripplanner/trip-details": "8.0.1",
     "@opentripplanner/trip-form": "6.0.2",
     "@opentripplanner/trip-viewer-overlay": "/tmp/otp-ui-pkg/trip-viewer-overlay",
     "@opentripplanner/vehicle-rental-overlay": "/tmp/otp-ui-pkg/vehicle-rental-overlay",
@@ -247,5 +247,6 @@
     "snapshot": {
       "percy-css": ".percy-hide { opacity: 0!important; } "
     }
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
