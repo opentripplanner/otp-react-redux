@@ -65,6 +65,7 @@
     "@opentripplanner/vehicle-rental-overlay": "/tmp/otp-ui-pkg/vehicle-rental-overlay",
     "@styled-icons/fa-regular": "^10.34.0",
     "@styled-icons/fa-solid": "^10.34.0",
+    "@tanstack/react-pacer": "^0.8.0",
     "@turf/centroid": "^6.5.0",
     "@turf/helpers": "^6.5.0",
     "@types/react-transition-group": "^4.4.10",
