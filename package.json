@@ -91,7 +91,7 @@
     "lodash.isempty": "^4.4.0",
     "lodash.isequal": "^4.5.0",
     "lodash.memoize": "^4.1.2",
-    "maplibre-gl": "^5.5.0",
+    "maplibre-gl": "^5.6.1",
     "object-hash": "^3.0.0",
     "object-path": "^0.11.8",
     "object-to-formdata": "^4.1.0",
