@@ -2,6 +2,11 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import { connect } from 'react-redux'
+import {
+  FormFactor,
+  RentalVehicle,
+  VehicleRentalStation
+} from '@opentripplanner/types/otp2'
 import { GeolocateControl, NavigationControl } from 'react-map-gl'
 import { getCurrentDate } from '@opentripplanner/core-utils/lib/time'
 import { injectIntl } from 'react-intl'
@@ -15,7 +20,7 @@ import {
   bikeRentalQuery,
   carRentalQuery,
   findStopTimesForStop,
-  vehicleRentalQuery
+  rentalVehicleQuery
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
 import { getActiveItinerary, getActiveSearch } from '../../util/state'
@@ -139,10 +144,31 @@ function getLayerName(overlay, config, intl) {
   }
 }
 
-class DefaultMap extends Component {
+interface DefaultMapProps {
+  bikeRentalQuery: any
+  bikeRentalStations: VehicleRentalStation[]
+  carRentalQuery: any
+  carRentalStations: VehicleRentalStation[]
+  config: any
+  getCurrentPosition: any
+  intl: any
+  itinerary: any
+  mapConfig: any
+  nearbyViewActive: any
+  pending: any
+  // need to update usages to reflect name change:
+  // vehicleRentalStations: RentalVehicle[]
+  rentalVehicleQuery: any
+  rentalVehicles: RentalVehicle[]
+  setLocation: any
+  setViewedStop: any
+  viewedRouteStops: any
+}
+
+class DefaultMap extends Component<DefaultMapProps> {
   static contextType = ComponentContext
 
-  constructor(props) {
+  constructor(props: DefaultMapProps) {
     super(props)
     // We have to maintain the map state because the underlying map also (incorrectly?) uses a state.
     // Not maintaining a state causes re-renders to the map's configured coordinates.
@@ -284,10 +310,10 @@ class DefaultMap extends Component {
       mapConfig,
       nearbyViewActive,
       pending,
+      rentalVehicleQuery,
+      rentalVehicles,
       setLocation,
       setViewedStop,
-      vehicleRentalQuery,
-      vehicleRentalStations,
       viewedRouteStops
     } = this.props
     const { getCustomMapOverlays, getTransitiveRouteLabel, ModeIcon } =
@@ -299,17 +325,21 @@ class DefaultMap extends Component {
       config.api?.path
     }/vectorTiles`
 
-    const bikeStations = [
-      ...bikeRentalStations.filter(
-        (station) =>
-          !station.isFloatingVehicle || station.isFloatingVehicle === false
-      ),
-      ...vehicleRentalStations.filter(
-        (station) => station.isFloatingBike === true
+    const bikeStationsAndFloatingBikes = [
+      ...bikeRentalStations,
+      ...rentalVehicles.filter(
+        (station) => station.vehicleType?.formFactor === FormFactor.BICYCLE
       )
     ]
-    const scooterStations = vehicleRentalStations.filter(
-      (station) => station.isFloatingBike === false && station.isFloatingVehicle
+
+    const scooters = rentalVehicles.filter(
+      (vehicle) => vehicle.vehicleType?.formFactor === FormFactor.SCOOTER
+    )
+
+    const micromobility = rentalVehicles.filter(
+      (vehicle) =>
+        vehicle.vehicleType &&
+        vehicle.vehicleType?.formFactor !== FormFactor.CAR
     )
 
     const baseLayersWithNames = baseLayers?.map((baseLayer) => ({
@@ -383,16 +413,16 @@ class DefaultMap extends Component {
                 return (
                   <VehicleRentalOverlay
                     {...namedLayerProps}
+                    entities={bikeRentalStations}
                     refreshVehicles={bikeRentalQuery}
-                    stations={bikeRentalStations}
                   />
                 )
               case 'car-rental':
                 return (
                   <VehicleRentalOverlay
                     {...namedLayerProps}
+                    entities={carRentalStations}
                     refreshVehicles={carRentalQuery}
-                    stations={carRentalStations}
                   />
                 )
               case 'park-and-ride':
@@ -403,8 +433,8 @@ class DefaultMap extends Component {
                 return (
                   <VehicleRentalOverlay
                     {...namedLayerProps}
-                    refreshVehicles={vehicleRentalQuery}
-                    stations={vehicleRentalStations}
+                    entities={micromobility}
+                    refreshVehicles={rentalVehicleQuery}
                   />
                 )
               case 'otp2-micromobility-rental':
@@ -412,8 +442,8 @@ class DefaultMap extends Component {
                   <VehicleRentalOverlay
                     key={k}
                     {...namedLayerProps}
-                    refreshVehicles={vehicleRentalQuery}
-                    stations={scooterStations}
+                    entities={scooters}
+                    refreshVehicles={rentalVehicleQuery}
                   />
                 )
               case 'otp2-bike-rental':
@@ -421,8 +451,8 @@ class DefaultMap extends Component {
                   <VehicleRentalOverlay
                     key={k}
                     {...namedLayerProps}
+                    entities={bikeStationsAndFloatingBikes}
                     refreshVehicles={bikeRentalQuery}
-                    stations={bikeStations}
                   />
                 )
               case 'otp2':
@@ -492,7 +522,7 @@ const mapStateToProps = (state) => {
       state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW,
     pending: activeSearch ? Boolean(activeSearch.pending) : false,
     query: state.otp.currentQuery,
-    vehicleRentalStations: state.otp.overlay.vehicleRental.stations,
+    rentalVehicles: state.otp.overlay.vehicleRental.stations,
     viewedRouteStops
   }
 }
@@ -502,11 +532,11 @@ const mapDispatchToProps = {
   carRentalQuery,
   findStopTimesForStop,
   getCurrentPosition,
+  rentalVehicleQuery,
   setLocation,
   setMapPopupLocationAndGeocode,
   setViewedStop,
-  updateOverlayVisibility,
-  vehicleRentalQuery
+  updateOverlayVisibility
 }
 
 export default connect(
