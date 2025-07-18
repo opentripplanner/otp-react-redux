@@ -11158,7 +11158,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 <styled.div
                                   style={
                                     Object {
-                                      "marginTop": "inherit",
+                                      "marginTop": "1rem",
                                     }
                                   }
                                 >
@@ -11166,7 +11166,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="sc-gUUBao dCmAkv"
                                     style={
                                       Object {
-                                        "marginTop": "inherit",
+                                        "marginTop": "1rem",
                                       }
                                     }
                                   >
@@ -11192,7 +11192,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <Connect(Component)
-                                          className="sc-fTACoA jMLBCS stop-header-action"
+                                          className="sc-fTACoA dNkEQw stop-header-action"
                                           to="/schedule/kcm:36940"
                                           toParams={
                                             Object {
@@ -11201,7 +11201,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         >
                                           <a
-                                            className="sc-fTACoA jMLBCS stop-header-action"
+                                            className="sc-fTACoA dNkEQw stop-header-action"
                                             href="#/schedule/kcm:36940"
                                           >
                                             <IconWithText
@@ -18434,7 +18434,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 <styled.div
                                   style={
                                     Object {
-                                      "marginTop": 5,
+                                      "marginTop": 10,
                                     }
                                   }
                                 >
@@ -18442,7 +18442,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="sc-gUUBao dCmAkv"
                                     style={
                                       Object {
-                                        "marginTop": 5,
+                                        "marginTop": 10,
                                       }
                                     }
                                   >
@@ -18457,7 +18457,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <Connect(Component)
-                                          className="sc-fTACoA jMLBCS stop-header-action"
+                                          className="sc-fTACoA dNkEQw stop-header-action"
                                           to="/schedule/40:990003"
                                           toParams={
                                             Object {
@@ -18466,7 +18466,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         >
                                           <a
-                                            className="sc-fTACoA jMLBCS stop-header-action"
+                                            className="sc-fTACoA dNkEQw stop-header-action"
                                             href="#/schedule/40:990003"
                                           >
                                             <IconWithText
@@ -28632,7 +28632,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 <styled.div
                                   style={
                                     Object {
-                                      "marginTop": "inherit",
+                                      "marginTop": "1rem",
                                     }
                                   }
                                 >
@@ -28640,7 +28640,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="sc-gUUBao dCmAkv"
                                     style={
                                       Object {
-                                        "marginTop": "inherit",
+                                        "marginTop": "1rem",
                                       }
                                     }
                                   >
@@ -28666,7 +28666,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <Connect(Component)
-                                          className="sc-fTACoA jMLBCS stop-header-action"
+                                          className="sc-fTACoA dNkEQw stop-header-action"
                                           to="/schedule/kcm:16430"
                                           toParams={
                                             Object {
@@ -28675,7 +28675,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         >
                                           <a
-                                            className="sc-fTACoA jMLBCS stop-header-action"
+                                            className="sc-fTACoA dNkEQw stop-header-action"
                                             href="#/schedule/kcm:16430"
                                           >
                                             <IconWithText
@@ -38600,7 +38600,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 <styled.div
                                   style={
                                     Object {
-                                      "marginTop": "inherit",
+                                      "marginTop": "1rem",
                                     }
                                   }
                                 >
@@ -38608,7 +38608,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="sc-gUUBao dCmAkv"
                                     style={
                                       Object {
-                                        "marginTop": "inherit",
+                                        "marginTop": "1rem",
                                       }
                                     }
                                   >
@@ -38634,7 +38634,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <Connect(Component)
-                                          className="sc-fTACoA jMLBCS stop-header-action"
+                                          className="sc-fTACoA dNkEQw stop-header-action"
                                           to="/schedule/kcm:16440"
                                           toParams={
                                             Object {
@@ -38643,7 +38643,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         >
                                           <a
-                                            className="sc-fTACoA jMLBCS stop-header-action"
+                                            className="sc-fTACoA dNkEQw stop-header-action"
                                             href="#/schedule/kcm:16440"
                                           >
                                             <IconWithText
@@ -47031,7 +47031,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 <styled.div
                                   style={
                                     Object {
-                                      "marginTop": 5,
+                                      "marginTop": 10,
                                     }
                                   }
                                 >
@@ -47039,7 +47039,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="sc-gUUBao dCmAkv"
                                     style={
                                       Object {
-                                        "marginTop": 5,
+                                        "marginTop": 10,
                                       }
                                     }
                                   >
@@ -47054,7 +47054,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <Connect(Component)
-                                          className="sc-fTACoA jMLBCS stop-header-action"
+                                          className="sc-fTACoA dNkEQw stop-header-action"
                                           to="/schedule/40:990004"
                                           toParams={
                                             Object {
@@ -47063,7 +47063,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         >
                                           <a
-                                            className="sc-fTACoA jMLBCS stop-header-action"
+                                            className="sc-fTACoA dNkEQw stop-header-action"
                                             href="#/schedule/40:990004"
                                           >
                                             <IconWithText
@@ -55265,7 +55265,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 <styled.div
                                   style={
                                     Object {
-                                      "marginTop": "inherit",
+                                      "marginTop": "1rem",
                                     }
                                   }
                                 >
@@ -55273,7 +55273,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="sc-gUUBao dCmAkv"
                                     style={
                                       Object {
-                                        "marginTop": "inherit",
+                                        "marginTop": "1rem",
                                       }
                                     }
                                   >
@@ -55299,7 +55299,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <Connect(Component)
-                                          className="sc-fTACoA jMLBCS stop-header-action"
+                                          className="sc-fTACoA dNkEQw stop-header-action"
                                           to="/schedule/kcm:23561"
                                           toParams={
                                             Object {
@@ -55308,7 +55308,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         >
                                           <a
-                                            className="sc-fTACoA jMLBCS stop-header-action"
+                                            className="sc-fTACoA dNkEQw stop-header-action"
                                             href="#/schedule/kcm:23561"
                                           >
                                             <IconWithText
@@ -67079,7 +67079,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 <styled.div
                                   style={
                                     Object {
-                                      "marginTop": "inherit",
+                                      "marginTop": "1rem",
                                     }
                                   }
                                 >
@@ -67087,7 +67087,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="sc-gUUBao dCmAkv"
                                     style={
                                       Object {
-                                        "marginTop": "inherit",
+                                        "marginTop": "1rem",
                                       }
                                     }
                                   >
@@ -67113,7 +67113,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <Connect(Component)
-                                          className="sc-fTACoA jMLBCS stop-header-action"
+                                          className="sc-fTACoA dNkEQw stop-header-action"
                                           to="/schedule/kcm:36931"
                                           toParams={
                                             Object {
@@ -67122,7 +67122,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         >
                                           <a
-                                            className="sc-fTACoA jMLBCS stop-header-action"
+                                            className="sc-fTACoA dNkEQw stop-header-action"
                                             href="#/schedule/kcm:36931"
                                           >
                                             <IconWithText
