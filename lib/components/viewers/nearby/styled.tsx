@@ -112,6 +112,6 @@ export const FullHeightContainer = styled.div`
 
 export const ActionLink = styled(Link)`
   color: inherit;
-  font-size: small;
+  font-size: 14px;
   float: right;
 `

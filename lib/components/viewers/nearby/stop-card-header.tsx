@@ -1,13 +1,12 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { MagnifyingGlassPlus } from '@styled-icons/fa-solid/MagnifyingGlassPlus'
+import { Search } from '@styled-icons/fa-solid/Search'
 import { TransitOperator } from '@opentripplanner/types'
 import React, { ComponentType } from 'react'
 
 import { AppReduxState } from '../../../util/state-types'
 import { Icon, IconWithText } from '../../util/styledIcon'
 import { StopData } from '../../util/types'
-import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import Strong from '../../util/strong-text'
 import TransitOperatorLogos from '../../util/transit-operator-icons'
 
@@ -57,26 +56,26 @@ const StopCardHeader = ({
           <span>{stopData.name}</span>
           {onZoomClick ? (
             <button
+              aria-label={zoomButtonText}
               className="link-button"
               onClick={onZoomClick}
               title={zoomButtonText}
             >
               <Icon
-                Icon={MagnifyingGlassPlus}
+                Icon={Search}
                 style={{
                   bottom: 3,
                   fontSize: 16,
-                  marginLeft: '0.3em',
+                  marginLeft: '1ch',
                   position: 'relative'
                 }}
               />
-              <InvisibleA11yLabel>{zoomButtonText}</InvisibleA11yLabel>
             </button>
           ) : null}
         </CardTitle>
         <DistanceDisplay distance={stopData.distance} />
       </CardHeader>
-      <CardBody style={{ marginTop: !stopData.code ? 5 : 'inherit' }}>
+      <CardBody style={{ marginTop: !stopData.code ? 10 : '1rem' }}>
         <div>
           {stopData.code ? (
             <FormattedMessage
