@@ -1,0 +1,74 @@
+import { Check2 } from '@styled-icons/bootstrap'
+import { Parking } from '@styled-icons/fa-solid'
+
+import { ComponentContext } from '../../../util/contexts'
+import { getBaseColor } from '../../util/colors'
+import { invisibleCss } from '@opentripplanner/trip-form/lib/MetroModeSelector'
+import { NearbyFilterConfig } from '../../../util/config-types'
+
+import React, { useContext } from 'react'
+import styled from 'styled-components'
+
+const StyledFilterCheckbox = styled.label<{ checked: boolean }>`
+  width: 75px;
+  height: 35px;
+  border-radius: 50px;
+  background: ${(props) => (props.checked ? '#fff' : '#ffffffd9')};
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  margin: 0;
+  justify-content: space-between;
+  padding: 0.5em;
+  align-content: center;
+  justify-items: center;
+  transition: all ease 150ms;
+
+  svg {
+    width: 25px;
+    height: 25px;
+    color: ${getBaseColor()};
+
+    &:first-of-type {
+      grid-column: 1;
+    }
+  }
+
+  input {
+    ${invisibleCss}
+  }
+`
+
+export const FilterCheckboxes = ({
+  filter,
+  onChange,
+  value
+}: {
+  filter: NearbyFilterConfig
+  onChange: (arg: any) => void
+  value: boolean
+}): JSX.Element => {
+  // @ts-expect-error component context
+  const { ModeIcon } = useContext(ComponentContext)
+  const FilterIcon = () =>
+    filter.cardType === 'VehicleParking' ? (
+      <Parking />
+    ) : (
+      <ModeIcon className="mode-svg" mode={filter.iconName} />
+    )
+
+  return (
+    <>
+      <StyledFilterCheckbox checked={value} htmlFor={filter.cardType}>
+        <FilterIcon />
+        {value && <Check2 />}
+        <input
+          checked={value}
+          id={filter.cardType}
+          onChange={onChange}
+          type="checkbox"
+        />
+      </StyledFilterCheckbox>
+    </>
+  )
+}

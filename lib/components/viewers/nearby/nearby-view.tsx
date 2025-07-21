@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Location } from '@opentripplanner/types'
@@ -7,14 +8,21 @@ import { Search } from '@styled-icons/fa-solid/Search'
 import coreUtils from '@opentripplanner/core-utils'
 import getGeocoder from '@opentripplanner/geocoder'
 import LocationField from '@opentripplanner/location-field'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, {
+  FormEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react'
 
 import * as apiActions from '../../../actions/api'
 import * as locationActions from '../../../actions/location'
 import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
-import { GeocoderConfig } from '../../../util/config-types'
+import { GeocoderConfig, NearbyFilterConfig } from '../../../util/config-types'
 import { getCurrentServiceWeek } from '../../../util/current-service-week'
 import {
   PatternStopTime,
@@ -28,6 +36,7 @@ import MobileNavigationBar from '../../mobile/navigation-bar'
 import PageTitle from '../../util/page-title'
 import VehiclePositionRetriever from '../vehicle-position-retriever'
 
+import { FilterCheckboxes } from './nearby-filter'
 import { FullHeightContainer, NearbySidebarContainer } from './styled'
 import FromToPicker from './from-to-picker'
 import RentalStation from './rental-station'
@@ -42,6 +51,8 @@ type LatLonObj = { lat: number; lon: number }
 type CurrentPosition = { coords?: { latitude: number; longitude: number } }
 type ServiceWeek = { end: string; start: string }
 
+type Filter = Record<string, boolean>
+
 type Props = {
   currentPosition?: CurrentPosition
   currentServiceWeek?: ServiceWeek
@@ -53,6 +64,7 @@ type Props = {
     radius?: number,
     currentServiceWeek?: ServiceWeek
   ) => void
+  filterConfig: any
   geocoderConfig: GeocoderConfig
   getCurrentPosition: any // TODO
   hideBackButton?: boolean
@@ -61,6 +73,7 @@ type Props = {
   mobile?: boolean
   // Todo: type nearby results
   nearby: any
+  nearbyFilters: any
   nearbyViewCoords?: LatLonObj
   radius?: number
   routeSortComparator: (a: PatternStopTime, b: PatternStopTime) => number
@@ -68,6 +81,7 @@ type Props = {
   setHighlightedLocation: (location: Location | null) => void
   setLocation: SetLocationHandler
   setMainPanelContent: (content: number) => void
+  setNearbyViewFilter: (arg: any) => void
   setViewedNearbyCoords: (location: Location | null) => void
   zoomToPlace: ZoomToPlaceHandler
 }
@@ -128,18 +142,21 @@ function NearbyView({
   displayedCoords,
   entityId,
   fetchNearby,
+  filterConfig,
   geocoderConfig,
   getCurrentPosition,
   hideEmptyStops,
   location,
   mobile,
   nearby,
+  nearbyFilters,
   nearbyViewCoords,
   radius,
   routeSortComparator,
   sessionSearches,
   setHighlightedLocation,
   setMainPanelContent,
+  setNearbyViewFilter,
   setViewedNearbyCoords,
   zoomToPlace
 }: Props): JSX.Element {
@@ -147,6 +164,17 @@ function NearbyView({
   const intl = useIntl()
   const [loading, setLoading] = useState(true)
   const [reversedPoint, setReversedPoint] = useState('')
+  const [filters, setFilters] = useState(
+    filterConfig
+      ? Object.fromEntries(
+          filterConfig.map((filter: Filter) => [
+            filter.cardType,
+            filter.defaultOn
+          ])
+        )
+      : nearbyFilters
+  )
+
   const firstItemRef = useRef<HTMLDivElement>(null)
   const finalNearbyCoords = useMemo(
     () =>
@@ -158,12 +186,18 @@ function NearbyView({
       ),
     [nearbyViewCoords, currentPosition, map]
   )
-
   const reverseCoords = (coords: LonLatInput) => {
     getGeocoder(geocoderConfig)
       .reverse({ point: coords })
       .then((result: Location) => setReversedPoint(result?.name || ''))
   }
+
+  const scrollToTop = () =>
+    window.scrollTo({
+      behavior: 'smooth',
+      left: 0,
+      top: 0
+    })
 
   // Make sure the highlighted location is cleaned up when leaving nearby
   useEffect(() => {
@@ -208,12 +242,19 @@ function NearbyView({
     }
   }, [map, setViewedNearbyCoords, setHighlightedLocation])
 
+  const onFilterChange = (event: FormEvent) => {
+    const { target } = event
+    const { id } = target as HTMLInputElement
+    setFilters({ ...filters, [id]: !filters[id] })
+  }
+
   useEffect(() => {
-    window.scrollTo({
-      behavior: 'smooth',
-      left: 0,
-      top: 0
-    })
+    setNearbyViewFilter(filters)
+    scrollToTop()
+  }, [filters, setNearbyViewFilter])
+
+  useEffect(() => {
+    scrollToTop()
     if (finalNearbyCoords) {
       fetchNearby(finalNearbyCoords, radius, currentServiceWeek)
       setLoading(true)
@@ -259,9 +300,9 @@ function NearbyView({
   const filteredNearby = nearby?.filter((n: any) => {
     if (n.place.__typename === 'Stop' && hideEmptyStops) {
       const patternArray = patternArrayforStops(n.place, routeSortComparator)
-      return !(patternArray?.length === 0)
+      return !(patternArray?.length === 0) && filters[n.place.__typename]
     }
-    return true
+    return filters[n.place.__typename]
   })
 
   const nearbyItemList =
@@ -327,7 +368,7 @@ function NearbyView({
           />
         </InvisibleA11yLabel>
       )}
-      <div style={{ padding: '1em' }}>
+      <div style={{ padding: filterConfig ? '1em 1em .5em 1em' : '1em' }}>
         <LocationField
           className="nearby-view-location-field"
           // TODO: why does this cause the jump to the trip planner when selecting location
@@ -364,6 +405,23 @@ function NearbyView({
           sortByDistance
           suggestionCount={geocoderConfig?.resultsCount}
         />
+        {filterConfig && (
+          <div
+            className="filter-container"
+            style={{ display: 'flex', gap: '10px', marginTop: '10px' }}
+          >
+            {filterConfig.map((filter: NearbyFilterConfig) => {
+              return (
+                <FilterCheckboxes
+                  filter={filter}
+                  key={filter.cardType}
+                  onChange={onFilterChange}
+                  value={filters[filter.cardType]}
+                />
+              )
+            })}
+          </div>
+        )}
       </div>
 
       {loading && <Loading extraSmall />}
@@ -371,6 +429,7 @@ function NearbyView({
       <div aria-hidden ref={firstItemRef} />
       <NearbySidebarContainer
         className="base-color-bg"
+        filters={filterConfig}
         style={{ marginBottom: 0 }}
       >
         {nearby &&
@@ -392,10 +451,12 @@ const mapStateToProps = (state: AppReduxState) => {
   const { config, location, transitIndex, ui } = state.otp
   const { map, nearbyView: nearbyViewConfig, routeViewer } = config
   const transitOperators = config?.transitOperators || []
-  const { nearbyViewCoords } = ui
+  const { nearbyView, nearbyViewCoords } = ui
   const { nearby } = transitIndex
   const { entityId } = state.router.location.query
   const { currentPosition, sessionSearches } = location
+  const { filters } = nearbyView
+  const filterConfig = nearbyViewConfig?.filterConfig
   const defaultLatLon =
     map?.initLat && map?.initLon ? { lat: map.initLat, lon: map.initLon } : null
 
@@ -424,11 +485,14 @@ const mapStateToProps = (state: AppReduxState) => {
     defaultLatLon,
     displayedCoords: nearby?.coords,
     entityId: entityId && decodeURIComponent(entityId),
+    filterConfig,
     geocoderConfig: config.geocoder,
     hideEmptyStops: config.nearbyView?.hideEmptyStops,
     homeTimezone: config.homeTimezone,
     location: state.router.location.hash,
+    mapConfig: config.map,
     nearby: nearby?.data,
+    nearbyFilters: filters,
     nearbyViewCoords,
     radius: config.nearbyView?.radius,
     routeSortComparator,
@@ -442,6 +506,7 @@ const mapDispatchToProps = {
   setHighlightedLocation: uiActions.setHighlightedLocation,
   setLocation: mapActions.setLocation,
   setMainPanelContent: uiActions.setMainPanelContent,
+  setNearbyViewFilter: uiActions.setNearbyViewFilter,
   setViewedNearbyCoords: uiActions.setViewedNearbyCoords,
   viewNearby: uiActions.viewNearby,
   zoomToPlace: mapActions.zoomToPlace

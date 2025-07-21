@@ -42,7 +42,7 @@ import TripViewerOverlay from './connected-trip-viewer-overlay'
 import VehicleRentalOverlay from './connected-vehicle-rental-overlay'
 import withMap from './with-map'
 
-const MapContainer = styled.div`
+const MapContainer = styled.div<{ hideLayerFilters: boolean }>`
   height: 100%;
   width: 100%;
 
@@ -59,6 +59,10 @@ const MapContainer = styled.div`
   .mapboxgl-popup-content {
     border-radius: 10px;
     box-shadow: 0 3px 14px 4px rgb(0 0 0 / 20%);
+  }
+
+  ul.layers-list {
+    display: ${(props) => (props.hideLayerFilters ? 'none' : 'block')};
   }
 `
 /**
@@ -152,10 +156,32 @@ class DefaultMap extends Component {
       initZoom: zoom = 13
     } = props.mapConfig || {}
     this.state = {
+      filteredOverlays: this.props.mapConfig.overlays,
       lat,
       lon,
       zoom
     }
+  }
+
+  _filterNearbyMapLayers = () => {
+    const { mapConfig, nearbyFilters } = this.props
+    const { overlays } = mapConfig
+    const newOverlays = overlays
+      .filter((overlay) => {
+        return overlay.cardType ? nearbyFilters[overlay.cardType] : true
+      })
+      .map((overlay) => {
+        if (overlay.layers) {
+          return {
+            ...overlay,
+            layers: overlay?.layers?.filter(
+              (layer) => nearbyFilters[layer.cardType]
+            )
+          }
+        }
+        return overlay
+      })
+    return this.setState({ filteredOverlays: newOverlays })
   }
 
   // Generate operator logos to pass through OTP tile layer to map-popup
@@ -258,6 +284,7 @@ class DefaultMap extends Component {
   }
 
   componentDidMount() {
+    this._filterNearbyMapLayers()
     // HACK: Set state lat and lon to null to prevent re-rendering of the
     // underlying OTP-UI map.
     this.setState({
@@ -267,8 +294,16 @@ class DefaultMap extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    const { mapConfig, nearbyFilters, nearbyViewActive } = this.props
     // Check if any overlays should be toggled due to mode change
     this._handleQueryChange(prevProps.query, this.props.query)
+    if (prevProps.nearbyFilters !== nearbyFilters && nearbyViewActive)
+      this._filterNearbyMapLayers()
+    if (prevProps.nearbyViewActive !== nearbyViewActive && !nearbyViewActive) {
+      this.setState({
+        filteredOverlays: mapConfig.overlays
+      })
+    }
   }
 
   render() {
@@ -282,6 +317,7 @@ class DefaultMap extends Component {
       intl,
       itinerary,
       mapConfig,
+      nearbyFiltersConfigured,
       nearbyViewActive,
       pending,
       setLocation,
@@ -323,7 +359,10 @@ class DefaultMap extends Component {
       overlays?.find((o) => o.type === 'vehicles-one-route') || undefined
 
     return (
-      <MapContainer className="percy-hide">
+      <MapContainer
+        className="percy-hide"
+        hideLayerFilters={nearbyViewActive && nearbyFiltersConfigured}
+      >
         <BaseMap
           baseLayer={
             baseLayerUrls?.length > 1 ? baseLayerUrls : baseLayerUrls?.[0]
@@ -367,7 +406,7 @@ class DefaultMap extends Component {
           <ElevationPointMarker />
 
           {/* The configurable overlays */}
-          {overlays?.map((overlayConfig, k) => {
+          {this.state.filteredOverlays?.map((overlayConfig, k) => {
             const namedLayerProps = {
               ...overlayConfig,
               id: k,
@@ -462,6 +501,8 @@ class DefaultMap extends Component {
 const mapStateToProps = (state) => {
   const activeSearch = getActiveSearch(state)
   const viewedRoute = state.otp?.ui?.viewedRoute?.routeId
+  const nearbyFilters = state.otp?.ui?.nearbyView?.filters
+  const nearbyFiltersConfigured = state.otp.config.nearbyView.filterConfig
   const nearbyViewerActive =
     state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW
 
@@ -488,6 +529,8 @@ const mapStateToProps = (state) => {
     config: state.otp.config,
     itinerary: getActiveItinerary(state),
     mapConfig: state.otp.config.map,
+    nearbyFilters,
+    nearbyFiltersConfigured,
     nearbyViewActive:
       state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW,
     pending: activeSearch ? Boolean(activeSearch.pending) : false,
