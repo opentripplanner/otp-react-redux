@@ -392,10 +392,12 @@ components:
     companyScooter: "{company} Scooter"
     distanceAway: "{localizedDistanceString} away"
     error: An error occurred loading nearby amenities.
+    errorHeader: Error
     header: Nearby View
     headsign: "{destination}"
     nearbyListIntro: List of {count} nearby entities.
     nothingNearby: There are no places nearby.
+    nothingNearbyHeader: Out of Range
     searchNearby: Search nearby...
     spacesAvailable: "{spacesAvailable} empty spaces available"
   NewAccountWizard:

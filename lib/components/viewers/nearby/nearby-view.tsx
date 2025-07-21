@@ -391,6 +391,9 @@ function NearbyView({
         {nearbyViewError && !loading && (
           <IconMessageContainer
             body={intl.formatMessage({ id: 'components.NearbyView.error' })}
+            header={intl.formatMessage({
+              id: 'components.NearbyView.errorHeader'
+            })}
           />
         )}
         {nearby &&
@@ -403,6 +406,9 @@ function NearbyView({
             <IconMessageContainer
               body={intl.formatMessage({
                 id: 'components.NearbyView.nothingNearby'
+              })}
+              header={intl.formatMessage({
+                id: 'components.NearbyView.nothingNearbyHeader'
               })}
             />
           ))}

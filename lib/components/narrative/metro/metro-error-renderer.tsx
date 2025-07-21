@@ -38,13 +38,7 @@ const Container = styled.li`
   p {
     grid-column: 2;
     grid-row: 2;
-  }
-
-  /* Center the body text if there is no header */
-  p:not(h2 ~ p) {
-    grid-row: 1 / -1;
-    place-self: center start;
-    margin-bottom: 0;
+    padding-bottom: 10px;
   }
 
   svg {
@@ -59,13 +53,13 @@ export const IconMessageContainer = ({
   iconSize = '3x'
 }: {
   body?: React.ReactNode
-  header?: React.ReactNode
+  header: React.ReactNode
   icon?: React.ElementType
   iconSize?: string
 }): JSX.Element => (
   <Container>
     <Icon Icon={icon} size={iconSize} />
-    {header && <h2>{header}</h2>}
+    <h2>{header}</h2>
     {body && <p>{body}</p>}
   </Container>
 )
