@@ -12,8 +12,9 @@ import styled from 'styled-components'
 const StyledFilterCheckbox = styled.label<{ checked: boolean }>`
   width: 75px;
   height: 35px;
-  border-radius: 50px;
+  border-radius: 10px;
   background: ${(props) => (props.checked ? '#fff' : '#ffffffd9')};
+  box-shadow: 0px 0px 5px 1px inset rgb(0 0 0 / 0.05);
   display: grid;
   grid-template-columns: 50% 50%;
   align-items: center;
@@ -36,6 +37,9 @@ const StyledFilterCheckbox = styled.label<{ checked: boolean }>`
 
   input {
     ${invisibleCss}
+  }
+  &:hover {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   }
 `
 
