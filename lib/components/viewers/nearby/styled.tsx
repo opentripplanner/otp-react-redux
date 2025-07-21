@@ -21,7 +21,7 @@ export const NearbySidebarContainer = styled.ol<{ filters: boolean }>`
   padding: 0.5em 1em;
   list-style: none;
   overflow-y: scroll;
-  height: ${(props) => (props.filters ? '85%' : '90%')};
+  height: ${(props) => (props.filters ? '84%' : '90%')};
 
   & > li:last-of-type {
     margin-bottom: 1em;

@@ -61,6 +61,7 @@ const MapContainer = styled.div<{ hideLayerFilters: boolean }>`
     box-shadow: 0 3px 14px 4px rgb(0 0 0 / 20%);
   }
 
+  // If we're using filtering in the nearby view, hide the toggleable layers so there's no confusion.
   ul.layers-list {
     display: ${(props) => (props.hideLayerFilters ? 'none' : 'block')};
   }
@@ -297,8 +298,10 @@ class DefaultMap extends Component {
     const { mapConfig, nearbyFilters, nearbyViewActive } = this.props
     // Check if any overlays should be toggled due to mode change
     this._handleQueryChange(prevProps.query, this.props.query)
+    // If we're in the nearby view, filter the visible layers according to the nearby view filters.
     if (prevProps.nearbyFilters !== nearbyFilters && nearbyViewActive)
       this._filterNearbyMapLayers()
+    // If we leave the nearby view, reset the map overlays back to defaults.
     if (prevProps.nearbyViewActive !== nearbyViewActive && !nearbyViewActive) {
       this.setState({
         filteredOverlays: mapConfig.overlays

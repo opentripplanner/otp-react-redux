@@ -165,6 +165,7 @@ function NearbyView({
   const [loading, setLoading] = useState(true)
   const [reversedPoint, setReversedPoint] = useState('')
   const [filters, setFilters] = useState(
+    // Set the filters according to the configuration settings. If there's no filter config, set the filters to default (which is just all filters set to true)
     filterConfig
       ? Object.fromEntries(
           filterConfig.map((filter: Filter) => [
@@ -175,7 +176,7 @@ function NearbyView({
       : nearbyFilters
   )
 
-  const firstItemRef = useRef<HTMLDivElement>(null)
+  const nearbyContainerRef = useRef<HTMLOListElement>(null)
   const finalNearbyCoords = useMemo(
     () =>
       getNearbyCoordsFromUrlOrLocationOrMapCenter(
@@ -192,12 +193,13 @@ function NearbyView({
       .then((result: Location) => setReversedPoint(result?.name || ''))
   }
 
-  const scrollToTop = () =>
-    window.scrollTo({
+  const scrollToTop = () => {
+    console.log(nearbyContainerRef)
+    nearbyContainerRef?.current?.scroll({
       behavior: 'smooth',
-      left: 0,
       top: 0
     })
+  }
 
   // Make sure the highlighted location is cleaned up when leaving nearby
   useEffect(() => {
@@ -368,7 +370,7 @@ function NearbyView({
           />
         </InvisibleA11yLabel>
       )}
-      <div style={{ padding: filterConfig ? '1em 1em .5em 1em' : '1em' }}>
+      <div style={{ padding: filterConfig ? '1em 1em .75em' : '1em' }}>
         <LocationField
           className="nearby-view-location-field"
           // TODO: why does this cause the jump to the trip planner when selecting location
@@ -426,10 +428,10 @@ function NearbyView({
 
       {loading && <Loading extraSmall />}
       {/* This is used to scroll to top */}
-      <div aria-hidden ref={firstItemRef} />
       <NearbySidebarContainer
         className="base-color-bg"
         filters={filterConfig}
+        ref={nearbyContainerRef}
         style={{ marginBottom: 0 }}
       >
         {nearby &&
@@ -490,7 +492,6 @@ const mapStateToProps = (state: AppReduxState) => {
     hideEmptyStops: config.nearbyView?.hideEmptyStops,
     homeTimezone: config.homeTimezone,
     location: state.router.location.hash,
-    mapConfig: config.map,
     nearby: nearby?.data,
     nearbyFilters: filters,
     nearbyViewCoords,
