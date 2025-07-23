@@ -85,10 +85,6 @@ const HeaderCard = styled.div`
   flex-direction: column;
   margin: 5px 0 0;
 
-  ${CardBody} {
-    margin: 25px 0 0;
-  }
-
   input[type='date'] {
     background: inherit;
     border: none;

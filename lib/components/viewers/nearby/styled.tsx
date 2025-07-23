@@ -88,7 +88,7 @@ export const CardAside = styled.p`
 
 export const CardBody = styled.div`
   margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   padding: 0rem 1.2rem;
 `
 

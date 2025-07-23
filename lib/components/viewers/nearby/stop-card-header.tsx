@@ -75,31 +75,33 @@ const StopCardHeader = ({
         </CardTitle>
         <DistanceDisplay distance={stopData.distance} />
       </CardHeader>
-      <CardBody style={{ marginTop: '1rem' }}>
-        <div>
-          {stopData.code ? (
-            <FormattedMessage
-              id="components.StopViewer.displayStopId"
-              values={{
-                stopId: stopData.code,
-                strong: Strong
-              }}
-            />
-          ) : (
-            // TODO: move this component to css grid to avoid this zero-width-space
-            // eslint-disable-next-line no-irregular-whitespace
-            actionPath && actionText && <span>​</span>
-          )}
-          {actionPath && actionText ? (
-            <ActionLink
-              className="stop-header-action"
-              to={actionPath}
-              toParams={actionParams}
-            >
-              <IconWithText Icon={actionIcon}>{actionText}</IconWithText>
-            </ActionLink>
-          ) : null}
-        </div>
+      <CardBody>
+        {(stopData.code || actionPath) && (
+          // TODO: Clean up these conditionals -- perhaps grid one level higher?
+          <div style={{ display: 'grid', height: 20 }}>
+            {stopData.code && (
+              <span style={{ gridRow: 1 }}>
+                <FormattedMessage
+                  id="components.StopViewer.displayStopId"
+                  values={{
+                    stopId: stopData.code,
+                    strong: Strong
+                  }}
+                />
+              </span>
+            )}
+            {actionPath && actionText ? (
+              <ActionLink
+                className="stop-header-action"
+                style={{ gridRow: 1, justifySelf: 'end' }}
+                to={actionPath}
+                toParams={actionParams}
+              >
+                <IconWithText Icon={actionIcon}>{actionText}</IconWithText>
+              </ActionLink>
+            ) : null}
+          </div>
+        )}
         {fromToSlot}
       </CardBody>
     </>
