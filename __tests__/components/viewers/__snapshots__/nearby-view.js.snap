@@ -18434,7 +18434,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 <styled.div
                                   style={
                                     Object {
-                                      "marginTop": 10,
+                                      "marginTop": "1rem",
                                     }
                                   }
                                 >
@@ -18442,11 +18442,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="sc-gUUBao dCmAkv"
                                     style={
                                       Object {
-                                        "marginTop": 10,
+                                        "marginTop": "1rem",
                                       }
                                     }
                                   >
                                     <div>
+                                      <span>
+                                        ​
+                                      </span>
                                       <Styled(Connect(Component))
                                         className="stop-header-action"
                                         to="/schedule/40:990003"
@@ -47031,7 +47034,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 <styled.div
                                   style={
                                     Object {
-                                      "marginTop": 10,
+                                      "marginTop": "1rem",
                                     }
                                   }
                                 >
@@ -47039,11 +47042,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="sc-gUUBao dCmAkv"
                                     style={
                                       Object {
-                                        "marginTop": 10,
+                                        "marginTop": "1rem",
                                       }
                                     }
                                   >
                                     <div>
+                                      <span>
+                                        ​
+                                      </span>
                                       <Styled(Connect(Component))
                                         className="stop-header-action"
                                         to="/schedule/40:990004"
