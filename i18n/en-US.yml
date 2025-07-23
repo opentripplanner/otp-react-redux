@@ -560,6 +560,7 @@ components:
     noSavedTripsInstructions: Perform a trip search from the map first.
     pause: Pause
     resume: Resume
+    unsnooze: Unsnooze
   SavedTripScreen:
     itineraryLoaded: Itinerary loaded
     itineraryLoading: Loading itinerary
@@ -689,11 +690,11 @@ components:
       lastCheckedText: "Last checked: {formattedDuration} ago"
       togglePause: Pause
       tripIsNotSnoozed: Snooze for rest of today
-      tripIsSnoozed: Unsnooze trip analysis
+      tripIsSnoozed: Unsnooze
       unknownState: Unknown Trip State
       untogglePause: Resume
     inactive:
-      description: Resume trip monitoring to see the updated status
+      description: Resume to begin monitoring your trip and receive notifications.
       heading: Trip monitoring is paused
     nextTripNotPossible:
       description: >
@@ -717,8 +718,11 @@ components:
       description: This is a one-time trip that occurred in the past.
       heading: Trip is in the past
     snoozed:
-      description: Unsnooze trip monitoring to see the updated status.
-      heading: Trip monitoring is snoozed for today
+      description: >-
+        Trip monitoring and notifications for this trip will automatically begin
+        on the next selected available day. Unsnooze to restart monitoring and
+        to receive notifications today.
+      heading: Trip monitoring and notifications are snoozed for today.
     upcoming:
       nextTripBegins: >-
         Next trip starts on {tripDatetime, date, ::eeeee yyyyMMdd} at
@@ -737,7 +741,8 @@ components:
     happensOnDays: "Happens on: {days}"
     monitoredTripDays: Trip monitored days
     notifications: "{leadTimeInMinutes} min. before scheduled departure"
-    notificationsDisabled: Notifications disabled
+    notificationsPaused: Trip monitoring and notifications are paused.
+    notificationsSnoozed: Trip monitoring and notifications are snoozed for today.
     timeAndDuration: Trip time and duration
   TripTools:
     copyLink: Copy Link

@@ -237,13 +237,13 @@ const TripSummaryPane = ({
                 )}
                 {isActiveAndSnoozed && (
                   <FormattedMessage
-                    id="components.TripStatusRenderers.snoozed.heading"
+                    id="components.TripSummaryPane.notificationsSnoozed"
                     values={{ leadTimeInMinutes }}
                   />
                 )}
                 {!monitoredTrip.isActive && (
                   <FormattedMessage
-                    id="components.TripSummaryPane.notificationsDisabled"
+                    id="components.TripSummaryPane.notificationsPaused"
                     values={{ leadTimeInMinutes }}
                   />
                 )}
@@ -257,6 +257,8 @@ const TripSummaryPane = ({
                       {pendingRequest === 'pause' ? (
                         /* Make loader fit */
                         <InlineLoading />
+                      ) : isActiveAndSnoozed ? (
+                        <FormattedMessage id="components.SavedTripList.unsnooze" />
                       ) : isActiveAndNotSnoozed ? (
                         <FormattedMessage id="components.SavedTripList.pause" />
                       ) : (

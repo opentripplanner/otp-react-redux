@@ -30,8 +30,7 @@ actions:
       No se puede guardar el plan: este plan no se pudo guardar debido a la
       falta de capacidad en uno o más vehículos. Por favor, vuelva a planificar
       su viaje.
-    maxTripRequestsExceeded: Número de solicitudes de viaje superadas sin 
-      resultados válidos
+    maxTripRequestsExceeded: Número de solicitudes de viaje superadas sin resultados válidos
     saveItinerariesError: "No se pudieron guardar los itinerarios: {err}"
     setDateError: "Error al establecer la fecha:"
     setGroupSizeError: "No se pudo establecer el tamaño del grupo:"
@@ -53,22 +52,16 @@ actions:
     authTokenError: Error al obtener un token de autorización.
     confirmDeleteMonitoredTrip: ¿Desea eliminar este viaje?
     confirmDeletePlace: ¿Quiere eliminar este lugar?
-    emailVerificationResent: El mensaje de verificación de correo electrónico ha
-      sido reenviado.
+    emailVerificationResent: El mensaje de verificación de correo electrónico ha sido reenviado.
     genericError: "Se ha encontrado un error: {err}"
-    getDependentUserInfoFailed: Error al obtener la información del perfil de 
-      movilidad.
-    itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje 
-      seleccionado es posible.
-    mustAcceptTermsToSavePlace: Acepte los Términos de uso (en Mi Cuenta) para 
-      guardar las ubicaciones.
-    mustBeLoggedInToSavePlace: Por favor, inicia la sesión para guardar las 
-      ubicaciones.
+    getDependentUserInfoFailed: Error al obtener la información del perfil de movilidad.
+    itineraryExistenceCheckFailed: Comprobación de errores para ver si el viaje seleccionado es posible.
+    mustAcceptTermsToSavePlace: Acepte los Términos de uso (en Mi Cuenta) para guardar las ubicaciones.
+    mustBeLoggedInToSavePlace: Por favor, inicia la sesión para guardar las ubicaciones.
     placeDeleted: Se ha eliminado su ubicación.
     placeRemembered: La configuración de este lugar se ha guardado.
     preferencesSaved: Sus preferencias se han guardado.
-    smsInvalidCode: El código introducido no es válido. Por favor, inténtelo de 
-      nuevo.
+    smsInvalidCode: El código introducido no es válido. Por favor, inténtelo de nuevo.
     smsResendThrottled: >-
       Se ha enviado un SMS de verificación al número de teléfono indicado hace
       menos de un minuto. Por favor, inténtelo de nuevo en unos momentos.
@@ -163,8 +156,7 @@ common:
   searchForms:
     click: haga clic
     enterDestination: Introduzca el destino o {mapAction} en el mapa…
-    enterStartLocation: Introduzca la ubicación de inicio o {mapAction} en el 
-      mapa…
+    enterStartLocation: Introduzca la ubicación de inicio o {mapAction} en el mapa…
     tap: toque
   time:
     duration:
@@ -183,8 +175,7 @@ components:
     message: Ya está listo para empezar a planificar sus viajes.
   AddPlaceButton:
     addPlace: Añadir lugar
-    needOriginDestination: Definir el origen o el destino para añadir lugares 
-      intermedios
+    needOriginDestination: Definir el origen o el destino para añadir lugares intermedios
     tooManyPlaces: Se alcanzó el máximo de lugares intermedios
   AdvancedOptions:
     bannedRoutes: Seleccionar rutas prohibidas…
@@ -226,8 +217,7 @@ components:
       a incluir el transporte publico en la selección de modos.
     origin: origen
     planTripTooltip: Planificar viaje
-    validationMessage: "Por favor, defina los siguientes campos para planificar un
-      viaje: {issues}"
+    validationMessage: "Por favor, defina los siguientes campos para planificar un viaje: {issues}"
   BeforeSignInScreen:
     mainTitle: Iniciando sesión
     message: >
@@ -423,8 +413,7 @@ components:
     header: No se encontró el contenido
   NotificationPrefsPane:
     devicesRegistered: "{count, plural, one {# device} other {# devices}} registrado"
-    noDeviceForPush: Regístrese con la aplicación móvil para acceder a esta 
-      configuración.
+    noDeviceForPush: Regístrese con la aplicación móvil para acceder a esta configuración.
     notificationChannelPrompt: "Recibir notificaciones para sus viajes guardados por:"
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
@@ -464,8 +453,7 @@ components:
       header: Error en el planificador de los viajes
     WALKING_BETTER_THAN_TRANSIT:
       body: Puede completar esta ruta más rápido caminando.
-      header: El transporte público no es la forma más rápida de hacer este 
-        viaje
+      header: El transporte público no es la forma más rápida de hacer este viaje
     inputFields:
       FROM: Procedencia
       TO: Destino
@@ -473,10 +461,8 @@ components:
     changeNumber: Cambiar número de teléfono
     invalidCode: Introduzca 6 dígitos para el código de validación.
     invalidPhone: Por favor, introduzca un número de teléfono válido.
-    phoneNumberSubmitted: El número de teléfono {phoneNumber} se ha enviado 
-      correctamente.
-    phoneNumberVerified: El número de teléfono {phoneNumber} se ha verificado 
-      correctamente.
+    phoneNumberSubmitted: El número de teléfono {phoneNumber} se ha enviado correctamente.
+    phoneNumberVerified: El número de teléfono {phoneNumber} se ha verificado correctamente.
     placeholder: Introduzca su número de teléfono
     prompt: >-
       Introduzca su número de teléfono para las notificaciones por mensaje de
@@ -579,15 +565,13 @@ components:
     fromTo: De {from} al {to}
     myTrips: Mis viajes
     noSavedTrips: No tiene viajes guardados
-    noSavedTripsInstructions: Realice primero una búsqueda de viajes desde el 
-      mapa.
+    noSavedTripsInstructions: Realice primero una búsqueda de viajes desde el mapa.
     pause: Pausa
     resume: Reanudar
   SavedTripScreen:
     itineraryLoaded: Itinerario cargado
     itineraryLoading: Cargando el itinerario
-    selectAtLeastOneDay: Por favor, seleccione al menos un día para realizar el 
-      seguimiento.
+    selectAtLeastOneDay: Por favor, seleccione al menos un día para realizar el seguimiento.
     tooManyTrips: >
       Ya ha alcanzado el máximo de cinco viajes guardados. Por favor, elimine
       los viajes no utilizados de sus viajes guardados e inténtelo de nuevo.
@@ -604,8 +588,7 @@ components:
     header: ¡La sesión está a punto de terminar!
     keepSession: Continuar sesión
   SimpleRealtimeAnnotation:
-    usingRealtimeInfo: Este viaje utiliza información de tráfico y retrasos en 
-      tiempo real
+    usingRealtimeInfo: Este viaje utiliza información de tráfico y retrasos en tiempo real
   StackedPaneDisplay:
     savePreferences: Guardar preferencias
   StatusBadge:
@@ -671,35 +654,30 @@ components:
     travelingAt: Viajando a {milesPerHour}
     vehicleName: Vehículo {vehicleNumber}
   TripBasicsPane:
-    checkingItineraryExistence: Comprobación de la existencia de itinerarios 
-      para cada día de la semana…
+    checkingItineraryExistence: Comprobación de la existencia de itinerarios para cada día de la semana…
     onlyOnDate: Solo el {date, date, ::eeeee yyyyMMdd}
     recurringEachWeek: Algunos días de la semana
     tripDaysPrompt: ¿Qué días hace este viaje?
-    tripIsAvailableOnDaysIndicated: Su viaje está disponible en los días de la 
-      semana indicados anteriormente.
+    tripIsAvailableOnDaysIndicated: Su viaje está disponible en los días de la semana indicados anteriormente.
     tripNamePrompt: "Por favor, indique un nombre para este viaje:"
     tripNotAvailableOnDay: El viaje no está disponible el {repeatedDay}
     unsavedChangesExistingTrip: >-
       Todavía no ha guardado su viaje. Si abandona la página, los cambios se
       perderán.
-    unsavedChangesNewTrip: Todavía no ha guardado su nuevo viaje. Si abandona la
-      página, se perderá.
+    unsavedChangesNewTrip: Todavía no ha guardado su nuevo viaje. Si abandona la página, se perderá.
   TripCompanionsPane:
     companionLabel: "Compañero en este viaje:"
     observersLabel: "Observadores que presenciaron este viaje:"
     primaryLabel: "Viajero principal: "
   TripNotificationsPane:
     advancedSettings: Configuración avanzada
-    altRouteRecommended: Se recomienda una ruta alternativa o un punto de 
-      transferencia
+    altRouteRecommended: Se recomienda una ruta alternativa o un punto de transferencia
     delaysAboveThreshold: Hay retrasos o interrupciones de más de
     howToReceiveAlerts: >
       Para recibir alertas de tus viajes guardados, activa las notificaciones en
       la configuración de tu cuenta e intenta guardar un viaje de nuevo.
     monitorThisTrip: "Supervise este viaje antes de que comience:"
-    notificationsTurnedOff: Las notificaciones están desactivadas para su 
-      cuenta.
+    notificationsTurnedOff: Las notificaciones están desactivadas para su cuenta.
     notifyViaChannelWhen: "Notifíqueme por {channel} cuando:"
     oneHour: 1 hora
     realtimeAlertFlagged: Hay una alerta en tiempo real marcada en mi viaje
@@ -712,8 +690,7 @@ components:
     planNewTrip: Planificar un nuevo viaje
   TripStatusRenderers:
     active:
-      delayedHeading: La hora de inicio del viaje se retrasa 
-        {formattedDuration}!
+      delayedHeading: La hora de inicio del viaje se retrasa {formattedDuration}!
       description: El viaje debe comenzar a las {arrivalTime, time, short}.
       earlyHeading: >-
         ¡El viaje está en marcha y llega {formattedDuration} antes de lo
@@ -731,13 +708,12 @@ components:
       unknownState: Estado de viaje desconocido
       untogglePause: Reanudar
     inactive:
-      description: Reanudar la supervisión del viaje para ver el estado 
-        actualizado
+      description: Reanudar la supervisión del viaje para ver el estado actualizado
       heading: La supervisión del viaje está en pausa
     nextTripNotPossible:
       description: >
-        El planificador de viajes no ha podido encontrar su viaje hoy. Intente volver
-        a planificar su itinerario para encontrar una ruta alternativa.
+        El planificador de viajes no ha podido encontrar su viaje hoy. Intente
+        volver a planificar su itinerario para encontrar una ruta alternativa.
       heading: El viaje no es posible hoy
     noLongerPossible:
       description: >
@@ -753,8 +729,7 @@ components:
       description: Un viaje que ocurrió el pasado.
       heading: Viaje realizado
     snoozed:
-      description: Reactivar la supervisión del viaje para ver el estado 
-        actualizado.
+      description: Reactivar la supervisión del viaje para ver el estado actualizado.
       heading: El seguimiento del viaje se ha suspendido por hoy
     upcoming:
       nextTripBegins: >-
@@ -764,8 +739,7 @@ components:
         El viaje debe comenzar a las {tripStart, time, short}. (El seguimiento
         en tiempo real comenzará a las {monitoringStart, time, short}.)
       tripStartIsDelayed: ¡La hora de inicio del viaje se retrasa {duration}!
-      tripStartIsEarly: ¡La hora de inicio del viaje se produce {duration} antes
-        de lo previsto!
+      tripStartIsEarly: ¡La hora de inicio del viaje se produce {duration} antes de lo previsto!
       tripStartsSoonNoUpdates: >-
         El viaje comienza pronto (no hay actualizaciones disponibles en tiempo
         real).
@@ -777,7 +751,7 @@ components:
     happensOnDays: "Ocurre en: {days}"
     monitoredTripDays: Días de viaje monitoreados
     notifications: "{leadTimeInMinutes} minutos antes de la salida programada"
-    notificationsDisabled: Notificaciones desactivadas
+    notificationsPaused: Notificaciones desactivadas
     timeAndDuration: Tiempo y duración del viaje
   TripTools:
     copyLink: Copiar enlace
@@ -814,8 +788,7 @@ components:
     listOfRouteStops: Lista de paradas en esta ruta
     routeHeader: "Ruta: <strong>{routeShortName}</strong> {routeLongName}"
     startOfTrip: Aquí comienza el viaje
-    tripDescription: Embarque en {boardAtStop} y desembarque en 
-      {disembarkAtStop}
+    tripDescription: Embarque en {boardAtStop} y desembarque en {disembarkAtStop}
     viewStop: Ver
   UserAccountScreen:
     confirmDelete: >-
@@ -853,8 +826,7 @@ components:
       Por favor compruebe el buzón de su correo electrónico y siga el enlace del
       mensaje para verificar su dirección de correo electrónico antes de
       finalizar la configuración de su cuenta.
-    instructions2: Una vez verificado, haga clic en el botón de abajo para 
-      continuar.
+    instructions2: Una vez verificado, haga clic en el botón de abajo para continuar.
     resendVerification: Reenviar el correo electrónico de verificación
   ViewSwitcher:
     nearby: Ver cerca
