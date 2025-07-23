@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { ExclamationCircle } from '@styled-icons/fa-solid/ExclamationCircle'
 import { format, parse } from 'date-fns'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
+import { Location } from '@styled-icons/fa-solid/Location'
 import { MapRef } from 'react-map-gl'
-import { SatelliteDish } from '@styled-icons/fa-solid/SatelliteDish'
 import { utcToZonedTime } from 'date-fns-tz'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component, FormEvent } from 'react'
@@ -214,7 +214,7 @@ class StopScheduleViewer extends Component<Props, State> {
         <HeaderCard>
           {stopData?.name ? (
             <StopCardHeader
-              actionIcon={SatelliteDish}
+              actionIcon={Location}
               actionParams={{ entityId: stopId }}
               actionPath={`/nearby/${stopData.lat},${stopData.lon}`}
               actionText={
@@ -274,7 +274,7 @@ class StopScheduleViewer extends Component<Props, State> {
     }
 
     return (
-      <div role="group" style={{ marginBottom: -15 }}>
+      <div role="group">
         {stopData ? <StyledFromToPicker place={stopData} /> : null}
         <input
           aria-label={intl.formatMessage({

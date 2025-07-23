@@ -75,7 +75,7 @@ const StopCardHeader = ({
         </CardTitle>
         <DistanceDisplay distance={stopData.distance} />
       </CardHeader>
-      <CardBody style={{ marginTop: !stopData.code ? 10 : '1rem' }}>
+      <CardBody style={{ marginTop: '1rem' }}>
         <div>
           {stopData.code ? (
             <FormattedMessage
@@ -85,7 +85,11 @@ const StopCardHeader = ({
                 strong: Strong
               }}
             />
-          ) : null}
+          ) : (
+            // TODO: move this component to css grid to avoid this zero-width-space
+            // eslint-disable-next-line no-irregular-whitespace
+            actionPath && actionText && <span>​</span>
+          )}
           {actionPath && actionText ? (
             <ActionLink
               className="stop-header-action"
