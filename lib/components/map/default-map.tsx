@@ -63,7 +63,7 @@ const MapContainer = styled.div<{ hideLayerFilters: boolean }>`
 
   // If we're using filtering in the nearby view, hide the toggleable layers so there's no confusion.
   ul.layers-list {
-    display: ${(props) => (props.hideLayerFilters ? 'none' : 'block')};
+    visibility: ${(props) => (props.hideLayerFilters ? 'hidden' : 'visible')};
   }
 `
 /**
@@ -165,18 +165,18 @@ class DefaultMap extends Component {
   }
 
   _filterNearbyMapLayers = () => {
-    const { mapConfig, nearbyFilters } = this.props
+    const { activeNearbyFilters, mapConfig } = this.props
     const { overlays } = mapConfig
     const newOverlays = overlays
       .filter((overlay) => {
-        return overlay.cardType ? nearbyFilters[overlay.cardType] : true
+        return overlay.cardType ? activeNearbyFilters[overlay.cardType] : true
       })
       .map((overlay) => {
         if (overlay.layers) {
           return {
             ...overlay,
             layers: overlay?.layers?.filter(
-              (layer) => nearbyFilters[layer.cardType]
+              (layer) => activeNearbyFilters[layer.cardType]
             )
           }
         }
@@ -285,7 +285,7 @@ class DefaultMap extends Component {
   }
 
   componentDidMount() {
-    this._filterNearbyMapLayers()
+    this.props.nearbyFilters && this._filterNearbyMapLayers()
     // HACK: Set state lat and lon to null to prevent re-rendering of the
     // underlying OTP-UI map.
     this.setState({
@@ -295,11 +295,14 @@ class DefaultMap extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { mapConfig, nearbyFilters, nearbyViewActive } = this.props
+    const { activeNearbyFilters, mapConfig, nearbyViewActive } = this.props
     // Check if any overlays should be toggled due to mode change
     this._handleQueryChange(prevProps.query, this.props.query)
     // If we're in the nearby view, filter the visible layers according to the nearby view filters.
-    if (prevProps.nearbyFilters !== nearbyFilters && nearbyViewActive)
+    if (
+      prevProps.activeNearbyFilters !== activeNearbyFilters &&
+      nearbyViewActive
+    )
       this._filterNearbyMapLayers()
     // If we leave the nearby view, reset the map overlays back to defaults.
     if (prevProps.nearbyViewActive !== nearbyViewActive && !nearbyViewActive) {
@@ -320,7 +323,7 @@ class DefaultMap extends Component {
       intl,
       itinerary,
       mapConfig,
-      nearbyFiltersConfigured,
+      nearbyFilters,
       nearbyViewActive,
       pending,
       setLocation,
@@ -364,7 +367,7 @@ class DefaultMap extends Component {
     return (
       <MapContainer
         className="percy-hide"
-        hideLayerFilters={nearbyViewActive && nearbyFiltersConfigured}
+        hideLayerFilters={nearbyViewActive && nearbyFilters}
       >
         <BaseMap
           baseLayer={
@@ -504,8 +507,8 @@ class DefaultMap extends Component {
 const mapStateToProps = (state) => {
   const activeSearch = getActiveSearch(state)
   const viewedRoute = state.otp?.ui?.viewedRoute?.routeId
-  const nearbyFilters = state.otp?.ui?.nearbyView?.filters
-  const nearbyFiltersConfigured = state.otp.config.nearbyView.filterConfig
+  const activeNearbyFilters = state.otp?.ui?.nearbyView?.filters
+  const nearbyFilters = state.otp.config?.nearbyView?.filters
   const nearbyViewerActive =
     state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW
 
@@ -527,13 +530,13 @@ const mapStateToProps = (state) => {
       : null
 
   return {
+    activeNearbyFilters,
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
     carRentalStations: state.otp.overlay.carRental.stations,
     config: state.otp.config,
     itinerary: getActiveItinerary(state),
     mapConfig: state.otp.config.map,
     nearbyFilters,
-    nearbyFiltersConfigured,
     nearbyViewActive:
       state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW,
     pending: activeSearch ? Boolean(activeSearch.pending) : false,

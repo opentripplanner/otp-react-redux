@@ -70,13 +70,13 @@ export type BugsnagConfig = ApiKeyConfig
 export type MapillaryConfig = ApiKeyConfig
 export type NearbyFilterConfig = {
   cardType: 'Stop' | 'RentalVehicle' | 'VehicleParking' | 'BikeRentalStation'
-  defaultOn: boolean
+  default?: boolean
   iconName: string
 }
 
 export type NearbyViewConfig = {
   alwaysShowLongName?: boolean
-  filterConfig?: Array<NearbyFilterConfig>
+  filters?: Array<NearbyFilterConfig>
   hideEmptyStops?: boolean
   radius?: number
   showShadowDotOnMapDrag?: boolean

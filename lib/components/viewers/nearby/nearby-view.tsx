@@ -51,9 +51,8 @@ type LatLonObj = { lat: number; lon: number }
 type CurrentPosition = { coords?: { latitude: number; longitude: number } }
 type ServiceWeek = { end: string; start: string }
 
-type Filter = Record<string, boolean>
-
 type Props = {
+  activeNearbyFilters: any
   currentPosition?: CurrentPosition
   currentServiceWeek?: ServiceWeek
   defaultLatLon: LatLonObj | null
@@ -64,7 +63,6 @@ type Props = {
     radius?: number,
     currentServiceWeek?: ServiceWeek
   ) => void
-  filterConfig: any
   geocoderConfig: GeocoderConfig
   getCurrentPosition: any // TODO
   hideBackButton?: boolean
@@ -73,7 +71,7 @@ type Props = {
   mobile?: boolean
   // Todo: type nearby results
   nearby: any
-  nearbyFilters: any
+  nearbyFilters?: Array<NearbyFilterConfig>
   nearbyViewCoords?: LatLonObj
   radius?: number
   routeSortComparator: (a: PatternStopTime, b: PatternStopTime) => number
@@ -136,13 +134,13 @@ function getNearbyCoordsFromUrlOrLocationOrMapCenter(
 }
 
 function NearbyView({
+  activeNearbyFilters,
   currentPosition,
   currentServiceWeek,
   defaultLatLon,
   displayedCoords,
   entityId,
   fetchNearby,
-  filterConfig,
   geocoderConfig,
   getCurrentPosition,
   hideEmptyStops,
@@ -164,17 +162,7 @@ function NearbyView({
   const intl = useIntl()
   const [loading, setLoading] = useState(true)
   const [reversedPoint, setReversedPoint] = useState('')
-  const [filters, setFilters] = useState(
-    // Set the filters according to the configuration settings. If there's no filter config, set the filters to default (which is just all filters set to true)
-    filterConfig
-      ? Object.fromEntries(
-          filterConfig.map((filter: Filter) => [
-            filter.cardType,
-            filter.defaultOn
-          ])
-        )
-      : nearbyFilters
-  )
+  const [filters, setFilters] = useState(activeNearbyFilters)
 
   const nearbyContainerRef = useRef<HTMLOListElement>(null)
   const finalNearbyCoords = useMemo(
@@ -194,7 +182,6 @@ function NearbyView({
   }
 
   const scrollToTop = () => {
-    console.log(nearbyContainerRef)
     nearbyContainerRef?.current?.scroll({
       behavior: 'smooth',
       top: 0
@@ -370,7 +357,7 @@ function NearbyView({
           />
         </InvisibleA11yLabel>
       )}
-      <div style={{ padding: filterConfig ? '1em 1em .75em' : '1em' }}>
+      <div style={{ padding: nearbyFilters ? '1em 1em .75em' : '1em' }}>
         <LocationField
           className="nearby-view-location-field"
           // TODO: why does this cause the jump to the trip planner when selecting location
@@ -407,12 +394,12 @@ function NearbyView({
           sortByDistance
           suggestionCount={geocoderConfig?.resultsCount}
         />
-        {filterConfig && (
+        {nearbyFilters && (
           <div
             className="filter-container"
             style={{ display: 'flex', gap: '10px', marginTop: '10px' }}
           >
-            {filterConfig.map((filter: NearbyFilterConfig) => {
+            {nearbyFilters.map((filter: NearbyFilterConfig) => {
               return (
                 <FilterCheckboxes
                   filter={filter}
@@ -430,7 +417,7 @@ function NearbyView({
       {/* This is used to scroll to top */}
       <NearbySidebarContainer
         className="base-color-bg"
-        filters={filterConfig}
+        filters={!!nearbyFilters}
         ref={nearbyContainerRef}
         style={{ marginBottom: 0 }}
       >
@@ -458,7 +445,7 @@ const mapStateToProps = (state: AppReduxState) => {
   const { entityId } = state.router.location.query
   const { currentPosition, sessionSearches } = location
   const { filters } = nearbyView
-  const filterConfig = nearbyViewConfig?.filterConfig
+  const nearbyFilters = nearbyViewConfig?.filters
   const defaultLatLon =
     map?.initLat && map?.initLon ? { lat: map.initLat, lon: map.initLon } : null
 
@@ -482,18 +469,18 @@ const mapStateToProps = (state: AppReduxState) => {
   }
 
   return {
+    activeNearbyFilters: filters,
     currentPosition,
     currentServiceWeek,
     defaultLatLon,
     displayedCoords: nearby?.coords,
     entityId: entityId && decodeURIComponent(entityId),
-    filterConfig,
     geocoderConfig: config.geocoder,
     hideEmptyStops: config.nearbyView?.hideEmptyStops,
     homeTimezone: config.homeTimezone,
     location: state.router.location.hash,
     nearby: nearby?.data,
-    nearbyFilters: filters,
+    nearbyFilters,
     nearbyViewCoords,
     radius: config.nearbyView?.radius,
     routeSortComparator,

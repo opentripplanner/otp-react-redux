@@ -40,6 +40,9 @@ const StyledFilterCheckbox = styled.label<{ checked: boolean }>`
   }
   &:hover {
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    cursor: pointer;
+    background: ${(props) => (props.checked ? '#fff' : '#ffffffe5')};
+    transition: all ease 150ms;
   }
 `
 
@@ -62,17 +65,15 @@ export const FilterCheckboxes = ({
     )
 
   return (
-    <>
-      <StyledFilterCheckbox checked={value} htmlFor={filter.cardType}>
-        <FilterIcon />
-        {value && <Check2 />}
-        <input
-          checked={value}
-          id={filter.cardType}
-          onChange={onChange}
-          type="checkbox"
-        />
-      </StyledFilterCheckbox>
-    </>
+    <StyledFilterCheckbox checked={value} htmlFor={filter.cardType}>
+      <FilterIcon />
+      {value && <Check2 />}
+      <input
+        checked={value}
+        id={filter.cardType}
+        onChange={onChange}
+        type="checkbox"
+      />
+    </StyledFilterCheckbox>
   )
 }
