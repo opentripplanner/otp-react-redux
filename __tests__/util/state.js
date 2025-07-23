@@ -108,15 +108,17 @@ describe('util > state', () => {
       makeItin(200),
       makeItin(undefined),
       makeItin(50),
-      makeItin(null)
+      makeItin(null),
+      makeItin(0)
     ]
 
     it('sorts by FARE ascending (undefined/null last)', () => {
       const sorted = [...itineraries].sort((a, b) =>
         sortItineraries('FARE', 'ASC', a, b)
       )
-      // Fares: 50, 100, 200, undefined, null
+      // Fares: 0, 50, 100, 200, undefined, null
       expect(sorted.map((i) => i.transitFare)).toEqual([
+        0,
         50,
         100,
         200,
@@ -129,11 +131,12 @@ describe('util > state', () => {
       const sorted = [...itineraries].sort((a, b) =>
         sortItineraries('FARE', 'DESC', a, b)
       )
-      // Fares: 200, 100, 50, undefined, null
+      // Fares: 200, 100, 50, 0, undefined, null
       expect(sorted.map((i) => i.transitFare)).toEqual([
         200,
         100,
         50,
+        0,
         undefined,
         null
       ])
@@ -160,6 +163,13 @@ describe('util > state', () => {
       const b = makeItin(null)
       expect(sortItineraries('FARE', 'ASC', a, b)).toBe(0)
       expect(sortItineraries('FARE', 'DESC', a, b)).toBe(0)
+    })
+
+    it('sorts 0 vs other fares correctly', () => {
+      const a = makeItin(0)
+      const b = makeItin(50)
+      expect(sortItineraries('FARE', 'ASC', a, b)).toBeLessThan(0)
+      expect(sortItineraries('FARE', 'DESC', a, b)).toBeGreaterThan(0)
     })
   })
 })
