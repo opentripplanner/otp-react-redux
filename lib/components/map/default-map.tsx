@@ -9,12 +9,12 @@ import BaseMap from '@opentripplanner/base-map'
 import generateOTP2TileLayers from '@opentripplanner/otp2-tile-overlay'
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import type { StopIdAgencyMap } from '@opentripplanner/map-popup/lib'
 
 import {
   assembleBasePath,
   bikeRentalQuery,
   carRentalQuery,
+  findFeeds,
   findStopTimesForStop,
   vehicleRentalQuery
 } from '../../actions/api'
@@ -299,6 +299,9 @@ class DefaultMap extends Component {
       lat: null,
       lon: null
     })
+
+    // Fetch feeds in the background
+    this.props.findFeeds()
   }
 
   componentDidUpdate(prevProps) {
@@ -313,6 +316,7 @@ class DefaultMap extends Component {
       carRentalQuery,
       carRentalStations,
       config,
+      feeds,
       getCurrentPosition,
       intl,
       itinerary,
@@ -472,6 +476,7 @@ class DefaultMap extends Component {
                 // This must be a method that returns an array of JSX
                 // as the base-map requires that every toggleable layer
                 // is its own component, and not a subcomponent of another component
+                console.log('feeds', feeds)
                 return generateOTP2TileLayers(
                   overlayConfig.layers.map((l) => ({
                     ...l,
@@ -483,8 +488,7 @@ class DefaultMap extends Component {
                   viewedRouteStops,
                   config.companies,
                   this.getEntityPrefix,
-                  this.getAgencyFromStopId,
-                  this.props.stopIdAgencies
+                  feeds
                 )
               default:
                 return null
@@ -530,19 +534,12 @@ const mapStateToProps = (state) => {
         )
       : null
 
-  const stopIdAgencies: StopIdAgencyMap = Object.values(stops).reduce(
-    (acc, stop) => {
-      acc[stop.gtfsId] = stop.stoptimesForPatterns?.[0]?.pattern.route.agency
-      return acc
-    },
-    {}
-  )
-
   return {
     activeNearbyFilters,
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
     carRentalStations: state.otp.overlay.carRental.stations,
     config: state.otp.config,
+    feeds: state.otp.transitIndex.feeds,
     itinerary: getActiveItinerary(state),
     mapConfig: state.otp.config.map,
     nearbyFilters,
@@ -550,7 +547,6 @@ const mapStateToProps = (state) => {
       state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW,
     pending: activeSearch ? Boolean(activeSearch.pending) : false,
     query: state.otp.currentQuery,
-    stopIdAgencies,
     vehicleRentalStations: state.otp.overlay.vehicleRental.stations,
     viewedRouteStops
   }
@@ -559,6 +555,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   bikeRentalQuery,
   carRentalQuery,
+  findFeeds,
   findStopTimesForStop,
   getCurrentPosition,
   setLocation,
