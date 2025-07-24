@@ -56,13 +56,14 @@ export const FilterCheckboxes = ({
   value: boolean
 }): JSX.Element => {
   // @ts-expect-error component context
-  const { ModeIcon } = useContext(ComponentContext)
-  const FilterIcon = () =>
-    filter.cardType === 'VehicleParking' ? (
-      <Parking />
-    ) : (
-      <ModeIcon className="mode-svg" mode={filter.iconName} />
-    )
+  const { ModeIcon, SvgIcon } = useContext(ComponentContext)
+  // The icon is either in SvgIcon or ModeIcon so provide both
+  const ModeFilterIcon = () => (
+    <ModeIcon className="mode-svg" mode={filter.iconName} />
+  )
+  const FilterIcon = () => (
+    <SvgIcon FallbackIcon={ModeFilterIcon} iconName={filter.iconName} />
+  )
 
   return (
     <StyledFilterCheckbox checked={value} htmlFor={filter.cardType}>
