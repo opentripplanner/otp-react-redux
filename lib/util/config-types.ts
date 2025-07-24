@@ -270,6 +270,7 @@ export type ItinerarySortOption =
   | 'WALKTIME'
   | 'COST'
   | 'DEPARTURETIME'
+  | 'FARE'
 
 export interface ItineraryCostWeights {
   driveReluctance: number
