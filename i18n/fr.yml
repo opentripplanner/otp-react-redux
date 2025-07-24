@@ -763,7 +763,8 @@ components:
     happensOnDays: "Effectué : {days}"
     monitoredTripDays: Jours de suivi de ce trajet
     notifications: "{leadTimeInMinutes} mn avant l'heure de départ prévue"
-    notificationsPaused: Notifications désactivées
+    notificationsPaused: Suivi du trajet et notifications suspendus.
+    notificationsSnoozed: Suivi du trajet et notifications suspendus pour aujourd'hui.
     timeAndDuration: Heure et durée du trajet
   TripTools:
     copyLink: Copier le lien
