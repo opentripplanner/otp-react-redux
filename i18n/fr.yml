@@ -577,6 +577,7 @@ components:
       nouveau trajet.
     pause: Arrêter
     resume: Reprendre
+    unsnooze: Reprendre
   SavedTripScreen:
     itineraryLoaded: Trajet chargé
     itineraryLoading: Chargement du trajet
@@ -714,11 +715,11 @@ components:
       lastCheckedText: Dernière vérification effectuée il y a {formattedDuration}
       togglePause: Suspendre le suivi
       tripIsNotSnoozed: Suspendre jusqu'à demain
-      tripIsSnoozed: Reprendre le suivi du trajet
+      tripIsSnoozed: Reprendre
       unknownState: État du trajet inconnu
       untogglePause: Reprendre
     inactive:
-      description: Reprenez le suivi pour obtenir des dernières conditions de votre trajet.
+      description: Reprendre le suivi du trajet et recevoir les notifications.
       heading: Suivi suspendu
     nextTripNotPossible:
       description: >
@@ -743,8 +744,11 @@ components:
       description: Le jour de ce trajet non-répété est passé.
       heading: Trajet dans le passé
     snoozed:
-      description: Reprenez le suivi pour obtenir des dernières conditions de votre trajet.
-      heading: Suivi suspendu jusqu'à demain
+      description: >-
+        Le suivi du trajet et les notifications reprendront automatiquement le
+        prochain jour selectionné pour lequel ce trajet est possible. Cliquez
+        sur Reprendre pour redémarrer le suivi et les notifications aujourd'hui.
+      heading: Le suivi du trajet et les notifications sont suspendus pour aujourd'hui.
     upcoming:
       nextTripBegins: >-
         Prochain départ : {tripDatetime, date, ::eeeee yyyyMMdd} à
