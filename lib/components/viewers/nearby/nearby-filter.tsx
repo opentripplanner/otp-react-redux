@@ -1,5 +1,5 @@
-import { Check2 } from '@styled-icons/bootstrap'
-import { Parking } from '@styled-icons/fa-solid'
+import { Check2 } from '@styled-icons/bootstrap/Check2'
+import { Parking } from '@styled-icons/fa-solid/Parking'
 
 import { ComponentContext } from '../../../util/contexts'
 import { getBaseColor } from '../../util/colors'
