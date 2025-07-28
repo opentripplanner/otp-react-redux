@@ -199,7 +199,7 @@ components:
     invalidModeSelection: 无法使用所选模式计划行程。尝试在模式选择中包括公交。
     origin: 出发地
     planTripTooltip: 计划行程
-    validationMessage: "请定义以下字段来计划旅行: {issues}"
+    validationMessage: "请定义以下字段以计划行程: {issues}"
   BeforeSignInScreen:
     mainTitle: 签到
     message: |
