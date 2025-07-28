@@ -61,13 +61,10 @@ export const FilterCheckboxes = ({
   const ModeFilterIcon = () => (
     <ModeIcon className="mode-svg" mode={filter.iconName} />
   )
-  const FilterIcon = () => (
-    <SvgIcon FallbackIcon={ModeFilterIcon} iconName={filter.iconName} />
-  )
 
   return (
     <StyledFilterCheckbox checked={value} htmlFor={filter.cardType}>
-      <FilterIcon />
+      <SvgIcon Fallback={ModeFilterIcon} iconName={filter.iconName} />
       {value && <Check2 />}
       <input
         checked={value}

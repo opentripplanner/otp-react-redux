@@ -157,7 +157,7 @@ class DefaultMap extends Component {
       initZoom: zoom = 13
     } = props.mapConfig || {}
     this.state = {
-      filteredOverlays: this.props.mapConfig.overlays,
+      filteredOverlays: this.props.mapConfig?.overlays,
       lat,
       lon,
       zoom
@@ -168,7 +168,7 @@ class DefaultMap extends Component {
     const { activeNearbyFilters, mapConfig } = this.props
     const { overlays } = mapConfig
     const newOverlays = overlays
-      .filter((overlay) => {
+      ?.filter((overlay) => {
         return overlay.cardType ? activeNearbyFilters[overlay.cardType] : true
       })
       .map((overlay) => {
@@ -307,7 +307,7 @@ class DefaultMap extends Component {
     // If we leave the nearby view, reset the map overlays back to defaults.
     if (prevProps.nearbyViewActive !== nearbyViewActive && !nearbyViewActive) {
       this.setState({
-        filteredOverlays: mapConfig.overlays
+        filteredOverlays: mapConfig?.overlays
       })
     }
   }
