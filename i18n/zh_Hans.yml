@@ -489,7 +489,7 @@ components:
     tripNotifications: 行程通知
   SavedTripList:
     alertTag: "{alert, plural, one {View one alert} other {View # alerts}}"
-    fromTo: 从 {from} 到 {to}
+    fromTo: 从 {from} 这里 {to}
     myTrips: 我的行程
     noSavedTrips: 你没有保存的行程
     noSavedTripsInstructions: 首先从地图上进行行程搜索.
@@ -577,7 +577,7 @@ components:
     tripNamePrompt: "请为这次旅行提供一个名称:"
     tripNotAvailableOnDay: 此行程每 {repeatedDay} 不举行!
     unsavedChangesExistingTrip: 您还没有保存你的行程. 如果您离开了，变更就会消失.
-    unsavedChangesNewTrip: 您还没有保存您的新旅行. 如果您离开，它就会消失.
+    unsavedChangesNewTrip: 您尚未保存新行程。若您离开本页面，该行程将丢失。
   TripCompanionsPane:
     companionLabel: 此行程中的伙伴：
     observersLabel: 观察此行程的人员：
