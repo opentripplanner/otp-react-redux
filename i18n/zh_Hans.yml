@@ -186,7 +186,7 @@ components:
   BatchRoutingPanel:
     shortTitle: 计划行程
   BatchSearchScreen:
-    advancedHeader: 高级偏好设置
+    advancedHeader: 高级偏好
     header: 计划您的行程
     modeSelectorLabel: 选择出行模式
     moreOptions: 更多选项
@@ -714,7 +714,7 @@ components:
     nearby: 查看附近
     switcher: 切换按钮
   WelcomeScreen:
-    prompt: 你想去哪里？
+    prompt: 您想去哪里？
 config:
   accessModes:
     car_hail: Ride Hail
