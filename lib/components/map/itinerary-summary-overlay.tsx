@@ -83,6 +83,15 @@ const Card = styled.div`
 `
 
 function addItinLineString(itin: Itinerary): ItinWithGeometry {
+  if (!itin?.legs)
+    return {
+      ...itin,
+      allLegGeometry: {
+        geometry: { coordinates: [], type: 'LineString' },
+        properties: {},
+        type: 'Feature'
+      }
+    }
   return {
     ...itin,
     allLegGeometry: lineString(
@@ -149,7 +158,7 @@ const ItinerarySummaryOverlay = ({
 
   if (!itins || !visible) return <></>
   const indexedItins: ItinWithGeometry[] = addTrueIndex(
-    itins.map(addItinLineString)
+    itins.filter((i) => !!i).map(addItinLineString)
   )
   const mergedItins: ItinWithGeometry[] =
     doMergeItineraries(indexedItins).mergedItineraries
