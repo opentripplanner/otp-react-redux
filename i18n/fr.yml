@@ -403,10 +403,12 @@ components:
     companyScooter: Trottinette {company}
     distanceAway: à {localizedDistanceString}
     error: Erreur lors du chargement des services à proximité.
+    errorHeader: Erreur
     header: À proximité
     headsign: "{destination}"
     nearbyListIntro: Liste de {count} entités à proximité.
     nothingNearby: Aucun lieu à proximité.
+    nothingNearbyHeader: Hors de portée
     searchNearby: Search nearby...
     spacesAvailable: "{spacesAvailable} emplacements libres disponibles"
   NewAccountWizard:
