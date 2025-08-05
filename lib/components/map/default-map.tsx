@@ -169,7 +169,7 @@ class DefaultMap extends Component {
     const { overlays } = mapConfig
     const newOverlays = overlays
       ?.filter((overlay) => {
-        return overlay.cardType ? activeNearbyFilters[overlay.cardType] : true
+        return overlay.cardType && !!activeNearbyFilters[overlay.cardType]
       })
       .map((overlay) => {
         if (overlay.layers) {
