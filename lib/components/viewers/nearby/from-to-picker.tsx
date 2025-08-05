@@ -10,9 +10,19 @@ interface Props {
   className?: string
   place: Place
   setLocation: SetLocationHandler
+  setLocationMiddleware?: (
+    location: any,
+    locationType: string,
+    reverseGeocode: boolean
+  ) => void
 }
 
-const FromToPicker = ({ className, place, setLocation }: Props) => {
+const FromToPicker = ({
+  className,
+  place,
+  setLocation,
+  setLocationMiddleware
+}: Props) => {
   const location = useMemo(
     () => ({
       lat: place.lat ?? 0,
@@ -21,16 +31,28 @@ const FromToPicker = ({ className, place, setLocation }: Props) => {
     }),
     [place]
   )
+
+  const handleLocationSet = useCallback(
+    (locationType: string) => {
+      if (setLocationMiddleware) {
+        setLocationMiddleware(location, locationType, false)
+      } else {
+        setLocation({ location, locationType, reverseGeocode: false })
+      }
+    },
+    [location, setLocation, setLocationMiddleware]
+  )
+
   return (
     <span className={className} role="group">
       <FromToLocationPicker
         label
         onFromClick={useCallback(() => {
-          setLocation({ location, locationType: 'from', reverseGeocode: false })
-        }, [location, setLocation])}
+          handleLocationSet('from')
+        }, [handleLocationSet])}
         onToClick={useCallback(() => {
-          setLocation({ location, locationType: 'to', reverseGeocode: false })
-        }, [location, setLocation])}
+          handleLocationSet('to')
+        }, [handleLocationSet])}
       />
     </span>
   )

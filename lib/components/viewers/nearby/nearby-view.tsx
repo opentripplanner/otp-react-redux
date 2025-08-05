@@ -1,4 +1,5 @@
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
+import { decodeQueryParams, encodeQueryParams } from 'use-query-params'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Location } from '@opentripplanner/types'
 import { LonLatInput } from '@conveyal/lonlat'
@@ -10,12 +11,14 @@ import LocationField from '@opentripplanner/location-field'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import * as apiActions from '../../../actions/api'
+import * as formActions from '../../../actions/form'
 import * as locationActions from '../../../actions/location'
 import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
 import { GeocoderConfig } from '../../../util/config-types'
 import { getCurrentServiceWeek } from '../../../util/current-service-week'
+import { modesQueryParamConfig, onSettingsUpdate } from '../../form/util'
 import {
   PatternStopTime,
   SetLocationHandler,
@@ -47,6 +50,7 @@ type Props = {
   currentServiceWeek?: ServiceWeek
   defaultLatLon: LatLonObj | null
   displayedCoords?: LatLonObj
+  enabledModeButtons?: string[]
   entityId?: string
   fetchNearby: (
     latLon: LatLonObj,
@@ -68,12 +72,18 @@ type Props = {
   setHighlightedLocation: (location: Location | null) => void
   setLocation: SetLocationHandler
   setMainPanelContent: (content: number) => void
+  setQueryParam: (params: any) => void
   setViewedNearbyCoords: (location: Location | null) => void
   zoomToPlace: ZoomToPlaceHandler
 }
 
-const getNearbyItem = (place: any) => {
-  const fromTo = <FromToPicker place={place} />
+const getNearbyItem = (place: any, setLocationWithBikeRentCheck?: any) => {
+  const fromTo = (
+    <FromToPicker
+      place={place}
+      setLocationMiddleware={setLocationWithBikeRentCheck}
+    />
+  )
 
   switch (place.__typename) {
     case 'RentalVehicle':
@@ -126,6 +136,7 @@ function NearbyView({
   currentServiceWeek,
   defaultLatLon,
   displayedCoords,
+  enabledModeButtons,
   entityId,
   fetchNearby,
   geocoderConfig,
@@ -140,14 +151,45 @@ function NearbyView({
   sessionSearches,
   setHighlightedLocation,
   setMainPanelContent,
+  setQueryParam,
   setViewedNearbyCoords,
   zoomToPlace
 }: Props): JSX.Element {
   const map = useMap().default
   const intl = useIntl()
+  const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
   const [reversedPoint, setReversedPoint] = useState('')
   const firstItemRef = useRef<HTMLDivElement>(null)
+
+  // Create middleware function for setLocation that enables bike_rent mode when vehicle-rent cards are present
+  const setLocationWithBikeRentCheck = useCallback(
+    (location: any, locationType: string, reverseGeocode: boolean) => {
+      // Check if there are any RentalVehicle items in nearby results
+      const hasRentalVehicles = nearby?.some(
+        (n: any) => n.place.__typename === 'RentalVehicle'
+      )
+
+      if (hasRentalVehicles) {
+        // Enable bike_rent mode button if not already enabled
+        if (!enabledModeButtons?.includes('bike_rent')) {
+          const newButtons = [...(enabledModeButtons || []), 'bike_rent']
+          const updateHandler = onSettingsUpdate(setQueryParam)
+          updateHandler(
+            encodeQueryParams(modesQueryParamConfig, {
+              modeButtons: newButtons
+            })
+          )
+        }
+      }
+
+      // Call the original setLocation function using dispatch
+      dispatch(
+        mapActions.setLocation({ location, locationType, reverseGeocode })
+      )
+    },
+    [dispatch, nearby, enabledModeButtons, setQueryParam]
+  )
   const finalNearbyCoords = useMemo(
     () =>
       getNearbyCoordsFromUrlOrLocationOrMapCenter(
@@ -283,7 +325,10 @@ function NearbyView({
           /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
           tabIndex={0}
         >
-          {getNearbyItem({ ...n.place, distance: n.distance, nearbyRoutes })}
+          {getNearbyItem(
+            { ...n.place, distance: n.distance, nearbyRoutes },
+            setLocationWithBikeRentCheck
+          )}
         </div>
       </li>
     ))
@@ -418,11 +463,20 @@ const mapStateToProps = (state: AppReduxState) => {
       )
   }
 
+  const urlSearchParams = new URLSearchParams(state.router.location.search)
+  const { modes } = config
+
   return {
     currentPosition,
     currentServiceWeek,
     defaultLatLon,
     displayedCoords: nearby?.coords,
+    enabledModeButtons:
+      decodeQueryParams(modesQueryParamConfig, {
+        modeButtons: urlSearchParams.get('modeButtons')
+      })?.modeButtons ||
+      modes?.initialState?.enabledModeButtons ||
+      [],
     entityId: entityId && decodeURIComponent(entityId),
     geocoderConfig: config.geocoder,
     hideEmptyStops: config.nearbyView?.hideEmptyStops,
@@ -442,6 +496,7 @@ const mapDispatchToProps = {
   setHighlightedLocation: uiActions.setHighlightedLocation,
   setLocation: mapActions.setLocation,
   setMainPanelContent: uiActions.setMainPanelContent,
+  setQueryParam: formActions.setQueryParam,
   setViewedNearbyCoords: uiActions.setViewedNearbyCoords,
   viewNearby: uiActions.viewNearby,
   zoomToPlace: mapActions.zoomToPlace

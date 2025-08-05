@@ -2,6 +2,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import { connect } from 'react-redux'
+import { decodeQueryParams, encodeQueryParams } from 'use-query-params'
 import { GeolocateControl, NavigationControl } from 'react-map-gl'
 import { getCurrentDate } from '@opentripplanner/core-utils/lib/time'
 import { injectIntl } from 'react-intl'
@@ -21,7 +22,9 @@ import { ComponentContext } from '../../util/contexts'
 import { getActiveItinerary, getActiveSearch } from '../../util/state'
 import { getCurrentPosition } from '../../actions/location'
 import { MainPanelContent } from '../../actions/ui-constants'
+import { modesQueryParamConfig, onSettingsUpdate } from '../form/util'
 import { setLocation, setMapPopupLocationAndGeocode } from '../../actions/map'
+import { setQueryParam } from '../../actions/form'
 import { setViewedStop } from '../../actions/ui'
 import { updateOverlayVisibility } from '../../actions/config'
 import TransitOperatorIcons from '../util/connected-transit-operator-icons'
@@ -278,6 +281,7 @@ class DefaultMap extends Component {
       carRentalQuery,
       carRentalStations,
       config,
+      enabledModeButtons,
       getCurrentPosition,
       intl,
       itinerary,
@@ -285,6 +289,7 @@ class DefaultMap extends Component {
       nearbyViewActive,
       pending,
       setLocation,
+      setQueryParam,
       setViewedStop,
       vehicleRentalQuery,
       vehicleRentalStations,
@@ -321,6 +326,29 @@ class DefaultMap extends Component {
 
     const routeBasedTransitVehicleOverlayNameOverride =
       overlays?.find((o) => o.type === 'vehicles-one-route') || undefined
+
+    // Create middleware function for setLocation that enables bike_rent mode when rentalVehicles are present
+    const setLocationWithBikeRentCheck = (location, reverseGeocode) => {
+      const overlayTypes = overlays
+        .filter((overlay) => overlay.type === 'otp2')?.[0]
+        ?.layers.map((layer) => layer.type)
+
+      if (overlayTypes?.includes('rentalVehicles')) {
+        // Enable bike_rent mode button if not already enabled
+        if (!enabledModeButtons?.includes('bike_rent')) {
+          const newButtons = [...(enabledModeButtons || []), 'bike_rent']
+          const updateHandler = onSettingsUpdate(setQueryParam)
+          updateHandler(
+            encodeQueryParams(modesQueryParamConfig, {
+              modeButtons: newButtons
+            })
+          )
+        }
+      }
+
+      // Call the original setLocation function
+      return setLocation(location, reverseGeocode)
+    }
 
     return (
       <MapContainer className="percy-hide">
@@ -435,7 +463,7 @@ class DefaultMap extends Component {
                     name: getLayerName(l, config, intl) || l.network || l.type
                   })),
                   vectorTilesEndpoint,
-                  setLocation,
+                  setLocationWithBikeRentCheck,
                   setViewedStop,
                   viewedRouteStops,
                   config.companies,
@@ -482,10 +510,19 @@ const mapStateToProps = (state) => {
         )
       : null
 
+  const urlSearchParams = new URLSearchParams(state.router.location.search)
+  const { modes } = state.otp.config
+
   return {
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
     carRentalStations: state.otp.overlay.carRental.stations,
     config: state.otp.config,
+    enabledModeButtons:
+      decodeQueryParams(modesQueryParamConfig, {
+        modeButtons: urlSearchParams.get('modeButtons')
+      })?.modeButtons ||
+      modes?.initialState?.enabledModeButtons ||
+      [],
     itinerary: getActiveItinerary(state),
     mapConfig: state.otp.config.map,
     nearbyViewActive:
@@ -504,6 +541,7 @@ const mapDispatchToProps = {
   getCurrentPosition,
   setLocation,
   setMapPopupLocationAndGeocode,
+  setQueryParam,
   setViewedStop,
   updateOverlayVisibility,
   vehicleRentalQuery
