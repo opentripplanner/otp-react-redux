@@ -157,17 +157,16 @@ class DefaultMap extends Component {
       initZoom: zoom = 13
     } = props.mapConfig || {}
     this.state = {
-      filteredOverlays: this.props.mapConfig?.overlays,
       lat,
       lon,
       zoom
     }
   }
 
-  _filterNearbyMapLayers = () => {
+  getNearbyViewFilteredOverlays = () => {
     const { activeNearbyFilters, mapConfig } = this.props
     const { overlays } = mapConfig
-    const newOverlays = overlays
+    const nearbyViewFilteredOverlays = overlays
       ?.filter((overlay) => {
         return overlay.cardType && !!activeNearbyFilters[overlay.cardType]
       })
@@ -182,7 +181,7 @@ class DefaultMap extends Component {
         }
         return overlay
       })
-    return this.setState({ filteredOverlays: newOverlays })
+    return nearbyViewFilteredOverlays
   }
 
   // Generate operator logos to pass through OTP tile layer to map-popup
@@ -285,7 +284,6 @@ class DefaultMap extends Component {
   }
 
   componentDidMount() {
-    this.props.nearbyFilters && this._filterNearbyMapLayers()
     // HACK: Set state lat and lon to null to prevent re-rendering of the
     // underlying OTP-UI map.
     this.setState({
@@ -303,13 +301,15 @@ class DefaultMap extends Component {
       prevProps.activeNearbyFilters !== activeNearbyFilters &&
       nearbyViewActive
     )
-      this._filterNearbyMapLayers()
-    // If we leave the nearby view, reset the map overlays back to defaults.
-    if (prevProps.nearbyViewActive !== nearbyViewActive && !nearbyViewActive) {
-      this.setState({
-        filteredOverlays: mapConfig?.overlays
-      })
-    }
+      if (
+        prevProps.nearbyViewActive !== nearbyViewActive &&
+        !nearbyViewActive
+      ) {
+        // If we leave the nearby view, reset the map overlays back to defaults.
+        this.setState({
+          filteredOverlays: mapConfig?.overlays
+        })
+      }
   }
 
   render() {
@@ -364,6 +364,10 @@ class DefaultMap extends Component {
     const routeBasedTransitVehicleOverlayNameOverride =
       overlays?.find((o) => o.type === 'vehicles-one-route') || undefined
 
+    const visibleOverlays = nearbyViewActive
+      ? this.getNearbyViewFilteredOverlays()
+      : overlays
+
     return (
       <MapContainer
         className="percy-hide"
@@ -412,7 +416,7 @@ class DefaultMap extends Component {
           <ElevationPointMarker />
 
           {/* The configurable overlays */}
-          {this.state.filteredOverlays?.map((overlayConfig, k) => {
+          {visibleOverlays?.map((overlayConfig, k) => {
             const namedLayerProps = {
               ...overlayConfig,
               id: k,
