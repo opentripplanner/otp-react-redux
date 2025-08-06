@@ -200,13 +200,6 @@ class DefaultMap extends Component {
     return <TransitOperatorIcons stopId={stopId} />
   }
 
-  getAgencyFromStopId = async (stopId: string) => {
-    this.props.findStopTimesForStop({
-      date: getCurrentDate(),
-      stopId
-    })
-  }
-
   /**
    * Checks whether the modes have changed between old and new queries and
    * whether to update the map overlays accordingly (e.g., to show rental vehicle
@@ -476,7 +469,6 @@ class DefaultMap extends Component {
                 // This must be a method that returns an array of JSX
                 // as the base-map requires that every toggleable layer
                 // is its own component, and not a subcomponent of another component
-                console.log('feeds', feeds)
                 return generateOTP2TileLayers(
                   overlayConfig.layers.map((l) => ({
                     ...l,
