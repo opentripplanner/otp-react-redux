@@ -336,7 +336,6 @@ class DefaultMap extends Component {
           selectedModeButtons = 'transit_bike_rent'
         else if (!selectedModeButtons.includes('bike_rent'))
           selectedModeButtons += '_bike_rent'
-        console.log('rentalVehicles detected! setting query params')
         const evt: QueryParamChangeEvent = { modeButtons: selectedModeButtons }
         onSettingsUpdate(setQueryParam)(evt)
       }
