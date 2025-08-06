@@ -5,10 +5,11 @@ import { connect } from 'react-redux'
 import { GeolocateControl, NavigationControl } from 'react-map-gl'
 import { getCurrentDate } from '@opentripplanner/core-utils/lib/time'
 import { injectIntl } from 'react-intl'
+import { MapLocationActionArg } from '@opentripplanner/types'
+import { QueryParamChangeEvent } from '@opentripplanner/trip-form/lib/types'
 import BaseMap from '@opentripplanner/base-map'
 import generateOTP2TileLayers from '@opentripplanner/otp2-tile-overlay'
 import React, { Component } from 'react'
-import styled from 'styled-components'
 
 import {
   assembleBasePath,
@@ -21,7 +22,9 @@ import { ComponentContext } from '../../util/contexts'
 import { getActiveItinerary, getActiveSearch } from '../../util/state'
 import { getCurrentPosition } from '../../actions/location'
 import { MainPanelContent } from '../../actions/ui-constants'
+import { onSettingsUpdate } from '../form/util'
 import { setLocation, setMapPopupLocationAndGeocode } from '../../actions/map'
+import { setQueryParam } from '../../actions/form'
 import { setViewedStop } from '../../actions/ui'
 import { updateOverlayVisibility } from '../../actions/config'
 import TransitOperatorIcons from '../util/connected-transit-operator-icons'
@@ -278,6 +281,7 @@ class DefaultMap extends Component {
       carRentalQuery,
       carRentalStations,
       config,
+      currentQuery,
       getCurrentPosition,
       intl,
       itinerary,
@@ -285,6 +289,7 @@ class DefaultMap extends Component {
       nearbyViewActive,
       pending,
       setLocation,
+      setQueryParam,
       setViewedStop,
       vehicleRentalQuery,
       vehicleRentalStations,
@@ -318,6 +323,24 @@ class DefaultMap extends Component {
     }))
     const baseLayerUrls = baseLayersWithNames?.map((bl) => bl.url)
     const baseLayerNames = baseLayersWithNames?.map((bl) => bl.name)
+
+    const overlayTypes = overlays
+      ?.filter((overlay) => overlay?.type === 'otp2')?.[0]
+      ?.layers?.map((layer) => layer?.type)
+    const handleSetLocation = (location: MapLocationActionArg) => {
+      if (overlayTypes && overlayTypes.includes('rentalVehicles')) {
+        let selectedModeButtons = currentQuery.modeButtons ?? ''
+        // if selectedModeButtons is undefined, the mode buttons are in their default state, which includes transit
+        if (selectedModeButtons.length === 0)
+          selectedModeButtons = 'transit_bike_rent'
+        else if (!selectedModeButtons.includes('bike_rent'))
+          selectedModeButtons += '_bike_rent'
+        console.log('rentalVehicles detected! setting query params')
+        const evt: QueryParamChangeEvent = { modeButtons: selectedModeButtons }
+        onSettingsUpdate(setQueryParam)(evt)
+      }
+      setLocation(location)
+    }
 
     const routeBasedTransitVehicleOverlayNameOverride =
       overlays?.find((o) => o.type === 'vehicles-one-route') || undefined
@@ -435,7 +458,7 @@ class DefaultMap extends Component {
                     name: getLayerName(l, config, intl) || l.network || l.type
                   })),
                   vectorTilesEndpoint,
-                  setLocation,
+                  handleSetLocation,
                   setViewedStop,
                   viewedRouteStops,
                   config.companies,
@@ -486,6 +509,7 @@ const mapStateToProps = (state) => {
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
     carRentalStations: state.otp.overlay.carRental.stations,
     config: state.otp.config,
+    currentQuery: state.otp.currentQuery,
     itinerary: getActiveItinerary(state),
     mapConfig: state.otp.config.map,
     nearbyViewActive:
@@ -504,6 +528,7 @@ const mapDispatchToProps = {
   getCurrentPosition,
   setLocation,
   setMapPopupLocationAndGeocode,
+  setQueryParam,
   setViewedStop,
   updateOverlayVisibility,
   vehicleRentalQuery
