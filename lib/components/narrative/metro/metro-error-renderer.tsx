@@ -40,7 +40,29 @@ const Container = styled.li`
     grid-row: 2;
     padding-bottom: 10px;
   }
+
+  svg {
+    margin: 0.25em;
+  }
 `
+
+export const IconMessageContainer = ({
+  body,
+  header,
+  icon = ExclamationCircle,
+  iconSize = '3x'
+}: {
+  body?: React.ReactNode
+  header: React.ReactNode
+  icon?: React.ElementType
+  iconSize?: string
+}): JSX.Element => (
+  <Container>
+    <Icon Icon={icon} size={iconSize} />
+    <h2>{header}</h2>
+    {body && <p>{body}</p>}
+  </Container>
+)
 
 const ErrorRenderer = ({
   errors,
@@ -82,14 +104,8 @@ const ErrorRenderer = ({
           )
 
           return (
-            <Container key={error}>
-              <Icon Icon={ExclamationCircle} size="3x" />
-              <h2>
-                <FormattedMessage
-                  id={`components.OTP2ErrorRenderer.${error}.header`}
-                />
-              </h2>
-              <p>
+            <IconMessageContainer
+              body={
                 <FormattedMessage
                   id={`components.OTP2ErrorRenderer.${error}.body`}
                   values={{
@@ -107,8 +123,15 @@ const ErrorRenderer = ({
                     )
                   }}
                 />
-              </p>
-            </Container>
+              }
+              header={
+                <FormattedMessage
+                  id={`components.OTP2ErrorRenderer.${error}.header`}
+                />
+              }
+              icon={ExclamationCircle}
+              key={error}
+            />
           )
         })}
     </List>
