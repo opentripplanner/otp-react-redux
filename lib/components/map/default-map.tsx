@@ -10,6 +10,7 @@ import { QueryParamChangeEvent } from '@opentripplanner/trip-form/lib/types'
 import BaseMap from '@opentripplanner/base-map'
 import generateOTP2TileLayers from '@opentripplanner/otp2-tile-overlay'
 import React, { Component } from 'react'
+import styled from 'styled-components'
 
 import {
   assembleBasePath,
