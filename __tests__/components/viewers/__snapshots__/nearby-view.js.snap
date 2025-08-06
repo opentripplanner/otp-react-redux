@@ -357,10 +357,11 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
               >
                 <IconMessageContainer
                   body="components.NearbyView.nothingNearby"
+                  header="components.NearbyView.nothingNearbyHeader"
                 >
                   <styled.li>
                     <li
-                      className="sc-edoYdd bLkddc"
+                      className="sc-edoYdd dUlBtg"
                     >
                       <Icon
                         Icon={
@@ -420,6 +421,9 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                           </span>
                         </styled.span>
                       </Icon>
+                      <h2>
+                        components.NearbyView.nothingNearbyHeader
+                      </h2>
                       <p>
                         components.NearbyView.nothingNearby
                       </p>
@@ -4908,7 +4912,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-liccgK isQfBt"
+                                className="sc-liccgK inbCZP"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -5336,7 +5340,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-liccgK isQfBt"
+                                className="sc-liccgK inbCZP"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -5764,7 +5768,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-liccgK isQfBt"
+                                className="sc-liccgK inbCZP"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -11223,22 +11227,43 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                                 <styled.div>
                                   <div
-                                    className="sc-liccgK isQfBt"
+                                    className="sc-liccgK inbCZP"
                                   >
-                                    <div>
-                                      <FormattedMessage
-                                        id="components.StopViewer.displayStopId"
-                                        values={
+                                    <div
+                                      style={
+                                        Object {
+                                          "display": "grid",
+                                          "height": 20,
+                                        }
+                                      }
+                                    >
+                                      <span
+                                        style={
                                           Object {
-                                            "stopId": "36940",
-                                            "strong": [Function],
+                                            "gridRow": 1,
                                           }
                                         }
                                       >
-                                        components.StopViewer.displayStopId
-                                      </FormattedMessage>
+                                        <FormattedMessage
+                                          id="components.StopViewer.displayStopId"
+                                          values={
+                                            Object {
+                                              "stopId": "36940",
+                                              "strong": [Function],
+                                            }
+                                          }
+                                        >
+                                          components.StopViewer.displayStopId
+                                        </FormattedMessage>
+                                      </span>
                                       <Styled(Connect(Component))
                                         className="stop-header-action"
+                                        style={
+                                          Object {
+                                            "gridRow": 1,
+                                            "justifySelf": "end",
+                                          }
+                                        }
                                         to="/schedule/kcm:36940"
                                         toParams={
                                           Object {
@@ -11247,7 +11272,13 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <Connect(Component)
-                                          className="sc-hRxcUd fPEFUA stop-header-action"
+                                          className="sc-hRxcUd JwFQy stop-header-action"
+                                          style={
+                                            Object {
+                                              "gridRow": 1,
+                                              "justifySelf": "end",
+                                            }
+                                          }
                                           to="/schedule/kcm:36940"
                                           toParams={
                                             Object {
@@ -11256,8 +11287,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         >
                                           <a
-                                            className="sc-hRxcUd fPEFUA stop-header-action"
+                                            className="sc-hRxcUd JwFQy stop-header-action"
                                             href="#/schedule/kcm:36940"
+                                            style={
+                                              Object {
+                                                "gridRow": 1,
+                                                "justifySelf": "end",
+                                              }
+                                            }
                                           >
                                             <IconWithText
                                               Icon={
@@ -18488,11 +18525,24 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                                 <styled.div>
                                   <div
-                                    className="sc-liccgK isQfBt"
+                                    className="sc-liccgK inbCZP"
                                   >
-                                    <div>
+                                    <div
+                                      style={
+                                        Object {
+                                          "display": "grid",
+                                          "height": 20,
+                                        }
+                                      }
+                                    >
                                       <Styled(Connect(Component))
                                         className="stop-header-action"
+                                        style={
+                                          Object {
+                                            "gridRow": 1,
+                                            "justifySelf": "end",
+                                          }
+                                        }
                                         to="/schedule/40:990003"
                                         toParams={
                                           Object {
@@ -18501,7 +18551,13 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <Connect(Component)
-                                          className="sc-hRxcUd fPEFUA stop-header-action"
+                                          className="sc-hRxcUd JwFQy stop-header-action"
+                                          style={
+                                            Object {
+                                              "gridRow": 1,
+                                              "justifySelf": "end",
+                                            }
+                                          }
                                           to="/schedule/40:990003"
                                           toParams={
                                             Object {
@@ -18510,8 +18566,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         >
                                           <a
-                                            className="sc-hRxcUd fPEFUA stop-header-action"
+                                            className="sc-hRxcUd JwFQy stop-header-action"
                                             href="#/schedule/40:990003"
+                                            style={
+                                              Object {
+                                                "gridRow": 1,
+                                                "justifySelf": "end",
+                                              }
+                                            }
                                           >
                                             <IconWithText
                                               Icon={
@@ -21667,7 +21729,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-liccgK isQfBt"
+                                className="sc-liccgK inbCZP"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -22095,7 +22157,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-liccgK isQfBt"
+                                className="sc-liccgK inbCZP"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -22523,7 +22585,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-liccgK isQfBt"
+                                className="sc-liccgK inbCZP"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -28675,22 +28737,43 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                                 <styled.div>
                                   <div
-                                    className="sc-liccgK isQfBt"
+                                    className="sc-liccgK inbCZP"
                                   >
-                                    <div>
-                                      <FormattedMessage
-                                        id="components.StopViewer.displayStopId"
-                                        values={
+                                    <div
+                                      style={
+                                        Object {
+                                          "display": "grid",
+                                          "height": 20,
+                                        }
+                                      }
+                                    >
+                                      <span
+                                        style={
                                           Object {
-                                            "stopId": "16430",
-                                            "strong": [Function],
+                                            "gridRow": 1,
                                           }
                                         }
                                       >
-                                        components.StopViewer.displayStopId
-                                      </FormattedMessage>
+                                        <FormattedMessage
+                                          id="components.StopViewer.displayStopId"
+                                          values={
+                                            Object {
+                                              "stopId": "16430",
+                                              "strong": [Function],
+                                            }
+                                          }
+                                        >
+                                          components.StopViewer.displayStopId
+                                        </FormattedMessage>
+                                      </span>
                                       <Styled(Connect(Component))
                                         className="stop-header-action"
+                                        style={
+                                          Object {
+                                            "gridRow": 1,
+                                            "justifySelf": "end",
+                                          }
+                                        }
                                         to="/schedule/kcm:16430"
                                         toParams={
                                           Object {
@@ -28699,7 +28782,13 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <Connect(Component)
-                                          className="sc-hRxcUd fPEFUA stop-header-action"
+                                          className="sc-hRxcUd JwFQy stop-header-action"
+                                          style={
+                                            Object {
+                                              "gridRow": 1,
+                                              "justifySelf": "end",
+                                            }
+                                          }
                                           to="/schedule/kcm:16430"
                                           toParams={
                                             Object {
@@ -28708,8 +28797,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         >
                                           <a
-                                            className="sc-hRxcUd fPEFUA stop-header-action"
+                                            className="sc-hRxcUd JwFQy stop-header-action"
                                             href="#/schedule/kcm:16430"
+                                            style={
+                                              Object {
+                                                "gridRow": 1,
+                                                "justifySelf": "end",
+                                              }
+                                            }
                                           >
                                             <IconWithText
                                               Icon={
@@ -33270,7 +33365,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-liccgK isQfBt"
+                                className="sc-liccgK inbCZP"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -33698,7 +33793,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-liccgK isQfBt"
+                                className="sc-liccgK inbCZP"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -34126,7 +34221,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-liccgK isQfBt"
+                                className="sc-liccgK inbCZP"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -34554,7 +34649,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-liccgK isQfBt"
+                                className="sc-liccgK inbCZP"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -34982,7 +35077,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-liccgK isQfBt"
+                                className="sc-liccgK inbCZP"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -38632,22 +38727,43 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                                 <styled.div>
                                   <div
-                                    className="sc-liccgK isQfBt"
+                                    className="sc-liccgK inbCZP"
                                   >
-                                    <div>
-                                      <FormattedMessage
-                                        id="components.StopViewer.displayStopId"
-                                        values={
+                                    <div
+                                      style={
+                                        Object {
+                                          "display": "grid",
+                                          "height": 20,
+                                        }
+                                      }
+                                    >
+                                      <span
+                                        style={
                                           Object {
-                                            "stopId": "16440",
-                                            "strong": [Function],
+                                            "gridRow": 1,
                                           }
                                         }
                                       >
-                                        components.StopViewer.displayStopId
-                                      </FormattedMessage>
+                                        <FormattedMessage
+                                          id="components.StopViewer.displayStopId"
+                                          values={
+                                            Object {
+                                              "stopId": "16440",
+                                              "strong": [Function],
+                                            }
+                                          }
+                                        >
+                                          components.StopViewer.displayStopId
+                                        </FormattedMessage>
+                                      </span>
                                       <Styled(Connect(Component))
                                         className="stop-header-action"
+                                        style={
+                                          Object {
+                                            "gridRow": 1,
+                                            "justifySelf": "end",
+                                          }
+                                        }
                                         to="/schedule/kcm:16440"
                                         toParams={
                                           Object {
@@ -38656,7 +38772,13 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <Connect(Component)
-                                          className="sc-hRxcUd fPEFUA stop-header-action"
+                                          className="sc-hRxcUd JwFQy stop-header-action"
+                                          style={
+                                            Object {
+                                              "gridRow": 1,
+                                              "justifySelf": "end",
+                                            }
+                                          }
                                           to="/schedule/kcm:16440"
                                           toParams={
                                             Object {
@@ -38665,8 +38787,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         >
                                           <a
-                                            className="sc-hRxcUd fPEFUA stop-header-action"
+                                            className="sc-hRxcUd JwFQy stop-header-action"
                                             href="#/schedule/kcm:16440"
+                                            style={
+                                              Object {
+                                                "gridRow": 1,
+                                                "justifySelf": "end",
+                                              }
+                                            }
                                           >
                                             <IconWithText
                                               Icon={
@@ -41827,7 +41955,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-liccgK isQfBt"
+                                className="sc-liccgK inbCZP"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -47052,11 +47180,24 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                                 <styled.div>
                                   <div
-                                    className="sc-liccgK isQfBt"
+                                    className="sc-liccgK inbCZP"
                                   >
-                                    <div>
+                                    <div
+                                      style={
+                                        Object {
+                                          "display": "grid",
+                                          "height": 20,
+                                        }
+                                      }
+                                    >
                                       <Styled(Connect(Component))
                                         className="stop-header-action"
+                                        style={
+                                          Object {
+                                            "gridRow": 1,
+                                            "justifySelf": "end",
+                                          }
+                                        }
                                         to="/schedule/40:990004"
                                         toParams={
                                           Object {
@@ -47065,7 +47206,13 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <Connect(Component)
-                                          className="sc-hRxcUd fPEFUA stop-header-action"
+                                          className="sc-hRxcUd JwFQy stop-header-action"
+                                          style={
+                                            Object {
+                                              "gridRow": 1,
+                                              "justifySelf": "end",
+                                            }
+                                          }
                                           to="/schedule/40:990004"
                                           toParams={
                                             Object {
@@ -47074,8 +47221,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         >
                                           <a
-                                            className="sc-hRxcUd fPEFUA stop-header-action"
+                                            className="sc-hRxcUd JwFQy stop-header-action"
                                             href="#/schedule/40:990004"
+                                            style={
+                                              Object {
+                                                "gridRow": 1,
+                                                "justifySelf": "end",
+                                              }
+                                            }
                                           >
                                             <IconWithText
                                               Icon={
@@ -55275,22 +55428,43 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                                 <styled.div>
                                   <div
-                                    className="sc-liccgK isQfBt"
+                                    className="sc-liccgK inbCZP"
                                   >
-                                    <div>
-                                      <FormattedMessage
-                                        id="components.StopViewer.displayStopId"
-                                        values={
+                                    <div
+                                      style={
+                                        Object {
+                                          "display": "grid",
+                                          "height": 20,
+                                        }
+                                      }
+                                    >
+                                      <span
+                                        style={
                                           Object {
-                                            "stopId": "23561",
-                                            "strong": [Function],
+                                            "gridRow": 1,
                                           }
                                         }
                                       >
-                                        components.StopViewer.displayStopId
-                                      </FormattedMessage>
+                                        <FormattedMessage
+                                          id="components.StopViewer.displayStopId"
+                                          values={
+                                            Object {
+                                              "stopId": "23561",
+                                              "strong": [Function],
+                                            }
+                                          }
+                                        >
+                                          components.StopViewer.displayStopId
+                                        </FormattedMessage>
+                                      </span>
                                       <Styled(Connect(Component))
                                         className="stop-header-action"
+                                        style={
+                                          Object {
+                                            "gridRow": 1,
+                                            "justifySelf": "end",
+                                          }
+                                        }
                                         to="/schedule/kcm:23561"
                                         toParams={
                                           Object {
@@ -55299,7 +55473,13 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <Connect(Component)
-                                          className="sc-hRxcUd fPEFUA stop-header-action"
+                                          className="sc-hRxcUd JwFQy stop-header-action"
+                                          style={
+                                            Object {
+                                              "gridRow": 1,
+                                              "justifySelf": "end",
+                                            }
+                                          }
                                           to="/schedule/kcm:23561"
                                           toParams={
                                             Object {
@@ -55308,8 +55488,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         >
                                           <a
-                                            className="sc-hRxcUd fPEFUA stop-header-action"
+                                            className="sc-hRxcUd JwFQy stop-header-action"
                                             href="#/schedule/kcm:23561"
+                                            style={
+                                              Object {
+                                                "gridRow": 1,
+                                                "justifySelf": "end",
+                                              }
+                                            }
                                           >
                                             <IconWithText
                                               Icon={
@@ -61619,7 +61805,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             </styled.div>
                             <styled.div>
                               <div
-                                className="sc-liccgK isQfBt"
+                                className="sc-liccgK inbCZP"
                               >
                                 <Connect(FromToPicker)
                                   place={
@@ -67078,22 +67264,43 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 </styled.div>
                                 <styled.div>
                                   <div
-                                    className="sc-liccgK isQfBt"
+                                    className="sc-liccgK inbCZP"
                                   >
-                                    <div>
-                                      <FormattedMessage
-                                        id="components.StopViewer.displayStopId"
-                                        values={
+                                    <div
+                                      style={
+                                        Object {
+                                          "display": "grid",
+                                          "height": 20,
+                                        }
+                                      }
+                                    >
+                                      <span
+                                        style={
                                           Object {
-                                            "stopId": "36931",
-                                            "strong": [Function],
+                                            "gridRow": 1,
                                           }
                                         }
                                       >
-                                        components.StopViewer.displayStopId
-                                      </FormattedMessage>
+                                        <FormattedMessage
+                                          id="components.StopViewer.displayStopId"
+                                          values={
+                                            Object {
+                                              "stopId": "36931",
+                                              "strong": [Function],
+                                            }
+                                          }
+                                        >
+                                          components.StopViewer.displayStopId
+                                        </FormattedMessage>
+                                      </span>
                                       <Styled(Connect(Component))
                                         className="stop-header-action"
+                                        style={
+                                          Object {
+                                            "gridRow": 1,
+                                            "justifySelf": "end",
+                                          }
+                                        }
                                         to="/schedule/kcm:36931"
                                         toParams={
                                           Object {
@@ -67102,7 +67309,13 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <Connect(Component)
-                                          className="sc-hRxcUd fPEFUA stop-header-action"
+                                          className="sc-hRxcUd JwFQy stop-header-action"
+                                          style={
+                                            Object {
+                                              "gridRow": 1,
+                                              "justifySelf": "end",
+                                            }
+                                          }
                                           to="/schedule/kcm:36931"
                                           toParams={
                                             Object {
@@ -67111,8 +67324,14 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         >
                                           <a
-                                            className="sc-hRxcUd fPEFUA stop-header-action"
+                                            className="sc-hRxcUd JwFQy stop-header-action"
                                             href="#/schedule/kcm:36931"
+                                            style={
+                                              Object {
+                                                "gridRow": 1,
+                                                "justifySelf": "end",
+                                              }
+                                            }
                                           >
                                             <IconWithText
                                               Icon={

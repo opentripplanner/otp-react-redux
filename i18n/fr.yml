@@ -386,6 +386,7 @@ components:
     selectCost: Prix
     selectDepartureTime: Heure de départ
     selectDuration: Durée
+    selectFare: Prix du trajet
     selectWalkTime: Temps de marche
     sortResults: Trier les résultats
     viewAll: Toutes les options

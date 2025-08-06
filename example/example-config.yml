@@ -93,6 +93,8 @@ persistence:
 ### If a Top level menu item contains submenu items (children) then use the 'children' flag.
 ### Icon URL is preferable over iconType. If none are given then a 'bus' iconType is used.
 #App menu
+### If set to true, a google translate suffix will be appended to the URL of external links for the active locale. For example, if the app is open in Spanish, the external URL will open with /#googtrans(es)
+translateExternalLinks: false
 #extraMenuItems:
 #  - id: link-list
 #    label: List of Links

@@ -264,6 +264,7 @@ export type ItinerarySortOption =
   | 'WALKTIME'
   | 'COST'
   | 'DEPARTURETIME'
+  | 'FARE'
 
 export interface ItineraryCostWeights {
   driveReluctance: number
@@ -434,6 +435,7 @@ export interface AppConfig {
   /** App title shown in the browser title bar. */
   title?: string
   transitOperators?: TransitOperatorConfig[]
+  translateExternalLinks?: boolean
 
   // Add other config items as needed.
 }
