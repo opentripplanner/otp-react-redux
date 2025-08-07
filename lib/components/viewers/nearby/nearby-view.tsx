@@ -23,6 +23,7 @@ import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
 import {
   AppReduxState,
+  LatLonObj,
   NearbyFilterKey,
   NearbyFilters
 } from '../../../util/state-types'
@@ -52,7 +53,6 @@ import VehicleParking from './vehicle-parking'
 const AUTO_REFRESH_INTERVAL = 15000000
 
 // TODO: use lonlat package
-type LatLonObj = { lat: number; lon: number }
 type CurrentPosition = { coords?: { latitude: number; longitude: number } }
 type ServiceWeek = { end: string; start: string }
 
