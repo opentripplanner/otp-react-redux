@@ -7,7 +7,7 @@ import {
   RentalVehicle,
   VehicleRentalStation
 } from '@opentripplanner/types/otp2'
-import { GeolocateControl, NavigationControl } from 'react-map-gl'
+import { GeolocateControl, NavigationControl } from 'react-map-gl/maplibre'
 import { getCurrentDate } from '@opentripplanner/core-utils/lib/time'
 import { injectIntl } from 'react-intl'
 import BaseMap from '@opentripplanner/base-map'

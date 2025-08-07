@@ -15,7 +15,7 @@ import {
   TransitOperator,
   VehicleRentalMapOverlaySymbol
 } from '@opentripplanner/types'
-import { ControlPosition } from 'react-map-gl'
+import { ControlPosition } from 'react-map-gl/maplibre'
 import { GeocoderConfig as GeocoderConfigOtpUI } from '@opentripplanner/geocoder'
 
 /** Accessibility threshold settings */
@@ -264,6 +264,7 @@ export type ItinerarySortOption =
   | 'WALKTIME'
   | 'COST'
   | 'DEPARTURETIME'
+  | 'FARE'
 
 export interface ItineraryCostWeights {
   driveReluctance: number
