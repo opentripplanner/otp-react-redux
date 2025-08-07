@@ -10,11 +10,11 @@ interface State {
  * for an active call (assumes that mount time corresponds with call start).
  */
 export default class CallTimeCounter extends Component<
-  HTMLAttributes<HTMLDivElement>,
+  { className?: string; initialCounter?: number },
   State
 > {
   state = {
-    counterString: 0,
+    counterString: this.props.initialCounter || 0,
     timer: undefined
   }
 
