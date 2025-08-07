@@ -10,7 +10,6 @@ import { Check } from '@styled-icons/boxicons-regular'
 import { connect } from 'react-redux'
 import { decodeQueryParams, DelimitedArrayParam } from 'serialize-query-params'
 import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
-import { invisibleCss } from '@opentripplanner/trip-form/lib/MetroModeSelector'
 import {
   ModeButtonDefinition,
   ModeSetting,
@@ -45,6 +44,7 @@ import {
   setModeButton,
   tripPlannerValidationErrors
 } from './util'
+import { invisibleCss } from '../util/invisible-a11y-label'
 import { setModeButtonEnabled } from './batch-settings'
 import { styledCheckboxCss } from './styled'
 import DateTimeModal from './date-time-modal'

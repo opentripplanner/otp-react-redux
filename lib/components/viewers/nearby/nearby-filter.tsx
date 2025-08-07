@@ -1,12 +1,12 @@
 import { Check2 } from '@styled-icons/bootstrap/Check2'
-import { Parking } from '@styled-icons/fa-solid/Parking'
 
 import { ComponentContext } from '../../../util/contexts'
 import { getBaseColor } from '../../util/colors'
-import { invisibleCss } from '@opentripplanner/trip-form/lib/MetroModeSelector'
 import { NearbyFilterConfig } from '../../../util/config-types'
-
 import React, { useContext } from 'react'
+
+import { invisibleCss } from '../../util/invisible-a11y-label'
+
 import styled from 'styled-components'
 
 const StyledFilterCheckbox = styled.label<{ checked: boolean }>`
@@ -52,7 +52,7 @@ export const FilterCheckboxes = ({
   value
 }: {
   filter: NearbyFilterConfig
-  onChange: (arg: any) => void
+  onChange: (arg: React.ChangeEvent<HTMLInputElement>) => void
   value: boolean
 }): JSX.Element => {
   // @ts-expect-error component context

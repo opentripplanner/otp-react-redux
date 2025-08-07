@@ -167,9 +167,9 @@ class DefaultMap extends Component {
     const { activeNearbyFilters, mapConfig } = this.props
     const { overlays } = mapConfig
     const nearbyViewFilteredOverlays = overlays
-      ?.filter((overlay) => {
-        return overlay.cardType && !!activeNearbyFilters[overlay.cardType]
-      })
+      ?.filter((overlay) =>
+        overlay.cardType ? activeNearbyFilters[overlay.cardType] : true
+      )
       .map((overlay) => {
         if (overlay.layers) {
           return {
@@ -293,23 +293,8 @@ class DefaultMap extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { activeNearbyFilters, mapConfig, nearbyViewActive } = this.props
     // Check if any overlays should be toggled due to mode change
     this._handleQueryChange(prevProps.query, this.props.query)
-    // If we're in the nearby view, filter the visible layers according to the nearby view filters.
-    if (
-      prevProps.activeNearbyFilters !== activeNearbyFilters &&
-      nearbyViewActive
-    )
-      if (
-        prevProps.nearbyViewActive !== nearbyViewActive &&
-        !nearbyViewActive
-      ) {
-        // If we leave the nearby view, reset the map overlays back to defaults.
-        this.setState({
-          filteredOverlays: mapConfig?.overlays
-        })
-      }
   }
 
   render() {

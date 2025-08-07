@@ -9,6 +9,13 @@ import { ModeSetting } from '@opentripplanner/types'
 
 import { AppConfig } from './config-types'
 
+export type NearbyFilterKey =
+  | 'Stop'
+  | 'RentalVehicle'
+  | 'VehicleParking'
+  | 'BikeRentalStation'
+export type NearbyFilters = Record<NearbyFilterKey, boolean>
+
 export interface OtpState {
   // TODO: Add other OTP states
   activeSearchId?: string
@@ -24,7 +31,12 @@ export interface OtpState {
   }
   transitIndex: any
   // TODO: Add other OTP states
-  ui: any // TODO
+  ui: {
+    nearbyView?: {
+      filters?: NearbyFilters
+    }
+    nearbyViewCoords: any
+  }
 }
 
 export interface SortType {
