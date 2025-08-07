@@ -162,7 +162,6 @@ function NearbyView({
   const intl = useIntl()
   const [loading, setLoading] = useState(true)
   const [reversedPoint, setReversedPoint] = useState('')
-  const [filters, setFilters] = useState(activeNearbyFilters)
 
   const nearbyContainerRef = useRef<HTMLOListElement>(null)
   const finalNearbyCoords = useMemo(
@@ -234,13 +233,13 @@ function NearbyView({
   const onFilterChange = (event: FormEvent) => {
     const { target } = event
     const { id } = target as HTMLInputElement
-    setFilters({ ...filters, [id]: !filters[id] })
-  }
-
-  useEffect(() => {
-    setNearbyViewFilter(filters)
+    // setFilters({ ...filters, [id]: !filters[id] })
+    setNearbyViewFilter({
+      ...activeNearbyFilters,
+      [id]: !activeNearbyFilters[id]
+    })
     scrollToTop()
-  }, [filters, setNearbyViewFilter])
+  }
 
   useEffect(() => {
     scrollToTop()
@@ -289,9 +288,11 @@ function NearbyView({
   const filteredNearby = nearby?.filter((n: any) => {
     if (n.place.__typename === 'Stop' && hideEmptyStops) {
       const patternArray = patternArrayforStops(n.place, routeSortComparator)
-      return !(patternArray?.length === 0) && filters[n.place.__typename]
+      return (
+        !(patternArray?.length === 0) && activeNearbyFilters[n.place.__typename]
+      )
     }
-    return filters[n.place.__typename]
+    return activeNearbyFilters[n.place.__typename]
   })
 
   const nearbyItemList =
@@ -405,7 +406,7 @@ function NearbyView({
                   filter={filter}
                   key={filter.cardType}
                   onChange={onFilterChange}
-                  value={filters[filter.cardType]}
+                  value={activeNearbyFilters[filter.cardType]}
                 />
               )
             })}
