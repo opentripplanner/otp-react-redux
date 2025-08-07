@@ -32,8 +32,8 @@ export interface OtpState {
   transitIndex: any
   // TODO: Add other OTP states
   ui: {
-    nearbyView?: {
-      filters?: NearbyFilters
+    nearbyView: {
+      filters: NearbyFilters
     }
     nearbyViewCoords: any
   }

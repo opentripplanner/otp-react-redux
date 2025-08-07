@@ -21,7 +21,11 @@ import * as apiActions from '../../../actions/api'
 import * as locationActions from '../../../actions/location'
 import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
-import { AppReduxState } from '../../../util/state-types'
+import {
+  AppReduxState,
+  NearbyFilterKey,
+  NearbyFilters
+} from '../../../util/state-types'
 import { GeocoderConfig, NearbyFilterConfig } from '../../../util/config-types'
 import { getCurrentServiceWeek } from '../../../util/current-service-week'
 import {
@@ -52,7 +56,7 @@ type CurrentPosition = { coords?: { latitude: number; longitude: number } }
 type ServiceWeek = { end: string; start: string }
 
 type Props = {
-  activeNearbyFilters: any
+  activeNearbyFilters: NearbyFilters
   currentPosition?: CurrentPosition
   currentServiceWeek?: ServiceWeek
   defaultLatLon: LatLonObj | null
@@ -236,7 +240,7 @@ function NearbyView({
     // setFilters({ ...filters, [id]: !filters[id] })
     setNearbyViewFilter({
       ...activeNearbyFilters,
-      [id]: !activeNearbyFilters[id]
+      [id]: !activeNearbyFilters[id as NearbyFilterKey]
     })
     scrollToTop()
   }
@@ -289,10 +293,11 @@ function NearbyView({
     if (n.place.__typename === 'Stop' && hideEmptyStops) {
       const patternArray = patternArrayforStops(n.place, routeSortComparator)
       return (
-        !(patternArray?.length === 0) && activeNearbyFilters[n.place.__typename]
+        !(patternArray?.length === 0) &&
+        activeNearbyFilters[n.place.__typename as NearbyFilterKey]
       )
     }
-    return activeNearbyFilters[n.place.__typename]
+    return activeNearbyFilters[n.place.__typename as NearbyFilterKey]
   })
 
   const nearbyItemList =
@@ -445,7 +450,7 @@ const mapStateToProps = (state: AppReduxState) => {
   const { nearby } = transitIndex
   const { entityId } = state.router.location.query
   const { currentPosition, sessionSearches } = location
-  const { filters } = nearbyView
+  const filters = nearbyView.filters
   const nearbyFilters = nearbyViewConfig?.filters
   const defaultLatLon =
     map?.initLat && map?.initLon ? { lat: map.initLat, lon: map.initLon } : null
