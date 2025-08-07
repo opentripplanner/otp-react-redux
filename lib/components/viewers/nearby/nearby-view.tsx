@@ -28,6 +28,7 @@ import {
 } from '../../../util/state-types'
 import { GeocoderConfig, NearbyFilterConfig } from '../../../util/config-types'
 import { getCurrentServiceWeek } from '../../../util/current-service-week'
+import { IconMessageContainer } from '../../narrative/metro/metro-error-renderer'
 import {
   PatternStopTime,
   SetLocationHandler,
@@ -77,6 +78,7 @@ type Props = {
   nearby: any
   nearbyFilters?: Array<NearbyFilterConfig>
   nearbyViewCoords?: LatLonObj
+  nearbyViewError?: any
   radius?: number
   routeSortComparator: (a: PatternStopTime, b: PatternStopTime) => number
   sessionSearches: any
@@ -137,6 +139,7 @@ function getNearbyCoordsFromUrlOrLocationOrMapCenter(
   return null
 }
 
+// eslint-disable-next-line complexity
 function NearbyView({
   activeNearbyFilters,
   currentPosition,
@@ -153,6 +156,7 @@ function NearbyView({
   nearby,
   nearbyFilters,
   nearbyViewCoords,
+  nearbyViewError,
   radius,
   routeSortComparator,
   sessionSearches,
@@ -178,10 +182,16 @@ function NearbyView({
       ),
     [nearbyViewCoords, currentPosition, map]
   )
-  const reverseCoords = (coords: LonLatInput) => {
-    getGeocoder(geocoderConfig)
-      .reverse({ point: coords })
-      .then((result: Location) => setReversedPoint(result?.name || ''))
+
+  const reverseCoords = async (coords: LonLatInput) => {
+    try {
+      const location = await getGeocoder(geocoderConfig).reverse({
+        point: coords
+      })
+      setReversedPoint(location?.name || '')
+    } catch (error) {
+      console.error('Error reversing coordinates:', error)
+    }
   }
 
   const scrollToTop = () => {
@@ -259,6 +269,12 @@ function NearbyView({
       }
     }
   }, [finalNearbyCoords, fetchNearby, radius])
+
+  useEffect(() => {
+    if (nearbyViewError) {
+      setLoading(false)
+    }
+  }, [nearbyViewError])
 
   const onMouseEnter = useCallback(
     (location: Location) => {
@@ -427,6 +443,14 @@ function NearbyView({
         ref={nearbyContainerRef}
         style={{ marginBottom: 0 }}
       >
+        {nearbyViewError && !loading && (
+          <IconMessageContainer
+            body={intl.formatMessage({ id: 'components.NearbyView.error' })}
+            header={intl.formatMessage({
+              id: 'components.NearbyView.errorHeader'
+            })}
+          />
+        )}
         {nearby &&
           !staleData &&
           (nearby.error ? (
@@ -434,7 +458,14 @@ function NearbyView({
           ) : filteredNearby?.length > 0 ? (
             nearbyItemList
           ) : (
-            <FormattedMessage id="components.NearbyView.nothingNearby" />
+            <IconMessageContainer
+              body={intl.formatMessage({
+                id: 'components.NearbyView.nothingNearby'
+              })}
+              header={intl.formatMessage({
+                id: 'components.NearbyView.nothingNearbyHeader'
+              })}
+            />
           ))}
       </NearbySidebarContainer>
       <VehiclePositionRetriever />
@@ -488,6 +519,7 @@ const mapStateToProps = (state: AppReduxState) => {
     nearby: nearby?.data,
     nearbyFilters,
     nearbyViewCoords,
+    nearbyViewError: nearby?.error,
     radius: config.nearbyView?.radius,
     routeSortComparator,
     sessionSearches
