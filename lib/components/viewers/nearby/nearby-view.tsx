@@ -85,7 +85,7 @@ type Props = {
   setHighlightedLocation: (location: Location | null) => void
   setLocation: SetLocationHandler
   setMainPanelContent: (content: number) => void
-  setNearbyViewFilter: (arg: any) => void
+  setNearbyViewFilter: (arg: NearbyFilters) => void
   setViewedNearbyCoords: (location: Location | null) => void
   zoomToPlace: ZoomToPlaceHandler
 }
@@ -247,7 +247,6 @@ function NearbyView({
   const onFilterChange = (event: FormEvent) => {
     const { target } = event
     const { id } = target as HTMLInputElement
-    // setFilters({ ...filters, [id]: !filters[id] })
     setNearbyViewFilter({
       ...activeNearbyFilters,
       [id]: !activeNearbyFilters[id as NearbyFilterKey]
