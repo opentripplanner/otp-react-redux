@@ -1,4 +1,5 @@
-import React, { Component, HTMLAttributes } from 'react'
+import { differenceInSeconds, parseISO } from 'date-fns'
+import React, { Component } from 'react'
 
 interface State {
   counterString: number
@@ -10,11 +11,13 @@ interface State {
  * for an active call (assumes that mount time corresponds with call start).
  */
 export default class CallTimeCounter extends Component<
-  { className?: string; initialCounter?: number },
+  { className?: string; startTime?: string },
   State
 > {
   state = {
-    counterString: this.props.initialCounter || 0,
+    counterString: this.props?.startTime
+      ? differenceInSeconds(new Date(), parseISO(this.props.startTime))
+      : 0,
     timer: undefined
   }
 
@@ -36,7 +39,9 @@ export default class CallTimeCounter extends Component<
   }
 
   _refreshCounter = (): void => {
-    const counterString = this.state.counterString + 1
+    const counterString = this.props?.startTime
+      ? differenceInSeconds(new Date(), parseISO(this.props.startTime))
+      : this.state.counterString + 1
     this.setState({ counterString })
   }
 
