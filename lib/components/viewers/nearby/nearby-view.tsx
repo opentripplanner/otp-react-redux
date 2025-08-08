@@ -16,6 +16,7 @@ import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
 import { GeocoderConfig } from '../../../util/config-types'
 import { getCurrentServiceWeek } from '../../../util/current-service-week'
+import { IconMessageContainer } from '../../narrative/metro/metro-error-renderer'
 import {
   PatternStopTime,
   SetLocationHandler,
@@ -62,6 +63,7 @@ type Props = {
   // Todo: type nearby results
   nearby: any
   nearbyViewCoords?: LatLonObj
+  nearbyViewError?: any
   radius?: number
   routeSortComparator: (a: PatternStopTime, b: PatternStopTime) => number
   sessionSearches: any
@@ -121,6 +123,7 @@ function getNearbyCoordsFromUrlOrLocationOrMapCenter(
   return null
 }
 
+// eslint-disable-next-line complexity
 function NearbyView({
   currentPosition,
   currentServiceWeek,
@@ -135,6 +138,7 @@ function NearbyView({
   mobile,
   nearby,
   nearbyViewCoords,
+  nearbyViewError,
   radius,
   routeSortComparator,
   sessionSearches,
@@ -159,10 +163,15 @@ function NearbyView({
     [nearbyViewCoords, currentPosition, map]
   )
 
-  const reverseCoords = (coords: LonLatInput) => {
-    getGeocoder(geocoderConfig)
-      .reverse({ point: coords })
-      .then((result: Location) => setReversedPoint(result?.name || ''))
+  const reverseCoords = async (coords: LonLatInput) => {
+    try {
+      const location = await getGeocoder(geocoderConfig).reverse({
+        point: coords
+      })
+      setReversedPoint(location?.name || '')
+    } catch (error) {
+      console.error('Error reversing coordinates:', error)
+    }
   }
 
   // Make sure the highlighted location is cleaned up when leaving nearby
@@ -226,6 +235,12 @@ function NearbyView({
       }
     }
   }, [finalNearbyCoords, fetchNearby, radius])
+
+  useEffect(() => {
+    if (nearbyViewError) {
+      setLoading(false)
+    }
+  }, [nearbyViewError])
 
   const onMouseEnter = useCallback(
     (location: Location) => {
@@ -373,6 +388,14 @@ function NearbyView({
         className="base-color-bg"
         style={{ marginBottom: 0 }}
       >
+        {nearbyViewError && !loading && (
+          <IconMessageContainer
+            body={intl.formatMessage({ id: 'components.NearbyView.error' })}
+            header={intl.formatMessage({
+              id: 'components.NearbyView.errorHeader'
+            })}
+          />
+        )}
         {nearby &&
           !staleData &&
           (nearby.error ? (
@@ -380,7 +403,14 @@ function NearbyView({
           ) : filteredNearby?.length > 0 ? (
             nearbyItemList
           ) : (
-            <FormattedMessage id="components.NearbyView.nothingNearby" />
+            <IconMessageContainer
+              body={intl.formatMessage({
+                id: 'components.NearbyView.nothingNearby'
+              })}
+              header={intl.formatMessage({
+                id: 'components.NearbyView.nothingNearbyHeader'
+              })}
+            />
           ))}
       </NearbySidebarContainer>
       <VehiclePositionRetriever />
@@ -430,6 +460,7 @@ const mapStateToProps = (state: AppReduxState) => {
     location: state.router.location.hash,
     nearby: nearby?.data,
     nearbyViewCoords,
+    nearbyViewError: nearby?.error,
     radius: config.nearbyView?.radius,
     routeSortComparator,
     sessionSearches
