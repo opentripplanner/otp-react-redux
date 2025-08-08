@@ -2332,11 +2332,6 @@
   resolved "https://registry.yarnpkg.com/@mapbox/jsonlint-lines-primitives/-/jsonlint-lines-primitives-2.0.2.tgz#ce56e539f83552b58d10d672ea4d6fc9adc7b234"
   integrity sha512-rY0o9A5ECsTQRVhv7tL/OyDpGAoUB4tTvLiW1DSzQGq4bvTPhNw1VpSNjDJc5GFZ2XuyOtSWSVN05qOtcD71qQ==
 
-"@mapbox/mapbox-gl-supported@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@mapbox/mapbox-gl-supported/-/mapbox-gl-supported-2.0.1.tgz#c15367178d8bfe4765e6b47b542fe821ce259c7b"
-  integrity sha512-HP6XvfNIzfoMVfyGjBckjiAOQK9WfX0ywdLubuPMPv+Vqf5fj0uCbgBQYpiqcWZT6cbyyRnTSXDheT1ugvF6UQ==
-
 "@mapbox/point-geometry@0.1.0", "@mapbox/point-geometry@^0.1.0", "@mapbox/point-geometry@~0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@mapbox/point-geometry/-/point-geometry-0.1.0.tgz#8a83f9335c7860effa2eeeca254332aa0aeed8f2"
@@ -2348,11 +2343,6 @@
   integrity sha512-sIIi9clVZiTmXYqbXpSAoG+ZLsvQn7j9FJLqiNOG85KnXN8tz11MEhuW2M7NDEDIKi4hIMaSI1CKwH8oLuVxPQ==
   dependencies:
     meow "^6.1.1"
-
-"@mapbox/tiny-sdf@^2.0.5":
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/@mapbox/tiny-sdf/-/tiny-sdf-2.0.7.tgz#0d67d65a43195003b282764f2297c619736bbc6e"
-  integrity sha512-25gQLQMcpivjOSA40g3gO6qgiFPDpWRoMfd+G/GoppPIeP6JDaMMkMrEJnMZhKyyS6iKwVt5YKu02vCUyJM3Ug==
 
 "@mapbox/tiny-sdf@^2.0.6":
   version "2.0.6"
@@ -2683,26 +2673,6 @@
   dependencies:
     "@octokit/openapi-types" "^10.0.0"
 
-"@opentripplanner/base-map@5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-5.0.1.tgz#53fd0989ea2ab8b207fa450710af64de4e03bb40"
-  integrity sha512-IJPrQbajzDhscMGtVmLwti3wk9y5zW0buvyQxFZ2v0xccyVvDrakis/IxK4HaO8ht/MUQIe7TC5TCF3NK0bUew==
-  dependencies:
-    "@opentripplanner/building-blocks" "3.0.0"
-    mapbox-gl "npm:empty-npm-package@1.0.0"
-    maplibre-gl "^2.1.9"
-    react-map-gl "^7.0.15"
-
-"@opentripplanner/base-map@5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-5.2.0.tgz#67992efcf9ed492d478e03d1e505f9a03b189028"
-  integrity sha512-UoPkmbDyiKO7Fm3vtsEFFgTLa6SLN6cFd9UdPjoJbhpjXB36ihEreE+DKvVUGPOdzBeT4EY+Hl2NNzkLRSYrtg==
-  dependencies:
-    "@opentripplanner/building-blocks" "3.0.1"
-    mapbox-gl "npm:empty-npm-package@1.0.0"
-    maplibre-gl "^2.1.9"
-    react-map-gl "^7.0.15"
-
 "@opentripplanner/base-map@6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-6.0.0.tgz#8a77572fed8c51dfb17e739cb18c792fd89c5c48"
@@ -2711,13 +2681,6 @@
     "@opentripplanner/building-blocks" "3.0.1"
     maplibre-gl "^5.6.1"
     react-map-gl "^8.0.4"
-
-"@opentripplanner/building-blocks@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/building-blocks/-/building-blocks-3.0.0.tgz#79952990a3ea8fdcbc4ac718d2d5e8793605aa9a"
-  integrity sha512-ThwCeWL4qZalayM3zg/D+Vzl4a+xY+289WWAU2D5lwI5f8/CAj8XDlLWuU6vcEYPI7pEf/GWnz01hBJ7KLeMrg==
-  dependencies:
-    "@styled-icons/bootstrap" "^10.47.0"
 
 "@opentripplanner/building-blocks@3.0.1":
   version "3.0.1"
@@ -2882,14 +2845,14 @@
   dependencies:
     "@opentripplanner/map-popup" "7.0.0"
 
-"@opentripplanner/park-and-ride-overlay@4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/park-and-ride-overlay/-/park-and-ride-overlay-4.0.1.tgz#7c4920b3103e29f12f75527d069f539770bfb07f"
-  integrity sha512-QzGSTEi0Jq+R1iYgYU8qEEhtIpTswh28Iv/q7qKsg4NmuSq7SPEUL2n7X47MxZDEQg932yqvdzq+7aMt2zjY8Q==
+"@opentripplanner/park-and-ride-overlay@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/park-and-ride-overlay/-/park-and-ride-overlay-5.0.0.tgz#25a0d0803a9c8a54874291c3f72d6fa4838fe929"
+  integrity sha512-9F3AzsAYKxZbnk9gMbRMewlPUpFD6KqkVduOXgwbCnGZ/w62kgha7Cxt7rI10Ssm4DT5NOy9KlQBnd9s1hTKCw==
   dependencies:
-    "@opentripplanner/base-map" "5.0.1"
-    "@opentripplanner/from-to-location-picker" "4.0.0"
-    "@opentripplanner/types" "6.5.2"
+    "@opentripplanner/base-map" "6.0.0"
+    "@opentripplanner/from-to-location-picker" "4.0.1"
+    "@opentripplanner/types" "7.0.0"
 
 "@opentripplanner/printable-itinerary@4.0.1":
   version "4.0.1"
@@ -2938,12 +2901,12 @@
     "@opentripplanner/map-popup" "7.0.0"
     flat "^5.0.2"
 
-"@opentripplanner/transit-vehicle-overlay@6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/transit-vehicle-overlay/-/transit-vehicle-overlay-6.0.2.tgz#bd2fd194b52a8195e2cafcefdb38a0a81339bc88"
-  integrity sha512-4D4qMkvTig4X9U9iiHjAP++vcbGnehA1Y87wjClAkkm/i4XS9y5UgvskbkicPlaIsmMe9kVUO6USb0Pp5o65sQ==
+"@opentripplanner/transit-vehicle-overlay@7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/transit-vehicle-overlay/-/transit-vehicle-overlay-7.0.0.tgz#62e91db95c698cf2de89d96425bfdd08451f80b3"
+  integrity sha512-T4Dvmy6bq+GBym4ebDXPJMb8x8OyhGnKudL6hhtEQvA1OH5cyGN0KUfFJCS3iGpK8ibX2Rc8DQXWpmLdYg8Jhw==
   dependencies:
-    "@opentripplanner/base-map" "5.2.0"
+    "@opentripplanner/base-map" "6.0.0"
     "@opentripplanner/core-utils" "13.0.1"
     "@opentripplanner/icons" "4.0.0"
     flat "^5.0.2"
@@ -3002,11 +2965,6 @@
     "@mapbox/polyline" "^1.1.1"
     "@opentripplanner/base-map" "6.0.0"
     "@opentripplanner/core-utils" "13.0.1"
-
-"@opentripplanner/types@6.5.2":
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-6.5.2.tgz#1373d738479568d880a3b13670b0ec53a1a75bd5"
-  integrity sha512-2qDcKOrsLoXdwjRAdi4xcdDUsZGTnwBM+vfEf8TTuuWSnA+WYav3ldlMB4sugxIdLaVKXlOfe3F5lCEh9jAHWA==
 
 "@opentripplanner/types@7.0.0":
   version "7.0.0"
@@ -3920,7 +3878,7 @@
   resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.8.tgz#30744afdb385e2945e22f3b033f897f76b1f12ca"
   integrity sha512-1rkryxURpr6aWP7R786/UQOkJ3PcpQiWkAXBmdWc7ryFWqN6a4xfK7BtjXvFBKO9LjQ+MWQSWxYeZX1OApnArA==
 
-"@types/geojson@^7946.0.10", "@types/geojson@^7946.0.16":
+"@types/geojson@^7946.0.16":
   version "7946.0.16"
   resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.16.tgz#8ebe53d69efada7044454e3305c19017d97ced2a"
   integrity sha512-6C8nqWur3j98U6+lXDfTUWIfgvZU+EumvpHKcYjujKH7woYyLj2sUmff0tRhrqM7BohUw7Pz3ZB1jj2gW9Fvmg==
@@ -4025,19 +3983,12 @@
   resolved "https://registry.yarnpkg.com/@types/long/-/long-3.0.32.tgz#f4e5af31e9e9b196d8e5fca8a5e2e20aa3d60b69"
   integrity sha512-ZXyOOm83p7X8p3s0IYM3VeueNmHpkk/yMlP8CLeOnEcu6hIwPH7YjZBvhQkR0ZFS2DqZAxKtJ/M5fcuv3OU5BA==
 
-"@types/mapbox-gl@>=1.0.0":
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/@types/mapbox-gl/-/mapbox-gl-3.4.1.tgz#b6a1b81b802e62fb7e1d1d13a97ccece63b232a3"
-  integrity sha512-NsGKKtgW93B+UaLPti6B7NwlxYlES5DpV5Gzj9F75rK5ALKsqSk15CiEHbOnTr09RGbr6ZYiCdI+59NNNcAImg==
-  dependencies:
-    "@types/geojson" "*"
-
 "@types/mapbox__point-geometry@*":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@types/mapbox__point-geometry/-/mapbox__point-geometry-0.1.2.tgz#488a9b76e8457d6792ea2504cdd4ecdd9860a27e"
   integrity sha512-D0lgCq+3VWV85ey1MZVkE8ZveyuvW5VAfuahVTQRpXFQTxw03SuIf1/K4UQ87MMIXVKzpFjXFiFMZzLj2kU+iA==
 
-"@types/mapbox__point-geometry@^0.1.2", "@types/mapbox__point-geometry@^0.1.4":
+"@types/mapbox__point-geometry@^0.1.4":
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/@types/mapbox__point-geometry/-/mapbox__point-geometry-0.1.4.tgz#0ef017b75eedce02ff6243b4189210e2e6d5e56d"
   integrity sha512-mUWlSxAmYLfwnRBmgYV86tgYmMIICX4kza8YnE/eIlywGe2XoOxlpVnXWwir92xRLjwyarqwpu2EJKD2pk0IUA==
@@ -4049,7 +4000,7 @@
   dependencies:
     "@types/geojson" "*"
 
-"@types/mapbox__vector-tile@^1.3.0", "@types/mapbox__vector-tile@^1.3.4":
+"@types/mapbox__vector-tile@^1.3.4":
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/@types/mapbox__vector-tile/-/mapbox__vector-tile-1.3.4.tgz#ad757441ef1d34628d9e098afd9c91423c1f8734"
   integrity sha512-bpd8dRn9pr6xKvuEBQup8pwQfD4VUyqO/2deGjfpe6AwC8YRlyEipvefyRJUSiCJTZuCb8Pl1ciVV5ekqJ96Bg==
@@ -4098,7 +4049,7 @@
   resolved "https://registry.yarnpkg.com/@types/pbf/-/pbf-3.0.2.tgz#8d291ad68b4b8c533e96c174a2e3e6399a59ed61"
   integrity sha512-EDrLIPaPXOZqDjrkzxxbX7UlJSeQVgah3i0aA4pOSzmK9zq3BIh7/MZIQxED7slJByvKM4Gc6Hypyu2lJzh3SQ==
 
-"@types/pbf@^3.0.2", "@types/pbf@^3.0.5":
+"@types/pbf@^3.0.5":
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/@types/pbf/-/pbf-3.0.5.tgz#a9495a58d8c75be4ffe9a0bd749a307715c07404"
   integrity sha512-j3pOPiEcWZ34R6a6mN07mUkM4o4Lwf6hPNt8eilOeZhTFbxFXmKhvXl9Y28jotFPaI1bpPDJsbCprUoNke6OrA==
@@ -7235,11 +7186,6 @@ css@^2.0.0:
     source-map-resolve "^0.5.2"
     urix "^0.1.0"
 
-csscolorparser@~1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/csscolorparser/-/csscolorparser-1.0.3.tgz#b34f391eea4da8f3e98231e2ccd8df9c041f171b"
-  integrity sha512-umPSgYwZkdFoUrH5hIq5kf0wPSXiro51nPw0j2K/c83KflkPSTBGMz6NJvMB+07VlL0y7VPo6QJcDjcgKTTm3w==
-
 cssdb@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/cssdb/-/cssdb-4.4.0.tgz#3bf2f2a68c10f5c6a08abd92378331ee803cddb0"
@@ -7935,11 +7881,6 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
-
-earcut@^2.2.4:
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/earcut/-/earcut-2.2.4.tgz#6d02fd4d68160c114825d06890a92ecaae60343a"
-  integrity sha512-/pjZsA1b4RPHbeWZQn66SWS8nZZWLQQ23oE3Eam7aroEFGEvwKAsJfZ9ytiEMycfzXWpca4FA9QIOehf7PocBQ==
 
 earcut@^3.0.1:
   version "3.0.1"
@@ -9596,11 +9537,6 @@ geocoder-arcgis@^2.0.5:
     lodash.get "^4.4.2"
     lodash.isobject "^3.0.2"
     lodash.isstring "^4.0.1"
-
-geojson-vt@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/geojson-vt/-/geojson-vt-3.2.1.tgz#f8adb614d2c1d3f6ee7c4265cad4bbf3ad60c8b7"
-  integrity sha512-EvGQQi/zPrDA6zr6BnJD/YhwAkBP8nnJ9emh3EnHQKVMfg/MRVtPbMYdgVy/IaEmn4UfagD2a6fafPDL5hbtwg==
 
 geojson-vt@^4.0.2:
   version "4.0.2"
@@ -12411,11 +12347,6 @@ just-diff@^3.0.1:
   resolved "https://registry.yarnpkg.com/just-diff/-/just-diff-3.1.1.tgz#d50c597c6fd4776495308c63bdee1b6839082647"
   integrity sha512-sdMWKjRq8qWZEjDcVA6llnUT8RDEBIfOiGpYFPYa9u+2c39JCsejktSP7mj5eRid5EIvTzIpQ2kDOCw1Nq9BjQ==
 
-kdbush@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/kdbush/-/kdbush-3.0.0.tgz#f8484794d47004cc2d85ed3a79353dbe0abc2bf0"
-  integrity sha512-hRkd6/XW4HTsA9vjVpY9tuXJYLSlelnkTmVFu4M9/7MIYQtFcHpbugAU7UbOfjOiVSVYl2fqgBuJ32JUmRo5Ew==
-
 kdbush@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/kdbush/-/kdbush-4.0.2.tgz#2f7b7246328b4657dd122b6c7f025fbc2c868e39"
@@ -13058,41 +12989,6 @@ map-visit@^1.0.0:
   integrity sha1-7Nyo8TFE5mDxtb1B8S80edmN+48=
   dependencies:
     object-visit "^1.0.0"
-
-"mapbox-gl@npm:empty-npm-package@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/empty-npm-package/-/empty-npm-package-1.0.0.tgz#fda29eb6de5efa391f73d578697853af55f6793a"
-  integrity sha512-q4Mq/+XO7UNDdMiPpR/LIBIW1Zl4V0Z6UT9aKGqIAnBCtCb3lvZJM1KbDbdzdC8fKflwflModfjR29Nt0EpcwA==
-
-maplibre-gl@^2.1.9:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/maplibre-gl/-/maplibre-gl-2.4.0.tgz#2b53dbf526626bf4ee92ad4f33f13ef09e5af182"
-  integrity sha512-csNFylzntPmHWidczfgCZpvbTSmhaWvLRj9e1ezUDBEPizGgshgm3ea1T5TCNEEBq0roauu7BPuRZjA3wO4KqA==
-  dependencies:
-    "@mapbox/geojson-rewind" "^0.5.2"
-    "@mapbox/jsonlint-lines-primitives" "^2.0.2"
-    "@mapbox/mapbox-gl-supported" "^2.0.1"
-    "@mapbox/point-geometry" "^0.1.0"
-    "@mapbox/tiny-sdf" "^2.0.5"
-    "@mapbox/unitbezier" "^0.0.1"
-    "@mapbox/vector-tile" "^1.3.1"
-    "@mapbox/whoots-js" "^3.1.0"
-    "@types/geojson" "^7946.0.10"
-    "@types/mapbox__point-geometry" "^0.1.2"
-    "@types/mapbox__vector-tile" "^1.3.0"
-    "@types/pbf" "^3.0.2"
-    csscolorparser "~1.0.3"
-    earcut "^2.2.4"
-    geojson-vt "^3.2.1"
-    gl-matrix "^3.4.3"
-    global-prefix "^3.0.0"
-    murmurhash-js "^1.0.0"
-    pbf "^3.2.1"
-    potpack "^1.0.2"
-    quickselect "^2.0.0"
-    supercluster "^7.1.5"
-    tinyqueue "^2.0.3"
-    vt-pbf "^3.1.3"
 
 maplibre-gl@^5.6.1:
   version "5.6.1"
@@ -15565,11 +15461,6 @@ postcss@^8.1.0, postcss@^8.1.10, postcss@^8.5.3:
     picocolors "^1.1.1"
     source-map-js "^1.2.1"
 
-potpack@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/potpack/-/potpack-1.0.2.tgz#23b99e64eb74f5741ffe7656b5b5c4ddce8dfc14"
-  integrity sha512-choctRBIV9EMT9WGAZHn3V7t0Z2pMQyl0EZE6pFc/6ml3ssw7Dlf/oAOvFwjm1HVsqfQN8GfeFyJ+d8tRzqueQ==
-
 potpack@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/potpack/-/potpack-2.0.0.tgz#61f4dd2dc4b3d5e996e3698c0ec9426d0e169104"
@@ -15954,11 +15845,6 @@ quick-lru@^4.0.1:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-4.0.1.tgz#5b8878f113a58217848c6482026c73e1ba57727f"
   integrity sha512-ARhCpm70fzdcvNQfPoy49IaanKkTlRWF2JMzqhcJbhSFRZv7nPTvZJdcY7301IPmvW+/p0RgIWnQDLJxifsQ7g==
 
-quickselect@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/quickselect/-/quickselect-2.0.0.tgz#f19680a486a5eefb581303e023e98faaf25dd018"
-  integrity sha512-RKJ22hX8mHe3Y6wH/N3wCM6BWtjaxIyyUIkpHOvfFnxdI4yD4tBXEBKSbriGujF6jnSVkJrffuo6vxACiSSxIw==
-
 quickselect@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/quickselect/-/quickselect-3.0.0.tgz#a37fc953867d56f095a20ac71c6d27063d2de603"
@@ -16211,14 +16097,6 @@ react-loading-skeleton@^2.1.1:
   integrity sha512-HH37uj9aobrUJSqFglHqO9KQt5zGQe+Svutv8LIq7Iq6gpJqCwIzJOsEVfkQy7ReirbI2uLhCtKloBGQIDP0BQ==
   dependencies:
     "@emotion/core" "^10.0.22"
-
-react-map-gl@^7.0.15:
-  version "7.1.9"
-  resolved "https://registry.yarnpkg.com/react-map-gl/-/react-map-gl-7.1.9.tgz#d41093ce266c342f89a2c49dec3739e980835fa7"
-  integrity sha512-KsCc8Gyn05wVGlHZoopaiiCr0RCAQ6LDISo5sEy1/pV/d7RlozkF946tiX7IgyijJQMRujHol5QdwUPESjh73w==
-  dependencies:
-    "@maplibre/maplibre-gl-style-spec" "^19.2.1"
-    "@types/mapbox-gl" ">=1.0.0"
 
 react-map-gl@^8.0.4:
   version "8.0.4"
@@ -18385,13 +18263,6 @@ stylehacks@^4.0.0:
     postcss "^7.0.0"
     postcss-selector-parser "^3.0.0"
 
-supercluster@^7.1.5:
-  version "7.1.5"
-  resolved "https://registry.yarnpkg.com/supercluster/-/supercluster-7.1.5.tgz#65a6ce4a037a972767740614c19051b64b8be5a3"
-  integrity sha512-EulshI3pGUM66o6ZdH3ReiFcvHpM3vAigyK+vcxdjpJyEbIIrtbmBdY23mGgnI24uXiGFvrGq9Gkum/8U7vJWg==
-  dependencies:
-    kdbush "^3.0.0"
-
 supercluster@^8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/supercluster/-/supercluster-8.0.1.tgz#9946ba123538e9e9ab15de472531f604e7372df5"
@@ -18726,11 +18597,6 @@ tinyglobby@^0.2.13:
   dependencies:
     fdir "^6.4.4"
     picomatch "^4.0.2"
-
-tinyqueue@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/tinyqueue/-/tinyqueue-2.0.3.tgz#64d8492ebf39e7801d7bd34062e29b45b2035f08"
-  integrity sha512-ppJZNDuKGgxzkHihX8v9v9G5f+18gzaTfrukGrq6ueg0lmH4nqVnA2IPG0AEH3jKEk2GRJCUhDoqpoiw3PHLBA==
 
 tinyqueue@^3.0.0:
   version "3.0.0"
