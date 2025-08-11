@@ -195,10 +195,11 @@ function NearbyView({
   }
 
   const scrollToTop = () => {
-    nearbyContainerRef?.current?.scroll({
-      behavior: 'smooth',
-      top: 0
-    })
+    nearbyContainerRef?.current?.scroll &&
+      nearbyContainerRef?.current?.scroll({
+        behavior: 'smooth',
+        top: 0
+      })
   }
 
   // Make sure the highlighted location is cleaned up when leaving nearby
