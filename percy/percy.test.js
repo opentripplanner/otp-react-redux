@@ -123,7 +123,7 @@ async function executeTest(page, isMobile, isCallTaker) {
     // Edit trip params [mobile-specific]
     await openEditIfNeeded(page, isMobile)
 
-    // Change the modes: Activate Transit and remove Bike.
+    // Change the modes: activate Transit and remove Bike.
     await page.click('label[title="Transit"]')
     await page.waitForTimeout(200)
 
