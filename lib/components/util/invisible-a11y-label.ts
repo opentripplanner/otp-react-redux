@@ -4,7 +4,6 @@ export const invisibleCss = css`
   clip: rect(0, 0, 0, 0);
   height: 0;
   overflow: hidden;
-  position: absolute;
   width: 0;
 `
 
