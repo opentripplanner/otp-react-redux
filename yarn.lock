@@ -2804,10 +2804,10 @@
     react-resize-detector "^4.2.1"
     string-similarity "^4.0.4"
 
-"@opentripplanner/location-field@4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-4.1.0.tgz#d8e446662f4fbc9a7e25416a4808a915ecea1323"
-  integrity sha512-huCiTkH3LtvCb0LOxDdSgEOD8isEKvM3y7IpCdK/hWAvpl5d51UsPlQy+NH2kD+jvRbUN4Aj+roTtPwGYsjCkQ==
+"@opentripplanner/location-field@4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-4.0.4.tgz#8e1ed4db74b8b919355d22cb1a55fe51b1915319"
+  integrity sha512-RQQxdvwrzvmBWijeU1iZN0ceYk29QxN46PfHsxh7EA9yrg5vPBhuTPcxXQyefKU5+cIzYgXtIai1iz+qIM3+jQ==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
     "@opentripplanner/core-utils" "13.0.1"
@@ -2815,7 +2815,7 @@
     "@opentripplanner/humanize-distance" "2.0.0"
     "@opentripplanner/location-icon" "2.0.0"
     "@styled-icons/fa-solid" "^10.34.0"
-    "@tanstack/react-pacer" "^0.8.0"
+    throttle-debounce "^2.1.0"
 
 "@opentripplanner/location-icon@2.0.0", "@opentripplanner/location-icon@^2.0.0":
   version "2.0.0"
@@ -3647,18 +3647,6 @@
     "@svgr/plugin-jsx" "^5.5.0"
     "@svgr/plugin-svgo" "^5.5.0"
     loader-utils "^2.0.0"
-
-"@tanstack/pacer@0.8.0":
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/@tanstack/pacer/-/pacer-0.8.0.tgz#1c29c3863af65bbab6fef4ebb71a440a256af9ed"
-  integrity sha512-wh9um4sF37woA9M/Pf05eyl30/V8RYN5x06yDQIhdJ+dB4YsQUR7qt+gIyGmygutFvqTMKDERXSC7NLIBZND9Q==
-
-"@tanstack/react-pacer@^0.8.0":
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-pacer/-/react-pacer-0.8.0.tgz#0a3733eaff6a5a1ede54f49e5f5b892153bcb480"
-  integrity sha512-nQX5ACRHdOiZjPOudA3Ii64mPfRkeRkSYtjQaRMD3FqY9AQKuQJgPglAFA7U4UenLOXJvqXiKMWzFDi1Bw9EZQ==
-  dependencies:
-    "@tanstack/pacer" "0.8.0"
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -18416,6 +18404,11 @@ throat@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/throat/-/throat-6.0.1.tgz#d514fedad95740c12c2d7fc70ea863eb51ade375"
   integrity sha512-8hmiGIJMDlwjg7dlJ4yKGLK8EsYqKgPWbG3b4wjJddKNwc7N7Dpn08Df4szr/sZdMVeOstrdYSsqzX6BYbcB+w==
+
+throttle-debounce@^2.1.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-2.3.0.tgz#fd31865e66502071e411817e241465b3e9c372e2"
+  integrity sha512-H7oLPV0P7+jgvrk+6mwwwBDmxTaxnu9HMXmloNLXwnNO0ZxZ31Orah2n8lU1eMPvsaowP2CX+USCgyovXfdOFQ==
 
 through2@^2.0.0, through2@~2.0.0, through2@~2.0.3:
   version "2.0.5"
