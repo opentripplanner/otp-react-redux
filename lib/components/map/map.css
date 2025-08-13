@@ -141,9 +141,3 @@
 .mapboxgl-popup {
   z-index: 101;
 }
-
-.maplibregl-ctrl-attrib-inner a {
-  /* Attribution links look like plain text in default maplibre styling and cause a11y check failures.
-     Decorate these links with underline to make these tests pass. */
-  text-decoration: underline;
-}
