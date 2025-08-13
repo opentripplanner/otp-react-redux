@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Location } from '@opentripplanner/types'
@@ -8,15 +9,28 @@ import { throttle } from '@tanstack/pacer'
 import coreUtils from '@opentripplanner/core-utils'
 import getGeocoder from '@opentripplanner/geocoder'
 import LocationField from '@opentripplanner/location-field'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, {
+  FormEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react'
 
 import * as apiActions from '../../../actions/api'
 import * as locationActions from '../../../actions/location'
 import * as mapActions from '../../../actions/map'
 import * as uiActions from '../../../actions/ui'
-import { AppReduxState } from '../../../util/state-types'
-import { GeocoderConfig } from '../../../util/config-types'
+import {
+  AppReduxState,
+  LatLonObj,
+  NearbyFilterKey,
+  NearbyFilters
+} from '../../../util/state-types'
+import { GeocoderConfig, NearbyFilterConfig } from '../../../util/config-types'
 import { getCurrentServiceWeek } from '../../../util/current-service-week'
+import { IconMessageContainer } from '../../narrative/metro/metro-error-renderer'
 import {
   PatternStopTime,
   SetLocationHandler,
@@ -29,6 +43,7 @@ import MobileNavigationBar from '../../mobile/navigation-bar'
 import PageTitle from '../../util/page-title'
 import VehiclePositionRetriever from '../vehicle-position-retriever'
 
+import { FilterCheckboxes } from './nearby-filter'
 import { FullHeightContainer, NearbySidebarContainer } from './styled'
 import FromToPicker from './from-to-picker'
 import RentalStation from './rental-station'
@@ -39,11 +54,11 @@ import VehicleParking from './vehicle-parking'
 const AUTO_REFRESH_INTERVAL = 15000000
 
 // TODO: use lonlat package
-type LatLonObj = { lat: number; lon: number }
 type CurrentPosition = { coords?: { latitude: number; longitude: number } }
 type ServiceWeek = { end: string; start: string }
 
 type Props = {
+  activeNearbyFilters: NearbyFilters
   currentPosition?: CurrentPosition
   currentServiceWeek?: ServiceWeek
   defaultLatLon: LatLonObj | null
@@ -62,13 +77,16 @@ type Props = {
   mobile?: boolean
   // Todo: type nearby results
   nearby: any
+  nearbyFilters?: Array<NearbyFilterConfig>
   nearbyViewCoords?: LatLonObj
+  nearbyViewError?: any
   radius?: number
   routeSortComparator: (a: PatternStopTime, b: PatternStopTime) => number
   sessionSearches: any
   setHighlightedLocation: (location: Location | null) => void
   setLocation: SetLocationHandler
   setMainPanelContent: (content: number) => void
+  setNearbyViewFilter: (arg: NearbyFilters) => void
   setViewedNearbyCoords: (location: Location | null) => void
   zoomToPlace: ZoomToPlaceHandler
 }
@@ -122,7 +140,9 @@ function getNearbyCoordsFromUrlOrLocationOrMapCenter(
   return null
 }
 
+// eslint-disable-next-line complexity
 function NearbyView({
+  activeNearbyFilters,
   currentPosition,
   currentServiceWeek,
   defaultLatLon,
@@ -135,12 +155,15 @@ function NearbyView({
   location,
   mobile,
   nearby,
+  nearbyFilters,
   nearbyViewCoords,
+  nearbyViewError,
   radius,
   routeSortComparator,
   sessionSearches,
   setHighlightedLocation,
   setMainPanelContent,
+  setNearbyViewFilter,
   setViewedNearbyCoords,
   zoomToPlace
 }: Props): JSX.Element {
@@ -148,7 +171,8 @@ function NearbyView({
   const intl = useIntl()
   const [loading, setLoading] = useState(true)
   const [reversedPoint, setReversedPoint] = useState('')
-  const firstItemRef = useRef<HTMLDivElement>(null)
+
+  const nearbyContainerRef = useRef<HTMLOListElement>(null)
   const finalNearbyCoords = useMemo(
     () =>
       getNearbyCoordsFromUrlOrLocationOrMapCenter(
@@ -160,10 +184,23 @@ function NearbyView({
     [nearbyViewCoords, currentPosition, map]
   )
 
-  const reverseCoords = (coords: LonLatInput) => {
-    getGeocoder(geocoderConfig)
-      .reverse({ point: coords })
-      .then((result: Location) => setReversedPoint(result?.name || ''))
+  const reverseCoords = async (coords: LonLatInput) => {
+    try {
+      const location = await getGeocoder(geocoderConfig).reverse({
+        point: coords
+      })
+      setReversedPoint(location?.name || '')
+    } catch (error) {
+      console.error('Error reversing coordinates:', error)
+    }
+  }
+
+  const scrollToTop = () => {
+    nearbyContainerRef?.current?.scroll &&
+      nearbyContainerRef?.current?.scroll({
+        behavior: 'smooth',
+        top: 0
+      })
   }
 
   // Make sure the highlighted location is cleaned up when leaving nearby
@@ -210,12 +247,18 @@ function NearbyView({
     }
   }, [map, setViewedNearbyCoords, setHighlightedLocation])
 
-  useEffect(() => {
-    window.scrollTo({
-      behavior: 'smooth',
-      left: 0,
-      top: 0
+  const onFilterChange = (event: FormEvent) => {
+    const { target } = event
+    const { id } = target as HTMLInputElement
+    setNearbyViewFilter({
+      ...activeNearbyFilters,
+      [id]: !activeNearbyFilters[id as NearbyFilterKey]
     })
+    scrollToTop()
+  }
+
+  useEffect(() => {
+    scrollToTop()
     if (finalNearbyCoords) {
       fetchNearby(finalNearbyCoords, radius, currentServiceWeek)
       setLoading(true)
@@ -228,6 +271,12 @@ function NearbyView({
       }
     }
   }, [finalNearbyCoords, fetchNearby, radius])
+
+  useEffect(() => {
+    if (nearbyViewError) {
+      setLoading(false)
+    }
+  }, [nearbyViewError])
 
   const onMouseEnter = useCallback(
     (location: Location) => {
@@ -270,9 +319,12 @@ function NearbyView({
   const filteredNearby = nearby?.filter((n: any) => {
     if (n.place.__typename === 'Stop' && hideEmptyStops) {
       const patternArray = patternArrayforStops(n.place, routeSortComparator)
-      return !(patternArray?.length === 0)
+      return (
+        !(patternArray?.length === 0) &&
+        activeNearbyFilters[n.place.__typename as NearbyFilterKey]
+      )
     }
-    return true
+    return activeNearbyFilters[n.place.__typename as NearbyFilterKey]
   })
 
   const nearbyItemList =
@@ -338,7 +390,7 @@ function NearbyView({
           />
         </InvisibleA11yLabel>
       )}
-      <div style={{ padding: '1em' }}>
+      <div style={{ padding: nearbyFilters ? '1em 1em .75em' : '1em' }}>
         <LocationField
           className="nearby-view-location-field"
           // TODO: why does this cause the jump to the trip planner when selecting location
@@ -375,15 +427,41 @@ function NearbyView({
           sortByDistance
           suggestionCount={geocoderConfig?.resultsCount}
         />
+        {nearbyFilters && (
+          <div
+            className="filter-container"
+            style={{ display: 'flex', gap: '10px', marginTop: '10px' }}
+          >
+            {nearbyFilters.map((filter: NearbyFilterConfig) => {
+              return (
+                <FilterCheckboxes
+                  filter={filter}
+                  key={filter.cardType}
+                  onChange={onFilterChange}
+                  value={activeNearbyFilters[filter.cardType]}
+                />
+              )
+            })}
+          </div>
+        )}
       </div>
 
       {loading && <Loading extraSmall />}
       {/* This is used to scroll to top */}
-      <div aria-hidden ref={firstItemRef} />
       <NearbySidebarContainer
         className="base-color-bg"
+        filters={!!nearbyFilters}
+        ref={nearbyContainerRef}
         style={{ marginBottom: 0 }}
       >
+        {nearbyViewError && !loading && (
+          <IconMessageContainer
+            body={intl.formatMessage({ id: 'components.NearbyView.error' })}
+            header={intl.formatMessage({
+              id: 'components.NearbyView.errorHeader'
+            })}
+          />
+        )}
         {nearby &&
           !staleData &&
           (nearby.error ? (
@@ -391,7 +469,14 @@ function NearbyView({
           ) : filteredNearby?.length > 0 ? (
             nearbyItemList
           ) : (
-            <FormattedMessage id="components.NearbyView.nothingNearby" />
+            <IconMessageContainer
+              body={intl.formatMessage({
+                id: 'components.NearbyView.nothingNearby'
+              })}
+              header={intl.formatMessage({
+                id: 'components.NearbyView.nothingNearbyHeader'
+              })}
+            />
           ))}
       </NearbySidebarContainer>
       <VehiclePositionRetriever />
@@ -403,10 +488,12 @@ const mapStateToProps = (state: AppReduxState) => {
   const { config, location, transitIndex, ui } = state.otp
   const { map, nearbyView: nearbyViewConfig, routeViewer } = config
   const transitOperators = config?.transitOperators || []
-  const { nearbyViewCoords } = ui
+  const { nearbyView, nearbyViewCoords } = ui
   const { nearby } = transitIndex
   const { entityId } = state.router.location.query
   const { currentPosition, sessionSearches } = location
+  const filters = nearbyView.filters
+  const nearbyFilters = nearbyViewConfig?.filters
   const defaultLatLon =
     map?.initLat && map?.initLon ? { lat: map.initLat, lon: map.initLon } : null
 
@@ -430,6 +517,7 @@ const mapStateToProps = (state: AppReduxState) => {
   }
 
   return {
+    activeNearbyFilters: filters,
     currentPosition,
     currentServiceWeek,
     defaultLatLon,
@@ -440,7 +528,9 @@ const mapStateToProps = (state: AppReduxState) => {
     homeTimezone: config.homeTimezone,
     location: state.router.location.hash,
     nearby: nearby?.data,
+    nearbyFilters,
     nearbyViewCoords,
+    nearbyViewError: nearby?.error,
     radius: config.nearbyView?.radius,
     routeSortComparator,
     sessionSearches
@@ -453,6 +543,7 @@ const mapDispatchToProps = {
   setHighlightedLocation: uiActions.setHighlightedLocation,
   setLocation: mapActions.setLocation,
   setMainPanelContent: uiActions.setMainPanelContent,
+  setNearbyViewFilter: uiActions.setNearbyViewFilter,
   setViewedNearbyCoords: uiActions.setViewedNearbyCoords,
   viewNearby: uiActions.viewNearby,
   zoomToPlace: mapActions.zoomToPlace
