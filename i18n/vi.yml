@@ -440,9 +440,8 @@ components:
         kiếm
     OUTSIDE_BOUNDS:
       body: >-
-        {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
-        {locations are}} không nằm trong ranh giới của trình lên kế hoạch chuyến
-        đi.
+        {inputFields} {inputFieldsCount, plural, =0 {} one {Vị trí là} other {Các
+        vị trí là}} không nằm trong ranh giới của trình lên kế hoạch chuyến đi.
       header: Địa điểm nằm ngoài ranh giới
     OUTSIDE_SERVICE_PERIOD:
       body: >-
