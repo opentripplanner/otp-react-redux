@@ -387,8 +387,8 @@ components:
       header: 搜索窗口中没有公交连接
     OUTSIDE_BOUNDS:
       body: >-
-        {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
-        {locations are}}不在Trip Planner的范围内。
+        {inputFields} {inputFieldsCount, plural, =0 {} one {位置是} other {位置是}}不在Trip
+        Planner的范围内。
       header: 位置超出边界
     OUTSIDE_SERVICE_PERIOD:
       body: 指定的日期不在当前加载到Trip Planner中的数据范围内。
