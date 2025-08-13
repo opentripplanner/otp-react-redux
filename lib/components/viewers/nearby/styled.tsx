@@ -14,14 +14,14 @@ export const FloatingLoadingIndicator = styled.div`
   position: fixed;
 `
 
-export const NearbySidebarContainer = styled.ol`
+export const NearbySidebarContainer = styled.ol<{ filters: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 1em;
   padding: 0.5em 1em;
   list-style: none;
   overflow-y: scroll;
-  height: 90%;
+  height: ${(props) => (props.filters ? '84%' : '90%')};
 
   & > li:last-of-type {
     margin-bottom: 1em;
