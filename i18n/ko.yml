@@ -396,8 +396,8 @@ components:
       header: 탐색 창 내 대중교통 연결편 없음
     OUTSIDE_BOUNDS:
       body: >-
-        {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
-        {locations are}} 트립 플래너 범위가 아닙니다.
+        {inputFields} {inputFieldsCount, plural, =0 {} one {위치는} other {위치들은}} 트립
+        플래너 범위가 아닙니다.
       header: 범위 밖 위치
     OUTSIDE_SERVICE_PERIOD:
       body: 지정된 날짜가 현재 트립 플래너에 로드된 데이터 범위를 벗어납니다.
