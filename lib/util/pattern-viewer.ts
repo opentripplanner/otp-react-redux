@@ -26,12 +26,23 @@ export function extractMainHeadsigns(
   // Address duplicate headsigns.
   return mapped.reduce((prev: PatternSummary[], cur) => {
     const amended = prev
-    const alreadyExistingIndex = prev.findIndex(
+    let alreadyExistingIndex = prev.findIndex(
       (h) => h.headsign === cur.headsign
     )
-    // If the headsign is a duplicate, and the last stop of the pattern is not the headsign,
-    // amend the headsign with the last stop name in parenthesis.
-    // e.g. "Headsign (Last Stop)"
+    // With all duplicate headsigns with the same last stops, only keep the pattern with the
+    // longest geometry.
+    if (
+      alreadyExistingIndex >= 0 &&
+      amended[alreadyExistingIndex].lastStop === cur.lastStop
+    ) {
+      if (amended[alreadyExistingIndex].geometryLength < cur.geometryLength) {
+        amended[alreadyExistingIndex] = cur
+        // If we've addressed the alreadyExistingIndex, set it back to -1
+        alreadyExistingIndex = -1
+      }
+    } else {
+      amended.push(cur)
+    }
     if (
       alreadyExistingIndex >= 0 &&
       cur.lastStop &&
@@ -48,18 +59,6 @@ export function extractMainHeadsigns(
       }
     }
 
-    // With all remaining duplicate headsigns with the same last stops, only keep the pattern with the
-    // longest geometry.
-    if (
-      alreadyExistingIndex >= 0 &&
-      amended[alreadyExistingIndex].lastStop === cur.lastStop
-    ) {
-      if (amended[alreadyExistingIndex].geometryLength < cur.geometryLength) {
-        amended[alreadyExistingIndex] = cur
-      }
-    } else {
-      amended.push(cur)
-    }
     return amended
   }, [])
 }
