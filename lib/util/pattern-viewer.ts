@@ -26,7 +26,7 @@ export function extractMainHeadsigns(
   // Address duplicate headsigns.
   return mapped.reduce((prev: PatternSummary[], cur) => {
     const amended = prev
-    let alreadyExistingIndex = prev.findIndex(
+    const alreadyExistingIndex = prev.findIndex(
       (h) => h.headsign === cur.headsign
     )
     // With all duplicate headsigns with the same last stops, only keep the pattern with the
@@ -37,8 +37,8 @@ export function extractMainHeadsigns(
     ) {
       if (amended[alreadyExistingIndex].geometryLength < cur.geometryLength) {
         amended[alreadyExistingIndex] = cur
-        // If we've addressed the alreadyExistingIndex, set it back to -1
-        alreadyExistingIndex = -1
+        // If we're replacing the already existing index, no need to continue
+        return amended
       }
     } else {
       amended.push(cur)
