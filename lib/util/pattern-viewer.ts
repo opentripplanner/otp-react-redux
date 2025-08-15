@@ -29,7 +29,6 @@ export function extractMainHeadsigns(
     const alreadyExistingIndex = prev.findIndex(
       (h) => h.headsign === cur.headsign
     )
-
     // If we encounter a duplicate headisgn, we may rename it in the case that the last stop is different than the headsign
     if (
       alreadyExistingIndex >= 0 &&
@@ -62,7 +61,6 @@ export function extractMainHeadsigns(
     } else {
       amended.push(cur)
     }
-
     return amended
   }, [])
 }
