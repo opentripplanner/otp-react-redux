@@ -29,7 +29,9 @@ export function extractMainHeadsigns(
     const alreadyExistingIndex = prev.findIndex(
       (h) => h.headsign === cur.headsign
     )
-    // If we encounter a duplicate headisgn, we may rename it in the case that the last stop is different than the headsign
+    // If the headsign is a duplicate, and the last stop of the pattern is not the headsign,
+    // amend the headsign with the last stop name in parenthesis.
+    // e.g. "Headsign (Last Stop)"
     if (
       alreadyExistingIndex >= 0 &&
       cur.lastStop &&
@@ -48,7 +50,7 @@ export function extractMainHeadsigns(
       }
     }
 
-    // With all duplicate headsigns with the same last stops, only keep the pattern with the
+    // With all remaining duplicate headsigns with the same last stops, only keep the pattern with the
     // longest geometry.
     if (
       alreadyExistingIndex >= 0 &&
@@ -56,7 +58,6 @@ export function extractMainHeadsigns(
     ) {
       if (amended[alreadyExistingIndex].geometryLength < cur.geometryLength) {
         amended[alreadyExistingIndex] = cur
-        // If we're replacing the already existing index, no need to continue
       }
     } else {
       amended.push(cur)
