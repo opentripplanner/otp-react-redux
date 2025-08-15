@@ -90,6 +90,14 @@ Object {
     "localizedMessages": null,
     "mainPanelContent": null,
     "mobileScreen": 1,
+    "nearbyView": Object {
+      "filters": Object {
+        "BikeRentalStation": true,
+        "RentalVehicle": true,
+        "Stop": true,
+        "VehicleParking": true,
+      },
+    },
     "popup": Object {
       "id": null,
     },

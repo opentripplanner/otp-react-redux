@@ -18,6 +18,8 @@ import {
 import { ControlPosition } from 'react-map-gl'
 import { GeocoderConfig as GeocoderConfigOtpUI } from '@opentripplanner/geocoder'
 
+import { NearbyFilterKey } from './state-types'
+
 /** Accessibility threshold settings */
 export interface AccessibilityScoreThresholdConfig {
   color: string
@@ -68,9 +70,15 @@ interface ApiKeyConfig {
 
 export type BugsnagConfig = ApiKeyConfig
 export type MapillaryConfig = ApiKeyConfig
+export type NearbyFilterConfig = {
+  cardType: NearbyFilterKey
+  default?: boolean
+  iconName: string
+}
 
 export type NearbyViewConfig = {
   alwaysShowLongName?: boolean
+  filters?: Array<NearbyFilterConfig>
   hideEmptyStops?: boolean
   radius?: number
   showShadowDotOnMapDrag?: boolean
