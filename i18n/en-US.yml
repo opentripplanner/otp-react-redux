@@ -65,6 +65,7 @@ actions:
     smsVerificationFailed: >-
       Your phone could not be verified. Perhaps the code you entered has
       expired. Please request a new code and try again.
+    tripDeleted: Your trip has been deleted.
 common:
   coordinates: "{lat}, {lon}"
   currentlySelected: " (Currently selected)"
