@@ -14,7 +14,7 @@ import { toastMessageOnPlaceChanged, toastPromise } from '../util/toasts'
 
 type Props = ComponentProps<typeof EndpointsOverlay> & {
   forgetPlace: (place: string, intl: IntlShape) => void
-  rememberPlace: (arg: UserLocationAndType, intl: IntlShape) => number
+  rememberPlace: (arg: UserLocationAndType, intl: IntlShape) => Promise<void>
   setViewedStop: (arg: Location) => void
 }
 
@@ -36,7 +36,6 @@ const ConnectedEndpointsOverlay = ({
     async (placeTypeLocation) => {
       const place = convertToPlace(placeTypeLocation.location)
       await toastPromise(
-        // @ts-expect-error Toast doesn't like that this returns a number
         rememberPlace(placeTypeLocation, intl),
         toastMessageOnPlaceChanged(place, intl, 'Remembered'),
         intl

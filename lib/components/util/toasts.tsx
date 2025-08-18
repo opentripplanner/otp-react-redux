@@ -62,6 +62,7 @@ export const toastPromise = async (
   id?: string,
   silentOnSuccess = false
 ): Promise<any> => {
+  if (!promise) return
   const result = await toast.promise(
     promise,
     toastStatusMessages(successMessage, intl),
