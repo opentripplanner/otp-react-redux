@@ -47,7 +47,7 @@ import TripViewerOverlay from './connected-trip-viewer-overlay'
 import VehicleRentalOverlay from './connected-vehicle-rental-overlay'
 import withMap from './with-map'
 
-const MapContainer = styled.div`
+const MapContainer = styled.div<{ hideLayerFilters: boolean }>`
   height: 100%;
   width: 100%;
 
@@ -64,6 +64,11 @@ const MapContainer = styled.div`
   .mapboxgl-popup-content {
     border-radius: 10px;
     box-shadow: 0 3px 14px 4px rgb(0 0 0 / 20%);
+  }
+
+  // If we're using filtering in the nearby view, hide the toggleable layers so there's no confusion.
+  ul.layers-list {
+    visibility: ${(props) => (props.hideLayerFilters ? 'hidden' : 'visible')};
   }
 `
 /**
@@ -182,6 +187,27 @@ class DefaultMap extends Component<DefaultMapProps> {
       lon,
       zoom
     }
+  }
+
+  getNearbyViewFilteredOverlays = () => {
+    const { activeNearbyFilters, mapConfig } = this.props
+    const { overlays } = mapConfig
+    const nearbyViewFilteredOverlays = overlays
+      ?.filter((overlay) =>
+        overlay.cardType ? activeNearbyFilters[overlay.cardType] : true
+      )
+      .map((overlay) => {
+        if (overlay.layers) {
+          return {
+            ...overlay,
+            layers: overlay?.layers?.filter(
+              (layer) => activeNearbyFilters[layer.cardType]
+            )
+          }
+        }
+        return overlay
+      })
+    return nearbyViewFilteredOverlays
   }
 
   // Generate operator logos to pass through OTP tile layer to map-popup
@@ -308,6 +334,7 @@ class DefaultMap extends Component<DefaultMapProps> {
       intl,
       itinerary,
       mapConfig,
+      nearbyFilters,
       nearbyViewActive,
       pending,
       rentalVehicleQuery,
@@ -352,8 +379,15 @@ class DefaultMap extends Component<DefaultMapProps> {
     const routeBasedTransitVehicleOverlayNameOverride =
       overlays?.find((o) => o.type === 'vehicles-one-route') || undefined
 
+    const visibleOverlays = nearbyViewActive
+      ? this.getNearbyViewFilteredOverlays()
+      : overlays
+
     return (
-      <MapContainer className="percy-hide">
+      <MapContainer
+        className="percy-hide"
+        hideLayerFilters={nearbyViewActive && nearbyFilters}
+      >
         <BaseMap
           baseLayer={
             baseLayerUrls?.length > 1 ? baseLayerUrls : baseLayerUrls?.[0]
@@ -397,7 +431,7 @@ class DefaultMap extends Component<DefaultMapProps> {
           <ElevationPointMarker />
 
           {/* The configurable overlays */}
-          {overlays?.map((overlayConfig, k) => {
+          {visibleOverlays?.map((overlayConfig, k) => {
             const namedLayerProps = {
               ...overlayConfig,
               id: k,
@@ -492,6 +526,8 @@ class DefaultMap extends Component<DefaultMapProps> {
 const mapStateToProps = (state) => {
   const activeSearch = getActiveSearch(state)
   const viewedRoute = state.otp?.ui?.viewedRoute?.routeId
+  const activeNearbyFilters = state.otp?.ui?.nearbyView?.filters
+  const nearbyFilters = state.otp.config?.nearbyView?.filters
   const nearbyViewerActive =
     state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW
 
@@ -513,11 +549,13 @@ const mapStateToProps = (state) => {
       : null
 
   return {
+    activeNearbyFilters,
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
     carRentalStations: state.otp.overlay.carRental.stations,
     config: state.otp.config,
     itinerary: getActiveItinerary(state),
     mapConfig: state.otp.config.map,
+    nearbyFilters,
     nearbyViewActive:
       state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW,
     pending: activeSearch ? Boolean(activeSearch.pending) : false,
