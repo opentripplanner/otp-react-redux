@@ -2,6 +2,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import { connect } from 'react-redux'
+import { findRequiredOptionsForTransportMode } from '@opentripplanner/trip-form'
 import { GeolocateControl, NavigationControl } from 'react-map-gl'
 import { getCurrentDate } from '@opentripplanner/core-utils/lib/time'
 import { injectIntl } from 'react-intl'
@@ -20,10 +21,15 @@ import {
   vehicleRentalQuery
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
+import { decodeQueryParams } from 'serialize-query-params'
 import { getActiveItinerary, getActiveSearch } from '../../util/state'
 import { getCurrentPosition } from '../../actions/location'
 import { MainPanelContent } from '../../actions/ui-constants'
-import { onSettingsUpdate } from '../form/util'
+import {
+  modesQueryParamConfig,
+  onSettingsUpdate,
+  setModeButton
+} from '../form/util'
 import { setLocation, setMapPopupLocationAndGeocode } from '../../actions/map'
 import { setQueryParam } from '../../actions/form'
 import { setViewedStop } from '../../actions/ui'
@@ -282,7 +288,7 @@ class DefaultMap extends Component {
       carRentalQuery,
       carRentalStations,
       config,
-      currentQuery,
+      enabledModeButtons,
       getCurrentPosition,
       intl,
       itinerary,
@@ -330,14 +336,26 @@ class DefaultMap extends Component {
       ?.layers?.map((layer) => layer?.type)
     const handleSetLocation = (location: MapLocationActionArg) => {
       if (overlayTypes && overlayTypes.includes('rentalVehicles')) {
-        let selectedModeButtons = currentQuery.modeButtons ?? ''
-        // if selectedModeButtons is undefined, the mode buttons are in their default state, which includes transit
-        if (selectedModeButtons.length === 0)
-          selectedModeButtons = 'transit_bike_rent'
-        else if (!selectedModeButtons.includes('bike_rent'))
-          selectedModeButtons += '_bike_rent'
-        const evt: QueryParamChangeEvent = { modeButtons: selectedModeButtons }
-        onSettingsUpdate(setQueryParam)(evt)
+        const requiredOptions:
+          | { modeButton: string; modeSetting?: string }
+          | undefined = findRequiredOptionsForTransportMode(
+          config.modes.modeButtons,
+          config.modes.modeSettingDefinitions,
+          { mode: 'SCOOTER', qualifier: 'RENT' }
+        )
+        if (requiredOptions) {
+          const modeSetter = setModeButton(
+            enabledModeButtons,
+            onSettingsUpdate(setQueryParam)
+          )
+
+          modeSetter(requiredOptions.modeButton, true)
+
+          if (requiredOptions.modeSetting)
+            onSettingsUpdate(setQueryParam)({
+              [requiredOptions.modeSetting]: true
+            })
+        }
       }
       setLocation(location)
     }
@@ -504,12 +522,19 @@ const mapStateToProps = (state) => {
           )
         )
       : null
+  const urlSearchParams = new URLSearchParams(state.router.location.search)
+  const { modes } = state.otp.config
 
   return {
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
     carRentalStations: state.otp.overlay.carRental.stations,
     config: state.otp.config,
-    currentQuery: state.otp.currentQuery,
+    enabledModeButtons:
+      decodeQueryParams(modesQueryParamConfig, {
+        modeButtons: urlSearchParams.get('modeButtons')
+      })?.modeButtons ||
+      modes?.initialState?.enabledModeButtons ||
+      {},
     itinerary: getActiveItinerary(state),
     mapConfig: state.otp.config.map,
     nearbyViewActive:
