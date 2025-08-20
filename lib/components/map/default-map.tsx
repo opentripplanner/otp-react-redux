@@ -332,7 +332,7 @@ class DefaultMap extends Component {
     const baseLayerNames = baseLayersWithNames?.map((bl) => bl.name)
 
     const overlayTypes = overlays
-      ?.filter((overlay) => overlay?.type === 'otp2')?.[0]
+      ?.find((overlay) => overlay?.type === 'otp2')
       ?.layers?.map((layer) => layer?.type)
     const handleSetLocation = (location: MapLocationActionArg) => {
       if (overlayTypes && overlayTypes.includes('rentalVehicles')) {
