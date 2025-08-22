@@ -5,7 +5,7 @@ import {
   Route,
   Stop
 } from '@opentripplanner/types'
-import { MapRef } from 'react-map-gl'
+import { MapRef } from 'react-map-gl/maplibre'
 
 export interface StopTimeTrip {
   blockId?: string

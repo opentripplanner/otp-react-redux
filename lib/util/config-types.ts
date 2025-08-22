@@ -15,7 +15,7 @@ import {
   TransitOperator,
   VehicleRentalMapOverlaySymbol
 } from '@opentripplanner/types'
-import { ControlPosition } from 'react-map-gl'
+import { ControlPosition } from 'react-map-gl/maplibre'
 import { GeocoderConfig as GeocoderConfigOtpUI } from '@opentripplanner/geocoder'
 
 import { NearbyFilterKey } from './state-types'
