@@ -1,10 +1,11 @@
 import { connect } from 'react-redux'
-import { getFitBoundsPadding } from '@opentripplanner/base-map/lib/util'
 import { Itinerary, Location } from '@opentripplanner/types'
-import { Layer, Source, useMap } from 'react-map-gl'
+import { Layer, Source, useMap } from 'react-map-gl/maplibre'
+import { util } from '@opentripplanner/base-map'
 import polyline from '@mapbox/polyline'
 import React, { useEffect } from 'react'
 
+import { AppReduxState } from '../../util/state-types'
 import { DARK_TEXT_GREY } from '../util/colors'
 import {
   getActiveItinerary,
@@ -15,7 +16,7 @@ import {
 type Props = {
   from: Location
   geometries: string[]
-  mainPanelContent: number | null
+  hasNoMainPanelContent?: boolean
   to: Location
   visible?: boolean
 }
@@ -26,20 +27,17 @@ type Props = {
 const RoutePreviewOverlay = ({
   from,
   geometries,
-  mainPanelContent,
+  hasNoMainPanelContent,
   to,
   visible
 }: Props) => {
   // Center the map over the endpoints when this overlay is shown.
   const { current: map } = useMap()
   useEffect(() => {
-    if (visible && mainPanelContent === null) {
-      map?.fitBounds([from, to], {
-        duration: 600,
-        padding: getFitBoundsPadding(map, 0.2)
-      })
+    if (visible && hasNoMainPanelContent && map) {
+      util.fitMapToPoints(map, from, to, 0.2, 600)
     }
-  }, [map, visible, from, to, mainPanelContent])
+  }, [map, visible, hasNoMainPanelContent, from, to])
 
   if (!geometries || !visible) return <></>
 
@@ -82,8 +80,7 @@ const RoutePreviewOverlay = ({
   }
 }
 
-// TODO: Typescript state
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: AppReduxState) => {
   const { activeSearchId, config, ui } = state.otp
   // Only show this overlay if the metro UI is explicitly enabled
   if (config.itinerary?.showFirstResultByDefault !== false) {
@@ -110,7 +107,7 @@ const mapStateToProps = (state: any) => {
   return {
     from,
     geometries,
-    mainPanelContent: ui.mainPanelContent,
+    hasNoMainPanelContent: ui.mainPanelContent === null,
     to,
     visible:
       // We need an explicit check for undefined and null because 0
