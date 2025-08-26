@@ -813,6 +813,9 @@ components:
       Please check your email inbox and follow the link in the message to verify
       your email address before finishing your account setup.
     instructions2: Once you're verified, click the button below to continue.
+    instructions3: >-
+      You can plan trips and return to this page anytime to continue setting up
+      your account.
     resendVerification: Resend verification email
   ViewSwitcher:
     nearby: Nearby

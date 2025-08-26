@@ -841,6 +841,9 @@ components:
     instructions2: >-
       Une fois votre adresse vérifiée, cliquez sur le bouton ci-dessous pour
       continuer.
+    instructions3: >-
+      Vous pouvez planifier des trajets et revenir à cet écran à tout moment
+      pour poursuivre la creation de votre compte.
     resendVerification: Envoyer un nouveau message de vérification
   ViewSwitcher:
     nearby: À proximité
