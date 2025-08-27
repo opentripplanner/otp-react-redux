@@ -21,11 +21,14 @@ export const formattedToastSuccessMessage = (
   )
 }
 
-export const toastStatusMessages = (
+export const toastPromise = async <T extends unknown>(
+  promise: Promise<T>,
   successMessage: JSX.Element | string,
-  intl: IntlShape
-): any => {
-  return {
+  intl: IntlShape,
+  id?: string,
+  silentOnSuccess = false
+): Promise<T> => {
+  const toastStatusMessages = {
     error: intl.formatMessage({
       id: 'components.UserAccountScreen.errorUpdatingProfile'
     }),
@@ -34,38 +37,22 @@ export const toastStatusMessages = (
     }),
     success: successMessage
   }
-}
-
-export const toastSettings = (
-  id?: string | undefined,
-  silentOnSuccess?: boolean
-): DefaultToastOptions => {
-  const settings: DefaultToastOptions = {
+  const toastSettings: DefaultToastOptions = {
     ariaProps: {
       'aria-live': 'assertive',
       role: 'alert'
     }
   }
   if (silentOnSuccess) {
-    settings.className = 'toast-hidden'
+    toastSettings.className = 'toast-hidden'
   }
   if (id) {
-    settings.id = id
+    toastSettings.id = id
   }
-  return settings
-}
-
-export const toastPromise = async <T,>(
-  promise: Promise<T>,
-  successMessage: JSX.Element | string,
-  intl: IntlShape,
-  id?: string,
-  silentOnSuccess = false
-): Promise<T> => {
   const result = await toast.promise(
     promise,
-    toastStatusMessages(successMessage, intl),
-    toastSettings(id, silentOnSuccess)
+    toastStatusMessages,
+    toastSettings
   )
   return result
 }
