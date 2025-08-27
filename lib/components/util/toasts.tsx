@@ -55,13 +55,13 @@ export const toastSettings = (
   return settings
 }
 
-export const toastPromise = async (
-  promise: Promise<any>,
+export const toastPromise = async <T,>(
+  promise: Promise<T>,
   successMessage: JSX.Element | string,
   intl: IntlShape,
   id?: string,
   silentOnSuccess = false
-): Promise<any> => {
+): Promise<T> => {
   const result = await toast.promise(
     promise,
     toastStatusMessages(successMessage, intl),
