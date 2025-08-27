@@ -2845,17 +2845,6 @@
     "@styled-icons/fa-regular" "^10.34.0"
     "@styled-icons/fa-solid" "^10.34.0"
 
-"@opentripplanner/map-popup@7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/map-popup/-/map-popup-7.0.0.tgz#87fdf58aee677a123af0d2ffd2616d540ebb13dd"
-  integrity sha512-NRnGJKxC9Y0TpIQCQ+Gelo7T1HGyp9llj4zrSR7IdTwWhQhN2QwPXmTb1LLJQdnZ3NYrUzg4Sdx1jIhL8ZOPsw==
-  dependencies:
-    "@opentripplanner/base-map" "6.0.0"
-    "@opentripplanner/building-blocks" "3.0.1"
-    "@opentripplanner/core-utils" "13.0.1"
-    "@opentripplanner/from-to-location-picker" "4.0.1"
-    flat "^5.0.2"
-
 "@opentripplanner/map-popup@7.0.1":
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/@opentripplanner/map-popup/-/map-popup-7.0.1.tgz#86c37ed91f0c7a42c3310fbd0d5b7fcc5b1776d7"
