@@ -1,10 +1,7 @@
 // This file is intended to contain configuration types,
 // each suffixed with "Config", as in "MapConfig", "MenuItemConfig", etc.
 
-import {
-  CO2ConfigType,
-  FareTableLayout
-} from '@opentripplanner/trip-details/lib/types'
+import { CO2ConfigType } from '@opentripplanner/trip-details/lib/types'
 import {
   Company,
   FareProductSelector,

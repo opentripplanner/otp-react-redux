@@ -16,7 +16,7 @@ const TripDetails = styled(TripDetailsBase)`
 
 const mapStateToProps = (state: AppReduxState) => {
   const { co2, itinerary } = state.otp.config
-  const { defaultFareType } = itinerary
+  const defaultFareType = itinerary?.defaultFareType
   return {
     co2Config: co2,
     defaultFareType
