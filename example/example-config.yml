@@ -387,12 +387,8 @@ itinerary:
   fillModeIcons: true
   # Allow user to collapse alerts in itinerary body
   allowUserAlertCollapsing: true
-  # If multiple fares are returned by OTP, assign names to the fare keys here
-  #fareKeyNameMap:
-  #  regular: "Transit Fare"
-  #  electronicRegular: "SmartCard Fare"
-  #  student: "Student Fare"
-  # One fare will always be shown by default
+  # The medium and rider category selected here will be used to render the total itinerary fare
+  # when there is only room to display a single fare.
   defaultFareType: { mediumId: null, riderCategoryId: null }
 
   # List of OTP2 errors to not display. Can be a list
