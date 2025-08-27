@@ -11,6 +11,7 @@ import * as apiActions from '../../actions/api'
 import * as callTakerActions from '../../actions/call-taker'
 import * as fieldTripActions from '../../actions/field-trip'
 import * as uiActions from '../../actions/ui'
+import { Icon, StyledIconWrapper } from '../util/styledIcon'
 import { isModuleEnabled, Modules } from '../../util/config'
 
 import {
@@ -20,7 +21,6 @@ import {
   FieldTripsButton,
   ToggleCallButton
 } from './styled'
-import { Icon, StyledIconWrapper } from '../util/styledIcon'
 
 type Props = {
   beginCall: () => void
@@ -104,6 +104,7 @@ class CallTakerControls extends Component<Props> {
 
   render() {
     const {
+      callTaker,
       callTakerEnabled,
       fieldTripEnabled,
       resetAndToggleCallHistory,
@@ -124,7 +125,9 @@ class CallTakerControls extends Component<Props> {
             {this._renderCallButtonIcon()}
           </ToggleCallButton>
         )}
-        {this._callInProgress() ? <CallTimeCounter /> : null}
+        {this._callInProgress() ? (
+          <CallTimeCounter startTime={callTaker?.activeCall?.startTime} />
+        ) : null}
         {/* Call History toggle button */}
         {callTakerEnabled && (
           <CallHistoryButton

@@ -3,8 +3,9 @@ import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Location } from '@opentripplanner/types'
 import { LonLatInput } from '@conveyal/lonlat'
-import { MapRef, useMap } from 'react-map-gl'
+import { MapRef, useMap, ViewStateChangeEvent } from 'react-map-gl/maplibre'
 import { Search } from '@styled-icons/fa-solid/Search'
+import { throttle } from '@tanstack/pacer'
 import coreUtils from '@opentripplanner/core-utils'
 import getGeocoder from '@opentripplanner/geocoder'
 import LocationField from '@opentripplanner/location-field'
@@ -210,7 +211,8 @@ function NearbyView({
   }, [location, setHighlightedLocation])
 
   useEffect(() => {
-    const moveListener = (e: mapboxgl.EventData) => {
+    const moveListener = (e: ViewStateChangeEvent) => {
+      // @ts-expect-error TODO: What is this condition supposed to capture?
       if (e.geolocateSource) {
         const coords = {
           lat: e.viewState.latitude,
@@ -221,7 +223,7 @@ function NearbyView({
       }
     }
 
-    const dragListener = (e: mapboxgl.EventData) => {
+    const dragListener = (e: ViewStateChangeEvent) => {
       const coords = {
         lat: e.viewState.latitude,
         lon: e.viewState.longitude
@@ -279,13 +281,22 @@ function NearbyView({
   const onMouseEnter = useCallback(
     (location: Location) => {
       setHighlightedLocation(location)
-      map && zoomToPlace(map, location)
+      map && location && zoomToPlace(map, location)
     },
     [setHighlightedLocation, map, zoomToPlace]
   )
-  const onMouseLeave = useCallback(() => {
-    setHighlightedLocation(null)
-  }, [setHighlightedLocation])
+
+  // onMouseLeave is throttled because of a bug on Firefox where
+  // two mouseleave events are triggered when moving cursor quickly from one card to the next.
+  const onMouseLeave = useCallback(
+    throttle(
+      (e) => {
+        setHighlightedLocation(null)
+      },
+      { trailing: false, wait: 1000 }
+    ),
+    [setHighlightedLocation]
+  )
 
   // Determine whether the data we have is stale based on whether the coords match the URL
   // Sometimes Redux could have data from a previous load of the nearby view
