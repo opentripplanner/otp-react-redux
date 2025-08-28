@@ -65,6 +65,7 @@ actions:
     smsVerificationFailed: >-
       Your phone could not be verified. Perhaps the code you entered has
       expired. Please request a new code and try again.
+    tripDeleted: Your trip has been deleted.
 common:
   coordinates: "{lat}, {lon}"
   currentlySelected: " (Currently selected)"
@@ -813,6 +814,9 @@ components:
       Please check your email inbox and follow the link in the message to verify
       your email address before finishing your account setup.
     instructions2: Once you're verified, click the button below to continue.
+    instructions3: >-
+      You can plan trips and return to this page anytime to continue setting up
+      your account.
     resendVerification: Resend verification email
   ViewSwitcher:
     nearby: Nearby

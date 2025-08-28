@@ -16,7 +16,6 @@ Object {
       "countryCode": "US",
     },
     "realtimeEffectsDisplayThreshold": 120,
-    "routingTypes": Array [],
     "stopViewer": Object {
       "showBlockIds": false,
     },
@@ -90,6 +89,14 @@ Object {
     "localizedMessages": null,
     "mainPanelContent": null,
     "mobileScreen": 1,
+    "nearbyView": Object {
+      "filters": Object {
+        "BikeRentalStation": true,
+        "RentalVehicle": true,
+        "Stop": true,
+        "VehicleParking": true,
+      },
+    },
     "popup": Object {
       "id": null,
     },
