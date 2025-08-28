@@ -429,13 +429,18 @@ function NearbyView({
         />
         {nearbyFilters && (
           <div
+            aria-label={intl.formatMessage({
+              id: 'components.NearbyView.filterNearby'
+            })}
             className="filter-container"
+            role="group"
             style={{ display: 'flex', gap: '10px', marginTop: '10px' }}
           >
             {nearbyFilters.map((filter: NearbyFilterConfig) => {
               return (
                 <FilterCheckboxes
                   filter={filter}
+                  intl={intl}
                   key={filter.cardType}
                   onChange={onFilterChange}
                   value={activeNearbyFilters[filter.cardType]}

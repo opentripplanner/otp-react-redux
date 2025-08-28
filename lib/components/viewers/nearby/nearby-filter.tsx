@@ -1,13 +1,19 @@
 import { Check2 } from '@styled-icons/bootstrap/Check2'
+import { IntlShape } from 'react-intl'
+import React, { useContext } from 'react'
+import styled from 'styled-components'
 
 import { ComponentContext } from '../../../util/contexts'
 import { getBaseColor } from '../../util/colors'
-import { NearbyFilterConfig } from '../../../util/config-types'
-import React, { useContext } from 'react'
-
 import { invisibleCss } from '../../util/invisible-a11y-label'
+import { NearbyFilterConfig } from '../../../util/config-types'
 
-import styled from 'styled-components'
+const FILTER_LABELS = {
+  BikeRentalStation: 'components.nearbyView.bikeRentalStation',
+  RentalVehicle: 'common.modes.rent',
+  Stop: 'components.MapLayers.stops',
+  VehicleParking: 'common.modes.car_park'
+}
 
 const StyledFilterCheckbox = styled.label<{ checked: boolean }>`
   width: 75px;
@@ -48,10 +54,12 @@ const StyledFilterCheckbox = styled.label<{ checked: boolean }>`
 
 export const FilterCheckboxes = ({
   filter,
+  intl,
   onChange,
   value
 }: {
   filter: NearbyFilterConfig
+  intl: IntlShape
   onChange: (arg: React.ChangeEvent<HTMLInputElement>) => void
   value: boolean
 }): JSX.Element => {
@@ -61,12 +69,18 @@ export const FilterCheckboxes = ({
   const ModeFilterIcon = () => (
     <ModeIcon className="mode-svg" mode={filter.iconName} />
   )
+  const filterLabel = intl.formatMessage({ id: FILTER_LABELS[filter.cardType] })
 
   return (
-    <StyledFilterCheckbox checked={value} htmlFor={filter.cardType}>
+    <StyledFilterCheckbox
+      checked={value}
+      htmlFor={filter.cardType}
+      title={filterLabel}
+    >
       <SvgIcon Fallback={ModeFilterIcon} iconName={filter.iconName} />
       {value && <Check2 />}
       <input
+        aria-label={filterLabel}
         checked={value}
         id={filter.cardType}
         onChange={onChange}
