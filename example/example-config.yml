@@ -347,10 +347,6 @@ modes:
 #     # NOTE: headerGraphic requires a valid URL to a png file.
 #     headerGraphic: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Trimet_logo.svg/1280px-Trimet_logo.svg.png'
 
-routingTypes:
-  - key: ITINERARY
-    text: Exact Time
-
 # Itinerary options
 itinerary:
   # Provides an array of valid mode combinations that returned itineraries will be filtered against

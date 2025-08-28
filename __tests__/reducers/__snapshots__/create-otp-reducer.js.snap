@@ -16,7 +16,6 @@ Object {
       "countryCode": "US",
     },
     "realtimeEffectsDisplayThreshold": 120,
-    "routingTypes": Array [],
     "stopViewer": Object {
       "showBlockIds": false,
     },
