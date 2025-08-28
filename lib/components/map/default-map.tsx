@@ -2,7 +2,10 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import { connect } from 'react-redux'
-import { findRequiredOptionsForTransportMode } from '@opentripplanner/trip-form'
+import {
+  findRequiredOptionsForTransportMode,
+  RequiredOptionsForTransportMode
+} from '@opentripplanner/trip-form'
 import { GeolocateControl, NavigationControl } from 'react-map-gl'
 import { getCurrentDate } from '@opentripplanner/core-utils/lib/time'
 import { injectIntl } from 'react-intl'
@@ -336,13 +339,12 @@ class DefaultMap extends Component {
       ?.layers?.map((layer) => layer?.type)
     const handleSetLocation = (location: MapLocationActionArg) => {
       if (overlayTypes && overlayTypes.includes('rentalVehicles')) {
-        const requiredOptions:
-          | { modeButton: string; modeSetting?: string }
-          | undefined = findRequiredOptionsForTransportMode(
-          config.modes.modeButtons,
-          config.modes.modeSettingDefinitions,
-          { mode: 'SCOOTER', qualifier: 'RENT' }
-        )
+        const requiredOptions: RequiredOptionsForTransportMode =
+          findRequiredOptionsForTransportMode(
+            config.modes.modeButtons,
+            config.modes.modeSettingDefinitions,
+            { mode: 'SCOOTER', qualifier: 'RENT' }
+          )
         if (requiredOptions) {
           const modeSetter = setModeButton(
             enabledModeButtons,

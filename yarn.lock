@@ -2733,6 +2733,24 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
+"@opentripplanner/core-utils@14.0.1":
+  version "14.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-14.0.1.tgz#8800c9cd50680ff09e5375b4a20d2f1c24fb4a8b"
+  integrity sha512-LfCNtl+YORiBxeutC4+SXL4yMIumrMdL3zNfcV+mghRtpRmus36xd5rCgnzXtv1d6Arbbk+zXixJg90j/tBmwA==
+  dependencies:
+    "@conveyal/lonlat" "^1.4.1"
+    "@mapbox/polyline" "^1.1.1"
+    "@opentripplanner/geocoder" "3.0.5"
+    "@styled-icons/foundation" "^10.34.0"
+    "@turf/along" "^6.0.1"
+    chroma-js "^2.4.2"
+    date-fns "^2.28.0"
+    date-fns-tz "^1.2.2"
+    graphql "^16.6.0"
+    lodash.clonedeep "^4.5.0"
+    lodash.isequal "^4.5.0"
+    qs "^6.9.1"
+
 "@opentripplanner/endpoints-overlay@4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-4.0.1.tgz#ecc62b729db876ed3e331b7cab1a638c77a9ebf5"
@@ -2975,14 +2993,14 @@
     flat "^5.0.2"
     react-animate-height "^3.0.4"
 
-"@opentripplanner/trip-form@6.0.1":
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-6.0.1.tgz#262079589e056bf49c285a5b38257c54c59f088f"
-  integrity sha512-7o8frpL7rhieQmkrSaAxj+kqp8ocHyxmyB2l2LH8jJmoGgGevtQ5VxEmXaVctwpGJ12Fi1P/yiqD08PqnPG49w==
+"@opentripplanner/trip-form@6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-6.1.0.tgz#0238052e423436f25ecd0edc3d98c6c5b3429754"
+  integrity sha512-jeo6wPZBHaf5wBJI3msrjckc5C08WMj6VkRe5b+a2CqEoDwPInxRN658+H6qgxDeCxFzNiOehey3lQq35bTP/Q==
   dependencies:
     "@floating-ui/react" "^0.19.2"
     "@opentripplanner/building-blocks" "3.0.1"
-    "@opentripplanner/core-utils" "13.0.1"
+    "@opentripplanner/core-utils" "14.0.1"
     "@opentripplanner/icons" "4.0.0"
     "@styled-icons/bootstrap" "^10.34.0"
     "@styled-icons/boxicons-regular" "^10.38.0"
