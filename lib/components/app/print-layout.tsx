@@ -41,11 +41,9 @@ class PrintLayout extends Component<Props> {
 
   componentDidUpdate() {
     const { activeSearch, itinerary, setVisibleItinerary } = this.props
-    console.log('component did update', this.props)
 
-    // Parse the URL query parameters, if present
+    // Display the desired itinerary on map.
     if (!itinerary) {
-      console.log('component did update with itinerary')
       const { ui_activeItinerary: uiActiveItinerary } =
         coreUtils.query.getUrlParams() || {}
       if (
