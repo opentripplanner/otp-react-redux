@@ -7,7 +7,11 @@ import React, { Component } from 'react'
 import * as formActions from '../../actions/form'
 import * as narrativeActions from '../../actions/narrative'
 import { AppReduxState } from '../../util/state-types'
-import { getActiveItinerary, getActiveSearch } from '../../util/state'
+import {
+  getActiveItineraries,
+  getActiveSearch,
+  getVisibleItineraryIndex
+} from '../../util/state'
 import { summarizeQuery } from '../form/user-settings-i18n'
 import { User } from '../user/types'
 import DefaultMap from '../map/default-map'
@@ -87,9 +91,10 @@ const mapStateToProps = (state: AppReduxState) => {
   const activeSearch = getActiveSearch(state)
   const { localUser, loggedInUser } = state.user
   const user = loggedInUser || localUser
+  const itineraries = getActiveItineraries(state)
   return {
     activeSearch,
-    itinerary: getActiveItinerary(state) as Itinerary,
+    itinerary: itineraries[getVisibleItineraryIndex(state)] as Itinerary,
     user
   }
 }
