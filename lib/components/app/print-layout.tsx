@@ -1,10 +1,11 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { Itinerary } from '@opentripplanner/types'
+import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
 
-import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
+import * as narrativeActions from '../../actions/narrative'
 import { AppReduxState } from '../../util/state-types'
 import { getActiveItinerary, getActiveSearch } from '../../util/state'
 import { summarizeQuery } from '../form/user-settings-i18n'
@@ -19,7 +20,8 @@ type Props = {
   intl: IntlShape
   itinerary: Itinerary
   location?: { search?: string }
-  parseUrlQueryString: (params?: any, source?: string) => any
+  parseUrlQueryString: (params?: any, source?: string) => void
+  setVisibleItinerary: (params: { index: number }) => void
   user: User
 }
 
@@ -34,6 +36,25 @@ class PrintLayout extends Component<Props> {
     // Parse the URL query parameters, if present
     if (!itinerary && location && location.search) {
       parseUrlQueryString()
+    }
+  }
+
+  componentDidUpdate() {
+    const { activeSearch, itinerary, setVisibleItinerary } = this.props
+    console.log('component did update', this.props)
+
+    // Parse the URL query parameters, if present
+    if (!itinerary) {
+      console.log('component did update with itinerary')
+      const { ui_activeItinerary: uiActiveItinerary } =
+        coreUtils.query.getUrlParams() || {}
+      if (
+        activeSearch &&
+        uiActiveItinerary !== undefined &&
+        uiActiveItinerary !== '-1'
+      ) {
+        setVisibleItinerary({ index: +uiActiveItinerary })
+      }
     }
   }
 
@@ -77,7 +98,7 @@ const mapStateToProps = (state: AppReduxState) => {
 
 const mapDispatchToProps = {
   parseUrlQueryString: formActions.parseUrlQueryString,
-  routingQuery: apiActions.routingQuery
+  setVisibleItinerary: narrativeActions.setVisibleItinerary
 }
 
 export default connect(
