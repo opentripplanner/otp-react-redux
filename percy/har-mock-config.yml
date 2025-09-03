@@ -7,12 +7,6 @@ api:
   path: /otp2/routers/default
   v2: true
 
-routingTypes:
-  - key: ITINERARY
-    text: Exact Time
-  - key: BATCH
-    text: Multiple Mode Combinations
-
 elevationProfile: true
 map:
   views:

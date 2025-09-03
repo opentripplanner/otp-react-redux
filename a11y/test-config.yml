@@ -9,11 +9,6 @@ api:
   # host: http://localhost:8001 # For testing against a local OTP instance
   path: /otp/routers/default
 
-# Enabled multimodal routing types (e.g. interary, profile)
-routingTypes:
-  - key: ITINERARY
-    text: Exact Time
-
 # Show/hide elevation profile chart for walk/bike legs
 # elevationProfile: true
 
