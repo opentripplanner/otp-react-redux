@@ -115,6 +115,7 @@ common:
     "yes": "Yes"
   itineraryDescriptions:
     fareUnknown: No fare information
+    noDefaultFareTypeConfigured: Multiple fares apply
     noItineraryToDisplay: No itinerary to display.
     relativeCo2: |
       {co2} {isMore, select, true {more} other {less} } CO₂ than driving alone
