@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
 import { Dropdown } from '@opentripplanner/building-blocks'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
-import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
 import { Stop, TransitOperator } from '@opentripplanner/types'
 import React, { Component } from 'react'
 import styled from 'styled-components'
@@ -19,13 +18,13 @@ import {
   ViewedRouteObject
 } from '../util/types'
 import { UnstyledButton } from '../util/unstyled-button'
+import OperatorLogo from '../util/operator-logo'
 
 import {
   Container,
   HeadsignSelectLabel,
   LogoLinkContainer,
   PatternContainer,
-  RouteNameContainer,
   StopContainer,
   StopLink,
   Stop as StyledStop
@@ -139,37 +138,7 @@ class RouteDetails extends Component<Props> {
       patternSelectLabel
 
     return (
-      <Container
-        backgroundColor={routeColor}
-        full={pattern != null}
-        textColor={getMostReadableTextColor(routeColor, route?.textColor)}
-      >
-        <RouteNameContainer className="operator-info">
-          <LogoLinkContainer>
-            {agency && (
-              <>
-                {/** TODO: use <OperatorLogo /> here? */}
-                <FormattedMessage
-                  id="components.RouteDetails.operatedBy"
-                  values={{
-                    agencyName: getOperatorName(operator, route)
-                  }}
-                />
-              </>
-            )}
-            {moreDetailsURL && (
-              <LinkOpensNewWindow
-                contents={
-                  <FormattedMessage id="components.RouteDetails.moreDetails" />
-                }
-                style={{
-                  color: getMostReadableTextColor(routeColor, route?.textColor)
-                }}
-                url={moreDetailsURL}
-              />
-            )}
-          </LogoLinkContainer>
-        </RouteNameContainer>
+      <Container full={pattern != null}>
         {headsigns && headsigns.length > 0 && (
           <PatternContainer className="pattern-picker">
             <HeadsignSelectLabel htmlFor="headsign-selector-label">
@@ -205,11 +174,7 @@ class RouteDetails extends Component<Props> {
             >
               <FormattedMessage id="components.RouteViewer.stopsInDirectionOfTravel" />
             </h2>
-            <StopContainer
-              backgroundColor={routeColor}
-              onMouseLeave={() => setHoveredStop(null)}
-              textColor={getMostReadableTextColor(routeColor, route?.textColor)}
-            >
+            <StopContainer onMouseLeave={() => setHoveredStop(null)}>
               {pattern?.stops?.map((stop, index) => (
                 <StyledStop
                   // Use array index instead of stop id because a stop can be visited several times.
@@ -221,18 +186,10 @@ class RouteDetails extends Component<Props> {
                       ? DEFAULT_ROUTE_COLOR
                       : routeColor
                   }
-                  textColor={getMostReadableTextColor(
-                    routeColor,
-                    route?.textColor
-                  )}
                 >
                   <StopLink
                     name={stop.name}
                     onFocus={() => setHoveredStop(stop.id)}
-                    textColor={getMostReadableTextColor(
-                      routeColor,
-                      route?.textColor
-                    )}
                   >
                     {stop.name}
                   </StopLink>
@@ -241,6 +198,26 @@ class RouteDetails extends Component<Props> {
             </StopContainer>
           </>
         )}
+        <LogoLinkContainer>
+          {operator && <OperatorLogo operator={operator} />}
+          {moreDetailsURL && (
+            <LinkOpensNewWindow
+              contents={
+                <FormattedMessage
+                  id={
+                    agency
+                      ? 'components.RouteDetails.operatedBy'
+                      : 'components.RouteDetails.moreDetails'
+                  }
+                  values={{
+                    agencyName: getOperatorName(operator, route)
+                  }}
+                />
+              }
+              url={moreDetailsURL}
+            />
+          )}
+        </LogoLinkContainer>
       </Container>
     )
   }

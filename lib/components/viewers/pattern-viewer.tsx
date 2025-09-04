@@ -1,17 +1,13 @@
 import { connect } from 'react-redux'
 import { TransitOperator } from '@opentripplanner/types'
+import { useIntl } from 'react-intl'
 import React, { useCallback, useContext, useEffect } from 'react'
 
 import * as apiActions from '../../actions/api'
 import * as uiActions from '../../actions/ui'
 import { ComponentContext } from '../../util/contexts'
-import { getFormattedMode } from '../../util/i18n'
-import {
-  getModeFromRoute,
-  getRouteColorBasedOnSettings,
-  getRouteOrPatternViewerTitle
-} from '../../util/viewer'
 import { getRouteOperator } from '../../util/state'
+import { getRouteOrPatternViewerTitle } from '../../util/viewer'
 import {
   SetViewedRouteHandler,
   ViewedRouteObject,
@@ -20,13 +16,12 @@ import {
 import BackButton from '../util/back-button'
 import PageTitle from '../util/page-title'
 
+import { RouteRowDetails } from './route-row'
 import RouteDetails from './route-details'
-import RouteName from './route-name'
 import VehiclePositionRetriever from './vehicle-position-retriever'
 
 interface Props {
   findRoutesIfNeeded: () => void
-  hideBackButton?: boolean
   setViewedRoute: SetViewedRouteHandler
   transitOperators: TransitOperator[]
   vehicleIconHighlight: boolean
@@ -36,7 +31,6 @@ interface Props {
 
 const PatternViewer = ({
   findRoutesIfNeeded,
-  hideBackButton,
   setViewedRoute,
   transitOperators,
   vehicleIconHighlight,
@@ -81,19 +75,12 @@ const PatternViewer = ({
   if (patternId && route) {
     // Find operator based on agency_id (extracted from OTP route ID).
     const operator = getRouteOperator(route, transitOperators)
-    const routeColor = getRouteColorBasedOnSettings(operator, route)
-    const textColor = getMostReadableTextColor(routeColor, route?.textColor)
-    const fill = vehicleIconHighlight === false ? undefined : textColor
 
     const backButtonText = intl.formatMessage({ id: 'common.forms.back' })
     return (
       <div
         className="route-viewer pattern-viewer"
-        style={{
-          backgroundColor: routeColor,
-          color: textColor,
-          fill
-        }}
+        style={{ backgroundColor: 'white' }}
       >
         <VehiclePositionRetriever />
         <PageTitle
@@ -105,39 +92,27 @@ const PatternViewer = ({
           )}
         />
         {/* Header Block */}
-        <div
-          className="route-viewer-header"
-          style={{ backgroundColor: routeColor }}
-        >
+        <div className="route-viewer-header">
           {/* Back button */}
-          {!hideBackButton && (
-            <div className="back-button-container">
-              <BackButton
-                closeButtonText={backButtonText}
-                id="pattern-viewer-back-button"
-                onClick={_backClicked}
-              />
+          <div className="back-button-container">
+            <BackButton
+              backButtonText={backButtonText}
+              id="pattern-viewer-back-button"
+              onClick={_backClicked}
+            />
+            <div className="header-text route-expanded">
+              <h1 style={{ display: 'contents', lineHeight: '1.4' }}>
+                {!route.pending && ModeIcon && (
+                  <RouteRowDetails
+                    intl={intl}
+                    isActive={false}
+                    ModeIcon={ModeIcon}
+                    route={route}
+                    RouteRenderer={RouteRenderer}
+                  />
+                )}
+              </h1>
             </div>
-          )}
-          <div className="header-text route-expanded">
-            <h1 style={{ display: 'contents' }}>
-              {!route.pending && ModeIcon && (
-                <ModeIcon
-                  aria-label={getFormattedMode(
-                    getModeFromRoute(route).toLowerCase(),
-                    intl
-                  )}
-                  mode={getModeFromRoute(route)}
-                  style={{ maxHeight: 40 }}
-                  width={22}
-                />
-              )}
-              <RouteName
-                isOnColoredBackground
-                route={route}
-                RouteRenderer={RouteRenderer}
-              />
-            </h1>
           </div>
         </div>
         <RouteDetails operator={operator} patternId={patternId} route={route} />

@@ -121,6 +121,53 @@ const PatternViewerLink = styled(Link)`
   }
 `
 
+export const RouteRowDetails = ({
+  intl,
+  isActive,
+  ModeIcon,
+  operator,
+  route,
+  RouteRenderer
+}: {
+  ModeIcon: any
+  RouteRenderer: any
+  intl: IntlShape
+  isActive?: boolean
+  operator?: TransitOperatorConfig
+  route: ViewedRouteObject
+}): JSX.Element => {
+  const modeFromRoute = getModeFromRoute(route)
+  const { id, longName, shortName } = route
+  console.log(operator?.routeIcons)
+  return (
+    <RouteDetailsContainer>
+      {operator && <OperatorLogo operator={operator} />}
+      {modeFromRoute && operator?.routeIcons !== false && (
+        <ModeIconElement>
+          <ModeIcon
+            aria-label={getFormattedMode(modeFromRoute.toLowerCase(), intl)}
+            height={28}
+            leg={{
+              routeId: id,
+              routeLongName: longName,
+              routeShortName: shortName
+            }}
+            mode={modeFromRoute}
+            role="img"
+            width={28}
+          />
+        </ModeIconElement>
+      )}
+      <RouteName route={route} RouteRenderer={RouteRenderer} />
+      {isActive && (
+        <InvisibleA11yLabel>
+          <FormattedMessage id="common.currentlySelected" />
+        </InvisibleA11yLabel>
+      )}
+    </RouteDetailsContainer>
+  )
+}
+
 export class RouteRow extends PureComponent<Props> {
   activeRef: React.RefObject<HTMLLIElement>
 
@@ -186,34 +233,14 @@ export class RouteRow extends PureComponent<Props> {
           to={routePath}
           tracking
         >
-          <RouteDetailsContainer>
-            <OperatorLogo operator={operator} />
-            {mode && operator.routeIcons !== false && (
-              <ModeIconElement>
-                <ModeIcon
-                  aria-label={getFormattedMode(
-                    modeFromRoute.toLowerCase(),
-                    intl
-                  )}
-                  height={28}
-                  leg={{
-                    routeId: id,
-                    routeLongName: longName,
-                    routeShortName: shortName
-                  }}
-                  mode={modeFromRoute}
-                  role="img"
-                  width={28}
-                />
-              </ModeIconElement>
-            )}
-            <RouteName route={route} RouteRenderer={RouteRenderer} />
-            {isActive && (
-              <InvisibleA11yLabel>
-                <FormattedMessage id="common.currentlySelected" />
-              </InvisibleA11yLabel>
-            )}
-          </RouteDetailsContainer>
+          <RouteRowDetails
+            intl={intl}
+            isActive={isActive}
+            ModeIcon={ModeIcon}
+            operator={operator}
+            route={route}
+            RouteRenderer={RouteRenderer}
+          />
         </RouteRowLink>
         <PatternViewerLink
           aria-label={patternViewerLinkText}
