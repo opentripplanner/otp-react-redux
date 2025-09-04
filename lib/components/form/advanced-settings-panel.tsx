@@ -276,7 +276,7 @@ const AdvancedSettingsPanel = ({
     <PanelOverlay className="advanced-settings" ref={innerRef}>
       <HeaderContainer>
         <BackButton
-          closeButtonText={closeButtonText}
+          backButtonText={closeButtonText}
           id="close-advanced-settings-button"
           onClick={closePanel}
         />

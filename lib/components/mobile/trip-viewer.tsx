@@ -23,7 +23,7 @@ const MobileTripViewer = ({ setViewedTrip }: Props) => {
       />
       <main tabIndex={-1}>
         <div className="viewer-container">
-          <TripViewer hideBackButton />
+          <TripViewer />
         </div>
 
         {/* The map is less important semantically, so keyboard focus and screen readers

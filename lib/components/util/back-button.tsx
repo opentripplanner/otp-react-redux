@@ -8,22 +8,22 @@ const StyledBackButton = styled.button`
 `
 
 const BackButton = ({
-  closeButtonText,
+  backButtonText,
   id,
   onClick
 }: {
-  closeButtonText: string
-  id: string
+  backButtonText: string
+  id?: string
   onClick: () => void
 }): JSX.Element => {
   return (
     <StyledBackButton
-      aria-label={closeButtonText}
+      aria-label={backButtonText}
       id={id}
       onClick={() => {
         onClick()
       }}
-      title={closeButtonText}
+      title={backButtonText}
     >
       <ArrowLeft size={22} />
     </StyledBackButton>
