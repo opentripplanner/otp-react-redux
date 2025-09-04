@@ -203,16 +203,16 @@ class RouteDetails extends Component<Props> {
           {moreDetailsURL && (
             <LinkOpensNewWindow
               contents={
-                <FormattedMessage
-                  id={
-                    agency
-                      ? 'components.RouteDetails.operatedBy'
-                      : 'components.RouteDetails.moreDetails'
-                  }
-                  values={{
-                    agencyName: getOperatorName(operator, route)
-                  }}
-                />
+                agency ? (
+                  <FormattedMessage
+                    id="components.RouteDetails.operatedBy"
+                    values={{
+                      agencyName: getOperatorName(operator, route)
+                    }}
+                  />
+                ) : (
+                  <FormattedMessage id="components.RouteDetails.moreDetails" />
+                )
               }
               url={moreDetailsURL}
             />
