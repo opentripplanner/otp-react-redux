@@ -1,8 +1,4 @@
-import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
-import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { FormattedMessage, useIntl } from 'react-intl'
-import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
 import { TransitOperator } from '@opentripplanner/types'
 import React, { useCallback, useContext, useEffect } from 'react'
 
@@ -21,7 +17,7 @@ import {
   ViewedRouteObject,
   ViewedRouteState
 } from '../util/types'
-import { StyledIconWrapper } from '../util/styledIcon'
+import BackButton from '../util/back-button'
 import PageTitle from '../util/page-title'
 
 import RouteDetails from './route-details'
@@ -89,6 +85,7 @@ const PatternViewer = ({
     const textColor = getMostReadableTextColor(routeColor, route?.textColor)
     const fill = vehicleIconHighlight === false ? undefined : textColor
 
+    const backButtonText = intl.formatMessage({ id: 'common.forms.back' })
     return (
       <div
         className="route-viewer pattern-viewer"
@@ -115,12 +112,11 @@ const PatternViewer = ({
           {/* Back button */}
           {!hideBackButton && (
             <div className="back-button-container">
-              <Button bsSize="small" onClick={_backClicked}>
-                <StyledIconWrapper>
-                  <ArrowLeft />
-                </StyledIconWrapper>
-                <FormattedMessage id="common.forms.back" />
-              </Button>
+              <BackButton
+                closeButtonText={backButtonText}
+                id="pattern-viewer-back-button"
+                onClick={_backClicked}
+              />
             </div>
           )}
           <div className="header-text route-expanded">

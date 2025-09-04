@@ -33,7 +33,9 @@ import { blue, getBaseColor } from '../util/colors'
 import { ComponentContext } from '../../util/contexts'
 import { generateModeSettingValues } from '../../util/api'
 import { getDependentName } from '../../util/user'
+import { invisibleCss } from '../util/invisible-a11y-label'
 import { User } from '../user/types'
+import BackButton from '../util/back-button'
 
 import {
   addCustomSettingLabels,
@@ -44,7 +46,6 @@ import {
   setModeButton,
   tripPlannerValidationErrors
 } from './util'
-import { invisibleCss } from '../util/invisible-a11y-label'
 import { setModeButtonEnabled } from './batch-settings'
 import { styledCheckboxCss } from './styled'
 import DateTimeModal from './date-time-modal'
@@ -274,16 +275,11 @@ const AdvancedSettingsPanel = ({
   return (
     <PanelOverlay className="advanced-settings" ref={innerRef}>
       <HeaderContainer>
-        <CloseButton
-          aria-label={closeButtonText}
+        <BackButton
+          closeButtonText={closeButtonText}
           id="close-advanced-settings-button"
-          onClick={() => {
-            closePanel()
-          }}
-          title={closeButtonText}
-        >
-          <ArrowLeft size={22} />
-        </CloseButton>
+          onClick={closePanel}
+        />
         <h1 className="header-text">{headerText}</h1>
       </HeaderContainer>
       <DtSelectorContainer>
