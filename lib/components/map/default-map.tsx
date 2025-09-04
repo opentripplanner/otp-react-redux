@@ -14,6 +14,7 @@ import {
   assembleBasePath,
   bikeRentalQuery,
   carRentalQuery,
+  findFeeds,
   findStopTimesForStop,
   vehicleRentalQuery
 } from '../../actions/api'
@@ -81,6 +82,7 @@ function getCompanyNames(companyIds, config, intl) {
 /**
  * Determines the localized name of a map layer by its type.
  */
+// eslint-disable-next-line complexity
 function getLayerName(overlay, config, intl) {
   const { companies, name, type } = overlay
 
@@ -207,6 +209,7 @@ class DefaultMap extends Component {
    * as that UI mode sets the access mode and company in the query params.
    * TODO: Implement for the batch interface.
    */
+  // eslint-disable-next-line complexity
   _handleQueryChange = (oldQuery, newQuery) => {
     const { overlays = [] } = this.props.mapConfig || {}
     if (oldQuery.mode) {
@@ -289,6 +292,9 @@ class DefaultMap extends Component {
       lat: null,
       lon: null
     })
+
+    // Fetch feeds in the background
+    this.props.findFeeds()
   }
 
   componentDidUpdate(prevProps) {
@@ -303,6 +309,7 @@ class DefaultMap extends Component {
       carRentalQuery,
       carRentalStations,
       config,
+      feeds,
       getCurrentPosition,
       intl,
       itinerary,
@@ -472,7 +479,8 @@ class DefaultMap extends Component {
                   setViewedStop,
                   viewedRouteStops,
                   config.companies,
-                  this.getEntityPrefix
+                  this.getEntityPrefix,
+                  feeds
                 )
               default:
                 return null
@@ -497,6 +505,7 @@ const mapStateToProps = (state) => {
   const viewedRoute = state.otp?.ui?.viewedRoute?.routeId
   const activeNearbyFilters = state.otp?.ui?.nearbyView?.filters
   const nearbyFilters = state.otp.config?.nearbyView?.filters
+  const stops = state.otp.transitIndex.stops
   const nearbyViewerActive =
     state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW
 
@@ -522,6 +531,7 @@ const mapStateToProps = (state) => {
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
     carRentalStations: state.otp.overlay.carRental.stations,
     config: state.otp.config,
+    feeds: state.otp.transitIndex.feeds,
     itinerary: getActiveItinerary(state),
     mapConfig: state.otp.config.map,
     nearbyFilters,
@@ -537,6 +547,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   bikeRentalQuery,
   carRentalQuery,
+  findFeeds,
   findStopTimesForStop,
   getCurrentPosition,
   setLocation,
