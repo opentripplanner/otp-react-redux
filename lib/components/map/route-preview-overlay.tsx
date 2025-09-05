@@ -16,6 +16,7 @@ import {
 type Props = {
   from: Location
   geometries: string[]
+  hasNoMainPanelContent?: boolean
   to: Location
   visible?: boolean
 }
@@ -23,14 +24,20 @@ type Props = {
  * This overlay will display thin gray lines for a set of geometries. It's to be used
  * as a stopgap until we make full use of Transitive!
  */
-const RoutePreviewOverlay = ({ from, geometries, to, visible }: Props) => {
+const RoutePreviewOverlay = ({
+  from,
+  geometries,
+  hasNoMainPanelContent,
+  to,
+  visible
+}: Props) => {
   // Center the map over the endpoints when this overlay is shown.
   const { current: map } = useMap()
   useEffect(() => {
-    if (visible && map) {
+    if (visible && hasNoMainPanelContent && map) {
       util.fitMapToPoints(map, from, to, 0.2, 600)
     }
-  }, [map, visible, from, to])
+  }, [map, visible, hasNoMainPanelContent, from, to])
 
   if (!geometries || !visible) return <></>
 
@@ -100,11 +107,11 @@ const mapStateToProps = (state: AppReduxState) => {
   return {
     from,
     geometries,
+    hasNoMainPanelContent: ui.mainPanelContent === null,
     to,
     visible:
       // We need an explicit check for undefined and null because 0
       // is for us true
-      ui.mainPanelContent &&
       (visibleItinerary === undefined || visibleItinerary === null) &&
       (activeItinerary === undefined || activeItinerary === null)
   }
