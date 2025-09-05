@@ -60,8 +60,8 @@ export interface ItineraryFareSummary {
 
 // Similar to OTP-UI's FareProductSelector, but the fields are nullable.
 interface RelaxedFareProductSelector {
-  mediumId: string | null
-  riderCategoryId: string | null
+  mediumId?: string | null
+  riderCategoryId?: string | null
 }
 
 /**
