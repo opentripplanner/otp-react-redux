@@ -6,7 +6,7 @@ import {
   Place
 } from '@opentripplanner/types'
 import { isTransitLeg } from '@opentripplanner/core-utils/lib/itinerary'
-import { toDate, utcToZonedTime } from 'date-fns-tz'
+import { utcToZonedTime } from 'date-fns-tz'
 import coreUtils from '@opentripplanner/core-utils'
 import hash from 'object-hash'
 import memoize from 'lodash.memoize'
@@ -101,15 +101,7 @@ export function getItineraryDefaultMonitoredDays(
   itinerary: Itinerary,
   timeZone = coreUtils.time.getUserTimezone()
 ): string[] {
-  const firstTransitLeg = getFirstTransitLeg(itinerary)
-  // firstTransitLeg should be non-null because only transit trips can be monitored at this time.
-  // - using serviceDate covers legs that start past midnight.
-  // - The format of serviceDate can either be 'yyyyMMdd' (OTP v1) or 'yyyy-MM-dd' (OTP v2)
-  //   and both formats are correctly handled by toDate from date-fns-tz.
-  const startDate = firstTransitLeg
-    ? toDate(firstTransitLeg.serviceDate || '', { timeZone })
-    : utcToZonedTime(new Date(itinerary.startTime), timeZone)
-
+  const startDate = utcToZonedTime(new Date(itinerary.startTime), timeZone)
   const dayOfWeek = startDate.getDay()
   return dayOfWeek === 0 || dayOfWeek === 6 ? WEEKEND_DAYS : WEEKDAYS
 }

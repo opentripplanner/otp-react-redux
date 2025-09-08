@@ -127,7 +127,6 @@
                         "headsign": "DOWNTOWN",
                         "agencyId": "HOU",
                         "tripId": "Houston:9129562",
-                        "serviceDate": "20210804",
                         "from": {
                             "name": "Travis St @ St Joseph Pkwy",
                             "stopId": "Houston:624",
@@ -388,7 +387,6 @@
                         "headsign": "DOWNTOWN / VIA EASTWOOD TC",
                         "agencyId": "HOU",
                         "tripId": "Houston:9135066",
-                        "serviceDate": "20210804",
                         "from": {
                             "name": "St Joseph Pkwy @ Travis St",
                             "stopId": "Houston:310",
@@ -675,7 +673,6 @@
                         "headsign": "DOWNTOWN",
                         "agencyId": "HOU",
                         "tripId": "Houston:9129563",
-                        "serviceDate": "20210804",
                         "from": {
                             "name": "Travis St @ St Joseph Pkwy",
                             "stopId": "Houston:624",
