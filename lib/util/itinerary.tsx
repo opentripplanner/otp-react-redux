@@ -21,15 +21,6 @@ export interface ItineraryStartTime {
   realtime: boolean
 }
 
-// FIXME: replace with OTP2 logic.
-interface LegWithOtp1HailedCar extends Leg {
-  hailedCar?: boolean
-}
-
-export interface ItineraryWithOtp1HailedCar extends Itinerary {
-  legs: LegWithOtp1HailedCar[]
-}
-
 interface OtpResponse {
   plan: {
     itineraries: Itinerary[]
@@ -69,14 +60,11 @@ interface RelaxedFareProductSelector {
  * @returns true if an itinerary has no rental or ride hail leg (e.g. CAR_RENT, CAR_HAIL, BICYCLE_RENT, etc.).
  *   (We use the corresponding fields returned by OTP to get transit legs and rental/ride hail legs.)
  */
-export function itineraryCanBeMonitored(
-  itinerary?: ItineraryWithOtp1HailedCar
-): boolean {
+export function itineraryCanBeMonitored(itinerary?: Itinerary): boolean {
   return (
     !!itinerary?.legs &&
     !itinerary.legs.some(
-      (leg: LegWithOtp1HailedCar) =>
-        leg.rentedBike || leg.rentedCar || leg.rentedVehicle || leg.hailedCar
+      (leg: Leg) => leg.rentedBike || !!leg.rideHailingEstimate
     )
   )
 }

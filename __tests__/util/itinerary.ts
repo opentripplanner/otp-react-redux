@@ -24,15 +24,34 @@ describe('util > itinerary', () => {
     }
     const rentalCarLeg = {
       mode: 'CAR_RENT',
-      rentedCar: true
+      // Note: OTP2 sets rentedBike to true for all rented vehicles, including rented cars.
+      rentedBike: true
     }
     const rentalMicromobilityLeg = {
       mode: 'MICROMOBILITY_RENT',
-      rentedVehicle: true
+      // Note: OTP2 sets rentedBike to true for all rented vehicles, including rented scooters.
+      rentedBike: true
     }
     const rideHailLeg = {
-      hailedCar: true,
-      mode: 'CAR_HAIL'
+      mode: 'CAR_HAIL',
+      rideHailingEstimate: {
+        arrival: 'PT4M',
+        maxPrice: {
+          amount: 19,
+          currency: {
+            code: 'USD'
+          }
+        },
+        minPrice: {
+          amount: 17,
+          currency: {
+            code: 'USD'
+          }
+        },
+        provider: {
+          id: 'ride-hail-platform'
+        }
+      }
     }
 
     const testCases = [
@@ -66,7 +85,7 @@ describe('util > itinerary', () => {
           legs: [walkLeg, rentalBikeLeg]
         },
         title:
-          'should be true for an itinerary without transit and without rentals.'
+          'should be false for an itinerary without transit and with a rented bike.'
       },
       {
         expected: false,
