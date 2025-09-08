@@ -31,27 +31,11 @@
                 "startTime": 1628083300000,
                 "endTime": 1628083692000,
                 "walkTime": 210,
-                "transitTime": 180,
                 "waitingTime": 2,
                 "walkDistance": 259.1391641774315,
-                "walkLimitExceeded": false,
                 "elevationLost": 0.0,
                 "elevationGained": 0.0,
                 "transfers": 0,
-                "fare": {
-                    "fare": {
-                        "regular": {
-                            "currency": {
-                                "symbol": "$",
-                                "currency": "USD",
-                                "defaultFractionDigits": 2,
-                                "currencyCode": "USD"
-                            },
-                            "cents": 125
-                        }
-                    },
-                    "details": {}
-                },
                 "legs": [
                     {
                         "startTime": 1628083300000,
@@ -342,27 +326,11 @@
                 "startTime": 1628083218000,
                 "endTime": 1628083733000,
                 "walkTime": 156,
-                "transitTime": 357,
                 "waitingTime": 2,
                 "walkDistance": 182.0511194004663,
-                "walkLimitExceeded": false,
                 "elevationLost": 0.0,
                 "elevationGained": 0.0,
                 "transfers": 0,
-                "fare": {
-                    "fare": {
-                        "regular": {
-                            "currency": {
-                                "symbol": "$",
-                                "currency": "USD",
-                                "defaultFractionDigits": 2,
-                                "currencyCode": "USD"
-                            },
-                            "cents": 200
-                        }
-                    },
-                    "details": {}
-                },
                 "legs": [
                     {
                         "startTime": 1628083218000,
@@ -687,27 +655,11 @@
                 "startTime": 1628083900000,
                 "endTime": 1628084292000,
                 "walkTime": 210,
-                "transitTime": 180,
                 "waitingTime": 2,
                 "walkDistance": 259.1391641774315,
-                "walkLimitExceeded": false,
                 "elevationLost": 0.0,
                 "elevationGained": 0.0,
                 "transfers": 0,
-                "fare": {
-                    "fare": {
-                        "regular": {
-                            "currency": {
-                                "symbol": "$",
-                                "currency": "USD",
-                                "defaultFractionDigits": 2,
-                                "currencyCode": "USD"
-                            },
-                            "cents": 125
-                        }
-                    },
-                    "details": {}
-                },
                 "legs": [
                     {
                         "startTime": 1628083900000,
