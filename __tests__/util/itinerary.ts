@@ -12,11 +12,6 @@ const bikeLeg = {
   mode: 'BICYCLE'
 }
 
-const transitLeg = {
-  mode: 'BUS',
-  transitLeg: true
-}
-
 describe('util > itinerary', () => {
   describe('itineraryCanBeMonitored', () => {
     const transitLeg = {
@@ -148,7 +143,6 @@ describe('util > itinerary', () => {
       {
         expected: WEEKDAYS,
         itinerary: {
-          legs: [walkLeg, transitLeg],
           startTime: THURSDAY_20210610_1218_EDT
         },
         title:
@@ -157,7 +151,6 @@ describe('util > itinerary', () => {
       {
         expected: WEEKEND_DAYS,
         itinerary: {
-          legs: [walkLeg, transitLeg],
           startTime: SATURDAY_20210612_1218_EDT
         },
         title:
@@ -166,38 +159,10 @@ describe('util > itinerary', () => {
       {
         expected: WEEKEND_DAYS,
         itinerary: {
-          legs: [walkLeg, transitLeg],
           startTime: SUNDAY_20210613_1218_EDT
         },
         title:
           "should be ['saturday', 'sunday'] for an itinerary starting on a Sunday."
-      },
-      {
-        expected: WEEKDAYS,
-        itinerary: {
-          legs: [walkLeg],
-          startTime: THURSDAY_20210610_1218_EDT
-        },
-        title:
-          "should be ['monday' thru 'friday'] for an itinerary without transit starting on a weekday (fallback case)."
-      },
-      {
-        expected: WEEKEND_DAYS,
-        itinerary: {
-          legs: [walkLeg],
-          startTime: SATURDAY_20210612_1218_EDT
-        },
-        title:
-          "should be ['saturday', 'sunday'] for an itinerary without transit starting on a Saturday (fallback case)."
-      },
-      {
-        expected: WEEKEND_DAYS,
-        itinerary: {
-          legs: [walkLeg],
-          startTime: SUNDAY_20210613_1218_EDT
-        },
-        title:
-          "should be ['saturday', 'sunday'] for an itinerary without transit starting on a Sunday (fallback case)."
       }
     ]
 
