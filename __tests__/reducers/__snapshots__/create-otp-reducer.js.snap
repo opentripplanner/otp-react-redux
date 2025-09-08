@@ -75,6 +75,7 @@ Object {
     "rideEstimates": Object {},
   },
   "transitIndex": Object {
+    "feeds": Array [],
     "routes": Object {},
     "routesFetchStatus": 0,
     "stops": Object {},
