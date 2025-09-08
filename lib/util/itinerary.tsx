@@ -160,14 +160,10 @@ export function sortStartTimes(
 }
 
 // Ignore certain keys that could add significant calculation time to hashing.
-// The alerts are irrelevant, but the intermediateStops, interStopGeometry and
+// The alerts are irrelevant, but the intermediateStops, legGeometry and
 // steps could have the legGeometry substitute as an equivalent hash value
-const blackListedKeys = [
-  'alerts',
-  'intermediateStops',
-  'interStopGeometry',
-  'steps'
-]
+const blackListedKeys = ['alerts', 'intermediateStops', 'legGeometry', 'steps']
+
 // make blackListedKeys into an object due to superior lookup performance
 const blackListedKeyLookup: Record<string, boolean> = {}
 blackListedKeys.forEach((key) => {

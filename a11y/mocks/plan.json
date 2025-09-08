@@ -158,28 +158,6 @@
                             "points": "mtqtDhebeQWSyCwBsCuBuCwB{BcBYSsCsB_CcBSQwCyB}BaBSQwCsBsCuBaCgBSMsCyB{CwBiCiB",
                             "length": 20
                         },
-                        "interStopGeometry": [
-                            {
-                                "points": "mtqtDhebeQWSyCwBsCuBuCwB{BcB",
-                                "length": 6
-                            },
-                            {
-                                "points": "egrtDjvaeQYSsCsB_CcB",
-                                "length": 4
-                            },
-                            {
-                                "points": "sprtD~naeQSQwCyB}BaB",
-                                "length": 4
-                            },
-                            {
-                                "points": "}yrtDpgaeQSQwCsBsCuBaCgB",
-                                "length": 5
-                            },
-                            {
-                                "points": "_hstDl|`eQSMsCyB{CwBiCiB",
-                                "length": 5
-                            }
-                        ],
                         "alerts": [
                             {
                                 "alertDescriptionText": "",
@@ -441,36 +419,6 @@
                             "points": "utqtDxcbeQOZyCwBsCuByBaB[UuCwB{BaBWQsCuB}BcBYUqCsBcCcBSOsCuBaCgBSMsCyB_CaB[U_DyB}BeB",
                             "length": 23
                         },
-                        "interStopGeometry": [
-                            {
-                                "points": "utqtDxcbeQOZyCwBsCuByBaB",
-                                "length": 5
-                            },
-                            {
-                                "points": "mbrtDdzaeQ[UuCwB{BaB",
-                                "length": 4
-                            },
-                            {
-                                "points": "{krtDtraeQWQsCuB}BcB",
-                                "length": 4
-                            },
-                            {
-                                "points": "eurtDhkaeQYUqCsBcCcB",
-                                "length": 4
-                            },
-                            {
-                                "points": "u~rtDzcaeQSOsCuBaCgB",
-                                "length": 4
-                            },
-                            {
-                                "points": "_hstDl|`eQSMsCyB_CaB",
-                                "length": 4
-                            },
-                            {
-                                "points": "gqstDbu`eQ[U_DyB}BeB",
-                                "length": 4
-                            }
-                        ],
                         "alerts": [
                             {
                                 "alertDescriptionText": "",
@@ -758,28 +706,6 @@
                             "points": "mtqtDhebeQWSyCwBsCuBuCwB{BcBYSsCsB_CcBSQwCyB}BaBSQwCsBsCuBaCgBSMsCyB{CwBiCiB",
                             "length": 20
                         },
-                        "interStopGeometry": [
-                            {
-                                "points": "mtqtDhebeQWSyCwBsCuBuCwB{BcB",
-                                "length": 6
-                            },
-                            {
-                                "points": "egrtDjvaeQYSsCsB_CcB",
-                                "length": 4
-                            },
-                            {
-                                "points": "sprtD~naeQSQwCyB}BaB",
-                                "length": 4
-                            },
-                            {
-                                "points": "}yrtDpgaeQSQwCsBsCuBaCgB",
-                                "length": 5
-                            },
-                            {
-                                "points": "_hstDl|`eQSMsCyB{CwBiCiB",
-                                "length": 5
-                            }
-                        ],
                         "alerts": [
                             {
                                 "alertDescriptionText": "",
