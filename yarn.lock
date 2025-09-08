@@ -2725,10 +2725,10 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@14.0.1":
-  version "14.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-14.0.1.tgz#8800c9cd50680ff09e5375b4a20d2f1c24fb4a8b"
-  integrity sha512-LfCNtl+YORiBxeutC4+SXL4yMIumrMdL3zNfcV+mghRtpRmus36xd5rCgnzXtv1d6Arbbk+zXixJg90j/tBmwA==
+"@opentripplanner/core-utils@14.2.0":
+  version "14.2.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-14.2.0.tgz#6a047b729ed0572b8ceb0ea0d46a6da64d434a1e"
+  integrity sha512-LR0QBVjf3WNZAL1qYoL+ovA7o2IK/Kn1XCv0z3ZAXSTDBj0bNhRN+i1yrm40KUMtqOikjSp1NUmtXURMUFkwNA==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.1"
@@ -2804,6 +2804,14 @@
   integrity sha512-BU2ATsL0LaX+7YF8GbEWlDctoHbXqZV5Czb93B9dkLjfWg8xif2+DvLJ44wH3nc1wzjRZlXyF+JwpeY+CfdS0A==
   dependencies:
     "@opentripplanner/core-utils" "13.0.0"
+    prop-types "^15.7.2"
+
+"@opentripplanner/icons@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/icons/-/icons-4.1.0.tgz#9f02b318efa9bf9ad26bfbe9ce900da31821f4a5"
+  integrity sha512-lAfyJ1xkOFb42Zy6mehLCEx96kzeEwLWqBotpFy/RJMlXS1jahd/VaPRBqy8dqTUrj8y6zkqWesusDQUXiYLIg==
+  dependencies:
+    "@opentripplanner/core-utils" "14.2.0"
     prop-types "^15.7.2"
 
 "@opentripplanner/itinerary-body@7.0.4":
@@ -2956,15 +2964,15 @@
     flat "^5.0.2"
     react-animate-height "^3.0.4"
 
-"@opentripplanner/trip-form@6.1.0":
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-6.1.0.tgz#0238052e423436f25ecd0edc3d98c6c5b3429754"
-  integrity sha512-jeo6wPZBHaf5wBJI3msrjckc5C08WMj6VkRe5b+a2CqEoDwPInxRN658+H6qgxDeCxFzNiOehey3lQq35bTP/Q==
+"@opentripplanner/trip-form@6.1.2":
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-6.1.2.tgz#e0628c350ae2ef8a9ee681dfefd0bc2b6618d87a"
+  integrity sha512-3KrkOsFUZ5Xavy5ddSiWyfF11UFYINOluKtfFp1t0y4ViPIMF7BTmVJ6JC6VBnRch2TO77r6jLnpgMSPJ2bXxg==
   dependencies:
     "@floating-ui/react" "^0.19.2"
     "@opentripplanner/building-blocks" "3.0.1"
-    "@opentripplanner/core-utils" "14.0.1"
-    "@opentripplanner/icons" "4.0.0"
+    "@opentripplanner/core-utils" "14.2.0"
+    "@opentripplanner/icons" "4.1.0"
     "@styled-icons/bootstrap" "^10.34.0"
     "@styled-icons/boxicons-regular" "^10.38.0"
     "@styled-icons/fa-regular" "^10.37.0"
