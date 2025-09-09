@@ -428,14 +428,13 @@ function NearbyView({
           suggestionCount={geocoderConfig?.resultsCount}
         />
         {nearbyFilters && (
-          <div
-            aria-label={intl.formatMessage({
-              id: 'components.NearbyView.filterNearby'
-            })}
+          <fieldset
             className="filter-container"
-            role="group"
             style={{ display: 'flex', gap: '10px', marginTop: '10px' }}
           >
+            <InvisibleA11yLabel as="legend" style={{ position: 'absolute' }}>
+              <FormattedMessage id="components.NearbyView.filterNearby" />
+            </InvisibleA11yLabel>
             {nearbyFilters.map((filter: NearbyFilterConfig) => {
               return (
                 <FilterCheckboxes
@@ -446,7 +445,7 @@ function NearbyView({
                 />
               )
             })}
-          </div>
+          </fieldset>
         )}
       </div>
 
