@@ -108,30 +108,25 @@ const PatternViewer = ({
         />
         {/* Header Block */}
         <div
-          className="route-viewer-header"
+          className="header-with-back-button pattern-viewer-header"
           style={{ backgroundColor: backgroundColor }}
         >
-          {/* Back button */}
-          <div className="back-button-container">
-            <BackButton
-              backButtonText={backButtonText}
-              id="pattern-viewer-back-button"
-              onClick={_backClicked}
-            />
-            <div className="header-text route-expanded">
-              <h1 style={{ display: 'contents', lineHeight: '1.4' }}>
-                {!route.pending && ModeIcon && (
-                  <RouteRowDetails
-                    intl={intl}
-                    isActive={false}
-                    ModeIcon={ModeIcon}
-                    route={route}
-                    RouteRenderer={RouteRenderer}
-                  />
-                )}
-              </h1>
-            </div>
-          </div>
+          <BackButton
+            backButtonText={backButtonText}
+            id="pattern-viewer-back-button"
+            onClick={_backClicked}
+          />
+          <h1 style={{ display: 'contents', lineHeight: '1.4' }}>
+            {!route.pending && ModeIcon && (
+              <RouteRowDetails
+                intl={intl}
+                isActive={false}
+                ModeIcon={ModeIcon}
+                route={route}
+                RouteRenderer={RouteRenderer}
+              />
+            )}
+          </h1>
         </div>
         <RouteDetails operator={operator} patternId={patternId} route={route} />
       </div>

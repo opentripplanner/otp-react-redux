@@ -2,6 +2,11 @@
 
 .otp .route-viewer-header,
 .otp .trip-viewer-header {
+  padding: 12px;
+  margin: 5px;
+}
+
+.otp .pattern-viewer-header {
   padding: 10px;
 }
 
@@ -50,8 +55,8 @@
   padding: 12px;
 }
 
-.otp .trip-viewer .back-button-container,
-.otp .route-viewer .back-button-container {
+.otp .trip-viewer .header-with-back-button,
+.otp .pattern-viewer .header-with-back-button {
   display: flex;
   gap: 5px;
 }

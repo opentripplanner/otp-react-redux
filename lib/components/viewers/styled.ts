@@ -32,7 +32,7 @@ export const LogoLinkContainer = styled.div<{
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   align-items: center;
   gap: 10px;
-  padding: 15px;
+  padding: 15px 10px;
   margin-top: -10px;
 
   a {
@@ -54,8 +54,7 @@ export const PatternContainer = styled.div`
   color: inherit;
   display: flex;
   justify-content: space-between;
-  margin: 0;
-  padding: 8px;
+  padding: 8px 10px;
 
   label {
     width: 15%;
