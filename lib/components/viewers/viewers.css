@@ -2,8 +2,8 @@
 
 .otp .route-viewer-header,
 .otp .trip-viewer-header {
-  padding: 12px;
-  margin: 5px;
+  padding: 17px;
+  border-bottom: 1px solid #33333333;
 }
 
 .otp .pattern-viewer-header {
@@ -17,13 +17,6 @@
   flex-direction: column;
   flex-flow: column;
   height: 100%;
-}
-
-.otp .route-viewer-body::before {
-  background-color: #33333333;
-  content: "";
-  display: block;
-  height: 2px;
 }
 
 @keyframes yellowfade {

@@ -138,7 +138,6 @@ export const RouteRowDetails = ({
 }): JSX.Element => {
   const modeFromRoute = getModeFromRoute(route)
   const { id, longName, shortName } = route
-  console.log(operator?.routeIcons)
   return (
     <RouteDetailsContainer>
       {operator && <OperatorLogo operator={operator} />}

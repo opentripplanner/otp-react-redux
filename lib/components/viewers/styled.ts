@@ -28,8 +28,8 @@ export const LogoLinkContainer = styled.div<{
   useRouteBgColor?: boolean
 }>`
   display: flex;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  border-top: 1px solid
+    ${(props) => (props.useRouteBgColor ? props.textColor + '33' : '#33333333')};
   align-items: center;
   gap: 10px;
   padding: 15px 10px;
