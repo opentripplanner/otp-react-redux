@@ -440,7 +440,6 @@ function NearbyView({
               return (
                 <FilterCheckboxes
                   filter={filter}
-                  intl={intl}
                   key={filter.cardType}
                   onChange={onFilterChange}
                   value={activeNearbyFilters[filter.cardType]}

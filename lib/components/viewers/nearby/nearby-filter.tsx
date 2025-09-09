@@ -1,5 +1,5 @@
 import { Check2 } from '@styled-icons/bootstrap/Check2'
-import { IntlShape } from 'react-intl'
+import { useIntl } from 'react-intl'
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 
@@ -54,15 +54,14 @@ const StyledFilterCheckbox = styled.label<{ checked: boolean }>`
 
 export const FilterCheckboxes = ({
   filter,
-  intl,
   onChange,
   value
 }: {
   filter: NearbyFilterConfig
-  intl: IntlShape
   onChange: (arg: React.ChangeEvent<HTMLInputElement>) => void
   value: boolean
 }): JSX.Element => {
+  const intl = useIntl()
   // @ts-expect-error component context
   const { ModeIcon, SvgIcon } = useContext(ComponentContext)
   // The icon is either in SvgIcon or ModeIcon so provide both
