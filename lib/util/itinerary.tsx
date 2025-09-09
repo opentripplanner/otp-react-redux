@@ -77,10 +77,9 @@ export function getMinutesUntilItineraryStart(itinerary: Itinerary): number {
  * Returns the set of monitored days that will be initially shown to the user
  * for the given itinerary.
  * @param itinerary The itinerary from which the default monitored days are extracted.
- * @returns ['monday' thru 'friday'] if itinerary happens on a weekday(*),
- *          ['saturday', 'sunday'] if itinerary happens on a saturday/sunday(*).
- * (*) For transit itineraries, the first transit leg is used to make
- * the determination. Otherwise, the itinerary startTime is used.
+ * @returns ['monday' thru 'friday'] if itinerary happens on a weekday,
+ *          ['saturday', 'sunday'] if itinerary happens on a saturday/sunday,
+ *          based on the itinerary startTime.
  */
 export function getItineraryDefaultMonitoredDays(
   itinerary: Itinerary,
