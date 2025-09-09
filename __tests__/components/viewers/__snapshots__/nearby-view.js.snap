@@ -4840,7 +4840,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-DJgqy hBRUWj"
+                            className="sc-DJgqy hRwxkI"
                           >
                             <styled.div>
                               <div
@@ -5268,7 +5268,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-DJgqy hBRUWj"
+                            className="sc-DJgqy hRwxkI"
                           >
                             <styled.div>
                               <div
@@ -5696,7 +5696,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-DJgqy hBRUWj"
+                            className="sc-DJgqy hRwxkI"
                           >
                             <styled.div>
                               <div
@@ -8314,7 +8314,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-DJgqy hBRUWj"
+                            className="sc-DJgqy hRwxkI"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -16617,7 +16617,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-DJgqy hBRUWj"
+                            className="sc-DJgqy hRwxkI"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -21657,7 +21657,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-DJgqy hBRUWj"
+                            className="sc-DJgqy hRwxkI"
                           >
                             <styled.div>
                               <div
@@ -22085,7 +22085,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-DJgqy hBRUWj"
+                            className="sc-DJgqy hRwxkI"
                           >
                             <styled.div>
                               <div
@@ -22513,7 +22513,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-DJgqy hBRUWj"
+                            className="sc-DJgqy hRwxkI"
                           >
                             <styled.div>
                               <div
@@ -25439,7 +25439,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-DJgqy hBRUWj"
+                            className="sc-DJgqy hRwxkI"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -33293,7 +33293,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-DJgqy hBRUWj"
+                            className="sc-DJgqy hRwxkI"
                           >
                             <styled.div>
                               <div
@@ -33721,7 +33721,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-DJgqy hBRUWj"
+                            className="sc-DJgqy hRwxkI"
                           >
                             <styled.div>
                               <div
@@ -34149,7 +34149,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-DJgqy hBRUWj"
+                            className="sc-DJgqy hRwxkI"
                           >
                             <styled.div>
                               <div
@@ -34577,7 +34577,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-DJgqy hBRUWj"
+                            className="sc-DJgqy hRwxkI"
                           >
                             <styled.div>
                               <div
@@ -35005,7 +35005,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-DJgqy hBRUWj"
+                            className="sc-DJgqy hRwxkI"
                           >
                             <styled.div>
                               <div
@@ -36819,7 +36819,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-DJgqy hBRUWj"
+                            className="sc-DJgqy hRwxkI"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -41883,7 +41883,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-DJgqy hBRUWj"
+                            className="sc-DJgqy hRwxkI"
                           >
                             <styled.div>
                               <div
@@ -44397,7 +44397,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-DJgqy hBRUWj"
+                            className="sc-DJgqy hRwxkI"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -52130,7 +52130,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-DJgqy hBRUWj"
+                            className="sc-DJgqy hRwxkI"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
@@ -61733,7 +61733,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-DJgqy hBRUWj"
+                            className="sc-DJgqy hRwxkI"
                           >
                             <styled.div>
                               <div
@@ -64351,7 +64351,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <styled.div>
                           <div
-                            className="sc-DJgqy hBRUWj"
+                            className="sc-DJgqy hRwxkI"
                           >
                             <Connect(StopCardHeader)
                               actionIcon={
