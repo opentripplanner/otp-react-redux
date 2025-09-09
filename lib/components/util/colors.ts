@@ -33,7 +33,7 @@ const GREY_ON_WHITE = grey[700]
  */
 const BLUE_ON_WHITE = blue[800]
 
-const DARK_TEXT_GREY = '#333'
+const DARK_TEXT_GREY = '#333333'
 
 const DEFAULT_ROUTE_COLOR = grey[800]
 

@@ -10,7 +10,7 @@ import { AppReduxState } from '../../util/state-types'
 import { DEFAULT_ROUTE_COLOR } from '../util/colors'
 import { extractMainHeadsigns, PatternSummary } from '../../util/pattern-viewer'
 import { getOperatorName } from '../../util/state'
-import { getRouteColorBasedOnSettings } from '../../util/viewer'
+import { getPatternViewerColors } from '../../util/viewer'
 import { LinkOpensNewWindow } from '../util/externalLink'
 import {
   SetViewedRouteHandler,
@@ -63,6 +63,7 @@ interface Props {
   setViewedRoute: SetViewedRouteHandler
   setViewedStop: SetViewedStopHandler
   sortPatternsByVehicleCount: boolean
+  useRouteColorAsBackground?: boolean
 }
 
 class RouteDetails extends Component<Props> {
@@ -99,14 +100,19 @@ class RouteDetails extends Component<Props> {
       patternId,
       route,
       setHoveredStop,
-      sortPatternsByVehicleCount
+      sortPatternsByVehicleCount,
+      useRouteColorAsBackground
     } = this.props
     const { agency, patterns = {}, shortName, url } = route
     const pattern = patterns[patternId]
 
     const moreDetailsURL = url || route?.agency?.url
 
-    const routeColor = getRouteColorBasedOnSettings(operator, route)
+    const { backgroundColor, routeColor, textColor } = getPatternViewerColors(
+      useRouteColorAsBackground,
+      operator,
+      route
+    )
 
     const headsigns = extractMainHeadsigns(
       patterns,
@@ -138,7 +144,7 @@ class RouteDetails extends Component<Props> {
       patternSelectLabel
 
     return (
-      <Container full={pattern != null}>
+      <Container backgroundColor={backgroundColor} full={pattern != null}>
         {headsigns && headsigns.length > 0 && (
           <PatternContainer className="pattern-picker">
             <HeadsignSelectLabel htmlFor="headsign-selector-label">
@@ -174,7 +180,11 @@ class RouteDetails extends Component<Props> {
             >
               <FormattedMessage id="components.RouteViewer.stopsInDirectionOfTravel" />
             </h2>
-            <StopContainer onMouseLeave={() => setHoveredStop(null)}>
+            <StopContainer
+              backgroundColor={backgroundColor}
+              onMouseLeave={() => setHoveredStop(null)}
+              textColor={textColor}
+            >
               {pattern?.stops?.map((stop, index) => (
                 <StyledStop
                   // Use array index instead of stop id because a stop can be visited several times.
@@ -186,10 +196,13 @@ class RouteDetails extends Component<Props> {
                       ? DEFAULT_ROUTE_COLOR
                       : routeColor
                   }
+                  textColor={textColor}
+                  useRouteColorAsBg={useRouteColorAsBackground}
                 >
                   <StopLink
                     name={stop.name}
                     onFocus={() => setHoveredStop(stop.id)}
+                    textColor={textColor}
                   >
                     {stop.name}
                   </StopLink>
@@ -198,7 +211,10 @@ class RouteDetails extends Component<Props> {
             </StopContainer>
           </>
         )}
-        <LogoLinkContainer>
+        <LogoLinkContainer
+          textColor={textColor}
+          useRouteBgColor={useRouteColorAsBackground}
+        >
           {operator && <OperatorLogo operator={operator} />}
           {moreDetailsURL && (
             <LinkOpensNewWindow
@@ -228,7 +244,9 @@ const mapStateToProps = (state: AppReduxState) => {
     state.otp.config.routeViewer?.sortRoutePatternsByVehicleCount
 
   return {
-    sortPatternsByVehicleCount: sortRoutePatternsByVehicleCount !== false
+    sortPatternsByVehicleCount: sortRoutePatternsByVehicleCount !== false,
+    useRouteColorAsBackground:
+      state.otp.config?.routeViewer?.useRouteColorAsBackground
   }
 }
 

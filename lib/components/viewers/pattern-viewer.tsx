@@ -6,8 +6,11 @@ import React, { useCallback, useContext, useEffect } from 'react'
 import * as apiActions from '../../actions/api'
 import * as uiActions from '../../actions/ui'
 import { ComponentContext } from '../../util/contexts'
+import {
+  getPatternViewerColors,
+  getRouteOrPatternViewerTitle
+} from '../../util/viewer'
 import { getRouteOperator } from '../../util/state'
-import { getRouteOrPatternViewerTitle } from '../../util/viewer'
 import {
   SetViewedRouteHandler,
   ViewedRouteObject,
@@ -24,6 +27,7 @@ interface Props {
   findRoutesIfNeeded: () => void
   setViewedRoute: SetViewedRouteHandler
   transitOperators: TransitOperator[]
+  useRouteColorAsBackground?: boolean
   vehicleIconHighlight: boolean
   viewedRoute?: ViewedRouteState
   viewedRouteObject?: ViewedRouteObject
@@ -33,6 +37,7 @@ const PatternViewer = ({
   findRoutesIfNeeded,
   setViewedRoute,
   transitOperators,
+  useRouteColorAsBackground,
   vehicleIconHighlight,
   viewedRoute,
   viewedRouteObject: route
@@ -75,12 +80,22 @@ const PatternViewer = ({
   if (patternId && route) {
     // Find operator based on agency_id (extracted from OTP route ID).
     const operator = getRouteOperator(route, transitOperators)
+    const { backgroundColor, textColor } = getPatternViewerColors(
+      useRouteColorAsBackground,
+      operator,
+      route
+    )
+    const fill = vehicleIconHighlight === false ? undefined : textColor
 
     const backButtonText = intl.formatMessage({ id: 'common.forms.back' })
     return (
       <div
         className="route-viewer pattern-viewer"
-        style={{ backgroundColor: 'white' }}
+        style={{
+          backgroundColor: backgroundColor,
+          color: textColor,
+          fill
+        }}
       >
         <VehiclePositionRetriever />
         <PageTitle
@@ -92,7 +107,10 @@ const PatternViewer = ({
           )}
         />
         {/* Header Block */}
-        <div className="route-viewer-header">
+        <div
+          className="route-viewer-header"
+          style={{ backgroundColor: backgroundColor }}
+        >
           {/* Back button */}
           <div className="back-button-container">
             <BackButton
@@ -129,6 +147,8 @@ const mapStateToProps = (state: any) => {
   const { viewedRoute } = state.otp.ui
   return {
     transitOperators: state.otp.config.transitOperators,
+    useRouteColorAsBackground:
+      state.otp.config?.routeViewer?.useRouteColorAsBackground,
     vehicleIconHighlight: state.otp.config?.routeViewer?.vehicleIconHighlight,
     viewedRoute,
     viewedRouteObject: state.otp.transitIndex.routes?.[viewedRoute?.routeId]

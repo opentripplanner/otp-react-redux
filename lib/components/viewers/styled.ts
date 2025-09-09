@@ -1,15 +1,20 @@
-import { blue, DARK_TEXT_GREY, getBaseColor, grey } from '../util/colors'
 import styled from 'styled-components'
+
+import { getBaseColor, grey } from '../util/colors'
 
 interface RenderProps {
   backgroundColor?: string
   full?: boolean
   routeColor?: string
   textColor?: string
+  useRouteColorAsBg?: boolean
 }
 
 /** Route Details */
 export const Container = styled.div<RenderProps>`
+  background-color: ${(props) =>
+    props.full ? props.backgroundColor || grey[100] : 'inherit'};
+  color: ${(props) => (props.full ? props.textColor : 'inherit')};
   height: 100%;
   overflow-y: hidden;
 `
@@ -18,7 +23,10 @@ export const RouteNameContainer = styled.div`
   padding: 8px;
   background-color: inherit;
 `
-export const LogoLinkContainer = styled.div`
+export const LogoLinkContainer = styled.div<{
+  textColor?: string
+  useRouteBgColor?: boolean
+}>`
   display: flex;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
@@ -28,9 +36,10 @@ export const LogoLinkContainer = styled.div`
   margin-top: -10px;
 
   a {
-    color: #333;
+    color: ${(props) => props.textColor};
     svg {
-      color: ${getBaseColor()};
+      color: ${(props) =>
+        props.useRouteBgColor ? props.textColor : getBaseColor()};
     }
   }
 `
@@ -73,7 +82,8 @@ export const PatternContainer = styled.div`
 `
 
 export const StopContainer = styled.ol<RenderProps>`
-  color: ${(props) => props?.textColor || DARK_TEXT_GREY};
+  color: ${(props) => props?.textColor};
+  background-color: ${(props) => props?.backgroundColor};
   overflow-y: scroll;
   /* Calculate the height of the container a little short to ensure all stops 
   are shown when browsers don't calculate 100% sensibly. */
@@ -81,7 +91,7 @@ export const StopContainer = styled.ol<RenderProps>`
   padding: 15px 0 0px;
 `
 export const StopLink = styled.button<RenderProps>`
-  color: ${DARK_TEXT_GREY};
+  color: ${(props) => props?.textColor + 'da'};
   background-color: transparent;
   border: none;
   padding: 0;
@@ -89,7 +99,7 @@ export const StopLink = styled.button<RenderProps>`
   width: 95%;
 
   &:hover {
-    color: ${blue[900]};
+    color: ${(props) => props?.textColor};
     text-decoration: underline;
   }
 `
@@ -108,7 +118,11 @@ export const Stop = styled.li<RenderProps>`
     display: block;
     height: 20px;
     width: 20px;
-    border: 5px solid ${(props) => props.routeColor};
+    border: 5px solid
+      ${(props) =>
+        props.useRouteColorAsBg ? props.textColor + 'ee' : props.routeColor};
+    background: ${(props) =>
+      props.useRouteColorAsBg ? props.routeColor : '#fff'};
     position: relative;
     top: 20px;
     left: -35px;
@@ -121,7 +135,8 @@ export const Stop = styled.li<RenderProps>`
     display: block;
     height: 1.65rem; /* set position in line-height agnostic way */
     width: 10px;
-    background: ${(props) => props.routeColor};
+    background: ${(props) =>
+      props.useRouteColorAsBg ? props.textColor + 'ee' : props.routeColor};
     position: relative;
     left: -30px;
     /* this is a few pixels into the blob (to make it look attached) + 3.5rem so that each
