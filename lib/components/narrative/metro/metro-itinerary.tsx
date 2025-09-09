@@ -327,7 +327,7 @@ class MetroItinerary extends NarrativeItinerary {
       style: 'currency'
     })
 
-    const fareInfo =
+    let fareInfo =
       // Hide the fare information entirely if the defaultFareType isn't specified.
       transitFare === null || transitFare === undefined || transitFare < 0 ? (
         <FormattedMessage id="common.itineraryDescriptions.fareUnknown" />
@@ -338,6 +338,18 @@ class MetroItinerary extends NarrativeItinerary {
           values={{ fare: formattedFare }}
         />
       )
+
+    if (
+      // Display special message if there are multiple fare products, but no primary product configured
+      // @ts-expect-error TS seems to not understand the optional?
+      itinerary.legs.some((leg: Leg) => leg.fareProducts?.length > 1) &&
+      !defaultFareType
+    ) {
+      console.log("Missing DefaultFareType! Can't display default fare")
+      fareInfo = (
+        <FormattedMessage id="common.itineraryDescriptions.noDefaultFareTypeConfigured" />
+      )
+    }
 
     // Use first leg's agency as a fallback
     return (

@@ -124,6 +124,7 @@ common:
     "yes": Oui
   itineraryDescriptions:
     fareUnknown: Tarif inconnu
+    noDefaultFareTypeConfigured: Multiple fares apply
     noItineraryToDisplay: Aucun trajet à afficher.
     relativeCo2: |
       {co2} de CO₂ en {isMore, select, true {plus} other {moins} } qu'en voiture
