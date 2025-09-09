@@ -211,8 +211,7 @@ export class RouteRow extends PureComponent<Props> {
 
     if (!route) return null
 
-    const { id, longName, mode, patterns, shortName } = route
-    const modeFromRoute = getModeFromRoute(route)
+    const { id, longName, patterns, shortName } = route
     const routePath = `/route/${id}`
     const firstPattern =
       patterns && extractMainHeadsigns(patterns, shortName, () => '')?.[0]?.id
