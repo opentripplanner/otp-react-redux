@@ -2725,6 +2725,24 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
+"@opentripplanner/core-utils@14.0.0":
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-14.0.0.tgz#8bda57dcd95a0e5b388ef34279ff3a68ff35e66b"
+  integrity sha512-0yk1FnZFQQpkVBN3J24bBDPJQCJvlRHeid3GjG0blEtIdSdwdShox94ZwYNoLe/lxg2nRCAP5XSgtTVkgcFjGg==
+  dependencies:
+    "@conveyal/lonlat" "^1.4.1"
+    "@mapbox/polyline" "^1.1.1"
+    "@opentripplanner/geocoder" "3.0.5"
+    "@styled-icons/foundation" "^10.34.0"
+    "@turf/along" "^6.0.1"
+    chroma-js "^2.4.2"
+    date-fns "^2.28.0"
+    date-fns-tz "^1.2.2"
+    graphql "^16.6.0"
+    lodash.clonedeep "^4.5.0"
+    lodash.isequal "^4.5.0"
+    qs "^6.9.1"
+
 "@opentripplanner/core-utils@14.2.0":
   version "14.2.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-14.2.0.tgz#6a047b729ed0572b8ceb0ea0d46a6da64d434a1e"
