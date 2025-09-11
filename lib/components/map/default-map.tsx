@@ -158,6 +158,42 @@ function getLayerName(overlay, config, intl) {
   }
 }
 
+// add comment
+const createLocationHandler = (
+  config,
+  setQueryParam,
+  setLocation,
+  overlays
+): ((location: MapLocationActionArg) => void) => {
+  return (location: MapLocationActionArg) => {
+    const overlayTypes = overlays
+      ?.find((overlay) => overlay?.type === 'otp2')
+      ?.layers?.map((layer) => layer?.type)
+    if (overlayTypes && overlayTypes.includes('rentalVehicles')) {
+      const requiredOptions: RequiredOptionsForTransportMode =
+        findRequiredOptionsForTransportMode(
+          config.modes.modeButtons,
+          config.modes.modeSettingDefinitions,
+          { mode: 'SCOOTER', qualifier: 'RENT' }
+        )
+      if (requiredOptions) {
+        const modeSetter = setModeButton(
+          enabledModeButtons,
+          onSettingsUpdate(setQueryParam)
+        )
+
+        modeSetter(requiredOptions.modeButton, true)
+
+        if (requiredOptions.modeSetting)
+          onSettingsUpdate(setQueryParam)({
+            [requiredOptions.modeSetting]: true
+          })
+      }
+    }
+    setLocation(location)
+  }
+}
+
 class DefaultMap extends Component {
   static contextType = ComponentContext
 
@@ -367,34 +403,6 @@ class DefaultMap extends Component {
     const baseLayerUrls = baseLayersWithNames?.map((bl) => bl.url)
     const baseLayerNames = baseLayersWithNames?.map((bl) => bl.name)
 
-    const overlayTypes = overlays
-      ?.find((overlay) => overlay?.type === 'otp2')
-      ?.layers?.map((layer) => layer?.type)
-    const handleSetLocation = (location: MapLocationActionArg) => {
-      if (overlayTypes && overlayTypes.includes('rentalVehicles')) {
-        const requiredOptions: RequiredOptionsForTransportMode =
-          findRequiredOptionsForTransportMode(
-            config.modes.modeButtons,
-            config.modes.modeSettingDefinitions,
-            { mode: 'SCOOTER', qualifier: 'RENT' }
-          )
-        if (requiredOptions) {
-          const modeSetter = setModeButton(
-            enabledModeButtons,
-            onSettingsUpdate(setQueryParam)
-          )
-
-          modeSetter(requiredOptions.modeButton, true)
-
-          if (requiredOptions.modeSetting)
-            onSettingsUpdate(setQueryParam)({
-              [requiredOptions.modeSetting]: true
-            })
-        }
-      }
-      setLocation(location)
-    }
-
     const routeBasedTransitVehicleOverlayNameOverride =
       overlays?.find((o) => o.type === 'vehicles-one-route') || undefined
 
@@ -518,7 +526,12 @@ class DefaultMap extends Component {
                     name: getLayerName(l, config, intl) || l.network || l.type
                   })),
                   vectorTilesEndpoint,
-                  handleSetLocation,
+                  createLocationHandler(
+                    config,
+                    setQueryParam,
+                    setLocation,
+                    overlays
+                  ),
                   setViewedStop,
                   viewedRouteStops,
                   config.companies,
