@@ -161,6 +161,7 @@ function getLayerName(overlay, config, intl) {
 // add comment
 const createLocationHandler = (
   config,
+  enabledModeButtons,
   setQueryParam,
   setLocation,
   overlays
@@ -529,6 +530,7 @@ class DefaultMap extends Component {
                   vectorTilesEndpoint,
                   createLocationHandler(
                     config,
+                    enabledModeButtons,
                     setQueryParam,
                     setLocation,
                     overlays
