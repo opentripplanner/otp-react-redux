@@ -158,7 +158,12 @@ function getLayerName(overlay, config, intl) {
   }
 }
 
-// add comment
+/**
+ * Creates a location handler that enables rental vehicle query params when the user
+ * clicks "from here" on a rental vehicle in Nearby view. Ideally, this logic would take place
+ * at a lower level, but the location handler is passed into an OTP-UI component from here; this
+ * is the lowest level achievable in OTP-RR
+ */
 const createLocationHandler = (
   config,
   enabledModeButtons,
