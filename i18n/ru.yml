@@ -767,8 +767,8 @@ components:
   TripSummaryPane:
     happensOnDays: "Проходит в такие дни: {days}"
     monitoredTripDays: Дни наблюдения за поездками
-    notifications: за <strong>{leadTimeInMinutes} мин до запланированного 
-      времени отправления
+    notifications: за {leadTimeInMinutes} мин до запланированного времени 
+      отправления
     notificationsDisabled: "Уведомления: отключены"
     timeAndDuration: Время и продолжительность поездки
   TripTools:
