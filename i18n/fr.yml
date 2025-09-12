@@ -406,6 +406,7 @@ components:
     distanceAway: à {localizedDistanceString}
     error: Erreur lors du chargement des services à proximité.
     errorHeader: Erreur
+    filterNearby: Filtrer les entités à proximité
     header: À proximité
     headsign: "{destination}"
     nearbyListIntro: Liste de {count} entités à proximité.

@@ -428,10 +428,13 @@ function NearbyView({
           suggestionCount={geocoderConfig?.resultsCount}
         />
         {nearbyFilters && (
-          <div
+          <fieldset
             className="filter-container"
             style={{ display: 'flex', gap: '10px', marginTop: '10px' }}
           >
+            <InvisibleA11yLabel as="legend" style={{ position: 'absolute' }}>
+              <FormattedMessage id="components.NearbyView.filterNearby" />
+            </InvisibleA11yLabel>
             {nearbyFilters.map((filter: NearbyFilterConfig) => {
               return (
                 <FilterCheckboxes
@@ -442,7 +445,7 @@ function NearbyView({
                 />
               )
             })}
-          </div>
+          </fieldset>
         )}
       </div>
 
