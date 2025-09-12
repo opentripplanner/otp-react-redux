@@ -395,6 +395,7 @@ components:
     distanceAway: "{localizedDistanceString} away"
     error: An error occurred loading nearby amenities.
     errorHeader: Error
+    filterNearby: Filter nearby results
     header: Nearby View
     headsign: "{destination}"
     nearbyListIntro: List of {count} nearby entities.
