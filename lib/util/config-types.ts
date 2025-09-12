@@ -98,6 +98,10 @@ export interface Auth0Config {
   audience: string
   clientId: string
   domain: string
+  managementApi?: {
+    clientId: string
+    clientSecret: string
+  }
 }
 
 /** Local persistence setting */

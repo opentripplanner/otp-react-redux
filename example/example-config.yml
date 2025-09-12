@@ -83,6 +83,10 @@ persistence:
 #  auth0:
 #    domain: your-auth0-domain
 #    clientId: your-auth0-client-id
+###  Management API credentials are required to update user metadata
+#    managementApi:
+#      clientId: your-auth0-management-api-client-id  
+#      clientSecret: your-auth0-management-api-client-secret
 #  otp_middleware:
 #    apiBaseUrl: https://otp-middleware.example.com
 #    apiKey: your-middleware-api-key
