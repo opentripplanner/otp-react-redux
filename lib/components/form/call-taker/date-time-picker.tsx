@@ -213,9 +213,17 @@ const DateTimeOptions = ({
         handleTimeChange(getCurrentTime(homeTimezone))
         setDate(getCurrentDate(homeTimezone))
         setTypedTime(
-          safeFormat(dateTime, timeFormat, {
-            timeZone: homeTimezone
-          })
+          safeFormat(
+            parseInputAsTime(
+              homeTimezone,
+              getCurrentTime(homeTimezone),
+              getCurrentDate(homeTimezone)
+            ),
+            timeFormat,
+            {
+              timeZone: homeTimezone
+            }
+          )
         )
       }
 

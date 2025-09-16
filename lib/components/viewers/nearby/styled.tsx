@@ -14,14 +14,14 @@ export const FloatingLoadingIndicator = styled.div`
   position: fixed;
 `
 
-export const NearbySidebarContainer = styled.ol`
+export const NearbySidebarContainer = styled.ol<{ filters: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 1em;
   padding: 0.5em 1em;
   list-style: none;
   overflow-y: scroll;
-  height: 90%;
+  height: ${(props) => (props.filters ? '84%' : '90%')};
 
   & > li:last-of-type {
     margin-bottom: 1em;
@@ -88,7 +88,7 @@ export const CardAside = styled.p`
 
 export const CardBody = styled.div`
   margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   padding: 0rem 1.2rem;
 `
 
@@ -112,6 +112,6 @@ export const FullHeightContainer = styled.div`
 
 export const ActionLink = styled(Link)`
   color: inherit;
-  font-size: small;
+  font-size: 14px;
   float: right;
 `

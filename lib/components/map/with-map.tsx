@@ -1,4 +1,4 @@
-import { MapRef, useMap } from 'react-map-gl'
+import { MapRef, useMap } from 'react-map-gl/maplibre'
 import React, { ComponentType, FC } from 'react'
 
 /**

@@ -48,6 +48,7 @@ export interface ItineraryWithCO2Info extends Itinerary {
 export interface ItineraryWithSortingCosts extends Itinerary {
   rank: number
   totalFare: number
+  transitFare?: number
 }
 
 export interface ItineraryFareSummary {
@@ -453,10 +454,12 @@ export function addSortingCosts<T extends Itinerary>(
     totalFareResult === null ? Number.MAX_VALUE : totalFareResult
 
   const rank = calculateItineraryCost(itinerary, config)
+  const transitFare = getFare(itinerary).transitFare
   return {
     ...itinerary,
     rank,
-    totalFare
+    totalFare,
+    transitFare
   }
 }
 

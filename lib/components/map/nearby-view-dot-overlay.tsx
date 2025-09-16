@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { Location } from '@opentripplanner/types'
-import { Marker } from 'react-map-gl'
+import { Marker } from 'react-map-gl/maplibre'
 import React from 'react'
 import styled from 'styled-components'
 

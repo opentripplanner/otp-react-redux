@@ -5,16 +5,15 @@ import EndpointsOverlay from '@opentripplanner/endpoints-overlay'
 import React, { ComponentProps, useCallback } from 'react'
 
 import { clearLocation } from '../../actions/form'
-import { convertToPlace, getUserLocations } from '../../util/user'
 import { forgetPlace, rememberPlace } from '../../actions/user'
 import { getActiveSearch, getShowUserSettings } from '../../util/state'
+import { getUserLocations } from '../../util/user'
 import { setLocation } from '../../actions/map'
 import { setViewedStop } from '../../actions/ui'
-import { toastMessageOnPlaceChanged, toastPromise } from '../util/toasts'
 
 type Props = ComponentProps<typeof EndpointsOverlay> & {
   forgetPlace: (place: string, intl: IntlShape) => void
-  rememberPlace: (arg: UserLocationAndType, intl: IntlShape) => number
+  rememberPlace: (arg: UserLocationAndType, intl: IntlShape) => void
   setViewedStop: (arg: Location) => void
 }
 
@@ -34,13 +33,7 @@ const ConnectedEndpointsOverlay = ({
 
   const _rememberPlace = useCallback(
     async (placeTypeLocation) => {
-      const place = convertToPlace(placeTypeLocation.location)
-      await toastPromise(
-        // @ts-expect-error Toast doesn't like that this returns a number
-        rememberPlace(placeTypeLocation, intl),
-        toastMessageOnPlaceChanged(place, intl, 'Remembered'),
-        intl
-      )
+      rememberPlace(placeTypeLocation, intl)
     },
     [rememberPlace, intl]
   )

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { GeolocateControl, NavigationControl } from 'react-map-gl'
+import { GeolocateControl, NavigationControl } from 'react-map-gl/maplibre'
 import { Itinerary } from '@opentripplanner/types'
 import { useIntl } from 'react-intl'
 import BaseMap from '@opentripplanner/base-map'

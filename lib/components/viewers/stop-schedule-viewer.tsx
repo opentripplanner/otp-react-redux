@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { ExclamationCircle } from '@styled-icons/fa-solid/ExclamationCircle'
 import { format, parse } from 'date-fns'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
-import { MagnifyingGlass } from '@styled-icons/fa-solid/MagnifyingGlass'
-import { MapRef } from 'react-map-gl'
+import { Location } from '@styled-icons/fa-solid/Location'
+import { MapRef } from 'react-map-gl/maplibre'
 import { utcToZonedTime } from 'date-fns-tz'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component, FormEvent } from 'react'
@@ -23,7 +23,7 @@ import PageTitle from '../util/page-title'
 import ServiceTimeRangeRetriever from '../util/service-time-range-retriever'
 import withMap from '../map/with-map'
 
-import { CardBody, CardHeader } from './nearby/styled'
+import { CardHeader } from './nearby/styled'
 import FavoriteStopToggle from './favorite-stop-toggle'
 import FromToPicker from './nearby/from-to-picker'
 import StopCardHeader from './nearby/stop-card-header'
@@ -84,10 +84,6 @@ const HeaderCard = styled.div`
   display: flex;
   flex-direction: column;
   margin: 5px 0 0;
-
-  ${CardBody} {
-    margin: 25px 0 0;
-  }
 
   input[type='date'] {
     background: inherit;
@@ -214,8 +210,7 @@ class StopScheduleViewer extends Component<Props, State> {
         <HeaderCard>
           {stopData?.name ? (
             <StopCardHeader
-              // FIXME: What icon should we use?
-              actionIcon={MagnifyingGlass}
+              actionIcon={Location}
               actionParams={{ entityId: stopId }}
               actionPath={`/nearby/${stopData.lat},${stopData.lon}`}
               actionText={
@@ -275,7 +270,7 @@ class StopScheduleViewer extends Component<Props, State> {
     }
 
     return (
-      <div role="group" style={{ marginBottom: '10px' }}>
+      <div role="group">
         {stopData ? <StyledFromToPicker place={stopData} /> : null}
         <input
           aria-label={intl.formatMessage({

@@ -64,6 +64,9 @@ const VerifyEmailPane = ({ resendVerificationEmail, routeTo }: Props) => {
       <p>
         <FormattedMessage id="components.VerifyEmailPane.instructions2" />
       </p>
+      <p>
+        <FormattedMessage id="components.VerifyEmailPane.instructions3" />
+      </p>
 
       <div style={{ margin: '1.5em 0' }}>
         <Button bsSize="large" bsStyle="primary" onClick={handleEmailVerified}>
