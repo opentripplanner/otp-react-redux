@@ -62,11 +62,6 @@
   margin: 0;
 }
 
-.otp .trip-viewer .header-text,
-.otp .route-viewer .header-text {
-  display: contents;
-}
-
 .otp .route-viewer .header-text.route-expanded {
   display: flex;
   align-items: center;
