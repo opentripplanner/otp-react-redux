@@ -699,7 +699,7 @@ components:
       unknownState: Unknown Trip State
       untogglePause: Resume
     inactive:
-      description: Resume to begin monitoring your trip and receive notifications.
+      description: Resume to receive notifications.
       heading: Trip monitoring is paused
     nextTripNotPossible:
       description: >
@@ -724,10 +724,9 @@ components:
       heading: Trip is in the past
     snoozed:
       description: >-
-        Trip monitoring and notifications for this trip will automatically begin
-        on the next selected available day. Unsnooze to restart monitoring and
-        to receive notifications today.
-      heading: Trip monitoring and notifications are snoozed for today.
+        Notifications for this trip will automatically begin on the next
+        selected available day. Unsnooze to receive notifications today.
+      heading: Notifications are snoozed for today.
     upcoming:
       nextTripBegins: >-
         Next trip starts on {tripDatetime, date, ::eeeee yyyyMMdd} at
@@ -746,8 +745,8 @@ components:
     happensOnDays: "Happens on: {days}"
     monitoredTripDays: Trip monitored days
     notifications: "{leadTimeInMinutes} min. before scheduled departure"
-    notificationsPaused: Trip monitoring and notifications are paused.
-    notificationsSnoozed: Trip monitoring and notifications are snoozed for today.
+    notificationsPaused: Notifications are paused.
+    notificationsSnoozed: Notifications are snoozed for today.
     timeAndDuration: Trip time and duration
   TripTools:
     copyLink: Copy Link
