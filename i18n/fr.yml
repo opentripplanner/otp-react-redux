@@ -724,7 +724,7 @@ components:
       unknownState: État du trajet inconnu
       untogglePause: Reprendre
     inactive:
-      description: Reprendre le suivi du trajet et recevoir les notifications.
+      description: Reprendre et recevoir les notifications.
       heading: Suivi suspendu
     nextTripNotPossible:
       description: >
@@ -750,10 +750,10 @@ components:
       heading: Trajet dans le passé
     snoozed:
       description: >-
-        Le suivi du trajet et les notifications reprendront automatiquement le
-        prochain jour selectionné pour lequel ce trajet est possible. Cliquez
-        sur Reprendre pour redémarrer le suivi et les notifications aujourd'hui.
-      heading: Le suivi du trajet et les notifications sont suspendus pour aujourd'hui.
+        Les notifications reprendront automatiquement le prochain jour
+        selectionné pour ce trajet. Cliquez sur Reprendre pour recevoir les
+        notifications aujourd'hui.
+      heading: Notifications suspendues pour le restant de la journée.
     upcoming:
       nextTripBegins: >-
         Prochain départ : {tripDatetime, date, ::eeeee yyyyMMdd} à
@@ -772,8 +772,8 @@ components:
     happensOnDays: "Effectué : {days}"
     monitoredTripDays: Jours de suivi de ce trajet
     notifications: "{leadTimeInMinutes} mn avant l'heure de départ prévue"
-    notificationsPaused: Suivi du trajet et notifications suspendus.
-    notificationsSnoozed: Suivi du trajet et notifications suspendus pour aujourd'hui.
+    notificationsPaused: Notifications suspendues.
+    notificationsSnoozed: Notifications suspendues pour le restant de la journée.
     timeAndDuration: Heure et durée du trajet
   TripTools:
     copyLink: Copier le lien
