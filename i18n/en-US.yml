@@ -700,7 +700,7 @@ components:
       untogglePause: Resume
     inactive:
       description: Resume to receive notifications.
-      heading: Trip monitoring is paused
+      heading: Notifications are paused.
     nextTripNotPossible:
       description: >
         After multiple failed attempts to locate your itinerary, monitoring has
