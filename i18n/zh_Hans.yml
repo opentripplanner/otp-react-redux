@@ -654,7 +654,7 @@ components:
     happensOnDays: "发生在: {days}"
     monitoredTripDays: 行程监测日期
     notifications: 预定出发前 {leadTimeInMinutes}
-    notificationsDisabled: "通知: 已禁用"
+    notificationsPaused: "通知: 已禁用"
     timeAndDuration: 行程时间与时长
   TripTools:
     copyLink: 复制链接
