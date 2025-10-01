@@ -168,7 +168,7 @@ const RouteBlock = ({
         )}
         {!hideLongName && leg.routeLongName && (
           <MultiRouteLongName>
-            <RouteLongName className="route-long-name" leg={leg} />
+            <RouteLongName className="route-block-route-long-name" leg={leg} />
             {Object.entries(leg?.alternateRoutes || {})?.length > 0 && (
               <em style={{ marginRight: 10 }}>
                 <FormattedMessage id="components.MetroUI.orAlternatives" />
