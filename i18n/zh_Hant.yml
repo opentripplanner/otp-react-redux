@@ -182,12 +182,12 @@ components:
   BatchRoutingPanel:
     shortTitle: 規劃行程
   BatchSearchScreen:
+    advancedHeader: 進階選項
     header: 規劃您的行程
     modeSelectorLabel: 選取出行模式
     moreOptions: 更多選擇
-    tripOptions: 行程選擇
-    advancedHeader: 進階選項
     saveAndReturn: 儲存並返回
+    tripOptions: 行程選擇
   BatchSettings:
     destination: 目的地
     invalidModeSelection: 無法使用所選模式規劃行程。嘗試將公共交通納入您的模式選取內容。
@@ -579,7 +579,7 @@ components:
   TripSummaryPane:
     happensOnDays: 發生於：{days}
     notifications: 預定出發前{leadTimeInMinutes}分鐘
-    notificationsDisabled: 通知已停用
+    notificationsPaused: 通知已停用
   TripTools:
     copyLink: 複製連結
     header: 行程工具
