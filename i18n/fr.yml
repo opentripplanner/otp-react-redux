@@ -450,6 +450,9 @@ components:
         Une desserte en transports a été trouvée mais ne correspond pas à vos
         critères. Veuillez ajuster votre recherche.
       header: Aucune desserte selon vos critères
+    OTP_RR_TRIP_IN_PAST:
+      body: L'heure d'arrivée d'un ou de plusieurs itinéraires est déjà passée.
+      header: Trajet déjà terminé
     OUTSIDE_BOUNDS:
       body: >-
         {inputFieldsCount, plural, =0 {} one {Votre {inputFields} n'est} other

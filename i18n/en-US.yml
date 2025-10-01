@@ -437,6 +437,9 @@ components:
         A transit connection was found, but it was outside the search window,
         try adjusting your search window, using the vehicle types you selected.
       header: No transit connection in search window
+    OTP_RR_TRIP_IN_PAST:
+      body: One or more of these itineraries ends in the past.
+      header: Trip has already occurred
     OUTSIDE_BOUNDS:
       body: >-
         {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
