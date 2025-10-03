@@ -5,6 +5,7 @@
   "scripts": {
     "a11y-test": "jest a11y/ --runInBand --force-exit",
     "build": "vite build",
+    "bundle-stats": "yarn build && node -e \"require('open')('stats.html')\"",
     "check:i18n-en-fr": "node node_modules/@opentripplanner/scripts/lib/run-validate-i18n.js lib i18n/en-US.yml i18n/fr.yml",
     "unit": "jest __tests__/",
     "lint": "lint-staged",
