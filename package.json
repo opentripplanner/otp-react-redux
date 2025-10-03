@@ -240,7 +240,7 @@
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix"
     ],
-    "i18n/*.{yml,yaml}": [
+    "i18n/en-US.yml": [
       "yaml-sort --quotingStyle double --input"
     ]
   },
