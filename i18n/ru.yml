@@ -143,7 +143,6 @@ common:
     walk: Пешком
   notifications:
     email: электронная почта
-    push: всплывающие уведомления
     sms: SMS
   places:
     custom: пользовательское
@@ -409,10 +408,6 @@ components:
     description: Запрашиваемое содержимое недоступно.
     header: Содержимое не обнаружено
   NotificationPrefsPane:
-    devicesRegistered: "{count, plural, one {# устройство} other {# устройства}} зарегистрированы"
-    noDeviceForPush: >-
-      Зарегистрируйте свое устройство с помощью мобильного приложения, чтобы
-      получать всплывающие уведомления.
     notificationChannelPrompt: "Получайте уведомления о сохраненных поездках через:"
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
@@ -741,8 +736,7 @@ components:
   TripSummaryPane:
     happensOnDays: "Проходит в такие дни: {days}"
     monitoredTripDays: Дни наблюдения за поездками
-    notifications: за {leadTimeInMinutes} мин до запланированного времени 
-      отправления
+    notifications: за {leadTimeInMinutes} мин до запланированного времени отправления
     notificationsDisabled: "Уведомления: отключены"
     timeAndDuration: Время и продолжительность поездки
   TripTools:

@@ -114,7 +114,6 @@ common:
     walk: Yürümek
   notifications:
     email: eposta
-    push: bildirimler
     sms: SMS
   places:
     dining: yemek

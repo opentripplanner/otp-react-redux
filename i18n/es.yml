@@ -144,7 +144,6 @@ common:
     walk: Caminar
   notifications:
     email: correo electrónico
-    push: notificaciones push
     sms: Mensaje de texto
   places:
     custom: personalizado
@@ -412,8 +411,6 @@ components:
     description: El contenido que ha solicitado no está disponible.
     header: No se encontró el contenido
   NotificationPrefsPane:
-    devicesRegistered: "{count, plural, one {# device} other {# devices}} registrado"
-    noDeviceForPush: Regístrese con la aplicación móvil para acceder a esta configuración.
     notificationChannelPrompt: "Recibir notificaciones para sus viajes guardados por:"
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:

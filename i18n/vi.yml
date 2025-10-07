@@ -143,7 +143,6 @@ common:
     walk: Đi bộ
   notifications:
     email: e-mail
-    push: thông báo đẩy
     sms: tin nhắn
   places:
     custom: phong tục
@@ -397,8 +396,6 @@ components:
     description: Nội dung bạn yêu cầu không có sẵn.
     header: Không tìm thấy nội dung
   NotificationPrefsPane:
-    devicesRegistered: "{count, plural, one {# device} other {# devices}} đã đăng ký"
-    noDeviceForPush: Đăng ký thiết bị của quý vị bằng ứng dụng di động để nhận thông báo đẩy.
     notificationChannelPrompt: "Nhận thông báo về các chuyến đi đã lưu bằng:"
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
@@ -427,8 +424,9 @@ components:
         kiếm
     OUTSIDE_BOUNDS:
       body: >-
-        {inputFields} {inputFieldsCount, plural, =0 {} one {Vị trí là} other {Các
-        vị trí là}} không nằm trong ranh giới của trình lên kế hoạch chuyến đi.
+        {inputFields} {inputFieldsCount, plural, =0 {} one {Vị trí là} other
+        {Các vị trí là}} không nằm trong ranh giới của trình lên kế hoạch chuyến
+        đi.
       header: Địa điểm nằm ngoài ranh giới
     OUTSIDE_SERVICE_PERIOD:
       body: >-

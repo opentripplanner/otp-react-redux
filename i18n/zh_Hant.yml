@@ -128,7 +128,6 @@ common:
     walk: 步行
   notifications:
     email: 電子郵件
-    push: 推播通知
     sms: 簡訊
   places:
     custom: 自訂
@@ -313,8 +312,6 @@ components:
     description: 您要求的內容無法使用。
     header: 找不到內容
   NotificationPrefsPane:
-    devicesRegistered: "{count}個裝置 已註冊"
-    noDeviceForPush: 使用行動應用程式註冊您的裝置以存取推播通知。
     notificationChannelPrompt: 透過以下方式接收有關您已儲存之行程的通知：
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:

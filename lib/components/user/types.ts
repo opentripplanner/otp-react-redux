@@ -59,7 +59,6 @@ export interface User {
   notificationChannel?: string
   phoneNumber?: string
   preferredLocale?: string
-  pushDevices?: number
   relatedUsers?: CompanionInfo[]
   savedLocations?: UserSavedLocation[]
   storeTripHistory?: boolean

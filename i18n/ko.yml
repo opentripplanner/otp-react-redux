@@ -130,7 +130,6 @@ common:
     walk: 걷기
   notifications:
     email: 이메일
-    push: 푸시 알림
     sms: SMS
   places:
     custom: 사용자 정의
@@ -370,8 +369,6 @@ components:
     description: 요청한 콘텐츠를 사용할 수 없습니다.
     header: 콘텐츠를 찾을 수 없음
   NotificationPrefsPane:
-    devicesRegistered: "{count, plural, one {# device} other {# devices}} 등록됨"
-    noDeviceForPush: 푸시 알림을 이용하려면 모바일 앱을 사용해 기기를 등록하십시오.
     notificationChannelPrompt: "저장된 여행의 알림을 받는 방법:"
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
@@ -392,8 +389,8 @@ components:
       header: 탐색 창 내 대중교통 연결편 없음
     OUTSIDE_BOUNDS:
       body: >-
-        {inputFields} {inputFieldsCount, plural, =0 {} one {위치는} other {위치들은}} 트립
-        플래너 범위가 아닙니다.
+        {inputFields} {inputFieldsCount, plural, =0 {} one {위치는} other {위치들은}}
+        트립 플래너 범위가 아닙니다.
       header: 범위 밖 위치
     OUTSIDE_SERVICE_PERIOD:
       body: 지정된 날짜가 현재 트립 플래너에 로드된 데이터 범위를 벗어납니다.

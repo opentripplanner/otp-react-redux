@@ -150,7 +150,6 @@ common:
     walk: Naglalakad
   notifications:
     email: email
-    push: mga push notification
     sms: SMS
   places:
     custom: custom
@@ -419,10 +418,6 @@ components:
     description: Hindi available ang hiniling mong content.
     header: Hindi nakita ang content
   NotificationPrefsPane:
-    devicesRegistered: "{count, plural, one {# device} other {# mga device}} rehistrado"
-    noDeviceForPush: >-
-      Irehistro ang iyong device gamit ang mobile app para i-access ang mga push
-      notification.
     notificationChannelPrompt: >-
       Makatanggap ng mga notification tungkol sa iyong mga naka-save na biyahe
       sa pamamagitan ng:

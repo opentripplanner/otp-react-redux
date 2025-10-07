@@ -130,7 +130,6 @@ common:
     walk: 步行
   notifications:
     email: 电子邮件
-    push: 推送通知
     sms: 短信
   places:
     custom: 习俗
@@ -365,8 +364,6 @@ components:
     description: 您要求的内容不存在.
     header: 未找到内容
   NotificationPrefsPane:
-    devicesRegistered: "{count, plural, one {# device} other {# devices}}已注册"
-    noDeviceForPush: 使用移动应用程序注册您的设备以访问推送通知。
     notificationChannelPrompt: "如何接收已保存行程的通知:"
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
@@ -387,8 +384,8 @@ components:
       header: 搜索窗口中没有公交连接
     OUTSIDE_BOUNDS:
       body: >-
-        {inputFields} {inputFieldsCount, plural, =0 {} one {位置是} other {位置是}}不在Trip
-        Planner的范围内。
+        {inputFields} {inputFieldsCount, plural, =0 {} one {位置是} other
+        {位置是}}不在Trip Planner的范围内。
       header: 位置超出边界
     OUTSIDE_SERVICE_PERIOD:
       body: 指定的日期不在当前加载到Trip Planner中的数据范围内。
