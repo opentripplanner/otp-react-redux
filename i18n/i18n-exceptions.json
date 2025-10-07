@@ -2,8 +2,7 @@
   "groups": {
     "common.notifications.*": [
       "email",
-      "sms",
-      "push"
+      "sms"
     ],
     "components.UserAccountScreen.fields.*": [
       "add-companion-form",
