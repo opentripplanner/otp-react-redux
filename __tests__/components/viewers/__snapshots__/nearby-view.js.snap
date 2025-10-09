@@ -40,6 +40,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
           }
         }
         defaultLatLon={null}
+        feeds={Array []}
         fetchNearby={[Function]}
         getCurrentPosition={[Function]}
         homeTimezone="America/Los_Angeles"
@@ -493,6 +494,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
           }
         }
         defaultLatLon={null}
+        feeds={Array []}
         fetchNearby={[Function]}
         getCurrentPosition={[Function]}
         homeTimezone="America/Los_Angeles"
@@ -6041,7 +6043,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               "id": "U3RvcDprY206MzY5NDA",
                               "lat": 47.6758881,
                               "lon": -122.315994,
-                              "name": "Roosevelt Station - Bay 2",
+                              "name": "Roosevelt Station - Bay 2 (undefined 36940)",
                               "nearbyRoutes": Array [
                                 undefined,
                               ],
@@ -7182,7 +7184,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 "id": "U3RvcDprY206MzY5NDA",
                                 "lat": 47.6758881,
                                 "lon": -122.315994,
-                                "name": "Roosevelt Station - Bay 2",
+                                "name": "Roosevelt Station - Bay 2 (undefined 36940)",
                                 "nearbyRoutes": Array [
                                   undefined,
                                 ],
@@ -8346,7 +8348,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       "id": "U3RvcDprY206MzY5NDA",
                                       "lat": 47.6758881,
                                       "lon": -122.315994,
-                                      "name": "Roosevelt Station - Bay 2",
+                                      "name": "Roosevelt Station - Bay 2 (undefined 36940)",
                                       "nearbyRoutes": Array [
                                         undefined,
                                       ],
@@ -9505,7 +9507,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         "id": "U3RvcDprY206MzY5NDA",
                                         "lat": 47.6758881,
                                         "lon": -122.315994,
-                                        "name": "Roosevelt Station - Bay 2",
+                                        "name": "Roosevelt Station - Bay 2 (undefined 36940)",
                                         "nearbyRoutes": Array [
                                           undefined,
                                         ],
@@ -11393,7 +11395,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           "id": "U3RvcDprY206MzY5NDA",
                                           "lat": 47.6758881,
                                           "lon": -122.315994,
-                                          "name": "Roosevelt Station - Bay 2",
+                                          "name": "Roosevelt Station - Bay 2 (undefined 36940)",
                                           "nearbyRoutes": Array [
                                             undefined,
                                           ],
@@ -11962,7 +11964,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             "id": "U3RvcDprY206MzY5NDA",
                                             "lat": 47.6758881,
                                             "lon": -122.315994,
-                                            "name": "Roosevelt Station - Bay 2",
+                                            "name": "Roosevelt Station - Bay 2 (undefined 36940)",
                                             "nearbyRoutes": Array [
                                               undefined,
                                             ],
@@ -15148,7 +15150,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               "id": "U3RvcDo0MDo5OTAwMDM",
                               "lat": 47.676107,
                               "lon": -122.316041,
-                              "name": "Roosevelt",
+                              "name": "Roosevelt (undefined null)",
                               "nearbyRoutes": Array [
                                 undefined,
                               ],
@@ -15887,7 +15889,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 "id": "U3RvcDo0MDo5OTAwMDM",
                                 "lat": 47.676107,
                                 "lon": -122.316041,
-                                "name": "Roosevelt",
+                                "name": "Roosevelt (undefined null)",
                                 "nearbyRoutes": Array [
                                   undefined,
                                 ],
@@ -16649,7 +16651,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       "id": "U3RvcDo0MDo5OTAwMDM",
                                       "lat": 47.676107,
                                       "lon": -122.316041,
-                                      "name": "Roosevelt",
+                                      "name": "Roosevelt (undefined null)",
                                       "nearbyRoutes": Array [
                                         undefined,
                                       ],
@@ -17406,7 +17408,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         "id": "U3RvcDo0MDo5OTAwMDM",
                                         "lat": 47.676107,
                                         "lon": -122.316041,
-                                        "name": "Roosevelt",
+                                        "name": "Roosevelt (undefined null)",
                                         "nearbyRoutes": Array [
                                           undefined,
                                         ],
@@ -18672,7 +18674,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           "id": "U3RvcDo0MDo5OTAwMDM",
                                           "lat": 47.676107,
                                           "lon": -122.316041,
-                                          "name": "Roosevelt",
+                                          "name": "Roosevelt (undefined null)",
                                           "nearbyRoutes": Array [
                                             undefined,
                                           ],
@@ -19040,7 +19042,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             "id": "U3RvcDo0MDo5OTAwMDM",
                                             "lat": 47.676107,
                                             "lon": -122.316041,
-                                            "name": "Roosevelt",
+                                            "name": "Roosevelt (undefined null)",
                                             "nearbyRoutes": Array [
                                               undefined,
                                             ],
@@ -22858,7 +22860,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               "id": "U3RvcDprY206MTY0MzA",
                               "lat": 47.6757507,
                               "lon": -122.316673,
-                              "name": "Roosevelt Station - Bay 1",
+                              "name": "Roosevelt Station - Bay 1 (undefined 16430)",
                               "nearbyRoutes": Array [
                                 undefined,
                               ],
@@ -24153,7 +24155,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 "id": "U3RvcDprY206MTY0MzA",
                                 "lat": 47.6757507,
                                 "lon": -122.316673,
-                                "name": "Roosevelt Station - Bay 1",
+                                "name": "Roosevelt Station - Bay 1 (undefined 16430)",
                                 "nearbyRoutes": Array [
                                   undefined,
                                 ],
@@ -25471,7 +25473,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       "id": "U3RvcDprY206MTY0MzA",
                                       "lat": 47.6757507,
                                       "lon": -122.316673,
-                                      "name": "Roosevelt Station - Bay 1",
+                                      "name": "Roosevelt Station - Bay 1 (undefined 16430)",
                                       "nearbyRoutes": Array [
                                         undefined,
                                       ],
@@ -26784,7 +26786,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         "id": "U3RvcDprY206MTY0MzA",
                                         "lat": 47.6757507,
                                         "lon": -122.316673,
-                                        "name": "Roosevelt Station - Bay 1",
+                                        "name": "Roosevelt Station - Bay 1 (undefined 16430)",
                                         "nearbyRoutes": Array [
                                           undefined,
                                         ],
@@ -28903,7 +28905,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           "id": "U3RvcDprY206MTY0MzA",
                                           "lat": 47.6757507,
                                           "lon": -122.316673,
-                                          "name": "Roosevelt Station - Bay 1",
+                                          "name": "Roosevelt Station - Bay 1 (undefined 16430)",
                                           "nearbyRoutes": Array [
                                             undefined,
                                           ],
@@ -29549,7 +29551,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             "id": "U3RvcDprY206MTY0MzA",
                                             "lat": 47.6757507,
                                             "lon": -122.316673,
-                                            "name": "Roosevelt Station - Bay 1",
+                                            "name": "Roosevelt Station - Bay 1 (undefined 16430)",
                                             "nearbyRoutes": Array [
                                               undefined,
                                             ],
@@ -35350,7 +35352,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               "id": "U3RvcDprY206MTY0NDA",
                               "lat": 47.675457,
                               "lon": -122.317467,
-                              "name": "Roosevelt Station Bay 5 - Bay 5",
+                              "name": "Roosevelt Station Bay 5 - Bay 5 (undefined 16440)",
                               "nearbyRoutes": Array [
                                 undefined,
                               ],
@@ -36089,7 +36091,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 "id": "U3RvcDprY206MTY0NDA",
                                 "lat": 47.675457,
                                 "lon": -122.317467,
-                                "name": "Roosevelt Station Bay 5 - Bay 5",
+                                "name": "Roosevelt Station Bay 5 - Bay 5 (undefined 16440)",
                                 "nearbyRoutes": Array [
                                   undefined,
                                 ],
@@ -36851,7 +36853,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       "id": "U3RvcDprY206MTY0NDA",
                                       "lat": 47.675457,
                                       "lon": -122.317467,
-                                      "name": "Roosevelt Station Bay 5 - Bay 5",
+                                      "name": "Roosevelt Station Bay 5 - Bay 5 (undefined 16440)",
                                       "nearbyRoutes": Array [
                                         undefined,
                                       ],
@@ -37608,7 +37610,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         "id": "U3RvcDprY206MTY0NDA",
                                         "lat": 47.675457,
                                         "lon": -122.317467,
-                                        "name": "Roosevelt Station Bay 5 - Bay 5",
+                                        "name": "Roosevelt Station Bay 5 - Bay 5 (undefined 16440)",
                                         "nearbyRoutes": Array [
                                           undefined,
                                         ],
@@ -38893,7 +38895,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           "id": "U3RvcDprY206MTY0NDA",
                                           "lat": 47.675457,
                                           "lon": -122.317467,
-                                          "name": "Roosevelt Station Bay 5 - Bay 5",
+                                          "name": "Roosevelt Station Bay 5 - Bay 5 (undefined 16440)",
                                           "nearbyRoutes": Array [
                                             undefined,
                                           ],
@@ -39261,7 +39263,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             "id": "U3RvcDprY206MTY0NDA",
                                             "lat": 47.675457,
                                             "lon": -122.317467,
-                                            "name": "Roosevelt Station Bay 5 - Bay 5",
+                                            "name": "Roosevelt Station Bay 5 - Bay 5 (undefined 16440)",
                                             "nearbyRoutes": Array [
                                               undefined,
                                             ],
@@ -42228,7 +42230,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               "id": "U3RvcDo0MDo5OTAwMDQ",
                               "lat": 47.677081,
                               "lon": -122.315928,
-                              "name": "Roosevelt",
+                              "name": "Roosevelt (undefined null)",
                               "nearbyRoutes": Array [
                                 undefined,
                               ],
@@ -43317,7 +43319,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 "id": "U3RvcDo0MDo5OTAwMDQ",
                                 "lat": 47.677081,
                                 "lon": -122.315928,
-                                "name": "Roosevelt",
+                                "name": "Roosevelt (undefined null)",
                                 "nearbyRoutes": Array [
                                   undefined,
                                 ],
@@ -44429,7 +44431,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       "id": "U3RvcDo0MDo5OTAwMDQ",
                                       "lat": 47.677081,
                                       "lon": -122.315928,
-                                      "name": "Roosevelt",
+                                      "name": "Roosevelt (undefined null)",
                                       "nearbyRoutes": Array [
                                         undefined,
                                       ],
@@ -45536,7 +45538,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         "id": "U3RvcDo0MDo5OTAwMDQ",
                                         "lat": 47.677081,
                                         "lon": -122.315928,
-                                        "name": "Roosevelt",
+                                        "name": "Roosevelt (undefined null)",
                                         "nearbyRoutes": Array [
                                           undefined,
                                         ],
@@ -47327,7 +47329,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           "id": "U3RvcDo0MDo5OTAwMDQ",
                                           "lat": 47.677081,
                                           "lon": -122.315928,
-                                          "name": "Roosevelt",
+                                          "name": "Roosevelt (undefined null)",
                                           "nearbyRoutes": Array [
                                             undefined,
                                           ],
@@ -47870,7 +47872,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             "id": "U3RvcDo0MDo5OTAwMDQ",
                                             "lat": 47.677081,
                                             "lon": -122.315928,
-                                            "name": "Roosevelt",
+                                            "name": "Roosevelt (undefined null)",
                                             "nearbyRoutes": Array [
                                               undefined,
                                             ],
@@ -49549,7 +49551,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               "id": "U3RvcDprY206MjM1NjE",
                               "lat": 47.6771355,
                               "lon": -122.315582,
-                              "name": "Roosevelt Station - Bay 3",
+                              "name": "Roosevelt Station - Bay 3 (undefined 23561)",
                               "nearbyRoutes": Array [
                                 undefined,
                               ],
@@ -50844,7 +50846,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 "id": "U3RvcDprY206MjM1NjE",
                                 "lat": 47.6771355,
                                 "lon": -122.315582,
-                                "name": "Roosevelt Station - Bay 3",
+                                "name": "Roosevelt Station - Bay 3 (undefined 23561)",
                                 "nearbyRoutes": Array [
                                   undefined,
                                 ],
@@ -52162,7 +52164,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       "id": "U3RvcDprY206MjM1NjE",
                                       "lat": 47.6771355,
                                       "lon": -122.315582,
-                                      "name": "Roosevelt Station - Bay 3",
+                                      "name": "Roosevelt Station - Bay 3 (undefined 23561)",
                                       "nearbyRoutes": Array [
                                         undefined,
                                       ],
@@ -53475,7 +53477,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         "id": "U3RvcDprY206MjM1NjE",
                                         "lat": 47.6771355,
                                         "lon": -122.315582,
-                                        "name": "Roosevelt Station - Bay 3",
+                                        "name": "Roosevelt Station - Bay 3 (undefined 23561)",
                                         "nearbyRoutes": Array [
                                           undefined,
                                         ],
@@ -55594,7 +55596,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           "id": "U3RvcDprY206MjM1NjE",
                                           "lat": 47.6771355,
                                           "lon": -122.315582,
-                                          "name": "Roosevelt Station - Bay 3",
+                                          "name": "Roosevelt Station - Bay 3 (undefined 23561)",
                                           "nearbyRoutes": Array [
                                             undefined,
                                           ],
@@ -56240,7 +56242,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             "id": "U3RvcDprY206MjM1NjE",
                                             "lat": 47.6771355,
                                             "lon": -122.315582,
-                                            "name": "Roosevelt Station - Bay 3",
+                                            "name": "Roosevelt Station - Bay 3 (undefined 23561)",
                                             "nearbyRoutes": Array [
                                               undefined,
                                             ],
@@ -62078,7 +62080,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                               "id": "U3RvcDprY206MzY5MzE",
                               "lat": 47.6758652,
                               "lon": -122.313545,
-                              "name": "NE 65th St & 14th Ave NE",
+                              "name": "NE 65th St & 14th Ave NE (undefined 36931)",
                               "nearbyRoutes": Array [
                                 undefined,
                               ],
@@ -63219,7 +63221,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 "id": "U3RvcDprY206MzY5MzE",
                                 "lat": 47.6758652,
                                 "lon": -122.313545,
-                                "name": "NE 65th St & 14th Ave NE",
+                                "name": "NE 65th St & 14th Ave NE (undefined 36931)",
                                 "nearbyRoutes": Array [
                                   undefined,
                                 ],
@@ -64383,7 +64385,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                       "id": "U3RvcDprY206MzY5MzE",
                                       "lat": 47.6758652,
                                       "lon": -122.313545,
-                                      "name": "NE 65th St & 14th Ave NE",
+                                      "name": "NE 65th St & 14th Ave NE (undefined 36931)",
                                       "nearbyRoutes": Array [
                                         undefined,
                                       ],
@@ -65542,7 +65544,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         "id": "U3RvcDprY206MzY5MzE",
                                         "lat": 47.6758652,
                                         "lon": -122.313545,
-                                        "name": "NE 65th St & 14th Ave NE",
+                                        "name": "NE 65th St & 14th Ave NE (undefined 36931)",
                                         "nearbyRoutes": Array [
                                           undefined,
                                         ],
@@ -67430,7 +67432,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           "id": "U3RvcDprY206MzY5MzE",
                                           "lat": 47.6758652,
                                           "lon": -122.313545,
-                                          "name": "NE 65th St & 14th Ave NE",
+                                          "name": "NE 65th St & 14th Ave NE (undefined 36931)",
                                           "nearbyRoutes": Array [
                                             undefined,
                                           ],
@@ -67999,7 +68001,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             "id": "U3RvcDprY206MzY5MzE",
                                             "lat": 47.6758652,
                                             "lon": -122.313545,
-                                            "name": "NE 65th St & 14th Ave NE",
+                                            "name": "NE 65th St & 14th Ave NE (undefined 36931)",
                                             "nearbyRoutes": Array [
                                               undefined,
                                             ],
