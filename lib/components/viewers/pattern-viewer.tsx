@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
+import { FormattedMessage, useIntl } from 'react-intl'
 import { TransitOperator } from '@opentripplanner/types'
-import { useIntl } from 'react-intl'
 import React, { useCallback, useContext, useEffect } from 'react'
 
 import * as apiActions from '../../actions/api'
@@ -17,6 +17,7 @@ import {
   ViewedRouteState
 } from '../util/types'
 import BackButton from '../util/back-button'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import PageTitle from '../util/page-title'
 
 import { RouteRowDetails } from './route-row'
@@ -117,7 +118,7 @@ const PatternViewer = ({
             onClick={_backClicked}
           />
           <h1 style={{ display: 'contents', lineHeight: '1.4' }}>
-            {!route.pending && ModeIcon && (
+            {!route.pending && ModeIcon ? (
               <RouteRowDetails
                 intl={intl}
                 isActive={false}
@@ -125,6 +126,11 @@ const PatternViewer = ({
                 route={route}
                 RouteRenderer={RouteRenderer}
               />
+            ) : (
+              <InvisibleA11yLabel>
+                {/* Show loading text for screen readers while route is loading (axe tests) */}
+                <FormattedMessage id="common.forms.loading" />
+              </InvisibleA11yLabel>
             )}
           </h1>
         </div>
