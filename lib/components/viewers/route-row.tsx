@@ -224,6 +224,7 @@ export class RouteRow extends PureComponent<Props> {
     return (
       <StyledRouteRow ref={this.activeRef}>
         <RouteRowLink
+          aria-current={isActive ? 'page' : false}
           className="clear-button-formatting"
           onFocus={this._onFocusOrEnter}
           onMouseEnter={this._onFocusOrEnter}
