@@ -1,5 +1,4 @@
-import { Alert, Button } from 'react-bootstrap'
-import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
+import { Alert } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { ExclamationCircle } from '@styled-icons/fa-solid/ExclamationCircle'
 import { format, parse } from 'date-fns'
@@ -38,7 +37,6 @@ interface Props {
     forceFetch?: boolean
     stopId: string
   }) => void
-  hideBackButton?: boolean
   homeTimezone: string
   intl: IntlShape
   map?: MapRef
@@ -192,21 +190,10 @@ class StopScheduleViewer extends Component<Props, State> {
   }
 
   _renderHeader = (agencyCount: number) => {
-    const { hideBackButton, stopData, stopId } = this.props
+    const { stopData, stopId } = this.props
     return (
       // CSS class stop-viewer-header is needed for customizing how logos are displayed.
       <div className="stop-viewer-header">
-        {/* Back button */}
-        {!hideBackButton && (
-          <div className="back-button-container">
-            <Button bsSize="small" onClick={this._backClicked}>
-              <IconWithText Icon={ArrowLeft}>
-                <FormattedMessage id="common.forms.back" />
-              </IconWithText>
-            </Button>
-          </div>
-        )}
-
         <HeaderCard>
           {stopData?.name ? (
             <StopCardHeader
