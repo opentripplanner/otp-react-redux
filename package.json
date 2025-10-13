@@ -5,6 +5,7 @@
   "scripts": {
     "a11y-test": "jest a11y/ --runInBand --force-exit",
     "build": "vite build",
+    "bundle-stats": "yarn build && node -e \"require('open')('stats.html')\"",
     "check:i18n-en-fr": "node node_modules/@opentripplanner/scripts/lib/run-validate-i18n.js lib i18n/en-US.yml i18n/fr.yml",
     "unit": "jest __tests__/",
     "lint": "lint-staged",
@@ -188,6 +189,7 @@
     "puppeteer": "^10.2.0",
     "react-scripts": "^4.0.3",
     "redux-mock-store": "^1.5.3",
+    "rollup-plugin-visualizer": "^6.0.4",
     "semantic-release": "^17.2.3",
     "tsdx": "https://github.com/ibi-group/tsdx",
     "typescript": "^4.4.2",

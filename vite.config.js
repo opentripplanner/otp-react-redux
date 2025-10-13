@@ -2,6 +2,7 @@ import path from 'path'
 
 import { defineConfig, transformWithEsbuild } from 'vite'
 import { nodePolyfills } from 'vite-plugin-node-polyfills'
+import { visualizer } from 'rollup-plugin-visualizer'
 import { yamlPlugin } from 'esbuild-plugin-yaml'
 import fs from 'fs-extra'
 import raw from 'vite-raw-plugin'
@@ -125,6 +126,7 @@ export default defineConfig({
     raw({
       fileRegex: /\.graphql$/
     }),
+    visualizer(),
     react()
   ],
   server: {
