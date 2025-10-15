@@ -71,7 +71,6 @@ type Props = {
   ) => void
   geocoderConfig: GeocoderConfig
   getCurrentPosition: any // TODO
-  hideBackButton?: boolean
   hideEmptyStops?: boolean
   location: string
   mobile?: boolean
