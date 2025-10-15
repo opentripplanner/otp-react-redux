@@ -97,7 +97,10 @@ const getNearbyItem = (place: any, feeds?: any[]) => {
     const feedId = place.gtfsId.split(':')[0]
     const feed = feeds.find((f) => f.feedId === feedId)
     const feedName = feed?.publisher?.name
-    placeForFromTo.name = `${place.name} (${feedName} ${place.code})`
+    placeForFromTo.name =
+      feedName || place.code
+        ? `${place.name} (${[feedName, place.code].join(' ')})`
+        : place.name
   }
   const fromTo = <FromToPicker place={placeForFromTo} />
 
