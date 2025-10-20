@@ -2743,6 +2743,42 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
+"@opentripplanner/core-utils@14.2.0":
+  version "14.2.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-14.2.0.tgz#6a047b729ed0572b8ceb0ea0d46a6da64d434a1e"
+  integrity sha512-LR0QBVjf3WNZAL1qYoL+ovA7o2IK/Kn1XCv0z3ZAXSTDBj0bNhRN+i1yrm40KUMtqOikjSp1NUmtXURMUFkwNA==
+  dependencies:
+    "@conveyal/lonlat" "^1.4.1"
+    "@mapbox/polyline" "^1.1.1"
+    "@opentripplanner/geocoder" "3.0.5"
+    "@styled-icons/foundation" "^10.34.0"
+    "@turf/along" "^6.0.1"
+    chroma-js "^2.4.2"
+    date-fns "^2.28.0"
+    date-fns-tz "^1.2.2"
+    graphql "^16.6.0"
+    lodash.clonedeep "^4.5.0"
+    lodash.isequal "^4.5.0"
+    qs "^6.9.1"
+
+"@opentripplanner/core-utils@14.2.2":
+  version "14.2.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-14.2.2.tgz#ce24e1e417404dac8a71075d80a4b5904a542577"
+  integrity sha512-wfQsjhBOcTk3vPWF99jh2tiIgoZhgJYE+gm8H6KnU76pyNpM7WLYarUgyHE+cCeQksKHB17x3UcooGxe5Y/5qw==
+  dependencies:
+    "@conveyal/lonlat" "^1.4.1"
+    "@mapbox/polyline" "^1.1.1"
+    "@opentripplanner/geocoder" "3.0.5"
+    "@styled-icons/foundation" "^10.34.0"
+    "@turf/along" "^6.0.1"
+    chroma-js "^2.4.2"
+    date-fns "^2.28.0"
+    date-fns-tz "^1.2.2"
+    graphql "^16.6.0"
+    lodash.clonedeep "^4.5.0"
+    lodash.isequal "^4.5.0"
+    qs "^6.9.1"
+
 "@opentripplanner/endpoints-overlay@5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-5.0.0.tgz#216ba195ef7cf9dd8f76b862480c018e7b96ffc6"
@@ -2806,6 +2842,14 @@
     "@opentripplanner/core-utils" "13.0.0"
     prop-types "^15.7.2"
 
+"@opentripplanner/icons@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/icons/-/icons-4.1.0.tgz#9f02b318efa9bf9ad26bfbe9ce900da31821f4a5"
+  integrity sha512-lAfyJ1xkOFb42Zy6mehLCEx96kzeEwLWqBotpFy/RJMlXS1jahd/VaPRBqy8dqTUrj8y6zkqWesusDQUXiYLIg==
+  dependencies:
+    "@opentripplanner/core-utils" "14.2.0"
+    prop-types "^15.7.2"
+
 "@opentripplanner/itinerary-body@7.0.4":
   version "7.0.4"
   resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-7.0.4.tgz#d4d2022707f776cb26108a228c09da839dc264fc"
@@ -2814,6 +2858,24 @@
     "@opentripplanner/core-utils" "13.0.1"
     "@opentripplanner/humanize-distance" "2.0.0"
     "@opentripplanner/icons" "4.0.0"
+    "@opentripplanner/location-icon" "2.0.0"
+    "@styled-icons/fa-solid" "^10.34.0"
+    "@styled-icons/foundation" "^10.34.0"
+    date-fns "^2.28.0"
+    date-fns-tz "^1.2.2"
+    flat "^5.0.2"
+    react-animate-height "^3.0.4"
+    react-resize-detector "^4.2.1"
+    string-similarity "^4.0.4"
+
+"@opentripplanner/itinerary-body@8.1.2":
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-8.1.2.tgz#172c0f7df16d4385e46020c6f384a6664292f746"
+  integrity sha512-jy7LEDZi9kkBK2NqORQr+Vu4GEosgdxg+u5SWSpAQ8JeDzipPS9EZxyuFztLll2dM3AikOjac733pACpAv+A6w==
+  dependencies:
+    "@opentripplanner/core-utils" "14.2.2"
+    "@opentripplanner/humanize-distance" "2.0.0"
+    "@opentripplanner/icons" "4.1.0"
     "@opentripplanner/location-icon" "2.0.0"
     "@styled-icons/fa-solid" "^10.34.0"
     "@styled-icons/foundation" "^10.34.0"
