@@ -3119,11 +3119,6 @@
   resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-7.0.0.tgz#53738d408a4be2e59fa414b253aebf999a685550"
   integrity sha512-0wY2bDIBVh1Ax8ebz7QMxBIJT23RYqb7A8xbHA0pDnqYAF9ReTnauCxnog3iWw/+yXdao3PuFDj5eBhiQ4b1zg==
 
-"@opentripplanner/types@8.2.1":
-  version "8.2.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-8.2.1.tgz#2c08e3c7346b9193e8705615bdd5bd7a14122ddf"
-  integrity sha512-zWyBa4kELwP3AKb5sY5SrCHOJWYO2CRJ9AgkAH6yQA2S3Oc1Z6RmZytDMgsTITb/zad9EzerJigGAkuT9DQgtg==
-
 "@opentripplanner/vehicle-rental-overlay@6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/vehicle-rental-overlay/-/vehicle-rental-overlay-6.0.0.tgz#7e9b6306e90fb015d8b2c7cf5055e069b4caf6b0"
