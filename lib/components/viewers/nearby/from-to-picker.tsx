@@ -26,10 +26,10 @@ const FromToPicker = ({ className, place, setLocation }: Props) => {
       <FromToLocationPicker
         label
         onFromClick={useCallback(() => {
-          setLocation({ location, locationType: 'from', reverseGeocode: false })
+          setLocation({ location, locationType: 'from', reverseGeocode: true })
         }, [location, setLocation])}
         onToClick={useCallback(() => {
-          setLocation({ location, locationType: 'to', reverseGeocode: false })
+          setLocation({ location, locationType: 'to', reverseGeocode: true })
         }, [location, setLocation])}
       />
     </span>
