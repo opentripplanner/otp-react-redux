@@ -440,9 +440,8 @@ components:
         kiếm
     OUTSIDE_BOUNDS:
       body: >-
-        {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
-        {locations are}} không nằm trong ranh giới của trình lên kế hoạch chuyến
-        đi.
+        {inputFields} {inputFieldsCount, plural, =0 {} one {Vị trí là} other {Các
+        vị trí là}} không nằm trong ranh giới của trình lên kế hoạch chuyến đi.
       header: Địa điểm nằm ngoài ranh giới
     OUTSIDE_SERVICE_PERIOD:
       body: >-
@@ -571,6 +570,7 @@ components:
       đồ.
     pause: Tạm ngừng
     resume: Tiếp tục
+    unsnooze: Tiếp tục
   SavedTripScreen:
     itineraryLoaded: Đã tải hành trình
     itineraryLoading: Đang tải hành trình
@@ -715,17 +715,17 @@ components:
       lastCheckedText: "Kiểm tra lần cuối: cách đây {formattedDuration}"
       togglePause: Tạm ngừng
       tripIsNotSnoozed: Tạm dừng phần còn lại của ngày hôm nay
-      tripIsSnoozed: Bật lại phân tích chuyến đi
+      tripIsSnoozed: Tiếp tục
       unknownState: Không xác định được trạng thái chuyến đi
       untogglePause: Tiếp tục
     inactive:
-      description: Tiếp tục giám sát chuyến đi để xem trạng thái cập nhật
+      description: Tiếp tục cho để nhận lại thông báo
       heading: Tạm dừng việc giám sát chuyến đi
     nextTripNotPossible:
       description: >
-        Người lập kế hoạch chuyến đi đã không thể tìm thấy chuyến đi của bạn ngày
-        hôm nay. Vui lòng thử cài đặt lại hành trình của bạn để tìm một tuyến đường
-        thay thế.
+        Người lập kế hoạch chuyến đi đã không thể tìm thấy chuyến đi của bạn
+        ngày hôm nay. Vui lòng thử cài đặt lại hành trình của bạn để tìm một
+        tuyến đường thay thế.
       heading: Không thể thực hiện chuyến đi hôm nay
     noLongerPossible:
       description: >
@@ -741,9 +741,10 @@ components:
       description: Đây là chuyến đi một lần đã diễn ra trong quá khứ.
       heading: Chuyến đi trong quá khứ
     snoozed:
-      description: Bật lại tính năng giám sát chuyến đi để xem trạng thái cập 
-        nhật
-      heading: Tạm dừng việc giám sát chuyến đi cho ngày hôm nay
+      description: >-
+        Thông báo chuyến đi sẽ bắt đầu lại ngày chọn tiếp theo. Bấm Tiếp tục cho
+        để nhận lại thông báo hôm nay.
+      heading: Thông báo đã tạm dừng trong ngày hôm nay
     upcoming:
       nextTripBegins: >-
         Chuyến tiếp theo bắt đầu vào {tripDatetime, date, ::eeeee yyyyMMdd} lúc
@@ -765,7 +766,8 @@ components:
     happensOnDays: "Xảy ra vào: {days}"
     monitoredTripDays: Số ngày theo dõi chuyến đi
     notifications: "{leadTimeInMinutes} phút trước khi khởi hành theo lịch trình"
-    notificationsDisabled: Thông báo đã tắt
+    notificationsPaused: Thông báo đã tắt
+    notificationsSnoozed: Thông báo đã tạm dừng trong ngày hôm nay
     timeAndDuration: Thời gian và thời lượng chuyến đi
   TripTools:
     copyLink: Sao chép URL
