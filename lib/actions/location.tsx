@@ -68,6 +68,7 @@ export function getCurrentPosition(
               newError.message = intl.formatMessage({
                 id: 'actions.location.userDeniedPermission'
               })
+              newError.code = error.code
             }
           }
           dispatch(receivedPositionError({ error: newError }))

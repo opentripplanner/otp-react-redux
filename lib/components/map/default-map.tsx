@@ -160,8 +160,10 @@ class DefaultMap extends Component {
     this.state = {
       lat,
       lon,
+      mapLoad: false,
       zoom
     }
+    this.geolocateControlRef = React.createRef<maplibregl.GeolocateControl>()
   }
 
   getNearbyViewFilteredOverlays = () => {
@@ -299,8 +301,15 @@ class DefaultMap extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    const { currentPositionError } = this.props
     // Check if any overlays should be toggled due to mode change
     this._handleQueryChange(prevProps.query, this.props.query)
+
+    // HACK: react-map-gl's GeolocateControl doesn't always accurately reflect that the user has blocked their location, so if we know we don't have access, trigger the button in the background to update the UI to disabled.
+    currentPositionError?.code === 1 &&
+      this.state.mapLoad &&
+      // After the map has loaded, give the GeolocateControl a sec to render.
+      setTimeout(() => this.geolocateControlRef.current?.trigger(), 10)
   }
 
   render() {
@@ -371,7 +380,12 @@ class DefaultMap extends Component {
           }
           baseLayerNames={baseLayerNames}
           center={[lat, lon]}
-          mapLibreProps={{ reuseMaps: true }}
+          mapLibreProps={{
+            onLoad: () => {
+              return this.setState({ mapLoad: true })
+            },
+            reuseMaps: true
+          }}
           maxZoom={maxZoom}
           // In Leaflet, this was an onclick handler. Creating a click handler in
           // MapLibreGL would require writing a custom event handler for all mouse events
@@ -400,6 +414,7 @@ class DefaultMap extends Component {
               getCurrentPosition(intl)
             }}
             position="top-left"
+            ref={this.geolocateControlRef}
           />
           <TransitiveOverlay
             getTransitiveRouteLabel={getTransitiveRouteLabel}
@@ -506,9 +521,10 @@ const mapStateToProps = (state) => {
   const viewedRoute = state.otp?.ui?.viewedRoute?.routeId
   const activeNearbyFilters = state.otp?.ui?.nearbyView?.filters
   const nearbyFilters = state.otp.config?.nearbyView?.filters
-  const stops = state.otp.transitIndex.stops
   const nearbyViewerActive =
     state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW
+
+  const currentPositionError = state.otp.location.currentPosition.error
 
   const viewedRoutePatterns = Object.entries(
     state.otp?.transitIndex?.routes?.[viewedRoute]?.patterns || {}
@@ -532,6 +548,7 @@ const mapStateToProps = (state) => {
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
     carRentalStations: state.otp.overlay.carRental.stations,
     config: state.otp.config,
+    currentPositionError,
     feeds: state.otp.transitIndex.feeds,
     itinerary: getActiveItinerary(state),
     mapConfig: state.otp.config.map,
