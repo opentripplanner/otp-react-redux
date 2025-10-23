@@ -38,11 +38,14 @@ type State = {
 }
 
 const CustomAttribution = styled.div`
-  margin-bottom: 30px;
   margin-top: 5px;
   a {
     color: ${grey[700]};
   }
+`
+
+const ItineraryContainer = styled.div`
+  margin-top: 30px;
 `
 
 class TripPreviewLayoutBase extends Component<Props, State> {
@@ -127,22 +130,23 @@ class TripPreviewLayoutBase extends Component<Props, State> {
 
         {/* The map, if visible */}
         {this.state.mapVisible && mapElement}
-        <CustomAttribution>
-          {attributionHTML && (
+
+        {attributionHTML && (
+          <CustomAttribution>
             <div dangerouslySetInnerHTML={{ __html: attributionHTML }} />
-          )}
-        </CustomAttribution>
+          </CustomAttribution>
+        )}
 
         {/* The main itinerary body */}
         {itinerary && (
-          <>
+          <ItineraryContainer>
             <PrintableItinerary
               config={config}
               itinerary={itinerary}
               LegIcon={LegIcon}
             />
             <TripDetails className="percy-hide" itinerary={itinerary} />
-          </>
+          </ItineraryContainer>
         )}
       </div>
     )
