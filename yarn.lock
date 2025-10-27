@@ -2807,24 +2807,6 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@14.2.1":
-  version "14.2.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-14.2.1.tgz#ca9ebe12bce298762453783673d73add1fc4a826"
-  integrity sha512-drwAkK/s/lOzpOrTSj3HZ4jN58D9pLX/szq4iITTrxtasr0skWD7YQY+bHRz3fdZ5xcBtE7mANCBPclcubCFBQ==
-  dependencies:
-    "@conveyal/lonlat" "^1.4.1"
-    "@mapbox/polyline" "^1.1.1"
-    "@opentripplanner/geocoder" "3.0.5"
-    "@styled-icons/foundation" "^10.34.0"
-    "@turf/along" "^6.0.1"
-    chroma-js "^2.4.2"
-    date-fns "^2.28.0"
-    date-fns-tz "^1.2.2"
-    graphql "^16.6.0"
-    lodash.clonedeep "^4.5.0"
-    lodash.isequal "^4.5.0"
-    qs "^6.9.1"
-
 "@opentripplanner/core-utils@14.2.2", "@opentripplanner/core-utils@file:../../../../tmp/otp-ui-pkg/core-utils":
   version "14.2.2"
   dependencies:
@@ -3102,12 +3084,10 @@
     "@turf/midpoint" "^6.5.0"
     lodash.isequal "^4.5.0"
 
-"@opentripplanner/trip-details@^9.0.2":
+"@opentripplanner/trip-details@file:../../../../tmp/otp-ui-pkg/trip-details":
   version "9.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-details/-/trip-details-9.0.2.tgz#0bf04196aea39fb06792091677c10073b538641b"
-  integrity sha512-xOOl89HJqGKtO1RORsqbkQO8JWaWALOXp7A2H5/SDRv3r90D4L3UMgy6b0V86YdyWC2hVulHEGgQ0gxPb025aw==
   dependencies:
-    "@opentripplanner/core-utils" "14.2.1"
+    "@opentripplanner/core-utils" "14.2.2"
     "@styled-icons/fa-solid" "^10.34.0"
     react-animate-height "^3.0.4"
 
