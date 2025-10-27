@@ -42,7 +42,7 @@
     "@floating-ui/react": "^0.19.2",
     "@opentripplanner/base-map": "6.0.0",
     "@opentripplanner/building-blocks": "3.0.1",
-    "@opentripplanner/core-utils": "14.2.2",
+    "@opentripplanner/core-utils": "/tmp/otp-ui-pkg/core-utils",
     "@opentripplanner/endpoints-overlay": "5.0.0",
     "@opentripplanner/from-to-location-picker": "4.0.1",
     "@opentripplanner/geocoder": "^3.0.5",

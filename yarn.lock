@@ -2825,10 +2825,8 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@14.2.2":
+"@opentripplanner/core-utils@14.2.2", "@opentripplanner/core-utils@file:../../../../tmp/otp-ui-pkg/core-utils":
   version "14.2.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-14.2.2.tgz#ce24e1e417404dac8a71075d80a4b5904a542577"
-  integrity sha512-wfQsjhBOcTk3vPWF99jh2tiIgoZhgJYE+gm8H6KnU76pyNpM7WLYarUgyHE+cCeQksKHB17x3UcooGxe5Y/5qw==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.1"
