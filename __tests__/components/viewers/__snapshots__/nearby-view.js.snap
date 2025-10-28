@@ -40,6 +40,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
           }
         }
         defaultLatLon={null}
+        feeds={Array []}
         fetchNearby={[Function]}
         getCurrentPosition={[Function]}
         homeTimezone="America/Los_Angeles"
@@ -493,6 +494,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
           }
         }
         defaultLatLon={null}
+        feeds={Array []}
         fetchNearby={[Function]}
         getCurrentPosition={[Function]}
         homeTimezone="America/Los_Angeles"
