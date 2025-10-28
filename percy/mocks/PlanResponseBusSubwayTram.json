@@ -375,20 +375,6 @@
               },
               "transitLeg": true,
               "trip": {
-                "arrivalStoptime": {
-                  "stop": {
-                    "gtfsId": "MARTA:40",
-                    "id": "U3RvcDpNQVJUQTo0MA"
-                  },
-                  "stopPosition": 15
-                },
-                "departureStoptime": {
-                  "stop": {
-                    "gtfsId": "MARTA:802",
-                    "id": "U3RvcDpNQVJUQTo4MDI"
-                  },
-                  "stopPosition": 1
-                },
                 "gtfsId": "MARTA:8063444",
                 "id": "VHJpcDpNQVJUQTo4MDYzNDQ0",
                 "tripHeadsign": "H E HOLMES STATION"
@@ -884,20 +870,6 @@
               },
               "transitLeg": true,
               "trip": {
-                "arrivalStoptime": {
-                  "stop": {
-                    "gtfsId": "MARTA:40",
-                    "id": "U3RvcDpNQVJUQTo0MA"
-                  },
-                  "stopPosition": 15
-                },
-                "departureStoptime": {
-                  "stop": {
-                    "gtfsId": "MARTA:802",
-                    "id": "U3RvcDpNQVJUQTo4MDI"
-                  },
-                  "stopPosition": 1
-                },
                 "gtfsId": "MARTA:8063445",
                 "id": "VHJpcDpNQVJUQTo4MDYzNDQ1",
                 "tripHeadsign": "H E HOLMES STATION"
@@ -1393,20 +1365,6 @@
               },
               "transitLeg": true,
               "trip": {
-                "arrivalStoptime": {
-                  "stop": {
-                    "gtfsId": "MARTA:40",
-                    "id": "U3RvcDpNQVJUQTo0MA"
-                  },
-                  "stopPosition": 15
-                },
-                "departureStoptime": {
-                  "stop": {
-                    "gtfsId": "MARTA:802",
-                    "id": "U3RvcDpNQVJUQTo4MDI"
-                  },
-                  "stopPosition": 1
-                },
                 "gtfsId": "MARTA:8063446",
                 "id": "VHJpcDpNQVJUQTo4MDYzNDQ2",
                 "tripHeadsign": "H E HOLMES STATION"

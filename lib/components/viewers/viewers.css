@@ -2,25 +2,21 @@
 
 .otp .route-viewer-header,
 .otp .trip-viewer-header {
-  padding: 12px;
-  margin: 5px;
+  padding: 17px;
+  border-bottom: 1px solid #33333333;
+}
+
+.otp .pattern-viewer-header {
+  padding: 12px 10px;
 }
 
 .otp .route-viewer,
-.otp .stop-viewer,
 .otp .trip-viewer,
 .otp .stop-viewer-body {
   display: flex;
   flex-direction: column;
   flex-flow: column;
   height: 100%;
-}
-
-.otp .route-viewer-body::before {
-  background-color: #33333333;
-  content: "";
-  display: block;
-  height: 2px;
 }
 
 @keyframes yellowfade {
@@ -52,11 +48,10 @@
   padding: 12px;
 }
 
-.otp .stop-viewer .back-button-container,
-.otp .trip-viewer .back-button-container,
-.otp .route-viewer .back-button-container {
-  float: left;
-  margin-right: 10px;
+.otp .trip-viewer .header-with-back-button,
+.otp .pattern-viewer .header-with-back-button {
+  display: flex;
+  gap: 5px;
 }
 
 .otp .trip-viewer .header-text,
@@ -65,11 +60,6 @@
   font-weight: 700;
   font-size: 24px;
   margin: 0;
-}
-
-.otp .trip-viewer .header-text,
-.otp .route-viewer .header-text {
-  display: contents;
 }
 
 .otp .route-viewer .header-text.route-expanded {

@@ -5,6 +5,7 @@
   "scripts": {
     "a11y-test": "jest a11y/ --runInBand --force-exit",
     "build": "vite build",
+    "bundle-stats": "yarn build && node -e \"require('open')('stats.html')\"",
     "check:i18n-en-fr": "node node_modules/@opentripplanner/scripts/lib/run-validate-i18n.js lib i18n/en-US.yml i18n/fr.yml",
     "unit": "jest __tests__/",
     "lint": "lint-staged",
@@ -150,7 +151,7 @@
     "@types/react-router-dom": "^5.1.17",
     "@types/styled-components": "^5.1.14",
     "@types/tinycolor2": "^1.4.3",
-    "@vitejs/plugin-react": "^4.3.4",
+    "@vitejs/plugin-react": "^5.0.4",
     "@wordpress/jest-puppeteer-axe": "^3.1.0",
     "babel-plugin-add-module-exports": "^1.0.4",
     "babel-plugin-lodash": "^3.3.4",
@@ -188,11 +189,12 @@
     "puppeteer": "^10.2.0",
     "react-scripts": "^4.0.3",
     "redux-mock-store": "^1.5.3",
+    "rollup-plugin-visualizer": "^6.0.4",
     "semantic-release": "^17.2.3",
     "tsdx": "https://github.com/ibi-group/tsdx",
     "typescript": "^4.4.2",
-    "vite": "^6.3.6",
-    "vite-plugin-node-polyfills": "^0.23.0",
+    "vite": "^7.1.11",
+    "vite-plugin-node-polyfills": "^0.24.0",
     "vite-raw-plugin": "^1.0.2",
     "yaml-jest": "^1.2.0",
     "yaml-sort": "^2.0.0"
@@ -241,7 +243,7 @@
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix"
     ],
-    "i18n/*.{yml,yaml}": [
+    "i18n/en-US.yml": [
       "yaml-sort --quotingStyle double --input"
     ]
   },

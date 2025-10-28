@@ -8,6 +8,7 @@ import { Times } from '@styled-icons/fa-solid/Times'
 // @ts-expect-error not typescripted yet
 import PrintableItinerary from '@opentripplanner/printable-itinerary'
 import React, { Component, ReactNode } from 'react'
+import styled from 'styled-components'
 
 import {
   addPrintViewClassToRootHtml,
@@ -16,6 +17,7 @@ import {
 import { AppConfig } from '../../util/config-types'
 import { AppReduxState } from '../../util/state-types'
 import { ComponentContext } from '../../util/contexts'
+import { grey } from '../util/colors'
 import { IconWithText } from '../util/styledIcon'
 import PageTitle from '../util/page-title'
 import SpanWithSpace from '../util/span-with-space'
@@ -34,6 +36,17 @@ type Props = {
 type State = {
   mapVisible?: boolean
 }
+
+const CustomAttribution = styled.div`
+  margin-top: 5px;
+  a {
+    color: ${grey[700]};
+  }
+`
+
+const ItineraryContainer = styled.div`
+  margin-top: 30px;
+`
 
 class TripPreviewLayoutBase extends Component<Props, State> {
   static contextType = ComponentContext
@@ -75,6 +88,11 @@ class TripPreviewLayoutBase extends Component<Props, State> {
     } = this.props
     const { LegIcon } = this.context
 
+    // The maplibre attribution can interfere with the map visually when printing, so we'll copy the map attribution and inject it instead below the map container.
+    const attributionHTML = document.querySelector(
+      '.maplibregl-ctrl-attrib-inner'
+    )?.innerHTML
+
     return (
       <div className="otp print-layout">
         <PageTitle title={[title, subTitle]} />
@@ -113,16 +131,22 @@ class TripPreviewLayoutBase extends Component<Props, State> {
         {/* The map, if visible */}
         {this.state.mapVisible && mapElement}
 
+        {attributionHTML && (
+          <CustomAttribution>
+            <div dangerouslySetInnerHTML={{ __html: attributionHTML }} />
+          </CustomAttribution>
+        )}
+
         {/* The main itinerary body */}
         {itinerary && (
-          <>
+          <ItineraryContainer>
             <PrintableItinerary
               config={config}
               itinerary={itinerary}
               LegIcon={LegIcon}
             />
             <TripDetails className="percy-hide" itinerary={itinerary} />
-          </>
+          </ItineraryContainer>
         )}
       </div>
     )

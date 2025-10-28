@@ -748,9 +748,9 @@ components:
       heading: Naka-pause ang pagsubaybay sa biyahe
     nextTripNotPossible:
       description: >
-        Hindi nakita ng planner ng biyahe ang iyong biyahe sa anumang napiling araw
-        ng linggo. Subukang planuhin ulit ang iyong itinerary para makakita ng alternatibong
-        ruta.
+        Hindi nakita ng planner ng biyahe ang iyong biyahe sa anumang napiling
+        araw ng linggo. Subukang planuhin ulit ang iyong itinerary para makakita
+        ng alternatibong ruta.
       heading: Hindi posible ang biyahe ngayong araw
     noLongerPossible:
       description: >
@@ -791,7 +791,7 @@ components:
     happensOnDays: "Mangyayari sa: {days}"
     monitoredTripDays: Mga sinusubaybayang araw ng biyahe
     notifications: "{leadTimeInMinutes} (na) minuto bago ang nakaiskedyul na pag-alis"
-    notificationsDisabled: "Mga Notification: Naka-disable"
+    notificationsPaused: "Mga Notification: Naka-disable"
     timeAndDuration: Oras at tagal ng biyahe
   TripTools:
     copyLink: Kopyahin ang Link

@@ -1,18 +1,13 @@
-import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
-import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
 import { TransitOperator } from '@opentripplanner/types'
 import React, { useCallback, useContext, useEffect } from 'react'
 
 import * as apiActions from '../../actions/api'
 import * as uiActions from '../../actions/ui'
 import { ComponentContext } from '../../util/contexts'
-import { getFormattedMode } from '../../util/i18n'
 import {
-  getModeFromRoute,
-  getRouteColorBasedOnSettings,
+  getPatternViewerColors,
   getRouteOrPatternViewerTitle
 } from '../../util/viewer'
 import { getRouteOperator } from '../../util/state'
@@ -21,18 +16,19 @@ import {
   ViewedRouteObject,
   ViewedRouteState
 } from '../util/types'
-import { StyledIconWrapper } from '../util/styledIcon'
+import BackButton from '../util/back-button'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import PageTitle from '../util/page-title'
 
+import { RouteRowDetails } from './route-row'
 import RouteDetails from './route-details'
-import RouteName from './route-name'
 import VehiclePositionRetriever from './vehicle-position-retriever'
 
 interface Props {
   findRoutesIfNeeded: () => void
-  hideBackButton?: boolean
   setViewedRoute: SetViewedRouteHandler
   transitOperators: TransitOperator[]
+  useRouteColorAsBackground?: boolean
   vehicleIconHighlight: boolean
   viewedRoute?: ViewedRouteState
   viewedRouteObject?: ViewedRouteObject
@@ -40,9 +36,9 @@ interface Props {
 
 const PatternViewer = ({
   findRoutesIfNeeded,
-  hideBackButton,
   setViewedRoute,
   transitOperators,
+  useRouteColorAsBackground,
   vehicleIconHighlight,
   viewedRoute,
   viewedRouteObject: route
@@ -85,15 +81,19 @@ const PatternViewer = ({
   if (patternId && route) {
     // Find operator based on agency_id (extracted from OTP route ID).
     const operator = getRouteOperator(route, transitOperators)
-    const routeColor = getRouteColorBasedOnSettings(operator, route)
-    const textColor = getMostReadableTextColor(routeColor, route?.textColor)
+    const { backgroundColor, textColor } = getPatternViewerColors(
+      useRouteColorAsBackground,
+      operator,
+      route
+    )
     const fill = vehicleIconHighlight === false ? undefined : textColor
 
+    const backButtonText = intl.formatMessage({ id: 'common.forms.back' })
     return (
       <div
         className="route-viewer pattern-viewer"
         style={{
-          backgroundColor: routeColor,
+          backgroundColor: backgroundColor,
           color: textColor,
           fill
         }}
@@ -109,40 +109,30 @@ const PatternViewer = ({
         />
         {/* Header Block */}
         <div
-          className="route-viewer-header"
-          style={{ backgroundColor: routeColor }}
+          className="header-with-back-button pattern-viewer-header"
+          style={{ backgroundColor: backgroundColor }}
         >
-          {/* Back button */}
-          {!hideBackButton && (
-            <div className="back-button-container">
-              <Button bsSize="small" onClick={_backClicked}>
-                <StyledIconWrapper>
-                  <ArrowLeft />
-                </StyledIconWrapper>
-                <FormattedMessage id="common.forms.back" />
-              </Button>
-            </div>
-          )}
-          <div className="header-text route-expanded">
-            <h1 style={{ display: 'contents' }}>
-              {!route.pending && ModeIcon && (
-                <ModeIcon
-                  aria-label={getFormattedMode(
-                    getModeFromRoute(route).toLowerCase(),
-                    intl
-                  )}
-                  mode={getModeFromRoute(route)}
-                  style={{ maxHeight: 40 }}
-                  width={22}
-                />
-              )}
-              <RouteName
-                isOnColoredBackground
+          <BackButton
+            backButtonText={backButtonText}
+            id="pattern-viewer-back-button"
+            onClick={_backClicked}
+          />
+          <h1 style={{ display: 'contents', lineHeight: '1.4' }}>
+            {!route.pending && ModeIcon ? (
+              <RouteRowDetails
+                intl={intl}
+                isActive={false}
+                ModeIcon={ModeIcon}
                 route={route}
                 RouteRenderer={RouteRenderer}
               />
-            </h1>
-          </div>
+            ) : (
+              <InvisibleA11yLabel>
+                {/* Show loading text for screen readers while route is loading (axe tests) */}
+                <FormattedMessage id="common.forms.loading" />
+              </InvisibleA11yLabel>
+            )}
+          </h1>
         </div>
         <RouteDetails operator={operator} patternId={patternId} route={route} />
       </div>
@@ -158,6 +148,8 @@ const mapStateToProps = (state: any) => {
   const { viewedRoute } = state.otp.ui
   return {
     transitOperators: state.otp.config.transitOperators,
+    useRouteColorAsBackground:
+      state.otp.config?.routeViewer?.useRouteColorAsBackground,
     vehicleIconHighlight: state.otp.config?.routeViewer?.vehicleIconHighlight,
     viewedRoute,
     viewedRouteObject: state.otp.transitIndex.routes?.[viewedRoute?.routeId]

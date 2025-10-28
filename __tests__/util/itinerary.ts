@@ -24,15 +24,34 @@ describe('util > itinerary', () => {
     }
     const rentalCarLeg = {
       mode: 'CAR_RENT',
-      rentedCar: true
+      // Note: OTP2 sets rentedBike to true for all rented vehicles, including rented cars.
+      rentedBike: true
     }
     const rentalMicromobilityLeg = {
       mode: 'MICROMOBILITY_RENT',
-      rentedVehicle: true
+      // Note: OTP2 sets rentedBike to true for all rented vehicles, including rented scooters.
+      rentedBike: true
     }
     const rideHailLeg = {
-      hailedCar: true,
-      mode: 'CAR_HAIL'
+      mode: 'CAR_HAIL',
+      rideHailingEstimate: {
+        arrival: 'PT4M',
+        maxPrice: {
+          amount: 19,
+          currency: {
+            code: 'USD'
+          }
+        },
+        minPrice: {
+          amount: 17,
+          currency: {
+            code: 'USD'
+          }
+        },
+        provider: {
+          id: 'ride-hail-platform'
+        }
+      }
     }
 
     const testCases = [
@@ -66,7 +85,7 @@ describe('util > itinerary', () => {
           legs: [walkLeg, rentalBikeLeg]
         },
         title:
-          'should be true for an itinerary without transit and without rentals.'
+          'should be false for an itinerary without transit and with a rented bike.'
       },
       {
         expected: false,
@@ -116,27 +135,15 @@ describe('util > itinerary', () => {
     })
   })
   describe('getItineraryDefaultMonitoredDays', () => {
-    const transitLegWeekday = {
-      mode: 'BUS',
-      serviceDate: '20210609', // Wednesday
-      transitLeg: true
-    }
-    const transitLegSaturday = {
-      mode: 'BUS',
-      serviceDate: '20210612', // Saturday
-      transitLeg: true
-    }
-    const transitLegSunday = {
-      mode: 'BUS',
-      serviceDate: '20210613', // Sunday
-      transitLeg: true
-    }
+    const THURSDAY_20210610_1218_EDT = 1623341891000
+    const SATURDAY_20210612_1218_EDT = 1623514691000
+    const SUNDAY_20210613_1218_EDT = 1623601091000
 
     const testCases = [
       {
         expected: WEEKDAYS,
         itinerary: {
-          legs: [walkLeg, transitLegWeekday]
+          startTime: THURSDAY_20210610_1218_EDT
         },
         title:
           "should be ['monday' thru 'friday'] for an itinerary starting on a weekday."
@@ -144,7 +151,7 @@ describe('util > itinerary', () => {
       {
         expected: WEEKEND_DAYS,
         itinerary: {
-          legs: [walkLeg, transitLegSaturday]
+          startTime: SATURDAY_20210612_1218_EDT
         },
         title:
           "should be ['saturday', 'sunday'] for an itinerary starting on a Saturday."
@@ -152,37 +159,10 @@ describe('util > itinerary', () => {
       {
         expected: WEEKEND_DAYS,
         itinerary: {
-          legs: [walkLeg, transitLegSunday]
+          startTime: SUNDAY_20210613_1218_EDT
         },
         title:
           "should be ['saturday', 'sunday'] for an itinerary starting on a Sunday."
-      },
-      {
-        expected: WEEKDAYS,
-        itinerary: {
-          legs: [walkLeg],
-          startTime: 1623341891000 // Thursday 2021-06-10 12:18 pm EDT
-        },
-        title:
-          "should be ['monday' thru 'friday'] for an itinerary without transit starting on a weekday (fallback case)."
-      },
-      {
-        expected: WEEKEND_DAYS,
-        itinerary: {
-          legs: [walkLeg],
-          startTime: 1623514691000 // Saturday 2021-06-12 12:18 pm EDT
-        },
-        title:
-          "should be ['saturday', 'sunday'] for an itinerary without transit starting on a Saturday (fallback case)."
-      },
-      {
-        expected: WEEKEND_DAYS,
-        itinerary: {
-          legs: [walkLeg],
-          startTime: 1623601091000 // Sunday 2021-06-13 12:18 pm EDT
-        },
-        title:
-          "should be ['saturday', 'sunday'] for an itinerary without transit starting on a Sunday (fallback case)."
       }
     ]
 
