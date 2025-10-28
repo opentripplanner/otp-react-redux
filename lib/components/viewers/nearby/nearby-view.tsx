@@ -102,7 +102,12 @@ const getNearbyItem = (place: any, feeds?: any[]) => {
         ? `${place.name} (${feedName} ${place.code})`
         : place.name
   }
-  const fromTo = <FromToPicker place={placeForFromTo} />
+  const fromTo = (
+    <FromToPicker
+      place={place}
+      reverseGeocode={place?.__typename === 'RentalVehicle'}
+    />
+  )
 
   switch (place.__typename) {
     case 'RentalVehicle':
