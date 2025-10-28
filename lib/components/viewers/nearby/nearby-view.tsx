@@ -91,7 +91,12 @@ type Props = {
 }
 
 const getNearbyItem = (place: any) => {
-  const fromTo = <FromToPicker place={place} />
+  const fromTo = (
+    <FromToPicker
+      place={place}
+      reverseGeocode={place?.__typename === 'RentalVehicle'}
+    />
+  )
 
   switch (place.__typename) {
     case 'RentalVehicle':
