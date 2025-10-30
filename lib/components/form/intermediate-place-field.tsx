@@ -34,6 +34,8 @@ class IntermediatePlaceField extends Component<Props> {
       <StyledLocationField
         {...this.props}
         clearLocation={this._removeIntermediatePlace}
+        // @ts-expect-error location-field is incorrectly typed. Why are there two GeocoderConfig types with different contents?
+        geocoderConfig={{ ...this.props.geocoderConfig, layers: 'stops' }}
         locationType={`intermediate-place-${index}`}
       />
     )
