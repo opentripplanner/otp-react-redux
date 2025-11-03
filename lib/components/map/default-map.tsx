@@ -2,9 +2,15 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import { connect } from 'react-redux'
+import {
+  findRequiredOptionsForTransportMode,
+  RequiredOptionsForTransportMode
+} from '@opentripplanner/trip-form'
 import { GeolocateControl, NavigationControl } from 'react-map-gl/maplibre'
 import { getCurrentDate } from '@opentripplanner/core-utils/lib/time'
 import { injectIntl } from 'react-intl'
+import { MapLocationActionArg } from '@opentripplanner/types'
+import { QueryParamChangeEvent } from '@opentripplanner/trip-form/lib/types'
 import BaseMap from '@opentripplanner/base-map'
 import generateOTP2TileLayers from '@opentripplanner/otp2-tile-overlay'
 import React, { Component } from 'react'
@@ -19,10 +25,17 @@ import {
   vehicleRentalQuery
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
+import { decodeQueryParams } from 'serialize-query-params'
 import { getActiveItinerary, getActiveSearch } from '../../util/state'
 import { getCurrentPosition } from '../../actions/location'
 import { MainPanelContent } from '../../actions/ui-constants'
+import {
+  modesQueryParamConfig,
+  onSettingsUpdate,
+  setModeButton
+} from '../form/util'
 import { setLocation, setMapPopupLocationAndGeocode } from '../../actions/map'
+import { setQueryParam } from '../../actions/form'
 import { setViewedStop } from '../../actions/ui'
 import { updateOverlayVisibility } from '../../actions/config'
 import TransitOperatorIcons from '../util/connected-transit-operator-icons'
@@ -142,6 +155,48 @@ function getLayerName(overlay, config, intl) {
     default:
       console.warn(`No name found for overlay type ${type}.`)
       return type
+  }
+}
+
+/**
+ * Creates a location handler that enables rental vehicle query params when the user
+ * clicks "from here" on a rental vehicle in Nearby view. Ideally, this logic would take place
+ * at a lower level, but the location handler is passed into an OTP-UI component from here; this
+ * is the lowest level achievable in OTP-RR
+ */
+const createLocationHandler = (
+  config,
+  enabledModeButtons,
+  setQueryParam,
+  setLocation,
+  overlays
+): ((location: MapLocationActionArg) => void) => {
+  return (location: MapLocationActionArg) => {
+    const overlayTypes = overlays
+      ?.find((overlay) => overlay?.type === 'otp2')
+      ?.layers?.map((layer) => layer?.type)
+    if (overlayTypes && overlayTypes.includes('rentalVehicles')) {
+      const requiredOptions: RequiredOptionsForTransportMode =
+        findRequiredOptionsForTransportMode(
+          config.modes.modeButtons,
+          config.modes.modeSettingDefinitions,
+          { mode: 'SCOOTER', qualifier: 'RENT' }
+        )
+      if (requiredOptions) {
+        const modeSetter = setModeButton(
+          enabledModeButtons,
+          onSettingsUpdate(setQueryParam)
+        )
+
+        modeSetter(requiredOptions.modeButton, true)
+
+        if (requiredOptions.modeSetting)
+          onSettingsUpdate(setQueryParam)({
+            [requiredOptions.modeSetting]: true
+          })
+      }
+    }
+    setLocation(location)
   }
 }
 
@@ -310,6 +365,7 @@ class DefaultMap extends Component {
       carRentalQuery,
       carRentalStations,
       config,
+      enabledModeButtons,
       feeds,
       getCurrentPosition,
       intl,
@@ -319,6 +375,7 @@ class DefaultMap extends Component {
       nearbyViewActive,
       pending,
       setLocation,
+      setQueryParam,
       setViewedStop,
       vehicleRentalQuery,
       vehicleRentalStations,
@@ -476,7 +533,13 @@ class DefaultMap extends Component {
                     name: getLayerName(l, config, intl) || l.network || l.type
                   })),
                   vectorTilesEndpoint,
-                  setLocation,
+                  createLocationHandler(
+                    config,
+                    enabledModeButtons,
+                    setQueryParam,
+                    setLocation,
+                    overlays
+                  ),
                   setViewedStop,
                   viewedRouteStops,
                   config.companies,
@@ -526,12 +589,20 @@ const mapStateToProps = (state) => {
           )
         )
       : null
+  const urlSearchParams = new URLSearchParams(state.router.location.search)
+  const { modes } = state.otp.config
 
   return {
     activeNearbyFilters,
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
     carRentalStations: state.otp.overlay.carRental.stations,
     config: state.otp.config,
+    enabledModeButtons:
+      decodeQueryParams(modesQueryParamConfig, {
+        modeButtons: urlSearchParams.get('modeButtons')
+      })?.modeButtons ||
+      modes?.initialState?.enabledModeButtons ||
+      {},
     feeds: state.otp.transitIndex.feeds,
     itinerary: getActiveItinerary(state),
     mapConfig: state.otp.config.map,
@@ -553,6 +624,7 @@ const mapDispatchToProps = {
   getCurrentPosition,
   setLocation,
   setMapPopupLocationAndGeocode,
+  setQueryParam,
   setViewedStop,
   updateOverlayVisibility,
   vehicleRentalQuery
