@@ -49,12 +49,6 @@ export interface ItineraryFareSummary {
   transitFare?: number
 }
 
-// Similar to OTP-UI's FareProductSelector, but the fields are nullable.
-interface RelaxedFareProductSelector {
-  mediumId: string | null
-  riderCategoryId: string | null
-}
-
 /**
  * Determines whether the specified Itinerary can be monitored.
  * @returns true if an itinerary has no rental or ride hail leg (e.g. CAR_RENT, CAR_HAIL, BICYCLE_RENT, etc.).
@@ -274,7 +268,7 @@ function getDriveTime(itinerary: Itinerary): number {
  */
 export function getFare(
   itinerary: Itinerary,
-  defaultFareType?: RelaxedFareProductSelector
+  defaultFareType?: FareProductSelector
 ): ItineraryFareSummary {
   const { maxTNCFare, minTNCFare } =
     coreUtils.itinerary.calculateTncFares(itinerary)
@@ -314,9 +308,9 @@ const DEFAULT_COSTS = {
 export function getTotalFare(
   itinerary: Itinerary,
   configCosts = {},
-  defaultFareType: RelaxedFareProductSelector = {
-    mediumId: null,
-    riderCategoryId: null
+  defaultFareType: FareProductSelector = {
+    mediumId: undefined,
+    riderCategoryId: undefined
   }
 ): number | null {
   // Get TNC fares.
