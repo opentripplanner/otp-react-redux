@@ -633,6 +633,7 @@ components:
       請查看您的電子郵件收件匣，並前往信件中的連結以驗證您的電子郵件地址，再完成帳戶設定。
     instructions2: 驗證之後，請按下方按鈕以繼續。
     resendVerification: 重新寄送驗證電子郵件
+    instructions3: 您可以規劃行程，並隨時返回此頁面以繼續設定您的帳戶.
   ViewSwitcher:
     nearby: 檢視附近
     switcher: 切換工具
