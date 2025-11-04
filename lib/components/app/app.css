@@ -300,7 +300,10 @@
   border: 2px solid black;
   box-sizing: border-box;
   height: 400px;
-  margin-bottom: 30px;
+}
+
+.otp.print-layout details.maplibregl-ctrl-attrib {
+  display: none;
 }
 
 /* View Switcher Styling */

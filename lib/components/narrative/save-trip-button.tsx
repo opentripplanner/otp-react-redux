@@ -1,6 +1,7 @@
 import { Ban } from '@styled-icons/fa-solid/Ban'
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
+import { Itinerary } from '@opentripplanner/types'
 import { Lock } from '@styled-icons/fa-solid/Lock'
 import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { PlusCircle } from '@styled-icons/fa-solid/PlusCircle'
@@ -10,16 +11,13 @@ import { AppReduxState } from '../../util/state-types'
 import { CREATE_TRIP_PATH } from '../../util/constants'
 import { getActiveItinerary } from '../../util/state'
 import { IconWithText } from '../util/styledIcon'
-import {
-  itineraryCanBeMonitored,
-  ItineraryWithOtp1HailedCar
-} from '../../util/itinerary'
+import { itineraryCanBeMonitored } from '../../util/itinerary'
 import { PersistenceConfig } from '../../util/config-types'
 import { UnstyledLink } from '../user/styled'
 import { User } from '../user/types'
 
 interface Props {
-  itinerary?: ItineraryWithOtp1HailedCar
+  itinerary?: Itinerary
   loggedInUser?: User
   persistence?: PersistenceConfig
 }
@@ -106,7 +104,7 @@ const SaveTripButton = ({
 const mapStateToProps = (state: AppReduxState) => {
   const { persistence } = state.otp.config
   return {
-    itinerary: getActiveItinerary(state) as ItineraryWithOtp1HailedCar,
+    itinerary: getActiveItinerary(state) as Itinerary,
     loggedInUser: state.user.loggedInUser,
     persistence
   }
