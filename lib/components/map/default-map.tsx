@@ -162,8 +162,6 @@ interface DefaultMapProps {
   mapConfig: any
   nearbyViewActive: any
   pending: any
-  // need to update usages to reflect name change:
-  // vehicleRentalStations: RentalVehicle[]
   rentalVehicleQuery: any
   rentalVehicles: RentalVehicle[]
   setLocation: any
