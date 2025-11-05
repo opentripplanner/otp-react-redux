@@ -64,6 +64,7 @@ type Props = {
   defaultLatLon: LatLonObj | null
   displayedCoords?: LatLonObj
   entityId?: string
+  feeds: any[]
   fetchNearby: (
     latLon: LatLonObj,
     radius?: number,
@@ -71,7 +72,6 @@ type Props = {
   ) => void
   geocoderConfig: GeocoderConfig
   getCurrentPosition: any // TODO
-  hideBackButton?: boolean
   hideEmptyStops?: boolean
   location: string
   mobile?: boolean
@@ -91,8 +91,23 @@ type Props = {
   zoomToPlace: ZoomToPlaceHandler
 }
 
-const getNearbyItem = (place: any) => {
-  const fromTo = <FromToPicker place={place} />
+const getNearbyItem = (place: any, feeds?: any[]) => {
+  const placeForFromTo = { ...place }
+  if (place.__typename === 'Stop' && feeds) {
+    const feedId = place.gtfsId.split(':')[0]
+    const feed = feeds.find((f) => f.feedId === feedId)
+    const feedName = feed?.publisher?.name
+    placeForFromTo.name =
+      feedName && place.code
+        ? `${place.name} (${feedName} ${place.code})`
+        : place.name
+  }
+  const fromTo = (
+    <FromToPicker
+      place={placeForFromTo}
+      reverseGeocode={place?.__typename === 'RentalVehicle'}
+    />
+  )
 
   switch (place.__typename) {
     case 'RentalVehicle':
@@ -148,6 +163,7 @@ function NearbyView({
   defaultLatLon,
   displayedCoords,
   entityId,
+  feeds,
   fetchNearby,
   geocoderConfig,
   getCurrentPosition,
@@ -346,7 +362,10 @@ function NearbyView({
           /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
           tabIndex={0}
         >
-          {getNearbyItem({ ...n.place, distance: n.distance, nearbyRoutes })}
+          {getNearbyItem(
+            { ...n.place, distance: n.distance, nearbyRoutes },
+            feeds
+          )}
         </div>
       </li>
     ))
@@ -428,10 +447,13 @@ function NearbyView({
           suggestionCount={geocoderConfig?.resultsCount}
         />
         {nearbyFilters && (
-          <div
+          <fieldset
             className="filter-container"
             style={{ display: 'flex', gap: '10px', marginTop: '10px' }}
           >
+            <InvisibleA11yLabel as="legend" style={{ position: 'absolute' }}>
+              <FormattedMessage id="components.NearbyView.filterNearby" />
+            </InvisibleA11yLabel>
             {nearbyFilters.map((filter: NearbyFilterConfig) => {
               return (
                 <FilterCheckboxes
@@ -442,7 +464,7 @@ function NearbyView({
                 />
               )
             })}
-          </div>
+          </fieldset>
         )}
       </div>
 
@@ -523,6 +545,7 @@ const mapStateToProps = (state: AppReduxState) => {
     defaultLatLon,
     displayedCoords: nearby?.coords,
     entityId: entityId && decodeURIComponent(entityId),
+    feeds: state.otp.transitIndex.feeds,
     geocoderConfig: config.geocoder,
     hideEmptyStops: config.nearbyView?.hideEmptyStops,
     homeTimezone: config.homeTimezone,

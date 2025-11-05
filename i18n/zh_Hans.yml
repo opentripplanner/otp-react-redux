@@ -55,6 +55,7 @@ actions:
     smsInvalidCode: 您输入的代码无效. 请再试一次.
     smsResendThrottled: 不到一分钟前一条验证短信已经发送到指定的电话号码上. 请稍后再试.
     smsVerificationFailed: 您的手机无法被验证. 也许你输入的代码已经过期. 请申请一个新的代码并重新尝试.
+    tripDeleted: 您的行程已删除.
 common:
   coordinates: "{lat}, {lon}"
   dateExpressions:
@@ -186,7 +187,7 @@ components:
   BatchRoutingPanel:
     shortTitle: 计划行程
   BatchSearchScreen:
-    advancedHeader: 高级偏好设置
+    advancedHeader: 高级偏好
     header: 计划您的行程
     modeSelectorLabel: 选择出行模式
     moreOptions: 更多选项
@@ -199,7 +200,7 @@ components:
     invalidModeSelection: 无法使用所选模式计划行程。尝试在模式选择中包括公交。
     origin: 出发地
     planTripTooltip: 计划行程
-    validationMessage: "请定义以下字段来计划旅行: {issues}"
+    validationMessage: "请定义以下字段以计划行程: {issues}"
   BeforeSignInScreen:
     mainTitle: 签到
     message: |
@@ -259,6 +260,8 @@ components:
     nameAlreadyUsed: 您已经在另一个地点使用这个名字. 请输入一个不同的名字.
     placeNotFound: 未找到地点
     placeNotFoundDescription: 对不起, 没有找到要求的地方.
+    charactersOverLimit: '{chars, plural, one {# 字符数超出限制} other {# 字符数超出限制} }'
+    nameTooLong: 名称须少于 {char} 个字符.
   FormNavigationButtons:
     ariaLabel: 表格导航
   ItinerarySummary:
@@ -352,9 +355,10 @@ components:
     header: 查看附近
     headsign: "{destination}"
     nearbyListIntro: 附近 {count} 个实体的列表。
-    nothingNearby: 附近没有地方。
+    nothingNearby: 附近没有地点.
     searchNearby: 搜索附近…
     spacesAvailable: "{spacesAvailable} 可用空位"
+    nothingNearbyHeader: 超出范围
   NewAccountWizard:
     createNewAccount: 创建一个新账户
     finish: 账户设置完成!
@@ -387,8 +391,8 @@ components:
       header: 搜索窗口中没有公交连接
     OUTSIDE_BOUNDS:
       body: >-
-        {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
-        {locations are}}不在Trip Planner的范围内。
+        {inputFields} {inputFieldsCount, plural, =0 {} one {位置是} other {位置是}}不在Trip
+        Planner的范围内。
       header: 位置超出边界
     OUTSIDE_SERVICE_PERIOD:
       body: 指定的日期不在当前加载到Trip Planner中的数据范围内。
@@ -402,6 +406,9 @@ components:
     inputFields:
       FROM: 起源
       TO: 目的地
+    OTP_RR_TRIP_IN_PAST:
+      header: 行程已发生
+      body: 部分路线已过期.
   PhoneNumberEditor:
     changeNumber: 更改电话号码
     invalidCode: 请输入6位数的验证码.
@@ -489,7 +496,7 @@ components:
     tripNotifications: 行程通知
   SavedTripList:
     alertTag: "{alert, plural, one {View one alert} other {View # alerts}}"
-    fromTo: 从 {from} 到 {to}
+    fromTo: 从 {from} 这里 {to}
     myTrips: 我的行程
     noSavedTrips: 你没有保存的行程
     noSavedTripsInstructions: 首先从地图上进行行程搜索.
@@ -577,7 +584,7 @@ components:
     tripNamePrompt: "请为这次旅行提供一个名称:"
     tripNotAvailableOnDay: 此行程每 {repeatedDay} 不举行!
     unsavedChangesExistingTrip: 您还没有保存你的行程. 如果您离开了，变更就会消失.
-    unsavedChangesNewTrip: 您还没有保存您的新旅行. 如果您离开，它就会消失.
+    unsavedChangesNewTrip: 您尚未保存新行程。若您离开本页面，该行程将丢失。
   TripCompanionsPane:
     companionLabel: 此行程中的伙伴：
     observersLabel: 观察此行程的人员：
@@ -612,16 +619,16 @@ components:
       lastCheckedText: "最后一次检查: {formattedDuration} 前"
       togglePause: 暂停
       tripIsNotSnoozed: 将今天剩下的时间设为打盹状态
-      tripIsSnoozed: 重新开启行程分析功能
+      tripIsSnoozed: 取消暂停
       unknownState: 未知的旅行状态
       untogglePause: 继续
     inactive:
-      description: 恢复行程监控以查看最新状态
-      heading: 行程监控暂停了
+      description: 点击恢复，接收通知.
+      heading: 已暂停通知.
     nextTripNotPossible:
       description: |
-        行程规划器无法找到您今天的行程. 请尝试重新规划您的行程寻找其他路线.
-      heading: 今天的行程已不可能进行
+        由于路线可能发生一次或多次变更，多次定位尝试路线失败后，已暂停今日监控。  点击取消暂停，即可恢复行程监控。若仍无法监控，请点击新建行程，保存最新路线用于监控.
+      heading: 无法监控行程
     noLongerPossible:
       description: |
         行程规划器无法找到您在一周内任何选定日期的行程。请尝试重新规划您的行程，寻找其他路线。
@@ -634,8 +641,8 @@ components:
       description: 这是一次已结束的单次行程。
       heading: 行程已过期
     snoozed:
-      description: 重新启用行程监控以查看最新状态.
-      heading: 今天行程监控为打盹状态
+      description: 本次行程通知将在下一个可选日期自动开启。取消暂停，重启监控功能并接收今日通知.
+      heading: 已暂停今日通知.
     upcoming:
       nextTripBegins: >-
         下一趟旅程于 {tripDatetime, date, ::eeeee yyyyMMdd} {tripDatetime, time,
@@ -654,7 +661,7 @@ components:
     happensOnDays: "发生在: {days}"
     monitoredTripDays: 行程监测日期
     notifications: 预定出发前 {leadTimeInMinutes}
-    notificationsDisabled: "通知: 已禁用"
+    notificationsPaused: "通知: 已禁用"
     timeAndDuration: 行程时间与时长
   TripTools:
     copyLink: 复制链接
@@ -714,7 +721,7 @@ components:
     nearby: 查看附近
     switcher: 切换按钮
   WelcomeScreen:
-    prompt: 你想去哪里？
+    prompt: 您想去哪里？
 config:
   accessModes:
     car_hail: Ride Hail

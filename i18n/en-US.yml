@@ -396,6 +396,7 @@ components:
     distanceAway: "{localizedDistanceString} away"
     error: An error occurred loading nearby amenities.
     errorHeader: Error
+    filterNearby: Filter nearby results
     header: Nearby View
     headsign: "{destination}"
     nearbyListIntro: List of {count} nearby entities.
@@ -437,6 +438,9 @@ components:
         A transit connection was found, but it was outside the search window,
         try adjusting your search window, using the vehicle types you selected.
       header: No transit connection in search window
+    OTP_RR_TRIP_IN_PAST:
+      body: One or more of these itineraries ends in the past.
+      header: Trip has already occurred
     OUTSIDE_BOUNDS:
       body: >-
         {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
@@ -565,6 +569,7 @@ components:
     noSavedTripsInstructions: Perform a trip search from the map first.
     pause: Pause
     resume: Resume
+    unsnooze: Unsnooze
   SavedTripScreen:
     itineraryLoaded: Itinerary loaded
     itineraryLoading: Loading itinerary
@@ -694,12 +699,12 @@ components:
       lastCheckedText: "Last checked: {formattedDuration} ago"
       togglePause: Pause
       tripIsNotSnoozed: Snooze for rest of today
-      tripIsSnoozed: Unsnooze trip analysis
+      tripIsSnoozed: Unsnooze
       unknownState: Unknown Trip State
       untogglePause: Resume
     inactive:
-      description: Resume trip monitoring to see the updated status
-      heading: Trip monitoring is paused
+      description: Resume to receive notifications.
+      heading: Notifications are paused.
     nextTripNotPossible:
       description: >
         After multiple failed attempts to locate your itinerary, monitoring has
@@ -722,8 +727,10 @@ components:
       description: This is a one-time trip that occurred in the past.
       heading: Trip is in the past
     snoozed:
-      description: Unsnooze trip monitoring to see the updated status.
-      heading: Trip monitoring is snoozed for today
+      description: >-
+        Notifications for this trip will automatically begin on the next
+        selected available day. Unsnooze to receive notifications today.
+      heading: Notifications are snoozed for today.
     upcoming:
       nextTripBegins: >-
         Next trip starts on {tripDatetime, date, ::eeeee yyyyMMdd} at
@@ -742,7 +749,8 @@ components:
     happensOnDays: "Happens on: {days}"
     monitoredTripDays: Trip monitored days
     notifications: "{leadTimeInMinutes} min. before scheduled departure"
-    notificationsDisabled: Notifications disabled
+    notificationsPaused: Notifications are paused.
+    notificationsSnoozed: Notifications are snoozed for today.
     timeAndDuration: Trip time and duration
   TripTools:
     copyLink: Copy Link

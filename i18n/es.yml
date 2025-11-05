@@ -583,6 +583,7 @@ components:
       mapa.
     pause: Pausa
     resume: Reanudar
+    unsnooze: Reanudar
   SavedTripScreen:
     itineraryLoaded: Itinerario cargado
     itineraryLoading: Cargando el itinerario
@@ -727,17 +728,16 @@ components:
       lastCheckedText: "Últimos comprobados: Hace {formattedDuration}"
       togglePause: Pausa
       tripIsNotSnoozed: Pausar para el resto del día
-      tripIsSnoozed: Reactivar el análisis de los viajes
+      tripIsSnoozed: Reactivar
       unknownState: Estado de viaje desconocido
       untogglePause: Reanudar
     inactive:
-      description: Reanudar la supervisión del viaje para ver el estado 
-        actualizado
+      description: Reanudar para recebir notificaciones.
       heading: La supervisión del viaje está en pausa
     nextTripNotPossible:
       description: >
-        El planificador de viajes no ha podido encontrar su viaje hoy. Intente volver
-        a planificar su itinerario para encontrar una ruta alternativa.
+        El planificador de viajes no ha podido encontrar su viaje hoy. Intente
+        volver a planificar su itinerario para encontrar una ruta alternativa.
       heading: El viaje no es posible hoy
     noLongerPossible:
       description: >
@@ -753,9 +753,11 @@ components:
       description: Un viaje que ocurrió el pasado.
       heading: Viaje realizado
     snoozed:
-      description: Reactivar la supervisión del viaje para ver el estado 
-        actualizado.
-      heading: El seguimiento del viaje se ha suspendido por hoy
+      description: >-
+        Las notificaciones de este viaje se activarán automáticamente el
+        siguiente día disponible seleccionado. Haga clic en Reanudar para
+        recibir notificaciones hoy.
+      heading: Notificaciones suspendidas por hoy.
     upcoming:
       nextTripBegins: >-
         El próximo viaje comienza el {tripDatetime, date, ::eeeee yyyyMMdd} a
@@ -777,7 +779,8 @@ components:
     happensOnDays: "Ocurre en: {days}"
     monitoredTripDays: Días de viaje monitoreados
     notifications: "{leadTimeInMinutes} minutos antes de la salida programada"
-    notificationsDisabled: Notificaciones desactivadas
+    notificationsPaused: Notificaciones desactivadas
+    notificationsSnoozed: Notificaciones suspendidas por hoy.
     timeAndDuration: Tiempo y duración del viaje
   TripTools:
     copyLink: Copiar enlace

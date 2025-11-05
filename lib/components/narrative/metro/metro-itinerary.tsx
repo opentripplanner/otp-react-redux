@@ -341,8 +341,7 @@ class MetroItinerary extends NarrativeItinerary {
 
     if (
       // Display special message if there are multiple fare products, but no primary product configured
-      // @ts-expect-error TS seems to not understand the optional?
-      itinerary.legs.some((leg: Leg) => leg.fareProducts?.length > 1) &&
+      itinerary.legs.some((leg: Leg) => leg.fareProducts?.length ?? 0 > 1) &&
       !defaultFareType
     ) {
       console.log("Missing DefaultFareType! Can't display default fare")

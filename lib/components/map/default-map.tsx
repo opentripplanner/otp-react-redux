@@ -191,8 +191,9 @@ class DefaultMap extends Component<DefaultMapProps> {
   }
 
   getNearbyViewFilteredOverlays = () => {
-    const { activeNearbyFilters, mapConfig } = this.props
+    const { activeNearbyFilters, mapConfig, nearbyFilters } = this.props
     const { overlays } = mapConfig
+    if (!nearbyFilters) return overlays
     const nearbyViewFilteredOverlays = overlays
       ?.filter((overlay) =>
         overlay.cardType ? activeNearbyFilters[overlay.cardType] : true
