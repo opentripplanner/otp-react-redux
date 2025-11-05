@@ -55,6 +55,7 @@ actions:
     smsInvalidCode: 您输入的代码无效. 请再试一次.
     smsResendThrottled: 不到一分钟前一条验证短信已经发送到指定的电话号码上. 请稍后再试.
     smsVerificationFailed: 您的手机无法被验证. 也许你输入的代码已经过期. 请申请一个新的代码并重新尝试.
+    tripDeleted: 您的行程已删除.
 common:
   coordinates: "{lat}, {lon}"
   dateExpressions:
@@ -259,6 +260,8 @@ components:
     nameAlreadyUsed: 您已经在另一个地点使用这个名字. 请输入一个不同的名字.
     placeNotFound: 未找到地点
     placeNotFoundDescription: 对不起, 没有找到要求的地方.
+    charactersOverLimit: '{chars, plural, one {# 字符数超出限制} other {# 字符数超出限制} }'
+    nameTooLong: 名称须少于 {char} 个字符.
   FormNavigationButtons:
     ariaLabel: 表格导航
   ItinerarySummary:
@@ -352,9 +355,10 @@ components:
     header: 查看附近
     headsign: "{destination}"
     nearbyListIntro: 附近 {count} 个实体的列表。
-    nothingNearby: 附近没有地方。
+    nothingNearby: 附近没有地点.
     searchNearby: 搜索附近…
     spacesAvailable: "{spacesAvailable} 可用空位"
+    nothingNearbyHeader: 超出范围
   NewAccountWizard:
     createNewAccount: 创建一个新账户
     finish: 账户设置完成!
@@ -402,6 +406,9 @@ components:
     inputFields:
       FROM: 起源
       TO: 目的地
+    OTP_RR_TRIP_IN_PAST:
+      header: 行程已发生
+      body: 部分路线已过期.
   PhoneNumberEditor:
     changeNumber: 更改电话号码
     invalidCode: 请输入6位数的验证码.
@@ -612,16 +619,16 @@ components:
       lastCheckedText: "最后一次检查: {formattedDuration} 前"
       togglePause: 暂停
       tripIsNotSnoozed: 将今天剩下的时间设为打盹状态
-      tripIsSnoozed: 重新开启行程分析功能
+      tripIsSnoozed: 取消暂停
       unknownState: 未知的旅行状态
       untogglePause: 继续
     inactive:
-      description: 恢复行程监控以查看最新状态
-      heading: 行程监控暂停了
+      description: 点击恢复，接收通知.
+      heading: 已暂停通知.
     nextTripNotPossible:
       description: |
-        行程规划器无法找到您今天的行程. 请尝试重新规划您的行程寻找其他路线.
-      heading: 今天的行程已不可能进行
+        由于路线可能发生一次或多次变更，多次定位尝试路线失败后，已暂停今日监控。  点击取消暂停，即可恢复行程监控。若仍无法监控，请点击新建行程，保存最新路线用于监控.
+      heading: 无法监控行程
     noLongerPossible:
       description: |
         行程规划器无法找到您在一周内任何选定日期的行程。请尝试重新规划您的行程，寻找其他路线。
@@ -634,8 +641,8 @@ components:
       description: 这是一次已结束的单次行程。
       heading: 行程已过期
     snoozed:
-      description: 重新启用行程监控以查看最新状态.
-      heading: 今天行程监控为打盹状态
+      description: 本次行程通知将在下一个可选日期自动开启。取消暂停，重启监控功能并接收今日通知.
+      heading: 已暂停今日通知.
     upcoming:
       nextTripBegins: >-
         下一趟旅程于 {tripDatetime, date, ::eeeee yyyyMMdd} {tripDatetime, time,

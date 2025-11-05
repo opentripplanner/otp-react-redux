@@ -15,6 +15,7 @@
               "departureDelay": 0,
               "distance": 4724.02,
               "dropoffType": "SCHEDULED",
+              "stopCalls": [],
               "duration": 1229.0,
               "endTime": 1691619389000,
               "fareProducts": [],

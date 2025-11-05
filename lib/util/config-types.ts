@@ -1,10 +1,7 @@
 // This file is intended to contain configuration types,
 // each suffixed with "Config", as in "MapConfig", "MenuItemConfig", etc.
 
-import {
-  CO2ConfigType,
-  FareTableLayout
-} from '@opentripplanner/trip-details/lib/types'
+import { CO2ConfigType } from '@opentripplanner/trip-details/lib/types'
 import {
   Company,
   FareProductSelector,
@@ -292,8 +289,6 @@ export interface ItineraryConfig {
   defaultSort?: ItinerarySortOption
   disableMetroSeperatorDot?: true
   exclusiveErrors?: string[]
-  fareDetailsLayout?: FareTableLayout[]
-  fareKeyNameMap?: Record<string, string>
   fillModeIcons?: boolean
   groupByMode?: boolean
   groupTransitModes?: boolean
@@ -378,6 +373,8 @@ export interface RouteViewerConfig {
   onlyShowCurrentServiceWeek?: boolean
   /** Setting to sort routes by the number of vehicles on each pattern */
   sortRoutePatternsByVehicleCount?: boolean
+  /** Whether to use the route color as the background color in the pattern viewer */
+  useRouteColorAsBackground?: boolean
   /** Disable vehicle highlight if necessary (e.g. custom or inverted icons) */
   vehicleIconHighlight?: boolean
   /** Customize vehicle icon padding (the default iconPadding is 2px in otp-ui) */

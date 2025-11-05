@@ -1,11 +1,13 @@
-import { blue, DARK_TEXT_GREY, grey } from '../util/colors'
 import styled from 'styled-components'
+
+import { getBaseColor, grey } from '../util/colors'
 
 interface RenderProps {
   backgroundColor?: string
   full?: boolean
   routeColor?: string
   textColor?: string
+  useRouteColorAsBg?: boolean
 }
 
 /** Route Details */
@@ -21,10 +23,25 @@ export const RouteNameContainer = styled.div`
   padding: 8px;
   background-color: inherit;
 `
-export const LogoLinkContainer = styled.div`
+export const LogoLinkContainer = styled.div<{
+  textColor?: string
+  useRouteBgColor?: boolean
+}>`
   display: flex;
+  border-top: 1px solid
+    ${(props) => (props.useRouteBgColor ? props.textColor + '33' : '#33333333')};
   align-items: center;
-  justify-content: space-between;
+  gap: 10px;
+  padding: 15px 10px;
+  margin-top: -10px;
+
+  a {
+    color: ${(props) => props.textColor};
+    svg {
+      color: ${(props) =>
+        props.useRouteBgColor ? props.textColor : getBaseColor()};
+    }
+  }
 `
 export const HeadsignSelectLabel = styled.label`
   font-size: 18px;
@@ -37,8 +54,7 @@ export const PatternContainer = styled.div`
   color: inherit;
   display: flex;
   justify-content: space-between;
-  margin: 0;
-  padding: 8px;
+  padding: 8px 10px;
 
   label {
     width: 15%;
@@ -65,8 +81,8 @@ export const PatternContainer = styled.div`
 `
 
 export const StopContainer = styled.ol<RenderProps>`
-  color: ${(props) => props?.textColor || DARK_TEXT_GREY};
-  background-color: ${(props) => props?.backgroundColor || '#fff'};
+  color: ${(props) => props?.textColor};
+  background-color: ${(props) => props?.backgroundColor};
   overflow-y: scroll;
   /* Calculate the height of the container a little short to ensure all stops 
   are shown when browsers don't calculate 100% sensibly. */
@@ -74,7 +90,7 @@ export const StopContainer = styled.ol<RenderProps>`
   padding: 15px 0 0px;
 `
 export const StopLink = styled.button<RenderProps>`
-  color: ${(props) => props?.textColor + 'da' || DARK_TEXT_GREY};
+  color: ${(props) => props?.textColor + 'da'};
   background-color: transparent;
   border: none;
   padding: 0;
@@ -82,7 +98,7 @@ export const StopLink = styled.button<RenderProps>`
   width: 95%;
 
   &:hover {
-    color: ${(props) => props?.textColor || blue[900]};
+    color: ${(props) => props?.textColor};
     text-decoration: underline;
   }
 `
@@ -101,8 +117,11 @@ export const Stop = styled.li<RenderProps>`
     display: block;
     height: 20px;
     width: 20px;
-    border: 5px solid ${(props) => props.textColor + 'ee'};
-    background: ${(props) => props.routeColor};
+    border: 5px solid
+      ${(props) =>
+        props.useRouteColorAsBg ? props.textColor + 'ee' : props.routeColor};
+    background: ${(props) =>
+      props.useRouteColorAsBg ? props.routeColor : '#fff'};
     position: relative;
     top: 20px;
     left: -35px;
@@ -115,7 +134,8 @@ export const Stop = styled.li<RenderProps>`
     display: block;
     height: 1.65rem; /* set position in line-height agnostic way */
     width: 10px;
-    background: ${(props) => props.textColor + 'ee'};
+    background: ${(props) =>
+      props.useRouteColorAsBg ? props.textColor + 'ee' : props.routeColor};
     position: relative;
     left: -30px;
     /* this is a few pixels into the blob (to make it look attached) + 3.5rem so that each
