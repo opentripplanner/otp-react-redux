@@ -376,8 +376,7 @@ class DefaultMap extends Component<DefaultMapProps> {
 
     const micromobility = rentalVehicles.filter(
       (vehicle) =>
-        vehicle.vehicleType &&
-        vehicle.vehicleType?.formFactor !== FormFactor.CAR
+        vehicle.vehicleType && vehicle.vehicleType.formFactor !== FormFactor.CAR
     )
 
     const baseLayersWithNames = baseLayers?.map((baseLayer) => ({
