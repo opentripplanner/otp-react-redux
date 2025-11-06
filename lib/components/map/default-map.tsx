@@ -9,12 +9,14 @@ import {
 } from '@opentripplanner/types/otp2'
 import { GeolocateControl, NavigationControl } from 'react-map-gl/maplibre'
 import { getCurrentDate } from '@opentripplanner/core-utils/lib/time'
-import { injectIntl } from 'react-intl'
+import { injectIntl, IntlShape } from 'react-intl'
+import { Itinerary } from '@opentripplanner/types'
 import BaseMap from '@opentripplanner/base-map'
 import generateOTP2TileLayers from '@opentripplanner/otp2-tile-overlay'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
+import { AppConfig, MapConfig } from '../../util/config-types'
 import {
   assembleBasePath,
   bikeRentalQuery,
@@ -25,9 +27,13 @@ import {
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
 import { getActiveItinerary, getActiveSearch } from '../../util/state'
-import { getCurrentPosition } from '../../actions/location'
+import {
+  getCurrentPosition,
+  GetCurrentPositionFunction
+} from '../../actions/location'
 import { MainPanelContent } from '../../actions/ui-constants'
 import { setLocation, setMapPopupLocationAndGeocode } from '../../actions/map'
+import { SetLocationHandler, SetViewedStopHandler } from '../util/types'
 import { setViewedStop } from '../../actions/ui'
 import { updateOverlayVisibility } from '../../actions/config'
 import TransitOperatorIcons from '../util/connected-transit-operator-icons'
@@ -151,22 +157,22 @@ function getLayerName(overlay, config, intl) {
 }
 
 interface DefaultMapProps {
-  bikeRentalQuery: any
+  bikeRentalQuery: () => void
   bikeRentalStations: VehicleRentalStation[]
-  carRentalQuery: any
+  carRentalQuery: () => void
   carRentalStations: VehicleRentalStation[]
-  config: any
-  getCurrentPosition: any
-  intl: any
-  itinerary: any
-  mapConfig: any
-  nearbyViewActive: any
-  pending: any
-  rentalVehicleQuery: any
+  config: AppConfig
+  getCurrentPosition: GetCurrentPositionFunction
+  intl: IntlShape
+  itinerary: Itinerary
+  mapConfig: MapConfig
+  nearbyViewActive: boolean
+  pending: boolean
+  rentalVehicleQuery: () => void
   rentalVehicles: RentalVehicle[]
-  setLocation: any
-  setViewedStop: any
-  viewedRouteStops: any
+  setLocation: SetLocationHandler
+  setViewedStop: SetViewedStopHandler
+  viewedRouteStops: string[]
 }
 
 class DefaultMap extends Component<DefaultMapProps> {
