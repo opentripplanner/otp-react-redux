@@ -366,17 +366,17 @@ class DefaultMap extends Component<DefaultMapProps> {
     const bikeStationsAndFloatingBikes = [
       ...bikeRentalStations,
       ...rentalVehicles.filter(
-        (station) => station.vehicleType?.formFactor === FormFactor.BICYCLE
+        (station) => station.vehicleType?.formFactor === 'BICYCLE'
       )
     ]
 
     const scooters = rentalVehicles.filter(
-      (vehicle) => vehicle.vehicleType?.formFactor === FormFactor.SCOOTER
+      (vehicle) => vehicle.vehicleType?.formFactor === 'SCOOTER'
     )
 
     const micromobility = rentalVehicles.filter(
       (vehicle) =>
-        vehicle.vehicleType && vehicle.vehicleType.formFactor !== FormFactor.CAR
+        vehicle.vehicleType && vehicle.vehicleType.formFactor !== 'CAR'
     )
 
     const baseLayersWithNames = baseLayers?.map((baseLayer) => ({
