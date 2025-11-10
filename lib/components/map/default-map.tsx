@@ -382,6 +382,7 @@ class DefaultMap extends Component {
           center={[lat, lon]}
           mapLibreProps={{
             onLoad: () => {
+              // Once this map has loaded, we subtly trigger the geolocate control to update its state.
               return this.setState({ mapLoad: true })
             },
             reuseMaps: true
