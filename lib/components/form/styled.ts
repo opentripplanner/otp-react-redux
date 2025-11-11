@@ -67,7 +67,7 @@ export const StyledLocationField = styled(LocationField)`
   grid-template-columns: 30px 1fr 30px;
   width: 100%;
 
-  ${Input} {
+  input {
     padding: 6px 12px;
   }
 
