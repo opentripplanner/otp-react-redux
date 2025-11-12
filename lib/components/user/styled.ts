@@ -115,12 +115,16 @@ export const ControlStrip = styled.span`
   & > * {
     margin-right: 4px;
   }
+
+  button {
+    text-wrap: wrap;
+    margin-top: 5px;
+  }
 `
 /** Styles for phone editing fields */
 export const phoneFieldStyle = css`
   display: inline-block;
   vertical-align: middle;
-  width: 14em;
 `
 
 export const UnstyledLink = styled(Link)`
