@@ -10,6 +10,13 @@ describe('util > viewer', () => {
       expect(extractHeadsignFromPattern(pattern)).toBe('Sesame Street')
     })
 
+    it('should remove leading "To " text in a headsign (English only)', () => {
+      const pattern = {
+        headsign: 'To Angle Lake'
+      }
+      expect(extractHeadsignFromPattern(pattern)).toBe('Angle Lake')
+    })
+
     it('should extract headsign from pattern description if no headsign present', () => {
       const pattern = {
         desc: '49 to Sesame Street (70:3562) from Airport Station'
