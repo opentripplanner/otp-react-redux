@@ -26,12 +26,20 @@ describe('util > viewer', () => {
       )
     })
 
+    it('should use the description provided if it is not the same as the route short name', () => {
+      const pattern = {
+        desc: 'Southbound Express'
+      }
+      expect(extractHeadsignFromPattern(pattern, '49')).toBe(
+        'Southbound Express'
+      )
+    })
+
     it('should use the last stop name of a pattern if no headsign is provided', () => {
       const stopNames = ['First stop', 'Second stop', 'Last stop']
       const pattern = {
         // If no headsigns are provided in feed, OTP might use the route short name as pattern name/description.
         desc: '49',
-        name: '49',
         stops: stopNames.map((s) => ({ name: s }))
       }
       expect(extractHeadsignFromPattern(pattern, '49')).toBe('Last stop')
