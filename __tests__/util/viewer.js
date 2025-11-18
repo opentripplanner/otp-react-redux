@@ -10,12 +10,17 @@ describe('util > viewer', () => {
       expect(extractHeadsignFromPattern(pattern)).toBe('Sesame Street')
     })
 
-    it('should remove leading "To " text in a headsign (English only)', () => {
-      const pattern = {
-        headsign: 'To Angle Lake'
-      }
-      expect(extractHeadsignFromPattern(pattern)).toBe('Angle Lake')
-    })
+    const prefixes = ['To', 'Toward', 'Towards']
+    prefixes
+      .flatMap((prefix) => [prefix, prefix.toLowerCase()])
+      .forEach((prefix) => {
+        it(`should remove leading "${prefix} " text in a headsign (English only)`, () => {
+          const pattern = {
+            headsign: `${prefix} Angle Lake`
+          }
+          expect(extractHeadsignFromPattern(pattern)).toBe('Angle Lake')
+        })
+      })
 
     it('should extract headsign from pattern description if no headsign present', () => {
       const pattern = {
