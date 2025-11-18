@@ -3,9 +3,10 @@ import { Distance } from '@opentripplanner/humanize-distance'
 
 import { AppReduxState } from '../../util/state-types'
 
-// Connect to the redux store for unit system presets.
+// Connect to the redux store for unit system presets
+// (fall back to imperial to not break existing implementations).
 const mapStateToProps = (state: AppReduxState) => {
-  const { units } = state.otp.config
+  const { units = 'imperial' } = state.otp.config
   return {
     // Preset for long units to be consistent with humanizeDistanceString.
     long: units === 'imperial',
