@@ -1,23 +1,43 @@
-import { FormattedMessage, useIntl } from 'react-intl'
-import { humanizeDistanceString } from '@opentripplanner/humanize-distance'
+import { connect } from 'react-redux'
+import { Distance } from '@opentripplanner/humanize-distance'
+import { FormattedMessage } from 'react-intl'
+import { UnitSystem } from '@opentripplanner/types'
 import React from 'react'
+
+import { AppReduxState } from '../../../util/state-types'
 
 import { CardAside } from './styled'
 
-const DistanceDisplay = ({ distance }: { distance?: number }): JSX.Element => {
-  const intl = useIntl()
-
+const DistanceDisplay = ({
+  distance,
+  units = 'imperial'
+}: {
+  distance?: number
+  units?: UnitSystem
+}): JSX.Element => {
   if (!distance || distance < 5) return <></>
   return (
     <CardAside>
       <FormattedMessage
         id="components.NearbyView.distanceAway"
         values={{
-          localizedDistanceString: humanizeDistanceString(distance, false, intl)
+          localizedDistanceString: (
+            <Distance
+              long={units === 'imperial'}
+              meters={distance}
+              units={units}
+            />
+          )
         }}
       />
     </CardAside>
   )
 }
 
-export default DistanceDisplay
+// connect to the redux store for unit system presets.
+const mapStateToProps = (state: AppReduxState) => ({
+  units: state.otp.config.units
+})
+
+// Pass an empty object as mapDispatchToProps to remove dispatch from the rendered HTML.
+export default connect(mapStateToProps, {})(DistanceDisplay)
