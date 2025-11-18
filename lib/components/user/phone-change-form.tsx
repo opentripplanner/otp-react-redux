@@ -26,6 +26,7 @@ import { ControlStrip, phoneFieldStyle } from './styled'
 
 // Styles
 const InlinePhoneInput = styled(Input)`
+  margin-top: 5px;
   ${phoneFieldStyle}
 `
 
