@@ -88,7 +88,6 @@ type Props = {
   setMainPanelContent: (content: number) => void
   setNearbyViewFilter: (arg: NearbyFilters) => void
   setViewedNearbyCoords: (location: Location | null) => void
-  setViewedRoute: () => void
   zoomToPlace: ZoomToPlaceHandler
 }
 
@@ -182,7 +181,6 @@ function NearbyView({
   setMainPanelContent,
   setNearbyViewFilter,
   setViewedNearbyCoords,
-  setViewedRoute,
   zoomToPlace
 }: Props): JSX.Element {
   const map = useMap().default
@@ -201,11 +199,6 @@ function NearbyView({
       ),
     [nearbyViewCoords, currentPosition, map]
   )
-
-  // Clear viewed route when entering nearby view
-  useEffect(() => {
-    setViewedRoute()
-  }, [setViewedRoute])
 
   const reverseCoords = async (coords: LonLatInput) => {
     try {
@@ -575,7 +568,6 @@ const mapDispatchToProps = {
   setMainPanelContent: uiActions.setMainPanelContent,
   setNearbyViewFilter: uiActions.setNearbyViewFilter,
   setViewedNearbyCoords: uiActions.setViewedNearbyCoords,
-  setViewedRoute: uiActions.setViewedRoute,
   viewNearby: uiActions.viewNearby,
   zoomToPlace: mapActions.zoomToPlace
 }
