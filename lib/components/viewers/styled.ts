@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { getBaseColor, grey } from '../util/colors'
 
@@ -43,9 +43,20 @@ export const LogoLinkContainer = styled.div<{
     }
   }
 `
-export const HeadsignSelectLabel = styled.label`
+
+const headsignStyle = css`
   font-size: 18px;
   margin-bottom: 0;
+`
+
+export const HeadsignSelectLabel = styled.label`
+  ${headsignStyle}
+`
+
+export const HeadsignLabel = styled.span`
+  ${headsignStyle}
+  font-weight: bold;
+  width: auto !important;
 `
 
 export const PatternContainer = styled.div`

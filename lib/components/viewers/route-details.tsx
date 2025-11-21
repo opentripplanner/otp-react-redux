@@ -22,6 +22,7 @@ import OperatorLogo from '../util/operator-logo'
 
 import {
   Container,
+  HeadsignLabel,
   HeadsignSelectLabel,
   LogoLinkContainer,
   PatternContainer,
@@ -147,26 +148,37 @@ class RouteDetails extends Component<Props> {
       <Container backgroundColor={backgroundColor} full={pattern != null}>
         {headsigns && headsigns.length > 0 && (
           <PatternContainer className="pattern-picker">
-            <HeadsignSelectLabel htmlFor="headsign-selector-label">
-              <FormattedMessage id="components.RouteDetails.stopsTo" />
-            </HeadsignSelectLabel>
-            <PatternSelectDropdown
-              id="headsign-selector"
-              label={patternSelectLabel}
-              style={{ color: 'black' }}
-              text={patternSelectName}
-            >
-              {headsigns.map((h: PatternSummary) => (
-                <li key={h.id}>
-                  <PatternSelectButton
-                    onClick={() => this._headSignButtonClicked(h.id)}
-                    value={h.id}
-                  >
-                    <span>{h.headsign}</span>
-                  </PatternSelectButton>
-                </li>
-              ))}
-            </PatternSelectDropdown>
+            {headsigns.length > 1 ? (
+              <>
+                <HeadsignSelectLabel htmlFor="headsign-selector-label">
+                  <FormattedMessage id="components.RouteDetails.stopsTo" />
+                </HeadsignSelectLabel>
+                <PatternSelectDropdown
+                  id="headsign-selector"
+                  label={patternSelectLabel}
+                  style={{ color: 'black' }}
+                  text={patternSelectName}
+                >
+                  {headsigns.map((h: PatternSummary) => (
+                    <li key={h.id}>
+                      <PatternSelectButton
+                        onClick={() => this._headSignButtonClicked(h.id)}
+                        value={h.id}
+                      >
+                        <span>{h.headsign}</span>
+                      </PatternSelectButton>
+                    </li>
+                  ))}
+                </PatternSelectDropdown>
+              </>
+            ) : (
+              <>
+                <HeadsignLabel>
+                  <FormattedMessage id="components.RouteDetails.stopsTo" />
+                </HeadsignLabel>
+                <span>{patternSelectName}</span>
+              </>
+            )}
           </PatternContainer>
         )}
         {pattern && (
