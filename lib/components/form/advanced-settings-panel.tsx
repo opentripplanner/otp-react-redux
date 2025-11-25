@@ -52,7 +52,6 @@ import {
 import { setModeButtonEnabled } from './batch-settings'
 import { styledCheckboxCss } from './styled'
 import { StyledTransparentButton } from './advanced-settings-button'
-import DateTimeModal from './date-time-modal'
 
 const PanelOverlay = styled.div`
   height: 100%;
@@ -63,6 +62,10 @@ const PanelOverlay = styled.div`
   top: 0;
   width: 100%;
   z-index: 100;
+
+  fieldset {
+    margin-bottom: 2em;
+  }
 
   @media (max-width: 768px) {
     padding: 1em;
@@ -83,6 +86,7 @@ const HeaderContainer = styled.div`
   display: flex;
   gap: 10px;
   height: 30px;
+  margin-bottom: 2em;
 `
 
 const InvisibleSubheader = styled.h2`
@@ -107,31 +111,10 @@ const ReturnToTripPlanButton = styled.button`
   gap: 5px;
   height: 51px;
   justify-content: center;
-  margin-top: 2em;
   width: 100%;
 
   svg {
     margin-bottom: 7px;
-  }
-`
-
-const DtSelectorContainer = styled.div`
-  margin: 2em 0;
-
-  .date-time-modal {
-    padding: 0;
-
-    .main-panel {
-      margin: 0;
-
-      button {
-        padding: 6px 0;
-      }
-
-      .date-time-selector {
-        margin: 15px 0;
-      }
-    }
   }
 `
 
@@ -151,7 +134,7 @@ const UserSavedTripDefaultsButton = styled(StyledTransparentButton)`
   display: flex;
   font-weight: bold;
   justify-content: center;
-  margin-top: 1em;
+  margin: 1em 0;
   text-decoration: underline;
   width: 100%;
 
@@ -319,9 +302,6 @@ const AdvancedSettingsPanel = ({
         />
         <h1 className="header-text">{headerText}</h1>
       </HeaderContainer>
-      <DtSelectorContainer>
-        <DateTimeModal departArriveDropdown />
-      </DtSelectorContainer>
       {processedGlobalSettings.length > 0 && (
         <>
           <InvisibleSubheader>
