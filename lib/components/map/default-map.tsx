@@ -2,27 +2,38 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import { connect } from 'react-redux'
+import {
+  FormFactor,
+  RentalVehicle,
+  VehicleRentalStation
+} from '@opentripplanner/types/otp2'
 import { GeolocateControl, NavigationControl } from 'react-map-gl/maplibre'
 import { getCurrentDate } from '@opentripplanner/core-utils/lib/time'
-import { injectIntl } from 'react-intl'
+import { injectIntl, IntlShape } from 'react-intl'
+import { Itinerary } from '@opentripplanner/types'
 import BaseMap from '@opentripplanner/base-map'
 import generateOTP2TileLayers from '@opentripplanner/otp2-tile-overlay'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
+import { AppConfig, MapConfig } from '../../util/config-types'
 import {
   assembleBasePath,
   bikeRentalQuery,
   carRentalQuery,
   findFeeds,
   findStopTimesForStop,
-  vehicleRentalQuery
+  rentalVehicleQuery
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
 import { getActiveItinerary, getActiveSearch } from '../../util/state'
-import { getCurrentPosition } from '../../actions/location'
+import {
+  getCurrentPosition,
+  GetCurrentPositionFunction
+} from '../../actions/location'
 import { MainPanelContent } from '../../actions/ui-constants'
 import { setLocation, setMapPopupLocationAndGeocode } from '../../actions/map'
+import { SetLocationHandler, SetViewedStopHandler } from '../util/types'
 import { setViewedStop } from '../../actions/ui'
 import { updateOverlayVisibility } from '../../actions/config'
 import TransitOperatorIcons from '../util/connected-transit-operator-icons'
@@ -145,10 +156,29 @@ function getLayerName(overlay, config, intl) {
   }
 }
 
-class DefaultMap extends Component {
+interface DefaultMapProps {
+  bikeRentalQuery: () => void
+  bikeRentalStations: VehicleRentalStation[]
+  carRentalQuery: () => void
+  carRentalStations: VehicleRentalStation[]
+  config: AppConfig
+  getCurrentPosition: GetCurrentPositionFunction
+  intl: IntlShape
+  itinerary: Itinerary
+  mapConfig: MapConfig
+  nearbyViewActive: boolean
+  pending: boolean
+  rentalVehicleQuery: () => void
+  rentalVehicles: RentalVehicle[]
+  setLocation: SetLocationHandler
+  setViewedStop: SetViewedStopHandler
+  viewedRouteStops: string[]
+}
+
+class DefaultMap extends Component<DefaultMapProps> {
   static contextType = ComponentContext
 
-  constructor(props) {
+  constructor(props: DefaultMapProps) {
     super(props)
     // We have to maintain the map state because the underlying map also (incorrectly?) uses a state.
     // Not maintaining a state causes re-renders to the map's configured coordinates.
@@ -160,8 +190,10 @@ class DefaultMap extends Component {
     this.state = {
       lat,
       lon,
+      mapLoad: false,
       zoom
     }
+    this.geolocateControlRef = React.createRef<maplibregl.GeolocateControl>()
   }
 
   getNearbyViewFilteredOverlays = () => {
@@ -299,8 +331,15 @@ class DefaultMap extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    const { currentPositionError } = this.props
     // Check if any overlays should be toggled due to mode change
     this._handleQueryChange(prevProps.query, this.props.query)
+
+    // HACK: react-map-gl's GeolocateControl doesn't always accurately reflect that the user has blocked their location, so if we know we don't have access, trigger the button in the background to update the UI to disabled.
+    currentPositionError?.code === 1 &&
+      this.state.mapLoad &&
+      // After the map has loaded, give the GeolocateControl a sec to render.
+      setTimeout(() => this.geolocateControlRef.current?.trigger(), 10)
   }
 
   render() {
@@ -318,10 +357,10 @@ class DefaultMap extends Component {
       nearbyFilters,
       nearbyViewActive,
       pending,
+      rentalVehicleQuery,
+      rentalVehicles,
       setLocation,
       setViewedStop,
-      vehicleRentalQuery,
-      vehicleRentalStations,
       viewedRouteStops
     } = this.props
     const { getCustomMapOverlays, getTransitiveRouteLabel, ModeIcon } =
@@ -333,17 +372,20 @@ class DefaultMap extends Component {
       config.api?.path
     }/vectorTiles`
 
-    const bikeStations = [
-      ...bikeRentalStations.filter(
-        (station) =>
-          !station.isFloatingVehicle || station.isFloatingVehicle === false
-      ),
-      ...vehicleRentalStations.filter(
-        (station) => station.isFloatingBike === true
+    const bikeStationsAndFloatingBikes = [
+      ...bikeRentalStations,
+      ...rentalVehicles.filter(
+        (station) => station.vehicleType?.formFactor === 'BICYCLE'
       )
     ]
-    const scooterStations = vehicleRentalStations.filter(
-      (station) => station.isFloatingBike === false && station.isFloatingVehicle
+
+    const scooters = rentalVehicles.filter(
+      (vehicle) => vehicle.vehicleType?.formFactor === 'SCOOTER'
+    )
+
+    const micromobility = rentalVehicles.filter(
+      (vehicle) =>
+        vehicle.vehicleType && vehicle.vehicleType.formFactor !== 'CAR'
     )
 
     const baseLayersWithNames = baseLayers?.map((baseLayer) => ({
@@ -371,7 +413,13 @@ class DefaultMap extends Component {
           }
           baseLayerNames={baseLayerNames}
           center={[lat, lon]}
-          mapLibreProps={{ reuseMaps: true }}
+          mapLibreProps={{
+            onLoad: () => {
+              // Once this map has loaded, we subtly trigger the geolocate control to update its state.
+              return this.setState({ mapLoad: true })
+            },
+            reuseMaps: true
+          }}
           maxZoom={maxZoom}
           // In Leaflet, this was an onclick handler. Creating a click handler in
           // MapLibreGL would require writing a custom event handler for all mouse events
@@ -400,6 +448,7 @@ class DefaultMap extends Component {
               getCurrentPosition(intl)
             }}
             position="top-left"
+            ref={this.geolocateControlRef}
           />
           <TransitiveOverlay
             getTransitiveRouteLabel={getTransitiveRouteLabel}
@@ -424,16 +473,16 @@ class DefaultMap extends Component {
                 return (
                   <VehicleRentalOverlay
                     {...namedLayerProps}
+                    entities={bikeRentalStations}
                     refreshVehicles={bikeRentalQuery}
-                    stations={bikeRentalStations}
                   />
                 )
               case 'car-rental':
                 return (
                   <VehicleRentalOverlay
                     {...namedLayerProps}
+                    entities={carRentalStations}
                     refreshVehicles={carRentalQuery}
-                    stations={carRentalStations}
                   />
                 )
               case 'park-and-ride':
@@ -444,8 +493,8 @@ class DefaultMap extends Component {
                 return (
                   <VehicleRentalOverlay
                     {...namedLayerProps}
-                    refreshVehicles={vehicleRentalQuery}
-                    stations={vehicleRentalStations}
+                    entities={micromobility}
+                    refreshVehicles={rentalVehicleQuery}
                   />
                 )
               case 'otp2-micromobility-rental':
@@ -453,8 +502,8 @@ class DefaultMap extends Component {
                   <VehicleRentalOverlay
                     key={k}
                     {...namedLayerProps}
-                    refreshVehicles={vehicleRentalQuery}
-                    stations={scooterStations}
+                    entities={scooters}
+                    refreshVehicles={rentalVehicleQuery}
                   />
                 )
               case 'otp2-bike-rental':
@@ -462,8 +511,8 @@ class DefaultMap extends Component {
                   <VehicleRentalOverlay
                     key={k}
                     {...namedLayerProps}
+                    entities={bikeStationsAndFloatingBikes}
                     refreshVehicles={bikeRentalQuery}
-                    stations={bikeStations}
                   />
                 )
               case 'otp2':
@@ -506,9 +555,10 @@ const mapStateToProps = (state) => {
   const viewedRoute = state.otp?.ui?.viewedRoute?.routeId
   const activeNearbyFilters = state.otp?.ui?.nearbyView?.filters
   const nearbyFilters = state.otp.config?.nearbyView?.filters
-  const stops = state.otp.transitIndex.stops
   const nearbyViewerActive =
     state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW
+
+  const currentPositionError = state.otp.location.currentPosition.error
 
   const viewedRoutePatterns = Object.entries(
     state.otp?.transitIndex?.routes?.[viewedRoute]?.patterns || {}
@@ -532,6 +582,7 @@ const mapStateToProps = (state) => {
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
     carRentalStations: state.otp.overlay.carRental.stations,
     config: state.otp.config,
+    currentPositionError,
     feeds: state.otp.transitIndex.feeds,
     itinerary: getActiveItinerary(state),
     mapConfig: state.otp.config.map,
@@ -540,7 +591,7 @@ const mapStateToProps = (state) => {
       state.otp.ui.mainPanelContent === MainPanelContent.NEARBY_VIEW,
     pending: activeSearch ? Boolean(activeSearch.pending) : false,
     query: state.otp.currentQuery,
-    vehicleRentalStations: state.otp.overlay.vehicleRental.stations,
+    rentalVehicles: state.otp.overlay.vehicleRental.stations,
     viewedRouteStops
   }
 }
@@ -551,11 +602,11 @@ const mapDispatchToProps = {
   findFeeds,
   findStopTimesForStop,
   getCurrentPosition,
+  rentalVehicleQuery,
   setLocation,
   setMapPopupLocationAndGeocode,
   setViewedStop,
-  updateOverlayVisibility,
-  vehicleRentalQuery
+  updateOverlayVisibility
 }
 
 export default connect(
