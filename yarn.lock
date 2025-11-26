@@ -2388,7 +2388,14 @@
   resolved "https://registry.yarnpkg.com/@mapbox/point-geometry/-/point-geometry-0.1.0.tgz#8a83f9335c7860effa2eeeca254332aa0aeed8f2"
   integrity sha512-6j56HdLTwWGO0fJPlrZtdU/B13q8Uwmo18Ck2GnGgN9PCFyKTZ3UbXeEdRFh18i9XQ92eH2VdtpJHpBD3aripQ==
 
-"@mapbox/polyline@^1.1.0", "@mapbox/polyline@^1.1.1":
+"@mapbox/polyline@^1.1.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@mapbox/polyline/-/polyline-1.2.1.tgz#1eecce5e8c0d9e6dfc718b225e8e9f03591ea636"
+  integrity sha512-sn0V18O3OzW4RCcPoUIVDWvEGQaBNH9a0y5lgqrf5hUycyw1CzrhEoxV5irzrMNXKCkw1xRsZXcaVbsVZggHXA==
+  dependencies:
+    meow "^9.0.0"
+
+"@mapbox/polyline@^1.1.1":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@mapbox/polyline/-/polyline-1.2.0.tgz#11f7481968a83bd9dde36273a50b8037af24a86b"
   integrity sha512-sIIi9clVZiTmXYqbXpSAoG+ZLsvQn7j9FJLqiNOG85KnXN8tz11MEhuW2M7NDEDIKi4hIMaSI1CKwH8oLuVxPQ==
@@ -2864,6 +2871,23 @@
     lodash.clonedeep "^4.5.0"
     qs "^6.9.1"
 
+"@opentripplanner/core-utils@14.3.0":
+  version "14.3.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-14.3.0.tgz#e0a24c9619c8c5326b34ce0f768815d9162a6abb"
+  integrity sha512-EXl8a8Ln1AcKkp8e86TCuEAFA/l09PLWpk2W9aiIS4yNpC63Cr+H4/NGt+TDsgsVu+Y3IJJ8Ph5RZy726SWz7A==
+  dependencies:
+    "@conveyal/lonlat" "^1.4.1"
+    "@mapbox/polyline" "^1.1.1"
+    "@opentripplanner/geocoder" "3.0.5"
+    "@styled-icons/foundation" "^10.34.0"
+    "@turf/along" "^6.0.1"
+    chroma-js "^2.4.2"
+    date-fns "^2.28.0"
+    date-fns-tz "^1.2.2"
+    graphql "^16.6.0"
+    lodash.clonedeep "^4.5.0"
+    qs "^6.9.1"
+
 "@opentripplanner/endpoints-overlay@5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/endpoints-overlay/-/endpoints-overlay-5.0.0.tgz#216ba195ef7cf9dd8f76b862480c018e7b96ffc6"
@@ -3144,13 +3168,13 @@
     flat "^5.0.2"
     react-animate-height "^3.0.4"
 
-"@opentripplanner/trip-form@6.1.3":
-  version "6.1.3"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-6.1.3.tgz#4e167ffe11678f36ba82ab6a0a269fd4a136d6a3"
-  integrity sha512-TwyA2RBkGpDnofaNmpRqlegU2S9263TEfK3ZSU8lpAbhFw5YDZjCjoCRdqKOwRFX4KxMFFsK9o6u4fD8p8WWcw==
+"@opentripplanner/trip-form@6.1.4":
+  version "6.1.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/trip-form/-/trip-form-6.1.4.tgz#5ef9c3be5e016869a615409c9aa46c8c271573fd"
+  integrity sha512-/7V0R+PvXXaJoz0Rhzy3v1thw7UZmeVf2TB7U8g+eYfXYV2DXsH3UdP8Mhu+4wlwpMXuIpV47X8pAnTpaozXFg==
   dependencies:
     "@opentripplanner/building-blocks" "3.0.1"
-    "@opentripplanner/core-utils" "14.2.3"
+    "@opentripplanner/core-utils" "14.3.0"
     "@opentripplanner/icons" "4.1.0"
     "@styled-icons/bootstrap" "^10.34.0"
     "@styled-icons/boxicons-regular" "^10.38.0"
@@ -13355,6 +13379,24 @@ meow@^8.0.0:
   dependencies:
     "@types/minimist" "^1.2.0"
     camelcase-keys "^6.2.2"
+    decamelize-keys "^1.1.0"
+    hard-rejection "^2.1.0"
+    minimist-options "4.1.0"
+    normalize-package-data "^3.0.0"
+    read-pkg-up "^7.0.1"
+    redent "^3.0.0"
+    trim-newlines "^3.0.0"
+    type-fest "^0.18.0"
+    yargs-parser "^20.2.3"
+
+meow@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/meow/-/meow-9.0.0.tgz#cd9510bc5cac9dee7d03c73ee1f9ad959f4ea364"
+  integrity sha512-+obSblOQmRhcyBt62furQqRAQpNyWXo8BuQ5bN7dG8wmwQ+vwHKp/rCFD4CrTP8CsDQD1sjoZ94K417XEUk8IQ==
+  dependencies:
+    "@types/minimist" "^1.2.0"
+    camelcase-keys "^6.2.2"
+    decamelize "^1.2.0"
     decamelize-keys "^1.1.0"
     hard-rejection "^2.1.0"
     minimist-options "4.1.0"
