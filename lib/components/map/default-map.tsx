@@ -163,6 +163,7 @@ interface DefaultMapProps {
   carRentalStations: VehicleRentalStation[]
   config: AppConfig
   getCurrentPosition: GetCurrentPositionFunction
+  hideAttribution?: boolean
   intl: IntlShape
   itinerary: Itinerary
   mapConfig: MapConfig
@@ -351,6 +352,7 @@ class DefaultMap extends Component<DefaultMapProps> {
       config,
       feeds,
       getCurrentPosition,
+      hideAttribution,
       intl,
       itinerary,
       mapConfig,
@@ -402,6 +404,8 @@ class DefaultMap extends Component<DefaultMapProps> {
       ? this.getNearbyViewFilteredOverlays()
       : overlays
 
+    console.log('hideAttribution', hideAttribution)
+
     return (
       <MapContainer
         className="percy-hide"
@@ -414,6 +418,7 @@ class DefaultMap extends Component<DefaultMapProps> {
           baseLayerNames={baseLayerNames}
           center={[lat, lon]}
           mapLibreProps={{
+            attributionControl: hideAttribution ? false : { compact: true },
             onLoad: () => {
               // Once this map has loaded, we subtly trigger the geolocate control to update its state.
               return this.setState({ mapLoad: true })
@@ -539,9 +544,7 @@ class DefaultMap extends Component<DefaultMapProps> {
           {/* If set, custom overlays are shown if no active itinerary is shown or pending. */}
           {typeof getCustomMapOverlays === 'function' &&
             getCustomMapOverlays(!itinerary && !pending)}
-          <NavigationControl
-            position={navigationControlPosition || 'bottom-right'}
-          />
+          <NavigationControl position="top-left" />
         </BaseMap>
       </MapContainer>
     )
