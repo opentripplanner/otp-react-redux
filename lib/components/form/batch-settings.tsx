@@ -166,6 +166,7 @@ function BatchSettings({
           title={intl.formatMessage({
             id: 'components.BatchSettings.planTripTooltip'
           })}
+          type="submit"
         >
           <StyledIconWrapper style={{ fontSize: '1.6em' }}>
             {hasValidLocation(currentQuery, 'from') &&
