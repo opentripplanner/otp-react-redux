@@ -36,6 +36,8 @@ export default function NarrativeItinerariesHeader({
   enabledSortModes,
   itineraries,
   itineraryIsExpanded,
+  mapExpanded,
+  onClickExpansionButton = undefined,
   onSortChange,
   onSortDirChange,
   onViewAllOptions,
@@ -49,6 +51,8 @@ export default function NarrativeItinerariesHeader({
   enabledSortModes: ItinerarySortOption[]
   itineraries: unknown[]
   itineraryIsExpanded: boolean
+  mapExpanded: boolean
+  onClickExpansionButton?: () => void
   onSortChange: (type: string) => VoidFunction
   onSortDirChange: () => void
   onViewAllOptions: () => void
@@ -155,52 +159,75 @@ export default function NarrativeItinerariesHeader({
             // because it falls under the "Plan your trip" <h1> header.
             <InvisibleA11yLabel as="h2">{itinerariesFound}</InvisibleA11yLabel>
           )}
-          <ItinerariesHeaderContainer showHeaderText={showHeaderText}>
+          <ItinerariesHeaderContainer
+            showHeaderText={showHeaderText}
+            style={{
+              alignItems: 'flex-end',
+              display: 'flex',
+              flexDirection: 'column',
+              width: '100%'
+            }}
+          >
             {popupTarget && (
               <button onClick={() => setPopupContent(popupTarget)}>
                 <PopupTriggerText compact popupTarget={popupTarget} />
               </button>
             )}
-            <button
-              className="clear-button-formatting"
-              onClick={onSortDirChange}
-              title={intl.formatMessage({
-                id: 'components.NarrativeItinerariesHeader.changeSortDir'
-              })}
-            >
-              <StyledIconWrapper
-                className={`${customBatchUiBackground && 'base-color-bg'}`}
+            {onClickExpansionButton && (
+              <button
+                onClick={onClickExpansionButton}
+                style={{ width: '100%' }}
               >
-                {sort.direction.toLowerCase() === 'asc' ? (
-                  <SortUp />
+                {mapExpanded ? (
+                  <FormattedMessage id="components.BatchResultsScreen.showResults" />
                 ) : (
-                  <SortDown />
+                  <FormattedMessage id="components.BatchResultsScreen.expandMap" />
                 )}
-              </StyledIconWrapper>
-            </button>
-            <SortResultsDropdown
-              id="sort-results"
-              label={sortResultsLabel}
-              text={sortText}
-              title={sortResultsLabel}
-            >
-              {sortOptionsArr.map((sortOption) => (
-                <li className="sort-option" key={sortOption.value}>
-                  <UnstyledButton
-                    aria-selected={sortText === sortOption.text || undefined}
-                    onClick={() => onSortChange(sortOption.value)}
-                    role="option"
-                  >
-                    {sortOption.text}
-                    {sortText === sortOption.text && (
-                      <InvisibleA11yLabel>
-                        <FormattedMessage id="common.currentlySelected" />
-                      </InvisibleA11yLabel>
-                    )}
-                  </UnstyledButton>
-                </li>
-              ))}
-            </SortResultsDropdown>
+              </button>
+            )}
+            <div style={{ display: 'flex' }}>
+              <button
+                className="clear-button-formatting"
+                onClick={onSortDirChange}
+                style={{ marginRight: '6px' }}
+                title={intl.formatMessage({
+                  id: 'components.NarrativeItinerariesHeader.changeSortDir'
+                })}
+              >
+                <StyledIconWrapper
+                  className={`${customBatchUiBackground && 'base-color-bg'}`}
+                >
+                  {sort.direction.toLowerCase() === 'asc' ? (
+                    <SortUp />
+                  ) : (
+                    <SortDown />
+                  )}
+                </StyledIconWrapper>
+              </button>
+              <SortResultsDropdown
+                id="sort-results"
+                label={sortResultsLabel}
+                text={sortText}
+                title={sortResultsLabel}
+              >
+                {sortOptionsArr.map((sortOption) => (
+                  <li className="sort-option" key={sortOption.value}>
+                    <UnstyledButton
+                      aria-selected={sortText === sortOption.text || undefined}
+                      onClick={() => onSortChange(sortOption.value)}
+                      role="option"
+                    >
+                      {sortOption.text}
+                      {sortText === sortOption.text && (
+                        <InvisibleA11yLabel>
+                          <FormattedMessage id="common.currentlySelected" />
+                        </InvisibleA11yLabel>
+                      )}
+                    </UnstyledButton>
+                  </li>
+                ))}
+              </SortResultsDropdown>
+            </div>
           </ItinerariesHeaderContainer>
           <PlanFirstLastButtons />
         </>
