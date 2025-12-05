@@ -33,9 +33,11 @@ import { AppReduxState } from '../../util/state-types'
 import { blue, getBaseColor, grey } from '../util/colors'
 import { ComponentContext } from '../../util/contexts'
 import { generateModeSettingValues } from '../../util/api'
+import { getAuth0Config } from '../../util/auth'
 import { getDependentName } from '../../util/user'
 import { IconWithText } from '../util/styledIcon'
 import { invisibleCss } from '../util/invisible-a11y-label'
+import { PersistenceConfig } from '../../util/config-types'
 import { toastPromise } from '../util/toasts'
 import { User } from '../user/types'
 import BackButton from '../util/back-button'
@@ -163,6 +165,7 @@ const AdvancedSettingsPanel = ({
   modeButtonOptions,
   modeSettingDefinitions,
   modeSettingValues,
+  persistence,
   saveAndReturnButton,
   setCloseAdvancedSettingsWithDelay,
   setQueryParam,
@@ -181,6 +184,7 @@ const AdvancedSettingsPanel = ({
   modeButtonOptions: ModeButtonDefinition[]
   modeSettingDefinitions: ModeSetting[]
   modeSettingValues: ModeSettingValues
+  persistence?: PersistenceConfig
   saveAndReturnButton?: boolean
   setCloseAdvancedSettingsWithDelay: () => void
   setQueryParam: (evt: any) => void
@@ -194,6 +198,8 @@ const AdvancedSettingsPanel = ({
     () => loggedInUser?.dependents || [],
     [loggedInUser]
   )
+
+  const usersCanSignIn = Boolean(getAuth0Config(persistence))
 
   useEffect(() => {
     if (mobilityProfile && dependents.length > 0) {
@@ -209,8 +215,7 @@ const AdvancedSettingsPanel = ({
     const updatedUser = user
     const tripOptions = getTripOptionsFromQuery(currentQuery)
     // Because some of these settings are custom route mode overrides, we'll store these as a string.
-    const settings = JSON.stringify(tripOptions)
-    updatedUser.userSavedTripDefaults = settings
+    updatedUser.userSavedTripDefaults = JSON.stringify(tripOptions)
     toastPromise(
       createOrUpdateUser(updatedUser, intl),
       intl.formatMessage({ id: 'actions.user.preferencesSaved' }),
@@ -368,20 +373,20 @@ const AdvancedSettingsPanel = ({
         </ReturnToTripPlanButton>
       )}
 
-      <UserSavedTripDefaultsButton
-        disabled={!user}
-        onClick={updateUserDefaultTripSettings}
-      >
-        {user ? (
-          <FormattedMessage id="components.BatchSearchScreen.setAsDefault" />
-        ) : (
-          <div>
+      {usersCanSignIn && (
+        <UserSavedTripDefaultsButton
+          disabled={!user}
+          onClick={updateUserDefaultTripSettings}
+        >
+          {user ? (
+            <FormattedMessage id="components.BatchSearchScreen.setAsDefault" />
+          ) : (
             <IconWithText Icon={Lock}>
               <FormattedMessage id="components.BatchSearchScreen.logInToSetDefault" />
             </IconWithText>
-          </div>
-        )}
-      </UserSavedTripDefaultsButton>
+          )}
+        </UserSavedTripDefaultsButton>
+      )}
     </PanelOverlay>
   )
 }
@@ -396,6 +401,8 @@ const mapStateToProps = (state: AppReduxState) => {
     modes?.initialState?.modeSettingValues || {}
   )
   const user = state.user.loggedInUser
+
+  const persistence = state.otp.config?.persistence
 
   const { autoPlan } = state.otp.config
   const saveAndReturnButton =
@@ -415,6 +422,7 @@ const mapStateToProps = (state: AppReduxState) => {
     modeButtonOptions: modes?.modeButtons || [],
     modeSettingDefinitions: state.otp?.modeSettingDefinitions || [],
     modeSettingValues,
+    persistence,
     saveAndReturnButton,
     user
   }
