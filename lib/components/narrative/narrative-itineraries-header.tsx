@@ -1,5 +1,7 @@
 /* eslint-disable complexity */
 import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
+import { ChevronDown } from '@styled-icons/fa-solid/ChevronDown'
+import { ChevronUp } from '@styled-icons/fa-solid/ChevronUp'
 import { Dropdown } from '@opentripplanner/building-blocks'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { SortAmountDown } from '@styled-icons/fa-solid/SortAmountDown'
@@ -175,14 +177,21 @@ export default function NarrativeItinerariesHeader({
             )}
             {onClickExpansionButton && (
               <button
+                className="clear-button-formatting"
                 onClick={onClickExpansionButton}
-                style={{ width: '100%' }}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  width: '100%'
+                }}
               >
-                {mapExpanded ? (
-                  <FormattedMessage id="components.BatchResultsScreen.showResults" />
-                ) : (
-                  <FormattedMessage id="components.BatchResultsScreen.expandMap" />
-                )}
+                <StyledIconWrapper>
+                  {mapExpanded ? (
+                    <ChevronUp style={{ height: '36px', width: '50px' }} />
+                  ) : (
+                    <ChevronDown style={{ height: '36px', width: '50px' }} />
+                  )}
+                </StyledIconWrapper>
               </button>
             )}
             <div style={{ display: 'flex' }}>
