@@ -58,6 +58,7 @@ actions:
     smsResendThrottled: 확인 SMS가 1분 미만 전에 표시된 전화번호로 전송되었습니다. 잠시 후 다시 시도하세요.
     smsVerificationFailed: 번호가 확인되지 않습니다. 입력한 코드가 만료되었을 수 있습니다. 새 코드를 요청한 후 다시 
       시도하세요.
+    tripDeleted: 여행이 삭제되었습니다.
 common:
   coordinates: "{lat}, {lon}"
   dateExpressions:
@@ -265,6 +266,9 @@ components:
     nameAlreadyUsed: 이 이름은 이미 다른 장소에 사용되고 있습니다. 다른 이름을 입력해 주세요.
     placeNotFound: 장소를 찾을 수 없음
     placeNotFoundDescription: 죄송합니다. 요청하신 장소를 찾을 수 없습니다.
+    charactersOverLimit: '{chars, plural, one {# # 자가 초과되었습니다} other {# 자가 초과되었습니다}
+      }'
+    nameTooLong: 이름은 {char} 자 미만이어야 합니다.
   FormNavigationButtons:
     ariaLabel: 내비게이션 양식
   ItinerarySummary:
@@ -364,6 +368,7 @@ components:
     nothingNearby: 근처에 장소가 없습니다.
     searchNearby: 주변 검색...
     spacesAvailable: "{spacesAvailable} 빈 자리 있음"
+    nothingNearbyHeader: 범위 초과
   NewAccountWizard:
     createNewAccount: 새 계정 생성
     finish: 계정 설정을 완료하셨습니다!
@@ -411,6 +416,9 @@ components:
     inputFields:
       FROM: 기원
       TO: 목적지
+    OTP_RR_TRIP_IN_PAST:
+      header: 여행이 이미 진행되었습니다
+      body: 여행 일정 중 하나 이상이 과거에 완료되었습니다.
   PhoneNumberEditor:
     changeNumber: 번호 변경
     invalidCode: 확인 코드 6 자리를 입력하세요.
@@ -727,6 +735,7 @@ components:
       귀하의 이메일의 받은 편지함을 확인한 후, 메시지의 링크를 따라 이메일 주소를 확인하여 계정 설정을 완료하세요.
     instructions2: 확인 후, 아래의 버튼을 클릭하여 계속 진행하십시오.
     resendVerification: 확인 이메일을 다시 전송
+    instructions3: 여행을 계획하고 이 페이지로 돌아와 계정 설정을 계속할 수 있습니다.
   ViewSwitcher:
     nearby: 근처 보기
     switcher: 변경

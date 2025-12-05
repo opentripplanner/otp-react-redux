@@ -54,6 +54,7 @@ actions:
     smsInvalidCode: 您輸入的代碼無效。請再試一次。
     smsResendThrottled: 驗證簡訊已在不到一分鐘前傳送到指定的電話號碼。請稍後再試一次。
     smsVerificationFailed: 您的電話無法驗證。您輸入的代碼可能已失效。請要求新的代碼，然後再試一次。
+    tripDeleted: 您的行程已刪除。
 common:
   coordinates: "{lat}; {lon}"
   dateExpressions:
@@ -244,6 +245,8 @@ components:
     nameAlreadyUsed: 您已經對其他地點使用此名稱。請輸入其他名稱。
     placeNotFound: 找不到地點
     placeNotFoundDescription: 很抱歉，找不到請求的地點。
+    charactersOverLimit: '{chars, plural, one {# 已超過 # 個字元} other {# 已超過 # 個字元} }'
+    nameTooLong: 名稱長度須少於 {char} 個字元。
   FormNavigationButtons:
     ariaLabel: 表單導航
   ItinerarySummary:
@@ -303,6 +306,8 @@ components:
     headsign: "{destination}"
     searchNearby: 搜尋附近...
     spacesAvailable: "{spacesAvailable} 有未佔用的空間"
+    nothingNearbyHeader: 超出範圍
+    nothingNearby: 附近無相關地點.
   NewAccountWizard:
     createNewAccount: 建立新帳戶
     finish: 帳戶設定完成！
@@ -344,6 +349,9 @@ components:
     inputFields:
       FROM: 起點
       TO: 目的地
+    OTP_RR_TRIP_IN_PAST:
+      header: 行程時間已過
+      body: 其中一項或多項行程方案的結束時間已過.
   PhoneNumberEditor:
     changeNumber: 變更號碼
     invalidCode: 請輸入6位數的驗證碼。
@@ -573,6 +581,8 @@ components:
       tripStartIsEarly: 行程開始時間比預期提早{duration}！
       tripStartsSoonNoUpdates: 行程即將開始 (沒有可用的即時更新)。
       tripStartsSoonOnTime: 行程即將開始且大約準時。
+    past:
+      heading: 此為過去行程
   TripSummary:
     arriveAt: "抵達 "
     leaveAt: "離開點 "
