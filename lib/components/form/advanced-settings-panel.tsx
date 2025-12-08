@@ -402,8 +402,6 @@ const mapStateToProps = (state: AppReduxState) => {
   )
   const user = state.user.loggedInUser
 
-  const persistence = state.otp.config?.persistence
-
   const { autoPlan } = state.otp.config
   const saveAndReturnButton =
     state.otp.config?.advancedSettingsPanel?.saveAndReturnButton
@@ -422,7 +420,7 @@ const mapStateToProps = (state: AppReduxState) => {
     modeButtonOptions: modes?.modeButtons || [],
     modeSettingDefinitions: state.otp?.modeSettingDefinitions || [],
     modeSettingValues,
-    persistence,
+    persistence: state.otp.config?.persistence,
     saveAndReturnButton,
     user
   }
