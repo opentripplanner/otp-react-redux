@@ -63,6 +63,7 @@ export interface User {
   relatedUsers?: CompanionInfo[]
   savedLocations?: UserSavedLocation[]
   storeTripHistory?: boolean
+  userSavedTripDefaults?: string
 }
 
 export type EditedUser = Omit<User, 'notificationChannel'> & {
