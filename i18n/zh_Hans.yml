@@ -717,6 +717,7 @@ components:
       在完成账户设置之前请检查您的电子邮件收件箱并按照信息中的链接来验证您的电子邮件地址.
     instructions2: 一旦您被验证，请点击下面的按钮继续.
     resendVerification: 重新发送验证邮件
+    instructions3: 规划行程后，您可随时返回此页面继续进行账户设置。
   ViewSwitcher:
     nearby: 查看附近
     switcher: 切换按钮
