@@ -21,10 +21,13 @@ import PlanFirstLastButtons from './plan-first-last-buttons'
 import SaveTripButton from './save-trip-button'
 
 const ItinerariesHeaderContainer = styled.div<{ showHeaderText: boolean }>`
+  align-items: flex-end;
   display: flex;
+  flex-direction: column;
   float: left;
   gap: 8px;
   margin-left: ${(props) => (props.showHeaderText ? 'inherit' : 'auto')};
+  width: 100%;
 `
 
 const SortResultsDropdown = styled(Dropdown)`
@@ -161,15 +164,7 @@ export default function NarrativeItinerariesHeader({
             // because it falls under the "Plan your trip" <h1> header.
             <InvisibleA11yLabel as="h2">{itinerariesFound}</InvisibleA11yLabel>
           )}
-          <ItinerariesHeaderContainer
-            showHeaderText={showHeaderText}
-            style={{
-              alignItems: 'flex-end',
-              display: 'flex',
-              flexDirection: 'column',
-              width: '100%'
-            }}
-          >
+          <ItinerariesHeaderContainer showHeaderText={showHeaderText}>
             {popupTarget && (
               <button onClick={() => setPopupContent(popupTarget)}>
                 <PopupTriggerText compact popupTarget={popupTarget} />
