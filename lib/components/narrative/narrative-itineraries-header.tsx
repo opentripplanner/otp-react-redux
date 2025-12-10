@@ -177,6 +177,15 @@ export default function NarrativeItinerariesHeader({
             )}
             {onClickExpansionButton && (
               <button
+                aria-label={
+                  mapExpanded
+                    ? intl.formatMessage({
+                        id: 'components.BatchResultsScreen.showResults'
+                      })
+                    : intl.formatMessage({
+                        id: 'components.BatchResultsScreen.expandMap'
+                      })
+                }
                 className="clear-button-formatting"
                 onClick={onClickExpansionButton}
                 style={{
@@ -184,6 +193,15 @@ export default function NarrativeItinerariesHeader({
                   justifyContent: 'center',
                   width: '100%'
                 }}
+                title={
+                  mapExpanded
+                    ? intl.formatMessage({
+                        id: 'components.BatchResultsScreen.showResults'
+                      })
+                    : intl.formatMessage({
+                        id: 'components.BatchResultsScreen.expandMap'
+                      })
+                }
               >
                 <StyledIconWrapper>
                   {mapExpanded ? (
