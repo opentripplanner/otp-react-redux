@@ -200,9 +200,23 @@ export default function NarrativeItinerariesHeader({
               >
                 <StyledIconWrapper>
                   {mapExpanded ? (
-                    <ChevronUp style={{ height: '36px', width: '50px' }} />
+                    <ChevronUp
+                      style={{
+                        color: 'var(--main-base-color)',
+                        height: '36px',
+                        transform: 'scaleX(2)',
+                        width: '50px'
+                      }}
+                    />
                   ) : (
-                    <ChevronDown style={{ height: '36px', width: '50px' }} />
+                    <ChevronDown
+                      style={{
+                        color: 'var(--main-base-color)',
+                        height: '36px',
+                        transform: 'scaleX(2)',
+                        width: '50px'
+                      }}
+                    />
                   )}
                 </StyledIconWrapper>
               </button>
