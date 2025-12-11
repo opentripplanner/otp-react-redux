@@ -540,7 +540,7 @@ class DefaultMap extends Component<DefaultMapProps> {
           {typeof getCustomMapOverlays === 'function' &&
             getCustomMapOverlays(!itinerary && !pending)}
           <NavigationControl
-            position={navigationControlPosition || 'bottom-right'}
+            position={navigationControlPosition || 'top-left'}
           />
         </BaseMap>
       </MapContainer>
