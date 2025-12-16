@@ -83,7 +83,7 @@ actions:
       Votre numéro de téléphone n'a pas pu être vérifié. Le code que vous avez
       entré a peut-être expiré. Veuillez demander un nouveau code, puis
       réessayez.
-    tripDeleted: Votre trajet a été supprimé
+    tripDeleted: Votre trajet a été supprimé.
 common:
   coordinates: "{lat}; {lon}"
   currentlySelected: " (actuellement sélectionné)"
@@ -227,10 +227,12 @@ components:
   BatchSearchScreen:
     advancedHeader: Préférences avancées
     header: Votre trajet
+    logInToSetDefault: Connectez-vous pour définir ces options par défaut
     modeSelectorLabel: Sélectionnez un mode de déplacement
     moreOptions: Plus d'options
     saveAndReturn: Enregistrer et fermer
     saved: Enregistré
+    setAsDefault: Définir ces options par défaut
     submodeSelectorLabel: Sélectionnez vos modes et sous-modes de déplacement
     tripOptions: Options concernant le trajet
   BatchSettings:
