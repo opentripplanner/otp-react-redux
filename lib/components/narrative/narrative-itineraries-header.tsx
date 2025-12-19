@@ -11,6 +11,7 @@ import { ComponentContext } from '../../util/contexts'
 import { IconWithText, StyledIconWrapper } from '../util/styledIcon'
 import { ItinerarySortOption } from '../../util/config-types'
 import { sortOptions } from '../util/sortOptions'
+import { TOGGLE_MAP_BUTTON_HEIGHT } from '../mobile/batch-results-screen'
 import { UnstyledButton } from '../util/unstyled-button'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import PopupTriggerText from '../app/popup-trigger-text'
@@ -187,8 +188,11 @@ export default function NarrativeItinerariesHeader({
                 className="clear-button-formatting"
                 onClick={onClickExpansionButton}
                 style={{
+                  alignItems: 'center',
                   display: 'flex',
+                  height: `${TOGGLE_MAP_BUTTON_HEIGHT}vh`,
                   justifyContent: 'center',
+                  margin: '-10px 0',
                   width: '100%'
                 }}
                 title={
