@@ -34,9 +34,9 @@ const SortResultsDropdown = styled(Dropdown)`
   }
 `
 
-const UnicodeChevron = styled.div<{ direction: 'up' | 'down' }>`
-  transform: rotate(${(props) => (props.direction === 'up' ? '270' : '90')}deg)
-    scaleY(2) scaleX(1.5);
+const UnicodeChevron = styled.div<{ expanded: boolean }>`
+  transform: rotate(${(props) => (props.expanded ? '270' : '90')}deg) scaleY(2)
+    scaleX(1.5);
 `
 
 export default function NarrativeItinerariesHeader({
@@ -203,9 +203,13 @@ export default function NarrativeItinerariesHeader({
               >
                 <StyledIconWrapper>
                   {mapExpanded ? (
-                    <UnicodeChevron direction="up">&#10095;</UnicodeChevron>
+                    <UnicodeChevron expanded={mapExpanded}>
+                      &#10095;
+                    </UnicodeChevron>
                   ) : (
-                    <UnicodeChevron direction="down">&#10095;</UnicodeChevron>
+                    <UnicodeChevron expanded={mapExpanded}>
+                      &#10095;
+                    </UnicodeChevron>
                   )}
                 </StyledIconWrapper>
               </button>
