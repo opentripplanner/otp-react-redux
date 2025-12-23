@@ -11,6 +11,7 @@ interface Props extends StackedPanesProps {
   extraButton?: ButtonType
   isReadOnly?: boolean
   onCancel: () => void
+  subtitle?: string | JSX.Element
 }
 
 /**
@@ -23,6 +24,7 @@ const StackedPanesWithSave = ({
   isReadOnly,
   onCancel,
   panes,
+  subtitle,
   title
 }: Props): JSX.Element => {
   // Create indicator of if cancel button was clicked so that child components can know
@@ -35,7 +37,12 @@ const StackedPanesWithSave = ({
 
   return (
     <>
-      <StackedPanes canceling={isBeingCanceled} panes={panes} title={title} />
+      <StackedPanes
+        canceling={isBeingCanceled}
+        panes={panes}
+        subtitle={subtitle}
+        title={title}
+      />
 
       {/* Announces when page is loading to AT users */}
       <InvisibleA11yLabel aria-live="polite" role="status">
