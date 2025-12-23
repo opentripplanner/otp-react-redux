@@ -200,15 +200,9 @@ export default function NarrativeItinerariesHeader({
                 title={mapExpansionText}
               >
                 <StyledIconWrapper>
-                  {mapExpanded ? (
-                    <UnicodeChevron expanded={mapExpanded}>
-                      &#10095;
-                    </UnicodeChevron>
-                  ) : (
-                    <UnicodeChevron expanded={mapExpanded}>
-                      &#10095;
-                    </UnicodeChevron>
-                  )}
+                  <UnicodeChevron expanded={mapExpanded}>
+                    &#10095;
+                  </UnicodeChevron>
                 </StyledIconWrapper>
               </button>
             )}
