@@ -4,7 +4,7 @@ import { Dropdown } from '@opentripplanner/building-blocks'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { SortAmountDown } from '@styled-icons/fa-solid/SortAmountDown'
 import { SortAmountUp } from '@styled-icons/fa-solid/SortAmountUp'
-import React, { useContext } from 'react'
+import React, { useContext, useMemo } from 'react'
 import styled from 'styled-components'
 
 import { ComponentContext } from '../../util/contexts'
@@ -102,6 +102,16 @@ export default function NarrativeItinerariesHeader({
   const sortOptionsArr = sortOptions(intl, enabledSortModes)
   const sortText = sortOptionsArr.find((x) => x.value === sort.type)?.text
 
+  const mapExpansionText = useMemo(() => {
+    return mapExpanded
+      ? intl.formatMessage({
+          id: 'components.BatchResultsScreen.showResults'
+        })
+      : intl.formatMessage({
+          id: 'components.BatchResultsScreen.expandMap'
+        })
+  }, [intl, mapExpanded])
+
   return (
     <div
       className="options header"
@@ -176,15 +186,7 @@ export default function NarrativeItinerariesHeader({
             )}
             {onClickExpansionButton && (
               <button
-                aria-label={
-                  mapExpanded
-                    ? intl.formatMessage({
-                        id: 'components.BatchResultsScreen.showResults'
-                      })
-                    : intl.formatMessage({
-                        id: 'components.BatchResultsScreen.expandMap'
-                      })
-                }
+                aria-label={mapExpansionText}
                 className="clear-button-formatting"
                 onClick={onClickExpansionButton}
                 style={{
@@ -195,15 +197,7 @@ export default function NarrativeItinerariesHeader({
                   margin: '-10px 0',
                   width: '100%'
                 }}
-                title={
-                  mapExpanded
-                    ? intl.formatMessage({
-                        id: 'components.BatchResultsScreen.showResults'
-                      })
-                    : intl.formatMessage({
-                        id: 'components.BatchResultsScreen.expandMap'
-                      })
-                }
+                title={mapExpansionText}
               >
                 <StyledIconWrapper>
                   {mapExpanded ? (
