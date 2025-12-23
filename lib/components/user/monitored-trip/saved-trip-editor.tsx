@@ -89,7 +89,9 @@ const SavedTripEditor = (props: Props): JSX.Element => {
           onCancel={onCancel}
           panes={paneSequence}
           subtitle={
-            <FormattedMessage id="components.TripBasicsPane.indicatesRequiredFields" />
+            !props.isReadOnly ? (
+              <FormattedMessage id="components.TripBasicsPane.indicatesRequiredFields" />
+            ) : undefined
           }
           title={title}
         />
