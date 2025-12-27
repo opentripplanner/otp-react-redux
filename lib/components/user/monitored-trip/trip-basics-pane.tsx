@@ -382,7 +382,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
           <FormGroup validationState={errorStates.tripName}>
             <ControlLabel htmlFor="tripName">
               <FormattedMessage id="components.TripBasicsPane.tripNamePrompt" />
-              {!isReadOnly && <RequiredIndicator> *</RequiredIndicator>}
+              {!isReadOnly && <RequiredIndicator>{' *'}</RequiredIndicator>}
             </ControlLabel>
             {/* onBlur, onChange, and value are passed automatically. */}
             <Field
@@ -403,7 +403,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
             <FormGroup validationState={selectOneDayError}>
               <ControlLabel>
                 <FormattedMessage id="components.TripBasicsPane.tripDaysPrompt" />
-                {!isReadOnly && <RequiredIndicator> *</RequiredIndicator>}
+                {!isReadOnly && <RequiredIndicator>{' *'}</RequiredIndicator>}
               </ControlLabel>
               <RenderAvailableDays
                 errorCheckingTrip={errorCheckingTrip}
