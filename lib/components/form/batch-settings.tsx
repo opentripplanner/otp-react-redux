@@ -52,11 +52,9 @@ type Props = {
   openAdvancedSettings: () => void
   routingQuery: any
   setQueryParam: (evt: any) => void
-  setUrlSearch: (evt: any, arg: boolean) => void
   sort: any
   syncSortWithDepartArrive: any
   updateItineraryFilter: any
-  userSavedTripDefaults: string
 }
 
 export function setModeButtonEnabled(enabledKeys: string[]) {
@@ -83,11 +81,9 @@ function BatchSettings({
   openAdvancedSettings,
   routingQuery,
   setQueryParam,
-  setUrlSearch,
   sort,
   syncSortWithDepartArrive,
-  updateItineraryFilter,
-  userSavedTripDefaults
+  updateItineraryFilter
 }: Props) {
   const intl = useIntl()
 
@@ -127,19 +123,6 @@ function BatchSettings({
       (dtTimeInput as HTMLElement)?.focus()
     }
   }, [dtSelectorOpen, departArrive])
-
-  /* If there are userSavedTripDefaults, only apply them when we're looking at 
-  the trip form and if the user isn't already in the middle of a search */
-  useEffect(() => {
-    if (
-      userSavedTripDefaults &&
-      !window.location.href.includes('activeSearch')
-    ) {
-      const userDefaultParams = JSON.parse(userSavedTripDefaults)
-      setQueryParam(userDefaultParams)
-      setUrlSearch(userDefaultParams, true)
-    }
-  }, [setQueryParam, setUrlSearch, userSavedTripDefaults])
 
   return (
     <MainSettingsRow className="main-settings-row">
@@ -206,7 +189,6 @@ const mapStateToProps = (state: any) => {
   const urlSearchParams = new URLSearchParams(state.router.location.search)
   const { homeTimezone, modes } = state.otp.config
   const { departArrive } = state.otp.currentQuery
-  const userSavedTripDefaults = state.user?.loggedInUser?.userSavedTripDefaults
   return {
     activeSearch: getActiveSearch(state),
     currentQuery: state.otp.currentQuery,
@@ -223,15 +205,13 @@ const mapStateToProps = (state: any) => {
     modeButtonOptions: modes?.modeButtons || [],
     sort: state.otp.filter.sort,
     syncSortWithDepartArrive:
-      state.otp.config?.itinerary?.syncSortWithDepartArrive,
-    userSavedTripDefaults
+      state.otp.config?.itinerary?.syncSortWithDepartArrive
   }
 }
 
 const mapDispatchToProps = {
   routingQuery: apiActions.routingQuery,
   setQueryParam: formActions.setQueryParam,
-  setUrlSearch: apiActions.setUrlSearch,
   updateItineraryFilter: narrativeActions.updateItineraryFilter
 }
 
