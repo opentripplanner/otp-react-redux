@@ -189,6 +189,8 @@ components:
     moreOptions: 更多選擇
     saveAndReturn: 儲存並返回
     tripOptions: 行程選擇
+    setAsDefault: 設為預設值
+    logInToSetDefault: 登入以設為預設值
   BatchSettings:
     destination: 目的地
     invalidModeSelection: 無法使用所選模式規劃行程。嘗試將公共交通納入您的模式選取內容。
@@ -441,6 +443,7 @@ components:
     noSavedTripsInstructions: 請先從地圖進行行程搜尋。
     pause: 暫停
     resume: 繼續
+    alertTag: '{alert, plural, one {檢視 1 則警示} other {檢視 # 則警示}}'
   SavedTripScreen:
     itineraryLoaded: 路線已載入
     itineraryLoading: 正在載入路線
@@ -534,7 +537,7 @@ components:
   TripPreviewLayout:
     previewTrip: 預覽行程
   TripStatus:
-    alerts: "{alerts}個警示！"
+    alerts: "{alerts, plural, one {# 則警示!} other {# 則警示!}}"
     deleteTrip: 刪除行程
     planNewTrip: 規劃新行程
   TripStatusRenderers:
