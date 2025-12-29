@@ -218,6 +218,8 @@ components:
     saved: Сохранено
     submodeSelectorLabel: Выбор режимов и подрежимов путешествия
     tripOptions: Варианты поездок
+    setAsDefault: Установить по умолчанию
+    logInToSetDefault: Войти, чтобы установить по умолчанию
   BatchSettings:
     destination: место назначения
     invalidModeSelection: >-
