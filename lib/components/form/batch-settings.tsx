@@ -8,20 +8,21 @@ import { ModeButtonDefinition } from '@opentripplanner/types'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
 import { useIntl } from 'react-intl'
+import AnimateHeight from 'react-animate-height'
 import React, { useCallback, useContext, useEffect } from 'react'
 
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
 import * as narrativeActions from '../../actions/narrative'
+import * as userAction from '../../actions/user'
 import { ComponentContext } from '../../util/contexts'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
 import { getBaseColor, getDarkenedBaseColor } from '../util/colors'
 import { StyledIconWrapper } from '../util/styledIcon'
-import AnimateHeight from 'react-animate-height'
+import { User } from '../user/types'
 
 import {
   addModeButtonIcon,
-  alertUserTripPlan,
   modesQueryParamConfig,
   onSettingsUpdate,
   pipe,
@@ -42,6 +43,7 @@ import DateTimeModal, {
 // TYPESCRIPT TODO: better types
 type Props = {
   activeSearch: any
+  applyUserSavedTripDefaults: (arg: string) => void
   currentQuery: any
   departArrive: DepartArriveValue
   enabledModeButtons: string[]
@@ -55,6 +57,7 @@ type Props = {
   sort: any
   syncSortWithDepartArrive: any
   updateItineraryFilter: any
+  user: User
 }
 
 export function setModeButtonEnabled(enabledKeys: string[]) {
@@ -71,6 +74,7 @@ export function setModeButtonEnabled(enabledKeys: string[]) {
  */
 function BatchSettings({
   activeSearch,
+  applyUserSavedTripDefaults,
   currentQuery,
   departArrive,
   enabledModeButtons,
@@ -83,7 +87,8 @@ function BatchSettings({
   setQueryParam,
   sort,
   syncSortWithDepartArrive,
-  updateItineraryFilter
+  updateItineraryFilter,
+  user
 }: Props) {
   const intl = useIntl()
 
@@ -110,6 +115,14 @@ function BatchSettings({
     },
     [syncSortWithDepartArrive, updateItineraryFilter, setQueryParam, sort]
   )
+
+  // If there are user saved trip defaults, update the query params
+  useEffect(() => {
+    const userSavedTripDefaults = user?.userSavedTripDefaults
+    if (userSavedTripDefaults) {
+      applyUserSavedTripDefaults(userSavedTripDefaults)
+    }
+  }, [applyUserSavedTripDefaults, user])
 
   const dtSelectorOpen = departArrive !== 'NOW'
 
@@ -189,6 +202,7 @@ const mapStateToProps = (state: any) => {
   const urlSearchParams = new URLSearchParams(state.router.location.search)
   const { homeTimezone, modes } = state.otp.config
   const { departArrive } = state.otp.currentQuery
+  const { loggedInUser } = state.user
   return {
     activeSearch: getActiveSearch(state),
     currentQuery: state.otp.currentQuery,
@@ -205,11 +219,13 @@ const mapStateToProps = (state: any) => {
     modeButtonOptions: modes?.modeButtons || [],
     sort: state.otp.filter.sort,
     syncSortWithDepartArrive:
-      state.otp.config?.itinerary?.syncSortWithDepartArrive
+      state.otp.config?.itinerary?.syncSortWithDepartArrive,
+    user: loggedInUser
   }
 }
 
 const mapDispatchToProps = {
+  applyUserSavedTripDefaults: userAction.applyUserSavedTripDefaults,
   routingQuery: apiActions.routingQuery,
   setQueryParam: formActions.setQueryParam,
   updateItineraryFilter: narrativeActions.updateItineraryFilter
