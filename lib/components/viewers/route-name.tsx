@@ -1,3 +1,4 @@
+import { Route } from '@opentripplanner/types'
 import React, { ComponentType } from 'react'
 import styled from 'styled-components'
 
@@ -30,7 +31,7 @@ const RouteLongNameElement = styled.span`
 
 interface MinimalLeg {
   mode: string
-  routeColor: string
+  route: Route
 }
 
 interface RouteRendererProps {
