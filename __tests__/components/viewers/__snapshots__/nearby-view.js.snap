@@ -12926,14 +12926,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Metro Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "kcm:1",
+                                                      "name": "Metro Transit",
+                                                    },
                                                     "mode": "BUS",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": null,
-                                                    "routeLongName": null,
-                                                    "routeShortName": "45",
-                                                    "routeTextColor": null,
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "kcm:1",
+                                                        "name": "Metro Transit",
+                                                      },
+                                                      "color": null,
+                                                      "longName": null,
+                                                      "mode": "BUS",
+                                                      "shortName": "45",
+                                                      "textColor": null,
+                                                      "type": 3,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -13752,14 +13763,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Metro Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "kcm:1",
+                                                      "name": "Metro Transit",
+                                                    },
                                                     "mode": "BUS",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": null,
-                                                    "routeLongName": null,
-                                                    "routeShortName": "62",
-                                                    "routeTextColor": null,
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "kcm:1",
+                                                        "name": "Metro Transit",
+                                                      },
+                                                      "color": null,
+                                                      "longName": null,
+                                                      "mode": "BUS",
+                                                      "shortName": "62",
+                                                      "textColor": null,
+                                                      "type": 3,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -14508,14 +14530,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Metro Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "kcm:1",
+                                                      "name": "Metro Transit",
+                                                    },
                                                     "mode": "BUS",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": null,
-                                                    "routeLongName": null,
-                                                    "routeShortName": "79",
-                                                    "routeTextColor": null,
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "kcm:1",
+                                                        "name": "Metro Transit",
+                                                      },
+                                                      "color": null,
+                                                      "longName": null,
+                                                      "mode": "BUS",
+                                                      "shortName": "79",
+                                                      "textColor": null,
+                                                      "type": 3,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -19744,14 +19777,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Sound Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "40:40",
+                                                      "name": "Sound Transit",
+                                                    },
                                                     "mode": "TRAM",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": "28813F",
-                                                    "routeLongName": "Northgate - Angle Lake",
-                                                    "routeShortName": "1 Line",
-                                                    "routeTextColor": "FFFFFF",
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "40:40",
+                                                        "name": "Sound Transit",
+                                                      },
+                                                      "color": "28813F",
+                                                      "longName": "Northgate - Angle Lake",
+                                                      "mode": "TRAM",
+                                                      "shortName": "1 Line",
+                                                      "textColor": "FFFFFF",
+                                                      "type": 0,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -20443,14 +20487,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Sound Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "40:40",
+                                                      "name": "Sound Transit",
+                                                    },
                                                     "mode": "TRAM",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": "28813F",
-                                                    "routeLongName": "Northgate - Angle Lake",
-                                                    "routeShortName": "1 Line",
-                                                    "routeTextColor": "FFFFFF",
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "40:40",
+                                                        "name": "Sound Transit",
+                                                      },
+                                                      "color": "28813F",
+                                                      "longName": "Northgate - Angle Lake",
+                                                      "mode": "TRAM",
+                                                      "shortName": "1 Line",
+                                                      "textColor": "FFFFFF",
+                                                      "type": 0,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -20945,14 +21000,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Sound Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "40:40",
+                                                      "name": "Sound Transit",
+                                                    },
                                                     "mode": "TRAM",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": "28813F",
-                                                    "routeLongName": "Northgate - Angle Lake",
-                                                    "routeShortName": "1 Line",
-                                                    "routeTextColor": "FFFFFF",
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "40:40",
+                                                        "name": "Sound Transit",
+                                                      },
+                                                      "color": "28813F",
+                                                      "longName": "Northgate - Angle Lake",
+                                                      "mode": "TRAM",
+                                                      "shortName": "1 Line",
+                                                      "textColor": "FFFFFF",
+                                                      "type": 0,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -30614,14 +30680,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Metro Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "kcm:1",
+                                                      "name": "Metro Transit",
+                                                    },
                                                     "mode": "BUS",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": null,
-                                                    "routeLongName": null,
-                                                    "routeShortName": "45",
-                                                    "routeTextColor": null,
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "kcm:1",
+                                                        "name": "Metro Transit",
+                                                      },
+                                                      "color": null,
+                                                      "longName": null,
+                                                      "mode": "BUS",
+                                                      "shortName": "45",
+                                                      "textColor": null,
+                                                      "type": 3,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -31453,14 +31530,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Metro Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "kcm:1",
+                                                      "name": "Metro Transit",
+                                                    },
                                                     "mode": "BUS",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": null,
-                                                    "routeLongName": null,
-                                                    "routeShortName": "62",
-                                                    "routeTextColor": null,
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "kcm:1",
+                                                        "name": "Metro Transit",
+                                                      },
+                                                      "color": null,
+                                                      "longName": null,
+                                                      "mode": "BUS",
+                                                      "shortName": "62",
+                                                      "textColor": null,
+                                                      "type": 3,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -32214,14 +32302,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Metro Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "kcm:1",
+                                                      "name": "Metro Transit",
+                                                    },
                                                     "mode": "BUS",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": null,
-                                                    "routeLongName": null,
-                                                    "routeShortName": "79",
-                                                    "routeTextColor": null,
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "kcm:1",
+                                                        "name": "Metro Transit",
+                                                      },
+                                                      "color": null,
+                                                      "longName": null,
+                                                      "mode": "BUS",
+                                                      "shortName": "79",
+                                                      "textColor": null,
+                                                      "type": 3,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -32913,14 +33012,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Metro Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "kcm:1",
+                                                      "name": "Metro Transit",
+                                                    },
                                                     "mode": "BUS",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": null,
-                                                    "routeLongName": null,
-                                                    "routeShortName": "988",
-                                                    "routeTextColor": null,
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "kcm:1",
+                                                        "name": "Metro Transit",
+                                                      },
+                                                      "color": null,
+                                                      "longName": null,
+                                                      "mode": "BUS",
+                                                      "shortName": "988",
+                                                      "textColor": null,
+                                                      "type": 3,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -40009,14 +40119,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Metro Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "kcm:1",
+                                                      "name": "Metro Transit",
+                                                    },
                                                     "mode": "BUS",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": null,
-                                                    "routeLongName": null,
-                                                    "routeShortName": "67",
-                                                    "routeTextColor": null,
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "kcm:1",
+                                                        "name": "Metro Transit",
+                                                      },
+                                                      "color": null,
+                                                      "longName": null,
+                                                      "mode": "BUS",
+                                                      "shortName": "67",
+                                                      "textColor": null,
+                                                      "type": 3,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -40830,14 +40951,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Metro Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "kcm:1",
+                                                      "name": "Metro Transit",
+                                                    },
                                                     "mode": "BUS",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": null,
-                                                    "routeLongName": null,
-                                                    "routeShortName": "73",
-                                                    "routeTextColor": null,
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "kcm:1",
+                                                        "name": "Metro Transit",
+                                                      },
+                                                      "color": null,
+                                                      "longName": null,
+                                                      "mode": "BUS",
+                                                      "shortName": "73",
+                                                      "textColor": null,
+                                                      "type": 3,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -41529,14 +41661,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Metro Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "kcm:1",
+                                                      "name": "Metro Transit",
+                                                    },
                                                     "mode": "BUS",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": null,
-                                                    "routeLongName": null,
-                                                    "routeShortName": "984",
-                                                    "routeTextColor": null,
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "kcm:1",
+                                                        "name": "Metro Transit",
+                                                      },
+                                                      "color": null,
+                                                      "longName": null,
+                                                      "mode": "BUS",
+                                                      "shortName": "984",
+                                                      "textColor": null,
+                                                      "type": 3,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -48959,14 +49102,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Sound Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "40:40",
+                                                      "name": "Sound Transit",
+                                                    },
                                                     "mode": "TRAM",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": "28813F",
-                                                    "routeLongName": "Northgate - Angle Lake",
-                                                    "routeShortName": "1 Line",
-                                                    "routeTextColor": "FFFFFF",
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "40:40",
+                                                        "name": "Sound Transit",
+                                                      },
+                                                      "color": "28813F",
+                                                      "longName": "Northgate - Angle Lake",
+                                                      "mode": "TRAM",
+                                                      "shortName": "1 Line",
+                                                      "textColor": "FFFFFF",
+                                                      "type": 0,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -57282,14 +57436,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Sound Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "kcm:40",
+                                                      "name": "Sound Transit",
+                                                    },
                                                     "mode": "BUS",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": "2B376E",
-                                                    "routeLongName": null,
-                                                    "routeShortName": "522",
-                                                    "routeTextColor": "FFFFFF",
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "kcm:40",
+                                                        "name": "Sound Transit",
+                                                      },
+                                                      "color": "2B376E",
+                                                      "longName": null,
+                                                      "mode": "BUS",
+                                                      "shortName": "522",
+                                                      "textColor": "FFFFFF",
+                                                      "type": 3,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -58033,14 +58198,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Metro Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "kcm:1",
+                                                      "name": "Metro Transit",
+                                                    },
                                                     "mode": "BUS",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": null,
-                                                    "routeLongName": null,
-                                                    "routeShortName": "67",
-                                                    "routeTextColor": null,
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "kcm:1",
+                                                        "name": "Metro Transit",
+                                                      },
+                                                      "color": null,
+                                                      "longName": null,
+                                                      "mode": "BUS",
+                                                      "shortName": "67",
+                                                      "textColor": null,
+                                                      "type": 3,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -58789,14 +58965,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Sound Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "kcm:40",
+                                                      "name": "Sound Transit",
+                                                    },
                                                     "mode": "BUS",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": "2B376E",
-                                                    "routeLongName": null,
-                                                    "routeShortName": "522",
-                                                    "routeTextColor": "FFFFFF",
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "kcm:40",
+                                                        "name": "Sound Transit",
+                                                      },
+                                                      "color": "2B376E",
+                                                      "longName": null,
+                                                      "mode": "BUS",
+                                                      "shortName": "522",
+                                                      "textColor": "FFFFFF",
+                                                      "type": 3,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -59605,14 +59792,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Metro Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "kcm:1",
+                                                      "name": "Metro Transit",
+                                                    },
                                                     "mode": "BUS",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": null,
-                                                    "routeLongName": null,
-                                                    "routeShortName": "73",
-                                                    "routeTextColor": null,
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "kcm:1",
+                                                        "name": "Metro Transit",
+                                                      },
+                                                      "color": null,
+                                                      "longName": null,
+                                                      "mode": "BUS",
+                                                      "shortName": "73",
+                                                      "textColor": null,
+                                                      "type": 3,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -60356,14 +60554,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Metro Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "kcm:1",
+                                                      "name": "Metro Transit",
+                                                    },
                                                     "mode": "BUS",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": null,
-                                                    "routeLongName": null,
-                                                    "routeShortName": "322",
-                                                    "routeTextColor": null,
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "kcm:1",
+                                                        "name": "Metro Transit",
+                                                      },
+                                                      "color": null,
+                                                      "longName": null,
+                                                      "mode": "BUS",
+                                                      "shortName": "322",
+                                                      "textColor": null,
+                                                      "type": 3,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -61081,14 +61290,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Metro Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "kcm:1",
+                                                      "name": "Metro Transit",
+                                                    },
                                                     "mode": "BUS",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": null,
-                                                    "routeLongName": null,
-                                                    "routeShortName": "322",
-                                                    "routeTextColor": null,
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "kcm:1",
+                                                        "name": "Metro Transit",
+                                                      },
+                                                      "color": null,
+                                                      "longName": null,
+                                                      "mode": "BUS",
+                                                      "shortName": "322",
+                                                      "textColor": null,
+                                                      "type": 3,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -69039,14 +69259,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Metro Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "kcm:1",
+                                                      "name": "Metro Transit",
+                                                    },
                                                     "mode": "BUS",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": null,
-                                                    "routeLongName": null,
-                                                    "routeShortName": "45",
-                                                    "routeTextColor": null,
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "kcm:1",
+                                                        "name": "Metro Transit",
+                                                      },
+                                                      "color": null,
+                                                      "longName": null,
+                                                      "mode": "BUS",
+                                                      "shortName": "45",
+                                                      "textColor": null,
+                                                      "type": 3,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -69865,14 +70096,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Metro Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "kcm:1",
+                                                      "name": "Metro Transit",
+                                                    },
                                                     "mode": "BUS",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": null,
-                                                    "routeLongName": null,
-                                                    "routeShortName": "62",
-                                                    "routeTextColor": null,
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "kcm:1",
+                                                        "name": "Metro Transit",
+                                                      },
+                                                      "color": null,
+                                                      "longName": null,
+                                                      "mode": "BUS",
+                                                      "shortName": "62",
+                                                      "textColor": null,
+                                                      "type": 3,
+                                                    },
                                                   }
                                                 }
                                                 style={
@@ -70621,14 +70863,25 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                               <DefaultRouteRenderer
                                                 leg={
                                                   Object {
-                                                    "agencyName": "Metro Transit",
+                                                    "agency": Object {
+                                                      "gtfsId": "kcm:1",
+                                                      "name": "Metro Transit",
+                                                    },
                                                     "mode": "BUS",
                                                     "onColoredBackground": true,
                                                     "origColor": undefined,
-                                                    "routeColor": null,
-                                                    "routeLongName": null,
-                                                    "routeShortName": "79",
-                                                    "routeTextColor": null,
+                                                    "route": Object {
+                                                      "agency": Object {
+                                                        "gtfsId": "kcm:1",
+                                                        "name": "Metro Transit",
+                                                      },
+                                                      "color": null,
+                                                      "longName": null,
+                                                      "mode": "BUS",
+                                                      "shortName": "79",
+                                                      "textColor": null,
+                                                      "type": 3,
+                                                    },
                                                   }
                                                 }
                                                 style={
