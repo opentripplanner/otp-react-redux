@@ -73,6 +73,7 @@ actions:
     smsVerificationFailed: >-
       Не удалось подтвердить ваш телефон. Возможно, истек срок действия кода,
       который вы ввели. Запросите новый код и попробуйте еще раз.
+    tripDeleted: Ваша поездка была удалена.
 common:
   coordinates: "{lat}; {lon}"
   dateExpressions:
@@ -294,6 +295,9 @@ components:
       имя.
     placeNotFound: Место не найдено
     placeNotFoundDescription: Не удалось найти требуемое место.
+    charactersOverLimit: '{chars, plural, one {Лимит символов превышен на #} other
+      {Лимит символов превышен на #} }'
+    nameTooLong: В имени может быть максимум {char} символов.
   FormNavigationButtons:
     ariaLabel: Навигационная форма
   ItinerarySummary:
@@ -409,6 +413,7 @@ components:
     nothingNearby: Поблизости нет мест.
     searchNearby: Искать поблизости...
     spacesAvailable: "{spacesAvailable} есть свободные места"
+    nothingNearbyHeader: Вне диапазона
   NewAccountWizard:
     createNewAccount: Создайте учетную запись
     finish: Настройка учетной записи завершена!
@@ -469,6 +474,9 @@ components:
     inputFields:
       FROM: Mесто отправления
       TO: Mесто назначения
+    OTP_RR_TRIP_IN_PAST:
+      header: Поездка уже произошла
+      body: Одна или больше из выбранных поездок заканчивается в прошлом.
   PhoneNumberEditor:
     changeNumber: Изменить номер
     invalidCode: "Введите проверочный код из 6 цифр."
@@ -832,6 +840,8 @@ components:
       почты.
     instructions2: После подтверждения нажмите кнопку ниже, чтобы продолжить.
     resendVerification: Отправить письмо с подтверждением еще раз
+    instructions3: Вы можете планировать поездки и в любое время вернуться к 
+      этой странице, чтобы продолжить настройку вашего аккаунта.
   ViewSwitcher:
     nearby: Посмотреть рядом
     switcher: Переключатель

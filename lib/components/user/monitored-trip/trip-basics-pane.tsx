@@ -130,6 +130,11 @@ const AvailableDays = styled(FieldSet)`
   }
 `
 
+const RequiredIndicator = styled.span`
+  color: ${RED_ON_WHITE};
+  margin-left: 5px;
+`
+
 function isDisabled(day: string, itineraryExistence?: ItineraryExistence) {
   return itineraryExistence && !itineraryExistence[day]?.valid
 }
@@ -315,6 +320,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
     this.props.clearItineraryExistence()
   }
 
+  // eslint-disable-next-line complexity
   render() {
     const {
       canceled,
@@ -377,6 +383,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
           <FormGroup validationState={errorStates.tripName}>
             <ControlLabel htmlFor="tripName">
               <FormattedMessage id="components.TripBasicsPane.tripNamePrompt" />
+              {!isReadOnly && <RequiredIndicator>*</RequiredIndicator>}
             </ControlLabel>
             {/* onBlur, onChange, and value are passed automatically. */}
             <Field
@@ -385,6 +392,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
               disabled={isReadOnly}
               id="tripName"
               name="tripName"
+              required
             />
             <FormControl.Feedback />
             <HelpBlock role="alert">
@@ -397,6 +405,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
             <FormGroup validationState={selectOneDayError}>
               <ControlLabel>
                 <FormattedMessage id="components.TripBasicsPane.tripDaysPrompt" />
+                {!isReadOnly && <RequiredIndicator>*</RequiredIndicator>}
               </ControlLabel>
               <RenderAvailableDays
                 errorCheckingTrip={errorCheckingTrip}

@@ -1,15 +1,15 @@
 import { ArrowRight } from '@styled-icons/fa-solid/ArrowRight'
 import { FormattedMessage } from 'react-intl'
-
-import { grey } from '../util/colors'
 import React from 'react'
 import styled from 'styled-components'
+
+import { grey } from '../util/colors'
 
 interface Props {
   onClick: () => void
 }
 
-const StyledTransparentButton = styled.button`
+export const StyledTransparentButton = styled.button`
   align-items: center;
   background: transparent;
   border: none;

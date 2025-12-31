@@ -205,10 +205,12 @@ components:
   BatchSearchScreen:
     advancedHeader: Advanced Preferences
     header: Plan Your Trip
+    logInToSetDefault: Log in to set as default
     modeSelectorLabel: Select a travel mode
     moreOptions: More options
     saveAndReturn: Save and return
     saved: Saved
+    setAsDefault: Set as default
     submodeSelectorLabel: Select travel modes and submodes
     tripOptions: Trip Options
   BatchSettings:
@@ -654,6 +656,7 @@ components:
     vehicleName: Vehicle {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: Checking itinerary existence for each day of the week...
+    indicatesRequiredFields: Fields marked with an asterisk (*) are required.
     onlyOnDate: Only on {date, date, ::eeeee yyyyMMdd}
     recurringEachWeek: On certain days each week
     tripDaysPrompt: What days do you take this trip?
