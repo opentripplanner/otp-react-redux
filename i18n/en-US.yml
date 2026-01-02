@@ -656,6 +656,7 @@ components:
     vehicleName: Vehicle {vehicleNumber}
   TripBasicsPane:
     checkingItineraryExistence: Checking itinerary existence for each day of the week...
+    indicatesRequiredFields: Fields marked with an asterisk (*) are required.
     onlyOnDate: Only on {date, date, ::eeeee yyyyMMdd}
     recurringEachWeek: On certain days each week
     tripDaysPrompt: What days do you take this trip?
