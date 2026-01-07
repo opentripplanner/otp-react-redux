@@ -141,8 +141,9 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.keyboard.type('08072023') // MMDDYYYY format.
 
     // Open advanced settings and wait for animation
+    await page.waitForTimeout(1500)
     await page.click('#open-advanced-settings-button')
-    await page.waitForTimeout(500)
+    await page.waitForTimeout(1500)
 
     // Check submode selector (this will have no effect on mock query)
     await page.click('#id-query-param-tram')
