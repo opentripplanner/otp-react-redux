@@ -44,7 +44,11 @@ import PageTitle from '../../util/page-title'
 import VehiclePositionRetriever from '../vehicle-position-retriever'
 
 import { FilterCheckboxes } from './nearby-filter'
-import { FullHeightContainer, NearbySidebarContainer } from './styled'
+import {
+  FullHeightContainer,
+  LocationWrapper,
+  NearbySidebarContainer
+} from './styled'
 import FromToPicker from './from-to-picker'
 import RentalStation from './rental-station'
 import Stop, { fullTimestamp, patternArrayforStops } from './stop'
@@ -409,7 +413,7 @@ function NearbyView({
           />
         </InvisibleA11yLabel>
       )}
-      <div style={{ padding: nearbyFilters ? '1em 1em .75em' : '1em' }}>
+      <LocationWrapper nearbyFilters={!!nearbyFilters}>
         <LocationField
           className="nearby-view-location-field"
           // TODO: why does this cause the jump to the trip planner when selecting location
@@ -466,7 +470,7 @@ function NearbyView({
             })}
           </fieldset>
         )}
-      </div>
+      </LocationWrapper>
 
       {loading && <Loading extraSmall />}
       {/* This is used to scroll to top */}

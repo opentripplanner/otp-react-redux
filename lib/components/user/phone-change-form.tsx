@@ -18,6 +18,7 @@ import React, {
 } from 'react'
 import styled from 'styled-components'
 
+import { GREY_ON_WHITE } from '../util/colors'
 import { InlineLoading } from '../narrative/loading'
 import { PhoneFormatConfig } from '../../util/config-types'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
@@ -28,6 +29,10 @@ import { ControlStrip, phoneFieldStyle } from './styled'
 const InlinePhoneInput = styled(Input)`
   margin-top: 5px;
   ${phoneFieldStyle}
+
+  &::placeholder {
+    color: ${GREY_ON_WHITE};
+  }
 `
 
 // The validation schema for phone numbers - relies on the react-phone-number-input library.
