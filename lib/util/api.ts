@@ -5,6 +5,7 @@ import coreUtils from '@opentripplanner/core-utils'
 import qs from 'qs'
 
 import { AppConfig } from './config-types'
+import { AppReduxState } from './state-types'
 
 const { getUrlParams } = coreUtils.query
 const { getCurrentDate, getCurrentTime } = coreUtils.time
@@ -30,7 +31,7 @@ export const generateModeSettingValues = (
       const fromUrl = urlSearchParams.get(setting.key)
       acc[setting.key] = fromUrl
         ? convertModeSettingValue(setting, fromUrl)
-        : initalStateValues?.[setting.key] || setting.default || ''
+        : initalStateValues?.[setting.key] ?? setting.default ?? ''
       return acc
     },
     {}
@@ -77,5 +78,35 @@ export function getDefaultQuery(config: AppConfig) {
     numItineraries: getDefaultNumItineraries(config),
     routingType: 'ITINERARY', // obsolete but required to avoid crash
     time: getCurrentTime()
+  }
+}
+
+/**
+ * Returns default trip settings
+ * @param state App state
+ * @param initialState Mode setting values from the config
+ * @returns Either the user's configured trip defaults, or if none are available, then the defaults from config
+ */
+export function getDefaultModeSettingValues(
+  state: AppReduxState,
+  initialState?: ModeSettingValues
+): ModeSettingValues {
+  const userSavedTripDefaults = state.user?.loggedInUser?.userSavedTripDefaults
+  if (userSavedTripDefaults) {
+    return JSON.parse(userSavedTripDefaults)
+  } else {
+    return initialState ?? {}
+  }
+}
+
+export function getDefaultModeButtons(
+  state: AppReduxState,
+  initialState?: string[]
+): string[] {
+  const userSavedTripDefaults = state.user?.loggedInUser?.userSavedTripDefaults
+  if (userSavedTripDefaults) {
+    return JSON.parse(userSavedTripDefaults).modeButtons?.split('_')
+  } else {
+    return initialState ?? []
   }
 }

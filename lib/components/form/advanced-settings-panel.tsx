@@ -32,7 +32,11 @@ import * as userActions from '../../actions/user'
 import { AppReduxState } from '../../util/state-types'
 import { blue, getBaseColor, grey } from '../util/colors'
 import { ComponentContext } from '../../util/contexts'
-import { generateModeSettingValues } from '../../util/api'
+import {
+  generateModeSettingValues,
+  getDefaultModeButtons,
+  getDefaultModeSettingValues
+} from '../../util/api'
 import { getAuth0Config } from '../../util/auth'
 import { getDependentName } from '../../util/user'
 import { IconWithText } from '../util/styledIcon'
@@ -395,10 +399,19 @@ const queryParamConfig = { modeButtons: DelimitedArrayParam }
 const mapStateToProps = (state: AppReduxState) => {
   const urlSearchParams = new URLSearchParams(state.router.location.search)
   const { modes } = state.otp.config
+  const defaultModeSettingValues = getDefaultModeSettingValues(
+    state,
+    modes.initialState?.modeSettingValues
+  )
+  const defaultModeButtons = getDefaultModeButtons(
+    state,
+    modes.initialState?.enabledModeButtons
+  )
+
   const modeSettingValues = generateModeSettingValues(
     urlSearchParams,
-    state.otp.modeSettingDefinitions || [],
-    modes?.initialState?.modeSettingValues || {}
+    state.otp.modeSettingDefinitions ?? [],
+    defaultModeSettingValues
   )
   const user = state.user.loggedInUser
 
@@ -412,9 +425,8 @@ const mapStateToProps = (state: AppReduxState) => {
     enabledModeButtons:
       decodeQueryParams(queryParamConfig, {
         modeButtons: urlSearchParams.get('modeButtons')
-      })?.modeButtons?.filter((mb): mb is string => mb !== null) ||
-      modes?.initialState?.enabledModeButtons ||
-      [],
+      })?.modeButtons?.filter((mb): mb is string => mb !== null) ??
+      defaultModeButtons,
     loggedInUser: state.user.loggedInUser,
     mobilityProfile: state.otp.config?.mobilityProfile || false,
     modeButtonOptions: modes?.modeButtons || [],

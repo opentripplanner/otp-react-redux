@@ -83,7 +83,6 @@ function BatchSettings({
   modeButtonOptions,
   onPlanTripClick,
   openAdvancedSettings,
-  routingQuery,
   setQueryParam,
   sort,
   syncSortWithDepartArrive,
@@ -115,14 +114,6 @@ function BatchSettings({
     },
     [syncSortWithDepartArrive, updateItineraryFilter, setQueryParam, sort]
   )
-
-  // If there are user saved trip defaults, update the query params
-  useEffect(() => {
-    const userSavedTripDefaults = user?.userSavedTripDefaults
-    if (userSavedTripDefaults) {
-      applyUserSavedTripDefaults(userSavedTripDefaults)
-    }
-  }, [applyUserSavedTripDefaults, user])
 
   const dtSelectorOpen = departArrive !== 'NOW'
 
