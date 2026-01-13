@@ -399,14 +399,8 @@ const queryParamConfig = { modeButtons: DelimitedArrayParam }
 const mapStateToProps = (state: AppReduxState) => {
   const urlSearchParams = new URLSearchParams(state.router.location.search)
   const { modes } = state.otp.config
-  const defaultModeSettingValues = getDefaultModeSettingValues(
-    state,
-    modes.initialState?.modeSettingValues
-  )
-  const defaultModeButtons = getDefaultModeButtons(
-    state,
-    modes.initialState?.enabledModeButtons
-  )
+  const defaultModeSettingValues = getDefaultModeSettingValues(state)
+  const defaultModeButtons = getDefaultModeButtons(state)
 
   const modeSettingValues = generateModeSettingValues(
     urlSearchParams,

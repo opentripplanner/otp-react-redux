@@ -88,10 +88,10 @@ export function getDefaultQuery(config: AppConfig) {
  * @returns Either the user's configured trip defaults, or if none are available, then the defaults from config
  */
 export function getDefaultModeSettingValues(
-  state: AppReduxState,
-  initialState?: ModeSettingValues
+  state: AppReduxState
 ): ModeSettingValues {
   const userSavedTripDefaults = state.user?.loggedInUser?.userSavedTripDefaults
+  const initialState = state.otp.config.modes.initialState?.modeSettingValues
   if (userSavedTripDefaults) {
     return JSON.parse(userSavedTripDefaults)
   } else {
@@ -99,11 +99,9 @@ export function getDefaultModeSettingValues(
   }
 }
 
-export function getDefaultModeButtons(
-  state: AppReduxState,
-  initialState?: string[]
-): string[] {
+export function getDefaultModeButtons(state: AppReduxState): string[] {
   const userSavedTripDefaults = state.user?.loggedInUser?.userSavedTripDefaults
+  const initialState = state.otp.config.modes.initialState?.enabledModeButtons
   if (userSavedTripDefaults) {
     return JSON.parse(userSavedTripDefaults).modeButtons?.split('_')
   } else {

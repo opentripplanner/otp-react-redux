@@ -18,9 +18,11 @@ import * as userAction from '../../actions/user'
 import { ComponentContext } from '../../util/contexts'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
 import { getBaseColor, getDarkenedBaseColor } from '../util/colors'
+import { getDefaultModeButtons } from '../../util/api'
 import { StyledIconWrapper } from '../util/styledIcon'
 import { User } from '../user/types'
 
+// eslint-disable-next-line sort-imports-es6-autofix/sort-imports-es6
 import {
   addModeButtonIcon,
   modesQueryParamConfig,
@@ -194,6 +196,7 @@ const mapStateToProps = (state: any) => {
   const { homeTimezone, modes } = state.otp.config
   const { departArrive } = state.otp.currentQuery
   const { loggedInUser } = state.user
+  const defaultEnabledModeButtons = getDefaultModeButtons(state)
   return {
     activeSearch: getActiveSearch(state),
     currentQuery: state.otp.currentQuery,
@@ -202,9 +205,7 @@ const mapStateToProps = (state: any) => {
     enabledModeButtons:
       decodeQueryParams(modesQueryParamConfig, {
         modeButtons: urlSearchParams.get('modeButtons')
-      })?.modeButtons ||
-      modes?.initialState?.enabledModeButtons ||
-      {},
+      })?.modeButtons?.filter((mb) => mb !== null) ?? defaultEnabledModeButtons,
     fillModeIcons: state.otp.config.itinerary?.fillModeIcons,
     homeTimezone,
     modeButtonOptions: modes?.modeButtons || [],
