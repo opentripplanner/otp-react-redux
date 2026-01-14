@@ -27,7 +27,7 @@ const Container = styled.div<{ withBackground?: boolean }>`
 `
 
 const TimeStruck = styled.div`
-  color: #676767;
+  color: ${grey[700]};
   text-decoration: line-through;
 `
 
