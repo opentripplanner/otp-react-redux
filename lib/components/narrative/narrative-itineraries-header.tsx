@@ -40,6 +40,15 @@ const UnicodeChevron = styled.div<{ expanded: boolean }>`
     scaleX(1.5);
 `
 
+const MapExpansionButton = styled.button`
+  align-items: center;
+  display: flex;
+  height: ${TOGGLE_MAP_BUTTON_HEIGHT}vh;
+  justify-content: center;
+  margin: -10px 0;
+  width: 100%;
+`
+
 export default function NarrativeItinerariesHeader({
   customBatchUiBackground,
   enabledSortModes,
@@ -185,18 +194,10 @@ export default function NarrativeItinerariesHeader({
               </button>
             )}
             {onClickExpansionButton && (
-              <button
+              <MapExpansionButton
                 aria-label={mapExpansionText}
                 className="clear-button-formatting"
                 onClick={onClickExpansionButton}
-                style={{
-                  alignItems: 'center',
-                  display: 'flex',
-                  height: `${TOGGLE_MAP_BUTTON_HEIGHT}vh`,
-                  justifyContent: 'center',
-                  margin: '-10px 0',
-                  width: '100%'
-                }}
                 title={mapExpansionText}
               >
                 <StyledIconWrapper>
@@ -204,7 +205,7 @@ export default function NarrativeItinerariesHeader({
                     &#10095;
                   </UnicodeChevron>
                 </StyledIconWrapper>
-              </button>
+              </MapExpansionButton>
             )}
             <div style={{ display: 'flex' }}>
               <button
