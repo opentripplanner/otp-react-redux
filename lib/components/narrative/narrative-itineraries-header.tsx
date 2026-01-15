@@ -207,7 +207,7 @@ export default function NarrativeItinerariesHeader({
                 </StyledIconWrapper>
               </MapExpansionButton>
             )}
-            <div style={{ display: 'flex' }}>
+            <div style={{ display: 'flex', marginTop: '0.2rem' }}>
               <button
                 className="clear-button-formatting"
                 onClick={onSortDirChange}
