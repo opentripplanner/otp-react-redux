@@ -10,6 +10,14 @@ describe('util > viewer', () => {
       expect(extractHeadsignFromPattern(pattern)).toBe('Sesame Street')
     })
 
+    it('should remove route short name from pattern headsign', () => {
+      const pattern = {
+        // OTP might pile up route short names in the headsign even if is already there.
+        headsign: '101 101 to Sesame Street'
+      }
+      expect(extractHeadsignFromPattern(pattern, '101')).toBe('Sesame Street')
+    })
+
     const prefixes = ['To', 'Toward', 'Towards']
     prefixes
       .flatMap((prefix) => [prefix, prefix.toLowerCase()])

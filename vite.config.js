@@ -63,6 +63,7 @@ customFile(
 )
 
 export default defineConfig({
+  base: './',
   build: {
     // Flatten the output for mastarm deploy (mastarm doesn't support uploading subfolders).
     assetsDir: ''

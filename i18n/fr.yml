@@ -697,6 +697,7 @@ components:
   TripBasicsPane:
     checkingItineraryExistence: Vérification du trajet pour chaque jour de la 
       semaine...
+    indicatesRequiredFields: Les champs marqués d'une astérisque (*) sont obligatoires.
     onlyOnDate: "{date, date, ::eeeee yyyyMMdd} uniquement"
     recurringEachWeek: Certains jours chaque semaine
     tripDaysPrompt: Quels jours effectuez-vous ce trajet ?
