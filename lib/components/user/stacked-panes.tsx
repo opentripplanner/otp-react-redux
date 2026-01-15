@@ -35,6 +35,7 @@ export interface PaneAttributes {
 export interface Props {
   canceling?: boolean
   panes: PaneAttributes[]
+  setIsLoading: (arg: boolean) => void
   subtitle?: string | JSX.Element
   title: string | JSX.Element
 }
@@ -45,6 +46,7 @@ export interface Props {
 const StackedPanes = ({
   canceling,
   panes,
+  setIsLoading,
   subtitle,
   title
 }: Props): JSX.Element => (
@@ -58,13 +60,21 @@ const StackedPanes = ({
             {collapsible ? (
               <details>
                 <Summary>{title}</Summary>
-                <Pane canceled={canceling} {...props} />
+                <Pane
+                  canceled={canceling}
+                  setIsLoading={setIsLoading}
+                  {...props}
+                />
               </details>
             ) : (
               <>
                 {title && <h3>{title}</h3>}
                 <div>
-                  <Pane canceled={canceling} {...props} />
+                  <Pane
+                    canceled={canceling}
+                    setIsLoading={setIsLoading}
+                    {...props}
+                  />
                 </div>
               </>
             )}
