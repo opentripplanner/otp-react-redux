@@ -205,7 +205,8 @@ const mapStateToProps = (state: any) => {
     enabledModeButtons:
       decodeQueryParams(modesQueryParamConfig, {
         modeButtons: urlSearchParams.get('modeButtons')
-      })?.modeButtons?.filter((mb) => mb !== null) ?? defaultEnabledModeButtons,
+      })?.modeButtons?.filter((mb): mb is string => mb !== null) ??
+      defaultEnabledModeButtons,
     fillModeIcons: state.otp.config.itinerary?.fillModeIcons,
     homeTimezone,
     modeButtonOptions: modes?.modeButtons || [],
