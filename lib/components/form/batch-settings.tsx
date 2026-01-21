@@ -14,7 +14,6 @@ import React, { useCallback, useContext, useEffect } from 'react'
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
 import * as narrativeActions from '../../actions/narrative'
-import * as userAction from '../../actions/user'
 import { ComponentContext } from '../../util/contexts'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
 import { getBaseColor, getDarkenedBaseColor } from '../util/colors'
@@ -45,7 +44,6 @@ import DateTimeModal, {
 // TYPESCRIPT TODO: better types
 type Props = {
   activeSearch: any
-  applyUserSavedTripDefaults: (arg: string) => void
   currentQuery: any
   departArrive: DepartArriveValue
   enabledModeButtons: string[]
@@ -76,7 +74,6 @@ export function setModeButtonEnabled(enabledKeys: string[]) {
  */
 function BatchSettings({
   activeSearch,
-  applyUserSavedTripDefaults,
   currentQuery,
   departArrive,
   enabledModeButtons,
@@ -218,7 +215,6 @@ const mapStateToProps = (state: any) => {
 }
 
 const mapDispatchToProps = {
-  applyUserSavedTripDefaults: userAction.applyUserSavedTripDefaults,
   routingQuery: apiActions.routingQuery,
   setQueryParam: formActions.setQueryParam,
   updateItineraryFilter: narrativeActions.updateItineraryFilter
