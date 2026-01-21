@@ -66,7 +66,7 @@ export function setModeButtonEnabled(enabledKeys: string[]) {
   return (modeButton: ModeButtonDefinition): ModeButtonDefinition => {
     return {
       ...modeButton,
-      enabled: enabledKeys.includes(modeButton.key)
+      enabled: enabledKeys?.includes(modeButton.key)
     }
   }
 }

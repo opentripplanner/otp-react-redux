@@ -103,7 +103,9 @@ export function getDefaultModeButtons(state: AppReduxState): string[] {
   const userSavedTripDefaults = state.user?.loggedInUser?.userSavedTripDefaults
   const initialState = state.otp.config.modes.initialState?.enabledModeButtons
   if (userSavedTripDefaults) {
-    return JSON.parse(userSavedTripDefaults).modeButtons?.split('_')
+    return JSON.parse(userSavedTripDefaults)
+      .mode?.split(',')
+      .map((x: string) => x.toLowerCase())
   } else {
     return initialState ?? []
   }
