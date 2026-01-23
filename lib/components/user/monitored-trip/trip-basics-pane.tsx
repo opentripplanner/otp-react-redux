@@ -327,7 +327,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
       values: monitoredTrip
     } = this.props
     if (
-      (monitoredTrip.itineraryExistence || itineraryExistence) &&
+      (monitoredTrip?.itineraryExistence || itineraryExistence) &&
       setIsLoading
     ) {
       setIsLoading(false)
