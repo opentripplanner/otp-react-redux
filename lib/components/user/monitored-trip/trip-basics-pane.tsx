@@ -50,6 +50,7 @@ type TripBasicsProps = WrappedComponentProps &
     isCreating: boolean
     isReadOnly: boolean
     itineraryExistence?: ItineraryExistence
+    setIsLoading?: (arg: boolean) => void
   }
 
 interface State {
@@ -306,14 +307,31 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
 
   componentDidMount() {
     // Check itinerary availability (existence) for all days if not already done.
-    const { checkItineraryExistence, intl, values: monitoredTrip } = this.props
+    const {
+      checkItineraryExistence,
+      intl,
+      setIsLoading,
+      values: monitoredTrip
+    } = this.props
     if (!monitoredTrip.itineraryExistence) {
+      setIsLoading && setIsLoading(true)
       checkItineraryExistence(monitoredTrip, intl)
     }
   }
 
   componentDidUpdate(prevProps: TripBasicsProps) {
     this._updateNewTripItineraryExistence(prevProps)
+    const {
+      itineraryExistence,
+      setIsLoading,
+      values: monitoredTrip
+    } = this.props
+    if (
+      (monitoredTrip?.itineraryExistence || itineraryExistence) &&
+      setIsLoading
+    ) {
+      setIsLoading(false)
+    }
   }
 
   componentWillUnmount() {

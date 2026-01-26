@@ -30,6 +30,7 @@ const StackedPanesWithSave = ({
   // Create indicator of if cancel button was clicked so that child components can know
   const [isBeingCanceled, updateBeingCanceled] = useState(false)
   const [buttonClicked, setButtonClicked] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     setButtonClicked('')
@@ -40,6 +41,7 @@ const StackedPanesWithSave = ({
       <StackedPanes
         canceling={isBeingCanceled}
         panes={panes}
+        setIsLoading={setIsLoading}
         subtitle={subtitle}
         title={title}
       />
@@ -71,13 +73,13 @@ const StackedPanesWithSave = ({
           isReadOnly
             ? undefined
             : {
-                disabled: buttonClicked === 'okay',
+                disabled: buttonClicked === 'okay' || isLoading,
                 onClick: () => {
                   // Some browsers need this to happen after the formik action finishes firing
                   setTimeout(() => setButtonClicked('okay'), 10)
                 },
                 text:
-                  buttonClicked === 'okay' ? (
+                  buttonClicked === 'okay' || isLoading ? (
                     <InlineLoading />
                   ) : (
                     <FormattedMessage id="components.StackedPaneDisplay.savePreferences" />
