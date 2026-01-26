@@ -8,6 +8,7 @@ import { ModeButtonDefinition } from '@opentripplanner/types'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
 import { useIntl } from 'react-intl'
+import AnimateHeight from 'react-animate-height'
 import React, { useCallback, useContext, useEffect } from 'react'
 
 import * as apiActions from '../../actions/api'
@@ -16,12 +17,12 @@ import * as narrativeActions from '../../actions/narrative'
 import { ComponentContext } from '../../util/contexts'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
 import { getBaseColor, getDarkenedBaseColor } from '../util/colors'
+import { getDefaultModeButtons } from '../../util/api'
 import { StyledIconWrapper } from '../util/styledIcon'
-import AnimateHeight from 'react-animate-height'
+import { User } from '../user/types'
 
 import {
   addModeButtonIcon,
-  alertUserTripPlan,
   modesQueryParamConfig,
   onSettingsUpdate,
   pipe,
@@ -55,13 +56,14 @@ type Props = {
   sort: any
   syncSortWithDepartArrive: any
   updateItineraryFilter: any
+  user: User
 }
 
 export function setModeButtonEnabled(enabledKeys: string[]) {
   return (modeButton: ModeButtonDefinition): ModeButtonDefinition => {
     return {
       ...modeButton,
-      enabled: enabledKeys.includes(modeButton.key)
+      enabled: enabledKeys?.includes(modeButton.key)
     }
   }
 }
@@ -79,11 +81,11 @@ function BatchSettings({
   modeButtonOptions,
   onPlanTripClick,
   openAdvancedSettings,
-  routingQuery,
   setQueryParam,
   sort,
   syncSortWithDepartArrive,
-  updateItineraryFilter
+  updateItineraryFilter,
+  user
 }: Props) {
   const intl = useIntl()
 
@@ -189,6 +191,8 @@ const mapStateToProps = (state: any) => {
   const urlSearchParams = new URLSearchParams(state.router.location.search)
   const { homeTimezone, modes } = state.otp.config
   const { departArrive } = state.otp.currentQuery
+  const { loggedInUser } = state.user
+  const defaultEnabledModeButtons = getDefaultModeButtons(state)
   return {
     activeSearch: getActiveSearch(state),
     currentQuery: state.otp.currentQuery,
@@ -197,15 +201,15 @@ const mapStateToProps = (state: any) => {
     enabledModeButtons:
       decodeQueryParams(modesQueryParamConfig, {
         modeButtons: urlSearchParams.get('modeButtons')
-      })?.modeButtons ||
-      modes?.initialState?.enabledModeButtons ||
-      {},
+      })?.modeButtons?.filter((mb): mb is string => mb !== null) ??
+      defaultEnabledModeButtons,
     fillModeIcons: state.otp.config.itinerary?.fillModeIcons,
     homeTimezone,
     modeButtonOptions: modes?.modeButtons || [],
     sort: state.otp.filter.sort,
     syncSortWithDepartArrive:
-      state.otp.config?.itinerary?.syncSortWithDepartArrive
+      state.otp.config?.itinerary?.syncSortWithDepartArrive,
+    user: loggedInUser
   }
 }
 
