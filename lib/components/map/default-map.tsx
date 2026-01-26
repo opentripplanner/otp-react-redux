@@ -171,7 +171,7 @@ interface DefaultMapProps {
   itinerary: Itinerary
   mapConfig: MapConfig
   nearbyViewActive: boolean
-  overrideNavigationControlPosition: ControlPosition | undefined
+  overrideNavigationControlPosition?: ControlPosition
   pending: boolean
   rentalVehicleQuery: () => void
   rentalVehicles: RentalVehicle[]
