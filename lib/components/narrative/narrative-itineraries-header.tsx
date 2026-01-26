@@ -33,6 +33,7 @@ const SortResultsDropdown = styled(Dropdown)`
   button {
     border: none;
   }
+  line-height: normal;
 `
 
 const UnicodeChevron = styled.div<{ expanded: boolean }>`
@@ -211,7 +212,11 @@ export default function NarrativeItinerariesHeader({
               <button
                 className="clear-button-formatting"
                 onClick={onSortDirChange}
-                style={{ marginRight: '6px' }}
+                style={{
+                  alignItems: 'center',
+                  display: 'flex',
+                  marginRight: '7px'
+                }}
                 title={intl.formatMessage({
                   id: 'components.NarrativeItinerariesHeader.changeSortDir'
                 })}
