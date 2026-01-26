@@ -160,7 +160,8 @@ class StopScheduleViewer extends Component<Props, State> {
         intl.formatMessage(
           { id: 'components.StopViewer.titleBarStopId' },
           {
-            stopId: stopData && coreUtils.itinerary.getDisplayedStopId(stopData)
+            stopId:
+              stopData && coreUtils.itinerary.getDisplayedStopCode(stopData)
           }
         ),
       // TODO: Rename string ids
