@@ -4,13 +4,14 @@ import { Dropdown } from '@opentripplanner/building-blocks'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { SortAmountDown } from '@styled-icons/fa-solid/SortAmountDown'
 import { SortAmountUp } from '@styled-icons/fa-solid/SortAmountUp'
-import React, { useContext } from 'react'
+import React, { useContext, useMemo } from 'react'
 import styled from 'styled-components'
 
 import { ComponentContext } from '../../util/contexts'
 import { IconWithText, StyledIconWrapper } from '../util/styledIcon'
 import { ItinerarySortOption } from '../../util/config-types'
 import { sortOptions } from '../util/sortOptions'
+import { TOGGLE_MAP_BUTTON_HEIGHT } from '../mobile/batch-results-screen'
 import { UnstyledButton } from '../util/unstyled-button'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import PopupTriggerText from '../app/popup-trigger-text'
@@ -19,16 +20,34 @@ import PlanFirstLastButtons from './plan-first-last-buttons'
 import SaveTripButton from './save-trip-button'
 
 const ItinerariesHeaderContainer = styled.div<{ showHeaderText: boolean }>`
+  align-items: flex-end;
   display: flex;
+  flex-direction: column;
   float: left;
   gap: 8px;
   margin-left: ${(props) => (props.showHeaderText ? 'inherit' : 'auto')};
+  width: 100%;
 `
 
 const SortResultsDropdown = styled(Dropdown)`
   button {
     border: none;
   }
+  line-height: normal;
+`
+
+const UnicodeChevron = styled.div<{ expanded: boolean }>`
+  transform: rotate(${(props) => (props.expanded ? '270' : '90')}deg) scaleY(2)
+    scaleX(1.5);
+`
+
+const MapExpansionButton = styled.button`
+  align-items: center;
+  display: flex;
+  height: ${TOGGLE_MAP_BUTTON_HEIGHT}vh;
+  justify-content: center;
+  margin: -10px 0;
+  width: 100%;
 `
 
 export default function NarrativeItinerariesHeader({
@@ -36,6 +55,8 @@ export default function NarrativeItinerariesHeader({
   enabledSortModes,
   itineraries,
   itineraryIsExpanded,
+  mapExpanded,
+  onClickExpansionButton = undefined,
   onSortChange,
   onSortDirChange,
   onViewAllOptions,
@@ -49,6 +70,8 @@ export default function NarrativeItinerariesHeader({
   enabledSortModes: ItinerarySortOption[]
   itineraries: unknown[]
   itineraryIsExpanded: boolean
+  mapExpanded: boolean
+  onClickExpansionButton?: () => void
   onSortChange: (type: string) => VoidFunction
   onSortDirChange: () => void
   onViewAllOptions: () => void
@@ -88,6 +111,16 @@ export default function NarrativeItinerariesHeader({
 
   const sortOptionsArr = sortOptions(intl, enabledSortModes)
   const sortText = sortOptionsArr.find((x) => x.value === sort.type)?.text
+
+  const mapExpansionText = useMemo(() => {
+    return mapExpanded
+      ? intl.formatMessage({
+          id: 'components.BatchResultsScreen.showResults'
+        })
+      : intl.formatMessage({
+          id: 'components.BatchResultsScreen.expandMap'
+        })
+  }, [intl, mapExpanded])
 
   return (
     <div
@@ -161,46 +194,67 @@ export default function NarrativeItinerariesHeader({
                 <PopupTriggerText compact popupTarget={popupTarget} />
               </button>
             )}
-            <button
-              className="clear-button-formatting"
-              onClick={onSortDirChange}
-              title={intl.formatMessage({
-                id: 'components.NarrativeItinerariesHeader.changeSortDir'
-              })}
-            >
-              <StyledIconWrapper
-                className={`${customBatchUiBackground && 'base-color-bg'}`}
+            {onClickExpansionButton && (
+              <MapExpansionButton
+                aria-label={mapExpansionText}
+                className="clear-button-formatting"
+                onClick={onClickExpansionButton}
+                title={mapExpansionText}
               >
-                {sort.direction.toLowerCase() === 'asc' ? (
-                  <SortUp />
-                ) : (
-                  <SortDown />
-                )}
-              </StyledIconWrapper>
-            </button>
-            <SortResultsDropdown
-              id="sort-results"
-              label={sortResultsLabel}
-              text={sortText}
-              title={sortResultsLabel}
-            >
-              {sortOptionsArr.map((sortOption) => (
-                <li className="sort-option" key={sortOption.value}>
-                  <UnstyledButton
-                    aria-selected={sortText === sortOption.text || undefined}
-                    onClick={() => onSortChange(sortOption.value)}
-                    role="option"
-                  >
-                    {sortOption.text}
-                    {sortText === sortOption.text && (
-                      <InvisibleA11yLabel>
-                        <FormattedMessage id="common.currentlySelected" />
-                      </InvisibleA11yLabel>
-                    )}
-                  </UnstyledButton>
-                </li>
-              ))}
-            </SortResultsDropdown>
+                <StyledIconWrapper>
+                  <UnicodeChevron expanded={mapExpanded}>
+                    &#10095;
+                  </UnicodeChevron>
+                </StyledIconWrapper>
+              </MapExpansionButton>
+            )}
+            <div style={{ display: 'flex', marginTop: '0.2rem' }}>
+              <button
+                className="clear-button-formatting"
+                onClick={onSortDirChange}
+                style={{
+                  alignItems: 'center',
+                  display: 'flex',
+                  marginRight: '7px'
+                }}
+                title={intl.formatMessage({
+                  id: 'components.NarrativeItinerariesHeader.changeSortDir'
+                })}
+              >
+                <StyledIconWrapper
+                  className={`${customBatchUiBackground && 'base-color-bg'}`}
+                >
+                  {sort.direction.toLowerCase() === 'asc' ? (
+                    <SortUp />
+                  ) : (
+                    <SortDown />
+                  )}
+                </StyledIconWrapper>
+              </button>
+              <SortResultsDropdown
+                id="sort-results"
+                label={sortResultsLabel}
+                text={sortText}
+                title={sortResultsLabel}
+              >
+                {sortOptionsArr.map((sortOption) => (
+                  <li className="sort-option" key={sortOption.value}>
+                    <UnstyledButton
+                      aria-selected={sortText === sortOption.text || undefined}
+                      onClick={() => onSortChange(sortOption.value)}
+                      role="option"
+                    >
+                      {sortOption.text}
+                      {sortText === sortOption.text && (
+                        <InvisibleA11yLabel>
+                          <FormattedMessage id="common.currentlySelected" />
+                        </InvisibleA11yLabel>
+                      )}
+                    </UnstyledButton>
+                  </li>
+                ))}
+              </SortResultsDropdown>
+            </div>
           </ItinerariesHeaderContainer>
           <PlanFirstLastButtons />
         </>
