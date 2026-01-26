@@ -621,7 +621,7 @@ components:
   TripPreviewLayout:
     previewTrip: 여행 미리 보기
   TripStatus:
-    alerts: "{alerts, plural, one {경고 #개!} other {경고 #개!}}"
+    alerts: "경고 {alerts}개!"
     deleteTrip: 트립 삭제
     planNewTrip: 새 트립 계획
   TripStatusRenderers:
