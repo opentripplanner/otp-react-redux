@@ -443,7 +443,7 @@ components:
     noSavedTripsInstructions: 請先從地圖進行行程搜尋。
     pause: 暫停
     resume: 繼續
-    alertTag: '{alert, plural, one {檢視 1 則警示} other {檢視 # 則警示}}'
+    alertTag: '檢視 {alert} 則警示'
   SavedTripScreen:
     itineraryLoaded: 路線已載入
     itineraryLoading: 正在載入路線
@@ -537,7 +537,7 @@ components:
   TripPreviewLayout:
     previewTrip: 預覽行程
   TripStatus:
-    alerts: "{alerts, plural, one {# 則警示!} other {# 則警示!}}"
+    alerts: "{alerts} 則警示!"
     deleteTrip: 刪除行程
     planNewTrip: 規劃新行程
   TripStatusRenderers:
