@@ -35,7 +35,7 @@ export interface PaneAttributes {
 export interface Props {
   canceling?: boolean
   panes: PaneAttributes[]
-  setIsLoading: (arg: boolean) => void
+  setIsLoading?: (arg: boolean) => void
   subtitle?: string | JSX.Element
   title: string | JSX.Element
 }
