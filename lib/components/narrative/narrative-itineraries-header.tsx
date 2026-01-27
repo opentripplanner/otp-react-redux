@@ -188,7 +188,7 @@ export default function NarrativeItinerariesHeader({
           {onClickExpansionButton && (
             <MapExpansionButton
               aria-label={mapExpansionText}
-              className="clear-button-formatting"
+              className="clear-button-formatting base-color-bg itinerary"
               onClick={onClickExpansionButton}
               title={mapExpansionText}
             >
@@ -203,7 +203,7 @@ export default function NarrativeItinerariesHeader({
                 <PopupTriggerText compact popupTarget={popupTarget} />
               </button>
             )}
-            <div style={{ display: 'flex', marginTop: '0.2rem' }}>
+            <div style={{ display: 'flex' }}>
               <button
                 className="clear-button-formatting"
                 onClick={onSortDirChange}
