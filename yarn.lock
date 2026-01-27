@@ -2960,6 +2960,24 @@
     react-resize-detector "^4.2.1"
     string-similarity "^4.0.4"
 
+"@opentripplanner/itinerary-body@9.0.0":
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-9.0.0.tgz#afe24bdffdff25549851aa40b5aadec1a6e62612"
+  integrity sha512-1VBUEdvH8mEyPqCLDA74/tYT82jKiA0SjCHxoPjQPz1XOM8Z4WPZaqW8vkjSjmDiIuY+lAPTuOmPbYWL3WjRyA==
+  dependencies:
+    "@opentripplanner/core-utils" "15.0.0"
+    "@opentripplanner/humanize-distance" "2.1.0"
+    "@opentripplanner/icons" "4.1.3"
+    "@opentripplanner/location-icon" "2.0.0"
+    "@styled-icons/fa-solid" "^10.34.0"
+    "@styled-icons/foundation" "^10.34.0"
+    date-fns "^2.28.0"
+    date-fns-tz "^1.2.2"
+    flat "^5.0.2"
+    react-animate-height "^3.0.4"
+    react-resize-detector "^4.2.1"
+    string-similarity "^4.0.4"
+
 "@opentripplanner/location-field@4.1.4":
   version "4.1.4"
   resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-4.1.4.tgz#b5286b60168027daeb581b6f5852a44361ad254d"
