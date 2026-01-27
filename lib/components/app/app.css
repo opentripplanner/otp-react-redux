@@ -1,8 +1,8 @@
 /* application menu styling */
 
 .app-menu-button {
-  border: none;
   background: none;
+  border: none;
   color: #fff;
   font-size: 24px;
   padding: 0px 0px;
@@ -21,10 +21,10 @@
 .app-menu .btn-default:active,
 .app-menu .open > .dropdown-toggle.btn-default:focus,
 .app-menu .open > .dropdown-toggle.btn-default {
-  color: #fff;
   background: none;
-  box-shadow: none;
   border: none;
+  box-shadow: none;
+  color: #fff;
 }
 
 .app-menu .btn-default:hover {
@@ -47,36 +47,269 @@
   }
 }
 
-/* PrintLayout styles */
+/* Navbar settings */
 
-.otp.print-layout {
-  max-width: 640px;
-  margin: 30px auto;
+.navbar .navbar-header {
+  display: grid;
+  grid-template-columns: 300px auto 170px;
 }
 
-.otp.print-layout > .header {
-  margin-bottom: 30px;
-  border-bottom: 4px solid black;
-  font-size: 36px;
-  font-weight: 600;
+.navbar .navbar-nav {
+  grid-column: 3;
+  margin: 0;
 }
 
-.otp.print-layout > .map-container {
-  border: 2px solid black;
-  height: 400px;
-  margin-bottom: 30px;
-  box-sizing: border-box;
+.navbar .navbar-brand {
+  align-items: center;
+  display: flex;
+  gap: 25px;
+  grid-column: 1 / span 1;
+  width: 100%;
 }
 
-/* View Switcher Styling */
 .view-switcher {
   align-items: center;
   display: flex;
   justify-content: center;
 }
+
+@media (min-width: 992px) {
+  .view-switcher {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    width: 100%
+  }
+}
+
+
+@media (max-width: 768px) {
+  .navbar .navbar-header {
+    grid-template-columns: 50px auto 70px;
+    width: auto !important;
+
+  }
+
+  .navbar .navbar-brand {
+    gap: 15px;
+    grid-column: 1 / span 2;
+    padding: 10px;
+  }
+
+  .view-switcher {
+    display: none;
+}
+
+}
+
+/* Mobile navbar */
+.mobile-navbar-container .navbar-header {
+  display: block;
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: center;
+  width: 25px;
+}
+
+.mobile-navbar-container .mobile-header {
+  grid-row: 1;
+  height: 100%;
+  justify-self: center;
+}
+
+.mobile-navbar-container .locale-selector-and-login {
+  grid-row: 1;
+  height: 50px;
+  justify-self: flex-end;
+}
+
+.mobile-navbar-container .container-fluid {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 50px auto 70px;
+  grid-template-rows: 50px;
+  padding: 0;
+}
+
+/* New app menu */
+.app-menu-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 15px;
+  justify-content: space-between;
+  padding: 0;
+  transition: all 1s ease;
+  width: 21px;
+  z-index: 10;
+}
+
+@media only screen and (max-width: 768px) {
+  #locale-selector-wrapper {
+    display: none;
+  }
+  .app-menu-icon {
+    left: 15px;
+  }
+}
+
+.app-menu-icon .menu-line {
+  border-bottom: 3px solid #ffffff;
+  display: block;
+  position: relative;
+  transition: all 0.5s ease;
+  width: 100%;
+}
+
+.app-menu-icon[aria-expanded="true"] .menu-line.top {
+  top: 7px;
+  transform: rotate(45deg);
+}
+.app-menu-icon[aria-expanded="true"] .menu-line.bottom {
+  bottom: 5px;
+  transform: rotate(-45deg);
+}
+.app-menu-icon[aria-expanded="true"] .menu-line.middle {
+  display: none;
+}
+
+.slide-pane {
+  transition: all 0.2s ease-in-out;
+}
+
+.slide-pane_from_left {
+  /* Keep pane from overflowing on smaller screens */
+  height: calc(100% - 52px);
+  margin: 52px auto 0 0;
+}
+
+.slide-pane__content {
+  padding: 6px 0;
+}
+
+.slide-pane__overlay {
+  z-index: 1000;
+}
+
+.app-menu {
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+.app-menu img,
+.app-menu svg {
+  margin: 0 2rem;
+  max-height: 1em;
+  vertical-align: middle;
+  width: 1em;
+}
+
+.app-menu a,
+.app-menu button {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  font-size: 20px;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  width: 100%;
+}
+
+/* Prevents hover styles from getting triggered on mobile */
+@media (hover: hover) {
+  .app-menu a:hover,
+  .app-menu button:hover {
+    color: #4c97f5;
+  }
+}
+
+.app-menu a:focus,
+.app-menu button:focus {
+  background-color: #ddd;
+  outline: 2px solid #4c97f5;
+  outline-offset: -2px;
+}
+
+.app-menu button[aria-selected="true"],
+.sort-option button[aria-selected="true"],
+#locale-selector button[aria-selected="true"] {
+  font-weight: bold;
+}
+
+.skip-nav-button {
+  color: initial;
+  position: fixed;
+  top: -30px;
+}
+.skip-nav-button:focus {
+  padding: 7px 24px;
+  top: 7px;
+  z-index: 100;
+}
+
+.expand-menu-chevron {
+  flex-grow: 1;
+  text-align: end;
+}
+
+.dropdown-header {
+  color: inherit;
+  font-size: inherit;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.sub-menu-container {
+  border-top: 1px solid #cccccc;
+  margin-top: 0.5rem;
+  padding-left: 2rem;
+}
+
+.app-menu .app-menu-divider {
+  border-bottom: 1px solid #ccc;
+  padding: 1rem 0;
+}
+
+/* Header image or title */
+/* If an icon is used, visually-hide the title (but keep it visible to screen readers). */
+.with-icon div.navbar-title {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
+
+/* PrintLayout styles */
+
+.otp.print-layout {
+  margin: 30px auto;
+  max-width: 640px;
+}
+
+.otp.print-layout > .header {
+  border-bottom: 4px solid black;
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.otp.print-layout > .map-container {
+  border: 2px solid black;
+  box-sizing: border-box;
+  height: 400px;
+}
+
+.otp.print-layout details.maplibregl-ctrl-attrib {
+  display: none;
+}
+
+/* View Switcher Styling */
 .view-switcher a {
-  color: rgba(255, 255, 255, 0.85);
   border-radius: 15px;
+  color: rgba(255, 255, 255, 0.85);
   font-size: 14px;
   padding: 6px 12px;
   user-select: none;
@@ -98,8 +331,8 @@
 
 /* Full screen modal styling */
 .fullscreen-modal {
-  width: 75vw;
   height: 60vh;
+  width: 75vw;
 }
 .fullscreen-modal .modal-content {
   height: 90vh;
@@ -107,6 +340,9 @@
 .fullscreen-modal iframe {
   height: 100%;
   width: 100%;
+}
+.otp .navbar {
+  z-index: 25;
 }
 
 /** These changes kick in when the map is hidden. These rules ensure that the entire "sidebar"
@@ -123,4 +359,8 @@
   .user-settings {
     overflow-y: unset !important;
   }
+}
+
+.toast-hidden {
+  display: none !important;
 }

@@ -13,11 +13,6 @@
   min-width: 0px;
 }
 
-.otp.mobile .navbar .container-fluid .locale-selector-and-login {
-  position: fixed;
-  right: 0;
-  top: 0;
-}
 .otp.mobile .navbar .container-fluid .locale-selector-and-login > li {
   display: inline-block;
 }
@@ -26,10 +21,10 @@
 }
 
 .navBarItem p {
-  padding: 5px 15px;
-  margin: 0;
-  font-weight: 600;
   font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  padding: 5px 15px;
 }
 
 .navBarItem ul {
@@ -50,5 +45,8 @@
   }
   #user-selector-label {
     background-color: transparent;
+    border: 0;
+    color: white;
+    height: 50px;
   }
 }

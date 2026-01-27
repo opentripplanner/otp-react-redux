@@ -1,4 +1,5 @@
 import { FormattedMessage, FormattedTime } from 'react-intl'
+import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -9,6 +10,8 @@ import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 const Divider = styled.span`
   margin: 0 7px;
 `
+
+const { ensureAtLeastOneMinute } = coreUtils.time
 
 const TripSummary = ({ monitoredTrip }: MonitoredTripProps): JSX.Element => {
   const { itinerary } = monitoredTrip
@@ -27,7 +30,7 @@ const TripSummary = ({ monitoredTrip }: MonitoredTripProps): JSX.Element => {
       <InvisibleA11yLabel>, </InvisibleA11yLabel>
       <Divider>•</Divider>
       <span aria-hidden>
-        <FormattedDuration duration={duration} />
+        <FormattedDuration duration={ensureAtLeastOneMinute(duration)} />
       </span>
     </span>
   )

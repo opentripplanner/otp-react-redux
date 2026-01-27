@@ -104,7 +104,6 @@ components:
     requestNewCode: Forespør ny kode
     sendVerificationText: Send bekreftelsestekst
     verificationCode: Bekreftelseskode
-    verified: Bekreftet
     verify: Bekreft
   Place:
     deleteThisPlace: Slett dette stedet

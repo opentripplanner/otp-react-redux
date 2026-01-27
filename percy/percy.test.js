@@ -42,10 +42,16 @@ async function loadPath(otpPath) {
   return page
 }
 
+const openEditIfNeeded = async (page, isMobile) => {
+  if (isMobile) {
+    await page.click('button.edit-search-button')
+  }
+}
+
 beforeAll(async () => {
   try {
-    // Launch OTP-RR web server
-    execa('yarn', ['percy-serve', 'dist', '-p', MOCK_SERVER_PORT], {
+    // Launch OTP-RR vite preview server
+    execa('yarn', ['percy-preview', '--port', MOCK_SERVER_PORT], {
       signal: serveAbortController.signal
     }).stdout.pipe(process.stdout)
 
@@ -71,8 +77,8 @@ beforeAll(async () => {
 
     // Web security is disabled to allow requests to the mock OTP server
     browser = await puppeteer.launch({
-      args: ['--disable-web-security']
-      //, headless: false
+      args: ['--disable-web-security', '--no-sandbox']
+      // , headless: false
     })
   } catch (error) {
     console.log(error)
@@ -97,6 +103,7 @@ afterAll(async () => {
 // Puppeteer can take a long time to load, especially in some ci environments
 jest.setTimeout(600000)
 
+// eslint-disable-next-line complexity
 async function executeTest(page, isMobile, isCallTaker) {
   // Make sure that the main UI (incl. map controls) has loaded.
   await page.waitForSelector('.maplibregl-ctrl-zoom-in')
@@ -114,9 +121,7 @@ async function executeTest(page, isMobile, isCallTaker) {
 
   if (!isCallTaker) {
     // Edit trip params [mobile-specific]
-    if (isMobile) {
-      await page.click('button.edit-search-button')
-    }
+    await openEditIfNeeded(page, isMobile)
 
     // Change the modes: Activate Transit and remove Bike.
     await page.click('label[title="Transit"]')
@@ -125,25 +130,32 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.click('label[title="Bike"]')
     await page.waitForTimeout(200)
     // Change the date
-    await page.hover('#date-time-button')
+    await page.click('#date-time-depart-arrive-label')
+    await page.keyboard.press('ArrowDown')
+    await page.keyboard.press('ArrowDown')
+    await page.keyboard.press('Enter')
+
     await page.waitForTimeout(200)
     await page.focus('input[type="date"]')
     // FIXME: Puppeteer only: On Wednesday 08/09/2023, Monday 08/07/2023 was shown as "Last Sunday"!...
     await page.keyboard.type('08072023') // MMDDYYYY format.
-    await page.keyboard.press('Escape')
-    await page.waitForTimeout(200)
+
+    // Open advanced settings and wait for animation
+    await page.click('#open-advanced-settings-button')
+    await page.waitForTimeout(500)
 
     // Check submode selector (this will have no effect on mock query)
-    await page.hover('label[title="Transit"]')
-    await page.waitForTimeout(500)
     await page.click('#id-query-param-tram')
 
     // Enable accessible routing (this will have no effect on mock query)
-    await page.hover('label[title="Transit"]')
-    await page.waitForTimeout(500)
     await page.click('#id-query-param-wheelchair')
 
+    // Close advanced settings
+    await page.click('#close-advanced-settings-button')
+    await page.waitForTimeout(500)
     // Delete both origin and destination
+
+    await openEditIfNeeded(page, isMobile)
 
     await page.click('.from-form-control')
     await page.waitForTimeout(300)
@@ -189,14 +201,12 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.waitForTimeout(1000) // wait extra time for all results to load
 
     if (!isMobile) {
-      await page.hover('label[title="Transit"]')
-      await page.waitForTimeout(200)
-      await percySnapshotWithWait(
-        page,
-        'Metro Transit-Walk Itinerary Desktop with Mode Selector Expanded'
-      )
-      // Hover something else to unhover the mode selector.
-      await page.hover('#plan-trip')
+      await page.click('#open-advanced-settings-button')
+      await page.waitForTimeout(500)
+      await percySnapshotWithWait(page, 'Metro Advanced Settings Open')
+      // Close advanced settings
+      await page.click('#close-advanced-settings-button')
+      await page.waitForTimeout(500)
     } else {
       await percySnapshotWithWait(page, 'Metro Transit-Walk Itinerary Mobile')
     }
@@ -221,6 +231,9 @@ async function executeTest(page, isMobile, isCallTaker) {
 
     // take screenshot
     await percySnapshotWithWait(page, 'Call Taker With Settings Adjusted')
+    await page.goto(
+      `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=South%20Prado%20Northeast%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.78946214120528%2C-84.37663414886111&toPlace=1%20Copenhill%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.767060728439574%2C-84.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false&mode=BICYCLE&walkSpeed=1.34&numItineraries=3&modeButtons=walk_bike`
+    )
 
     // Other steps are identical to desktop, so we end here to not waste screenshots.
     return
@@ -261,8 +274,8 @@ async function executeTest(page, isMobile, isCallTaker) {
 
   // Open schedule view
   await page.waitForTimeout(2000)
-  await page.waitForSelector('a.pull-right')
-  await page.click('a.pull-right')
+  await page.waitForSelector('a.stop-header-action')
+  await page.click('a.stop-header-action')
   await page.waitForTimeout(500)
   // Request a schedule for a specific valid date in the past,
   // so it is different than today and triggers a full render of the schedule.
@@ -282,7 +295,7 @@ async function executeTest(page, isMobile, isCallTaker) {
     await percySnapshotWithWait(page, 'Mobile Sidebar')
   }
 
-  const [routeViewerLink] = await page.$x("//a[contains(., 'View Routes')]")
+  const [routeViewerLink] = await page.$x("//a[contains(., 'Routes')]")
   await routeViewerLink.click()
   await page.waitForSelector('.route-viewer')
   await page.waitForTimeout(5000)
@@ -367,6 +380,20 @@ async function executeTest(page, isMobile, isCallTaker) {
   if (isMobile) {
     // Printable itinerary screenshot on mobile only better page ration (and to save allowance).
     await percySnapshotWithWait(page, 'Printable Itinerary')
+  }
+  if (!isCallTaker) {
+    // Go to a URL that will trigger an error message.
+    await page.goto(
+      `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=TestLocation%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A34.78946214120528%2C-86.37663414886111&toPlace=1%20TestLocation2%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A35.767060728439574%2C-86.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false&mode=BICYCLE&walkSpeed=1.34&numItineraries=3&modeButtons=car_transit`
+    )
+    await page.waitForTimeout(500)
+    await openEditIfNeeded(page, isMobile)
+    await page.click('#plan-trip')
+    // FIXME: Network idle condition seems never met after navigating to above link.
+    // await page.waitForNavigation({ waitUntil: 'networkidle2' })
+    await page.waitForTimeout(2000)
+    await page.waitForSelector('.options')
+    await percySnapshotWithWait(page, 'With error message displayed')
   }
 }
 

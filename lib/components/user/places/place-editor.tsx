@@ -12,6 +12,7 @@ import {
   IntlShape,
   WrappedComponentProps
 } from 'react-intl'
+import { InvisibleAdditionalDetails } from '@opentripplanner/itinerary-body/lib/styled'
 import { Location } from '@opentripplanner/types'
 import { LocationSelectedEvent } from '@opentripplanner/location-field/lib/types'
 import coreUtils from '@opentripplanner/core-utils'
@@ -24,6 +25,7 @@ import { capitalizeFirst, getErrorStates } from '../../../util/ui'
 import { ComponentContext } from '../../../util/contexts'
 import { CUSTOM_PLACE_TYPES, isHomeOrWork } from '../../../util/user'
 import { getFormattedPlaces } from '../../../util/i18n'
+import { PLACE_NAME_MAX_LENGTH } from '../../../util/constants'
 import { StyledIconWrapper } from '../../util/styledIcon'
 import { UserSavedLocation } from '../types'
 import ButtonGroup from '../../util/button-group'
@@ -34,7 +36,9 @@ import { PlaceLocationField } from './place-location-field'
 
 type Props = WrappedComponentProps &
   FormikProps<UserSavedLocation> & {
-    geocoderConfig: GeocoderConfig
+    geocoderConfig: GeocoderConfig & {
+      geocoderResultsOrder?: Array<string>
+    }
     getCurrentPosition: (
       ...args: Parameters<typeof locationActions.getCurrentPosition>
     ) => void
@@ -84,19 +88,38 @@ class PlaceEditor extends Component<Props> {
   static contextType = ComponentContext
 
   _setLocation = (location: Location) => {
-    const { intl, setValues, values } = this.props
+    const { geocoderConfig, intl, setValues, values } = this.props
     const { category, lat, lon, name } = location
-    setValues({
-      ...values,
-      address:
-        // If the raw current location is passed without a name attribute (i.e. the address),
-        // set the "address" as the formatted coordinates of the current location at that time.
-        category === 'CURRENT_LOCATION'
-          ? intl.formatMessage({ id: 'common.coordinates' }, { lat, lon })
-          : name,
-      lat,
-      lon
-    })
+
+    // Helper function to update the form values.
+    const updateFormValues = (newAddress?: string) => {
+      setValues({
+        ...values,
+        address: newAddress,
+        lat,
+        lon
+      })
+    }
+
+    // If the location is a current location, reverse geocode the coordinates.
+    if (category === 'CURRENT_LOCATION') {
+      const initialAddress = intl.formatMessage(
+        { id: 'common.coordinates' },
+        { lat, lon }
+      )
+      updateFormValues(initialAddress)
+
+      getGeocoder(geocoderConfig)
+        .reverse({ point: { lat, lon } })
+        .then((geocodedLocation: Location) => {
+          updateFormValues(geocodedLocation.name)
+        })
+        .catch((err: Error) => {
+          console.warn('Reverse geocode failed:', err)
+        })
+    } else {
+      updateFormValues(name)
+    }
   }
 
   _handleLocationChange = (e: LocationSelectedEvent) => {
@@ -128,13 +151,18 @@ class PlaceEditor extends Component<Props> {
   }
 
   render() {
-    const { errors, intl, values: place } = this.props
+    const { errors, geocoderConfig, intl, values: place } = this.props
     const { SvgIcon } = this.context
     const isFixed = isHomeOrWork(place)
     const errorStates = getErrorStates(this.props)
     const nameExample = intl.formatMessage({
       id: 'components.PlaceEditor.nameExample'
     })
+    const placeCharacterCount = place.name?.length || 0
+    const characterRemaining = PLACE_NAME_MAX_LENGTH - placeCharacterCount
+    const charactersOverLimit = 0 - characterRemaining
+
+    const { geocoderResultsOrder } = geocoderConfig
 
     return (
       <div>
@@ -144,6 +172,27 @@ class PlaceEditor extends Component<Props> {
               <ControlLabel htmlFor="name">
                 <FormattedMessage id="components.PlaceEditor.namePrompt" />
               </ControlLabel>
+              <div
+                aria-hidden
+                style={{
+                  fontWeight: 300,
+                  position: 'absolute',
+                  right: 0,
+                  top: 0
+                }}
+              >
+                {charactersOverLimit > 0 ? (
+                  <FormattedMessage
+                    id="components.FavoritePlaceScreen.charactersOverLimit"
+                    values={{ chars: charactersOverLimit }}
+                  />
+                ) : (
+                  <FormattedMessage
+                    id="components.FavoritePlaceScreen.charactersRemaining"
+                    values={{ chars: characterRemaining }}
+                  />
+                )}
+              </div>
               {/* onBlur, onChange, and value are passed automatically. */}
               <Field
                 aria-invalid={!!errors.name}
@@ -158,6 +207,15 @@ class PlaceEditor extends Component<Props> {
                 {errorStates.name && (
                   <FormattedValidationError type={errors.name} />
                 )}
+                {/* Invisible alert for AT to how many characters are over the limit. */}
+                <InvisibleAdditionalDetails>
+                  {charactersOverLimit > 0 && (
+                    <FormattedMessage
+                      id="components.FavoritePlaceScreen.charactersOverLimit"
+                      values={{ chars: charactersOverLimit }}
+                    />
+                  )}
+                </InvisibleAdditionalDetails>
               </HelpBlock>
             </StyledFormGroup>
             <FormGroup>
@@ -216,6 +274,7 @@ class PlaceEditor extends Component<Props> {
 
             <PlaceLocationField
               className="form-control"
+              geocoderResultsOrder={geocoderResultsOrder}
               getCurrentPosition={this._handleGetCurrentPosition}
               inputPlaceholder={
                 isFixed

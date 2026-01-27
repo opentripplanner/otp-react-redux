@@ -9,6 +9,7 @@ import {
   IntlShape
 } from 'react-intl'
 import { Leaf } from '@styled-icons/fa-solid/Leaf'
+import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
@@ -40,6 +41,8 @@ import DepartureTimesList, {
 } from './departure-times-list'
 import MetroItineraryRoutes from './metro-itinerary-routes'
 import RouteBlock from './route-block'
+
+const { ensureAtLeastOneMinute } = coreUtils.time
 
 // Styled components
 const ItineraryWrapper = styled.div.attrs((props) => {
@@ -232,7 +235,11 @@ class MetroItinerary extends NarrativeItinerary {
         aria-hidden
         footer={
           showLegDurations &&
-          mainLeg?.duration && <FormattedDuration duration={mainLeg.duration} />
+          mainLeg?.duration && (
+            <FormattedDuration
+              duration={ensureAtLeastOneMinute(mainLeg.duration)}
+            />
+          )
         }
         hideLongName
         leg={mainLeg}
@@ -314,22 +321,34 @@ class MetroItinerary extends NarrativeItinerary {
         10
       )
     }
+    const formattedFare = intl.formatNumber(transitFare, {
+      currency: fareCurrency,
+      currencyDisplay: 'narrowSymbol',
+      style: 'currency'
+    })
 
-    const fareInfo =
+    let fareInfo =
       // Hide the fare information entirely if the defaultFareType isn't specified.
       transitFare === null || transitFare === undefined || transitFare < 0 ? (
         <FormattedMessage id="common.itineraryDescriptions.fareUnknown" />
       ) : (
         // TODO: re-implement TNC fares for metro UI?
-        <FormattedNumber
-          currency={fareCurrency}
-          currencyDisplay="narrowSymbol"
-          // This isn't a "real" style prop
-          // eslint-disable-next-line react/style-prop-object
-          style="currency"
-          value={transitFare}
+        <FormattedMessage
+          id="components.MetroUI.fare"
+          values={{ fare: formattedFare }}
         />
       )
+
+    if (
+      // Display special message if there are multiple fare products, but no primary product configured
+      itinerary.legs.some((leg: Leg) => leg.fareProducts?.length ?? 0 > 1) &&
+      !defaultFareType
+    ) {
+      console.log("Missing DefaultFareType! Can't display default fare")
+      fareInfo = (
+        <FormattedMessage id="common.itineraryDescriptions.noDefaultFareTypeConfigured" />
+      )
+    }
 
     // Use first leg's agency as a fallback
     return (
@@ -384,7 +403,7 @@ class MetroItinerary extends NarrativeItinerary {
                 >
                   <PrimaryInfo>
                     <FormattedDuration
-                      duration={itinerary.duration}
+                      duration={ensureAtLeastOneMinute(itinerary.duration)}
                       includeSeconds={false}
                     />
                   </PrimaryInfo>
@@ -409,7 +428,13 @@ class MetroItinerary extends NarrativeItinerary {
                       values={{
                         time: (
                           <FormattedDuration
-                            duration={itinerary.walkTime}
+                            duration={
+                              /* If the walk time is truly zero, show 0. But if the walk time is just less 
+                              than a minute, round up to the nearest minute to avoid showing no walk time. */
+                              itinerary.walkTime > 0
+                                ? ensureAtLeastOneMinute(itinerary.walkTime)
+                                : itinerary.walkTime
+                            }
                             includeSeconds={false}
                           />
                         )
@@ -429,7 +454,7 @@ class MetroItinerary extends NarrativeItinerary {
                       }}
                     />
                   )}
-                  <span className="timeInfo">
+                  <span>
                     {arrivesAt ? (
                       <FormattedMessage id="components.MetroUI.arriveAt" />
                     ) : (
@@ -470,7 +495,7 @@ class MetroItinerary extends NarrativeItinerary {
               <ItineraryGridSmall className="other-itin">
                 <PrimaryInfo as="span">
                   <FormattedDuration
-                    duration={itinerary.duration}
+                    duration={ensureAtLeastOneMinute(itinerary.duration)}
                     includeSeconds={false}
                   />
                 </PrimaryInfo>

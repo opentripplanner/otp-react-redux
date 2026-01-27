@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
 import { Feature, lineString, LineString, Position } from '@turf/helpers'
 import { Itinerary, Location } from '@opentripplanner/types'
-import { Marker } from 'react-map-gl'
+import { Marker } from 'react-map-gl/maplibre'
 import centroid from '@turf/centroid'
 import distance from '@turf/distance'
 import polyline from '@mapbox/polyline'
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import * as narriativeActions from '../../actions/narrative'
@@ -83,6 +83,15 @@ const Card = styled.div`
 `
 
 function addItinLineString(itin: Itinerary): ItinWithGeometry {
+  if (!itin?.legs)
+    return {
+      ...itin,
+      allLegGeometry: {
+        geometry: { coordinates: [], type: 'LineString' },
+        properties: {},
+        type: 'Feature'
+      }
+    }
   return {
     ...itin,
     allLegGeometry: lineString(
@@ -147,19 +156,20 @@ const ItinerarySummaryOverlay = ({
   // @ts-expect-error React context is populated dynamically
   const { LegIcon } = useContext(ComponentContext)
 
-  const [sharedTimeout, setSharedTimeout] = useState<null | NodeJS.Timeout>(
-    null
-  )
-
   if (!itins || !visible) return <></>
-  const mergedItins: ItinWithGeometry[] = addTrueIndex(
-    doMergeItineraries(itins).mergedItineraries.map(addItinLineString)
+  const indexedItins: ItinWithGeometry[] = addTrueIndex(
+    itins.filter((i) => !!i).map(addItinLineString)
   )
+  const mergedItins: ItinWithGeometry[] =
+    doMergeItineraries(indexedItins).mergedItineraries
 
-  const midPoints = mergedItins.reduce<ItinUniquePoint[]>((prev, curItin) => {
-    prev.push(getUniquePoint(curItin, prev))
-    return prev
-  }, [])
+  const midPoints = mergedItins.reduce<ItinUniquePoint[]>(
+    (prev: ItinUniquePoint[], curItin: ItinWithGeometry) => {
+      prev.push(getUniquePoint(curItin, prev))
+      return prev
+    },
+    []
+  )
   // The first point is probably not well placed, so let's run the algorithm again
   if (midPoints.length > 1) {
     midPoints[0] = getUniquePoint(mergedItins[0], midPoints)
@@ -186,18 +196,8 @@ const ItinerarySummaryOverlay = ({
                   onClick={() => {
                     setActive({ index: mp.itin.index })
                   }}
-                  // TODO: useCallback here (getting weird errors?)
-                  onMouseEnter={() => {
-                    setSharedTimeout(
-                      setTimeout(() => {
-                        setVisible({ index: mp.itin.index })
-                      }, 150)
-                    )
-                  }}
-                  onMouseLeave={() => {
-                    sharedTimeout && clearTimeout(sharedTimeout)
-                    setVisible({ index: null })
-                  }}
+                  // TODO: restore setting visible itinerary on hover without
+                  // causing endless re-render?
                 >
                   <MetroItineraryRoutes
                     expanded={false}

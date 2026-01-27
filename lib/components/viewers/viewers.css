@@ -2,25 +2,21 @@
 
 .otp .route-viewer-header,
 .otp .trip-viewer-header {
-  padding: 12px;
-  margin: 5px;
+  padding: 17px;
+  border-bottom: 1px solid #33333333;
+}
+
+.otp .pattern-viewer-header {
+  padding: 12px 10px;
 }
 
 .otp .route-viewer,
-.otp .stop-viewer,
 .otp .trip-viewer,
 .otp .stop-viewer-body {
   display: flex;
   flex-direction: column;
   flex-flow: column;
   height: 100%;
-}
-
-.otp .route-viewer-body::before {
-  background-color: #33333333;
-  content: "";
-  display: block;
-  height: 2px;
 }
 
 @keyframes yellowfade {
@@ -52,20 +48,20 @@
   padding: 12px;
 }
 
-.otp .stop-viewer .back-button-container,
-.otp .trip-viewer .back-button-container,
-.otp .route-viewer .back-button-container {
-  float: left;
-  margin-right: 10px;
+.otp .trip-viewer .header-with-back-button,
+.otp .pattern-viewer .header-with-back-button {
+  display: flex;
+  gap: 5px;
 }
 
 .otp .trip-viewer .header-text,
-.otp .route-viewer .header-text {
-  display: contents;
+.otp .route-viewer .header-text,
+.otp .advanced-settings .header-text {
   font-weight: 700;
   font-size: 24px;
   margin: 0;
 }
+
 .otp .route-viewer .header-text.route-expanded {
   display: flex;
   align-items: center;
@@ -242,4 +238,26 @@
   align-items: center;
   justify-content: center;
   padding-top: 10px;
+}
+
+/* Nearby View Location Field Styles */
+.nearby-view-location-field {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  border: none !important;
+  box-shadow: 0px 0px 5px 1px inset rgb(0 0 0 / 0.05);
+  color: #111;
+  display: flex !important;
+  height: 50px;
+  margin-bottom: 0px !important;
+  transition: background-color 0.1s ease-out;
+}
+.nearby-view-location-field:hover,
+.nearby-view-location-field:active {
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+.nearby-view-location-field input {
+  width: 100% !important;
+  background: transparent !important;
 }

@@ -93,6 +93,8 @@ persistence:
 ### If a Top level menu item contains submenu items (children) then use the 'children' flag.
 ### Icon URL is preferable over iconType. If none are given then a 'bus' iconType is used.
 #App menu
+### If set to true, a google translate suffix will be appended to the URL of external links for the active locale. For example, if the app is open in Spanish, the external URL will open with /#googtrans(es)
+translateExternalLinks: false
 #extraMenuItems:
 #  - id: link-list
 #    label: List of Links
@@ -112,11 +114,19 @@ persistence:
 #        iconUrl: ''
 #        href: ''
 
+### These settings are only used for the field trip features.
+dateTime:
+  timeFormat: h:mm a
+  dateFormat: MM/dd/yyyy
+
 map:
   initLat: 45.52
   initLon: -122.682
   # autoFlyOnTripFormUpdate: false
   # navigationControlPosition: "bottom-right"
+
+  # Enable the following option to show the endpoints popup even with persistence disabled
+  # forceDisplayEndpointsPopup: false
   baseLayers:
     - name: Streets
       # These tiles are free to use, but not in production
@@ -179,6 +189,9 @@ map:
 # geocoder test account can be obtained from the Pelias maintainers at geocode.earth.
 geocoder:
   apiKey: PELIAS_API_KEY
+  # Pass an array of geocoder result types to control the order in which they are displayed.
+  # The default order is ['STATIONS', 'STOPS', 'OTHER'].
+  geocoderResultsOrder: ['STATIONS', 'STOPS', 'OTHER']
   boundary:
     rect:
       minLon: -123.2034
@@ -263,7 +276,11 @@ modes:
       iconName: wheelchair
       type: CHECKBOX # Possible options: CHECKBOX, SUBMODE, SLIDER, DROPDOWN
   transitModes:
-    - mode: BUS
+      # Mode can be a string or an array of strings.
+    - mode: ["TROLLEYBUS", "BUS"]
+      # When mode is an array an overrideMode must be provided.
+      # This specifies the displayed mode used for icon and URL param.
+      overrideMode: BUS
       label: Bus
       # A mode color can be added, used throughout the application,
       # most notably in the enhanced stop viewer bubble
@@ -330,12 +347,20 @@ modes:
 #     # NOTE: headerGraphic requires a valid URL to a png file.
 #     headerGraphic: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Trimet_logo.svg/1280px-Trimet_logo.svg.png'
 
-routingTypes:
-  - key: ITINERARY
-    text: Exact Time
-
 # Itinerary options
 itinerary:
+  # Provides an array of valid mode combinations that returned itineraries will be filtered against
+  # If left blank, all itineraries deemed valid by OTP will be returned
+  validModeCombinations: [ 
+    ['WALK'],
+    ['WALK', 'PERSONAL'],
+    ['WALK', 'TRANSIT', 'SHARED'],
+    ['WALK', 'SHARED'],
+    ['WALK', 'TRANSIT'],
+    ['WALK', 'TRANSIT', 'PERSONAL'],
+    ['WALK', 'TRANSIT', 'CAR'],
+    ['CAR'] 
+  ]
   # Show fares for each transit leg (false if omitted).
   # (Requires using LineItinerary.)
   showRouteFares: false
@@ -344,6 +369,8 @@ itinerary:
   showPlanFirstLastButtons: false
   # adds the 'about' and '~' prefixes to the duration of non transit legs and trip details panel
   showApproximatePrefixAccessLegs: false
+  # Whether to show the effective date and time of alerts
+  showAlertEffectiveDateTimeText: true
   # Show all walking legs regardless of distance
   showAllWalkLegs: false
   # Filters out trips returned by OTP by default, unless specifically requested.
@@ -356,12 +383,8 @@ itinerary:
   fillModeIcons: true
   # Allow user to collapse alerts in itinerary body
   allowUserAlertCollapsing: true
-  # If multiple fares are returned by OTP, assign names to the fare keys here
-  #fareKeyNameMap:
-  #  regular: "Transit Fare"
-  #  electronicRegular: "SmartCard Fare"
-  #  student: "Student Fare"
-  # One fare will always be shown by default
+  # The medium and rider category selected here will be used to render the total itinerary fare
+  # when there is only room to display a single fare.
   defaultFareType: { mediumId: null, riderCategoryId: null }
 
   # List of OTP2 errors to not display. Can be a list
@@ -409,8 +432,14 @@ itinerary:
   previewOverlay: false
   # Whether to add a OTP_RR_A11Y_ROUTING_ENABLED error to all itineraries with accessibility scores
   displayA11yError: false
+  # Whether to add OTP_RR_MICROBILITY_SUBJECT_TO_CHANGE error to all searches that include micromobiity rental.
+  displayMicromobilityRentalError: false
+  # Whether to add a OTP_RR_TRIP_IN_PAST error to all itineraries which have an itinerary that ends in the past
+  displayTripInPastError: true
   # Whether to display itinerary info in the side of the preview or next to the departure times
   showInlineItinerarySummary: false
+  # Whether to sync the sort type with the depart/arrive time in the date/time modal
+  syncSortWithDepartArrive: true
   # The sort option to use by default
   # Available sort options: 'BEST', 'DURATION', 'ARRIVALTIME', 'WALKTIME', 'COST', 'DEPARTURETIME'
   # defaultSort: "BEST" # Default
@@ -424,6 +453,13 @@ itinerary:
   #   - 'WALKTIME'
   #   - 'COST'
   #   - 'DEPARTURETIME'
+  # In the batch itinerary UI, this setting will always show both departure/arrival times
+  alwaysShowBothTimes: false
+advancedSettingsPanel:
+  # Show button in advanced panel that allows users to save and return
+  saveAndReturnButton: true
+# Prevent users from selecting a single day for saving trips.
+disableSingleItineraryDays: false
 
 # The transitOperators key is a list of transit operators that can be used to
 # order transit agencies when sorting by route. Also, this can optionally
@@ -651,6 +687,10 @@ itinerary:
 #   # Whether to render routes within flex zones of a route's patterns. If set to true,
 #   # routes will not be rendered within flex zones.
 #   hideRouteShapesWithinFlexZones: true
+#   # Setting to sort routes by the number of vehicles on each pattern
+#   sortRoutePatternsByVehicleCount: true
+#   # Whether to use the route color as the pattern viewer background
+#   useRouteColorAsBackground: true
 #   # Disable vehicle highlight if necessary (e.g. custom or inverted icons)
 #   vehicleIconHighlight: true
 #   # Customize vehicle icon padding (the default iconPadding is 2px in otp-ui)
@@ -659,6 +699,8 @@ itinerary:
 #   maxRealtimeVehicleAge: 60
 #   # Interval for refreshing vehicle positions
 #   vehiclePositionRefreshSeconds: 30 # defaults to 30 seconds.
+#   # Enable this to restrict listing to routes active within the last to next Sunday
+#   onlyShowCurrentServiceWeek: true
 
 # API key to make Mapillary API calls. These are used to show street imagery.
 # Mapillary calls these "Client Tokens". They can be created at https://www.mapillary.com/dashboard/developers
@@ -675,6 +717,8 @@ itinerary:
 # sessionTimeoutSeconds: 180
 
 # nearbyView:
+### Setting to use arrival time instead of departure time in the nearby view.
+#   useArrivalTime: true
 ### Setting to hide stops with no depatures in the nearby view.
 #   hideEmptyStops: true
 ### What radius should the nearby query get results within? (in meters)

@@ -57,6 +57,7 @@ const mapStateToProps = (state: AppReduxState) => {
           'terms',
           'mobilityDevices',
           'mobilityLimitations',
+          'companions',
           'notifications',
           'places',
           'finish'

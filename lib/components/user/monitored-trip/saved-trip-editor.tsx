@@ -3,6 +3,7 @@ import React, { ComponentType } from 'react'
 
 import { BackButtonContent } from '../back-link'
 import { MonitoredTrip } from '../types'
+import { PaneAttributes } from '../stacked-panes'
 import { TRIPS_PATH } from '../../../util/constants'
 import DeleteForm from '../delete-form'
 import Link from '../../util/link'
@@ -12,7 +13,9 @@ import StackedPanesWithSave from '../stacked-panes-with-save'
 import TripNotFound from './trip-not-found'
 
 interface Props {
+  hasMobilityProfile: boolean
   isCreating: boolean
+  isReadOnly: boolean
   onCancel: () => void
   panes: Record<string, ComponentType>
   values: MonitoredTrip
@@ -30,7 +33,11 @@ const SavedTripEditor = (props: Props): JSX.Element => {
   const intl = useIntl()
 
   if (monitoredTrip) {
-    const paneSequence = [
+    const paneSequence: PaneAttributes[] = [
+      {
+        pane: panes.readOnlyAlert,
+        props
+      },
       {
         pane: panes.basics,
         props,
@@ -47,7 +54,20 @@ const SavedTripEditor = (props: Props): JSX.Element => {
       }
     ]
 
-    const title = isCreating
+    // if mobility profile is present, then add travel companions pane
+    if (props.hasMobilityProfile) {
+      paneSequence.push({
+        pane: panes.travelCompanions,
+        props,
+        title: (
+          <FormattedMessage id="components.SavedTripEditor.travelCompanions" />
+        )
+      })
+    }
+
+    const title = props.isReadOnly
+      ? intl.formatMessage({ id: 'otpUi.TripDetails.title' })
+      : isCreating
       ? intl.formatMessage({ id: 'components.SavedTripEditor.saveNewTrip' })
       : intl.formatMessage({ id: 'components.SavedTripEditor.editSavedTrip' })
 
@@ -65,8 +85,14 @@ const SavedTripEditor = (props: Props): JSX.Element => {
               ? { content: <DeleteForm tripId={monitoredTrip.id} /> }
               : undefined
           }
+          isReadOnly={props.isReadOnly}
           onCancel={onCancel}
           panes={paneSequence}
+          subtitle={
+            !props.isReadOnly ? (
+              <FormattedMessage id="components.TripBasicsPane.indicatesRequiredFields" />
+            ) : undefined
+          }
           title={title}
         />
       </>

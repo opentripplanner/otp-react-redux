@@ -49,9 +49,13 @@ export const removeInsignificantWalkLegs = (leg: Leg): boolean =>
   // TODO: Make the 400 meters configurable?
   leg.mode !== 'WALK' || leg.distance > 400
 
+export const getAlternateRoutesFromLeg = (
+  leg: Leg & { alternateRoutes?: { [id: string]: Leg } }
+): Array<[string, Leg]> => {
+  return Object.entries(leg.alternateRoutes || {})
+}
 /**
  * Generate text for all routes used in an itinerary.
- * TODO: include all alternate routes inside alternateRoutes as well!
  */
 export const getItineraryRoutes = (
   itinerary: Itinerary,
@@ -59,8 +63,19 @@ export const getItineraryRoutes = (
 ): React.ReactNode => {
   return intl.formatList(
     itinerary.legs
-      .map((leg: Leg) => {
-        return leg.routeShortName
+      .map((leg: Leg & { alternateRoutes?: { [id: string]: Leg } }) => {
+        const alternateRouteNames =
+          leg.alternateRoutes &&
+          getAlternateRoutesFromLeg(leg)
+            .map((route) => route[1].routeShortName || route[1].routeLongName)
+            .filter((name) => !!name)
+
+        const routeName = leg.routeShortName || leg.routeLongName
+        return !alternateRouteNames
+          ? routeName
+          : intl.formatList([routeName, ...alternateRouteNames], {
+              type: 'disjunction'
+            })
       })
       .filter((name) => !!name)
   )

@@ -9,10 +9,16 @@ import { SetLocationHandler } from '../../util/types'
 interface Props {
   className?: string
   place: Place
+  reverseGeocode?: boolean
   setLocation: SetLocationHandler
 }
 
-const FromToPicker = ({ className, place, setLocation }: Props) => {
+const FromToPicker = ({
+  className,
+  place,
+  reverseGeocode = false,
+  setLocation
+}: Props) => {
   const location = useMemo(
     () => ({
       lat: place.lat ?? 0,
@@ -26,11 +32,19 @@ const FromToPicker = ({ className, place, setLocation }: Props) => {
       <FromToLocationPicker
         label
         onFromClick={useCallback(() => {
-          setLocation({ location, locationType: 'from', reverseGeocode: false })
-        }, [location, setLocation])}
+          setLocation({
+            location,
+            locationType: 'from',
+            reverseGeocode: reverseGeocode
+          })
+        }, [location, reverseGeocode, setLocation])}
         onToClick={useCallback(() => {
-          setLocation({ location, locationType: 'to', reverseGeocode: false })
-        }, [location, setLocation])}
+          setLocation({
+            location,
+            locationType: 'to',
+            reverseGeocode: reverseGeocode
+          })
+        }, [location, reverseGeocode, setLocation])}
       />
     </span>
   )

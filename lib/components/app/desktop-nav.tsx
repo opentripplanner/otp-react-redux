@@ -13,14 +13,15 @@ import { DEFAULT_APP_TITLE } from '../../util/constants'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import NavLoginButtonAuth0 from '../user/nav-login-button-auth0'
 
+import { NetworkConnectionBanner } from './network-connection-banner'
 import AppMenu, { Icon } from './app-menu'
 import LocaleSelector from './locale-selector'
 import NavbarItem from './nav-item'
 import ViewSwitcher from './view-switcher'
 
 const StyledNav = styled(Nav)`
-  /* Almost override bootstrap's margin-right: -15px */
-  margin-right: -5px;
+  display: flex;
+  justify-content: end;
   /* Target only the svgs in the Navbar */
   & > li > button > svg,
   & > li > span > button > span > svg {
@@ -41,10 +42,6 @@ const StyledNav = styled(Nav)`
       padding: 15px;
       line-height: 20px;
 
-      @media (max-width: 768px) {
-        padding: 10px;
-      }
-
       &:hover {
         background: rgba(0, 0, 0, 0.05);
         color: #ececec;
@@ -63,6 +60,7 @@ const NavItemOnLargeScreens = styled(NavbarItem)`
 // Typscript TODO: otpConfig type
 export type Props = {
   locale: string
+  networkConnectionLost: boolean
   otpConfig: AppConfig
   popupTarget?: string
   setPopupContent: (url: string) => void
@@ -83,6 +81,7 @@ export type Props = {
  */
 const DesktopNav = ({
   locale,
+  networkConnectionLost,
   otpConfig,
   popupTarget,
   setPopupContent
@@ -99,18 +98,14 @@ const DesktopNav = ({
 
   const BrandingElement = brandClickable ? 'a' : 'div'
 
-  const commonStyles = { marginLeft: 50 }
-  const brandingProps = brandClickable
-    ? {
-        href: '/#/',
-        style: {
-          ...commonStyles,
-          display: 'block',
-          position: 'relative',
-          zIndex: 10
-        }
-      }
-    : { style: { ...commonStyles } }
+  const brandingProps = brandClickable && {
+    href: '/#/',
+    style: {
+      display: 'block',
+      position: 'relative',
+      zIndex: 10
+    }
+  }
   const popupButtonText =
     popupTarget &&
     intl.formatMessage({
@@ -142,7 +137,7 @@ const DesktopNav = ({
             )}
           </Navbar.Brand>
 
-          <ViewSwitcher sticky />
+          <ViewSwitcher />
 
           <StyledNav pullRight>
             {popupTarget && (
@@ -166,6 +161,7 @@ const DesktopNav = ({
           </StyledNav>
         </Navbar.Header>
       </Navbar>
+      <NetworkConnectionBanner networkConnectionLost={networkConnectionLost} />
     </header>
   )
 }
@@ -173,8 +169,10 @@ const DesktopNav = ({
 // connect to the redux store
 const mapStateToProps = (state: AppReduxState) => {
   const { config: otpConfig } = state.otp
+  const { networkConnectionLost } = state.otp.ui.errors
   return {
     locale: state.otp.ui.locale,
+    networkConnectionLost,
     otpConfig,
     popupTarget: otpConfig.popups?.launchers?.toolbar
   }

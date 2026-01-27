@@ -1,10 +1,7 @@
 // This file is intended to contain configuration types,
 // each suffixed with "Config", as in "MapConfig", "MenuItemConfig", etc.
 
-import {
-  CO2ConfigType,
-  FareTableLayout
-} from '@opentripplanner/trip-details/lib/types'
+import { CO2ConfigType } from '@opentripplanner/trip-details/lib/types'
 import {
   Company,
   FareProductSelector,
@@ -15,7 +12,10 @@ import {
   TransitOperator,
   VehicleRentalMapOverlaySymbol
 } from '@opentripplanner/types'
+import { ControlPosition } from 'react-map-gl/maplibre'
 import { GeocoderConfig as GeocoderConfigOtpUI } from '@opentripplanner/geocoder'
+
+import { NearbyFilterKey } from './state-types'
 
 /** Accessibility threshold settings */
 export interface AccessibilityScoreThresholdConfig {
@@ -67,12 +67,19 @@ interface ApiKeyConfig {
 
 export type BugsnagConfig = ApiKeyConfig
 export type MapillaryConfig = ApiKeyConfig
+export type NearbyFilterConfig = {
+  cardType: NearbyFilterKey
+  default?: boolean
+  iconName: string
+}
 
 export type NearbyViewConfig = {
   alwaysShowLongName?: boolean
+  filters?: Array<NearbyFilterConfig>
   hideEmptyStops?: boolean
   radius?: number
   showShadowDotOnMapDrag?: boolean
+  useArrivalTime?: boolean
   useRouteViewSort?: boolean
 }
 
@@ -221,15 +228,26 @@ export type SupportedOverlays =
   | Otp1StopsOverlayConfig
   | MapTileLayerConfig
 
+export interface TransitiveConfig {
+  disableFlexArc?: boolean
+  labeledModes?: string[]
+  styles?: {
+    labels: Record<string, unknown>
+    segmentLabels: Record<string, unknown>
+  }
+}
+
 export interface MapConfig {
   autoFlyOnTripFormUpdate?: boolean
   baseLayers?: BaseLayerConfig[]
+  forceDisplayEndpointsPopup?: boolean
   initLat?: number
   initLon?: number
   initZoom?: number
   maxZoom?: number
-  navigationControlPosition?: string
+  navigationControlPosition?: ControlPosition
   overlays?: SupportedOverlays[]
+  transitive?: TransitiveConfig
   views?: MapViewConfig[]
 }
 
@@ -251,6 +269,7 @@ export type ItinerarySortOption =
   | 'WALKTIME'
   | 'COST'
   | 'DEPARTURETIME'
+  | 'FARE'
 
 export interface ItineraryCostWeights {
   driveReluctance: number
@@ -263,14 +282,13 @@ export interface ItineraryCostWeights {
 
 export interface ItineraryConfig {
   allowUserAlertCollapsing?: boolean
+  alwaysShowBothTimes?: boolean
   costs?: ItineraryCostConfig
   customBatchUiBackground?: boolean
   defaultFareType?: FareProductSelector
   defaultSort?: ItinerarySortOption
   disableMetroSeperatorDot?: true
   exclusiveErrors?: string[]
-  fareDetailsLayout?: FareTableLayout[]
-  fareKeyNameMap?: Record<string, string>
   fillModeIcons?: boolean
   groupByMode?: boolean
   groupTransitModes?: boolean
@@ -288,7 +306,10 @@ export interface ItineraryConfig {
   showLegDurations?: boolean
   showPlanFirstLastButtons?: boolean
   showRouteFares?: boolean
+  /** Whether to show the x minutes late/early in the itinerary body */
+  showScheduleDeviation?: boolean
   sortModes?: ItinerarySortOption[]
+  syncSortWithDepartArrive?: boolean
   weights?: ItineraryCostWeights
 }
 
@@ -300,8 +321,10 @@ export interface CO2Config extends CO2ConfigType {
 }
 
 export interface GeocoderConfig extends GeocoderConfigOtpUI {
+  // TODO: This is a terrible key name. OTP-UI should just pull this from the geocoder config...
+  geocoderResultsOrder?: Array<'STATIONS' | 'STOPS' | 'OTHER'>
   maxNearbyStops?: number
-  resultColors?: Record<string, string>
+  resultsColors?: Record<string, string>
   resultsCount?: number
   type: string
 }
@@ -309,7 +332,7 @@ export interface GeocoderConfig extends GeocoderConfigOtpUI {
 export interface TransitModeConfig {
   color?: string
   label?: string
-  mode: string
+  mode: string | string[]
   showWheelchairSetting?: boolean
 }
 
@@ -336,12 +359,22 @@ export interface TransitOperatorConfig extends TransitOperator {
   routeIcons?: boolean
 }
 
+export interface AdvancedSettingsPanelConfig {
+  saveAndReturnButton?: boolean
+}
+
 /** Route Viewer config */
 export interface RouteViewerConfig {
   /** Whether to hide the route linear shape inside a flex zone of that route. */
   hideRouteShapesWithinFlexZones?: boolean
   /** Remove vehicles from the map if they haven't sent an update in a number of seconds */
   maxRealtimeVehicleAge?: number
+  /** Use OTP date limiting to only show current service week in list */
+  onlyShowCurrentServiceWeek?: boolean
+  /** Setting to sort routes by the number of vehicles on each pattern */
+  sortRoutePatternsByVehicleCount?: boolean
+  /** Whether to use the route color as the background color in the pattern viewer */
+  useRouteColorAsBackground?: boolean
   /** Disable vehicle highlight if necessary (e.g. custom or inverted icons) */
   vehicleIconHighlight?: boolean
   /** Customize vehicle icon padding (the default iconPadding is 2px in otp-ui) */
@@ -356,9 +389,15 @@ export interface StopScheduleViewerConfig {
   showBlockIds?: boolean
 }
 
+export interface DateTimeConfig {
+  dateFormat: string
+  timeFormat: string
+}
+
 /** The main application configuration object */
 export interface AppConfig {
   accessibilityScore?: AccessibilityScoreConfig
+  advancedSettingsPanel?: AdvancedSettingsPanelConfig
   api: ApiConfig
   // Optional on declaration, populated with defaults in reducer if not configured.
   autoPlan?: boolean | AutoPlanConfig
@@ -368,6 +407,8 @@ export interface AppConfig {
   bugsnag?: BugsnagConfig
   co2?: CO2Config
   companies?: Company[]
+  dateTime?: DateTimeConfig
+  disableSingleItineraryDays?: boolean
   elevationProfile?: boolean
   extraMenuItems?: AppMenuItemConfig[]
   geocoder: GeocoderConfig
@@ -393,14 +434,13 @@ export interface AppConfig {
   routeViewer?: RouteViewerConfig
   /** Approx delay in seconds to reset the UI to an initial URL if there is no user activity */
   sessionTimeoutSeconds?: number
-  /** Whether to show the x minutes late/early in the itinerary body */
-  showScheduleDeviation?: boolean
   stopViewer?: StopScheduleViewerConfig
   /** Externally hosted terms of service URL */
   termsOfServiceLink?: string
   /** App title shown in the browser title bar. */
   title?: string
   transitOperators?: TransitOperatorConfig[]
+  translateExternalLinks?: boolean
 
   // Add other config items as needed.
 }

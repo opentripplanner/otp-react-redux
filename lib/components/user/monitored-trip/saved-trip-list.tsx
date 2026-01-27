@@ -1,13 +1,16 @@
 import { connect } from 'react-redux'
+import { Edit } from '@styled-icons/fa-solid/Edit'
 import { FormattedMessage, injectIntl, IntlShape, useIntl } from 'react-intl'
+import { Map } from '@styled-icons/fa-solid/Map'
 import { Panel } from 'react-bootstrap'
 import { TriangleExclamation } from '@styled-icons/fa-solid/TriangleExclamation'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
 import React, { Component } from 'react'
+import styled from 'styled-components'
 
 import * as userActions from '../../../actions/user'
 import { AppReduxState } from '../../../util/state-types'
-import { Edit } from '@styled-icons/fa-solid'
+import { ComponentContext } from '../../../util/contexts'
 import { IconWithText } from '../../util/styledIcon'
 import { MonitoredTrip } from '../types'
 import {
@@ -19,23 +22,17 @@ import {
   TripPanelTitle
 } from '../styled'
 import { RETURN_TO_CURRENT_ROUTE } from '../../../util/ui'
-import { TRIPS_PATH } from '../../../util/constants'
+import { TRIP_PREVIEW_PATH, TRIPS_PATH } from '../../../util/constants'
 import AccountPage from '../account-page'
 import AwaitingScreen from '../awaiting-screen'
 import BackToTripPlanner from '../back-to-trip-planner'
+import InvisibleA11yLabel from '../../util/invisible-a11y-label'
+import Link from '../../util/link'
+import MetroItineraryRoutes from '../../narrative/metro/metro-itinerary-routes'
 import PageTitle from '../../util/page-title'
-
-import styled from 'styled-components'
-
 import withLoggedInUserSupport from '../with-logged-in-user-support'
 
 import getRenderData from './trip-status-rendering-strategies'
-import InvisibleA11yLabel from '../../util/invisible-a11y-label'
-
-import { ComponentContext } from '../../../util/contexts'
-import Link from '../../util/link'
-import MetroItineraryRoutes from '../../narrative/metro/metro-itinerary-routes'
-
 import TripSummaryPane from './trip-summary-pane'
 
 interface ItemOwnProps {
@@ -44,8 +41,10 @@ interface ItemOwnProps {
 
 interface ItemProps extends ItemOwnProps {
   intl: IntlShape
+  isReadOnly: boolean
   renderData: any
   togglePauseTrip: (trip: MonitoredTrip, intl: IntlShape) => void
+  toggleSnoozeTrip: (trip: MonitoredTrip, intl: IntlShape) => void
 }
 
 interface ItemState {
@@ -86,7 +85,10 @@ class TripListItem extends Component<ItemProps, ItemState> {
   static contextType = ComponentContext
 
   componentDidUpdate = (prevProps: ItemProps) => {
-    if (prevProps.trip.isActive !== this.props.trip.isActive) {
+    if (
+      prevProps.trip.isActive !== this.props.trip.isActive ||
+      prevProps.trip.snoozed !== this.props.trip.snoozed
+    ) {
       this.setState({ pendingRequest: false })
     }
   }
@@ -100,8 +102,14 @@ class TripListItem extends Component<ItemProps, ItemState> {
     togglePauseTrip(trip, intl)
   }
 
+  _handleToggleSnoozeMonitoring = () => {
+    const { intl, toggleSnoozeTrip, trip } = this.props
+    this.setState({ pendingRequest: 'pause' })
+    toggleSnoozeTrip(trip, intl)
+  }
+
   render() {
-    const { intl, renderData, trip } = this.props
+    const { intl, isReadOnly, renderData, trip } = this.props
     const { itinerary } = trip
     const { legs } = itinerary
     const { alerts, shouldRenderAlerts } = renderData
@@ -111,24 +119,30 @@ class TripListItem extends Component<ItemProps, ItemState> {
     const from = legs[0].from
     const to = legs[legs.length - 1].to
     const editTripPath = `${TRIPS_PATH}/${trip.id}`
+    const editTripText = intl.formatMessage({
+      id: 'components.SavedTripEditor.editSavedTrip'
+    })
+    const previewTripText = intl.formatMessage({
+      id: 'components.TripPreviewLayout.previewTrip'
+    })
     const { LegIcon } = this.context
     return (
-      <Panel>
+      <Panel className="saved-trip-panel">
         <TripPanelHeading>
           <TripPanelTitle>
             <Panel.Title>
               <TripHeader>{trip.tripName}</TripHeader>
             </Panel.Title>
             <Link
-              title={intl.formatMessage({
-                id: 'components.SavedTripEditor.editSavedTrip'
-              })}
-              to={editTripPath}
+              title={previewTripText}
+              to={`${TRIP_PREVIEW_PATH}/${trip.id}`}
             >
+              <Map height={18} />
+              <InvisibleA11yLabel>{previewTripText}</InvisibleA11yLabel>
+            </Link>
+            <Link title={editTripText} to={editTripPath}>
               <Edit height={18} />
-              <InvisibleA11yLabel>
-                <FormattedMessage id="components.SavedTripEditor.editSavedTrip" />
-              </InvisibleA11yLabel>
+              <InvisibleA11yLabel>{editTripText}</InvisibleA11yLabel>
             </Link>
           </TripPanelTitle>
           <RouteBlockGrid>
@@ -144,6 +158,8 @@ class TripListItem extends Component<ItemProps, ItemState> {
           <TripSummaryPane
             from={from}
             handleTogglePauseMonitoring={this._handleTogglePauseMonitoring}
+            handleToggleSnoozeMonitoring={this._handleToggleSnoozeMonitoring}
+            isReadOnly={isReadOnly}
             monitoredTrip={trip}
             pendingRequest={this.state.pendingRequest}
             to={to}
@@ -171,6 +187,7 @@ class TripListItem extends Component<ItemProps, ItemState> {
 // connect to the redux store
 const itemMapStateToProps = (state: AppReduxState, { trip }: ItemOwnProps) => {
   return {
+    isReadOnly: trip.userId !== state.user.loggedInUser.id,
     renderData: getRenderData({
       monitoredTrip: trip
     })
@@ -178,7 +195,8 @@ const itemMapStateToProps = (state: AppReduxState, { trip }: ItemOwnProps) => {
 }
 
 const itemMapDispatchToProps = {
-  togglePauseTrip: userActions.togglePauseTrip
+  togglePauseTrip: userActions.togglePauseTrip,
+  toggleSnoozeTrip: userActions.toggleSnoozeTrip
 }
 const ConnectedTripListItem = connect(
   itemMapStateToProps,

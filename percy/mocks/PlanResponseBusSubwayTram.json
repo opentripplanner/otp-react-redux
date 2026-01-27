@@ -16,6 +16,7 @@
               "departureDelay": 0,
               "distance": 493.51,
               "dropoffType": "SCHEDULED",
+              "stopCalls": [],
               "duration": 409.0,
               "endTime": 1691096940000,
               "fareProducts": [],
@@ -158,6 +159,7 @@
               "departureDelay": 0,
               "distance": 10171.43,
               "dropoffType": "SCHEDULED",
+              "stopCalls": [],
               "duration": 840.0,
               "endTime": 1691097780000,
               "fareProducts": [
@@ -375,20 +377,6 @@
               },
               "transitLeg": true,
               "trip": {
-                "arrivalStoptime": {
-                  "stop": {
-                    "gtfsId": "MARTA:40",
-                    "id": "U3RvcDpNQVJUQTo0MA"
-                  },
-                  "stopPosition": 15
-                },
-                "departureStoptime": {
-                  "stop": {
-                    "gtfsId": "MARTA:802",
-                    "id": "U3RvcDpNQVJUQTo4MDI"
-                  },
-                  "stopPosition": 1
-                },
                 "gtfsId": "MARTA:8063444",
                 "id": "VHJpcDpNQVJUQTo4MDYzNDQ0",
                 "tripHeadsign": "H E HOLMES STATION"
@@ -402,6 +390,7 @@
               "departureDelay": 0,
               "distance": 93.79,
               "dropoffType": "SCHEDULED",
+              "stopCalls": [],
               "duration": 91.0,
               "endTime": 1691097871000,
               "fareProducts": [],
@@ -525,6 +514,7 @@
               "departureDelay": 0,
               "distance": 493.51,
               "dropoffType": "SCHEDULED",
+              "stopCalls": [],
               "duration": 409.0,
               "endTime": 1691097840000,
               "fareProducts": [],
@@ -667,6 +657,7 @@
               "departureDelay": 0,
               "distance": 10171.43,
               "dropoffType": "SCHEDULED",
+              "stopCalls": [],
               "duration": 840.0,
               "endTime": 1691098680000,
               "fareProducts": [
@@ -884,20 +875,6 @@
               },
               "transitLeg": true,
               "trip": {
-                "arrivalStoptime": {
-                  "stop": {
-                    "gtfsId": "MARTA:40",
-                    "id": "U3RvcDpNQVJUQTo0MA"
-                  },
-                  "stopPosition": 15
-                },
-                "departureStoptime": {
-                  "stop": {
-                    "gtfsId": "MARTA:802",
-                    "id": "U3RvcDpNQVJUQTo4MDI"
-                  },
-                  "stopPosition": 1
-                },
                 "gtfsId": "MARTA:8063445",
                 "id": "VHJpcDpNQVJUQTo4MDYzNDQ1",
                 "tripHeadsign": "H E HOLMES STATION"
@@ -911,6 +888,7 @@
               "departureDelay": 0,
               "distance": 93.79,
               "dropoffType": "SCHEDULED",
+              "stopCalls": [],
               "duration": 91.0,
               "endTime": 1691098771000,
               "fareProducts": [],
@@ -1034,6 +1012,7 @@
               "departureDelay": 0,
               "distance": 493.51,
               "dropoffType": "SCHEDULED",
+              "stopCalls": [],
               "duration": 409.0,
               "endTime": 1691098740000,
               "fareProducts": [],
@@ -1176,6 +1155,7 @@
               "departureDelay": 0,
               "distance": 10171.43,
               "dropoffType": "SCHEDULED",
+              "stopCalls": [],
               "duration": 840.0,
               "endTime": 1691099580000,
               "fareProducts": [
@@ -1393,20 +1373,6 @@
               },
               "transitLeg": true,
               "trip": {
-                "arrivalStoptime": {
-                  "stop": {
-                    "gtfsId": "MARTA:40",
-                    "id": "U3RvcDpNQVJUQTo0MA"
-                  },
-                  "stopPosition": 15
-                },
-                "departureStoptime": {
-                  "stop": {
-                    "gtfsId": "MARTA:802",
-                    "id": "U3RvcDpNQVJUQTo4MDI"
-                  },
-                  "stopPosition": 1
-                },
                 "gtfsId": "MARTA:8063446",
                 "id": "VHJpcDpNQVJUQTo4MDYzNDQ2",
                 "tripHeadsign": "H E HOLMES STATION"
@@ -1420,6 +1386,7 @@
               "departureDelay": 0,
               "distance": 93.79,
               "dropoffType": "SCHEDULED",
+              "stopCalls": [],
               "duration": 91.0,
               "endTime": 1691099671000,
               "fareProducts": [],

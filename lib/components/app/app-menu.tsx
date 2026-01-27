@@ -3,9 +3,11 @@ import { connect } from 'react-redux'
 import { Envelope } from '@styled-icons/fa-regular/Envelope'
 import { ExternalLinkSquareAlt } from '@styled-icons/fa-solid/ExternalLinkSquareAlt'
 import { FormattedMessage, injectIntl } from 'react-intl'
-import { GlobeAmericas, MapMarked, MapPin } from '@styled-icons/fa-solid'
+import { GlobeAmericas } from '@styled-icons/fa-solid/GlobeAmericas'
 import { GraduationCap } from '@styled-icons/fa-solid/GraduationCap'
 import { History } from '@styled-icons/fa-solid/History'
+import { MapMarked } from '@styled-icons/fa-solid/MapMarked'
+import { MapPin } from '@styled-icons/fa-solid/MapPin'
 import { Undo } from '@styled-icons/fa-solid/Undo'
 import React, { Component, Fragment, useContext } from 'react'
 import SlidingPane from 'react-sliding-pane'
@@ -17,7 +19,7 @@ import * as uiActions from '../../actions/ui'
 import { AppMenuItemConfig, LanguageConfig } from '../../util/config-types'
 import { AppReduxState } from '../../util/state-types'
 import { ComponentContext } from '../../util/contexts'
-import { getLanguageOptions } from '../../util/i18n'
+import { convertChineseLanguageCode, getLanguageOptions } from '../../util/i18n'
 import { isModuleEnabled, Modules } from '../../util/config'
 
 import AppMenuItem from './app-menu-item'
@@ -52,6 +54,7 @@ type AppMenuProps = {
   setPopupContent: (url: string) => void
   startOverFromInitialUrl: () => void
   toggleMailables: () => void
+  translateExternalLinks?: boolean
 }
 type AppMenuState = {
   isPaneOpen: boolean
@@ -88,7 +91,10 @@ class AppMenu extends Component<
     document.querySelector('main')?.focus()
   }
 
-  _addExtraMenuItems = (menuItems?: MenuItem[] | null) => {
+  _addExtraMenuItems = (
+    menuItems?: MenuItem[] | null,
+    translateExternalLinks?: boolean
+  ) => {
     return (
       menuItems &&
       menuItems.map((menuItem) => {
@@ -111,11 +117,15 @@ class AppMenu extends Component<
         // Override the config label if a localized label exists
         const label = useLocalizedLabel ? localizedLabel : configLabel
 
+        const languageCode = convertChineseLanguageCode(activeLocale)
+        const url = translateExternalLinks
+          ? href + `/#googtrans(${languageCode})`
+          : href
         return (
           <AppMenuItem
             aria-selected={isSelected || undefined}
             className={subMenuDivider ? 'app-menu-divider' : undefined}
-            href={href}
+            href={url}
             icon={
               iconType && typeof iconType !== 'string' ? (
                 iconType
@@ -149,7 +159,8 @@ class AppMenu extends Component<
       resetAndToggleCallHistory,
       resetAndToggleFieldTrips,
       setLocale,
-      toggleMailables
+      toggleMailables,
+      translateExternalLinks
     } = this.props
     const languageMenuItems: MenuItem[] | null = languageOptions && [
       {
@@ -282,7 +293,7 @@ class AppMenu extends Component<
                 })}
               />
             )}
-            {this._addExtraMenuItems(extraMenuItems)}
+            {this._addExtraMenuItems(extraMenuItems, translateExternalLinks)}
             {this._addExtraMenuItems(languageMenuItems)}
           </div>
         </SlidingPane>
@@ -294,7 +305,8 @@ class AppMenu extends Component<
 // connect to the redux store
 
 const mapStateToProps = (state: AppReduxState) => {
-  const { extraMenuItems, language, popups } = state.otp.config
+  const { extraMenuItems, language, popups, translateExternalLinks } =
+    state.otp.config
   return {
     activeLocale: state.otp.ui.locale,
     callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),
@@ -303,7 +315,8 @@ const mapStateToProps = (state: AppReduxState) => {
     language,
     languageOptions: getLanguageOptions(language),
     mailablesEnabled: isModuleEnabled(state, Modules.MAILABLES),
-    popupTarget: popups?.launchers?.sidebarLink
+    popupTarget: popups?.launchers?.sidebarLink,
+    translateExternalLinks
   }
 }
 

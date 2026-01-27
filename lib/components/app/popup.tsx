@@ -1,5 +1,5 @@
 import { Modal } from 'react-bootstrap'
-import { Times } from '@styled-icons/fa-solid'
+import { Times } from '@styled-icons/fa-solid/Times'
 import { useIntl } from 'react-intl'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { useCallback, useEffect } from 'react'

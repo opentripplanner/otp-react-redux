@@ -3,29 +3,26 @@
 }
 
 .otp .mobile-bottom-button-container {
-  position: fixed;
   bottom: 0;
-  right: 0;
-  left: 0;
   height: 40px;
+  left: 0;
+  position: fixed;
+  right: 0;
 }
 
 /* Navbar settings */
 
 .otp.mobile .navbar {
-  margin-bottom: 0;
   border: none;
+  margin-bottom: 0;
 }
 
 .otp .navbar .mobile-header {
   align-items: center;
   display: flex;
-  height: 50px;
+  height: 100%;
   justify-content: center;
-  left: 50px;
   max-width: 90%;
-  position: fixed;
-  right: 50px;
   text-align: center;
 }
 
@@ -38,7 +35,6 @@
 
 @media (max-width: 768px) {
   .otp .navbar .mobile-header-text {
-    margin-top: 2px;
     word-break: break-all;
   }
 }
@@ -56,149 +52,139 @@
   border: none;
   color: white;
   font-size: 18px;
-  left: 7px;
-  position: fixed;
 }
 
 .otp .navbar .mobile-close {
-  position: fixed;
-  top: 4px;
-  right: 6px;
   color: white;
   font-size: 18px;
-}
-
-.otp .navbar-brand {
-  padding: 7px 10px;
+  position: fixed;
+  right: 6px;
+  top: 4px;
 }
 
 /* Welcome screen */
 
 .otp.mobile .welcome-location {
-  position: fixed;
-  top: 50px;
-  left: 0;
-  right: 0;
   height: 60px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 50px;
 }
 
 .otp.mobile .welcome-map {
-  position: fixed;
-  top: 110px;
-  left: 0;
-  right: 0;
   bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 110px;
 }
 
 /* Location search screen */
 
 .otp.mobile .location-search {
-  position: fixed;
-  top: 50px;
-  left: 0;
-  right: 0;
   bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 50px;
 }
 
 /* Main search screen */
 
 .otp.mobile .search-settings {
-  position: fixed;
-  top: 50px;
-  left: 0;
-  right: 0;
-  height: 250px;
   box-shadow: 3px 0px 12px #00000052;
+  height: 250px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 50px;
 }
 
 .otp.mobile .search-map {
-  position: fixed;
-  top: 300px;
-  left: 0;
-  right: 0;
   bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 300px;
 }
 
 /* Batch routing search screen */
 
-.otp.mobile .batch-search-settings {
-  position: fixed;
-  top: 50px;
+.otp.mobile .batch-search-map {
+  bottom: 0;
   left: 0;
+  position: fixed;
   right: 0;
-  height: 216px;
-  /* Must appear under the 'hamburger' dropdown which has z-index of 1000. */
-  z-index: 999;
-  box-shadow: 3px 0px 12px #00000052;
+  top: 270px;
+  transition: all 225ms ease;
+  transition-delay: 50ms;
 }
 
-.otp.mobile .batch-search-map {
-  position: fixed;
-  top: 266px;
-  left: 0;
-  right: 0;
-  bottom: 0;
+.otp.mobile .batch-search-map.dt-open {
+  top: 325px;
+  transition: all 200ms ease;
 }
 
 /* Detailed options screen */
 
 .otp.mobile .options-main-content {
-  position: fixed;
-  top: 50px;
-  left: 0;
-  right: 0;
   bottom: 55px;
-  overflow-y: auto;
+  left: 0;
   overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  right: 0;
+  top: 50px;
 }
 
 .otp.mobile .options-lower-tray {
-  position: fixed;
+  bottom: 0;
   height: 55px;
   left: 0;
+  position: fixed;
   right: 0;
-  bottom: 0;
 }
 
 /* Results screen: normal display */
 
 .otp.mobile .mobile-narrative-header {
-  position: fixed;
-  height: 40px;
-  left: 0;
-  right: 0;
   background-color: #444;
   color: #fff;
-  text-align: center;
   font-size: 20px;
   font-weight: 500;
+  height: 40px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  text-align: center;
 }
 
 .otp.mobile .mobile-narrative-container {
-  position: fixed;
   bottom: 20px;
-  right: 0;
   left: 0;
   padding: 8px 12px;
+  position: fixed;
+  right: 0;
 }
 
 .otp.mobile .dots-container {
-  position: fixed;
   bottom: 0;
-  right: 0;
-  left: 0;
   height: 20px;
+  left: 0;
+  position: fixed;
+  right: 0;
   text-align: center;
 }
 
 .otp.mobile .dots-container .dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 4px;
   background-color: #ddd;
+  border-radius: 4px;
+  display: inline-block;
+  height: 8px;
   margin: 0px 3px;
   vertical-align: 2px;
+  width: 8px;
 }
 
 .otp.mobile .dots-container .dot.active {
@@ -206,73 +192,78 @@
 }
 
 .otp.mobile .results-map {
-  position: fixed;
-  top: 100px;
-  left: 0;
-  right: 0;
   bottom: 140px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 100px;
 }
 
 /* Results screen: error display */
 
 .otp.mobile .results-error-map {
-  position: fixed;
-  top: 100px;
-  left: 0;
-  right: 0;
   height: 200px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 100px;
 }
 
 .otp.mobile .results-error-message {
-  position: fixed;
-  left: 0;
-  right: 0;
   bottom: 0;
+  left: 0;
   padding-top: 12px;
+  position: fixed;
+  right: 0;
 }
 
 /* User Settings */
 
 .otp.mobile .user-settings {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: white;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin-bottom: 18px;
-  height: 165px;
-  z-index: 999999;
-  overflow-y: scroll;
   border-radius: 5px;
+  bottom: 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 165px;
+  left: 0;
+  margin-bottom: 18px;
+  overflow-y: scroll;
+  position: fixed;
+  right: 0;
+  z-index: 999999;
 }
 
 /* Stop/Trip/Route Viewer screens */
 
 .otp.mobile .viewer-container {
-  position: fixed;
-  top: 250px;
   bottom: 0;
   left: 0;
-  right: 0;
   overflow-y: auto;
+  position: fixed;
+  right: 0;
+  top: 250px;
 }
 
 .otp.mobile .viewer-map {
-  position: fixed;
-  top: 50px;
-  left: 0;
-  right: 0;
   height: 200px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 50px;
 }
 
 .otp.mobile .route-viewer-header {
+  padding: 12px;
   margin: 0;
 }
 
 @media (max-width: 768px){
-  .panel-default {
+  .saved-trip-panel .panel-default {
     width: 90%;
   }
 }
 
+.otp.mobile .nearby-view-location-field ul {
+  overflow-x: scroll;
+  max-width: 100%;
+}

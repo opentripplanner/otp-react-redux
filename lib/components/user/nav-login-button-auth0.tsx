@@ -1,6 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import React, { HTMLAttributes, useCallback } from 'react'
 
+import { convertChineseLanguageCode } from '../../util/i18n'
 import { getCurrentRoute } from '../../util/ui'
 
 import NavLoginButton from './nav-login-button'
@@ -28,9 +29,8 @@ const NavLoginButtonAuth0 = ({
 }: NavLoginButtonAuth0Props): JSX.Element => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0()
 
-  // For Chinese (Chinese (Simplified)), we must pass 'zh-CN' to auth0.
-  // Unlike 'fr', 'zh' alone is not recognized and falls back to English.
-  const auth0Locale = locale === 'zh' ? 'zh-CN' : locale
+  // For Chinese (Traditional and Simplified) we use a different language code than Auth0
+  const auth0Locale = convertChineseLanguageCode(locale)
 
   // On login, preserve the current trip query if any.
   const handleLogin = useCallback(

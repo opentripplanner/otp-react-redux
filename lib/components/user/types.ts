@@ -25,7 +25,22 @@ export type VisionLimitation = typeof visionLimitations[number]
 export interface MobilityProfile {
   isMobilityLimited: boolean
   mobilityDevices: string[]
+  mobilityMode: string
   visionLimitation: VisionLimitation
+}
+
+export interface CompanionInfo {
+  acceptKey?: string
+  email: string
+  nickname?: string
+  status?: 'PENDING' | 'CONFIRMED' | 'INVALID'
+}
+
+export interface DependentInfo {
+  email: string
+  mobilityMode: string
+  name?: string
+  userId: string
 }
 
 /**
@@ -33,6 +48,8 @@ export interface MobilityProfile {
  */
 export interface User {
   accessibilityRoutingByDefault?: boolean
+  dependents?: string[]
+  dependentsInfo?: DependentInfo[]
   // email always exists per Auth0.
   email: string
   hasConsentedToTerms?: boolean
@@ -43,8 +60,10 @@ export interface User {
   phoneNumber?: string
   preferredLocale?: string
   pushDevices?: number
+  relatedUsers?: CompanionInfo[]
   savedLocations?: UserSavedLocation[]
   storeTripHistory?: boolean
+  userSavedTripDefaults?: string
 }
 
 export type EditedUser = Omit<User, 'notificationChannel'> & {
@@ -57,16 +76,25 @@ export interface ItineraryExistenceDay {
 
 export type ItineraryExistence = Record<DaysOfWeek, ItineraryExistenceDay>
 
+export interface JourneyState {
+  matchingItinerary?: Itinerary
+}
+
 export type MonitoredTrip = Record<DaysOfWeek, boolean> & {
   arrivalVarianceMinutesThreshold: number
+  companion?: CompanionInfo
   departureVarianceMinutesThreshold: number
   excludeFederalHolidays?: boolean
   id: string
   isActive: boolean
   itinerary: Itinerary
   itineraryExistence?: ItineraryExistence
+  journeyState?: JourneyState
   leadTimeInMinutes: number
-  queryParams: string
+  observers?: CompanionInfo[]
+  otp2QueryParams: Record<string, unknown>
+  primary?: DependentInfo
+  secondary?: CompanionInfo
   tripName: string
   userId: string
 }
@@ -74,6 +102,8 @@ export type MonitoredTrip = Record<DaysOfWeek, boolean> & {
 export interface MonitoredTripProps {
   from?: Place
   handleTogglePauseMonitoring?: () => void
+  handleToggleSnoozeMonitoring?: () => void
+  isReadOnly?: boolean
   monitoredTrip: MonitoredTrip
   pendingRequest?: boolean | string
   to?: Place

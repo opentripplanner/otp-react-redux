@@ -1,11 +1,10 @@
-import { Alert, Button } from 'react-bootstrap'
-import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
+import { Alert } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { ExclamationCircle } from '@styled-icons/fa-solid/ExclamationCircle'
 import { format, parse } from 'date-fns'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
-import { MagnifyingGlass } from '@styled-icons/fa-solid/MagnifyingGlass'
-import { MapRef } from 'react-map-gl'
+import { Location } from '@styled-icons/fa-solid/Location'
+import { MapRef } from 'react-map-gl/maplibre'
 import { utcToZonedTime } from 'date-fns-tz'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component, FormEvent } from 'react'
@@ -23,7 +22,7 @@ import PageTitle from '../util/page-title'
 import ServiceTimeRangeRetriever from '../util/service-time-range-retriever'
 import withMap from '../map/with-map'
 
-import { CardBody, CardHeader } from './nearby/styled'
+import { CardHeader } from './nearby/styled'
 import FavoriteStopToggle from './favorite-stop-toggle'
 import FromToPicker from './nearby/from-to-picker'
 import StopCardHeader from './nearby/stop-card-header'
@@ -33,8 +32,11 @@ import TimezoneWarning from './timezone-warning'
 interface Props {
   calendarMax: string
   calendarMin: string
-  findStopTimesForStop: (arg: { date: string; stopId: string }) => void
-  hideBackButton?: boolean
+  findStopTimesForStop: (arg: {
+    date: string
+    forceFetch?: boolean
+    stopId: string
+  }) => void
   homeTimezone: string
   intl: IntlShape
   map?: MapRef
@@ -80,10 +82,6 @@ const HeaderCard = styled.div`
   display: flex;
   flex-direction: column;
   margin: 5px 0 0;
-
-  ${CardBody} {
-    margin: 25px 0 0;
-  }
 
   input[type='date'] {
     background: inherit;
@@ -137,7 +135,7 @@ class StopScheduleViewer extends Component<Props, State> {
   _findStopTimesForDate = (date: string) => {
     const { findStopTimesForStop, stopId } = this.props
     if (stopId) {
-      findStopTimesForStop({ date, stopId })
+      findStopTimesForStop({ date, forceFetch: true, stopId })
     }
   }
 
@@ -162,7 +160,8 @@ class StopScheduleViewer extends Component<Props, State> {
         intl.formatMessage(
           { id: 'components.StopViewer.titleBarStopId' },
           {
-            stopId: stopData && coreUtils.itinerary.getDisplayedStopId(stopData)
+            stopId:
+              stopData && coreUtils.itinerary.getDisplayedStopCode(stopData)
           }
         ),
       // TODO: Rename string ids
@@ -192,26 +191,14 @@ class StopScheduleViewer extends Component<Props, State> {
   }
 
   _renderHeader = (agencyCount: number) => {
-    const { hideBackButton, stopData, stopId } = this.props
+    const { stopData, stopId } = this.props
     return (
       // CSS class stop-viewer-header is needed for customizing how logos are displayed.
       <div className="stop-viewer-header">
-        {/* Back button */}
-        {!hideBackButton && (
-          <div className="back-button-container">
-            <Button bsSize="small" onClick={this._backClicked}>
-              <IconWithText Icon={ArrowLeft}>
-                <FormattedMessage id="common.forms.back" />
-              </IconWithText>
-            </Button>
-          </div>
-        )}
-
         <HeaderCard>
           {stopData?.name ? (
             <StopCardHeader
-              // FIXME: What icon should we use?
-              actionIcon={MagnifyingGlass}
+              actionIcon={Location}
               actionParams={{ entityId: stopId }}
               actionPath={`/nearby/${stopData.lat},${stopData.lon}`}
               actionText={
@@ -271,7 +258,7 @@ class StopScheduleViewer extends Component<Props, State> {
     }
 
     return (
-      <div role="group" style={{ marginBottom: '10px' }}>
+      <div role="group">
         {stopData ? <StyledFromToPicker place={stopData} /> : null}
         <input
           aria-label={intl.formatMessage({

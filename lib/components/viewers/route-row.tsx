@@ -1,15 +1,17 @@
-import { ArrowRight } from '@styled-icons/fa-solid'
-import { IntlShape } from 'react-intl'
+import { ArrowRight } from '@styled-icons/fa-solid/ArrowRight'
+import { FormattedMessage, IntlShape } from 'react-intl'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 
 import { blue } from '../util/colors'
 import { ComponentContext } from '../../util/contexts'
+import { extractMainHeadsigns } from '../../util/pattern-viewer'
 import { getFormattedMode } from '../../util/i18n'
 import { getModeFromRoute } from '../../util/viewer'
 import { Icon } from '../util/styledIcon'
 import { TransitOperatorConfig } from '../../util/config-types'
 import { ViewedRouteObject } from '../util/types'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import Link from '../util/link'
 import OperatorLogo from '../util/operator-logo'
 
@@ -119,6 +121,52 @@ const PatternViewerLink = styled(Link)`
   }
 `
 
+export const RouteRowDetails = ({
+  intl,
+  isActive,
+  ModeIcon,
+  operator,
+  route,
+  RouteRenderer
+}: {
+  ModeIcon: any
+  RouteRenderer: any
+  intl: IntlShape
+  isActive?: boolean
+  operator?: TransitOperatorConfig
+  route: ViewedRouteObject
+}): JSX.Element => {
+  const modeFromRoute = getModeFromRoute(route)
+  const { id, longName, shortName } = route
+  return (
+    <RouteDetailsContainer>
+      {operator && <OperatorLogo operator={operator} />}
+      {modeFromRoute && operator?.routeIcons !== false && (
+        <ModeIconElement>
+          <ModeIcon
+            aria-label={getFormattedMode(modeFromRoute.toLowerCase(), intl)}
+            height={28}
+            leg={{
+              routeId: id,
+              routeLongName: longName,
+              routeShortName: shortName
+            }}
+            mode={modeFromRoute}
+            role="img"
+            width={28}
+          />
+        </ModeIconElement>
+      )}
+      <RouteName route={route} RouteRenderer={RouteRenderer} />
+      {isActive && (
+        <InvisibleA11yLabel>
+          <FormattedMessage id="common.currentlySelected" />
+        </InvisibleA11yLabel>
+      )}
+    </RouteDetailsContainer>
+  )
+}
+
 export class RouteRow extends PureComponent<Props> {
   activeRef: React.RefObject<HTMLLIElement>
 
@@ -163,10 +211,10 @@ export class RouteRow extends PureComponent<Props> {
 
     if (!route) return null
 
-    const { id, longName, mode, patterns, shortName } = route
-    const modeFromRoute = getModeFromRoute(route)
+    const { id, longName, patterns, shortName } = route
     const routePath = `/route/${id}`
-    const firstPattern = patterns && Object.values(patterns)?.[0]?.id
+    const firstPattern =
+      patterns && extractMainHeadsigns(patterns, shortName, () => '')?.[0]?.id
 
     const patternViewerLinkText = intl.formatMessage({
       description: 'identifies the purpose of the pattern viewer button',
@@ -176,6 +224,7 @@ export class RouteRow extends PureComponent<Props> {
     return (
       <StyledRouteRow ref={this.activeRef}>
         <RouteRowLink
+          aria-current={isActive}
           className="clear-button-formatting"
           onFocus={this._onFocusOrEnter}
           onMouseEnter={this._onFocusOrEnter}
@@ -183,29 +232,14 @@ export class RouteRow extends PureComponent<Props> {
           to={routePath}
           tracking
         >
-          <RouteDetailsContainer>
-            <OperatorLogo operator={operator} />
-            {mode && operator.routeIcons !== false && (
-              <ModeIconElement>
-                <ModeIcon
-                  aria-label={getFormattedMode(
-                    modeFromRoute.toLowerCase(),
-                    intl
-                  )}
-                  height={28}
-                  leg={{
-                    routeId: id,
-                    routeLongName: longName,
-                    routeShortName: shortName
-                  }}
-                  mode={modeFromRoute}
-                  role="img"
-                  width={28}
-                />
-              </ModeIconElement>
-            )}
-            <RouteName route={route} RouteRenderer={RouteRenderer} />
-          </RouteDetailsContainer>
+          <RouteRowDetails
+            intl={intl}
+            isActive={isActive}
+            ModeIcon={ModeIcon}
+            operator={operator}
+            route={route}
+            RouteRenderer={RouteRenderer}
+          />
         </RouteRowLink>
         <PatternViewerLink
           aria-label={patternViewerLinkText}

@@ -4,6 +4,7 @@ import React, { ReactNode } from 'react'
 import { EditedUser } from './types'
 import AccountSetupFinishPane from './account-setup-finish-pane'
 import AssistiveDevicesPane from './mobility-profile/assistive-devices-pane'
+import CompanionsPane from './mobility-profile/companions-pane'
 import DeleteUser from './delete-user'
 import FavoritePlaceList from './places/favorite-place-list'
 import LimitationsPane from './mobility-profile/limitations-pane'
@@ -20,6 +21,11 @@ export interface PaneProps {
 }
 
 const standardPanes: Record<string, PaneProps> = {
+  companions: {
+    id: 'companions',
+    pane: CompanionsPane,
+    title: <FormattedMessage id="components.CompanionsPane.title" />
+  },
   finish: {
     id: 'finish',
     pane: AccountSetupFinishPane,

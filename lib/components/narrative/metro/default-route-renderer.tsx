@@ -37,10 +37,16 @@ const DefaultRouteRenderer = ({
   leg,
   style
 }: RouteRendererProps): JSX.Element => {
-  const routeTitle = leg.routeShortName || leg.routeLongName
+  const routeTitle =
+    typeof leg.route === 'object'
+      ? leg.route.shortName || leg.route.longName
+      : leg.routeShortName || leg.routeLongName
   return (
     <Block
-      color={leg.routeColor || '333333'}
+      color={
+        (typeof leg.route === 'object' ? leg.route.color : leg.routeColor) ||
+        '333333'
+      }
       isOnColoredBackground={leg.onColoredBackground}
       style={style}
       title={routeTitle}

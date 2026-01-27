@@ -9,14 +9,15 @@
   padding: 0px 0px;
   color: #000080;
 }
-.otp .base-color-bg .link-button {
+.otp .base-color-bg .link-button,
+.otp .base-color-bg .stop-header-action {
   color: inherit;
 }
 
+.otp .stop-header-action:hover,
 .otp .link-button:hover {
   text-decoration: underline;
 }
-
 
 /* leg diagram */
 
@@ -49,7 +50,8 @@
   overflow-x: scroll;
   overflow-y: hidden;
 }
-.otp .leg-diagram .close-button, .modal-open .close-button {
+.otp .leg-diagram .close-button,
+.modal-open .close-button {
   position: absolute;
   top: 4px;
   right: 10px;
@@ -58,7 +60,8 @@
   color: #888;
 }
 
-.otp .leg-diagram .close-button:hover, .modal-open .close-button:hover {
+.otp .leg-diagram .close-button:hover,
+.modal-open .close-button:hover {
   color: #aaa;
   background: none;
 }
@@ -128,13 +131,11 @@
   HACK: maplibre has a tendency to place the marker for the active stop in the stop viewer
   at the bottom of the map (i.e. first). This change puts the active stop on top so it is easier to see.
  */
-.maplibregl-marker:first-of-type,
-.mapboxgl-marker:first-of-type {
+.maplibregl-marker:first-of-type {
   z-index: 100;
 }
 
 /* Make sure popups stay on top of markers above. */
-.maplibregl-popup,
-.mapboxgl-popup {
+.maplibregl-popup {
   z-index: 101;
 }

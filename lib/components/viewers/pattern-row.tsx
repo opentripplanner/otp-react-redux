@@ -1,5 +1,6 @@
-import { Calendar } from '@styled-icons/fa-regular'
+import { Calendar } from '@styled-icons/fa-regular/Calendar'
 import { format, utcToZonedTime } from 'date-fns-tz'
+import { FormattedMessage } from 'react-intl'
 import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
 import { isSameDay } from 'date-fns'
 import React, { useContext } from 'react'
@@ -25,7 +26,6 @@ type Props = {
   alwaysShowLongName?: boolean
   homeTimezone?: string
   pattern: Pattern
-  roundedTop?: boolean
   route: Route & { operator?: TransitOperator & { colorMode?: string } }
   showOperatorLogo?: boolean
   stopTimes: Time[]
@@ -58,11 +58,11 @@ const renderDay = (homeTimezone: string, day: number): JSX.Element => {
  * Represents a single pattern row for displaying arrival times in the stop
  * viewer.
  */
+// eslint-disable-next-line complexity
 const PatternRow = ({
   alwaysShowLongName,
   homeTimezone,
   pattern,
-  roundedTop = true,
   route,
   showOperatorLogo,
   stopTimes
@@ -80,7 +80,7 @@ const PatternRow = ({
   const routeColor = getRouteColorBasedOnSettings(route.operator, route)
 
   return (
-    <PatternRowItem className="pattern-row-item" roundedTop={roundedTop}>
+    <PatternRowItem className="pattern-row-item">
       {/* header row */}
       <div
         className="header stop-view"
@@ -108,8 +108,16 @@ const PatternRow = ({
                 {pattern.route.longName}
               </strong>
             )}
-            {extractHeadsignFromPattern(pattern) ||
-              (pattern.route.longName !== routeName && pattern.route.longName)}
+            <FormattedMessage
+              id="components.NearbyView.headsign"
+              values={{
+                destination:
+                  stopTimes?.[0]?.headsign ||
+                  extractHeadsignFromPattern(pattern) ||
+                  (pattern.route.longName !== routeName &&
+                    pattern.route.longName)
+              }}
+            />
           </span>
         </div>
         {/* next departure preview (only shows up to 3 entries) */}

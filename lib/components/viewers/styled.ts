@@ -1,11 +1,13 @@
-import { blue, DARK_TEXT_GREY, grey } from '../util/colors'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+import { getBaseColor, grey } from '../util/colors'
 
 interface RenderProps {
   backgroundColor?: string
   full?: boolean
   routeColor?: string
   textColor?: string
+  useRouteColorAsBg?: boolean
 }
 
 /** Route Details */
@@ -21,14 +23,40 @@ export const RouteNameContainer = styled.div`
   padding: 8px;
   background-color: inherit;
 `
-export const LogoLinkContainer = styled.div`
+export const LogoLinkContainer = styled.div<{
+  textColor?: string
+  useRouteBgColor?: boolean
+}>`
   display: flex;
+  border-top: 1px solid
+    ${(props) => (props.useRouteBgColor ? props.textColor + '33' : '#33333333')};
   align-items: center;
-  justify-content: space-between;
+  gap: 10px;
+  padding: 15px 10px;
+  margin-top: -10px;
+
+  a {
+    color: ${(props) => props.textColor};
+    svg {
+      color: ${(props) =>
+        props.useRouteBgColor ? props.textColor : getBaseColor()};
+    }
+  }
 `
-export const HeadsignSelectLabel = styled.label`
+
+const headsignStyle = css`
   font-size: 18px;
   margin-bottom: 0;
+`
+
+export const HeadsignSelectLabel = styled.label`
+  ${headsignStyle}
+`
+
+export const HeadsignLabel = styled.span`
+  ${headsignStyle}
+  font-weight: bold;
+  width: auto !important;
 `
 
 export const PatternContainer = styled.div`
@@ -36,10 +64,8 @@ export const PatternContainer = styled.div`
   background-color: inherit;
   color: inherit;
   display: flex;
-  gap: 16px;
-  justify-content: flex-start;
-  margin: 0;
-  padding: 8px;
+  justify-content: space-between;
+  padding: 8px 10px;
 
   label {
     width: 15%;
@@ -48,9 +74,9 @@ export const PatternContainer = styled.div`
   // Styling for SortResultsDropdown
 
   & > span {
-    width: 85%;
+    width: 80%;
 
-    button {
+    button#headsign-selector-label {
       align-items: center;
       display: flex;
       justify-content: space-between;
@@ -66,16 +92,16 @@ export const PatternContainer = styled.div`
 `
 
 export const StopContainer = styled.ol<RenderProps>`
-  color: ${(props) => props?.textColor || DARK_TEXT_GREY};
-  background-color: ${(props) => props?.backgroundColor || '#fff'};
+  color: ${(props) => props?.textColor};
+  background-color: ${(props) => props?.backgroundColor};
   overflow-y: scroll;
-  height: 100%;
-  /* 100px bottom padding is needed to ensure all stops 
-  are shown when browsers don't calculate 100% sensibly */
-  padding: 15px 0 100px;
+  /* Calculate the height of the container a little short to ensure all stops 
+  are shown when browsers don't calculate 100% sensibly. */
+  height: calc(100% - 140px);
+  padding: 15px 0 0px;
 `
 export const StopLink = styled.button<RenderProps>`
-  color: ${(props) => props?.textColor + 'da' || DARK_TEXT_GREY};
+  color: ${(props) => props?.textColor + 'da'};
   background-color: transparent;
   border: none;
   padding: 0;
@@ -83,7 +109,7 @@ export const StopLink = styled.button<RenderProps>`
   width: 95%;
 
   &:hover {
-    color: ${(props) => props?.textColor || blue[900]};
+    color: ${(props) => props?.textColor};
     text-decoration: underline;
   }
 `
@@ -102,8 +128,11 @@ export const Stop = styled.li<RenderProps>`
     display: block;
     height: 20px;
     width: 20px;
-    border: 5px solid ${(props) => props.textColor + 'ee'};
-    background: ${(props) => props.routeColor};
+    border: 5px solid
+      ${(props) =>
+        props.useRouteColorAsBg ? props.textColor + 'ee' : props.routeColor};
+    background: ${(props) =>
+      props.useRouteColorAsBg ? props.routeColor : '#fff'};
     position: relative;
     top: 20px;
     left: -35px;
@@ -116,7 +145,8 @@ export const Stop = styled.li<RenderProps>`
     display: block;
     height: 1.65rem; /* set position in line-height agnostic way */
     width: 10px;
-    background: ${(props) => props.textColor + 'ee'};
+    background: ${(props) =>
+      props.useRouteColorAsBg ? props.textColor + 'ee' : props.routeColor};
     position: relative;
     left: -30px;
     /* this is a few pixels into the blob (to make it look attached) + 3.5rem so that each
@@ -130,7 +160,7 @@ export const Stop = styled.li<RenderProps>`
   }
 `
 
-export const PatternRowItem = styled.li<{ roundedTop?: boolean }>`
+export const PatternRowItem = styled.li`
   list-style-type: none;
 
   & .header {
@@ -138,16 +168,6 @@ export const PatternRowItem = styled.li<{ roundedTop?: boolean }>`
     display: grid;
     grid-template-columns: 2fr 1fr;
     overflow: hidden;
-  }
-
-  &:first-of-type .header.stop-view {
-    border-top-left-radius: ${({ roundedTop }) => (roundedTop ? '10px' : '0')};
-    border-top-right-radius: ${({ roundedTop }) => (roundedTop ? '10px' : '0')};
-  }
-
-  &:last-of-type .header.stop-view {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
   }
 `
 

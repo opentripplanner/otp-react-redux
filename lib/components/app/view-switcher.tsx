@@ -3,14 +3,11 @@ import React from 'react'
 
 import Link from '../util/link'
 
-type Props = {
-  sticky?: boolean
-}
 /**
  * This component is a switcher between
  * the main views of the application.
  */
-const ViewSwitcher = ({ sticky }: Props) => {
+const ViewSwitcher = (): JSX.Element => {
   const intl = useIntl()
   return (
     <div
@@ -20,16 +17,6 @@ const ViewSwitcher = ({ sticky }: Props) => {
       className="view-switcher"
       id="view-switcher"
       role="group"
-      style={
-        sticky
-          ? {
-              height: '100%',
-              left: 0,
-              position: 'absolute',
-              width: '100%'
-            }
-          : {}
-      }
     >
       <Link to="/" tracking>
         <FormattedMessage id="components.BatchRoutingPanel.shortTitle" />

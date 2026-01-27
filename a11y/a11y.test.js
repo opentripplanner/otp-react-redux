@@ -10,7 +10,8 @@ import routes from '../lib/util/webapp-routes'
 
 import { mockServer } from './mock-server'
 
-const OTP_RR_TEST_CONFIG_PATH = '../a11y/test-config.yml'
+// Path relative to OTP-RR repo root.
+const OTP_RR_TEST_CONFIG_PATH = './a11y/test-config.yml'
 
 const MOCK_SERVER_PORT = 9999
 
@@ -41,7 +42,12 @@ async function runAxeTestOnPath(otpPath) {
     page.waitForNavigation({ waitUntil: 'networkidle2' })
   ])
 
-  await expect(page).toPassAxeTests({ disabledRules })
+  await expect(page).toPassAxeTests({
+    disabledRules,
+    // FIXME: Send a PR to maplibre-gl 5.x to not populate aria-label on <div> elements.
+    // This occurs in their source code at https://github.com/maplibre/maplibre-gl-js/blob/b450876c1707ad7fc563a86b37a472578b4545dc/src/ui/marker.ts#L319.
+    exclude: '.maplibregl-marker'
+  })
   return page
 }
 
@@ -58,7 +64,7 @@ beforeAll(async () => {
   })
   // Web security is disabled to allow requests to the mock OTP server
   browser = await puppeteer.launch({
-    args: ['--disable-web-security']
+    args: ['--disable-web-security', '--no-sandbox']
   })
 })
 

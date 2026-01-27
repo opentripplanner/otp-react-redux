@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 
 import { ELEVATION_BLUE } from '../util/colors'
 import { Leg } from '@opentripplanner/types'
-import { Marker } from 'react-map-gl'
+import { Marker } from 'react-map-gl/maplibre'
 import coreUtils from '@opentripplanner/core-utils'
 import React from 'react'
 import styled from 'styled-components'

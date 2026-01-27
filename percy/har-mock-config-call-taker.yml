@@ -1,0 +1,120 @@
+branding: HAR Test
+title: Percy Calltaker Mock Config
+homeTimezone: America/New_York
+
+api:
+  host: http://localhost:9999
+  path: /otp2/routers/default
+  v2: true
+
+# Declare the calltaker module, although it will only be used during the calltaker portion of the percy tests.
+# and not in the "normal" OTP-RR portion.
+modules:
+- id: call
+
+elevationProfile: true
+map:
+  views:
+    - type: DEFAULT
+      text: Map View
+
+  initLat: 33.7490
+  initLon: -84.3880
+  initZoom: 10
+
+geocoder:
+  baseUrl: http://localhost:9977
+  focusPoint:
+    lat: 33.7490
+    lon: -84.3880
+  boundary:
+    rect:
+      minLon: -86.0856
+      maxLon: -81.9499
+      minLat: 32.066
+      maxLat: 35.7251
+  maxNearbyStops: 6
+  options:
+    headers:
+      x-api-key: insert-your-geocoder-key
+  type: PELIAS
+
+modes:
+  modeButtons:
+    - iconName: transit
+      key: transit
+      label: Transit
+      modes:
+        - mode: TRANSIT
+    - iconName: walk
+      key: walk
+      label: Walk
+      modes:
+        - mode: WALK
+    - iconName: bicycle
+      key: bike
+      label: Bike
+      modes:
+        - mode: BICYCLE
+    - iconName: car
+      key: car
+      label: Car
+      modes:
+        - mode: CAR
+  initialState:
+    enabledModeButtons:
+      - walk
+      - transit
+  modeSettingDefinitions:
+    - applicableMode: TRANSIT
+      default: false
+      key: wheelchair
+      label: Use Accessible Routing
+      type: CHECKBOX
+
+
+  transitModes:
+    - mode: BUS
+      showWheelchairSetting: true
+    - mode: SUBWAY
+      showWheelchairSetting: true
+    - mode: TRAM
+      label: Atl. Streetcar
+      showWheelchairSetting: true
+
+  accessModes:
+    - mode: BICYCLE
+    - mode: BICYCLE_RENT
+      label: Transit + Bikeshare
+    - mode: SCOOTER
+      label: Transit + eScooter rental
+
+itinerary:
+  showHeaderText: false
+  hideSkeletons: true
+  customBatchUiBackground: true
+  groupByMode: true
+  groupTransitModes: true
+  showFirstResultByDefault: false
+  mergeItineraries: true
+
+dateTime:
+  timeFormat: h:mm a
+  dateFormat: MM/dd/yyyy
+routeViewer:
+  hideRouteShapesWithinFlexZones: true
+
+accessibilityScore:
+  gradationMap:
+    0.0:
+      color: "#ffb5b9"
+      icon: thumbs-down
+    0.5:
+      color: "#b5d1ff"
+      icon: question-circle
+    0.8:
+      color: "#bfffb5"
+      icon: thumbs-up
+    1.0:
+      color: "#a2e099"
+      icon: thumbs-up

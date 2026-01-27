@@ -1,5 +1,5 @@
 @import url(node_modules/bootstrap/dist/css/bootstrap.min.css);
-
+@import url(react-sliding-pane/dist/react-sliding-pane.css);
 @import url(node_modules/maplibre-gl/dist/maplibre-gl.css);
 
 @import url(lib/components/admin/call-taker.css);
@@ -12,176 +12,11 @@
 @import url(lib/components/user/nav-login-button.css);
 @import url(lib/components/viewers/viewers.css);
 
-@import url(lib/bike-rental.css);
-
-@import url(react-sliding-pane/dist/react-sliding-pane.css);
+@import url(tmp/custom-styles.css);
 
 /* Hide IE/Edge clear button in text input fields. */
 input[type="text"]::-ms-clear {
   display: none;
-}
-
-/* New app menu */
-.app-menu-icon {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  height: 15px;
-  justify-content: space-between;
-  padding: 0;
-  position: absolute;
-  top: 16px;
-  transition: all 1s ease;
-  width: 21px;
-  z-index: 10;
-}
-
-@media only screen and (max-width: 768px) {
-  #locale-selector-wrapper {
-    display: none;
-  }
-  .app-menu-icon {
-    left: 15px;
-  }
-}
-
-.app-menu-icon .menu-line {
-  border-bottom: 3px solid #ffffff;
-  display: block;
-  position: relative;
-  transition: all 0.5s ease;
-  width: 100%;
-}
-
-.app-menu-icon[aria-expanded="true"] .menu-line.top {
-  transform: rotate(45deg);
-  top: 7px;
-}
-.app-menu-icon[aria-expanded="true"] .menu-line.bottom {
-  transform: rotate(-45deg);
-  bottom: 5px;
-}
-.app-menu-icon[aria-expanded="true"] .menu-line.middle {
-  display: none;
-}
-
-.slide-pane {
-  transition: all 0.2s ease-in-out;
-}
-
-.slide-pane_from_left {
-  margin: 52px auto 0 0;
-  /* Keep pane from overflowing on smaller screens */
-  height: calc(100% - 52px);
-}
-
-.slide-pane__content {
-  padding: 6px 0;
-}
-
-.slide-pane__overlay {
-  z-index: 1000;
-}
-
-.app-menu {
-  margin: 0;
-  padding: 0.5rem 0;
-}
-
-.app-menu img,
-.app-menu svg {
-  max-height: 1em;
-  margin: 0 2rem;
-  vertical-align: middle;
-  width: 1em;
-}
-
-.app-menu a,
-.app-menu button {
-  background: none;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  display: flex;
-  font-size: 20px;
-  padding: 0.5rem 0;
-  text-decoration: none;
-  width: 100%;
-}
-
-/* Prevents hover styles from getting triggered on mobile */
-@media (hover: hover) {
-  .app-menu a:hover,
-  .app-menu button:hover {
-    color: #4c97f5;
-  }
-}
-
-.app-menu a:focus,
-.app-menu button:focus {
-  background-color: #ddd;
-  outline: 2px solid #4c97f5;
-  outline-offset: -2px;
-}
-
-.app-menu button[aria-selected="true"],
-.sort-option button[aria-selected="true"],
-#locale-selector button[aria-selected="true"] {
-  font-weight: bold;
-}
-
-.skip-nav-button {
-  color: initial;
-  position: fixed;
-  top: -30px;
-}
-.skip-nav-button:focus {
-  padding: 7px 24px;
-  top: 7px;
-  z-index: 100;
-}
-
-.view-switcher {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .view-switcher {
-    display: flex;
-  }
-}
-
-.expand-menu-chevron {
-  flex-grow: 1;
-  text-align: end;
-}
-
-.dropdown-header {
-  font-size: inherit;
-  line-height: normal;
-  color: inherit;
-  white-space: nowrap;
-}
-
-.sub-menu-container {
-  border-top: 1px solid #cccccc;
-  margin-top: 0.5rem;
-  padding-left: 2rem;
-}
-
-.app-menu .app-menu-divider {
-  border-bottom: 1px solid #ccc;
-  padding: 1rem 0;
-}
-
-/* Header image or title */
-/* If an icon is used, visually-hide the title (but keep it visible to screen readers). */
-.with-icon div.navbar-title {
-  height: 0;
-  overflow: hidden;
-  width: 0;
 }
 
 /* Buttons */
@@ -190,12 +25,12 @@ button.header,
 button.step,
 .clear-button-formatting {
   background: transparent;
-  color: inherit;
   border: 0;
+  color: inherit;
+  margin: 0;
+  padding: 0;
   text-align: inherit;
   text-decoration: none;
-  padding: 0;
-  margin: 0;
 }
 
 .clear-button-formatting:active {
@@ -217,9 +52,9 @@ button.step {
 }
 
 .overflow-ellipsis {
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .map-container .leaflet-top {

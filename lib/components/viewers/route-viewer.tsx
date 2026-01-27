@@ -1,5 +1,3 @@
-import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
-import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { Filter } from '@styled-icons/fa-solid/Filter'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
@@ -21,6 +19,7 @@ import { getRouteOrPatternViewerTitle } from '../../util/viewer'
 import { StyledIconWrapper } from '../util/styledIcon'
 import { TransitOperatorConfig } from '../../util/config-types'
 import { ViewedRouteObject, ViewedRouteState } from '../util/types'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import PageTitle from '../util/page-title'
 
 import { RouteRow } from './route-row'
@@ -38,7 +37,6 @@ interface Props {
   // Not really worried about the args for findRoute(s)IfNeeded.
   findRouteIfNeeded: () => void
   findRoutesIfNeeded: () => void
-  hideBackButton?: boolean
   hideHeader?: boolean
   intl: IntlShape
   modes: string[]
@@ -117,7 +115,6 @@ class RouteViewer extends Component<Props, State> {
       agencies,
       filter,
       findRouteIfNeeded,
-      hideBackButton,
       hideHeader,
       intl,
       modes,
@@ -128,7 +125,7 @@ class RouteViewer extends Component<Props, State> {
     } = this.props
 
     const { initialRender } = this.state
-    const { search } = filter
+    const { agency, mode, search } = filter
     const operators =
       transitOperators.length > 0
         ? Array.from(new Set(transitOperators.map((x) => x.name)))
@@ -137,6 +134,14 @@ class RouteViewer extends Component<Props, State> {
     const searchRouteText = intl.formatMessage({
       id: 'components.RouteViewer.findARoute'
     })
+
+    const listOfFilters = [
+      agency,
+      mode ? getFormattedMode(mode, intl) : null,
+      search
+    ].filter(Boolean)
+
+    const noFilter = listOfFilters.length === 0
 
     return (
       <div className="route-viewer">
@@ -151,18 +156,6 @@ class RouteViewer extends Component<Props, State> {
         />
         {/* Header Block */}
         <div className="route-viewer-header">
-          {/* Back button */}
-          {!hideBackButton && (
-            <div className="back-button-container">
-              <Button bsSize="small" onClick={this._backClicked}>
-                <StyledIconWrapper>
-                  <ArrowLeft />
-                </StyledIconWrapper>
-                <FormattedMessage id="common.forms.back" />
-              </Button>
-            </div>
-          )}
-
           {/* Header Text */}
           {!hideHeader && (
             <h1 className="header-text">
@@ -232,7 +225,18 @@ class RouteViewer extends Component<Props, State> {
             </span>
           </section>
         </div>
-
+        <InvisibleA11yLabel as="div" role="status">
+          {noFilter ? (
+            <FormattedMessage id="components.RouteViewer.noRouteFilter" />
+          ) : (
+            <FormattedMessage
+              id="components.RouteViewer.routesFilteredBy"
+              values={{
+                list: intl.formatList(listOfFilters, { type: 'conjunction' })
+              }}
+            />
+          )}
+        </InvisibleA11yLabel>
         <ul className="route-viewer-body">
           {sortedRoutes.map((route) => {
             // Find operator based on agency_id (extracted from OTP route ID).

@@ -35,7 +35,9 @@ export function extractMainHeadsigns(
     if (
       alreadyExistingIndex >= 0 &&
       cur.lastStop &&
-      cur.headsign !== cur.lastStop
+      cur.headsign !== cur.lastStop &&
+      // If the last stop is different than the headsign but the same as the last stop of the previously existing duplicate, there's no point in renaming.
+      cur.lastStop !== amended[alreadyExistingIndex].lastStop
     ) {
       editHeadsign(cur)
 

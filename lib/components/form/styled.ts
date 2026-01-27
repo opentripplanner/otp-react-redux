@@ -1,12 +1,13 @@
-import { blue, grey } from '../util/colors'
 import {
   DateTimeSelector,
-  SettingsSelectorPanel,
   Styled as TripFormClasses
 } from '@opentripplanner/trip-form'
 import { Input, MenuItemLi } from '@opentripplanner/location-field/lib/styled'
 import LocationField from '@opentripplanner/location-field'
 import styled, { css } from 'styled-components'
+
+import { blue, grey } from '../util/colors'
+import { prefersReducedMotion } from '../util/prefersReducedMotion'
 
 const commonButtonCss = css`
   -webkit-user-select: none;
@@ -50,164 +51,10 @@ export const modeButtonButtonCss = css`
   }
 `
 
-export const Dot = styled.div`
-  position: absolute;
-  top: -3px;
-  right: -3px;
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
-  background-color: #f00;
-`
-
-export const StyledSettingsSelectorPanel = styled(SettingsSelectorPanel)`
-  ${modeButtonButtonCss}
-
-  ${TripFormClasses.SettingLabel} {
-    color: ${grey[700]};
-    font-size: 14px;
-    font-weight: inherit;
-    letter-spacing: 1px;
-    padding-top: 8px;
-    text-transform: uppercase;
-  }
-  ${TripFormClasses.SettingsHeader} {
-    color: ${grey[900]};
-    font-size: 18px;
-    margin: 16px 0px;
-  }
-  ${TripFormClasses.SettingsSection} {
-    margin-bottom: 16px;
-  }
-  ${TripFormClasses.DropdownSelector} {
-    select {
-      ${commonInputCss}
-      -webkit-appearance: none;
-      border-radius: 3px;
-      font-size: 14px;
-      height: 34px;
-      line-height: 1.42857;
-      margin-bottom: 20px;
-
-      &:focus {
-        border-color: ${blue[400]};
-        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-          0 0 8px rgba(102, 175, 233, 0.6);
-        outline: 0;
-      }
-    }
-    > div:last-child::after {
-      box-sizing: border-box;
-      color: #000;
-      content: '▼';
-      font-size: 67%;
-      pointer-events: none;
-      position: absolute;
-      right: 8px;
-      top: 10px;
-    }
-  }
-
-  ${TripFormClasses.ModeSelector} {
-    font-weight: 300;
-    ${TripFormClasses.ModeButton.Button} {
-      box-shadow: none;
-      outline: none;
-      padding: 3px;
-    }
-    ${TripFormClasses.ModeButton.Title} {
-      font-size: 10px;
-      line-height: 12px;
-      padding: 4px 0px 0px;
-
-      &.active {
-        font-weight: 600;
-      }
-    }
-  }
-  ${TripFormClasses.ModeSelector.MainRow} {
-    box-sizing: border-box;
-    font-size: 170%;
-    margin: 0px -10px 18px;
-    padding: 0px 5px;
-    ${TripFormClasses.ModeButton.Button} {
-      height: 54px;
-      width: 100%;
-      &.active {
-        font-weight: 600;
-      }
-    }
-  }
-  ${TripFormClasses.ModeSelector.SecondaryRow} {
-    margin: 0px -10px 10px;
-    ${TripFormClasses.ModeButton.Button} {
-      font-size: 130%;
-      font-weight: 800;
-      height: 46px;
-      > svg {
-        margin: 0 0.2em;
-      }
-    }
-  }
-  ${TripFormClasses.ModeSelector.TertiaryRow} {
-    font-size: 80%;
-    font-weight: 300;
-    margin: 0px -10px 10px;
-    text-align: center;
-    ${TripFormClasses.ModeButton.Button} {
-      height: 36px;
-    }
-  }
-  ${TripFormClasses.SubmodeSelector.Row} {
-    font-size: 12px;
-    > * {
-      padding: 3px 5px 3px 0px;
-    }
-    > :last-child {
-      padding-right: 0px;
-    }
-    ${TripFormClasses.ModeButton.Button} {
-      height: 35px;
-    }
-    svg,
-    img {
-      margin-left: 0px;
-    }
-  }
-  ${TripFormClasses.SubmodeSelector} {
-    ${TripFormClasses.SettingLabel} {
-      margin-bottom: 0;
-    }
-  }
-  ${TripFormClasses.SubmodeSelector.InlineRow} {
-    margin: -3px 0px;
-    svg,
-    img {
-      height: 18px;
-      max-width: 32px;
-    }
-  }
-`
-
 export const StyledDateTimeSelector = styled(DateTimeSelector)`
-  margin: 0 -15px 15px;
-
-  ${TripFormClasses.DateTimeSelector.DateTimeRow} {
-    margin: 20px 0px 15px;
-    input {
-      ${commonInputCss}
-      background-color: #fff;
-      border: 0;
-      border-bottom: 1px solid #000;
-      box-shadow: none;
-      outline: none;
-      text-align: center;
-    }
-  }
-  ${TripFormClasses.ModeButton.Button} {
-    ${commonButtonCss}
-    font-size: 14px;
-    height: 35px;
+  font-size: 14px;
+  div {
+    max-width: 33%;
   }
 `
 
@@ -220,13 +67,87 @@ export const StyledLocationField = styled(LocationField)`
   grid-template-columns: 30px 1fr 30px;
   width: 100%;
 
-  ${Input} {
+  input {
     padding: 6px 12px;
   }
 
   ${MenuItemLi} {
     &:hover {
       color: inherit;
+    }
+  }
+`
+
+export const advancedPanelClassName = 'advanced-panel'
+export const mainPanelClassName = 'main-panel'
+export const transitionDuration = prefersReducedMotion ? 0 : 175
+
+const wipeOffset = 7
+
+const transitionMixin = css`
+  transition: all ${transitionDuration}ms ease-in-out;
+`
+
+const wipeOutMixin = (offset: number) => css`
+  opacity: 0;
+  transform: translateX(${offset}px);
+`
+const wipeInMixin = css`
+  opacity: 1;
+`
+
+export const TransitionStyles = styled.div<{ transitionDelay: number }>`
+  display: contents;
+  .${advancedPanelClassName}-enter {
+    ${wipeOutMixin(wipeOffset)}
+  }
+  .${advancedPanelClassName}-enter-done {
+    ${wipeInMixin}
+    ${transitionMixin}
+  }
+
+  .${advancedPanelClassName}-exit {
+    ${wipeInMixin}
+  }
+
+  .${advancedPanelClassName}-exit-active {
+    ${wipeOutMixin(wipeOffset)}
+    ${transitionMixin}
+    transition-delay: ${(props) => props.transitionDelay}ms;
+  }
+
+  .${mainPanelClassName}-enter {
+    ${wipeOutMixin(-wipeOffset)}
+  }
+  .${mainPanelClassName}-enter-done {
+    ${wipeInMixin}
+    ${transitionMixin}
+  }
+
+  .${mainPanelClassName}-exit {
+    ${wipeInMixin}
+  }
+
+  .${mainPanelClassName}-exit-active {
+    ${wipeOutMixin(-wipeOffset)}
+    ${transitionMixin}
+  }
+`
+export const styledCheckboxCss = css`
+  div {
+    align-items: center;
+    justify-content: space-between;
+
+    label {
+      margin-bottom: 0;
+    }
+    input[type='checkbox'] {
+      margin-top: 0;
+      order: 2;
+
+      &:focus-visible + label {
+        outline: 1px solid blue;
+      }
     }
   }
 `

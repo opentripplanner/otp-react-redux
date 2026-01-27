@@ -1,4 +1,4 @@
-import { Parking } from '@styled-icons/fa-solid'
+import { Parking } from '@styled-icons/fa-solid/Parking'
 import { Place } from '@opentripplanner/types'
 import React from 'react'
 

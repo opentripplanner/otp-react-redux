@@ -1,7 +1,12 @@
 /* globals describe, expect, it */
 
 import '../test-utils/mock-window-url'
-import { isValidSubsequence, queryIsValid } from '../../lib/util/state'
+import {
+  addToSearches,
+  isValidSubsequence,
+  queryIsValid,
+  sortItineraries
+} from '../../lib/util/state'
 
 describe('util > state', () => {
   describe('isValidSubsequence', () => {
@@ -63,6 +68,108 @@ describe('util > state', () => {
           testCase.expected ? 'toBeTruthy' : 'toBeFalsy'
         ]()
       })
+    })
+  })
+  describe('addToSearches', () => {
+    it('should add the most recent entry and remove other identical ones', () => {
+      const spaceNeedle = {
+        lat: 47.620336,
+        lon: -122.349314,
+        main: 'Space Needle',
+        name: 'Space Needle, Broad Street, Lower Queen Anne, Seattle, WA',
+        secondary: 'Broad Street, Lower Queen Anne, Seattle, WA'
+      }
+      const unionStation = {
+        lat: 47.598665,
+        lon: -122.328498,
+        main: 'Union Station',
+        name: 'Union Station, South Jackson Street, International District, Seattle, WA',
+        secondary: 'South Jackson Street, International District, Seattle, WA'
+      }
+      const pikePlace = {
+        lat: 47.609541,
+        lon: -122.342621,
+        main: 'Pike Place Market',
+        name: 'Pike Place Market, Pike Place Market, Seattle, WA',
+        secondary: 'Pike Place Market, Seattle, WA'
+      }
+
+      // Entries, most recent first.
+      const entries = [unionStation, spaceNeedle, pikePlace]
+      const tidiedEntries = [spaceNeedle, unionStation, pikePlace]
+      expect(addToSearches(entries, spaceNeedle)).toEqual(tidiedEntries)
+    })
+  })
+  describe('sortItineraries', () => {
+    const makeItin = (transitFare) => ({ transitFare })
+
+    const itineraries = [
+      makeItin(100),
+      makeItin(200),
+      makeItin(undefined),
+      makeItin(50),
+      makeItin(null),
+      makeItin(0)
+    ]
+
+    it('sorts by FARE ascending (undefined/null last)', () => {
+      const sorted = [...itineraries].sort((a, b) =>
+        sortItineraries('FARE', 'ASC', a, b)
+      )
+      // Fares: 0, 50, 100, 200, undefined, null
+      expect(sorted.map((i) => i.transitFare)).toEqual([
+        0,
+        50,
+        100,
+        200,
+        undefined,
+        null
+      ])
+    })
+
+    it('sorts by FARE descending (undefined/null last)', () => {
+      const sorted = [...itineraries].sort((a, b) =>
+        sortItineraries('FARE', 'DESC', a, b)
+      )
+      // Fares: 200, 100, 50, 0, undefined, null
+      expect(sorted.map((i) => i.transitFare)).toEqual([
+        200,
+        100,
+        50,
+        0,
+        undefined,
+        null
+      ])
+    })
+
+    it('sorts undefined vs defined correctly', () => {
+      const a = makeItin(undefined)
+      const b = makeItin(100)
+      expect(sortItineraries('FARE', 'ASC', a, b)).toBe(1)
+      expect(sortItineraries('FARE', 'ASC', b, a)).toBe(-1)
+      expect(sortItineraries('FARE', 'DESC', a, b)).toBe(1)
+      expect(sortItineraries('FARE', 'DESC', b, a)).toBe(-1)
+    })
+
+    it('sorts null vs defined correctly', () => {
+      const a = makeItin(null)
+      const b = makeItin(100)
+      expect(sortItineraries('FARE', 'ASC', a, b)).toBe(1)
+      expect(sortItineraries('FARE', 'ASC', b, a)).toBe(-1)
+    })
+
+    it('sorts undefined vs null as equal', () => {
+      const a = makeItin(undefined)
+      const b = makeItin(null)
+      expect(sortItineraries('FARE', 'ASC', a, b)).toBe(0)
+      expect(sortItineraries('FARE', 'DESC', a, b)).toBe(0)
+    })
+
+    it('sorts 0 vs other fares correctly', () => {
+      const a = makeItin(0)
+      const b = makeItin(50)
+      expect(sortItineraries('FARE', 'ASC', a, b)).toBeLessThan(0)
+      expect(sortItineraries('FARE', 'DESC', a, b)).toBeGreaterThan(0)
     })
   })
 })

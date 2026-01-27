@@ -6,6 +6,7 @@ import styled from 'styled-components'
 
 import { ComponentContext } from '../../../util/contexts'
 
+import { getAlternateRoutesFromLeg } from './attribute-utils'
 import DefaultRouteRenderer from './default-route-renderer'
 
 type Props = {
@@ -124,7 +125,7 @@ const RouteBlock = ({
   // Determine if the routeShortName will fit!
   const alternateRoutesAreTooLongToDisplay =
     leg?.alternateRoutes &&
-    Object.entries(leg.alternateRoutes || {}).every(
+    getAlternateRoutesFromLeg(leg).every(
       (altRoute) =>
         // This 7 does a good job at filtering out most problematic short names,
         // but may be revistited in the future depending on what feeds cause issues
@@ -167,7 +168,7 @@ const RouteBlock = ({
         )}
         {!hideLongName && leg.routeLongName && (
           <MultiRouteLongName>
-            <RouteLongName leg={leg} />
+            <RouteLongName className="route-block-route-long-name" leg={leg} />
             {Object.entries(leg?.alternateRoutes || {})?.length > 0 && (
               <em style={{ marginRight: 10 }}>
                 <FormattedMessage id="components.MetroUI.orAlternatives" />

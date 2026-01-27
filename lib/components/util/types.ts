@@ -5,7 +5,7 @@ import {
   Route,
   Stop
 } from '@opentripplanner/types'
-import { MapRef } from 'react-map-gl'
+import { MapRef } from 'react-map-gl/maplibre'
 
 export interface StopTimeTrip {
   blockId?: string
@@ -108,3 +108,5 @@ export type ZoomToPlaceHandler = (
   place?: { lat: number; lon: number },
   zoom?: number
 ) => void
+
+export type QueryParamChangeHandler = (event: any) => void

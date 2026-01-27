@@ -19,137 +19,210 @@
         "url": "https://itsmarta.com/Blue-Line.aspx",
         "color": "0075B2",
         "textColor": "000000",
-        "routeBikesAllowed": "NO_INFORMATION",
         "bikesAllowed": "NO_INFORMATION"
       },
       "serviceId": "MARTA:5",
       "tripHeadsign": "H E HOLMES STATION",
       "directionId": "1",
-      "blockId": "1111469",
+      "blockId": "11114697",
       "shapeId": "MARTA:109181",
       "wheelchairAccessible": "POSSIBLE",
       "bikesAllowed": "NO_INFORMATION",
-      "tripBikesAllowed": "NO_INFORMATION",
-      "stops": [
+      "stoptimes": [
         {
-          "gtfsId": "MARTA:802",
-          "stopId": "MARTA:802",
-          "code": "908516",
-          "name": "Indian Creek Station",
-          "lat": 33.769893,
-          "lon": -84.229874
+          "scheduledDeparture": 61200,
+          "stop": {
+            "code": "908516",
+            "gtfsId": "MARTA:802",
+            "lat": 33.769893,
+            "locationType": "STOP",
+            "lon": -84.229874,
+            "name": "Indian Creek Station",
+            "wheelchairBoarding": "POSSIBLE",
+            "zoneId": null
+          }
         },
         {
-          "gtfsId": "MARTA:224",
-          "stopId": "MARTA:224",
-          "code": "908709",
-          "name": "Kensington Station",
-          "lat": 33.772764,
-          "lon": -84.252151
+          "scheduledDeparture": 61320,
+          "stop": {
+            "code": "908709",
+            "gtfsId": "MARTA:224",
+            "lat": 33.772764,
+            "locationType": "STOP",
+            "lon": -84.252151,
+            "name": "Kensington Station",
+            "wheelchairBoarding": "POSSIBLE",
+            "zoneId": null
+          }
         },
         {
-          "gtfsId": "MARTA:803",
-          "stopId": "MARTA:803",
-          "code": "908691",
-          "name": "Avondale Station",
-          "lat": 33.775214,
-          "lon": -84.282466
+          "scheduledDeparture": 61500,
+          "stop": {
+            "code": "908691",
+            "gtfsId": "MARTA:803",
+            "lat": 33.775214,
+            "locationType": "STOP",
+            "lon": -84.282466,
+            "name": "Avondale Station",
+            "wheelchairBoarding": "POSSIBLE",
+            "zoneId": null
+          }
         },
         {
-          "gtfsId": "MARTA:193",
-          "stopId": "MARTA:193",
-          "code": "908475",
-          "name": "Decatur Station",
-          "lat": 33.774699,
-          "lon": -84.295417
+          "scheduledDeparture": 61740,
+          "stop": {
+            "code": "908475",
+            "gtfsId": "MARTA:193",
+            "lat": 33.774699,
+            "locationType": "STOP",
+            "lon": -84.295417,
+            "name": "Decatur Station",
+            "wheelchairBoarding": "POSSIBLE",
+            "zoneId": null
+          }
         },
         {
-          "gtfsId": "MARTA:186",
-          "stopId": "MARTA:186",
-          "code": "908567",
-          "name": "East Lake Station",
-          "lat": 33.765196,
-          "lon": -84.313426
+          "scheduledDeparture": 61920,
+          "stop": {
+            "code": "908567",
+            "gtfsId": "MARTA:186",
+            "lat": 33.765196,
+            "locationType": "STOP",
+            "lon": -84.313426,
+            "name": "East Lake Station",
+            "wheelchairBoarding": "POSSIBLE",
+            "zoneId": null
+          }
         },
         {
-          "gtfsId": "MARTA:195",
-          "stopId": "MARTA:195",
-          "code": "908476",
-          "name": "Edgewood-Candler Park Station",
-          "lat": 33.761803,
-          "lon": -84.340825
+          "scheduledDeparture": 62100,
+          "stop": {
+            "code": "908476",
+            "gtfsId": "MARTA:195",
+            "lat": 33.761803,
+            "locationType": "STOP",
+            "lon": -84.340825,
+            "name": "Edgewood-Candler Park Station",
+            "wheelchairBoarding": "POSSIBLE",
+            "zoneId": null
+          }
         },
         {
-          "gtfsId": "MARTA:804",
-          "stopId": "MARTA:804",
-          "code": "908692",
-          "name": "Inman Park-Reynoldstown Station",
-          "lat": 33.757227,
-          "lon": -84.353066
+          "scheduledDeparture": 62220,
+          "stop": {
+            "code": "908692",
+            "gtfsId": "MARTA:804",
+            "lat": 33.757227,
+            "locationType": "STOP",
+            "lon": -84.353066,
+            "name": "Inman Park-Reynoldstown Station",
+            "wheelchairBoarding": "POSSIBLE",
+            "zoneId": null
+          }
         },
         {
-          "gtfsId": "MARTA:805",
-          "stopId": "MARTA:805",
-          "code": "908693",
-          "name": "King Memorial Station",
-          "lat": 33.749853,
-          "lon": -84.37599
+          "scheduledDeparture": 62400,
+          "stop": {
+            "code": "908693",
+            "gtfsId": "MARTA:805",
+            "lat": 33.749853,
+            "locationType": "STOP",
+            "lon": -84.37599,
+            "name": "King Memorial Station",
+            "wheelchairBoarding": "POSSIBLE",
+            "zoneId": "0"
+          }
         },
         {
-          "gtfsId": "MARTA:198",
-          "stopId": "MARTA:198",
-          "code": "908618",
-          "name": "Georgia State Station",
-          "lat": 33.750161,
-          "lon": -84.385915
+          "scheduledDeparture": 62520,
+          "stop": {
+            "code": "908618",
+            "gtfsId": "MARTA:198",
+            "lat": 33.750161,
+            "locationType": "STOP",
+            "lon": -84.385915,
+            "name": "Georgia State Station",
+            "wheelchairBoarding": "POSSIBLE",
+            "zoneId": null
+          }
         },
         {
-          "gtfsId": "MARTA:806",
-          "stopId": "MARTA:806",
-          "code": "908990",
-          "name": "Five Points Station",
-          "lat": 33.754123,
-          "lon": -84.391876
+          "scheduledDeparture": 62580,
+          "stop": {
+            "code": "908990",
+            "gtfsId": "MARTA:806",
+            "lat": 33.754123,
+            "locationType": "STOP",
+            "lon": -84.391876,
+            "name": "Five Points Station",
+            "wheelchairBoarding": "POSSIBLE",
+            "zoneId": null
+          }
         },
         {
-          "gtfsId": "MARTA:807",
-          "stopId": "MARTA:807",
-          "code": "908694",
-          "name": "Gwcc-Cnn Center Station",
-          "lat": 33.756187,
-          "lon": -84.397291
+          "scheduledDeparture": 62640,
+          "stop": {
+            "code": "908694",
+            "gtfsId": "MARTA:807",
+            "lat": 33.756187,
+            "locationType": "STOP",
+            "lon": -84.397291,
+            "name": "Gwcc-Cnn Center Station",
+            "wheelchairBoarding": "POSSIBLE",
+            "zoneId": null
+          }
         },
         {
-          "gtfsId": "MARTA:471",
-          "stopId": "MARTA:471",
-          "code": "908959",
-          "name": "Vine City Station",
-          "lat": 33.756613,
-          "lon": -84.404021
+          "scheduledDeparture": 62700,
+          "stop": {
+            "code": "908959",
+            "gtfsId": "MARTA:471",
+            "lat": 33.756613,
+            "locationType": "STOP",
+            "lon": -84.404021,
+            "name": "Vine City Station",
+            "wheelchairBoarding": "POSSIBLE",
+            "zoneId": null
+          }
         },
         {
-          "gtfsId": "MARTA:486",
-          "stopId": "MARTA:486",
-          "code": "908964",
-          "name": "Ashby Station",
-          "lat": 33.756477,
-          "lon": -84.417328
+          "scheduledDeparture": 62760,
+          "stop": {
+            "code": "908964",
+            "gtfsId": "MARTA:486",
+            "lat": 33.756477,
+            "locationType": "STOP",
+            "lon": -84.417328,
+            "name": "Ashby Station",
+            "wheelchairBoarding": "POSSIBLE",
+            "zoneId": null
+          }
         },
         {
-          "gtfsId": "MARTA:39",
-          "stopId": "MARTA:39",
-          "code": "907906",
-          "name": "West Lake Station",
-          "lat": 33.753247,
-          "lon": -84.445568
+          "scheduledDeparture": 62940,
+          "stop": {
+            "code": "907906",
+            "gtfsId": "MARTA:39",
+            "lat": 33.753247,
+            "locationType": "STOP",
+            "lon": -84.445568,
+            "name": "West Lake Station",
+            "wheelchairBoarding": "POSSIBLE",
+            "zoneId": null
+          }
         },
         {
-          "gtfsId": "MARTA:40",
-          "stopId": "MARTA:40",
-          "code": "907907",
-          "name": "Hamilton E Holmes Station",
-          "lat": 33.754517,
-          "lon": -84.469824
+          "scheduledDeparture": 63120,
+          "stop": {
+            "code": "907907",
+            "gtfsId": "MARTA:40",
+            "lat": 33.754517,
+            "locationType": "STOP",
+            "lon": -84.469824,
+            "name": "Hamilton E Holmes Station",
+            "wheelchairBoarding": "POSSIBLE",
+            "zoneId": null
+          }
         }
       ],
       "tripGeometry": {

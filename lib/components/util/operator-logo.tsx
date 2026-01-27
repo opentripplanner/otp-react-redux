@@ -2,20 +2,28 @@ import { TransitOperator } from '@opentripplanner/types'
 import React from 'react'
 import styled from 'styled-components'
 
-const OperatorImg = styled.img`
-  &:not(:last-of-type) {
-    margin-right: 0.5ch;
-  }
+const OperatorImg = styled.img<{ marginRight?: number; maxHeight?: number }>`
   width: 25px;
+`
+
+const StyledOperatorImg = styled(OperatorImg)`
+  max-height: 1em;
+  // Make sure icons stay square
+  max-width: 1em;
 `
 
 type Props = {
   alt?: string
   operator?: TransitOperator
+  styled?: boolean
 }
 
-const OperatorLogo = ({ alt, operator }: Props): JSX.Element | null => {
+const OperatorLogo = ({ alt, operator, styled }: Props): JSX.Element | null => {
   if (!operator?.logo) return null
+  if (styled) {
+    return <StyledOperatorImg alt={alt || operator.name} src={operator.logo} />
+  }
+
   return <OperatorImg alt={alt || operator.name} src={operator.logo} />
 }
 

@@ -27,8 +27,8 @@ const Container = styled.div<{ withBackground?: boolean }>`
 `
 
 const TimeStruck = styled.div`
+  color: ${grey[700]};
   text-decoration: line-through;
-  opacity: 0.5;
 `
 
 const TimeBlock = styled.div`
@@ -62,9 +62,11 @@ const STATUS = {
  * will be rendered above the status. Also, this can optionally be rendered with
  * a background color for a label-like presentation.
  */
+// eslint-disable-next-line complexity
 const RealtimeStatusLabel = ({
   className,
   delay,
+  isFlex = false,
   isRealtime,
   onTimeThresholdSeconds,
   originalTime,
@@ -74,6 +76,7 @@ const RealtimeStatusLabel = ({
 }: {
   className?: string
   delay: number
+  isFlex: boolean
   isRealtime?: boolean
   onTimeThresholdSeconds?: number
   originalTime?: number
@@ -104,12 +107,12 @@ const RealtimeStatusLabel = ({
         <TimeStruck aria-hidden>
           <FormattedTime timeStyle="short" value={originalTime} />
         </TimeStruck>
-        <div>
+        <div className={isRealtime ? 'realtime-icon' : ''}>
           <FormattedTime timeStyle="short" value={time} />
         </div>
       </TimeBlock>
     ) : (
-      <div>
+      <div className={isRealtime ? 'realtime-icon' : ''}>
         <FormattedTime timeStyle="short" value={time} />
       </div>
     )
@@ -120,12 +123,16 @@ const RealtimeStatusLabel = ({
       color={color}
       withBackground={withBackground}
     >
-      {renderedTime}
+      <div className={isRealtime ? 'itin-time-realtime' : ''}>
+        {renderedTime}
+      </div>
       <MainContent>
         {showScheduleDeviation && (
           <FormattedRealtimeStatusLabel
             minutes={
-              isEarlyOrLate ? (
+              isFlex ? (
+                <FormattedMessage id="config.flex.flex-service" />
+              ) : isEarlyOrLate ? (
                 <DelayText>
                   <FormattedDuration
                     duration={Math.abs(delay)}
@@ -137,10 +144,10 @@ const RealtimeStatusLabel = ({
               )
             }
             // @ts-ignore getTripStatus is not typed yet
-            status={STATUS[status].label}
+            status={!isFlex && STATUS[status].label}
           />
         )}
-        {isEarlyOrLate && (
+        {isEarlyOrLate && !isFlex && (
           <InvisibleAdditionalDetails>
             <FormattedMessage
               id="components.MetroUI.originallyScheduledTime"
@@ -159,7 +166,7 @@ const RealtimeStatusLabel = ({
 
 const mapStateToProps = (state: AppReduxState) => ({
   onTimeThresholdSeconds: state.otp.config.onTimeThresholdSeconds,
-  showScheduleDeviation: state.otp.config.showScheduleDeviation
+  showScheduleDeviation: state.otp.config?.itinerary?.showScheduleDeviation
 })
 
 export default connect(mapStateToProps)(RealtimeStatusLabel)

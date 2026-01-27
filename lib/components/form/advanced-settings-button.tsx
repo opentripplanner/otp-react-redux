@@ -1,0 +1,32 @@
+import { ArrowRight } from '@styled-icons/fa-solid/ArrowRight'
+import { FormattedMessage } from 'react-intl'
+import React from 'react'
+import styled from 'styled-components'
+
+import { grey } from '../util/colors'
+
+interface Props {
+  onClick: () => void
+}
+
+export const StyledTransparentButton = styled.button`
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: ${grey[800]};
+  display: flex;
+  gap: 7px;
+`
+
+const AdvancedSettingsButton = ({ onClick }: Props): JSX.Element => (
+  <StyledTransparentButton
+    id="open-advanced-settings-button"
+    onClick={onClick}
+    type="button"
+  >
+    <FormattedMessage id="components.BatchSearchScreen.moreOptions" />
+    <ArrowRight size={18} />
+  </StyledTransparentButton>
+)
+
+export default AdvancedSettingsButton

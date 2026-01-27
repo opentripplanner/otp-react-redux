@@ -1,69 +1,69 @@
-import {
-  addSettingsToButton,
-  MetroModeSelector,
-  populateSettingWithValue
-} from '@opentripplanner/trip-form'
 import { connect } from 'react-redux'
+import { decodeQueryParams } from 'use-query-params'
 import {
-  decodeQueryParams,
-  DelimitedArrayParam,
-  encodeQueryParams
-} from 'use-query-params'
-import {
-  ModeButtonDefinition,
-  ModeSetting,
-  ModeSettingValues
-} from '@opentripplanner/types'
+  DepartArriveDropdown,
+  MetroModeSelector
+} from '@opentripplanner/trip-form'
+import { ModeButtonDefinition } from '@opentripplanner/types'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { SyncAlt } from '@styled-icons/fa-solid/SyncAlt'
 import { useIntl } from 'react-intl'
-import React, { useCallback, useContext, useState } from 'react'
+import AnimateHeight from 'react-animate-height'
+import React, { useCallback, useContext, useEffect } from 'react'
 
 import * as apiActions from '../../actions/api'
 import * as formActions from '../../actions/form'
+import * as narrativeActions from '../../actions/narrative'
 import { ComponentContext } from '../../util/contexts'
-import { generateModeSettingValues } from '../../util/api'
 import { getActiveSearch, hasValidLocation } from '../../util/state'
 import { getBaseColor, getDarkenedBaseColor } from '../util/colors'
-import { getFormattedMode } from '../../util/i18n'
-import { RoutingQueryCallResult } from '../../actions/api-constants'
+import { getDefaultModeButtons } from '../../util/api'
 import { StyledIconWrapper } from '../util/styledIcon'
+import { User } from '../user/types'
 
 import {
+  addModeButtonIcon,
+  modesQueryParamConfig,
+  onSettingsUpdate,
+  pipe,
+  setModeButton
+} from './util'
+import {
+  AdvancedOptionsContainer,
   MainSettingsRow,
   ModeSelectorContainer,
   PlanTripButton
 } from './batch-styled'
-import DateTimeButton from './date-time-button'
-
-const queryParamConfig = { modeButtons: DelimitedArrayParam }
+import AdvancedSettingsButton from './advanced-settings-button'
+import DateTimeModal, {
+  DepartArriveValue,
+  setQueryParamMiddleware
+} from './date-time-modal'
 
 // TYPESCRIPT TODO: better types
 type Props = {
   activeSearch: any
   currentQuery: any
+  departArrive: DepartArriveValue
   enabledModeButtons: string[]
   fillModeIcons?: boolean
+  homeTimezone: string
   modeButtonOptions: ModeButtonDefinition[]
-  modeSettingDefinitions: ModeSetting[]
-  modeSettingValues: ModeSettingValues
   onPlanTripClick: () => void
+  openAdvancedSettings: () => void
   routingQuery: any
   setQueryParam: (evt: any) => void
-  spacedOutModeSelector?: boolean
-  updateQueryTimeIfLeavingNow: () => void
-}
-
-// This method is used to daisy-chain a series of functions together on a given value
-function pipe<T>(...fns: Array<(arg: T) => T>) {
-  return (value: T) => fns.reduce((acc, fn) => fn(acc), value)
+  sort: any
+  syncSortWithDepartArrive: any
+  updateItineraryFilter: any
+  user: User
 }
 
 export function setModeButtonEnabled(enabledKeys: string[]) {
   return (modeButton: ModeButtonDefinition): ModeButtonDefinition => {
     return {
       ...modeButton,
-      enabled: enabledKeys.includes(modeButton.key)
+      enabled: enabledKeys?.includes(modeButton.key)
     }
   }
 }
@@ -74,177 +74,80 @@ export function setModeButtonEnabled(enabledKeys: string[]) {
 function BatchSettings({
   activeSearch,
   currentQuery,
+  departArrive,
   enabledModeButtons,
   fillModeIcons,
+  homeTimezone,
   modeButtonOptions,
-  modeSettingDefinitions,
-  modeSettingValues,
   onPlanTripClick,
-  routingQuery,
+  openAdvancedSettings,
   setQueryParam,
-  spacedOutModeSelector,
-  updateQueryTimeIfLeavingNow
+  sort,
+  syncSortWithDepartArrive,
+  updateItineraryFilter,
+  user
 }: Props) {
   const intl = useIntl()
-
-  // Whether the date/time selector is open
-  const [dateTimeOpen, setDateTimeOpen] = useState(false)
-
-  // Whether the mode selector has a popup open
-  const [modeSelectorPopup, setModeSelectorPopup] = useState(false)
 
   // @ts-expect-error Context not typed
   const { ModeIcon } = useContext(ComponentContext)
 
-  const addModeButtonIcon = useCallback(
-    (def: ModeButtonDefinition) => ({
-      ...def,
-      Icon: function ModeButtonIcon() {
-        return <ModeIcon mode={def.iconName} />
-      }
-    }),
-    [ModeIcon]
-  )
-
-  const populateSettingWithIcon = useCallback(
-    (msd: ModeSetting) => ({
-      ...msd,
-      icon: <ModeIcon mode={msd.iconName} width={16} />
-    }),
-    [ModeIcon]
-  )
-
-  const addCustomSettingLabels = useCallback(
-    (msd: ModeSetting) => {
-      let modeLabel
-      // If we're using route mode overrides, make sure we're using the custom mode name
-      if (msd.type === 'SUBMODE') {
-        modeLabel = msd.overrideMode || msd.addTransportMode.mode
-        return {
-          ...msd,
-          label: getFormattedMode(modeLabel, intl)
-        }
-      }
-      return msd
-    },
-    [intl]
-  )
-
-  const processedModeSettings = modeSettingDefinitions.map(
-    pipe(
-      populateSettingWithIcon,
-      populateSettingWithValue(modeSettingValues),
-      addCustomSettingLabels
-    )
-  )
-
   const processedModeButtons = modeButtonOptions.map(
-    pipe(
-      addModeButtonIcon,
-      addSettingsToButton(processedModeSettings),
-      setModeButtonEnabled(enabledModeButtons)
-    )
+    pipe(addModeButtonIcon(ModeIcon), setModeButtonEnabled(enabledModeButtons))
   )
-
-  const _planTrip = useCallback(() => {
-    // Check for any validation issues in query.
-    const issues = []
-    if (!hasValidLocation(currentQuery, 'from')) {
-      issues.push(intl.formatMessage({ id: 'components.BatchSettings.origin' }))
-    }
-    if (!hasValidLocation(currentQuery, 'to')) {
-      issues.push(
-        intl.formatMessage({ id: 'components.BatchSettings.destination' })
-      )
-    }
-    onPlanTripClick && onPlanTripClick()
-    if (issues.length > 0) {
-      // TODO: replace with less obtrusive validation.
-      window.alert(
-        intl.formatMessage(
-          { id: 'components.BatchSettings.validationMessage' },
-          { issues: intl.formatList(issues, { type: 'conjunction' }) }
-        )
-      )
-      return
-    }
-
-    // Plan trip.
-    updateQueryTimeIfLeavingNow()
-    const routingQueryResult = routingQuery()
-
-    // If mode combination is not valid (i.e. produced no query), alert the user.
-    if (routingQueryResult === RoutingQueryCallResult.INVALID_MODE_SELECTION) {
-      window.alert(
-        intl.formatMessage({
-          id: 'components.BatchSettings.invalidModeSelection'
-        })
-      )
-    }
-  }, [
-    currentQuery,
-    intl,
-    onPlanTripClick,
-    routingQuery,
-    updateQueryTimeIfLeavingNow
-  ])
-
-  /**
-   * Stores parameters in both the Redux `currentQuery` and URL
-   * @param params Params to store
-   */
-  const _onSettingsUpdate = useCallback(
-    (params: any) => {
-      setQueryParam({ queryParamData: params, ...params })
-    },
-    [setQueryParam]
-  )
-
-  const _toggleModeButton = useCallback(
-    (buttonId: string, newState: boolean) => {
-      let newButtons
-      if (newState) {
-        newButtons = [...enabledModeButtons, buttonId]
-      } else {
-        newButtons = enabledModeButtons.filter((c) => c !== buttonId)
-      }
-
-      // encodeQueryParams serializes the mode buttons for the URL
-      // to get nice looking URL params and consistency
-      _onSettingsUpdate(
-        encodeQueryParams(queryParamConfig, { modeButtons: newButtons })
-      )
-    },
-    [enabledModeButtons, _onSettingsUpdate]
-  )
-
-  /**
-   * Check whether the mode selector is showing a popup.
-   */
-  const checkModeSelectorPopup = useCallback(() => {
-    const modeSelectorPopup = document.querySelector(
-      '.metro-mode-selector div[role="dialog"]'
-    )
-    setModeSelectorPopup(!!modeSelectorPopup)
-  }, [setModeSelectorPopup])
 
   const baseColor = getBaseColor()
 
   const accentColor = getDarkenedBaseColor()
 
+  const onQueryParamChange = useCallback(
+    (params) => {
+      setQueryParamMiddleware(
+        syncSortWithDepartArrive,
+        updateItineraryFilter,
+        params,
+        setQueryParam,
+        sort
+      )
+    },
+    [syncSortWithDepartArrive, updateItineraryFilter, setQueryParam, sort]
+  )
+
+  const dtSelectorOpen = departArrive !== 'NOW'
+
+  // If the user selects depart or arrive, set the focus to the time input
+  useEffect(() => {
+    const dtTimeInput = document.querySelector(
+      ".date-time-selector input[type='time']"
+    )
+    if (dtSelectorOpen) {
+      // eslint-disable-next-line prettier/prettier
+      (dtTimeInput as HTMLElement)?.focus()
+    }
+  }, [dtSelectorOpen, departArrive])
+
   return (
-    <MainSettingsRow onMouseMove={checkModeSelectorPopup}>
-      <DateTimeButton
-        open={dateTimeOpen}
-        setOpen={setDateTimeOpen}
-        // Prevent the hover on date/time selector when mode selector has a popup open via keyboard.
-        style={{ pointerEvents: modeSelectorPopup ? 'none' : undefined }}
-      />
-      <ModeSelectorContainer
-        squashed={!spacedOutModeSelector}
-        // Prevent hover effect on mode selector when date selector is activated via keyboard.
-        style={{ pointerEvents: dateTimeOpen ? 'none' : undefined }}
+    <MainSettingsRow className="main-settings-row">
+      <AdvancedOptionsContainer>
+        <DepartArriveDropdown
+          departArrive={departArrive}
+          onQueryParamChange={onQueryParamChange}
+          timeZone={homeTimezone}
+        />
+        <AdvancedSettingsButton onClick={openAdvancedSettings} />
+      </AdvancedOptionsContainer>
+      <AnimateHeight
+        duration={200}
+        height={dtSelectorOpen ? 'auto' : 0}
+        style={{
+          marginBottom: dtSelectorOpen ? '10px' : 0,
+          transition: 'ease all 200ms'
+        }}
       >
+        <DateTimeModal />
+      </AnimateHeight>
+
+      <ModeSelectorContainer>
         <MetroModeSelector
           accentColor={baseColor}
           activeHoverColor={accentColor.toHexString()}
@@ -253,15 +156,19 @@ function BatchSettings({
             id: 'components.BatchSearchScreen.modeSelectorLabel'
           })}
           modeButtons={processedModeButtons}
-          onSettingsUpdate={_onSettingsUpdate}
-          onToggleModeButton={_toggleModeButton}
+          onSettingsUpdate={onSettingsUpdate(setQueryParam)}
+          onToggleModeButton={setModeButton(
+            enabledModeButtons,
+            onSettingsUpdate(setQueryParam)
+          )}
         />
         <PlanTripButton
           id="plan-trip"
-          onClick={_planTrip}
+          onClick={onPlanTripClick}
           title={intl.formatMessage({
             id: 'components.BatchSettings.planTripTooltip'
           })}
+          type="submit"
         >
           <StyledIconWrapper style={{ fontSize: '1.6em' }}>
             {hasValidLocation(currentQuery, 'from') &&
@@ -282,33 +189,34 @@ function BatchSettings({
 // TODO: Typescript
 const mapStateToProps = (state: any) => {
   const urlSearchParams = new URLSearchParams(state.router.location.search)
-  const modeSettingValues = generateModeSettingValues(
-    urlSearchParams,
-    state.otp?.modeSettingDefinitions || [],
-    state.otp.config.modes?.initialState?.modeSettingValues
-  )
+  const { homeTimezone, modes } = state.otp.config
+  const { departArrive } = state.otp.currentQuery
+  const { loggedInUser } = state.user
+  const defaultEnabledModeButtons = getDefaultModeButtons(state)
   return {
     activeSearch: getActiveSearch(state),
     currentQuery: state.otp.currentQuery,
+    departArrive,
     // TODO: Duplicated in apiv2.js
     enabledModeButtons:
-      decodeQueryParams(queryParamConfig, {
+      decodeQueryParams(modesQueryParamConfig, {
         modeButtons: urlSearchParams.get('modeButtons')
-      })?.modeButtons ||
-      state.otp.config?.modes?.initialState?.enabledModeButtons ||
-      {},
+      })?.modeButtons?.filter((mb): mb is string => mb !== null) ??
+      defaultEnabledModeButtons,
     fillModeIcons: state.otp.config.itinerary?.fillModeIcons,
-    modeButtonOptions: state.otp.config?.modes?.modeButtons || [],
-    modeSettingDefinitions: state.otp?.modeSettingDefinitions || [],
-    modeSettingValues,
-    spacedOutModeSelector: state.otp?.config?.modes?.spacedOut
+    homeTimezone,
+    modeButtonOptions: modes?.modeButtons || [],
+    sort: state.otp.filter.sort,
+    syncSortWithDepartArrive:
+      state.otp.config?.itinerary?.syncSortWithDepartArrive,
+    user: loggedInUser
   }
 }
 
 const mapDispatchToProps = {
   routingQuery: apiActions.routingQuery,
   setQueryParam: formActions.setQueryParam,
-  updateQueryTimeIfLeavingNow: formActions.updateQueryTimeIfLeavingNow
+  updateItineraryFilter: narrativeActions.updateItineraryFilter
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BatchSettings)

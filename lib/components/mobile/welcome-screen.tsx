@@ -56,4 +56,8 @@ const mapDispatchToProps = {
   setMobileScreen: uiActions.setMobileScreen
 }
 
-export default connect(null, mapDispatchToProps)(MobileWelcomeScreen)
+const mapStateToProps = (state: any) => {
+  return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MobileWelcomeScreen)

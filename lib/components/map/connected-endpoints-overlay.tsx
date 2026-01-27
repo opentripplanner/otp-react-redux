@@ -1,28 +1,26 @@
 import { connect } from 'react-redux'
 import { IntlShape, useIntl } from 'react-intl'
-import { UserLocationAndType } from '@opentripplanner/types'
+import { Location, UserLocationAndType } from '@opentripplanner/types'
 import EndpointsOverlay from '@opentripplanner/endpoints-overlay'
 import React, { ComponentProps, useCallback } from 'react'
 
 import { clearLocation } from '../../actions/form'
-import { convertToPlace, getUserLocations } from '../../util/user'
-import {
-  forgetPlace,
-  rememberPlace,
-  UserActionResult
-} from '../../actions/user'
+import { forgetPlace, rememberPlace } from '../../actions/user'
 import { getActiveSearch, getShowUserSettings } from '../../util/state'
+import { getUserLocations } from '../../util/user'
 import { setLocation } from '../../actions/map'
-import { toastOnPlaceSaved } from '../util/toasts'
+import { setViewedStop } from '../../actions/ui'
 
 type Props = ComponentProps<typeof EndpointsOverlay> & {
   forgetPlace: (place: string, intl: IntlShape) => void
-  rememberPlace: (arg: UserLocationAndType, intl: IntlShape) => number
+  rememberPlace: (arg: UserLocationAndType, intl: IntlShape) => void
+  setViewedStop: (arg: Location) => void
 }
 
 const ConnectedEndpointsOverlay = ({
   forgetPlace,
   rememberPlace,
+  setViewedStop,
   ...otherProps
 }: Props): JSX.Element => {
   const intl = useIntl()
@@ -35,10 +33,7 @@ const ConnectedEndpointsOverlay = ({
 
   const _rememberPlace = useCallback(
     async (placeTypeLocation) => {
-      const result = await rememberPlace(placeTypeLocation, intl)
-      if (result === UserActionResult.SUCCESS) {
-        toastOnPlaceSaved(convertToPlace(placeTypeLocation.location), intl)
-      }
+      rememberPlace(placeTypeLocation, intl)
     },
     [rememberPlace, intl]
   )
@@ -47,6 +42,7 @@ const ConnectedEndpointsOverlay = ({
       {...otherProps}
       forgetPlace={_forgetPlace}
       rememberPlace={_rememberPlace}
+      setViewNearby={setViewedStop}
     />
   )
 }
@@ -69,7 +65,9 @@ const mapStateToProps = (state: any) => {
   // current query is no search is available.
   const activeSearch: any = getActiveSearch(state)
   const query = activeSearch ? activeSearch.query : state.otp.currentQuery
-  const showUserSettings = getShowUserSettings(state)
+  const showUserSettings =
+    getShowUserSettings(state) ||
+    state.otp.config?.map?.forceDisplayEndpointsPopup
   const { from, to } = query
   // Intermediate places doesn't trigger a re-plan, so for now default to
   // current query. FIXME: Determine with TriMet if this is desired behavior.
@@ -89,7 +87,8 @@ const mapDispatchToProps = {
   clearLocation,
   forgetPlace,
   rememberPlace,
-  setLocation
+  setLocation,
+  setViewedStop
 }
 
 export default connect(

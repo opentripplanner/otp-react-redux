@@ -1,17 +1,17 @@
 /* eslint-disable complexity */
 import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
 import { Dropdown } from '@opentripplanner/building-blocks'
-import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { Itinerary } from '@opentripplanner/types'
 import { SortAmountDown } from '@styled-icons/fa-solid/SortAmountDown'
 import { SortAmountUp } from '@styled-icons/fa-solid/SortAmountUp'
-import React, { useCallback } from 'react'
+import React, { useContext, useMemo } from 'react'
 import styled from 'styled-components'
 
+import { ComponentContext } from '../../util/contexts'
 import { IconWithText, StyledIconWrapper } from '../util/styledIcon'
 import { ItinerarySortOption } from '../../util/config-types'
 import { sortOptions } from '../util/sortOptions'
+import { TOGGLE_MAP_BUTTON_HEIGHT } from '../mobile/batch-results-screen'
 import { UnstyledButton } from '../util/unstyled-button'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import PopupTriggerText from '../app/popup-trigger-text'
@@ -19,76 +19,81 @@ import PopupTriggerText from '../app/popup-trigger-text'
 import PlanFirstLastButtons from './plan-first-last-buttons'
 import SaveTripButton from './save-trip-button'
 
-const IssueButton = styled.button`
-  background-color: #ecbe03;
-  border: none;
-  border-radius: 5px;
-  display: inline-block;
-  font-size: 12px;
-  padding: 2px 4px;
-`
-
 const ItinerariesHeaderContainer = styled.div<{ showHeaderText: boolean }>`
+  align-items: flex-end;
   display: flex;
+  flex-direction: column;
   float: left;
   gap: 8px;
   margin-left: ${(props) => (props.showHeaderText ? 'inherit' : 'auto')};
+  width: 100%;
 `
 
 const SortResultsDropdown = styled(Dropdown)`
   button {
     border: none;
   }
+  line-height: normal;
+`
+
+const UnicodeChevron = styled.div<{ expanded: boolean }>`
+  transform: rotate(${(props) => (props.expanded ? '270' : '90')}deg) scaleY(2)
+    scaleX(1.5);
+`
+
+const MapExpansionButton = styled.button`
+  align-items: center;
+  display: flex;
+  height: ${TOGGLE_MAP_BUTTON_HEIGHT}vh;
+  justify-content: center;
+  margin: -10px 0;
+  width: 100%;
 `
 
 export default function NarrativeItinerariesHeader({
   customBatchUiBackground,
   enabledSortModes,
-  errors,
   itineraries,
-  itinerary,
   itineraryIsExpanded,
+  mapExpanded,
+  onClickExpansionButton = undefined,
   onSortChange,
   onSortDirChange,
-  onToggleShowErrors,
   onViewAllOptions,
   pending,
   popupTarget,
   setPopupContent,
   showHeaderText = true,
-  showingErrors,
   sort
 }: {
   customBatchUiBackground?: boolean
   enabledSortModes: ItinerarySortOption[]
-  errors: unknown[]
   itineraries: unknown[]
-  itinerary: Itinerary
   itineraryIsExpanded: boolean
+  mapExpanded: boolean
+  onClickExpansionButton?: () => void
   onSortChange: (type: string) => VoidFunction
   onSortDirChange: () => void
-  onToggleShowErrors: () => void
   onViewAllOptions: () => void
   pending: boolean
   popupTarget: string
   setPopupContent: (url: string) => void
   showHeaderText: boolean
-  showingErrors: boolean
   sort: { direction: string; type: string }
 }): JSX.Element {
   const intl = useIntl()
+
+  // Use customized sort icons or fall back to the defaults
+  // @ts-expect-error Context not typed
+  const { SortIconDown, SortIconUp } = useContext(ComponentContext)
+  const SortUp = SortIconUp || SortAmountUp
+  const SortDown = SortIconDown || SortAmountDown
 
   const itinerariesFound = intl.formatMessage(
     {
       id: 'components.NarrativeItinerariesHeader.itinerariesFound'
     },
     { itineraryNum: itineraries.length }
-  )
-  const numIssues = intl.formatMessage(
-    {
-      id: 'components.NarrativeItinerariesHeader.numIssues'
-    },
-    { issueNum: errors.length }
   )
 
   const sortResultsLabel = intl.formatMessage({
@@ -103,18 +108,19 @@ export default function NarrativeItinerariesHeader({
     id: 'components.NarrativeItinerariesHeader.searching'
   })
   const narrativeUiStatus = pending
-    ? searching
-    : intl.formatList([itinerariesFound, numIssues], { type: 'conjunction' })
 
   const sortOptionsArr = sortOptions(intl, enabledSortModes)
   const sortText = sortOptionsArr.find((x) => x.value === sort.type)?.text
 
-  const handleSortClick = useCallback(
-    (value) => {
-      onSortChange(value)
-    },
-    [onSortChange]
-  )
+  const mapExpansionText = useMemo(() => {
+    return mapExpanded
+      ? intl.formatMessage({
+          id: 'components.BatchResultsScreen.showResults'
+        })
+      : intl.formatMessage({
+          id: 'components.BatchResultsScreen.expandMap'
+        })
+  }, [intl, mapExpanded])
 
   return (
     <div
@@ -144,7 +150,7 @@ export default function NarrativeItinerariesHeader({
         )}
       </InvisibleA11yLabel>
 
-      {itineraryIsExpanded || showingErrors ? (
+      {itineraryIsExpanded ? (
         <>
           <button
             className="clear-button-formatting"
@@ -176,13 +182,6 @@ export default function NarrativeItinerariesHeader({
               >
                 {pending ? searching : itinerariesFound}
               </h1>
-              {errors.length > 0 && (
-                <IssueButton onClick={onToggleShowErrors}>
-                  <IconWithText Icon={ExclamationTriangle}>
-                    <span>{numIssues}</span>
-                  </IconWithText>
-                </IssueButton>
-              )}
             </div>
           ) : (
             // The "n Itineraries Found" a11y header is an <h2> element
@@ -195,41 +194,67 @@ export default function NarrativeItinerariesHeader({
                 <PopupTriggerText compact popupTarget={popupTarget} />
               </button>
             )}
-            <button
-              className="clear-button-formatting"
-              onClick={onSortDirChange}
-              title={intl.formatMessage({
-                id: 'components.NarrativeItinerariesHeader.changeSortDir'
-              })}
-            >
-              <StyledIconWrapper
-                className={`${customBatchUiBackground && 'base-color-bg'}`}
+            {onClickExpansionButton && (
+              <MapExpansionButton
+                aria-label={mapExpansionText}
+                className="clear-button-formatting"
+                onClick={onClickExpansionButton}
+                title={mapExpansionText}
               >
-                {sort.direction.toLowerCase() === 'asc' ? (
-                  <SortAmountUp />
-                ) : (
-                  <SortAmountDown />
-                )}
-              </StyledIconWrapper>
-            </button>
-            <SortResultsDropdown
-              id="sort-results"
-              label={sortResultsLabel}
-              text={sortText}
-              title={sortResultsLabel}
-            >
-              {sortOptionsArr.map((sortOption) => (
-                <li className="sort-option" key={sortOption.value}>
-                  <UnstyledButton
-                    aria-selected={sortText === sortOption.text || undefined}
-                    onClick={() => handleSortClick(sortOption.value)}
-                    role="option"
-                  >
-                    {sortOption.text}
-                  </UnstyledButton>
-                </li>
-              ))}
-            </SortResultsDropdown>
+                <StyledIconWrapper>
+                  <UnicodeChevron expanded={mapExpanded}>
+                    &#10095;
+                  </UnicodeChevron>
+                </StyledIconWrapper>
+              </MapExpansionButton>
+            )}
+            <div style={{ display: 'flex', marginTop: '0.2rem' }}>
+              <button
+                className="clear-button-formatting"
+                onClick={onSortDirChange}
+                style={{
+                  alignItems: 'center',
+                  display: 'flex',
+                  marginRight: '7px'
+                }}
+                title={intl.formatMessage({
+                  id: 'components.NarrativeItinerariesHeader.changeSortDir'
+                })}
+              >
+                <StyledIconWrapper
+                  className={`${customBatchUiBackground && 'base-color-bg'}`}
+                >
+                  {sort.direction.toLowerCase() === 'asc' ? (
+                    <SortUp />
+                  ) : (
+                    <SortDown />
+                  )}
+                </StyledIconWrapper>
+              </button>
+              <SortResultsDropdown
+                id="sort-results"
+                label={sortResultsLabel}
+                text={sortText}
+                title={sortResultsLabel}
+              >
+                {sortOptionsArr.map((sortOption) => (
+                  <li className="sort-option" key={sortOption.value}>
+                    <UnstyledButton
+                      aria-selected={sortText === sortOption.text || undefined}
+                      onClick={() => onSortChange(sortOption.value)}
+                      role="option"
+                    >
+                      {sortOption.text}
+                      {sortText === sortOption.text && (
+                        <InvisibleA11yLabel>
+                          <FormattedMessage id="common.currentlySelected" />
+                        </InvisibleA11yLabel>
+                      )}
+                    </UnstyledButton>
+                  </li>
+                ))}
+              </SortResultsDropdown>
+            </div>
           </ItinerariesHeaderContainer>
           <PlanFirstLastButtons />
         </>

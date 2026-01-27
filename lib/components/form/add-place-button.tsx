@@ -22,7 +22,7 @@ const AddPlaceButton = ({
   const disabled = !from || !to || maxPlacesDefined
   return (
     <button
-      className="clear-button-formatting"
+      className="clear-button-formatting add-place-button"
       disabled={disabled}
       onClick={onClick}
       style={{ marginBottom: '5px', marginLeft: '10px' }}
