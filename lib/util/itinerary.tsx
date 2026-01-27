@@ -15,6 +15,76 @@ import { AppConfig, CO2Config } from './config-types'
 import { checkForRouteModeOverride } from './config'
 import { WEEKDAYS, WEEKEND_DAYS } from './monitored-trip'
 
+interface CustomRoutingZone {
+  bbox: number[]
+  destinationRoutingRules: Rule[]
+  originRoutingRules: Rule[]
+}
+
+interface Rule {
+  // stop to use for boarding/alighting
+  accessibleStopToUse: string
+  headsign: string
+  route: string
+  // multiple headsigns??
+  stopToUse: string // for accessible trips
+}
+
+// EXAMPLES
+
+const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
+  {
+    // Seattle Stadium zone
+    bbox: [47.592266, 47.597533, -122.334768, -122.327691],
+    destinationRoutingRules: [
+      {
+        // NORTHBOUND 1 Line trips TO Seattle Stadium
+        accessibleStopToUse: 'CID_stop_id',
+        headsign: 'Lynnwood City Center',
+        route: '1 Line',
+        stopToUse: 'stadium_stop_id'
+      },
+      {
+        // SOUTHBOUND 1 Line trips TO Seattle Stadium
+        accessibleStopToUse: 'CID_stop_id',
+        headsign: 'Federal Way Downtown',
+        route: '1 Line',
+        stopToUse: 'pioneer_square_stop_id'
+      },
+      {
+        // WESTBOUND 2 Line trips TO Seattle Stadium
+        accessibleStopToUse: 'CID_stop_id',
+        headsign: 'Lynnwood City Center',
+        route: '2 Line',
+        stopToUse: 'CID_stop_id'
+      }
+    ],
+    originRoutingRules: [
+      {
+        // NORTHBOUND 1 Line trips FROM Seattle Stadium
+        accessibleStopToUse: 'CID_stop_id',
+        headsign: 'Lynnwood City Center',
+        route: '1 Line',
+        stopToUse: 'pioneer_square_stop_id'
+      },
+      {
+        // SOUTHBOUND 1 Line trips FROM Seattle Stadium
+        accessibleStopToUse: 'CID_stop_id',
+        headsign: 'Federal Way Downtown',
+        route: '1 Line',
+        stopToUse: 'stadium_stop_id'
+      },
+      {
+        // EASTBOUND 2 Line trips FROM Seattle Stadium
+        accessibleStopToUse: 'CID_stop_id',
+        headsign: 'Downtown Redmond',
+        route: '2 Line',
+        stopToUse: 'CID_stop_id'
+      }
+    ]
+  }
+]
+
 export interface ItineraryStartTime {
   itinerary: ItineraryWithIndex
   legs: Leg[]
@@ -65,6 +135,29 @@ export function itineraryCanBeMonitored(itinerary?: Itinerary): boolean {
 
 export function getMinutesUntilItineraryStart(itinerary: Itinerary): number {
   return differenceInMinutes(new Date(itinerary.startTime), new Date())
+}
+
+/**
+ * Gets the first transit leg of the given itinerary, or null if none found.
+ */
+function getFirstTransitLeg(itinerary: Itinerary) {
+  return itinerary?.legs?.find((leg) => leg.transitLeg)
+}
+
+function getLastTransitLeg(itinerary: Itinerary) {
+  const legs = itinerary?.legs
+  for (let i = legs.length - 1; i >= 0; i--) {
+    if (legs[i].transitLeg) return legs[i]
+  }
+  return null
+}
+
+/**
+ * Get the first stop ID from the itinerary in the underscore format required by
+ * the startTransitStopId query param (e.g., TRIMET_12345 instead of TRIMET:12345).
+ */
+export function getFirstStopId(itinerary: Itinerary): string | undefined {
+  return getFirstTransitLeg(itinerary)?.from.stopId?.replace(':', '_')
 }
 
 /**
@@ -176,6 +269,52 @@ export function collectItinerariesWithoutDuplicates(
   })
 
   console.log(itineraries)
+
+  const isInBBox = (lat: number, lon: number, bbox: number[]) => {
+    const [minLat, maxLat, minLon, maxLon] = bbox
+    return lat >= minLat && lat <= maxLat && lon >= minLon && lon <= maxLon
+  }
+
+  const triggeredRules: (Rule | null)[] = []
+
+  // only works for single-zone configs
+
+  itineraries.forEach((itin) => {
+    const origin = { lat: itin.legs[0].from.lat, lon: itin.legs[0].from.lon }
+    const destination = {
+      lat: itin.legs[itin.legs.length - 1].to.lat,
+      lon: itin.legs[itin.legs.length - 1].to.lon
+    }
+
+    const firstTransitLeg = getFirstTransitLeg(itin)
+    const lastTransitLeg = getLastTransitLeg(itin)
+
+    soundTransitCustomRoutingZones.forEach((zone) => {
+      let originRule
+      let destinationRule
+      if (isInBBox(origin.lat, origin.lon, zone.bbox)) {
+        originRule = zone.originRoutingRules.find(
+          (rule) =>
+            rule.headsign === firstTransitLeg?.headsign &&
+            rule.route === firstTransitLeg?.routeShortName
+        )
+      }
+
+      if (isInBBox(destination.lat, destination.lon, zone.bbox)) {
+        destinationRule = zone.destinationRoutingRules.find(
+          (rule) =>
+            rule.headsign === lastTransitLeg?.headsign &&
+            rule.route === lastTransitLeg?.routeShortName
+        )
+      }
+
+      if (originRule) triggeredRules.push(originRule)
+      else if (destinationRule) triggeredRules.push(destinationRule)
+      else triggeredRules.push(null)
+    })
+  })
+
+  console.log('triggered rules', triggeredRules)
 
   return itineraries
 }
