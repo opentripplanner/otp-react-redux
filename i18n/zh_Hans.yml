@@ -195,6 +195,8 @@ components:
     saved: 保存
     submodeSelectorLabel: 选择主要出行方式和次要出行方式
     tripOptions: 行程选项
+    setAsDefault: 设置为默认
+    logInToSetDefault: 登录以设置为默认
   BatchSettings:
     destination: 目的地
     invalidModeSelection: 无法使用所选模式计划行程。尝试在模式选择中包括公交。

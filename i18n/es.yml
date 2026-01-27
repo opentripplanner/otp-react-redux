@@ -220,6 +220,8 @@ components:
     saved: Guardado
     submodeSelectorLabel: Seleccionar modos y submodos de desplazamiento
     tripOptions: Opciones de ruta
+    setAsDefault: Establecer como predeterminada
+    logInToSetDefault: Iniciar sesión para establecerla como predeterminada
   BatchSettings:
     destination: destino
     invalidModeSelection: >-
