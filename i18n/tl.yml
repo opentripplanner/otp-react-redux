@@ -225,6 +225,8 @@ components:
     saved: Na-save na
     submodeSelectorLabel: Piliin ang mga mode at submode ng pagbiyahe
     tripOptions: Mga Opsyon sa Biyahe
+    setAsDefault: Itakda bilang default
+    logInToSetDefault: Mag log-in upang itakda bilang default
   BatchSettings:
     destination: patutunguhan
     invalidModeSelection: >-
@@ -593,7 +595,8 @@ components:
     tripNotFoundDescription: Pasensya na, hindi nakita ang hiniling na biyahe.
     tripNotifications: Mga notification sa biyahe
   SavedTripList:
-    alertTag: "{alert, plural, one {View one alert} other {View # alerts}}"
+    alertTag: "{alert, plural, one {Tingnan ang isang babala} other {Tingnan ang #
+      ng babala}}"
     fromTo: Mula sa {from} papuntang {to}
     myTrips: Aking mga biyahe
     noSavedTrips: Wala kang naka-save na biyahe
@@ -728,7 +731,7 @@ components:
   TripPreviewLayout:
     previewTrip: I-preview ang Biyahe
   TripStatus:
-    alerts: "{alerts, plural, one {# alert!} other {# alerts!}}"
+    alerts: "{alerts, plural, one {# ng babala!} other {# babala!}}"
     deleteTrip: I-delete ang Biyahe
     planNewTrip: Magplano ng Bagong Biyahe
   TripStatusRenderers:
