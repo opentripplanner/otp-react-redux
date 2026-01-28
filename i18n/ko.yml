@@ -198,6 +198,8 @@ components:
     saved: 저장됨
     submodeSelectorLabel: 여행 모드 및 하위 모드 선택
     tripOptions: 여행 옵션
+    setAsDefault: 기본으로 설정
+    logInToSetDefault: 기본으로 설정하려면 로그인하세요
   BatchSettings:
     destination: 목적지
     invalidModeSelection: 선택된 수단을 사용해 이동편을 계획할 수 없습니다. 수단 선택에 대중교통을 포함해 보십시오.
@@ -619,7 +621,7 @@ components:
   TripPreviewLayout:
     previewTrip: 여행 미리 보기
   TripStatus:
-    alerts: "{alerts} 경고!"
+    alerts: "경고 {alerts}개!"
     deleteTrip: 트립 삭제
     planNewTrip: 새 트립 계획
   TripStatusRenderers:

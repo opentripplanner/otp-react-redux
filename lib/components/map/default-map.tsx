@@ -3,11 +3,15 @@
 // @ts-nocheck
 import { connect } from 'react-redux'
 import {
+  ControlPosition,
+  GeolocateControl,
+  NavigationControl
+} from 'react-map-gl/maplibre'
+import {
   FormFactor,
   RentalVehicle,
   VehicleRentalStation
 } from '@opentripplanner/types/otp2'
-import { GeolocateControl, NavigationControl } from 'react-map-gl/maplibre'
 import { getCurrentDate } from '@opentripplanner/core-utils/lib/time'
 import { injectIntl, IntlShape } from 'react-intl'
 import { Itinerary } from '@opentripplanner/types'
@@ -167,6 +171,7 @@ interface DefaultMapProps {
   itinerary: Itinerary
   mapConfig: MapConfig
   nearbyViewActive: boolean
+  overrideNavigationControlPosition?: ControlPosition
   pending: boolean
   rentalVehicleQuery: () => void
   rentalVehicles: RentalVehicle[]
@@ -356,6 +361,7 @@ class DefaultMap extends Component<DefaultMapProps> {
       mapConfig,
       nearbyFilters,
       nearbyViewActive,
+      overrideNavigationControlPosition,
       pending,
       rentalVehicleQuery,
       rentalVehicles,
@@ -540,7 +546,11 @@ class DefaultMap extends Component<DefaultMapProps> {
           {typeof getCustomMapOverlays === 'function' &&
             getCustomMapOverlays(!itinerary && !pending)}
           <NavigationControl
-            position={navigationControlPosition || 'bottom-right'}
+            position={
+              overrideNavigationControlPosition ||
+              navigationControlPosition ||
+              'bottom-right'
+            }
           />
         </BaseMap>
       </MapContainer>

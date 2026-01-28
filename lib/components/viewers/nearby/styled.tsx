@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { DARK_TEXT_GREY, grey } from '../../util/colors'
+import { DARK_TEXT_GREY, grey, GREY_ON_WHITE } from '../../util/colors'
 import Link from '../../util/link'
 
 export const FloatingLoadingIndicator = styled.div`
@@ -29,6 +29,14 @@ export const NearbySidebarContainer = styled.ol<{ filters: boolean }>`
 
   @media (max-width: 768px) {
     min-height: calc(100vh - 50px);
+  }
+`
+
+export const LocationWrapper = styled.div<{ nearbyFilters: boolean }>`
+  padding: ${(props) => (props.nearbyFilters ? '1em 1em .75em' : '1em')};
+
+  input::placeholder {
+    color: ${GREY_ON_WHITE};
   }
 `
 
