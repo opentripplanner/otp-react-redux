@@ -18,7 +18,7 @@ api:
   port: 8080
   v2: true
 
-### The default unit system was historically imperial, but it can now easily be switched to metric:
+### This setting makes the UI display metric units.
 # units: metric
 
 # Determines if the header brand should be clickable or not. If set to true, 
