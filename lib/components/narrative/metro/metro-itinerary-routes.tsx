@@ -79,9 +79,9 @@ const MetroItineraryRoutes = ({
   showLegDurations
 }: Props): JSX.Element => {
   const intl = useIntl()
-  const routeLegs = showAllWalkLegs
-    ? itinerary.legs
-    : itinerary.legs.filter(removeInsignificantWalkLegs)
+  const routeLegs = itinerary.legs
+    .filter(showAllWalkLegs ? () => true : removeInsignificantWalkLegs)
+    .filter((leg) => !leg.interlineWithPreviousLeg)
   const transitRoutes = getItineraryRoutes(itinerary, intl)
 
   return (
