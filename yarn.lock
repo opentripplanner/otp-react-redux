@@ -2960,10 +2960,10 @@
     react-resize-detector "^4.2.1"
     string-similarity "^4.0.4"
 
-"@opentripplanner/itinerary-body@9.0.1":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-9.0.1.tgz#359f09b13d7508e044e9a8e59e661b4134e3a01c"
-  integrity sha512-CJJ5FbiKY/LNzEgCjOVuvvbJiO6Zuh68WFM4Y7B2FEpxXalEksxVgDMLWhhmlP1/Hal9OIhAgJPFFEiqDej5Vw==
+"@opentripplanner/itinerary-body@9.0.2":
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-9.0.2.tgz#bdf253c1ddcac33220ccc49e8d0da0e9185f3ad1"
+  integrity sha512-TwBehkZkbAjmEf2vBpRfros42XANnXTU01kKrp7rhNQjL21VWiOOdQc1e+iF7SP9m5iWVEqj3QM1mK/2nzesoA==
   dependencies:
     "@opentripplanner/core-utils" "15.0.0"
     "@opentripplanner/humanize-distance" "2.1.0"
