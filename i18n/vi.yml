@@ -217,6 +217,8 @@ components:
     saved: Đã lưu
     submodeSelectorLabel: Chọn phương thức di chuyển và phương thức phụ
     tripOptions: Tùy Chọn Chuyến Đi
+    setAsDefault: Đặt làm mặc định
+    logInToSetDefault: Đăng nhập để đặt làm mặc định
   BatchSettings:
     destination: điểm đến
     invalidModeSelection: >-
