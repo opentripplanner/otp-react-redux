@@ -4917,7 +4917,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         id="components.NearbyView.distanceAway"
                                         values={
                                           Object {
-                                            "localizedDistanceString": "79 feet",
+                                            "localizedDistanceString": <Memo(Connect(Distance))
+                                              meters={24}
+                                            />,
                                           }
                                         }
                                       >
@@ -5349,7 +5351,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         id="components.NearbyView.distanceAway"
                                         values={
                                           Object {
-                                            "localizedDistanceString": "85 feet",
+                                            "localizedDistanceString": <Memo(Connect(Distance))
+                                              meters={26}
+                                            />,
                                           }
                                         }
                                       >
@@ -5781,7 +5785,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         id="components.NearbyView.distanceAway"
                                         values={
                                           Object {
-                                            "localizedDistanceString": "112 feet",
+                                            "localizedDistanceString": <Memo(Connect(Distance))
+                                              meters={34}
+                                            />,
                                           }
                                         }
                                       >
@@ -11246,7 +11252,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             id="components.NearbyView.distanceAway"
                                             values={
                                               Object {
-                                                "localizedDistanceString": "135 feet",
+                                                "localizedDistanceString": <Memo(Connect(Distance))
+                                                  meters={41}
+                                                />,
                                               }
                                             }
                                           >
@@ -18583,7 +18591,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             id="components.NearbyView.distanceAway"
                                             values={
                                               Object {
-                                                "localizedDistanceString": "161 feet",
+                                                "localizedDistanceString": <Memo(Connect(Distance))
+                                                  meters={49}
+                                                />,
                                               }
                                             }
                                           >
@@ -21824,7 +21834,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         id="components.NearbyView.distanceAway"
                                         values={
                                           Object {
-                                            "localizedDistanceString": "171 feet",
+                                            "localizedDistanceString": <Memo(Connect(Distance))
+                                              meters={52}
+                                            />,
                                           }
                                         }
                                       >
@@ -22256,7 +22268,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         id="components.NearbyView.distanceAway"
                                         values={
                                           Object {
-                                            "localizedDistanceString": "187 feet",
+                                            "localizedDistanceString": <Memo(Connect(Distance))
+                                              meters={57}
+                                            />,
                                           }
                                         }
                                       >
@@ -22688,7 +22702,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         id="components.NearbyView.distanceAway"
                                         values={
                                           Object {
-                                            "localizedDistanceString": "187 feet",
+                                            "localizedDistanceString": <Memo(Connect(Distance))
+                                              meters={57}
+                                            />,
                                           }
                                         }
                                       >
@@ -28846,7 +28862,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             id="components.NearbyView.distanceAway"
                                             values={
                                               Object {
-                                                "localizedDistanceString": "302 feet",
+                                                "localizedDistanceString": <Memo(Connect(Distance))
+                                                  meters={92}
+                                                />,
                                               }
                                             }
                                           >
@@ -33522,7 +33540,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         id="components.NearbyView.distanceAway"
                                         values={
                                           Object {
-                                            "localizedDistanceString": "377 feet",
+                                            "localizedDistanceString": <Memo(Connect(Distance))
+                                              meters={115}
+                                            />,
                                           }
                                         }
                                       >
@@ -33954,7 +33974,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         id="components.NearbyView.distanceAway"
                                         values={
                                           Object {
-                                            "localizedDistanceString": "387 feet",
+                                            "localizedDistanceString": <Memo(Connect(Distance))
+                                              meters={118}
+                                            />,
                                           }
                                         }
                                       >
@@ -34386,7 +34408,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         id="components.NearbyView.distanceAway"
                                         values={
                                           Object {
-                                            "localizedDistanceString": "397 feet",
+                                            "localizedDistanceString": <Memo(Connect(Distance))
+                                              meters={121}
+                                            />,
                                           }
                                         }
                                       >
@@ -34818,7 +34842,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         id="components.NearbyView.distanceAway"
                                         values={
                                           Object {
-                                            "localizedDistanceString": "469 feet",
+                                            "localizedDistanceString": <Memo(Connect(Distance))
+                                              meters={143}
+                                            />,
                                           }
                                         }
                                       >
@@ -35250,7 +35276,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         id="components.NearbyView.distanceAway"
                                         values={
                                           Object {
-                                            "localizedDistanceString": "495 feet",
+                                            "localizedDistanceString": <Memo(Connect(Distance))
+                                              meters={151}
+                                            />,
                                           }
                                         }
                                       >
@@ -38906,7 +38934,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             id="components.NearbyView.distanceAway"
                                             values={
                                               Object {
-                                                "localizedDistanceString": "502 feet",
+                                                "localizedDistanceString": <Memo(Connect(Distance))
+                                                  meters={153}
+                                                />,
                                               }
                                             }
                                           >
@@ -42171,7 +42201,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         id="components.NearbyView.distanceAway"
                                         values={
                                           Object {
-                                            "localizedDistanceString": "512 feet",
+                                            "localizedDistanceString": <Memo(Connect(Distance))
+                                              meters={156}
+                                            />,
                                           }
                                         }
                                       >
@@ -47402,7 +47434,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             id="components.NearbyView.distanceAway"
                                             values={
                                               Object {
-                                                "localizedDistanceString": "512 feet",
+                                                "localizedDistanceString": <Memo(Connect(Distance))
+                                                  meters={156}
+                                                />,
                                               }
                                             }
                                           >
@@ -55667,7 +55701,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             id="components.NearbyView.distanceAway"
                                             values={
                                               Object {
-                                                "localizedDistanceString": "0.1 miles",
+                                                "localizedDistanceString": <Memo(Connect(Distance))
+                                                  meters={178}
+                                                />,
                                               }
                                             }
                                           >
@@ -62114,7 +62150,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         id="components.NearbyView.distanceAway"
                                         values={
                                           Object {
-                                            "localizedDistanceString": "0.1 miles",
+                                            "localizedDistanceString": <Memo(Connect(Distance))
+                                              meters={181}
+                                            />,
                                           }
                                         }
                                       >
@@ -67579,7 +67617,9 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             id="components.NearbyView.distanceAway"
                                             values={
                                               Object {
-                                                "localizedDistanceString": "0.1 miles",
+                                                "localizedDistanceString": <Memo(Connect(Distance))
+                                                  meters={194}
+                                                />,
                                               }
                                             }
                                           >

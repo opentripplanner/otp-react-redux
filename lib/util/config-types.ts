@@ -10,6 +10,7 @@ import {
   ModeSetting,
   ModeSettingValues,
   TransitOperator,
+  UnitSystem,
   VehicleRentalMapOverlaySymbol
 } from '@opentripplanner/types'
 import { ControlPosition } from 'react-map-gl/maplibre'
@@ -441,6 +442,7 @@ export interface AppConfig {
   title?: string
   transitOperators?: TransitOperatorConfig[]
   translateExternalLinks?: boolean
+  units?: UnitSystem
 
   // Add other config items as needed.
 }

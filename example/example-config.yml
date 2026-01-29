@@ -18,6 +18,9 @@ api:
   port: 8080
   v2: true
 
+### This setting makes the UI display metric units.
+# units: metric
+
 # Determines if the header brand should be clickable or not. If set to true, 
 # clicking the header brand will go back to the main trip planner page and wipe out any
 # results.
