@@ -1,6 +1,7 @@
 import { Pattern } from '../components/util/types'
 
 import { extractHeadsignFromPattern } from './viewer'
+import { isValidSubsequence } from './state'
 
 export interface PatternSummary {
   geometryLength: number
@@ -64,4 +65,44 @@ export function extractMainHeadsigns(
     }
     return amended
   }, [])
+}
+
+/**
+ * Returns a list of patterns, in descending length order, in which none is a subpattern of any other.
+ * In the patterns below, only Patterns 1, 2, 5 should be retained:
+ *   Pattern 1: Stops A, B, C, D
+ *   Pattern 2: Stops    B, C, D, E, F
+ *   Pattern 3: Stops A, B, C
+ *   Pattern 4: Stops       C, D, E
+ *   Pattern 5: Stops A,    C, D, E
+ */
+export function sortAndRemoveSubpatterns(patterns: Pattern[]): Pattern[] {
+  // Sort patterns by length to make algorithm below more efficient
+  const patternsSortedByLength = [...patterns].sort(
+    (a, b) => (a.stops?.length || 0) - (b.stops?.length || 0)
+  )
+
+  // Remove all patterns that are subsets of larger patterns
+  const filteredPatterns = patternsSortedByLength
+    // Start with the largest for performance
+    .reverse()
+    .filter((pattern) => {
+      // Compare to all other patterns TODO: make this beat O(n^2)
+      return !patternsSortedByLength.find((p) => {
+        // Don't compare against ourself
+        if (p.id === pattern.id) return false
+
+        // If our pattern is longer, it's not a subset
+        if ((p.stops?.length || 0) <= (pattern.stops?.length || 0)) return false
+
+        return isValidSubsequence(
+          p.stops?.map((s) => s.id) || [],
+          pattern.stops?.map((s) => s.id) || []
+        )
+      })
+    })
+
+  // Fallback for if the filtering leaves us with a silly number of patterns
+  // If this happens, it is not possible to know which pattern to keep.
+  return filteredPatterns.length > 1 ? filteredPatterns : patterns
 }
