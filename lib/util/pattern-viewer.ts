@@ -10,6 +10,11 @@ export interface PatternSummary {
   lastStop?: string
 }
 
+export interface SubPatternInfo {
+  filteredPatterns: Pattern[]
+  subPatterns: Record<string, string[]>
+}
+
 export function extractMainHeadsigns(
   patterns: Record<string, Pattern>,
   shortName: string,
@@ -76,11 +81,13 @@ export function extractMainHeadsigns(
  *   Pattern 4: Stops       C, D, E
  *   Pattern 5: Stops A,    C, D, E
  */
-export function sortAndRemoveSubpatterns(patterns: Pattern[]): Pattern[] {
+export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
   // Sort patterns by length to make algorithm below more efficient
   const patternsSortedByLength = [...patterns].sort(
     (a, b) => (a.stops?.length || 0) - (b.stops?.length || 0)
   )
+
+  const subPatterns: Record<string, string[]> = {}
 
   // Remove all patterns that are subsets of larger patterns
   const filteredPatterns = patternsSortedByLength
@@ -95,14 +102,27 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): Pattern[] {
         // If our pattern is longer, it's not a subset
         if ((p.stops?.length || 0) <= (pattern.stops?.length || 0)) return false
 
-        return isValidSubsequence(
+        const isSubpattern = isValidSubsequence(
           p.stops?.map((s) => s.id) || [],
           pattern.stops?.map((s) => s.id) || []
         )
+
+        if (isSubpattern) {
+          // Populate a list of subpatterns for the larger pattern.
+          if (!subPatterns[p.id]) {
+            subPatterns[p.id] = []
+          }
+          subPatterns[p.id].push(pattern.id)
+        }
+
+        return isSubpattern
       })
     })
 
-  // Fallback for if the filtering leaves us with a silly number of patterns
-  // If this happens, it is not possible to know which pattern to keep.
-  return filteredPatterns.length > 1 ? filteredPatterns : patterns
+  return {
+    // Fallback for if the filtering leaves us with a silly number of patterns
+    // If this happens, it is not possible to know which pattern to keep.
+    filteredPatterns: filteredPatterns.length > 1 ? filteredPatterns : patterns,
+    subPatterns
+  }
 }

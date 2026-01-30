@@ -98,7 +98,7 @@ describe('util > pattern-viewer', () => {
       // P1:   o--o--o--o--o
       // P2:         o--o-----o--o
       // P3:         o--o--o
-      // P3:   o-----o--o--o
+      // P4:   o-----o--o--o
       //
       // P3 should be removed because it is a subset of P1 and P3.
       // P1, P2, and P4 should be kept.
@@ -148,11 +148,15 @@ describe('util > pattern-viewer', () => {
           stops: createStops(['S1', 'S3', 'S4', 'S5'])
         }
       ]
-      const filteredPatterns = sortAndRemoveSubpatterns(patterns)
+      const { filteredPatterns, subPatterns } =
+        sortAndRemoveSubpatterns(patterns)
       expect(filteredPatterns.length).toBe(3)
       expect(filteredPatterns[0]).toBe(patterns[0])
       expect(filteredPatterns[1]).toBe(patterns[3])
       expect(filteredPatterns[2]).toBe(patterns[1])
+      expect(subPatterns.P1).toContain('P3')
+      expect(subPatterns.P3).toBe(undefined)
+      expect(subPatterns.P4).toBe(undefined)
     })
   })
 })
