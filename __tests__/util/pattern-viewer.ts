@@ -150,7 +150,6 @@ describe('util > pattern-viewer', () => {
       ]
       const filteredPatterns = sortAndRemoveSubpatterns(patterns)
       expect(filteredPatterns.length).toBe(3)
-      console.log(filteredPatterns)
       expect(filteredPatterns[0]).toBe(patterns[0])
       expect(filteredPatterns[1]).toBe(patterns[3])
       expect(filteredPatterns[2]).toBe(patterns[1])
