@@ -18,6 +18,7 @@ import { WEEKDAYS, WEEKEND_DAYS } from './monitored-trip'
 interface CustomRoutingZone {
   bbox: number[]
   destinationRoutingRules: Rule[]
+  name: string
   originRoutingRules: Rule[]
 }
 
@@ -25,9 +26,11 @@ interface StopAdjustment {
   duration: number
   endTime: number
   intermediateStops: number
+  itineraryDuration: number
+  itineraryEndTime: number
   legGeometry: {
     length: number
-    points: string
+    pointsToCut: string
   }
   stopCalls: number
   to: {
@@ -47,6 +50,7 @@ interface StopAdjustment {
 
 interface Rule {
   accessibleStopToUse: string
+  customWalkLegGeometry: string
   // multiple headsigns??
   headsign: string
   route: string
@@ -54,6 +58,10 @@ interface Rule {
 }
 
 // EXAMPLES
+
+const STADIUM_TO_ZONE_WALK_LEG =
+  '{"accessibilityScore":null,"agency":null,"alerts":[],"arrivalDelay":0,"departureDelay":0,"distance":503.56,"dropOffBookingInfo":{"latestBookingTime":null},"dropoffType":"SCHEDULED","duration":493,"endTime":1769811163000,"fareProducts":[],"from":{"lat":47.592285,"lon":-122.326988,"name":"Stadium","rentalVehicle":null,"stop":{"alerts":[],"code":null,"gtfsId":"40:99260","id":"U3RvcDo0MDo5OTI2MA","lat":47.592285,"lon":-122.326988},"vertexType":"TRANSIT","stopCode":null,"stopId":"40:99260"},"headsign":null,"id":null,"interlineWithPreviousLeg":false,"intermediateStops":null,"legGeometry":{"length":67,"points":"wjnaHt~riV@??D?L?B?D?H?J?B?D?F?H?B?F?\\\\?@@BC@C@?D?D?jA?fC@FBFBD@??BCXAPA\\\\ZrADNFFHFDDFDH@D?DE@ABG?GCGEMW]GCKAI@IBGDIJEHCLCL?J?~C?T?@?n@BD?LSBE@?nAMCWG"},"mode":"WALK","pickupBookingInfo":null,"pickupType":"SCHEDULED","realTime":false,"realtimeState":null,"rentedBike":false,"rideHailingEstimate":null,"startTime":1769810670000,"steps":[{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":6.91,"elevationProfile":[],"lat":47.5922729,"lon":-122.3269878,"relativeDirection":"DEPART","stayOn":false,"streetName":"SODO Trail"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":131.37,"elevationProfile":[],"lat":47.5922724,"lon":-122.32708,"relativeDirection":"CONTINUE","stayOn":false,"streetName":"path"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":false,"distance":8.14,"elevationProfile":[],"lat":47.5922964,"lon":-122.3288022,"relativeDirection":"LEFT","stayOn":false,"streetName":"4th Avenue South"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":29.35,"elevationProfile":[],"lat":47.5922467,"lon":-122.3288776,"relativeDirection":"RIGHT","stayOn":false,"streetName":"sidewalk"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":true,"distance":261.64,"elevationProfile":[],"lat":47.5922872,"lon":-122.3292643,"relativeDirection":"SLIGHTLY_LEFT","stayOn":true,"streetName":"open area"},{"absoluteDirection":"NORTH","alerts":[],"area":false,"distance":10.64,"elevationProfile":[],"lat":47.5923255,"lon":-122.3311355,"relativeDirection":"RIGHT","stayOn":false,"streetName":"South Royal Brougham Way"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":34,"elevationProfile":[],"lat":47.5924202,"lon":-122.3311558,"relativeDirection":"LEFT","stayOn":true,"streetName":"South Royal Brougham Way"},{"absoluteDirection":"NORTH","alerts":[],"area":false,"distance":21.53,"elevationProfile":[],"lat":47.5924575,"lon":-122.3315618,"relativeDirection":"RIGHT","stayOn":false,"streetName":"service road"}],"stopCalls":[],"to":{"lat":47.5927964,"lon":-122.3317254,"name":"Freeway Park, Seattle, WA, USA","rentalVehicle":null,"stop":null,"vertexType":"NORMAL"},"transitLeg":false,"trip":null,"alightRule":"scheduled","boardRule":"scheduled","bookingRuleInfo":{"dropOff":{},"pickUp":{}},"routeColor":"333333","routeTextColor":""}'
+// '{"accessibilityScore":null,"agency":null,"alerts":[],"arrivalDelay":0,"departureDelay":0,"distance":503.56,"dropOffBookingInfo":{"latestBookingTime":null},"dropoffType":"SCHEDULED","duration":493,"endTime":1769811163000,"fareProducts":[],"from":{"lat":47.592285,"lon":-122.326988,"name":"Stadium","rentalVehicle":null,"stop":{"alerts":[],"code":null,"gtfsId":"40:99260","id":"U3RvcDo0MDo5OTI2MA","lat":47.592285,"lon":-122.326988},"vertexType":"TRANSIT","stopCode":null,"stopId":"40:99260"},"headsign":null,"id":null,"interlineWithPreviousLeg":false,"intermediateStops":null,"legGeometry":{"length":67,"points":"wjnaHt~riV@??D?L?B?D?H?J?B?D?F?H?B?F?\\?@@BC@C@?D?D?jA?fC@FBFBD@??BCXAPA\\ZrADNFFHFDDFDH@D?DE@ABG?GCGEMW]GCKAI@IBGDIJEHCLCL?J?~C?T?@?n@BD?LSBE@?nAMCWG"},"mode":"WALK","pickupBookingInfo":null,"pickupType":"SCHEDULED","realTime":false,"realtimeState":null,"rentedBike":false,"rideHailingEstimate":null,"startTime":1769810670000,"steps":[{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":6.91,"elevationProfile":[],"lat":47.5922729,"lon":-122.3269878,"relativeDirection":"DEPART","stayOn":false,"streetName":"SODO Trail"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":131.37,"elevationProfile":[],"lat":47.5922724,"lon":-122.32708,"relativeDirection":"CONTINUE","stayOn":false,"streetName":"path"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":false,"distance":8.14,"elevationProfile":[],"lat":47.5922964,"lon":-122.3288022,"relativeDirection":"LEFT","stayOn":false,"streetName":"4th Avenue South"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":29.35,"elevationProfile":[],"lat":47.5922467,"lon":-122.3288776,"relativeDirection":"RIGHT","stayOn":false,"streetName":"sidewalk"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":true,"distance":261.64,"elevationProfile":[],"lat":47.5922872,"lon":-122.3292643,"relativeDirection":"SLIGHTLY_LEFT","stayOn":true,"streetName":"open area"},{"absoluteDirection":"NORTH","alerts":[],"area":false,"distance":10.64,"elevationProfile":[],"lat":47.5923255,"lon":-122.3311355,"relativeDirection":"RIGHT","stayOn":false,"streetName":"South Royal Brougham Way"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":34,"elevationProfile":[],"lat":47.5924202,"lon":-122.3311558,"relativeDirection":"LEFT","stayOn":true,"streetName":"South Royal Brougham Way"},{"absoluteDirection":"NORTH","alerts":[],"area":false,"distance":21.53,"elevationProfile":[],"lat":47.5924575,"lon":-122.3315618,"relativeDirection":"RIGHT","stayOn":false,"streetName":"service road"}],"stopCalls":[],"to":{"lat":47.5927964,"lon":-122.3317254,"name":"Freeway Park, Seattle, WA, USA","rentalVehicle":null,"stop":null,"vertexType":"NORMAL"},"transitLeg":false,"trip":null,"alightRule":"scheduled","boardRule":"scheduled","bookingRuleInfo":{"dropOff":{},"pickUp":{}},"routeColor":"333333","routeTextColor":""}'
 
 const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
   {
@@ -63,6 +71,7 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
       {
         // NORTHBOUND 1 Line trips TO Seattle Stadium
         accessibleStopToUse: 'CID_stop_id',
+        customWalkLegGeometry: STADIUM_TO_ZONE_WALK_LEG,
         headsign: 'Lynnwood City Center',
         route: '1 Line',
         stopAdjustments: [
@@ -71,10 +80,12 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               duration: -120,
               endTime: -120000,
               intermediateStops: -1,
+              itineraryDuration: -237,
+              itineraryEndTime: -237000,
               legGeometry: {
                 length: -24,
-                points:
-                  'qbhaHdjliVsa@|TYN]N]JYJe@He@He@Bg@@c@AkDIw@A{LBeKCkMIa@@a@Da@J]J_@Pa@VsE~C??k@`@[V[ZW`@Wb@Qh@GTIZGZCZsAjNOjAQlAQdAWhAmEfRYnAO|@Kx@Iz@E`AC|@?|@@z@D|@Fz@Hx@Jt@P|@p@bD??~AxHRz@Pp@Tr@Xv@nD~IPj@Pl@Rx@N~@J|@H|@Bl@@n@@n@At@ElAUzECb@Ad@?tS?l@Aj@]vLEr@E`@EPENENGLOVKJKHIFMDMDM@c@BcL?????ul@Ao@Ae@C]EuB_@]C[Ci@?_P?'
+                pointsToCut:
+                  'uA?g@Be@H[JcBj@o@PsGfBc@H_@D]@]?YC{@Gc@A]?}ADQ?IAKCk@UKAOA_C?'
               },
               stopCalls: -1,
               to: {
@@ -98,6 +109,7 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
       {
         // SOUTHBOUND 1 Line trips TO Seattle Stadium
         accessibleStopToUse: 'CID_stop_id',
+        customWalkLegGeometry: '',
         headsign: 'Federal Way Downtown',
         route: '1 Line',
         stopAdjustments: []
@@ -105,15 +117,18 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
       {
         // WESTBOUND 2 Line trips TO Seattle Stadium
         accessibleStopToUse: 'CID_stop_id',
+        customWalkLegGeometry: '',
         headsign: 'Lynnwood City Center',
         route: '2 Line',
         stopAdjustments: []
       }
     ],
+    name: 'Seattle Stadium FIFA Zone',
     originRoutingRules: [
       {
         // NORTHBOUND 1 Line trips FROM Seattle Stadium
         accessibleStopToUse: 'CID_stop_id',
+        customWalkLegGeometry: '',
         headsign: 'Lynnwood City Center',
         route: '1 Line',
         stopAdjustments: []
@@ -121,6 +136,7 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
       {
         // SOUTHBOUND 1 Line trips FROM Seattle Stadium
         accessibleStopToUse: 'CID_stop_id',
+        customWalkLegGeometry: '',
         headsign: 'Federal Way Downtown',
         route: '1 Line',
         stopAdjustments: []
@@ -128,6 +144,7 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
       {
         // EASTBOUND 2 Line trips FROM Seattle Stadium
         accessibleStopToUse: 'CID_stop_id',
+        customWalkLegGeometry: '',
         headsign: 'Downtown Redmond',
         route: '2 Line',
         stopAdjustments: []
@@ -135,11 +152,6 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
     ]
   }
 ]
-
-const STADIUM_TO_ZONE_WALK_LEG = JSON.parse(
-  '{"accessibilityScore":null,"agency":null,"alerts":[],"arrivalDelay":0,"departureDelay":0,"distance":503.56,"dropOffBookingInfo":{"latestBookingTime":null},"dropoffType":"SCHEDULED","duration":493,"endTime":1769811163000,"fareProducts":[],"from":{"lat":47.592285,"lon":-122.326988,"name":"Stadium","rentalVehicle":null,"stop":{"alerts":[],"code":null,"gtfsId":"40:99260","id":"U3RvcDo0MDo5OTI2MA","lat":47.592285,"lon":-122.326988},"vertexType":"TRANSIT","stopCode":null,"stopId":"40:99260"},"headsign":null,"id":null,"interlineWithPreviousLeg":false,"intermediateStops":null,"legGeometry":{"length":67,"points":"wjnaHt~riV@??D?L?B?D?H?J?B?D?F?H?B?F?\\\\?@@BC@C@?D?D?jA?fC@FBFBD@??BCXAPA\\\\ZrADNFFHFDDFDH@D?DE@ABG?GCGEMW]GCKAI@IBGDIJEHCLCL?J?~C?T?@?n@BD?LSBE@?nAMCWG"},"mode":"WALK","pickupBookingInfo":null,"pickupType":"SCHEDULED","realTime":false,"realtimeState":null,"rentedBike":false,"rideHailingEstimate":null,"startTime":1769810670000,"steps":[{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":6.91,"elevationProfile":[],"lat":47.5922729,"lon":-122.3269878,"relativeDirection":"DEPART","stayOn":false,"streetName":"SODO Trail"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":131.37,"elevationProfile":[],"lat":47.5922724,"lon":-122.32708,"relativeDirection":"CONTINUE","stayOn":false,"streetName":"path"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":false,"distance":8.14,"elevationProfile":[],"lat":47.5922964,"lon":-122.3288022,"relativeDirection":"LEFT","stayOn":false,"streetName":"4th Avenue South"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":29.35,"elevationProfile":[],"lat":47.5922467,"lon":-122.3288776,"relativeDirection":"RIGHT","stayOn":false,"streetName":"sidewalk"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":true,"distance":261.64,"elevationProfile":[],"lat":47.5922872,"lon":-122.3292643,"relativeDirection":"SLIGHTLY_LEFT","stayOn":true,"streetName":"open area"},{"absoluteDirection":"NORTH","alerts":[],"area":false,"distance":10.64,"elevationProfile":[],"lat":47.5923255,"lon":-122.3311355,"relativeDirection":"RIGHT","stayOn":false,"streetName":"South Royal Brougham Way"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":34,"elevationProfile":[],"lat":47.5924202,"lon":-122.3311558,"relativeDirection":"LEFT","stayOn":true,"streetName":"South Royal Brougham Way"},{"absoluteDirection":"NORTH","alerts":[],"area":false,"distance":21.53,"elevationProfile":[],"lat":47.5924575,"lon":-122.3315618,"relativeDirection":"RIGHT","stayOn":false,"streetName":"service road"}],"stopCalls":[],"to":{"lat":47.5927964,"lon":-122.3317254,"name":"Freeway Park, Seattle, WA, USA","rentalVehicle":null,"stop":null,"vertexType":"NORMAL"},"transitLeg":false,"trip":null,"alightRule":"scheduled","boardRule":"scheduled","bookingRuleInfo":{"dropOff":{},"pickUp":{}},"routeColor":"333333","routeTextColor":""}'
-  // '{"accessibilityScore":null,"agency":null,"alerts":[],"arrivalDelay":0,"departureDelay":0,"distance":503.56,"dropOffBookingInfo":{"latestBookingTime":null},"dropoffType":"SCHEDULED","duration":493,"endTime":1769811163000,"fareProducts":[],"from":{"lat":47.592285,"lon":-122.326988,"name":"Stadium","rentalVehicle":null,"stop":{"alerts":[],"code":null,"gtfsId":"40:99260","id":"U3RvcDo0MDo5OTI2MA","lat":47.592285,"lon":-122.326988},"vertexType":"TRANSIT","stopCode":null,"stopId":"40:99260"},"headsign":null,"id":null,"interlineWithPreviousLeg":false,"intermediateStops":null,"legGeometry":{"length":67,"points":"wjnaHt~riV@??D?L?B?D?H?J?B?D?F?H?B?F?\\?@@BC@C@?D?D?jA?fC@FBFBD@??BCXAPA\\ZrADNFFHFDDFDH@D?DE@ABG?GCGEMW]GCKAI@IBGDIJEHCLCL?J?~C?T?@?n@BD?LSBE@?nAMCWG"},"mode":"WALK","pickupBookingInfo":null,"pickupType":"SCHEDULED","realTime":false,"realtimeState":null,"rentedBike":false,"rideHailingEstimate":null,"startTime":1769810670000,"steps":[{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":6.91,"elevationProfile":[],"lat":47.5922729,"lon":-122.3269878,"relativeDirection":"DEPART","stayOn":false,"streetName":"SODO Trail"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":131.37,"elevationProfile":[],"lat":47.5922724,"lon":-122.32708,"relativeDirection":"CONTINUE","stayOn":false,"streetName":"path"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":false,"distance":8.14,"elevationProfile":[],"lat":47.5922964,"lon":-122.3288022,"relativeDirection":"LEFT","stayOn":false,"streetName":"4th Avenue South"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":29.35,"elevationProfile":[],"lat":47.5922467,"lon":-122.3288776,"relativeDirection":"RIGHT","stayOn":false,"streetName":"sidewalk"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":true,"distance":261.64,"elevationProfile":[],"lat":47.5922872,"lon":-122.3292643,"relativeDirection":"SLIGHTLY_LEFT","stayOn":true,"streetName":"open area"},{"absoluteDirection":"NORTH","alerts":[],"area":false,"distance":10.64,"elevationProfile":[],"lat":47.5923255,"lon":-122.3311355,"relativeDirection":"RIGHT","stayOn":false,"streetName":"South Royal Brougham Way"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":34,"elevationProfile":[],"lat":47.5924202,"lon":-122.3311558,"relativeDirection":"LEFT","stayOn":true,"streetName":"South Royal Brougham Way"},{"absoluteDirection":"NORTH","alerts":[],"area":false,"distance":21.53,"elevationProfile":[],"lat":47.5924575,"lon":-122.3315618,"relativeDirection":"RIGHT","stayOn":false,"streetName":"service road"}],"stopCalls":[],"to":{"lat":47.5927964,"lon":-122.3317254,"name":"Freeway Park, Seattle, WA, USA","rentalVehicle":null,"stop":null,"vertexType":"NORMAL"},"transitLeg":false,"trip":null,"alightRule":"scheduled","boardRule":"scheduled","bookingRuleInfo":{"dropOff":{},"pickUp":{}},"routeColor":"333333","routeTextColor":""}'
-)
 
 export interface ItineraryStartTime {
   itinerary: ItineraryWithIndex
@@ -331,8 +343,6 @@ export function collectItinerariesWithoutDuplicates(
     return lat >= minLat && lat <= maxLat && lon >= minLon && lon <= maxLon
   }
 
-  const triggeredRules: (Rule | null)[] = []
-
   // only works for single-zone configs
 
   itineraries.forEach((itin) => {
@@ -343,7 +353,7 @@ export function collectItinerariesWithoutDuplicates(
     }
 
     const firstTransitLeg = getFirstTransitLeg(itin)
-    const lastTransitLeg = getLastTransitLeg(itin)
+    let lastTransitLeg = getLastTransitLeg(itin)
 
     soundTransitCustomRoutingZones.forEach((zone) => {
       let originRule
@@ -364,57 +374,122 @@ export function collectItinerariesWithoutDuplicates(
         )
       }
 
-      if (originRule) triggeredRules.push(originRule)
-      else if (destinationRule) triggeredRules.push(destinationRule)
-      else triggeredRules.push(null)
+      if (originRule) {
+        // apply rule stop adjustments (if applicable) to the first transit leg, first stop
+      }
+      if (destinationRule) {
+        // apply rule stop adjustments (if applicable) to the last transit leg, last stop
+        const adjustment = destinationRule.stopAdjustments.find(
+          (adj) => adj.originalStop === lastTransitLeg?.to?.name
+        )?.adjustment
+        console.log('adjustment', adjustment)
+        if (lastTransitLeg && adjustment) {
+          lastTransitLeg = {
+            ...lastTransitLeg,
+            duration: lastTransitLeg.duration + adjustment.itineraryDuration,
+            endTime: lastTransitLeg.endTime + adjustment.itineraryEndTime,
+            intermediateStops: lastTransitLeg.intermediateStops.slice(
+              0,
+              adjustment.intermediateStops
+            ),
+            legGeometry: {
+              ...lastTransitLeg.legGeometry,
+              length:
+                lastTransitLeg.legGeometry.length +
+                adjustment.legGeometry.length,
+              // points: adjustment.legGeometry.points
+              points: lastTransitLeg.legGeometry.points.replace(
+                adjustment.legGeometry.pointsToCut,
+                ''
+              )
+            },
+            stopCalls: lastTransitLeg.stopCalls?.slice(0, adjustment.stopCalls),
+            to: {
+              ...lastTransitLeg.to,
+              lat: adjustment.to.lat,
+              lon: adjustment.to.lon,
+              name: adjustment.to.name,
+              stop: {
+                ...lastTransitLeg.to.stop,
+                gtfsId: adjustment.to.stop.gtfsId,
+                id: adjustment.to.stop.id,
+                lat: adjustment.to.stop.lat,
+                lon: adjustment.to.stop.lon,
+                name: adjustment.to.stop.name // oddly, this doesn't show up in the OTP response but is required in this type
+              },
+              stopId: adjustment.to.stopId
+            }
+          }
+
+          for (let i = itin.legs.length - 1; i >= 0; i--) {
+            const leg = itin.legs[i]
+            if (leg.transitLeg) {
+              itin.legs[i] = lastTransitLeg
+              break
+            }
+          }
+
+          for (let i = itin.legs.length - 1; i >= 0; i--) {
+            const leg = itin.legs[i]
+            if (leg.mode === 'WALK') {
+              const obj = JSON.parse(destinationRule.customWalkLegGeometry)
+              itin.legs[i] = {
+                ...obj,
+                to: {
+                  ...obj.to,
+                  name: zone.name
+                }
+              }
+            }
+          }
+        }
+      }
     })
   })
 
-  console.log('triggered rules', triggeredRules)
-
   console.log(itineraries[0])
 
-  itineraries.forEach((itin) => {
-    // only do this if itinerary triggers rule:
-    itin.duration -= 237
-    itin.endTime -= 237000
+  // itineraries.forEach((itin) => {
+  //   // only do this if itinerary triggers rule:
+  //   itin.duration -= 237
+  //   itin.endTime -= 237000
 
-    let transitLeg = getFirstTransitLeg(itin)
-    if (!transitLeg) return
-    transitLeg = {
-      ...transitLeg,
-      duration: transitLeg.duration - 120,
-      endTime: transitLeg.endTime - 120000,
-      intermediateStops: transitLeg.intermediateStops.slice(0, -1),
-      legGeometry: {
-        ...transitLeg.legGeometry,
-        length: transitLeg.legGeometry.length - 24,
-        points:
-          'qbhaHdjliVsa@|TYN]N]JYJe@He@He@Bg@@c@AkDIw@A{LBeKCkMIa@@a@Da@J]J_@Pa@VsE~C??k@`@[V[ZW`@Wb@Qh@GTIZGZCZsAjNOjAQlAQdAWhAmEfRYnAO|@Kx@Iz@E`AC|@?|@@z@D|@Fz@Hx@Jt@P|@p@bD??~AxHRz@Pp@Tr@Xv@nD~IPj@Pl@Rx@N~@J|@H|@Bl@@n@@n@At@ElAUzECb@Ad@?tS?l@Aj@]vLEr@E`@EPENENGLOVKJKHIFMDMDM@c@BcL?????ul@Ao@Ae@C]EuB_@]C[Ci@?_P?'
-      },
-      stopCalls: transitLeg.stopCalls?.slice(0, -1),
-      to: {
-        ...transitLeg.to,
-        lat: 47.592285,
-        lon: -122.326988,
-        name: 'Stadium',
-        stop: {
-          ...transitLeg.to.stop,
-          gtfsId: '40:99260',
-          id: 'U3RvcDo0MDo5OTI2MA',
-          lat: 47.592285,
-          lon: -122.326988,
-          name: 'Stadium' // oddly, this doesn't show up in the OTP response but is required in this type
-        },
-        stopId: '40:99260'
-      }
-    }
+  //   let transitLeg = getFirstTransitLeg(itin)
+  //   if (!transitLeg) return
+  //   transitLeg = {
+  //     ...transitLeg,
+  //     duration: transitLeg.duration - 120,
+  //     endTime: transitLeg.endTime - 120000,
+  //     intermediateStops: transitLeg.intermediateStops.slice(0, -1),
+  //     legGeometry: {
+  //       ...transitLeg.legGeometry,
+  //       length: transitLeg.legGeometry.length - 24,
+  //       points:
+  //         'qbhaHdjliVsa@|TYN]N]JYJe@He@He@Bg@@c@AkDIw@A{LBeKCkMIa@@a@Da@J]J_@Pa@VsE~C??k@`@[V[ZW`@Wb@Qh@GTIZGZCZsAjNOjAQlAQdAWhAmEfRYnAO|@Kx@Iz@E`AC|@?|@@z@D|@Fz@Hx@Jt@P|@p@bD??~AxHRz@Pp@Tr@Xv@nD~IPj@Pl@Rx@N~@J|@H|@Bl@@n@@n@At@ElAUzECb@Ad@?tS?l@Aj@]vLEr@E`@EPENENGLOVKJKHIFMDMDM@c@BcL?????ul@Ao@Ae@C]EuB_@]C[Ci@?_P?'
+  //     },
+  //     stopCalls: transitLeg.stopCalls?.slice(0, -1),
+  //     to: {
+  //       ...transitLeg.to,
+  //       lat: 47.592285,
+  //       lon: -122.326988,
+  //       name: 'Stadium',
+  //       stop: {
+  //         ...transitLeg.to.stop,
+  //         gtfsId: '40:99260',
+  //         id: 'U3RvcDo0MDo5OTI2MA',
+  //         lat: 47.592285,
+  //         lon: -122.326988,
+  //         name: 'Stadium' // oddly, this doesn't show up in the OTP response but is required in this type
+  //       },
+  //       stopId: '40:99260'
+  //     }
+  //   }
 
-    STADIUM_TO_ZONE_WALK_LEG.to.name = 'Seattle Stadium FIFA Zone'
+  //   STADIUM_TO_ZONE_WALK_LEG.to.name = 'Seattle Stadium FIFA Zone'
 
-    itin.legs[1] = transitLeg
-    itin.legs[2] = STADIUM_TO_ZONE_WALK_LEG
-  })
+  //   itin.legs[1] = transitLeg
+  //   itin.legs[2] = STADIUM_TO_ZONE_WALK_LEG
+  // })
 
   console.log(itineraries[0])
 
