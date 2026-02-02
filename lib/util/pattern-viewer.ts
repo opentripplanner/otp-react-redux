@@ -99,6 +99,9 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
         // Don't compare against ourself
         if (p.id === pattern.id) return false
 
+        // If the pattern has no stops, exclude it.
+        if (!p.stops || p.stops.length === 0) return false
+
         // If our pattern is longer, it's not a subset
         if ((p.stops?.length || 0) <= (pattern.stops?.length || 0)) return false
 

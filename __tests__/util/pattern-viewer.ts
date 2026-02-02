@@ -146,6 +146,17 @@ describe('util > pattern-viewer', () => {
           },
           route,
           stops: createStops(['S1', 'S3', 'S4', 'S5'])
+        },
+        {
+          desc: 'Pattern without stops',
+          headsign,
+          id: 'P6',
+          patternGeometry: {
+            length: 0,
+            points: ''
+          },
+          route,
+          stops: undefined
         }
       ]
       const { filteredPatterns, subPatterns } =
