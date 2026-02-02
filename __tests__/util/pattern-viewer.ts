@@ -93,14 +93,17 @@ describe('util > pattern-viewer', () => {
 
   describe('sortAndRemoveSubpatterns', () => {
     it('should sort and remove subpatterns', () => {
-      // Consider the following patterns P1, P2, P3, P4 of the same route:
+      // Consider the following patterns P1...P6 of the same route:
       // Stops S1 S2 S3 S4 S5 S6 S7 --> direction of travel
       // P1:   o--o--o--o--o
       // P2:         o--o-----o--o
       // P3:         o--o--o
       // P4:   o-----o--o--o
+      // P5:   o--o--o--o--o
+      // P6: <undefined stops>
       //
-      // P3 should be removed because it is a subset of P1 and P3.
+      // One of P1 or P5 should be removed because both have the exact same stops.
+      // P3 should be removed because it is a subset of P1, P4, and P5.
       // P1, P2, and P4 should be kept.
       const patterns: Pattern[] = [
         {
@@ -148,6 +151,17 @@ describe('util > pattern-viewer', () => {
           stops: createStops(['S1', 'S3', 'S4', 'S5'])
         },
         {
+          desc: 'P5 Pattern name (same stops as P1)',
+          headsign,
+          id: 'P5',
+          patternGeometry: {
+            length: 1404,
+            points: 'p5-points'
+          },
+          route,
+          stops: createStops(['S1', 'S2', 'S3', 'S4', 'S5'])
+        },
+        {
           desc: 'Pattern without stops',
           headsign,
           id: 'P6',
@@ -162,12 +176,16 @@ describe('util > pattern-viewer', () => {
       const { filteredPatterns, subPatterns } =
         sortAndRemoveSubpatterns(patterns)
       expect(filteredPatterns.length).toBe(3)
-      expect(filteredPatterns[0]).toBe(patterns[0])
+      expect([patterns[0], patterns[4]]).toContain(filteredPatterns[0])
       expect(filteredPatterns[1]).toBe(patterns[3])
       expect(filteredPatterns[2]).toBe(patterns[1])
       expect(subPatterns.P1).toContain('P3')
       expect(subPatterns.P3).toBe(undefined)
-      expect(subPatterns.P4).toBe(undefined)
+      expect(subPatterns.P4).toContain('P3')
+      expect(subPatterns.P5).toContain('P3')
+      expect(
+        subPatterns.P1.includes('P5') || subPatterns.P5.includes('P1')
+      ).toBeTruthy()
     })
   })
 })

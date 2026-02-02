@@ -83,27 +83,31 @@ export function extractMainHeadsigns(
  */
 export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
   // Sort patterns by length to make algorithm below more efficient
-  const patternsSortedByLength = [...patterns].sort(
-    (a, b) => (a.stops?.length || 0) - (b.stops?.length || 0)
-  )
+  const patternsSortedByLength = [...patterns]
+    .filter((pattern) => pattern.stops?.length)
+    .sort((a, b) => (a.stops?.length || 0) - (b.stops?.length || 0))
 
   const subPatterns: Record<string, string[]> = {}
 
-  // Remove all patterns that are subsets of larger patterns
+  // Keep patterns that are not subsets of larger patterns
   const filteredPatterns = patternsSortedByLength
     // Start with the largest for performance
     .reverse()
-    .filter((pattern) => {
+    .filter((pattern, patternIndex) => {
       // Compare to all other patterns TODO: make this beat O(n^2)
-      return !patternsSortedByLength.find((p) => {
+      let includePattern = true
+      patternsSortedByLength.forEach((p, index) => {
         // Don't compare against ourself
-        if (p.id === pattern.id) return false
+        if (p.id === pattern.id) return
 
         // If the pattern has no stops, exclude it.
-        if (!p.stops || p.stops.length === 0) return false
+        if (!p.stops || p.stops.length === 0) return
+
+        // Exclude patterns higher in the list to avoid circular references among patterns of same length.
+        if (index > patternIndex) return
 
         // If our pattern is longer, it's not a subset
-        if ((p.stops?.length || 0) <= (pattern.stops?.length || 0)) return false
+        if (p.stops.length < (pattern.stops?.length || 0)) return
 
         const isSubpattern = isValidSubsequence(
           p.stops?.map((s) => s.id) || [],
@@ -111,6 +115,7 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
         )
 
         if (isSubpattern) {
+          includePattern = false
           // Populate a list of subpatterns for the larger pattern.
           if (!subPatterns[p.id]) {
             subPatterns[p.id] = []
@@ -120,6 +125,8 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
 
         return isSubpattern
       })
+
+      return includePattern
     })
 
   return {
