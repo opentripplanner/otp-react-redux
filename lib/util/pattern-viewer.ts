@@ -1,3 +1,5 @@
+import { Stop } from '@opentripplanner/types'
+
 import { Pattern } from '../components/util/types'
 
 import { extractHeadsignFromPattern } from './viewer'
@@ -13,6 +15,10 @@ export interface PatternSummary {
 export interface SubPatternInfo {
   filteredPatterns: Pattern[]
   subPatterns: Record<string, string[]>
+}
+
+export interface StopWithParent extends Stop {
+  parentStation?: Stop
 }
 
 export function extractMainHeadsigns(
@@ -73,6 +79,13 @@ export function extractMainHeadsigns(
 }
 
 /**
+ * Obtains the parent stop id, if available, or the stop id.
+ */
+export function getParentStopOrStopGtfsId(stop: StopWithParent): string {
+  return stop.parentStation?.gtfsId || stop.gtfsId
+}
+
+/**
  * Returns a list of patterns, in descending length order, in which none is a subpattern of any other.
  * In the patterns below, only Patterns 1, 2, 5 should be retained:
  *   Pattern 1: Stops A, B, C, D
@@ -110,8 +123,8 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
         if (p.stops.length < (pattern.stops?.length || 0)) return
 
         const isSubpattern = isValidSubsequence(
-          p.stops?.map((s) => s.id) || [],
-          pattern.stops?.map((s) => s.id) || []
+          p.stops?.map(getParentStopOrStopGtfsId) || [],
+          pattern.stops?.map(getParentStopOrStopGtfsId) || []
         )
 
         if (isSubpattern) {
