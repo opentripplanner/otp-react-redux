@@ -63,6 +63,10 @@ const STADIUM_TO_ZONE_WALK_LEG =
   '{"accessibilityScore":null,"agency":null,"alerts":[],"arrivalDelay":0,"departureDelay":0,"distance":503.56,"dropOffBookingInfo":{"latestBookingTime":null},"dropoffType":"SCHEDULED","duration":493,"endTime":1769811163000,"fareProducts":[],"from":{"lat":47.592285,"lon":-122.326988,"name":"Stadium","rentalVehicle":null,"stop":{"alerts":[],"code":null,"gtfsId":"40:99260","id":"U3RvcDo0MDo5OTI2MA","lat":47.592285,"lon":-122.326988},"vertexType":"TRANSIT","stopCode":null,"stopId":"40:99260"},"headsign":null,"id":null,"interlineWithPreviousLeg":false,"intermediateStops":null,"legGeometry":{"length":67,"points":"wjnaHt~riV@??D?L?B?D?H?J?B?D?F?H?B?F?\\\\?@@BC@C@?D?D?jA?fC@FBFBD@??BCXAPA\\\\ZrADNFFHFDDFDH@D?DE@ABG?GCGEMW]GCKAI@IBGDIJEHCLCL?J?~C?T?@?n@BD?LSBE@?nAMCWG"},"mode":"WALK","pickupBookingInfo":null,"pickupType":"SCHEDULED","realTime":false,"realtimeState":null,"rentedBike":false,"rideHailingEstimate":null,"startTime":1769810670000,"steps":[{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":6.91,"elevationProfile":[],"lat":47.5922729,"lon":-122.3269878,"relativeDirection":"DEPART","stayOn":false,"streetName":"SODO Trail"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":131.37,"elevationProfile":[],"lat":47.5922724,"lon":-122.32708,"relativeDirection":"CONTINUE","stayOn":false,"streetName":"path"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":false,"distance":8.14,"elevationProfile":[],"lat":47.5922964,"lon":-122.3288022,"relativeDirection":"LEFT","stayOn":false,"streetName":"4th Avenue South"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":29.35,"elevationProfile":[],"lat":47.5922467,"lon":-122.3288776,"relativeDirection":"RIGHT","stayOn":false,"streetName":"sidewalk"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":true,"distance":261.64,"elevationProfile":[],"lat":47.5922872,"lon":-122.3292643,"relativeDirection":"SLIGHTLY_LEFT","stayOn":true,"streetName":"open area"},{"absoluteDirection":"NORTH","alerts":[],"area":false,"distance":10.64,"elevationProfile":[],"lat":47.5923255,"lon":-122.3311355,"relativeDirection":"RIGHT","stayOn":false,"streetName":"South Royal Brougham Way"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":34,"elevationProfile":[],"lat":47.5924202,"lon":-122.3311558,"relativeDirection":"LEFT","stayOn":true,"streetName":"South Royal Brougham Way"},{"absoluteDirection":"NORTH","alerts":[],"area":false,"distance":21.53,"elevationProfile":[],"lat":47.5924575,"lon":-122.3315618,"relativeDirection":"RIGHT","stayOn":false,"streetName":"service road"}],"stopCalls":[],"to":{"lat":47.5927964,"lon":-122.3317254,"name":"Freeway Park, Seattle, WA, USA","rentalVehicle":null,"stop":null,"vertexType":"NORMAL"},"transitLeg":false,"trip":null,"alightRule":"scheduled","boardRule":"scheduled","bookingRuleInfo":{"dropOff":{},"pickUp":{}},"routeColor":"333333","routeTextColor":""}'
 // '{"accessibilityScore":null,"agency":null,"alerts":[],"arrivalDelay":0,"departureDelay":0,"distance":503.56,"dropOffBookingInfo":{"latestBookingTime":null},"dropoffType":"SCHEDULED","duration":493,"endTime":1769811163000,"fareProducts":[],"from":{"lat":47.592285,"lon":-122.326988,"name":"Stadium","rentalVehicle":null,"stop":{"alerts":[],"code":null,"gtfsId":"40:99260","id":"U3RvcDo0MDo5OTI2MA","lat":47.592285,"lon":-122.326988},"vertexType":"TRANSIT","stopCode":null,"stopId":"40:99260"},"headsign":null,"id":null,"interlineWithPreviousLeg":false,"intermediateStops":null,"legGeometry":{"length":67,"points":"wjnaHt~riV@??D?L?B?D?H?J?B?D?F?H?B?F?\\?@@BC@C@?D?D?jA?fC@FBFBD@??BCXAPA\\ZrADNFFHFDDFDH@D?DE@ABG?GCGEMW]GCKAI@IBGDIJEHCLCL?J?~C?T?@?n@BD?LSBE@?nAMCWG"},"mode":"WALK","pickupBookingInfo":null,"pickupType":"SCHEDULED","realTime":false,"realtimeState":null,"rentedBike":false,"rideHailingEstimate":null,"startTime":1769810670000,"steps":[{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":6.91,"elevationProfile":[],"lat":47.5922729,"lon":-122.3269878,"relativeDirection":"DEPART","stayOn":false,"streetName":"SODO Trail"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":131.37,"elevationProfile":[],"lat":47.5922724,"lon":-122.32708,"relativeDirection":"CONTINUE","stayOn":false,"streetName":"path"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":false,"distance":8.14,"elevationProfile":[],"lat":47.5922964,"lon":-122.3288022,"relativeDirection":"LEFT","stayOn":false,"streetName":"4th Avenue South"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":29.35,"elevationProfile":[],"lat":47.5922467,"lon":-122.3288776,"relativeDirection":"RIGHT","stayOn":false,"streetName":"sidewalk"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":true,"distance":261.64,"elevationProfile":[],"lat":47.5922872,"lon":-122.3292643,"relativeDirection":"SLIGHTLY_LEFT","stayOn":true,"streetName":"open area"},{"absoluteDirection":"NORTH","alerts":[],"area":false,"distance":10.64,"elevationProfile":[],"lat":47.5923255,"lon":-122.3311355,"relativeDirection":"RIGHT","stayOn":false,"streetName":"South Royal Brougham Way"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":34,"elevationProfile":[],"lat":47.5924202,"lon":-122.3311558,"relativeDirection":"LEFT","stayOn":true,"streetName":"South Royal Brougham Way"},{"absoluteDirection":"NORTH","alerts":[],"area":false,"distance":21.53,"elevationProfile":[],"lat":47.5924575,"lon":-122.3315618,"relativeDirection":"RIGHT","stayOn":false,"streetName":"service road"}],"stopCalls":[],"to":{"lat":47.5927964,"lon":-122.3317254,"name":"Freeway Park, Seattle, WA, USA","rentalVehicle":null,"stop":null,"vertexType":"NORMAL"},"transitLeg":false,"trip":null,"alightRule":"scheduled","boardRule":"scheduled","bookingRuleInfo":{"dropOff":{},"pickUp":{}},"routeColor":"333333","routeTextColor":""}'
 
+const PIONEER_SQUARE_TO_ZONE_WALK_LEG =
+  '{"accessibilityScore":null,"agency":null,"alerts":[],"arrivalDelay":0,"departureDelay":0,"distance":745.26,"dropOffBookingInfo":{"latestBookingTime":null},"dropoffType":"SCHEDULED","duration":692,"endTime":1770068732000,"fareProducts":[],"from":{"lat":47.60256,"lon":-122.331216,"name":"Pioneer Square (Sound Transit)","rentalVehicle":null,"stop":null,"vertexType":"NORMAL"},"headsign":null,"id":null,"interlineWithPreviousLeg":false,"intermediateStops":null,"legGeometry":{"length":76,"points":"}jpaHdysiV`A{@HIHGDL@DBC^hABHDLJ@@?B?FBHB@?B??t@?@?F?D?P?`@?BnAgAd@?P?F?F?LA@B@?vB?L??FB?H?@AJA@?@C@?~B?B?DEF?@?B?H?DD@?lC?@@BAJ@N@B??CdC@@MPADAR@B?D?T?B?D?T?B?D?F?F@F??M?E"},"mode":"WALK","pickupBookingInfo":null,"pickupType":"SCHEDULED","realTime":false,"realtimeState":null,"rentedBike":false,"rideHailingEstimate":null,"startTime":1770068040000,"steps":[{"absoluteDirection":"SOUTHEAST","alerts":[],"area":false,"distance":67.67,"elevationProfile":[],"lat":47.6025566,"lon":-122.3312243,"relativeDirection":"DEPART","stayOn":false,"streetName":"3rd Avenue"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":false,"distance":67.23,"elevationProfile":[],"lat":47.6020628,"lon":-122.330919,"relativeDirection":"RIGHT","stayOn":false,"streetName":"sidewalk"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":19.78,"elevationProfile":[],"lat":47.6016432,"lon":-122.3314587,"relativeDirection":"RIGHT","stayOn":false,"streetName":"Yesler Way Cycletrack"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":4.19,"elevationProfile":[],"lat":47.6016435,"lon":-122.3317225,"relativeDirection":"CONTINUE","stayOn":false,"streetName":"2nd Avenue Cycletrack"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":21.76,"elevationProfile":[],"lat":47.6016407,"lon":-122.3317781,"relativeDirection":"CONTINUE","stayOn":false,"streetName":"path"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":false,"distance":1.83,"elevationProfile":[],"lat":47.6016489,"lon":-122.3320681,"relativeDirection":"SLIGHTLY_LEFT","stayOn":false,"streetName":"Yesler Way Cycletrack"},{"absoluteDirection":"SOUTHEAST","alerts":[],"area":false,"distance":72.6,"elevationProfile":[],"lat":47.6016401,"lon":-122.3320888,"relativeDirection":"LEFT","stayOn":false,"streetName":"2nd Avenue Extension South"},{"absoluteDirection":"SOUTH","alerts":[],"area":false,"distance":28.66,"elevationProfile":[],"lat":47.6010566,"lon":-122.3317253,"relativeDirection":"CONTINUE","stayOn":false,"streetName":"2nd Avenue South"},{"absoluteDirection":"SOUTH","alerts":[],"area":false,"distance":274.69,"elevationProfile":[],"lat":47.600806,"lon":-122.3317388,"relativeDirection":"LEFT","stayOn":true,"streetName":"2nd Avenue South"},{"absoluteDirection":"SOUTHEAST","alerts":[],"area":false,"distance":2.07,"elevationProfile":[],"lat":47.5983823,"lon":-122.3317495,"relativeDirection":"SLIGHTLY_LEFT","stayOn":false,"streetName":"South King Street"},{"absoluteDirection":"SOUTH","alerts":[],"area":false,"distance":15.82,"elevationProfile":[],"lat":47.5983677,"lon":-122.3317323,"relativeDirection":"RIGHT","stayOn":false,"streetName":"path"},{"absoluteDirection":"SOUTH","alerts":[],"area":false,"distance":78.21,"elevationProfile":[],"lat":47.5982265,"lon":-122.3317585,"relativeDirection":"CONTINUE","stayOn":false,"streetName":"Stadium Place South"},{"absoluteDirection":"EAST","alerts":[],"area":false,"distance":5.09,"elevationProfile":[],"lat":47.5975354,"lon":-122.3317431,"relativeDirection":"LEFT","stayOn":true,"streetName":"Stadium Place South"},{"absoluteDirection":"SOUTH","alerts":[],"area":false,"distance":78.53,"elevationProfile":[],"lat":47.5975208,"lon":-122.3316787,"relativeDirection":"RIGHT","stayOn":false,"streetName":"path"},{"absoluteDirection":"EAST","alerts":[],"area":false,"distance":7.17,"elevationProfile":[],"lat":47.5968155,"lon":-122.331671,"relativeDirection":"LEFT","stayOn":true,"streetName":"parking aisle"}],"stopCalls":[],"to":{"lat":47.5968293,"lon":-122.3315754,"name":"Muckleshoot Heritage Plaza, Seattle, WA, USA","rentalVehicle":null,"stop":null,"vertexType":"NORMAL"},"transitLeg":false,"trip":null,"alightRule":"scheduled","boardRule":"scheduled","bookingRuleInfo":{"dropOff":{},"pickUp":{}},"routeColor":"333333","routeTextColor":""}'
+// '{"accessibilityScore":null,"agency":null,"alerts":[],"arrivalDelay":0,"departureDelay":0,"distance":745.26,"dropOffBookingInfo":{"latestBookingTime":null},"dropoffType":"SCHEDULED","duration":692,"endTime":1770068732000,"fareProducts":[],"from":{"lat":47.60256,"lon":-122.331216,"name":"Pioneer Square (Sound Transit)","rentalVehicle":null,"stop":null,"vertexType":"NORMAL"},"headsign":null,"id":null,"interlineWithPreviousLeg":false,"intermediateStops":null,"legGeometry":{"length":76,"points":"}jpaHdysiV`A{@HIHGDL@DBC^hABHDLJ@@?B?FBHB@?B??t@?@?F?D?P?`@?BnAgAd@?P?F?F?LA@B@?vB?L??FB?H?@AJA@?@C@?~B?B?DEF?@?B?H?DD@?lC?@@BAJ@N@B??CdC@@MPADAR@B?D?T?B?D?T?B?D?F?F@F??M?E"},"mode":"WALK","pickupBookingInfo":null,"pickupType":"SCHEDULED","realTime":false,"realtimeState":null,"rentedBike":false,"rideHailingEstimate":null,"startTime":1770068040000,"steps":[{"absoluteDirection":"SOUTHEAST","alerts":[],"area":false,"distance":67.67,"elevationProfile":[],"lat":47.6025566,"lon":-122.3312243,"relativeDirection":"DEPART","stayOn":false,"streetName":"3rd Avenue"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":false,"distance":67.23,"elevationProfile":[],"lat":47.6020628,"lon":-122.330919,"relativeDirection":"RIGHT","stayOn":false,"streetName":"sidewalk"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":19.78,"elevationProfile":[],"lat":47.6016432,"lon":-122.3314587,"relativeDirection":"RIGHT","stayOn":false,"streetName":"Yesler Way Cycletrack"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":4.19,"elevationProfile":[],"lat":47.6016435,"lon":-122.3317225,"relativeDirection":"CONTINUE","stayOn":false,"streetName":"2nd Avenue Cycletrack"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":21.76,"elevationProfile":[],"lat":47.6016407,"lon":-122.3317781,"relativeDirection":"CONTINUE","stayOn":false,"streetName":"path"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":false,"distance":1.83,"elevationProfile":[],"lat":47.6016489,"lon":-122.3320681,"relativeDirection":"SLIGHTLY_LEFT","stayOn":false,"streetName":"Yesler Way Cycletrack"},{"absoluteDirection":"SOUTHEAST","alerts":[],"area":false,"distance":72.6,"elevationProfile":[],"lat":47.6016401,"lon":-122.3320888,"relativeDirection":"LEFT","stayOn":false,"streetName":"2nd Avenue Extension South"},{"absoluteDirection":"SOUTH","alerts":[],"area":false,"distance":28.66,"elevationProfile":[],"lat":47.6010566,"lon":-122.3317253,"relativeDirection":"CONTINUE","stayOn":false,"streetName":"2nd Avenue South"},{"absoluteDirection":"SOUTH","alerts":[],"area":false,"distance":274.69,"elevationProfile":[],"lat":47.600806,"lon":-122.3317388,"relativeDirection":"LEFT","stayOn":true,"streetName":"2nd Avenue South"},{"absoluteDirection":"SOUTHEAST","alerts":[],"area":false,"distance":2.07,"elevationProfile":[],"lat":47.5983823,"lon":-122.3317495,"relativeDirection":"SLIGHTLY_LEFT","stayOn":false,"streetName":"South King Street"},{"absoluteDirection":"SOUTH","alerts":[],"area":false,"distance":15.82,"elevationProfile":[],"lat":47.5983677,"lon":-122.3317323,"relativeDirection":"RIGHT","stayOn":false,"streetName":"path"},{"absoluteDirection":"SOUTH","alerts":[],"area":false,"distance":78.21,"elevationProfile":[],"lat":47.5982265,"lon":-122.3317585,"relativeDirection":"CONTINUE","stayOn":false,"streetName":"Stadium Place South"},{"absoluteDirection":"EAST","alerts":[],"area":false,"distance":5.09,"elevationProfile":[],"lat":47.5975354,"lon":-122.3317431,"relativeDirection":"LEFT","stayOn":true,"streetName":"Stadium Place South"},{"absoluteDirection":"SOUTH","alerts":[],"area":false,"distance":78.53,"elevationProfile":[],"lat":47.5975208,"lon":-122.3316787,"relativeDirection":"RIGHT","stayOn":false,"streetName":"path"},{"absoluteDirection":"EAST","alerts":[],"area":false,"distance":7.17,"elevationProfile":[],"lat":47.5968155,"lon":-122.331671,"relativeDirection":"LEFT","stayOn":true,"streetName":"parking aisle"}],"stopCalls":[],"to":{"lat":47.5968293,"lon":-122.3315754,"name":"Muckleshoot Heritage Plaza, Seattle, WA, USA","rentalVehicle":null,"stop":null,"vertexType":"NORMAL"},"transitLeg":false,"trip":null,"alightRule":"scheduled","boardRule":"scheduled","bookingRuleInfo":{"dropOff":{},"pickUp":{}},"routeColor":"333333","routeTextColor":""}'
+
 const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
   {
     // Seattle Stadium zone
@@ -109,10 +113,39 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
       {
         // SOUTHBOUND 1 Line trips TO Seattle Stadium
         accessibleStopToUse: 'CID_stop_id',
-        customWalkLegGeometry: '',
+        customWalkLegGeometry: PIONEER_SQUARE_TO_ZONE_WALK_LEG,
         headsign: 'Federal Way Downtown',
         route: '1 Line',
-        stopAdjustments: []
+        stopAdjustments: [
+          {
+            adjustment: {
+              duration: -120,
+              endTime: -120000,
+              intermediateStops: -1,
+              itineraryDuration: 123, // FIX (how does walk leg  change affect this?)
+              itineraryEndTime: 123, // FIX
+              legGeometry: {
+                length: -19,
+                pointsToCut: '??p@m@X[Xc@hEyHR]NQLQLO\\W^SPIPE`@If@AjI?N@J@HB'
+              },
+              stopCalls: -1,
+              to: {
+                lat: 47.602139,
+                lon: -122.331055,
+                name: 'Pioneer Square',
+                stop: {
+                  gtfsId: '40:501',
+                  id: 'U3RvcDo0MDo1MDE',
+                  lat: 47.602139,
+                  lon: -122.331055,
+                  name: 'Pioneer Square'
+                },
+                stopId: '40:501'
+              }
+            },
+            originalStop: "Int'l Dist/Chinatown"
+          }
+        ]
       },
       {
         // WESTBOUND 2 Line trips TO Seattle Stadium
@@ -447,55 +480,7 @@ export function collectItinerariesWithoutDuplicates(
     })
   })
 
-  console.log(itineraries[0])
-
-  // itineraries.forEach((itin) => {
-  //   // only do this if itinerary triggers rule:
-  //   itin.duration -= 237
-  //   itin.endTime -= 237000
-
-  //   let transitLeg = getFirstTransitLeg(itin)
-  //   if (!transitLeg) return
-  //   transitLeg = {
-  //     ...transitLeg,
-  //     duration: transitLeg.duration - 120,
-  //     endTime: transitLeg.endTime - 120000,
-  //     intermediateStops: transitLeg.intermediateStops.slice(0, -1),
-  //     legGeometry: {
-  //       ...transitLeg.legGeometry,
-  //       length: transitLeg.legGeometry.length - 24,
-  //       points:
-  //         'qbhaHdjliVsa@|TYN]N]JYJe@He@He@Bg@@c@AkDIw@A{LBeKCkMIa@@a@Da@J]J_@Pa@VsE~C??k@`@[V[ZW`@Wb@Qh@GTIZGZCZsAjNOjAQlAQdAWhAmEfRYnAO|@Kx@Iz@E`AC|@?|@@z@D|@Fz@Hx@Jt@P|@p@bD??~AxHRz@Pp@Tr@Xv@nD~IPj@Pl@Rx@N~@J|@H|@Bl@@n@@n@At@ElAUzECb@Ad@?tS?l@Aj@]vLEr@E`@EPENENGLOVKJKHIFMDMDM@c@BcL?????ul@Ao@Ae@C]EuB_@]C[Ci@?_P?'
-  //     },
-  //     stopCalls: transitLeg.stopCalls?.slice(0, -1),
-  //     to: {
-  //       ...transitLeg.to,
-  //       lat: 47.592285,
-  //       lon: -122.326988,
-  //       name: 'Stadium',
-  //       stop: {
-  //         ...transitLeg.to.stop,
-  //         gtfsId: '40:99260',
-  //         id: 'U3RvcDo0MDo5OTI2MA',
-  //         lat: 47.592285,
-  //         lon: -122.326988,
-  //         name: 'Stadium' // oddly, this doesn't show up in the OTP response but is required in this type
-  //       },
-  //       stopId: '40:99260'
-  //     }
-  //   }
-
-  //   STADIUM_TO_ZONE_WALK_LEG.to.name = 'Seattle Stadium FIFA Zone'
-
-  //   itin.legs[1] = transitLeg
-  //   itin.legs[2] = STADIUM_TO_ZONE_WALK_LEG
-  // })
-
-  console.log(itineraries[0])
-
-  console.log(JSON.stringify(itineraries?.[0]?.legs?.[2]))
-
-  console.log(STADIUM_TO_ZONE_WALK_LEG)
+  // console.log(JSON.stringify(itineraries?.[0]?.legs?.[0]))
 
   return itineraries
 }
