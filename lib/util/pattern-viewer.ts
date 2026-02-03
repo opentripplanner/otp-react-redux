@@ -109,6 +109,8 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
     .filter((pattern, patternIndex) => {
       // Compare to all other patterns TODO: make this beat O(n^2)
       let includePattern = true
+      const patternStops = pattern.stops?.map(getParentStopOrStopId) || []
+
       patternsSortedByLength.forEach((p, index) => {
         // Don't compare against ourself
         if (p.id === pattern.id) return
@@ -117,13 +119,10 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
         if (!p.stops || p.stops.length === 0) return
 
         // If our pattern is longer, it's not a subset
-        if (p.stops.length < (pattern.stops?.length || 0)) return
+        if (p.stops.length < patternStops.length) return
 
-        const pStops = p.stops?.map(getParentStopOrStopId) || []
-        const patternStops = pattern.stops?.map(getParentStopOrStopId) || []
-
+        const pStops = p.stops.map(getParentStopOrStopId)
         const isSubpattern = isValidSubsequence(pStops, patternStops)
-
         if (isSubpattern) {
           // Include pattern if it has not been referenced before among patterns of same stops.
           includePattern = index > patternIndex
