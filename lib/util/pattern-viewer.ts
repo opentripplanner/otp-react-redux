@@ -15,7 +15,6 @@ export interface PatternSummary {
 export interface SubPatternInfo {
   containingPatterns: Record<string, string>
   filteredPatterns: Pattern[]
-  subPatterns: Record<string, string[]>
 }
 
 export interface StopWithParent extends Stop {
@@ -101,7 +100,6 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
     .filter((pattern) => pattern.stops?.length)
     .sort((a, b) => (a.stops?.length || 0) - (b.stops?.length || 0))
 
-  const subPatterns: Record<string, string[]> = {}
   const containingPatterns: Record<string, string> = {}
 
   // Keep patterns that are not subsets of larger patterns
@@ -129,11 +127,6 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
         if (isSubpattern) {
           // Include pattern if it has not been referenced before among patterns of same stops.
           includePattern = index > patternIndex
-          // Populate a list of subpatterns for the larger pattern.
-          if (!subPatterns[p.id]) {
-            subPatterns[p.id] = []
-          }
-          subPatterns[p.id].push(pattern.id)
           // Populate the highest containing pattern.
           if (!containingPatterns[pattern.id]) {
             containingPatterns[pattern.id] = p.id
@@ -148,7 +141,6 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
     containingPatterns,
     // Fallback for if the filtering leaves us with a silly number of patterns
     // If this happens, it is not possible to know which pattern to keep.
-    filteredPatterns: filteredPatterns.length > 1 ? filteredPatterns : patterns,
-    subPatterns
+    filteredPatterns: filteredPatterns.length > 1 ? filteredPatterns : patterns
   }
 }
