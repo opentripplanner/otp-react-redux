@@ -12,7 +12,7 @@ export interface PatternSummary {
   lastStop?: string
 }
 
-export interface SubPatternInfo {
+export interface ProcessedPatterns {
   containingPatterns: Record<string, string>
   filteredPatterns: Pattern[]
 }
@@ -94,7 +94,9 @@ export function getParentStopOrStopId(stop: StopWithParent): string {
  *   Pattern 4: Stops       C, D, E
  *   Pattern 5: Stops A,    C, D, E
  */
-export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
+export function sortAndRemoveSubpatterns(
+  patterns: Pattern[]
+): ProcessedPatterns {
   // Sort patterns by length to make algorithm below more efficient
   const patternsSortedByLength = [...patterns]
     .filter((pattern) => pattern.stops?.length)
@@ -124,11 +126,11 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
         const pStops = p.stops.map(getParentStopOrStopId)
         const isSubpattern = isValidSubsequence(pStops, patternStops)
         if (isSubpattern) {
-          // Include pattern if it has not been referenced before among patterns of same stops.
-          includePattern = index > patternIndex
           // Populate the highest containing pattern.
           if (!containingPatterns[pattern.id]) {
             containingPatterns[pattern.id] = p.id
+            // Include pattern if it has not been referenced before among patterns of same stops.
+            includePattern = index > patternIndex
           }
         }
       })

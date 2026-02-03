@@ -93,7 +93,7 @@ describe('util > pattern-viewer', () => {
 
   describe('sortAndRemoveSubpatterns', () => {
     it('should sort and remove subpatterns', () => {
-      // Consider the following patterns P1...P6 of the same route:
+      // Consider the following patterns of the same route:
       // Stops S1 S2 S3 S4 S5 S6 S7 --> direction of travel
       // P1:   o--o--o--o--o
       // P2:         o--o-----o--o
@@ -101,9 +101,10 @@ describe('util > pattern-viewer', () => {
       // P4:   o-----o--o--o
       // P5:   o--o--o--o--o
       // P6: <undefined stops>
+      // P7:         o--o--o
       //
       // One of P1 or P5 should be removed because both have the exact same stops.
-      // P3 should be removed because it is a subset of P1, P4, and P5.
+      // P3 and P7 should be removed because they are a subset of P1, P4, and P5.
       // P1, P2, and P4 should be kept.
       const patterns: Pattern[] = [
         {
@@ -171,6 +172,17 @@ describe('util > pattern-viewer', () => {
           },
           route,
           stops: undefined
+        },
+        {
+          desc: 'P7 Pattern name',
+          headsign,
+          id: 'P7',
+          patternGeometry: {
+            length: 987,
+            points: 'p7-points'
+          },
+          route,
+          stops: createStops(['S3', 'S4', 'S5'])
         }
       ]
       const { containingPatterns, filteredPatterns } =
