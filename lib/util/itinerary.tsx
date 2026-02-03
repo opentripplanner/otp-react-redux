@@ -422,7 +422,7 @@ export function collectItinerariesWithoutDuplicates(
       lon: itin.legs[itin.legs.length - 1].to.lon
     }
 
-    const firstTransitLeg = getFirstTransitLeg(itin)
+    let firstTransitLeg = getFirstTransitLeg(itin)
     let lastTransitLeg = getLastTransitLeg(itin)
 
     soundTransitCustomRoutingZones.forEach((zone) => {
@@ -446,13 +446,77 @@ export function collectItinerariesWithoutDuplicates(
 
       if (originRule) {
         // apply rule stop adjustments (if applicable) to the first transit leg, first stop
+        const adjustment = originRule.stopAdjustments.find(
+          (adj) => adj.originalStop === firstTransitLeg?.from?.name
+        )?.adjustment
+        console.log('origin adjustment', adjustment)
+        if (firstTransitLeg && adjustment) {
+          firstTransitLeg = {
+            ...firstTransitLeg,
+            duration: firstTransitLeg.duration + adjustment.itineraryDuration,
+            endTime: firstTransitLeg.endTime + adjustment.itineraryEndTime,
+            from: {
+              ...firstTransitLeg.from,
+              lat: adjustment.toOrFrom.lat,
+              lon: adjustment.toOrFrom.lon,
+              name: adjustment.toOrFrom.name,
+              stop: {
+                ...firstTransitLeg.from.stop,
+                gtfsId: adjustment.toOrFrom.stop.gtfsId,
+                id: adjustment.toOrFrom.stop.id,
+                lat: adjustment.toOrFrom.stop.lat,
+                lon: adjustment.toOrFrom.stop.lon,
+                name: adjustment.toOrFrom.stop.name
+              },
+              stopId: adjustment.toOrFrom.stopId
+            },
+            intermediateStops: firstTransitLeg.intermediateStops.slice(
+              adjustment.intermediateStops
+            ),
+            legGeometry: {
+              ...firstTransitLeg.legGeometry,
+              length:
+                firstTransitLeg.legGeometry.length +
+                adjustment.legGeometry.length,
+              points: firstTransitLeg.legGeometry.points.replace(
+                adjustment.legGeometry.pointsToCut,
+                ''
+              )
+            },
+            stopCalls: firstTransitLeg.stopCalls?.slice(adjustment.stopCalls)
+          }
+
+          for (let i = 0; i <= itin.legs.length; i++) {
+            const leg = itin.legs[i]
+            if (leg.transitLeg) {
+              itin.legs[i] = firstTransitLeg
+              break
+            }
+          }
+
+          for (let i = 0; i < itin.legs.length; i++) {
+            const leg = itin.legs[i]
+            if (leg.mode === 'WALK') {
+              const obj = JSON.parse(originRule.customWalkLegGeometry)
+              itin.legs[i] = {
+                ...obj,
+                from: {
+                  ...obj.from,
+                  name: zone.name
+                }
+              }
+              break
+            }
+          }
+        }
       }
+
       if (destinationRule) {
         // apply rule stop adjustments (if applicable) to the last transit leg, last stop
         const adjustment = destinationRule.stopAdjustments.find(
           (adj) => adj.originalStop === lastTransitLeg?.to?.name
         )?.adjustment
-        console.log('adjustment', adjustment)
+        console.log('destination adjustment', adjustment)
         if (lastTransitLeg && adjustment) {
           lastTransitLeg = {
             ...lastTransitLeg,
@@ -510,6 +574,7 @@ export function collectItinerariesWithoutDuplicates(
                   name: zone.name
                 }
               }
+              break
             }
           }
         }
