@@ -33,7 +33,7 @@ interface StopAdjustment {
     pointsToCut: string
   }
   stopCalls: number
-  to: {
+  toOrFrom: {
     lat: number
     lon: number
     name: string
@@ -92,7 +92,7 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
                   'uA?g@Be@H[JcBj@o@PsGfBc@H_@D]@]?YC{@Gc@A]?}ADQ?IAKCk@UKAOA_C?'
               },
               stopCalls: -1,
-              to: {
+              toOrFrom: {
                 lat: 47.592285,
                 lon: -122.326988,
                 name: 'Stadium',
@@ -129,7 +129,7 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
                 pointsToCut: '??p@m@X[Xc@hEyHR]NQLQLO\\W^SPIPE`@If@AjI?N@J@HB'
               },
               stopCalls: -1,
-              to: {
+              toOrFrom: {
                 lat: 47.602139,
                 lon: -122.331055,
                 name: 'Pioneer Square',
@@ -439,18 +439,18 @@ export function collectItinerariesWithoutDuplicates(
             stopCalls: lastTransitLeg.stopCalls?.slice(0, adjustment.stopCalls),
             to: {
               ...lastTransitLeg.to,
-              lat: adjustment.to.lat,
-              lon: adjustment.to.lon,
-              name: adjustment.to.name,
+              lat: adjustment.toOrFrom.lat,
+              lon: adjustment.toOrFrom.lon,
+              name: adjustment.toOrFrom.name,
               stop: {
                 ...lastTransitLeg.to.stop,
-                gtfsId: adjustment.to.stop.gtfsId,
-                id: adjustment.to.stop.id,
-                lat: adjustment.to.stop.lat,
-                lon: adjustment.to.stop.lon,
-                name: adjustment.to.stop.name // oddly, this doesn't show up in the OTP response but is required in this type
+                gtfsId: adjustment.toOrFrom.stop.gtfsId,
+                id: adjustment.toOrFrom.stop.id,
+                lat: adjustment.toOrFrom.stop.lat,
+                lon: adjustment.toOrFrom.stop.lon,
+                name: adjustment.toOrFrom.stop.name // oddly, this doesn't show up in the OTP response but is required in this type
               },
-              stopId: adjustment.to.stopId
+              stopId: adjustment.toOrFrom.stopId
             }
           }
 
