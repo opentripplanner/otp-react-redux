@@ -1,5 +1,3 @@
-// TODO: Typescript
-/* eslint-disable react/prop-types */
 /**
  * This overlay is similar to gtfs-rt-vehicle-overlay in that it shows
  * realtime positions of vehicles on a route using the otp-ui/transit-vehicle-overlay.
@@ -14,6 +12,7 @@
 
 import { connect } from 'react-redux'
 import { FormattedMessage, FormattedNumber, useIntl } from 'react-intl'
+import { TransitVehicle } from '@opentripplanner/types'
 import React from 'react'
 import TransitVehicleOverlay, {
   Circle,
@@ -21,13 +20,26 @@ import TransitVehicleOverlay, {
   withRouteColorBackground
 } from '@opentripplanner/transit-vehicle-overlay'
 
+import { AppReduxState } from '../../util/state-types'
 import { capitalizeFirst } from '../../util/ui'
 import { DEFAULT_ROUTE_COLOR } from '../util/colors'
 import { formatDuration } from '../util/formatted-duration'
 import FormattedTransitVehicleStatus from '../util/formatted-transit-vehicle-status'
 
-function VehicleTooltip(props) {
-  const { vehicle } = props
+interface TransitVehicleExt extends TransitVehicle {
+  label?: string
+  nextStopName?: string
+  patternId?: string
+  speed: number
+  stopStatus?: string
+  textColor?: string
+}
+
+interface VehicleTooltipProps {
+  vehicle: TransitVehicleExt
+}
+
+function VehicleTooltip({ vehicle }: VehicleTooltipProps): React.ReactNode {
   const intl = useIntl()
 
   const scopedVehicleId = vehicle?.vehicleId?.split(':')?.[1]
@@ -39,8 +51,8 @@ function VehicleTooltip(props) {
   // Otherwise, the label itself is enough
   //   (this is TriMet-specific, when label contains text such as "MAX Green").
   if (
-    vehicleLabel !== null &&
-    (vehicleLabel?.length <= 5 || scopedVehicleId || vehicle?.vehicleId)
+    !!vehicleLabel &&
+    (vehicleLabel.length <= 5 || scopedVehicleId || vehicle?.vehicleId)
   ) {
     vehicleLabel = intl.formatMessage(
       { id: 'components.TransitVehicleOverlay.vehicleName' },
@@ -52,9 +64,6 @@ function VehicleTooltip(props) {
 
   const stopStatus = vehicle?.stopStatus || 'in_transit_to'
 
-  // FIXME: This may not be timezone adjusted as reported seconds may be in the wrong timezone.
-  // All needed info to fix this is available via route.agency.timezone
-  // However, the needed coreUtils methods are not updated to support this
   return (
     <>
       {/* FIXME: move back to core-utils for time handling */}
@@ -67,7 +76,7 @@ function VehicleTooltip(props) {
             { id: 'common.time.durationAgo' },
             {
               duration: formatDuration(
-                Math.floor(Date.now() / 1000 - vehicle?.seconds),
+                Math.floor(Date.now() / 1000 - (vehicle?.seconds || 0)),
                 intl,
                 true
               )
@@ -75,7 +84,7 @@ function VehicleTooltip(props) {
           )
         )}
       </div>
-      {stopStatus !== 'STOPPED_AT' && vehicle?.speed > 0 && (
+      {stopStatus !== 'STOPPED_AT' && vehicle.speed > 0 && (
         <div>
           <FormattedMessage
             id="components.TransitVehicleOverlay.travelingAt"
@@ -114,6 +123,7 @@ const CaretTouchingBorder = withCaret(Circle, {
 
 // Round vehicle symbol with arrow/caret on the border,
 // and showing the route color with a transparent effect on hover.
+// @ts-expect-error This visual component does not deal with vehicle data directly.
 const IconContainer = withRouteColorBackground(CaretTouchingBorder, {
   alphaHex: 'aa',
   display: 'onhover'
@@ -121,7 +131,7 @@ const IconContainer = withRouteColorBackground(CaretTouchingBorder, {
 
 // connect to the redux store
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: AppReduxState) => {
   const viewedRoute = state.otp.ui.viewedRoute
   const { patternId, routeId } = viewedRoute || {}
   const route = state.otp.transitIndex?.routes?.[routeId]
@@ -135,7 +145,7 @@ const mapStateToProps = (state) => {
 
   // Add missing fields to vehicle list
   if (routeId) {
-    vehicleList = route?.vehicles?.map((vehicle) => {
+    vehicleList = route?.vehicles?.map((vehicle: TransitVehicleExt) => {
       vehicle.routeType = route?.mode
       vehicle.routeColor =
         route.color && !route.color.includes('#')
@@ -153,9 +163,9 @@ const mapStateToProps = (state) => {
     // Also include vehicles in hidden subpatterns of the pattern being viewed.
     if (patternId && vehicleList) {
       vehicleList = vehicleList.filter(
-        (vehicle) =>
+        (vehicle: TransitVehicleExt) =>
           vehicle.patternId === patternId ||
-          route.containingPatterns?.[vehicle.patternId] === patternId
+          route.containingPatterns?.[vehicle.patternId || ''] === patternId
       )
     }
   }
@@ -171,4 +181,5 @@ const mapStateToProps = (state) => {
   }
 }
 
+// @ts-expect-error Type error is unclear on what type ReactNode conflicts with.
 export default connect(mapStateToProps)(TransitVehicleOverlay)
