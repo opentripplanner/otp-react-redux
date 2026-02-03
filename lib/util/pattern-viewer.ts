@@ -81,8 +81,8 @@ export function extractMainHeadsigns(
 /**
  * Obtains the parent stop id, if available, or the stop id.
  */
-export function getParentStopOrStopGtfsId(stop: StopWithParent): string {
-  return stop.parentStation?.gtfsId || stop.gtfsId
+export function getParentStopOrStopId(stop: StopWithParent): string {
+  return stop.parentStation?.id || stop.id
 }
 
 /**
@@ -122,10 +122,10 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
         // If our pattern is longer, it's not a subset
         if (p.stops.length < (pattern.stops?.length || 0)) return
 
-        const isSubpattern = isValidSubsequence(
-          p.stops?.map(getParentStopOrStopGtfsId) || [],
-          pattern.stops?.map(getParentStopOrStopGtfsId) || []
-        )
+        const pStops = p.stops?.map(getParentStopOrStopId) || []
+        const patternStops = pattern.stops?.map(getParentStopOrStopId) || []
+
+        const isSubpattern = isValidSubsequence(pStops, patternStops)
 
         if (isSubpattern) {
           includePattern = false
