@@ -13,6 +13,7 @@ export interface PatternSummary {
 }
 
 export interface SubPatternInfo {
+  containingPatterns: Record<string, string>
   filteredPatterns: Pattern[]
   subPatterns: Record<string, string[]>
 }
@@ -101,6 +102,7 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
     .sort((a, b) => (a.stops?.length || 0) - (b.stops?.length || 0))
 
   const subPatterns: Record<string, string[]> = {}
+  const containingPatterns: Record<string, string> = {}
 
   // Keep patterns that are not subsets of larger patterns
   const filteredPatterns = patternsSortedByLength
@@ -116,9 +118,6 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
         // If the pattern has no stops, exclude it.
         if (!p.stops || p.stops.length === 0) return
 
-        // Exclude patterns higher in the list to avoid circular references among patterns of same length.
-        if (index > patternIndex) return
-
         // If our pattern is longer, it's not a subset
         if (p.stops.length < (pattern.stops?.length || 0)) return
 
@@ -128,21 +127,25 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
         const isSubpattern = isValidSubsequence(pStops, patternStops)
 
         if (isSubpattern) {
-          includePattern = false
+          // Include pattern if it has not been referenced before among patterns of same stops.
+          includePattern = index > patternIndex
           // Populate a list of subpatterns for the larger pattern.
           if (!subPatterns[p.id]) {
             subPatterns[p.id] = []
           }
           subPatterns[p.id].push(pattern.id)
+          // Populate the highest containing pattern.
+          if (!containingPatterns[pattern.id]) {
+            containingPatterns[pattern.id] = p.id
+          }
         }
-
-        return isSubpattern
       })
 
       return includePattern
     })
 
   return {
+    containingPatterns,
     // Fallback for if the filtering leaves us with a silly number of patterns
     // If this happens, it is not possible to know which pattern to keep.
     filteredPatterns: filteredPatterns.length > 1 ? filteredPatterns : patterns,

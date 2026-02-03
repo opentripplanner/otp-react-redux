@@ -173,18 +173,23 @@ describe('util > pattern-viewer', () => {
           stops: undefined
         }
       ]
-      const { filteredPatterns, subPatterns } =
+      const { containingPatterns, filteredPatterns, subPatterns } =
         sortAndRemoveSubpatterns(patterns)
       expect(filteredPatterns.length).toBe(3)
-      expect([patterns[0], patterns[4]]).toContain(filteredPatterns[0])
+      expect(['P1', 'P5']).toContain(filteredPatterns[0].id)
       expect(filteredPatterns[1]).toBe(patterns[3])
       expect(filteredPatterns[2]).toBe(patterns[1])
       expect(subPatterns.P1).toContain('P3')
+      expect(['P1', 'P5']).toContain(containingPatterns.P3)
       expect(subPatterns.P3).toBe(undefined)
       expect(subPatterns.P4).toContain('P3')
+      expect(containingPatterns.P4).toBe(undefined)
       expect(subPatterns.P5).toContain('P3')
       expect(
-        subPatterns.P1.includes('P5') || subPatterns.P5.includes('P1')
+        subPatterns.P1.includes('P5') && subPatterns.P5.includes('P1')
+      ).toBeTruthy()
+      expect(
+        containingPatterns.P1 === 'P5' || containingPatterns.P5 === 'P1'
       ).toBeTruthy()
     })
   })
