@@ -557,7 +557,7 @@ components:
       untogglePause: 繼續
     inactive:
       description: 繼續行程監控，以查看更新的狀態
-      heading: 行程監控已暫停
+      heading: 行程監控已暫停.
     nextTripNotPossible:
       description: |
         行程規劃器無法找到您今天的行程。請嘗試重新規劃預定行程，以尋找替代路線。
@@ -572,7 +572,7 @@ components:
       heading: 行程尚未計算
     snoozed:
       description: 取消延遲行程監控，以查看更新的狀態。
-      heading: 已為今天延遲行程監控
+      heading: 已為今天延遲行程監控.
     upcoming:
       nextTripBegins: >-
         下一個行程將在{tripDatetime, date, ::eeeee yyyyMMdd}的{tripDatetime, time,
@@ -593,6 +593,7 @@ components:
     happensOnDays: 發生於：{days}
     notifications: 預定出發前{leadTimeInMinutes}分鐘
     notificationsPaused: 通知已停用
+    notificationsSnoozed: 已為今天延遲行程監控.
   TripTools:
     copyLink: 複製連結
     header: 行程工具
