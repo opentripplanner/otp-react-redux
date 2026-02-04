@@ -456,7 +456,8 @@ export function collectItinerariesWithoutDuplicates(
 
   // only works for single-zone configs
 
-  itineraries.forEach((itin) => {
+  for (let i = 0; i < itineraries.length; i++) {
+    const itin = itineraries[i]
     const origin = { lat: itin.legs[0].from.lat, lon: itin.legs[0].from.lon }
     const destination = {
       lat: itin.legs[itin.legs.length - 1].to.lat,
@@ -621,10 +622,10 @@ export function collectItinerariesWithoutDuplicates(
         }
       }
     })
-  })
+  }
 
-  console.log(JSON.stringify(itineraries?.[0]?.legs?.[1]))
-  console.log(itineraries?.[0]?.legs?.[1]?.legGeometry?.points)
+  console.log(JSON.stringify(itineraries?.[0]?.legs?.[0]))
+  console.log(itineraries?.[0]?.legs?.[0]?.legGeometry?.points)
 
   return itineraries
 }
