@@ -665,6 +665,7 @@ components:
     notifications: 预定出发前 {leadTimeInMinutes}
     notificationsPaused: "通知: 已禁用"
     timeAndDuration: 行程时间与时长
+    notificationsSnoozed: 已暂停今日通知.
   TripTools:
     copyLink: 复制链接
     header: 工具
