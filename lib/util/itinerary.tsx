@@ -32,6 +32,7 @@ interface StopAdjustment {
   itineraryEndTime: number
   legGeometry: {
     length: number
+    pointsToAdd: string
     pointsToCut: string
   }
   stopCalls: number
@@ -95,6 +96,7 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               itineraryEndTime: -237000,
               legGeometry: {
                 length: -24,
+                pointsToAdd: '',
                 pointsToCut:
                   'uA?g@Be@H[JcBj@o@PsGfBc@H_@D]@]?YC{@Gc@A]?}ADQ?IAKCk@UKAOA_C?'
               },
@@ -133,6 +135,7 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               itineraryEndTime: 123, // FIX
               legGeometry: {
                 length: -19,
+                pointsToAdd: '',
                 pointsToCut: '??p@m@X[Xc@hEyHR]NQLQLO\\W^SPIPE`@If@AjI?N@J@HB'
               },
               stopCalls: -1,
@@ -182,7 +185,9 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               itineraryEndTime: 123, // FIX
               legGeometry: {
                 length: -16,
-                pointsToCut: '' // FIX
+                pointsToAdd: 'unpaHb|siVw@j@',
+                pointsToCut:
+                  'eqoaHtdsiV_FAi@B_@FQFQF_@R]X[\\OTQZsEhI]f@YZoE|DIH??w@j@'
               },
               stopCalls: 1,
               toOrFrom: {
@@ -480,7 +485,7 @@ export function collectItinerariesWithoutDuplicates(
                 adjustment.legGeometry.length,
               points: firstTransitLeg.legGeometry.points.replace(
                 adjustment.legGeometry.pointsToCut,
-                ''
+                adjustment.legGeometry.pointsToAdd
               )
             },
             stopCalls: firstTransitLeg.stopCalls?.slice(adjustment.stopCalls)
@@ -534,7 +539,7 @@ export function collectItinerariesWithoutDuplicates(
               // points: adjustment.legGeometry.points
               points: lastTransitLeg.legGeometry.points.replace(
                 adjustment.legGeometry.pointsToCut,
-                ''
+                adjustment.legGeometry.pointsToAdd
               )
             },
             stopCalls: lastTransitLeg.stopCalls?.slice(0, adjustment.stopCalls),
@@ -582,7 +587,8 @@ export function collectItinerariesWithoutDuplicates(
     })
   })
 
-  console.log(JSON.stringify(itineraries?.[0]?.legs?.[0]))
+  console.log(JSON.stringify(itineraries?.[0]?.legs?.[1]))
+  console.log(itineraries?.[0]?.legs?.[1]?.legGeometry?.points)
 
   return itineraries
 }
