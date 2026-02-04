@@ -741,7 +741,7 @@ components:
       untogglePause: Reanudar
     inactive:
       description: Reanudar para recebir notificaciones.
-      heading: La supervisión del viaje está en pausa
+      heading: La supervisión del viaje está en pausa.
     nextTripNotPossible:
       description: >
         El planificador de viajes no ha podido encontrar su viaje hoy. Intente
@@ -787,7 +787,7 @@ components:
     happensOnDays: "Ocurre en: {days}"
     monitoredTripDays: Días de viaje monitoreados
     notifications: "{leadTimeInMinutes} minutos antes de la salida programada"
-    notificationsPaused: Notificaciones desactivadas
+    notificationsPaused: Notificaciones desactivadas.
     notificationsSnoozed: Notificaciones suspendidas por hoy.
     timeAndDuration: Tiempo y duración del viaje
   TripTools:
