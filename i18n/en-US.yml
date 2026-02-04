@@ -685,7 +685,9 @@ components:
   TripPreviewLayout:
     previewTrip: Preview Trip
   TripStatus:
-    alerts: "{alerts, plural, one {# alert!} other {# alerts!}}"
+    alerts: >-
+      There {alerts, plural, one {# is one alert} other {are # alerts}} on your
+      trip
     deleteTrip: Delete Trip
     planNewTrip: Plan New Trip
   TripStatusRenderers:
