@@ -36,14 +36,6 @@ const SettingsList = styled.ul`
   }
 `
 
-const Summary = styled.summary`
-  /* Revert display:block set by Bootstrap that hides the native expand/collapse caret. */
-  display: revert-layer;
-  /* Format summary as labels */
-  font-weight: 700;
-  margin-bottom: 5px;
-`
-
 interface Props extends FormikProps<MonitoredTrip> {
   isReadOnly: boolean
   notificationChannel: string
@@ -162,32 +154,29 @@ class TripNotificationsPane extends Component<Props> {
             </>
           ) : null}
 
-          <details>
-            <Summary>
-              <FormattedMessage id="components.TripNotificationsPane.advancedSettings" />
-            </Summary>
-            <SettingsList>
-              <li>
-                <Select
-                  label={
-                    <FormattedMessage id="components.TripNotificationsPane.monitorThisTrip" />
-                  }
-                  name="leadTimeInMinutes"
-                >
-                  <DurationOptions
-                    decoratorFunc={(time, intl) => {
-                      return intl.formatMessage(
-                        { id: 'components.TripNotificationsPane.timeBefore' },
-                        { time }
-                      )
-                    }}
-                    defaultValue={30}
-                    minuteOptions={[15, 30, 45, 60]}
-                  />
-                </Select>
-              </li>
-            </SettingsList>
-          </details>
+          <FormattedMessage id="components.TripNotificationsPane.advancedSettings" />
+
+          <SettingsList>
+            <li>
+              <Select
+                label={
+                  <FormattedMessage id="components.TripNotificationsPane.monitorThisTrip" />
+                }
+                name="leadTimeInMinutes"
+              >
+                <DurationOptions
+                  decoratorFunc={(time, intl) => {
+                    return intl.formatMessage(
+                      { id: 'components.TripNotificationsPane.timeBefore' },
+                      { time }
+                    )
+                  }}
+                  defaultValue={30}
+                  minuteOptions={[15, 30, 45, 60]}
+                />
+              </Select>
+            </li>
+          </SettingsList>
         </FieldSet>
       )
     }

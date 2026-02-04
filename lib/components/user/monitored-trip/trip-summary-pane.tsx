@@ -5,14 +5,16 @@ import { Calendar } from '@styled-icons/fa-regular/Calendar'
 import { Clock } from '@styled-icons/fa-regular/Clock'
 import { FormattedDate, FormattedMessage, useIntl } from 'react-intl'
 import LocationIcon from '@opentripplanner/location-icon'
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
+import { ComponentContext } from '../../../util/contexts'
 import { dayFieldsToArray } from '../../../util/monitored-trip'
 import { grey } from '../../util/colors'
 import { InlineLoading } from '../../narrative/loading'
 import { MonitoredTripProps } from '../types'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
+import MetroItineraryRoutes from '../../narrative/metro/metro-itinerary-routes'
 
 import MonitoredDays from './trip-monitored-days'
 import TripSummary from './trip-duration-summary'
@@ -27,6 +29,10 @@ const SavedTripBody = styled.div`
   display: flex;
   justify-content: center;
   padding: 0 0 0 15px;
+
+  .trip-details-list .routes-container {
+    margin-top: -15px !important;
+  }
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -107,7 +113,7 @@ const TripDetailsList = styled.ul`
   padding: 0;
 `
 
-const ToggleNotificationButton = styled.button`
+export const ToggleNotificationButton = styled.button`
   background: transparent;
   border: none;
   font-style: italic;
@@ -119,13 +125,18 @@ const TripSummaryPane = ({
   from,
   handleTogglePauseMonitoring,
   handleToggleSnoozeMonitoring,
+  isEditingTrip,
   isReadOnly,
   monitoredTrip,
   pendingRequest,
   to
-}: MonitoredTripProps): JSX.Element => {
+}: { isEditingTrip?: boolean } & MonitoredTripProps): JSX.Element => {
   const intl = useIntl()
-  const { itinerary, leadTimeInMinutes } = monitoredTrip
+  const itinerary = monitoredTrip.itinerary
+  const leadTimeInMinutes = monitoredTrip.leadTimeInMinutes
+  // @ts-expect-error No type on ComponentContext
+  const { LegIcon } = useContext(ComponentContext)
+  console.log(monitoredTrip)
   if (!itinerary) {
     return (
       <div>
@@ -173,7 +184,7 @@ const TripSummaryPane = ({
             values={{ from: from?.name, to: to?.name }}
           />
         </InvisibleA11yLabel>
-        <LocationDetails aria-hidden>
+        <LocationDetails aria-hidden className="trip-location-details">
           <TextWIcon>
             {/* Location Icon does not allow a title prop so use a span wrapper for a title tooltip */}
             <span
@@ -197,7 +208,7 @@ const TripSummaryPane = ({
           </TextWIcon>
         </LocationDetails>
         <ItineraryDetails>
-          <TripDetailsList>
+          <TripDetailsList className="trip-details-list">
             {/* Trip time and duration */}
             <TripDetailWithIcon as="li">
               <Clock
@@ -208,67 +219,81 @@ const TripSummaryPane = ({
               />
               <TripSummary monitoredTrip={monitoredTrip} />
             </TripDetailWithIcon>
-            {/* Available trip days */}
-            <TripDetailWithIcon as="li">
-              <Calendar
-                aria-hidden
-                title={intl.formatMessage({
-                  id: 'components.TripSummaryPane.monitoredTripDays'
-                })}
-              />
-              {displayedDays}
-            </TripDetailWithIcon>
-            {/* Trip notification info */}
-            <TripDetailWithIcon as="li">
-              {isActiveAndNotSnoozed ? (
-                <Bell
-                  aria-label={notificationLabel}
-                  title={notificationLabel}
+            {/* Itinerary route block (for save trip page) */}
+            {isEditingTrip && (
+              <li>
+                <MetroItineraryRoutes
+                  expanded={false}
+                  itinerary={itinerary}
+                  LegIcon={LegIcon}
                 />
-              ) : (
-                <BellSlash width={20} />
-              )}
-              <span>
-                {isActiveAndNotSnoozed && (
-                  <FormattedMessage
-                    id="components.TripSummaryPane.notifications"
-                    values={{ leadTimeInMinutes }}
+              </li>
+            )}
+            {/* Available trip days */}
+            {!isEditingTrip && (
+              <TripDetailWithIcon as="li">
+                <Calendar
+                  aria-hidden
+                  title={intl.formatMessage({
+                    id: 'components.TripSummaryPane.monitoredTripDays'
+                  })}
+                />
+                {displayedDays}
+              </TripDetailWithIcon>
+            )}
+            {/* Trip notification info */}
+            {!isEditingTrip && (
+              <TripDetailWithIcon as="li">
+                {isActiveAndNotSnoozed ? (
+                  <Bell
+                    aria-label={notificationLabel}
+                    title={notificationLabel}
                   />
+                ) : (
+                  <BellSlash width={20} />
                 )}
-                {isActiveAndSnoozed && (
-                  <FormattedMessage
-                    id="components.TripSummaryPane.notificationsSnoozed"
-                    values={{ leadTimeInMinutes }}
-                  />
-                )}
-                {!monitoredTrip.isActive && (
-                  <FormattedMessage
-                    id="components.TripSummaryPane.notificationsPaused"
-                    values={{ leadTimeInMinutes }}
-                  />
-                )}
-                {!isReadOnly && (
-                  <>
-                    <br />
-                    <ToggleNotificationButton
-                      disabled={pendingRequest === 'pause'}
-                      onClick={handleNotificationToggle}
-                    >
-                      {pendingRequest === 'pause' ? (
-                        /* Make loader fit */
-                        <InlineLoading />
-                      ) : isActiveAndSnoozed ? (
-                        <FormattedMessage id="components.SavedTripList.unsnooze" />
-                      ) : isActiveAndNotSnoozed ? (
-                        <FormattedMessage id="components.SavedTripList.pause" />
-                      ) : (
-                        <FormattedMessage id="components.SavedTripList.resume" />
-                      )}
-                    </ToggleNotificationButton>
-                  </>
-                )}
-              </span>
-            </TripDetailWithIcon>
+                <span>
+                  {isActiveAndNotSnoozed && (
+                    <FormattedMessage
+                      id="components.TripSummaryPane.notifications"
+                      values={{ leadTimeInMinutes }}
+                    />
+                  )}
+                  {isActiveAndSnoozed && (
+                    <FormattedMessage
+                      id="components.TripSummaryPane.notificationsSnoozed"
+                      values={{ leadTimeInMinutes }}
+                    />
+                  )}
+                  {!monitoredTrip.isActive && (
+                    <FormattedMessage
+                      id="components.TripSummaryPane.notificationsPaused"
+                      values={{ leadTimeInMinutes }}
+                    />
+                  )}
+                  {!isReadOnly && (
+                    <>
+                      <br />
+                      <ToggleNotificationButton
+                        disabled={pendingRequest === 'pause'}
+                        onClick={handleNotificationToggle}
+                      >
+                        {pendingRequest === 'pause' ? (
+                          /* Make loader fit */
+                          <InlineLoading />
+                        ) : isActiveAndSnoozed ? (
+                          <FormattedMessage id="components.SavedTripList.unsnooze" />
+                        ) : isActiveAndNotSnoozed ? (
+                          <FormattedMessage id="components.SavedTripList.pause" />
+                        ) : (
+                          <FormattedMessage id="components.SavedTripList.resume" />
+                        )}
+                      </ToggleNotificationButton>
+                    </>
+                  )}
+                </span>
+              </TripDetailWithIcon>
+            )}
           </TripDetailsList>
         </ItineraryDetails>
       </SavedTripBody>
