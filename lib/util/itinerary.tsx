@@ -902,15 +902,25 @@ const adjustItinerary = (
     for (let i = 0; i < updatedItinerary.legs.length; i++) {
       const leg = updatedItinerary.legs[i]
       if (leg.mode === 'WALK') {
-        // need to protect this parse more
-        const obj = JSON.parse(
-          customWalkLegGeometry(updatedItinerary.startTime)
-        )
-        updatedItinerary.legs[i] = {
-          ...obj,
-          from: {
-            ...obj.from,
-            name: zoneName || obj.from.name
+        try {
+          const obj = JSON.parse(
+            customWalkLegGeometry(updatedItinerary.startTime)
+          )
+          updatedItinerary.legs[i] = {
+            ...obj,
+            from: {
+              ...obj.from,
+              name: zoneName || obj.from.name
+            }
+          }
+        } catch (error) {
+          console.error('unable to parse custom walk leg', error)
+          updatedItinerary.legs[i] = {
+            ...leg,
+            from: {
+              ...leg.from,
+              name: zoneName || leg.from.name
+            }
           }
         }
         break
@@ -946,13 +956,25 @@ const adjustItinerary = (
     for (let i = updatedItinerary.legs.length - 1; i >= 0; i--) {
       const leg = updatedItinerary.legs[i]
       if (leg.mode === 'WALK') {
-        // need to protect this parse more
-        const obj = JSON.parse(customWalkLegGeometry(relevantLeg.endTime))
-        updatedItinerary.legs[i] = {
-          ...obj,
-          to: {
-            ...obj.to,
-            name: zoneName || obj.to.name
+        try {
+          const obj = JSON.parse(
+            customWalkLegGeometry(updatedItinerary.startTime)
+          )
+          updatedItinerary.legs[i] = {
+            ...obj,
+            to: {
+              ...obj.to,
+              name: zoneName || obj.to.name
+            }
+          }
+        } catch (error) {
+          console.error('unable to parse custom walk leg', error)
+          updatedItinerary.legs[i] = {
+            ...leg,
+            to: {
+              ...leg.to,
+              name: zoneName || leg.to.name
+            }
           }
         }
         break
