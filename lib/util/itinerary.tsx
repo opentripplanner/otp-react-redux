@@ -28,14 +28,11 @@ interface StopAdjustment {
   duration: number
   endTime: number
   intermediateStops: number
-  itineraryDuration: number
-  itineraryEndTime: number
   legGeometry: {
     length: number
     pointsToAdd: string
     pointsToCut: string
   }
-  stopCalls: number // unnecessary; will always match intermediateStops
   toOrFrom: {
     lat: number
     lon: number
@@ -103,15 +100,12 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               duration: -120,
               endTime: -120000,
               intermediateStops: -1,
-              itineraryDuration: -237,
-              itineraryEndTime: -237000,
               legGeometry: {
                 length: -24,
                 pointsToAdd: '',
                 pointsToCut:
                   'uA?g@Be@H[JcBj@o@PsGfBc@H_@D]@]?YC{@Gc@A]?}ADQ?IAKCk@UKAOA_C?'
               },
-              stopCalls: -1,
               toOrFrom: {
                 lat: 47.592285,
                 lon: -122.326988,
@@ -142,14 +136,11 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               duration: -120,
               endTime: -120000,
               intermediateStops: -1,
-              itineraryDuration: 123, // FIX (how does walk leg  change affect this?)
-              itineraryEndTime: 123, // FIX
               legGeometry: {
                 length: -19,
                 pointsToAdd: '',
                 pointsToCut: '??p@m@X[Xc@hEyHR]NQLQLO\\W^SPIPE`@If@AjI?N@J@HB'
               },
-              stopCalls: -1,
               toOrFrom: {
                 lat: 47.602139,
                 lon: -122.331055,
@@ -192,15 +183,12 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               duration: -120,
               endTime: -120000,
               intermediateStops: 1, // note how we use positive here and negative in destination rules
-              itineraryDuration: 123, // FIX
-              itineraryEndTime: 123, // FIX
               legGeometry: {
                 length: -16,
                 pointsToAdd: 'unpaHb|siVw@j@',
                 pointsToCut:
                   'eqoaHtdsiV_FAi@B_@FQFQF_@R]X[\\OTQZsEhI]f@YZoE|DIH??w@j@'
               },
-              stopCalls: 1,
               toOrFrom: {
                 lat: 47.603199,
                 lon: -122.331581,
@@ -232,15 +220,12 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               duration: -180,
               endTime: -180000,
               intermediateStops: 1,
-              itineraryDuration: 123, // FIX
-              itineraryEndTime: 123, // FIX
               legGeometry: {
                 length: -15,
                 pointsToAdd: '{gnaHj`siV',
                 pointsToCut:
                   'eloaHpesiVB@f@RJBJ@xGCt@CZCZEr@MnFyA|C{@b@Gd@CpD???'
               },
-              stopCalls: 1,
               toOrFrom: {
                 lat: 47.591824,
                 lon: -122.327354,
@@ -454,8 +439,6 @@ export function collectItinerariesWithoutDuplicates(
     })
   })
 
-  console.log(itineraries)
-
   // only works for single-zone configs
 
   for (let i = 0; i < itineraries.length; i++) {
@@ -510,8 +493,9 @@ export function collectItinerariesWithoutDuplicates(
     itineraries[i] = itin
   }
 
-  console.log(JSON.stringify(itineraries?.[0]?.legs?.[0]))
-  console.log(itineraries?.[0]?.legs?.[0]?.legGeometry?.points)
+  // console.log(JSON.stringify(itineraries?.[0]?.legs?.[0]))
+  // console.log(itineraries?.[0]?.legs?.[0]?.legGeometry?.points)
+  console.log(itineraries)
 
   return itineraries
 }
@@ -862,8 +846,8 @@ const adjustItinerary = (
 
   const updatedLeg: Leg = {
     ...relevantLeg,
-    duration: relevantLeg.duration + adjustment.itineraryDuration,
-    endTime: relevantLeg.endTime + adjustment.itineraryEndTime,
+    duration: relevantLeg.duration + adjustment.duration,
+    endTime: relevantLeg.endTime + adjustment.endTime,
     intermediateStops: relevantLeg.intermediateStops.slice(
       sliceArgs.start,
       sliceArgs.end
@@ -963,9 +947,7 @@ const adjustItinerary = (
       const leg = updatedItinerary.legs[i]
       if (leg.mode === 'WALK') {
         try {
-          const obj = JSON.parse(
-            customWalkLegGeometry(updatedItinerary.startTime)
-          )
+          const obj = JSON.parse(customWalkLegGeometry(updatedLeg.endTime))
           updatedItinerary.legs[i] = {
             ...obj,
             to: {
@@ -987,6 +969,12 @@ const adjustItinerary = (
       }
     }
   }
+
+  updatedItinerary.startTime = Number(updatedItinerary.legs[0].startTime)
+  updatedItinerary.endTime =
+    updatedItinerary.legs[updatedItinerary.legs.length - 1].endTime
+  updatedItinerary.duration =
+    (updatedItinerary.endTime - updatedItinerary.startTime) / 1000
 
   return updatedItinerary
 }
