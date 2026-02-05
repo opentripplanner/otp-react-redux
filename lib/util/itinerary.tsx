@@ -335,7 +335,7 @@ function getLastTransitLeg(itinerary: Itinerary) {
   for (let i = legs.length - 1; i >= 0; i--) {
     if (legs[i].transitLeg) return legs[i]
   }
-  return null
+  return undefined
 }
 
 /**
@@ -456,183 +456,162 @@ export function collectItinerariesWithoutDuplicates(
 
   console.log(itineraries)
 
-  const isInBBox = (lat: number, lon: number, bbox: number[]) => {
-    const [minLat, maxLat, minLon, maxLon] = bbox
-    return lat >= minLat && lat <= maxLat && lon >= minLon && lon <= maxLon
-  }
-
   // only works for single-zone configs
 
   for (let i = 0; i < itineraries.length; i++) {
     const itin = itineraries[i]
-    const origin = { lat: itin.legs[0].from.lat, lon: itin.legs[0].from.lon }
-    const destination = {
-      lat: itin.legs[itin.legs.length - 1].to.lat,
-      lon: itin.legs[itin.legs.length - 1].to.lon
-    }
 
     let firstTransitLeg = getFirstTransitLeg(itin)
     let lastTransitLeg = getLastTransitLeg(itin)
 
-    soundTransitCustomRoutingZones.forEach((zone) => {
-      let originRule
-      let destinationRule
-      if (isInBBox(origin.lat, origin.lon, zone.bbox)) {
-        originRule = zone.originRoutingRules.find(
-          (rule) =>
-            rule.headsign === firstTransitLeg?.headsign &&
-            rule.route === firstTransitLeg?.routeShortName
-        )
-      }
+    const { destinationRule, destinationZoneName, originRule, originZoneName } =
+      extractRulesFromZones(
+        itin,
+        soundTransitCustomRoutingZones,
+        firstTransitLeg,
+        lastTransitLeg
+      )
 
-      if (isInBBox(destination.lat, destination.lon, zone.bbox)) {
-        destinationRule = zone.destinationRoutingRules.find(
-          (rule) =>
-            rule.headsign === lastTransitLeg?.headsign &&
-            rule.route === lastTransitLeg?.routeShortName
-        )
-      }
-
-      if (originRule) {
-        // apply rule stop adjustments (if applicable) to the first transit leg, first stop
-        const adjustment = originRule.stopAdjustments.find(
-          (adj) => adj.originalStop === firstTransitLeg?.from?.name
-        )?.adjustment
-        console.log('origin adjustment', adjustment)
-        if (firstTransitLeg && adjustment) {
-          firstTransitLeg = {
-            ...firstTransitLeg,
-            duration: firstTransitLeg.duration + adjustment.itineraryDuration,
-            endTime: firstTransitLeg.endTime + adjustment.itineraryEndTime,
-            from: {
-              ...firstTransitLeg.from,
-              lat: adjustment.toOrFrom.lat,
-              lon: adjustment.toOrFrom.lon,
-              name: adjustment.toOrFrom.name,
-              stop: {
-                ...firstTransitLeg.from.stop,
-                gtfsId: adjustment.toOrFrom.stop.gtfsId,
-                id: adjustment.toOrFrom.stop.id,
-                lat: adjustment.toOrFrom.stop.lat,
-                lon: adjustment.toOrFrom.stop.lon,
-                name: adjustment.toOrFrom.stop.name
-              },
-              stopId: adjustment.toOrFrom.stopId
+    if (originRule) {
+      // apply rule stop adjustments (if applicable) to the first transit leg, first stop
+      const adjustment = originRule.stopAdjustments.find(
+        (adj) => adj.originalStop === firstTransitLeg?.from?.name
+      )?.adjustment
+      console.log('origin adjustment', adjustment)
+      if (firstTransitLeg && adjustment) {
+        firstTransitLeg = {
+          ...firstTransitLeg,
+          duration: firstTransitLeg.duration + adjustment.itineraryDuration,
+          endTime: firstTransitLeg.endTime + adjustment.itineraryEndTime,
+          from: {
+            ...firstTransitLeg.from,
+            lat: adjustment.toOrFrom.lat,
+            lon: adjustment.toOrFrom.lon,
+            name: adjustment.toOrFrom.name,
+            stop: {
+              ...firstTransitLeg.from.stop,
+              gtfsId: adjustment.toOrFrom.stop.gtfsId,
+              id: adjustment.toOrFrom.stop.id,
+              lat: adjustment.toOrFrom.stop.lat,
+              lon: adjustment.toOrFrom.stop.lon,
+              name: adjustment.toOrFrom.stop.name
             },
-            intermediateStops: firstTransitLeg.intermediateStops.slice(
-              adjustment.intermediateStops
-            ),
-            legGeometry: {
-              ...firstTransitLeg.legGeometry,
-              length:
-                firstTransitLeg.legGeometry.length +
-                adjustment.legGeometry.length,
-              points: firstTransitLeg.legGeometry.points.replace(
-                adjustment.legGeometry.pointsToCut,
-                adjustment.legGeometry.pointsToAdd
-              )
-            },
-            stopCalls: firstTransitLeg.stopCalls?.slice(adjustment.stopCalls)
-          }
+            stopId: adjustment.toOrFrom.stopId
+          },
+          intermediateStops: firstTransitLeg.intermediateStops.slice(
+            adjustment.intermediateStops
+          ),
+          legGeometry: {
+            ...firstTransitLeg.legGeometry,
+            length:
+              firstTransitLeg.legGeometry.length +
+              adjustment.legGeometry.length,
+            points: firstTransitLeg.legGeometry.points.replace(
+              adjustment.legGeometry.pointsToCut,
+              adjustment.legGeometry.pointsToAdd
+            )
+          },
+          stopCalls: firstTransitLeg.stopCalls?.slice(adjustment.stopCalls)
+        }
 
-          for (let i = 0; i <= itin.legs.length; i++) {
-            const leg = itin.legs[i]
-            if (leg.transitLeg) {
-              itin.legs[i] = firstTransitLeg
-              break
-            }
+        for (let i = 0; i <= itin.legs.length; i++) {
+          const leg = itin.legs[i]
+          if (leg.transitLeg) {
+            itin.legs[i] = firstTransitLeg
+            break
           }
+        }
 
-          for (let i = 0; i < itin.legs.length; i++) {
-            const leg = itin.legs[i]
-            if (leg.mode === 'WALK') {
-              const obj = JSON.parse(
-                originRule.customWalkLegGeometry(itin.startTime)
-              )
-              itin.legs[i] = {
-                ...obj,
-                from: {
-                  ...obj.from,
-                  name: zone.name
-                }
+        for (let i = 0; i < itin.legs.length; i++) {
+          const leg = itin.legs[i]
+          if (leg.mode === 'WALK') {
+            // need to protect this parse more
+            const obj = JSON.parse(
+              originRule.customWalkLegGeometry(itin.startTime)
+            )
+            itin.legs[i] = {
+              ...obj,
+              from: {
+                ...obj.from,
+                name: originZoneName || obj.from.name
               }
-              break
             }
+            break
           }
         }
       }
+    }
 
-      if (destinationRule) {
-        // apply rule stop adjustments (if applicable) to the last transit leg, last stop
-        const adjustment = destinationRule.stopAdjustments.find(
-          (adj) => adj.originalStop === lastTransitLeg?.to?.name
-        )?.adjustment
-        console.log('destination adjustment', adjustment)
-        if (lastTransitLeg && adjustment) {
-          lastTransitLeg = {
-            ...lastTransitLeg,
-            duration: lastTransitLeg.duration + adjustment.itineraryDuration,
-            endTime: lastTransitLeg.endTime + adjustment.itineraryEndTime,
-            intermediateStops: lastTransitLeg.intermediateStops.slice(
-              0,
-              adjustment.intermediateStops
-            ),
-            legGeometry: {
-              ...lastTransitLeg.legGeometry,
-              length:
-                lastTransitLeg.legGeometry.length +
-                adjustment.legGeometry.length,
-              // points: adjustment.legGeometry.points
-              points: lastTransitLeg.legGeometry.points.replace(
-                adjustment.legGeometry.pointsToCut,
-                adjustment.legGeometry.pointsToAdd
-              )
+    if (destinationRule) {
+      // apply rule stop adjustments (if applicable) to the last transit leg, last stop
+      const adjustment = destinationRule.stopAdjustments.find(
+        (adj) => adj.originalStop === lastTransitLeg?.to?.name
+      )?.adjustment
+      console.log('destination adjustment', adjustment)
+      if (lastTransitLeg && adjustment) {
+        lastTransitLeg = {
+          ...lastTransitLeg,
+          duration: lastTransitLeg.duration + adjustment.itineraryDuration,
+          endTime: lastTransitLeg.endTime + adjustment.itineraryEndTime,
+          intermediateStops: lastTransitLeg.intermediateStops.slice(
+            0,
+            adjustment.intermediateStops
+          ),
+          legGeometry: {
+            ...lastTransitLeg.legGeometry,
+            length:
+              lastTransitLeg.legGeometry.length + adjustment.legGeometry.length,
+            // points: adjustment.legGeometry.points
+            points: lastTransitLeg.legGeometry.points.replace(
+              adjustment.legGeometry.pointsToCut,
+              adjustment.legGeometry.pointsToAdd
+            )
+          },
+          stopCalls: lastTransitLeg.stopCalls?.slice(0, adjustment.stopCalls),
+          to: {
+            ...lastTransitLeg.to,
+            lat: adjustment.toOrFrom.lat,
+            lon: adjustment.toOrFrom.lon,
+            name: adjustment.toOrFrom.name,
+            stop: {
+              ...lastTransitLeg.to.stop,
+              gtfsId: adjustment.toOrFrom.stop.gtfsId,
+              id: adjustment.toOrFrom.stop.id,
+              lat: adjustment.toOrFrom.stop.lat,
+              lon: adjustment.toOrFrom.stop.lon,
+              name: adjustment.toOrFrom.stop.name // oddly, this doesn't show up in the OTP response but is required in this type
             },
-            stopCalls: lastTransitLeg.stopCalls?.slice(0, adjustment.stopCalls),
-            to: {
-              ...lastTransitLeg.to,
-              lat: adjustment.toOrFrom.lat,
-              lon: adjustment.toOrFrom.lon,
-              name: adjustment.toOrFrom.name,
-              stop: {
-                ...lastTransitLeg.to.stop,
-                gtfsId: adjustment.toOrFrom.stop.gtfsId,
-                id: adjustment.toOrFrom.stop.id,
-                lat: adjustment.toOrFrom.stop.lat,
-                lon: adjustment.toOrFrom.stop.lon,
-                name: adjustment.toOrFrom.stop.name // oddly, this doesn't show up in the OTP response but is required in this type
-              },
-              stopId: adjustment.toOrFrom.stopId
-            }
+            stopId: adjustment.toOrFrom.stopId
           }
+        }
 
-          for (let i = itin.legs.length - 1; i >= 0; i--) {
-            const leg = itin.legs[i]
-            if (leg.transitLeg) {
-              itin.legs[i] = lastTransitLeg
-              break
-            }
+        for (let i = itin.legs.length - 1; i >= 0; i--) {
+          const leg = itin.legs[i]
+          if (leg.transitLeg) {
+            itin.legs[i] = lastTransitLeg
+            break
           }
+        }
 
-          for (let i = itin.legs.length - 1; i >= 0; i--) {
-            const leg = itin.legs[i]
-            if (leg.mode === 'WALK') {
-              const obj = JSON.parse(
-                destinationRule.customWalkLegGeometry(lastTransitLeg.endTime)
-              )
-              itin.legs[i] = {
-                ...obj,
-                to: {
-                  ...obj.to,
-                  name: zone.name
-                }
+        for (let i = itin.legs.length - 1; i >= 0; i--) {
+          const leg = itin.legs[i]
+          if (leg.mode === 'WALK') {
+            // need to protect this parse more
+            const obj = JSON.parse(
+              destinationRule.customWalkLegGeometry(lastTransitLeg.endTime)
+            )
+            itin.legs[i] = {
+              ...obj,
+              to: {
+                ...obj.to,
+                name: destinationZoneName || obj.to.name
               }
-              break
             }
+            break
           }
         }
       }
-    })
+    }
   }
 
   console.log(JSON.stringify(itineraries?.[0]?.legs?.[0]))
@@ -916,4 +895,50 @@ export function copyAndRemoveRouteModeOverrides(
       mode: leg.originalMode || leg.mode
     }))
   }
+}
+
+const isInBBox = (lat: number, lon: number, bbox: number[]) => {
+  const [minLat, maxLat, minLon, maxLon] = bbox
+  return lat >= minLat && lat <= maxLat && lon >= minLon && lon <= maxLon
+}
+
+const legTriggersRule = (leg?: Leg) => (rule: Rule) =>
+  rule.headsign === leg?.headsign && rule.route === leg?.routeShortName
+
+// if multiple zones apply, only returns rule(s) from the last one that matches
+const extractRulesFromZones = (
+  itin: ItineraryWithIndex,
+  zones: CustomRoutingZone[],
+  firstTransitLeg?: Leg,
+  lastTransitLeg?: Leg
+) => {
+  const origin = { lat: itin.legs[0].from.lat, lon: itin.legs[0].from.lon }
+  const destination = {
+    lat: itin.legs[itin.legs.length - 1].to.lat,
+    lon: itin.legs[itin.legs.length - 1].to.lon
+  }
+
+  let originRule: Rule | undefined
+  let destinationRule: Rule | undefined
+
+  let originZoneName: string | undefined
+  let destinationZoneName: string | undefined
+
+  zones.forEach((zone) => {
+    if (isInBBox(origin.lat, origin.lon, zone.bbox)) {
+      originRule = zone.originRoutingRules.find(
+        legTriggersRule(firstTransitLeg)
+      )
+      originZoneName = zone.name
+    }
+
+    if (isInBBox(destination.lat, destination.lon, zone.bbox)) {
+      destinationRule = zone.destinationRoutingRules.find(
+        legTriggersRule(lastTransitLeg)
+      )
+      destinationZoneName = zone.name
+    }
+  })
+
+  return { destinationRule, destinationZoneName, originRule, originZoneName }
 }
