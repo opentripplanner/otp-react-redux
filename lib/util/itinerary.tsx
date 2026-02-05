@@ -35,7 +35,7 @@ interface StopAdjustment {
     pointsToAdd: string
     pointsToCut: string
   }
-  stopCalls: number
+  stopCalls: number // unnecessary; will always match intermediateStops
   toOrFrom: {
     lat: number
     lon: number
@@ -855,12 +855,18 @@ const adjustItinerary = (
 
   const updatedItinerary = { ...itinerary }
 
+  const sliceArgs = {
+    end: type === 'destination' ? adjustment.intermediateStops : undefined,
+    start: type === 'destination' ? 0 : adjustment.intermediateStops
+  }
+
   const updatedLeg: Leg = {
     ...relevantLeg,
     duration: relevantLeg.duration + adjustment.itineraryDuration,
     endTime: relevantLeg.endTime + adjustment.itineraryEndTime,
     intermediateStops: relevantLeg.intermediateStops.slice(
-      adjustment.intermediateStops
+      sliceArgs.start,
+      sliceArgs.end
     ),
     legGeometry: {
       ...relevantLeg.legGeometry,
@@ -870,7 +876,7 @@ const adjustItinerary = (
         adjustment.legGeometry.pointsToAdd
       )
     },
-    stopCalls: relevantLeg.stopCalls?.slice(adjustment.stopCalls)
+    stopCalls: relevantLeg.stopCalls?.slice(sliceArgs.start, sliceArgs.end)
   }
 
   // there's a better way to do this....
