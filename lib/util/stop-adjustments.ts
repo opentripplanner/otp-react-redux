@@ -442,6 +442,14 @@ export const adjustItinerary = (
     updatedItinerary.legs[updatedItinerary.legs.length - 1].endTime
   updatedItinerary.duration =
     (updatedItinerary.endTime - updatedItinerary.startTime) / 1000
+  updatedItinerary.walkDistance = updatedItinerary.legs
+    .filter((leg) => leg.mode === 'WALK')
+    .map((leg) => leg.distance)
+    .reduce((accumulator, currentValue) => accumulator + currentValue)
+  updatedItinerary.walkTime = updatedItinerary.legs
+    .filter((leg) => leg.mode === 'WALK')
+    .map((leg) => leg.duration)
+    .reduce((accumulator, currentValue) => accumulator + currentValue)
 
   return updatedItinerary
 }
