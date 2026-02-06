@@ -24,7 +24,6 @@ interface CustomRoutingZone {
 }
 
 interface StopAdjustment {
-  // distance??
   duration: number
   endTime: number
   intermediateStops: number
@@ -99,7 +98,7 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
             adjustment: {
               duration: -120,
               endTime: -120000,
-              intermediateStops: -1,
+              intermediateStops: 1,
               legGeometry: {
                 length: -24,
                 pointsToAdd: '',
@@ -135,7 +134,7 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
             adjustment: {
               duration: -120,
               endTime: -120000,
-              intermediateStops: -1,
+              intermediateStops: 1,
               legGeometry: {
                 length: -19,
                 pointsToAdd: '',
@@ -179,10 +178,9 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
         stopAdjustments: [
           {
             adjustment: {
-              // distance: -624.83
               duration: -120,
               endTime: -120000,
-              intermediateStops: 1, // note how we use positive here and negative in destination rules
+              intermediateStops: 1,
               legGeometry: {
                 length: -16,
                 pointsToAdd: 'unpaHb|siVw@j@',
@@ -216,7 +214,6 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
         stopAdjustments: [
           {
             adjustment: {
-              // distance: -655.79,
               duration: -180,
               endTime: -180000,
               intermediateStops: 1,
@@ -840,7 +837,7 @@ const adjustItinerary = (
   const updatedItinerary = { ...itinerary }
 
   const sliceArgs = {
-    end: type === 'destination' ? adjustment.intermediateStops : undefined,
+    end: type === 'destination' ? -1 * adjustment.intermediateStops : undefined,
     start: type === 'destination' ? 0 : adjustment.intermediateStops
   }
 
