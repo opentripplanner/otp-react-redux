@@ -1,4 +1,3 @@
-/* eslint-disable complexity */
 import { differenceInMinutes } from 'date-fns'
 import {
   FareProductSelector,
