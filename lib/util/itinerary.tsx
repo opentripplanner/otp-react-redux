@@ -50,8 +50,7 @@ interface StopAdjustment {
 interface Rule {
   accessibleStopToUse: string
   customWalkLegGeometry: (timeToAdjust: number) => string
-  // multiple headsigns??
-  headsign: string
+  headsigns: string[]
   route: string
   stopAdjustments: { adjustment: StopAdjustment; originalStop: string }[]
 }
@@ -91,7 +90,7 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
         // NORTHBOUND 1 Line trips TO Seattle Stadium
         accessibleStopToUse: 'CID_stop_id',
         customWalkLegGeometry: STADIUM_TO_ZONE_WALK_LEG,
-        headsign: 'Lynnwood City Center',
+        headsigns: ['Lynnwood City Center'],
         route: '1 Line',
         stopAdjustments: [
           {
@@ -127,7 +126,7 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
         // SOUTHBOUND 1 Line trips TO Seattle Stadium
         accessibleStopToUse: 'CID_stop_id',
         customWalkLegGeometry: PIONEER_SQUARE_TO_ZONE_WALK_LEG,
-        headsign: 'Federal Way Downtown',
+        headsigns: ['Federal Way Downtown'],
         route: '1 Line',
         stopAdjustments: [
           {
@@ -162,7 +161,7 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
         // WESTBOUND 2 Line trips TO Seattle Stadium
         accessibleStopToUse: 'CID_stop_id',
         customWalkLegGeometry: () => '',
-        headsign: 'Lynnwood City Center',
+        headsigns: ['Lynnwood City Center'],
         route: '2 Line',
         stopAdjustments: []
       }
@@ -173,7 +172,7 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
         // NORTHBOUND 1 Line trips FROM Seattle Stadium
         accessibleStopToUse: 'CID_stop_id',
         customWalkLegGeometry: ZONE_TO_PIONEER_SQUARE_WALK_LEG,
-        headsign: 'Lynnwood City Center',
+        headsigns: ['Lynnwood City Center'],
         route: '1 Line',
         stopAdjustments: [
           {
@@ -209,7 +208,7 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
         // SOUTHBOUND 1 Line trips FROM Seattle Stadium
         accessibleStopToUse: 'CID_stop_id',
         customWalkLegGeometry: ZONE_TO_STADIUM_WALK_LEG,
-        headsign: 'Federal Way Downtown',
+        headsigns: ['Federal Way Downtown'],
         route: '1 Line',
         stopAdjustments: [
           {
@@ -245,7 +244,7 @@ const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
         // EASTBOUND 2 Line trips FROM Seattle Stadium
         accessibleStopToUse: 'CID_stop_id',
         customWalkLegGeometry: () => '',
-        headsign: 'Downtown Redmond',
+        headsigns: ['Downtown Redmond'],
         route: '2 Line',
         stopAdjustments: []
       }
@@ -780,7 +779,10 @@ const isInBBox = (lat: number, lon: number, bbox: number[]) => {
 }
 
 const legTriggersRule = (leg?: Leg) => (rule: Rule) =>
-  rule.headsign === leg?.headsign && rule.route === leg?.routeShortName
+  leg &&
+  leg.headsign &&
+  rule.headsigns.includes(leg.headsign) &&
+  rule.route === leg.routeShortName
 
 // if multiple zones apply, only returns rule(s) from the last one that matches
 const extractRulesFromZones = (
