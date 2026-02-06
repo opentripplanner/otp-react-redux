@@ -1,7 +1,6 @@
 # To use OTP-RR with your own OTP deployment, at a minimum you will need to set the
 # host and port under the api section (for example to http://localhost and 8080).
-# The v2 configuration item here refers to OTP 2.x, not a versioned API with base URLs
-# ending in v2. OTP v1 is no longer supported by OTP-RR, so leave this v2 item enabled.
+# OTP v2.x is assumed. OTP v1 is no longer supported by OTP-RR.
 # The bare minimum additional things to configure in sections below are:
 # The initLat, initLon, and  baseLayers in the 'map' section;
 # The apiKey, boundary, focus point, and baseUrl in the 'geocoder' section;
@@ -16,7 +15,9 @@ api:
   # Then you can set the OPTIONAL property basePath. The default is "/otp"
   basePath: /otp
   port: 8080
-  v2: true
+
+### This setting makes the UI display metric units.
+# units: metric
 
 # Determines if the header brand should be clickable or not. If set to true, 
 # clicking the header brand will go back to the main trip planner page and wipe out any

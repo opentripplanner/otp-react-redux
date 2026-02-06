@@ -20,13 +20,10 @@ import PlanFirstLastButtons from './plan-first-last-buttons'
 import SaveTripButton from './save-trip-button'
 
 const ItinerariesHeaderContainer = styled.div<{ showHeaderText: boolean }>`
-  align-items: flex-end;
   display: flex;
-  flex-direction: column;
   float: left;
   gap: 8px;
   margin-left: ${(props) => (props.showHeaderText ? 'inherit' : 'auto')};
-  width: 100%;
 `
 
 const SortResultsDropdown = styled(Dropdown)`
@@ -46,7 +43,7 @@ const MapExpansionButton = styled.button`
   display: flex;
   height: ${TOGGLE_MAP_BUTTON_HEIGHT}vh;
   justify-content: center;
-  margin: -10px 0;
+  margin: -10px 0 0;
   width: 100%;
 `
 
@@ -188,27 +185,27 @@ export default function NarrativeItinerariesHeader({
             // because it falls under the "Plan your trip" <h1> header.
             <InvisibleA11yLabel as="h2">{itinerariesFound}</InvisibleA11yLabel>
           )}
+          {onClickExpansionButton && (
+            <MapExpansionButton
+              aria-label={mapExpansionText}
+              // CSS classes 'base-color-bg' and 'itinerary' let us set the chevron color to the
+              // same color as the color used the H3 headings over the narrative background.
+              className="clear-button-formatting base-color-bg itinerary"
+              onClick={onClickExpansionButton}
+              title={mapExpansionText}
+            >
+              <StyledIconWrapper>
+                <UnicodeChevron expanded={mapExpanded}>&#10095;</UnicodeChevron>
+              </StyledIconWrapper>
+            </MapExpansionButton>
+          )}
           <ItinerariesHeaderContainer showHeaderText={showHeaderText}>
             {popupTarget && (
               <button onClick={() => setPopupContent(popupTarget)}>
                 <PopupTriggerText compact popupTarget={popupTarget} />
               </button>
             )}
-            {onClickExpansionButton && (
-              <MapExpansionButton
-                aria-label={mapExpansionText}
-                className="clear-button-formatting"
-                onClick={onClickExpansionButton}
-                title={mapExpansionText}
-              >
-                <StyledIconWrapper>
-                  <UnicodeChevron expanded={mapExpanded}>
-                    &#10095;
-                  </UnicodeChevron>
-                </StyledIconWrapper>
-              </MapExpansionButton>
-            )}
-            <div style={{ display: 'flex', marginTop: '0.2rem' }}>
+            <div style={{ display: 'flex' }}>
               <button
                 className="clear-button-formatting"
                 onClick={onSortDirChange}
