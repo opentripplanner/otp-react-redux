@@ -83,14 +83,6 @@ export function getLastTransitLeg(itinerary: Itinerary): Leg | undefined {
 }
 
 /**
- * Get the first stop ID from the itinerary in the underscore format required by
- * the startTransitStopId query param (e.g., TRIMET_12345 instead of TRIMET:12345).
- */
-export function getFirstStopId(itinerary: Itinerary): string | undefined {
-  return getFirstTransitLeg(itinerary)?.from.stopId?.replace(':', '_')
-}
-
-/**
  * Returns the set of monitored days that will be initially shown to the user
  * for the given itinerary.
  * @param itinerary The itinerary from which the default monitored days are extracted.
