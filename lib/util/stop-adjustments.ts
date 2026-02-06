@@ -252,7 +252,11 @@ const legTriggersRule = (leg?: Leg) => (rule: Rule) =>
   rule.headsigns.includes(leg.headsign) &&
   rule.route === leg.routeShortName
 
-// if multiple zones apply, only returns rule(s) from the last one that matches
+// TODO: how to handle multiple applicable zones?
+/**
+ * Takes a set of custom routing zones and an itinerary and extracts the relevant origin and/or
+ * destination rule and zone names
+ */
 const extractRulesFromZones = (
   itin: ItineraryWithIndex,
   zones: CustomRoutingZone[],
@@ -290,6 +294,10 @@ const extractRulesFromZones = (
   return { destinationRule, destinationZoneName, originRule, originZoneName }
 }
 
+/**
+ * Adjusts a given itinerary according to the origin and/or destination rules contained within the given
+ * stop adjustment
+ */
 export const adjustItinerary = (
   adjustment: StopAdjustment,
   customWalkLegGeometry: (timeToAdjust: number) => string,
@@ -306,11 +314,15 @@ export const adjustItinerary = (
 
   const updatedItinerary = { ...itinerary }
 
+  // For destination adjustments, remove stops from the end of the stop list.
+  // For origin adjustments, remove stops from the beginning of the stop list
   const sliceArgs = {
     end: type === 'destination' ? -1 * adjustment.intermediateStops : undefined,
     start: type === 'destination' ? 0 : adjustment.intermediateStops
   }
 
+  // Update everything on the leg except for the from/to object, which will depend on
+  // the type of adjustment
   const updatedLeg: Leg = {
     ...relevantLeg,
     duration: relevantLeg.duration + adjustment.duration,
@@ -348,6 +360,7 @@ export const adjustItinerary = (
       stopId: adjustment.toOrFrom.stopId
     }
 
+    // Replace the first transit leg with the updated leg
     for (let i = 0; i <= updatedItinerary.legs.length; i++) {
       const leg = updatedItinerary.legs[i]
       if (leg.transitLeg) {
@@ -356,6 +369,7 @@ export const adjustItinerary = (
       }
     }
 
+    // Replace the first walk leg with the custom walk leg
     for (let i = 0; i < updatedItinerary.legs.length; i++) {
       const leg = updatedItinerary.legs[i]
       if (leg.mode === 'WALK') {
@@ -402,6 +416,7 @@ export const adjustItinerary = (
       stopId: adjustment.toOrFrom.stopId
     }
 
+    // Replace the last transit leg with the updated leg
     for (let i = updatedItinerary.legs.length - 1; i >= 0; i--) {
       const leg = updatedItinerary.legs[i]
       if (leg.transitLeg) {
@@ -410,6 +425,7 @@ export const adjustItinerary = (
       }
     }
 
+    // Replace the last walk leg with the custom walk leg
     for (let i = updatedItinerary.legs.length - 1; i >= 0; i--) {
       const leg = updatedItinerary.legs[i]
       if (leg.mode === 'WALK') {
@@ -437,6 +453,7 @@ export const adjustItinerary = (
     }
   }
 
+  // Update itinerary time and distance values based on updated legs
   updatedItinerary.startTime = Number(updatedItinerary.legs[0].startTime)
   updatedItinerary.endTime =
     updatedItinerary.legs[updatedItinerary.legs.length - 1].endTime
@@ -455,6 +472,7 @@ export const adjustItinerary = (
 }
 
 export const updateItinerariesWithStopAdjustments = (
+  customRoutingZones: CustomRoutingZone[],
   itineraries: ItineraryWithIndex[]
 ): ItineraryWithIndex[] => {
   const updatedItineraries = [...itineraries]
@@ -467,7 +485,7 @@ export const updateItinerariesWithStopAdjustments = (
     const { destinationRule, destinationZoneName, originRule, originZoneName } =
       extractRulesFromZones(
         itin,
-        soundTransitCustomRoutingZones,
+        customRoutingZones,
         firstTransitLeg,
         lastTransitLeg
       )
