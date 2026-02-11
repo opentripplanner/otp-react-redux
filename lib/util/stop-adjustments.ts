@@ -9,8 +9,10 @@ import {
 /* eslint-disable complexity */
 export interface CustomRoutingZone {
   bbox: number[]
+  destinationAffirmativeRules?: AffirmativeRule[]
   destinationRoutingRules: Rule[]
   name: string
+  originAffirmativeRules?: AffirmativeRule[]
   originRoutingRules: Rule[]
 }
 
@@ -46,6 +48,12 @@ export interface Rule {
   stopAdjustments: { adjustment: StopAdjustment; originalStop: string }[]
 }
 
+interface AffirmativeRule {
+  headsigns: string[]
+  prohibitedRoutes: string[]
+  route: string
+}
+
 /**
  * Note that the legGeometry.points string may contain double-escaped characters when copied from the OTP response (for example, "sdaf\\sdaf" would evaluate to "sdafsdaf").
  * These double-escaped characters need to be escaped again. So, in the example, "sdaf\\sdaf" would need to be updated to "sdaf\\\\sdaf".
@@ -74,6 +82,15 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
   {
     // Seattle Stadium zone
     bbox: [47.592266, 47.597533, -122.334768, -122.327691],
+    destinationAffirmativeRules: [
+      {
+        // itineraries that end in the zone and use the 2 Line are prohibited
+        // from using the 1 Line
+        headsigns: ['Lynnwood City Center'],
+        prohibitedRoutes: ['1 Line'],
+        route: '2 Line'
+      }
+    ],
     destinationRoutingRules: [
       {
         // NORTHBOUND 1 Line trips TO Seattle Stadium
@@ -156,6 +173,15 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
       }
     ],
     name: 'Seattle Stadium FIFA Zone',
+    originAffirmativeRules: [
+      {
+        // itineraries that begin in the zone and use the 2 Line are prohibited from
+        // also using the 1 Line
+        headsigns: ['Downtown Redmond'],
+        prohibitedRoutes: ['1 Line'],
+        route: '2 Line'
+      }
+    ],
     originRoutingRules: [
       {
         // NORTHBOUND 1 Line trips FROM Seattle Stadium
@@ -228,14 +254,6 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
             originalStop: "Int'l Dist/Chinatown"
           }
         ]
-      },
-      {
-        // EASTBOUND 2 Line trips FROM Seattle Stadium
-        accessibleStopToUse: 'CID_stop_id',
-        customWalkLegGeometry: () => '',
-        headsigns: ['Downtown Redmond'],
-        route: '2 Line',
-        stopAdjustments: []
       }
     ]
   }
@@ -251,6 +269,14 @@ const legTriggersRule = (leg?: Leg) => (rule: Rule) =>
   leg.headsign &&
   rule.headsigns.includes(leg.headsign) &&
   rule.route === leg.routeShortName
+
+const legUsesRuleRoute = (leg: Leg, rule: AffirmativeRule) =>
+  leg.headsign &&
+  rule.headsigns.includes(leg.headsign) &&
+  rule.route === leg.routeShortName
+
+const legUsesProhibitedRoute = (leg: Leg, rule: AffirmativeRule) =>
+  leg.routeShortName && rule.prohibitedRoutes.includes(leg.routeShortName)
 
 // TODO: how to handle multiple applicable zones?
 /**
@@ -275,11 +301,19 @@ const extractRulesFromZones = (
   let originZoneName: string | undefined
   let destinationZoneName: string | undefined
 
+  let originAffirmativeRules: AffirmativeRule[] = []
+  let destinationAffirmativeRules: AffirmativeRule[] = []
+
   zones.forEach((zone) => {
     if (isInBBox(origin.lat, origin.lon, zone.bbox)) {
       originRule = zone.originRoutingRules.find(
-        legTriggersRule(firstTransitLeg)
+        legTriggersRule(firstTransitLeg) // we're catching the "wrong" rule first...
       )
+      if (zone.originAffirmativeRules)
+        originAffirmativeRules = [
+          ...originAffirmativeRules,
+          ...zone.originAffirmativeRules
+        ]
       originZoneName = zone.name
     }
 
@@ -287,11 +321,23 @@ const extractRulesFromZones = (
       destinationRule = zone.destinationRoutingRules.find(
         legTriggersRule(lastTransitLeg)
       )
+      if (zone.destinationAffirmativeRules)
+        destinationAffirmativeRules = [
+          ...destinationAffirmativeRules,
+          ...zone.destinationAffirmativeRules
+        ]
       destinationZoneName = zone.name
     }
   })
 
-  return { destinationRule, destinationZoneName, originRule, originZoneName }
+  return {
+    destinationAffirmativeRules,
+    destinationRule,
+    destinationZoneName,
+    originAffirmativeRules,
+    originRule,
+    originZoneName
+  }
 }
 
 /**
@@ -476,19 +522,48 @@ export const updateItinerariesWithStopAdjustments = (
   itineraries: ItineraryWithIndex[]
 ): ItineraryWithIndex[] => {
   const updatedItineraries = [...itineraries]
+  const indicesToRemove: Set<number> = new Set()
+
   for (let i = 0; i < updatedItineraries.length; i++) {
     let itin = updatedItineraries[i]
 
     const firstTransitLeg = getFirstTransitLeg(itin)
     const lastTransitLeg = getLastTransitLeg(itin)
 
-    const { destinationRule, destinationZoneName, originRule, originZoneName } =
-      extractRulesFromZones(
-        itin,
-        customRoutingZones,
-        firstTransitLeg,
-        lastTransitLeg
-      )
+    const {
+      destinationAffirmativeRules,
+      destinationRule,
+      destinationZoneName,
+      originAffirmativeRules,
+      originRule,
+      originZoneName
+    } = extractRulesFromZones(
+      itin,
+      customRoutingZones,
+      firstTransitLeg,
+      lastTransitLeg
+    )
+
+    // check if any transit leg violates affirmative rules
+    const affirmativeRules = [
+      ...destinationAffirmativeRules,
+      ...originAffirmativeRules
+    ]
+    for (let j = 0; j < affirmativeRules.length; j++) {
+      if (indicesToRemove.has(i)) break
+      const rule = affirmativeRules[j]
+      let ruleRouteUsed = false
+      let ruleProhibitedRouteUsed = false
+      for (let k = 0; k < itin.legs.length; k++) {
+        const leg = itin.legs[j]
+        if (legUsesRuleRoute(leg, rule)) ruleRouteUsed = true
+        if (legUsesProhibitedRoute(leg, rule)) ruleProhibitedRouteUsed = true
+        if (ruleRouteUsed && ruleProhibitedRouteUsed) {
+          indicesToRemove.add(i)
+          break
+        }
+      }
+    }
 
     if (originRule) {
       // apply rule stop adjustments (if applicable) to the first transit leg, first stop
@@ -524,9 +599,14 @@ export const updateItinerariesWithStopAdjustments = (
       itin = updatedItinerary
     }
 
-    // note that, if both origin and destination have rules, currently only the destination rule will take effect...
     updatedItineraries[i] = itin
   }
 
-  return updatedItineraries
+  const finalItineraries = []
+
+  for (let i = 0; i < updatedItineraries.length; i++) {
+    if (!indicesToRemove.has(i)) finalItineraries.push(updatedItineraries[i])
+  }
+
+  return finalItineraries
 }
