@@ -10,6 +10,7 @@ import StackedPanes, { Props as StackedPanesProps } from './stacked-panes'
 interface Props extends StackedPanesProps {
   extraButton?: ButtonType
   isReadOnly?: boolean
+  isSubmitting?: boolean
   onCancel: () => void
   subtitle?: string | JSX.Element
 }
@@ -22,6 +23,7 @@ interface Props extends StackedPanesProps {
 const StackedPanesWithSave = ({
   extraButton,
   isReadOnly,
+  isSubmitting,
   onCancel,
   panes,
   subtitle,
@@ -73,13 +75,13 @@ const StackedPanesWithSave = ({
           isReadOnly
             ? undefined
             : {
-                disabled: buttonClicked === 'okay' || isLoading,
+                disabled: isLoading || isSubmitting,
                 onClick: () => {
                   // Some browsers need this to happen after the formik action finishes firing
                   setTimeout(() => setButtonClicked('okay'), 10)
                 },
                 text:
-                  buttonClicked === 'okay' || isLoading ? (
+                  isLoading || isSubmitting ? (
                     <InlineLoading />
                   ) : (
                     <FormattedMessage id="components.StackedPaneDisplay.savePreferences" />
