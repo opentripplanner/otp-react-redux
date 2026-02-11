@@ -193,12 +193,7 @@ export function collectItinerariesWithoutDuplicates(
     })
   })
 
-  const updatedItineraries = updateItinerariesWithStopAdjustments(
-    soundTransitCustomRoutingZones,
-    itineraries
-  )
-
-  return updatedItineraries
+  return itineraries
 }
 
 /**
