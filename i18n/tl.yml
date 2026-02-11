@@ -737,7 +737,7 @@ components:
   TripStatusRenderers:
     active:
       delayedHeading: Nasa biyahe sa kasalukuyan at naantala ito nang 
-        {formattedDuration}!
+        {formattedDuration}.
       description: Darating sa patutunguhan nang {arrivalTime, time, short}.
       earlyHeading: >-
         Nasa biyahe sa kasalukuyan at darating nang {formattedDuration} na mas

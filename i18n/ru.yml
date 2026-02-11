@@ -715,7 +715,7 @@ components:
     planNewTrip: Запланировать поездку
   TripStatusRenderers:
     active:
-      delayedHeading: "Поездка выполняется. Задержка: {formattedDuration}!"
+      delayedHeading: "Поездка выполняется. Задержка: {formattedDuration}."
       description: Прибытие к месту назначения в {arrivalTime, time, short}.
       earlyHeading: >-
         Поездка выполняется. Прибытие к месту назначения на {formattedDuration}

@@ -2740,6 +2740,13 @@
   dependencies:
     "@styled-icons/bootstrap" "^10.47.0"
 
+"@opentripplanner/building-blocks@3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/building-blocks/-/building-blocks-3.1.0.tgz#07cc52712d0cfb38fc692d62d83c796d8c60020b"
+  integrity sha512-S5Safgxevmdg9r3SZyO4NnfJEjT/TPs8g16yNprUACwv1nPnsyxv9oNgc0hsFKiqi5Ql+CrVIXasz+M9aibtWA==
+  dependencies:
+    "@styled-icons/bootstrap" "^10.47.0"
+
 "@opentripplanner/core-utils@13.0.1":
   version "13.0.1"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-13.0.1.tgz#53c222bbe7f72cf6cda50046daab1480b5b3aa3e"
