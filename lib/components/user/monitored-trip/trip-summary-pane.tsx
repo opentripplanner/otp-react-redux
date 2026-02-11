@@ -176,12 +176,17 @@ const TripSummaryPane = ({
 
     const isActiveAndSnoozed = monitoredTrip.isActive && monitoredTrip.snoozed
 
+    const itineraryLegs = monitoredTrip?.itinerary?.legs
+    const fromPlace = from?.name || itineraryLegs[0]?.from?.name
+    const toPlace =
+      to?.name || itineraryLegs[itineraryLegs.length - 1]?.to?.name
+
     return (
       <SavedTripBody>
         <InvisibleA11yLabel>
           <FormattedMessage
             id="components.SavedTripList.fromTo"
-            values={{ from: from?.name, to: to?.name }}
+            values={{ from: fromPlace, to: toPlace }}
           />
         </InvisibleA11yLabel>
         <LocationDetails aria-hidden className="trip-location-details">
@@ -194,7 +199,7 @@ const TripSummaryPane = ({
             >
               <LocationIcon size={ICON_SIZE} type="from" />
             </span>
-            <span>{from?.name}</span>
+            <span>{fromPlace}</span>
           </TextWIcon>
           <TextWIcon>
             <span
@@ -204,7 +209,7 @@ const TripSummaryPane = ({
             >
               <LocationIcon size={ICON_SIZE} type="to" />
             </span>
-            <span>{to?.name}</span>
+            <span>{toPlace}</span>
           </TextWIcon>
         </LocationDetails>
         <ItineraryDetails>
