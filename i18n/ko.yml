@@ -626,7 +626,7 @@ components:
     planNewTrip: 새 트립 계획
   TripStatusRenderers:
     active:
-      delayedHeading: 진행 중인 트립이 {formattedDuration} 지연됩니다!
+      delayedHeading: 진행 중인 트립이 {formattedDuration} 지연됩니다.
       description: "{arrivalTime, time, short}에 목적지에 도착할 예정입니다."
       earlyHeading: 진행 중인 트립이 예상보다 {formattedDuration} 일찍 시작됩니다!
       noDataHeading: 트립이 진행 중입니다 (실시간 업데이트를 사용할 수 없습니다).

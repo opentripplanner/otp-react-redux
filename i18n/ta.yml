@@ -722,7 +722,7 @@ components:
   TripStatusRenderers:
     active:
       delayedHeading: பயணம் நடந்து கொண்டிருக்கிறது மற்றும் தாமதமானது 
-        {formattedDuration}!
+        {formattedDuration}.
       description: பயணம் இலக்கு மற்றும் {வருகைநேரம், நேரம், குறுகிய}.
       earlyHeading: >-
         பயணம் நடந்து கொண்டிருக்கிறது மற்றும் எதிர்பார்த்ததை விட

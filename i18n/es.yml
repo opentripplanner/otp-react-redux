@@ -722,7 +722,7 @@ components:
   TripStatusRenderers:
     active:
       delayedHeading: La hora de inicio del viaje se retrasa 
-        {formattedDuration}!
+        {formattedDuration}
       description: El viaje debe comenzar a las {arrivalTime, time, short}.
       earlyHeading: >-
         ¡El viaje está en marcha y llega {formattedDuration} antes de lo
