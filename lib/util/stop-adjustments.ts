@@ -1,4 +1,4 @@
-import { Leg } from '@opentripplanner/types'
+import { Leg, Place, Stop } from '@opentripplanner/types'
 
 import {
   getFirstTransitLeg,
@@ -26,19 +26,12 @@ export interface StopAdjustment {
     pointsToAdd: string
     pointsToCut: string
   }
-  toOrFrom: {
-    lat: number
-    lon: number
-    name: string
-    stop: {
-      gtfsId: string
-      id: string
-      lat: number
-      lon: number
-      name: string
-    }
-    stopId: string
-  }
+  newStop: NewStop
+}
+
+interface NewStop extends Omit<Stop, 'lat' | 'lon'> {
+  lat: number
+  lon: number
 }
 
 export interface Rule {
@@ -80,6 +73,23 @@ const ZONE_TO_STADIUM_WALK_LEG = (timeToAdjust: number): string =>
     timeToAdjust + 582000
   },"fareProducts":[],"from":{"lat":47.5925996,"lon":-122.3317687,"name":"South Royal Brougham Way, Seattle, WA, USA","rentalVehicle":null,"stop":null,"vertexType":"NORMAL"},"headsign":null,"id":null,"interlineWithPreviousLeg":false,"intermediateStops":null,"legGeometry":{"length":65,"points":"glnaHp|siV?k@?cA?[R?D?L?CE?o@?W?_D?KBMBMDIHKFEHCHAJ@FBV\\\\DLBF?FCFA@EDE?IAGEEEIGGGEO[sA@]@QBY?CA?CECGAG?sE?E?EBABAAE?]?G?C?I?G?E?C?K\\\\?p@?H??\`@"},"mode":"WALK","pickupBookingInfo":null,"pickupType":"SCHEDULED","realTime":false,"realtimeState":null,"rentedBike":false,"rideHailingEstimate":null,"startTime":${timeToAdjust},"steps":[{"absoluteDirection":"EAST","alerts":[],"area":false,"distance":220.12,"elevationProfile":[],"lat":47.592526,"lon":-122.3317679,"relativeDirection":"DEPART","stayOn":false,"streetName":"sidewalk"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":true,"distance":140.26,"elevationProfile":[],"lat":47.591983,"lon":-122.3295327,"relativeDirection":"SLIGHTLY_RIGHT","stayOn":true,"streetName":"open area"},{"absoluteDirection":"NORTHEAST","alerts":[],"area":false,"distance":8.14,"elevationProfile":[],"lat":47.5922467,"lon":-122.3288776,"relativeDirection":"LEFT","stayOn":false,"streetName":"4th Avenue South"},{"absoluteDirection":"EAST","alerts":[],"area":false,"distance":123.29,"elevationProfile":[],"lat":47.5922964,"lon":-122.3288022,"relativeDirection":"RIGHT","stayOn":false,"streetName":"sidewalk"},{"absoluteDirection":"SOUTH","alerts":[],"area":false,"distance":71.21,"elevationProfile":[],"lat":47.5922728,"lon":-122.3271879,"relativeDirection":"RIGHT","stayOn":false,"streetName":"SODO Trail"},{"absoluteDirection":"SOUTH","alerts":[],"area":true,"distance":58.31,"elevationProfile":[],"lat":47.5916323,"lon":-122.3271875,"relativeDirection":"CONTINUE","stayOn":false,"streetName":"Stadium"}],"stopCalls":[],"to":{"lat":47.591108,"lon":-122.327172,"name":"Stadium (Sound Transit)","rentalVehicle":null,"stop":null,"vertexType":"NORMAL"},"transitLeg":false,"trip":null,"alightRule":"scheduled","boardRule":"scheduled","bookingRuleInfo":{"dropOff":{},"pickUp":{}},"routeColor":"333333","routeTextColor":""}`
 
+const STOPS: Record<string, NewStop> = {
+  PIONEER_SQUARE: {
+    gtfsId: '40:501',
+    id: 'U3RvcDo0MDo1MDE',
+    lat: 47.602139,
+    lon: -122.331055,
+    name: 'Pioneer Square'
+  },
+  STADIUM: {
+    gtfsId: '40:99260',
+    id: 'U3RvcDo0MDo5OTI2MA',
+    lat: 47.592285,
+    lon: -122.326988,
+    name: 'Stadium'
+  }
+}
+
 export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
   {
     // Seattle Stadium zone
@@ -110,19 +120,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
                 pointsToCut:
                   'uA?g@Be@H[JcBj@o@PsGfBc@H_@D]@]?YC{@Gc@A]?}ADQ?IAKCk@UKAOA_C?'
               },
-              toOrFrom: {
-                lat: 47.592285,
-                lon: -122.326988,
-                name: 'Stadium',
-                stop: {
-                  gtfsId: '40:99260',
-                  id: 'U3RvcDo0MDo5OTI2MA',
-                  lat: 47.592285,
-                  lon: -122.326988,
-                  name: 'Stadium'
-                },
-                stopId: '40:99260'
-              }
+              newStop: STOPS.STADIUM
             },
             originalStop: "Int'l Dist/Chinatown"
           }
@@ -149,19 +147,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
                 pointsToAdd: '',
                 pointsToCut: '??p@m@X[Xc@hEyHR]NQLQLO\\W^SPIPE`@If@AjI?N@J@HB'
               },
-              toOrFrom: {
-                lat: 47.602139,
-                lon: -122.331055,
-                name: 'Pioneer Square',
-                stop: {
-                  gtfsId: '40:501',
-                  id: 'U3RvcDo0MDo1MDE',
-                  lat: 47.602139,
-                  lon: -122.331055,
-                  name: 'Pioneer Square'
-                },
-                stopId: '40:501'
-              }
+              newStop: STOPS.PIONEER_SQUARE
             },
             originalStop: "Int'l Dist/Chinatown"
           },
@@ -176,19 +162,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
                 pointsToCut:
                   '??p@m@X[Xc@hEyHR]NQLQLO\\W^SPIPE`@If@AjI?N@J@HB??B@f@RJBJ@xGCt@CZCZEr@MnFyA|C{@b@Gd@CpD?'
               },
-              toOrFrom: {
-                lat: 47.602139,
-                lon: -122.331055,
-                name: 'Pioneer Square',
-                stop: {
-                  gtfsId: '40:501',
-                  id: 'U3RvcDo0MDo1MDE',
-                  lat: 47.602139,
-                  lon: -122.331055,
-                  name: 'Pioneer Square'
-                },
-                stopId: '40:501'
-              }
+              newStop: STOPS.PIONEER_SQUARE
             },
             originalStop: 'Stadium'
           }
@@ -244,19 +218,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
                 pointsToCut:
                   'eqoaHtdsiV_FAi@B_@FQFQF_@R]X[\\OTQZsEhI]f@YZoE|DIH??w@j@'
               },
-              toOrFrom: {
-                lat: 47.603199,
-                lon: -122.331581,
-                name: 'Pioneer Square',
-                stop: {
-                  gtfsId: '40:532',
-                  id: 'U3RvcDo0MDo1MzI',
-                  lat: 47.603199,
-                  lon: -122.331581,
-                  name: 'Pioneer Square'
-                },
-                stopId: '40:532'
-              }
+              newStop: STOPS.PIONEER_SQUARE
             },
             originalStop: "Int'l Dist/Chinatown"
           }
@@ -288,19 +250,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
                 pointsToCut:
                   'eloaHpesiVB@f@RJBJ@xGCt@CZCZEr@MnFyA|C{@b@Gd@CpD???'
               },
-              toOrFrom: {
-                lat: 47.591824,
-                lon: -122.327354,
-                name: 'Stadium',
-                stop: {
-                  gtfsId: '40:99101',
-                  id: 'U3RvcDo0MDo5OTEwMQ',
-                  lat: 47.591824,
-                  lon: -122.327354,
-                  name: 'Stadium'
-                },
-                stopId: '40:99101'
-              }
+              newStop: STOPS.STADIUM
             },
             originalStop: "Int'l Dist/Chinatown"
           }
@@ -363,6 +313,24 @@ const legUsesRuleRoute = (leg: Leg, rule: AffirmativeRule) =>
 
 const legUsesProhibitedRoute = (leg: Leg, rule: AffirmativeRule) =>
   leg.routeShortName && rule.prohibitedRoutes.includes(leg.routeShortName)
+
+const updatePlaceWithNewStop = (previous: Place, newStop: NewStop): Place => {
+  return {
+    ...previous,
+    lat: newStop.lat,
+    lon: newStop.lon,
+    name: newStop.name,
+    stop: {
+      ...previous.stop,
+      gtfsId: newStop.gtfsId,
+      id: newStop.id,
+      lat: newStop.lat,
+      lon: newStop.lon,
+      name: newStop.name
+    },
+    stopId: newStop.gtfsId
+  }
+}
 
 const itineraryIsInZoneTimeRange = (
   itin: ItineraryWithIndex,
@@ -487,23 +455,11 @@ export const adjustItinerary = (
     stopCalls: relevantLeg.stopCalls?.slice(sliceArgs.start, sliceArgs.end)
   }
 
-  // there's a better way to do this....
   if (type === 'origin') {
-    updatedLeg.from = {
-      ...relevantLeg.from,
-      lat: adjustment.toOrFrom.lat,
-      lon: adjustment.toOrFrom.lon,
-      name: adjustment.toOrFrom.name,
-      stop: {
-        ...relevantLeg.from.stop,
-        gtfsId: adjustment.toOrFrom.stop.gtfsId,
-        id: adjustment.toOrFrom.stop.id,
-        lat: adjustment.toOrFrom.stop.lat,
-        lon: adjustment.toOrFrom.stop.lon,
-        name: adjustment.toOrFrom.stop.name
-      },
-      stopId: adjustment.toOrFrom.stopId
-    }
+    updatedLeg.from = updatePlaceWithNewStop(
+      updatedLeg.from,
+      adjustment.newStop
+    )
 
     // Replace the first transit leg with the updated leg
     for (let i = 0; i <= updatedItinerary.legs.length; i++) {
@@ -545,21 +501,7 @@ export const adjustItinerary = (
   }
 
   if (type === 'destination') {
-    updatedLeg.to = {
-      ...relevantLeg.to,
-      lat: adjustment.toOrFrom.lat,
-      lon: adjustment.toOrFrom.lon,
-      name: adjustment.toOrFrom.name,
-      stop: {
-        ...relevantLeg.to.stop,
-        gtfsId: adjustment.toOrFrom.stop.gtfsId,
-        id: adjustment.toOrFrom.stop.id,
-        lat: adjustment.toOrFrom.stop.lat,
-        lon: adjustment.toOrFrom.stop.lon,
-        name: adjustment.toOrFrom.stop.name // oddly, this doesn't show up in the OTP response but is required in this type
-      },
-      stopId: adjustment.toOrFrom.stopId
-    }
+    updatedLeg.to = updatePlaceWithNewStop(updatedLeg.to, adjustment.newStop)
 
     // Replace the last transit leg with the updated leg
     for (let i = updatedItinerary.legs.length - 1; i >= 0; i--) {
