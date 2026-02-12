@@ -340,6 +340,8 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
   }
 ]
 
+// issue with bikeshare + transit trips...will keep post-transit bikeshare ride at the old end of the transit leg, isntead of the updated one
+
 const isInBBox = (lat: number, lon: number, bbox: number[]) => {
   const [minLat, maxLat, minLon, maxLon] = bbox
   return lat >= minLat && lat <= maxLat && lon >= minLon && lon <= maxLon
