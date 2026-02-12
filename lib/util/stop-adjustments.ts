@@ -14,6 +14,7 @@ export interface CustomRoutingZone {
   name: string
   originAffirmativeRules?: AffirmativeRule[]
   originRoutingRules: Rule[]
+  times: { end: number; start: number }[]
 }
 
 export interface StopAdjustment {
@@ -43,9 +44,8 @@ export interface StopAdjustment {
 export interface Rule {
   accessibleStopToUse: string
   customWalkLegGeometry: (timeToAdjust: number) => string
-  headsigns: string[]
-  route: string
   stopAdjustments: { adjustment: StopAdjustment; originalStop: string }[]
+  trips: { headsigns: string[]; route: string }[]
 }
 
 interface AffirmativeRule {
@@ -96,8 +96,6 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
         // NORTHBOUND 1 Line trips TO Seattle Stadium
         accessibleStopToUse: 'CID_stop_id',
         customWalkLegGeometry: STADIUM_TO_ZONE_WALK_LEG,
-        headsigns: ['Lynnwood City Center'],
-        route: '1 Line',
         stopAdjustments: [
           {
             adjustment: {
@@ -126,14 +124,18 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
             },
             originalStop: "Int'l Dist/Chinatown"
           }
+        ],
+        trips: [
+          {
+            headsigns: ['Lynnwood City Center'],
+            route: '1 Line'
+          }
         ]
       },
       {
-        // SOUTHBOUND 1 Line trips TO Seattle Stadium
+        // SOUTHBOUND 1 & 2 Line trips TO Seattle Stadium
         accessibleStopToUse: 'CID_stop_id',
         customWalkLegGeometry: PIONEER_SQUARE_TO_ZONE_WALK_LEG,
-        headsigns: ['Federal Way Downtown'],
-        route: '1 Line',
         stopAdjustments: [
           {
             adjustment: {
@@ -161,15 +163,29 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
             },
             originalStop: "Int'l Dist/Chinatown"
           }
+        ],
+        trips: [
+          {
+            headsigns: ['Federal Way Downtown'],
+            route: '1 Line'
+          },
+          {
+            headsigns: ['Downtown Redmond'],
+            route: '2 Line'
+          }
         ]
       },
       {
         // WESTBOUND 2 Line trips TO Seattle Stadium
         accessibleStopToUse: 'CID_stop_id',
         customWalkLegGeometry: () => '',
-        headsigns: ['Lynnwood City Center'],
-        route: '2 Line',
-        stopAdjustments: []
+        stopAdjustments: [],
+        trips: [
+          {
+            headsigns: ['Lynnwood City Center'],
+            route: '2 Line'
+          }
+        ]
       }
     ],
     name: 'Seattle Stadium FIFA Zone',
@@ -184,11 +200,9 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
     ],
     originRoutingRules: [
       {
-        // NORTHBOUND 1 Line trips FROM Seattle Stadium
+        // NORTHBOUND 1 & 2 Line trips FROM Seattle Stadium
         accessibleStopToUse: 'CID_stop_id',
         customWalkLegGeometry: ZONE_TO_PIONEER_SQUARE_WALK_LEG,
-        headsigns: ['Lynnwood City Center'],
-        route: '1 Line',
         stopAdjustments: [
           {
             adjustment: {
@@ -217,14 +231,22 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
             },
             originalStop: "Int'l Dist/Chinatown"
           }
+        ],
+        trips: [
+          {
+            headsigns: ['Lynnwood City Center'],
+            route: '1 Line'
+          },
+          {
+            headsigns: ['Lynnwood City Center'],
+            route: '2 Line'
+          }
         ]
       },
       {
         // SOUTHBOUND 1 Line trips FROM Seattle Stadium
         accessibleStopToUse: 'CID_stop_id',
         customWalkLegGeometry: ZONE_TO_STADIUM_WALK_LEG,
-        headsigns: ['Federal Way Downtown'],
-        route: '1 Line',
         stopAdjustments: [
           {
             adjustment: {
@@ -253,7 +275,23 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
             },
             originalStop: "Int'l Dist/Chinatown"
           }
+        ],
+        trips: [
+          {
+            headsigns: ['Federal Way Downtown'],
+            route: '1 Line'
+          }
         ]
+      }
+    ],
+    times: [
+      {
+        end: 1798790399000, // end of 2026
+        start: 1767254400000 // beginning of 2026
+      },
+      {
+        end: 1781578800000, // 6/15/26, 8pm
+        start: 1781535600000 // 6/15/26, 8am
       }
     ]
   }
@@ -267,8 +305,11 @@ const isInBBox = (lat: number, lon: number, bbox: number[]) => {
 const legTriggersRule = (leg?: Leg) => (rule: Rule) =>
   leg &&
   leg.headsign &&
-  rule.headsigns.includes(leg.headsign) &&
-  rule.route === leg.routeShortName
+  rule.trips.some(
+    (trip) =>
+      trip.headsigns.includes(leg.headsign || '') && // shouldn't need || here but it's being annoying...
+      trip.route === leg.routeShortName
+  )
 
 const legUsesRuleRoute = (leg: Leg, rule: AffirmativeRule) =>
   leg.headsign &&
@@ -277,6 +318,16 @@ const legUsesRuleRoute = (leg: Leg, rule: AffirmativeRule) =>
 
 const legUsesProhibitedRoute = (leg: Leg, rule: AffirmativeRule) =>
   leg.routeShortName && rule.prohibitedRoutes.includes(leg.routeShortName)
+
+const itineraryIsInZoneTimeRange = (
+  itin: ItineraryWithIndex,
+  zone: CustomRoutingZone
+) => {
+  const startTime = itin.startTime
+  return zone.times.some(
+    (time) => startTime >= time.start && startTime <= time.end
+  )
+}
 
 // TODO: how to handle multiple applicable zones?
 /**
@@ -304,7 +355,9 @@ const extractRulesFromZones = (
   let originAffirmativeRules: AffirmativeRule[] = []
   let destinationAffirmativeRules: AffirmativeRule[] = []
 
-  zones.forEach((zone) => {
+  for (let i = 0; i < zones.length; i++) {
+    const zone = zones[i]
+    if (!itineraryIsInZoneTimeRange(itin, zone)) continue
     if (isInBBox(origin.lat, origin.lon, zone.bbox)) {
       originRule = zone.originRoutingRules.find(
         legTriggersRule(firstTransitLeg) // we're catching the "wrong" rule first...
@@ -328,7 +381,7 @@ const extractRulesFromZones = (
         ]
       destinationZoneName = zone.name
     }
-  })
+  }
 
   return {
     destinationAffirmativeRules,
@@ -555,7 +608,7 @@ export const updateItinerariesWithStopAdjustments = (
       let ruleRouteUsed = false
       let ruleProhibitedRouteUsed = false
       for (let k = 0; k < itin.legs.length; k++) {
-        const leg = itin.legs[j]
+        const leg = itin.legs[k]
         if (legUsesRuleRoute(leg, rule)) ruleRouteUsed = true
         if (legUsesProhibitedRoute(leg, rule)) ruleProhibitedRouteUsed = true
         if (ruleRouteUsed && ruleProhibitedRouteUsed) {
