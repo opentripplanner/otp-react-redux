@@ -57,6 +57,8 @@ interface AffirmativeRule {
 /**
  * Note that the legGeometry.points string may contain double-escaped characters when copied from the OTP response (for example, "sdaf\\sdaf" would evaluate to "sdafsdaf").
  * These double-escaped characters need to be escaped again. So, in the example, "sdaf\\sdaf" would need to be updated to "sdaf\\\\sdaf".
+ *
+ * Explain duration adjustment better
  */
 const STADIUM_TO_ZONE_WALK_LEG = (timeToAdjust: number): string =>
   `{"accessibilityScore":null,"agency":null,"alerts":[],"arrivalDelay":0,"departureDelay":0,"distance":503.56,"dropOffBookingInfo":{"latestBookingTime":null},"dropoffType":"SCHEDULED","duration":493,"endTime":${
@@ -84,8 +86,8 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
     bbox: [47.592266, 47.597533, -122.334768, -122.327691],
     destinationAffirmativeRules: [
       {
-        // itineraries that end in the zone and use the 2 Line are prohibited
-        // from using the 1 Line
+        // itineraries that end in the zone and use the 2 Line are prohibited from
+        // using the 1 Line
         headsigns: ['Lynnwood City Center'],
         prohibitedRoutes: ['1 Line'],
         route: '2 Line'
@@ -433,6 +435,7 @@ export const adjustItinerary = (
     legGeometry: {
       ...relevantLeg.legGeometry,
       length: relevantLeg.legGeometry.length + adjustment.legGeometry.length,
+      // comment here with splicing explanation
       points: relevantLeg.legGeometry.points.replace(
         adjustment.legGeometry.pointsToCut,
         adjustment.legGeometry.pointsToAdd
