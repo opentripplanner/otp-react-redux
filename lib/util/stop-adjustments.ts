@@ -83,7 +83,7 @@ const ZONE_TO_STADIUM_WALK_LEG = (timeToAdjust: number): string =>
 export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
   {
     // Seattle Stadium zone
-    bbox: [47.592266, 47.597533, -122.334768, -122.327691],
+    bbox: [47.592241, 47.597523, -122.333457, -122.329477],
     destinationAffirmativeRules: [
       {
         // itineraries that end in the zone and use the 2 Line are prohibited from
@@ -164,6 +164,33 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               }
             },
             originalStop: "Int'l Dist/Chinatown"
+          },
+          {
+            adjustment: {
+              duration: -300,
+              endTime: -300000,
+              intermediateStops: 2,
+              legGeometry: {
+                length: -34,
+                pointsToAdd: '',
+                pointsToCut:
+                  '??p@m@X[Xc@hEyHR]NQLQLO\\W^SPIPE`@If@AjI?N@J@HB??B@f@RJBJ@xGCt@CZCZEr@MnFyA|C{@b@Gd@CpD?'
+              },
+              toOrFrom: {
+                lat: 47.602139,
+                lon: -122.331055,
+                name: 'Pioneer Square',
+                stop: {
+                  gtfsId: '40:501',
+                  id: 'U3RvcDo0MDo1MDE',
+                  lat: 47.602139,
+                  lon: -122.331055,
+                  name: 'Pioneer Square'
+                },
+                stopId: '40:501'
+              }
+            },
+            originalStop: 'Stadium'
           }
         ],
         trips: [
