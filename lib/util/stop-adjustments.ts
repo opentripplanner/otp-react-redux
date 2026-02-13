@@ -314,6 +314,43 @@ const legUsesRuleRoute = (leg: Leg, rule: AffirmativeRule) =>
 const legUsesProhibitedRoute = (leg: Leg, rule: AffirmativeRule) =>
   leg.routeShortName && rule.prohibitedRoutes.includes(leg.routeShortName)
 
+const adjustLeg = (
+  adjustment: StopAdjustment,
+  leg: Leg,
+  type: 'destination' | 'origin'
+): Leg => {
+  // For destination adjustments, remove stops from the end of the stop list.
+  // For origin adjustments, remove stops from the beginning of the stop list
+  const sliceArgs = {
+    end: type === 'destination' ? -1 * adjustment.intermediateStops : undefined,
+    start: type === 'destination' ? 0 : adjustment.intermediateStops
+  }
+
+  // Update everything on the leg except for the from/to object, which will depend on
+  // the type of adjustment
+  const updatedLeg: Leg = {
+    ...leg,
+    duration: leg.duration + adjustment.duration,
+    endTime: leg.endTime + adjustment.endTime,
+    intermediateStops: leg.intermediateStops.slice(
+      sliceArgs.start,
+      sliceArgs.end
+    ),
+    legGeometry: {
+      ...leg.legGeometry,
+      length: leg.legGeometry.length + adjustment.legGeometry.length,
+      // comment here with splicing explanation
+      points: leg.legGeometry.points.replace(
+        adjustment.legGeometry.pointsToCut,
+        adjustment.legGeometry.pointsToAdd
+      )
+    },
+    stopCalls: leg.stopCalls?.slice(sliceArgs.start, sliceArgs.end)
+  }
+
+  return updatedLeg
+}
+
 const updatePlaceWithNewStop = (previous: Place, newStop: NewStop): Place => {
   return {
     ...previous,
@@ -426,34 +463,7 @@ export const adjustItinerary = (
 
   const updatedItinerary = { ...itinerary }
 
-  // For destination adjustments, remove stops from the end of the stop list.
-  // For origin adjustments, remove stops from the beginning of the stop list
-  const sliceArgs = {
-    end: type === 'destination' ? -1 * adjustment.intermediateStops : undefined,
-    start: type === 'destination' ? 0 : adjustment.intermediateStops
-  }
-
-  // Update everything on the leg except for the from/to object, which will depend on
-  // the type of adjustment
-  const updatedLeg: Leg = {
-    ...relevantLeg,
-    duration: relevantLeg.duration + adjustment.duration,
-    endTime: relevantLeg.endTime + adjustment.endTime,
-    intermediateStops: relevantLeg.intermediateStops.slice(
-      sliceArgs.start,
-      sliceArgs.end
-    ),
-    legGeometry: {
-      ...relevantLeg.legGeometry,
-      length: relevantLeg.legGeometry.length + adjustment.legGeometry.length,
-      // comment here with splicing explanation
-      points: relevantLeg.legGeometry.points.replace(
-        adjustment.legGeometry.pointsToCut,
-        adjustment.legGeometry.pointsToAdd
-      )
-    },
-    stopCalls: relevantLeg.stopCalls?.slice(sliceArgs.start, sliceArgs.end)
-  }
+  const updatedLeg = adjustLeg(adjustment, relevantLeg, type)
 
   if (type === 'origin') {
     updatedLeg.from = updatePlaceWithNewStop(
