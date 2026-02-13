@@ -48,16 +48,14 @@ const StackedPanesWithSave = ({
         title={title}
       />
 
-      {/* Announces when page is loading to AT users */}
+      {/* Announces when page is loading or submitting to AT users */}
       <InvisibleA11yLabel aria-live="polite" role="status">
-        {buttonClicked === 'okay' && (
-          <FormattedMessage id="common.forms.loading" />
-        )}
+        {isSubmitting && <FormattedMessage id="common.forms.loading" />}
       </InvisibleA11yLabel>
 
       <FormNavigationButtons
         backButton={{
-          disabled: buttonClicked === 'okay',
+          disabled: isSubmitting,
           onClick: () => {
             setButtonClicked('back')
             updateBeingCanceled(true)
