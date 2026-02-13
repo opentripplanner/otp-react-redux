@@ -35,11 +35,11 @@ interface TransitVehicleExt extends TransitVehicle {
   textColor?: string
 }
 
-interface VehicleTooltipProps {
+function VehicleTooltip({
+  vehicle
+}: {
   vehicle: TransitVehicleExt
-}
-
-function VehicleTooltip({ vehicle }: VehicleTooltipProps): React.ReactNode {
+}): React.ReactNode {
   const intl = useIntl()
 
   const scopedVehicleId = vehicle?.vehicleId?.split(':')?.[1]
