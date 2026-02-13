@@ -90,13 +90,18 @@ export function getParentStopOrStopId(stop: StopWithParent): string {
 }
 
 /**
- * Returns a list of patterns, in descending length order, in which none is a subpattern of any other.
- * In the patterns below, only Patterns 1, 2, 5 should be retained:
+ * Computes a list of patterns, in descending length order, in which none is a subpattern of any other.
+ * In the patterns below, only Patterns 1, 2, 5 should be retained.
+ * In addition, Pattern 1 is designated as containing pattern for Pattern 3.
+ * The containing pattern for Pattern 4 could be Pattern 1 or 2,
+ * however whichever is actually picked does not really matter.
  *   Pattern 1: Stops A, B, C, D
  *   Pattern 2: Stops    B, C, D, E, F
  *   Pattern 3: Stops A, B, C
  *   Pattern 4: Stops       C, D, E
  *   Pattern 5: Stops A,    C, D, E
+ * @returns An object with a filteredPatterns field with the filtered (largest) patterns,
+ *   and a containingPatterns field with a map of the containing pattern for each pattern.
  */
 export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
   // Sort patterns by length to make algorithm below more efficient
