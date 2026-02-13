@@ -104,24 +104,24 @@ export function getParentStopOrStopId(stop: StopWithParent): string {
  *   and a containingPatterns field with a map of the containing pattern for each pattern.
  */
 export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
-  // Sort patterns by length to make algorithm below more efficient
-  const patternsSortedByLength = [...patterns].filter(
-    (pattern) => pattern.stops?.length
-  ) as PatternWithStops[]
-  patternsSortedByLength.sort((a, b) => a.stops.length - b.stops.length)
-
   const containingPatterns: Record<string, string> = {}
 
-  // Keep patterns that are not subsets of larger patterns
-  const filteredPatterns = patternsSortedByLength
-    // Start with the largest for performance
-    .reverse()
+  // Filter out patterns with no stops.
+  const patternsWithStops = [...patterns].filter(
+    (pattern) => pattern.stops?.length
+  ) as PatternWithStops[]
+
+  // Keep patterns that are not subsets of larger patterns.
+  // Assign a containing pattern to each sub pattern.
+  const filteredPatterns = patternsWithStops
+    // Sort patterns by descending length (most stops first) for efficiency.
+    .sort((a, b) => b.stops.length - a.stops.length)
     .filter((pattern, patternIndex) => {
       // Compare to all other patterns TODO: make this beat O(n^2)
       let includePattern = true
       const patternStops = pattern.stops?.map(getParentStopOrStopId) || []
 
-      patternsSortedByLength.forEach((p, index) => {
+      patternsWithStops.forEach((p, index) => {
         // Don't compare against ourself
         if (p.id === pattern.id) return
 
