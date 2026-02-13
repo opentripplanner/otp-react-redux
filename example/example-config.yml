@@ -306,9 +306,8 @@ modes:
     - mode: BICYCLE
       label: Transit + Bike
 
-# # The following modules require the datastoreUrl and trinetReDirect properties
-# # to be set. Note: Most of these components are currently only configured for
-# # TriMet.
+# # The following modules require the datastoreUrl to be set.
+# # trinetReDirect is optional, however omitting it requires pre-configured sessions.
 # datastoreUrl: https://localhost:9000
 # trinetReDirect: https://localhost:9001
 # modules:
