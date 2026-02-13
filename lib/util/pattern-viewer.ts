@@ -21,6 +21,10 @@ export interface StopWithParent extends Stop {
   parentStation?: Stop
 }
 
+interface PatternWithStops extends Pattern {
+  stops: Stop[]
+}
+
 export function extractMainHeadsigns(
   patterns: Record<string, Pattern>,
   shortName: string,
@@ -96,9 +100,10 @@ export function getParentStopOrStopId(stop: StopWithParent): string {
  */
 export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
   // Sort patterns by length to make algorithm below more efficient
-  const patternsSortedByLength = [...patterns]
-    .filter((pattern) => pattern.stops?.length)
-    .sort((a, b) => (a.stops?.length || 0) - (b.stops?.length || 0))
+  const patternsSortedByLength = [...patterns].filter(
+    (pattern) => pattern.stops?.length
+  ) as PatternWithStops[]
+  patternsSortedByLength.sort((a, b) => a.stops.length - b.stops.length)
 
   const containingPatterns: Record<string, string> = {}
 
@@ -114,9 +119,6 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
       patternsSortedByLength.forEach((p, index) => {
         // Don't compare against ourself
         if (p.id === pattern.id) return
-
-        // If the pattern has no stops, exclude it.
-        if (!p.stops || p.stops.length === 0) return
 
         // If our pattern is longer, it's not a subset
         if (p.stops.length < patternStops.length) return
