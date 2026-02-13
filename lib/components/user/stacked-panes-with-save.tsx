@@ -74,10 +74,6 @@ const StackedPanesWithSave = ({
             ? undefined
             : {
                 disabled: isLoading || isSubmitting,
-                onClick: () => {
-                  // Some browsers need this to happen after the formik action finishes firing
-                  setTimeout(() => setButtonClicked('okay'), 10)
-                },
                 text:
                   isLoading || isSubmitting ? (
                     <InlineLoading />
