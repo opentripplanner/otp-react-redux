@@ -24,7 +24,7 @@ export interface StopAdjustment {
   legGeometry: {
     length: number
     pointsToAdd: string
-    pointsToCut: string
+    pointsToCut: string[]
   }
   newStop: NewStop
 }
@@ -117,8 +117,9 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               legGeometry: {
                 length: -24,
                 pointsToAdd: '',
-                pointsToCut:
+                pointsToCut: [
                   'uA?g@Be@H[JcBj@o@PsGfBc@H_@D]@]?YC{@Gc@A]?}ADQ?IAKCk@UKAOA_C?'
+                ]
               },
               newStop: STOPS.STADIUM
             },
@@ -145,7 +146,10 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               legGeometry: {
                 length: -19,
                 pointsToAdd: '',
-                pointsToCut: '??p@m@X[Xc@hEyHR]NQLQLO\\W^SPIPE`@If@AjI?N@J@HB'
+                pointsToCut: [
+                  '??p@m@X[Xc@hEyHR]NQLQLO\\W^SPIPE`@If@AjI?N@J@HB',
+                  '??p@m@X[Xc@hEyHR]NQLQLO\\W^SPIPE`@If@AlBBtEC'
+                ]
               },
               newStop: STOPS.PIONEER_SQUARE
             },
@@ -159,8 +163,9 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               legGeometry: {
                 length: -34,
                 pointsToAdd: '',
-                pointsToCut:
+                pointsToCut: [
                   '??p@m@X[Xc@hEyHR]NQLQLO\\W^SPIPE`@If@AjI?N@J@HB??B@f@RJBJ@xGCt@CZCZEr@MnFyA|C{@b@Gd@CpD?'
+                ]
               },
               newStop: STOPS.PIONEER_SQUARE
             },
@@ -215,8 +220,9 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               legGeometry: {
                 length: -16,
                 pointsToAdd: 'unpaHb|siVw@j@',
-                pointsToCut:
+                pointsToCut: [
                   'eqoaHtdsiV_FAi@B_@FQFQF_@R]X[\\OTQZsEhI]f@YZoE|DIH??w@j@'
+                ]
               },
               newStop: STOPS.PIONEER_SQUARE
             },
@@ -247,8 +253,9 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               legGeometry: {
                 length: -15,
                 pointsToAdd: '{gnaHj`siV',
-                pointsToCut:
+                pointsToCut: [
                   'eloaHpesiVB@f@RJBJ@xGCt@CZCZEr@MnFyA|C{@b@Gd@CpD???'
+                ]
               },
               newStop: STOPS.STADIUM
             },
@@ -326,6 +333,16 @@ const adjustLeg = (
     start: type === 'destination' ? 0 : adjustment.intermediateStops
   }
 
+  // Attempt to cut and replace any matching parts of the leg geometry polyline
+  let updatedPoints = leg.legGeometry.points
+  adjustment.legGeometry.pointsToCut.forEach(
+    (ptc) =>
+      (updatedPoints = updatedPoints.replace(
+        ptc,
+        adjustment.legGeometry.pointsToAdd
+      ))
+  )
+
   // Update everything on the leg except for the from/to object, which will depend on
   // the type of adjustment
   const updatedLeg: Leg = {
@@ -339,11 +356,7 @@ const adjustLeg = (
     legGeometry: {
       ...leg.legGeometry,
       length: leg.legGeometry.length + adjustment.legGeometry.length,
-      // comment here with splicing explanation
-      points: leg.legGeometry.points.replace(
-        adjustment.legGeometry.pointsToCut,
-        adjustment.legGeometry.pointsToAdd
-      )
+      points: updatedPoints
     },
     stopCalls: leg.stopCalls?.slice(sliceArgs.start, sliceArgs.end)
   }
