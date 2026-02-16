@@ -107,7 +107,7 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
   const containingPatterns: Record<string, string> = {}
 
   // Filter out patterns with no stops.
-  const patternsWithStops = [...patterns].filter(
+  const patternsWithStops = patterns.filter(
     (pattern) => pattern.stops?.length
   ) as PatternWithStops[]
 
@@ -119,7 +119,7 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
     .filter((pattern, patternIndex) => {
       // Compare to all other patterns TODO: make this beat O(n^2)
       let includePattern = true
-      const patternStops = pattern.stops?.map(getParentStopOrStopId) || []
+      const patternStops = pattern.stops.map(getParentStopOrStopId) || []
 
       patternsWithStops.forEach((p, index) => {
         // Don't compare against ourself
