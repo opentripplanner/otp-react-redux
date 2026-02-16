@@ -2,9 +2,9 @@ import { FormattedMessage } from 'react-intl'
 import React, { useEffect, useState } from 'react'
 
 import { InlineLoading } from '../narrative/loading'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
 import FormNavigationButtons, { ButtonType } from './form-navigation-buttons'
-import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import StackedPanes, { Props as StackedPanesProps } from './stacked-panes'
 
 interface Props extends StackedPanesProps {
