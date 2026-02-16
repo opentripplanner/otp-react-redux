@@ -423,7 +423,7 @@ const extractRulesFromZones = (
     if (!itineraryIsInZoneTimeRange(itin, zone)) continue
     if (isInBBox(origin.lat, origin.lon, zone.bbox)) {
       originRule = zone.originRoutingRules.find(
-        legTriggersRule(firstTransitLeg) // we're catching the "wrong" rule first...
+        legTriggersRule(firstTransitLeg)
       )
       if (zone.originAffirmativeRules)
         originAffirmativeRules = [
