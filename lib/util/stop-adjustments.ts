@@ -178,7 +178,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
             route: '1 Line'
           },
           {
-            headsigns: ['Downtown Redmond'],
+            headsigns: ['Downtown Redmond', "Int'l Dist/Chinatown"],
             route: '2 Line'
           }
         ]
