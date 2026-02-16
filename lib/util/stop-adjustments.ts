@@ -497,25 +497,20 @@ export const adjustItinerary = (
     for (let i = 0; i < updatedItinerary.legs.length; i++) {
       const leg = updatedItinerary.legs[i]
       if (leg.mode === 'WALK') {
+        let walkLegObject
         try {
-          const obj = JSON.parse(
+          walkLegObject = JSON.parse(
             customWalkLegGeometry(updatedItinerary.startTime)
           )
-          updatedItinerary.legs[i] = {
-            ...obj,
-            from: {
-              ...obj.from,
-              name: zoneName || obj.from.name
-            }
-          }
         } catch (error) {
           console.error('unable to parse custom walk leg', error)
-          updatedItinerary.legs[i] = {
-            ...leg,
-            from: {
-              ...leg.from,
-              name: zoneName || leg.from.name
-            }
+        }
+        const updatedWalkLeg = walkLegObject ?? leg
+        updatedItinerary.legs[i] = {
+          ...updatedWalkLeg,
+          from: {
+            ...updatedWalkLeg.from,
+            name: zoneName || updatedWalkLeg.from.name
           }
         }
         break
@@ -539,23 +534,18 @@ export const adjustItinerary = (
     for (let i = updatedItinerary.legs.length - 1; i >= 0; i--) {
       const leg = updatedItinerary.legs[i]
       if (leg.mode === 'WALK') {
+        let walkLegObject
         try {
-          const obj = JSON.parse(customWalkLegGeometry(updatedLeg.endTime))
-          updatedItinerary.legs[i] = {
-            ...obj,
-            to: {
-              ...obj.to,
-              name: zoneName || obj.to.name
-            }
-          }
+          walkLegObject = JSON.parse(customWalkLegGeometry(updatedLeg.endTime))
         } catch (error) {
           console.error('unable to parse custom walk leg', error)
-          updatedItinerary.legs[i] = {
-            ...leg,
-            to: {
-              ...leg.to,
-              name: zoneName || leg.to.name
-            }
+        }
+        const updatedWalkLeg = walkLegObject ?? leg
+        updatedItinerary.legs[i] = {
+          ...updatedWalkLeg,
+          to: {
+            ...updatedWalkLeg.to,
+            name: zoneName || updatedWalkLeg.to.name
           }
         }
         break
