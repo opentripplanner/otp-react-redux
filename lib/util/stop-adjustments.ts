@@ -9,11 +9,11 @@ import {
 /* eslint-disable complexity */
 export interface CustomRoutingZone {
   bbox: number[]
-  destinationAffirmativeRules?: AffirmativeRule[]
-  destinationRoutingRules: Rule[]
+  destinationRouteExclusionRules?: RouteExclusionRule[]
+  destinationStopAdjustmentRules: StopAdjustmentRule[]
   name: string
-  originAffirmativeRules?: AffirmativeRule[]
-  originRoutingRules: Rule[]
+  originRouteExclusionRules?: RouteExclusionRule[]
+  originStopAdjustmentRules: StopAdjustmentRule[]
   times: { end: number; start: number }[]
 }
 
@@ -34,14 +34,14 @@ interface NewStop extends Omit<Stop, 'lat' | 'lon'> {
   lon: number
 }
 
-export interface Rule {
+export interface StopAdjustmentRule {
   accessibleStopToUse: string
   customWalkLegGeometry: (timeToAdjust: number) => string
   stopAdjustments: { adjustment: StopAdjustment; originalStop: string }[]
   trips: { headsigns: string[]; route: string }[]
 }
 
-interface AffirmativeRule {
+interface RouteExclusionRule {
   headsigns: string[]
   prohibitedRoutes: string[]
   route: string
@@ -94,7 +94,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
   {
     // Seattle Stadium zone
     bbox: [47.592241, 47.597523, -122.333457, -122.329477],
-    destinationAffirmativeRules: [
+    destinationRouteExclusionRules: [
       {
         // itineraries that end in the zone and use the 2 Line are prohibited from
         // using the 1 Line
@@ -103,7 +103,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
         route: '2 Line'
       }
     ],
-    destinationRoutingRules: [
+    destinationStopAdjustmentRules: [
       {
         // NORTHBOUND 1 Line trips TO Seattle Stadium
         accessibleStopToUse: 'CID_stop_id',
@@ -197,7 +197,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
       }
     ],
     name: 'Seattle Stadium FIFA Zone',
-    originAffirmativeRules: [
+    originRouteExclusionRules: [
       {
         // itineraries that begin in the zone and use the 2 Line are prohibited from
         // also using the 1 Line
@@ -206,7 +206,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
         route: '2 Line'
       }
     ],
-    originRoutingRules: [
+    originStopAdjustmentRules: [
       {
         // NORTHBOUND 1 & 2 Line trips FROM Seattle Stadium
         accessibleStopToUse: 'CID_stop_id',
@@ -304,7 +304,7 @@ const isInBBox = (lat: number, lon: number, bbox: number[]) => {
   return lat >= minLat && lat <= maxLat && lon >= minLon && lon <= maxLon
 }
 
-const legTriggersRule = (leg?: Leg) => (rule: Rule) =>
+const legTriggersRule = (leg?: Leg) => (rule: StopAdjustmentRule) =>
   leg &&
   leg.headsign &&
   rule.trips.some(
@@ -313,12 +313,12 @@ const legTriggersRule = (leg?: Leg) => (rule: Rule) =>
       trip.route === leg.routeShortName
   )
 
-const legUsesRuleRoute = (leg: Leg, rule: AffirmativeRule) =>
+const legUsesRuleRoute = (leg: Leg, rule: RouteExclusionRule) =>
   leg.headsign &&
   rule.headsigns.includes(leg.headsign) &&
   rule.route === leg.routeShortName
 
-const legUsesProhibitedRoute = (leg: Leg, rule: AffirmativeRule) =>
+const legUsesProhibitedRoute = (leg: Leg, rule: RouteExclusionRule) =>
   leg.routeShortName && rule.prohibitedRoutes.includes(leg.routeShortName)
 
 const adjustLeg = (
@@ -409,38 +409,38 @@ const extractRulesFromZones = (
     lon: itin.legs[itin.legs.length - 1].to.lon
   }
 
-  let originRule: Rule | undefined
-  let destinationRule: Rule | undefined
+  let originRule: StopAdjustmentRule | undefined
+  let destinationRule: StopAdjustmentRule | undefined
 
   let originZoneName: string | undefined
   let destinationZoneName: string | undefined
 
-  let originAffirmativeRules: AffirmativeRule[] = []
-  let destinationAffirmativeRules: AffirmativeRule[] = []
+  let originAffirmativeRules: RouteExclusionRule[] = []
+  let destinationAffirmativeRules: RouteExclusionRule[] = []
 
   for (let i = 0; i < zones.length; i++) {
     const zone = zones[i]
     if (!itineraryIsInZoneTimeRange(itin, zone)) continue
     if (isInBBox(origin.lat, origin.lon, zone.bbox)) {
-      originRule = zone.originRoutingRules.find(
+      originRule = zone.originStopAdjustmentRules.find(
         legTriggersRule(firstTransitLeg)
       )
-      if (zone.originAffirmativeRules)
+      if (zone.originRouteExclusionRules)
         originAffirmativeRules = [
           ...originAffirmativeRules,
-          ...zone.originAffirmativeRules
+          ...zone.originRouteExclusionRules
         ]
       originZoneName = zone.name
     }
 
     if (isInBBox(destination.lat, destination.lon, zone.bbox)) {
-      destinationRule = zone.destinationRoutingRules.find(
+      destinationRule = zone.destinationStopAdjustmentRules.find(
         legTriggersRule(lastTransitLeg)
       )
-      if (zone.destinationAffirmativeRules)
+      if (zone.destinationRouteExclusionRules)
         destinationAffirmativeRules = [
           ...destinationAffirmativeRules,
-          ...zone.destinationAffirmativeRules
+          ...zone.destinationRouteExclusionRules
         ]
       destinationZoneName = zone.name
     }
