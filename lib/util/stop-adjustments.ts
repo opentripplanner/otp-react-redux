@@ -403,13 +403,19 @@ const adjustLeg = (
 
   // Attempt to cut and replace any matching parts of the leg geometry polyline
   let updatedPoints = leg.legGeometry.points
-  adjustment.legGeometry.pointsToCut.forEach(
-    (ptc) =>
-      (updatedPoints = updatedPoints.replace(
-        ptc,
-        adjustment.legGeometry.pointsToAdd
-      ))
-  )
+  if (!adjustment.legGeometry.pointsToCut.length) {
+    // only add geometry points
+    updatedPoints += adjustment.legGeometry.pointsToAdd
+  } else {
+    // cut and replace geometry points
+    adjustment.legGeometry.pointsToCut.forEach(
+      (ptc) =>
+        (updatedPoints = updatedPoints.replace(
+          ptc,
+          adjustment.legGeometry.pointsToAdd
+        ))
+    )
+  }
 
   // Update everything on the leg except for the from/to object, which will depend on
   // the type of adjustment
