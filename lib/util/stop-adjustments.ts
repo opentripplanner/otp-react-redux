@@ -365,8 +365,6 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
   }
 ]
 
-// issue with bikeshare + transit trips...will keep post-transit bikeshare ride at the old end of the transit leg, isntead of the updated one
-
 const isInBBox = (lat: number, lon: number, bbox: number[]) => {
   const [minLat, maxLat, minLon, maxLon] = bbox
   return lat >= minLat && lat <= maxLat && lon >= minLon && lon <= maxLon
@@ -375,10 +373,10 @@ const isInBBox = (lat: number, lon: number, bbox: number[]) => {
 const legTriggersRule =
   (accessible: boolean, leg?: Leg) => (rule: StopAdjustmentRule) =>
     leg &&
-    leg.headsign &&
     rule.trips.some(
       (trip) =>
-        trip.headsigns.includes(leg.headsign || '') && // shouldn't need || here but it's being annoying...
+        leg.headsign &&
+        trip.headsigns.includes(leg.headsign) &&
         trip.route === leg.routeShortName &&
         trip.accessible === accessible
     )
@@ -462,7 +460,6 @@ const itineraryIsInZoneTimeRange = (
   )
 }
 
-// TODO: how to handle multiple applicable zones?
 /**
  * Takes a set of custom routing zones and an itinerary and extracts the relevant origin and/or
  * destination rule and zone names
@@ -671,7 +668,7 @@ export const updateItinerariesWithStopAdjustments = (
       lastTransitLeg
     )
 
-    // check if any transit leg violates affirmative rules
+    // check if any transit leg violates route exclusion rules
     const routeExclusionRules = [
       ...destinationRouteExclusionRules,
       ...originRouteExclusionRules
@@ -731,6 +728,7 @@ export const updateItinerariesWithStopAdjustments = (
 
   const finalItineraries = []
 
+  // remove itineraries that violated route exclusion rules
   for (let i = 0; i < updatedItineraries.length; i++) {
     if (!indicesToRemove.has(i)) finalItineraries.push(updatedItineraries[i])
   }
