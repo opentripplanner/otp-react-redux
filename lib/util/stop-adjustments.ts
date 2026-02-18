@@ -333,22 +333,34 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
       },
       {
         // 6/15/26, 12pm Match
-        end: 1781578800000, // 8pm
+        end: 1781569800000, // 5:30pm
         start: 1781535600000 // 8am
       },
       {
         // 6/19/26, 12pm Match
-        end: 1781924400000, // 8pm
+        end: 1781915400000, // 5:30pm
         start: 1781881200000 // 8am
       },
       {
         // 6/24/26, 12pm Match
-        end: 1782356400000, // 8pm
+        end: 1782347400000, // 5:30pm
         start: 1782313200000 // 8am
+      },
+      {
+        // 6/26/26, 8pm Match
+        end: 1782549000000, // 1:30am (6/27)
+        start: 1782514800000 // 4pm
+      },
+      {
+        // 7/1/26, 1pm Match
+        end: 1782955800000, // 6:30pm
+        start: 1782921600000 // 9am
+      },
+      {
+        // 7/6/26, 5pm Match
+        end: 1783402200000, // 10:30pm
+        start: 1783368000000 // 1pm
       }
-      // 6/26/26, 8pm Match
-      // 7/1/26, 1pm Match
-      // 7/6/26, 5pm Match
     ]
   }
 ]
