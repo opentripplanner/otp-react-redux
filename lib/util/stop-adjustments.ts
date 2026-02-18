@@ -38,7 +38,7 @@ export interface StopAdjustmentRule {
   accessibleStopToUse: string
   customWalkLegGeometry: (timeToAdjust: number) => string
   stopAdjustments: { adjustment: StopAdjustment; originalStop: string }[]
-  trips: { headsigns: string[]; route: string }[]
+  trips: { accessible: boolean; headsigns: string[]; route: string }[]
 }
 
 interface RouteExclusionRule {
@@ -128,6 +128,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
         ],
         trips: [
           {
+            accessible: false,
             headsigns: ['Lynnwood City Center'],
             route: '1 Line'
           }
@@ -174,10 +175,12 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
         ],
         trips: [
           {
+            accessible: false,
             headsigns: ['Federal Way Downtown'],
             route: '1 Line'
           },
           {
+            accessible: false,
             headsigns: ['Downtown Redmond', "Int'l Dist/Chinatown"],
             route: '2 Line'
           }
@@ -190,6 +193,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
         stopAdjustments: [],
         trips: [
           {
+            accessible: false,
             headsigns: ['Lynnwood City Center'],
             route: '2 Line'
           }
@@ -231,10 +235,12 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
         ],
         trips: [
           {
+            accessible: false,
             headsigns: ['Lynnwood City Center'],
             route: '1 Line'
           },
           {
+            accessible: false,
             headsigns: ['Lynnwood City Center'],
             route: '2 Line'
           }
@@ -264,6 +270,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
         ],
         trips: [
           {
+            accessible: false,
             headsigns: ['Federal Way Downtown'],
             route: '1 Line'
           }
@@ -304,14 +311,16 @@ const isInBBox = (lat: number, lon: number, bbox: number[]) => {
   return lat >= minLat && lat <= maxLat && lon >= minLon && lon <= maxLon
 }
 
-const legTriggersRule = (leg?: Leg) => (rule: StopAdjustmentRule) =>
-  leg &&
-  leg.headsign &&
-  rule.trips.some(
-    (trip) =>
-      trip.headsigns.includes(leg.headsign || '') && // shouldn't need || here but it's being annoying...
-      trip.route === leg.routeShortName
-  )
+const legTriggersRule =
+  (accessible: boolean, leg?: Leg) => (rule: StopAdjustmentRule) =>
+    leg &&
+    leg.headsign &&
+    rule.trips.some(
+      (trip) =>
+        trip.headsigns.includes(leg.headsign || '') && // shouldn't need || here but it's being annoying...
+        trip.route === leg.routeShortName &&
+        trip.accessible === accessible
+    )
 
 const legUsesRuleRoute = (leg: Leg, rule: RouteExclusionRule) =>
   leg.headsign &&
@@ -398,6 +407,7 @@ const itineraryIsInZoneTimeRange = (
  * destination rule and zone names
  */
 const extractRulesFromZones = (
+  accessible: boolean,
   itin: ItineraryWithIndex,
   zones: CustomRoutingZone[],
   firstTransitLeg?: Leg,
@@ -423,7 +433,7 @@ const extractRulesFromZones = (
     if (!itineraryIsInZoneTimeRange(itin, zone)) continue
     if (isInBBox(origin.lat, origin.lon, zone.bbox)) {
       originRule = zone.originStopAdjustmentRules.find(
-        legTriggersRule(firstTransitLeg)
+        legTriggersRule(accessible, firstTransitLeg)
       )
       if (zone.originRouteExclusionRules)
         originAffirmativeRules = [
@@ -435,7 +445,7 @@ const extractRulesFromZones = (
 
     if (isInBBox(destination.lat, destination.lon, zone.bbox)) {
       destinationRule = zone.destinationStopAdjustmentRules.find(
-        legTriggersRule(lastTransitLeg)
+        legTriggersRule(accessible, lastTransitLeg)
       )
       if (zone.destinationRouteExclusionRules)
         destinationAffirmativeRules = [
@@ -572,6 +582,7 @@ export const adjustItinerary = (
 }
 
 export const updateItinerariesWithStopAdjustments = (
+  accessible: boolean,
   customRoutingZones: CustomRoutingZone[],
   itineraries: ItineraryWithIndex[]
 ): ItineraryWithIndex[] => {
@@ -592,6 +603,7 @@ export const updateItinerariesWithStopAdjustments = (
       originRule,
       originZoneName
     } = extractRulesFromZones(
+      accessible,
       itin,
       customRoutingZones,
       firstTransitLeg,
