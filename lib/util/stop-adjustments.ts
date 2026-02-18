@@ -526,13 +526,14 @@ const extractRulesFromZones = (
 
 /**
  * Adjusts a given itinerary according to the origin and/or destination rules contained within the given
- * stop adjustment
+ * stop adjustment. If no adjustment is provided, the walk legs can still be updated using the provided
+ * customWalkLegGeometry
  */
 export const adjustItinerary = (
-  adjustment: StopAdjustment,
   customWalkLegGeometry: (timeToAdjust: number) => string,
   itinerary: ItineraryWithIndex,
   type: 'destination' | 'origin',
+  adjustment?: StopAdjustment,
   zoneName?: string
 ): ItineraryWithIndex => {
   const relevantLeg =
@@ -544,20 +545,24 @@ export const adjustItinerary = (
 
   const updatedItinerary = { ...itinerary }
 
-  const updatedLeg = adjustLeg(adjustment, relevantLeg, type)
+  const updatedLeg = adjustment
+    ? adjustLeg(adjustment, relevantLeg, type)
+    : relevantLeg
 
   if (type === 'origin') {
-    updatedLeg.from = updatePlaceWithNewStop(
-      updatedLeg.from,
-      adjustment.newStop
-    )
+    if (adjustment) {
+      updatedLeg.from = updatePlaceWithNewStop(
+        updatedLeg.from,
+        adjustment.newStop
+      )
 
-    // Replace the first transit leg with the updated leg
-    for (let i = 0; i <= updatedItinerary.legs.length; i++) {
-      const leg = updatedItinerary.legs[i]
-      if (leg.transitLeg) {
-        updatedItinerary.legs[i] = updatedLeg
-        break
+      // Replace the first transit leg with the updated leg
+      for (let i = 0; i <= updatedItinerary.legs.length; i++) {
+        const leg = updatedItinerary.legs[i]
+        if (leg.transitLeg) {
+          updatedItinerary.legs[i] = updatedLeg
+          break
+        }
       }
     }
 
@@ -587,14 +592,16 @@ export const adjustItinerary = (
   }
 
   if (type === 'destination') {
-    updatedLeg.to = updatePlaceWithNewStop(updatedLeg.to, adjustment.newStop)
+    if (adjustment) {
+      updatedLeg.to = updatePlaceWithNewStop(updatedLeg.to, adjustment.newStop)
 
-    // Replace the last transit leg with the updated leg
-    for (let i = updatedItinerary.legs.length - 1; i >= 0; i--) {
-      const leg = updatedItinerary.legs[i]
-      if (leg.transitLeg) {
-        updatedItinerary.legs[i] = updatedLeg
-        break
+      // Replace the last transit leg with the updated leg
+      for (let i = updatedItinerary.legs.length - 1; i >= 0; i--) {
+        const leg = updatedItinerary.legs[i]
+        if (leg.transitLeg) {
+          updatedItinerary.legs[i] = updatedLeg
+          break
+        }
       }
     }
 
@@ -695,12 +702,11 @@ export const updateItinerariesWithStopAdjustments = (
         (adj) => adj.originalStop === firstTransitLeg?.from?.name
       )?.adjustment
       console.log('origin adjustment', adjustment)
-      if (!adjustment) continue
       const updatedItinerary = adjustItinerary(
-        adjustment,
         originStopAdjustmentRule.customWalkLegGeometry,
         itin,
         'origin',
+        adjustment,
         originZoneName
       )
       itin = updatedItinerary
@@ -712,12 +718,11 @@ export const updateItinerariesWithStopAdjustments = (
         (adj) => adj.originalStop === lastTransitLeg?.to?.name
       )?.adjustment
       console.log('destination adjustment', adjustment)
-      if (!adjustment) continue
       const updatedItinerary = adjustItinerary(
-        adjustment,
         destinationStopAdjustmentRule.customWalkLegGeometry,
         itin,
         'destination',
+        adjustment,
         destinationZoneName
       )
       itin = updatedItinerary
