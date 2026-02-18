@@ -1,6 +1,7 @@
-import { Alert, FormControl } from 'react-bootstrap'
+import { Alert } from '@opentripplanner/building-blocks'
 import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
 import { FormattedList, FormattedMessage } from 'react-intl'
+import { FormControl } from 'react-bootstrap'
 import { FormikProps } from 'formik'
 import { isTransitLeg } from '@opentripplanner/core-utils/lib/itinerary'
 import React, { Component, FormEvent } from 'react'
@@ -12,8 +13,8 @@ import {
   YesNoOptions
 } from '../common/dropdown-options'
 import { FieldSet } from '../styled'
-import { IconWithText } from '../../util/styledIcon'
 import { MonitoredTrip } from '../types'
+import { SUCCESS_COLOR_VARIABLES } from '../../util/colors'
 
 // Element styles
 const SettingsList = styled.ul`
@@ -34,6 +35,14 @@ const SettingsList = styled.ul`
       display: table-cell;
     }
   }
+`
+
+const Summary = styled.summary`
+  /* Revert display:block set by Bootstrap that hides the native expand/collapse caret. */
+  display: revert-layer;
+  /* Format summary as labels */
+  font-weight: 700;
+  margin-bottom: 5px;
 `
 
 interface Props extends FormikProps<MonitoredTrip> {
@@ -72,18 +81,18 @@ class TripNotificationsPane extends Component<Props> {
     let notificationSettingsContent
     if (areNotificationsDisabled) {
       notificationSettingsContent = (
-        <Alert bsStyle="warning">
-          <p>
-            <IconWithText Icon={ExclamationTriangle}>
-              <strong>
-                <FormattedMessage id="components.TripNotificationsPane.notificationsTurnedOff" />
-              </strong>
-            </IconWithText>
-          </p>
-          <p>
+        <Alert
+          alertHeader={
+            <h4 style={{ fontSize: '16px', fontWeight: 700, margin: 0 }}>
+              <FormattedMessage id="components.TripNotificationsPane.notificationsTurnedOff" />
+            </h4>
+          }
+          alertSubheader={
             <FormattedMessage id="components.TripNotificationsPane.howToReceiveAlerts" />
-          </p>
-        </Alert>
+          }
+          backgroundColor={SUCCESS_COLOR_VARIABLES.warning}
+          Icon={ExclamationTriangle}
+        />
       )
     } else {
       const selectedChannels = notificationChannel
@@ -154,29 +163,32 @@ class TripNotificationsPane extends Component<Props> {
             </>
           ) : null}
 
-          <FormattedMessage id="components.TripNotificationsPane.advancedSettings" />
-
-          <SettingsList>
-            <li>
-              <Select
-                label={
-                  <FormattedMessage id="components.TripNotificationsPane.monitorThisTrip" />
-                }
-                name="leadTimeInMinutes"
-              >
-                <DurationOptions
-                  decoratorFunc={(time, intl) => {
-                    return intl.formatMessage(
-                      { id: 'components.TripNotificationsPane.timeBefore' },
-                      { time }
-                    )
-                  }}
-                  defaultValue={30}
-                  minuteOptions={[15, 30, 45, 60]}
-                />
-              </Select>
-            </li>
-          </SettingsList>
+          <details>
+            <Summary>
+              <FormattedMessage id="components.TripNotificationsPane.advancedSettings" />
+            </Summary>
+            <SettingsList>
+              <li>
+                <Select
+                  label={
+                    <FormattedMessage id="components.TripNotificationsPane.monitorThisTrip" />
+                  }
+                  name="leadTimeInMinutes"
+                >
+                  <DurationOptions
+                    decoratorFunc={(time, intl) => {
+                      return intl.formatMessage(
+                        { id: 'components.TripNotificationsPane.timeBefore' },
+                        { time }
+                      )
+                    }}
+                    defaultValue={30}
+                    minuteOptions={[15, 30, 45, 60]}
+                  />
+                </Select>
+              </li>
+            </SettingsList>
+          </details>
         </FieldSet>
       )
     }

@@ -136,7 +136,6 @@ const TripSummaryPane = ({
   const leadTimeInMinutes = monitoredTrip.leadTimeInMinutes
   // @ts-expect-error No type on ComponentContext
   const { LegIcon } = useContext(ComponentContext)
-  console.log(monitoredTrip)
   if (!itinerary) {
     return (
       <div>

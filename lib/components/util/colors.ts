@@ -40,9 +40,9 @@ const DEFAULT_ROUTE_COLOR = grey[800]
 const ELEVATION_BLUE = blue[400]
 
 const SUCCESS_COLOR_VARIABLES = {
-  info: undefined,
+  info: blue[50],
   success: '#DCF0E0',
-  warning: '#FFF3CD'
+  warning: '#fcf8e3'
 }
 
 export {
