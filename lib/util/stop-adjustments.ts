@@ -73,7 +73,28 @@ const ZONE_TO_STADIUM_WALK_LEG = (timeToAdjust: number): string =>
     timeToAdjust + 582000
   },"fareProducts":[],"from":{"lat":47.5925996,"lon":-122.3317687,"name":"South Royal Brougham Way, Seattle, WA, USA","rentalVehicle":null,"stop":null,"vertexType":"NORMAL"},"headsign":null,"id":null,"interlineWithPreviousLeg":false,"intermediateStops":null,"legGeometry":{"length":65,"points":"glnaHp|siV?k@?cA?[R?D?L?CE?o@?W?_D?KBMBMDIHKFEHCHAJ@FBV\\\\DLBF?FCFA@EDE?IAGEEEIGGGEO[sA@]@QBY?CA?CECGAG?sE?E?EBABAAE?]?G?C?I?G?E?C?K\\\\?p@?H??\`@"},"mode":"WALK","pickupBookingInfo":null,"pickupType":"SCHEDULED","realTime":false,"realtimeState":null,"rentedBike":false,"rideHailingEstimate":null,"startTime":${timeToAdjust},"steps":[{"absoluteDirection":"EAST","alerts":[],"area":false,"distance":220.12,"elevationProfile":[],"lat":47.592526,"lon":-122.3317679,"relativeDirection":"DEPART","stayOn":false,"streetName":"sidewalk"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":true,"distance":140.26,"elevationProfile":[],"lat":47.591983,"lon":-122.3295327,"relativeDirection":"SLIGHTLY_RIGHT","stayOn":true,"streetName":"open area"},{"absoluteDirection":"NORTHEAST","alerts":[],"area":false,"distance":8.14,"elevationProfile":[],"lat":47.5922467,"lon":-122.3288776,"relativeDirection":"LEFT","stayOn":false,"streetName":"4th Avenue South"},{"absoluteDirection":"EAST","alerts":[],"area":false,"distance":123.29,"elevationProfile":[],"lat":47.5922964,"lon":-122.3288022,"relativeDirection":"RIGHT","stayOn":false,"streetName":"sidewalk"},{"absoluteDirection":"SOUTH","alerts":[],"area":false,"distance":71.21,"elevationProfile":[],"lat":47.5922728,"lon":-122.3271879,"relativeDirection":"RIGHT","stayOn":false,"streetName":"SODO Trail"},{"absoluteDirection":"SOUTH","alerts":[],"area":true,"distance":58.31,"elevationProfile":[],"lat":47.5916323,"lon":-122.3271875,"relativeDirection":"CONTINUE","stayOn":false,"streetName":"Stadium"}],"stopCalls":[],"to":{"lat":47.591108,"lon":-122.327172,"name":"Stadium (Sound Transit)","rentalVehicle":null,"stop":null,"vertexType":"NORMAL"},"transitLeg":false,"trip":null,"alightRule":"scheduled","boardRule":"scheduled","bookingRuleInfo":{"dropOff":{},"pickUp":{}},"routeColor":"333333","routeTextColor":""}`
 
+const INTERNATIONAL_DISTRICT_TO_ZONE_WALK_LEG = (
+  timeToAdjust: number
+): string =>
+  `{"accessibilityScore":1,"agency":null,"alerts":[],"arrivalDelay":0,"departureDelay":0,"distance":381.73,"dropOffBookingInfo":{"latestBookingTime":null},"dropoffType":"SCHEDULED","duration":434,"endTime":${
+    timeToAdjust + 434000
+  },"fareProducts":[],"from":{"lat":47.59766,"lon":-122.328217,"name":"Int'l Dist/Chinatown","rentalVehicle":null,"stop":{"alerts":[],"code":null,"gtfsId":"40:623","id":"U3RvcDo0MDo2MjM","lat":47.59766,"lon":-122.328217},"vertexType":"TRANSIT","stopCode":null,"stopId":"40:623"},"headsign":null,"id":null,"interlineWithPreviousLeg":false,"intermediateStops":null,"legGeometry":{"length":36,"points":"kloaHjfsiV?@P??D?dAAh@?HCB?D?V@^?DAD?D?X?HAxA?Z?j@?????BTRB@@?J?P?|A?JRFJ@??|DHH@@B?p@]"},"mode":"WALK","pickupBookingInfo":null,"pickupType":"SCHEDULED","realTime":false,"realtimeState":null,"rentedBike":false,"rideHailingEstimate":null,"startTime":${timeToAdjust},"steps":[{"absoluteDirection":"SOUTH","alerts":[],"area":false,"distance":9.38,"elevationProfile":[],"lat":47.59766,"lon":-122.3282229,"relativeDirection":"DEPART","stayOn":false,"streetName":"path"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":52.92,"elevationProfile":[],"lat":47.5975757,"lon":-122.3282238,"relativeDirection":"RIGHT","stayOn":false,"streetName":"South Weller Street"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":25.35,"elevationProfile":[],"lat":47.5976022,"lon":-122.3289176,"relativeDirection":"CONTINUE","stayOn":false,"streetName":"path"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":76.81,"elevationProfile":[],"lat":47.5976091,"lon":-122.3292521,"relativeDirection":"SLIGHTLY_LEFT","stayOn":false,"streetName":"South Weller Street Overpass"},{"absoluteDirection":"SOUTH","alerts":[],"area":false,"distance":0,"elevationProfile":[],"lat":47.5976152,"lon":-122.3302764,"relativeDirection":"LEFT","stayOn":false,"streetName":"ElevatorBoardEdge"},{"absoluteDirection":null,"alerts":[],"area":false,"distance":0,"elevationProfile":[],"lat":47.5976152,"lon":-122.3302764,"relativeDirection":"ELEVATOR","stayOn":false,"streetName":"elevator"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":1.51,"elevationProfile":[],"lat":47.5976152,"lon":-122.3302764,"relativeDirection":"RIGHT","stayOn":false,"streetName":"South Weller Street"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":true,"distance":86.24,"elevationProfile":[],"lat":47.5976151,"lon":-122.3302966,"relativeDirection":"LEFT","stayOn":false,"streetName":"open area"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":false,"distance":16.6,"elevationProfile":[],"lat":47.5968581,"lon":-122.3304073,"relativeDirection":"RIGHT","stayOn":true,"streetName":"path"},{"absoluteDirection":"SOUTH","alerts":[],"area":false,"distance":72.93,"elevationProfile":[],"lat":47.5967558,"lon":-122.3305686,"relativeDirection":"LEFT","stayOn":true,"streetName":"sidewalk"},{"absoluteDirection":"SOUTHWEST","alerts":[],"area":false,"distance":10.07,"elevationProfile":[],"lat":47.5967422,"lon":-122.3315199,"relativeDirection":"LEFT","stayOn":true,"streetName":"path"},{"absoluteDirection":"SOUTH","alerts":[],"area":true,"distance":29.94,"elevationProfile":[],"lat":47.5966617,"lon":-122.3315757,"relativeDirection":"SLIGHTLY_LEFT","stayOn":false,"streetName":"Muckleshoot Heritage Plaza"}],"stopCalls":[],"to":{"lat":47.596411,"lon":-122.33143,"name":"Muckleshoot Heritage Plaza, Pioneer Square, Seattle, WA","rentalVehicle":null,"stop":null,"vertexType":"NORMAL"},"transitLeg":false,"trip":null,"alightRule":"scheduled","boardRule":"scheduled","bookingRuleInfo":{"dropOff":{},"pickUp":{}},"routeColor":"333333","routeTextColor":""}`
+
+const ZONE_TO_INTERNATIONAL_DISTRICT_WALK_LEG = (
+  timeToAdjust: number
+): string =>
+  `{"accessibilityScore":1,"agency":null,"alerts":[],"arrivalDelay":0,"departureDelay":0,"distance":442.55,"dropOffBookingInfo":{"latestBookingTime":null},"dropoffType":"SCHEDULED","duration":360,"endTime":${
+    timeToAdjust + 360000
+  },"fareProducts":[],"from":{"lat":47.703414,"lon":-122.328244,"name":"Northgate","rentalVehicle":null,"stop":{"alerts":[],"code":null,"gtfsId":"40:990006","id":"U3RvcDo0MDo5OTAwMDY","lat":47.703414,"lon":-122.328244},"vertexType":"TRANSIT","stopCode":null,"stopId":"40:990006"},"headsign":null,"id":null,"interlineWithPreviousLeg":false,"intermediateStops":null,"legGeometry":{"length":30,"points":"iadbHpfsiV?@jDN@B?bA@DP?d@Cd@Af@C\`ACJO?Q?WACC@m@@g@?O@Y?cA@i@@S?A?g@@A?AA?C?C?M"},"mode":"WALK","pickupBookingInfo":null,"pickupType":"SCHEDULED","realTime":false,"realtimeState":null,"rentedBike":false,"rideHailingEstimate":null,"startTime":${timeToAdjust},"steps":[{"absoluteDirection":"SOUTH","alerts":[],"area":true,"distance":97.62,"elevationProfile":[],"lat":47.7034139,"lon":-122.3282596,"relativeDirection":"DEPART","stayOn":false,"streetName":"Northgate"},{"absoluteDirection":"WEST","alerts":[],"area":false,"distance":140.19,"elevationProfile":[],"lat":47.7025446,"lon":-122.3283563,"relativeDirection":"SLIGHTLY_RIGHT","stayOn":false,"streetName":"John Lewis Memorial Bridge"},{"absoluteDirection":"SOUTHEAST","alerts":[],"area":true,"distance":8.29,"elevationProfile":[],"lat":47.7015304,"lon":-122.3286524,"relativeDirection":"LEFT","stayOn":false,"streetName":"open area"},{"absoluteDirection":"EAST","alerts":[],"area":false,"distance":15.68,"elevationProfile":[],"lat":47.701477,"lon":-122.3285751,"relativeDirection":"LEFT","stayOn":true,"streetName":"path"},{"absoluteDirection":"EAST","alerts":[],"area":false,"distance":1.33,"elevationProfile":[],"lat":47.7014782,"lon":-122.3283655,"relativeDirection":"CONTINUE","stayOn":false,"streetName":"Northeast 100th Street"},{"absoluteDirection":"NORTH","alerts":[],"area":false,"distance":171.51,"elevationProfile":[],"lat":47.7014808,"lon":-122.3283481,"relativeDirection":"LEFT","stayOn":false,"streetName":"1st Avenue Northeast"},{"absoluteDirection":"EAST","alerts":[],"area":false,"distance":7.92,"elevationProfile":[],"lat":47.7030211,"lon":-122.3283944,"relativeDirection":"RIGHT","stayOn":false,"streetName":"Northeast 103rd Street"}],"stopCalls":[],"to":{"lat":47.703028,"lon":-122.32829,"name":"Northgate (Sound Transit)","rentalVehicle":null,"stop":null,"vertexType":"NORMAL"},"transitLeg":false,"trip":null,"alightRule":"scheduled","boardRule":"scheduled","bookingRuleInfo":{"dropOff":{},"pickUp":{}},"routeColor":"333333","routeTextColor":""}`
+
 const STOPS: Record<string, NewStop> = {
+  INTERNATIONAL_DISTRICT_CHINATOWN: {
+    gtfsId: '40:623',
+    id: 'U3RvcDo0MDo2MjM',
+    lat: 47.59766,
+    lon: -122.328217,
+    name: "Int'l Dist/Chinatown"
+  },
   PIONEER_SQUARE: {
     gtfsId: '40:501',
     id: 'U3RvcDo0MDo1MDE',
@@ -183,6 +204,34 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
             accessible: false,
             headsigns: ['Downtown Redmond', "Int'l Dist/Chinatown"],
             route: '2 Line'
+          }
+        ]
+      },
+      {
+        // SOUTHBOUND ACCESSIBLE 1 Line trips TO Seattle Stadium
+        accessibleStopToUse: 'CID_stop_id',
+        customWalkLegGeometry: INTERNATIONAL_DISTRICT_TO_ZONE_WALK_LEG,
+        stopAdjustments: [
+          {
+            adjustment: {
+              duration: -180,
+              endTime: -180000,
+              intermediateStops: 1,
+              legGeometry: {
+                length: -15,
+                pointsToAdd: '',
+                pointsToCut: ['??B@f@RJBJ@xGCt@CZCZEr@MnFyA|C{@b@Gd@CpD?']
+              },
+              newStop: STOPS.INTERNATIONAL_DISTRICT_CHINATOWN
+            },
+            originalStop: 'Stadium'
+          }
+        ],
+        trips: [
+          {
+            accessible: true,
+            headsigns: ['Federal Way Downtown'],
+            route: '1 Line'
           }
         ]
       },
