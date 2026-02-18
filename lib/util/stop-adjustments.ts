@@ -468,37 +468,37 @@ const extractRulesFromZones = (
     lon: itin.legs[itin.legs.length - 1].to.lon
   }
 
-  let originRule: StopAdjustmentRule | undefined
-  let destinationRule: StopAdjustmentRule | undefined
+  let originStopAdjustmentRule: StopAdjustmentRule | undefined
+  let destinationStopAdjustmentRule: StopAdjustmentRule | undefined
 
   let originZoneName: string | undefined
   let destinationZoneName: string | undefined
 
-  let originAffirmativeRules: RouteExclusionRule[] = []
-  let destinationAffirmativeRules: RouteExclusionRule[] = []
+  let originRouteExclusionRules: RouteExclusionRule[] = []
+  let destinationRouteExclusionRules: RouteExclusionRule[] = []
 
   for (let i = 0; i < zones.length; i++) {
     const zone = zones[i]
     if (!itineraryIsInZoneTimeRange(itin, zone)) continue
     if (isInBBox(origin.lat, origin.lon, zone.bbox)) {
-      originRule = zone.originStopAdjustmentRules.find(
+      originStopAdjustmentRule = zone.originStopAdjustmentRules.find(
         legTriggersRule(accessible, firstTransitLeg)
       )
       if (zone.originRouteExclusionRules)
-        originAffirmativeRules = [
-          ...originAffirmativeRules,
+        originRouteExclusionRules = [
+          ...originRouteExclusionRules,
           ...zone.originRouteExclusionRules
         ]
       originZoneName = zone.name
     }
 
     if (isInBBox(destination.lat, destination.lon, zone.bbox)) {
-      destinationRule = zone.destinationStopAdjustmentRules.find(
+      destinationStopAdjustmentRule = zone.destinationStopAdjustmentRules.find(
         legTriggersRule(accessible, lastTransitLeg)
       )
       if (zone.destinationRouteExclusionRules)
-        destinationAffirmativeRules = [
-          ...destinationAffirmativeRules,
+        destinationRouteExclusionRules = [
+          ...destinationRouteExclusionRules,
           ...zone.destinationRouteExclusionRules
         ]
       destinationZoneName = zone.name
@@ -506,11 +506,11 @@ const extractRulesFromZones = (
   }
 
   return {
-    destinationAffirmativeRules,
-    destinationRule,
+    destinationRouteExclusionRules,
+    destinationStopAdjustmentRule,
     destinationZoneName,
-    originAffirmativeRules,
-    originRule,
+    originRouteExclusionRules,
+    originStopAdjustmentRule,
     originZoneName
   }
 }
@@ -645,11 +645,11 @@ export const updateItinerariesWithStopAdjustments = (
     const lastTransitLeg = getLastTransitLeg(itin)
 
     const {
-      destinationAffirmativeRules,
-      destinationRule,
+      destinationRouteExclusionRules,
+      destinationStopAdjustmentRule,
       destinationZoneName,
-      originAffirmativeRules,
-      originRule,
+      originRouteExclusionRules,
+      originStopAdjustmentRule,
       originZoneName
     } = extractRulesFromZones(
       accessible,
@@ -660,13 +660,13 @@ export const updateItinerariesWithStopAdjustments = (
     )
 
     // check if any transit leg violates affirmative rules
-    const affirmativeRules = [
-      ...destinationAffirmativeRules,
-      ...originAffirmativeRules
+    const routeExclusionRules = [
+      ...destinationRouteExclusionRules,
+      ...originRouteExclusionRules
     ]
-    for (let j = 0; j < affirmativeRules.length; j++) {
+    for (let j = 0; j < routeExclusionRules.length; j++) {
       if (indicesToRemove.has(i)) break
-      const rule = affirmativeRules[j]
+      const rule = routeExclusionRules[j]
       let ruleRouteUsed = false
       let ruleProhibitedRouteUsed = false
       for (let k = 0; k < itin.legs.length; k++) {
@@ -680,16 +680,16 @@ export const updateItinerariesWithStopAdjustments = (
       }
     }
 
-    if (originRule) {
+    if (originStopAdjustmentRule) {
       // apply rule stop adjustments (if applicable) to the first transit leg, first stop
-      const adjustment = originRule.stopAdjustments.find(
+      const adjustment = originStopAdjustmentRule.stopAdjustments.find(
         (adj) => adj.originalStop === firstTransitLeg?.from?.name
       )?.adjustment
       console.log('origin adjustment', adjustment)
       if (!adjustment) continue
       const updatedItinerary = adjustItinerary(
         adjustment,
-        originRule.customWalkLegGeometry,
+        originStopAdjustmentRule.customWalkLegGeometry,
         itin,
         'origin',
         originZoneName
@@ -697,16 +697,16 @@ export const updateItinerariesWithStopAdjustments = (
       itin = updatedItinerary
     }
 
-    if (destinationRule) {
+    if (destinationStopAdjustmentRule) {
       // apply rule stop adjustments (if applicable) to the last transit leg, last stop
-      const adjustment = destinationRule.stopAdjustments.find(
+      const adjustment = destinationStopAdjustmentRule.stopAdjustments.find(
         (adj) => adj.originalStop === lastTransitLeg?.to?.name
       )?.adjustment
       console.log('destination adjustment', adjustment)
       if (!adjustment) continue
       const updatedItinerary = adjustItinerary(
         adjustment,
-        destinationRule.customWalkLegGeometry,
+        destinationStopAdjustmentRule.customWalkLegGeometry,
         itin,
         'destination',
         destinationZoneName
