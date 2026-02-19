@@ -36,7 +36,6 @@ interface NewStop extends Omit<Stop, 'lat' | 'lon'> {
 }
 
 export interface StopAdjustmentRule {
-  accessibleStopToUse: string
   customWalkLegGeometry: (timeToAdjust: number) => string
   stopAdjustments: { adjustment: StopAdjustment; originalStop: string }[]
   trips: { accessible: boolean; headsigns: string[]; route: string }[]
@@ -128,7 +127,6 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
     destinationStopAdjustmentRules: [
       {
         // NORTHBOUND 1 Line trips TO Seattle Stadium
-        accessibleStopToUse: 'CID_stop_id',
         customWalkLegGeometry: STADIUM_TO_ZONE_WALK_LEG,
         stopAdjustments: [
           {
@@ -158,7 +156,6 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
       },
       {
         // NORTHBOUND ACCESSIBLE 1 Line trips TO Seattle Stadium
-        accessibleStopToUse: '',
         customWalkLegGeometry: INTERNATIONAL_DISTRICT_TO_ZONE_WALK_LEG,
         stopAdjustments: [
           {
@@ -187,7 +184,6 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
       },
       {
         // SOUTHBOUND 1 & 2 Line trips TO Seattle Stadium
-        accessibleStopToUse: 'CID_stop_id',
         customWalkLegGeometry: PIONEER_SQUARE_TO_ZONE_WALK_LEG,
         stopAdjustments: [
           {
@@ -239,7 +235,6 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
       },
       {
         // SOUTHBOUND ACCESSIBLE 1 & 2 Line trips TO Seattle Stadium
-        accessibleStopToUse: 'CID_stop_id',
         customWalkLegGeometry: INTERNATIONAL_DISTRICT_TO_ZONE_WALK_LEG,
         stopAdjustments: [
           {
@@ -272,7 +267,6 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
       },
       {
         // WESTBOUND 2 Line trips TO Seattle Stadium
-        accessibleStopToUse: 'CID_stop_id',
         customWalkLegGeometry: INTERNATIONAL_DISTRICT_TO_ZONE_WALK_LEG,
         stopAdjustments: [],
         trips: [
@@ -302,7 +296,6 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
     originStopAdjustmentRules: [
       {
         // NORTHBOUND 1 & 2 Line trips FROM Seattle Stadium
-        accessibleStopToUse: 'CID_stop_id',
         customWalkLegGeometry: ZONE_TO_PIONEER_SQUARE_WALK_LEG,
         stopAdjustments: [
           {
@@ -337,7 +330,6 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
       },
       {
         // NORTHBOUND ACCESSIBLE 1 & 2 Line trips FROM Seattle Stadium
-        accessibleStopToUse: '',
         customWalkLegGeometry: ZONE_TO_INTERNATIONAL_DISTRICT_WALK_LEG,
         stopAdjustments: [], // adjust stadium -> CID
         trips: [
@@ -355,7 +347,6 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
       },
       {
         // SOUTHBOUND 1 Line trips FROM Seattle Stadium
-        accessibleStopToUse: 'CID_stop_id',
         customWalkLegGeometry: ZONE_TO_STADIUM_WALK_LEG,
         stopAdjustments: [
           {
@@ -385,7 +376,6 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
       },
       {
         // SOUTHBOUND ACCESSIBLE 1 Line trips FROM Seattle Stadium
-        accessibleStopToUse: '',
         customWalkLegGeometry: ZONE_TO_INTERNATIONAL_DISTRICT_WALK_LEG,
         stopAdjustments: [
           {
@@ -414,7 +404,6 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
       },
       {
         // EASTBOUND 2 Line trips FROM Seattle Stadium
-        accessibleStopToUse: '',
         customWalkLegGeometry: ZONE_TO_INTERNATIONAL_DISTRICT_WALK_LEG,
         stopAdjustments: [],
         trips: [
