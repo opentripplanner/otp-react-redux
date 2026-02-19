@@ -34,6 +34,7 @@ type Props = {
 }
 
 type State = {
+  attributionHTML?: string
   mapVisible?: boolean
 }
 
@@ -54,8 +55,13 @@ class TripPreviewLayoutBase extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = {
+      attributionHTML: undefined,
       mapVisible: true
     }
+  }
+
+  _setInnerHtml = (innerAttributionContent: string) => {
+    this.setState({ attributionHTML: innerAttributionContent })
   }
 
   _toggleMap = () => {
@@ -88,10 +94,13 @@ class TripPreviewLayoutBase extends Component<Props, State> {
     } = this.props
     const { LegIcon } = this.context
 
-    // The maplibre attribution can interfere with the map visually when printing, so we'll copy the map attribution and inject it instead below the map container.
-    const attributionHTML = document.querySelector(
+    const innerAttributionContent = document.querySelector(
       '.maplibregl-ctrl-attrib-inner'
     )?.innerHTML
+
+    if (innerAttributionContent) {
+      this._setInnerHtml(innerAttributionContent)
+    }
 
     return (
       <div className="otp print-layout">
@@ -131,9 +140,11 @@ class TripPreviewLayoutBase extends Component<Props, State> {
         {/* The map, if visible */}
         {this.state.mapVisible && mapElement}
 
-        {attributionHTML && (
+        {this.state.attributionHTML && this.state.mapVisible && (
           <CustomAttribution>
-            <div dangerouslySetInnerHTML={{ __html: attributionHTML }} />
+            <div
+              dangerouslySetInnerHTML={{ __html: this.state.attributionHTML }}
+            />
           </CustomAttribution>
         )}
 
