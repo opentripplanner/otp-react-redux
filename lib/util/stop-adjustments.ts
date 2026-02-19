@@ -20,7 +20,8 @@ export interface CustomRoutingZone {
 export interface StopAdjustment {
   duration: number
   endTime: number
-  intermediateStops: number
+  intermediateStopsToAdd?: NewStop[]
+  intermediateStopsToRemove?: number
   legGeometry: {
     length: number
     pointsToAdd: string
@@ -134,7 +135,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
             adjustment: {
               duration: -120,
               endTime: -120000,
-              intermediateStops: 1,
+              intermediateStopsToRemove: 1,
               legGeometry: {
                 length: -24,
                 pointsToAdd: '',
@@ -164,7 +165,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
             adjustment: {
               duration: -120,
               endTime: -120000,
-              intermediateStops: 1,
+              intermediateStopsToRemove: 1,
               legGeometry: {
                 length: -19,
                 pointsToAdd: '',
@@ -181,7 +182,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
             adjustment: {
               duration: -300,
               endTime: -300000,
-              intermediateStops: 2,
+              intermediateStopsToRemove: 2,
               legGeometry: {
                 length: -34,
                 pointsToAdd: '',
@@ -216,7 +217,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
             adjustment: {
               duration: -180,
               endTime: -180000,
-              intermediateStops: 1,
+              intermediateStopsToRemove: 1,
               legGeometry: {
                 length: -15,
                 pointsToAdd: '',
@@ -269,7 +270,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
             adjustment: {
               duration: -120,
               endTime: -120000,
-              intermediateStops: 1,
+              intermediateStopsToRemove: 1,
               legGeometry: {
                 length: -16,
                 pointsToAdd: 'unpaHb|siVw@j@',
@@ -304,7 +305,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
             adjustment: {
               duration: -180,
               endTime: -180000,
-              intermediateStops: 1,
+              intermediateStopsToRemove: 1,
               legGeometry: {
                 length: -15,
                 pointsToAdd: '{gnaHj`siV',
@@ -394,13 +395,6 @@ const adjustLeg = (
   leg: Leg,
   type: 'destination' | 'origin'
 ): Leg => {
-  // For destination adjustments, remove stops from the end of the stop list.
-  // For origin adjustments, remove stops from the beginning of the stop list
-  const sliceArgs = {
-    end: type === 'destination' ? -1 * adjustment.intermediateStops : undefined,
-    start: type === 'destination' ? 0 : adjustment.intermediateStops
-  }
-
   // Attempt to cut and replace any matching parts of the leg geometry polyline
   let updatedPoints = leg.legGeometry.points
   if (!adjustment.legGeometry.pointsToCut.length) {
@@ -423,16 +417,60 @@ const adjustLeg = (
     ...leg,
     duration: leg.duration + adjustment.duration,
     endTime: leg.endTime + adjustment.endTime,
-    intermediateStops: leg.intermediateStops.slice(
-      sliceArgs.start,
-      sliceArgs.end
-    ),
     legGeometry: {
       ...leg.legGeometry,
       length: leg.legGeometry.length + adjustment.legGeometry.length,
       points: updatedPoints
-    },
-    stopCalls: leg.stopCalls?.slice(sliceArgs.start, sliceArgs.end)
+    }
+  }
+
+  if (adjustment.intermediateStopsToRemove) {
+    // For destination adjustments, remove stops from the end of the stop list
+    // For origin adjustments, remove stops from the beginning of the stop list
+    const sliceArgs = {
+      end:
+        type === 'destination'
+          ? -1 * adjustment.intermediateStopsToRemove
+          : undefined,
+      start: type === 'destination' ? 0 : adjustment.intermediateStopsToRemove
+    }
+
+    updatedLeg.intermediateStops = leg.intermediateStops.slice(
+      sliceArgs.start,
+      sliceArgs.end
+    )
+
+    updatedLeg.stopCalls = leg.stopCalls?.slice(sliceArgs.start, sliceArgs.end)
+  }
+
+  if (adjustment.intermediateStopsToAdd) {
+    // For destination adjustments, add stops to the end of the stop list
+    // For origin adjustments, add stops to the beginning of the stop list
+    const places: Place[] = adjustment.intermediateStopsToAdd.map((stop) => {
+      return {
+        lat: stop.lat,
+        locationType: 'STOP',
+        lon: stop.lon,
+        name: stop.name,
+        stopCode: undefined,
+        stopId: stop.id,
+        vertexType: 'TRANSIT'
+      }
+    })
+
+    let updatedStops: Place[]
+
+    if (type === 'destination') {
+      updatedStops = [...updatedLeg.intermediateStops, ...places]
+    } else {
+      updatedStops = [...places, ...updatedLeg.intermediateStops]
+    }
+
+    updatedLeg.intermediateStops = updatedStops
+    if (updatedLeg.stopCalls && updatedLeg.stopCalls.length)
+      updatedLeg.stopCalls = updatedLeg.stopCalls.concat(
+        updatedLeg.stopCalls[0]
+      )
   }
 
   return updatedLeg
