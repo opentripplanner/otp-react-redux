@@ -69,13 +69,15 @@ export const patternArrayforStops = (
         if (p.pattern.route?.shortName && cur.pattern.route?.shortName) {
           sameRoute =
             p.pattern.route?.shortName === cur.pattern.route?.shortName
-        } else if (p.pattern.route?.longName && cur.pattern.route?.longName) {
-          sameRoute = p.pattern.route?.longName === cur.pattern.route?.longName
-        } else if (
-          p?.stoptimes?.[0]?.headsign &&
-          cur?.stoptimes?.[0]?.headsign
-        ) {
+        }
+        if (p.pattern.route?.longName && cur.pattern.route?.longName) {
           sameRoute =
+            sameRoute &&
+            p.pattern.route?.longName === cur.pattern.route?.longName
+        }
+        if (p?.stoptimes?.[0]?.headsign && cur?.stoptimes?.[0]?.headsign) {
+          sameRoute =
+            sameRoute &&
             p?.stoptimes?.[0]?.headsign === cur?.stoptimes?.[0]?.headsign
         }
         return (
