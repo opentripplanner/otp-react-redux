@@ -877,7 +877,6 @@ export const updateItinerariesWithStopAdjustments = (
       const adjustment = originStopAdjustmentRule.stopAdjustments.find(
         (adj) => adj.originalStop === firstTransitLeg?.from?.name
       )?.adjustment
-      console.log('origin adjustment', adjustment)
       const updatedItinerary = adjustItinerary(
         originStopAdjustmentRule.customWalkLegGeometry,
         itin,
@@ -893,7 +892,6 @@ export const updateItinerariesWithStopAdjustments = (
       const adjustment = destinationStopAdjustmentRule.stopAdjustments.find(
         (adj) => adj.originalStop === lastTransitLeg?.to?.name
       )?.adjustment
-      console.log('destination adjustment', adjustment)
       const updatedItinerary = adjustItinerary(
         destinationStopAdjustmentRule.customWalkLegGeometry,
         itin,
