@@ -8,25 +8,51 @@ import {
 
 /* eslint-disable complexity */
 export interface CustomRoutingZone {
+  /** The bounding box of the routing zone, in the following format: [minLat, maxLat, minLon, maxLon] */
   bbox: number[]
+  /** Route exclusion rules to use if the destination of an itinerary falls within the zone */
   destinationRouteExclusionRules?: RouteExclusionRule[]
+  /** Stop adjustment rules to use if the destination of an itinerary falls within the zone */
   destinationStopAdjustmentRules: StopAdjustmentRule[]
+  /** Name of the zone, to be shown on the overview map and in the itinerary */
   name: string
+  /** Route exclusion rules to use if the origin of an itinerary falls within the zone */
   originRouteExclusionRules?: RouteExclusionRule[]
+  /** Stop adjustment rules to use if the origin of an itinerary falls within the zone */
   originStopAdjustmentRules: StopAdjustmentRule[]
+  /** Time windows where the custom routing should take effect. Formatted as milliseconds since the unix epoch */
   times: { end: number; start: number }[]
 }
 
+/** Describes an adjustment to be made to a transit leg */
 export interface StopAdjustment {
+  /** Difference in leg duration between the original stop and the new stop */
   duration: number
+  /** Difference in end time between the original stop and the new stop */
   endTime: number
+  /** Stops to add to the transit leg. For origin adjustments, stops are added to the beginning of the leg.
+   * For destination adjustments, stops are added to the end of the leg
+   */
   intermediateStopsToAdd?: NewStop[]
+  /** Stops to remove from the transit leg. Since the stops are removed, only a number of stops is required.
+   * For origin adjustments, stops are removed from the beginning of the leg. For destination adjustments,
+   * stops are removed from the end of the leg
+   */
   intermediateStopsToRemove?: number
+  /** Leg geometry adjustments to make */
   legGeometry: {
+    /** Change in length of the leg geometry */
     length: number
+    /** Leg geometry points to be added. Format should be encoded polyline points. For more information, see here:
+     * https://developers.google.com/maps/documentation/utilities/polylineutility
+     */
     pointsToAdd: string
+    /** Leg geometry points to be removed. Format should be encoded polyline points. For more information, see here:
+     * https://developers.google.com/maps/documentation/utilities/polylineutility
+     */
     pointsToCut: string[]
   }
+  /** Information for the new stop that should be used as the boarding or alighting point of the updated transit leg */
   newStop: NewStop
 }
 
@@ -35,12 +61,23 @@ interface NewStop extends Omit<Stop, 'lat' | 'lon'> {
   lon: number
 }
 
+/** Rule for adjusting stops in an itinerary based on certain trip rules. When an itinerary's transit leg matches one
+ * of the trips in the rule, the leg will be updated according to the relevant stopAdjustment, if one exists
+ */
 export interface StopAdjustmentRule {
+  /** A custom walk leg geometry that will be inserted into the itinerary. Formatted as a function that takes in
+   * the relevant start time for the walk leg
+   */
   customWalkLegGeometry: (timeToAdjust: number) => string
+  /** Adjustments to make to a transit leg if the originalStop is included in that leg */
   stopAdjustments: { adjustment: StopAdjustment; originalStop: string }[]
+  /** Transit trips that should potentially trigger stop adjustments */
   trips: { accessible: boolean; headsigns: string[]; route: string }[]
 }
 
+/** Rule that prohibits itineraries from containing certain routes. If an itinerary contains the given route with one of the given headsigns,
+ * the itinerary will be deleted if one of the prohibitedRoutes is also used within that itinerary
+ */
 interface RouteExclusionRule {
   headsigns: string[]
   prohibitedRoutes: string[]
@@ -51,7 +88,9 @@ interface RouteExclusionRule {
  * Note that the legGeometry.points string may contain double-escaped characters when copied from the OTP response (for example, "sdaf\\sdaf" would evaluate to "sdafsdaf").
  * These double-escaped characters need to be escaped again. So, in the example, "sdaf\\sdaf" would need to be updated to "sdaf\\\\sdaf".
  *
- * Explain duration adjustment better
+ * The legs are formatted as functions so that the relevant time may be used when generating the walk leg string. For example, a destination adjustment would use the end time
+ * of the final transit leg as the timeToAdjust parameter value, since that's when the walk leg would start. The function would then use that time as the startTime and, using
+ * the duration of the custom walk leg, provide the correct end time as well.
  */
 const STADIUM_TO_ZONE_WALK_LEG = (timeToAdjust: number): string =>
   `{"accessibilityScore":null,"agency":null,"alerts":[],"arrivalDelay":0,"departureDelay":0,"distance":503.56,"dropOffBookingInfo":{"latestBookingTime":null},"dropoffType":"SCHEDULED","duration":493,"endTime":${
