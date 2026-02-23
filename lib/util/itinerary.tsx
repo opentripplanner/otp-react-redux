@@ -13,10 +13,6 @@ import memoize from 'lodash.memoize'
 
 import { AppConfig, CO2Config } from './config-types'
 import { checkForRouteModeOverride } from './config'
-import {
-  soundTransitCustomRoutingZones,
-  updateItinerariesWithStopAdjustments
-} from './stop-adjustments'
 import { WEEKDAYS, WEEKEND_DAYS } from './monitored-trip'
 
 export interface ItineraryStartTime {
