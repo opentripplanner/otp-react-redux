@@ -889,6 +889,19 @@ export const updateItinerariesWithStopAdjustments = (
     }
 
     if (originStopAdjustmentRule) {
+      // if the trip starts in a custom zone, we should delete any itineraries that contain a micromobility leg
+      // that occurs before a transit leg
+      let micromobilityLegFound = false
+      for (let j = 0; j < itin.legs.length; j++) {
+        const leg = itin.legs[j]
+        if (leg.rentedBike || leg.rentedVehicle) micromobilityLegFound = true
+        if (leg.transitLeg && micromobilityLegFound) {
+          indicesToRemove.add(i)
+          break
+        }
+      }
+      if (indicesToRemove.has(i)) continue
+
       // apply rule stop adjustments (if applicable) to the first transit leg, first stop
       const adjustment = originStopAdjustmentRule.stopAdjustments.find(
         (adj) => adj.originalStop === firstTransitLeg?.from?.name
@@ -904,6 +917,19 @@ export const updateItinerariesWithStopAdjustments = (
     }
 
     if (destinationStopAdjustmentRule) {
+      // if the trip ends in a custom zone, we should delete any itineraries that contain a micromobility leg
+      // that occurs after a transit leg
+      let transitLegFound = false
+      for (let j = 0; j < itin.legs.length; j++) {
+        const leg = itin.legs[j]
+        if (leg.transitLeg) transitLegFound = true
+        if ((leg.rentedBike || leg.rentedVehicle) && transitLegFound) {
+          indicesToRemove.add(i)
+          break
+        }
+      }
+      if (indicesToRemove.has(i)) continue
+
       // apply rule stop adjustments (if applicable) to the last transit leg, last stop
       const adjustment = destinationStopAdjustmentRule.stopAdjustments.find(
         (adj) => adj.originalStop === lastTransitLeg?.to?.name
