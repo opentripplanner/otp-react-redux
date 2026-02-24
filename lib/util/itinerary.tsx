@@ -78,7 +78,10 @@ export function getFirstTransitLeg(itinerary: Itinerary): Leg | undefined {
  * Gets the last transit leg of the given itinerary, or undefined if none found.
  */
 export function getLastTransitLeg(itinerary: Itinerary): Leg | undefined {
-  return itinerary?.legs?.toReversed().find((leg) => leg.transitLeg)
+  return itinerary?.legs
+    ?.slice()
+    .reverse()
+    .find((leg) => leg.transitLeg)
 }
 
 /**
