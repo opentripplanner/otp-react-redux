@@ -477,10 +477,6 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
     ],
     times: [
       {
-        end: 1798790399000, // end of 2026
-        start: 1767254400000 // beginning of 2026
-      },
-      {
         // 6/15/26, 12pm Match
         end: 1781569800000, // 5:30pm
         start: 1781535600000 // 8am
