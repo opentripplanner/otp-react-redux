@@ -697,7 +697,8 @@ components:
   TripBasicsPane:
     checkingItineraryExistence: Vérification du trajet pour chaque jour de la 
       semaine...
-    indicatesRequiredFields: Les champs marqués d'une astérisque (*) sont obligatoires.
+    indicatesRequiredFields: Les champs marqués d'une astérisque (*) sont 
+      obligatoires.
     onlyOnDate: "{date, date, ::eeeee yyyyMMdd} uniquement"
     recurringEachWeek: Certains jours chaque semaine
     tripDaysPrompt: Quels jours effectuez-vous ce trajet ?
@@ -754,7 +755,7 @@ components:
       untogglePause: Reprendre
     inactive:
       description: Reprendre et recevoir les notifications.
-      heading: Suivi suspendu
+      heading: Suivi suspendu.
     nextTripNotPossible:
       description: >
         Votre trajet étant introuvable après plusieurs tentatives, le suivi a

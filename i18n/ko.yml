@@ -641,7 +641,7 @@ components:
       untogglePause: 다시 시작
     inactive:
       description: 트립 모니터링을 다시 시작하여 상태 업데이트 확인
-      heading: 트립 모니터링이 일시 중지됨
+      heading: 트립 모니터링이 일시 중지됨.
     nextTripNotPossible:
       description: |
         트립 플래너가 오늘 트립을 찾을 수 없습니다. 대체 경로를 찾으려면 여정을 트립 일정을 다시 계획하세요.
@@ -678,8 +678,9 @@ components:
     happensOnDays: "발생: {days}"
     monitoredTripDays: 여행을 모니터링한 일수
     notifications: 출발 예정 시간 {leadTimeInMinutes} 분 전
-    notificationsPaused: "알림: 비활성화됨"
+    notificationsPaused: "알림: 비활성화됨."
     timeAndDuration: 여행 시간 및 기간
+    notificationsSnoozed: 오늘 트립 모니터링이 일시 중지되었습니다.
   TripTools:
     copyLink: 링크 복사
     header: 도구
