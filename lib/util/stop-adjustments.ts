@@ -352,6 +352,22 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               newStop: STOPS.PIONEER_SQUARE
             },
             originalStop: "Int'l Dist/Chinatown"
+          },
+          {
+            adjustment: {
+              duration: -300,
+              endTime: -300000,
+              intermediateStopsToRemove: 2,
+              legGeometry: {
+                length: -34,
+                pointsToAdd: 'knpaHx{siV',
+                pointsToCut: [
+                  'wjnaHj_siVuA?g@Be@H[JcBj@o@PsGfBc@H_@D]@]?YC{@Gc@A]?}ADQ?IAKCk@UKAOA_C???_FAi@B_@FQFQF_@R]X[\\OTQZsEhI]f@YZoE|D'
+                ]
+              },
+              newStop: STOPS.PIONEER_SQUARE
+            },
+            originalStop: 'Stadium'
           }
         ],
         trips: [
