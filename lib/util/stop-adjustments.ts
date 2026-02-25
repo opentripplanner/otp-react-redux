@@ -586,20 +586,20 @@ const adjustLeg = (
   if (adjustment.intermediateStopsToRemove) {
     // For destination adjustments, remove stops from the end of the stop list
     // For origin adjustments, remove stops from the beginning of the stop list
-    const sliceArgs = {
-      end:
-        type === 'destination'
-          ? -1 * adjustment.intermediateStopsToRemove
-          : undefined,
-      start: type === 'destination' ? 0 : adjustment.intermediateStopsToRemove
-    }
+    const sliceStart =
+      type === 'destination' ? 0 : adjustment.intermediateStopsToRemove
+
+    const sliceEnd =
+      type === 'destination'
+        ? -1 * adjustment.intermediateStopsToRemove
+        : undefined
 
     updatedLeg.intermediateStops = leg.intermediateStops.slice(
-      sliceArgs.start,
-      sliceArgs.end
+      sliceStart,
+      sliceEnd
     )
 
-    updatedLeg.stopCalls = leg.stopCalls?.slice(sliceArgs.start, sliceArgs.end)
+    updatedLeg.stopCalls = leg.stopCalls?.slice(sliceStart, sliceEnd)
   }
 
   if (adjustment.intermediateStopsToAdd) {
