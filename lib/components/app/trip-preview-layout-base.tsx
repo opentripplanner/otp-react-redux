@@ -55,18 +55,17 @@ class TripPreviewLayoutBase extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = {
-      attributionHTML: undefined,
+      attributionHTML: ' ',
       mapVisible: true
     }
-  }
-
-  _setInnerHtml = (innerAttributionContent: string) => {
-    this.setState({ attributionHTML: innerAttributionContent })
   }
 
   _toggleMap = () => {
     this.setState({ mapVisible: !this.state.mapVisible })
   }
+
+  _grabInnerAttributionContent = () =>
+    document.querySelector('.maplibregl-ctrl-attrib-inner')?.innerHTML
 
   _print = () => {
     window.print()
@@ -111,14 +110,6 @@ class TripPreviewLayoutBase extends Component<Props, State> {
       title
     } = this.props
     const { LegIcon } = this.context
-
-    const innerAttributionContent = document.querySelector(
-      '.maplibregl-ctrl-attrib-inner'
-    )?.innerHTML
-
-    if (innerAttributionContent) {
-      this._setInnerHtml(innerAttributionContent)
-    }
 
     return (
       <div className="otp print-layout">
