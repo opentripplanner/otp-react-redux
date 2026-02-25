@@ -64,15 +64,14 @@ class TripPreviewLayoutBase extends Component<Props, State> {
     this.setState({ mapVisible: !this.state.mapVisible })
   }
 
-  _grabInnerAttributionContent = () =>
-    document.querySelector('.maplibregl-ctrl-attrib-inner')?.innerHTML
-
   _print = () => {
     window.print()
   }
 
   _updateAttributionContent = () => {
-    const innerAttributionContent = this._grabInnerAttributionContent()
+    const innerAttributionContent = document.querySelector(
+      '.maplibregl-ctrl-attrib-inner'
+    )?.innerHTML
 
     if (
       innerAttributionContent &&
