@@ -8,8 +8,8 @@ import {
 
 /* eslint-disable complexity */
 export interface CustomRoutingZone {
-  /** The bounding box of the routing zone, in the following format: [minLat, maxLat, minLon, maxLon] */
-  bbox: number[]
+  /** The bounding box of the routing zone */
+  bbox: BoundingBox
   /** Route exclusion rules to use if the destination of an itinerary falls within the zone */
   destinationRouteExclusionRules?: RouteExclusionRule[]
   /** Stop adjustment rules to use if the destination of an itinerary falls within the zone */
@@ -59,6 +59,13 @@ export interface StopAdjustment {
 interface NewStop extends Omit<Stop, 'lat' | 'lon'> {
   lat: number
   lon: number
+}
+
+interface BoundingBox {
+  maxLat: number
+  maxLon: number
+  minLat: number
+  minLon: number
 }
 
 /** Rule for adjusting stops in an itinerary based on certain trip rules. When an itinerary's transit leg matches one
@@ -153,7 +160,12 @@ const STOPS: Record<string, NewStop> = {
 export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
   {
     // Seattle Stadium zone
-    bbox: [47.592241, 47.597523, -122.333457, -122.329477],
+    bbox: {
+      maxLat: 47.597523,
+      maxLon: -122.329477,
+      minLat: 47.592241,
+      minLon: -122.333457
+    },
     destinationRouteExclusionRules: [
       {
         // itineraries that end in the zone and use the 2 Line are prohibited from
@@ -510,8 +522,8 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
   }
 ]
 
-const isInBBox = (lat: number, lon: number, bbox: number[]) => {
-  const [minLat, maxLat, minLon, maxLon] = bbox
+const isInBBox = (lat: number, lon: number, bbox: BoundingBox) => {
+  const { maxLat, maxLon, minLat, minLon } = bbox
   return lat >= minLat && lat <= maxLat && lon >= minLon && lon <= maxLon
 }
 
