@@ -121,6 +121,14 @@ export function getLastLegEndTime(legs: Leg[]): number {
   return +legs[legs.length - 1].endTime
 }
 
+// TODO: is there a type for OTP Modes?
+export function getTotalTimeForMode(legs: Leg[], mode: string): number {
+  return legs
+    .filter((l) => l.mode === mode)
+    .map((l) => l.duration)
+    .reduce((acc, cur) => acc + cur, 0)
+}
+
 export function sortStartTimes(
   startTimes: ItineraryStartTime[]
 ): ItineraryStartTime[] {
