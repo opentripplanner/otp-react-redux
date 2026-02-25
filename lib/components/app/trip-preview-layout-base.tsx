@@ -83,13 +83,15 @@ class TripPreviewLayoutBase extends Component<Props, State> {
   }
 
   componentDidMount() {
-    this._updateAttributionContent()
+    // Allow the attribution to fully render before we grab and set the state.
+    setTimeout(() => this._updateAttributionContent(), 200)
   }
 
   componentDidUpdate() {
     // Add print-view class to html tag to ensure that iOS scroll fix only applies
     // to non-print views.
     addPrintViewClassToRootHtml()
+    // Sometimes moving the map can change the attribution.
     this._updateAttributionContent()
   }
 
@@ -148,16 +150,11 @@ class TripPreviewLayoutBase extends Component<Props, State> {
         {this.state.mapVisible && mapElement}
 
         {this.state.attributionHTML && this.state.mapVisible && (
-          <CustomAttribution>
-            <div
-              dangerouslySetInnerHTML={{
-                __html:
-                  this.state.attributionHTML ||
-                  this._grabInnerAttributionContent() ||
-                  ''
-              }}
-            />
-          </CustomAttribution>
+          <CustomAttribution
+            dangerouslySetInnerHTML={{
+              __html: this.state.attributionHTML
+            }}
+          />
         )}
 
         {/* The main itinerary body */}
