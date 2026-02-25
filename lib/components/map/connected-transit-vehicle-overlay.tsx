@@ -15,8 +15,6 @@ import { FormattedMessage, FormattedNumber, useIntl } from 'react-intl'
 import { TransitVehicle } from '@opentripplanner/types'
 import React from 'react'
 import TransitVehicleOverlay, {
-  Circle,
-  withCaret,
   withRouteColorBackground
 } from '@opentripplanner/transit-vehicle-overlay'
 
@@ -25,6 +23,8 @@ import { capitalizeFirst } from '../../util/ui'
 import { DEFAULT_ROUTE_COLOR } from '../util/colors'
 import { formatDuration } from '../util/formatted-duration'
 import FormattedTransitVehicleStatus from '../util/formatted-transit-vehicle-status'
+
+import ConnectedCaret from './connected-caret'
 
 interface TransitVehicleExt extends TransitVehicle {
   label?: string
@@ -115,11 +115,7 @@ function VehicleTooltip({
 }
 
 // Settings where caret is touching the border of the circle.
-const CaretTouchingBorder = withCaret(Circle, {
-  height: 5,
-  offset: 1.5,
-  width: 10
-})
+const CaretTouchingBorder = ConnectedCaret
 
 // Round vehicle symbol with arrow/caret on the border,
 // and showing the route color with a transparent effect on hover.
