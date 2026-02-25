@@ -56,6 +56,9 @@ export interface StopAdjustment {
   newStop: NewStop
 }
 
+/** Information for the new stop that will be used in a stop adjustment. Since lat and lon are optional in the Stop type,
+ * we need to make them required here
+ */
 interface NewStop extends Omit<Stop, 'lat' | 'lon'> {
   lat: number
   lon: number
