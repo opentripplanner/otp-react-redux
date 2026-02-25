@@ -171,6 +171,7 @@ interface DefaultMapProps {
   itinerary: Itinerary
   mapConfig: MapConfig
   nearbyViewActive: boolean
+  onClickLayerSelector?: () => void
   overrideNavigationControlPosition?: ControlPosition
   pending: boolean
   rentalVehicleQuery: () => void
@@ -361,6 +362,7 @@ class DefaultMap extends Component<DefaultMapProps> {
       mapConfig,
       nearbyFilters,
       nearbyViewActive,
+      onClickLayerSelector,
       overrideNavigationControlPosition,
       pending,
       rentalVehicleQuery,
@@ -427,6 +429,7 @@ class DefaultMap extends Component<DefaultMapProps> {
             reuseMaps: true
           }}
           maxZoom={maxZoom}
+          onClickLayerSelector={onClickLayerSelector}
           // In Leaflet, this was an onclick handler. Creating a click handler in
           // MapLibreGL would require writing a custom event handler for all mouse events
           onContextMenu={this.onMapClick}
