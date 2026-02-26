@@ -1,32 +1,46 @@
-/* eslint-disable no-case-declarations */
 import { Button } from 'react-bootstrap'
 import { Check } from '@styled-icons/fa-solid/Check'
 import { Clipboard } from '@styled-icons/fa-solid/Clipboard'
 import { connect } from 'react-redux'
 import { Flag } from '@styled-icons/fa-solid/Flag'
-import { FormattedMessage, injectIntl } from 'react-intl'
+import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl'
 import { Print } from '@styled-icons/fa-solid/Print'
-import { StyledIconBase } from '@styled-icons/styled-icon'
 import { Undo } from '@styled-icons/fa-solid/Undo'
-import { withRouter } from 'react-router'
 import bowser from 'bowser'
 import copyToClipboard from 'copy-to-clipboard'
 import coreUtils from '@opentripplanner/core-utils'
-import PropTypes from 'prop-types'
 import qs from 'qs'
-import React, { Component, useContext, useMemo } from 'react'
+import React, {
+  Component,
+  ComponentType,
+  CSSProperties,
+  ReactNode,
+  SVGProps,
+  useContext,
+  useMemo
+} from 'react'
 
 import * as uiActions from '../../actions/ui'
+import { AppReduxState } from '../../util/state-types'
 import { ComponentContext } from '../../util/contexts'
 import { getModuleConfig, Modules } from '../../util/config'
 import { IconWithText } from '../util/styledIcon'
+import { ReportIssueConfig } from '../../util/config-types'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import PopupTriggerText from '../app/popup-trigger-text'
 
 // Copy URL Button
 
-class CopyUrlButton extends Component {
-  constructor(props) {
+interface CopyUrlButtonProps {
+  copyItineraryUrl?: string
+}
+
+interface CopyUrlButtonState {
+  showCopied: boolean
+}
+
+class CopyUrlButton extends Component<CopyUrlButtonProps, CopyUrlButtonState> {
+  constructor(props: CopyUrlButtonProps) {
     super(props)
     this.state = { showCopied: false }
   }
@@ -89,17 +103,13 @@ class CopyUrlButton extends Component {
   }
 }
 
-CopyUrlButton.propTypes = {
-  copyItineraryUrl: PropTypes.string
-}
-
 // Print Button Component
 
 class PrintButton extends Component {
   _onClick = () => {
     // Note: this is designed to work only with hash routing.
     const printUrl = window.location.href.replace('#', '#/print')
-    window.location = printUrl
+    window.location.href = printUrl
   }
 
   render() {
@@ -117,7 +127,9 @@ class PrintButton extends Component {
 
 // Report Issue Button Component
 
-class ReportIssueButtonBase extends Component {
+class ReportIssueButtonBase extends Component<
+  ReportIssueConfig & WrappedComponentProps
+> {
   _onClick = () => {
     const { intl, mailto, subject: configuredSubject } = this.props
     const subject =
@@ -146,18 +158,11 @@ class ReportIssueButtonBase extends Component {
     return (
       <Button className="tool-button" onClick={this._onClick}>
         <IconWithText Icon={Flag}>
-          {/* FIXME: Depending on translation, Spanish and French strings may not fit in button width. */}
           <FormattedMessage id="components.TripTools.reportIssue" />
         </IconWithText>
       </Button>
     )
   }
-}
-
-ReportIssueButtonBase.propTypes = {
-  intl: PropTypes.object,
-  mailto: PropTypes.string,
-  subject: PropTypes.string
 }
 
 // The ReportIssueButton component above, with an intl prop
@@ -166,9 +171,16 @@ const ReportIssueButton = injectIntl(ReportIssueButtonBase)
 
 // Link to URL Button
 
-class LinkButton extends Component {
+interface LinkButtonProps {
+  Icon: ComponentType
+  onClick: () => void
+  text: ReactNode
+  url?: string
+}
+
+class LinkButton extends Component<LinkButtonProps> {
   _onClick = () => {
-    window.location.href = this.props.url
+    this.props.url && (window.location.href = this.props.url)
   }
 
   render() {
@@ -187,34 +199,48 @@ class LinkButton extends Component {
   }
 }
 
-LinkButton.propTypes = {
-  Icon: PropTypes.elementType,
-  onClick: PropTypes.func,
-  text: PropTypes.element,
-  url: PropTypes.string
+interface TripToolsProps {
+  buttonTypes?: string[]
+  copyItineraryUrl?: string
+  popupTarget?: string
+  reportConfig?: ReportIssueConfig
+  setPopupContent: (target: string) => void
+  startOverFromInitialUrl: () => void
+}
+
+// FIXME: See app.js for original definition.
+interface SvgIconProps {
+  Fallback?: unknown
+  className?: string
+  iconName?: string
+  style?: CSSProperties
 }
 
 const TripTools = ({
-  buttonTypes,
+  buttonTypes = [
+    'COPY_URL',
+    'PRINT',
+    'REPORT_ISSUE',
+    'START_OVER',
+    'POPUP_LINK'
+  ],
   copyItineraryUrl,
   popupTarget,
   reportConfig,
   setPopupContent,
   startOverFromInitialUrl
-}) => {
-  const { SvgIcon } = useContext(ComponentContext)
+}: TripToolsProps) => {
+  const { SvgIcon } = useContext(ComponentContext) as {
+    SvgIcon: ComponentType<SvgIconProps>
+  }
   const PopupIcon = useMemo(() => {
-    const IconComponent = (componentProps) => {
-      return (
-        <StyledIconBase>
-          <SvgIcon iconName={popupTarget} {...componentProps} />
-        </StyledIconBase>
-      )
-    }
+    const IconComponent = (componentProps: SVGProps<SVGSVGElement>) => (
+      <SvgIcon iconName={popupTarget} {...componentProps} />
+    )
     return IconComponent
   }, [SvgIcon, popupTarget])
 
-  const buttonComponents = []
+  const buttonComponents = [] as ReactNode[]
   buttonTypes.forEach((type) => {
     switch (type) {
       case 'COPY_URL':
@@ -271,22 +297,9 @@ const TripTools = ({
   )
 }
 
-TripTools.propTypes = {
-  buttonTypes: PropTypes.arrayOf(PropTypes.string),
-  copyItineraryUrl: PropTypes.string,
-  popupTarget: PropTypes.string,
-  reportConfig: PropTypes.object,
-  setPopupContent: PropTypes.func,
-  startOverFromInitialUrl: PropTypes.func
-}
-
-TripTools.defaultProps = {
-  buttonTypes: ['COPY_URL', 'PRINT', 'REPORT_ISSUE', 'START_OVER', 'POPUP_LINK']
-}
-
 // Connect main class to redux store
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: AppReduxState) => {
   const callTakerConfig = getModuleConfig(state, Modules.CALL_TAKER)
   return {
     copyItineraryUrl: callTakerConfig?.options?.copyItineraryUrl,
@@ -299,6 +312,4 @@ const mapDispatchToProps = {
   startOverFromInitialUrl: uiActions.startOverFromInitialUrl
 }
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(TripTools)
-)
+export default connect(mapStateToProps, mapDispatchToProps)(TripTools)
