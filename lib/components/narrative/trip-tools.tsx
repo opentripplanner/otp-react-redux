@@ -48,22 +48,7 @@ class CopyUrlButton extends Component<CopyUrlButtonProps, CopyUrlButtonState> {
   _resetState = () => this.setState({ showCopied: false })
 
   _onClick = () => {
-    // If special routerId has been set in session storage, construct copy URL
-    // for itinerary with #/start/ prefix to set routerId on page load.
-    const routerId = window.sessionStorage.getItem('routerId')
     let url = window.location.href
-    if (routerId) {
-      const parts = url.split('#')
-      if (parts.length === 2) {
-        url = `${parts[0]}#/start/x/x/x/${routerId}${parts[1]}`
-      } else {
-        // Console logs are not internationalized.
-        console.warn(
-          'URL not formatted as expected, copied URL will not contain session routerId.',
-          routerId
-        )
-      }
-    }
     if (this.props.copyItineraryUrl) {
       // Copy query params without sessionId.
       const params = { ...coreUtils.query.getUrlParams(), sessionId: undefined }
