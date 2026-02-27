@@ -208,7 +208,7 @@ interface TripToolsProps {
   startOverFromInitialUrl: () => void
 }
 
-// FIXME: See app.js for original definition.
+// FIXME: Combine with the same type from app.js when converting that to TS.
 interface SvgIconProps {
   Fallback?: unknown
   className?: string
