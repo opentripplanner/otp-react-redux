@@ -2,14 +2,15 @@ import { FormattedMessage } from 'react-intl'
 import React, { useEffect, useState } from 'react'
 
 import { InlineLoading } from '../narrative/loading'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
 import FormNavigationButtons, { ButtonType } from './form-navigation-buttons'
-import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import StackedPanes, { Props as StackedPanesProps } from './stacked-panes'
 
 interface Props extends StackedPanesProps {
   extraButton?: ButtonType
   isReadOnly?: boolean
+  isSubmitting?: boolean
   onCancel: () => void
   subtitle?: string | JSX.Element
 }
@@ -22,6 +23,7 @@ interface Props extends StackedPanesProps {
 const StackedPanesWithSave = ({
   extraButton,
   isReadOnly,
+  isSubmitting,
   onCancel,
   panes,
   subtitle,
@@ -46,16 +48,14 @@ const StackedPanesWithSave = ({
         title={title}
       />
 
-      {/* Announces when page is loading to AT users */}
+      {/* Announces when page is loading or submitting to AT users */}
       <InvisibleA11yLabel aria-live="polite" role="status">
-        {buttonClicked === 'okay' && (
-          <FormattedMessage id="common.forms.loading" />
-        )}
+        {isSubmitting && <FormattedMessage id="common.forms.loading" />}
       </InvisibleA11yLabel>
 
       <FormNavigationButtons
         backButton={{
-          disabled: buttonClicked === 'okay',
+          disabled: isSubmitting,
           onClick: () => {
             setButtonClicked('back')
             updateBeingCanceled(true)
@@ -73,13 +73,9 @@ const StackedPanesWithSave = ({
           isReadOnly
             ? undefined
             : {
-                disabled: buttonClicked === 'okay' || isLoading,
-                onClick: () => {
-                  // Some browsers need this to happen after the formik action finishes firing
-                  setTimeout(() => setButtonClicked('okay'), 10)
-                },
+                disabled: isLoading || isSubmitting,
                 text:
-                  buttonClicked === 'okay' || isLoading ? (
+                  isLoading || isSubmitting ? (
                     <InlineLoading />
                   ) : (
                     <FormattedMessage id="components.StackedPaneDisplay.savePreferences" />
