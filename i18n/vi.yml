@@ -730,7 +730,7 @@ components:
       untogglePause: Tiếp tục
     inactive:
       description: Tiếp tục cho để nhận lại thông báo
-      heading: Tạm dừng việc giám sát chuyến đi
+      heading: Tạm dừng việc giám sát chuyến đi.
     nextTripNotPossible:
       description: >
         Người lập kế hoạch chuyến đi đã không thể tìm thấy chuyến đi của bạn
@@ -754,7 +754,7 @@ components:
       description: >-
         Thông báo chuyến đi sẽ bắt đầu lại ngày chọn tiếp theo. Bấm Tiếp tục cho
         để nhận lại thông báo hôm nay.
-      heading: Thông báo đã tạm dừng trong ngày hôm nay
+      heading: Thông báo đã tạm dừng trong ngày hôm nay.
     upcoming:
       nextTripBegins: >-
         Chuyến tiếp theo bắt đầu vào {tripDatetime, date, ::eeeee yyyyMMdd} lúc
@@ -777,7 +777,7 @@ components:
     monitoredTripDays: Số ngày theo dõi chuyến đi
     notifications: "{leadTimeInMinutes} phút trước khi khởi hành theo lịch trình"
     notificationsPaused: Thông báo đã tắt
-    notificationsSnoozed: Thông báo đã tạm dừng trong ngày hôm nay
+    notificationsSnoozed: Thông báo đã tạm dừng trong ngày hôm nay.
     timeAndDuration: Thời gian và thời lượng chuyến đi
   TripTools:
     copyLink: Sao chép URL
