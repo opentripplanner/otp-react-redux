@@ -165,7 +165,9 @@ interface LinkButtonProps {
 
 class LinkButton extends Component<LinkButtonProps> {
   _onClick = () => {
-    this.props.url && (window.location.href = this.props.url)
+    if (this.props.url) {
+      window.location.href = this.props.url
+    }
   }
 
   render() {
@@ -225,7 +227,7 @@ const TripTools = ({
     return IconComponent
   }, [SvgIcon, popupTarget])
 
-  const buttonComponents = [] as ReactNode[]
+  const buttonComponents: ReactNode[] = []
   buttonTypes.forEach((type) => {
     switch (type) {
       case 'COPY_URL':
