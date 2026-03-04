@@ -271,6 +271,7 @@ export type ItinerarySortOption =
   | 'COST'
   | 'DEPARTURETIME'
   | 'FARE'
+  | 'EMISSIONS'
 
 export interface ItineraryCostWeights {
   driveReluctance: number
