@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, IntlShape, useIntl } from 'react-intl'
-import { FormikProps } from 'formik'
+import { useFormikContext } from 'formik'
 import React, { useCallback, useEffect } from 'react'
 
 import * as userActions from '../../../actions/user'
@@ -10,7 +10,7 @@ import { MonitoredTrip, User } from '../types'
 
 import CompanionSelector, { Option } from './companion-selector'
 
-type Props = FormikProps<MonitoredTrip> & {
+type Props = {
   getDependentUserInfo: (userIds: string[], intl: IntlShape) => void
   isReadOnly: boolean
   loggedInUser: User
@@ -27,10 +27,10 @@ function optionValue(option: Option | null) {
 const TripCompanions = ({
   getDependentUserInfo,
   isReadOnly,
-  loggedInUser,
-  setFieldValue,
-  values: trip
+  loggedInUser
 }: Props): JSX.Element => {
+  const { setFieldValue, values: trip } = useFormikContext<MonitoredTrip>()
+
   const handleCompanionChange = useCallback(
     (option: Option | Option[] | null) => {
       if (!option || 'label' in option) {

@@ -1,14 +1,14 @@
 import { Alert } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
-import { FormikProps } from 'formik'
+import { useFormikContext } from 'formik'
 import React from 'react'
 
 import { AppReduxState } from '../../../util/state-types'
 import { getDependentName } from '../../../util/user'
 import { MonitoredTrip, User } from '../types'
 
-type Props = FormikProps<MonitoredTrip> & {
+type Props = {
   isReadOnly: boolean
   loggedInUser: User
 }
@@ -16,11 +16,9 @@ type Props = FormikProps<MonitoredTrip> & {
 /**
  * Displays a banner for read-only state.
  */
-const TripReadOnlyPane = ({
-  isReadOnly,
-  loggedInUser,
-  values: trip
-}: Props) => {
+const TripReadOnlyPane = ({ isReadOnly, loggedInUser }: Props) => {
+  const { values: trip } = useFormikContext<MonitoredTrip>()
+
   if (!isReadOnly) return null
 
   const { companion, primary } = trip
