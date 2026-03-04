@@ -11,8 +11,6 @@ import {
 import { Field, FormikProps } from 'formik'
 import { FormattedMessage, injectIntl, useIntl } from 'react-intl'
 import { Prompt } from 'react-router'
-// @ts-expect-error FormikErrorFocus does not support TypeScript yet.
-import FormikErrorFocus from 'formik-error-focus'
 import React, { Component, FormEventHandler } from 'react'
 import styled from 'styled-components'
 import type { IntlShape, WrappedComponentProps } from 'react-intl'
@@ -470,9 +468,6 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
               </Radio>
             </FormGroup>
           )}
-
-          {/* Scroll to the trip name/days fields if submitting and there is an error on these fields. */}
-          <FormikErrorFocus align="middle" duration={200} />
         </div>
       )
     }
