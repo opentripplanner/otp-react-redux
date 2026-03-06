@@ -63,19 +63,23 @@ export const patternArrayforStops = (
   return stopData?.stoptimesForPatterns
     ?.reduce<PatternStopTime[]>((acc, cur) => {
       const currentHeadsign = extractHeadsignFromPattern(cur.pattern)
+      // TODO: Extract routes out
+      // https://github.com/opentripplanner/otp-react-redux/pull/1533#discussion_r2844679701
       const dupe = acc.findIndex((p) => {
         // TODO: use OTP_generated ids
         let sameRoute = false
         if (p.pattern.route?.shortName && cur.pattern.route?.shortName) {
           sameRoute =
             p.pattern.route?.shortName === cur.pattern.route?.shortName
-        } else if (p.pattern.route?.longName && cur.pattern.route?.longName) {
-          sameRoute = p.pattern.route?.longName === cur.pattern.route?.longName
-        } else if (
-          p?.stoptimes?.[0]?.headsign &&
-          cur?.stoptimes?.[0]?.headsign
-        ) {
+        }
+        if (p.pattern.route?.longName && cur.pattern.route?.longName) {
           sameRoute =
+            sameRoute &&
+            p.pattern.route?.longName === cur.pattern.route?.longName
+        }
+        if (p?.stoptimes?.[0]?.headsign && cur?.stoptimes?.[0]?.headsign) {
+          sameRoute =
+            sameRoute &&
             p?.stoptimes?.[0]?.headsign === cur?.stoptimes?.[0]?.headsign
         }
         return (

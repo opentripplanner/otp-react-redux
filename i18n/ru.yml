@@ -734,7 +734,7 @@ components:
     inactive:
       description: >-
         Возобновите отслеживание поездки, чтобы просматривать изменение ее статуса
-      heading: Отслеживание поездки приостановлено
+      heading: Отслеживание поездки приостановлено.
     nextTripNotPossible:
       description: >
         Планировщику не удалось найти вашу поездку на выбранные дни недели.
@@ -755,7 +755,7 @@ components:
     snoozed:
       description: >-
         Восстановите отслеживание поездки, чтобы просматривать изменение ее статуса
-      heading: На сегодня отслеживание поездки отложено
+      heading: На сегодня отслеживание поездки отложено.
     upcoming:
       nextTripBegins: >-
         Начало следующей поездки: {tripDatetime, date, ::eeeee yyyyMMdd} в
@@ -778,6 +778,7 @@ components:
     notifications: за {leadTimeInMinutes} мин до запланированного времени 
       отправления
     timeAndDuration: Время и продолжительность поездки
+    notificationsSnoozed: На сегодня отслеживание поездки отложено.
   TripTools:
     copyLink: Скопировать ссылку
     header: Инструменты маршрута
