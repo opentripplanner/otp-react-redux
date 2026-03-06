@@ -756,7 +756,7 @@ components:
     inactive:
       description: Ipagpatuloy ang pagsubaybay sa biyahe para makita ang updated
         na status
-      heading: Naka-pause ang pagsubaybay sa biyahe
+      heading: Naka-pause ang pagsubaybay sa biyahe.
     nextTripNotPossible:
       description: >
         Hindi nakita ng planner ng biyahe ang iyong biyahe sa anumang napiling
@@ -779,7 +779,7 @@ components:
     snoozed:
       description: I-unsnooze ang pagsubaybay sa biyahe para makita ang updated 
         na status.
-      heading: Naka-snooze ang pagsubaybay sa biyahe ngayong araw
+      heading: Naka-snooze ang pagsubaybay sa biyahe ngayong araw.
     upcoming:
       nextTripBegins: >-
         Magsisimula ang susunod na biyahe sa {tripDatetime, date, ::eeeee
@@ -804,6 +804,7 @@ components:
     notifications: "{leadTimeInMinutes} (na) minuto bago ang nakaiskedyul na pag-alis"
     notificationsPaused: "Mga Notification: Naka-disable"
     timeAndDuration: Oras at tagal ng biyahe
+    notificationsSnoozed: Naka-snooze ang pagsubaybay sa biyahe ngayong araw.
   TripTools:
     copyLink: Kopyahin ang Link
     header: Mga Tool sa Biyahe

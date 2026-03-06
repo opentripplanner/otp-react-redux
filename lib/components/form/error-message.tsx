@@ -41,7 +41,6 @@ const ErrorMessage = ({
         </IconWithText>
       </div>
       <div className="message">{message}</div>
-      {/* @ts-expect-error TODO: typescript TripTools */}
       {!warning && <TripTools buttonTypes={['START_OVER', 'REPORT_ISSUE']} />}
     </div>
   )

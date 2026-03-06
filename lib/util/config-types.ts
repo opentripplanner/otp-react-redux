@@ -255,6 +255,7 @@ export interface MapConfig {
 /** Settings for reporting issues */
 export interface ReportIssueConfig {
   mailto: string
+  subject?: string
 }
 
 export interface ItineraryCostConfig {
@@ -376,6 +377,13 @@ export interface RouteViewerConfig {
   sortRoutePatternsByVehicleCount?: boolean
   /** Whether to use the route color as the background color in the pattern viewer */
   useRouteColorAsBackground?: boolean
+  /** Configure the caret on the realtime vehicle bubble (settings from OTP-UI props) */
+  vehicleIconCaret?: {
+    height?: number
+    offset?: number
+    position?: 'inner' | 'outer'
+    width?: number
+  }
   /** Disable vehicle highlight if necessary (e.g. custom or inverted icons) */
   vehicleIconHighlight?: boolean
   /** Customize vehicle icon padding (the default iconPadding is 2px in otp-ui) */
