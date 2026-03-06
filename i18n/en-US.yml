@@ -381,7 +381,7 @@ components:
     selectCost: Cost
     selectDepartureTime: Departure time
     selectDuration: Duration
-    selectEmissions: CO2 emissions
+    selectEmissions: CO₂ emissions
     selectFare: Transit fare
     selectWalkTime: Walk time
     sortResults: Sort results

@@ -14,7 +14,7 @@ export const sortOptions = (
     'COST',
     'DEPARTURETIME',
     'FARE'
-    // Emissions is disabled by default, as it does nothing unless co2 calculation is enabled
+    // Emissions is disabled by default, as it does nothing unless CO₂ calculation is enabled
   ]
 ): SortOptionEntry[] => {
   const sortOptionsArray: SortOptionEntry[] = [
