@@ -255,6 +255,7 @@ export interface MapConfig {
 /** Settings for reporting issues */
 export interface ReportIssueConfig {
   mailto: string
+  subject?: string
 }
 
 export interface ItineraryCostConfig {
