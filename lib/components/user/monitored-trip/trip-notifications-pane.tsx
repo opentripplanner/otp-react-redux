@@ -1,8 +1,8 @@
 import { Alert, FormControl } from 'react-bootstrap'
 import { ExclamationTriangle } from '@styled-icons/fa-solid/ExclamationTriangle'
 import { FormattedList, FormattedMessage } from 'react-intl'
-import { FormikProps } from 'formik'
 import { isTransitLeg } from '@opentripplanner/core-utils/lib/itinerary'
+import { useFormikContext } from 'formik'
 import React, { FormEvent, useCallback } from 'react'
 import styled from 'styled-components'
 
@@ -44,7 +44,7 @@ const Summary = styled.summary`
   margin-bottom: 5px;
 `
 
-interface Props extends FormikProps<MonitoredTrip> {
+interface Props {
   isReadOnly: boolean
   notificationChannel: string
 }
@@ -53,7 +53,8 @@ interface Props extends FormikProps<MonitoredTrip> {
  * This component wraps the elements to edit trip notification settings.
  */
 const TripNotificationsPane = (props: Props): JSX.Element => {
-  const { isReadOnly, notificationChannel, setFieldValue, values } = props
+  const { isReadOnly, notificationChannel } = props
+  const { setFieldValue, values } = useFormikContext<MonitoredTrip>()
   const handleDelayThresholdChange = useCallback(
     (e: FormEvent<FormControl>): void => {
       // To spare users the complexity of the departure/arrival delay thresholds,
