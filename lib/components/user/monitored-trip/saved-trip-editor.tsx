@@ -1,6 +1,6 @@
 import { FormattedMessage, useIntl } from 'react-intl'
 import { useFormikContext } from 'formik'
-import React, { ComponentType } from 'react'
+import React from 'react'
 
 import { BackButtonContent } from '../back-link'
 import { MonitoredTrip } from '../types'
@@ -10,15 +10,18 @@ import DeleteForm from '../delete-form'
 import Link from '../../util/link'
 import PageTitle from '../../util/page-title'
 import StackedPanesWithSave from '../stacked-panes-with-save'
+import TripCompanionsPane from '../mobility-profile/trip-companions-pane'
+import TripReadonlyPane from '../mobility-profile/trip-readonly-pane'
 
+import TripBasicsPane from './trip-basics-pane'
 import TripNotFound from './trip-not-found'
+import TripNotificationsPane from './trip-notifications-pane'
 
 interface Props {
   hasMobilityProfile: boolean
   isCreating: boolean
   isReadOnly: boolean
   onCancel: () => void
-  panes: Record<string, ComponentType>
 }
 
 /**
@@ -29,25 +32,25 @@ const SavedTripEditor = (props: Props): JSX.Element => {
   // and to its own blur/change/submit event handlers that automate the state.
   // We forward the props to each pane so that their individual controls
   // can be wired to be managed by Formik.
-  const { hasMobilityProfile, isCreating, isReadOnly, onCancel, panes } = props
+  const { hasMobilityProfile, isCreating, isReadOnly, onCancel } = props
   const { isSubmitting, values: trip } = useFormikContext<MonitoredTrip>()
   const intl = useIntl()
 
   if (trip) {
     const paneSequence: PaneAttributes[] = [
       {
-        pane: panes.readOnlyAlert,
+        pane: TripReadonlyPane,
         props
       },
       {
-        pane: panes.basics,
+        pane: TripBasicsPane,
         props,
         title: (
           <FormattedMessage id="components.SavedTripEditor.tripInformation" />
         )
       },
       {
-        pane: panes.notifications,
+        pane: TripNotificationsPane,
         props,
         title: (
           <FormattedMessage id="components.SavedTripEditor.tripNotifications" />
@@ -58,7 +61,7 @@ const SavedTripEditor = (props: Props): JSX.Element => {
     // if mobility profile is present, then add travel companions pane
     if (hasMobilityProfile) {
       paneSequence.push({
-        pane: panes.travelCompanions,
+        pane: TripCompanionsPane,
         props,
         title: (
           <FormattedMessage id="components.SavedTripEditor.travelCompanions" />
