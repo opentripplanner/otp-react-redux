@@ -1,4 +1,5 @@
 import { FormattedMessage, useIntl } from 'react-intl'
+import { useFormikContext } from 'formik'
 import React, { ComponentType } from 'react'
 
 import { BackButtonContent } from '../back-link'
@@ -16,10 +17,8 @@ interface Props {
   hasMobilityProfile: boolean
   isCreating: boolean
   isReadOnly: boolean
-  isSubmitting?: boolean
   onCancel: () => void
   panes: Record<string, ComponentType>
-  values: MonitoredTrip
 }
 
 /**
@@ -30,10 +29,11 @@ const SavedTripEditor = (props: Props): JSX.Element => {
   // and to its own blur/change/submit event handlers that automate the state.
   // We forward the props to each pane so that their individual controls
   // can be wired to be managed by Formik.
-  const { isCreating, onCancel, panes, values: monitoredTrip } = props
+  const { hasMobilityProfile, isCreating, isReadOnly, onCancel, panes } = props
+  const { isSubmitting, values: trip } = useFormikContext<MonitoredTrip>()
   const intl = useIntl()
 
-  if (monitoredTrip) {
+  if (trip) {
     const paneSequence: PaneAttributes[] = [
       {
         pane: panes.readOnlyAlert,
@@ -56,7 +56,7 @@ const SavedTripEditor = (props: Props): JSX.Element => {
     ]
 
     // if mobility profile is present, then add travel companions pane
-    if (props.hasMobilityProfile) {
+    if (hasMobilityProfile) {
       paneSequence.push({
         pane: panes.travelCompanions,
         props,
@@ -66,7 +66,7 @@ const SavedTripEditor = (props: Props): JSX.Element => {
       })
     }
 
-    const title = props.isReadOnly
+    const title = isReadOnly
       ? intl.formatMessage({ id: 'otpUi.TripDetails.title' })
       : isCreating
       ? intl.formatMessage({ id: 'components.SavedTripEditor.saveNewTrip' })
@@ -82,16 +82,14 @@ const SavedTripEditor = (props: Props): JSX.Element => {
         </Link>
         <StackedPanesWithSave
           extraButton={
-            monitoredTrip.id
-              ? { content: <DeleteForm tripId={monitoredTrip.id} /> }
-              : undefined
+            trip.id ? { content: <DeleteForm tripId={trip.id} /> } : undefined
           }
-          isReadOnly={props.isReadOnly}
-          isSubmitting={props.isSubmitting}
+          isReadOnly={isReadOnly}
+          isSubmitting={isSubmitting}
           onCancel={onCancel}
           panes={paneSequence}
           subtitle={
-            !props.isReadOnly ? (
+            !isReadOnly ? (
               <FormattedMessage id="components.TripBasicsPane.indicatesRequiredFields" />
             ) : undefined
           }
