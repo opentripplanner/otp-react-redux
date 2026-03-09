@@ -1,5 +1,6 @@
 import { Ban } from '@styled-icons/fa-solid/Ban'
 import { connect } from 'react-redux'
+import { connect as connectFormik, Field, FormikProps } from 'formik'
 import {
   ControlLabel,
   FormControl,
@@ -8,7 +9,6 @@ import {
   ProgressBar,
   Radio
 } from 'react-bootstrap'
-import { Field, FormikProps } from 'formik'
 import { FormattedMessage, injectIntl, useIntl } from 'react-intl'
 import { Prompt } from 'react-router'
 import React, { Component, FormEventHandler } from 'react'
@@ -36,20 +36,20 @@ import MonitoredDays, { MonitoredDayCircle } from './trip-monitored-days'
 import TripStatus from './trip-status'
 import TripSummary from './trip-duration-summary'
 
-type TripBasicsProps = WrappedComponentProps &
-  FormikProps<MonitoredTrip> & {
-    canceled: boolean
-    checkItineraryExistence: (
-      monitoredTrip: MonitoredTrip,
-      intl: IntlShape
-    ) => void
-    clearItineraryExistence: () => void
-    disableSingleItineraryDays?: boolean
-    isCreating: boolean
-    isReadOnly: boolean
-    itineraryExistence?: ItineraryExistence
-    setIsLoading?: (arg: boolean) => void
-  }
+type TripBasicsProps = WrappedComponentProps & {
+  canceled: boolean
+  checkItineraryExistence: (
+    monitoredTrip: MonitoredTrip,
+    intl: IntlShape
+  ) => void
+  clearItineraryExistence: () => void
+  disableSingleItineraryDays?: boolean
+  formik: FormikProps<MonitoredTrip>
+  isCreating: boolean
+  isReadOnly: boolean
+  itineraryExistence?: ItineraryExistence
+  setIsLoading?: (arg: boolean) => void
+}
 
 interface State {
   selectedDays: string[] | null
@@ -142,7 +142,6 @@ const RenderAvailableDays = ({
   errorCheckingTrip,
   errorSelectingDays,
   finalItineraryExistence,
-  isCreating,
   isReadOnly,
   monitoredTrip
 }: {
@@ -249,7 +248,8 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
    * uncheck days for which the itinerary is not available.
    */
   _updateNewTripItineraryExistence = (prevProps: TripBasicsProps) => {
-    const { isCreating, itineraryExistence, setFieldValue } = this.props
+    const { formik, isCreating, itineraryExistence } = this.props
+    const { setFieldValue } = formik
 
     if (
       isCreating &&
@@ -265,7 +265,8 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
   }
 
   _getDaysFromItineraryExistence = () => {
-    const { itineraryExistence, values: trip } = this.props
+    const { formik, itineraryExistence } = this.props
+    const { values: trip } = formik
     const finalItineraryExistence =
       trip.itineraryExistence || itineraryExistence
     return ALL_DAYS.filter((day) => finalItineraryExistence?.[day]?.valid)
@@ -274,7 +275,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
   _handleRecurringTrip: FormEventHandler<Radio> = (e) => {
     const input = e.target as HTMLInputElement
     if (input.checked) {
-      const { setValues, values } = this.props
+      const { setValues, values } = this.props.formik
       const { selectedDays } = this.state
 
       // Restore previously checked monitored days.
@@ -291,7 +292,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
   _handleOneTimeTrip: FormEventHandler<Radio> = (e) => {
     const input = e.target as HTMLInputElement
     if (input.checked) {
-      const { setValues, values } = this.props
+      const { setValues, values } = this.props.formik
       // Hold on to monitored days
       this.setState({ selectedDays: dayFieldsToArray(values) })
 
@@ -305,12 +306,9 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
 
   componentDidMount() {
     // Check itinerary availability (existence) for all days if not already done.
-    const {
-      checkItineraryExistence,
-      intl,
-      setIsLoading,
-      values: monitoredTrip
-    } = this.props
+    const { checkItineraryExistence, formik, intl, setIsLoading } = this.props
+    const { values: monitoredTrip } = formik
+
     if (!monitoredTrip.itineraryExistence) {
       setIsLoading && setIsLoading(true)
       checkItineraryExistence(monitoredTrip, intl)
@@ -319,11 +317,8 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
 
   componentDidUpdate(prevProps: TripBasicsProps) {
     this._updateNewTripItineraryExistence(prevProps)
-    const {
-      itineraryExistence,
-      setIsLoading,
-      values: monitoredTrip
-    } = this.props
+    const { formik, itineraryExistence, setIsLoading } = this.props
+    const { values: monitoredTrip } = formik
     if (
       (monitoredTrip?.itineraryExistence || itineraryExistence) &&
       setIsLoading
@@ -340,16 +335,14 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
   render() {
     const {
       canceled,
-      dirty,
       disableSingleItineraryDays,
-      errors,
+      formik,
       intl,
       isCreating,
       isReadOnly,
-      isSubmitting,
-      itineraryExistence,
-      values: monitoredTrip
+      itineraryExistence
     } = this.props
+    const { dirty, errors, isSubmitting, values: monitoredTrip } = formik
     const { itinerary } = monitoredTrip
     const finalItineraryExistence =
       monitoredTrip.itineraryExistence || itineraryExistence
@@ -374,7 +367,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
       )
     } else {
       // Show an error indication when monitoredTrip.tripName is not blank, or that tripName is already used.
-      const errorStates = getErrorStates(this.props)
+      const errorStates = getErrorStates(formik)
       const monitoredDays = dayFieldsToArray(monitoredTrip)
       const isOneTime = monitoredDays.length === 0
       const errorCheckingTrip = ALL_DAYS.every((day) =>
@@ -493,4 +486,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(injectIntl(TripBasicsPane))
+)(connectFormik(injectIntl(TripBasicsPane)))
