@@ -1,7 +1,7 @@
 import { Alert } from 'react-bootstrap'
 import { FormattedMessage } from 'react-intl'
 import { useFormikContext } from 'formik'
-import React, { ReactNode } from 'react'
+import React, { ElementType } from 'react'
 
 import { getDependentName } from '../../../util/user'
 import { MonitoredTrip, User } from '../types'
@@ -14,7 +14,10 @@ type Props = {
 /**
  * Displays a banner for read-only state.
  */
-const TripReadOnlyPane = ({ isReadOnly, loggedInUser }: Props): ReactNode => {
+const TripReadOnlyPane: ElementType<Props> = ({
+  isReadOnly,
+  loggedInUser
+}: Props) => {
   const { values: trip } = useFormikContext<MonitoredTrip>()
 
   if (!isReadOnly) return null
