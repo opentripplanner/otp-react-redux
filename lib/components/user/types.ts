@@ -63,7 +63,7 @@ export interface User {
   id?: string
   isPhoneNumberVerified?: boolean
   mobilityProfile?: MobilityProfile
-  notificationChannel?: NotificationChannel
+  notificationChannel?: string
   phoneNumber?: string
   preferredLocale?: string
   pushDevices?: number
