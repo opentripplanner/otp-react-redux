@@ -4,7 +4,6 @@ import { useFormikContext } from 'formik'
 import React, { useCallback, useEffect } from 'react'
 
 import * as userActions from '../../../actions/user'
-import { AppReduxState } from '../../../util/state-types'
 import { getDependentName } from '../../../util/user'
 import { MonitoredTrip, User } from '../types'
 
@@ -103,12 +102,8 @@ const TripCompanions = ({
 
 // connect to the redux store
 
-const mapStateToProps = (state: AppReduxState) => ({
-  loggedInUser: state.user.loggedInUser
-})
-
 const mapDispatchToProps = {
   getDependentUserInfo: userActions.getDependentUserInfo
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TripCompanions)
+export default connect(null, mapDispatchToProps)(TripCompanions)

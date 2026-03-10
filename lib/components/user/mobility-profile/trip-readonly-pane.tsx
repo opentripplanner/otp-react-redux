@@ -1,10 +1,8 @@
 import { Alert } from 'react-bootstrap'
-import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import { useFormikContext } from 'formik'
-import React from 'react'
+import React, { ReactNode } from 'react'
 
-import { AppReduxState } from '../../../util/state-types'
 import { getDependentName } from '../../../util/user'
 import { MonitoredTrip, User } from '../types'
 
@@ -16,7 +14,7 @@ type Props = {
 /**
  * Displays a banner for read-only state.
  */
-const TripReadOnlyPane = ({ isReadOnly, loggedInUser }: Props) => {
+const TripReadOnlyPane = ({ isReadOnly, loggedInUser }: Props): ReactNode => {
   const { values: trip } = useFormikContext<MonitoredTrip>()
 
   if (!isReadOnly) return null
@@ -45,10 +43,4 @@ const TripReadOnlyPane = ({ isReadOnly, loggedInUser }: Props) => {
   )
 }
 
-// connect to the redux store
-
-const mapStateToProps = (state: AppReduxState) => ({
-  loggedInUser: state.user.loggedInUser
-})
-
-export default connect(mapStateToProps)(TripReadOnlyPane)
+export default TripReadOnlyPane
