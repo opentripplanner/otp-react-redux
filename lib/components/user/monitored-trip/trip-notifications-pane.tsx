@@ -13,7 +13,7 @@ import {
 } from '../common/dropdown-options'
 import { FieldSet } from '../styled'
 import { IconWithText } from '../../util/styledIcon'
-import { MonitoredTrip } from '../types'
+import { MonitoredTrip, User } from '../types'
 
 // Element styles
 const SettingsList = styled.ul`
@@ -46,14 +46,15 @@ const Summary = styled.summary`
 
 interface Props {
   isReadOnly: boolean
-  notificationChannel: string
+  loggedInUser: User
 }
 
 /**
  * This component wraps the elements to edit trip notification settings.
  */
 const TripNotificationsPane = (props: Props): JSX.Element => {
-  const { isReadOnly, notificationChannel } = props
+  const { isReadOnly, loggedInUser } = props
+  const { notificationChannel } = loggedInUser
   const { setFieldValue, values } = useFormikContext<MonitoredTrip>()
   const handleDelayThresholdChange = useCallback(
     (e: FormEvent<FormControl>): void => {
