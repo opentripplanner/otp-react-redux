@@ -49,6 +49,7 @@ export const notificationChannels: ReadonlyArray<string> = [
   'push'
 ]
 
+export type NotificationChannel = typeof notificationChannels[number]
 /**
  * Type definition for an OTP-middleware (OTP-personas) user.
  */
@@ -62,7 +63,7 @@ export interface User {
   id?: string
   isPhoneNumberVerified?: boolean
   mobilityProfile?: MobilityProfile
-  notificationChannel?: string
+  notificationChannel?: NotificationChannel
   phoneNumber?: string
   preferredLocale?: string
   pushDevices?: number
