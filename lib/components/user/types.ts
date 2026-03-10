@@ -43,6 +43,12 @@ export interface DependentInfo {
   userId: string
 }
 
+export const notificationChannels: ReadonlyArray<string> = [
+  'email',
+  'sms',
+  'push'
+]
+
 /**
  * Type definition for an OTP-middleware (OTP-personas) user.
  */

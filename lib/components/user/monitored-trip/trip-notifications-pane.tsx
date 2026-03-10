@@ -13,7 +13,8 @@ import {
 } from '../common/dropdown-options'
 import { FieldSet } from '../styled'
 import { IconWithText } from '../../util/styledIcon'
-import { MonitoredTrip } from '../types'
+import { isBlank } from '../../../util/ui'
+import { MonitoredTrip, notificationChannels } from '../types'
 
 // Element styles
 const SettingsList = styled.ul`
@@ -68,7 +69,7 @@ class TripNotificationsPane extends Component<Props> {
   render(): JSX.Element {
     const { isReadOnly, notificationChannel, values } = this.props
     const areNotificationsDisabled =
-      notificationChannel === 'none' || !notificationChannel?.length
+      notificationChannel === 'none' || isBlank(notificationChannel)
     // Define a common trip delay field for simplicity, set to the smallest between the
     // retrieved departure/arrival delay attributes.
     const commonDelayThreshold = Math.min(
@@ -96,7 +97,7 @@ class TripNotificationsPane extends Component<Props> {
     } else {
       const selectedChannels = notificationChannel
         .split(',')
-        .filter((channel) => channel?.length)
+        .filter((channel) => notificationChannels.includes(channel))
         .map((channel) => (
           <FormattedMessage
             id={`common.notifications.${channel}`}
