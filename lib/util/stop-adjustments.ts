@@ -362,7 +362,8 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
                 length: -16,
                 pointsToAdd: 'unpaHb|siVw@j@',
                 pointsToCut: [
-                  'eqoaHtdsiV_FAi@B_@FQFQF_@R]X[\\OTQZsEhI]f@YZoE|DIH??w@j@'
+                  'eqoaHtdsiV_FAi@B_@FQFQF_@R]X[\\OTQZsEhI]f@YZoE|DIH??w@j@',
+                  'eqoaHndsiVcB?s@@gA@i@B_@FQFQF_@R]X[\\OTQZsEhI]f@YZoE|DIH??w@j@'
                 ]
               },
               newStop: STOPS.PIONEER_SQUARE
