@@ -1,11 +1,11 @@
 import { Leg, Place, Stop } from '@opentripplanner/types'
+import clone from 'clone'
 
 import {
   getFirstTransitLeg,
   getLastTransitLeg,
   ItineraryWithIndex
 } from './itinerary'
-import clone from 'clone'
 
 /* eslint-disable complexity */
 export interface CustomRoutingZone {
