@@ -5,6 +5,7 @@ import {
   getLastTransitLeg,
   ItineraryWithIndex
 } from './itinerary'
+import clone from 'clone'
 
 /* eslint-disable complexity */
 export interface CustomRoutingZone {
@@ -854,7 +855,7 @@ export const updateItinerariesWithStopAdjustments = (
   customRoutingZones: CustomRoutingZone[],
   itineraries: ItineraryWithIndex[]
 ): ItineraryWithIndex[] => {
-  const updatedItineraries = [...itineraries]
+  const updatedItineraries = clone(itineraries)
   const indicesToRemove: Set<number> = new Set()
 
   for (let i = 0; i < updatedItineraries.length; i++) {
