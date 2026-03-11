@@ -403,7 +403,24 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
       {
         // NORTHBOUND ACCESSIBLE 1 & 2 Line trips FROM Seattle Stadium
         customWalkLegGeometry: ZONE_TO_INTERNATIONAL_DISTRICT_WALK_LEG,
-        stopAdjustments: [], // adjust stadium -> CID
+        stopAdjustments: [
+          {
+            adjustment: {
+              duration: -120,
+              endTime: -180000,
+              intermediateStopsToRemove: 1,
+              legGeometry: {
+                length: -24,
+                pointsToAdd: 'eqoaHtdsiV',
+                pointsToCut: [
+                  'wjnaHj_siVuA?g@Be@H[JcBj@o@PsGfBc@H_@D]@]?YC{@Gc@A]?}ADQ?IAKCk@UKAOA_C???'
+                ]
+              },
+              newStop: STOPS.INTERNATIONAL_DISTRICT_CHINATOWN
+            },
+            originalStop: 'Stadium'
+          }
+        ],
         trips: [
           {
             accessible: true,
