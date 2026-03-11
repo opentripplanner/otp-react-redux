@@ -1,0 +1,576 @@
+branding: HAR Test
+title: Percy Field Trip Mock Config
+
+api:
+  host: http://localhost:9999
+  path: /otp2/routers/default
+  v2: true
+
+# datastoreUrl: http://localhost:9000
+datastoreUrl: https://trimet-datastore.ibi-transit.com
+trinetReDirect: https://trinet.trimet.org/call_verify_login
+autoPlan: false
+itinerary:
+  showPlanFirstLastButtons: true
+  renderRouteNamesInBlocks: true
+  showFirstResultByDefault: true
+  alwaysShowBothTimes: true
+  showBatchUiItineraryHeaders: false
+  onlyShowCountdownForRealtime: true
+  fillModeIcons: true
+  defaultSort: "DEPARTURETIME"
+  syncSortWithDepartArrive: true
+modules:
+  - id: call
+    options:
+      modeDropdownOptions:
+        - label: Transit
+          combination:
+            - mode: TRANSIT
+            - mode: WALK
+        - label: Bike Only
+          combination:
+            - mode: BICYCLE
+        - label: Bike and Transit
+          combination:
+            - mode: TRANSIT
+            - mode: WALK
+            - mode: BICYCLE
+        - label: Bikeshare and Transit
+          combination:
+            - mode: TRANSIT
+            - mode: WALK
+            - mode: BICYCLE
+              qualifier: RENT
+        - label: Scooter and Transit
+          combination:
+            - mode: TRANSIT
+            - mode: WALK
+            - mode: SCOOTER
+              qualifier: RENT
+        - label: Rideshare and Transit
+          combination:
+            - mode: TRANSIT
+            - mode: WALK
+            - mode: CAR
+              qualifier: HAIL
+        - label: Park and Ride
+          combination:
+            - mode: TRANSIT
+            - mode: WALK
+            - mode: CAR
+              qualifier: PARK
+        - label: Walk Only
+          combination:
+            - mode: WALK
+      defaultQueryParams:
+        # maxWalkDistance: otp_consts.maxWalk
+  - id: ft
+    options:
+      defaultQueryParams:
+        # maxWalkDistance: otp_consts.maxWalk
+        minTransferTime: 300
+  - id: mailables
+    items:
+      - name: Rte 1 Schedule (1-Vermont)
+        largePrint: true
+      - name: Rte 2 Schedule (2-Division)
+        largePrint: true
+      - name: Rte 4 Schedule (4-Fessenden)
+        largePrint: true
+      - name: Rte 6 Schedule (6-Martin Luther King Jr Blvd)
+        largePrint: true
+      - name: Rte 8 Schedule (8-Jackson Park/NE 15th)
+        largePrint: true
+      - name: Rte 9 Schedule (9-Powell Blvd)
+        largePrint: true
+      - name: Rte 10 Schedule (10-Harold St)
+        largePrint: true
+      - name: Rte 11/16 Schedule (11-Rivergate/Marine Dr, 16-Front Ave/St Helens Rd)
+        largePrint: true
+      - name: Rte 12 Schedule (12-Barbur/Sandy Blvd)
+        largePrint: true
+      - name: Rte 14 Schedule (14-Hawthorne)
+        largePrint: true
+      - name: Rte 15 Schedule (15-Belmont/NW 23rd)
+        largePrint: true
+      - name: Rte 17 Schedule (17-Holgate/Broadway)
+        largePrint: true
+      - name: Rte 18/63 Schedule (18-Hillside, 63-Washington Park/Arlington Hts)
+        largePrint: true
+      - name: Rte 19 Schedule (19-Woodstock/Glisan)
+        largePrint: true
+      - name: Rte 20/272 Schedule (20-Burnside/Stark, 272-PDX Night Bus)
+        largePrint: true
+      - name: Rte 21 Schedule (21-Sandy Blvd/223rd)
+        largePrint: true
+      - name: Rte 22/23/25 Schedule (22-Parkrose, 23-San Rafael, 25-Glisan/Rockwood)
+        largePrint: true
+      - name: Rte 24 Schedule (24-Fremont)
+        largePrint: true
+      - name: Rte 29/30 Schedule (29-Lake/Webster Rd, 30-Estacada)
+        largePrint: true
+      - name: Rte 32/34 Schedule (32-Oatfield, 34-Linwood/River Rd)
+        largePrint: true
+      - name: Rte 33 (33-McLoughlin/King Rd)
+        largePrint: true
+      - name: Rte 35 Schedule (35-Macadam/Greeley)
+        largePrint: true
+      - name: Rte 36 Schedule (36-South Shore)
+        largePrint: true
+      - name: Rte 37 Schedule (37-Lake Grove)
+        largePrint: true
+      - name: Rte 38 Schedule (38-Boones Ferry Rd)
+        largePrint: true
+      - name: Rte 39 Schedule (39-Lewis & Clark)
+        largePrint: true
+      - name: Rte 42 Schedule (42-Denney/Hall)
+        largePrint: true
+      - name: Rte 43/45 Schedule (43-Taylors Ferry Rd, 45-Garden Home)
+        largePrint: true
+      - name: Rte 44 Schedule (44-Capitol Hwy/Mocks Crest)
+        largePrint: true
+      - name: Rte 46 Schedule (46-North Hillsboro)
+        largePrint: true
+      - name: Rte 47/48 Schedule (47-Baseline/Evergreen)
+        largePrint: true
+      - name: Rte 50 Schedule (50-Cedar Mill)
+        largePrint: true
+      - name: Rte 51 Schedule (51-Vista)
+        largePrint: true
+      - name: Rte 52 Schedule (52-Farmington/185th)
+        largePrint: true
+      - name: Rte 53 Schedule (53-Arctic/Allen)
+        largePrint: true
+      - name: Rte 54/56 Schedule (54-Beaverton-Hillsdale Hwy, 56-Scholls Ferry Rd)
+        largePrint: true
+      - name: Rte 55 Schedule (55-Hamilton )
+        largePrint: true
+      - name: Rte 57/59 Schedule (57-TV Hwy/Forest Grove, 59-Walker/Park Way)
+        largePrint: true
+      - name: Rte 58 Schedule (58-Canyon Rd)
+        largePrint: true
+      - name: Rte 61 Schedule (61-Marquam Hill/Beaverton)
+        largePrint: true
+      - name: Rte 62/67 Schedule (62-Murray Blvd, 67-Bethany/158th)
+        largePrint: true
+      - name: Rte 64 Schedule (64-Marquam Hill/Tigard)
+        largePrint: true
+      - name: Rte 65 Schedule (65-Marquam Hill/Barbur Blvd)
+        largePrint: true
+      - name: Rte 66 Schedule (66-Marquam Hill/Hollywood)
+        largePrint: true
+      - name: Rte 68 Schedule (68-Marquam Hill/Collins Circle)
+        largePrint: true
+      - name: Rte 70 Schedule (70-12th/NE 33rd Ave)
+        largePrint: true
+      - name: Rte 71/73 Schedule (71-60th Ave, 73-122nd Ave)
+        largePrint: true
+      - name: Rte 72 Schedule (72-Killingsworth/82nd Ave)
+        largePrint: true
+      - name: Rte 74 Schedule (74-162nd Ave)
+        largePrint: true
+      - name: Rte 75 Schedule (75-Cesar Chavez/Lombard)
+        largePrint: true
+      - name: Rte 76/78 Schedule (76-Beaverton/Tualatin, 78-Beaverton/Lake Oswego)
+        largePrint: true
+      - name: Rte 77 Schedule (77-Broadway/Halsey)
+        largePrint: true
+      - name: Rte 79 Schedule (79-Clackamas/Oregon City)
+        largePrint: true
+      - name: Rte 80/81 Schedule (80-Kane/Troutdale Rd, 81-Kane/257th)
+        largePrint: true
+      - name: Rte 82 Schedule (82-South Gresham)
+        largePrint: true
+      - name: Rte 84 Schedule (84-Powell Valley/Orient Dr)
+        largePrint: true
+      - name: Rte 85 Schedule (85-Swan Island)
+        largePrint: true
+      - name: Rte 87 Schedule (87-Airport Way/181st)
+        largePrint: true
+      - name: Rte 88 Schedule (88-Hart/198th)
+        largePrint: true
+      - name: Rte 92 Schedule (92-South Beaverton Express)
+        largePrint: true
+      - name: Rte 93/94 Schedule (93-Tigard/Sherwoord, 94-Pacific Hwy/Sherwood)
+        largePrint: true
+      - name: Rte 96/97 Schedule (96-Tualatin/I-5, 97-Tualatin-Sherwood Rd)
+        largePrint: true
+      - name: Rte 99 Schedule (99-Macadam/McLoughlin)
+        largePrint: true
+      - name: Rte 115 Schedule (115-Cherry Blossom Loop)
+        largePrint: true
+      - name: Rte 152 Schedule (152-Milwaukie)
+        largePrint: true
+      - name: Rte 154 Schedule (154-Willamette/Clackamas Hts)
+        largePrint: true
+      - name: Rte 155/156 Schedule (155-Sunnyside, 156-Mather Rd)
+        largePrint: true
+      - name: "MAX Schedule: Blue, Green, Orange, Red, Yellow & 291-Orange Night Bus"
+        largePrint: true
+      - name: "MAX Schedule: Red Line"
+        largePrint: true
+      - name: WES Schedule
+        largePrint: true
+      - name: Destinations Brochure
+        largePrint: false
+      - name: Accessible Services Brochure
+        largePrint: false
+      - name: "Bikes and TriMet "
+        largePrint: false
+      - name: Bikes and TriMet (Spanish)
+        largePrint: false
+      - name: Fares & How to Ride (multilingual)
+        largePrint: false
+      - name: Multilingual Hop pamphlet
+        largePrint: false
+      - name: Trip Tools
+        largePrint: false
+      - name: System Map
+        largePrint: true
+      - name: Honored Citizen Application
+        largePrint: false
+      - name: Transit Access Flip-book for the Blind
+        largePrint: false
+      - name: Lanyard
+        largePrint: false
+      - name: Safety light
+        largePrint: false
+      - name: Earl P. Nutt Safety Coloring Book
+        largePrint: false
+      - name: Earl P. Nutt Safety Puzzle Book
+        largePrint: false
+      - name: MAX Safety Posters
+        largePrint: false
+      - name: Bus Safety Posters
+        largePrint: false
+      - name: WES Safety Posters
+        largePrint: false
+      - name: WES Safety Poster (Spanish)
+        largePrint: false
+      - name: WES Safety Stickers
+        largePrint: false
+      - name: WES Safety DVD
+        largePrint: false
+      - name: MAX Train Bank
+        largePrint: false
+      - name: Service Alert - Pamphlet A
+        largePrint: false
+      - name: Service Alert - Pamphlet B
+        largePrint: false
+      - name: Service Alert - Pamphlet C
+        largePrint: false
+      - name: Survey (English)
+        largePrint: false
+      - name: Survey (Spanish)
+        largePrint: false
+      - name: Survey (Chinese)
+        largePrint: false
+      - name: Survey (Russian)
+        largePrint: false
+      - name: Survey (Vietnamese)
+        largePrint: false
+    horizontalMargin: 108
+    verticalMargin: 120
+    introduction: "Thank you for calling us to request TriMet information.  We have enclosed for you the following item(s):"
+    conclusion: |-
+      For personalized trip planning, please call our Rider Support Team from 7:30 AM until 5:30 PM, seven days a week, at 238-RIDE (238-7433), TTY 238-5511.  We can also provide fare information, additional schedules, or brochures you may need.
+
+      It's a pleasure to serve your transit needs, and we thank you for riding TriMet.
+    footer: Tri-County Metropolitan Transportation District of Oregon •
+      503-238-RIDE • TTY 503-238-5811 • trimet.org
+    headerGraphic: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Trimet_logo.svg/1280px-Trimet_logo.svg.png"
+    signatureGraphicHeight: 36
+    signatureGraphicWidth: 108
+homeTimezone: America/Los_Angeles
+map:
+  # Enabled map views
+  views:
+    - type: DEFAULT
+      text: Map View
+
+  # Default map center
+  initLat: 45.52
+  initLon: -122.682
+  initZoom: 13
+  maxZoom: 20
+
+  baseLayerButtons: true
+  baseLayersInitial: 0 # index of the array below -- 0 == Streets, 1 == Aerials, etc...
+
+  forceDisplayEndpointsPopup: true
+
+  # Base layers for default map
+  baseLayers:
+    - type: streets
+      url: https://tiles.trimet.org/styles/trimet/style.json
+    - type: satellite
+      url: https://tiles.trimet.org/styles/trimet-satellite/style.json
+
+  overlays:
+    # real-time vehicles config
+    - type: vehicles-one-route
+      name: Realtime Vehicles
+    - type: vehicles
+      name: Real-Time Buses and Trains
+      api: https://maps.trimet.org/gtfs/rt/vehicles
+      #pauseAnimationOnZoom: false # note: when true, MOD+vehicles has issues with multiple (additive) ws calls
+      refresh: 5
+      default: "all"
+
+    - type: zipcar
+      name: Zipcar Locations
+      api: https://newplanner.trimet.org/ws/carshare/zipcar/data.json
+
+    - type: otp2
+      layers:
+        - type: OTP-UI-stopsAndStations
+          initiallyVisible: true
+        - type: rentalVehicles
+          network: BIRD
+        - type: rentalVehicles
+          network: LIME
+        - type: rentalVehicles
+          network: SPIN
+        - type: rentalVehicles
+          network: lyft_pdx
+        - type: rentalStations
+          companies:
+            - lyft_pdx
+
+    - type: park-and-ride
+      name: Park & Ride Locations
+      maxTransitDistance: 1000
+      modes:
+        - CAR_PARK
+
+geocoder:
+  baseUrl: http://localhost:9977
+  layers: ""
+  maxNearbyStops: 6
+  type: PELIAS
+  boundary:
+    rect:
+      minLon: -123.2034
+      maxLon: -122.135
+      minLat: 45.273
+      maxLat: 45.7445
+
+nearbyView:
+  radius: 500
+  useRouteViewSort: true
+  showShadowDotOnMapDrag: false
+  alwaysShowLongName: true
+  useArrivalTime: true
+routeViewer:
+  maxRealtimeVehicleAge: 60
+  vehiclePositionRefreshSeconds: 10
+
+# Mode selector configuration
+modes:
+  disableCombinationGeneration: true
+  numItineraries: 4
+  modeButtons:
+    - iconName: bus
+      key: transit
+      label: Transit
+      modes:
+        - mode: TRANSIT
+    - iconName: walk
+      key: walk
+      label: Walk
+      modes:
+        - mode: WALK
+    - iconName: bicycle
+      key: bike
+      label: Bike
+      modes:
+        - mode: BICYCLE
+    - iconName: car
+      key: car
+      label: Car
+      modes:
+        - mode: CAR
+  initialState:
+    enabledModeButtons:
+      - walk
+      - transit
+    modeSettingValues:
+  modeSettingDefinitions:
+    - applicableMode: WALK
+      default: 3
+      key: walkReluctance
+      type: DROPDOWN
+      options:
+        - value: 3
+          text: Normal Walking
+        - value: 1
+          text: Prefer Walking
+        - value: 15
+          text: Avoid Walking
+    - applicableMode: BICYCLE
+      default: 3
+      key: bikeReluctance
+      type: DROPDOWN
+      options:
+        - value: 3
+          text: Normal Biking
+        - value: 1
+          text: Prefer Biking
+        - value: 15
+          text: Avoid Biking
+  transitModes:
+    - mode: BUS
+      label: Bus
+    - mode: TRAM
+      label: MAX & Streetcar
+    - mode: RAIL
+      label: WES
+    - mode: GONDOLA
+      label: Aerial Tram
+
+  accessModes:
+    - mode: BICYCLE
+      label: Bike to transit
+    - mode: BICYCLE_RENT
+      label: Biketown to transit
+      company: BIKETOWN
+    - mode: SCOOTER_RENT
+      label: E-scooter to transit
+      company: RAZOR,SPIN
+    - mode: CAR_PARK
+      label: Park & Ride
+    - mode: CAR_HAIL
+      label: Uber to transit
+      company: UBER
+      showWheelchairSetting: false
+
+  # which exclusive modes to show. This involves using a single mode and no
+  # transit for the duration of the trip. Further configurations of
+  # `bicycleModes`, `micromobilityModes` and/or `carModes` are needed as
+  # desired, but no extra configuration is needed for a WALK exclusive mode.
+  exclusiveModes:
+    - WALK
+    - BICYCLE
+
+  bicycleModes:
+    - mode: BICYCLE
+      label: Own Bike
+      iconWidth: 18
+    - mode: BICYCLE_RENT
+      label: BIKETOWN
+      iconWidth: 36
+
+# A list of private transportation operators. These are either companies that
+# provide rental vehicles or transportation network companies. Companies that
+# have multiple modes of transport should have all modes listed as a string with
+# commas. For example: BICYCLE_RENT,SCOOTER_RENT.
+companies:
+  - id: lyft_pdx
+    label: BIKETOWN
+    overridePlaceNames: true
+    modes: BICYCLE
+  - id: BIRD
+    label: Bird
+    overridePlaceNames: true
+    modes: SCOOTER
+  - id: LIME
+    label: Lime
+    overridePlaceNames: true
+    modes: SCOOTER
+  - id: SPIN
+    label: Spin
+    overridePlaceNames: true
+    modes: SCOOTER
+  - id: uber
+    label: Uber
+
+transitOperators:
+  - feedId: TriMet
+    agencyId: TriMet:PSC
+    logo: https://d2tyb7byn1fef9.cloudfront.net/psc.png
+    order: 2
+  - feedId: TriMet
+    agencyId: TriMet:TRIMET
+    name: TriMet
+    order: 2
+    logo: http://news.trimet.org/wordpress/wp-content/uploads/2019/04/TriMet-logo-300x300.png
+  - feedId: TriMet
+    agencyId: TriMet:TRAM
+    order: 2
+    logo: https://d2tyb7byn1fef9.cloudfront.net/tram.png
+  - feedId: SMART
+    agencyId: "SMART:214"
+    name: SMART
+    logo: https://www.ridesmart.com/sites/all/themes/aha_compass_smart/logo.png
+    longNameSplitter: " - "
+    order: 9999
+  - feedId: CTRAN
+    agencyId: "CTRAN:C-TRAN"
+    name: C-TRAN
+    logo: https://d2tyb7byn1fef9.cloudfront.net/ctran.png
+    longNameSplitter: " - "
+    order: 9999
+
+### The persistence setting is used to enable the storage of places (home, work),
+### recent searches/places, user overrides, and favorite stops. Currently the
+### only strategy is localStorage (which is used by default)
+### TODO: add another server-based strategy
+persistence:
+  # enabled: true
+  strategy: localStorage
+
+reportIssue:
+  mailto: gis@trimet.org
+
+dateTime:
+  timeFormat: h:mm a
+  dateFormat: MM/dd/yyyy
+
+stopViewer:
+  showBlockIds: true
+
+language:
+  allLanguages:
+    common:
+      modes:
+        tram: MAX Rail
+        rail: WES
+    components:
+      EnhancedStopMarker:
+        stopViewer: TransitTracker
+      StopViewer:
+        header: TransitTracker
+        viewNearby: View Realtime
+      NearbyView:
+        headsign: "To {destination}"
+        header: TransitTracker
+      ViewSwitcher:
+        nearby: TransitTracker
+    errorMessages:
+      404:
+        msg: Sorry, we couldn't find any transit or rideshare/carshare options at the time and/or location you chose. Please try again later, or change the settings of your trip.
+        # OTP modes in a string to be extracted (Format: [MODE1], [MODE2] (space included))
+        modes: "CAR_HAIL, CAR_RENT"
+      405:
+        msg: Sorry, we couldn't find any transit or rideshare/carshare options at the time and/or location you chose. Please try again later, or change the settings of your trip.
+        modes: "CAR_HAIL, CAR_RENT"
+      480:
+        msg: No available transit routes or rideshare/carshare service at origin.
+    otpUi:
+      MapPopup:
+        stopViewer: TransitTracker
+      ModeSelector:
+        settings:
+          bikeReluctance-label: Bike Tolerance
+          walkReluctance-label: Walk Tolerance
+      EndpointsOverlay:
+        viewNearby: TransitTracker / View Schedule
+      StopsOverlay:
+        stopViewer: TransitTracker
+      TransitLegBody:
+        stopViewer: TransitTracker
+      PrintableItinerary:
+        TransitLeg:
+          alight: Alight at <strong>{place}</strong> (ID {stopId}) at <strong>{time, time, short}</strong>
+          board: Board at <strong>{place}</strong> (ID {stopId}) at <strong>{time, time, short}</strong>
