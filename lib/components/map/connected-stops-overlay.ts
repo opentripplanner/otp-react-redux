@@ -36,7 +36,12 @@ const mapStateToProps = (state: AppReduxState) => {
       // However, without changes to GraphQL, getting this data is very expensive
       Object.values(patterns).forEach((p) => {
         p?.stops
-          ?.filter((s: Stop) => s.geometries?.geoJson?.type === 'Polygon')
+          ?.filter(
+            (s: Stop) =>
+              s.geometries?.geoJson?.type === 'Polygon' ||
+              s.geometries?.geoJson?.type === 'MultiPolygon' ||
+              s.geometries?.geoJson?.type === 'GeometryCollection'
+          )
           ?.forEach((s: Stop) => (stopsById[s.id] = s))
       })
     } else if (patternId) {
