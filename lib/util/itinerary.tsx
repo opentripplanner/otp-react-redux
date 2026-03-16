@@ -68,23 +68,6 @@ export function getMinutesUntilItineraryStart(itinerary: Itinerary): number {
 }
 
 /**
- * Gets the first transit leg of the given itinerary, or undefined if none found.
- */
-export function getFirstTransitLeg(itinerary: Itinerary): Leg | undefined {
-  return itinerary?.legs?.find((leg) => leg.transitLeg)
-}
-
-/**
- * Gets the last transit leg of the given itinerary, or undefined if none found.
- */
-export function getLastTransitLeg(itinerary: Itinerary): Leg | undefined {
-  return itinerary?.legs
-    ?.slice()
-    .reverse()
-    .find((leg) => leg.transitLeg)
-}
-
-/**
  * Returns the set of monitored days that will be initially shown to the user
  * for the given itinerary.
  * @param itinerary The itinerary from which the default monitored days are extracted.
@@ -199,6 +182,8 @@ export function collectItinerariesWithoutDuplicates(
       }
     })
   })
+
+  console.log(itineraries)
 
   return itineraries
 }
