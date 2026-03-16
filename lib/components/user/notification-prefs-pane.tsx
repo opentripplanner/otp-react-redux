@@ -9,16 +9,13 @@ import { AppReduxState } from '../../util/state-types'
 import { GREY_ON_WHITE } from '../util/colors'
 
 import { FieldSet } from './styled'
-import { User } from './types'
+import { NotificationChannel, notificationChannels, User } from './types'
 import PhoneNumberEditor from './phone-number-editor'
 
 interface Props extends FormikProps<User> {
-  allowedNotificationChannels: string[]
+  allowedNotificationChannels: ReadonlyArray<NotificationChannel>
   loggedInUser: User
 }
-
-const allNotificationChannels = ['email', 'sms', 'push']
-const emailAndSms = ['email', 'sms']
 
 // Styles
 const NotificationOption = styled(ListGroupItem)`
@@ -117,12 +114,12 @@ const mapStateToProps = (state: AppReduxState) => {
   const { persistence } = state.otp.config
   const supportsPushNotifications =
     persistence && 'otp_middleware' in persistence
-      ? persistence.otp_middleware?.supportsPushNotifications
+      ? persistence?.otp_middleware?.supportsPushNotifications
       : false
   return {
     allowedNotificationChannels: supportsPushNotifications
-      ? allNotificationChannels
-      : emailAndSms
+      ? notificationChannels
+      : ['email', 'sms']
   }
 }
 
