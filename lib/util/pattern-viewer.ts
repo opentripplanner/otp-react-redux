@@ -25,7 +25,7 @@ interface PatternWithStops extends Pattern {
   stops: Stop[]
 }
 
-export function extractMainHeadsigns(
+export function extractMainPatterns(
   patterns: Record<string, Pattern>,
   shortName: string,
   editHeadsign: (pattern: PatternSummary) => void
