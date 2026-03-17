@@ -10,6 +10,7 @@ export interface PatternSummary {
   headsign: string
   id: string
   lastStop?: string
+  pattern: Pattern
 }
 
 export interface SubPatternInfo {
@@ -35,7 +36,8 @@ export function extractMainPatterns(
       geometryLength: pat.patternGeometry?.length || 0,
       headsign: extractHeadsignFromPattern(pat, shortName),
       id,
-      lastStop: pat.stops?.[pat.stops?.length - 1]?.name
+      lastStop: pat.stops?.[pat.stops?.length - 1]?.name,
+      pattern: pat
     })
   )
 
