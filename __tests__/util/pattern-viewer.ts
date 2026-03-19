@@ -236,12 +236,12 @@ describe('util > pattern-viewer', () => {
       // P3:         o--o--o
       // P4:   o-----o--o--o
       // P5:   o--o--o--o--o
-      // P7:               o--o--o
-      // P6: <undefined stops>
+      // P6:               o--o--o
+      // P7: <undefined stops>
       //
       // One of P1 or P5 should be removed because both have the exact same stops.
       // P3 should be removed because it is a subset of P1, P4, and P5.
-      // P1, P2, P4, and P7 should be kept.
+      // P1, P2, P4, and P6 should be kept.
       const patterns: Pattern[] = [
         {
           desc: 'P1 Pattern name',
