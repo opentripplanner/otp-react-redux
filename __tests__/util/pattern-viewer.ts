@@ -38,9 +38,9 @@ describe('util > pattern-viewer', () => {
       // Stops S1 S2 S3 S4 S5 S6 S7 --> direction of travel
       // P1:   o--o--o--o--o
       // P2:         o--o-----o--o
-      // P3:         o--o--o
+      // P3:   o-----o--o--o
       //
-      // P3 should be removed because it is a subset of P1.
+      // P3 should be removed because it has the same origin and final stops as P1.
       // P1 and P2 should be kept.
       // Patterns are assumed in descending length order because
       // pre-sorting happened before extractMainHeadsigns is invoked (key order matters).
@@ -77,7 +77,7 @@ describe('util > pattern-viewer', () => {
             points: 'p3-points'
           },
           route,
-          stops: createStops(['S3', 'S4', 'S5'])
+          stops: createStops(['S1', 'S3', 'S4', 'S5'])
         }
       }
       const headsignData = extractMainHeadsigns(
@@ -88,6 +88,62 @@ describe('util > pattern-viewer', () => {
       expect(headsignData.length).toBe(2)
       expect(headsignData[0].headsign).toBe(headsign)
       expect(headsignData[1].headsign).toBe(`${headsign} (S7)`)
+    })
+    it('should keep forks with the same headsigns', () => {
+      // Consider the following patterns P1, P2, P3 of the same route with the same headsigns:
+      // Stops S1 S2 S3 S4 S5 S6 S7 --> direction of travel
+      // P1:   o--o--o--------o--o
+      // P2:            o--o--o--o
+      // P3:   o--------------o--o
+      //
+      // P3 should be removed because it has the same origin and final stops as P1.
+      // P1 and P2 should be kept.
+      // Patterns are assumed in descending length order because
+      // pre-sorting happened before extractMainHeadsigns is invoked (key order matters).
+      const routeShortName = '512'
+      const patterns: Record<string, Pattern> = {
+        P1: {
+          desc: 'P1 Pattern name',
+          headsign,
+          id: 'P1',
+          patternGeometry: {
+            length: 1404,
+            points: 'p1-points'
+          },
+          route,
+          stops: createStops(['S1', 'S2', 'S3', 'S6', 'S7'])
+        },
+        P2: {
+          desc: 'P2 Pattern name',
+          headsign,
+          id: 'P2',
+          patternGeometry: {
+            length: 1072,
+            points: 'p2-points'
+          },
+          route,
+          stops: createStops(['S4', 'S5', 'S6', 'S7'])
+        },
+        P3: {
+          desc: 'P3 Pattern name',
+          headsign,
+          id: 'P3',
+          patternGeometry: {
+            length: 987,
+            points: 'p3-points'
+          },
+          route,
+          stops: createStops(['S1', 'S6', 'S7'])
+        }
+      }
+      const headsignData = extractMainHeadsigns(
+        patterns,
+        routeShortName,
+        editHeadsign
+      )
+      expect(headsignData.length).toBe(2)
+      expect(headsignData[0].headsign).toBe(headsign)
+      expect(headsignData[1].headsign).toBe(`${headsign} (from S4)`)
     })
   })
 
@@ -100,11 +156,12 @@ describe('util > pattern-viewer', () => {
       // P3:         o--o--o
       // P4:   o-----o--o--o
       // P5:   o--o--o--o--o
+      // P7:               o--o--o
       // P6: <undefined stops>
       //
       // One of P1 or P5 should be removed because both have the exact same stops.
       // P3 should be removed because it is a subset of P1, P4, and P5.
-      // P1, P2, and P4 should be kept.
+      // P1, P2, P4, and P7 should be kept.
       const patterns: Pattern[] = [
         {
           desc: 'P1 Pattern name',
@@ -162,9 +219,20 @@ describe('util > pattern-viewer', () => {
           stops: createStops(['S1', 'S2', 'S3', 'S4', 'S5'])
         },
         {
-          desc: 'Pattern without stops',
+          desc: 'P6 Pattern name (same stops as P1)',
           headsign,
           id: 'P6',
+          patternGeometry: {
+            length: 700,
+            points: 'p6-points'
+          },
+          route,
+          stops: createStops(['S5', 'S6', 'S7'])
+        },
+        {
+          desc: 'Pattern without stops',
+          headsign,
+          id: 'P7',
           patternGeometry: {
             length: 0,
             points: ''
@@ -175,10 +243,11 @@ describe('util > pattern-viewer', () => {
       ]
       const { containingPatterns, filteredPatterns } =
         sortAndRemoveSubpatterns(patterns)
-      expect(filteredPatterns.length).toBe(3)
+      expect(filteredPatterns.length).toBe(4)
       expect(['P1', 'P5']).toContain(filteredPatterns[0].id)
       expect(filteredPatterns).toContain(patterns[1])
       expect(filteredPatterns).toContain(patterns[3])
+      expect(filteredPatterns).toContain(patterns[5])
       expect(['P1', 'P5']).toContain(containingPatterns.P3)
       expect(containingPatterns.P4).toBe(undefined)
       expect(

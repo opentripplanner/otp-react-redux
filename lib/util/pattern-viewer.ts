@@ -6,6 +6,7 @@ import { extractHeadsignFromPattern } from './viewer'
 import { isValidSubsequence } from './state'
 
 export interface PatternSummary {
+  firstStop?: string
   geometryLength: number
   headsign: string
   id: string
@@ -25,13 +26,14 @@ interface PatternWithStops extends Pattern {
   stops: Stop[]
 }
 
-export function extractMainPatterns(
+export function extractMainHeadsigns(
   patterns: Record<string, Pattern>,
   shortName: string,
   editHeadsign: (pattern: PatternSummary) => void
 ): PatternSummary[] {
   const mapped = Object.entries(patterns).map(
     ([id, pat]): PatternSummary => ({
+      firstStop: pat.stops?.[0]?.name,
       geometryLength: pat.patternGeometry?.length || 0,
       headsign: extractHeadsignFromPattern(pat, shortName),
       id,
@@ -40,6 +42,7 @@ export function extractMainPatterns(
   )
 
   // Address duplicate headsigns.
+  // Either append the last stop name, or append 'from' + the first stop name.
   return mapped.reduce((prev: PatternSummary[], cur) => {
     const amended = prev
     const alreadyExistingIndex = prev.findIndex(
@@ -48,21 +51,22 @@ export function extractMainPatterns(
     // If the headsign is a duplicate, and the last stop of the pattern is not the headsign,
     // amend the headsign with the last stop name in parenthesis.
     // e.g. "Headsign (Last Stop)"
-    if (
-      alreadyExistingIndex >= 0 &&
-      cur.lastStop &&
-      cur.headsign !== cur.lastStop &&
-      // If the last stop is different than the headsign but the same as the last stop of the previously existing duplicate, there's no point in renaming.
-      cur.lastStop !== amended[alreadyExistingIndex].lastStop
-    ) {
-      editHeadsign(cur)
+    if (alreadyExistingIndex >= 0) {
+      if (cur.lastStop && cur.headsign !== cur.lastStop) {
+        // If the last stop is different than the headsign but the same as the last stop of the previously existing duplicate, there's no point in renaming.
+        if (cur.lastStop !== amended[alreadyExistingIndex].lastStop) {
+          editHeadsign(cur)
+        } else if (cur.firstStop !== amended[alreadyExistingIndex].firstStop) {
+          cur.headsign = cur.headsign + ` (from ${cur.firstStop})`
+        }
 
-      // If there are only two total patterns, then we should rename
-      // both of them
-      if (amended.length === 1 && Object.entries(patterns).length === 2) {
-        editHeadsign(amended[0])
-        amended.push(cur)
-        return amended
+        // If there are only two total patterns, then we should rename
+        // both of them
+        if (amended.length === 1 && Object.entries(patterns).length === 2) {
+          editHeadsign(amended[0])
+          amended.push(cur)
+          return amended
+        }
       }
     }
 
@@ -70,7 +74,8 @@ export function extractMainPatterns(
     // longest geometry.
     if (
       alreadyExistingIndex >= 0 &&
-      amended[alreadyExistingIndex].lastStop === cur.lastStop
+      amended[alreadyExistingIndex].lastStop === cur.lastStop &&
+      amended[alreadyExistingIndex].firstStop === cur.firstStop
     ) {
       if (amended[alreadyExistingIndex].geometryLength < cur.geometryLength) {
         amended[alreadyExistingIndex] = cur
@@ -78,6 +83,7 @@ export function extractMainPatterns(
     } else {
       amended.push(cur)
     }
+    console.log('Amended', amended.length)
     return amended
   }, [])
 }
