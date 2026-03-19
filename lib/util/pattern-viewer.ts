@@ -83,7 +83,6 @@ export function extractMainHeadsigns(
     } else {
       amended.push(cur)
     }
-    console.log('Amended', amended.length)
     return amended
   }, [])
 }
