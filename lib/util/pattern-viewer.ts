@@ -52,18 +52,27 @@ export function extractMainHeadsigns(
     // amend the headsign with the last stop name in parenthesis.
     // e.g. "Headsign (Last Stop)"
     if (alreadyExistingIndex >= 0) {
-      if (cur.lastStop && cur.headsign !== cur.lastStop) {
-        // If the last stop is different than the headsign but the same as the last stop of the previously existing duplicate, there's no point in renaming.
-        if (cur.lastStop !== amended[alreadyExistingIndex].lastStop) {
-          editHeadsign(cur)
-        } else if (cur.firstStop !== amended[alreadyExistingIndex].firstStop) {
-          cur.headsign = cur.headsign + ` (from ${cur.firstStop})`
-        }
-
+      // If the last stop is different than the headsign but the same as the last stop of the previously existing duplicate, there's no point in renaming.
+      if (
+        cur.lastStop &&
+        cur.headsign !== cur.lastStop &&
+        cur.lastStop !== amended[alreadyExistingIndex].lastStop
+      ) {
+        editHeadsign(cur)
         // If there are only two total patterns, then we should rename
         // both of them
         if (amended.length === 1 && Object.entries(patterns).length === 2) {
           editHeadsign(amended[0])
+          amended.push(cur)
+          return amended
+        }
+      } else if (cur.firstStop !== amended[alreadyExistingIndex].firstStop) {
+        cur.headsign = cur.headsign + ` (from ${cur.firstStop})`
+        // If there are only two total patterns, then we should rename
+        // both of them
+        if (amended.length === 1 && Object.entries(patterns).length === 2) {
+          amended[0].headsign =
+            amended[0].headsign + ` (from ${amended[0].firstStop})`
           amended.push(cur)
           return amended
         }

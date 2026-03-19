@@ -104,6 +104,56 @@ describe('util > pattern-viewer', () => {
       const patterns: Record<string, Pattern> = {
         P1: {
           desc: 'P1 Pattern name',
+          headsign: 'S7',
+          id: 'P1',
+          patternGeometry: {
+            length: 1404,
+            points: 'p1-points'
+          },
+          route,
+          stops: createStops(['S1', 'S2', 'S3', 'S6', 'S7'])
+        },
+        P2: {
+          desc: 'P2 Pattern name',
+          headsign: 'S7',
+          id: 'P2',
+          patternGeometry: {
+            length: 1072,
+            points: 'p2-points'
+          },
+          route,
+          stops: createStops(['S4', 'S5', 'S6', 'S7'])
+        },
+        P3: {
+          desc: 'P3 Pattern name',
+          headsign: 'S7',
+          id: 'P3',
+          patternGeometry: {
+            length: 987,
+            points: 'p3-points'
+          },
+          route,
+          stops: createStops(['S1', 'S6', 'S7'])
+        }
+      }
+      const headsignData = extractMainHeadsigns(
+        patterns,
+        routeShortName,
+        editHeadsign
+      )
+      expect(headsignData.length).toBe(2)
+      expect(headsignData[0].headsign).toBe('S7')
+      expect(headsignData[1].headsign).toBe('S7 (from S4)')
+    })
+    it('should append final stops', () => {
+      // Consider the following patterns P1, P2 of the same route with the same headsigns:
+      // Stops S1 S2 S3 S4 S5 S6 S7 --> direction of travel
+      // P1:   o--o--o--------o--o
+      // P2:            o--o--o
+      const routeShortName = '512'
+      const patterns: Record<string, Pattern> = {
+        P1: {
+          desc: 'P1 Pattern name',
           headsign,
           id: 'P1',
           patternGeometry: {
@@ -122,18 +172,7 @@ describe('util > pattern-viewer', () => {
             points: 'p2-points'
           },
           route,
-          stops: createStops(['S4', 'S5', 'S6', 'S7'])
-        },
-        P3: {
-          desc: 'P3 Pattern name',
-          headsign,
-          id: 'P3',
-          patternGeometry: {
-            length: 987,
-            points: 'p3-points'
-          },
-          route,
-          stops: createStops(['S1', 'S6', 'S7'])
+          stops: createStops(['S4', 'S5', 'S6'])
         }
       }
       const headsignData = extractMainHeadsigns(
@@ -142,8 +181,49 @@ describe('util > pattern-viewer', () => {
         editHeadsign
       )
       expect(headsignData.length).toBe(2)
-      expect(headsignData[0].headsign).toBe(headsign)
-      expect(headsignData[1].headsign).toBe(`${headsign} (from S4)`)
+      // The final stop is appended because there are only two patterns.
+      expect(headsignData[0].headsign).toBe(`${headsign} (S7)`)
+      expect(headsignData[1].headsign).toBe(`${headsign} (S6)`)
+    })
+    it('should prepend origin stops', () => {
+      // Consider the following patterns P1, P2 of the same route with the same headsigns:
+      // Stops S1 S2 S3 S4 S5 S6 S7 --> direction of travel
+      // P1:   o--o--o--------o--o
+      // P2:               o--o--o
+      const routeShortName = '512'
+      const patterns: Record<string, Pattern> = {
+        P1: {
+          desc: 'P1 Pattern name',
+          headsign,
+          id: 'P1',
+          patternGeometry: {
+            length: 1404,
+            points: 'p1-points'
+          },
+          route,
+          stops: createStops(['S1', 'S2', 'S3', 'S6', 'S7'])
+        },
+        P2: {
+          desc: 'P2 Pattern name',
+          headsign,
+          id: 'P2',
+          patternGeometry: {
+            length: 1072,
+            points: 'p2-points'
+          },
+          route,
+          stops: createStops(['S5', 'S6', 'S7'])
+        }
+      }
+      const headsignData = extractMainHeadsigns(
+        patterns,
+        routeShortName,
+        editHeadsign
+      )
+      expect(headsignData.length).toBe(2)
+      // The final stop is appended because there are only two patterns.
+      expect(headsignData[0].headsign).toBe(`${headsign} (from S1)`)
+      expect(headsignData[1].headsign).toBe(`${headsign} (from S5)`)
     })
   })
 
