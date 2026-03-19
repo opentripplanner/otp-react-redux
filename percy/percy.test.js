@@ -5,7 +5,8 @@ import puppeteer from 'puppeteer'
 
 const percySnapshot = require('@percy/puppeteer')
 
-const OTP_RR_UI_MODE = process.env.OTP_RR_UI_MODE || 'normal'
+const OTP_RR_UI_MODE = 'field-trip'
+// const OTP_RR_UI_MODE = process.env.OTP_RR_UI_MODE || 'normal'
 
 const MOCK_SERVER_PORT = 5486
 
@@ -77,8 +78,9 @@ beforeAll(async () => {
 
     // Web security is disabled to allow requests to the mock OTP server
     browser = await puppeteer.launch({
-      args: ['--disable-web-security', '--no-sandbox']
-      // , headless: false
+      args: ['--disable-web-security', '--no-sandbox'],
+      devtools: true,
+      headless: false
     })
   } catch (error) {
     console.log(error)
@@ -104,22 +106,23 @@ afterAll(async () => {
 jest.setTimeout(600000)
 
 // eslint-disable-next-line complexity
-async function executeTest(page, isMobile, isCallTaker) {
+async function executeTest(page, isMobile, mode) {
   // Make sure that the main UI (incl. map controls) has loaded.
   await page.waitForSelector('.maplibregl-ctrl-zoom-in')
 
   // Load itinerary from URL
   // Triggers mock.har graphql query #1 and #2 (bike-only query, twice).
   // FIXME: Opening a url with non-default mode params triggers the plan query twice.
-  await page.goto(
-    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=South%20Prado%20Northeast%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.78946214120528%2C-84.37663414886111&toPlace=1%20Copenhill%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.767060728439574%2C-84.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false&mode=BICYCLE&walkSpeed=1.34&numItineraries=3&modeButtons=walk_bike`
-  )
+  // await page.goto(
+  //   `http://localhost:${MOCK_SERVER_PORT}/#/?sessionId=test&ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=South%20Prado%20Northeast%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.78946214120528%2C-84.37663414886111&toPlace=1%20Copenhill%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.767060728439574%2C-84.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false&mode=BICYCLE&walkSpeed=1.34&numItineraries=3&modeButtons=walk_bike`
+  // )
+  await page.goto(`http://localhost:${MOCK_SERVER_PORT}/#/?sessionId=test`)
   // FIXME: Network idle condition seems never met after navigating to above link.
   // await page.waitForNavigation({ waitUntil: 'networkidle2' })
   await page.waitForTimeout(4000)
-  await page.waitForSelector('.option.metro-itin')
+  // await page.waitForSelector('.option.metro-itin')
 
-  if (!isCallTaker) {
+  if (mode === 'normal') {
     // Edit trip params [mobile-specific]
     await openEditIfNeeded(page, isMobile)
 
@@ -210,7 +213,7 @@ async function executeTest(page, isMobile, isCallTaker) {
     } else {
       await percySnapshotWithWait(page, 'Metro Transit-Walk Itinerary Mobile')
     }
-  } else {
+  } else if (mode === 'calltaker') {
     await page.waitForTimeout(1000) // wait extra time for all results to load
 
     // add intermediate stop
@@ -237,6 +240,25 @@ async function executeTest(page, isMobile, isCallTaker) {
 
     // Other steps are identical to desktop, so we end here to not waste screenshots.
     return
+  } else if (mode === 'field-trip') {
+    // Fill in new origin
+    await page.hover('.from-form-control')
+    await page.focus('.from-form-control')
+    // FIXME: Characters are typed very fast, but each stroke still triggers a geocoder call.
+    await page.keyboard.type('M', { delay: 100 })
+    await page.waitForTimeout(2000)
+    await page.keyboard.press('ArrowDown')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('Enter')
+
+    // Fill in new destination
+    await page.focus('.to-form-control')
+    // FIXME: Characters are typed very fast, but each stroke still triggers a geocoder call.
+    await page.keyboard.type('908981', { delay: 100 })
+    await page.waitForTimeout(2000)
+    await page.keyboard.press('ArrowDown')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('Enter')
   }
 
   // Select a trip
@@ -381,7 +403,7 @@ async function executeTest(page, isMobile, isCallTaker) {
     // Printable itinerary screenshot on mobile only better page ration (and to save allowance).
     await percySnapshotWithWait(page, 'Printable Itinerary')
   }
-  if (!isCallTaker) {
+  if (!mode) {
     // Go to a URL that will trigger an error message.
     await page.goto(
       `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=TestLocation%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A34.78946214120528%2C-86.37663414886111&toPlace=1%20TestLocation2%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A35.767060728439574%2C-86.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false&mode=BICYCLE&walkSpeed=1.34&numItineraries=3&modeButtons=car_transit`
@@ -435,10 +457,10 @@ test('OTP-RR Desktop', async () => {
     console.error(`Request failed: ${req.method()} ${req.url()}`)
   })
 
-  await executeTest(page, false, OTP_RR_UI_MODE === 'calltaker')
+  await executeTest(page, false, 'field-trip')
 })
 
-if (OTP_RR_UI_MODE !== 'calltaker') {
+if (!['calltaker', 'field-trip'].includes(OTP_RR_UI_MODE)) {
   // Non-calltaker test runs both mobile and desktop test.
   test('OTP-RR Mobile', async () => {
     const page = await loadPath('/')
