@@ -245,7 +245,7 @@ async function executeTest(page, isMobile, mode) {
     await page.hover('.from-form-control')
     await page.focus('.from-form-control')
     // FIXME: Characters are typed very fast, but each stroke still triggers a geocoder call.
-    await page.keyboard.type('M', { delay: 100 })
+    await page.keyboard.type('Muji', { delay: 10000 })
     await page.waitForTimeout(2000)
     await page.keyboard.press('ArrowDown')
     await page.waitForTimeout(200)
