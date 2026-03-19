@@ -118,8 +118,6 @@ export function getParentStopOrStopId(stop: StopWithParent): string {
  *   and a containingPatterns field with a map of the containing pattern for each pattern.
  */
 export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
-  const containingPatterns: Record<string, string> = {}
-
   // Filter out patterns with no stops.
   const patternsWithStops = patterns.filter(
     (pattern) => pattern.stops?.length
@@ -131,24 +129,26 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
   )
 
   // Compute containing patterns for each pattern (except the top-level ones)
+  const containingPatterns: Record<string, string> = {}
   sortedPatterns.forEach((pattern) => {
     // Compare to all other patterns TODO: make this beat O(n^2)
     const patternStops = pattern.stops.map(getParentStopOrStopId) || []
-    sortedPatterns.forEach((p, index) => {
+    sortedPatterns.forEach((p) => {
       // Don't compare against ourself
       if (p.id === pattern.id) return
 
       // If our pattern is longer, it's not a subset
       if (patternStops.length < p.stops.length) return
 
-      const pStops = p.stops.map(getParentStopOrStopId)
-      const isSubpattern = isValidSubsequence(patternStops, pStops)
-      // Populate the highest containing pattern.
-      if (isSubpattern) {
-        if (!containingPatterns[p.id]) {
-          if (containingPatterns[pattern.id] !== p.id) {
-            containingPatterns[p.id] = pattern.id
-          }
+      // Populate the highest containing pattern, if not so done.
+      if (
+        !containingPatterns[p.id] &&
+        containingPatterns[pattern.id] !== p.id // no circular references
+      ) {
+        const pStops = p.stops.map(getParentStopOrStopId)
+        const isSubpattern = isValidSubsequence(patternStops, pStops)
+        if (isSubpattern) {
+          containingPatterns[p.id] = pattern.id
         }
       }
     })
