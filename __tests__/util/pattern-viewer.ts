@@ -299,7 +299,7 @@ describe('util > pattern-viewer', () => {
           stops: createStops(['S1', 'S2', 'S3', 'S4', 'S5'])
         },
         {
-          desc: 'P6 Pattern name (same stops as P1)',
+          desc: 'P6 Pattern name',
           headsign,
           id: 'P6',
           patternGeometry: {
@@ -324,15 +324,15 @@ describe('util > pattern-viewer', () => {
       const { containingPatterns, filteredPatterns } =
         sortAndRemoveSubpatterns(patterns)
       expect(filteredPatterns.length).toBe(4)
-      expect(['P1', 'P5']).toContain(filteredPatterns[0].id)
+      expect(filteredPatterns).toContain(patterns[0])
       expect(filteredPatterns).toContain(patterns[1])
       expect(filteredPatterns).toContain(patterns[3])
       expect(filteredPatterns).toContain(patterns[5])
-      expect(['P1', 'P5']).toContain(containingPatterns.P3)
+      expect(containingPatterns.P3).toBe('P1')
       expect(containingPatterns.P4).toBe(undefined)
-      expect(
-        containingPatterns.P1 === 'P5' || containingPatterns.P5 === 'P1'
-      ).toBeTruthy()
+      // No circular references in identical patterns
+      expect(containingPatterns.P5).toBe('P1')
+      expect(containingPatterns.P1).toBeUndefined()
     })
   })
 })

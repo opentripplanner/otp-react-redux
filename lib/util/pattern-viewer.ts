@@ -125,37 +125,39 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
     (pattern) => pattern.stops?.length
   ) as PatternWithStops[]
 
-  // Keep patterns that are not subsets of larger patterns.
-  // Assign a containing pattern to each sub pattern.
-  const filteredPatterns = patternsWithStops
-    // Sort patterns by descending length (most stops first) for efficiency.
-    .sort((a, b) => b.stops.length - a.stops.length)
-    .filter((pattern, patternIndex) => {
-      // Compare to all other patterns TODO: make this beat O(n^2)
-      let includePattern = true
-      const patternStops = pattern.stops.map(getParentStopOrStopId) || []
+  // Sort patterns by descending length (most stops first) for efficiency.
+  const sortedPatterns = patternsWithStops.sort(
+    (a, b) => b.stops.length - a.stops.length
+  )
 
-      patternsWithStops.forEach((p, index) => {
-        // Don't compare against ourself
-        if (p.id === pattern.id) return
+  // Compute containing patterns for each pattern (except the top-level ones)
+  sortedPatterns.forEach((pattern) => {
+    // Compare to all other patterns TODO: make this beat O(n^2)
+    const patternStops = pattern.stops.map(getParentStopOrStopId) || []
+    sortedPatterns.forEach((p, index) => {
+      // Don't compare against ourself
+      if (p.id === pattern.id) return
 
-        // If our pattern is longer, it's not a subset
-        if (p.stops.length < patternStops.length) return
+      // If our pattern is longer, it's not a subset
+      if (patternStops.length < p.stops.length) return
 
-        const pStops = p.stops.map(getParentStopOrStopId)
-        const isSubpattern = isValidSubsequence(pStops, patternStops)
-        if (isSubpattern) {
-          // Include pattern if it has not been referenced before among patterns of same stops.
-          includePattern = index > patternIndex
-          // Populate the highest containing pattern.
-          if (!containingPatterns[pattern.id]) {
-            containingPatterns[pattern.id] = p.id
+      const pStops = p.stops.map(getParentStopOrStopId)
+      const isSubpattern = isValidSubsequence(patternStops, pStops)
+      // Populate the highest containing pattern.
+      if (isSubpattern) {
+        if (!containingPatterns[p.id]) {
+          if (containingPatterns[pattern.id] !== p.id) {
+            containingPatterns[p.id] = pattern.id
           }
         }
-      })
-
-      return includePattern
+      }
     })
+  })
+
+  // Keep patterns that are not subsets of larger patterns.
+  const filteredPatterns = sortedPatterns.filter(
+    (pattern) => !containingPatterns[pattern.id]
+  )
 
   return {
     containingPatterns,
