@@ -41,36 +41,35 @@ export function extractMainHeadsigns(
     })
   )
 
-  // Address duplicate headsigns.
-  // Either append the last stop name, or append 'from' + the first stop name.
-  return mapped.reduce((prev: PatternSummary[], cur) => {
-    const amended = prev
-    const alreadyExistingIndex = prev.findIndex(
+  return mapped.reduce((amended: PatternSummary[], cur) => {
+    const alreadyExistingIndex = amended.findIndex(
       (h) => h.headsign === cur.headsign
     )
+    const existing = amended[alreadyExistingIndex]
     // If the headsign is a duplicate, and the last stop of the pattern is not the headsign,
     // amend the headsign with the last stop name in parenthesis.
     // e.g. "Headsign (Last Stop)"
     if (alreadyExistingIndex >= 0) {
+      const twoPatternsWithOneAmended =
+        amended.length === 1 && Object.entries(patterns).length === 2
       // If the last stop is different than the headsign but the same as the last stop of the previously existing duplicate, there's no point in renaming.
       if (
         cur.lastStop &&
         cur.headsign !== cur.lastStop &&
-        cur.lastStop !== amended[alreadyExistingIndex].lastStop
+        cur.lastStop !== existing.lastStop
       ) {
         editHeadsign(cur)
-        // If there are only two total patterns, then we should rename
-        // both of them
-        if (amended.length === 1 && Object.entries(patterns).length === 2) {
+        // If there are only two total patterns, then we should rename both of them
+        if (twoPatternsWithOneAmended) {
           editHeadsign(amended[0])
           amended.push(cur)
           return amended
         }
-      } else if (cur.firstStop !== amended[alreadyExistingIndex].firstStop) {
+      } else if (cur.firstStop !== existing.firstStop) {
+        // Append 'from' + the first stop name if the patterns have the exact same arrival stops but different origins.
         cur.headsign = cur.headsign + ` (from ${cur.firstStop})`
-        // If there are only two total patterns, then we should rename
-        // both of them
-        if (amended.length === 1 && Object.entries(patterns).length === 2) {
+        // If there are only two total patterns, then we should rename both of them
+        if (twoPatternsWithOneAmended) {
           amended[0].headsign =
             amended[0].headsign + ` (from ${amended[0].firstStop})`
           amended.push(cur)
@@ -83,10 +82,10 @@ export function extractMainHeadsigns(
     // longest geometry.
     if (
       alreadyExistingIndex >= 0 &&
-      amended[alreadyExistingIndex].lastStop === cur.lastStop &&
-      amended[alreadyExistingIndex].firstStop === cur.firstStop
+      existing.lastStop === cur.lastStop &&
+      existing.firstStop === cur.firstStop
     ) {
-      if (amended[alreadyExistingIndex].geometryLength < cur.geometryLength) {
+      if (existing.geometryLength < cur.geometryLength) {
         amended[alreadyExistingIndex] = cur
       }
     } else {
@@ -132,7 +131,7 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
   const containingPatterns: Record<string, string> = {}
   sortedPatterns.forEach((pattern) => {
     // Compare to all other patterns TODO: make this beat O(n^2)
-    const patternStops = pattern.stops.map(getParentStopOrStopId) || []
+    const patternStops = pattern.stops.map(getParentStopOrStopId)
     sortedPatterns.forEach((p) => {
       // Don't compare against ourself
       if (p.id === pattern.id) return
