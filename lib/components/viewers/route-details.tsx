@@ -89,14 +89,20 @@ class RouteDetails extends Component<Props> {
 
   _editToHeadsign = (pattern: PatternSummary) => {
     pattern.headsign = this.props.intl.formatMessage(
-      { id: 'components.RouteDetails.headsignTo' },
+      {
+        defaultMessage: '{headsign} ({lastStop})',
+        id: 'components.RouteDetails.headsignTo'
+      },
       { ...pattern }
     ) as string
   }
 
   _editFromHeadsign = (pattern: PatternSummary) => {
     pattern.headsign = this.props.intl.formatMessage(
-      { id: 'components.RouteDetails.headsignFrom' },
+      {
+        defaultMessage: '{headsign} (from {firstStop})',
+        id: 'components.RouteDetails.headsignFrom'
+      },
       { ...pattern }
     ) as string
   }
