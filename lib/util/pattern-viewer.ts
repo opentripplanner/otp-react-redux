@@ -29,7 +29,8 @@ interface PatternWithStops extends Pattern {
 export function extractMainHeadsigns(
   patterns: Record<string, Pattern>,
   shortName: string,
-  editHeadsign: (pattern: PatternSummary) => void
+  editToHeadsign: (pattern: PatternSummary) => void,
+  editFromHeadsign: (pattern: PatternSummary) => void
 ): PatternSummary[] {
   const mapped = Object.entries(patterns).map(
     ([id, pat]): PatternSummary => ({
@@ -51,35 +52,35 @@ export function extractMainHeadsigns(
     // e.g. "Headsign (Last Stop)"
     if (alreadyExistingIndex >= 0) {
       const twoPatternsWithOneAmended =
-        amended.length === 1 && Object.entries(patterns).length === 2
-      // If the last stop is different than the headsign but the same as the last stop of the previously existing duplicate, there's no point in renaming.
+        amended.length === 1 && mapped.length === 2
+      // If the last stop is different than the headsign but the same as the last stop
+      // of the previously existing duplicate, there's no point in renaming.
       if (
         cur.lastStop &&
         cur.headsign !== cur.lastStop &&
         cur.lastStop !== existing.lastStop
       ) {
-        editHeadsign(cur)
+        editToHeadsign(cur)
         // If there are only two total patterns, then we should rename both of them
         if (twoPatternsWithOneAmended) {
-          editHeadsign(amended[0])
+          editToHeadsign(amended[0])
           amended.push(cur)
           return amended
         }
       } else if (cur.firstStop !== existing.firstStop) {
+        editFromHeadsign(cur)
         // Append 'from' + the first stop name if the patterns have the exact same arrival stops but different origins.
-        cur.headsign = cur.headsign + ` (from ${cur.firstStop})`
         // If there are only two total patterns, then we should rename both of them
         if (twoPatternsWithOneAmended) {
-          amended[0].headsign =
-            amended[0].headsign + ` (from ${amended[0].firstStop})`
+          editFromHeadsign(amended[0])
           amended.push(cur)
           return amended
         }
       }
     }
 
-    // With all remaining duplicate headsigns with the same last stops, only keep the pattern with the
-    // longest geometry.
+    // With all remaining duplicate headsigns with the same first and last stops,
+    // only keep the pattern with the longest geometry.
     if (
       alreadyExistingIndex >= 0 &&
       existing.lastStop === cur.lastStop &&

@@ -16,8 +16,12 @@ function createStops(ids: string[]): Stop[] {
   }))
 }
 
-function editHeadsign(pattern: PatternSummary) {
+function editToHeadsign(pattern: PatternSummary) {
   pattern.headsign = `${pattern.headsign} (${pattern.lastStop})`
+}
+
+function editFromHeadsign(pattern: PatternSummary) {
+  pattern.headsign = `${pattern.headsign} (from ${pattern.firstStop})`
 }
 
 const headsign = 'Everett via Lynnwood'
@@ -83,7 +87,8 @@ describe('util > pattern-viewer', () => {
       const headsignData = extractMainHeadsigns(
         patterns,
         routeShortName,
-        editHeadsign
+        editToHeadsign,
+        editFromHeadsign
       )
       expect(headsignData.length).toBe(2)
       expect(headsignData[0].headsign).toBe(headsign)
@@ -139,7 +144,8 @@ describe('util > pattern-viewer', () => {
       const headsignData = extractMainHeadsigns(
         patterns,
         routeShortName,
-        editHeadsign
+        editToHeadsign,
+        editFromHeadsign
       )
       expect(headsignData.length).toBe(2)
       expect(headsignData[0].headsign).toBe('S7')
@@ -178,7 +184,8 @@ describe('util > pattern-viewer', () => {
       const headsignData = extractMainHeadsigns(
         patterns,
         routeShortName,
-        editHeadsign
+        editToHeadsign,
+        editFromHeadsign
       )
       expect(headsignData.length).toBe(2)
       // The final stop is appended because there are only two patterns.
@@ -218,7 +225,8 @@ describe('util > pattern-viewer', () => {
       const headsignData = extractMainHeadsigns(
         patterns,
         routeShortName,
-        editHeadsign
+        editToHeadsign,
+        editFromHeadsign
       )
       expect(headsignData.length).toBe(2)
       // The origin stop is appended because there are only two patterns.

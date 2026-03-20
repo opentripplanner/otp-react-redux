@@ -524,6 +524,7 @@ components:
   ResultsError:
     backToSearch: Back to Search
   RouteDetails:
+    headsignFrom: "{headsign} (from {firstStop})"
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: More Details
     operatedBy: Operated by {agencyName}

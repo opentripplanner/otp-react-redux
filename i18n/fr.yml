@@ -555,6 +555,7 @@ components:
   ResultsError:
     backToSearch: Retour à la recherche
   RouteDetails:
+    headsignFrom: "{headsign} (depuis {firstStop})"
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: Plus d'infos
     operatedBy: Exploité par {agencyName}

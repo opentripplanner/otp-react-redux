@@ -87,9 +87,16 @@ class RouteDetails extends Component<Props> {
     setViewedStop(stop)
   }
 
-  _editHeadsign = (pattern: PatternSummary) => {
+  _editToHeadsign = (pattern: PatternSummary) => {
     pattern.headsign = this.props.intl.formatMessage(
       { id: 'components.RouteDetails.headsignTo' },
+      { ...pattern }
+    ) as string
+  }
+
+  _editFromHeadsign = (pattern: PatternSummary) => {
+    pattern.headsign = this.props.intl.formatMessage(
+      { id: 'components.RouteDetails.headsignFrom' },
       { ...pattern }
     ) as string
   }
@@ -118,7 +125,8 @@ class RouteDetails extends Component<Props> {
     const headsigns = extractMainHeadsigns(
       patterns,
       shortName,
-      this._editHeadsign
+      this._editToHeadsign,
+      this._editFromHeadsign
     ).sort((a, b) => {
       if (!sortPatternsByVehicleCount) return 0
       // sort by number of vehicles on that pattern
