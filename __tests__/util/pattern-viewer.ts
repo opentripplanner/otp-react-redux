@@ -221,7 +221,7 @@ describe('util > pattern-viewer', () => {
         editHeadsign
       )
       expect(headsignData.length).toBe(2)
-      // The final stop is appended because there are only two patterns.
+      // The origin stop is appended because there are only two patterns.
       expect(headsignData[0].headsign).toBe(`${headsign} (from S1)`)
       expect(headsignData[1].headsign).toBe(`${headsign} (from S5)`)
     })
