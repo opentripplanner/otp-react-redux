@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { Stop } from '@opentripplanner/types'
-import StopsOverlay from '@opentripplanner/stops-overlay'
+import StopsOverlay, { isGeoJsonFlex } from '@opentripplanner/stops-overlay'
 
 import * as apiActions from '../../actions/api'
 import * as mapActions from '../../actions/map'
@@ -36,12 +36,8 @@ const mapStateToProps = (state: AppReduxState) => {
       // However, without changes to GraphQL, getting this data is very expensive
       Object.values(patterns).forEach((p) => {
         p?.stops
-          ?.filter(
-            (s: Stop) =>
-              s.geometries?.geoJson?.type === 'Polygon' ||
-              s.geometries?.geoJson?.type === 'MultiPolygon' ||
-              s.geometries?.geoJson?.type === 'GeometryCollection'
-          )
+          // @ts-expect-error isJsonFlex logic does support undefined arg.
+          ?.filter((s: Stop) => isGeoJsonFlex(s.geometries?.geoJson))
           ?.forEach((s: Stop) => (stopsById[s.id] = s))
       })
     } else if (patternId) {
