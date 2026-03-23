@@ -405,6 +405,7 @@ components:
     selectCost: Prix
     selectDepartureTime: Heure de départ
     selectDuration: Durée
+    selectEmissions: Émissions de CO₂
     selectFare: Prix du trajet
     selectWalkTime: Temps de marche
     sortResults: Trier les résultats

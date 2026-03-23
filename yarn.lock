@@ -2733,10 +2733,10 @@
     maplibre-gl "^5.6.1"
     react-map-gl "^8.0.4"
 
-"@opentripplanner/base-map@6.1.0":
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-6.1.0.tgz#4758dd37c678b907d1eb0916facc1c710de10b68"
-  integrity sha512-2hsiWk8EeODUviyYXy52tmy4AWol9ZAgheCLYg3KpbTFTYmWjAcPPbN9WvJ+f5gGn06pufRx4s5x/14TxzTBTA==
+"@opentripplanner/base-map@6.1.1":
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-6.1.1.tgz#93cca0613cf747890a098903ca31296445bdd4d0"
+  integrity sha512-l8c/k4fkD0gykiikn1iIGak/hRxB82zyd5vSGKwhl5ki2SBcnTIGmqiKQyJ42/WrE9JfCQ2RCV83wzk/dAu1Nw==
   dependencies:
     "@opentripplanner/building-blocks" "3.1.0"
     maplibre-gl "^5.6.1"
@@ -9459,9 +9459,9 @@ flat@^5.0.2:
   integrity sha512-b6suED+5/3rTpUBdG1gupIl8MPFCAMA0QXwmljLhvCUKcUvdE4gWky9zpuGCcXHOsz4J9wPGNWq6OKpmIzz3hQ==
 
 flatted@^3.1.0:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.2.tgz#64bfed5cb68fe3ca78b3eb214ad97b63bedce561"
-  integrity sha512-JaTY/wtrcSyvXJl4IMFHPKyFur1sE9AUqc0QnhOaJ0CxHtAoIV8pYDzeEfAaNEtGkOfq4gr3LBFmdXW5mOQFnA==
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.4.2.tgz#f5c23c107f0f37de8dbdf24f13722b3b98d52726"
+  integrity sha512-PjDse7RzhcPkIJwy5t7KPWQSZ9cAbzQXcafsetQoD7sOJRQlGikNbx7yZp2OotDnJyrDcbyRq3Ttb18iYOqkxA==
 
 flatten@^1.0.2:
   version "1.0.3"
