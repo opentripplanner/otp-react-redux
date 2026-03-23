@@ -105,7 +105,7 @@ const MetroItineraryRoutes = ({
           />
         )}
       </InvisibleHeader>
-      <Routes aria-hidden enableDot={enableDot}>
+      <Routes aria-hidden className="routes-container" enableDot={enableDot}>
         {routeLegs.map((leg: Leg, index: number, filteredLegs: Leg[]) => {
           const previousLegMode =
             (index > 0 && filteredLegs[index - 1].mode) || undefined
