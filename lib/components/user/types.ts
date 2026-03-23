@@ -43,6 +43,13 @@ export interface DependentInfo {
   userId: string
 }
 
+export const notificationChannels: ReadonlyArray<string> = [
+  'email',
+  'sms',
+  'push'
+]
+
+export type NotificationChannel = typeof notificationChannels[number]
 /**
  * Type definition for an OTP-middleware (OTP-personas) user.
  */
