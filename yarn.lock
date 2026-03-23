@@ -2774,24 +2774,6 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@14.0.0":
-  version "14.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-14.0.0.tgz#8bda57dcd95a0e5b388ef34279ff3a68ff35e66b"
-  integrity sha512-0yk1FnZFQQpkVBN3J24bBDPJQCJvlRHeid3GjG0blEtIdSdwdShox94ZwYNoLe/lxg2nRCAP5XSgtTVkgcFjGg==
-  dependencies:
-    "@conveyal/lonlat" "^1.4.1"
-    "@mapbox/polyline" "^1.1.1"
-    "@opentripplanner/geocoder" "3.0.5"
-    "@styled-icons/foundation" "^10.34.0"
-    "@turf/along" "^6.0.1"
-    chroma-js "^2.4.2"
-    date-fns "^2.28.0"
-    date-fns-tz "^1.2.2"
-    graphql "^16.6.0"
-    lodash.clonedeep "^4.5.0"
-    lodash.isequal "^4.5.0"
-    qs "^6.9.1"
-
 "@opentripplanner/core-utils@14.2.0":
   version "14.2.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-14.2.0.tgz#6a047b729ed0572b8ceb0ea0d46a6da64d434a1e"
@@ -2994,17 +2976,6 @@
     "@styled-icons/fa-regular" "^10.34.0"
     "@styled-icons/fa-solid" "^10.34.0"
 
-"@opentripplanner/map-popup@7.0.1":
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/map-popup/-/map-popup-7.0.1.tgz#86c37ed91f0c7a42c3310fbd0d5b7fcc5b1776d7"
-  integrity sha512-HXsy7wVY9KwmbZ7G1enl7ES88kxAGw+Cr8dBp5eC52S6u4bTrVAMaM6aMq3CNYilVo3cqwfJcImugQC4idKi4Q==
-  dependencies:
-    "@opentripplanner/base-map" "6.0.0"
-    "@opentripplanner/building-blocks" "3.0.1"
-    "@opentripplanner/core-utils" "14.0.0"
-    "@opentripplanner/from-to-location-picker" "4.0.1"
-    flat "^5.0.2"
-
 "@opentripplanner/map-popup@8.0.3":
   version "8.0.3"
   resolved "https://registry.yarnpkg.com/@opentripplanner/map-popup/-/map-popup-8.0.3.tgz#faaeb9c326f9931bc0cb906e2ed70b8b9fb9dabb"
@@ -3070,14 +3041,14 @@
     "@opentripplanner/base-map" "6.0.0"
     "@opentripplanner/core-utils" "13.0.1"
 
-"@opentripplanner/stops-overlay@8.0.1":
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/stops-overlay/-/stops-overlay-8.0.1.tgz#4bc26f831906fc7fdd8455fa2031c2e4260e795b"
-  integrity sha512-UtNNdoTROyZziuxTbdaceYSchDPwbqi/pznRIJFOOP9qH54QZe6cNxv5vOP3E52uqcAMk4Z1t9n7YS/eU7SFJg==
+"@opentripplanner/stops-overlay@8.1.0":
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/stops-overlay/-/stops-overlay-8.1.0.tgz#91b91b25c9c6e0a287d6b8d48d4fff60e3cddbf6"
+  integrity sha512-3HG+0hr3SQoz8JwfO8/GXx3xzIhFWmLROHtTl1GB6Y9hgcPDMhFXz2PhkQIG38GBhrApqDhtaD55pfcEfVPezw==
   dependencies:
-    "@opentripplanner/base-map" "6.0.0"
+    "@opentripplanner/base-map" "6.1.1"
     "@opentripplanner/from-to-location-picker" "4.0.1"
-    "@opentripplanner/map-popup" "7.0.1"
+    "@opentripplanner/map-popup" "8.0.3"
     flat "^5.0.2"
 
 "@opentripplanner/transit-vehicle-overlay@7.0.1":
