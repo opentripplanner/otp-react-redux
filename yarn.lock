@@ -3041,10 +3041,10 @@
     "@opentripplanner/base-map" "6.0.0"
     "@opentripplanner/core-utils" "13.0.1"
 
-"@opentripplanner/stops-overlay@8.1.0":
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/stops-overlay/-/stops-overlay-8.1.0.tgz#91b91b25c9c6e0a287d6b8d48d4fff60e3cddbf6"
-  integrity sha512-3HG+0hr3SQoz8JwfO8/GXx3xzIhFWmLROHtTl1GB6Y9hgcPDMhFXz2PhkQIG38GBhrApqDhtaD55pfcEfVPezw==
+"@opentripplanner/stops-overlay@8.1.1":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/stops-overlay/-/stops-overlay-8.1.1.tgz#c0c3cb7be23c80f4ed6d934be3f303ed6fb6eaa4"
+  integrity sha512-EeRSc9IUb2gb2hISYU/j64hyOKUQr90FnPZc+iOHDS1NqZG9Yypk6VSP2Msd+QC+/hT9U+69F23EOvaGGwolEQ==
   dependencies:
     "@opentripplanner/base-map" "6.1.1"
     "@opentripplanner/from-to-location-picker" "4.0.1"
