@@ -36,7 +36,6 @@ const mapStateToProps = (state: AppReduxState) => {
       // However, without changes to GraphQL, getting this data is very expensive
       Object.values(patterns).forEach((p) => {
         p?.stops
-          // @ts-expect-error isJsonFlex logic does support undefined arg.
           ?.filter((s: Stop) => isGeoJsonFlex(s.geometries?.geoJson))
           ?.forEach((s: Stop) => (stopsById[s.id] = s))
       })
