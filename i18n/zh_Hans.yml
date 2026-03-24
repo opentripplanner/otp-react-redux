@@ -611,7 +611,7 @@ components:
     planNewTrip: 计划新的行程
   TripStatusRenderers:
     active:
-      delayedHeading: 旅程正在进行中并延迟了{formattedDuration}!
+      delayedHeading: 旅程正在进行中并延迟了{formattedDuration}.
       description: 旅程将于 {arrivalTime, time, short} 到达目的地.
       earlyHeading: 旅程正在进行中将比预计时间早 {formattedDuration} 到达!
       noDataHeading: 旅程正在进行中 (没有可用的实时更新).

@@ -1,4 +1,4 @@
-import { StyledIconBase } from '@styled-icons/styled-icon'
+import { Rss } from '@styled-icons/fa-solid'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
@@ -39,6 +39,11 @@ const getFontSize = (size?: string) => {
       return 'inherit'
   }
 }
+
+export const PulsingRss = styled(Rss)`
+  animation: pulse-opacity 2s ease-in-out infinite;
+  transform: scaleX(-1);
+`
 
 const rotateAnimation = keyframes`
   0% {
