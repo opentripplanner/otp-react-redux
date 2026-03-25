@@ -244,7 +244,7 @@ export class RouteRow extends PureComponent<Props> {
         <PatternViewerLink
           aria-label={patternViewerLinkText}
           id={`open-route-button-${shortName || longName}-${
-            operator.name || '' // don't print 'undefined' if there is no operator.
+            operator?.name || '' // don't print 'undefined' if there is no operator.
           }`}
           // Cannot keyboard navigate to the link unless it is visible
           tabIndex={isActive ? 0 : -1}
