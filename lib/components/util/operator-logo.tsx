@@ -21,10 +21,10 @@ type Props = {
 const OperatorLogo = ({ alt, operator, styled }: Props): JSX.Element | null => {
   if (!operator?.logo) return null
   if (styled) {
-    return <StyledOperatorImg alt={alt || operator.name} src={operator.logo} />
+    return <StyledOperatorImg alt={alt || operator?.name} src={operator.logo} />
   }
 
-  return <OperatorImg alt={alt || operator.name} src={operator.logo} />
+  return <OperatorImg alt={alt || operator?.name} src={operator.logo} />
 }
 
 export default OperatorLogo
