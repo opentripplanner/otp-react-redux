@@ -2,15 +2,13 @@ import { Clock } from '@styled-icons/fa-regular/Clock'
 import { connect } from 'react-redux'
 import { format, getTimezoneOffset, utcToZonedTime } from 'date-fns-tz'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { Rss } from '@styled-icons/fa-solid/Rss'
 import coreUtils from '@opentripplanner/core-utils'
 import isSameDay from 'date-fns/isSameDay'
 import React from 'react'
-import styled from 'styled-components'
 
 import { AppReduxState } from '../../util/state-types'
 import { getSecondsUntilDeparture, getTripStatus } from '../../util/viewer'
-import { StyledIconWrapperTextAlign } from '../util/styledIcon'
+import { PulsingRss, StyledIconWrapperTextAlign } from '../util/styledIcon'
 import FormattedDayOfWeek from '../util/formatted-day-of-week'
 import FormattedDuration from '../util/formatted-duration'
 import getRealtimeStatusLabel, {
@@ -23,11 +21,6 @@ import DepartureTime from './departure-time'
 
 const { getUserTimezone } = coreUtils.time
 const ONE_HOUR_IN_SECONDS = 3600
-
-const PulsingRss = styled(Rss)`
-  animation: pulse-opacity 2s ease-in-out infinite;
-  transform: scaleX(-1);
-`
 
 type Props = {
   /** If configured, the timezone of the area */

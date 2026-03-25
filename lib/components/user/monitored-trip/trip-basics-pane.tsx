@@ -36,7 +36,7 @@ import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 
 import MonitoredDays, { MonitoredDayCircle } from './trip-monitored-days'
 import TripStatus from './trip-status'
-import TripSummary from './trip-duration-summary'
+import TripSummaryPane from './trip-summary-pane'
 
 type TripBasicsProps = WrappedComponentProps &
   FormikProps<MonitoredTrip> & {
@@ -56,6 +56,10 @@ type TripBasicsProps = WrappedComponentProps &
 interface State {
   selectedDays: string[] | null
 }
+
+const TripSummaryContainer = styled.div`
+  margin: 3em 0;
+`
 
 // Styles.
 const AvailableDays = styled(FieldSet)`
@@ -382,6 +386,8 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
       const errorCheckingTrip = ALL_DAYS.every((day) =>
         isDisabled(day, finalItineraryExistence)
       )
+
+      const { from, to } = monitoredTrip
       /* Hack: because the selected days checkboxes are not grouped, we need to assign this error to one of the 
       checkboxes so that the FormikErrorFocus works. */
       const selectOneDayError = errorStates.monday
@@ -390,14 +396,6 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
           {/* TODO: This component does not block navigation on reload or using the back button.
           This will have to be done at a higher level. See #376 */}
           <Prompt message={unsavedChangesMessage} when={unsavedChanges} />
-
-          {/* Do not show trip status when saving trip for the first time
-              (it doesn't exist in backend yet). */}
-          {!isCreating && (
-            <TripStatus isReadOnly={isReadOnly} monitoredTrip={monitoredTrip} />
-          )}
-          <TripSummary monitoredTrip={monitoredTrip} />
-
           <FormGroup validationState={errorStates.tripName}>
             <ControlLabel htmlFor="tripName">
               <FormattedMessage id="components.TripBasicsPane.tripNamePrompt" />
@@ -419,6 +417,21 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
               )}
             </HelpBlock>
           </FormGroup>
+
+          {/* Do not show trip status when saving trip for the first time
+              (it doesn't exist in backend yet). */}
+          {!isCreating && (
+            <TripStatus isReadOnly={isReadOnly} monitoredTrip={monitoredTrip} />
+          )}
+          <TripSummaryContainer>
+            <TripSummaryPane
+              from={from}
+              isEditingTrip
+              monitoredTrip={monitoredTrip}
+              to={to}
+            />
+          </TripSummaryContainer>
+
           {disableSingleItineraryDays ? (
             <FormGroup validationState={selectOneDayError}>
               <ControlLabel>
