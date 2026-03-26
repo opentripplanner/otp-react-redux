@@ -184,6 +184,7 @@
     "husky": "^6.0.0",
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0",
+    "jest-environment-node": "30.3.0",
     "jest-transform-stub": "^2.0.0",
     "jest-yaml-transform": "^0.2.0",
     "lint-staged": "^11.1.2",

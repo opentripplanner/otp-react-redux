@@ -1,9 +1,8 @@
 // Percy screenshot is not an assertion, but that's ok
 /* eslint-disable jest/expect-expect */
 import execa from 'execa'
+import percySnapshot from '@percy/puppeteer'
 import puppeteer from 'puppeteer'
-
-const percySnapshot = require('@percy/puppeteer')
 
 const OTP_RR_UI_MODE = process.env.OTP_RR_UI_MODE || 'normal'
 
@@ -78,7 +77,7 @@ beforeAll(async () => {
     // Web security is disabled to allow requests to the mock OTP server
     browser = await puppeteer.launch({
       args: ['--disable-web-security', '--no-sandbox']
-      // , headless: false
+      //, headless: false
     })
   } catch (error) {
     console.log(error)
