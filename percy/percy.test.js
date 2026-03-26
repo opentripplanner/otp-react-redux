@@ -390,19 +390,27 @@ test('OTP-RR Desktop', async () => {
     width: 1920
   })
   page.on('console', async (msg) => {
-    const args = await msg.args()
-    args.forEach(async (arg) => {
-      const val = await arg.jsonValue()
-      // value is serializable
-      if (JSON.stringify(val) !== JSON.stringify({})) console.log(val)
-      // value is unserializable (or an empty oject)
-      else {
-        const { description, subtype, type } = arg._remoteObject
-        console.log(
-          `type: ${type}, subtype: ${subtype}, description:\n ${description}`
-        )
+    try {
+      const args = await msg.args()
+      for (const arg of args) {
+        try {
+          const val = await arg.jsonValue()
+          // value is serializable
+          if (JSON.stringify(val) !== JSON.stringify({})) console.log(val)
+          // value is unserializable (or an empty oject)
+          else {
+            const { description, subtype, type } = arg._remoteObject
+            console.log(
+              `type: ${type}, subtype: ${subtype}, description:\n ${description}`
+            )
+          }
+        } catch {
+          // Browser closed, ignore
+        }
       }
-    })
+    } catch {
+      // Browser closed, ignore
+    }
   })
   // log all errors that were logged to the browser console
   page.on('warn', (warn) => {
