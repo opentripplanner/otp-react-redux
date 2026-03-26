@@ -23,9 +23,6 @@ const percySnapshotWithWait = async (page, name, enableJavaScript) => {
 }
 
 let browser
-const serveAbortController = new AbortController()
-const harAbortController = new AbortController()
-const geocoderAbortController = new AbortController()
 
 /**
  * Loads a path
@@ -50,29 +47,22 @@ const openEditIfNeeded = async (page, isMobile) => {
 beforeAll(async () => {
   try {
     // Launch OTP-RR vite preview server
-    execa('yarn', ['percy-preview', '--port', MOCK_SERVER_PORT], {
-      signal: serveAbortController.signal
-    }).stdout.pipe(process.stdout)
+    execa('yarn', ['percy-preview', '--port', MOCK_SERVER_PORT]).stdout.pipe(
+      process.stdout
+    )
 
     // Launch mock OTP server
     execa('yarn', ['percy-combined-mock-server'], {
-      env: { HAR: './percy/mock.har', PORT: '9999' },
-      signal: harAbortController.signal
+      env: { HAR: './percy/mock.har', PORT: '9999' }
     }).stdout.pipe(process.stdout)
 
     // Launch mock geocoder server
-    execa(
-      'yarn',
-      [
-        'percy-har-express',
-        `percy/geocoder-mock-${OTP_RR_UI_MODE}.har`,
-        '-p',
-        '9977'
-      ],
-      {
-        signal: geocoderAbortController.signal
-      }
-    ).stdout.pipe(process.stdout)
+    execa('yarn', [
+      'percy-har-express',
+      `percy/geocoder-mock-${OTP_RR_UI_MODE}.har`,
+      '-p',
+      '9977'
+    ]).stdout.pipe(process.stdout)
 
     // Web security is disabled to allow requests to the mock OTP server
     browser = await puppeteer.launch({
@@ -89,9 +79,6 @@ beforeAll(async () => {
 
 afterAll(async () => {
   try {
-    serveAbortController.abort()
-    harAbortController.abort()
-    geocoderAbortController.abort()
     await browser.close()
   } catch (error) {
     console.log(error)
