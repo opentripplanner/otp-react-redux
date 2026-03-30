@@ -248,7 +248,7 @@ async function executeTest(page, isMobile, mode) {
     await page.hover('.from-form-control')
     await page.focus('.from-form-control')
     // FIXME: Characters are typed very fast, but each stroke still triggers a geocoder call.
-    await page.keyboard.type('Muji', { delay: 10000 })
+    await page.keyboard.type('Muji', { delay: 500 }) // had to slow this down. for some reason, quick typing results in one geocoder call for the whole string; the URL and query parameters are correct ("Muji"), but the response payload "query" object shows that the query was just "m", so we get those results instead
     await page.waitForTimeout(2000)
     await page.keyboard.press('ArrowDown')
     await page.waitForTimeout(200)
