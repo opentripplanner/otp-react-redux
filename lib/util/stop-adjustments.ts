@@ -27,9 +27,9 @@ export interface CustomRoutingZone {
 
 /** Describes an adjustment to be made to a transit leg */
 export interface StopAdjustment {
-  /** Difference in leg duration between the original stop and the new stop */
+  /** Difference in leg duration between the original stop and the new stop, expressed in seconds */
   duration: number
-  /** Difference in end time between the original stop and the new stop */
+  /** Difference in end time between the original stop and the new stop, expressed in milliseconds */
   endTime: number
   /** Stops to add to the transit leg. For origin adjustments, stops are added to the beginning of the leg.
    * For destination adjustments, stops are added to the end of the leg
