@@ -130,6 +130,7 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
 
   // Compute containing patterns for each pattern (except the top-level ones)
   const containingPatterns: Record<string, string> = {}
+  const immediateContainingPatterns: Record<string, string> = {}
   sortedPatterns.forEach((pattern) => {
     // Compare to all other patterns TODO: make this beat O(n^2)
     const patternStops = pattern.stops.map(getParentStopOrStopId)
@@ -141,14 +142,19 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
       if (patternStops.length < p.stops.length) return
 
       // Populate the highest containing pattern, if not so done.
-      if (
-        !containingPatterns[p.id] &&
-        containingPatterns[pattern.id] !== p.id // no circular references
-      ) {
-        const pStops = p.stops.map(getParentStopOrStopId)
-        const isSubpattern = isValidSubsequence(patternStops, pStops)
-        if (isSubpattern) {
+      const pStops = p.stops.map(getParentStopOrStopId)
+      const isSubpattern = isValidSubsequence(patternStops, pStops)
+      if (isSubpattern) {
+        if (
+          !containingPatterns[p.id] &&
+          containingPatterns[pattern.id] !== p.id // no circular references
+        ) {
           containingPatterns[p.id] = pattern.id
+        }
+        if (
+          immediateContainingPatterns[pattern.id] !== p.id // no circular references
+        ) {
+          immediateContainingPatterns[p.id] = pattern.id
         }
       }
     })
@@ -156,7 +162,7 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
 
   // Keep patterns that are not subsets of larger patterns or, if they are, have a different headsign from the containing pattern.
   const filteredPatterns = sortedPatterns.filter((pattern) => {
-    const containingPatternId = containingPatterns[pattern.id]
+    const containingPatternId = immediateContainingPatterns[pattern.id]
     const containingPattern = patterns.find((p) => p.id === containingPatternId)
     return !containingPattern || containingPattern.headsign !== pattern.headsign
   })

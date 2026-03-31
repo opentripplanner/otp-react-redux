@@ -260,12 +260,14 @@ describe('util > pattern-viewer', () => {
       // P5:   o--o--o--o--o
       // P6:               o--o--o
       // P7:   o--o--o
-      // P8: <undefined stops>
+      // P8:      o--o
+      // P9:   o--o
+      // P10: <undefined stops>
       //
       // One of P1 or P5 should be removed because both have the exact same stops.
       // P3 should be removed because it is a subset of P1, P4, and P5.
-      // P7 has a different headsign.
-      // P1, P2, P4, P6, and P7 should be kept.
+      // P7, P8, and P9 have different headsigns than P1.
+      // P1, P2, P4, P6, P7, P9 should be kept.
       const patterns: Pattern[] = [
         {
           desc: 'P1 Pattern name',
@@ -345,9 +347,31 @@ describe('util > pattern-viewer', () => {
           stops: createStops(['S1', 'S2', 'S3'])
         },
         {
+          desc: 'P8 Pattern name',
+          headsign: 'Other headsign',
+          id: 'P8',
+          patternGeometry: {
+            length: 500,
+            points: 'p8-points'
+          },
+          route,
+          stops: createStops(['S2', 'S3'])
+        },
+        {
+          desc: 'P9 Pattern name',
+          headsign: 'Other headsign 2',
+          id: 'P9',
+          patternGeometry: {
+            length: 400,
+            points: 'p9-points'
+          },
+          route,
+          stops: createStops(['S1', 'S2'])
+        },
+        {
           desc: 'Pattern without stops',
           headsign,
-          id: 'P8',
+          id: 'P10',
           patternGeometry: {
             length: 0,
             points: ''
@@ -358,12 +382,13 @@ describe('util > pattern-viewer', () => {
       ]
       const { containingPatterns, filteredPatterns } =
         sortAndRemoveSubpatterns(patterns)
-      expect(filteredPatterns.length).toBe(5)
+      expect(filteredPatterns.length).toBe(6)
       expect(filteredPatterns).toContain(patterns[0])
       expect(filteredPatterns).toContain(patterns[1])
       expect(filteredPatterns).toContain(patterns[3])
       expect(filteredPatterns).toContain(patterns[5])
       expect(filteredPatterns).toContain(patterns[6])
+      expect(filteredPatterns).toContain(patterns[8])
       expect(containingPatterns.P3).toBe('P1')
       expect(containingPatterns.P4).toBe(undefined)
       // No circular references in identical patterns
