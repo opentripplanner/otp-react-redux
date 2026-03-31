@@ -2,6 +2,8 @@
 
 The goal of the stop adjustments feature is to allow for agencies to implement custom routing rules for trips that originate and/or terminate in a defined geographic area. For a given area, the agency can define rules that prevent users from being routed to certain stops depending on what route they use and which direction they head. The goal of this feature is to allow agencies to prevent overcrowding at particular stations when users are routing to/from a large event, such as the FIFA 2026 World Cup.
 
+Within the code, these stop adjustments are used by the `updateItinerariesWithStopAdjustments` function within [stop-adjustments](./stop-adjustments.ts). When itineraries are returned from the OTP backend, this function can take those itineraries and use the stop adjustment rules to augment them, returning the updated itineraries. These updated itineraries can then be fed forward to the frontend UI for display just like the normal itineraries.
+
 Agencies can set rules using specific types that live in the [stop-adjustments.ts](./stop-adjustments.ts) file. What follows is a high-level overview of theses types. See the types themselves for more specific comments.
 
 ## Custom Routing Zones
