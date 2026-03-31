@@ -712,7 +712,7 @@ components:
   TripStatusRenderers:
     active:
       delayedHeading: Chuyến đi đang được tiến hành và bị trì hoãn 
-        {formattedDuration}!
+        {formattedDuration}.
       description: Chuyến đi sẽ đến đích lúc {arrivalTime, time, short}.
       earlyHeading: >-
         Chuyến đi đang diễn ra và sẽ đến sớm hơn {formattedDuration} so với dự

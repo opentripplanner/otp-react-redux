@@ -687,16 +687,16 @@ components:
   TripPreviewLayout:
     previewTrip: Preview Trip
   TripStatus:
-    alerts: "{alerts, plural, one {# alert!} other {# alerts!}}"
+    alerts: "There {alerts, plural, one {is # alert} other {are # alerts}} on your trip"
     deleteTrip: Delete Trip
     planNewTrip: Plan New Trip
   TripStatusRenderers:
     active:
-      delayedHeading: Trip is in progress and is delayed {formattedDuration}!
+      delayedHeading: Trip is in progress and is delayed {formattedDuration}
       description: Trip is due to arrive at the destination at {arrivalTime, time, short}.
       earlyHeading: >-
         Trip is in progress and is arriving {formattedDuration} earlier than
-        expected!
+        expected.
       noDataHeading: Trip is in progress (no realtime updates available).
       onTimeHeading: Trip is in progress and is about on time.
     base:

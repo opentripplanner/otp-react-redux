@@ -2774,24 +2774,6 @@
     lodash.isequal "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@14.0.0":
-  version "14.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-14.0.0.tgz#8bda57dcd95a0e5b388ef34279ff3a68ff35e66b"
-  integrity sha512-0yk1FnZFQQpkVBN3J24bBDPJQCJvlRHeid3GjG0blEtIdSdwdShox94ZwYNoLe/lxg2nRCAP5XSgtTVkgcFjGg==
-  dependencies:
-    "@conveyal/lonlat" "^1.4.1"
-    "@mapbox/polyline" "^1.1.1"
-    "@opentripplanner/geocoder" "3.0.5"
-    "@styled-icons/foundation" "^10.34.0"
-    "@turf/along" "^6.0.1"
-    chroma-js "^2.4.2"
-    date-fns "^2.28.0"
-    date-fns-tz "^1.2.2"
-    graphql "^16.6.0"
-    lodash.clonedeep "^4.5.0"
-    lodash.isequal "^4.5.0"
-    qs "^6.9.1"
-
 "@opentripplanner/core-utils@14.2.0":
   version "14.2.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-14.2.0.tgz#6a047b729ed0572b8ceb0ea0d46a6da64d434a1e"
@@ -2994,17 +2976,6 @@
     "@styled-icons/fa-regular" "^10.34.0"
     "@styled-icons/fa-solid" "^10.34.0"
 
-"@opentripplanner/map-popup@7.0.1":
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/map-popup/-/map-popup-7.0.1.tgz#86c37ed91f0c7a42c3310fbd0d5b7fcc5b1776d7"
-  integrity sha512-HXsy7wVY9KwmbZ7G1enl7ES88kxAGw+Cr8dBp5eC52S6u4bTrVAMaM6aMq3CNYilVo3cqwfJcImugQC4idKi4Q==
-  dependencies:
-    "@opentripplanner/base-map" "6.0.0"
-    "@opentripplanner/building-blocks" "3.0.1"
-    "@opentripplanner/core-utils" "14.0.0"
-    "@opentripplanner/from-to-location-picker" "4.0.1"
-    flat "^5.0.2"
-
 "@opentripplanner/map-popup@8.0.3":
   version "8.0.3"
   resolved "https://registry.yarnpkg.com/@opentripplanner/map-popup/-/map-popup-8.0.3.tgz#faaeb9c326f9931bc0cb906e2ed70b8b9fb9dabb"
@@ -3070,14 +3041,14 @@
     "@opentripplanner/base-map" "6.0.0"
     "@opentripplanner/core-utils" "13.0.1"
 
-"@opentripplanner/stops-overlay@8.0.1":
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/stops-overlay/-/stops-overlay-8.0.1.tgz#4bc26f831906fc7fdd8455fa2031c2e4260e795b"
-  integrity sha512-UtNNdoTROyZziuxTbdaceYSchDPwbqi/pznRIJFOOP9qH54QZe6cNxv5vOP3E52uqcAMk4Z1t9n7YS/eU7SFJg==
+"@opentripplanner/stops-overlay@8.1.1":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/stops-overlay/-/stops-overlay-8.1.1.tgz#c0c3cb7be23c80f4ed6d934be3f303ed6fb6eaa4"
+  integrity sha512-EeRSc9IUb2gb2hISYU/j64hyOKUQr90FnPZc+iOHDS1NqZG9Yypk6VSP2Msd+QC+/hT9U+69F23EOvaGGwolEQ==
   dependencies:
-    "@opentripplanner/base-map" "6.0.0"
+    "@opentripplanner/base-map" "6.1.1"
     "@opentripplanner/from-to-location-picker" "4.0.1"
-    "@opentripplanner/map-popup" "7.0.1"
+    "@opentripplanner/map-popup" "8.0.3"
     flat "^5.0.2"
 
 "@opentripplanner/transit-vehicle-overlay@7.0.1":
@@ -10091,12 +10062,12 @@ handle-thing@^2.0.0:
   integrity sha512-9Qn4yBxelxoh2Ow62nP+Ka/kMnOXRi8BXnRaUwezLNhqelnN49xKz4F/dPP8OYLxLxq6JDtZb2i9XznUQbNPTg==
 
 handlebars@^4.7.6:
-  version "4.7.7"
-  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.7.tgz#9ce33416aad02dbd6c8fafa8240d5d98004945a1"
-  integrity sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==
+  version "4.7.9"
+  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.9.tgz#6f139082ab58dc4e5a0e51efe7db5ae890d56a0f"
+  integrity sha512-4E71E0rpOaQuJR2A3xDZ+GM1HyWYv1clR58tC8emQNeQe3RH7MAzSbat+V0wG78LQBo6m6bzSG/L4pBuCsgnUQ==
   dependencies:
     minimist "^1.2.5"
-    neo-async "^2.6.0"
+    neo-async "^2.6.2"
     source-map "^0.6.1"
     wordwrap "^1.0.0"
   optionalDependencies:
@@ -13747,7 +13718,7 @@ negotiator@0.6.3, negotiator@^0.6.2:
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.3.tgz#58e323a72fedc0d6f9cd4d31fe49f51479590ccd"
   integrity sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
 
-neo-async@^2.5.0, neo-async@^2.6.0, neo-async@^2.6.1, neo-async@^2.6.2:
+neo-async@^2.5.0, neo-async@^2.6.1, neo-async@^2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
