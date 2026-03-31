@@ -141,16 +141,18 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
       // If our pattern is longer, it's not a subset
       if (patternStops.length < p.stops.length) return
 
-      // Populate the highest containing pattern, if not so done.
       const pStops = p.stops.map(getParentStopOrStopId)
       const isSubpattern = isValidSubsequence(patternStops, pStops)
       if (isSubpattern) {
+        // Populate the highest containing pattern, if not so done.
         if (
           !containingPatterns[p.id] &&
           containingPatterns[pattern.id] !== p.id // no circular references
         ) {
           containingPatterns[p.id] = pattern.id
         }
+        // For immediateContainingPattern, it is the smallest containing pattern,
+        // so as we iterate into sorted patterns, the patterns get smaller, so replace what was previously there.
         if (
           immediateContainingPatterns[pattern.id] !== p.id // no circular references
         ) {
