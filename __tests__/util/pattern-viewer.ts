@@ -219,7 +219,7 @@ describe('util > pattern-viewer', () => {
       expect(filteredPatterns).toContain(patterns[7])
       expect(filteredPatterns).toContain(patterns[8])
       expect(containingPatterns.P3).toBe('P1')
-      expect(containingPatterns.P4).toBe(undefined)
+      expect(containingPatterns.P4).toBeUndefined()
       // No circular references in identical patterns
       expect(containingPatterns.P5).toBe('P1')
       expect(containingPatterns.P1).toBeUndefined()
