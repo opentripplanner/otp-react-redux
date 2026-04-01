@@ -35,6 +35,25 @@ const route: Route = {
   sortOrderSet: false
 }
 
+function createPattern(
+  id: string,
+  length: number,
+  stops: string[],
+  headsign: string | null
+): Pattern {
+  return {
+    desc: `${id} Pattern name`,
+    headsign,
+    id,
+    patternGeometry: {
+      length,
+      points: `${id}-points`
+    },
+    route,
+    stops: createStops(stops)
+  }
+}
+
 describe('util > pattern-viewer', () => {
   describe('extractMainHeadsigns', () => {
     it('should retain the essential patterns', () => {
@@ -53,61 +72,16 @@ describe('util > pattern-viewer', () => {
       // pre-sorting happened before extractMainHeadsigns is invoked (key order matters).
       const routeShortName = '512'
       const patterns: Record<string, Pattern> = {
-        P1: {
-          desc: 'P1 Pattern name',
-          headsign,
-          id: 'P1',
-          patternGeometry: {
-            length: 1404,
-            points: 'p1-points'
-          },
-          route,
-          stops: createStops(['S1', 'S2', 'S3', 'S4', 'S5'])
-        },
-        P2: {
-          desc: 'P2 Pattern name',
-          headsign,
-          id: 'P2',
-          patternGeometry: {
-            length: 1072,
-            points: 'p2-points'
-          },
-          route,
-          stops: createStops(['S3', 'S4', 'S6', 'S7'])
-        },
-        P3: {
-          desc: 'P3 Pattern name',
-          headsign,
-          id: 'P3',
-          patternGeometry: {
-            length: 987,
-            points: 'p3-points'
-          },
-          route,
-          stops: createStops(['S1', 'S3', 'S4', 'S5'])
-        },
-        P4: {
-          desc: 'P4 Pattern name',
-          headsign: 'Other headsign',
-          id: 'P4',
-          patternGeometry: {
-            length: 1100,
-            points: 'p4-points'
-          },
-          route,
-          stops: createStops(['S1', 'S2', 'S3', 'S4'])
-        },
-        P5: {
-          desc: 'P5 Pattern name',
-          headsign: null,
-          id: 'P5',
-          patternGeometry: {
-            length: 900,
-            points: 'p5-points'
-          },
-          route,
-          stops: createStops(['S1', 'S2', 'S3'])
-        }
+        P1: createPattern('P1', 1404, ['S1', 'S2', 'S3', 'S4', 'S5'], headsign),
+        P2: createPattern('P2', 1072, ['S3', 'S4', 'S6', 'S7'], headsign),
+        P3: createPattern('P3', 987, ['S1', 'S3', 'S4', 'S5'], headsign),
+        P4: createPattern(
+          'P4',
+          1100,
+          ['S1', 'S2', 'S3', 'S4'],
+          'Other headsign'
+        ),
+        P5: createPattern('P5', 900, ['S1', 'S2', 'S3', 'S4'], null)
       }
       const headsignData = extractMainHeadsigns(
         patterns,
@@ -134,39 +108,9 @@ describe('util > pattern-viewer', () => {
       // pre-sorting happened before extractMainHeadsigns is invoked (key order matters).
       const routeShortName = '512'
       const patterns: Record<string, Pattern> = {
-        P1: {
-          desc: 'P1 Pattern name',
-          headsign: 'S7',
-          id: 'P1',
-          patternGeometry: {
-            length: 1404,
-            points: 'p1-points'
-          },
-          route,
-          stops: createStops(['S1', 'S2', 'S3', 'S6', 'S7'])
-        },
-        P2: {
-          desc: 'P2 Pattern name',
-          headsign: 'S7',
-          id: 'P2',
-          patternGeometry: {
-            length: 1072,
-            points: 'p2-points'
-          },
-          route,
-          stops: createStops(['S4', 'S5', 'S6', 'S7'])
-        },
-        P3: {
-          desc: 'P3 Pattern name',
-          headsign: 'S7',
-          id: 'P3',
-          patternGeometry: {
-            length: 987,
-            points: 'p3-points'
-          },
-          route,
-          stops: createStops(['S1', 'S6', 'S7'])
-        }
+        P1: createPattern('P1', 1404, ['S1', 'S2', 'S3', 'S6', 'S7'], 'S7'),
+        P2: createPattern('P2', 1072, ['S4', 'S5', 'S6', 'S7'], 'S7'),
+        P3: createPattern('P3', 987, ['S1', 'S6', 'S7'], 'S7')
       }
       const headsignData = extractMainHeadsigns(
         patterns,
@@ -185,28 +129,8 @@ describe('util > pattern-viewer', () => {
       // P2:            o--o--o
       const routeShortName = '512'
       const patterns: Record<string, Pattern> = {
-        P1: {
-          desc: 'P1 Pattern name',
-          headsign,
-          id: 'P1',
-          patternGeometry: {
-            length: 1404,
-            points: 'p1-points'
-          },
-          route,
-          stops: createStops(['S1', 'S2', 'S3', 'S6', 'S7'])
-        },
-        P2: {
-          desc: 'P2 Pattern name',
-          headsign,
-          id: 'P2',
-          patternGeometry: {
-            length: 1072,
-            points: 'p2-points'
-          },
-          route,
-          stops: createStops(['S4', 'S5', 'S6'])
-        }
+        P1: createPattern('P1', 1404, ['S1', 'S2', 'S3', 'S6', 'S7'], headsign),
+        P2: createPattern('P2', 1072, ['S4', 'S5', 'S6'], headsign)
       }
       const headsignData = extractMainHeadsigns(
         patterns,
@@ -226,28 +150,8 @@ describe('util > pattern-viewer', () => {
       // P2:               o--o--o
       const routeShortName = '512'
       const patterns: Record<string, Pattern> = {
-        P1: {
-          desc: 'P1 Pattern name',
-          headsign,
-          id: 'P1',
-          patternGeometry: {
-            length: 1404,
-            points: 'p1-points'
-          },
-          route,
-          stops: createStops(['S1', 'S2', 'S3', 'S6', 'S7'])
-        },
-        P2: {
-          desc: 'P2 Pattern name',
-          headsign,
-          id: 'P2',
-          patternGeometry: {
-            length: 1072,
-            points: 'p2-points'
-          },
-          route,
-          stops: createStops(['S5', 'S6', 'S7'])
-        }
+        P1: createPattern('P1', 1404, ['S1', 'S2', 'S3', 'S6', 'S7'], headsign),
+        P2: createPattern('P1', 1072, ['S5', 'S6', 'S7'], headsign)
       }
       const headsignData = extractMainHeadsigns(
         patterns,
@@ -282,105 +186,16 @@ describe('util > pattern-viewer', () => {
       // P7, P8, and P9 have different headsigns than P1. P8 and P7 have different headsigns.
       // P1, P2, P4, P6, P7, P8, P9 should be kept.
       const patterns: Pattern[] = [
-        {
-          desc: 'P1 Pattern name',
-          headsign,
-          id: 'P1',
-          patternGeometry: {
-            length: 1404,
-            points: 'p1-points'
-          },
-          route,
-          stops: createStops(['S1', 'S2', 'S3', 'S4', 'S5'])
-        },
-        {
-          desc: 'P2 Pattern name',
-          headsign,
-          id: 'P2',
-          patternGeometry: {
-            length: 1072,
-            points: 'p2-points'
-          },
-          route,
-          stops: createStops(['S3', 'S4', 'S6', 'S7'])
-        },
-        {
-          desc: 'P3 Pattern name',
-          headsign,
-          id: 'P3',
-          patternGeometry: {
-            length: 987,
-            points: 'p3-points'
-          },
-          route,
-          stops: createStops(['S3', 'S4', 'S5'])
-        },
-        {
-          desc: 'P4 Pattern name',
-          headsign,
-          id: 'P4',
-          patternGeometry: {
-            length: 1404,
-            points: 'p4-points'
-          },
-          route,
-          stops: createStops(['S1', 'S3', 'S4', 'S5'])
-        },
-        {
-          desc: 'P5 Pattern name (same stops as P1)',
-          headsign,
-          id: 'P5',
-          patternGeometry: {
-            length: 1404,
-            points: 'p5-points'
-          },
-          route,
-          stops: createStops(['S1', 'S2', 'S3', 'S4', 'S5'])
-        },
-        {
-          desc: 'P6 Pattern name',
-          headsign,
-          id: 'P6',
-          patternGeometry: {
-            length: 700,
-            points: 'p6-points'
-          },
-          route,
-          stops: createStops(['S5', 'S6', 'S7'])
-        },
-        {
-          desc: 'P7 Pattern name',
-          headsign: null,
-          id: 'P7',
-          patternGeometry: {
-            length: 600,
-            points: 'p7-points'
-          },
-          route,
-          stops: createStops(['S1', 'S2', 'S3'])
-        },
-        {
-          desc: 'P8 Pattern name',
-          headsign: 'Other headsign',
-          id: 'P8',
-          patternGeometry: {
-            length: 500,
-            points: 'p8-points'
-          },
-          route,
-          stops: createStops(['S2', 'S3'])
-        },
-        {
-          desc: 'P9 Pattern name',
-          headsign: null,
-          id: 'P9',
-          patternGeometry: {
-            length: 400,
-            points: 'p9-points'
-          },
-          route,
-          stops: createStops(['S1', 'S2'])
-        },
+        createPattern('P1', 1404, ['S1', 'S2', 'S3', 'S4', 'S5'], headsign),
+        createPattern('P2', 1072, ['S3', 'S4', 'S6', 'S7'], headsign),
+        createPattern('P3', 987, ['S3', 'S4', 'S5'], headsign),
+
+        createPattern('P4', 1404, ['S1', 'S3', 'S4', 'S5'], headsign),
+        createPattern('P5', 1404, ['S1', 'S2', 'S3', 'S4', 'S5'], headsign),
+        createPattern('P6', 700, ['S5', 'S6', 'S7'], headsign),
+        createPattern('P7', 600, ['S1', 'S2', 'S3'], null),
+        createPattern('P8', 500, ['S2', 'S3'], 'Other headsign'),
+        createPattern('P9', 400, ['S1', 'S2'], null),
         {
           desc: 'Pattern without stops',
           headsign,
@@ -417,39 +232,9 @@ describe('util > pattern-viewer', () => {
       // P3:   o--o--o--o--o
       //
       const patterns: Pattern[] = [
-        {
-          desc: 'P1 Pattern name',
-          headsign,
-          id: 'P1',
-          patternGeometry: {
-            length: 1404,
-            points: 'p1-points'
-          },
-          route,
-          stops: createStops(['S1', 'S2', 'S3', 'S4', 'S5'])
-        },
-        {
-          desc: 'P2 Pattern name',
-          headsign,
-          id: 'P2',
-          patternGeometry: {
-            length: 1404,
-            points: 'p2-points'
-          },
-          route,
-          stops: createStops(['S1', 'S2', 'S3', 'S4', 'S5'])
-        },
-        {
-          desc: 'P3 Pattern name',
-          headsign,
-          id: 'P3',
-          patternGeometry: {
-            length: 1404,
-            points: 'p3-points'
-          },
-          route,
-          stops: createStops(['S1', 'S2', 'S3', 'S4', 'S5'])
-        }
+        createPattern('P1', 1404, ['S1', 'S2', 'S3', 'S4', 'S5'], headsign),
+        createPattern('P2', 1404, ['S1', 'S2', 'S3', 'S4', 'S5'], headsign),
+        createPattern('P3', 1404, ['S1', 'S2', 'S3', 'S4', 'S5'], headsign)
       ]
       const { containingPatterns, filteredPatterns } =
         sortAndRemoveSubpatterns(patterns)
