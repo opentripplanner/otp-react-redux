@@ -134,15 +134,19 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
   // Compute containing patterns for each pattern (except the top-level ones)
   const containingPatterns: Record<string, string> = {}
   const immediateContainingPatterns: Record<string, string> = {}
-  sortedPatterns.forEach((pattern) => {
+
+  for (let topIndex = 0; topIndex < sortedPatterns.length - 2; topIndex++) {
+    const pattern = sortedPatterns[topIndex]
     // Compare to all other patterns TODO: make this beat O(n^2)
     const patternStops = pattern.stops.map(getParentStopOrStopId)
-    sortedPatterns.forEach((p) => {
+
+    for (let index = topIndex + 1; index < sortedPatterns.length; index++) {
+      const p = sortedPatterns[index]
       // Don't compare against ourself
-      if (p.id === pattern.id) return
+      if (p.id === pattern.id) break
 
       // If our pattern is longer, it's not a subset
-      if (patternStops.length < p.stops.length) return
+      if (patternStops.length < p.stops.length) break
 
       const pStops = p.stops.map(getParentStopOrStopId)
       const isSubpattern = isValidSubsequence(patternStops, pStops)
@@ -162,15 +166,14 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
           immediateContainingPatterns[p.id] = pattern.id
         }
       }
-    })
-  })
+    }
+  }
 
   // Keep patterns that are not subsets of larger patterns or, if they are,
   // have a different headsign from the containing pattern, or if the pattern and immediate coontaining pattern headsigns are null.
   const filteredPatterns = sortedPatterns.filter((pattern) => {
     const containingPatternId = immediateContainingPatterns[pattern.id]
     const containingPattern = patterns.find((p) => p.id === containingPatternId)
-    console.log(pattern, containingPattern)
     return (
       !containingPattern ||
       containingPattern.headsign !== pattern.headsign ||
@@ -180,8 +183,6 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
 
   return {
     containingPatterns,
-    // Fallback for if the filtering leaves us with a silly number of patterns
-    // If this happens, it is not possible to know which pattern to keep.
-    filteredPatterns: filteredPatterns.length > 1 ? filteredPatterns : patterns
+    filteredPatterns
   }
 }

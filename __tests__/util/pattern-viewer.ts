@@ -119,7 +119,7 @@ describe('util > pattern-viewer', () => {
       expect(headsignData[0].headsign).toBe(headsign)
       expect(headsignData[1].headsign).toBe(`${headsign} (S7)`)
       expect(headsignData[2].headsign).toBe('Other headsign')
-      expect(headsignData[3].headsign).toBe('S3')
+      expect(headsignData[3].headsign).toBe('P5 Pattern name')
     })
     it('should keep forks with the same headsigns', () => {
       // Consider the following patterns P1, P2, P3 of the same route with the same headsigns:
@@ -264,7 +264,7 @@ describe('util > pattern-viewer', () => {
 
   describe('sortAndRemoveSubpatterns', () => {
     it('should sort and remove subpatterns', () => {
-      // Consider the following patterns P1...P6 of the same route:
+      // Consider the following patterns of the same route:
       // Stops S1 S2 S3 S4 S5 S6 S7 --> direction of travel
       // P1:   o--o--o--o--o
       // P2:         o--o-----o--o
@@ -408,6 +408,56 @@ describe('util > pattern-viewer', () => {
       // No circular references in identical patterns
       expect(containingPatterns.P5).toBe('P1')
       expect(containingPatterns.P1).toBeUndefined()
+    })
+    it('should not create circular references', () => {
+      // Consider the following patterns of the same route:
+      // Stops S1 S2 S3 S4 S5 --> direction of travel
+      // P1:   o--o--o--o--o
+      // P2:   o--o--o--o--o
+      // P3:   o--o--o--o--o
+      //
+      const patterns: Pattern[] = [
+        {
+          desc: 'P1 Pattern name',
+          headsign,
+          id: 'P1',
+          patternGeometry: {
+            length: 1404,
+            points: 'p1-points'
+          },
+          route,
+          stops: createStops(['S1', 'S2', 'S3', 'S4', 'S5'])
+        },
+        {
+          desc: 'P2 Pattern name',
+          headsign,
+          id: 'P2',
+          patternGeometry: {
+            length: 1404,
+            points: 'p2-points'
+          },
+          route,
+          stops: createStops(['S1', 'S2', 'S3', 'S4', 'S5'])
+        },
+        {
+          desc: 'P3 Pattern name',
+          headsign,
+          id: 'P3',
+          patternGeometry: {
+            length: 1404,
+            points: 'p3-points'
+          },
+          route,
+          stops: createStops(['S1', 'S2', 'S3', 'S4', 'S5'])
+        }
+      ]
+      const { containingPatterns, filteredPatterns } =
+        sortAndRemoveSubpatterns(patterns)
+      console.log(filteredPatterns, containingPatterns)
+      expect(filteredPatterns.length).toBe(1)
+      expect(filteredPatterns).toContain(patterns[0])
+      expect(containingPatterns.P2).toBe('P1')
+      expect(containingPatterns.P3).toBe('P1')
     })
   })
 })
