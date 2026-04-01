@@ -61,29 +61,25 @@ export function extractMainHeadsigns(
     // amend the headsign with the last stop name in parenthesis.
     // e.g. "Headsign (Last Stop)"
     if (alreadyExistingIndex >= 0) {
-      const twoPatternsWithOneAmended =
-        amended.length === 1 && mapped.length === 2
       // If the last stop is different than the headsign but the same as the last stop
       // of the previously existing duplicate, there's no point in renaming.
-
+      let updateHeadsign = null
       if (
         cur.lastStop &&
         cur.headsign !== cur.lastStop &&
         cur.lastStop !== existing.lastStop
       ) {
-        editToHeadsign(cur)
-        // If there are only two total patterns, then we should rename both of them
-        if (twoPatternsWithOneAmended) {
-          editToHeadsign(amended[0])
-          amended.push(cur)
-          return amended
-        }
+        updateHeadsign = editToHeadsign
       } else if (cur.firstStop !== existing.firstStop) {
-        editFromHeadsign(cur)
         // Append 'from' + the first stop name if the patterns have the exact same arrival stops but different origins.
+        updateHeadsign = editFromHeadsign
+      }
+      if (updateHeadsign) {
+        // Update headsign if conditions apply.
+        updateHeadsign(cur)
         // If there are only two total patterns, then we should rename both of them
-        if (twoPatternsWithOneAmended) {
-          editFromHeadsign(amended[0])
+        if (amended.length === 1 && mapped.length === 2) {
+          updateHeadsign(amended[0])
           amended.push(cur)
           return amended
         }
