@@ -26,6 +26,16 @@ interface PatternWithStops extends Pattern {
   stops: Stop[]
 }
 
+function sameFirstAndLastStop(
+  pattern1: PatternSummary,
+  pattern2: PatternSummary
+) {
+  return (
+    pattern1.lastStop === pattern2.lastStop &&
+    pattern1.firstStop === pattern2.firstStop
+  )
+}
+
 export function extractMainHeadsigns(
   patterns: Record<string, Pattern>,
   shortName: string,
@@ -55,6 +65,7 @@ export function extractMainHeadsigns(
         amended.length === 1 && mapped.length === 2
       // If the last stop is different than the headsign but the same as the last stop
       // of the previously existing duplicate, there's no point in renaming.
+
       if (
         cur.lastStop &&
         cur.headsign !== cur.lastStop &&
@@ -81,11 +92,7 @@ export function extractMainHeadsigns(
 
     // With all remaining duplicate headsigns with the same first and last stops,
     // only keep the pattern with the longest geometry.
-    if (
-      alreadyExistingIndex >= 0 &&
-      existing.lastStop === cur.lastStop &&
-      existing.firstStop === cur.firstStop
-    ) {
+    if (alreadyExistingIndex >= 0 && sameFirstAndLastStop(existing, cur)) {
       if (existing.geometryLength < cur.geometryLength) {
         amended[alreadyExistingIndex] = cur
       }
