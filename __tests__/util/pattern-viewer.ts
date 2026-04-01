@@ -24,7 +24,7 @@ function editFromHeadsign(pattern: PatternSummary) {
   pattern.headsign = `${pattern.headsign} (from ${pattern.firstStop})`
 }
 
-const headsign = 'Everett via Lynnwood'
+const defaultHeadsign = 'Everett via Lynnwood'
 const route: Route = {
   agency: {
     id: 'agnecy'
@@ -39,7 +39,7 @@ function createPattern(
   id: string,
   length: number,
   stops: string[],
-  headsign: string | null
+  headsign: string | null = defaultHeadsign
 ): Pattern {
   return {
     desc: `${id} Pattern name`,
@@ -72,9 +72,9 @@ describe('util > pattern-viewer', () => {
       // pre-sorting happened before extractMainHeadsigns is invoked (key order matters).
       const routeShortName = '512'
       const patterns: Record<string, Pattern> = {
-        P1: createPattern('P1', 1404, ['S1', 'S2', 'S3', 'S4', 'S5'], headsign),
-        P2: createPattern('P2', 1072, ['S3', 'S4', 'S6', 'S7'], headsign),
-        P3: createPattern('P3', 987, ['S1', 'S3', 'S4', 'S5'], headsign),
+        P1: createPattern('P1', 1404, ['S1', 'S2', 'S3', 'S4', 'S5']),
+        P2: createPattern('P2', 1072, ['S3', 'S4', 'S6', 'S7']),
+        P3: createPattern('P3', 987, ['S1', 'S3', 'S4', 'S5']),
         P4: createPattern(
           'P4',
           1100,
@@ -90,8 +90,8 @@ describe('util > pattern-viewer', () => {
         editFromHeadsign
       )
       expect(headsignData.length).toBe(4)
-      expect(headsignData[0].headsign).toBe(headsign)
-      expect(headsignData[1].headsign).toBe(`${headsign} (S7)`)
+      expect(headsignData[0].headsign).toBe(defaultHeadsign)
+      expect(headsignData[1].headsign).toBe(`${defaultHeadsign} (S7)`)
       expect(headsignData[2].headsign).toBe('Other headsign')
       expect(headsignData[3].headsign).toBe('P5 Pattern name')
     })
@@ -129,8 +129,8 @@ describe('util > pattern-viewer', () => {
       // P2:            o--o--o
       const routeShortName = '512'
       const patterns: Record<string, Pattern> = {
-        P1: createPattern('P1', 1404, ['S1', 'S2', 'S3', 'S6', 'S7'], headsign),
-        P2: createPattern('P2', 1072, ['S4', 'S5', 'S6'], headsign)
+        P1: createPattern('P1', 1404, ['S1', 'S2', 'S3', 'S6', 'S7']),
+        P2: createPattern('P2', 1072, ['S4', 'S5', 'S6'])
       }
       const headsignData = extractMainHeadsigns(
         patterns,
@@ -140,8 +140,8 @@ describe('util > pattern-viewer', () => {
       )
       expect(headsignData.length).toBe(2)
       // The final stop is appended because there are only two patterns.
-      expect(headsignData[0].headsign).toBe(`${headsign} (S7)`)
-      expect(headsignData[1].headsign).toBe(`${headsign} (S6)`)
+      expect(headsignData[0].headsign).toBe(`${defaultHeadsign} (S7)`)
+      expect(headsignData[1].headsign).toBe(`${defaultHeadsign} (S6)`)
     })
     it('should prepend origin stops', () => {
       // Consider the following patterns P1, P2 of the same route with the same headsigns:
@@ -150,8 +150,8 @@ describe('util > pattern-viewer', () => {
       // P2:               o--o--o
       const routeShortName = '512'
       const patterns: Record<string, Pattern> = {
-        P1: createPattern('P1', 1404, ['S1', 'S2', 'S3', 'S6', 'S7'], headsign),
-        P2: createPattern('P1', 1072, ['S5', 'S6', 'S7'], headsign)
+        P1: createPattern('P1', 1404, ['S1', 'S2', 'S3', 'S6', 'S7']),
+        P2: createPattern('P1', 1072, ['S5', 'S6', 'S7'])
       }
       const headsignData = extractMainHeadsigns(
         patterns,
@@ -161,8 +161,8 @@ describe('util > pattern-viewer', () => {
       )
       expect(headsignData.length).toBe(2)
       // The origin stop is appended because there are only two patterns.
-      expect(headsignData[0].headsign).toBe(`${headsign} (from S1)`)
-      expect(headsignData[1].headsign).toBe(`${headsign} (from S5)`)
+      expect(headsignData[0].headsign).toBe(`${defaultHeadsign} (from S1)`)
+      expect(headsignData[1].headsign).toBe(`${defaultHeadsign} (from S5)`)
     })
   })
 
@@ -186,19 +186,19 @@ describe('util > pattern-viewer', () => {
       // P7, P8, and P9 have different headsigns than P1. P8 and P7 have different headsigns.
       // P1, P2, P4, P6, P7, P8, P9 should be kept.
       const patterns: Pattern[] = [
-        createPattern('P1', 1404, ['S1', 'S2', 'S3', 'S4', 'S5'], headsign),
-        createPattern('P2', 1072, ['S3', 'S4', 'S6', 'S7'], headsign),
-        createPattern('P3', 987, ['S3', 'S4', 'S5'], headsign),
+        createPattern('P1', 1404, ['S1', 'S2', 'S3', 'S4', 'S5']),
+        createPattern('P2', 1072, ['S3', 'S4', 'S6', 'S7']),
+        createPattern('P3', 987, ['S3', 'S4', 'S5']),
 
-        createPattern('P4', 1404, ['S1', 'S3', 'S4', 'S5'], headsign),
-        createPattern('P5', 1404, ['S1', 'S2', 'S3', 'S4', 'S5'], headsign),
-        createPattern('P6', 700, ['S5', 'S6', 'S7'], headsign),
+        createPattern('P4', 1404, ['S1', 'S3', 'S4', 'S5']),
+        createPattern('P5', 1404, ['S1', 'S2', 'S3', 'S4', 'S5']),
+        createPattern('P6', 700, ['S5', 'S6', 'S7']),
         createPattern('P7', 600, ['S1', 'S2', 'S3'], null),
         createPattern('P8', 500, ['S2', 'S3'], 'Other headsign'),
         createPattern('P9', 400, ['S1', 'S2'], null),
         {
           desc: 'Pattern without stops',
-          headsign,
+          headsign: defaultHeadsign,
           id: 'P10',
           patternGeometry: {
             length: 0,
@@ -232,9 +232,9 @@ describe('util > pattern-viewer', () => {
       // P3:   o--o--o--o--o
       //
       const patterns: Pattern[] = [
-        createPattern('P1', 1404, ['S1', 'S2', 'S3', 'S4', 'S5'], headsign),
-        createPattern('P2', 1404, ['S1', 'S2', 'S3', 'S4', 'S5'], headsign),
-        createPattern('P3', 1404, ['S1', 'S2', 'S3', 'S4', 'S5'], headsign)
+        createPattern('P1', 1404, ['S1', 'S2', 'S3', 'S4', 'S5']),
+        createPattern('P2', 1404, ['S1', 'S2', 'S3', 'S4', 'S5']),
+        createPattern('P3', 1404, ['S1', 'S2', 'S3', 'S4', 'S5'])
       ]
       const { containingPatterns, filteredPatterns } =
         sortAndRemoveSubpatterns(patterns)
