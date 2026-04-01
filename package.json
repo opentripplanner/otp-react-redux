@@ -57,7 +57,7 @@
     "@opentripplanner/printable-itinerary": "6.0.0",
     "@opentripplanner/route-viewer-overlay": "5.0.0",
     "@opentripplanner/stop-viewer-overlay": "5.0.0",
-    "@opentripplanner/stops-overlay": "8.0.1",
+    "@opentripplanner/stops-overlay": "8.1.1",
     "@opentripplanner/transit-vehicle-overlay": "7.0.1",
     "@opentripplanner/transitive-overlay": "7.1.0",
     "@opentripplanner/trip-details": "^9.1.2",
