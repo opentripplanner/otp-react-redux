@@ -1,14 +1,12 @@
 import { Alert } from '@opentripplanner/building-blocks'
 import { Bicycle } from '@styled-icons/fa-solid/Bicycle'
 import { Label as BsLabel } from 'react-bootstrap'
-import { Circle } from '@styled-icons/fa-solid/Circle'
 import { connect } from 'react-redux'
-import { FormattedMessage, injectIntl } from 'react-intl'
-import { toDate } from 'date-fns-tz'
+import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { Wheelchair } from '@styled-icons/fa-solid/Wheelchair'
 import coreUtils from '@opentripplanner/core-utils'
 import PropTypes from 'prop-types'
-import React, { Component, createRef } from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import * as apiActions from '../../actions/api'
@@ -19,33 +17,20 @@ import {
   getActiveSearch,
   getOperatorAndRoute
 } from '../../util/state'
-import { IconWithText, StyledIconWrapper } from '../util/styledIcon'
+import { IconWithText } from '../util/styledIcon'
+import { Leg, TransitOperator } from '@opentripplanner/types'
 import BackButton from '../util/back-button'
-import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import PageTitle from '../util/page-title'
 import SpanWithSpace from '../util/span-with-space'
 import Strong from '../util/strong-text'
 
 import StopList from './stop-list'
-import ViewStopButton from './view-stop-button'
-
-const { getCurrentDate } = coreUtils.time
 
 const AlertContainer = styled.div`
   margin: 1em 0;
   span {
     font-weight: 400;
   }
-`
-// AMY AMY AMY
-
-const StopListTemp = styled.ol`
-  list-style: none;
-  padding-left: 0;
-`
-const Stop = styled.li`
-  align-items: center;
-  display: flex;
 `
 const RouteName = styled.h2`
   font-size: inherit;
@@ -54,29 +39,24 @@ const RouteName = styled.h2`
 const HeaderText = styled.h1`
   margin: 2px 0 0 0;
 `
-const FlexWrapper = styled.div`
-  display: flex;
-`
 
-class TripViewer extends Component {
-  static propTypes = {
-    activeItinerary: PropTypes.object,
-    activeItineraryIndex: PropTypes.number,
-    findTrip: apiActions.findTrip.type,
-    hideHeader: PropTypes.bool,
-    homeTimezone: PropTypes.string,
-    intl: PropTypes.object,
-    setMainPanelContent: uiActions.setMainPanelContent.type,
-    settingActiveItinerary: narrativeActions.settingActiveItinerary.type,
-    setViewedStop: uiActions.setViewedStop.type,
-    setViewedTrip: uiActions.setViewedTrip.type,
-    transitOperators: PropTypes.array,
-    tripData: PropTypes.object,
-    viewedTrip: PropTypes.object
-  }
+interface Props {
+  activeItinerary: any
+  activeItineraryIndex: number
+  findTrip: any
+  hideHeader: boolean
+  homeTimezone: string
+  intl: IntlShape
+  setMainPanelContent: (content: number | null) => void
+  setViewedStop: (payload: { stopId: string } | null) => void
+  setViewedTrip: (payload: any) => void
+  settingActiveItinerary: (payload: { index: number } | null) => void
+  transitOperators: TransitOperator[]
+  tripData: any
+  viewedTrip: any
+}
 
-  firstStopRef = createRef()
-
+class TripViewer extends Component<Props> {
   _backClicked = () => {
     this.props.setViewedTrip(null)
     this.props.setMainPanelContent(null)
@@ -88,7 +68,7 @@ class TripViewer extends Component {
     findTrip({ tripId })
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const {
       activeItinerary,
       activeItineraryIndex,
@@ -105,7 +85,7 @@ class TripViewer extends Component {
       } else {
         const matchingLeg = activeItinerary.legs
           ?.filter(coreUtils.itinerary.isTransitLeg)
-          .find((leg) => leg.tripId === tripId)
+          .find((leg: Leg) => leg.tripId === tripId)
         this.props.setViewedTrip({
           fromStopId: matchingLeg.from?.stopId,
           toStopId: matchingLeg.to?.stopId,
@@ -122,11 +102,6 @@ class TripViewer extends Component {
         toStopId: null,
         tripId
       })
-    }
-
-    const { current } = this.firstStopRef
-    if (current) {
-      current.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
   }
 
@@ -152,17 +127,13 @@ class TripViewer extends Component {
       tripData,
       viewedTrip
     } = this.props
-    const startOfDay = toDate(getCurrentDate(homeTimezone), {
-      timeZone: homeTimezone
-    })
-
     const stopTimes = tripData?.stopTimes
 
     const fromIndex = stopTimes?.findIndex(
-      (stopTime) => stopTime.stop.id === viewedTrip?.fromStopId
+      (stopTime: any) => stopTime.stop.id === viewedTrip?.fromStopId
     )
     const toIndex = stopTimes?.findIndex(
-      (stopTime) => stopTime.stop.id === viewedTrip?.toStopId
+      (stopTime: any) => stopTime.stop.id === viewedTrip?.toStopId
     )
 
     const bikesAreAllowed = tripData?.bikesAllowed === 'ALLOWED'
@@ -175,7 +146,7 @@ class TripViewer extends Component {
         <div className="trip-viewer-header">
           <div
             className="header-with-back-button"
-            style={{ float: hideHeader && 'left' }}
+            style={{ float: hideHeader ? 'left' : undefined }}
           >
             <BackButton
               backButtonText={intl.formatMessage({
@@ -193,7 +164,9 @@ class TripViewer extends Component {
           {/* Basic Trip Info */}
           {tripData && (
             <div>
-              <RouteName style={hideHeader && { margin: '.25em 0 1em 3em' }}>
+              <RouteName
+                style={{ margin: hideHeader ? '.25em 0 1em 3em' : 'auto' }}
+              >
                 {tripData.route && (
                   <FormattedMessage
                     id="components.TripViewer.routeHeader"
@@ -275,8 +248,8 @@ class TripViewer extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  const activeSearch = getActiveSearch(state)
+const mapStateToProps = (state: any) => {
+  const activeSearch: any = getActiveSearch(state)
   const pending = activeSearch?.pending
   const activeItineraryIndex = Number.parseInt(
     coreUtils.query.getUrlParams().ui_activeItinerary
