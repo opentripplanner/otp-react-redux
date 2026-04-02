@@ -57,8 +57,6 @@ export const StopLink = styled.button<RenderProps>`
 `
 
 export const Stop = styled.li<StopProps>`
-  // Probably we need to conditionally render whether the
-  cursor: pointer;
   display: grid;
   grid-template-columns: ${(props) =>
     props.timeColumn ? `${timeCellWidth} 20px auto` : '20px auto'};
@@ -95,7 +93,7 @@ export const Stop = styled.li<StopProps>`
       background: ${(props) =>
         props.useRouteColorAsBg ? props.textColor + 'ee' : props.routeColor};
       position: relative;
-      /* this is a few pixels into the blob (to make it look attached) + 3.5rem so that each
+      /* this is a few pixels into the blob (to make it look attached) and top aligned so that each
     stop's bar connects the previous bar with the current one */
       top: -1.8rem; /* adjust position in a way that is agnostic to line-height */
     }
@@ -134,6 +132,7 @@ const StopList = ({
   fromIndex,
   toIndex
 }: StopListProps): JSX.Element => {
+  // The stops in the pattern viewer vs the trip viewer are organized slightly differently, so account for that:
   const stopsArray =
     routePattern.stops ||
     routePattern.map((x: any) => ({
@@ -143,9 +142,6 @@ const StopList = ({
   const startOfDay = toDate(getCurrentDate(homeTimezone), {
     timeZone: homeTimezone
   })
-
-  const firstStopRef = useRef<HTMLLIElement>(null)
-
   const tripViewerHighLighter =
     fromIndex !== undefined &&
     fromIndex > -1 &&
@@ -153,11 +149,13 @@ const StopList = ({
     toIndex > -1
 
   // If we're in the trip viewer and there's a highlighted section of the trip, scroll that section into view.
+  const firstStopRef = useRef<HTMLLIElement>(null)
   useEffect(() => {
     firstStopRef?.current?.scrollIntoView({
       behavior: 'smooth',
       block: 'start'
     })
+    // Also focus the first stop in the trip, for keyboard navigation
     firstStopRef?.current?.focus()
   }, [])
 
@@ -173,6 +171,7 @@ const StopList = ({
           ? index >= fromIndex && index <= toIndex
           : true
 
+        // Helpful invisible labels for screenreaders
         let stopLabel = null
         if (fromIndex === index) {
           stopLabel = (
@@ -199,9 +198,12 @@ const StopList = ({
           >
             {stop.scheduledDeparture && (
               <div
+                aria-hidden
                 className="stop-time"
                 style={{ opacity: highlighted ? '100%' : '0%' }}
-              />
+              >
+                <DepartureTime originDate={startOfDay} stopTime={stop} />
+              </div>
             )}
             <div className="stop-decoration" />
             <StopLink
