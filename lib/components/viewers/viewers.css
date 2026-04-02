@@ -43,10 +43,6 @@
   overflow-y: auto;
   padding-left: 0;
 }
-.otp .stop-viewer-body,
-.otp .trip-viewer-body {
-  padding: 12px;
-}
 
 .otp .trip-viewer .header-with-back-button,
 .otp .pattern-viewer .header-with-back-button {
@@ -91,15 +87,6 @@
 }
 
 /* trip viewer styles */
-
-.otp .trip-viewer .stop-time {
-  float: left;
-  font-size: 11px;
-  padding-right: 5px;
-  padding-top: 12px;
-  text-align: right;
-  width: 60px;
-}
 
 .otp .trip-viewer .strip-map-container {
   position: relative;

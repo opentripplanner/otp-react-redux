@@ -25,11 +25,9 @@ import {
   HeadsignLabel,
   HeadsignSelectLabel,
   LogoLinkContainer,
-  PatternContainer,
-  StopContainer,
-  StopLink,
-  Stop as StyledStop
+  PatternContainer
 } from './styled'
+import StopList from './stop-list'
 
 const PatternSelectButton = styled(UnstyledButton)`
   span {
@@ -193,35 +191,14 @@ class RouteDetails extends Component<Props> {
             >
               <FormattedMessage id="components.RouteViewer.stopsInDirectionOfTravel" />
             </h2>
-            <StopContainer
-              backgroundColor={backgroundColor}
-              onMouseLeave={() => setHoveredStop(null)}
+
+            <StopList
+              routeColor={routeColor}
+              routePattern={pattern}
+              setHoveredStop={setHoveredStop}
+              stopLinkClicked={this._stopLinkClicked}
               textColor={textColor}
-            >
-              {pattern?.stops?.map((stop, index) => (
-                <StyledStop
-                  // Use array index instead of stop id because a stop can be visited several times.
-                  key={index}
-                  onClick={() => this._stopLinkClicked(stop)}
-                  onMouseOver={() => setHoveredStop(stop.id)}
-                  routeColor={
-                    routeColor.includes('ffffff')
-                      ? DEFAULT_ROUTE_COLOR
-                      : routeColor
-                  }
-                  textColor={textColor}
-                  useRouteColorAsBg={useRouteColorAsBackground}
-                >
-                  <StopLink
-                    name={stop.name}
-                    onFocus={() => setHoveredStop(stop.id)}
-                    textColor={textColor}
-                  >
-                    {stop.name}
-                  </StopLink>
-                </StyledStop>
-              ))}
-            </StopContainer>
+            />
           </>
         )}
         <LogoLinkContainer

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 
 import { getBaseColor, grey } from '../util/colors'
 
-interface RenderProps {
+export interface RenderProps {
   backgroundColor?: string
   full?: boolean
   routeColor?: string
@@ -88,75 +88,6 @@ export const PatternContainer = styled.div`
         white-space: nowrap;
       }
     }
-  }
-`
-
-export const StopContainer = styled.ol<RenderProps>`
-  color: ${(props) => props?.textColor};
-  background-color: ${(props) => props?.backgroundColor};
-  overflow-y: scroll;
-  /* Calculate the height of the container a little short to ensure all stops 
-  are shown when browsers don't calculate 100% sensibly. */
-  height: calc(100% - 140px);
-  padding: 15px 0 0px;
-`
-export const StopLink = styled.button<RenderProps>`
-  color: ${(props) => props?.textColor + 'da'};
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  text-align: left;
-  width: 95%;
-
-  &:hover {
-    color: ${(props) => props?.textColor};
-    text-decoration: underline;
-  }
-`
-
-export const Stop = styled.li<RenderProps>`
-  cursor: pointer;
-  display: block;
-  white-space: nowrap;
-  margin-left: 45px;
-  /* negative margin accounts for the height of the stop blob */
-  margin-top: -28px;
-
-  /* this is the station blob */
-  &::before {
-    content: '';
-    display: block;
-    height: 20px;
-    width: 20px;
-    border: 5px solid
-      ${(props) =>
-        props.useRouteColorAsBg ? props.textColor + 'ee' : props.routeColor};
-    background: ${(props) =>
-      props.useRouteColorAsBg ? props.routeColor : '#fff'};
-    position: relative;
-    top: 20px;
-    left: -35px;
-    border-radius: 20px;
-  }
-
-  /* this is the line between the blobs */
-  &::after {
-    content: '';
-    display: block;
-    height: 1.65rem; /* set position in line-height agnostic way */
-    width: 10px;
-    background: ${(props) =>
-      props.useRouteColorAsBg ? props.textColor + 'ee' : props.routeColor};
-    position: relative;
-    left: -30px;
-    /* this is a few pixels into the blob (to make it look attached) + 3.5rem so that each
-    stop's bar connects the previous bar with the current one */
-    top: -3.5rem; /* adjust position in a way that is agnostic to line-height */
-  }
-
-  /* hide the first line between blobs */
-  &:first-of-type::after {
-    background: transparent;
   }
 `
 
