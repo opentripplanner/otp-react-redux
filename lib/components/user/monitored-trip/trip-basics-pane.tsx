@@ -148,14 +148,12 @@ const RenderAvailableDays = ({
   errorCheckingTrip,
   errorSelectingDays,
   finalItineraryExistence,
-  isCreating,
   isReadOnly,
   monitoredTrip
 }: {
   errorCheckingTrip: boolean
   errorSelectingDays?: 'error' | null
   finalItineraryExistence?: ItineraryExistence
-  isCreating: boolean
   isReadOnly: boolean
   monitoredTrip: MonitoredTrip
 }) => {
@@ -442,7 +440,6 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
                 errorCheckingTrip={errorCheckingTrip}
                 errorSelectingDays={selectOneDayError}
                 finalItineraryExistence={finalItineraryExistence}
-                isCreating={isCreating}
                 isReadOnly={isReadOnly}
                 monitoredTrip={monitoredTrip}
               />
@@ -465,7 +462,6 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
                   <RenderAvailableDays
                     errorCheckingTrip={errorCheckingTrip}
                     finalItineraryExistence={finalItineraryExistence}
-                    isCreating={isCreating}
                     isReadOnly={isReadOnly}
                     monitoredTrip={monitoredTrip}
                   />
