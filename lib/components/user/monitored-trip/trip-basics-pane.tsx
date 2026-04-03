@@ -1,6 +1,6 @@
 import { Ban } from '@styled-icons/fa-solid/Ban'
-import { connect } from 'react-redux'
 import {
+  Button,
   ControlLabel,
   FormControl,
   FormGroup,
@@ -8,6 +8,7 @@ import {
   ProgressBar,
   Radio
 } from 'react-bootstrap'
+import { connect } from 'react-redux'
 import { Field, FormikProps } from 'formik'
 import { FormattedMessage, injectIntl, useIntl } from 'react-intl'
 import { Prompt } from 'react-router'
@@ -196,7 +197,6 @@ const RenderAvailableDays = ({
               title={notAvailableText}
             >
               <Field
-                // TODO: improve checking trip availability.
                 disabled={isDayDisabled}
                 id={day}
                 name={day}
@@ -340,6 +340,18 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
     this.props.clearItineraryExistence()
   }
 
+  _handleRecheckItineraryExistence = () => {
+    // Check itinerary availability (existence) for all days if not already done.
+    const {
+      checkItineraryExistence,
+      intl,
+      setIsLoading,
+      values: monitoredTrip
+    } = this.props
+    setIsLoading && setIsLoading(true)
+    checkItineraryExistence(monitoredTrip, intl)
+  }
+
   // eslint-disable-next-line complexity
   render() {
     const {
@@ -443,6 +455,11 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
                 isReadOnly={isReadOnly}
                 monitoredTrip={monitoredTrip}
               />
+              {!isCreating && (
+                <Button onClick={this._handleRecheckItineraryExistence}>
+                  Check again
+                </Button>
+              )}
             </FormGroup>
           ) : (
             <FormGroup>
@@ -451,7 +468,6 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
               </ControlLabel>
               <Radio
                 checked={!isOneTime}
-                // FIXME: Temporary solution until itinerary existence check is fixed.
                 disabled={errorCheckingTrip || isReadOnly}
                 onChange={this._handleRecurringTrip}
               >
@@ -465,6 +481,11 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
                     isReadOnly={isReadOnly}
                     monitoredTrip={monitoredTrip}
                   />
+                  {!isCreating && (
+                    <Button onClick={this._handleRecheckItineraryExistence}>
+                      Check again
+                    </Button>
+                  )}
                 </>
               )}
               <Radio
