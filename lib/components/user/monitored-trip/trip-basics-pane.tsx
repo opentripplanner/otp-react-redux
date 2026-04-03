@@ -401,6 +401,25 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
       /* Hack: because the selected days checkboxes are not grouped, we need to assign this error to one of the 
       checkboxes so that the FormikErrorFocus works. */
       const selectOneDayError = errorStates.monday
+      const dayButtons = (
+        <>
+          <RenderAvailableDays
+            errorCheckingTrip={errorCheckingTrip}
+            errorSelectingDays={
+              disableSingleItineraryDays ? selectOneDayError : undefined
+            }
+            finalItineraryExistence={finalItineraryExistence}
+            isReadOnly={isReadOnly}
+            monitoredTrip={monitoredTrip}
+          />
+          {!isCreating && (
+            <Button onClick={this._handleRecheckItineraryExistence}>
+              Check again
+            </Button>
+          )}
+        </>
+      )
+
       return (
         <div>
           {/* TODO: This component does not block navigation on reload or using the back button.
@@ -448,18 +467,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
                 <FormattedMessage id="components.TripBasicsPane.tripDaysPrompt" />
                 {!isReadOnly && <RequiredIndicator>*</RequiredIndicator>}
               </ControlLabel>
-              <RenderAvailableDays
-                errorCheckingTrip={errorCheckingTrip}
-                errorSelectingDays={selectOneDayError}
-                finalItineraryExistence={finalItineraryExistence}
-                isReadOnly={isReadOnly}
-                monitoredTrip={monitoredTrip}
-              />
-              {!isCreating && (
-                <Button onClick={this._handleRecheckItineraryExistence}>
-                  Check again
-                </Button>
-              )}
+              {dayButtons}
             </FormGroup>
           ) : (
             <FormGroup>
@@ -473,21 +481,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
               >
                 <FormattedMessage id="components.TripBasicsPane.recurringEachWeek" />
               </Radio>
-              {!isOneTime && (
-                <>
-                  <RenderAvailableDays
-                    errorCheckingTrip={errorCheckingTrip}
-                    finalItineraryExistence={finalItineraryExistence}
-                    isReadOnly={isReadOnly}
-                    monitoredTrip={monitoredTrip}
-                  />
-                  {!isCreating && (
-                    <Button onClick={this._handleRecheckItineraryExistence}>
-                      Check again
-                    </Button>
-                  )}
-                </>
-              )}
+              {!isOneTime && dayButtons}
               <Radio
                 checked={isOneTime}
                 disabled={isReadOnly}
