@@ -618,10 +618,8 @@ components:
     endOfTrip: 行程到此結束
     header: 行程檢視器
     listOfRouteStops: 此路線上的車站清單
-    routeHeader: 路線：<strong>{routeShortName}</strong> {routeLongName}
     startOfTrip: 行程從這裡開始
     tripDescription: 在 {boardAtStop} 上車，在 {disembarkAtStop} 下車
-    viewStop: 檢視
   UserAccountScreen:
     confirmDelete: 您確定要刪除使用者帳戶嗎？一旦刪除，就無法復原。
     errorUpdatingProfile: 更新設定檔時發生錯誤。

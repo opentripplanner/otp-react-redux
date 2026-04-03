@@ -803,10 +803,8 @@ components:
     endOfTrip: Chuyến đi kết thúc tại đây
     header: Xem chuyến đi
     listOfRouteStops: Danh sách các trạm dừng trên tuyến đường này
-    routeHeader: "Tuyến: <strong>{routeShortName}</strong> {routeLongName}"
     startOfTrip: Chuyến đi bắt đầu tại đây
     tripDescription: Lên xe tại {boardAtStop} và xuống xe tại {disembarkAtStop}
-    viewStop: Lượt xem
   UserAccountScreen:
     confirmDelete: >-
       Bạn có chắc bạn muốn xóa tài khoản người dùng của mình không? Một khi bạn

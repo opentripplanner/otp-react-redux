@@ -839,10 +839,8 @@ components:
     endOfTrip: Fin du trajet
     header: Info trajet
     listOfRouteStops: Liste des arrêts sur cette ligne
-    routeHeader: "Ligne : <strong>{routeShortName}</strong> {routeLongName}"
     startOfTrip: Début du trajet
     tripDescription: Montez à {boardAtStop} et descendez à {disembarkAtStop}
-    viewStop: Info
   UserAccountScreen:
     confirmDelete: >-
       Voulez-vous vraiment supprimer votre compte ? Cette action est

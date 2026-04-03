@@ -193,6 +193,7 @@ class RouteDetails extends Component<Props> {
             </h2>
 
             <StopList
+              intl={intl}
               routeColor={routeColor}
               routePattern={pattern}
               setHoveredStop={setHoveredStop}

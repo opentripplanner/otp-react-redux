@@ -689,10 +689,8 @@ components:
     endOfTrip: 行程到此结束
     header: 行程查看器
     listOfRouteStops: 这条路线上的公车站列表
-    routeHeader: 路线:<strong>{routeShortName}</strong> {routeLongName}
     startOfTrip: 行程从这里开始
     tripDescription: 在{boardAtStop}上车，在{disembarkAtStop}下车
-    viewStop: 查阅
   UserAccountScreen:
     confirmDelete: 您确定要删除你的用户账户吗?一旦您这样做, 它就无法恢复.
     errorUpdatingProfile: 更新配置文件出错。

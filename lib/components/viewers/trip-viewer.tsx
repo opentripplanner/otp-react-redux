@@ -292,6 +292,7 @@ class TripViewer extends Component<Props> {
             <StopList
               fromIndex={fromIndex}
               homeTimezone={homeTimezone}
+              intl={intl}
               routeColor={routeColor}
               routePattern={stopTimes}
               stopLinkClicked={setViewedStop}

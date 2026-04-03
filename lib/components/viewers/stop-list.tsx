@@ -1,4 +1,4 @@
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, IntlShape } from 'react-intl'
 import { getCurrentDate } from '@opentripplanner/core-utils/lib/time'
 import { toDate } from 'date-fns-tz'
 import React, { useEffect, useRef } from 'react'
@@ -111,6 +111,7 @@ interface StopListProps {
   backgroundColor?: string
   fromIndex?: number
   homeTimezone?: any
+  intl: IntlShape
   routeColor?: string
   routePattern: any
   setHoveredStop?: (arg: any) => void
@@ -124,6 +125,7 @@ const StopList = ({
   backgroundColor,
   routeColor = DEFAULT_ROUTE_COLOR,
   homeTimezone,
+  intl,
   routePattern,
   setHoveredStop,
   stopLinkClicked,
@@ -161,6 +163,9 @@ const StopList = ({
 
   return (
     <StopContainer
+      aria-label={intl.formatMessage({
+        id: 'components.TripViewer.listOfRouteStops'
+      })}
       backgroundColor={backgroundColor}
       onMouseLeave={() => setHoveredStop && setHoveredStop(null)}
       textColor={textColor}

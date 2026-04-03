@@ -803,10 +803,8 @@ components:
     endOfTrip: Маршрут заканчивается здесь
     header: Средство просмотра поездки
     listOfRouteStops: Список остановок на этом маршруте
-    routeHeader: "Маршрут: <strong>{routeShortName}</strong> {routeLongName}"
     startOfTrip: Маршрут начинается здесь
     tripDescription: Сесть в {boardAtStop} и выйти на {disembarkAtStop}
-    viewStop: Просмотреть
   UserAccountScreen:
     confirmDelete: >-
       Действительно удалить учетную запись? После удаления ее невозможно будет
