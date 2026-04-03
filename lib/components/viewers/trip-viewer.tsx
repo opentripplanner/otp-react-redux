@@ -3,9 +3,9 @@ import { Bicycle } from '@styled-icons/fa-solid/Bicycle'
 import { Label as BsLabel } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
+import { Leg, Route, Stop, TransitOperator } from '@opentripplanner/types'
 import { Wheelchair } from '@styled-icons/fa-solid/Wheelchair'
 import coreUtils from '@opentripplanner/core-utils'
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
@@ -18,7 +18,10 @@ import {
   getOperatorAndRoute
 } from '../../util/state'
 import { IconWithText } from '../util/styledIcon'
-import { Leg, TransitOperator } from '@opentripplanner/types'
+import {
+  ItineraryWithCO2Info,
+  ItineraryWithSortingCosts
+} from '../../util/itinerary'
 import BackButton from '../util/back-button'
 import PageTitle from '../util/page-title'
 import SpanWithSpace from '../util/span-with-space'
@@ -40,20 +43,44 @@ const HeaderText = styled.h1`
   margin: 2px 0 0 0;
 `
 
+type ViewedTrip = {
+  fromStopId?: string | null
+  toStopId?: string | null
+  tripId?: string
+}
+
+interface StopTime {
+  scheduledDeparture: string
+  stop: Stop
+}
+interface TripData {
+  bikesAllowed: string
+  blockId?: string | null
+  directionId: string
+  geometry: { length: number; points: string }
+  id: string
+  route: Route
+  serviceId: string
+  shapeId: string
+  stopTimes: StopTime[]
+  tripHeadsign: string
+  wheelchairAccessible: string
+}
+
 interface Props {
-  activeItinerary: any
+  activeItinerary?: false | ItineraryWithCO2Info | ItineraryWithSortingCosts
   activeItineraryIndex: number
-  findTrip: any
-  hideHeader: boolean
+  findTrip: (arg: { tripId?: string }) => void
+  hideHeader?: boolean
   homeTimezone: string
   intl: IntlShape
   setMainPanelContent: (content: number | null) => void
   setViewedStop: (payload: { stopId: string } | null) => void
-  setViewedTrip: (payload: any) => void
+  setViewedTrip: (payload: ViewedTrip | null) => void
   settingActiveItinerary: (payload: { index: number } | null) => void
   transitOperators: TransitOperator[]
-  tripData: any
-  viewedTrip: any
+  tripData: TripData
+  viewedTrip: ViewedTrip
 }
 
 class TripViewer extends Component<Props> {
@@ -87,8 +114,8 @@ class TripViewer extends Component<Props> {
           ?.filter(coreUtils.itinerary.isTransitLeg)
           .find((leg: Leg) => leg.tripId === tripId)
         this.props.setViewedTrip({
-          fromStopId: matchingLeg.from?.stopId,
-          toStopId: matchingLeg.to?.stopId,
+          fromStopId: matchingLeg?.from?.stopId,
+          toStopId: matchingLeg?.to?.stopId,
           tripId
         })
       }
@@ -130,10 +157,10 @@ class TripViewer extends Component<Props> {
     const stopTimes = tripData?.stopTimes
 
     const fromIndex = stopTimes?.findIndex(
-      (stopTime: any) => stopTime.stop.id === viewedTrip?.fromStopId
+      (stopTime: StopTime) => stopTime.stop.id === viewedTrip?.fromStopId
     )
     const toIndex = stopTimes?.findIndex(
-      (stopTime: any) => stopTime.stop.id === viewedTrip?.toStopId
+      (stopTime: StopTime) => stopTime.stop.id === viewedTrip?.toStopId
     )
 
     const bikesAreAllowed = tripData?.bikesAllowed === 'ALLOWED'
