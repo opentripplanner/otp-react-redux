@@ -3,6 +3,7 @@ import { Bicycle } from '@styled-icons/fa-solid/Bicycle'
 import { Label as BsLabel } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
+import { isMobile } from '@opentripplanner/core-utils/lib/ui'
 import { Leg, Route, Stop, TransitOperator } from '@opentripplanner/types'
 import { Wheelchair } from '@styled-icons/fa-solid/Wheelchair'
 import coreUtils from '@opentripplanner/core-utils'
@@ -217,14 +218,22 @@ class TripViewer extends Component<Props> {
           </div>
           {/* Basic Trip Info */}
           {tripData && (
-            <div style={{ marginTop: '1em' }}>
-              <RouteRowDetails
-                intl={intl}
-                ModeIcon={ModeIcon}
-                operator={operator}
-                route={tripData?.route}
-                RouteRenderer={Route}
-              />
+            <div>
+              <div
+                style={
+                  isMobile()
+                    ? { marginTop: '-0.5em', padding: '3px' }
+                    : { marginTop: '1em' }
+                }
+              >
+                <RouteRowDetails
+                  intl={intl}
+                  ModeIcon={ModeIcon}
+                  operator={operator}
+                  route={tripData?.route}
+                  RouteRenderer={Route}
+                />
+              </div>
 
               {/* TODO: In Trip Description, add links to the stop in the list of stops so when navigating by 
               screenreader or keyboard nav, the departure, arrival, and stop viewer links 
