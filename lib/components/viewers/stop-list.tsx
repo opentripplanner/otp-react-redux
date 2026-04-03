@@ -148,6 +148,8 @@ const StopList = ({
     toIndex !== undefined &&
     toIndex > -1
 
+  console.log(routeColor)
+
   // If we're in the trip viewer and there's a highlighted section of the trip, scroll that section into view.
   const firstStopRef = useRef<HTMLLIElement>(null)
   useEffect(() => {

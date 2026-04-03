@@ -12,21 +12,24 @@ import styled from 'styled-components'
 import * as apiActions from '../../actions/api'
 import * as narrativeActions from '../../actions/narrative'
 import * as uiActions from '../../actions/ui'
+import { ComponentContext } from '../../util/contexts'
 import {
   getActiveItineraries,
   getActiveSearch,
   getOperatorAndRoute
 } from '../../util/state'
+import { getRouteColorBasedOnSettings } from '../../util/viewer'
 import { IconWithText } from '../util/styledIcon'
 import {
   ItineraryWithCO2Info,
   ItineraryWithSortingCosts
 } from '../../util/itinerary'
 import BackButton from '../util/back-button'
+import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
 import PageTitle from '../util/page-title'
 import SpanWithSpace from '../util/span-with-space'
-import Strong from '../util/strong-text'
 
+import { RouteRowDetails } from './route-row'
 import StopList from './stop-list'
 
 const AlertContainer = styled.div`
@@ -34,10 +37,6 @@ const AlertContainer = styled.div`
   span {
     font-weight: 400;
   }
-`
-const RouteName = styled.h2`
-  font-size: inherit;
-  margin: 1em 0;
 `
 const HeaderText = styled.h1`
   margin: 2px 0 0 0;
@@ -84,6 +83,8 @@ interface Props {
 }
 
 class TripViewer extends Component<Props> {
+  static contextType = ComponentContext
+
   _backClicked = () => {
     this.props.setViewedTrip(null)
     this.props.setMainPanelContent(null)
@@ -151,10 +152,13 @@ class TripViewer extends Component<Props> {
       homeTimezone,
       intl,
       setViewedStop,
+      transitOperators,
       tripData,
       viewedTrip
     } = this.props
     const stopTimes = tripData?.stopTimes
+    const { ModeIcon, RouteRenderer } = this.context
+    const Route = RouteRenderer || DefaultRouteRenderer
 
     const fromIndex = stopTimes?.findIndex(
       (stopTime: StopTime) => stopTime.stop.id === viewedTrip?.fromStopId
@@ -165,6 +169,19 @@ class TripViewer extends Component<Props> {
 
     const bikesAreAllowed = tripData?.bikesAllowed === 'ALLOWED'
     const wheelchairsAreAllowed = tripData?.wheelchairAccessible === 'POSSIBLE'
+
+    const operator =
+      (tripData?.route &&
+        coreUtils?.route?.getTransitOperatorFromOtpRoute(
+          tripData?.route,
+          transitOperators
+        )) ||
+      {}
+
+    const routeColor =
+      tripData?.route &&
+      ((tripData?.route?.color && `#${tripData?.route?.color}`) ||
+        getRouteColorBasedOnSettings(tripData.route, operator))
 
     return (
       <div className="trip-viewer">
@@ -190,21 +207,14 @@ class TripViewer extends Component<Props> {
           </div>
           {/* Basic Trip Info */}
           {tripData && (
-            <div>
-              <RouteName
-                style={{ margin: hideHeader ? '.25em 0 1em 3em' : 'auto' }}
-              >
-                {tripData.route && (
-                  <FormattedMessage
-                    id="components.TripViewer.routeHeader"
-                    values={{
-                      routeLongName: tripData.route.longName,
-                      routeShortName: tripData.route.shortName,
-                      strong: Strong
-                    }}
-                  />
-                )}
-              </RouteName>
+            <div style={{ marginTop: '1em' }}>
+              <RouteRowDetails
+                intl={intl}
+                ModeIcon={ModeIcon}
+                operator={operator}
+                route={tripData?.route}
+                RouteRenderer={Route}
+              />
 
               {/* TODO: In Trip Description, add links to the stop in the list of stops so when navigating by 
               screenreader or keyboard nav, the departure, arrival, and stop viewer links 
@@ -263,7 +273,7 @@ class TripViewer extends Component<Props> {
             <StopList
               fromIndex={fromIndex}
               homeTimezone={homeTimezone}
-              routeColor={`#${tripData?.route?.color}`}
+              routeColor={routeColor}
               routePattern={stopTimes}
               stopLinkClicked={setViewedStop}
               toIndex={toIndex}
