@@ -145,14 +145,34 @@ class TripViewer extends Component<Props> {
     ]
   }
 
-  // eslint-disable-next-line complexity
+  _getRouteColor = (operator: TransitOperator) => {
+    const { tripData } = this.props
+    const routeColor =
+      tripData?.route &&
+      ((tripData?.route?.color && `#${tripData?.route?.color}`) ||
+        getRouteColorBasedOnSettings(tripData.route, operator))
+    return routeColor
+  }
+
+  _getOperator = () => {
+    const { transitOperators, tripData } = this.props
+    const operator =
+      (tripData?.route &&
+        coreUtils?.route?.getTransitOperatorFromOtpRoute(
+          tripData?.route,
+          transitOperators
+        )) ||
+      {}
+
+    return operator
+  }
+
   render() {
     const {
       hideHeader,
       homeTimezone,
       intl,
       setViewedStop,
-      transitOperators,
       tripData,
       viewedTrip
     } = this.props
@@ -170,18 +190,8 @@ class TripViewer extends Component<Props> {
     const bikesAreAllowed = tripData?.bikesAllowed === 'ALLOWED'
     const wheelchairsAreAllowed = tripData?.wheelchairAccessible === 'POSSIBLE'
 
-    const operator =
-      (tripData?.route &&
-        coreUtils?.route?.getTransitOperatorFromOtpRoute(
-          tripData?.route,
-          transitOperators
-        )) ||
-      {}
-
-    const routeColor =
-      tripData?.route &&
-      ((tripData?.route?.color && `#${tripData?.route?.color}`) ||
-        getRouteColorBasedOnSettings(tripData.route, operator))
+    const operator = this._getOperator()
+    const routeColor = this._getRouteColor(operator)
 
     return (
       <div className="trip-viewer">

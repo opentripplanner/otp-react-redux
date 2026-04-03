@@ -1,11 +1,11 @@
 import { FormattedMessage } from 'react-intl'
 import { getCurrentDate } from '@opentripplanner/core-utils/lib/time'
 import { toDate } from 'date-fns-tz'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
 import { DEFAULT_ROUTE_COLOR } from '../util/colors'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
-import React, { useEffect, useRef } from 'react'
 
 import { RenderProps } from './styled'
 import DepartureTime from './departure-time'
@@ -147,8 +147,6 @@ const StopList = ({
     fromIndex > -1 &&
     toIndex !== undefined &&
     toIndex > -1
-
-  console.log(routeColor)
 
   // If we're in the trip viewer and there's a highlighted section of the trip, scroll that section into view.
   const firstStopRef = useRef<HTMLLIElement>(null)

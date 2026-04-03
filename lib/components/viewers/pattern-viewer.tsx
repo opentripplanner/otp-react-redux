@@ -88,8 +88,6 @@ const PatternViewer = ({
     )
     const fill = vehicleIconHighlight === false ? undefined : textColor
 
-    console.log('route', route)
-
     const backButtonText = intl.formatMessage({ id: 'common.forms.back' })
     return (
       <div
