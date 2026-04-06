@@ -48,6 +48,7 @@ type TripBasicsProps = WrappedComponentProps &
   }
 
 interface State {
+  isRecheckingExistence: boolean
   selectedDays: string[] | null
 }
 
@@ -70,6 +71,7 @@ function isDisabled(day: string, itineraryExistence?: ItineraryExistence) {
  */
 class TripBasicsPane extends Component<TripBasicsProps, State> {
   state = {
+    isRecheckingExistence: false,
     selectedDays: null
   }
 
@@ -165,7 +167,8 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
     this.props.clearItineraryExistence()
   }
 
-  _handleRecheckItineraryExistence = () => {
+  _handleRecheckItineraryExistence = async () => {
+    this.setState({ isRecheckingExistence: true })
     // Check itinerary availability (existence) for all days if not already done.
     const {
       checkItineraryExistence,
@@ -174,7 +177,8 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
       values: monitoredTrip
     } = this.props
     setIsLoading && setIsLoading(true)
-    checkItineraryExistence(monitoredTrip, intl)
+    await checkItineraryExistence(monitoredTrip, intl)
+    this.setState({ isRecheckingExistence: false })
   }
 
   // eslint-disable-next-line complexity
@@ -192,8 +196,10 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
       values: monitoredTrip
     } = this.props
     const { itinerary } = monitoredTrip
-    const finalItineraryExistence =
-      monitoredTrip.itineraryExistence || itineraryExistence
+    const { isRecheckingExistence } = this.state
+    const finalItineraryExistence = isRecheckingExistence
+      ? undefined
+      : monitoredTrip.itineraryExistence || itineraryExistence
 
     // Prevent user from leaving when form has been changed,
     // but don't show it when they click submit or cancel.
@@ -238,7 +244,10 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
             monitoredTrip={monitoredTrip}
           />
           {!isCreating && (
-            <Button onClick={this._handleRecheckItineraryExistence}>
+            <Button
+              disabled={isRecheckingExistence}
+              onClick={this._handleRecheckItineraryExistence}
+            >
               Check again
             </Button>
           )}
