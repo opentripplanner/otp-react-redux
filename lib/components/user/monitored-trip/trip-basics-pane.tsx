@@ -129,6 +129,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
     // Check itinerary availability (existence) for all days if not already done.
     const {
       checkItineraryExistence,
+      intl,
       setFieldValue,
       setIsLoading,
       values: monitoredTrip
@@ -138,6 +139,11 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
     this.setState({
       fetchedItineraryExistence: newExistence
     })
+    if (!newExistence) {
+      alert(
+        intl.formatMessage({ id: 'actions.user.itineraryExistenceCheckFailed' })
+      )
+    }
     setIsLoading && setIsLoading(false)
     this.setState({ isRecheckingExistence: false })
     ALL_DAYS.forEach((day) => {
