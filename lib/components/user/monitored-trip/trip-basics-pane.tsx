@@ -14,7 +14,7 @@ import { Prompt } from 'react-router'
 import FormikErrorFocus from 'formik-error-focus'
 import React, { Component, FormEventHandler } from 'react'
 import styled from 'styled-components'
-import type { IntlShape, WrappedComponentProps } from 'react-intl'
+import type { WrappedComponentProps } from 'react-intl'
 
 import * as userActions from '../../../actions/user'
 import {
@@ -36,18 +36,16 @@ type TripBasicsProps = WrappedComponentProps &
   FormikProps<MonitoredTrip> & {
     canceled: boolean
     checkItineraryExistence: (
-      monitoredTrip: MonitoredTrip,
-      intl: IntlShape
-    ) => void
-    clearItineraryExistence: () => void
+      monitoredTrip: MonitoredTrip
+    ) => Promise<ItineraryExistence>
     disableSingleItineraryDays?: boolean
     isCreating: boolean
     isReadOnly: boolean
-    itineraryExistence?: ItineraryExistence
     setIsLoading?: (arg: boolean) => void
   }
 
 interface State {
+  fetchedItineraryExistence: ItineraryExistence | null
   isRecheckingExistence: boolean
   selectedDays: string[] | null
 }
@@ -61,44 +59,26 @@ const RequiredIndicator = styled.span`
   margin-left: 5px;
 `
 
-function isDisabled(day: string, itineraryExistence?: ItineraryExistence) {
+function isDisabled(
+  day: string,
+  itineraryExistence?: ItineraryExistence | null
+) {
   return itineraryExistence && !itineraryExistence[day]?.valid
 }
 
 /**
  * This component shows summary information for a trip
- * and lets the user edit the trip name and day.
+ * and lets the user edit the trip name and monitored day.
  */
 class TripBasicsPane extends Component<TripBasicsProps, State> {
   state = {
+    fetchedItineraryExistence: null,
     isRecheckingExistence: false,
     selectedDays: null
   }
 
-  /**
-   * For new trips only, update the Formik state to
-   * uncheck days for which the itinerary is not available.
-   */
-  _updateNewTripItineraryExistence = (prevProps: TripBasicsProps) => {
-    const { isCreating, itineraryExistence, setFieldValue } = this.props
-
-    if (
-      isCreating &&
-      itineraryExistence &&
-      itineraryExistence !== prevProps.itineraryExistence
-    ) {
-      ALL_DAYS.forEach((day) => {
-        if (!itineraryExistence[day].valid) {
-          setFieldValue(day, false)
-        }
-      })
-    }
-  }
-
   _getDaysFromItineraryExistence = () => {
-    const { itineraryExistence, values: trip } = this.props
-    const finalItineraryExistence =
-      trip.itineraryExistence || itineraryExistence
+    const finalItineraryExistence = this.state.fetchedItineraryExistence
     return ALL_DAYS.filter((day) => finalItineraryExistence?.[day]?.valid)
   }
 
@@ -136,35 +116,14 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
 
   componentDidMount() {
     // Check itinerary availability (existence) for all days if not already done.
-    const {
-      checkItineraryExistence,
-      intl,
-      setIsLoading,
-      values: monitoredTrip
-    } = this.props
+    const { values: monitoredTrip } = this.props
     if (!monitoredTrip.itineraryExistence) {
-      setIsLoading && setIsLoading(true)
-      checkItineraryExistence(monitoredTrip, intl)
+      this._handleRecheckItineraryExistence()
+    } else {
+      this.setState({
+        fetchedItineraryExistence: monitoredTrip.itineraryExistence
+      })
     }
-  }
-
-  componentDidUpdate(prevProps: TripBasicsProps) {
-    this._updateNewTripItineraryExistence(prevProps)
-    const {
-      itineraryExistence,
-      setIsLoading,
-      values: monitoredTrip
-    } = this.props
-    if (
-      (monitoredTrip?.itineraryExistence || itineraryExistence) &&
-      setIsLoading
-    ) {
-      setIsLoading(false)
-    }
-  }
-
-  componentWillUnmount() {
-    this.props.clearItineraryExistence()
   }
 
   _handleRecheckItineraryExistence = async () => {
@@ -172,13 +131,24 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
     // Check itinerary availability (existence) for all days if not already done.
     const {
       checkItineraryExistence,
-      intl,
+      setFieldValue,
       setIsLoading,
       values: monitoredTrip
     } = this.props
     setIsLoading && setIsLoading(true)
-    await checkItineraryExistence(monitoredTrip, intl)
+    const newExistence = await checkItineraryExistence(monitoredTrip)
+    this.setState({
+      fetchedItineraryExistence: newExistence
+    })
+    setIsLoading && setIsLoading(false)
     this.setState({ isRecheckingExistence: false })
+    if (newExistence) {
+      ALL_DAYS.forEach((day) => {
+        if (!newExistence[day].valid) {
+          setFieldValue(day, false)
+        }
+      })
+    }
   }
 
   // eslint-disable-next-line complexity
@@ -192,14 +162,13 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
       isCreating,
       isReadOnly,
       isSubmitting,
-      itineraryExistence,
       values: monitoredTrip
     } = this.props
     const { itinerary } = monitoredTrip
-    const { isRecheckingExistence } = this.state
+    const { fetchedItineraryExistence, isRecheckingExistence } = this.state
     const finalItineraryExistence = isRecheckingExistence
       ? undefined
-      : monitoredTrip.itineraryExistence || itineraryExistence
+      : fetchedItineraryExistence
 
     // Prevent user from leaving when form has been changed,
     // but don't show it when they click submit or cancel.
@@ -340,17 +309,14 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
 // Connect to redux store
 
 const mapStateToProps = (state: AppReduxState) => {
-  const { itineraryExistence } = state.user
   const { disableSingleItineraryDays } = state.otp.config
   return {
-    disableSingleItineraryDays,
-    itineraryExistence
+    disableSingleItineraryDays
   }
 }
 
 const mapDispatchToProps = {
-  checkItineraryExistence: userActions.checkItineraryExistence,
-  clearItineraryExistence: userActions.clearItineraryExistence
+  checkItineraryExistence: userActions.checkItineraryExistence
 }
 
 export default connect(
