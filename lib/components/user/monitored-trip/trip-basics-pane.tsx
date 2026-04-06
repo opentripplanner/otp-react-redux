@@ -219,7 +219,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
               disabled={isRecheckingExistence}
               onClick={this._handleRecheckItineraryExistence}
             >
-              Check again
+              <FormattedMessage id="components.TripBasicsPane.checkAgain" />
             </Button>
           )}
         </>
