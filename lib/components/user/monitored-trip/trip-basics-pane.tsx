@@ -71,10 +71,13 @@ function isDisabled(
  * and lets the user edit the trip name and monitored day.
  */
 class TripBasicsPane extends Component<TripBasicsProps, State> {
-  state = {
-    fetchedItineraryExistence: null,
-    isRecheckingExistence: false,
-    selectedDays: null
+  constructor(props: TripBasicsProps) {
+    super(props)
+    this.state = {
+      fetchedItineraryExistence: null,
+      isRecheckingExistence: false,
+      selectedDays: null
+    }
   }
 
   _getDaysFromItineraryExistence = () => {
