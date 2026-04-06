@@ -189,7 +189,6 @@ describe('util > pattern-viewer', () => {
         createPattern('P1', 1404, ['S1', 'S2', 'S3', 'S4', 'S5']),
         createPattern('P2', 1072, ['S3', 'S4', 'S6', 'S7']),
         createPattern('P3', 987, ['S3', 'S4', 'S5']),
-
         createPattern('P4', 1404, ['S1', 'S3', 'S4', 'S5']),
         createPattern('P5', 1404, ['S1', 'S2', 'S3', 'S4', 'S5']),
         createPattern('P6', 700, ['S5', 'S6', 'S7']),
@@ -210,14 +209,15 @@ describe('util > pattern-viewer', () => {
       ]
       const { containingPatterns, filteredPatterns } =
         sortAndRemoveSubpatterns(patterns)
-      expect(filteredPatterns.length).toBe(7)
-      expect(filteredPatterns).toContain(patterns[0])
-      expect(filteredPatterns).toContain(patterns[1])
-      expect(filteredPatterns).toContain(patterns[3])
-      expect(filteredPatterns).toContain(patterns[5])
-      expect(filteredPatterns).toContain(patterns[6])
-      expect(filteredPatterns).toContain(patterns[7])
-      expect(filteredPatterns).toContain(patterns[8])
+      expect(filteredPatterns).toEqual([
+        patterns[0],
+        patterns[1],
+        patterns[3],
+        patterns[5],
+        patterns[6],
+        patterns[7],
+        patterns[8]
+      ])
       expect(containingPatterns.P3).toBe('P1')
       expect(containingPatterns.P4).toBeUndefined()
       // No circular references in identical patterns
@@ -238,7 +238,6 @@ describe('util > pattern-viewer', () => {
       ]
       const { containingPatterns, filteredPatterns } =
         sortAndRemoveSubpatterns(patterns)
-      console.log(filteredPatterns, containingPatterns)
       expect(filteredPatterns.length).toBe(1)
       expect(filteredPatterns).toContain(patterns[0])
       expect(containingPatterns.P2).toBe('P1')
