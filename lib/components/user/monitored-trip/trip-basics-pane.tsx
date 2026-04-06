@@ -28,7 +28,9 @@ import { ItineraryExistence, MonitoredTrip } from '../types'
 import { RED_ON_WHITE } from '../../util/colors'
 import FormattedValidationError from '../../util/formatted-validation-error'
 
-import TripMonitoredDaySelector from './trip-monitored-day-selector'
+import TripMonitoredDaySelector, {
+  isDisabled
+} from './trip-monitored-day-selector'
 import TripStatus from './trip-status'
 import TripSummaryPane from './trip-summary-pane'
 
@@ -59,13 +61,6 @@ const RequiredIndicator = styled.span`
   margin-left: 5px;
 `
 
-function isDisabled(
-  day: string,
-  itineraryExistence?: ItineraryExistence | null
-) {
-  return itineraryExistence && !itineraryExistence[day]?.valid
-}
-
 /**
  * This component shows summary information for a trip
  * and lets the user edit the trip name and monitored day.
@@ -81,8 +76,8 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
   }
 
   _getDaysFromItineraryExistence = () => {
-    const finalItineraryExistence = this.state.fetchedItineraryExistence
-    return ALL_DAYS.filter((day) => finalItineraryExistence?.[day]?.valid)
+    const itineraryExistence = this.state.fetchedItineraryExistence
+    return ALL_DAYS.filter((day) => itineraryExistence?.[day]?.valid)
   }
 
   _handleRecurringTrip: FormEventHandler<Radio> = (e) => {
@@ -145,13 +140,11 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
     })
     setIsLoading && setIsLoading(false)
     this.setState({ isRecheckingExistence: false })
-    if (newExistence) {
-      ALL_DAYS.forEach((day) => {
-        if (!newExistence[day].valid) {
-          setFieldValue(day, false)
-        }
-      })
-    }
+    ALL_DAYS.forEach((day) => {
+      if (isDisabled(day, newExistence)) {
+        setFieldValue(day, false)
+      }
+    })
   }
 
   // eslint-disable-next-line complexity
