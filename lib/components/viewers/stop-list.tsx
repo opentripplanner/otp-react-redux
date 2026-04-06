@@ -4,7 +4,7 @@ import { toDate } from 'date-fns-tz'
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
-import { DEFAULT_ROUTE_COLOR } from '../util/colors'
+import { DEFAULT_ROUTE_COLOR, GREY_ON_WHITE } from '../util/colors'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
 import { RenderProps } from './styled'
@@ -16,22 +16,27 @@ const timeCellWidth = '45px'
 const lowOpacity = '40%'
 
 export const StopContainer = styled.ol<StopProps>`
-  color: ${(props) => props?.textColor};
-  padding: 5px 10px;
   background-color: ${(props) => props?.backgroundColor};
-  overflow-y: ${(props) => (props.timeColumn ? 'visible' : 'scroll')};
-  /* Calculate the height of the container a little short to ensure all stops 
-  are shown when browsers don't calculate 100% sensibly. */
-  height: calc(100% - 140px);
+  color: ${(props) => props?.textColor};
   display: flex;
   flex-direction: column;
   gap: 8.5px;
+  /* Calculate the height of the container a little short to ensure all stops 
+  are shown when browsers don't calculate 100% sensibly. */
+  height: calc(100% - 140px);
+  overflow-y: ${(props) => (props.timeColumn ? 'visible' : 'scroll')};
+  padding: 5px 10px;
 
   .highlighted {
     opacity: 100%;
 
     div.stop-decoration {
       box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.1);
+      opacity: 100%;
+
+      div.stop-decoration::after {
+        opacity: 100%;
+      }
     }
   }
 
@@ -43,27 +48,31 @@ export const StopContainer = styled.ol<StopProps>`
 `
 
 export const StopLink = styled.button<RenderProps>`
-  color: ${(props) => props?.textColor + 'da'};
   background-color: transparent;
   border: none;
+  // Should this just be black to better contrast with the #666 in the faded class?
+  color: ${(props) => props?.textColor + 'da'};
   padding: 0;
   text-align: left;
   width: 95%;
 
   &:hover {
-    color: ${(props) => props?.textColor};
     text-decoration: underline;
   }
 `
 
 export const Stop = styled.li<StopProps>`
+  align-items: center;
   display: grid;
+  gap: 14px;
   grid-template-columns: ${(props) =>
     props.timeColumn ? `${timeCellWidth} 20px auto` : '20px auto'};
-  align-items: center;
-  gap: 14px;
-  opacity: ${lowOpacity};
   white-space: nowrap;
+
+  &.faded button {
+    // The most faded we can get while still maintaining WCAG AA
+    color: ${GREY_ON_WHITE};
+  }
 
   .stop-time {
     font-size: 11px;
@@ -73,26 +82,27 @@ export const Stop = styled.li<StopProps>`
 
   /* this is the station blob */
   div.stop-decoration {
-    position: relative;
-    display: block;
-    height: 20px;
-    width: 20px;
+    background: ${(props) =>
+      props.useRouteColorAsBg ? props.routeColor : '#fff'};
     border: 5px solid
       ${(props) =>
         props.useRouteColorAsBg ? props.textColor + 'ee' : props.routeColor};
-    background: ${(props) =>
-      props.useRouteColorAsBg ? props.routeColor : '#fff'};
     border-radius: 20px;
+    display: block;
+    height: 20px;
+    opacity: ${lowOpacity};
+    position: relative;
+    width: 20px;
 
     /* this is the line between the blobs */
     &::after {
+      background: ${(props) =>
+        props.useRouteColorAsBg ? props.textColor + 'ee' : props.routeColor};
       content: '';
       display: block;
       height: 1.65rem; /* set position in line-height agnostic way */
-      width: 10px;
-      background: ${(props) =>
-        props.useRouteColorAsBg ? props.textColor + 'ee' : props.routeColor};
       position: relative;
+      width: 10px;
       /* this is a few pixels into the blob (to make it look attached) and top aligned so that each
     stop's bar connects the previous bar with the current one */
       top: -1.8rem; /* adjust position in a way that is agnostic to line-height */
@@ -123,16 +133,16 @@ interface StopListProps {
 
 const StopList = ({
   backgroundColor,
-  routeColor = DEFAULT_ROUTE_COLOR,
+  fromIndex,
   homeTimezone,
   intl,
+  routeColor = DEFAULT_ROUTE_COLOR,
   routePattern,
   setHoveredStop,
   stopLinkClicked,
   textColor,
-  useRouteColorAsBackground,
-  fromIndex,
-  toIndex
+  toIndex,
+  useRouteColorAsBackground
 }: StopListProps): JSX.Element => {
   // The stops in the pattern viewer vs the trip viewer are organized slightly differently, so account for that:
   const stopsArray =
