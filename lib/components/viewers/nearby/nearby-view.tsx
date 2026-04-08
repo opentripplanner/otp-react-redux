@@ -191,6 +191,7 @@ function NearbyView({
   const intl = useIntl()
   const [loading, setLoading] = useState(true)
   const [reversedPoint, setReversedPoint] = useState('')
+  const [locationInputFocused, setLocationInputFocused] = useState(false)
 
   const nearbyContainerRef = useRef<HTMLOListElement>(null)
   const finalNearbyCoords = useMemo(
@@ -279,7 +280,7 @@ function NearbyView({
 
   useEffect(() => {
     scrollToTop()
-    if (finalNearbyCoords) {
+    if (finalNearbyCoords && !locationInputFocused) {
       fetchNearby(finalNearbyCoords, radius, currentServiceWeek)
       setLoading(true)
       const interval = setInterval(() => {
@@ -290,7 +291,7 @@ function NearbyView({
         clearInterval(interval)
       }
     }
-  }, [finalNearbyCoords, fetchNearby, radius])
+  }, [finalNearbyCoords, fetchNearby, locationInputFocused, radius])
 
   useEffect(() => {
     if (nearbyViewError) {
@@ -436,6 +437,12 @@ function NearbyView({
             <Search style={{ marginRight: 5, padding: 5 }} />
           )}
           locationType="to"
+          onBlur={() => {
+            setLocationInputFocused(false)
+          }}
+          onFocus={() => {
+            setLocationInputFocused(true)
+          }}
           onLocationSelected={(selection) => {
             const { location } = selection
             setViewedNearbyCoords(location)
