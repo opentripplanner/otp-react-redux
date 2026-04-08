@@ -24,6 +24,7 @@ import {
 } from '../../../util/monitored-trip'
 import { AppReduxState } from '../../../util/state-types'
 import { getErrorStates } from '../../../util/ui'
+import { InlineLoading } from '../../narrative/loading'
 import { ItineraryExistence, MonitoredTrip } from '../types'
 import { RED_ON_WHITE } from '../../util/colors'
 import FormattedValidationError from '../../util/formatted-validation-error'
@@ -219,7 +220,11 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
               disabled={isRecheckingExistence}
               onClick={this._handleRecheckItineraryExistence}
             >
-              <FormattedMessage id="components.TripBasicsPane.checkAgain" />
+              {isRecheckingExistence ? (
+                <InlineLoading />
+              ) : (
+                <FormattedMessage id="components.TripBasicsPane.checkAgain" />
+              )}
             </Button>
           )}
         </>
