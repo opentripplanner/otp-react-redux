@@ -10,7 +10,6 @@ import { AppReduxState } from '../../util/state-types'
 import { DEFAULT_ROUTE_COLOR } from '../util/colors'
 import { extractMainHeadsigns, PatternSummary } from '../../util/pattern-viewer'
 import { getOperatorName } from '../../util/state'
-import { getPatternViewerColors } from '../../util/viewer'
 import { LinkOpensNewWindow } from '../util/externalLink'
 import {
   SetViewedRouteHandler,
@@ -99,19 +98,14 @@ class RouteDetails extends Component<Props> {
       patternId,
       route,
       setHoveredStop,
-      sortPatternsByVehicleCount,
-      useRouteColorAsBackground
+      sortPatternsByVehicleCount
     } = this.props
     const { agency, patterns = {}, shortName, url } = route
     const pattern = patterns[patternId]
 
     const moreDetailsURL = url || route?.agency?.url
 
-    const { backgroundColor, routeColor, textColor } = getPatternViewerColors(
-      useRouteColorAsBackground,
-      operator,
-      route
-    )
+    const routeColor = route.color ? `#${route.color}` : DEFAULT_ROUTE_COLOR
 
     const headsigns = extractMainHeadsigns(
       patterns,
@@ -143,7 +137,7 @@ class RouteDetails extends Component<Props> {
       patternSelectLabel
 
     return (
-      <Container backgroundColor={backgroundColor} full={pattern != null}>
+      <Container full={pattern != null}>
         {headsigns && headsigns.length > 0 && (
           <PatternContainer className="pattern-picker">
             {headsigns.length > 1 ? (
@@ -198,14 +192,10 @@ class RouteDetails extends Component<Props> {
               routePattern={pattern}
               setHoveredStop={setHoveredStop}
               stopLinkClicked={this._stopLinkClicked}
-              textColor={textColor}
             />
           </>
         )}
-        <LogoLinkContainer
-          textColor={textColor}
-          useRouteBgColor={useRouteColorAsBackground}
-        >
+        <LogoLinkContainer>
           {operator && <OperatorLogo operator={operator} />}
           {moreDetailsURL && (
             <LinkOpensNewWindow

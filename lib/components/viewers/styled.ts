@@ -1,20 +1,15 @@
 import styled, { css } from 'styled-components'
 
-import { getBaseColor, grey } from '../util/colors'
+import { DARK_TEXT_GREY } from '../util/colors'
 
 export interface RenderProps {
-  backgroundColor?: string
   full?: boolean
   routeColor?: string
-  textColor?: string
-  useRouteColorAsBg?: boolean
 }
 
 /** Route Details */
 export const Container = styled.div<RenderProps>`
-  background-color: ${(props) =>
-    props.full ? props.backgroundColor || grey[100] : 'inherit'};
-  color: ${(props) => (props.full ? props.textColor : 'inherit')};
+  background-color: inherit;
   height: 100%;
   overflow-y: hidden;
 `
@@ -23,23 +18,18 @@ export const RouteNameContainer = styled.div`
   padding: 8px;
   background-color: inherit;
 `
-export const LogoLinkContainer = styled.div<{
-  textColor?: string
-  useRouteBgColor?: boolean
-}>`
+export const LogoLinkContainer = styled.div`
   display: flex;
-  border-top: 1px solid
-    ${(props) => (props.useRouteBgColor ? props.textColor + '33' : '#33333333')};
+  border-top: 1px solid #33333333;
   align-items: center;
   gap: 10px;
   padding: 15px 10px;
   margin-top: -10px;
 
   a {
-    color: ${(props) => props.textColor};
+    color: ${DARK_TEXT_GREY};
     svg {
-      color: ${(props) =>
-        props.useRouteBgColor ? props.textColor : getBaseColor()};
+      color: ${DARK_TEXT_GREY};
     }
   }
 `

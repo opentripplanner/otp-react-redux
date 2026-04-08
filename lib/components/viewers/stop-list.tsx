@@ -4,7 +4,11 @@ import { toDate } from 'date-fns-tz'
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
-import { DEFAULT_ROUTE_COLOR, GREY_ON_WHITE } from '../util/colors'
+import {
+  DARK_TEXT_GREY,
+  DEFAULT_ROUTE_COLOR,
+  GREY_ON_WHITE
+} from '../util/colors'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
 import { RenderProps } from './styled'
@@ -16,8 +20,7 @@ const timeCellWidth = '45px'
 const lowOpacity = '40%'
 
 export const StopContainer = styled.ol<StopProps>`
-  background-color: ${(props) => props?.backgroundColor};
-  color: ${(props) => props?.textColor};
+  color: ${DARK_TEXT_GREY};
   display: flex;
   flex-direction: column;
   gap: 8.5px;
@@ -51,7 +54,7 @@ export const StopLink = styled.button<RenderProps>`
   background-color: transparent;
   border: none;
   // Should this just be black to better contrast with the #666 in the faded class?
-  color: ${(props) => props?.textColor + 'da'};
+  color: ${DARK_TEXT_GREY + 'da'};
   padding: 0;
   text-align: left;
   width: 95%;
@@ -82,11 +85,7 @@ export const Stop = styled.li<StopProps>`
 
   /* this is the station blob */
   div.stop-decoration {
-    background: ${(props) =>
-      props.useRouteColorAsBg ? props.routeColor : '#fff'};
-    border: 5px solid
-      ${(props) =>
-        props.useRouteColorAsBg ? props.textColor + 'ee' : props.routeColor};
+    border: 5px solid ${(props) => props.routeColor};
     border-radius: 20px;
     display: block;
     height: 20px;
@@ -96,8 +95,7 @@ export const Stop = styled.li<StopProps>`
 
     /* this is the line between the blobs */
     &::after {
-      background: ${(props) =>
-        props.useRouteColorAsBg ? props.textColor + 'ee' : props.routeColor};
+      background: ${(props) => props.routeColor};
       content: '';
       display: block;
       height: 1.65rem; /* set position in line-height agnostic way */
@@ -118,7 +116,6 @@ export const Stop = styled.li<StopProps>`
 `
 
 interface StopListProps {
-  backgroundColor?: string
   fromIndex?: number
   homeTimezone?: any
   intl: IntlShape
@@ -126,13 +123,10 @@ interface StopListProps {
   routePattern: any
   setHoveredStop?: (arg: any) => void
   stopLinkClicked: (arg: any) => void
-  textColor?: string
   toIndex?: number
-  useRouteColorAsBackground?: boolean
 }
 
 const StopList = ({
-  backgroundColor,
   fromIndex,
   homeTimezone,
   intl,
@@ -140,9 +134,7 @@ const StopList = ({
   routePattern,
   setHoveredStop,
   stopLinkClicked,
-  textColor,
-  toIndex,
-  useRouteColorAsBackground
+  toIndex
 }: StopListProps): JSX.Element => {
   // The stops in the pattern viewer vs the trip viewer are organized slightly differently, so account for that:
   const stopsArray =
@@ -176,9 +168,7 @@ const StopList = ({
       aria-label={intl.formatMessage({
         id: 'components.TripViewer.listOfRouteStops'
       })}
-      backgroundColor={backgroundColor}
       onMouseLeave={() => setHoveredStop && setHoveredStop(null)}
-      textColor={textColor}
       timeColumn={stopsArray[0].scheduledDeparture}
     >
       {stopsArray?.map((stop: any, index: number) => {
@@ -207,9 +197,7 @@ const StopList = ({
             routeColor={
               routeColor?.includes('ffffff') ? DEFAULT_ROUTE_COLOR : routeColor
             }
-            textColor={textColor}
             timeColumn={stop.scheduledDeparture}
-            useRouteColorAsBg={useRouteColorAsBackground}
           >
             {stop.scheduledDeparture && (
               <div
@@ -224,7 +212,6 @@ const StopList = ({
             <StopLink
               name={stop.name}
               onFocus={() => setHoveredStop && setHoveredStop(stop.id)}
-              textColor={textColor}
             >
               {stopLabel && (
                 <InvisibleA11yLabel>{stopLabel}</InvisibleA11yLabel>

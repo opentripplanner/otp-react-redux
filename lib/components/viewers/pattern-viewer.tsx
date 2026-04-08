@@ -6,11 +6,9 @@ import React, { useCallback, useContext, useEffect } from 'react'
 import * as apiActions from '../../actions/api'
 import * as uiActions from '../../actions/ui'
 import { ComponentContext } from '../../util/contexts'
-import {
-  getPatternViewerColors,
-  getRouteOrPatternViewerTitle
-} from '../../util/viewer'
+import { DARK_TEXT_GREY } from '../util/colors'
 import { getRouteOperator } from '../../util/state'
+import { getRouteOrPatternViewerTitle } from '../../util/viewer'
 import {
   SetViewedRouteHandler,
   ViewedRouteObject,
@@ -28,7 +26,6 @@ interface Props {
   findRoutesIfNeeded: () => void
   setViewedRoute: SetViewedRouteHandler
   transitOperators: TransitOperator[]
-  useRouteColorAsBackground?: boolean
   vehicleIconHighlight: boolean
   viewedRoute?: ViewedRouteState
   viewedRouteObject?: ViewedRouteObject
@@ -38,7 +35,6 @@ const PatternViewer = ({
   findRoutesIfNeeded,
   setViewedRoute,
   transitOperators,
-  useRouteColorAsBackground,
   vehicleIconHighlight,
   viewedRoute,
   viewedRouteObject: route
@@ -81,23 +77,11 @@ const PatternViewer = ({
   if (patternId && route) {
     // Find operator based on agency_id (extracted from OTP route ID).
     const operator = getRouteOperator(route, transitOperators)
-    const { backgroundColor, textColor } = getPatternViewerColors(
-      useRouteColorAsBackground,
-      operator,
-      route
-    )
-    const fill = vehicleIconHighlight === false ? undefined : textColor
+    const fill = vehicleIconHighlight === false ? undefined : DARK_TEXT_GREY
 
     const backButtonText = intl.formatMessage({ id: 'common.forms.back' })
     return (
-      <div
-        className="route-viewer pattern-viewer"
-        style={{
-          backgroundColor: backgroundColor,
-          color: textColor,
-          fill
-        }}
-      >
+      <div className="route-viewer pattern-viewer" style={{ fill }}>
         <VehiclePositionRetriever />
         <PageTitle
           title={getRouteOrPatternViewerTitle(
@@ -108,10 +92,7 @@ const PatternViewer = ({
           )}
         />
         {/* Header Block */}
-        <div
-          className="header-with-back-button pattern-viewer-header"
-          style={{ backgroundColor: backgroundColor }}
-        >
+        <div className="header-with-back-button pattern-viewer-header">
           <BackButton
             backButtonText={backButtonText}
             id="pattern-viewer-back-button"
