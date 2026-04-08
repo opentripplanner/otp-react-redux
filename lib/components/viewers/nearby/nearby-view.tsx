@@ -55,7 +55,7 @@ import Stop, { fullTimestamp, patternArrayforStops } from './stop'
 import Vehicle from './vehicle-rent'
 import VehicleParking from './vehicle-parking'
 
-const AUTO_REFRESH_INTERVAL = 15000000
+const AUTO_REFRESH_INTERVAL = 15000
 
 // TODO: use lonlat package
 type CurrentPosition = { coords?: { latitude: number; longitude: number } }
