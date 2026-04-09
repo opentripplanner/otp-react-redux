@@ -170,14 +170,14 @@ export function sortAndRemoveSubpatterns(patterns: Pattern[]): SubPatternInfo {
   }
 
   // Keep patterns that are not subsets of larger patterns or, if they are,
-  // have a different headsign from the containing pattern, or if the pattern and immediate coontaining pattern headsigns are null.
+  // have a different headsign from the containing pattern, or if the pattern and immediate coontaining pattern headsigns are not defined.
   const filteredPatterns = sortedPatterns.filter((pattern) => {
     const containingPatternId = immediateContainingPatterns[pattern.id]
     const containingPattern = patterns.find((p) => p.id === containingPatternId)
     return (
       !containingPattern ||
-      containingPattern.headsign !== pattern.headsign ||
-      (!containingPattern.headsign && !pattern.headsign)
+      !containingPattern.headsign ||
+      containingPattern.headsign !== pattern.headsign
     )
   })
 
