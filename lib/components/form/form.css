@@ -217,6 +217,14 @@
   position: relative;
 }
 
+.batch-routing-panel-location-fields input::placeholder, 
+.batch-search-settings.mobile-padding input::placeholder,
+.route-viewer .routeSearch input::placeholder,
+.otp.mobile .location-search input::placeholder,
+.otp.mobile .welcome-location input::placeholder {
+  color: #666
+}
+
 /* Highlight location fields when they update */
 @keyframes highlight {
   from {
