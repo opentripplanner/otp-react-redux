@@ -26,7 +26,7 @@ export interface StopTime {
 
 export interface Pattern {
   desc: string
-  headsign: string | null
+  headsign?: string
   id: string
   patternGeometry?: {
     length: number
