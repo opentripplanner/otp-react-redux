@@ -141,6 +141,7 @@ export type PersistenceConfig = (
 /** Popup target settings */
 export interface PopupTargetConfig {
   appendLocale?: boolean
+  appendParams?: boolean
   modal?: boolean
   url?: string
 }

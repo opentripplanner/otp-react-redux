@@ -201,7 +201,10 @@ export default function NarrativeItinerariesHeader({
           )}
           <ItinerariesHeaderContainer showHeaderText={showHeaderText}>
             {popupTarget && (
-              <button onClick={() => setPopupContent(popupTarget)}>
+              <button
+                className="popup-button"
+                onClick={() => setPopupContent(popupTarget)}
+              >
                 <PopupTriggerText compact popupTarget={popupTarget} />
               </button>
             )}
