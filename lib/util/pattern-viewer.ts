@@ -13,6 +13,8 @@ export interface PatternSummary {
   lastStop?: string
 }
 
+export type HeadsignGenerator = (pattern: PatternSummary) => string
+
 export interface SubPatternInfo {
   containingPatterns: Record<string, string>
   filteredPatterns: Pattern[]
@@ -39,8 +41,8 @@ function sameFirstAndLastStop(
 export function extractMainHeadsigns(
   patterns: Record<string, Pattern>,
   shortName: string,
-  editToHeadsign: (pattern: PatternSummary) => string,
-  editFromHeadsign: (pattern: PatternSummary) => string
+  editToHeadsign: HeadsignGenerator,
+  editFromHeadsign: HeadsignGenerator
 ): PatternSummary[] {
   const mapped = Object.entries(patterns).map(
     ([id, pat]): PatternSummary => ({

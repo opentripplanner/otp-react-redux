@@ -8,7 +8,11 @@ import styled from 'styled-components'
 import * as uiActions from '../../actions/ui'
 import { AppReduxState } from '../../util/state-types'
 import { DEFAULT_ROUTE_COLOR } from '../util/colors'
-import { extractMainHeadsigns, PatternSummary } from '../../util/pattern-viewer'
+import {
+  extractMainHeadsigns,
+  HeadsignGenerator,
+  PatternSummary
+} from '../../util/pattern-viewer'
 import { getOperatorName } from '../../util/state'
 import { getPatternViewerColors } from '../../util/viewer'
 import { LinkOpensNewWindow } from '../util/externalLink'
@@ -87,7 +91,7 @@ class RouteDetails extends Component<Props> {
     setViewedStop(stop)
   }
 
-  _getHeadsignWithLastStop = (pattern: PatternSummary): string => {
+  _getHeadsignWithLastStop: HeadsignGenerator = (pattern) => {
     return this.props.intl.formatMessage(
       {
         defaultMessage: '{headsign} ({lastStop})',
@@ -97,7 +101,7 @@ class RouteDetails extends Component<Props> {
     ) as string
   }
 
-  _getHeadsignWithFirstStop = (pattern: PatternSummary): string => {
+  _getHeadsignWithFirstStop: HeadsignGenerator = (pattern) => {
     return this.props.intl.formatMessage(
       {
         defaultMessage: '{headsign} (from {firstStop})',

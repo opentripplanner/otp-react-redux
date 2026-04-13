@@ -3,7 +3,7 @@ import { Route, Stop } from '@opentripplanner/types'
 import '../test-utils/mock-window-url'
 import {
   extractMainHeadsigns,
-  PatternSummary,
+  HeadsignGenerator,
   sortAndRemoveSubpatterns
 } from '../../lib/util/pattern-viewer'
 import { Pattern } from '../../lib/components/util/types'
@@ -16,13 +16,11 @@ function createStops(ids: string[]): Stop[] {
   }))
 }
 
-function editToHeadsign(pattern: PatternSummary): string {
-  return `${pattern.headsign} (${pattern.lastStop})`
-}
+const editToHeadsign: HeadsignGenerator = (pattern) =>
+  `${pattern.headsign} (${pattern.lastStop})`
 
-function editFromHeadsign(pattern: PatternSummary): string {
-  return `${pattern.headsign} (from ${pattern.firstStop})`
-}
+const editFromHeadsign: HeadsignGenerator = (pattern) =>
+  `${pattern.headsign} (from ${pattern.firstStop})`
 
 const defaultHeadsign = 'Everett via Lynnwood'
 const route: Route = {
