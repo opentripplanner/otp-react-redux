@@ -102,7 +102,10 @@ const PatternRow = ({
               style={{ fontSize: routeNameFontSize(routeName) }}
             />
           </span>
-          <span style={{ wordBreak: 'break-word' }} title={pattern.headsign}>
+          <span
+            style={{ wordBreak: 'break-word' }}
+            title={pattern.headsign || undefined}
+          >
             {alwaysShowLongName && !!pattern.route.longName && (
               <strong style={{ display: 'block' }}>
                 {pattern.route.longName}
