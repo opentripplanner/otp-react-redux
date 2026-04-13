@@ -26,8 +26,8 @@
 }
 
 .field-trip-time-edit form {
+  align-items: baseline;
   display: flex;
   flex-direction: row-reverse;
-  align-items: baseline;
   justify-content: left;
 }
