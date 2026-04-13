@@ -16,12 +16,12 @@ function createStops(ids: string[]): Stop[] {
   }))
 }
 
-function editToHeadsign(pattern: PatternSummary) {
-  pattern.headsign = `${pattern.headsign} (${pattern.lastStop})`
+function editToHeadsign(pattern: PatternSummary): string {
+  return `${pattern.headsign} (${pattern.lastStop})`
 }
 
-function editFromHeadsign(pattern: PatternSummary) {
-  pattern.headsign = `${pattern.headsign} (from ${pattern.firstStop})`
+function editFromHeadsign(pattern: PatternSummary): string {
+  return `${pattern.headsign} (from ${pattern.firstStop})`
 }
 
 const defaultHeadsign = 'Everett via Lynnwood'

@@ -39,8 +39,8 @@ function sameFirstAndLastStop(
 export function extractMainHeadsigns(
   patterns: Record<string, Pattern>,
   shortName: string,
-  editToHeadsign: (pattern: PatternSummary) => void,
-  editFromHeadsign: (pattern: PatternSummary) => void
+  editToHeadsign: (pattern: PatternSummary) => string,
+  editFromHeadsign: (pattern: PatternSummary) => string
 ): PatternSummary[] {
   const mapped = Object.entries(patterns).map(
     ([id, pat]): PatternSummary => ({
@@ -76,10 +76,10 @@ export function extractMainHeadsigns(
       }
       if (updateHeadsign) {
         // Update headsign if conditions apply.
-        updateHeadsign(cur)
+        cur.headsign = updateHeadsign(cur)
         // If there are only two total patterns, then we should rename both of them
         if (amended.length === 1 && mapped.length === 2) {
-          updateHeadsign(amended[0])
+          amended[0].headsign = updateHeadsign(amended[0])
           amended.push(cur)
           return amended
         }
