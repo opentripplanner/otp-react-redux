@@ -2,13 +2,8 @@ import styled, { css } from 'styled-components'
 
 import { DARK_TEXT_GREY } from '../util/colors'
 
-export interface RenderProps {
-  full?: boolean
-  routeColor?: string
-}
-
 /** Route Details */
-export const Container = styled.div<RenderProps>`
+export const Container = styled.div<{ full?: boolean }>`
   background-color: inherit;
   height: 100%;
   overflow-y: hidden;

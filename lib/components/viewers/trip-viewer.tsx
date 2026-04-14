@@ -13,18 +13,17 @@ import styled from 'styled-components'
 import * as apiActions from '../../actions/api'
 import * as narrativeActions from '../../actions/narrative'
 import * as uiActions from '../../actions/ui'
+import { AppReduxState } from '../../util/state-types'
 import { ComponentContext } from '../../util/contexts'
-import {
-  getActiveItineraries,
-  getActiveSearch,
-  getOperatorAndRoute
-} from '../../util/state'
+import { getActiveItineraries, getOperatorAndRoute } from '../../util/state'
 import { getRouteColorBasedOnSettings } from '../../util/viewer'
 import { IconWithText } from '../util/styledIcon'
 import {
   ItineraryWithCO2Info,
   ItineraryWithSortingCosts
 } from '../../util/itinerary'
+import { TransitOperatorConfig } from '../../util/config-types'
+import { TripStopTime } from '../util/types'
 import BackButton from '../util/back-button'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
 import PageTitle from '../util/page-title'
@@ -49,10 +48,6 @@ type ViewedTrip = {
   tripId?: string
 }
 
-interface StopTime {
-  scheduledDeparture: string
-  stop: Stop
-}
 interface TripData {
   bikesAllowed: string
   blockId?: string | null
@@ -62,7 +57,7 @@ interface TripData {
   route: Route
   serviceId: string
   shapeId: string
-  stopTimes: StopTime[]
+  stopTimes: TripStopTime[]
   tripHeadsign: string
   wheelchairAccessible: string
 }
@@ -78,7 +73,7 @@ interface Props {
   setViewedStop: (payload: { stopId: string } | null) => void
   setViewedTrip: (payload: ViewedTrip | null) => void
   settingActiveItinerary: (payload: { index: number } | null) => void
-  transitOperators: TransitOperator[]
+  transitOperators?: TransitOperatorConfig[]
   tripData: TripData
   viewedTrip: ViewedTrip
 }
@@ -161,7 +156,7 @@ class TripViewer extends Component<Props> {
       (tripData?.route &&
         coreUtils?.route?.getTransitOperatorFromOtpRoute(
           tripData?.route,
-          transitOperators
+          transitOperators as TransitOperator[]
         )) ||
       {}
 
@@ -182,10 +177,10 @@ class TripViewer extends Component<Props> {
     const Route = RouteRenderer || DefaultRouteRenderer
 
     const fromIndex = stopTimes?.findIndex(
-      (stopTime: StopTime) => stopTime.stop.id === viewedTrip?.fromStopId
+      (stopTime: TripStopTime) => stopTime.stop.id === viewedTrip?.fromStopId
     )
     const toIndex = stopTimes?.findIndex(
-      (stopTime: StopTime) => stopTime.stop.id === viewedTrip?.toStopId
+      (stopTime: TripStopTime) => stopTime.stop.id === viewedTrip?.toStopId
     )
 
     const bikesAreAllowed = tripData?.bikesAllowed === 'ALLOWED'
@@ -305,9 +300,7 @@ class TripViewer extends Component<Props> {
   }
 }
 
-const mapStateToProps = (state: any) => {
-  const activeSearch: any = getActiveSearch(state)
-  const pending = activeSearch?.pending
+const mapStateToProps = (state: AppReduxState) => {
   const activeItineraryIndex = Number.parseInt(
     coreUtils.query.getUrlParams().ui_activeItinerary
   )
@@ -315,7 +308,7 @@ const mapStateToProps = (state: any) => {
   const viewedTrip = state.otp.ui.viewedTrip
 
   return {
-    activeItinerary: !pending && itineraries[activeItineraryIndex],
+    activeItinerary: itineraries[activeItineraryIndex],
     activeItineraryIndex,
     homeTimezone: state.otp.config.homeTimezone,
     transitOperators: state.otp.config.transitOperators,

@@ -1,7 +1,7 @@
 import { FormattedMessage, IntlShape } from 'react-intl'
 import { getCurrentDate } from '@opentripplanner/core-utils/lib/time'
 import { toDate } from 'date-fns-tz'
-import React, { useEffect, useRef } from 'react'
+import React, { ReactElement, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
 import {
@@ -9,17 +9,15 @@ import {
   DEFAULT_ROUTE_COLOR,
   GREY_ON_WHITE
 } from '../util/colors'
+import { StopTime, TripStopTime } from '../util/types'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
-import { RenderProps } from './styled'
 import DepartureTime from './departure-time'
-
-type StopProps = RenderProps & { timeColumn?: boolean }
 
 const timeCellWidth = '45px'
 const lowOpacity = '40%'
 
-export const StopContainer = styled.ol<StopProps>`
+export const StopContainer = styled.ol<{ timeColumn?: boolean }>`
   color: ${DARK_TEXT_GREY};
   display: flex;
   flex-direction: column;
@@ -50,11 +48,11 @@ export const StopContainer = styled.ol<StopProps>`
   }
 `
 
-export const StopLink = styled.button<RenderProps>`
+export const StopLink = styled.button`
   background-color: transparent;
   border: none;
   // Should this just be black to better contrast with the #666 in the faded class?
-  color: ${DARK_TEXT_GREY + 'da'};
+  color: ${DARK_TEXT_GREY} + 'da';
   padding: 0;
   text-align: left;
   width: 95%;
@@ -64,7 +62,7 @@ export const StopLink = styled.button<RenderProps>`
   }
 `
 
-export const Stop = styled.li<StopProps>`
+export const Stop = styled.li<{ routeColor: string; timeColumn?: boolean }>`
   align-items: center;
   display: grid;
   gap: 14px;
@@ -121,7 +119,7 @@ interface StopListProps {
   intl: IntlShape
   routeColor?: string
   routePattern: any
-  setHoveredStop?: (arg: any) => void
+  setHoveredStop?: (id: string | null) => void
   stopLinkClicked: (arg: any) => void
   toIndex?: number
 }
@@ -137,9 +135,9 @@ const StopList = ({
   toIndex
 }: StopListProps): JSX.Element => {
   // The stops in the pattern viewer vs the trip viewer are organized slightly differently, so account for that:
-  const stopsArray =
+  const stopsArray: StopTime[] =
     routePattern.stops ||
-    routePattern.map((x: any) => ({
+    routePattern.map((x: TripStopTime) => ({
       ...x.stop,
       scheduledDeparture: x.scheduledDeparture
     }))
@@ -169,15 +167,15 @@ const StopList = ({
         id: 'components.TripViewer.listOfRouteStops'
       })}
       onMouseLeave={() => setHoveredStop && setHoveredStop(null)}
-      timeColumn={stopsArray[0].scheduledDeparture}
+      timeColumn={!!stopsArray[0].scheduledDeparture}
     >
-      {stopsArray?.map((stop: any, index: number) => {
+      {stopsArray?.map((stop: StopTime, index: number) => {
         const highlighted = tripViewerHighLighter
           ? index >= fromIndex && index <= toIndex
           : true
 
         // Helpful invisible labels for screenreaders
-        let stopLabel = null
+        let stopLabel: ReactElement | undefined
         if (fromIndex === index) {
           stopLabel = (
             <FormattedMessage id="components.TripViewer.startOfTrip" />
@@ -192,12 +190,15 @@ const StopList = ({
             // Use array index instead of stop id because a stop can be visited several times.
             key={index}
             onClick={() => stopLinkClicked(stop)}
-            onMouseOver={() => setHoveredStop && setHoveredStop(stop.id)}
+            onMouseOver={
+              () => setHoveredStop && setHoveredStop(stop.id || null)
+              // eslint-disable-next-line react/jsx-curly-newline
+            }
             ref={index === fromIndex ? firstStopRef : null}
             routeColor={
               routeColor?.includes('ffffff') ? DEFAULT_ROUTE_COLOR : routeColor
             }
-            timeColumn={stop.scheduledDeparture}
+            timeColumn={!!stop.scheduledDeparture}
           >
             {stop.scheduledDeparture && (
               <div
@@ -211,7 +212,7 @@ const StopList = ({
             <div className="stop-decoration" />
             <StopLink
               name={stop.name}
-              onFocus={() => setHoveredStop && setHoveredStop(stop.id)}
+              onFocus={() => setHoveredStop && setHoveredStop(stop.id || null)}
             >
               {stopLabel && (
                 <InvisibleA11yLabel>{stopLabel}</InvisibleA11yLabel>
