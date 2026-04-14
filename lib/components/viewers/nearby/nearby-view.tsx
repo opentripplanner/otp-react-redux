@@ -84,6 +84,8 @@ type Props = {
   nearbyFilters?: Array<NearbyFilterConfig>
   nearbyViewCoords?: LatLonObj
   nearbyViewError?: any
+  onLocationFieldBlur?: () => void
+  onLocationFieldFocus?: () => void
   radius?: number
   routeSortComparator: (a: PatternStopTime, b: PatternStopTime) => number
   sessionSearches: any
@@ -178,6 +180,8 @@ function NearbyView({
   nearbyFilters,
   nearbyViewCoords,
   nearbyViewError,
+  onLocationFieldBlur,
+  onLocationFieldFocus,
   radius,
   routeSortComparator,
   sessionSearches,
@@ -438,9 +442,11 @@ function NearbyView({
           )}
           locationType="to"
           onBlur={() => {
+            onLocationFieldBlur && onLocationFieldBlur()
             setLocationInputFocused(false)
           }}
           onFocus={() => {
+            onLocationFieldFocus && onLocationFieldFocus()
             setLocationInputFocused(true)
           }}
           onLocationSelected={(selection) => {
