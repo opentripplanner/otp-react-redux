@@ -33,7 +33,7 @@ import TripMonitoredDaySelector, {
   isDisabled
 } from './trip-monitored-day-selector'
 import TripStatus from './trip-status'
-import TripSummaryPane from './trip-summary-pane'
+import TripSummaryPane, { ToggleNotificationButton } from './trip-summary-pane'
 
 type TripBasicsProps = WrappedComponentProps &
   FormikProps<MonitoredTrip> & {
@@ -216,7 +216,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
             monitoredTrip={monitoredTrip}
           />
           {!isCreating && (
-            <Button
+            <ToggleNotificationButton
               disabled={isRecheckingExistence}
               onClick={this._handleRecheckItineraryExistence}
             >
@@ -225,7 +225,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
               ) : (
                 <FormattedMessage id="components.TripBasicsPane.checkAgain" />
               )}
-            </Button>
+            </ToggleNotificationButton>
           )}
         </>
       )
