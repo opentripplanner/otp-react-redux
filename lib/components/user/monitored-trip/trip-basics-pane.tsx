@@ -1,12 +1,11 @@
+import { connect } from 'react-redux'
 import {
-  Button,
   ControlLabel,
   FormControl,
   FormGroup,
   HelpBlock,
   Radio
 } from 'react-bootstrap'
-import { connect } from 'react-redux'
 import { Field, FormikProps } from 'formik'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { Prompt } from 'react-router'
