@@ -177,13 +177,18 @@ const TripMonitoredDaySelector = ({
         {finalItineraryExistence ? (
           <FormattedMessage id="components.TripBasicsPane.tripIsAvailableOnDaysIndicated" />
         ) : (
-          <ProgressBar
-            active
-            label={
+          <>
+            <InvisibleA11yLabel as="div">
               <FormattedMessage id="components.TripBasicsPane.checkingItineraryExistence" />
-            }
-            now={100}
-          />
+            </InvisibleA11yLabel>
+            <ProgressBar
+              active
+              label={
+                <FormattedMessage id="components.TripBasicsPane.checkingItineraryExistence" />
+              }
+              now={100}
+            />
+          </>
         )}
       </HelpBlock>
       <HelpBlock role="alert">
