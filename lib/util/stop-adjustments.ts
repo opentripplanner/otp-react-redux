@@ -716,6 +716,29 @@ const itineraryIsInZoneTimeRange = (
   )
 }
 
+const updateLegIdWithNewStop = (
+  leg: Leg,
+  adjustment: StopAdjustment
+): string | undefined => {
+  const oldLegId = leg.id
+  const oldStopCode = leg.to.stop?.gtfsId
+  const newStopCode = adjustment.newStop.gtfsId
+  if (oldLegId && oldStopCode) {
+    try {
+      const bytes = Uint8Array.fromBase64(oldLegId, {
+        alphabet: 'base64url'
+      })
+      const decoded = new TextDecoder().decode(bytes)
+      const updatedDecoded = decoded.replace(oldStopCode, newStopCode)
+      const updatedEncoded = new TextEncoder().encode(updatedDecoded)
+      return updatedEncoded.toBase64()
+    } catch (error) {
+      console.warn('error updating leg ID with new stop', error)
+    }
+  }
+  return oldLegId
+}
+
 /**
  * Takes a set of custom routing zones and an itinerary and extracts the relevant origin and/or
  * destination rule and zone names
@@ -816,6 +839,8 @@ export const adjustItinerary = (
       for (let i = 0; i <= updatedItinerary.legs.length; i++) {
         const leg = updatedItinerary.legs[i]
         if (leg.transitLeg) {
+          const newLegId = updateLegIdWithNewStop(leg, adjustment)
+          updatedLeg.id = newLegId
           updatedItinerary.legs[i] = updatedLeg
           break
         }
@@ -855,6 +880,8 @@ export const adjustItinerary = (
       for (let i = updatedItinerary.legs.length - 1; i >= 0; i--) {
         const leg = updatedItinerary.legs[i]
         if (leg.transitLeg) {
+          const newLegId = updateLegIdWithNewStop(leg, adjustment)
+          updatedLeg.id = newLegId
           updatedItinerary.legs[i] = updatedLeg
           break
         }
