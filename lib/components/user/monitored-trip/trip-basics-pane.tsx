@@ -61,6 +61,10 @@ const RequiredIndicator = styled.span`
   margin-left: 5px;
 `
 
+const RecheckTripButton = styled(ToggleNotificationButton)`
+  margin-top: -10px;
+`
+
 /**
  * This component shows summary information for a trip
  * and lets the user edit the trip name and monitored day.
@@ -215,7 +219,9 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
             monitoredTrip={monitoredTrip}
           />
           {!isCreating && (
-            <ToggleNotificationButton
+            <RecheckTripButton
+              // Use same text color as the trip existence text above.
+              className="help-block"
               disabled={isRecheckingExistence}
               onClick={this._handleRecheckItineraryExistence}
             >
@@ -224,7 +230,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
               ) : (
                 <FormattedMessage id="components.TripBasicsPane.checkAgain" />
               )}
-            </ToggleNotificationButton>
+            </RecheckTripButton>
           )}
         </>
       )
