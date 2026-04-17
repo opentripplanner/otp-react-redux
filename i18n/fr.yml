@@ -41,6 +41,7 @@ actions:
     setGroupSizeError: "Erreur sur la taille du groupe :"
     setPaymentError: "Erreur sur les coordonnées de paiement :"
     setRequestStatusError: "Erreur sur l'état de la requête :"
+    setTimeError: "Error setting time:"
   location:
     deniedAccessAlert: >
       L'accès à votre position est refusé.

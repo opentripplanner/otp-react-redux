@@ -33,6 +33,7 @@ actions:
     setGroupSizeError: "Error setting group size:"
     setPaymentError: "Error setting payment info:"
     setRequestStatusError: "Error setting request status:"
+    setTimeError: "Error setting time:"
   location:
     deniedAccessAlert: >
       Access to your location is blocked.
