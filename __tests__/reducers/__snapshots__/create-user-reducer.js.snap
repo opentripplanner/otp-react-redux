@@ -3,7 +3,6 @@
 exports[`lib > reducers > create-user-reducer should be able to create the initial state 1`] = `
 {
   "accessToken": null,
-  "itineraryExistence": null,
   "lastPhoneSmsRequest": {
     "number": null,
     "status": null,
