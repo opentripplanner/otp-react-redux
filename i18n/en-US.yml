@@ -33,6 +33,7 @@ actions:
     setGroupSizeError: "Error setting group size:"
     setPaymentError: "Error setting payment info:"
     setRequestStatusError: "Error setting request status:"
+    setTimeError: "Error setting time:"
   location:
     deniedAccessAlert: >
       Access to your location is blocked.
@@ -656,6 +657,7 @@ components:
     travelingAt: Traveling at {milesPerHour}
     vehicleName: Vehicle {vehicleNumber}
   TripBasicsPane:
+    checkAgain: Check again
     checkingItineraryExistence: Checking itinerary existence for each day of the week...
     indicatesRequiredFields: Fields marked with an asterisk (*) are required.
     onlyOnDate: Only on {date, date, ::eeeee yyyyMMdd}
