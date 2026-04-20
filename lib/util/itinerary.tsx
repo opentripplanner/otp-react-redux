@@ -182,9 +182,6 @@ export function collectItinerariesWithoutDuplicates(
       }
     })
   })
-
-  console.log(itineraries)
-
   return itineraries
 }
 
