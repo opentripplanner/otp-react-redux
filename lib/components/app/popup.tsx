@@ -36,7 +36,7 @@ const isMobile = coreUtils.ui.isMobile()
 const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
   const intl = useIntl()
 
-  const { appendLocale, id, modal, url } = content || {}
+  const { appendLocale, appendParams, id, modal, url } = content || {}
 
   const closeText = intl.formatMessage({ id: 'common.forms.close' })
 
@@ -46,7 +46,7 @@ const PopupWrapper = ({ content, hideModal }: Props): JSX.Element | null => {
   // appendLocale is true by default, so undefined is true
   const compiledUrl = `${url}${
     appendLocale !== false ? intl.defaultLocale : ''
-  }`
+  }${appendParams === true ? window.location.hash : ''}`
 
   useEffect(() => {
     if (!useIframe && shown) {
