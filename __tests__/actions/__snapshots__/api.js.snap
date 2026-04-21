@@ -1,19 +1,19 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`actions > api routingQuery should gracefully handle bad response 1`] = `
-Array [
-  Array [
+[
+  [
     [Function],
   ],
-  Array [
+  [
     [Function],
   ],
 ]
 `;
 
 exports[`actions > api routingQuery should make a query to OTP 1`] = `
-Array [
-  Array [
+[
+  [
     [Function],
   ],
 ]
