@@ -161,8 +161,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                             <Search
                               style={
                                 {
-                                  "marginRight": 5,
-                                  "padding": 5,
+                                  "padding": 3,
                                 }
                               }
                             >
@@ -177,8 +176,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                                 iconViewBox="0 0 512 512"
                                 style={
                                   {
-                                    "marginRight": 5,
-                                    "padding": 5,
+                                    "padding": 3,
                                   }
                                 }
                               >
@@ -194,8 +192,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                                   iconViewBox="0 0 512 512"
                                   style={
                                     {
-                                      "marginRight": 5,
-                                      "padding": 5,
+                                      "padding": 3,
                                     }
                                   }
                                 >
@@ -206,8 +203,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                                     focusable="false"
                                     style={
                                       {
-                                        "marginRight": 5,
-                                        "padding": 5,
+                                        "padding": 3,
                                       }
                                     }
                                     viewBox="0 0 512 512"
@@ -4533,8 +4529,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             <Search
                               style={
                                 {
-                                  "marginRight": 5,
-                                  "padding": 5,
+                                  "padding": 3,
                                 }
                               }
                             >
@@ -4549,8 +4544,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 iconViewBox="0 0 512 512"
                                 style={
                                   {
-                                    "marginRight": 5,
-                                    "padding": 5,
+                                    "padding": 3,
                                   }
                                 }
                               >
@@ -4566,8 +4560,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   iconViewBox="0 0 512 512"
                                   style={
                                     {
-                                      "marginRight": 5,
-                                      "padding": 5,
+                                      "padding": 3,
                                     }
                                   }
                                 >
@@ -4578,8 +4571,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     focusable="false"
                                     style={
                                       {
-                                        "marginRight": 5,
-                                        "padding": 5,
+                                        "padding": 3,
                                       }
                                     }
                                     viewBox="0 0 512 512"
