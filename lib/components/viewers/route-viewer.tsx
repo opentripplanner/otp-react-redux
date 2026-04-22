@@ -240,11 +240,10 @@ class RouteViewer extends Component<Props, State> {
         <ul className="route-viewer-body">
           {sortedRoutes.map((route) => {
             // Find operator based on agency_id (extracted from OTP route ID).
-            const operator =
-              coreUtils.route.getTransitOperatorFromOtpRoute(
-                route,
-                transitOperators
-              ) || {}
+            const operator = coreUtils.route.getTransitOperatorFromOtpRoute(
+              route,
+              transitOperators
+            ) as TransitOperatorConfig
             return (
               <RouteRow
                 findRouteIfNeeded={findRouteIfNeeded}

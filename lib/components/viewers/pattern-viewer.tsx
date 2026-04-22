@@ -80,7 +80,10 @@ const PatternViewer = ({
   // If patternId is present and route data have been fetched, we're looking at a specific pattern's stops.
   if (patternId && route) {
     // Find operator based on agency_id (extracted from OTP route ID).
-    const operator = getRouteOperator(route, transitOperators)
+    const operator = getRouteOperator(
+      route,
+      transitOperators
+    ) as TransitOperator
     const { backgroundColor, textColor } = getPatternViewerColors(
       useRouteColorAsBackground,
       operator,

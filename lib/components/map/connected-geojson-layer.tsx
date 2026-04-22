@@ -64,7 +64,6 @@ const GeoJSONOverlay = (props: Props) => {
                 </BaseMapStyled.PopupRow>
               </BaseMapStyled.MapOverlayPopup>
             }
-            // @ts-expect-error popup props are incorrect
             popupProps={{ offset: 10 }}
             position={[geometry.coordinates[1], geometry.coordinates[0]]}
           >
