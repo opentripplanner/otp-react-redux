@@ -221,7 +221,8 @@
 .batch-search-settings.mobile-padding input::placeholder,
 .route-viewer .routeSearch input::placeholder,
 .otp.mobile .location-search input::placeholder,
-.otp.mobile .welcome-location input::placeholder {
+.otp.mobile .welcome-location input::placeholder,
+.nearby-view-location-field input::placeholder {
   color: #666
 }
 
