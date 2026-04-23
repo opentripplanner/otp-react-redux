@@ -161,6 +161,8 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                             <Search
                               style={
                                 {
+                                  "color": "#666666",
+                                  "marginTop": -2,
                                   "padding": 3,
                                 }
                               }
@@ -176,6 +178,8 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                                 iconViewBox="0 0 512 512"
                                 style={
                                   {
+                                    "color": "#666666",
+                                    "marginTop": -2,
                                     "padding": 3,
                                   }
                                 }
@@ -192,6 +196,8 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                                   iconViewBox="0 0 512 512"
                                   style={
                                     {
+                                      "color": "#666666",
+                                      "marginTop": -2,
                                       "padding": 3,
                                     }
                                   }
@@ -203,6 +209,8 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                                     focusable="false"
                                     style={
                                       {
+                                        "color": "#666666",
+                                        "marginTop": -2,
                                         "padding": 3,
                                       }
                                     }
@@ -4529,6 +4537,8 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             <Search
                               style={
                                 {
+                                  "color": "#666666",
+                                  "marginTop": -2,
                                   "padding": 3,
                                 }
                               }
@@ -4544,6 +4554,8 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 iconViewBox="0 0 512 512"
                                 style={
                                   {
+                                    "color": "#666666",
+                                    "marginTop": -2,
                                     "padding": 3,
                                   }
                                 }
@@ -4560,6 +4572,8 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   iconViewBox="0 0 512 512"
                                   style={
                                     {
+                                      "color": "#666666",
+                                      "marginTop": -2,
                                       "padding": 3,
                                     }
                                   }
@@ -4571,6 +4585,8 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     focusable="false"
                                     style={
                                       {
+                                        "color": "#666666",
+                                        "marginTop": -2,
                                         "padding": 3,
                                       }
                                     }
