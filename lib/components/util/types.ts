@@ -26,6 +26,13 @@ export interface StopTime {
   trip: StopTimeTrip
 }
 
+export interface StopListEntry {
+  id?: string
+  name: string
+  realtimeDeparture?: number
+  scheduledDeparture?: number
+}
+
 export interface TripStopTime {
   scheduledDeparture: number
   stop: Stop

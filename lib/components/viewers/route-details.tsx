@@ -14,6 +14,7 @@ import { LinkOpensNewWindow } from '../util/externalLink'
 import {
   SetViewedRouteHandler,
   SetViewedStopHandler,
+  StopListEntry,
   ViewedRouteObject
 } from '../util/types'
 import { UnstyledButton } from '../util/unstyled-button'
@@ -189,9 +190,11 @@ class RouteDetails extends Component<Props> {
             <StopList
               intl={intl}
               routeColor={routeColor}
-              routePattern={pattern}
               setHoveredStop={setHoveredStop}
               stopLinkClicked={this._stopLinkClicked}
+              stops={(pattern.stops ?? []).map(
+                (stop): StopListEntry => ({ id: stop.id, name: stop.name })
+              )}
             />
           </>
         )}

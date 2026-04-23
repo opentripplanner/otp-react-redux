@@ -4,7 +4,7 @@ import { Label as BsLabel } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
 import { isMobile } from '@opentripplanner/core-utils/lib/ui'
-import { Leg, Route, Stop, TransitOperator } from '@opentripplanner/types'
+import { Leg, Route, TransitOperator } from '@opentripplanner/types'
 import { Wheelchair } from '@styled-icons/fa-solid/Wheelchair'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { Component } from 'react'
@@ -22,8 +22,8 @@ import {
   ItineraryWithCO2Info,
   ItineraryWithSortingCosts
 } from '../../util/itinerary'
+import { StopListEntry, TripStopTime } from '../util/types'
 import { TransitOperatorConfig } from '../../util/config-types'
-import { TripStopTime } from '../util/types'
 import BackButton from '../util/back-button'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
 import PageTitle from '../util/page-title'
@@ -141,7 +141,7 @@ class TripViewer extends Component<Props> {
     ]
   }
 
-  _getRouteColor = (operator: TransitOperator) => {
+  _getRouteColor = (operator?: TransitOperator) => {
     const { tripData } = this.props
     const routeColor =
       tripData?.route &&
@@ -152,12 +152,13 @@ class TripViewer extends Component<Props> {
 
   _getOperator = () => {
     const { transitOperators, tripData } = this.props
+    if (!transitOperators) return undefined
     const operator =
       (tripData?.route &&
         coreUtils?.route?.getTransitOperatorFromOtpRoute(
           tripData?.route,
-          transitOperators as TransitOperator[]
-        )) ||
+          transitOperators
+        )) ??
       {}
 
     return operator
@@ -230,8 +231,8 @@ class TripViewer extends Component<Props> {
                 />
               </div>
 
-              {/* TODO: In Trip Description, add links to the stop in the list of stops so when navigating by 
-              screenreader or keyboard nav, the departure, arrival, and stop viewer links 
+              {/* TODO: In Trip Description, add links to the stop in the list of stops so when navigating by
+              screenreader or keyboard nav, the departure, arrival, and stop viewer links
               are all accessible without having to go through all the stops not on the trip. */}
 
               {fromIndex > -1 && (
@@ -289,8 +290,14 @@ class TripViewer extends Component<Props> {
               homeTimezone={homeTimezone}
               intl={intl}
               routeColor={routeColor}
-              routePattern={stopTimes}
               stopLinkClicked={setViewedStop}
+              stops={stopTimes.map(
+                (st: TripStopTime): StopListEntry => ({
+                  id: st.stop.id,
+                  name: st.stop.name,
+                  scheduledDeparture: st.scheduledDeparture
+                })
+              )}
               toIndex={toIndex}
             />
           )}

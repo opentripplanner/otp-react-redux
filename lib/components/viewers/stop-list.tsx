@@ -1,6 +1,6 @@
 import { FormattedMessage, IntlShape } from 'react-intl'
-import { getCurrentDate } from '@opentripplanner/core-utils/lib/time'
 import { toDate } from 'date-fns-tz'
+import coreUtils from '@opentripplanner/core-utils'
 import React, { ReactElement, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
@@ -9,10 +9,13 @@ import {
   DEFAULT_ROUTE_COLOR,
   GREY_ON_WHITE
 } from '../util/colors'
-import { StopTime, TripStopTime } from '../util/types'
+import { StopListEntry } from '../util/types'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
 import DepartureTime from './departure-time'
+
+const { time } = coreUtils
+const { getCurrentDate } = time
 
 const timeCellWidth = '45px'
 const lowOpacity = '40%'
@@ -22,7 +25,7 @@ export const StopContainer = styled.ol<{ timeColumn?: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 8.5px;
-  /* Calculate the height of the container a little short to ensure all stops 
+  /* Calculate the height of the container a little short to ensure all stops
   are shown when browsers don't calculate 100% sensibly. */
   height: calc(100% - 140px);
   overflow-y: ${(props) => (props.timeColumn ? 'visible' : 'scroll')};
@@ -118,9 +121,9 @@ interface StopListProps {
   homeTimezone?: any
   intl: IntlShape
   routeColor?: string
-  routePattern: any
   setHoveredStop?: (id: string | null) => void
   stopLinkClicked: (arg: any) => void
+  stops: StopListEntry[]
   toIndex?: number
 }
 
@@ -129,18 +132,11 @@ const StopList = ({
   homeTimezone,
   intl,
   routeColor = DEFAULT_ROUTE_COLOR,
-  routePattern,
   setHoveredStop,
   stopLinkClicked,
+  stops,
   toIndex
 }: StopListProps): JSX.Element => {
-  // The stops in the pattern viewer vs the trip viewer are organized slightly differently, so account for that:
-  const stopsArray: StopTime[] =
-    routePattern.stops ||
-    routePattern.map((x: TripStopTime) => ({
-      ...x.stop,
-      scheduledDeparture: x.scheduledDeparture
-    }))
   const startOfDay = toDate(getCurrentDate(homeTimezone), {
     timeZone: homeTimezone
   })
@@ -167,9 +163,9 @@ const StopList = ({
         id: 'components.TripViewer.listOfRouteStops'
       })}
       onMouseLeave={() => setHoveredStop && setHoveredStop(null)}
-      timeColumn={!!stopsArray[0].scheduledDeparture}
+      timeColumn={stops.length > 0 && 'scheduledDeparture' in stops[0]}
     >
-      {stopsArray?.map((stop: StopTime, index: number) => {
+      {stops?.map((stop: StopListEntry, index: number) => {
         const highlighted = tripViewerHighLighter
           ? index >= fromIndex && index <= toIndex
           : true
