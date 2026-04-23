@@ -730,6 +730,11 @@ const updateLegIdWithNewStop = (
       })
       const decoded = new TextDecoder().decode(bytes)
       const updatedDecoded = decoded.replace(oldStopCode, newStopCode)
+      const duplicateCheck = updatedDecoded.indexOf(oldStopCode)
+      if (duplicateCheck !== -1) {
+        console.warn('leg ID contains duplicate stop codes')
+        return oldLegId
+      }
       const updatedEncoded = new TextEncoder().encode(updatedDecoded)
       return updatedEncoded.toBase64()
     } catch (error) {
