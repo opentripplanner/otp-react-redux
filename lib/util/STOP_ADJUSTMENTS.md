@@ -4,7 +4,7 @@ The goal of the stop adjustments feature is to allow for agencies to implement c
 
 Within the code, these stop adjustments are used by the `updateItinerariesWithStopAdjustments` function within [stop-adjustments](./stop-adjustments.ts). When itineraries are returned from the OTP backend, this function can take those itineraries and use the stop adjustment rules to augment them, returning the updated itineraries. These updated itineraries can then be fed forward to the frontend UI for display just like the normal itineraries.
 
-Agencies can set rules using specific types that live in the [stop-adjustments.ts](./stop-adjustments.ts) file. What follows is a high-level overview of theses types. See the types themselves for more specific comments.
+Agencies can set rules using specific types that live in the [stop-adjustments.ts](./stop-adjustments.ts) file. What follows is a high-level overview of these types. See the types themselves for more specific comments.
 
 ## Custom Routing Zones
 
@@ -126,7 +126,7 @@ The optional intermediate stops to remove property specifies how many stops shou
 
 #### `legGeometry`
 
-The leg geometry property specifies which changes need to be made to the `legGeometry` property of the revelant transit leg in the itinerary. The leg geometry changes are what allow the route preview to show correctly in the trip planner.
+The leg geometry property specifies which changes need to be made to the `legGeometry` property of the relevant transit leg in the itinerary. The leg geometry changes are what allow the route preview to show correctly in the trip planner.
 
 This property contains the following fields:
 
