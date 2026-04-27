@@ -143,23 +143,27 @@ class TripViewer extends Component<Props> {
 
   _getRouteColor = (operator?: TransitOperator) => {
     const { tripData } = this.props
-    const routeColor =
-      tripData?.route &&
-      ((tripData?.route?.color && `#${tripData?.route?.color}`) ||
-        getRouteColorBasedOnSettings(tripData.route, operator))
+    const routeColorFromTripData =
+      tripData?.route?.color && `#${tripData?.route?.color}`
+    const routeColorBasedOnSettings = getRouteColorBasedOnSettings(
+      tripData.route,
+      operator
+    )
+
+    const routeColor = routeColorFromTripData || routeColorBasedOnSettings
+
     return routeColor
   }
 
   _getOperator = () => {
     const { transitOperators, tripData } = this.props
     if (!transitOperators) return undefined
+    if (!tripData?.route) return undefined
     const operator =
-      (tripData?.route &&
-        coreUtils?.route?.getTransitOperatorFromOtpRoute(
-          tripData?.route,
-          transitOperators
-        )) ??
-      {}
+      coreUtils?.route?.getTransitOperatorFromOtpRoute(
+        tripData?.route,
+        transitOperators
+      ) ?? undefined
 
     return operator
   }
