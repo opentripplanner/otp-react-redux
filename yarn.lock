@@ -3987,6 +3987,17 @@
     isomorphic-mapzen-search "^1.6.1"
     lodash.memoize "^4.1.2"
 
+"@opentripplanner/geocoder@3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-3.1.0.tgz#79421fce54fc59cb74264061142948b513d16b3d"
+  integrity sha512-Jh2Ef6aD5hTwN2HJ0qe+raw5u447MQgw+hO6c4/zl/GWYkO47iqI4gyvgaOq62boe6Qh2G4G4B21bAjM0jZkMA==
+  dependencies:
+    "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
+    "@conveyal/lonlat" "^1.4.1"
+    "@leeoniya/ufuzzy" "^1.0.14"
+    isomorphic-mapzen-search "^1.6.1"
+    lodash.memoize "^4.1.2"
+
 "@opentripplanner/humanize-distance@2.1.0", "@opentripplanner/humanize-distance@^2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/humanize-distance/-/humanize-distance-2.1.0.tgz#217ee427b56422c41c036320c2524720ce7a5079"
@@ -4038,14 +4049,14 @@
     react-resize-detector "^4.2.1"
     string-similarity "^4.0.4"
 
-"@opentripplanner/location-field@4.1.4":
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-4.1.4.tgz#b5286b60168027daeb581b6f5852a44361ad254d"
-  integrity sha512-x+WOWNar0qXrfZNuuN/jmZ9RSLukoy9Ll3yJwTaabHcyWVLDsP+F7BIqYQcrxnrkjLjUFrxy8PTN8xkOa5EgQg==
+"@opentripplanner/location-field@4.1.6":
+  version "4.1.6"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/location-field/-/location-field-4.1.6.tgz#ab9c13fd2c8a56e771085113846aef29b39e25cc"
+  integrity sha512-Ezj9fpuQXLbv4CGpwKLv6GtQKTGF7qBGpPGEKrgS5gPPYail9EI2V4+9evCxVT/0rYHQ7GnX7WMfpsb8aGCLIA==
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
-    "@opentripplanner/core-utils" "14.3.2"
-    "@opentripplanner/geocoder" "3.0.7"
+    "@opentripplanner/core-utils" "16.0.2"
+    "@opentripplanner/geocoder" "3.1.0"
     "@opentripplanner/humanize-distance" "2.1.0"
     "@opentripplanner/location-icon" "2.0.0"
     "@styled-icons/fa-solid" "^10.34.0"
