@@ -21,6 +21,8 @@ jobs:
           node-version: 22.x
       - name: Install npm packages using cache
         uses: bahmutov/npm-install@v1
+      - name: Install husky
+        run: yarn add-husky
       - name: Lint code
         # Move everything from latest commit back to staged
         run: git reset --soft HEAD^ && yarn lint

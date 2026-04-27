@@ -76,8 +76,16 @@ const PatternViewer = ({
   // If patternId is present and route data have been fetched, we're looking at a specific pattern's stops.
   if (patternId && route) {
     // Find operator based on agency_id (extracted from OTP route ID).
-    const operator = getRouteOperator(route, transitOperators)
-    const fill = vehicleIconHighlight === false ? undefined : DARK_TEXT_GREY
+    const operator = getRouteOperator(
+      route,
+      transitOperators
+    ) as TransitOperator
+    const { backgroundColor, textColor } = getPatternViewerColors(
+      useRouteColorAsBackground,
+      operator,
+      route
+    )
+    const fill = vehicleIconHighlight === false ? undefined : textColor
 
     const backButtonText = intl.formatMessage({ id: 'common.forms.back' })
     return (
