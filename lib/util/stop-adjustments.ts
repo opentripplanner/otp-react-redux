@@ -1,5 +1,6 @@
 import { Leg, Place, Stop } from '@opentripplanner/types'
 import clone from 'clone'
+import polyline from '@mapbox/polyline'
 
 import {
   getFirstTransitLeg,
@@ -42,16 +43,15 @@ export interface StopAdjustment {
   intermediateStopsToRemove?: number
   /** Leg geometry adjustments to make */
   legGeometry: {
-    /** Change in length of the leg geometry */
+    /** Change in length of the leg geometry. This number will be used to remove coordinate points from the route that
+     * gets displayed on the map
+     */
     length: number
-    /** Leg geometry points to be added. Format should be encoded polyline points. For more information, see here:
+    /** Leg geometry points to be added. Format should be encoded polyline points. The polyline will be decoded and combined
+     * with the existing (decoded) polyline before being re-encoded. For more information, see here:
      * https://developers.google.com/maps/documentation/utilities/polylineutility
      */
-    pointsToAdd: string
-    /** Leg geometry points to be removed. Format should be encoded polyline points. For more information, see here:
-     * https://developers.google.com/maps/documentation/utilities/polylineutility
-     */
-    pointsToCut: string[]
+    pointsToAdd?: string
   }
   /** Information for the new stop that should be used as the boarding or alighting point of the updated transit leg */
   newStop: NewStop
@@ -204,11 +204,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               endTime: -120000,
               intermediateStopsToRemove: 1,
               legGeometry: {
-                length: -24,
-                pointsToAdd: '',
-                pointsToCut: [
-                  'uA?g@Be@H[JcBj@o@PsGfBc@H_@D]@]?YC{@Gc@A]?}ADQ?IAKCk@UKAOA_C?'
-                ]
+                length: -23
               },
               newStop: STOPS.STADIUM
             },
@@ -236,8 +232,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               legGeometry: {
                 length: 24,
                 pointsToAdd:
-                  '??uA?g@Be@H[JcBj@o@PsGfBc@H_@D]@]?YC{@Gc@A]?}ADQ?IAKCk@UKAOA_C?',
-                pointsToCut: []
+                  'wjnaHj_siVuA?g@Be@H[JcBj@o@PsGfBc@H_@D]@]?YC{@Gc@A]?}ADQ?IAKCk@UKAOA_C?'
               },
               newStop: STOPS.INTERNATIONAL_DISTRICT_CHINATOWN
             },
@@ -262,12 +257,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               endTime: -120000,
               intermediateStopsToRemove: 1,
               legGeometry: {
-                length: -19,
-                pointsToAdd: '',
-                pointsToCut: [
-                  '??p@m@X[Xc@hEyHR]NQLQLO\\W^SPIPE`@If@AjI?N@J@HB',
-                  '??p@m@X[Xc@hEyHR]NQLQLO\\W^SPIPE`@If@AlBBtEC'
-                ]
+                length: -17
               },
               newStop: STOPS.PIONEER_SQUARE
             },
@@ -279,11 +269,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               endTime: -300000,
               intermediateStopsToRemove: 2,
               legGeometry: {
-                length: -34,
-                pointsToAdd: '',
-                pointsToCut: [
-                  '??p@m@X[Xc@hEyHR]NQLQLO\\W^SPIPE`@If@AjI?N@J@HB??B@f@RJBJ@xGCt@CZCZEr@MnFyA|C{@b@Gd@CpD?'
-                ]
+                length: -33
               },
               newStop: STOPS.PIONEER_SQUARE
             },
@@ -314,9 +300,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               endTime: -180000,
               intermediateStopsToRemove: 1,
               legGeometry: {
-                length: -15,
-                pointsToAdd: '',
-                pointsToCut: ['??B@f@RJBJ@xGCt@CZCZEr@MnFyA|C{@b@Gd@CpD?']
+                length: -15
               },
               newStop: STOPS.INTERNATIONAL_DISTRICT_CHINATOWN
             },
@@ -383,12 +367,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               endTime: -120000,
               intermediateStopsToRemove: 1,
               legGeometry: {
-                length: -16,
-                pointsToAdd: 'unpaHb|siVw@j@',
-                pointsToCut: [
-                  'eqoaHtdsiV_FAi@B_@FQFQF_@R]X[\\OTQZsEhI]f@YZoE|DIH??w@j@',
-                  'eqoaHndsiVcB?s@@gA@i@B_@FQFQF_@R]X[\\OTQZsEhI]f@YZoE|DIH??w@j@'
-                ]
+                length: -17
               },
               newStop: STOPS.PIONEER_SQUARE
             },
@@ -400,11 +379,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               endTime: -300000,
               intermediateStopsToRemove: 2,
               legGeometry: {
-                length: -34,
-                pointsToAdd: 'knpaHx{siV',
-                pointsToCut: [
-                  'wjnaHj_siVuA?g@Be@H[JcBj@o@PsGfBc@H_@D]@]?YC{@Gc@A]?}ADQ?IAKCk@UKAOA_C???_FAi@B_@FQFQF_@R]X[\\OTQZsEhI]f@YZoE|D'
-                ]
+                length: -38
               },
               newStop: STOPS.PIONEER_SQUARE
             },
@@ -435,11 +410,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               endTime: -180000,
               intermediateStopsToRemove: 1,
               legGeometry: {
-                length: -24,
-                pointsToAdd: 'eqoaHtdsiV',
-                pointsToCut: [
-                  'wjnaHj_siVuA?g@Be@H[JcBj@o@PsGfBc@H_@D]@]?YC{@Gc@A]?}ADQ?IAKCk@UKAOA_C???'
-                ]
+                length: -23
               },
               newStop: STOPS.INTERNATIONAL_DISTRICT_CHINATOWN
             },
@@ -469,11 +440,7 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
               endTime: -180000,
               intermediateStopsToRemove: 1,
               legGeometry: {
-                length: -15,
-                pointsToAdd: '{gnaHj`siV',
-                pointsToCut: [
-                  'eloaHpesiVB@f@RJBJ@xGCt@CZCZEr@MnFyA|C{@b@Gd@CpD???'
-                ]
+                length: -14
               },
               newStop: STOPS.STADIUM
             },
@@ -497,12 +464,11 @@ export const soundTransitCustomRoutingZones: CustomRoutingZone[] = [
             adjustment: {
               duration: 120,
               endTime: 120000,
-              intermediateStopsToRemove: 1,
+              intermediateStopsToAdd: [STOPS.STADIUM],
               legGeometry: {
                 length: 24,
                 pointsToAdd:
-                  '??uA?g@Be@H[JcBj@o@PsGfBc@H_@D]@]?YC{@Gc@A]?}ADQ?IAKCk@UKAOA_C?',
-                pointsToCut: []
+                  'wjnaHj_siVuA?g@Be@H[JcBj@o@PsGfBc@H_@D]@]?YC{@Gc@A]?}ADQ?IAKCk@UKAOA_C?'
               },
               newStop: STOPS.INTERNATIONAL_DISTRICT_CHINATOWN
             },
@@ -607,20 +573,26 @@ const adjustLeg = (
   leg: Leg,
   type: 'destination' | 'origin'
 ): Leg => {
-  // Attempt to cut and replace any matching parts of the leg geometry polyline
   let updatedPoints = leg.legGeometry.points
-  if (!adjustment.legGeometry.pointsToCut.length) {
-    // only add geometry points
-    updatedPoints += adjustment.legGeometry.pointsToAdd
-  } else {
-    // cut and replace geometry points
-    adjustment.legGeometry.pointsToCut.forEach(
-      (ptc) =>
-        (updatedPoints = updatedPoints.replace(
-          ptc,
-          adjustment.legGeometry.pointsToAdd
-        ))
-    )
+
+  if (adjustment.legGeometry.length < 0) {
+    const sliceStart =
+      type === 'destination' ? 0 : -1 * adjustment.legGeometry.length
+    const sliceEnd =
+      type === 'destination' ? adjustment.legGeometry.length : undefined
+
+    // decode the points polyline and remove the required number of coordinate pairs, then re-encode
+    const decoded = polyline.decode(leg.legGeometry.points)
+    const updatedDecoded = decoded.slice(sliceStart, sliceEnd)
+    const encoded = polyline.encode(updatedDecoded)
+    updatedPoints = encoded
+  } else if (adjustment.legGeometry.pointsToAdd) {
+    // decode the points polyline and the pointsToAdd polyline, combine them, then re-encode
+    const decoded = polyline.decode(leg.legGeometry.points)
+    const decodedToAdd = polyline.decode(adjustment.legGeometry.pointsToAdd)
+    const combined = [...decoded, ...decodedToAdd]
+    const encoded = polyline.encode(combined)
+    updatedPoints = encoded
   }
 
   // Update everything on the leg except for the from/to object, which will depend on

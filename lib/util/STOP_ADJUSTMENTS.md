@@ -132,15 +132,11 @@ This property contains the following fields:
 
 #####  `length`
 
-The *change* in length of the leg geometry
+The *change* in length of the leg geometry. This will be used to remove coordinate pairs from the route polyline. For example, if the `length` value is -20, 20 points will be removed from the route polyline.
 
 ##### `pointsToAdd`
 
-The leg geometry points to be added. The leg geometry is expressed as an [encoded polyline](https://developers.google.com/maps/documentation/utilities/polylineutility). If a stop adjustment results in a longer leg geometry, these points will be added to the existing leg geometry.
-
-##### `pointsToCut`
-
-The leg geometry points to be cut. The leg geometry is expressed as an [encoded polyline](https://developers.google.com/maps/documentation/utilities/polylineutility). If a stop adjustment results in a shorter leg geometry, these points will be cut from the existing leg geometry.
+The leg geometry points to be added. The leg geometry is expressed as an [encoded polyline](https://developers.google.com/maps/documentation/utilities/polylineutility). If a stop adjustment results in a longer leg geometry, these points will be added to the existing leg geometry. When combining the two polylines, both are decoded first. Then, the two arrays of coordinate points are concatenated and the resulting array is re-encoded to a polyline.
 
 ---
 
