@@ -536,7 +536,6 @@ const mapStateToProps = (state: AppReduxState) => {
   if (nearbyViewConfig?.useRouteViewSort) {
     routeSortComparator = (a: PatternStopTime, b: PatternStopTime) =>
       coreUtils.route.makeRouteComparator(transitOperators)(
-        // @ts-expect-error core-utils types are wrong!
         a.pattern.route,
         b.pattern.route
       )

@@ -25,12 +25,14 @@ const DepartureTime = ({
     ('serviceDay' in stopTime
       ? new Date(stopTime.serviceDay * 1000)
       : undefined)
-  const departureTimestamp = addSeconds(
-    startOfDate,
+
+  const secondsToAdd =
     realTime && stopTime.realtimeDeparture
       ? stopTime.realtimeDeparture
       : stopTime.scheduledDeparture
-  )
+
+  if (!startOfDate || !secondsToAdd) return <></>
+  const departureTimestamp = addSeconds(startOfDate, secondsToAdd)
 
   return <FormattedTime timeStyle="short" value={departureTimestamp} />
 }

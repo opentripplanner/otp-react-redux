@@ -55,7 +55,7 @@ const PatternSelectDropdown = styled(Dropdown)`
 
 interface Props {
   intl: IntlShape
-  operator: TransitOperator
+  operator?: TransitOperator
   patternId: string
   route: ViewedRouteObject
   setHoveredStop: (id: string | null) => void
