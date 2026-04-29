@@ -55,7 +55,7 @@ import Stop, { fullTimestamp, patternArrayforStops } from './stop'
 import Vehicle from './vehicle-rent'
 import VehicleParking from './vehicle-parking'
 
-const AUTO_REFRESH_INTERVAL = 15000000
+const AUTO_REFRESH_INTERVAL = 15000
 
 // TODO: use lonlat package
 type CurrentPosition = { coords?: { latitude: number; longitude: number } }
@@ -84,6 +84,8 @@ type Props = {
   nearbyFilters?: Array<NearbyFilterConfig>
   nearbyViewCoords?: LatLonObj
   nearbyViewError?: any
+  onLocationFieldBlur?: () => void
+  onLocationFieldFocus?: () => void
   radius?: number
   routeSortComparator: (a: PatternStopTime, b: PatternStopTime) => number
   sessionSearches: any
@@ -178,6 +180,8 @@ function NearbyView({
   nearbyFilters,
   nearbyViewCoords,
   nearbyViewError,
+  onLocationFieldBlur,
+  onLocationFieldFocus,
   radius,
   routeSortComparator,
   sessionSearches,
@@ -191,6 +195,7 @@ function NearbyView({
   const intl = useIntl()
   const [loading, setLoading] = useState(true)
   const [reversedPoint, setReversedPoint] = useState('')
+  const [locationInputFocused, setLocationInputFocused] = useState(false)
 
   const nearbyContainerRef = useRef<HTMLOListElement>(null)
   const finalNearbyCoords = useMemo(
@@ -279,7 +284,7 @@ function NearbyView({
 
   useEffect(() => {
     scrollToTop()
-    if (finalNearbyCoords) {
+    if (finalNearbyCoords && !locationInputFocused) {
       fetchNearby(finalNearbyCoords, radius, currentServiceWeek)
       setLoading(true)
       const interval = setInterval(() => {
@@ -290,7 +295,7 @@ function NearbyView({
         clearInterval(interval)
       }
     }
-  }, [finalNearbyCoords, fetchNearby, radius])
+  }, [finalNearbyCoords, fetchNearby, locationInputFocused, radius])
 
   useEffect(() => {
     if (nearbyViewError) {
@@ -436,6 +441,14 @@ function NearbyView({
             <Search style={{ marginRight: 5, padding: 5 }} />
           )}
           locationType="to"
+          onBlur={() => {
+            onLocationFieldBlur && onLocationFieldBlur()
+            setLocationInputFocused(false)
+          }}
+          onFocus={() => {
+            onLocationFieldFocus && onLocationFieldFocus()
+            setLocationInputFocused(true)
+          }}
           onLocationSelected={(selection) => {
             const { location } = selection
             setViewedNearbyCoords(location)
