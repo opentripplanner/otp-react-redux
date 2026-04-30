@@ -159,11 +159,11 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                             locationType="to"
                           >
                             <Search
+                              size={12}
                               style={
                                 {
                                   "color": "#666666",
                                   "marginTop": -2,
-                                  "padding": 3,
                                 }
                               }
                             >
@@ -176,11 +176,11 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                                 }
                                 iconVerticalAlign="middle"
                                 iconViewBox="0 0 512 512"
+                                size={12}
                                 style={
                                   {
                                     "color": "#666666",
                                     "marginTop": -2,
-                                    "padding": 3,
                                   }
                                 }
                               >
@@ -194,11 +194,11 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                                   }
                                   iconVerticalAlign="middle"
                                   iconViewBox="0 0 512 512"
+                                  size={12}
                                   style={
                                     {
                                       "color": "#666666",
                                       "marginTop": -2,
-                                      "padding": 3,
                                     }
                                   }
                                 >
@@ -207,14 +207,15 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                                     className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
                                     fill="currentColor"
                                     focusable="false"
+                                    height={12}
                                     style={
                                       {
                                         "color": "#666666",
                                         "marginTop": -2,
-                                        "padding": 3,
                                       }
                                     }
                                     viewBox="0 0 512 512"
+                                    width={12}
                                     xmlns="http://www.w3.org/2000/svg"
                                   >
                                     <path
@@ -239,8 +240,10 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                         aria-required={false}
                         autoFocus={false}
                         className="to-form-control"
+                        onBlur={[Function]}
                         onChange={[Function]}
                         onClick={[Function]}
+                        onFocus={null}
                         onKeyDown={[Function]}
                         placeholder="components.NearbyView.searchNearby"
                         role="combobox"
@@ -258,8 +261,10 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                           aria-required={false}
                           autoFocus={false}
                           className="styled__Input-sc-xahsq2-6 gKJkbm to-form-control"
+                          onBlur={[Function]}
                           onChange={[Function]}
                           onClick={[Function]}
+                          onFocus={null}
                           onKeyDown={[Function]}
                           placeholder="components.NearbyView.searchNearby"
                           role="combobox"
@@ -4535,11 +4540,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                             locationType="to"
                           >
                             <Search
+                              size={12}
                               style={
                                 {
                                   "color": "#666666",
                                   "marginTop": -2,
-                                  "padding": 3,
                                 }
                               }
                             >
@@ -4552,11 +4557,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                 }
                                 iconVerticalAlign="middle"
                                 iconViewBox="0 0 512 512"
+                                size={12}
                                 style={
                                   {
                                     "color": "#666666",
                                     "marginTop": -2,
-                                    "padding": 3,
                                   }
                                 }
                               >
@@ -4570,11 +4575,11 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   }
                                   iconVerticalAlign="middle"
                                   iconViewBox="0 0 512 512"
+                                  size={12}
                                   style={
                                     {
                                       "color": "#666666",
                                       "marginTop": -2,
-                                      "padding": 3,
                                     }
                                   }
                                 >
@@ -4583,14 +4588,15 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     className="StyledIconBase-sc-ea9ulj-0 fqiNOa"
                                     fill="currentColor"
                                     focusable="false"
+                                    height={12}
                                     style={
                                       {
                                         "color": "#666666",
                                         "marginTop": -2,
-                                        "padding": 3,
                                       }
                                     }
                                     viewBox="0 0 512 512"
+                                    width={12}
                                     xmlns="http://www.w3.org/2000/svg"
                                   >
                                     <path
@@ -4615,8 +4621,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                         aria-required={false}
                         autoFocus={false}
                         className="to-form-control"
+                        onBlur={[Function]}
                         onChange={[Function]}
                         onClick={[Function]}
+                        onFocus={null}
                         onKeyDown={[Function]}
                         placeholder="components.NearbyView.searchNearby"
                         role="combobox"
@@ -4634,8 +4642,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           aria-required={false}
                           autoFocus={false}
                           className="styled__Input-sc-xahsq2-6 gKJkbm to-form-control"
+                          onBlur={[Function]}
                           onChange={[Function]}
                           onClick={[Function]}
+                          onFocus={null}
                           onKeyDown={[Function]}
                           placeholder="components.NearbyView.searchNearby"
                           role="combobox"

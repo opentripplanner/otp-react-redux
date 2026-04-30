@@ -434,7 +434,7 @@ function NearbyView({
             name: reversedPoint
           }}
           LocationIconComponent={() => (
-            <Search size={10} style={{ color: grey[700], marginTop: -2 }} />
+            <Search size={12} style={{ color: grey[700], marginTop: -2 }} />
           )}
           locationType="to"
           onLocationSelected={(selection) => {
