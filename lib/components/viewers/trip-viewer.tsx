@@ -298,9 +298,9 @@ class TripViewer extends Component<Props> {
               stopLinkClicked={setViewedStop}
               stops={stopTimes.map(
                 (st: TripStopTime): StopListEntry => ({
-                  id: st.stop.id,
                   name: st.stop.name,
-                  scheduledDeparture: st.scheduledDeparture
+                  scheduledDeparture: st.scheduledDeparture,
+                  stopId: st.stop.id
                 })
               )}
               toIndex={toIndex}

@@ -27,10 +27,10 @@ export interface StopTime {
 }
 
 export interface StopListEntry {
-  id?: string
   name: string
   realtimeDeparture?: number
   scheduledDeparture?: number
+  stopId: string
 }
 
 export interface TripStopTime {

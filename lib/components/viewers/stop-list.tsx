@@ -187,7 +187,7 @@ const StopList = ({
             key={index}
             onClick={() => stopLinkClicked(stop)}
             onMouseOver={
-              () => setHoveredStop && setHoveredStop(stop.id || null)
+              () => setHoveredStop && setHoveredStop(stop.stopId || null)
               // eslint-disable-next-line react/jsx-curly-newline
             }
             ref={index === fromIndex ? firstStopRef : null}
@@ -208,7 +208,10 @@ const StopList = ({
             <div className="stop-decoration" />
             <StopLink
               name={stop.name}
-              onFocus={() => setHoveredStop && setHoveredStop(stop.id || null)}
+              onFocus={
+                () => setHoveredStop && setHoveredStop(stop.stopId || null)
+                // eslint-disable-next-line react/jsx-curly-newline
+              }
             >
               {stopLabel && (
                 <InvisibleA11yLabel>{stopLabel}</InvisibleA11yLabel>

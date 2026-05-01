@@ -193,7 +193,7 @@ class RouteDetails extends Component<Props> {
               setHoveredStop={setHoveredStop}
               stopLinkClicked={this._stopLinkClicked}
               stops={(pattern.stops ?? []).map(
-                (stop): StopListEntry => ({ id: stop.id, name: stop.name })
+                (stop): StopListEntry => ({ name: stop.name, stopId: stop.id })
               )}
             />
           </>
