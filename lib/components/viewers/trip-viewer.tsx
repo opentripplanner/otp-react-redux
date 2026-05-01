@@ -143,10 +143,11 @@ class TripViewer extends Component<Props> {
 
   _getRouteColor = (operator?: TransitOperator) => {
     const { tripData } = this.props
+    console.log(tripData)
     const routeColorFromTripData =
       tripData?.route?.color && `#${tripData?.route?.color}`
     const routeColorBasedOnSettings = getRouteColorBasedOnSettings(
-      tripData.route,
+      tripData?.route,
       operator
     )
 
