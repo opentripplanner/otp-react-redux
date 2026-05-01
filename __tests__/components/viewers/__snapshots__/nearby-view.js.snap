@@ -124,6 +124,8 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                     }
                   }
                   locationType="to"
+                  onBlur={[Function]}
+                  onFocus={[Function]}
                   onLocationSelected={[Function]}
                   sessionSearches={[]}
                   sortByDistance={true}
@@ -243,7 +245,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                         onBlur={[Function]}
                         onChange={[Function]}
                         onClick={[Function]}
-                        onFocus={null}
+                        onFocus={[Function]}
                         onKeyDown={[Function]}
                         placeholder="components.NearbyView.searchNearby"
                         role="combobox"
@@ -264,7 +266,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                           onBlur={[Function]}
                           onChange={[Function]}
                           onClick={[Function]}
-                          onFocus={null}
+                          onFocus={[Function]}
                           onKeyDown={[Function]}
                           placeholder="components.NearbyView.searchNearby"
                           role="combobox"
@@ -4505,6 +4507,8 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                     }
                   }
                   locationType="to"
+                  onBlur={[Function]}
+                  onFocus={[Function]}
                   onLocationSelected={[Function]}
                   sessionSearches={[]}
                   sortByDistance={true}
@@ -4624,7 +4628,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                         onBlur={[Function]}
                         onChange={[Function]}
                         onClick={[Function]}
-                        onFocus={null}
+                        onFocus={[Function]}
                         onKeyDown={[Function]}
                         placeholder="components.NearbyView.searchNearby"
                         role="combobox"
@@ -4645,7 +4649,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           onBlur={[Function]}
                           onChange={[Function]}
                           onClick={[Function]}
-                          onFocus={null}
+                          onFocus={[Function]}
                           onKeyDown={[Function]}
                           placeholder="components.NearbyView.searchNearby"
                           role="combobox"
