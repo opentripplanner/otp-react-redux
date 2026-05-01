@@ -124,6 +124,8 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                     }
                   }
                   locationType="to"
+                  onBlur={[Function]}
+                  onFocus={[Function]}
                   onLocationSelected={[Function]}
                   sessionSearches={[]}
                   sortByDistance={true}
@@ -239,8 +241,10 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                         aria-required={false}
                         autoFocus={false}
                         className="to-form-control"
+                        onBlur={[Function]}
                         onChange={[Function]}
                         onClick={[Function]}
+                        onFocus={[Function]}
                         onKeyDown={[Function]}
                         placeholder="components.NearbyView.searchNearby"
                         role="combobox"
@@ -258,8 +262,10 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                           aria-required={false}
                           autoFocus={false}
                           className="styled__Input-sc-xahsq2-6 gKJkbm to-form-control"
+                          onBlur={[Function]}
                           onChange={[Function]}
                           onClick={[Function]}
+                          onFocus={[Function]}
                           onKeyDown={[Function]}
                           placeholder="components.NearbyView.searchNearby"
                           role="combobox"
@@ -4500,6 +4506,8 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                     }
                   }
                   locationType="to"
+                  onBlur={[Function]}
+                  onFocus={[Function]}
                   onLocationSelected={[Function]}
                   sessionSearches={[]}
                   sortByDistance={true}
@@ -4615,8 +4623,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                         aria-required={false}
                         autoFocus={false}
                         className="to-form-control"
+                        onBlur={[Function]}
                         onChange={[Function]}
                         onClick={[Function]}
+                        onFocus={[Function]}
                         onKeyDown={[Function]}
                         placeholder="components.NearbyView.searchNearby"
                         role="combobox"
@@ -4634,8 +4644,10 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                           aria-required={false}
                           autoFocus={false}
                           className="styled__Input-sc-xahsq2-6 gKJkbm to-form-control"
+                          onBlur={[Function]}
                           onChange={[Function]}
                           onClick={[Function]}
+                          onFocus={[Function]}
                           onKeyDown={[Function]}
                           placeholder="components.NearbyView.searchNearby"
                           role="combobox"
