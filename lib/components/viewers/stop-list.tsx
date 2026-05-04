@@ -187,7 +187,7 @@ const StopList = ({
             key={index}
             onClick={() => stopLinkClicked(stop)}
             onMouseOver={
-              () => setHoveredStop && setHoveredStop(stop.stopId || null)
+              () => setHoveredStop && setHoveredStop(stop.stopId ?? null)
               // eslint-disable-next-line react/jsx-curly-newline
             }
             ref={index === fromIndex ? firstStopRef : null}
@@ -209,7 +209,7 @@ const StopList = ({
             <StopLink
               name={stop.name}
               onFocus={
-                () => setHoveredStop && setHoveredStop(stop.stopId || null)
+                () => setHoveredStop && setHoveredStop(stop.stopId ?? null)
                 // eslint-disable-next-line react/jsx-curly-newline
               }
             >

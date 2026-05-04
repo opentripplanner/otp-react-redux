@@ -138,7 +138,7 @@ class RouteDetails extends Component<Props> {
       patternSelectLabel
 
     return (
-      <Container full={pattern != null}>
+      <Container full={pattern !== undefined}>
         {headsigns && headsigns.length > 0 && (
           <PatternContainer className="pattern-picker">
             {headsigns.length > 1 ? (
