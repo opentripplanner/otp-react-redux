@@ -87,6 +87,16 @@ function makeLocationFieldLocation(favoriteLocation: UserSavedLocation) {
 class PlaceEditor extends Component<Props> {
   static contextType = ComponentContext
 
+  _clearLocation = () => {
+    const { setValues, values } = this.props
+    setValues({
+      ...values,
+      address: '',
+      lat: undefined,
+      lon: undefined
+    })
+  }
+
   _setLocation = (location: Location) => {
     const { geocoderConfig, intl, setValues, values } = this.props
     const { category, lat, lon, name } = location
@@ -274,6 +284,7 @@ class PlaceEditor extends Component<Props> {
 
             <PlaceLocationField
               className="form-control"
+              clearLocation={this._clearLocation}
               geocoderResultsOrder={geocoderResultsOrder}
               getCurrentPosition={this._handleGetCurrentPosition}
               inputPlaceholder={
