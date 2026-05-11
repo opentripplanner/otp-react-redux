@@ -134,6 +134,7 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
     const {
       checkItineraryExistence,
       intl,
+      isCreating,
       setFieldValue,
       setIsLoading,
       values: monitoredTrip
@@ -147,6 +148,12 @@ class TripBasicsPane extends Component<TripBasicsProps, State> {
       alert(
         intl.formatMessage({ id: 'actions.user.itineraryExistenceCheckFailed' })
       )
+    } else if (isCreating) {
+      // For new trips, if the itinerary existence check returns, only provide the id of that result,
+      // regardless of whether there was an error or itinerary did not exist.
+      // The rest will be populated on POST.
+      // (We let users save new trips as one-time if check deems itinerary inexistent for all monitored days.)
+      setFieldValue('itineraryExistence', { id: newExistence.id })
     }
     setIsLoading && setIsLoading(false)
     this.setState({ isRecheckingExistence: false })
