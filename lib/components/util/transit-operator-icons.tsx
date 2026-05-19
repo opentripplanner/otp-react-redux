@@ -26,7 +26,7 @@ const Operator = ({ operator }: { operator?: TransitOperator }) => {
         id: 'components.StopViewer.operatorLogoAriaLabel'
       },
       {
-        operatorName: operator.name
+        operatorName: operator ? operator.name : ''
       }
     )
     return operator.logo ? (

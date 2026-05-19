@@ -19,7 +19,8 @@
       "OUTSIDE_BOUNDS",
       "OUTSIDE_SERVICE_PERIOD",
       "SYSTEM_ERROR",
-      "WALKING_BETTER_THAN_TRANSIT"
+      "WALKING_BETTER_THAN_TRANSIT",
+      "NO_DIRECT_MODE_CONNECTION"
     ],
     "components.OTP2ErrorRenderer.*.header": [
       "OTP_RR_TRIP_IN_PAST",
@@ -31,7 +32,8 @@
       "OUTSIDE_BOUNDS",
       "OUTSIDE_SERVICE_PERIOD",
       "SYSTEM_ERROR",
-      "WALKING_BETTER_THAN_TRANSIT"
+      "WALKING_BETTER_THAN_TRANSIT",
+      "NO_DIRECT_MODE_CONNECTION"
     ],
     "components.OTP2ErrorRenderer.inputFields.*": [
       "FROM",

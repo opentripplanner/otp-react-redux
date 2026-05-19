@@ -41,6 +41,7 @@ actions:
     setGroupSizeError: "Erreur sur la taille du groupe :"
     setPaymentError: "Erreur sur les coordonnées de paiement :"
     setRequestStatusError: "Erreur sur l'état de la requête :"
+    setTimeError: "Error setting time:"
   location:
     deniedAccessAlert: >
       L'accès à votre position est refusé.
@@ -491,6 +492,11 @@ components:
         Vous pouvez effectuer ce trajet plus rapidement sans prendre les
         transports.
       header: Moins rapide en transports
+    NO_DIRECT_MODE_CONNECTION:
+      body: >-
+        The origin and destination may be too far apart or not directly
+        connected by the requested mode of transport.
+      header: No direct trip found.
     inputFields:
       FROM: point de départ
       TO: destination
@@ -697,6 +703,7 @@ components:
     travelingAt: "Vitesse : {milesPerHour}"
     vehicleName: Véhicule {vehicleNumber}
   TripBasicsPane:
+    checkAgain: Revérifier
     checkingItineraryExistence: Vérification du trajet pour chaque jour de la 
       semaine...
     indicatesRequiredFields: Les champs marqués d'une astérisque (*) sont 
