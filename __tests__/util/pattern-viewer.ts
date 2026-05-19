@@ -22,7 +22,7 @@ const editToHeadsign: HeadsignGenerator = (pattern) =>
 const editFromHeadsign: HeadsignGenerator = (pattern) =>
   `${pattern.headsign} (from ${pattern.firstStop})`
 
-const defaultHeadsign = 'Everett via Lynnwood'
+const DEFAULT_HEADSIGN = 'Everett via Lynnwood'
 const route: Route = {
   agency: {
     id: 'agnecy'
@@ -37,7 +37,7 @@ function createPattern(
   id: string,
   length: number,
   stops: string[],
-  headsign: string | null = defaultHeadsign
+  headsign: string | null = DEFAULT_HEADSIGN
 ): Pattern {
   return {
     desc: `${id} Pattern name`,
@@ -88,8 +88,8 @@ describe('util > pattern-viewer', () => {
         editFromHeadsign
       )
       expect(headsignData.length).toBe(4)
-      expect(headsignData[0].headsign).toBe(defaultHeadsign)
-      expect(headsignData[1].headsign).toBe(`${defaultHeadsign} (S7)`)
+      expect(headsignData[0].headsign).toBe(DEFAULT_HEADSIGN)
+      expect(headsignData[1].headsign).toBe(`${DEFAULT_HEADSIGN} (S7)`)
       expect(headsignData[2].headsign).toBe('Other headsign')
       expect(headsignData[3].headsign).toBe('P5 Pattern name')
     })
@@ -138,8 +138,8 @@ describe('util > pattern-viewer', () => {
       )
       expect(headsignData.length).toBe(2)
       // The final stop is appended because there are only two patterns.
-      expect(headsignData[0].headsign).toBe(`${defaultHeadsign} (S7)`)
-      expect(headsignData[1].headsign).toBe(`${defaultHeadsign} (S6)`)
+      expect(headsignData[0].headsign).toBe(`${DEFAULT_HEADSIGN} (S7)`)
+      expect(headsignData[1].headsign).toBe(`${DEFAULT_HEADSIGN} (S6)`)
     })
     it('should prepend origin stops', () => {
       // Consider the following patterns P1, P2 of the same route with the same headsigns:
@@ -159,8 +159,8 @@ describe('util > pattern-viewer', () => {
       )
       expect(headsignData.length).toBe(2)
       // The origin stop is appended because there are only two patterns.
-      expect(headsignData[0].headsign).toBe(`${defaultHeadsign} (from S1)`)
-      expect(headsignData[1].headsign).toBe(`${defaultHeadsign} (from S5)`)
+      expect(headsignData[0].headsign).toBe(`${DEFAULT_HEADSIGN} (from S1)`)
+      expect(headsignData[1].headsign).toBe(`${DEFAULT_HEADSIGN} (from S5)`)
     })
   })
 
@@ -195,7 +195,7 @@ describe('util > pattern-viewer', () => {
         createPattern('P9', 400, ['S1', 'S2'], null),
         {
           desc: 'Pattern without stops',
-          headsign: defaultHeadsign,
+          headsign: DEFAULT_HEADSIGN,
           id: 'P10',
           patternGeometry: {
             length: 0,
