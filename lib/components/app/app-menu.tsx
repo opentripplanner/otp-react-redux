@@ -293,6 +293,7 @@ class AppMenu extends Component<
                 })}
               />
             )}
+            {/* ALERTS-TODO: add toggle alerts view here. */}
             {this._addExtraMenuItems(extraMenuItems, translateExternalLinks)}
             {this._addExtraMenuItems(languageMenuItems)}
           </div>
