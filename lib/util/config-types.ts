@@ -405,10 +405,16 @@ export interface DateTimeConfig {
   timeFormat: string
 }
 
+export interface alertsViewerConfig {
+  enabled?: boolean
+  url: string
+}
+
 /** The main application configuration object */
 export interface AppConfig {
   accessibilityScore?: AccessibilityScoreConfig
   advancedSettingsPanel?: AdvancedSettingsPanelConfig
+  alertsViewer?: alertsViewerConfig
   api: ApiConfig
   // Optional on declaration, populated with defaults in reducer if not configured.
   autoPlan?: boolean | AutoPlanConfig
