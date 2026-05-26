@@ -1,3 +1,4 @@
+import { Warning as Alert } from '@styled-icons/fa-solid/Warning'
 import { Bus } from '@styled-icons/fa-solid/Bus'
 import { connect } from 'react-redux'
 import { Envelope } from '@styled-icons/fa-regular/Envelope'
@@ -297,7 +298,7 @@ class AppMenu extends Component<
             )}
             {alertsEnabled && (
               <AppMenuItem
-                icon={<Envelope />}
+                icon={<Alert />}
                 onClick={this._togglePane}
                 text={intl.formatMessage({
                   id: 'components.AppMenu.alerts'

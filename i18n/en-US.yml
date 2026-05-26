@@ -188,6 +188,7 @@ components:
       If the page doesn't load after a few seconds, <redirectLink>click
       here</redirectLink>.
   AppMenu:
+    alerts: Alerts
     callHistory: Call History
     closeMenu: Close Menu
     fieldTrip: Field Trip
