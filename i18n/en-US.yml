@@ -187,6 +187,8 @@ components:
     message: >-
       If the page doesn't load after a few seconds, <redirectLink>click
       here</redirectLink>.
+  AlertsScreen:
+    title: Alerts
   AppMenu:
     alerts: Alerts
     callHistory: Call History
