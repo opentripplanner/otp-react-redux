@@ -16,6 +16,7 @@ interface Props {
  */
 const SubNav = ({ showLinks = true, title }: Props): JSX.Element => (
   <SubNavContainer>
+    {/** Break out to separate component. PageHeader. Include here and in alerts screen */}
     <div className="container">
       <h1 style={{ display: 'inline', paddingTop: '10px' }}>
         {title || <FormattedMessage id="components.SubNav.myAccount" />}
