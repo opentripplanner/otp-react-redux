@@ -184,7 +184,7 @@ const ItinerarySummaryOverlay = ({
             // TODO: clean up conditionals, move these to a more appropriate place without breaking indexing
             (isDefined(visibleItinerary)
               ? visibleItinerary === mp.itin.index
-              : true) &&
+              : midPoints.length < 6) &&
             mp.uniquePoint && (
               <Marker
                 key={mp.itin.duration}

@@ -492,6 +492,11 @@ components:
         Vous pouvez effectuer ce trajet plus rapidement sans prendre les
         transports.
       header: Moins rapide en transports
+    NO_DIRECT_MODE_CONNECTION:
+      body: >-
+        The origin and destination may be too far apart or not directly
+        connected by the requested mode of transport.
+      header: No direct trip found.
     inputFields:
       FROM: point de départ
       TO: destination
@@ -556,6 +561,7 @@ components:
   ResultsError:
     backToSearch: Retour à la recherche
   RouteDetails:
+    headsignFrom: "{headsign} (depuis {firstStop})"
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: Plus d'infos
     operatedBy: Exploité par {agencyName}
