@@ -26,7 +26,9 @@ import VehiclePositionRetriever from './vehicle-position-retriever'
 
 interface Props {
   findRoutesIfNeeded: () => void
+  getTimetableData: (params: any) => any
   setViewedRoute: SetViewedRouteHandler
+  timetableData: any
   transitOperators: TransitOperator[]
   useRouteColorAsBackground?: boolean
   vehicleIconHighlight: boolean
@@ -36,7 +38,9 @@ interface Props {
 
 const PatternViewer = ({
   findRoutesIfNeeded,
+  getTimetableData,
   setViewedRoute,
+  timetableData,
   transitOperators,
   useRouteColorAsBackground,
   vehicleIconHighlight,
@@ -51,6 +55,17 @@ const PatternViewer = ({
   const routePatternKeys = route?.patterns && Object.keys(route?.patterns)
   const patternId = viewedRoute?.patternId
   const routeId = viewedRoute?.routeId || null
+
+  useEffect(
+    () =>
+      getTimetableData({
+        end: '2026-06-11',
+        gtfsId: routeId,
+        serviceDate: '20260610',
+        start: '2026-06-10'
+      }),
+    [routeId, getTimetableData]
+  )
 
   /**
    * If we're viewing a pattern's stops, route to main route viewer.
@@ -148,8 +163,9 @@ const PatternViewer = ({
 // connect to redux store
 
 const mapStateToProps = (state: any) => {
-  const { viewedRoute } = state.otp.ui
+  const { timetable, viewedRoute } = state.otp.ui
   return {
+    timetableData: timetable,
     transitOperators: state.otp.config.transitOperators,
     useRouteColorAsBackground:
       state.otp.config?.routeViewer?.useRouteColorAsBackground,
@@ -161,6 +177,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = {
   findRoutesIfNeeded: apiActions.findRoutesIfNeeded,
+  getTimetableData: apiActions.getTimetableData,
   setViewedRoute: uiActions.setViewedRoute
 }
 
