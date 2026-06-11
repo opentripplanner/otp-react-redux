@@ -49,6 +49,7 @@ export interface OtpState {
     popup: PopupTargetConfig
     printView: boolean
     routeViewer: any
+    timetable: any
     viewedRoute: {
       patternId: string
       routeId: string
