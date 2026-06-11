@@ -3,17 +3,20 @@ import { injectIntl, IntlShape } from 'react-intl'
 import React, { Component } from 'react'
 
 import { AppReduxState } from '../../util/state-types'
+import { ComponentContext } from '../../util/contexts'
 import AppFrame from '../app/app-frame'
 import PageTitle from '../util/page-title'
 import SubNav from '../user/sub-nav'
 
 interface Props {
   intl: IntlShape
-  loggedInUser: any
 }
 
 class AlertsScreen extends Component<Props> {
+  static contextType = ComponentContext
+
   render() {
+    const { alertsApi, AlertsViewer } = this.context
     return (
       <AppFrame
         SubNav={() => (
@@ -30,6 +33,7 @@ class AlertsScreen extends Component<Props> {
             id: 'components.AlertsScreen.title'
           })}
         />
+        <AlertsViewer apiUrl={alertsApi} />
       </AppFrame>
     )
   }

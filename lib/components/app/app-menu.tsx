@@ -42,7 +42,6 @@ type MenuItem = {
 
 type AppMenuProps = {
   activeLocale: string
-  alertsEnabled?: boolean
   callTakerEnabled?: boolean
   extraMenuItems?: AppMenuItemConfig[]
   fieldTripEnabled?: boolean
@@ -151,7 +150,6 @@ class AppMenu extends Component<
   render() {
     const {
       activeLocale,
-      alertsEnabled,
       callTakerEnabled,
       extraMenuItems,
       fieldTripEnabled,
@@ -165,6 +163,7 @@ class AppMenu extends Component<
       toggleMailables,
       translateExternalLinks
     } = this.props
+    const alertsEnabled = this.context.AlertsViewer
     const languageMenuItems: MenuItem[] | null = languageOptions && [
       {
         children: Object.keys(languageOptions).map((locale: string) => ({
@@ -318,16 +317,10 @@ class AppMenu extends Component<
 // connect to the redux store
 
 const mapStateToProps = (state: AppReduxState) => {
-  const {
-    alertsViewer,
-    extraMenuItems,
-    language,
-    popups,
-    translateExternalLinks
-  } = state.otp.config
+  const { extraMenuItems, language, popups, translateExternalLinks } =
+    state.otp.config
   return {
     activeLocale: state.otp.ui.locale,
-    alertsEnabled: alertsViewer?.enabled,
     callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),
     extraMenuItems,
     fieldTripEnabled: isModuleEnabled(state, Modules.FIELD_TRIP),
