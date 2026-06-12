@@ -7,30 +7,27 @@ import Link from '../util/link'
 import { SubNavContainer, SubNavLinks } from './styled'
 
 interface Props {
-  showLinks?: boolean
   title: ReactNode
 }
 
 /**
  * This component renders the sub navigation elements for Account pages.
  */
-const SubNav = ({ showLinks = true, title }: Props): JSX.Element => (
+const SubNav = ({ title }: Props): JSX.Element => (
   <SubNavContainer>
     {/** Break out to separate component. PageHeader. Include here and in alerts screen */}
     <div className="container">
       <h1 style={{ display: 'inline', paddingTop: '10px' }}>
         {title || <FormattedMessage id="components.SubNav.myAccount" />}
       </h1>
-      {showLinks !== false && (
-        <SubNavLinks className="pull-right">
-          <Link to={TRIPS_PATH} tracking>
-            <FormattedMessage id="components.SubNav.trips" />
-          </Link>
-          <Link to={ACCOUNT_SETTINGS_PATH} tracking>
-            <FormattedMessage id="components.SubNav.settings" />
-          </Link>
-        </SubNavLinks>
-      )}
+      <SubNavLinks className="pull-right">
+        <Link to={TRIPS_PATH} tracking>
+          <FormattedMessage id="components.SubNav.trips" />
+        </Link>
+        <Link to={ACCOUNT_SETTINGS_PATH} tracking>
+          <FormattedMessage id="components.SubNav.settings" />
+        </Link>
+      </SubNavLinks>
     </div>
   </SubNavContainer>
 )
