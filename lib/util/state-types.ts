@@ -47,6 +47,8 @@ export interface OtpState {
     }
     nearbyViewCoords: LatLonObj
     popup: PopupTargetConfig
+    // One timetable can be open at a time - in the future this might have to be an array
+    portal: boolean
     printView: boolean
     routeViewer: any
     timetable: any

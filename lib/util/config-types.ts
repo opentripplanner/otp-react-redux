@@ -342,6 +342,7 @@ export interface TransitModeConfig {
 
 export interface ModesConfig {
   accessModes: TransitModeConfig[]
+  allowFlexWithoutTransit?: boolean
   initialState?: {
     enabledModeButtons?: string[]
     modeSettingValues?: ModeSettingValues

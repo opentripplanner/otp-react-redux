@@ -26,7 +26,8 @@ export interface StopTime {
 
 export interface Pattern {
   desc: string
-  headsign: string
+  // Some agencies send explicit `null` headsigns.
+  headsign: string | null
   id: string
   patternGeometry?: {
     length: number

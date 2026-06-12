@@ -141,8 +141,9 @@ const ErrorRenderer = ({
 const mapStateToProps = (state: AppReduxState) => {
   const { itinerary } = state.otp.config
   return {
+    // Sensible defaults, which should cover most use cases
     exclusiveErrors: itinerary?.exclusiveErrors || ['NO_TRANSIT_CONNECTION'],
-    mutedErrors: itinerary?.mutedErrors
+    mutedErrors: itinerary?.mutedErrors || ['NO_DIRECT_MODE_CONNECTION']
   }
 }
 export default connect(mapStateToProps)(ErrorRenderer)

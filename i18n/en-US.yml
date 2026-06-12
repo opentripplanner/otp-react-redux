@@ -427,6 +427,11 @@ components:
         {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
         {locations are}} not near any streets.
       header: Location not accessible
+    NO_DIRECT_MODE_CONNECTION:
+      body: >-
+        The origin and destination may be too far apart or not directly
+        connected by the requested mode of transport.
+      header: No direct trip found.
     NO_STOPS_IN_RANGE:
       body: >-
         {inputFields} {inputFieldsCount, plural, =0 {} one {location is} other
@@ -525,6 +530,7 @@ components:
   ResultsError:
     backToSearch: Back to Search
   RouteDetails:
+    headsignFrom: "{headsign} (from {firstStop})"
     headsignTo: "{headsign} ({lastStop})"
     moreDetails: More Details
     operatedBy: Operated by {agencyName}

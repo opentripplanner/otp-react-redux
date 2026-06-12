@@ -30,6 +30,7 @@ import {
 } from '../../../util/state-types'
 import { GeocoderConfig, NearbyFilterConfig } from '../../../util/config-types'
 import { getCurrentServiceWeek } from '../../../util/current-service-week'
+import { grey } from '../../util/colors'
 import { IconMessageContainer } from '../../narrative/metro/metro-error-renderer'
 import {
   PatternStopTime,
@@ -438,7 +439,7 @@ function NearbyView({
             name: reversedPoint
           }}
           LocationIconComponent={() => (
-            <Search style={{ marginRight: 5, padding: 5 }} />
+            <Search size={12} style={{ color: grey[700], marginTop: -2 }} />
           )}
           locationType="to"
           onBlur={() => {
