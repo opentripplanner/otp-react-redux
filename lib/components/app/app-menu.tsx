@@ -259,6 +259,7 @@ class AppMenu extends Component<
                 id: 'common.forms.startOver'
               })}
             />
+            {/* // TODO: add extra views here */}
             {popupTarget && (
               <AppMenuItem
                 icon={<SvgIcon iconName={popupTarget} />}

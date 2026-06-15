@@ -35,6 +35,7 @@
 .app-menu .app-menu-route-viewer-link,
 .app-menu .app-menu-nearby-viewer-link,
 .app-menu .app-menu-trip-planner-link,
+.app-menu .app-menu-extra-view-link,
 .app-menu #app-menu-locale-selector {
   display: none;
 }
@@ -42,6 +43,7 @@
   .app-menu .app-menu-route-viewer-link,
   .app-menu .app-menu-nearby-viewer-link,
   .app-menu .app-menu-trip-planner-link,
+  .app-menu .app-menu-extra-view-link,
   .app-menu #app-menu-locale-selector {
     display: flex;
   }

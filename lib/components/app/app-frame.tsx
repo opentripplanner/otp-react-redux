@@ -6,13 +6,14 @@ import NotFound from './not-found'
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   SubNav?: ComponentType
+  fullWidth?: boolean
 }
 
 /**
  * This component defines the general application frame, to which
  * content and an optional sub-navigation component can be inserted.
  */
-const AppFrame = ({ children, SubNav }: Props): JSX.Element => (
+const AppFrame = ({ children, fullWidth, SubNav }: Props): JSX.Element => (
   <div className="otp" id="otp">
     {/* TODO: Do mobile view. */}
     <DesktopNav />
@@ -21,13 +22,17 @@ const AppFrame = ({ children, SubNav }: Props): JSX.Element => (
         is not contained within the main or other landmark
         (see https://dequeuniversity.com/rules/axe/4.3/landmark-banner-is-top-level?application=axe-puppeteer) */}
     <main tabIndex={-1}>
-      <div className="container">
-        <Row>
-          <Col md={8} mdOffset={2} sm={10} smOffset={1} xs={12}>
-            {children}
-          </Col>
-        </Row>
-      </div>
+      {fullWidth ? (
+        <div style={{ marginTop: -60 }}>{children}</div>
+      ) : (
+        <div className="container">
+          <Row>
+            <Col md={8} mdOffset={2} sm={10} smOffset={1} xs={12}>
+              {children}
+            </Col>
+          </Row>
+        </div>
+      )}
     </main>
   </div>
 )
@@ -36,9 +41,9 @@ const AppFrame = ({ children, SubNav }: Props): JSX.Element => (
  * Creates a simple wrapper component consisting of an AppFrame that surrounds
  * the provided component. (Displays "Content not found" if none provided.)
  */
-export function frame(Component: ComponentType): FC {
+export function frame(Component: ComponentType, fullWidth?: boolean): FC {
   const FramedComponent = () => (
-    <AppFrame>{Component ? <Component /> : <NotFound />}</AppFrame>
+    <AppFrame fullWidth>{Component ? <Component /> : <NotFound />}</AppFrame>
   )
   return FramedComponent
 }

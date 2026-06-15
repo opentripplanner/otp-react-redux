@@ -1,7 +1,15 @@
 import { FormattedMessage, useIntl } from 'react-intl'
-import React from 'react'
+import React, { useContext } from 'react'
 
+import { ComponentContext } from '../../util/contexts'
 import Link from '../util/link'
+
+// TODO: Move to generic types file
+type ExtraView = {
+  content: JSX.Element
+  name?: string
+  path: string
+}
 
 /**
  * This component is a switcher between
@@ -9,6 +17,8 @@ import Link from '../util/link'
  */
 const ViewSwitcher = (): JSX.Element => {
   const intl = useIntl()
+  // @ts-expect-error Context not typed
+  const { extraViews } = useContext(ComponentContext)
   return (
     <div
       aria-label={intl.formatMessage({
@@ -27,6 +37,13 @@ const ViewSwitcher = (): JSX.Element => {
       <Link to="/nearby" tracking>
         <FormattedMessage id="components.ViewSwitcher.nearby" />
       </Link>
+      {extraViews
+        .filter((v: ExtraView) => !!v?.name)
+        .map((view: ExtraView) => (
+          <Link key={view.path} to={view.path} tracking>
+            {view.name}
+          </Link>
+        ))}
     </div>
   )
 }
