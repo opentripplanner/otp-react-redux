@@ -1,9 +1,10 @@
 import { createPortal } from 'react-dom'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 function WindowPortal({ children, onClose }) {
   const newWindow = useRef<Window | null>(null)
   const container = useRef(document.createElement('div'))
+  const [externalWindow, setExternalWindow] = useState<Window | null>(null)
 
   // TODO amy type pls
   let intervalId
@@ -18,9 +19,21 @@ function WindowPortal({ children, onClose }) {
 
     if (!newWindow.current) {
       console.log('error')
+      return
     }
 
+    setExternalWindow(newWindow.current)
+
     const win = newWindow.current
+
+    const sourceStyles = document.querySelectorAll(
+      'style, link[rel="stylesheet"]'
+    )
+
+    sourceStyles.forEach((styleNode) => {
+      win?.document?.head.appendChild(styleNode.cloneNode(true))
+    })
+
     win?.document?.body?.appendChild(container.current)
 
     intervalId = setInterval(() => {
@@ -28,7 +41,7 @@ function WindowPortal({ children, onClose }) {
     }, 100)
   }, [])
 
-  return createPortal(children, container.current)
+  return externalWindow ? createPortal(children, container.current) : null
 }
 
 export default WindowPortal
