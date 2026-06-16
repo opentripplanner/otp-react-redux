@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { format } from 'date-fns'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { TransitOperator } from '@opentripplanner/types'
 import React, { useCallback, useContext, useEffect } from 'react'
@@ -58,16 +59,18 @@ const PatternViewer = ({
   const patternId = viewedRoute?.patternId
   const routeId = viewedRoute?.routeId || null
 
-  useEffect(
-    () =>
-      getTimetableData({
-        end: '2026-06-11',
-        gtfsId: routeId,
-        serviceDate: '20260610',
-        start: '2026-06-10'
-      }),
-    [routeId, getTimetableData]
-  )
+  useEffect(() => {
+    const today = new Date()
+    const tomorrow = new Date(today)
+    tomorrow.setDate(tomorrow.getDate() + 1)
+
+    getTimetableData({
+      end: format(tomorrow, 'yyyy-MM-dd'),
+      gtfsId: routeId,
+      serviceDate: format(today, 'yyyyMMdd'),
+      start: format(today, 'yyyy-MM-dd')
+    })
+  }, [routeId, getTimetableData])
 
   /**
    * If we're viewing a pattern's stops, route to main route viewer.
