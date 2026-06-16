@@ -728,3 +728,6 @@ disableSingleItineraryDays: false
 ### In routes, this will always show the routeLongName before the headsign
 ### !!! WARNING: in some feeds, this may show the long name twice. In some feeds, this may cause layout issues !!!
 #     alwaysShowLongName: false
+
+### Whether to enable the timetable button on the pattern viewer within the Routes tab
+# timetableEnabled: false

@@ -30,6 +30,7 @@ interface Props {
   getTimetableData: (params: any) => any
   setPortal: (arg: boolean) => void
   setViewedRoute: SetViewedRouteHandler
+  timetableEnabled?: boolean
   transitOperators: TransitOperator[]
   useRouteColorAsBackground?: boolean
   vehicleIconHighlight: boolean
@@ -42,6 +43,7 @@ const PatternViewer = ({
   getTimetableData,
   setPortal,
   setViewedRoute,
+  timetableEnabled,
   transitOperators,
   useRouteColorAsBackground,
   vehicleIconHighlight,
@@ -58,17 +60,19 @@ const PatternViewer = ({
   const routeId = viewedRoute?.routeId || null
 
   useEffect(() => {
-    const today = new Date()
-    const tomorrow = new Date(today)
-    tomorrow.setDate(tomorrow.getDate() + 1)
+    if (timetableEnabled) {
+      const today = new Date()
+      const tomorrow = new Date(today)
+      tomorrow.setDate(tomorrow.getDate() + 1)
 
-    getTimetableData({
-      end: format(tomorrow, 'yyyy-MM-dd'),
-      gtfsId: routeId,
-      serviceDate: format(today, 'yyyyMMdd'),
-      start: format(today, 'yyyy-MM-dd')
-    })
-  }, [routeId, getTimetableData])
+      getTimetableData({
+        end: format(tomorrow, 'yyyy-MM-dd'),
+        gtfsId: routeId,
+        serviceDate: format(today, 'yyyyMMdd'),
+        start: format(today, 'yyyy-MM-dd')
+      })
+    }
+  }, [timetableEnabled, routeId, getTimetableData])
 
   /**
    * If we're viewing a pattern's stops, route to main route viewer.
@@ -154,7 +158,9 @@ const PatternViewer = ({
               </InvisibleA11yLabel>
             )}
           </h1>
-          <button onClick={() => setPortal(true)}>timetable</button>
+          {timetableEnabled && (
+            <button onClick={() => setPortal(true)}>Timetable</button>
+          )}
         </div>
         <RouteDetails operator={operator} patternId={patternId} route={route} />
       </div>
@@ -169,6 +175,7 @@ const PatternViewer = ({
 const mapStateToProps = (state: any) => {
   const { viewedRoute } = state.otp.ui
   return {
+    timetableEnabled: state.otp.config?.timetableEnabled,
     transitOperators: state.otp.config.transitOperators,
     useRouteColorAsBackground:
       state.otp.config?.routeViewer?.useRouteColorAsBackground,
