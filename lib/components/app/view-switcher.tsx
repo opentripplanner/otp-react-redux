@@ -34,7 +34,7 @@ const ViewSwitcher = (): JSX.Element => {
         <FormattedMessage id="components.ViewSwitcher.nearby" />
       </Link>
       {extraViews
-        .filter((v: ExtraView) => !!v?.name && v?.viewStitcher)
+        .filter((v: ExtraView) => !!v?.name && v?.showInHeaderBar)
         .map((view: ExtraView) => (
           <Link key={view.path} to={view.path} tracking>
             {view.name}
