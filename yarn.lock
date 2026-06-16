@@ -4043,10 +4043,10 @@
     "@opentripplanner/map-popup" "^8.0.4"
     flat "^5.0.2"
 
-"@opentripplanner/timetable@0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/timetable/-/timetable-0.0.2.tgz#8dea0740c3be64949c93085dbeeabffa603588df"
-  integrity sha512-k801OqTlByKXzJ54DonRmuDKQX28p8FAlTDJ+priVEUZEcqmbd8yptdTHKhY4qiSVfujN3BStS9Hcj66TGOBMw==
+"@opentripplanner/timetable@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/timetable/-/timetable-1.0.0.tgz#9f01cff703fe7a3b578593105efe1c3d035f3ea2"
+  integrity sha512-Xt+v9BpGUyu05/FLzoIQe0FqZqXCwNYkJMdeFYsLWwawrH8/ygzuCYxCnudecD8x6NAwIQ2qgVSbs8DLfhScoA==
   dependencies:
     react-intl "^6.8.4"
     toposort "^2.0.2"
@@ -5399,21 +5399,13 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@17":
-  version "17.0.38"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.38.tgz#f24249fefd89357d5fa71f739a686b8d7c7202bd"
-  integrity sha512-SI92X1IA+FMnP3qM5m4QReluXzhcmovhZnLNm3pyeQlooi02qI7sLiepEYqT678uNiyc25XfCqxREFpy3W7YhQ==
+"@types/react@*", "@types/react@16 || 17 || 18", "@types/react@17", "@types/react@<17.0.0":
+  version "16.14.70"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.14.70.tgz#c97b717a6263e18e546c54b3b870482d867c6a93"
+  integrity sha512-DM5Q7rSx9G6QYcVvMgxvEurL5P06OxcDNUXrLxlpBzG4ccUewcBCmsztYbxJBobzO8RIwwmjoaD5OsKqdHDuYQ==
   dependencies:
     "@types/prop-types" "*"
-    "@types/scheduler" "*"
-    csstype "^3.0.2"
-
-"@types/react@16 || 17 || 18":
-  version "18.3.31"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.31.tgz#b5e95e28ffcceab8d982f33f2eb076e17653c2a4"
-  integrity sha512-vfEqpXTvwT91yhmwdfouStN2hSKwTvyRs8qpLfADyrq/kxDw0hZM7Wk9Ug1FELj8hIby+S/+kQCSRFF32nv2Qw==
-  dependencies:
-    "@types/prop-types" "*"
+    "@types/scheduler" "^0.16"
     csstype "^3.2.2"
 
 "@types/resolve@0.0.8":
@@ -5435,10 +5427,10 @@
   resolved "https://registry.yarnpkg.com/@types/retry/-/retry-0.12.0.tgz#2b35eccfcee7d38cd72ad99232fbd58bffb3c84d"
   integrity sha512-wWKOClTTiizcZhXnPY4wikVAwmdYHp8q6DmC+EJUzAMsycb7HB32Kh9RN4+0gExjmPmZSAQjgURXIGATPegAvA==
 
-"@types/scheduler@*":
-  version "0.16.2"
-  resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
-  integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
+"@types/scheduler@^0.16":
+  version "0.16.8"
+  resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.8.tgz#ce5ace04cfeabe7ef87c0091e50752e36707deff"
+  integrity sha512-WZLiwShhwLRmeV6zH+GkbOFT6Z6VklCItrDioxUnv+u4Ll+8vKeFySoFyK/0ctcRpOmwAicELfmys1sDc/Rw+A==
 
 "@types/source-list-map@*":
   version "0.1.2"
