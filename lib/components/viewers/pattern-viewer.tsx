@@ -30,7 +30,6 @@ interface Props {
   getTimetableData: (params: any) => any
   setPortal: (arg: boolean) => void
   setViewedRoute: SetViewedRouteHandler
-  timetableData: any
   transitOperators: TransitOperator[]
   useRouteColorAsBackground?: boolean
   vehicleIconHighlight: boolean
@@ -43,7 +42,6 @@ const PatternViewer = ({
   getTimetableData,
   setPortal,
   setViewedRoute,
-  timetableData,
   transitOperators,
   useRouteColorAsBackground,
   vehicleIconHighlight,
@@ -169,9 +167,8 @@ const PatternViewer = ({
 // connect to redux store
 
 const mapStateToProps = (state: any) => {
-  const { timetable, viewedRoute } = state.otp.ui
+  const { viewedRoute } = state.otp.ui
   return {
-    timetableData: timetable,
     transitOperators: state.otp.config.transitOperators,
     useRouteColorAsBackground:
       state.otp.config?.routeViewer?.useRouteColorAsBackground,
