@@ -10,7 +10,7 @@ import WindowPortal from './popout'
 interface TimeTableWrapperProps {
   portal: boolean
   setPortal: (portal: boolean) => void
-  timetable: any
+  timetable: any // TODO: add typing
 }
 
 const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
@@ -19,9 +19,9 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   const [directionId, setDirectionId] = useState<0 | 1>(0)
   const [timepointsOnly, setTimepointsOnly] = useState(true)
 
-  // TODO: move this to the timetable package
+  // TODO: improve this with typing on timetable object
   const directionNames = new Map<number, string[]>()
-  timetable?.route?.patterns?.forEach((pattern) => {
+  timetable?.route?.patterns?.forEach((pattern: any) => {
     const dirId = pattern.directionId
     const names = (directionNames.get(dirId) || []).concat([pattern.name])
     directionNames.set(dirId, names)
