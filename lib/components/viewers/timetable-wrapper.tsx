@@ -19,27 +19,47 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   const [directionId, setDirectionId] = useState<0 | 1>(0)
   const [timepointsOnly, setTimepointsOnly] = useState(true)
 
-  console.log('hello world')
+  // TODO: move this to the timetable package
+  const directionNames = new Map<number, string[]>()
+  timetable?.route?.patterns?.forEach((pattern) => {
+    const dirId = pattern.directionId
+    const names = (directionNames.get(dirId) || []).concat([pattern.name])
+    directionNames.set(dirId, names)
+  })
 
   return portal ? (
     <WindowPortal onClose={() => setPortal(false)}>
-      <button
-        onClick={() => {
-          setTimepointsOnly(!timepointsOnly)
-          console.log('click!')
+      <div
+        style={{
+          alignItems: 'center',
+          display: 'flex',
+          flexDirection: 'column'
         }}
       >
-        {timepointsOnly ? 'Show All Stops' : 'Show Timepoints Only'}
-      </button>
-      <button onClick={() => setDirectionId(directionId === 1 ? 0 : 1)}>
-        {directionId === 0 ? 'One Direction' : 'Another Direction'}
-      </button>
+        <button
+          onClick={() => {
+            setTimepointsOnly(!timepointsOnly)
+          }}
+        >
+          {timepointsOnly ? 'Show All Stops' : 'Show Timepoints Only'}
+        </button>
+        <button onClick={() => setDirectionId(directionId === 1 ? 0 : 1)}>
+          Switch Direction
+        </button>
+        {(directionNames.get(directionId) || []).map((dirName) => (
+          <span key={dirName}>{dirName}</span>
+        ))}
+      </div>
       {timetable && (
-        <TimeTable
-          directionId={directionId}
-          route={timetable.route}
-          timepointsOnly={timepointsOnly}
-        />
+        <div style={{ overflow: 'scroll' }}>
+          <TimeTable
+            directionId={directionId}
+            includeDwellStops
+            route={timetable.route}
+            showBlockId
+            timepointsOnly={timepointsOnly}
+          />
+        </div>
       )}
     </WindowPortal>
   ) : (
