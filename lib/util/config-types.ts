@@ -411,7 +411,7 @@ export type ExtraView = {
   icon?: JSX.Element
   name: string
   path: string
-  viewStitcher?: boolean
+  showInHeaderBar?: boolean
 }
 
 /** The main application configuration object */
