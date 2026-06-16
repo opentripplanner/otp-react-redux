@@ -2,14 +2,10 @@ import { FormattedMessage, useIntl } from 'react-intl'
 import React, { useContext } from 'react'
 
 import { ComponentContext } from '../../util/contexts'
+import { ExtraView } from '../../util/config-types'
 import Link from '../util/link'
 
 // TODO: Move to generic types file
-type ExtraView = {
-  content: JSX.Element
-  name?: string
-  path: string
-}
 
 /**
  * This component is a switcher between
@@ -38,7 +34,7 @@ const ViewSwitcher = (): JSX.Element => {
         <FormattedMessage id="components.ViewSwitcher.nearby" />
       </Link>
       {extraViews
-        .filter((v: ExtraView) => !!v?.name)
+        .filter((v: ExtraView) => !!v?.name && v?.viewStitcher)
         .map((view: ExtraView) => (
           <Link key={view.path} to={view.path} tracking>
             {view.name}

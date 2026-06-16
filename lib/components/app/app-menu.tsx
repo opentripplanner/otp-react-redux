@@ -16,7 +16,11 @@ import type { WrappedComponentProps } from 'react-intl'
 import * as callTakerActions from '../../actions/call-taker'
 import * as fieldTripActions from '../../actions/field-trip'
 import * as uiActions from '../../actions/ui'
-import { AppMenuItemConfig, LanguageConfig } from '../../util/config-types'
+import {
+  AppMenuItemConfig,
+  ExtraView,
+  LanguageConfig
+} from '../../util/config-types'
 import { AppReduxState } from '../../util/state-types'
 import { ComponentContext } from '../../util/contexts'
 import { convertChineseLanguageCode, getLanguageOptions } from '../../util/i18n'
@@ -183,7 +187,7 @@ class AppMenu extends Component<
     ]
 
     const { isPaneOpen } = this.state
-    const { SvgIcon } = this.context
+    const { extraViews, SvgIcon } = this.context
     const buttonLabel = isPaneOpen
       ? intl.formatMessage({ id: 'components.AppMenu.closeMenu' })
       : intl.formatMessage({ id: 'components.AppMenu.openMenu' })
@@ -294,6 +298,15 @@ class AppMenu extends Component<
                 })}
               />
             )}
+            {extraViews.map((view: ExtraView) => (
+              <AppMenuItem
+                icon={view.icon}
+                key={view.name}
+                onClick={this._togglePane}
+                text={view.name}
+                to={view.path}
+              />
+            ))}
             {this._addExtraMenuItems(extraMenuItems, translateExternalLinks)}
             {this._addExtraMenuItems(languageMenuItems)}
           </div>

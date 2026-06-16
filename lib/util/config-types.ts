@@ -406,6 +406,14 @@ export interface DateTimeConfig {
   timeFormat: string
 }
 
+export type ExtraView = {
+  content: JSX.Element
+  icon?: JSX.Element
+  name: string
+  path: string
+  viewStitcher?: boolean
+}
+
 /** The main application configuration object */
 export interface AppConfig {
   accessibilityScore?: AccessibilityScoreConfig

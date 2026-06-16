@@ -23,7 +23,7 @@ const AppFrame = ({ children, fullWidth, SubNav }: Props): JSX.Element => (
         (see https://dequeuniversity.com/rules/axe/4.3/landmark-banner-is-top-level?application=axe-puppeteer) */}
     <main tabIndex={-1}>
       {fullWidth ? (
-        <div style={{ marginTop: -60 }}>{children}</div>
+        <div>{children}</div>
       ) : (
         <div className="container">
           <Row>
