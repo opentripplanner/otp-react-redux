@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { format } from 'date-fns'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { TransitOperator } from '@opentripplanner/types'
 import React, { useCallback, useContext, useEffect } from 'react'
@@ -26,7 +27,10 @@ import VehiclePositionRetriever from './vehicle-position-retriever'
 
 interface Props {
   findRoutesIfNeeded: () => void
+  getTimetableData: (params: any) => any
+  setPortal: (arg: boolean) => void
   setViewedRoute: SetViewedRouteHandler
+  timetableEnabled?: boolean
   transitOperators: TransitOperator[]
   useRouteColorAsBackground?: boolean
   vehicleIconHighlight: boolean
@@ -36,7 +40,10 @@ interface Props {
 
 const PatternViewer = ({
   findRoutesIfNeeded,
+  getTimetableData,
+  setPortal,
   setViewedRoute,
+  timetableEnabled,
   transitOperators,
   useRouteColorAsBackground,
   vehicleIconHighlight,
@@ -51,6 +58,21 @@ const PatternViewer = ({
   const routePatternKeys = route?.patterns && Object.keys(route?.patterns)
   const patternId = viewedRoute?.patternId
   const routeId = viewedRoute?.routeId || null
+
+  useEffect(() => {
+    if (timetableEnabled) {
+      const today = new Date()
+      const tomorrow = new Date(today)
+      tomorrow.setDate(tomorrow.getDate() + 1)
+
+      getTimetableData({
+        end: format(tomorrow, 'yyyy-MM-dd'),
+        gtfsId: routeId,
+        serviceDate: format(today, 'yyyyMMdd'),
+        start: format(today, 'yyyy-MM-dd')
+      })
+    }
+  }, [timetableEnabled, routeId, getTimetableData])
 
   /**
    * If we're viewing a pattern's stops, route to main route viewer.
@@ -136,6 +158,9 @@ const PatternViewer = ({
               </InvisibleA11yLabel>
             )}
           </h1>
+          {timetableEnabled && (
+            <button onClick={() => setPortal(true)}>Timetable</button>
+          )}
         </div>
         <RouteDetails operator={operator} patternId={patternId} route={route} />
       </div>
@@ -150,6 +175,7 @@ const PatternViewer = ({
 const mapStateToProps = (state: any) => {
   const { viewedRoute } = state.otp.ui
   return {
+    timetableEnabled: state.otp.config?.timetableEnabled,
     transitOperators: state.otp.config.transitOperators,
     useRouteColorAsBackground:
       state.otp.config?.routeViewer?.useRouteColorAsBackground,
@@ -161,6 +187,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = {
   findRoutesIfNeeded: apiActions.findRoutesIfNeeded,
+  getTimetableData: apiActions.getTimetableData,
+  setPortal: uiActions.setPortal,
   setViewedRoute: uiActions.setViewedRoute
 }
 
