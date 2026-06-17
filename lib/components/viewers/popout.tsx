@@ -15,7 +15,7 @@ function WindowPortal({
   const [externalWindow, setExternalWindow] = useState<Window | null>(null)
 
   // TODO amy type pls
-  let intervalId: number
+  let intervalId: ReturnType<typeof setInterval>
 
   function closeAndClear() {
     onClose()
