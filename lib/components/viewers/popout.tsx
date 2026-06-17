@@ -1,13 +1,21 @@
 import { createPortal } from 'react-dom'
 import React, { useEffect, useRef, useState } from 'react'
 
-function WindowPortal({ children, onClose }) {
+interface WindowPortalProps {
+  children: React.ReactNode
+  onClose: () => void
+}
+
+function WindowPortal({
+  children,
+  onClose
+}: WindowPortalProps): React.ReactPortal | null {
   const newWindow = useRef<Window | null>(null)
   const container = useRef(document.createElement('div'))
   const [externalWindow, setExternalWindow] = useState<Window | null>(null)
 
   // TODO amy type pls
-  let intervalId
+  let intervalId: number
 
   function closeAndClear() {
     onClose()
@@ -36,6 +44,7 @@ function WindowPortal({ children, onClose }) {
 
     win?.document?.body?.appendChild(container.current)
 
+    // TODO: address warning here
     intervalId = setInterval(() => {
       win?.closed && closeAndClear()
     }, 100)
