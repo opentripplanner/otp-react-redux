@@ -66,11 +66,7 @@ export default defineConfig({
   base: './',
   build: {
     // Flatten the output for mastarm deploy (mastarm doesn't support uploading subfolders).
-    assetsDir: '',
-    rollupOptions: {
-      // Tell Rollup to treat these imports as external dependencies
-      external: ['react', 'react-dom', 'react/jsx-runtime']
-    }
+    assetsDir: ''
   },
   optimizeDeps: {
     esbuildOptions: {
