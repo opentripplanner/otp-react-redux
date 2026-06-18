@@ -253,7 +253,6 @@ components:
       pendant que nous vous redirigeons vers la page de connexion...
   CallTakerPanel:
     advancedOptions: Options avancées
-    groupSize: "Taille du groupe :"
     intermediateDestination: Entrez la destination intermédiaire
   CompanionsPane:
     addNewCompanion: Ajouter un accompagnateur
