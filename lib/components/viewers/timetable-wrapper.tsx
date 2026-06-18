@@ -33,7 +33,8 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
         style={{
           alignItems: 'center',
           display: 'flex',
-          flexDirection: 'column'
+          flexDirection: 'column',
+          gap: '6px'
         }}
       >
         <button
