@@ -243,7 +243,6 @@ components:
       habang nire-redirect ka namin sa page sa pag-log in...
   CallTakerPanel:
     advancedOptions: Mga advanced na opsyon
-    groupSize: "Laki ng grupo:"
     intermediateDestination: Ilagay ang intermediate na patutunguhan
   CompanionsPane:
     addNewCompanion: Magdagdag ng bagong kasama sa pagbiyahe

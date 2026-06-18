@@ -238,7 +238,6 @@ components:
       நாங்கள் உங்களை திருப்பி விடும்போது காத்திருங்கள் ...
   CallTakerPanel:
     advancedOptions: மேம்பட்ட விருப்பங்கள்
-    groupSize: "குழு அளவு:"
     intermediateDestination: இடைநிலை இலக்கை உள்ளிடவும்
   CompanionsPane:
     addNewCompanion: ஒரு புதிய பயணத் தோழரைச் சேர்க்கவும்

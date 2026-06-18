@@ -203,7 +203,6 @@ components:
       您必須登入才能存取此頁面。我們正在將您重新導向到登入頁面，請稍候……
   CallTakerPanel:
     advancedOptions: 進階選項
-    groupSize: 群組大小：
     intermediateDestination: 輸入中間目的地
   DateTimeOptions:
     arriveBy: 最晚抵達時間
