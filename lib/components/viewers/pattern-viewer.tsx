@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-import { format } from 'date-fns'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { TransitOperator } from '@opentripplanner/types'
 import React, { useCallback, useContext, useEffect } from 'react'
@@ -61,15 +60,9 @@ const PatternViewer = ({
 
   useEffect(() => {
     if (timetableEnabled) {
-      const today = new Date()
-      const tomorrow = new Date(today)
-      tomorrow.setDate(tomorrow.getDate() + 1)
-
       getTimetableData({
-        end: format(tomorrow, 'yyyy-MM-dd'),
         gtfsId: routeId,
-        serviceDate: format(today, 'yyyyMMdd'),
-        start: format(today, 'yyyy-MM-dd')
+        serviceDate: new Date()
       })
     }
   }, [timetableEnabled, routeId, getTimetableData])
