@@ -14,7 +14,6 @@ function WindowPortal({
   const container = useRef(document.createElement('div'))
   const [externalWindow, setExternalWindow] = useState<Window | null>(null)
 
-  // TODO amy type pls
   let intervalId: ReturnType<typeof setInterval>
 
   function closeAndClear() {
