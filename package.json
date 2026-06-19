@@ -196,7 +196,7 @@
     "ts-jest": "^29.4.6",
     "tsdx": "https://github.com/ibi-group/tsdx",
     "typescript": "^4.4.2",
-    "vite": "^7.3.2",
+    "vite": "^7.3.5",
     "vite-plugin-node-polyfills": "^0.24.0",
     "vite-raw-plugin": "^1.0.2",
     "yaml-jest": "^1.2.0",
