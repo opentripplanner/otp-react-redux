@@ -12,8 +12,8 @@ export const sortOptions = (
     'ARRIVALTIME',
     'WALKTIME',
     'COST',
-    'DEPARTURETIME',
-    'FARE'
+    'DEPARTURETIME'
+    // 'FARE' disabled by default. can be confusing when next to the COST option
     // Emissions is disabled by default, as it does nothing unless CO₂ calculation is enabled
   ]
 ): SortOptionEntry[] => {
