@@ -26,7 +26,7 @@ import VehiclePositionRetriever from './vehicle-position-retriever'
 
 interface Props {
   findRoutesIfNeeded: () => void
-  getTimetableData: (params: any) => any
+  getTimetableData: (params: { gtfsId: string; serviceDate: Date }) => any
   setPortal: (arg: boolean) => void
   setViewedRoute: SetViewedRouteHandler
   timetableEnabled?: boolean
@@ -56,7 +56,7 @@ const PatternViewer = ({
 
   const routePatternKeys = route?.patterns && Object.keys(route?.patterns)
   const patternId = viewedRoute?.patternId
-  const routeId = viewedRoute?.routeId || null
+  const routeId = viewedRoute?.routeId || ''
 
   useEffect(() => {
     if (timetableEnabled) {
