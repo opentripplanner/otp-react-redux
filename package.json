@@ -42,7 +42,7 @@
     "@opentripplanner/core-utils": "16.0.4",
     "@opentripplanner/endpoints-overlay": "5.0.1",
     "@opentripplanner/from-to-location-picker": "4.0.2",
-    "@opentripplanner/geocoder": "^3.1.1",
+    "@opentripplanner/geocoder": "^3.1.2",
     "@opentripplanner/humanize-distance": "^2.1.1",
     "@opentripplanner/icons": "4.1.4",
     "@opentripplanner/itinerary-body": "9.4.0",
