@@ -1,11 +1,23 @@
 import { connect } from 'react-redux'
 import React, { useState } from 'react'
+import styled from 'styled-components'
 import TimeTable from '@opentripplanner/timetable'
 
 import * as uiActions from '../../actions/ui'
 import { AppReduxState } from '../../util/state-types'
 
 import WindowPortal from './popout'
+
+const TimetableButtonsWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+`
+
+const TimetableScrollContainer = styled.div`
+  overflow: scroll;
+`
 
 interface TimeTableWrapperProps {
   portal: boolean
@@ -29,14 +41,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
 
   return portal ? (
     <WindowPortal onClose={() => setPortal(false)}>
-      <div
-        style={{
-          alignItems: 'center',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '6px'
-        }}
-      >
+      <TimetableButtonsWrapper>
         <button
           onClick={() => {
             setTimepointsOnly(!timepointsOnly)
@@ -50,9 +55,9 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
         {(directionNames.get(directionId) || []).map((dirName) => (
           <span key={dirName}>{dirName}</span>
         ))}
-      </div>
+      </TimetableButtonsWrapper>
       {timetable && (
-        <div style={{ overflow: 'scroll' }}>
+        <TimetableScrollContainer>
           <TimeTable
             directionId={directionId}
             includeDwellStops
@@ -60,7 +65,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
             showBlockId
             timepointsOnly={timepointsOnly}
           />
-        </div>
+        </TimetableScrollContainer>
       )}
     </WindowPortal>
   ) : (
