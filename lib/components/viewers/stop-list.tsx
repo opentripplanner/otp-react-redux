@@ -17,8 +17,8 @@ import DepartureTime from './departure-time'
 const { time } = coreUtils
 const { getCurrentDate } = time
 
-const timeCellWidth = '45px'
-const lowOpacity = '40%'
+const TIME_CELL_WIDTH = '45px'
+const LOW_OPACITY = '40%'
 
 export const StopContainer = styled.ol<{ timeColumn?: boolean }>`
   color: ${DARK_TEXT_GREY};
@@ -46,7 +46,7 @@ export const StopContainer = styled.ol<{ timeColumn?: boolean }>`
 
   .faded + .highlighted {
     div.stop-decoration::after {
-      opacity: ${lowOpacity};
+      opacity: ${LOW_OPACITY};
     }
   }
 `
@@ -70,7 +70,7 @@ export const Stop = styled.li<{ routeColor: string; timeColumn?: boolean }>`
   display: grid;
   gap: 14px;
   grid-template-columns: ${(props) =>
-    props.timeColumn ? `${timeCellWidth} 20px auto` : '20px auto'};
+    props.timeColumn ? `${TIME_CELL_WIDTH} 20px auto` : '20px auto'};
   white-space: nowrap;
 
   &.faded button {
@@ -81,7 +81,7 @@ export const Stop = styled.li<{ routeColor: string; timeColumn?: boolean }>`
   .stop-time {
     font-size: 11px;
     text-align: right;
-    width: ${timeCellWidth};
+    width: ${TIME_CELL_WIDTH};
   }
 
   /* this is the station blob */
@@ -90,7 +90,7 @@ export const Stop = styled.li<{ routeColor: string; timeColumn?: boolean }>`
     border-radius: 20px;
     display: block;
     height: 20px;
-    opacity: ${lowOpacity};
+    opacity: ${LOW_OPACITY};
     position: relative;
     width: 20px;
 
