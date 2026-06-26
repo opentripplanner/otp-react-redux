@@ -5,7 +5,6 @@ import styled from 'styled-components'
 
 import { blue } from '../util/colors'
 import { ComponentContext } from '../../util/contexts'
-import { extractMainHeadsigns } from '../../util/pattern-viewer'
 import { getFormattedMode } from '../../util/i18n'
 import { getModeFromRoute } from '../../util/viewer'
 import { Icon } from '../util/styledIcon'
@@ -213,8 +212,8 @@ export class RouteRow extends PureComponent<Props> {
 
     const { id, longName, patterns, shortName } = route
     const routePath = `/route/${id}`
-    const firstPattern =
-      patterns && extractMainHeadsigns(patterns, shortName, () => '')?.[0]?.id
+    // No need to do additional filtering, subpattern filtering is already done upon fetching the route.
+    const firstPattern = patterns && Object.values(patterns)[0]?.id
 
     const patternViewerLinkText = intl.formatMessage({
       description: 'identifies the purpose of the pattern viewer button',

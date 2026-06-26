@@ -115,9 +115,9 @@ type Props = {
     departArrive,
     time
   }: {
-    date: string
-    departArrive: string
-    time: string
+    date?: string
+    departArrive?: string
+    time?: string
   }) => void
   sort: SortType
   syncSortWithDepartArrive?: boolean
@@ -139,7 +139,7 @@ type Props = {
  */
 
 const DateTimeOptions = ({
-  date: initialDate,
+  date,
   departArrive: initialDepartArrive,
   homeTimezone,
   importedUpdateItineraryFilter,
@@ -147,14 +147,12 @@ const DateTimeOptions = ({
   setQueryParam,
   sort,
   syncSortWithDepartArrive,
-  time: initialTime,
+  time,
   timeFormat
 }: Props) => {
   const [departArrive, setDepartArrive] = useState<DepartArriveValue>(
-    initialDate || initialTime ? 'DEPART' : 'NOW'
+    date || time ? 'DEPART' : 'NOW'
   )
-  const [date, setDate] = useState<string | undefined>(initialDate)
-  const [time, setTime] = useState<string | undefined>(initialTime)
   const [typedTime, setTypedTime] = useState<string | undefined>(
     safeFormat(parseInputAsTime(homeTimezone, time, date), timeFormat, {
       timeZone: homeTimezone
@@ -169,14 +167,12 @@ const DateTimeOptions = ({
 
   // Update state when external state is updated
   useEffect(() => {
-    if (initialDate !== date) setDate(initialDate)
-    if (initialTime !== time) {
-      handleTimeChange(initialTime || '')
+    if (typedTime !== time) {
+      handleTimeChange(time || '')
     }
     // This effect is design to flow from state to component only
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialTime, initialDate])
-
+  }, [time])
   useEffect(() => {
     if (initialDepartArrive && departArrive !== initialDepartArrive) {
       setDepartArrive(initialDepartArrive)
@@ -189,13 +185,7 @@ const DateTimeOptions = ({
   useEffect(() => {
     if (safeFormat(dateTime, OTP_API_DATE_FORMAT, {}) !== '' && setQueryParam) {
       setQueryParam({
-        date: safeFormat(dateTime, OTP_API_DATE_FORMAT, {
-          timeZone: homeTimezone
-        }),
-        departArrive,
-        time: safeFormat(dateTime, OTP_API_TIME_FORMAT, {
-          timeZone: homeTimezone
-        })
+        departArrive
       })
     }
   }, [dateTime, departArrive, homeTimezone, setQueryParam])
@@ -211,7 +201,9 @@ const DateTimeOptions = ({
       // Handler for updating the time and date fields when NOW is selected
       if (newValue === 'NOW') {
         handleTimeChange(getCurrentTime(homeTimezone))
-        setDate(getCurrentDate(homeTimezone))
+        setQueryParam({
+          date: getCurrentDate(homeTimezone)
+        })
         setTypedTime(
           safeFormat(
             parseInputAsTime(
@@ -252,7 +244,6 @@ const DateTimeOptions = ({
 
   const handleTimeChange = useCallback(
     (newTime: string) => {
-      setTime(newTime)
       // Only update typed time if not actively typing
       if (timeRef.current !== document.activeElement) {
         setTypedTime(
@@ -260,6 +251,18 @@ const DateTimeOptions = ({
             timeZone: homeTimezone
           }) || 'Invalid Time'
         )
+        // otherwise update the time
+      } else {
+        setQueryParam({
+          time:
+            safeFormat(
+              parseInputAsTime(homeTimezone, newTime, date),
+              OTP_API_TIME_FORMAT,
+              {
+                timeZone: homeTimezone
+              }
+            ) || 'Invalid Time'
+        })
       }
     },
     [dateTime, timeFormat, homeTimezone]
@@ -302,6 +305,13 @@ const DateTimeOptions = ({
       >
         <input
           className="datetime-slim"
+          onBlur={() => {
+            setTypedTime(
+              safeFormat(dateTime, timeFormat, {
+                timeZone: homeTimezone
+              })
+            )
+          }}
           onChange={useCallback(
             (e) => {
               handleTimeChange(e.target.value)
@@ -333,10 +343,12 @@ const DateTimeOptions = ({
               // TODO: prevent selection from advancing to next field
               return
             }
-            setDate(e.target.value)
+            setQueryParam({
+              date: e.target.value
+            })
             unsetNow()
           },
-          [unsetNow, setDate]
+          [unsetNow]
         )}
         onKeyDown={onKeyDown}
         style={{

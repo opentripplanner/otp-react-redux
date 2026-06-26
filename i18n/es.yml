@@ -634,9 +634,9 @@ components:
     displayStopId: <strong>Parada n°</strong>{stopId}
     findSchedule: Buscar horario por fecha
     flexStop: >-
-      Esta es una parada flexible. Los vehículos dejarán y recogerán a los
-      pasajeros en esta zona flexible previa solicitud. Es posible que tenga que
-      llamar con antelación para el servicio en esta zona.    
+      Esta es una parada flexible. Los vehículos dejarán y recogerán a los pasajeros
+      en esta zona flexible previa solicitud. Es posible que tenga que llamar con
+      antelación para el servicio en esta zona.
     forStop: para {stopName}
     header: Visor de paradas
     loadingText: Cargando la parada...
@@ -721,8 +721,7 @@ components:
     planNewTrip: Planificar un nuevo viaje
   TripStatusRenderers:
     active:
-      delayedHeading: La hora de inicio del viaje se retrasa 
-        {formattedDuration}
+      delayedHeading: La hora de inicio del viaje se retrasa {formattedDuration}
       description: El viaje debe comenzar a las {arrivalTime, time, short}.
       earlyHeading: >-
         ¡El viaje está en marcha y llega {formattedDuration} antes de lo
