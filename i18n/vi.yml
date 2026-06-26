@@ -857,7 +857,7 @@ config:
     car_hail: Đi taxi
   flex:
     both: Xem dưới cùng của hành trình để biết chi tiết
-    call-ahead: Gọi để đặt trước.
+    call-ahead: Gọi để đặt trước
     continuous-dropoff: Giao tiếp với người vận hành về điểm dừng
     flex-service: Dịch vụ linh hoạt
     flex-service-colon: "Dịch vụ flex:"
