@@ -49,6 +49,7 @@ export interface OtpState {
     popup: PopupTargetConfig
     printView: boolean
     routeViewer: any
+    stopClosures: Map<string, Set<string>>
     viewedRoute: {
       patternId: string
       routeId: string
