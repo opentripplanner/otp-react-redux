@@ -313,7 +313,7 @@ class MetroItinerary extends NarrativeItinerary {
     const handleClick = () => {
       setActiveItinerary(itinerary)
       setActiveLeg(null, null)
-      setItineraryView(ItineraryView.FULL)
+      setItineraryView(ItineraryView.ITINERARY_OPEN)
       // Reset the scroll. Refs would be the more
       // appropriate way to do this, but they don't work
       setTimeout(
