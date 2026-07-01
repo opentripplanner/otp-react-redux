@@ -8,13 +8,14 @@ import { AppReduxState } from '../../util/state-types'
 import PortalWrapper from './popout'
 
 interface TimeTableWrapperProps {
+  closedStops: Map<string, Set<string>>
   portal: string | undefined
   setPortal: (portal: string | undefined) => void
   timetable: any // TODO: add typing
 }
 
 const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
-  const { portal, setPortal, timetable } = props
+  const { closedStops, portal, setPortal, timetable } = props
 
   const [directionId, setDirectionId] = useState<0 | 1>(0)
   const [timepointsOnly, setTimepointsOnly] = useState(true)
@@ -26,6 +27,8 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
     const names = (directionNames.get(dirId) || []).concat([pattern.name])
     directionNames.set(dirId, names)
   })
+
+  const stopsSet = closedStops?.get(portal || '')
 
   return portal ? (
     <PortalWrapper
@@ -58,6 +61,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
       {timetable && (
         <div style={{ overflow: 'scroll' }}>
           <TimeTable
+            closedStops={stopsSet}
             directionId={directionId}
             includeDwellStops
             route={timetable.route}
@@ -74,6 +78,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
 
 const mapStateToProps = (state: AppReduxState) => {
   return {
+    closedStops: state.otp.ui.stopClosures,
     portal: state.otp.ui.portal,
     timetable: state.otp.ui.timetable
   }
