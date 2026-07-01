@@ -8,7 +8,11 @@ import { AppReduxState } from '../../util/state-types'
 import PortalWrapper from './popout'
 
 interface TimeTableWrapperProps {
+  /** A map of closed stops. Keys are route gtfsIds, values are sets of gtfsIds for stops that are closed on that route */
   closedStops: Map<string, Set<string>>
+  /** The value of the portal in application state. If defined, it refers to the gtfsId of the route whose timetable
+   * is to be displayed in the portal
+   */
   portal: string | undefined
   setPortal: (portal: string | undefined) => void
   timetable: any // TODO: add typing
@@ -28,7 +32,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
     directionNames.set(dirId, names)
   })
 
-  const stopsSet = closedStops?.get(portal || '')
+  const closedStopsSet = closedStops?.get(portal || '')
 
   return portal ? (
     <PortalWrapper
@@ -61,7 +65,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
       {timetable && (
         <div style={{ overflow: 'scroll' }}>
           <TimeTable
-            closedStops={stopsSet}
+            closedStops={closedStopsSet}
             directionId={directionId}
             includeDwellStops
             route={timetable.route}
