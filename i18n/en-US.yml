@@ -229,7 +229,6 @@ components:
       redirect you to the login page...
   CallTakerPanel:
     advancedOptions: Advanced options
-    groupSize: "Group size:"
     intermediateDestination: Enter intermediate destination
   CompanionsPane:
     addNewCompanion: Add a new travel companion
