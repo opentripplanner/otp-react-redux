@@ -1,7 +1,7 @@
 import { createPortal } from 'react-dom'
 import React, { ReactPortal, useEffect, useRef, useState } from 'react'
 
-interface NewWindowPortalProps {
+interface PortalWrapperProps {
   children: React.ReactNode
   onClose: () => void
   title: string
@@ -33,7 +33,7 @@ const onLoad = (
   setIsLoading(false)
 }
 
-const PortalWrapper = (props: NewWindowPortalProps): ReactPortal | null => {
+const PortalWrapper = (props: PortalWrapperProps): ReactPortal | null => {
   const { children, onClose, title } = props
 
   // Create a node to inject the React Portal into
