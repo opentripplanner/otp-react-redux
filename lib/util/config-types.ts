@@ -359,7 +359,7 @@ export interface ModeColorConfig {
 }
 
 export interface TransitOperatorConfig extends TransitOperator {
-  colorMode?: 'gtfs' | 'gtfs-softened' | 'disabled'
+  colorMode?: 'gtfs' | 'disabled'
   modeColors?: Record<string, ModeColorConfig>
   routeIcons?: boolean
 }

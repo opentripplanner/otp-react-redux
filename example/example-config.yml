@@ -490,7 +490,7 @@ disableSingleItineraryDays: false
 #     agencyId: PSC
 #     logo: https://d2tyb7byn1fef9.cloudfront.net/psc.png
 #     order: 1
-#     colorMode: gtfs # One of gtfs, gtfs-softened, disabled. see util/viewer.js for more details.
+#     colorMode: gtfs or disabled. see util/viewer.js for more details.
 #     # Mode color overrides. If a GTFS supplies weird colors for
 #     # a mode, they can be overridden here. This is treated as GTFS data.
 #     modeColors:
