@@ -5,7 +5,7 @@ import TimeTable from '@opentripplanner/timetable'
 import * as uiActions from '../../actions/ui'
 import { AppReduxState } from '../../util/state-types'
 
-import WindowPortal from './popout'
+import PortalWrapper from './popout'
 
 interface TimeTableWrapperProps {
   portal: boolean
@@ -28,7 +28,12 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   })
 
   return portal ? (
-    <WindowPortal onClose={() => setPortal(false)}>
+    <PortalWrapper
+      onClose={() => {
+        setPortal(false)
+      }}
+      title="timetable"
+    >
       <div
         style={{
           alignItems: 'center',
@@ -61,7 +66,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
           />
         </div>
       )}
-    </WindowPortal>
+    </PortalWrapper>
   ) : (
     <></>
   )
