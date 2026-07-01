@@ -8,8 +8,8 @@ import { AppReduxState } from '../../util/state-types'
 import PortalWrapper from './popout'
 
 interface TimeTableWrapperProps {
-  portal: boolean
-  setPortal: (portal: boolean) => void
+  portal: string | undefined
+  setPortal: (portal: string | undefined) => void
   timetable: any // TODO: add typing
 }
 
@@ -30,7 +30,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   return portal ? (
     <PortalWrapper
       onClose={() => {
-        setPortal(false)
+        setPortal(undefined)
       }}
       title="timetable"
     >
