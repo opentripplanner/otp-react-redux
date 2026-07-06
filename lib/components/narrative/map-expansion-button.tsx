@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { StyledIconWrapper } from '../util/styledIcon'
 
-export const TOGGLE_MAP_BUTTON_HEIGHT = 7
+export const TOGGLE_MAP_BUTTON_HEIGHT = 5
 
 const StyledMapExpansionButton = styled.button`
   align-items: center;
@@ -48,7 +48,7 @@ const MapExpansionButton = ({
       onClick={onClickExpansionButton}
       title={mapExpansionText}
     >
-      <StyledIconWrapper>
+      <StyledIconWrapper style={{ marginTop: '3px' }}>
         <UnicodeChevron expanded={mapExpanded}>&#10095;</UnicodeChevron>
       </StyledIconWrapper>
     </StyledMapExpansionButton>
