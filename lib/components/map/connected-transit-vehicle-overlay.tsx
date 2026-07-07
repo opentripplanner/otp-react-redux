@@ -71,7 +71,7 @@ function VehicleTooltip({
       <div>
         <strong>{vehicleLabel}</strong>
       </div>
-      {!!vehicle?.seconds && (
+      {vehicle?.seconds !== null && vehicle?.seconds !== undefined && (
         <div>
           {capitalizeFirst(
             intl.formatMessage(
