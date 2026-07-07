@@ -47,9 +47,9 @@ export interface OtpState {
     }
     nearbyViewCoords: LatLonObj
     popup: PopupTargetConfig
-    // The portal value being defined indicates that a portal should be open. The value
+    // The portalId value being defined indicates that a portal should be open. The value
     // can then be used by the content within the portal
-    portal: string | undefined
+    portalId: string | undefined
     printView: boolean
     routeViewer: any
     stopClosures: Map<string, Set<string>>

@@ -28,7 +28,7 @@ import VehiclePositionRetriever from './vehicle-position-retriever'
 interface Props {
   findRoutesIfNeeded: () => void
   getTimetableData: (params: any) => any
-  setPortal: (arg: string | undefined) => void
+  setPortalId: (portalId?: string) => void
   setViewedRoute: SetViewedRouteHandler
   timetableEnabled?: boolean
   transitOperators: TransitOperator[]
@@ -41,7 +41,7 @@ interface Props {
 const PatternViewer = ({
   findRoutesIfNeeded,
   getTimetableData,
-  setPortal,
+  setPortalId,
   setViewedRoute,
   timetableEnabled,
   transitOperators,
@@ -159,7 +159,7 @@ const PatternViewer = ({
             )}
           </h1>
           {timetableEnabled && (
-            <button onClick={() => setPortal(routeId || undefined)}>
+            <button onClick={() => setPortalId(routeId || undefined)}>
               Timetable
             </button>
           )}
@@ -190,7 +190,7 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = {
   findRoutesIfNeeded: apiActions.findRoutesIfNeeded,
   getTimetableData: apiActions.getTimetableData,
-  setPortal: uiActions.setPortal,
+  setPortalId: uiActions.setPortalId,
   setViewedRoute: uiActions.setViewedRoute
 }
 
