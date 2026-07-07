@@ -5,16 +5,21 @@ import TimeTable from '@opentripplanner/timetable'
 import * as uiActions from '../../actions/ui'
 import { AppReduxState } from '../../util/state-types'
 
-import WindowPortal from './popout'
+import PortalWrapper from './popout'
 
 interface TimeTableWrapperProps {
-  portal: boolean
-  setPortal: (portal: boolean) => void
+  /** A map of closed stops. Keys are route gtfsIds, values are sets of gtfsIds for stops that are closed on that route */
+  closedStops: Map<string, Set<string>>
+  /** The value of the portal in application state. If defined, it refers to the gtfsId of the route whose timetable
+   * is to be displayed in the portal
+   */
+  portal: string | undefined
+  setPortal: (portal: string | undefined) => void
   timetable: any // TODO: add typing
 }
 
 const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
-  const { portal, setPortal, timetable } = props
+  const { closedStops, portal, setPortal, timetable } = props
 
   const [directionId, setDirectionId] = useState<0 | 1>(0)
   const [timepointsOnly, setTimepointsOnly] = useState(true)
@@ -27,8 +32,15 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
     directionNames.set(dirId, names)
   })
 
+  const closedStopsSet = closedStops?.get(portal || '')
+
   return portal ? (
-    <WindowPortal onClose={() => setPortal(false)}>
+    <PortalWrapper
+      onClose={() => {
+        setPortal(undefined)
+      }}
+      title="timetable"
+    >
       <div
         style={{
           alignItems: 'center',
@@ -53,6 +65,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
       {timetable && (
         <div style={{ overflow: 'scroll' }}>
           <TimeTable
+            closedStops={closedStopsSet}
             directionId={directionId}
             includeDwellStops
             route={timetable.route}
@@ -61,7 +74,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
           />
         </div>
       )}
-    </WindowPortal>
+    </PortalWrapper>
   ) : (
     <></>
   )
@@ -69,6 +82,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
 
 const mapStateToProps = (state: AppReduxState) => {
   return {
+    closedStops: state.otp.ui.stopClosures,
     portal: state.otp.ui.portal,
     timetable: state.otp.ui.timetable
   }

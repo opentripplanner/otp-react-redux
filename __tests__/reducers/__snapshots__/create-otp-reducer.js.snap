@@ -101,7 +101,7 @@ exports[`lib > reducers > create-otp-reducer should be able to create the initia
     "popup": {
       "id": null,
     },
-    "portal": false,
+    "portal": undefined,
     "printView": false,
     "routeViewer": {
       "filter": {
