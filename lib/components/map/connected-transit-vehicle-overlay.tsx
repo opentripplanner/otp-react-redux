@@ -35,6 +35,7 @@ interface TransitVehicleExt extends TransitVehicle {
   textColor?: string
 }
 
+// eslint-disable-next-line complexity
 function VehicleTooltip({
   vehicle
 }: {
@@ -70,20 +71,22 @@ function VehicleTooltip({
       <div>
         <strong>{vehicleLabel}</strong>
       </div>
-      <div>
-        {capitalizeFirst(
-          intl.formatMessage(
-            { id: 'common.time.durationAgo' },
-            {
-              duration: formatDuration(
-                Math.floor(Date.now() / 1000 - (vehicle?.seconds || 0)),
-                intl,
-                true
-              )
-            }
-          )
-        )}
-      </div>
+      {vehicle?.seconds !== null && vehicle?.seconds !== undefined && (
+        <div>
+          {capitalizeFirst(
+            intl.formatMessage(
+              { id: 'common.time.durationAgo' },
+              {
+                duration: formatDuration(
+                  Math.floor(Date.now() / 1000 - (vehicle?.seconds || 0)),
+                  intl,
+                  true
+                )
+              }
+            )
+          )}
+        </div>
+      )}
       {stopStatus !== 'STOPPED_AT' && vehicle.speed > 0 && (
         <div>
           <FormattedMessage
