@@ -9,17 +9,19 @@ import PortalWrapper from './popout'
 
 interface TimeTableWrapperProps {
   /** A map of closed stops. Keys are route gtfsIds, values are sets of gtfsIds for stops that are closed on that route */
-  closedStops: Map<string, Set<string>>
+  closedStops?: Map<string, Set<string>>
   /** The value of the portal ID in application state. If defined, it refers to the gtfsId of the route whose timetable
    * is to be displayed in the portal
    */
   portalId: string | undefined
   setPortalId: (portalId?: string) => void
+  stopClosuresError?: string
   timetable: any // TODO: add typing
 }
 
 const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
-  const { closedStops, portalId, setPortalId, timetable } = props
+  const { closedStops, portalId, setPortalId, stopClosuresError, timetable } =
+    props
 
   const [directionId, setDirectionId] = useState<0 | 1>(0)
   const [timepointsOnly, setTimepointsOnly] = useState(true)
@@ -48,6 +50,9 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
           flexDirection: 'column'
         }}
       >
+        {(stopClosuresError || !closedStops) && (
+          <span>Error loading stop closures</span>
+        )}
         <button
           onClick={() => {
             setTimepointsOnly(!timepointsOnly)
@@ -82,8 +87,9 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
 
 const mapStateToProps = (state: AppReduxState) => {
   return {
-    closedStops: state.otp.ui.stopClosures,
+    closedStops: state.otp.ui.stopClosures.closedStops,
     portalId: state.otp.ui.portalId,
+    stopClosuresError: state.otp.ui.stopClosures.error,
     timetable: state.otp.ui.timetable
   }
 }

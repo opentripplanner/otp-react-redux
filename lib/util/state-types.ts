@@ -52,7 +52,10 @@ export interface OtpState {
     portalId: string | undefined
     printView: boolean
     routeViewer: any
-    stopClosures: Map<string, Set<string>>
+    stopClosures: {
+      closedStops?: Map<string, Set<string>>
+      error?: string
+    }
     timetable: any
     viewedRoute: {
       patternId: string
