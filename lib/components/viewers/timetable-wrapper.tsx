@@ -41,7 +41,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
       onClose={() => {
         setPortalId(undefined)
       }}
-      title="timetable"
+      title={portalId}
     >
       <div
         style={{
