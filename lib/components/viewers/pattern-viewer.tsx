@@ -17,6 +17,7 @@ import {
   ViewedRouteObject,
   ViewedRouteState
 } from '../util/types'
+import { stopClosuresQuery } from '../../actions/api'
 import BackButton from '../util/back-button'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import PageTitle from '../util/page-title'
@@ -30,6 +31,7 @@ interface Props {
   getTimetableData: (params: any) => any
   setPortalId: (portalId?: string) => void
   setViewedRoute: SetViewedRouteHandler
+  stopClosuresQuery: () => void
   timetableEnabled?: boolean
   transitOperators: TransitOperator[]
   useRouteColorAsBackground?: boolean
@@ -43,6 +45,7 @@ const PatternViewer = ({
   getTimetableData,
   setPortalId,
   setViewedRoute,
+  stopClosuresQuery,
   timetableEnabled,
   transitOperators,
   useRouteColorAsBackground,
@@ -71,8 +74,9 @@ const PatternViewer = ({
         serviceDate: format(today, 'yyyyMMdd'),
         start: format(today, 'yyyy-MM-dd')
       })
+      stopClosuresQuery()
     }
-  }, [timetableEnabled, routeId, getTimetableData])
+  }, [timetableEnabled, routeId, getTimetableData, stopClosuresQuery])
 
   /**
    * If we're viewing a pattern's stops, route to main route viewer.
@@ -191,7 +195,8 @@ const mapDispatchToProps = {
   findRoutesIfNeeded: apiActions.findRoutesIfNeeded,
   getTimetableData: apiActions.getTimetableData,
   setPortalId: uiActions.setPortalId,
-  setViewedRoute: uiActions.setViewedRoute
+  setViewedRoute: uiActions.setViewedRoute,
+  stopClosuresQuery
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PatternViewer)
