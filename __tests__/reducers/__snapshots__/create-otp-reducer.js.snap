@@ -101,7 +101,7 @@ exports[`lib > reducers > create-otp-reducer should be able to create the initia
     "popup": {
       "id": null,
     },
-    "portal": undefined,
+    "portalId": undefined,
     "printView": false,
     "routeViewer": {
       "filter": {
@@ -109,6 +109,10 @@ exports[`lib > reducers > create-otp-reducer should be able to create the initia
         "mode": null,
         "search": "",
       },
+    },
+    "stopClosures": {
+      "closedStops": undefined,
+      "error": undefined,
     },
     "timetable": {},
   },
