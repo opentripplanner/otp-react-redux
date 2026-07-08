@@ -44,7 +44,7 @@ const MapExpansionButton = ({
       aria-label={mapExpansionText}
       // CSS classes 'base-color-bg' and 'itinerary' let us set the chevron color to the
       // same color as the color used the H3 headings over the narrative background.
-      className="clear-button-formatting base-color-bg itinerary"
+      className="clear-button-formatting itinerary"
       onClick={onClickExpansionButton}
       title={mapExpansionText}
     >
