@@ -18,9 +18,17 @@ const { time } = coreUtils
 const { getCurrentDate } = time
 
 const TIME_CELL_WIDTH = '45px'
-const LOW_OPACITY = '40%'
 
-export const StopContainer = styled.ol<{ timeColumn?: boolean }>`
+// Create a fake, opaque "low opacity" color that won't show overlap.
+const lowOpacityColor = (
+  color: string
+) => `color-mix(in oklab, ${color} 40%, white)
+`
+
+export const StopContainer = styled.ol<{
+  routeColor: string
+  timeColumn?: boolean
+}>`
   color: ${DARK_TEXT_GREY};
   display: flex;
   flex-direction: column;
@@ -32,21 +40,21 @@ export const StopContainer = styled.ol<{ timeColumn?: boolean }>`
   padding: 5px 10px;
 
   .highlighted {
-    opacity: 100%;
-
     div.stop-decoration {
       box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.1);
       opacity: 100%;
+      border-color: ${(props) => props.routeColor};
 
-      div.stop-decoration::after {
+      &::after {
         opacity: 100%;
+        background: ${(props) => props.routeColor};
       }
     }
   }
 
   .faded + .highlighted {
     div.stop-decoration::after {
-      opacity: ${LOW_OPACITY};
+      background-color: ${(props) => lowOpacityColor(props.routeColor)};
     }
   }
 `
@@ -86,17 +94,16 @@ export const Stop = styled.li<{ routeColor: string; timeColumn?: boolean }>`
 
   /* this is the station blob */
   div.stop-decoration {
-    border: 5px solid ${(props) => props.routeColor};
+    border: 5px solid ${(props) => lowOpacityColor(props.routeColor)};
     border-radius: 20px;
     display: block;
     height: 20px;
-    opacity: ${LOW_OPACITY};
     position: relative;
     width: 20px;
 
     /* this is the line between the blobs */
     &::after {
-      background: ${(props) => props.routeColor};
+      background: ${(props) => lowOpacityColor(props.routeColor)};
       content: '';
       display: block;
       height: 1.65rem; /* set position in line-height agnostic way */
@@ -105,6 +112,7 @@ export const Stop = styled.li<{ routeColor: string; timeColumn?: boolean }>`
       /* this is a few pixels into the blob (to make it look attached) and top aligned so that each
     stop's bar connects the previous bar with the current one */
       top: -1.8rem; /* adjust position in a way that is agnostic to line-height */
+      z-index: -1;
     }
   }
 
@@ -163,6 +171,7 @@ const StopList = ({
         id: 'components.TripViewer.listOfRouteStops'
       })}
       onMouseLeave={() => setHoveredStop && setHoveredStop(null)}
+      routeColor={routeColor}
       timeColumn={stops.length > 0 && 'scheduledDeparture' in stops[0]}
     >
       {stops?.map((stop: StopListEntry, index: number) => {
