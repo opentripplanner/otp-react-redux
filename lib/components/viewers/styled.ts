@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { DARK_TEXT_GREY } from '../util/colors'
+import { DARK_TEXT_GREY, getBaseColor } from '../util/colors'
 
 /** Route Details */
 export const Container = styled.div<{ full?: boolean }>`
@@ -24,7 +24,7 @@ export const LogoLinkContainer = styled.div`
   a {
     color: ${DARK_TEXT_GREY};
     svg {
-      color: ${DARK_TEXT_GREY};
+      color: ${getBaseColor()};
     }
   }
 `
