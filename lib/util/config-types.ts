@@ -299,6 +299,7 @@ export interface ItineraryConfig {
   hideSkeletons?: boolean
   mergeItineraries?: boolean
   mutedErrors?: string[]
+  omitCanceledTrips?: boolean
   onlyShowCountdownForRealtime?: boolean
   previewOverlay?: boolean
   renderRouteNamesInBlocks?: boolean
