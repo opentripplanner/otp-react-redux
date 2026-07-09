@@ -17,12 +17,12 @@ describe('util > ui', () => {
     })
     it('returns a full itinerary view if URL contains ui_activeItinerary that is not -1', () => {
       expect(getItineraryView({ ui_activeItinerary: 2 })).toBe(
-        ItineraryView.FULL
+        ItineraryView.ITINERARY_OPEN
       )
     })
     it('returns an itinerary list view if URL contains ui_activeItinerary=-1 regardless of ui_itineraryView', () => {
       const expectedValues = {
-        [ItineraryView.FULL]: ItineraryView.LIST,
+        [ItineraryView.ITINERARY_OPEN]: ItineraryView.LIST,
         [ItineraryView.LEG]: ItineraryView.LIST,
         [ItineraryView.LEG_HIDDEN]: ItineraryView.LIST,
         [ItineraryView.LIST]: ItineraryView.LIST,
