@@ -115,7 +115,6 @@ export function getItineraryView({
   ui_activeItinerary,
   ui_itineraryView
 }: UrlParams): ItineraryView {
-  console.log(ui_itineraryView)
   return (
     ((ui_activeItinerary === null ||
       ui_activeItinerary === undefined ||
