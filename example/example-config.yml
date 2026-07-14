@@ -128,6 +128,8 @@ map:
 
   # Enable the following option to show the endpoints popup even with persistence disabled
   # forceDisplayEndpointsPopup: false
+  # Show "view stop" button in stop popup. Set to true by default
+  showViewStopInPopup: true
   baseLayers:
     - name: Streets
       # These tiles are free to use, but not in production
