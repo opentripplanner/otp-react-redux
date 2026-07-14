@@ -76,8 +76,10 @@ export function getPathFromParts(...parts: string[]): string {
  * Enum to describe the layout of the itinerary view.
  */
 export enum ItineraryView {
-  /** One itinerary is shown. (In mobile view, the map is hidden.) */
-  FULL = 'full',
+  /** The selected itinerary is hidden. (In mobile view, the map is expanded.) */
+  ITINERARY_HIDDEN = 'itin-hidden',
+  /** One itinerary is shown. (The mobile view is split.) */
+  ITINERARY_OPEN = 'itin-open',
   /** One itinerary is shown, itinerary and map are focused on a leg. (The mobile view is split.) */
   LEG = 'leg',
   /** One itinerary leg is hidden. (In mobile view, the map is expanded.) */
@@ -121,7 +123,8 @@ export function getItineraryView({
         ? ItineraryView.LIST_HIDDEN
         : ItineraryView.LIST)) ||
     ui_itineraryView ||
-    (isDefinedAndNotEqual(ui_activeItinerary, -1) && ItineraryView.FULL) ||
+    (isDefinedAndNotEqual(ui_activeItinerary, -1) &&
+      ItineraryView.ITINERARY_OPEN) ||
     ItineraryView.LIST
   )
 }
@@ -139,6 +142,10 @@ export function getMapToggleNewItineraryView(
       return ItineraryView.LIST_HIDDEN
     case ItineraryView.LEG_HIDDEN:
       return ItineraryView.LEG
+    case ItineraryView.ITINERARY_OPEN:
+      return ItineraryView.ITINERARY_HIDDEN
+    case ItineraryView.ITINERARY_HIDDEN:
+      return ItineraryView.ITINERARY_OPEN
     default:
       return ItineraryView.LIST
   }
