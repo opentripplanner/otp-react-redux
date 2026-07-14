@@ -379,6 +379,8 @@ itinerary:
   renderRouteNamesInBlocks: true
   # Whether the mode icons should be colored as well
   fillModeIcons: true
+  # Whether to omit trips that involve a transit leg that has been canceled via realtime update
+  omitCanceledTrips: true
   # Allow user to collapse alerts in itinerary body
   allowUserAlertCollapsing: true
   # The medium and rider category selected here will be used to render the total itinerary fare
