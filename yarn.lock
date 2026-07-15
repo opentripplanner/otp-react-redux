@@ -3089,6 +3089,15 @@
     maplibre-gl "^5.6.1"
     react-map-gl "^8.0.4"
 
+"@opentripplanner/base-map@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-7.1.0.tgz#5def02024d0a15b7fad9f666f7e0f10e8b380a43"
+  integrity sha512-A4WqFF0JO0mXEc2zGCO6OxTo+ShbrjRpESn11ywrskqfgW5CMDXEhgC9n1mowtOGp5rKlBwlAxpLGzkPnb03IA==
+  dependencies:
+    "@opentripplanner/building-blocks" "^3.1.1"
+    maplibre-gl "^5.6.1"
+    react-map-gl "^8.0.4"
+
 "@opentripplanner/building-blocks@3.1.1", "@opentripplanner/building-blocks@^3.1.1":
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/@opentripplanner/building-blocks/-/building-blocks-3.1.1.tgz#0ec87f2445f32963059a001b11fd58e0968685f8"
@@ -3133,7 +3142,26 @@
     "@opentripplanner/location-icon" "^2.0.0"
     flat "^5.0.2"
 
-"@opentripplanner/geocoder@^3.1.0", "@opentripplanner/geocoder@^3.1.2":
+"@opentripplanner/from-to-location-picker@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/from-to-location-picker/-/from-to-location-picker-4.1.0.tgz#338dd7676af7b077ae6033a638d431780a09bd55"
+  integrity sha512-euAJUspAgFsyAfkxVz3AJuKc7NaOwvZNqHQbBnjg+gGl01xQ7tEUhzHV1vvpW0GUETsir1TQDxJBxhRdBAvNVA==
+  dependencies:
+    "@opentripplanner/location-icon" "^2.0.0"
+    flat "^5.0.2"
+
+"@opentripplanner/geocoder@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-3.1.0.tgz#79421fce54fc59cb74264061142948b513d16b3d"
+  integrity sha512-Jh2Ef6aD5hTwN2HJ0qe+raw5u447MQgw+hO6c4/zl/GWYkO47iqI4gyvgaOq62boe6Qh2G4G4B21bAjM0jZkMA==
+  dependencies:
+    "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
+    "@conveyal/lonlat" "^1.4.1"
+    "@leeoniya/ufuzzy" "^1.0.14"
+    isomorphic-mapzen-search "^1.6.1"
+    lodash.memoize "^4.1.2"
+
+"@opentripplanner/geocoder@^3.1.2":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-3.1.2.tgz#d5ce4baea674df980f568e65eeab971ec863c0e7"
   integrity sha512-yxNxDNx4pTn8jH6NpGdU5cv7SMdDB1/Ey1zZB021AGyVFouKcFvBSV6F8ULp3sWAr+nI+AWo8lYz08UG3c8/SA==
@@ -3198,7 +3226,18 @@
     "@styled-icons/fa-regular" "^10.34.0"
     "@styled-icons/fa-solid" "^10.34.0"
 
-"@opentripplanner/map-popup@8.0.4", "@opentripplanner/map-popup@^8.0.4":
+"@opentripplanner/map-popup@8.0.5":
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/map-popup/-/map-popup-8.0.5.tgz#bb72e021bcce36b5cf234128775047abb7ffe315"
+  integrity sha512-pZpnf2Md3P07EdP5ouHnm/WJx4RyKRMitPiUCeegxALFXDTxrgPgScbLPoZVsBQ7EoujvjGFEQVR82JvJkwcxw==
+  dependencies:
+    "@opentripplanner/base-map" "^7.1.0"
+    "@opentripplanner/building-blocks" "^3.1.1"
+    "@opentripplanner/core-utils" "^16.0.5"
+    "@opentripplanner/from-to-location-picker" "^4.1.0"
+    flat "^5.0.2"
+
+"@opentripplanner/map-popup@^8.0.4":
   version "8.0.4"
   resolved "https://registry.yarnpkg.com/@opentripplanner/map-popup/-/map-popup-8.0.4.tgz#045b86c3817662264fa3137dc7524d7b79e3d757"
   integrity sha512-jVp9NiS9ylIUNl4s7df8N7IouHTsMJF1p46F0gTaG9WeamTLWetj99B3TEfeRffwVTCUMu8EDHNu6j/6rN8IgA==
