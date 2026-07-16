@@ -133,6 +133,7 @@ common:
     submitting: Envoi en cours…
     "yes": Oui
   itineraryDescriptions:
+    containsCanceledTrip: Contient un voyage annulé
     fareUnknown: Tarif inconnu
     noDefaultFareTypeConfigured: Multiple fares apply
     noItineraryToDisplay: Aucun trajet à afficher.
