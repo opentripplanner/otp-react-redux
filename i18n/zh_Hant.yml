@@ -8,27 +8,6 @@ actions:
     couldNotFindCallError: 找不到通話。正在取消儲存查詢請求。
     fetchCallsError: 擷取通話時發生錯誤：{err}
     queryFetchError: 擷取查詢時發生錯誤：{err}
-  fieldTrip:
-    addNoteError: 新增實地考察備註時發生錯誤：
-    confirmOverwriteItineraries: |
-      此動作將覆蓋此請求之前規劃的{outbound, select,
-       true {外出}
-       other {返回}
-       }預定行程。您想繼續嗎？
-    deleteItinerariesError: 刪除實地考察計畫時發生錯誤：
-    deleteNoteError: 刪除實地考察備註時發生錯誤：
-    editSubmitterNotesError: 編輯提交者備註時發生錯誤：
-    fetchFieldTripError: 擷取實地考察時發生錯誤：{err}
-    fetchFieldTripsError: 擷取實地考察時發生錯誤：{err}
-    fetchTripsForDateError: 擷取實地考察行程日期的行程時發生錯誤：{err}
-    incompatibleTripDateError: 規劃的行程日期 ({tripDate}) 並非請求的行程日期 ({requestDate})
-    itineraryCapacityError: 無法儲存計畫：因為一或多輛車的容量不足，此計畫無法儲存。請重新規劃您的行程。
-    maxTripRequestsExceeded: 行程請求數量過多，沒有有效結果
-    saveItinerariesError: 無法儲存預定行程：{err}
-    setDateError: 設定日期時發生錯誤：
-    setGroupSizeError: 設定群組大小時發生錯誤：
-    setPaymentError: 設定付款資訊時發生錯誤：
-    setRequestStatusError: 設定請求狀態時發生錯誤：
   location:
     deniedAccessAlert: |
       系統已封鎖您存取地點的權限。
@@ -171,7 +150,6 @@ components:
   AppMenu:
     callHistory: 通話記錄
     closeMenu: 關閉功能表
-    fieldTrip: 實地考察
     mailables: 可郵寄
     openMenu: 開啟功能表
     skipNavigation: 跳過導航

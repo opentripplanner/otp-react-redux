@@ -8,27 +8,6 @@ actions:
     couldNotFindCallError: 找不到通话.取消保存查询请求.
     fetchCallsError: "获取通话时出现错误: {err}"
     queryFetchError: "获取查询时出现错误: {err}"
-  fieldTrip:
-    addNoteError: "添加行程记录时出现错误:"
-    confirmOverwriteItineraries: |
-      此操作将覆盖此请求的先前计划的{outbound, select,
-        true {出站}
-        other {入站}
-        } 行程. 你想继续吗?
-    deleteItinerariesError: "删除行程计划时出现错误:"
-    deleteNoteError: "删除行程计划时出现错误:"
-    editSubmitterNotesError: "编辑提交者备注时出现错误:"
-    fetchFieldTripError: "获取行程时出现错误: {err}"
-    fetchFieldTripsError: "获取行程时出现错误: {err}"
-    fetchTripsForDateError: "获取旅行日期的行程时出现错误: {err}"
-    incompatibleTripDateError: 计划的旅行日期 ({tripDate}) 不是请求的旅行日期 ({requestDate})
-    itineraryCapacityError: "无法保存计划: 由于一辆或多辆车辆容量不足, 无法保存此计划. 请重新计划您的旅行."
-    maxTripRequestsExceeded: 超出了没有有效结果的行程请求数
-    saveItinerariesError: "未能保存行程: {err}"
-    setDateError: 设置日期时出现错误：
-    setGroupSizeError: "设置团体大小时出现错误:"
-    setPaymentError: "设置付款信息时出现错误:"
-    setRequestStatusError: "设置请求状态时出现错误:"
   location:
     deniedAccessAlert: |
       访问您的位置被阻止。
@@ -173,7 +152,6 @@ components:
   AppMenu:
     callHistory: 呼叫历史
     closeMenu: 关闭菜单
-    fieldTrip: 旅行标题
     mailables: 准备发布
     networkConnectionLost: 网络连接中断
     networkConnectionRestored: 网络连接已恢复

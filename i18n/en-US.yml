@@ -8,32 +8,6 @@ actions:
     couldNotFindCallError: Could not find call. Cancelling save queries request.
     fetchCallsError: "Error fetching calls: {err}"
     queryFetchError: "Error fetching queries: {err}"
-  fieldTrip:
-    addNoteError: "Error adding field trip note:"
-    confirmOverwriteItineraries: |
-      This action will overwrite a previously planned {outbound, select,
-          true {outbound}
-          other {inbound}
-        } itinerary for this request. Do you wish to continue?
-    deleteItinerariesError: "Error deleting field trip plan:"
-    deleteNoteError: "Error deleting field trip note:"
-    editSubmitterNotesError: "Error editing submitter notes:"
-    fetchFieldTripError: "Error fetching field trip: {err}"
-    fetchFieldTripsError: "Error fetching field trips: {err}"
-    fetchTripsForDateError: "Error fetching trips for field trip travel date: {err}"
-    incompatibleTripDateError: >-
-      Planned trip date ({tripDate}) is not the requested day of travel
-      ({requestDate})
-    itineraryCapacityError: >-
-      Cannot Save Plan: This plan could not be saved due to a lack of capacity
-      on one or more vehicles. Please re-plan your trip.
-    maxTripRequestsExceeded: Number of trip requests exceeded without valid results
-    saveItinerariesError: "Failed to save itineraries: {err}"
-    setDateError: "Error setting date:"
-    setGroupSizeError: "Error setting group size:"
-    setPaymentError: "Error setting payment info:"
-    setRequestStatusError: "Error setting request status:"
-    setTimeError: "Error setting time:"
   location:
     deniedAccessAlert: >
       Access to your location is blocked.
@@ -190,7 +164,6 @@ components:
   AppMenu:
     callHistory: Call History
     closeMenu: Close Menu
-    fieldTrip: Field Trip
     mailables: Mailables
     networkConnectionLost: Network connection lost
     networkConnectionRestored: Network connection restored
