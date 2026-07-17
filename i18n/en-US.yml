@@ -115,6 +115,7 @@ common:
     submitting: Submitting…
     "yes": "Yes"
   itineraryDescriptions:
+    containsCanceledTrip: Contains canceled trip
     fareUnknown: No fare information
     noDefaultFareTypeConfigured: Multiple fares apply
     noItineraryToDisplay: No itinerary to display.
