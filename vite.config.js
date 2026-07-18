@@ -120,8 +120,11 @@ export default defineConfig({
     },
     {
       name: 'copy-branding-assets',
-      closeBundle() {
-        fs.copySync('./branding', path.resolve(__dirname, 'dist/branding'))
+      writeBundle() {
+        const sourceDir = path.resolve(process.cwd(), 'branding')
+        const targetDir = path.resolve(process.cwd(), 'dist/branding')
+        fs.emptyDirSync(targetDir)
+        fs.copySync(sourceDir, targetDir)
       }
     },
 
