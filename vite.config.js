@@ -118,6 +118,12 @@ export default defineConfig({
         })
       }
     },
+    {
+      name: 'copy-branding-assets',
+      closeBundle() {
+        fs.copySync('./branding', path.resolve(__dirname, 'dist/branding'))
+      }
+    },
 
     ViteYaml(),
     // Support very old libraries such as blob-stream and its dependencies
