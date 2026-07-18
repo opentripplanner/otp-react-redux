@@ -15,12 +15,6 @@
       "src": "./branding/512.png",
       "sizes": "512x512",
       "type": "image/png"
-    },
-    {
-      "src": "./branding/logo.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
     }
   ]
 }
