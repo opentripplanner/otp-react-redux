@@ -188,7 +188,6 @@ components:
       이 페이지에 접근하려면 로그인해야 합니다. 로그인 페이지로 리디렉션하는 동안 기다려 주세요…
   CallTakerPanel:
     advancedOptions: 고급 옵션
-    groupSize: "그룹 크기:"
     intermediateDestination: 중간 목적지 입력
   CompanionsPane:
     addNewCompanion: 새로운 여행 동행 추가

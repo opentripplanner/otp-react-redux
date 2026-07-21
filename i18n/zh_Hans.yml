@@ -187,7 +187,6 @@ components:
       为了访问这个页面 你将需要登录。我们会将您重新定向到登录页面，请稍等。
   CallTakerPanel:
     advancedOptions: 进阶选项
-    groupSize: "团体规模:"
     intermediateDestination: 输入中间目的地
   CompanionsPane:
     addNewCompanion: 添加新的出行伙伴

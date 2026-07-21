@@ -208,7 +208,7 @@ components:
       chúng tôi chuyển hướng bạn đến trang đăng nhập…
   CallTakerPanel:
     advancedOptions: Tùy chọn nâng cao
-    groupSize: "Quy mô nhóm:"
+    : "Quy mô nhóm:"
     intermediateDestination: Nhập điểm đến trung gian
   CompanionsPane:
     addNewCompanion: Thêm người đồng hành đi lại mới

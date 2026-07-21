@@ -208,7 +208,6 @@ components:
       перенаправляем вас на страницу входа…
   CallTakerPanel:
     advancedOptions: Расширенные опции
-    groupSize: "Размер группы:"
     intermediateDestination: Введите промежуточное место назначения
   CompanionsPane:
     addNewCompanion: Добавить нового попутчика
