@@ -1,48 +1,76 @@
-import { connect } from 'react-redux'
-import React, { useState } from 'react'
+import { connect, useSelector } from 'react-redux'
+import { format } from 'date-fns'
+import React, { useEffect, useMemo, useState } from 'react'
 import TimeTable from '@opentripplanner/timetable'
 
-import * as uiActions from '../../actions/ui'
+import * as apiActions from '../../actions/api'
 import { AppReduxState } from '../../util/state-types'
-
-import PortalWrapper from './popout'
 
 interface TimeTableWrapperProps {
   /** A map of closed stops. Keys are route gtfsIds, values are sets of gtfsIds for stops that are closed on that route */
   closedStops?: Map<string, Set<string>>
-  /** The value of the portal ID in application state. If defined, it refers to the gtfsId of the route whose timetable
-   * is to be displayed in the portal
-   */
-  portalId: string | undefined
-  setPortalId: (portalId?: string) => void
+  getTimetableData: (params: any) => void // TYPE TYPE TYPE
+  routeId: string
   stopClosuresError?: string
-  timetable: any // TODO: add typing
+  stopClosuresQuery: () => void
 }
 
 const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
-  const { closedStops, portalId, setPortalId, stopClosuresError, timetable } =
-    props
+  const {
+    closedStops,
+    getTimetableData,
+    routeId,
+    stopClosuresError,
+    stopClosuresQuery
+  } = props
+
+  const timetable = useSelector(
+    (state: AppReduxState) => state.otp.ui.timetable
+  )
 
   const [directionId, setDirectionId] = useState<0 | 1>(0)
   const [timepointsOnly, setTimepointsOnly] = useState(true)
+  const [loading, setLoading] = useState(true)
 
   // TODO: improve this with typing on timetable object
   const directionNames = new Map<number, string[]>()
+
+  const closedStopsSet = useMemo(
+    () => closedStops?.get(routeId || ''),
+    [closedStops, routeId]
+  )
+
+  useEffect(() => {
+    stopClosuresQuery()
+    const today = new Date()
+    const tomorrow = new Date(today)
+    tomorrow.setDate(tomorrow.getDate() + 1)
+
+    // need to migrate data fetching to local state instead of redux
+    getTimetableData({
+      end: format(tomorrow, 'yyyy-MM-dd'),
+      gtfsId: routeId,
+      serviceDate: format(today, 'yyyyMMdd'),
+      start: format(today, 'yyyy-MM-dd')
+    })
+  }, [])
+
+  useEffect(() => {
+    if (timetable?.route) setLoading(false)
+  }, [timetable])
+
   timetable?.route?.patterns?.forEach((pattern: any) => {
     const dirId = pattern.directionId
     const names = (directionNames.get(dirId) || []).concat([pattern.name])
     directionNames.set(dirId, names)
   })
 
-  const closedStopsSet = closedStops?.get(portalId || '')
+  if (loading) {
+    return <div>loading!</div>
+  }
 
-  return portalId ? (
-    <PortalWrapper
-      onClose={() => {
-        setPortalId(undefined)
-      }}
-      title={portalId}
-    >
+  return routeId && timetable?.route ? (
+    <div>
       <div
         style={{
           alignItems: 'center',
@@ -79,23 +107,27 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
           />
         </div>
       )}
-    </PortalWrapper>
+    </div>
   ) : (
-    <></>
+    <>no route ID provided</>
   )
 }
 
 const mapStateToProps = (state: AppReduxState) => {
+  const { pathname } = state.router.location
+  const split = pathname.split('/')
+  const routeId = split[split.length - 1]
+
   return {
     closedStops: state.otp.ui.stopClosures.closedStops,
-    portalId: state.otp.ui.portalId,
-    stopClosuresError: state.otp.ui.stopClosures.error,
-    timetable: state.otp.ui.timetable
+    routeId,
+    stopClosuresError: state.otp.ui.stopClosures.error
   }
 }
 
 const mapDispatchToProps = {
-  setPortal: uiActions.setPortalId
+  getTimetableData: apiActions.getTimetableData,
+  stopClosuresQuery: apiActions.stopClosuresQuery
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TimeTableWrapper)

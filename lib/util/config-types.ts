@@ -458,6 +458,7 @@ export interface AppConfig {
   stopViewer?: StopScheduleViewerConfig
   /** Externally hosted terms of service URL */
   termsOfServiceLink?: string
+  timetableEnabled?: boolean
   /** App title shown in the browser title bar. */
   title?: string
   transitOperators?: TransitOperatorConfig[]

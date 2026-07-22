@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-import { format } from 'date-fns'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { TransitOperator } from '@opentripplanner/types'
 import React, { useCallback, useContext, useEffect } from 'react'
@@ -17,7 +16,6 @@ import {
   ViewedRouteObject,
   ViewedRouteState
 } from '../util/types'
-import { stopClosuresQuery } from '../../actions/api'
 import BackButton from '../util/back-button'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import PageTitle from '../util/page-title'
@@ -28,10 +26,7 @@ import VehiclePositionRetriever from './vehicle-position-retriever'
 
 interface Props {
   findRoutesIfNeeded: () => void
-  getTimetableData: (params: any) => any
-  setPortalId: (portalId?: string) => void
   setViewedRoute: SetViewedRouteHandler
-  stopClosuresQuery: () => void
   timetableEnabled?: boolean
   transitOperators: TransitOperator[]
   useRouteColorAsBackground?: boolean
@@ -42,10 +37,7 @@ interface Props {
 
 const PatternViewer = ({
   findRoutesIfNeeded,
-  getTimetableData,
-  setPortalId,
   setViewedRoute,
-  stopClosuresQuery,
   timetableEnabled,
   transitOperators,
   useRouteColorAsBackground,
@@ -62,21 +54,9 @@ const PatternViewer = ({
   const patternId = viewedRoute?.patternId
   const routeId = viewedRoute?.routeId || null
 
-  useEffect(() => {
-    if (timetableEnabled) {
-      const today = new Date()
-      const tomorrow = new Date(today)
-      tomorrow.setDate(tomorrow.getDate() + 1)
-
-      getTimetableData({
-        end: format(tomorrow, 'yyyy-MM-dd'),
-        gtfsId: routeId,
-        serviceDate: format(today, 'yyyyMMdd'),
-        start: format(today, 'yyyy-MM-dd')
-      })
-      stopClosuresQuery()
-    }
-  }, [timetableEnabled, routeId, getTimetableData, stopClosuresQuery])
+  const handleTimetableButtonClick = () => {
+    window.open(`/#/timetable/${routeId}`, undefined, 'width=1000,height=800')
+  }
 
   /**
    * If we're viewing a pattern's stops, route to main route viewer.
@@ -163,9 +143,7 @@ const PatternViewer = ({
             )}
           </h1>
           {timetableEnabled && (
-            <button onClick={() => setPortalId(routeId || undefined)}>
-              Timetable
-            </button>
+            <button onClick={handleTimetableButtonClick}>Timetable</button>
           )}
         </div>
         <RouteDetails operator={operator} patternId={patternId} route={route} />
@@ -193,10 +171,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = {
   findRoutesIfNeeded: apiActions.findRoutesIfNeeded,
-  getTimetableData: apiActions.getTimetableData,
-  setPortalId: uiActions.setPortalId,
-  setViewedRoute: uiActions.setViewedRoute,
-  stopClosuresQuery
+  setViewedRoute: uiActions.setViewedRoute
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PatternViewer)
