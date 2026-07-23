@@ -826,6 +826,7 @@ config:
     continuous-dropoff: Communicate with operator about stop
     flex-service: Flex Service
     flex-service-colon: "Flex Service:"
+    reservationRequired: Reservation required
 util:
   state:
     errorPlanningTrip: An error occurred while planning a trip.

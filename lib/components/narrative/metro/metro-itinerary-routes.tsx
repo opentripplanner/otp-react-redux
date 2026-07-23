@@ -1,7 +1,8 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Itinerary, Leg } from '@opentripplanner/types'
-import React from 'react'
+import coreUtils from '@opentripplanner/core-utils'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 
 import { AppReduxState } from '../../../util/state-types'
@@ -109,24 +110,27 @@ const MetroItineraryRoutes = ({
         {routeLegs.map((leg: Leg, index: number, filteredLegs: Leg[]) => {
           const previousLegMode =
             (index > 0 && filteredLegs[index - 1].mode) || undefined
+          const needReservation = coreUtils.itinerary.isReservationRequired(leg)
           return (
-            <RouteBlock
-              aria-hidden
-              footer={
-                showLegDurations && (
-                  <FormattedDuration
-                    duration={leg.duration}
-                    includeSeconds={false}
-                  />
-                )
-              }
-              hideLongName
-              key={index}
-              leg={leg}
-              LegIcon={LegIcon}
-              previousLegMode={previousLegMode}
-              showDivider={enableDot}
-            />
+            <Fragment key={index}>
+              <RouteBlock
+                aria-hidden
+                footer={
+                  showLegDurations && (
+                    <FormattedDuration
+                      duration={leg.duration}
+                      includeSeconds={false}
+                    />
+                  )
+                }
+                hideLongName
+                leg={leg}
+                LegIcon={LegIcon}
+                previousLegMode={previousLegMode}
+                showDivider={enableDot}
+              />
+              {needReservation && <span style={{ marginLeft: '-1ch' }}>✤</span>}
+            </Fragment>
           )
         })}
       </Routes>
