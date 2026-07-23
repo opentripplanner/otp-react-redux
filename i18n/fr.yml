@@ -696,6 +696,12 @@ components:
       Facultatif: Je consens à ce que le Planificateur de trajets sauvegarde mes
       recherches afin d'améliorer les transports publics dans ma region.
       <termsOfStorageLink>Plus d'informations...</termsOfStorageLink>
+  Timetable:
+    errorLoadingStopClosures: Error loading stop closures
+    errorLoadingTimetable: Error loading timetable
+    showAllStops: Show All Stops
+    showTimepointsOnly: Show Timepoints Only
+    switchDirection: Switch Direction
   TransitVehicleOverlay:
     in_transit_to: "Prochain arrêt : {stop}"
     incoming_at: Approchant {stop}

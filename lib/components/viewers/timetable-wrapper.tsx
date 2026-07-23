@@ -1,5 +1,6 @@
 import { connect, useSelector } from 'react-redux'
 import { format } from 'date-fns'
+import { FormattedMessage } from 'react-intl'
 import React, { useEffect, useMemo, useState } from 'react'
 import TimeTable from '@opentripplanner/timetable'
 
@@ -83,17 +84,21 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
         }}
       >
         {(stopClosuresError || !closedStops) && (
-          <span>Error loading stop closures</span>
+          <FormattedMessage id="components.Timetable.errorLoadingStopClosures" />
         )}
         <button
           onClick={() => {
             setTimepointsOnly(!timepointsOnly)
           }}
         >
-          {timepointsOnly ? 'Show All Stops' : 'Show Timepoints Only'}
+          {timepointsOnly ? (
+            <FormattedMessage id="components.Timetable.showAllStops" />
+          ) : (
+            <FormattedMessage id="components.Timetable.showTimepointsOnly" />
+          )}
         </button>
         <button onClick={() => setDirectionId(directionId === 1 ? 0 : 1)}>
-          Switch Direction
+          <FormattedMessage id="components.Timetable.switchDirection" />
         </button>
         {(directionNames.get(directionId) || []).map((dirName) => (
           <span key={dirName}>{dirName}</span>
@@ -113,7 +118,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
       )}
     </div>
   ) : (
-    <span>Error loading timetable</span>
+    <FormattedMessage id="components.Timetable.errorLoadingTimetable" />
   )
 }
 
