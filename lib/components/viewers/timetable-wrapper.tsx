@@ -5,11 +5,13 @@ import TimeTable from '@opentripplanner/timetable'
 
 import * as apiActions from '../../actions/api'
 import { AppReduxState } from '../../util/state-types'
+import { GetTimetableDataParams } from '../util/types'
+import Loading from '../narrative/loading'
 
 interface TimeTableWrapperProps {
   /** A map of closed stops. Keys are route gtfsIds, values are sets of gtfsIds for stops that are closed on that route */
   closedStops?: Map<string, Set<string>>
-  getTimetableData: (params: any) => void // TYPE TYPE TYPE
+  getTimetableData: (params: GetTimetableDataParams) => void
   routeId: string
   stopClosuresError?: string
   stopClosuresQuery: () => void
@@ -32,9 +34,6 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   const [timepointsOnly, setTimepointsOnly] = useState(true)
   const [loading, setLoading] = useState(true)
 
-  // TODO: improve this with typing on timetable object
-  const directionNames = new Map<number, string[]>()
-
   const closedStopsSet = useMemo(
     () => closedStops?.get(routeId || ''),
     [closedStops, routeId]
@@ -46,27 +45,32 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
     const tomorrow = new Date(today)
     tomorrow.setDate(tomorrow.getDate() + 1)
 
-    // need to migrate data fetching to local state instead of redux
     getTimetableData({
       end: format(tomorrow, 'yyyy-MM-dd'),
       gtfsId: routeId,
       serviceDate: format(today, 'yyyyMMdd'),
       start: format(today, 'yyyy-MM-dd')
     })
-  }, [])
+  }, [getTimetableData, routeId, stopClosuresQuery])
 
   useEffect(() => {
     if (timetable?.route) setLoading(false)
   }, [timetable])
 
-  timetable?.route?.patterns?.forEach((pattern: any) => {
-    const dirId = pattern.directionId
-    const names = (directionNames.get(dirId) || []).concat([pattern.name])
-    directionNames.set(dirId, names)
-  })
+  const directionNames = useMemo(() => {
+    const map = new Map<number, string[]>()
+
+    timetable?.route?.patterns?.forEach((pattern: any) => {
+      const dirId = pattern.directionId
+      const names = (map.get(dirId) || []).concat([pattern.name])
+      map.set(dirId, names)
+    })
+
+    return map
+  }, [timetable])
 
   if (loading) {
-    return <div>loading!</div>
+    return <Loading />
   }
 
   return routeId && timetable?.route ? (
@@ -109,7 +113,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
       )}
     </div>
   ) : (
-    <>no route ID provided</>
+    <span>Error loading timetable</span>
   )
 }
 
