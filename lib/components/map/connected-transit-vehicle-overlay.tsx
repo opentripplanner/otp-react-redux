@@ -35,50 +35,38 @@ interface TransitVehicleExt extends TransitVehicle {
   textColor?: string
 }
 
-// eslint-disable-next-line complexity
 function VehicleTooltip({
   vehicle
 }: {
   vehicle: TransitVehicleExt
 }): React.ReactNode {
   const intl = useIntl()
+  const { label, nextStopName, seconds, speed, stopStatus, vehicleId } =
+    vehicle || {}
+  const scopedVehicleId = vehicleId?.split(':')?.[1]
 
-  const scopedVehicleId = vehicle?.vehicleId?.split(':')?.[1]
-
-  let vehicleLabel = scopedVehicleId || vehicle?.vehicleId
-  // If a vehicle's label prop is less than 5 characters long, we can assume it is a vehicle
-  // number. If this is the case, or if a vehicleId prop is provided,
-  // render as "Vehicle <vehicleId>" (or the equivalent in the user's language).
-  // Otherwise, the label itself is enough
-  //   (this is TriMet-specific, when label contains text such as "MAX Green").
-  if (
-    !!vehicleLabel &&
-    (vehicleLabel.length <= 5 || scopedVehicleId || vehicle?.vehicleId)
-  ) {
-    vehicleLabel = intl.formatMessage(
-      { id: 'components.TransitVehicleOverlay.vehicleName' },
-      { vehicleNumber: vehicleLabel }
-    )
-  } else if (vehicle?.label) {
-    vehicleLabel = vehicle?.label
-  }
-
-  const stopStatus = vehicle?.stopStatus || 'in_transit_to'
+  // Use label first, fall back on (scoped) vehicle id if no label.
+  const vehicleLabel = label || scopedVehicleId || vehicleId
 
   return (
     <>
       {/* FIXME: move back to core-utils for time handling */}
       <div>
-        <strong>{vehicleLabel}</strong>
+        <strong>
+          <FormattedMessage
+            id="components.TransitVehicleOverlay.vehicleName"
+            values={{ vehicleNumber: vehicleLabel }}
+          />
+        </strong>
       </div>
-      {vehicle?.seconds !== null && vehicle?.seconds !== undefined && (
+      {seconds !== null && seconds !== undefined && (
         <div>
           {capitalizeFirst(
             intl.formatMessage(
               { id: 'common.time.durationAgo' },
               {
                 duration: formatDuration(
-                  Math.floor(Date.now() / 1000 - (vehicle?.seconds || 0)),
+                  Math.floor(Date.now() / 1000 - seconds),
                   intl,
                   true
                 )
@@ -87,7 +75,7 @@ function VehicleTooltip({
           )}
         </div>
       )}
-      {stopStatus !== 'STOPPED_AT' && vehicle.speed > 0 && (
+      {stopStatus !== 'STOPPED_AT' && speed > 0 && (
         <div>
           <FormattedMessage
             id="components.TransitVehicleOverlay.travelingAt"
@@ -98,18 +86,18 @@ function VehicleTooltip({
                   // eslint-disable-next-line react/style-prop-object
                   style="unit"
                   unit="mile-per-hour"
-                  value={Math.round(vehicle.speed)}
+                  value={Math.round(speed)}
                 />
               )
             }}
           />
         </div>
       )}
-      {vehicle?.nextStopName && (
+      {nextStopName && (
         <div>
           <FormattedTransitVehicleStatus
-            stop={vehicle.nextStopName}
-            stopStatus={stopStatus.toLowerCase()}
+            stop={nextStopName}
+            stopStatus={(stopStatus || 'in_transit_to').toLowerCase()}
           />
         </div>
       )}
