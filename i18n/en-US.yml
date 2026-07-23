@@ -662,6 +662,7 @@ components:
     showAllStops: Show All Stops
     showTimepointsOnly: Show Timepoints Only
     switchDirection: Switch Direction
+    timetable: Timetable
   TransitVehicleOverlay:
     in_transit_to: "Next stop: {stop}"
     incoming_at: "Approaching: {stop}"

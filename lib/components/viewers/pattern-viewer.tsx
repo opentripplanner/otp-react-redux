@@ -143,7 +143,9 @@ const PatternViewer = ({
             )}
           </h1>
           {timetableEnabled && (
-            <button onClick={handleTimetableButtonClick}>Timetable</button>
+            <button onClick={handleTimetableButtonClick}>
+              <FormattedMessage id="components.Timetable.timetable" />
+            </button>
           )}
         </div>
         <RouteDetails operator={operator} patternId={patternId} route={route} />
