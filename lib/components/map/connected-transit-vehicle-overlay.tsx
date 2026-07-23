@@ -22,7 +22,6 @@ import { AppReduxState } from '../../util/state-types'
 import { capitalizeFirst } from '../../util/ui'
 import { DEFAULT_ROUTE_COLOR } from '../util/colors'
 import { formatDuration } from '../util/formatted-duration'
-import FormattedTransitVehicleStatus from '../util/formatted-transit-vehicle-status'
 
 import ConnectedCaret from './connected-caret'
 
@@ -76,30 +75,30 @@ function VehicleTooltip({
         </div>
       )}
       {stopStatus !== 'STOPPED_AT' && speed > 0 && (
-        <div>
-          <FormattedMessage
-            id="components.TransitVehicleOverlay.travelingAt"
-            values={{
-              milesPerHour: (
-                <FormattedNumber
-                  // Not a "real" style prop
-                  // eslint-disable-next-line react/style-prop-object
-                  style="unit"
-                  unit="mile-per-hour"
-                  value={Math.round(speed)}
-                />
-              )
-            }}
-          />
-        </div>
+        <FormattedMessage
+          id="components.TransitVehicleOverlay.travelingAt"
+          tagName="div"
+          values={{
+            milesPerHour: (
+              <FormattedNumber
+                // Not a "real" style prop
+                // eslint-disable-next-line react/style-prop-object
+                style="unit"
+                unit="mile-per-hour"
+                value={Math.round(speed)}
+              />
+            )
+          }}
+        />
       )}
       {nextStopName && (
-        <div>
-          <FormattedTransitVehicleStatus
-            stop={nextStopName}
-            stopStatus={(stopStatus || 'in_transit_to').toLowerCase()}
-          />
-        </div>
+        <FormattedMessage
+          id={`components.TransitVehicleOverlay.${(
+            stopStatus || 'in_transit_to'
+          ).toLowerCase()}`}
+          tagName="div"
+          values={{ stop: nextStopName }}
+        />
       )}
     </>
   )
