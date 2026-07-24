@@ -165,6 +165,7 @@ interface DefaultMapProps {
   bikeRentalStations: VehicleRentalStation[]
   carRentalQuery: () => void
   carRentalStations: VehicleRentalStation[]
+  closedStops: Map<string, Set<string>>
   config: AppConfig
   getCurrentPosition: GetCurrentPositionFunction
   intl: IntlShape
@@ -354,6 +355,7 @@ class DefaultMap extends Component<DefaultMapProps> {
       bikeRentalStations,
       carRentalQuery,
       carRentalStations,
+      closedStops,
       config,
       feeds,
       getCurrentPosition,
@@ -544,7 +546,8 @@ class DefaultMap extends Component<DefaultMapProps> {
                   viewedRouteStops,
                   config.companies,
                   this.getEntityPrefix,
-                  feeds
+                  feeds,
+                  new Set(closedStops.values().flatMap((v) => v.values()))
                 )
               default:
                 return null
@@ -599,6 +602,7 @@ const mapStateToProps = (state) => {
     activeNearbyFilters,
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
     carRentalStations: state.otp.overlay.carRental.stations,
+    closedStops: state.otp.ui.stopClosures.closedStops,
     config: state.otp.config,
     currentPositionError,
     feeds: state.otp.transitIndex.feeds,
