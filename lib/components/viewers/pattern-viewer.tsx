@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { TransitOperator } from '@opentripplanner/types'
-import React, { useCallback, useContext, useEffect } from 'react'
+import React, { useCallback, useContext, useEffect, useMemo } from 'react'
 
 import * as apiActions from '../../actions/api'
 import * as uiActions from '../../actions/ui'
@@ -54,9 +54,11 @@ const PatternViewer = ({
   const patternId = viewedRoute?.patternId
   const routeId = viewedRoute?.routeId || null
 
-  const handleTimetableButtonClick = () => {
-    window.open(`/#/timetable/${routeId}`, undefined, 'width=1000,height=800')
-  }
+  const timetableHref = useMemo(() => `/#/timetable/${routeId}`, [routeId])
+
+  const handleTimetableButtonClick = useCallback(() => {
+    window.open(timetableHref, undefined, 'width=1000,height=800')
+  }, [timetableHref])
 
   /**
    * If we're viewing a pattern's stops, route to main route viewer.
@@ -143,9 +145,14 @@ const PatternViewer = ({
             )}
           </h1>
           {timetableEnabled && (
-            <button onClick={handleTimetableButtonClick}>
+            <a
+              href={timetableHref}
+              onClick={handleTimetableButtonClick}
+              rel="noreferrer"
+              target="_blank"
+            >
               <FormattedMessage id="components.Timetable.timetable" />
-            </button>
+            </a>
           )}
         </div>
         <RouteDetails operator={operator} patternId={patternId} route={route} />
