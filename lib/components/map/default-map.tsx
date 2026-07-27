@@ -196,10 +196,12 @@ class DefaultMap extends Component<DefaultMapProps> {
     this.state = {
       lat,
       lon,
+      mapFonts: [],
       mapLoad: false,
       zoom
     }
     this.geolocateControlRef = React.createRef<maplibregl.GeolocateControl>()
+    this.baseMapRef = React.createRef<maplibregl.Map>()
   }
 
   getNearbyViewFilteredOverlays = () => {
@@ -237,6 +239,20 @@ class DefaultMap extends Component<DefaultMapProps> {
       stopId
     })
     return <TransitOperatorIcons stopId={stopId} />
+  }
+
+  /* 
+  Pull the fonts from the map tiles so we can pass the correct fonts to transitive.
+  If map tiles have fonts we don't account for, it can cause transitive to crash.
+  */
+  _getFontsByMapLayer = (mapRef) => {
+    const fonts = []
+    mapRef?.current?.getStyle().layers.forEach((l) => {
+      const font = l.layout && l.layout['text-font']
+      font?.forEach((f) => !fonts.includes(f) && fonts.push(f))
+    })
+    console.log('amy', fonts)
+    this.setState({ mapFonts: fonts })
   }
 
   /**
@@ -426,17 +442,19 @@ class DefaultMap extends Component<DefaultMapProps> {
           }
           baseLayerNames={baseLayerNames}
           center={[lat, lon]}
+          innerRef={this.baseMapRef}
           mapLibreProps={{
             onLoad: () => {
+              this._getFontsByMapLayer(this.baseMapRef)
               // Once this map has loaded, we subtly trigger the geolocate control to update its state.
               return this.setState({ mapLoad: true })
             },
             reuseMaps: true
           }}
           maxZoom={maxZoom}
-          onClickLayerSelector={onClickLayerSelector}
           // In Leaflet, this was an onclick handler. Creating a click handler in
           // MapLibreGL would require writing a custom event handler for all mouse events
+          onClickLayerSelector={onClickLayerSelector}
           onContextMenu={this.onMapClick}
           showEverything={nearbyViewActive}
           zoom={zoom}
@@ -466,6 +484,10 @@ class DefaultMap extends Component<DefaultMapProps> {
           />
           <TransitiveOverlay
             getTransitiveRouteLabel={getTransitiveRouteLabel}
+            // Pass map fonts if there are any to pass
+            mapLayerFonts={
+              this.state.mapFonts.length > 0 && this.state.mapFonts
+            }
           />
           <TripViewerOverlay />
           <ElevationPointMarker />
