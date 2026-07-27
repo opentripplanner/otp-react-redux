@@ -251,7 +251,6 @@ class DefaultMap extends Component<DefaultMapProps> {
       const font = l.layout && l.layout['text-font']
       font?.forEach((f) => !fonts.includes(f) && fonts.push(f))
     })
-    console.log('amy', fonts)
     this.setState({ mapFonts: fonts })
   }
 
