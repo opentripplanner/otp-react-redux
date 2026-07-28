@@ -11,6 +11,7 @@ import {
   getRouteOrPatternViewerTitle
 } from '../../util/viewer'
 import { getRouteOperator } from '../../util/state'
+import { isModuleEnabled, Modules } from '../../util/config'
 import {
   SetViewedRouteHandler,
   ViewedRouteObject,
@@ -25,9 +26,9 @@ import RouteDetails from './route-details'
 import VehiclePositionRetriever from './vehicle-position-retriever'
 
 interface Props {
+  callTakerEnabled?: boolean
   findRoutesIfNeeded: () => void
   setViewedRoute: SetViewedRouteHandler
-  timetableEnabled?: boolean
   transitOperators: TransitOperator[]
   useRouteColorAsBackground?: boolean
   vehicleIconHighlight: boolean
@@ -36,9 +37,9 @@ interface Props {
 }
 
 const PatternViewer = ({
+  callTakerEnabled,
   findRoutesIfNeeded,
   setViewedRoute,
-  timetableEnabled,
   transitOperators,
   useRouteColorAsBackground,
   vehicleIconHighlight,
@@ -144,7 +145,7 @@ const PatternViewer = ({
               </InvisibleA11yLabel>
             )}
           </h1>
-          {timetableEnabled && (
+          {callTakerEnabled && (
             <a
               href={timetableHref}
               onClick={handleTimetableButtonClick}
@@ -168,7 +169,7 @@ const PatternViewer = ({
 const mapStateToProps = (state: any) => {
   const { viewedRoute } = state.otp.ui
   return {
-    timetableEnabled: state.otp.config?.timetableEnabled,
+    callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),
     transitOperators: state.otp.config.transitOperators,
     useRouteColorAsBackground:
       state.otp.config?.routeViewer?.useRouteColorAsBackground,
