@@ -24,10 +24,3 @@
 .otp .search-plan-button-container {
   padding: 1rem;
 }
-
-.field-trip-time-edit form {
-  align-items: baseline;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: left;
-}
