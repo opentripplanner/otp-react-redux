@@ -1,12 +1,14 @@
 import { connect, useSelector } from 'react-redux'
 import { format } from 'date-fns'
 import { FormattedMessage } from 'react-intl'
+import { matchPath } from 'react-router'
 import React, { useEffect, useMemo, useState } from 'react'
 import TimeTable from '@opentripplanner/timetable'
 
 import * as apiActions from '../../actions/api'
 import { AppReduxState } from '../../util/state-types'
 import { GetTimetableDataParams } from '../util/types'
+import { TIMETABLE_PATH } from '../../util/constants'
 import Loading from '../narrative/loading'
 
 interface TimeTableWrapperProps {
@@ -36,7 +38,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   const [loading, setLoading] = useState(true)
 
   const closedStopsSet = useMemo(
-    () => closedStops?.get(routeId || ''),
+    () => closedStops?.get(routeId),
     [closedStops, routeId]
   )
 
@@ -124,8 +126,12 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
 
 const mapStateToProps = (state: AppReduxState) => {
   const { pathname } = state.router.location
-  const split = pathname.split('/')
-  const routeId = split[split.length - 1]
+  const match = matchPath<{ routeId: string }>(pathname, {
+    exact: true,
+    path: TIMETABLE_PATH,
+    strict: false
+  })
+  const routeId = match?.params.routeId ?? ''
 
   return {
     closedStops: state.otp.ui.stopClosures.closedStops,
