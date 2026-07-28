@@ -68,7 +68,6 @@ components:
     planTripTooltip: Planlegg tur
   CallTakerPanel:
     advancedOptions: Avanserte innstillinger
-    groupSize: "Gruppestørrelse:"
   DateTimeOptions:
     now: Nå
   DeleteUser:
