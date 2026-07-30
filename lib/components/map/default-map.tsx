@@ -165,7 +165,7 @@ interface DefaultMapProps {
   bikeRentalStations: VehicleRentalStation[]
   carRentalQuery: () => void
   carRentalStations: VehicleRentalStation[]
-  closedStops: Map<string, Set<string>>
+  closedStops?: Map<string, Set<string>>
   config: AppConfig
   getCurrentPosition: GetCurrentPositionFunction
   intl: IntlShape
@@ -547,7 +547,7 @@ class DefaultMap extends Component<DefaultMapProps> {
                   config.companies,
                   this.getEntityPrefix,
                   feeds,
-                  new Set(closedStops.values().flatMap((v) => v.values()))
+                  new Set(closedStops?.values().flatMap((v) => v.values()))
                 )
               default:
                 return null
