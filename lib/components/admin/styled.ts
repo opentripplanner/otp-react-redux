@@ -48,12 +48,6 @@ export const ControlsContainer = styled.div`
   position: relative;
 `
 
-export const FieldTripsButton = styled.button`
-  ${circleButtonStyle}
-  background-color: ${PURPLE};
-  margin-left: 80px;
-  top: 190px;
-`
 type ToggleCallButtonProps = {
   callInProgress?: boolean
 }
@@ -93,15 +87,6 @@ export const CallRecordButton = styled.button`
 export const CallRecordIcon = styled(StyledIconWrapper)`
   margin-right: 3px;
   padding-top: 4px;
-`
-
-// Make sure button extends to end of window.
-export const FieldTripRecordButton = styled.button`
-  display: inline-block;
-  width: 100%;
-  width: -moz-available;
-  width: -webkit-fill-available;
-  width: fill-available;
 `
 
 export const Full = styled.div`
