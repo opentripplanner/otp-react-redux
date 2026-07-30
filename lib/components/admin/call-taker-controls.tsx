@@ -9,7 +9,6 @@ import React, { Component } from 'react'
 
 import * as apiActions from '../../actions/api'
 import * as callTakerActions from '../../actions/call-taker'
-import * as fieldTripActions from '../../actions/field-trip'
 import * as uiActions from '../../actions/ui'
 import { Icon, StyledIconWrapper } from '../util/styledIcon'
 import { isModuleEnabled, Modules } from '../../util/config'
@@ -18,7 +17,6 @@ import {
   CallHistoryButton,
   CallTimeCounter,
   ControlsContainer,
-  FieldTripsButton,
   ToggleCallButton
 } from './styled'
 
@@ -36,10 +34,7 @@ type Props = {
   callTakerEnabled: boolean
   endCall: (intl: IntlShape) => void
   fetchCalls: (intl: IntlShape) => void
-  fetchFieldTrips: (intl: IntlShape) => void
-  fieldTripEnabled: boolean
   resetAndToggleCallHistory: () => void
-  resetAndToggleFieldTrips: () => void
   session: string
 } & WrappedComponentProps
 
@@ -52,18 +47,10 @@ type Props = {
  */
 class CallTakerControls extends Component<Props> {
   componentDidUpdate(prevProps: Props) {
-    const {
-      callTakerEnabled,
-      fetchCalls,
-      fetchFieldTrips,
-      fieldTripEnabled,
-      intl,
-      session
-    } = this.props
+    const { callTakerEnabled, fetchCalls, intl, session } = this.props
     // Once session is available, fetch calls.
     if (session && !prevProps.session) {
       if (callTakerEnabled) fetchCalls(intl)
-      if (fieldTripEnabled) fetchFieldTrips(intl)
     }
   }
 
@@ -103,14 +90,8 @@ class CallTakerControls extends Component<Props> {
   _callInProgress = () => Boolean(this.props.callTaker.activeCall)
 
   render() {
-    const {
-      callTaker,
-      callTakerEnabled,
-      fieldTripEnabled,
-      resetAndToggleCallHistory,
-      resetAndToggleFieldTrips,
-      session
-    } = this.props
+    const { callTaker, callTakerEnabled, resetAndToggleCallHistory, session } =
+      this.props
     // If no valid session is found, do not show calltaker controls.
     if (!session) return null
     return (
@@ -139,17 +120,6 @@ class CallTakerControls extends Component<Props> {
             </StyledIconWrapper>
           </CallHistoryButton>
         )}
-        {/* Field Trip toggle button */}
-        {fieldTripEnabled && (
-          <FieldTripsButton
-            className="call-taker-button"
-            onClick={resetAndToggleFieldTrips}
-          >
-            <StyledIconWrapper size="2x">
-              <GraduationCap />
-            </StyledIconWrapper>
-          </FieldTripsButton>
-        )}
       </ControlsContainer>
     )
   }
@@ -159,7 +129,6 @@ const mapStateToProps = (state: Record<string, any>) => {
   return {
     callTaker: state.callTaker,
     callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),
-    fieldTripEnabled: isModuleEnabled(state, Modules.FIELD_TRIP),
     session: state.callTaker.session
   }
 }
@@ -168,9 +137,7 @@ const mapDispatchToProps = {
   beginCall: callTakerActions.beginCall,
   endCall: callTakerActions.endCall,
   fetchCalls: callTakerActions.fetchCalls,
-  fetchFieldTrips: fieldTripActions.fetchFieldTrips,
   resetAndToggleCallHistory: callTakerActions.resetAndToggleCallHistory,
-  resetAndToggleFieldTrips: fieldTripActions.resetAndToggleFieldTrips,
   routingQuery: apiActions.routingQuery,
   setMainPanelContent: uiActions.setMainPanelContent
 }
