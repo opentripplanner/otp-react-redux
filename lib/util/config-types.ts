@@ -233,11 +233,11 @@ export type SupportedOverlays =
 export interface TransitiveConfig {
   disableFlexArc?: boolean
   labeledModes?: string[]
-  mapFonts?: string[]
   styles?: {
     labels: Record<string, unknown>
     segmentLabels: Record<string, unknown>
   }
+  vectorTileFonts?: string[]
 }
 
 export interface MapConfig {
