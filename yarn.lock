@@ -3105,7 +3105,7 @@
   dependencies:
     "@styled-icons/bootstrap" "^10.47.0"
 
-"@opentripplanner/core-utils@16.1.0", "@opentripplanner/core-utils@^16.0.3", "@opentripplanner/core-utils@^16.0.4", "@opentripplanner/core-utils@^16.0.5", "@opentripplanner/core-utils@^16.1.0":
+"@opentripplanner/core-utils@16.1.0", "@opentripplanner/core-utils@^16.0.3", "@opentripplanner/core-utils@^16.0.4", "@opentripplanner/core-utils@^16.1.0":
   version "16.1.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-16.1.0.tgz#c6cc0c579dfa7fa97c84bef1c125c00400054b37"
   integrity sha512-x9LhxPhSJxiPdP7IGuS2uLY5UZV/gpE4m7DTW636ygJrcwKFYI99VkhhGF0eBOBT44ypjOC4e+q2NSEzwoBA0g==
