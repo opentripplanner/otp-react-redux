@@ -250,6 +250,7 @@ class TripViewer extends Component<Props> {
                         }}
                       />
                     }
+                    Icon={null}
                   />
                 </AlertContainer>
               )}

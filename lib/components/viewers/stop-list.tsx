@@ -41,7 +41,6 @@ export const StopContainer = styled.ol<{
 
   .highlighted {
     div.stop-decoration {
-      box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.1);
       opacity: 100%;
       border-color: ${(props) => props.routeColor};
 
