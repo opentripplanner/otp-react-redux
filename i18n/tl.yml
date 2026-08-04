@@ -10,35 +10,6 @@ actions:
       query.
     fetchCallsError: "Nagka-error sa pag-fetch ng mga tawag: {err}"
     queryFetchError: "Nagka-error sa pag-fetch ng mga query: {err}"
-  fieldTrip:
-    addNoteError: "Error sa pagdaragdag ng tala sa field trip:"
-    confirmOverwriteItineraries: |
-      This action will overwrite a previously planned {outbound, select,
-          true {outbound}
-          other {inbound}
-        } itinerary for this request. Do you wish to continue?
-    deleteItinerariesError: "Error sa pag-delete ng plano sa field trip:"
-    deleteNoteError: "Error sa pag-delete ng tala sa field trip:"
-    editSubmitterNotesError: "Error sa pag-edit ng mga tala ng nagsumite:"
-    fetchFieldTripError: "Nagka-error sa pag-fetch sa field trip: {err}"
-    fetchFieldTripsError: "Nagka-error sa pag-fetch sa mga field trip: {err}"
-    fetchTripsForDateError: >-
-      Nagka-error sa pag-fetch ng mga trip para sa petsa ng paglalakbay para sa
-      field trip: {err}
-    incompatibleTripDateError: >-
-      Ang pinaplanong petsa ng biyahe ({tripDate}) ay hindi ang hinihiling na
-      araw ng paglalakbay ({requestDate})
-    itineraryCapacityError: >-
-      Hindi Ma-save ang Plano: Hindi ma-save ang planong ito dahil sa kakulangan
-      ng kapasidad sa isa o higit pang sasakyan. Planuhin ulit ang iyong biyahe.
-    maxTripRequestsExceeded: >-
-      Nalampasan ang bilang ng mga kahilingan sa biyahe nang walang valid na
-      resulta
-    saveItinerariesError: "Hindi na-save ang mga itinerary: {err}"
-    setDateError: "Nagka-error sa pagtatakda ng petsa:"
-    setGroupSizeError: "Error sa pag-set up ng laki ng grupo:"
-    setPaymentError: "Error sa pagtatakda ng impormasyon sa pagbabayad:"
-    setRequestStatusError: "Error sa pagtatakda ng status ng kahilingan:"
   location:
     deniedAccessAlert: >
       Naka-block ang access sa lokasyon mo.
@@ -203,7 +174,6 @@ components:
   AppMenu:
     callHistory: History ng Tawag
     closeMenu: Isara ang Menu
-    fieldTrip: Field Trip
     mailables: Mga Mailable
     networkConnectionLost: Nawala ang koneksyon sa network
     networkConnectionRestored: Naibalik na ang koneksyon sa network
@@ -243,7 +213,6 @@ components:
       habang nire-redirect ka namin sa page sa pag-log in...
   CallTakerPanel:
     advancedOptions: Mga advanced na opsyon
-    groupSize: "Laki ng grupo:"
     intermediateDestination: Ilagay ang intermediate na patutunguhan
   CompanionsPane:
     addNewCompanion: Magdagdag ng bagong kasama sa pagbiyahe

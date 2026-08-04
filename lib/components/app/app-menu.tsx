@@ -14,9 +14,12 @@ import SlidingPane from 'react-sliding-pane'
 import type { WrappedComponentProps } from 'react-intl'
 
 import * as callTakerActions from '../../actions/call-taker'
-import * as fieldTripActions from '../../actions/field-trip'
 import * as uiActions from '../../actions/ui'
-import { AppMenuItemConfig, LanguageConfig } from '../../util/config-types'
+import {
+  AppMenuItemConfig,
+  ExtraView,
+  LanguageConfig
+} from '../../util/config-types'
 import { AppReduxState } from '../../util/state-types'
 import { ComponentContext } from '../../util/contexts'
 import { convertChineseLanguageCode, getLanguageOptions } from '../../util/i18n'
@@ -43,13 +46,11 @@ type AppMenuProps = {
   activeLocale: string
   callTakerEnabled?: boolean
   extraMenuItems?: AppMenuItemConfig[]
-  fieldTripEnabled?: boolean
   language?: LanguageConfig
   languageOptions: Record<string, any> | null
   mailablesEnabled?: boolean
   popupTarget?: string
   resetAndToggleCallHistory?: () => void
-  resetAndToggleFieldTrips?: () => void
   setLocale: (locale: string) => void
   setPopupContent: (url: string) => void
   startOverFromInitialUrl: () => void
@@ -151,13 +152,11 @@ class AppMenu extends Component<
       activeLocale,
       callTakerEnabled,
       extraMenuItems,
-      fieldTripEnabled,
       intl,
       languageOptions,
       mailablesEnabled,
       popupTarget,
       resetAndToggleCallHistory,
-      resetAndToggleFieldTrips,
       setLocale,
       toggleMailables,
       translateExternalLinks
@@ -183,7 +182,7 @@ class AppMenu extends Component<
     ]
 
     const { isPaneOpen } = this.state
-    const { SvgIcon } = this.context
+    const { extraViews, SvgIcon } = this.context
     const buttonLabel = isPaneOpen
       ? intl.formatMessage({ id: 'components.AppMenu.closeMenu' })
       : intl.formatMessage({ id: 'components.AppMenu.openMenu' })
@@ -259,6 +258,7 @@ class AppMenu extends Component<
                 id: 'common.forms.startOver'
               })}
             />
+            {/* // TODO: add extra views here */}
             {popupTarget && (
               <AppMenuItem
                 icon={<SvgIcon iconName={popupTarget} />}
@@ -275,15 +275,6 @@ class AppMenu extends Component<
                 })}
               />
             )}
-            {fieldTripEnabled && (
-              <AppMenuItem
-                icon={<GraduationCap />}
-                onClick={resetAndToggleFieldTrips}
-                text={intl.formatMessage({
-                  id: 'components.AppMenu.fieldTrip'
-                })}
-              />
-            )}
             {mailablesEnabled && (
               <AppMenuItem
                 icon={<Envelope />}
@@ -293,6 +284,15 @@ class AppMenu extends Component<
                 })}
               />
             )}
+            {extraViews.map((view: ExtraView) => (
+              <AppMenuItem
+                icon={view.icon}
+                key={view.name}
+                onClick={this._togglePane}
+                text={view.name}
+                to={view.path}
+              />
+            ))}
             {this._addExtraMenuItems(extraMenuItems, translateExternalLinks)}
             {this._addExtraMenuItems(languageMenuItems)}
           </div>
@@ -311,7 +311,6 @@ const mapStateToProps = (state: AppReduxState) => {
     activeLocale: state.otp.ui.locale,
     callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),
     extraMenuItems,
-    fieldTripEnabled: isModuleEnabled(state, Modules.FIELD_TRIP),
     language,
     languageOptions: getLanguageOptions(language),
     mailablesEnabled: isModuleEnabled(state, Modules.MAILABLES),
@@ -322,7 +321,6 @@ const mapStateToProps = (state: AppReduxState) => {
 
 const mapDispatchToProps = {
   resetAndToggleCallHistory: callTakerActions.resetAndToggleCallHistory,
-  resetAndToggleFieldTrips: fieldTripActions.resetAndToggleFieldTrips,
   setLocale: uiActions.setLocale,
   setPopupContent: uiActions.setPopupContent,
   startOverFromInitialUrl: uiActions.startOverFromInitialUrl,

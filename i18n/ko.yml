@@ -8,29 +8,6 @@ actions:
     couldNotFindCallError: 통화를 찾을 수 없습니다. 쿼리 저장 요청을 취소하는 중입니다.
     fetchCallsError: "통화를 가져오는 중에 오류가 발생했습니다: {err}"
     queryFetchError: "쿼리를 가져오는 중에 오류가 발생했습니다: {err}"
-  fieldTrip:
-    addNoteError: "트립 메모를 찾는 중에 오류가 발생했습니다:"
-    confirmOverwriteItineraries: |
-      이 작업은 이 요청에 대해 이전에 계획된 {outbound, select,
-        true {아웃바운드}
-        other {인바운드}
-        } 일정을 덮어씁니다. 계속하시겠습니까?
-    deleteItinerariesError: "트립 플랜을 삭제하는 중에 오류가 발생했습니다:"
-    deleteNoteError: "트립 메모를 삭제하는 중에 오류가 발생했습니다:"
-    editSubmitterNotesError: "제출자 메모를 수정하는 중에 오류가 발생했습니다:"
-    fetchFieldTripError: "트립을 가져오는 중에 오류가 발생했습니다: {err}"
-    fetchFieldTripsError: "트립을 가져오는 중에 오류가 발생했습니다: {err}"
-    fetchTripsForDateError: "필트 트립 날짜에 대한 트립을 가져오는 중에 오류가 발생했습니다: {err}"
-    incompatibleTripDateError: 계획한 트립 날짜({tripDate})가 요청한 트립 날짜({requestDate})가 
-      아닙니다
-    itineraryCapacityError: "플랜을 저장할 수 없습니다: 하나 이상의 차량의 용량이 부족하여 이 플랜을 저장할 수 없습니다.
-      트립을 다시 계획하세요."
-    maxTripRequestsExceeded: 유효한 결과없이 초과된 트립 요청의 개수
-    saveItinerariesError: "트립을 저장하는 데 실패했습니다: {err}"
-    setDateError: "날짜를 설정하는 중에 오류가 발생했습니다:"
-    setGroupSizeError: "그룹 크기를 설정하는 중에 오류가 발생했습니다:"
-    setPaymentError: "결제 정보를 설정하는 중에 오류가 발생했습니다:"
-    setRequestStatusError: "요청 상태를 설정하는 중에 오류가 발생했습니다:"
   location:
     deniedAccessAlert: |
       귀하의 위치로 액세스가 차단되었습니다.
@@ -176,7 +153,6 @@ components:
   AppMenu:
     callHistory: 통화 기록
     closeMenu: 메뉴 닫기
-    fieldTrip: 필드 트립
     mailables: 발송 가능
     networkConnectionLost: 네트워크 연결이 끊어짐
     networkConnectionRestored: 네트워크 연결이 복구됨
@@ -212,7 +188,6 @@ components:
       이 페이지에 접근하려면 로그인해야 합니다. 로그인 페이지로 리디렉션하는 동안 기다려 주세요…
   CallTakerPanel:
     advancedOptions: 고급 옵션
-    groupSize: "그룹 크기:"
     intermediateDestination: 중간 목적지 입력
   CompanionsPane:
     addNewCompanion: 새로운 여행 동행 추가

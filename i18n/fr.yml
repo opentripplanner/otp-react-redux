@@ -11,37 +11,6 @@ actions:
       annulée.
     fetchCallsError: "Erreur lors du chargement des appels : {err}"
     queryFetchError: "Erreur lors du chargement des requêtes : {err}"
-  fieldTrip:
-    addNoteError: "Erreur lors de l'ajout d'une note sur le groupe :"
-    confirmOverwriteItineraries: |
-      Cette action replacera un trajet {outbound, select,
-        true {aller}
-        other {retour}
-      } planifié préalablement pour cette demande. Voulez-vous continuer ?
-    deleteItinerariesError: "Erreur lors de la suppression du trajet pour le groupe
-      :"
-    deleteNoteError: "Erreur lors de la suppression d'une note sur le groupe :"
-    editSubmitterNotesError: "Erreur lors de la modification des notes du demandeur
-      :"
-    fetchFieldTripError: "Erreur de chargement du groupe scolaire : {err}"
-    fetchFieldTripsError: "Erreur lors du chargement des groupes scolaires : {err}"
-    fetchTripsForDateError: >-
-      Erreur lors du chargement des trajets du groupe pour les dates de sorties
-      : {err}
-    incompatibleTripDateError: >-
-      La date du trajet planifié ({tripDate}) ne correspond pas à la date
-      demandée ({requestDate}).
-    itineraryCapacityError: >-
-      Impossible d'enregistrer les trajets : Capacité insuffisante dans un ou
-      plusieurs véhicules. Veuillez réorganiser votre trajet.
-    maxTripRequestsExceeded: Le nombre de requêtes sans résultats valables a été
-      dépassé.
-    saveItinerariesError: "Erreur lors de l'enregistrement des trajets : {err}"
-    setDateError: "Erreur sur la date :"
-    setGroupSizeError: "Erreur sur la taille du groupe :"
-    setPaymentError: "Erreur sur les coordonnées de paiement :"
-    setRequestStatusError: "Erreur sur l'état de la requête :"
-    setTimeError: "Error setting time:"
   location:
     deniedAccessAlert: >
       L'accès à votre position est refusé.
@@ -133,6 +102,7 @@ common:
     submitting: Envoi en cours…
     "yes": Oui
   itineraryDescriptions:
+    containsCanceledTrip: Contient un voyage annulé
     fareUnknown: Tarif inconnu
     noDefaultFareTypeConfigured: Multiple fares apply
     noItineraryToDisplay: Aucun trajet à afficher.
@@ -212,7 +182,6 @@ components:
   AppMenu:
     callHistory: Historique des appels
     closeMenu: Fermer le menu
-    fieldTrip: Groupes scolaires
     mailables: Prêt-à-poster
     networkConnectionLost: Erreur de connexion réseau
     networkConnectionRestored: Connexion réseau restaurée
@@ -253,7 +222,6 @@ components:
       pendant que nous vous redirigeons vers la page de connexion...
   CallTakerPanel:
     advancedOptions: Options avancées
-    groupSize: "Taille du groupe :"
     intermediateDestination: Entrez la destination intermédiaire
   CompanionsPane:
     addNewCompanion: Ajouter un accompagnateur

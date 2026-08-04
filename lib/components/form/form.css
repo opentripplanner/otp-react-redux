@@ -225,22 +225,3 @@
 .nearby-view-location-field input::placeholder {
   color: #666
 }
-
-/* Highlight location fields when they update */
-@keyframes highlight {
-  from {
-    outline: 0px solid #fff;
-  }
-
-  to {
-    outline: 10px solid rgba(255, 247, 0, 0.7);
-  }
-}
-
-.animate-highlight {
-  outline: 0px solid #fff;
-  animation: 0.2s 4 alternate highlight;
-}
-.animate-highlight:focus-within {
-  animation: none;
-}

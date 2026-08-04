@@ -299,6 +299,7 @@ export interface ItineraryConfig {
   hideSkeletons?: boolean
   mergeItineraries?: boolean
   mutedErrors?: string[]
+  omitCanceledTrips?: boolean
   onlyShowCountdownForRealtime?: boolean
   previewOverlay?: boolean
   renderRouteNamesInBlocks?: boolean
@@ -404,6 +405,14 @@ export interface StopScheduleViewerConfig {
 export interface DateTimeConfig {
   dateFormat: string
   timeFormat: string
+}
+
+export type ExtraView = {
+  content: JSX.Element
+  icon?: JSX.Element
+  name: string
+  path: string
+  showInHeaderBar?: boolean
 }
 
 /** The main application configuration object */
