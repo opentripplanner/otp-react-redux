@@ -19,6 +19,7 @@ type Props = {
     }
   }
   previousLegMode?: string
+  reservationRequired?: boolean
   showDivider?: boolean
 }
 
@@ -113,6 +114,7 @@ const RouteBlock = ({
   leg: rawLeg,
   LegIcon,
   previousLegMode,
+  reservationRequired,
   showDivider
 }: Props): React.ReactElement | null => {
   // @ts-expect-error React context is populated dynamically
@@ -159,6 +161,9 @@ const RouteBlock = ({
             italic={alternateRoutesAreTooLongToDisplay && hideLongName}
             multi={!!leg.alternateRoutes}
           >
+            {reservationRequired && (
+              <span style={{ marginLeft: '-1ch' }}>✤</span>
+            )}
             <Route leg={leg} />
             {Object.entries(leg?.alternateRoutes || {})?.map((altRoute) => {
               const route = altRoute[1]

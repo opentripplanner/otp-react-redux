@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Itinerary, Leg } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import { AppReduxState } from '../../../util/state-types'
@@ -115,29 +115,28 @@ const MetroItineraryRoutes = ({
             coreUtils.itinerary.isReservationRequired(filteredLegs[index - 1])
           const needReservation = coreUtils.itinerary.isReservationRequired(leg)
           return (
-            <Fragment key={index}>
-              <RouteBlock
-                aria-hidden
-                footer={
-                  showLegDurations && (
-                    <FormattedDuration
-                      duration={leg.duration}
-                      includeSeconds={false}
-                    />
-                  )
-                }
-                hideLongName
-                leg={leg}
-                LegIcon={LegIcon}
-                previousLegMode={
-                  needReservation === previousLegReservation
-                    ? previousLegMode
-                    : undefined
-                }
-                showDivider={enableDot}
-              />
-              {needReservation && <span style={{ marginLeft: '-1ch' }}>✤</span>}
-            </Fragment>
+            <RouteBlock
+              aria-hidden
+              footer={
+                showLegDurations && (
+                  <FormattedDuration
+                    duration={leg.duration}
+                    includeSeconds={false}
+                  />
+                )
+              }
+              hideLongName
+              key={index}
+              leg={leg}
+              LegIcon={LegIcon}
+              previousLegMode={
+                needReservation === previousLegReservation
+                  ? previousLegMode
+                  : undefined
+              }
+              reservationRequired={needReservation}
+              showDivider={enableDot}
+            />
           )
         })}
       </Routes>
