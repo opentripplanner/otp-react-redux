@@ -272,7 +272,7 @@ class MetroItinerary extends NarrativeItinerary {
     const { ItineraryPreviewSupplement, RouteRenderer, SvgIcon } = this.context
     const Route = RouteRenderer || DefaultRouteRenderer
 
-    const { isFlexItinerary } = getFlexAttributes(itinerary)
+    const { isCallAhead, isFlexItinerary } = getFlexAttributes(itinerary)
 
     const { fareCurrency, transitFare } = getFare(itinerary, defaultFareType)
 
@@ -405,7 +405,7 @@ class MetroItinerary extends NarrativeItinerary {
                       includeSeconds={false}
                     />
                   </PrimaryInfo>
-                  {isFlexItinerary && (
+                  {isFlexItinerary && isCallAhead && (
                     <SecondaryInfo className={isFlexItinerary ? 'flex' : ''}>
                       <span aria-hidden>✤</span>
                       <FormattedMessage id="config.flex.reservationRequired" />
