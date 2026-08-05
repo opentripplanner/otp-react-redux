@@ -20,7 +20,6 @@ import {
 } from '../lib'
 import CallHistoryWindow from '../lib/components/admin/call-history-window'
 import CallTakerPanel from '../lib/components/app/call-taker-panel'
-import FieldTripWindows from '../lib/components/admin/field-trip-windows'
 import MailablesWindow from '../lib/components/admin/mailables-window'
 
 /**
@@ -84,7 +83,6 @@ export function configure(otpConfig) {
     MapWindows: () => (
       <>
         <CallHistoryWindow />
-        <FieldTripWindows />
         <MailablesWindow />
       </>
     ),
