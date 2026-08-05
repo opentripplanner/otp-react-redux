@@ -110,6 +110,9 @@ const MetroItineraryRoutes = ({
         {routeLegs.map((leg: Leg, index: number, filteredLegs: Leg[]) => {
           const previousLegMode =
             (index > 0 && filteredLegs[index - 1].mode) || undefined
+          const previousLegReservation =
+            index > 0 &&
+            coreUtils.itinerary.isReservationRequired(filteredLegs[index - 1])
           const needReservation = coreUtils.itinerary.isReservationRequired(leg)
           return (
             <Fragment key={index}>
@@ -126,7 +129,11 @@ const MetroItineraryRoutes = ({
                 hideLongName
                 leg={leg}
                 LegIcon={LegIcon}
-                previousLegMode={previousLegMode}
+                previousLegMode={
+                  needReservation === previousLegReservation
+                    ? previousLegMode
+                    : undefined
+                }
                 showDivider={enableDot}
               />
               {needReservation && <span style={{ marginLeft: '-1ch' }}>✤</span>}
