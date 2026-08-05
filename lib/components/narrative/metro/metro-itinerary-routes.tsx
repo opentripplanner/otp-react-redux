@@ -85,6 +85,8 @@ const MetroItineraryRoutes = ({
     .filter((leg) => !leg.interlineWithPreviousLeg)
   const transitRoutes = getItineraryRoutes(itinerary, intl)
 
+  const reservationSymbol = <span style={{ marginLeft: '-1ch' }}>✤</span>
+
   return (
     <>
       <InvisibleHeader as={expanded ? 'h1' : undefined}>
@@ -129,12 +131,12 @@ const MetroItineraryRoutes = ({
               key={index}
               leg={leg}
               LegIcon={LegIcon}
+              modeIconDecoration={needReservation && reservationSymbol}
               previousLegMode={
                 needReservation === previousLegReservation
                   ? previousLegMode
                   : undefined
               }
-              reservationRequired={needReservation}
               showDivider={enableDot}
             />
           )
