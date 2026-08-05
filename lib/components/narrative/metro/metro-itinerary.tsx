@@ -17,7 +17,6 @@ import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
 import { ComponentContext } from '../../../util/contexts'
 import { DARK_TEXT_GREY } from '../../util/colors'
-import { FlexIndicator } from '../default/flex-indicator'
 import { getActiveSearch } from '../../../util/state'
 import { getFare } from '../../../util/itinerary'
 import { IconWithText } from '../../util/styledIcon'
@@ -273,8 +272,7 @@ class MetroItinerary extends NarrativeItinerary {
     const { ItineraryPreviewSupplement, RouteRenderer, SvgIcon } = this.context
     const Route = RouteRenderer || DefaultRouteRenderer
 
-    const { isCallAhead, isContinuousDropoff, isFlexItinerary, phone } =
-      getFlexAttributes(itinerary)
+    const { isFlexItinerary } = getFlexAttributes(itinerary)
 
     const { fareCurrency, transitFare } = getFare(itinerary, defaultFareType)
 
@@ -409,13 +407,8 @@ class MetroItinerary extends NarrativeItinerary {
                   </PrimaryInfo>
                   {isFlexItinerary && (
                     <SecondaryInfo className={isFlexItinerary ? 'flex' : ''}>
-                      <FlexIndicator
-                        isCallAhead={isCallAhead}
-                        isContinuousDropoff={isContinuousDropoff}
-                        phoneNumber={phone}
-                        shrink={false}
-                        textOnly
-                      />
+                      <span aria-hidden>✤</span>
+                      <FormattedMessage id="config.flex.reservationRequired" />
                     </SecondaryInfo>
                   )}
                   {/* If inline summary is enabled, don't show fare in side */}
