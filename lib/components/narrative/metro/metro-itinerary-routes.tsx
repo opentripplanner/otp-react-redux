@@ -118,7 +118,6 @@ const MetroItineraryRoutes = ({
           const needReservation = coreUtils.itinerary.isReservationRequired(leg)
           return (
             <RouteBlock
-              aria-hidden
               footer={
                 showLegDurations && (
                   <FormattedDuration
