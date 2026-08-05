@@ -116,8 +116,7 @@ export const FlexIndicator = ({
   if (textOnly)
     return (
       <>
-        ✤
-        <FormattedMessage id="config.flex.reservationRequired" />
+        <FormattedMessage id="config.flex.flex-service-colon" /> {text}
       </>
     )
 
