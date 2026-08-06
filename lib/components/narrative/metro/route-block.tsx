@@ -144,6 +144,7 @@ const RouteBlock = ({
       })
     }
   }
+  const showModeIcon = leg.mode !== previousLegMode
 
   return (
     <>
@@ -151,7 +152,7 @@ const RouteBlock = ({
         <Divider className="route-block-divider">•</Divider>
       )}
       <Wrapper className="route-block-wrapper">
-        {leg.mode !== previousLegMode && (
+        {showModeIcon && (
           <LegIconWrapper>
             <LegIcon height={28} leg={leg} />
           </LegIconWrapper>
@@ -161,7 +162,7 @@ const RouteBlock = ({
             italic={alternateRoutesAreTooLongToDisplay && hideLongName}
             multi={!!leg.alternateRoutes}
           >
-            {modeIconDecoration}
+            {showModeIcon && modeIconDecoration}
             <Route leg={leg} />
             {Object.entries(leg?.alternateRoutes || {})?.map((altRoute) => {
               const route = altRoute[1]
