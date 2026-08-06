@@ -269,7 +269,12 @@ class MetroItinerary extends NarrativeItinerary {
       showLegDurations,
       showRealtimeAnnotation
     } = this.props
-    const { ItineraryPreviewSupplement, RouteRenderer, SvgIcon } = this.context
+    const {
+      FlexReservationIcon,
+      ItineraryPreviewSupplement,
+      RouteRenderer,
+      SvgIcon
+    } = this.context
     const Route = RouteRenderer || DefaultRouteRenderer
 
     const { isCallAhead, isFlexItinerary } = getFlexAttributes(itinerary)
@@ -406,7 +411,9 @@ class MetroItinerary extends NarrativeItinerary {
                   </PrimaryInfo>
                   {isFlexItinerary && isCallAhead && (
                     <SecondaryInfo className={isFlexItinerary ? 'flex' : ''}>
-                      <span aria-hidden>✤</span>
+                      <span aria-hidden>
+                        <FlexReservationIcon />
+                      </span>
                       <FormattedMessage id="config.flex.reservationRequired" />
                     </SecondaryInfo>
                   )}
