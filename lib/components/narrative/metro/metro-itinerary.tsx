@@ -414,7 +414,7 @@ class MetroItinerary extends NarrativeItinerary {
                       <span aria-hidden>
                         <FlexReservationIcon />
                       </span>
-                      <FormattedMessage id="config.flex.reservationRequired" />
+                      <FormattedMessage id="common.itineraryDescriptions.reservationRequired" />
                     </SecondaryInfo>
                   )}
                   {/* If inline summary is enabled, don't show fare in side */}
