@@ -391,7 +391,6 @@ class MetroItinerary extends NarrativeItinerary {
                 <MetroItineraryRoutes
                   expanded={expanded}
                   itinerary={itinerary}
-                  LegIcon={LegIcon}
                   showLegDurations={showLegDurations}
                 />
                 <ItineraryDetails

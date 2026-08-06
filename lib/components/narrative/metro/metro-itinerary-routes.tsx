@@ -2,10 +2,11 @@ import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Itinerary, Leg } from '@opentripplanner/types'
 import coreUtils from '@opentripplanner/core-utils'
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import { AppReduxState } from '../../../util/state-types'
+import { ComponentContext } from '../../../util/contexts'
 import { getFormattedMode } from '../../../util/i18n'
 import FormattedDuration, {
   formatDuration
@@ -61,8 +62,6 @@ const InvisibleHeader = styled(InvisibleA11yLabel)`
 `
 
 type Props = {
-  // TODO: create and reuse type for LegIcon.
-  LegIcon: ({ height, leg }: { height: number; leg: Leg }) => React.ReactElement
   enableDot?: boolean
   /** This is true when there is only one itinerary being shown and the itinerary-body is visible */
   expanded: boolean
@@ -75,17 +74,22 @@ const MetroItineraryRoutes = ({
   enableDot,
   expanded,
   itinerary,
-  LegIcon,
   showAllWalkLegs,
   showLegDurations
 }: Props): JSX.Element => {
   const intl = useIntl()
+  // @ts-expect-error No type on ComponentContext
+  const { FlexReservationIcon, LegIcon } = useContext(ComponentContext)
   const routeLegs = itinerary.legs
     .filter(showAllWalkLegs ? () => true : removeInsignificantWalkLegs)
     .filter((leg) => !leg.interlineWithPreviousLeg)
   const transitRoutes = getItineraryRoutes(itinerary, intl)
 
-  const reservationSymbol = <span style={{ marginLeft: '-1ch' }}>✤</span>
+  const reservationWrapper = (
+    <span style={{ marginLeft: '-1ch' }}>
+      <FlexReservationIcon />
+    </span>
+  )
 
   return (
     <>
@@ -126,7 +130,7 @@ const MetroItineraryRoutes = ({
               key={index}
               leg={leg}
               LegIcon={LegIcon}
-              modeIconDecoration={needReservation && reservationSymbol}
+              modeIconDecoration={needReservation && reservationWrapper}
               previousLegMode={
                 needReservation === previousLegReservation
                   ? previousLegMode
