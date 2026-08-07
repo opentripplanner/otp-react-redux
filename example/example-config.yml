@@ -244,23 +244,42 @@ modes:
   # numItineraries: 3
   # Definition for the mode buttons to display in trip form
   modeButtons:
-    - iconName: bus
+    - iconName: transit
       key: transit
-      # List of modes to add to the query when this button is enabled
+      label: Transit
       modes:
         - mode: TRANSIT
+        - mode: WALK
+          input:
+            direct: [WALK]
+            directOnly: true
+        - mode: WALK
+          input:
+            direct: [WALK]
     - iconName: bicycle
       key: bicycle
+      label: Bike
       modes:
-        # Modes can contain a qualifier
-        # See OTP documentation for details
         - mode: BICYCLE
+          input:
+            direct: [BICYCLE]
+            directOnly: true
         - mode: BICYCLE
-          qualifier: RENT
+          input:
+            transit:
+              access: [BICYCLE]
+              egress: [BICYCLE]
+              transfer: [BICYCLE]
+            transitOnly: true
     - iconName: car
       key: car
+      label: Car
       modes:
         - mode: CAR
+          input:
+            transit:
+              access: [CAR_PARKING]
+              egress: [WALK]
   # Allows initial state to be configured.
   # Which buttons enabled on load + overriding setting defaults
   initialState:

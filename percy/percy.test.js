@@ -98,7 +98,7 @@ async function executeTest(page, isMobile, isCallTaker) {
   // Triggers mock.har graphql query #1 and #2 (bike-only query, twice).
   // FIXME: Opening a url with non-default mode params triggers the plan query twice.
   await page.goto(
-    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=South%20Prado%20Northeast%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.78946214120528%2C-84.37663414886111&toPlace=1%20Copenhill%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.767060728439574%2C-84.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false&mode=BICYCLE&walkSpeed=1.34&numItineraries=3&modeButtons=walk_bike`
+    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=South%20Prado%20Northeast%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.78946214120528%2C-84.37663414886111&toPlace=1%20Copenhill%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.767060728439574%2C-84.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false&modeButtons=bicycle`
   )
   // FIXME: Network idle condition seems never met after navigating to above link.
   // await page.waitForNavigation({ waitUntil: 'networkidle2' })
@@ -218,7 +218,7 @@ async function executeTest(page, isMobile, isCallTaker) {
     // take screenshot
     await percySnapshotWithWait(page, 'Call Taker With Settings Adjusted')
     await page.goto(
-      `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=South%20Prado%20Northeast%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.78946214120528%2C-84.37663414886111&toPlace=1%20Copenhill%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.767060728439574%2C-84.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false&mode=BICYCLE&walkSpeed=1.34&numItineraries=3&modeButtons=walk_bike`
+      `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=South%20Prado%20Northeast%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.78946214120528%2C-84.37663414886111&toPlace=1%20Copenhill%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.767060728439574%2C-84.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false&modeButtons=bicycle`
     )
 
     // Other steps are identical to desktop, so we end here to not waste screenshots.
@@ -244,16 +244,17 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.waitForTimeout(2000)
   }
 
-  await tripViewerButton.click()
+  await page.$eval(
+    '.transit-leg-details-wrapper button[class*="styled__ViewerButton"]',
+    (el) => el.click()
+  )
   await page.waitForSelector('div.trip-viewer-body')
   await page.waitForTimeout(1000)
   await percySnapshotWithWait(page, 'Trip Viewer')
 
   // Open nearby viewer from trip viewer
   // Triggers mock.har graphql query #6, #7, and #8 (stop details, nearest places, nearest stops).
-  await page.click(
-    'div.trip-viewer-body > ol > li:nth-child(3) > div.stop-button-container > button'
-  )
+  await page.click('.view-stop-button:first-of-type')
   await page.waitForSelector('.nearby-view')
 
   await percySnapshotWithWait(page, 'Nearby View')
@@ -370,7 +371,7 @@ async function executeTest(page, isMobile, isCallTaker) {
   if (!isCallTaker) {
     // Go to a URL that will trigger an error message.
     await page.goto(
-      `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=TestLocation%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A34.78946214120528%2C-86.37663414886111&toPlace=1%20TestLocation2%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A35.767060728439574%2C-86.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false&mode=BICYCLE&walkSpeed=1.34&numItineraries=3&modeButtons=car_transit`
+      `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=TestLocation%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A34.78946214120528%2C-86.37663414886111&toPlace=1%20TestLocation2%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A35.767060728439574%2C-86.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false&modeButtons=car_transit`
     )
     await page.waitForTimeout(500)
     await openEditIfNeeded(page, isMobile)
