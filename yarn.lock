@@ -3080,7 +3080,7 @@
   dependencies:
     "@octokit/openapi-types" "^10.0.0"
 
-"@opentripplanner/base-map@7.0.1", "@opentripplanner/base-map@^7.0.1":
+"@opentripplanner/base-map@7.0.1":
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-7.0.1.tgz#a4c14091fafdd55b5e9c108952936981edafc750"
   integrity sha512-UONLrwYthGXjzA2dE9zHW6vPNlPqNwsdH+EEtUwVzfjchYt/lVwyInavW1DNWb5sYxLjWHMCbS+FxJmNYKifmg==
@@ -3089,7 +3089,7 @@
     maplibre-gl "^5.6.1"
     react-map-gl "^8.0.4"
 
-"@opentripplanner/base-map@^7.1.0":
+"@opentripplanner/base-map@^7.0.1", "@opentripplanner/base-map@^7.1.0":
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/base-map/-/base-map-7.1.0.tgz#5def02024d0a15b7fad9f666f7e0f10e8b380a43"
   integrity sha512-A4WqFF0JO0mXEc2zGCO6OxTo+ShbrjRpESn11ywrskqfgW5CMDXEhgC9n1mowtOGp5rKlBwlAxpLGzkPnb03IA==
@@ -3098,10 +3098,10 @@
     maplibre-gl "^5.6.1"
     react-map-gl "^8.0.4"
 
-"@opentripplanner/building-blocks@3.1.1", "@opentripplanner/building-blocks@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/building-blocks/-/building-blocks-3.1.1.tgz#0ec87f2445f32963059a001b11fd58e0968685f8"
-  integrity sha512-D+BuXBTRbejOPUUf9TdG1Z78l6pUu6VJn6pA4W+CcvQuuXjNDz/PibScT3maaULASxj5GP9iPMoNoIcRHwqOOw==
+"@opentripplanner/building-blocks@3.2.0", "@opentripplanner/building-blocks@^3.1.1":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/building-blocks/-/building-blocks-3.2.0.tgz#fce4065c8c2bf2bf517574a01df701d648cf9412"
+  integrity sha512-u5J+uX059wMJFI3noOoZpCuw33TXaNstnvsYNVtj9TPybJ1Feb6khyrmk5fYNggXzJ+nxn81cN/DcU+ImQhIXw==
   dependencies:
     "@styled-icons/bootstrap" "^10.47.0"
 

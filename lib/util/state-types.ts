@@ -54,6 +54,7 @@ export interface OtpState {
       routeId: string
     }
     viewedStop?: any
+    viewedTrip?: any
   }
 }
 
