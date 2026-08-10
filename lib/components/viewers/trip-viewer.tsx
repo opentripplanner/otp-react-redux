@@ -34,7 +34,7 @@ import StopList from './stop-list'
 
 const AlertContainer = styled.div`
   margin: 1em 0;
-  span {
+  .header {
     font-weight: 400;
   }
 `
