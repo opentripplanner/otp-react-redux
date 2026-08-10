@@ -20,10 +20,8 @@ const { getCurrentDate } = time
 const TIME_CELL_WIDTH = '45px'
 
 // Create a fake, opaque "low opacity" color that won't show overlap.
-const lowOpacityColor = (
-  color: string
-) => `color-mix(in oklab, ${color} 40%, white)
-`
+const lowOpacityColor = (color: string) =>
+  `color-mix(in oklab, ${color} 40%, white)`
 
 export const StopContainer = styled.ol<{
   routeColor: string
@@ -39,14 +37,12 @@ export const StopContainer = styled.ol<{
   overflow-y: ${(props) => (props.timeColumn ? 'visible' : 'scroll')};
   padding: 5px 10px;
 
-  .highlighted {
+  .faded {
     div.stop-decoration {
-      opacity: 100%;
-      border-color: ${(props) => props.routeColor};
+      border-color: ${(props) => lowOpacityColor(props.routeColor)};
 
       &::after {
-        opacity: 100%;
-        background: ${(props) => props.routeColor};
+        background: ${(props) => lowOpacityColor(props.routeColor)};
       }
     }
   }
@@ -93,7 +89,7 @@ export const Stop = styled.li<{ routeColor: string; timeColumn?: boolean }>`
 
   /* this is the station blob */
   div.stop-decoration {
-    border: 5px solid ${(props) => lowOpacityColor(props.routeColor)};
+    border: 5px solid ${(props) => props.routeColor};
     border-radius: 20px;
     display: block;
     height: 20px;
@@ -102,7 +98,7 @@ export const Stop = styled.li<{ routeColor: string; timeColumn?: boolean }>`
 
     /* this is the line between the blobs */
     &::after {
-      background: ${(props) => lowOpacityColor(props.routeColor)};
+      background: ${(props) => props.routeColor};
       content: '';
       display: block;
       height: 1.65rem; /* set position in line-height agnostic way */
@@ -190,7 +186,8 @@ const StopList = ({
         }
         return (
           <Stop
-            className={highlighted ? 'highlighted' : 'faded'}
+            // Hack: Percy does not handle color-mix, so approximate the effect in percy tests. Css is in package.json.
+            className={`percy-stop ${highlighted ? 'highlighted' : 'faded'}`}
             // Use array index instead of stop id because a stop can be visited several times.
             key={index}
             onClick={() => stopLinkClicked(stop)}
