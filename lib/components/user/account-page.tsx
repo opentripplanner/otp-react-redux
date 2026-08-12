@@ -21,6 +21,7 @@ import withLoggedInUserSupport from './with-logged-in-user-support'
 interface Props {
   children: ReactElement
   isTermsOrVerifyPage: boolean
+  loadAppModule: (appModule: string) => void
   loggedInUser: User
   popupContent: PopupTargetConfig
   routeTo: (url: string, arg2: any, arg3: any) => void
@@ -51,6 +52,7 @@ class AccountPage extends Component<Props> {
 
   componentDidMount() {
     this._checkAccountCreated()
+    this.props.loadAppModule('account')
   }
 
   render() {
@@ -90,6 +92,7 @@ const mapStateToProps = (state: AppReduxState) => {
 }
 
 const mapDispatchToProps = {
+  loadAppModule: uiActions.loadAppModule,
   routeTo: uiActions.routeTo,
   setPopupContent: uiActions.setPopupContent
 }
