@@ -1,79 +1,85 @@
 import { Alert } from '@opentripplanner/building-blocks'
 import { Bicycle } from '@styled-icons/fa-solid/Bicycle'
 import { Label as BsLabel } from 'react-bootstrap'
-import { Circle } from '@styled-icons/fa-solid/Circle'
 import { connect } from 'react-redux'
-import { FormattedMessage, injectIntl } from 'react-intl'
-import { toDate } from 'date-fns-tz'
+import { FormattedMessage, injectIntl, IntlShape } from 'react-intl'
+import { isMobile } from '@opentripplanner/core-utils/lib/ui'
+import { Leg, Route, TransitOperator } from '@opentripplanner/types'
 import { Wheelchair } from '@styled-icons/fa-solid/Wheelchair'
 import coreUtils from '@opentripplanner/core-utils'
-import PropTypes from 'prop-types'
-import React, { Component, createRef } from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import * as apiActions from '../../actions/api'
 import * as narrativeActions from '../../actions/narrative'
 import * as uiActions from '../../actions/ui'
+import { AppReduxState } from '../../util/state-types'
+import { ComponentContext } from '../../util/contexts'
+import { getActiveItineraries, getOperatorAndRoute } from '../../util/state'
+import { getRouteColorBasedOnSettings } from '../../util/viewer'
+import { IconWithText } from '../util/styledIcon'
 import {
-  getActiveItineraries,
-  getActiveSearch,
-  getOperatorAndRoute
-} from '../../util/state'
-import { IconWithText, StyledIconWrapper } from '../util/styledIcon'
+  ItineraryWithCO2Info,
+  ItineraryWithSortingCosts
+} from '../../util/itinerary'
+import { StopListEntry, TripStopTime } from '../util/types'
+import { TransitOperatorConfig } from '../../util/config-types'
 import BackButton from '../util/back-button'
-import InvisibleA11yLabel from '../util/invisible-a11y-label'
+import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
 import PageTitle from '../util/page-title'
 import SpanWithSpace from '../util/span-with-space'
-import Strong from '../util/strong-text'
 
-import DepartureTime from './departure-time'
-import ViewStopButton from './view-stop-button'
-
-const { getCurrentDate } = coreUtils.time
+import { RouteRowDetails } from './route-row'
+import StopList from './stop-list'
 
 const AlertContainer = styled.div`
   margin: 1em 0;
-  span {
+  .header {
     font-weight: 400;
   }
-`
-
-const StopList = styled.ol`
-  list-style: none;
-  padding-left: 0;
-`
-const Stop = styled.li`
-  align-items: center;
-  display: flex;
-`
-const RouteName = styled.h2`
-  font-size: inherit;
-  margin: 1em 0;
 `
 const HeaderText = styled.h1`
   margin: 2px 0 0 0;
 `
-const FlexWrapper = styled.div`
-  display: flex;
-`
 
-class TripViewer extends Component {
-  static propTypes = {
-    activeItinerary: PropTypes.object,
-    activeItineraryIndex: PropTypes.number,
-    findTrip: apiActions.findTrip.type,
-    hideHeader: PropTypes.bool,
-    homeTimezone: PropTypes.string,
-    intl: PropTypes.object,
-    setMainPanelContent: uiActions.setMainPanelContent.type,
-    settingActiveItinerary: narrativeActions.settingActiveItinerary.type,
-    setViewedTrip: uiActions.setViewedTrip.type,
-    transitOperators: PropTypes.array,
-    tripData: PropTypes.object,
-    viewedTrip: PropTypes.object
-  }
+type ViewedTrip = {
+  fromStopId?: string | null
+  toStopId?: string | null
+  tripId?: string
+}
 
-  firstStopRef = createRef()
+interface TripData {
+  bikesAllowed: string
+  blockId?: string | null
+  directionId: string
+  geometry: { length: number; points: string }
+  id: string
+  route: Route
+  serviceId: string
+  shapeId: string
+  stopTimes: TripStopTime[]
+  tripHeadsign: string
+  wheelchairAccessible: string
+}
+
+interface Props {
+  activeItinerary?: false | ItineraryWithCO2Info | ItineraryWithSortingCosts
+  activeItineraryIndex: number
+  findTrip: (arg: { tripId?: string }) => void
+  hideHeader?: boolean
+  homeTimezone: string
+  intl: IntlShape
+  setMainPanelContent: (content: number | null) => void
+  setViewedStop: (payload: { stopId: string } | null) => void
+  setViewedTrip: (payload: ViewedTrip | null) => void
+  settingActiveItinerary: (payload: { index: number } | null) => void
+  transitOperators?: TransitOperatorConfig[]
+  tripData: TripData
+  viewedTrip: ViewedTrip
+}
+
+class TripViewer extends Component<Props> {
+  static contextType = ComponentContext
 
   _backClicked = () => {
     this.props.setViewedTrip(null)
@@ -86,7 +92,7 @@ class TripViewer extends Component {
     findTrip({ tripId })
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const {
       activeItinerary,
       activeItineraryIndex,
@@ -103,10 +109,10 @@ class TripViewer extends Component {
       } else {
         const matchingLeg = activeItinerary.legs
           ?.filter(coreUtils.itinerary.isTransitLeg)
-          .find((leg) => leg.tripId === tripId)
+          .find((leg: Leg) => leg.tripId === tripId)
         this.props.setViewedTrip({
-          fromStopId: matchingLeg.from?.stopId,
-          toStopId: matchingLeg.to?.stopId,
+          fromStopId: matchingLeg?.from?.stopId,
+          toStopId: matchingLeg?.to?.stopId,
           tripId
         })
       }
@@ -120,11 +126,6 @@ class TripViewer extends Component {
         toStopId: null,
         tripId
       })
-    }
-
-    const { current } = this.firstStopRef
-    if (current) {
-      current.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
   }
 
@@ -140,22 +141,53 @@ class TripViewer extends Component {
     ]
   }
 
+  _getRouteColor = (operator?: TransitOperator) => {
+    const { tripData } = this.props
+    const routeColor = tripData?.route?.color
+      ? `#${tripData?.route?.color}`
+      : getRouteColorBasedOnSettings(tripData?.route, operator)
+
+    return routeColor
+  }
+
+  _getOperator = () => {
+    const { transitOperators, tripData } = this.props
+    if (!transitOperators) return undefined
+    if (!tripData?.route) return undefined
+    const operator =
+      coreUtils?.route?.getTransitOperatorFromOtpRoute(
+        tripData?.route,
+        transitOperators
+      ) ?? undefined
+
+    return operator
+  }
+
   render() {
-    const { hideHeader, homeTimezone, intl, tripData, viewedTrip } = this.props
-    const startOfDay = toDate(getCurrentDate(homeTimezone), {
-      timeZone: homeTimezone
-    })
+    const {
+      hideHeader,
+      homeTimezone,
+      intl,
+      setViewedStop,
+      tripData,
+      viewedTrip
+    } = this.props
     const stopTimes = tripData?.stopTimes
+    const { ModeIcon, RouteRenderer } = this.context
+    const Route = RouteRenderer || DefaultRouteRenderer
 
     const fromIndex = stopTimes?.findIndex(
-      (stopTime) => stopTime.stop.id === viewedTrip?.fromStopId
+      (stopTime: TripStopTime) => stopTime.stop.id === viewedTrip?.fromStopId
     )
     const toIndex = stopTimes?.findIndex(
-      (stopTime) => stopTime.stop.id === viewedTrip?.toStopId
+      (stopTime: TripStopTime) => stopTime.stop.id === viewedTrip?.toStopId
     )
 
     const bikesAreAllowed = tripData?.bikesAllowed === 'ALLOWED'
     const wheelchairsAreAllowed = tripData?.wheelchairAccessible === 'POSSIBLE'
+
+    const operator = this._getOperator()
+    const routeColor = this._getRouteColor(operator)
 
     return (
       <div className="trip-viewer">
@@ -164,7 +196,7 @@ class TripViewer extends Component {
         <div className="trip-viewer-header">
           <div
             className="header-with-back-button"
-            style={{ float: hideHeader && 'left' }}
+            style={{ float: hideHeader ? 'left' : undefined }}
           >
             <BackButton
               backButtonText={intl.formatMessage({
@@ -182,21 +214,24 @@ class TripViewer extends Component {
           {/* Basic Trip Info */}
           {tripData && (
             <div>
-              <RouteName style={hideHeader && { margin: '.25em 0 1em 3em' }}>
-                {tripData.route && (
-                  <FormattedMessage
-                    id="components.TripViewer.routeHeader"
-                    values={{
-                      routeLongName: tripData.route.longName,
-                      routeShortName: tripData.route.shortName,
-                      strong: Strong
-                    }}
-                  />
-                )}
-              </RouteName>
+              <div
+                style={
+                  isMobile()
+                    ? { marginTop: '-0.5em', padding: '3px' }
+                    : { marginTop: '1em' }
+                }
+              >
+                <RouteRowDetails
+                  intl={intl}
+                  ModeIcon={ModeIcon}
+                  operator={operator}
+                  route={tripData?.route}
+                  RouteRenderer={Route}
+                />
+              </div>
 
-              {/* TODO: In Trip Description, add links to the stop in the list of stops so when navigating by 
-              screenreader or keyboard nav, the departure, arrival, and stop viewer links 
+              {/* TODO: In Trip Description, add links to the stop in the list of stops so when navigating by
+              screenreader or keyboard nav, the departure, arrival, and stop viewer links
               are all accessible without having to go through all the stops not on the trip. */}
 
               {fromIndex > -1 && (
@@ -215,6 +250,7 @@ class TripViewer extends Component {
                         }}
                       />
                     }
+                    Icon={null}
                   />
                 </AlertContainer>
               )}
@@ -248,97 +284,30 @@ class TripViewer extends Component {
 
         <div className="trip-viewer-body">
           {/* Stop Listing */}
-          <StopList
-            aria-label={intl.formatMessage({
-              id: 'components.TripViewer.listOfRouteStops'
-            })}
-          >
-            {stopTimes &&
-              stopTimes.map((stopTime, i) => {
-                // determine whether to use special styling for first/last stop
-                let stripMapLineClass = 'strip-map-line'
-                if (i === 0) stripMapLineClass = 'strip-map-line-first'
-                else if (i === stopTimes.length - 1) {
-                  stripMapLineClass = 'strip-map-line-last'
-                }
-
-                let stopLabel = null
-                let refProp = null
-                if (fromIndex === i) {
-                  stopLabel = (
-                    <FormattedMessage id="components.TripViewer.startOfTrip" />
-                  )
-                  refProp = this.firstStopRef
-                }
-                if (toIndex === i) {
-                  stopLabel = (
-                    <FormattedMessage id="components.TripViewer.endOfTrip" />
-                  )
-                }
-
-                // determine whether to show highlight in strip map
-                let highlightClass
-                if (i === fromIndex) {
-                  highlightClass = 'strip-map-highlight-first'
-                } else if (i > fromIndex && i < toIndex) {
-                  highlightClass = 'strip-map-highlight'
-                } else if (i === toIndex) {
-                  highlightClass = 'strip-map-highlight-last'
-                }
-
-                return (
-                  <Stop key={i}>
-                    <FlexWrapper style={{ width: '80%' }}>
-                      <FlexWrapper>
-                        {/* the departure time */}
-                        {stopLabel && (
-                          <InvisibleA11yLabel>{stopLabel}</InvisibleA11yLabel>
-                        )}
-                        <div className="stop-time" ref={refProp}>
-                          <DepartureTime
-                            originDate={startOfDay}
-                            stopTime={stopTime}
-                          />
-                        </div>
-                        {/* the vertical strip map */}
-                        <div className="strip-map-container">
-                          {highlightClass && <div className={highlightClass} />}
-                          <div className={stripMapLineClass} />
-                          {/* the main stop label */}
-                          <div className="strip-map-icon">
-                            <StyledIconWrapper>
-                              <Circle />
-                            </StyledIconWrapper>
-                          </div>
-                        </div>
-                      </FlexWrapper>
-                      <div className="stop-name">{stopTime.stop.name}</div>
-                    </FlexWrapper>
-
-                    {/* the stop-viewer button */}
-                    <div className="stop-button-container">
-                      <ViewStopButton
-                        stop={stopTime.stop}
-                        text={
-                          <FormattedMessage id="components.TripViewer.viewStop" />
-                        }
-                      />
-                    </div>
-
-                    <div style={{ clear: 'both' }} />
-                  </Stop>
-                )
-              })}
-          </StopList>
+          {tripData && (
+            <StopList
+              fromIndex={fromIndex}
+              homeTimezone={homeTimezone}
+              intl={intl}
+              routeColor={routeColor}
+              stopLinkClicked={setViewedStop}
+              stops={stopTimes.map(
+                (st: TripStopTime): StopListEntry => ({
+                  name: st.stop.name,
+                  scheduledDeparture: st.scheduledDeparture,
+                  stopId: st.stop.id
+                })
+              )}
+              toIndex={toIndex}
+            />
+          )}
         </div>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  const activeSearch = getActiveSearch(state)
-  const pending = activeSearch?.pending
+const mapStateToProps = (state: AppReduxState) => {
   const activeItineraryIndex = Number.parseInt(
     coreUtils.query.getUrlParams().ui_activeItinerary
   )
@@ -346,7 +315,7 @@ const mapStateToProps = (state) => {
   const viewedTrip = state.otp.ui.viewedTrip
 
   return {
-    activeItinerary: !pending && itineraries[activeItineraryIndex],
+    activeItinerary: itineraries[activeItineraryIndex],
     activeItineraryIndex,
     homeTimezone: state.otp.config.homeTimezone,
     transitOperators: state.otp.config.transitOperators,
@@ -359,6 +328,7 @@ const mapDispatchToProps = {
   findTrip: apiActions.findTrip,
   setMainPanelContent: uiActions.setMainPanelContent,
   settingActiveItinerary: narrativeActions.settingActiveItinerary,
+  setViewedStop: uiActions.setViewedStop,
   setViewedTrip: uiActions.setViewedTrip
 }
 
