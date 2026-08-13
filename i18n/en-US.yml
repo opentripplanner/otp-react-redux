@@ -770,10 +770,8 @@ components:
     endOfTrip: Trip ends here
     header: Trip Viewer
     listOfRouteStops: List of stops on this route
-    routeHeader: "Route: <strong>{routeShortName}</strong> {routeLongName}"
     startOfTrip: Trip begins here
     tripDescription: Board at {boardAtStop} and disembark at {disembarkAtStop}
-    viewStop: View
   UserAccountScreen:
     confirmDelete: >-
       Are you sure you would like to delete your user account? Once you do so,
