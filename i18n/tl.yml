@@ -798,10 +798,8 @@ components:
     endOfTrip: Magtatapos dito ang biyahe
     header: Viewer ng Biyahe
     listOfRouteStops: Listahan ng mga hintuan sa rutang ito
-    routeHeader: "Ruta: <strong>{routeShortName}</strong> {routeLongName}"
     startOfTrip: Magsisimula rito ang biyahe
     tripDescription: Sumakay sa {boardAtStop} at bumaba sa {disembarkAtStop}
-    viewStop: Tingnan
   UserAccountScreen:
     confirmDelete: >-
       Sigurado ka bang gusto mong i-delete ang iyong user account? Kapag ginawa
