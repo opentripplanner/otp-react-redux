@@ -3269,10 +3269,10 @@
     "@opentripplanner/from-to-location-picker" "^4.0.2"
     flat "^5.0.2"
 
-"@opentripplanner/otp2-tile-overlay@5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/otp2-tile-overlay/-/otp2-tile-overlay-5.2.0.tgz#17edf384b2d9ee179c431a01f2f4ed6c2caa24a9"
-  integrity sha512-KxmIWl7pMlc4sGadkjlPBgQSp3PIe7d25PRmV90lFdzmVFD9wU4jk/uStanK045vESuJEZbkD3Tm8sohy7TxGw==
+"@opentripplanner/otp2-tile-overlay@5.2.1":
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/otp2-tile-overlay/-/otp2-tile-overlay-5.2.1.tgz#bce88f62caa1293b0422e807c8baceadff3a16a6"
+  integrity sha512-u1FI7CkbQIl41O+lOmTyAPZSKTOkEXYRPcsCk5dcao+GenzAKqVWRStEmdH1kd2lCrRal/tSRdl+N07IT+EhXg==
   dependencies:
     "@opentripplanner/map-popup" "^8.1.0"
 
