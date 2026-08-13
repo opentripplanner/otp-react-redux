@@ -197,7 +197,6 @@ class DefaultMap extends Component<DefaultMapProps> {
       lat,
       lon,
       mapLoad: false,
-      vectorTileFonts: [],
       zoom
     }
     this.geolocateControlRef = React.createRef<maplibregl.GeolocateControl>()
@@ -239,19 +238,6 @@ class DefaultMap extends Component<DefaultMapProps> {
       stopId
     })
     return <TransitOperatorIcons stopId={stopId} />
-  }
-
-  /* 
-  Pull the fonts from the vector tiles so we can pass the correct fonts to transitive.
-  If tiles have fonts we don't account for, it can cause transitive to crash.
-  */
-  _getFontsFromVectorTiles = (mapRef) => {
-    const fonts = []
-    mapRef?.current?.getStyle().layers.forEach((l) => {
-      const font = l.layout && l.layout['text-font']
-      font?.forEach((f) => !fonts.includes(f) && fonts.push(f))
-    })
-    this.setState({ vectorTileFonts: fonts })
   }
 
   /**
@@ -444,7 +430,6 @@ class DefaultMap extends Component<DefaultMapProps> {
           innerRef={this.baseMapRef}
           mapLibreProps={{
             onLoad: () => {
-              this._getFontsFromVectorTiles(this.baseMapRef)
               // Once this map has loaded, we subtly trigger the geolocate control to update its state.
               return this.setState({ mapLoad: true })
             },
@@ -483,11 +468,7 @@ class DefaultMap extends Component<DefaultMapProps> {
           />
           <TransitiveOverlay
             getTransitiveRouteLabel={getTransitiveRouteLabel}
-            // Pass map fonts if there are any to pass
-            vectorTileFonts={
-              this.state.vectorTileFonts.length > 0 &&
-              this.state.vectorTileFonts
-            }
+            mapRef={this.baseMapRef}
           />
           <TripViewerOverlay />
           <ElevationPointMarker />
