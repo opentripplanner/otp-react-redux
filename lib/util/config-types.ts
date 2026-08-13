@@ -237,7 +237,6 @@ export interface TransitiveConfig {
     labels: Record<string, unknown>
     segmentLabels: Record<string, unknown>
   }
-  vectorTileFonts?: string[]
 }
 
 export interface MapConfig {
