@@ -15,6 +15,8 @@ export interface StopTimeTrip {
 export interface StopTime {
   departureDelay?: number
   headsign: string
+  id?: string
+  name?: string
   pattern: Pattern
   realtimeDeparture?: number
   realtimeState?: string
@@ -22,6 +24,18 @@ export interface StopTime {
   serviceDay: number
   times: Time[]
   trip: StopTimeTrip
+}
+
+export interface StopListEntry {
+  name: string
+  realtimeDeparture?: number
+  scheduledDeparture?: number
+  stopId: string
+}
+
+export interface TripStopTime {
+  scheduledDeparture: number
+  stop: Stop
 }
 
 export interface Pattern {

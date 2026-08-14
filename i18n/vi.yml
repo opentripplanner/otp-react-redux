@@ -9,33 +9,6 @@ actions:
       truy vấn.
     fetchCallsError: "Lỗi khi tìm nạp cuộc gọi: {err}"
     queryFetchError: "Lỗi khi tìm nạp các truy vấn: {err}"
-  fieldTrip:
-    addNoteError: "Lỗi khi thêm ghi chú chuyến đi:"
-    confirmOverwriteItineraries: |
-      Hành động này sẽ ghi đè lên một hành trình {outbound, select,
-        true {xuất ngoại}
-        other {đến}
-        } đã được lên kế hoạch trước đó cho yêu cầu này. Bạn có muốn tiếp tục không?
-    deleteItinerariesError: "Lỗi khi xóa kế hoạch chuyến đi:"
-    deleteNoteError: "Lỗi khi xóa ghi chú chuyến đi:"
-    editSubmitterNotesError: "Lỗi khi chỉnh sửa ghi chú của người gửi:"
-    fetchFieldTripError: "Lỗi khi tìm nạp các chuyến đi: {err}"
-    fetchFieldTripsError: "Lỗi khi tìm nạp các chuyến đi: {err}"
-    fetchTripsForDateError: "Lỗi khi tìm nạp các chuyến đi cho ngày đi du lịch: {err}"
-    incompatibleTripDateError: >-
-      Ngày đi dự kiến ({tripDate}) không phải là ngày đi theo yêu cầu
-      ({requestDate})
-    itineraryCapacityError: >-
-      Không thể lưu kế hoạch chuyến đi: Không thể lưu kế hoạch chuyến đi này do
-      thiếu sức chứa trên một hoặc nhiều xe. Vui lòng lên kế hoạch lại chuyến đi
-      của bạn.
-    maxTripRequestsExceeded: Đã vượt quá số lượng yêu cầu chuyến đi mà không có 
-      kết quả hợp lệ
-    saveItinerariesError: "Không lưu được hành trình: {err}"
-    setDateError: "Lỗi khi cài đặt ngày:"
-    setGroupSizeError: "Lỗi khi cài đặt kích thước nhóm:"
-    setPaymentError: "Lỗi khi cài đặt thông tin thanh toán:"
-    setRequestStatusError: "Lỗi khi cài đặt trạng thái yêu cầu:"
   location:
     deniedAccessAlert: >
       Quyền truy cập vào địa điểm của quý vị bị chặn.
@@ -195,7 +168,6 @@ components:
   AppMenu:
     callHistory: Lịch sử cuộc gọi
     closeMenu: Đóng danh mục
-    fieldTrip: Chuyến đi thực địa
     mailables: Sẵn sàng để gửi
     networkConnectionLost: Mất kết nối mạng
     networkConnectionRestored: Kết nối mạng đã được khôi phục
@@ -236,7 +208,6 @@ components:
       chúng tôi chuyển hướng bạn đến trang đăng nhập…
   CallTakerPanel:
     advancedOptions: Tùy chọn nâng cao
-    groupSize: "Quy mô nhóm:"
     intermediateDestination: Nhập điểm đến trung gian
   CompanionsPane:
     addNewCompanion: Thêm người đồng hành đi lại mới
@@ -803,10 +774,8 @@ components:
     endOfTrip: Chuyến đi kết thúc tại đây
     header: Xem chuyến đi
     listOfRouteStops: Danh sách các trạm dừng trên tuyến đường này
-    routeHeader: "Tuyến: <strong>{routeShortName}</strong> {routeLongName}"
     startOfTrip: Chuyến đi bắt đầu tại đây
     tripDescription: Lên xe tại {boardAtStop} và xuống xe tại {disembarkAtStop}
-    viewStop: Lượt xem
   UserAccountScreen:
     confirmDelete: >-
       Bạn có chắc bạn muốn xóa tài khoản người dùng của mình không? Một khi bạn

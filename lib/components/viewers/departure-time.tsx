@@ -2,12 +2,12 @@ import { FormattedTime } from 'react-intl'
 import addSeconds from 'date-fns/addSeconds'
 import React from 'react'
 
-import type { StopTime, Time } from '../util/types'
+import type { StopListEntry, StopTime, Time } from '../util/types'
 
 interface Props {
   originDate?: Date
   realTime?: boolean
-  stopTime: Time | StopTime
+  stopTime: StopListEntry | Time | StopTime
 }
 
 /**
@@ -20,13 +20,19 @@ const DepartureTime = ({
 }: Props): JSX.Element => {
   // If an originDate is defined, use that, otherwise use stopTime.serviceDay.
   // stopTime.serviceDay already corresponds to midnight in the agency's home timezone so no extra conversion is needed.
-  const startOfDate = originDate || new Date(stopTime.serviceDay * 1000)
-  const departureTimestamp = addSeconds(
-    startOfDate,
+  const startOfDate =
+    originDate ??
+    ('serviceDay' in stopTime
+      ? new Date(stopTime.serviceDay * 1000)
+      : undefined)
+
+  const secondsToAdd =
     realTime && stopTime.realtimeDeparture
       ? stopTime.realtimeDeparture
       : stopTime.scheduledDeparture
-  )
+
+  if (!startOfDate || !secondsToAdd) return <></>
+  const departureTimestamp = addSeconds(startOfDate, secondsToAdd)
 
   return <FormattedTime timeStyle="short" value={departureTimestamp} />
 }
