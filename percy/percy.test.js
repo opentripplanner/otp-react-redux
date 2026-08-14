@@ -251,7 +251,9 @@ async function executeTest(page, isMobile, isCallTaker) {
 
   // Open nearby viewer from trip viewer
   // Triggers mock.har graphql query #6, #7, and #8 (stop details, nearest places, nearest stops).
-  await page.click('div.trip-viewer-body > ol > li:nth-child(3) > button')
+  await page.click(
+    'div.trip-viewer-body > ol > li:nth-child(3) > div.stop-button-container > button'
+  )
   await page.waitForSelector('.nearby-view')
 
   await percySnapshotWithWait(page, 'Nearby View')

@@ -14,11 +14,11 @@ import {
   PatternSummary
 } from '../../util/pattern-viewer'
 import { getOperatorName } from '../../util/state'
+import { getPatternViewerColors } from '../../util/viewer'
 import { LinkOpensNewWindow } from '../util/externalLink'
 import {
   SetViewedRouteHandler,
   SetViewedStopHandler,
-  StopListEntry,
   ViewedRouteObject
 } from '../util/types'
 import { UnstyledButton } from '../util/unstyled-button'
@@ -29,9 +29,11 @@ import {
   HeadsignLabel,
   HeadsignSelectLabel,
   LogoLinkContainer,
-  PatternContainer
+  PatternContainer,
+  StopContainer,
+  StopLink,
+  Stop as StyledStop
 } from './styled'
-import StopList from './stop-list'
 
 const PatternSelectButton = styled(UnstyledButton)`
   span {
@@ -59,7 +61,7 @@ const PatternSelectDropdown = styled(Dropdown)`
 
 interface Props {
   intl: IntlShape
-  operator?: TransitOperator
+  operator: TransitOperator
   patternId: string
   route: ViewedRouteObject
   setHoveredStop: (id: string | null) => void
@@ -116,14 +118,19 @@ class RouteDetails extends Component<Props> {
       patternId,
       route,
       setHoveredStop,
-      sortPatternsByVehicleCount
+      sortPatternsByVehicleCount,
+      useRouteColorAsBackground
     } = this.props
     const { agency, patterns = {}, shortName, url } = route
     const pattern = patterns[patternId]
 
     const moreDetailsURL = url || route?.agency?.url
 
-    const routeColor = route.color ? `#${route.color}` : DEFAULT_ROUTE_COLOR
+    const { backgroundColor, routeColor, textColor } = getPatternViewerColors(
+      useRouteColorAsBackground,
+      operator,
+      route
+    )
 
     const headsigns = extractMainHeadsigns(
       patterns,
@@ -156,7 +163,7 @@ class RouteDetails extends Component<Props> {
       patternSelectLabel
 
     return (
-      <Container full={pattern !== undefined}>
+      <Container backgroundColor={backgroundColor} full={pattern != null}>
         {headsigns && headsigns.length > 0 && (
           <PatternContainer className="pattern-picker">
             {headsigns.length > 1 ? (
@@ -204,19 +211,41 @@ class RouteDetails extends Component<Props> {
             >
               <FormattedMessage id="components.RouteViewer.stopsInDirectionOfTravel" />
             </h2>
-
-            <StopList
-              intl={intl}
-              routeColor={routeColor}
-              setHoveredStop={setHoveredStop}
-              stopLinkClicked={this._stopLinkClicked}
-              stops={(pattern.stops ?? []).map(
-                (stop): StopListEntry => ({ name: stop.name, stopId: stop.id })
-              )}
-            />
+            <StopContainer
+              backgroundColor={backgroundColor}
+              onMouseLeave={() => setHoveredStop(null)}
+              textColor={textColor}
+            >
+              {pattern?.stops?.map((stop, index) => (
+                <StyledStop
+                  // Use array index instead of stop id because a stop can be visited several times.
+                  key={index}
+                  onClick={() => this._stopLinkClicked(stop)}
+                  onMouseOver={() => setHoveredStop(stop.id)}
+                  routeColor={
+                    routeColor.includes('ffffff')
+                      ? DEFAULT_ROUTE_COLOR
+                      : routeColor
+                  }
+                  textColor={textColor}
+                  useRouteColorAsBg={useRouteColorAsBackground}
+                >
+                  <StopLink
+                    name={stop.name}
+                    onFocus={() => setHoveredStop(stop.id)}
+                    textColor={textColor}
+                  >
+                    {stop.name}
+                  </StopLink>
+                </StyledStop>
+              ))}
+            </StopContainer>
           </>
         )}
-        <LogoLinkContainer>
+        <LogoLinkContainer
+          textColor={textColor}
+          useRouteBgColor={useRouteColorAsBackground}
+        >
           {operator && <OperatorLogo operator={operator} />}
           {moreDetailsURL && (
             <LinkOpensNewWindow

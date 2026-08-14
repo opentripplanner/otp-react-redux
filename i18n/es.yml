@@ -793,9 +793,11 @@ components:
     endOfTrip: El viaje acaba aquí
     header: Visor de viajes
     listOfRouteStops: Lista de paradas en esta ruta
+    routeHeader: "Ruta: <strong>{routeShortName}</strong> {routeLongName}"
     startOfTrip: Aquí comienza el viaje
     tripDescription: Embarque en {boardAtStop} y desembarque en 
       {disembarkAtStop}
+    viewStop: Ver
   UserAccountScreen:
     confirmDelete: >-
       ¿Está seguro de que desea eliminar su cuenta de usuario? Una vez que lo

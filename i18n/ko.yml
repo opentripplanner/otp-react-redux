@@ -680,8 +680,10 @@ components:
     endOfTrip: 여기에서 이동편 종료
     header: 트립 뷰어
     listOfRouteStops: 이 경로의 정류장 목록
+    routeHeader: "노선: <strong>{routeShortName}</strong> {routeLongName}"
     startOfTrip: 여기에서 이동편 시작
     tripDescription: "{boardAtStop} 에서 탑승하고 {disembarkAtStop}에서 하차"
+    viewStop: 보기
   UserAccountScreen:
     confirmDelete: 귀하의 사용자 계정을 삭제하시겠습니까? 한 번 그렇게 하신 경우, 복구할 수 없습니다.
     errorUpdatingProfile: 프로필 업데이트 중 오류.
