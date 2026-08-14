@@ -805,10 +805,8 @@ components:
     endOfTrip: பயணம் இங்கே முடிகிறது
     header: பயண பார்வையாளர்
     listOfRouteStops: இந்த வழியில் நிறுத்தங்களின் பட்டியல்
-    routeHeader: "பாதை: <strong> {routeShortName} </strong> {routeLongName}"
     startOfTrip: பயணம் இங்கே தொடங்குகிறது
     tripDescription: "{boardAtStop} இல் பலகை மற்றும் {disembarkAtStop} இல் இறங்கவும்"
-    viewStop: பார்வை
   UserAccountScreen:
     confirmDelete: >-
       உங்கள் பயனர் கணக்கை நீக்க விரும்புகிறீர்களா? நீங்கள் அவ்வாறு செய்தவுடன்,
