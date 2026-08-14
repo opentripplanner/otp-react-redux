@@ -165,6 +165,7 @@ interface DefaultMapProps {
   bikeRentalStations: VehicleRentalStation[]
   carRentalQuery: () => void
   carRentalStations: VehicleRentalStation[]
+  closedStops?: Map<string, Set<string>>
   config: AppConfig
   getCurrentPosition: GetCurrentPositionFunction
   intl: IntlShape
@@ -354,6 +355,7 @@ class DefaultMap extends Component<DefaultMapProps> {
       bikeRentalStations,
       carRentalQuery,
       carRentalStations,
+      closedStops,
       config,
       feeds,
       getCurrentPosition,
@@ -391,6 +393,12 @@ class DefaultMap extends Component<DefaultMapProps> {
         (station) => station.vehicleType?.formFactor === 'BICYCLE'
       )
     ]
+
+    // Closed stops are stored as a map with route ID as the key; we just want a set
+    // of all the stop values
+    const closedStopsSet = new Set(
+      closedStops?.values().flatMap((v) => v.values())
+    )
 
     const scooters = rentalVehicles.filter(
       (vehicle) => vehicle.vehicleType?.formFactor === 'SCOOTER'
@@ -544,7 +552,8 @@ class DefaultMap extends Component<DefaultMapProps> {
                   viewedRouteStops,
                   config.companies,
                   this.getEntityPrefix,
-                  feeds
+                  feeds,
+                  closedStopsSet
                 )
               default:
                 return null
@@ -599,6 +608,7 @@ const mapStateToProps = (state) => {
     activeNearbyFilters,
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
     carRentalStations: state.otp.overlay.carRental.stations,
+    closedStops: state.otp.ui.stopClosures.closedStops,
     config: state.otp.config,
     currentPositionError,
     feeds: state.otp.transitIndex.feeds,
