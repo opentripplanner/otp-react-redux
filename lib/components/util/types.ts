@@ -126,7 +126,7 @@ export type ZoomToPlaceHandler = (
 
 export type QueryParamChangeHandler = (event: any) => void
 
-export interface GetTimetableDataParams {
+export interface TimetableDataParams {
   /** The end date of the service day for the timetable, exclusive.
    * Format: yyyy-MM-dd
    */

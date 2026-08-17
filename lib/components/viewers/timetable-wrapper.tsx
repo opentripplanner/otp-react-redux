@@ -7,14 +7,14 @@ import TimeTable from '@opentripplanner/timetable'
 
 import * as apiActions from '../../actions/api'
 import { AppReduxState } from '../../util/state-types'
-import { GetTimetableDataParams } from '../util/types'
 import { TIMETABLE_PATH } from '../../util/constants'
+import { TimetableDataParams } from '../util/types'
 import Loading from '../narrative/loading'
 
 interface TimeTableWrapperProps {
   /** A map of closed stops. Keys are route gtfsIds, values are sets of gtfsIds for stops that are closed on that route */
   closedStops?: Map<string, Set<string>>
-  getTimetableData: (params: GetTimetableDataParams) => void
+  getTimetableData: (params: TimetableDataParams) => void
   routeId: string
   stopClosuresError?: string
   stopClosuresQuery: () => void
