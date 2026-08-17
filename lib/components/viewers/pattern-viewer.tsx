@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { TransitOperator } from '@opentripplanner/types'
 import React, { useCallback, useContext, useEffect, useMemo } from 'react'
+import styled from 'styled-components'
 
 import * as apiActions from '../../actions/api'
 import * as uiActions from '../../actions/ui'
@@ -10,6 +11,7 @@ import { DARK_TEXT_GREY } from '../util/colors'
 import { getRouteOperator } from '../../util/state'
 import { getRouteOrPatternViewerTitle } from '../../util/viewer'
 import { isModuleEnabled, Modules } from '../../util/config'
+import { NewWindowIconA11y } from '../util/externalLink'
 import {
   SetViewedRouteHandler,
   ViewedRouteObject,
@@ -22,6 +24,13 @@ import PageTitle from '../util/page-title'
 import { RouteRowDetails } from './route-row'
 import RouteDetails from './route-details'
 import VehiclePositionRetriever from './vehicle-position-retriever'
+
+const TimetableLink = styled.a`
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  min-width: 10rem;
+`
 
 interface Props {
   callTakerEnabled?: boolean
@@ -124,14 +133,15 @@ const PatternViewer = ({
             )}
           </h1>
           {callTakerEnabled && (
-            <a
+            <TimetableLink
               href={timetableHref}
               onClick={handleTimetableButtonClick}
               rel="noreferrer"
               target="_blank"
             >
               <FormattedMessage id="components.Timetable.timetable" />
-            </a>
+              <NewWindowIconA11y size={14} />
+            </TimetableLink>
           )}
         </div>
         <RouteDetails operator={operator} patternId={patternId} route={route} />
