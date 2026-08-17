@@ -73,6 +73,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   }, [timetable])
 
   if (loading) {
+    // TODO: add aria status region to the body
     return <Loading />
   }
 
