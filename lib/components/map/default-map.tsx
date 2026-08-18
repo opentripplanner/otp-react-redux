@@ -436,9 +436,9 @@ class DefaultMap extends Component<DefaultMapProps> {
             reuseMaps: true
           }}
           maxZoom={maxZoom}
+          onClickLayerSelector={onClickLayerSelector}
           // In Leaflet, this was an onclick handler. Creating a click handler in
           // MapLibreGL would require writing a custom event handler for all mouse events
-          onClickLayerSelector={onClickLayerSelector}
           onContextMenu={this.onMapClick}
           showEverything={nearbyViewActive}
           zoom={zoom}
