@@ -44,15 +44,10 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
 
   useEffect(() => {
     stopClosuresQuery()
-    const today = new Date()
-    const tomorrow = new Date(today)
-    tomorrow.setDate(tomorrow.getDate() + 1)
 
     getTimetableData({
-      end: format(tomorrow, 'yyyy-MM-dd'),
-      gtfsId: routeId,
-      serviceDate: format(today, 'yyyyMMdd'),
-      start: format(today, 'yyyy-MM-dd')
+      date: new Date(),
+      gtfsId: routeId
     })
   }, [getTimetableData, routeId, stopClosuresQuery])
 
