@@ -132,29 +132,32 @@ class BatchSearchScreen extends Component<Props> {
                       ref={this._mainPanelContentRef}
                       style={{ display: 'content' }}
                     >
-                      <LocationField
-                        inputPlaceholder={intl.formatMessage({
-                          id: 'components.LocationSearch.setOrigin'
-                        })}
-                        isRequired
-                        locationType="from"
-                        onTextInputClick={this._fromFieldClicked}
-                        selfValidate={planTripClicked}
-                        showClearButton={false}
-                      />
-                      <LocationField
-                        inputPlaceholder={intl.formatMessage({
-                          id: 'components.LocationSearch.setDestination'
-                        })}
-                        isRequired
-                        locationType="to"
-                        onTextInputClick={this._toFieldClicked}
-                        selfValidate={planTripClicked}
-                        showClearButton={false}
-                      />
+                      <div className="batch-search-location-fields">
+                        <LocationField
+                          inputPlaceholder={intl.formatMessage({
+                            id: 'components.LocationSearch.setOrigin'
+                          })}
+                          isRequired
+                          locationType="from"
+                          onTextInputClick={this._fromFieldClicked}
+                          selfValidate={planTripClicked}
+                          showClearButton={false}
+                        />
+                        <LocationField
+                          inputPlaceholder={intl.formatMessage({
+                            id: 'components.LocationSearch.setDestination'
+                          })}
+                          isRequired
+                          locationType="to"
+                          onTextInputClick={this._toFieldClicked}
+                          selfValidate={planTripClicked}
+                          showClearButton={false}
+                        />
+                      </div>
                       <div className="switch-button-container-mobile">
                         <SwitchButton />
                       </div>
+
                       <BatchSettings
                         onPlanTripClick={this.handlePlanTripClick}
                         openAdvancedSettings={this.openAdvancedSettings}
