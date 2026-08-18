@@ -52,6 +52,9 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   }, [getTimetableData, routeId, stopClosuresQuery])
 
   useEffect(() => {
+    // TODO: improve handling of data fetching to avoid issues with useEffect and stale data.
+    // This will be important when the capability to fetch timetables for different dates via a calendar
+    // is added.
     if (timetable?.route) setLoading(false)
   }, [timetable])
 
