@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
-import { format } from 'date-fns'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { TransitOperator } from '@opentripplanner/types'
-import React, { useCallback, useContext, useEffect } from 'react'
+import React, { useCallback, useContext, useEffect, useMemo } from 'react'
+import styled from 'styled-components'
 
 import * as apiActions from '../../actions/api'
 import * as uiActions from '../../actions/ui'
@@ -10,12 +10,13 @@ import { ComponentContext } from '../../util/contexts'
 import { DARK_TEXT_GREY } from '../util/colors'
 import { getRouteOperator } from '../../util/state'
 import { getRouteOrPatternViewerTitle } from '../../util/viewer'
+import { isModuleEnabled, Modules } from '../../util/config'
+import { NewWindowIconA11y } from '../util/externalLink'
 import {
   SetViewedRouteHandler,
   ViewedRouteObject,
   ViewedRouteState
 } from '../util/types'
-import { stopClosuresQuery } from '../../actions/api'
 import BackButton from '../util/back-button'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import PageTitle from '../util/page-title'
@@ -24,13 +25,17 @@ import { RouteRowDetails } from './route-row'
 import RouteDetails from './route-details'
 import VehiclePositionRetriever from './vehicle-position-retriever'
 
+const TimetableLink = styled.a`
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  min-width: 10rem;
+`
+
 interface Props {
+  callTakerEnabled?: boolean
   findRoutesIfNeeded: () => void
-  getTimetableData: (params: any) => any
-  setPortalId: (portalId?: string) => void
   setViewedRoute: SetViewedRouteHandler
-  stopClosuresQuery: () => void
-  timetableEnabled?: boolean
   transitOperators: TransitOperator[]
   vehicleIconHighlight: boolean
   viewedRoute?: ViewedRouteState
@@ -38,12 +43,9 @@ interface Props {
 }
 
 const PatternViewer = ({
+  callTakerEnabled,
   findRoutesIfNeeded,
-  getTimetableData,
-  setPortalId,
   setViewedRoute,
-  stopClosuresQuery,
-  timetableEnabled,
   transitOperators,
   vehicleIconHighlight,
   viewedRoute,
@@ -58,21 +60,11 @@ const PatternViewer = ({
   const patternId = viewedRoute?.patternId
   const routeId = viewedRoute?.routeId || null
 
-  useEffect(() => {
-    if (timetableEnabled) {
-      const today = new Date()
-      const tomorrow = new Date(today)
-      tomorrow.setDate(tomorrow.getDate() + 1)
+  const timetableHref = useMemo(() => `/#/timetable/${routeId}`, [routeId])
 
-      getTimetableData({
-        end: format(tomorrow, 'yyyy-MM-dd'),
-        gtfsId: routeId,
-        serviceDate: format(today, 'yyyyMMdd'),
-        start: format(today, 'yyyy-MM-dd')
-      })
-      stopClosuresQuery()
-    }
-  }, [timetableEnabled, routeId, getTimetableData, stopClosuresQuery])
+  const handleTimetableButtonClick = useCallback(() => {
+    window.open(timetableHref, undefined, 'width=1000,height=800')
+  }, [timetableHref])
 
   /**
    * If we're viewing a pattern's stops, route to main route viewer.
@@ -140,10 +132,16 @@ const PatternViewer = ({
               </InvisibleA11yLabel>
             )}
           </h1>
-          {timetableEnabled && (
-            <button onClick={() => setPortalId(routeId || undefined)}>
-              Timetable
-            </button>
+          {callTakerEnabled && (
+            <TimetableLink
+              href={timetableHref}
+              onClick={handleTimetableButtonClick}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <FormattedMessage id="components.Timetable.timetable" />
+              <NewWindowIconA11y size={14} />
+            </TimetableLink>
           )}
         </div>
         <RouteDetails operator={operator} patternId={patternId} route={route} />
@@ -159,7 +157,7 @@ const PatternViewer = ({
 const mapStateToProps = (state: any) => {
   const { viewedRoute } = state.otp.ui
   return {
-    timetableEnabled: state.otp.config?.timetableEnabled,
+    callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),
     transitOperators: state.otp.config.transitOperators,
     useRouteColorAsBackground:
       state.otp.config?.routeViewer?.useRouteColorAsBackground,
@@ -171,10 +169,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = {
   findRoutesIfNeeded: apiActions.findRoutesIfNeeded,
-  getTimetableData: apiActions.getTimetableData,
-  setPortalId: uiActions.setPortalId,
-  setViewedRoute: uiActions.setViewedRoute,
-  stopClosuresQuery
+  setViewedRoute: uiActions.setViewedRoute
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PatternViewer)

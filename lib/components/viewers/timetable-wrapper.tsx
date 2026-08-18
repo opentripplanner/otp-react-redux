@@ -1,48 +1,79 @@
-import { connect } from 'react-redux'
-import React, { useState } from 'react'
+import { connect, useSelector } from 'react-redux'
+import { format } from 'date-fns'
+import { FormattedMessage } from 'react-intl'
+import { matchPath } from 'react-router'
+import React, { useEffect, useMemo, useState } from 'react'
 import TimeTable from '@opentripplanner/timetable'
 
-import * as uiActions from '../../actions/ui'
+import * as apiActions from '../../actions/api'
 import { AppReduxState } from '../../util/state-types'
-
-import PortalWrapper from './popout'
+import { TIMETABLE_PATH } from '../../util/constants'
+import { TimetableDataParams } from '../util/types'
+import Loading from '../narrative/loading'
 
 interface TimeTableWrapperProps {
   /** A map of closed stops. Keys are route gtfsIds, values are sets of gtfsIds for stops that are closed on that route */
   closedStops?: Map<string, Set<string>>
-  /** The value of the portal ID in application state. If defined, it refers to the gtfsId of the route whose timetable
-   * is to be displayed in the portal
-   */
-  portalId: string | undefined
-  setPortalId: (portalId?: string) => void
+  getTimetableData: (params: TimetableDataParams) => void
+  routeId: string
   stopClosuresError?: string
-  timetable: any // TODO: add typing
+  stopClosuresQuery: () => void
 }
 
 const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
-  const { closedStops, portalId, setPortalId, stopClosuresError, timetable } =
-    props
+  const {
+    closedStops,
+    getTimetableData,
+    routeId,
+    stopClosuresError,
+    stopClosuresQuery
+  } = props
+
+  const timetable = useSelector(
+    (state: AppReduxState) => state.otp.ui.timetable
+  )
 
   const [directionId, setDirectionId] = useState<0 | 1>(0)
   const [timepointsOnly, setTimepointsOnly] = useState(true)
+  const [loading, setLoading] = useState(true)
 
-  // TODO: improve this with typing on timetable object
-  const directionNames = new Map<number, string[]>()
-  timetable?.route?.patterns?.forEach((pattern: any) => {
-    const dirId = pattern.directionId
-    const names = (directionNames.get(dirId) || []).concat([pattern.name])
-    directionNames.set(dirId, names)
-  })
+  const closedStopsSet = useMemo(
+    () => closedStops?.get(routeId),
+    [closedStops, routeId]
+  )
 
-  const closedStopsSet = closedStops?.get(portalId || '')
+  useEffect(() => {
+    stopClosuresQuery()
 
-  return portalId ? (
-    <PortalWrapper
-      onClose={() => {
-        setPortalId(undefined)
-      }}
-      title={portalId}
-    >
+    getTimetableData({
+      date: new Date(),
+      gtfsId: routeId
+    })
+  }, [getTimetableData, routeId, stopClosuresQuery])
+
+  useEffect(() => {
+    if (timetable?.route) setLoading(false)
+  }, [timetable])
+
+  const directionNames = useMemo(() => {
+    const map = new Map<number, string[]>()
+
+    timetable?.route?.patterns?.forEach((pattern: any) => {
+      const dirId = pattern.directionId
+      const names = (map.get(dirId) || []).concat([pattern.name])
+      map.set(dirId, names)
+    })
+
+    return map
+  }, [timetable])
+
+  if (loading) {
+    // TODO: add aria status region to the body
+    return <Loading />
+  }
+
+  return routeId && timetable?.route ? (
+    <div>
       <div
         style={{
           alignItems: 'center',
@@ -51,17 +82,21 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
         }}
       >
         {(stopClosuresError || !closedStops) && (
-          <span>Error loading stop closures</span>
+          <FormattedMessage id="components.Timetable.errorLoadingStopClosures" />
         )}
         <button
           onClick={() => {
             setTimepointsOnly(!timepointsOnly)
           }}
         >
-          {timepointsOnly ? 'Show All Stops' : 'Show Timepoints Only'}
+          {timepointsOnly ? (
+            <FormattedMessage id="components.Timetable.showAllStops" />
+          ) : (
+            <FormattedMessage id="components.Timetable.showTimepointsOnly" />
+          )}
         </button>
         <button onClick={() => setDirectionId(directionId === 1 ? 0 : 1)}>
-          Switch Direction
+          <FormattedMessage id="components.Timetable.switchDirection" />
         </button>
         {(directionNames.get(directionId) || []).map((dirName) => (
           <span key={dirName}>{dirName}</span>
@@ -79,23 +114,31 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
           />
         </div>
       )}
-    </PortalWrapper>
+    </div>
   ) : (
-    <></>
+    <FormattedMessage id="components.Timetable.errorLoadingTimetable" />
   )
 }
 
 const mapStateToProps = (state: AppReduxState) => {
+  const { pathname } = state.router.location
+  const match = matchPath<{ routeId: string }>(pathname, {
+    exact: true,
+    path: TIMETABLE_PATH,
+    strict: false
+  })
+  const routeId = match?.params.routeId ?? ''
+
   return {
     closedStops: state.otp.ui.stopClosures.closedStops,
-    portalId: state.otp.ui.portalId,
-    stopClosuresError: state.otp.ui.stopClosures.error,
-    timetable: state.otp.ui.timetable
+    routeId,
+    stopClosuresError: state.otp.ui.stopClosures.error
   }
 }
 
 const mapDispatchToProps = {
-  setPortal: uiActions.setPortalId
+  getTimetableData: apiActions.getTimetableData,
+  stopClosuresQuery: apiActions.stopClosuresQuery
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TimeTableWrapper)

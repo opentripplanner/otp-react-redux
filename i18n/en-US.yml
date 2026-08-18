@@ -629,6 +629,13 @@ components:
       Optional: I consent to the Trip Planner storing my historical planned
       trips in order to improve transit services in my area.
       <termsOfStorageLink>More info...</termsOfStorageLink>
+  Timetable:
+    errorLoadingStopClosures: Error loading stop closures
+    errorLoadingTimetable: Error loading timetable
+    showAllStops: Show All Stops
+    showTimepointsOnly: Show Timepoints Only
+    switchDirection: Switch Direction
+    timetable: Timetable
   TransitVehicleOverlay:
     in_transit_to: "Next stop: {stop}"
     incoming_at: "Approaching: {stop}"
