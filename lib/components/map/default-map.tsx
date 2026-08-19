@@ -201,6 +201,7 @@ class DefaultMap extends Component<DefaultMapProps> {
       zoom
     }
     this.geolocateControlRef = React.createRef<maplibregl.GeolocateControl>()
+    this.baseMapRef = React.createRef<maplibregl.Map>()
   }
 
   getNearbyViewFilteredOverlays = () => {
@@ -434,6 +435,7 @@ class DefaultMap extends Component<DefaultMapProps> {
           }
           baseLayerNames={baseLayerNames}
           center={[lat, lon]}
+          innerRef={this.baseMapRef}
           mapLibreProps={{
             onLoad: () => {
               // Once this map has loaded, we subtly trigger the geolocate control to update its state.
@@ -474,6 +476,7 @@ class DefaultMap extends Component<DefaultMapProps> {
           />
           <TransitiveOverlay
             getTransitiveRouteLabel={getTransitiveRouteLabel}
+            mapRef={this.baseMapRef}
           />
           <TripViewerOverlay />
           <ElevationPointMarker />
