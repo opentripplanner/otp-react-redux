@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import { AppReduxState } from '../../../util/state-types'
 import { ComponentContext } from '../../../util/contexts'
 import { getFormattedMode } from '../../../util/i18n'
+import FlexDecoration from '../../util/flex-decoration'
 import FormattedDuration, {
   formatDuration
 } from '../../util/formatted-duration'
@@ -79,17 +80,11 @@ const MetroItineraryRoutes = ({
 }: Props): JSX.Element => {
   const intl = useIntl()
   // @ts-expect-error No type on ComponentContext
-  const { FlexNoticeIcon, LegIcon } = useContext(ComponentContext)
+  const { LegIcon } = useContext(ComponentContext)
   const routeLegs = itinerary.legs
     .filter(showAllWalkLegs ? () => true : removeInsignificantWalkLegs)
     .filter((leg) => !leg.interlineWithPreviousLeg)
   const transitRoutes = getItineraryRoutes(itinerary, intl)
-
-  const reservationWrapper = (
-    <span style={{ marginLeft: '-1ch' }}>
-      <FlexNoticeIcon />
-    </span>
-  )
 
   return (
     <>
@@ -136,7 +131,7 @@ const MetroItineraryRoutes = ({
               key={index}
               leg={leg}
               LegIcon={LegIcon}
-              modeIconDecoration={needReservation && reservationWrapper}
+              modeIconDecoration={needReservation && <FlexDecoration />}
               previousLegMode={
                 needReservation === previousLegReservation
                   ? previousLegMode
