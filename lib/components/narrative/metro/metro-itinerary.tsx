@@ -187,6 +187,14 @@ const LoadingBlurred = styled.span<{ loading: boolean }>`
   transition: all 0.2s ease-in-out;
 `
 
+// Add visual separation from the "Reservation required" text,
+// especially if the flex indicator is just plain text (e.g a star or shorthand such as "FLX").
+const FlexNoticeWrapper = styled.span`
+  ::after {
+    content: ' ';
+  }
+`
+
 type Props = {
   LegIcon: React.ReactNode
   accessibilityScoreGradationMap: { [value: number]: string }
@@ -411,9 +419,9 @@ class MetroItinerary extends NarrativeItinerary {
                   </PrimaryInfo>
                   {isFlexItinerary && isCallAhead && (
                     <SecondaryInfo className={isFlexItinerary ? 'flex' : ''}>
-                      <span aria-hidden>
+                      <FlexNoticeWrapper aria-hidden>
                         <FlexReservationIcon />
-                      </span>
+                      </FlexNoticeWrapper>
                       <FormattedMessage id="common.itineraryDescriptions.reservationRequired" />
                     </SecondaryInfo>
                   )}
