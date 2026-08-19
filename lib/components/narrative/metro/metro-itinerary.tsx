@@ -40,6 +40,7 @@ import DepartureTimesList, {
 } from './departure-times-list'
 import MetroItineraryRoutes from './metro-itinerary-routes'
 import RouteBlock from './route-block'
+import RouteBlockWithModeDecoration from './route-block-with-mode-decoration'
 
 const { ensureAtLeastOneMinute } = coreUtils.time
 
@@ -521,7 +522,7 @@ class MetroItinerary extends NarrativeItinerary {
               accessibilityScoreGradationMap={localizedGradationMapWithIcons}
               itinerary={itinerary}
               LegIcon={LegIcon}
-              RouteDescriptionOverride={RouteBlock}
+              RouteDescriptionOverride={RouteBlockWithModeDecoration}
               setActiveLeg={setActiveLeg}
             />
           </>

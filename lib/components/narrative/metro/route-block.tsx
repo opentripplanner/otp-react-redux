@@ -9,7 +9,7 @@ import { ComponentContext } from '../../../util/contexts'
 import { getAlternateRoutesFromLeg } from './attribute-utils'
 import DefaultRouteRenderer from './default-route-renderer'
 
-type Props = {
+export type Props = {
   LegIcon: ({ height, leg }: { height: number; leg: Leg }) => React.ReactElement
   footer?: React.ReactNode
   hideLongName?: boolean
