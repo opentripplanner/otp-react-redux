@@ -79,7 +79,7 @@ const MetroItineraryRoutes = ({
 }: Props): JSX.Element => {
   const intl = useIntl()
   // @ts-expect-error No type on ComponentContext
-  const { FlexReservationIcon, LegIcon } = useContext(ComponentContext)
+  const { FlexNoticeIcon, LegIcon } = useContext(ComponentContext)
   const routeLegs = itinerary.legs
     .filter(showAllWalkLegs ? () => true : removeInsignificantWalkLegs)
     .filter((leg) => !leg.interlineWithPreviousLeg)
@@ -87,7 +87,7 @@ const MetroItineraryRoutes = ({
 
   const reservationWrapper = (
     <span style={{ marginLeft: '-1ch' }}>
-      <FlexReservationIcon />
+      <FlexNoticeIcon />
     </span>
   )
 

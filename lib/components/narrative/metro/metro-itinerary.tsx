@@ -278,7 +278,7 @@ class MetroItinerary extends NarrativeItinerary {
       showRealtimeAnnotation
     } = this.props
     const {
-      FlexReservationIcon,
+      FlexNoticeIcon,
       ItineraryPreviewSupplement,
       RouteRenderer,
       SvgIcon
@@ -420,7 +420,7 @@ class MetroItinerary extends NarrativeItinerary {
                   {isFlexItinerary && isCallAhead && (
                     <SecondaryInfo className={isFlexItinerary ? 'flex' : ''}>
                       <FlexNoticeWrapper aria-hidden>
-                        <FlexReservationIcon />
+                        <FlexNoticeIcon />
                       </FlexNoticeWrapper>
                       <FormattedMessage id="common.itineraryDescriptions.reservationRequired" />
                     </SecondaryInfo>
