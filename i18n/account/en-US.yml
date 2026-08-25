@@ -200,6 +200,35 @@ components:
       Optional: I consent to the Trip Planner storing my historical planned
       trips in order to improve transit services in my area.
       <termsOfStorageLink>More info...</termsOfStorageLink>
+  TripBasicsPane:
+    checkAgain: Check again
+    checkingItineraryExistence: Checking itinerary existence for each day of the week...
+    indicatesRequiredFields: Fields marked with an asterisk (*) are required.
+    onlyOnDate: Only on {date, date, ::eeeee yyyyMMdd}
+    recurringEachWeek: On certain days each week
+    tripDaysPrompt: What days do you take this trip?
+    tripIsAvailableOnDaysIndicated: Your trip is available on the days of the week as indicated above.
+    tripNamePrompt: "Please provide a name for this trip:"
+    tripNotAvailableOnDay: Trip not available on {repeatedDay}
+    unsavedChangesExistingTrip: You haven't saved your trip yet. If you leave, changes will be lost.
+    unsavedChangesNewTrip: You haven't saved your new trip yet. If you leave, it will be lost.
+  TripCompanionsPane:
+    companionLabel: "Companion on this trip:"
+    observersLabel: "Observers watching this trip:"
+    primaryLabel: "Primary traveler: "
+  TripNotificationsPane:
+    advancedSettings: Advanced settings
+    altRouteRecommended: An alternative route or transfer point is recommended
+    delaysAboveThreshold: There are delays or disruptions of more than
+    howToReceiveAlerts: >
+      To receive alerts for your saved trips, enable notifications in your
+      account settings, and try saving a trip again.
+    monitorThisTrip: "Monitor this trip before it begins:"
+    notificationsTurnedOff: Notifications are turned off for your account.
+    notifyViaChannelWhen: "Notify me via {channel} when:"
+    oneHour: 1 hour
+    realtimeAlertFlagged: There is a realtime alert flagged on my journey
+    timeBefore: "{time} before"
   TripStatus:
     alerts: "There {alerts, plural, one {is # alert} other {are # alerts}} on your trip"
     deleteTrip: Delete Trip
