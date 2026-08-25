@@ -1,5 +1,3 @@
-import AfterSignInScreen from '../components/user/after-signin-screen'
-
 /**
  * Contains mapping of the component(s) to display for each URL route.
  *
@@ -33,15 +31,6 @@ const routes = [
       '/trip/:id'
     ],
     shouldRenderWebApp: true
-  },
-  {
-    a11yIgnore: true,
-    // This route is called immediately after login by Auth0
-    // and by the onRedirectCallback function from /lib/util/auth.js.
-    // For new users, it displays the account setup form.
-    // For existing users, it takes the browser back to the itinerary search prior to login.
-    component: AfterSignInScreen,
-    path: '/signedin'
   }
 ]
 
