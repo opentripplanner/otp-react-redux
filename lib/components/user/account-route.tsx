@@ -35,12 +35,12 @@ import withLoggedInUserSupport from './with-logged-in-user-support'
 
 interface Props {
   isTermsOrVerifyPage: boolean
+  isWizard: boolean
   loadAppModule: (appModule: string) => void
   loggedInUser: User
   popupContent: PopupTargetConfig
   routeTo: (url: string, arg2: any, arg3: any) => void
   setPopupContent: (url: string | null) => void
-  subnav: boolean
 }
 
 /**
@@ -72,12 +72,12 @@ class AccountRoute extends Component<Props> {
   }
 
   render() {
-    const { popupContent, setPopupContent, subnav = true } = this.props
+    const { isWizard, popupContent, setPopupContent } = this.props
     const components = this.context
 
     return (
       // @ts-expect-error TODO: add typing for SubNav
-      <AppFrame SubNav={subnav && SubNav}>
+      <AppFrame SubNav={!isWizard && SubNav}>
         <PopupWrapper
           content={popupContent}
           hideModal={() => {
@@ -125,10 +125,14 @@ class AccountRoute extends Component<Props> {
 
 const mapStateToProps = (state: AppReduxState) => {
   const currentPath = state.router.location.pathname
+  const basePath = [CREATE_ACCOUNT_PATH, MOBILITY_PATH].find((path) =>
+    currentPath.startsWith(path)
+  )
   return {
     isTermsOrVerifyPage:
       currentPath === CREATE_ACCOUNT_TERMS_PATH ||
       currentPath === CREATE_ACCOUNT_VERIFY_PATH,
+    isWizard: !!basePath,
     loggedInUser: state.user.loggedInUser,
     popupContent: state.otp.ui.popup
   }
