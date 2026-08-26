@@ -23,6 +23,7 @@ import { ComponentContext } from '../../util/contexts'
 import { PopupTargetConfig } from '../../util/config-types'
 import { RETURN_TO_CURRENT_ROUTE } from '../../util/ui'
 import AppFrame from '../app/app-frame'
+import AppModule from '../app/app-module'
 import FavoritePlaceScreen from '../../components/user/places/favorite-place-screen'
 import PopupWrapper from '../app/popup'
 import RedirectWithQuery from '../../components/form/redirect-with-query'
@@ -36,7 +37,6 @@ import withLoggedInUserSupport from './with-logged-in-user-support'
 interface Props {
   isTermsOrVerifyPage: boolean
   isWizard: boolean
-  loadAppModule: (appModule: string) => void
   loggedInUser: User
   popupContent: PopupTargetConfig
   routeTo: (url: string, arg2: any, arg3: any) => void
@@ -68,7 +68,6 @@ class AccountRoute extends Component<Props> {
 
   componentDidMount() {
     this._checkAccountCreated()
-    this.props.loadAppModule('account')
   }
 
   render() {
@@ -76,47 +75,49 @@ class AccountRoute extends Component<Props> {
     const components = this.context
 
     return (
-      // @ts-expect-error TODO: add typing for SubNav
-      <AppFrame SubNav={!isWizard && SubNav}>
-        <PopupWrapper
-          content={popupContent}
-          hideModal={() => {
-            if (setPopupContent) setPopupContent(null)
-          }}
-        />
+      <AppModule name="account">
+        {/* @ts-expect-error TODO: add typing for SubNav */}
+        <AppFrame SubNav={!isWizard && SubNav}>
+          <PopupWrapper
+            content={popupContent}
+            hideModal={() => {
+              if (setPopupContent) setPopupContent(null)
+            }}
+          />
 
-        <Switch>
-          <Route
-            component={FavoritePlaceScreen}
-            path={[`${CREATE_ACCOUNT_PLACES_PATH}/:id`, `${PLACES_PATH}/:id`]}
-          />
-          <Route component={SavedTripScreen} path={`${TRIPS_PATH}/:id`} />
-          <Route exact path={ACCOUNT_PATH}>
-            <RedirectWithQuery to={TRIPS_PATH} />
-          </Route>
-          <Route exact path={CREATE_ACCOUNT_PATH}>
-            <RedirectWithQuery to={CREATE_ACCOUNT_VERIFY_PATH} />
-          </Route>
-          <Route
-            component={UserAccountScreen}
-            path={[
-              `${CREATE_ACCOUNT_PATH}/:step`,
-              `${MOBILITY_PATH}/:step`,
-              `${MOBILITY_PATH}/`,
-              ACCOUNT_SETTINGS_PATH
-            ]}
-          />
-          <Route component={SavedTripList} path={TRIPS_PATH} />
-          <Route
-            component={components.TermsOfService}
-            path={ACCOUNT_PATH + TERMS_OF_SERVICE_PATH}
-          />
-          <Route
-            component={components.TermsOfStorage}
-            path={ACCOUNT_PATH + TERMS_OF_STORAGE_PATH}
-          />
-        </Switch>
-      </AppFrame>
+          <Switch>
+            <Route
+              component={FavoritePlaceScreen}
+              path={[`${CREATE_ACCOUNT_PLACES_PATH}/:id`, `${PLACES_PATH}/:id`]}
+            />
+            <Route component={SavedTripScreen} path={`${TRIPS_PATH}/:id`} />
+            <Route exact path={ACCOUNT_PATH}>
+              <RedirectWithQuery to={TRIPS_PATH} />
+            </Route>
+            <Route exact path={CREATE_ACCOUNT_PATH}>
+              <RedirectWithQuery to={CREATE_ACCOUNT_VERIFY_PATH} />
+            </Route>
+            <Route
+              component={UserAccountScreen}
+              path={[
+                `${CREATE_ACCOUNT_PATH}/:step`,
+                `${MOBILITY_PATH}/:step`,
+                `${MOBILITY_PATH}/`,
+                ACCOUNT_SETTINGS_PATH
+              ]}
+            />
+            <Route component={SavedTripList} path={TRIPS_PATH} />
+            <Route
+              component={components.TermsOfService}
+              path={ACCOUNT_PATH + TERMS_OF_SERVICE_PATH}
+            />
+            <Route
+              component={components.TermsOfStorage}
+              path={ACCOUNT_PATH + TERMS_OF_STORAGE_PATH}
+            />
+          </Switch>
+        </AppFrame>
+      </AppModule>
     )
   }
 }
@@ -139,7 +140,6 @@ const mapStateToProps = (state: AppReduxState) => {
 }
 
 const mapDispatchToProps = {
-  loadAppModule: uiActions.loadAppModule,
   routeTo: uiActions.routeTo,
   setPopupContent: uiActions.setPopupContent
 }
