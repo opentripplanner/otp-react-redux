@@ -468,5 +468,7 @@ export function copyAndRemoveRouteModeOverrides(
 export function flattenStopClosures(
   map: Map<string, Set<string>>
 ): Set<string> {
-  return new Set(map.values().flatMap((v) => v.values()))
+  return new Set(
+    Array.from(map.values()).flatMap((v) => Array.from(v.values()))
+  )
 }
