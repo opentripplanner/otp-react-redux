@@ -461,3 +461,12 @@ export function copyAndRemoveRouteModeOverrides(
     }))
   }
 }
+
+/** Take a Map<string, Set<string>> of routes and their closed stops
+ * and flatten to a Set<string> of just stop IDs
+ */
+export function flattenStopClosures(
+  map: Map<string, Set<string>>
+): Set<string> {
+  return new Set(map.values().flatMap((v) => v.values()))
+}
