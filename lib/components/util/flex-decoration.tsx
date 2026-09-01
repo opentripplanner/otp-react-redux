@@ -11,7 +11,7 @@ export default function FlexDecoration(): ReactElement {
   // @ts-expect-error No type on ComponentContext
   const { FlexNoticeIcon } = useContext(ComponentContext)
   return (
-    <span aria-hidden style={{ marginLeft: '-10px' }}>
+    <span aria-hidden style={{ marginLeft: '-8px' }}>
       <FlexNoticeIcon />
     </span>
   )
