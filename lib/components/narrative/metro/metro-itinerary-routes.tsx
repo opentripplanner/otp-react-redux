@@ -110,16 +110,17 @@ const MetroItineraryRoutes = ({
       <Routes aria-hidden className="routes-container" enableDot={enableDot}>
         {routeLegs.map((leg: Leg, index: number, filteredLegs: Leg[]) => {
           let previousLegMode
-          let previousLegReservation
+          let previousLegNeedsReservation
 
           if (index > 0) {
             const prevLeg = filteredLegs[index - 1]
             previousLegMode = prevLeg.mode
-            previousLegReservation =
+            previousLegNeedsReservation =
               coreUtils.itinerary.isReservationRequired(prevLeg)
           }
 
-          const needReservation = coreUtils.itinerary.isReservationRequired(leg)
+          const needsReservation =
+            coreUtils.itinerary.isReservationRequired(leg)
           return (
             <RouteBlock
               footer={
@@ -131,9 +132,9 @@ const MetroItineraryRoutes = ({
               key={index}
               leg={leg}
               LegIcon={LegIcon}
-              modeIconDecoration={needReservation && <FlexDecoration />}
+              modeIconDecoration={needsReservation && <FlexDecoration />}
               previousLegMode={
-                needReservation === previousLegReservation
+                needsReservation === previousLegNeedsReservation
                   ? previousLegMode
                   : undefined
               }
