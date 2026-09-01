@@ -3174,10 +3174,10 @@
     "@opentripplanner/core-utils" "^16.0.3"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@9.6.0", "@opentripplanner/itinerary-body@^9.3.1":
-  version "9.6.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-9.6.0.tgz#4dddd7087d64acb305b5f805054516433f1f8df4"
-  integrity sha512-drW1f6aWOeh0ooTKIjalpGiLJ05vdVqEh4aAXQwVAf6F6S3Eh5qccMvg49OI1vLE7hL0Nt7Q2vWAp8BioWtzmA==
+"@opentripplanner/itinerary-body@9.7.0":
+  version "9.7.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-9.7.0.tgz#da96b0f1f3a36b7a36afdd3350e7942021b312f8"
+  integrity sha512-2SMlRscZ+1HtFGJGKIgzA1vTHcJt1Dr9tcJ6gBG60iBcL+S6sd+wHUXSAxcQSqqxMC52J/mtTqjOqD/dhWlAQQ==
   dependencies:
     "@opentripplanner/building-blocks" "^3.2.0"
     "@opentripplanner/core-utils" "^16.1.0"
@@ -3194,7 +3194,7 @@
     react-resize-detector "^4.2.1"
     string-similarity "^4.0.4"
 
-"@opentripplanner/itinerary-body@^9.6.0":
+"@opentripplanner/itinerary-body@^9.3.1", "@opentripplanner/itinerary-body@^9.6.0":
   version "9.6.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-9.6.0.tgz#4dddd7087d64acb305b5f805054516433f1f8df4"
   integrity sha512-drW1f6aWOeh0ooTKIjalpGiLJ05vdVqEh4aAXQwVAf6F6S3Eh5qccMvg49OI1vLE7hL0Nt7Q2vWAp8BioWtzmA==
