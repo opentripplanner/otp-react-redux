@@ -193,8 +193,6 @@ components:
   ErrorMessage:
     header: Could Not Plan Trip
     warning: Warning
-  FavoritePlaceList:
-    setAddressForPlaceType: Set your {placeType} address
   FormNavigationButtons:
     ariaLabel: Form navigation
   ItinerarySummary:
@@ -320,11 +318,11 @@ components:
     inputFields:
       FROM: Origin
       TO: Destination
-  Place:
-    deleteThisPlace: Delete this place
+  PlaceShortcut:
     enterAlert: >
       Enter origin/destination in the form (or set via map click)  and click the
       resulting marker to set as {placeType} location.
+    setAddressForPlaceType: Set your {placeType} address
   PlanFirstLastButtons:
     first: First
     last: Last

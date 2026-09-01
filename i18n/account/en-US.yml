@@ -59,15 +59,13 @@ components:
     addAnotherPlace: Add another place
     description: "Add the places you frequent often to save time planning trips:"
     editThisPlace: Edit this place
-    setAddressForPlaceType: Set your {placeType} address
   FavoritePlaceScreen:
     addNewPlace: Add new place
     charactersOverLimit: >-
-      {chars, plural, one {# character over limit} other {# characters over
-      limit} }
+      {chars, plural, one {# character} other {# characters}} over limit
     charactersRemaining: >-
-      {chars, plural, one {# character remaining} other {# characters remaining}
-      }
+      {chars, plural, one {# character} other {# characters}} remaining
+    deleteThisPlace: Delete this place
     editPlace: Edit {placeName}
     editPlaceGeneric: Edit place
     invalidAddress: Please set a location for this place.
