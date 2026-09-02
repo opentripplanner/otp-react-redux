@@ -1,0 +1,316 @@
+_id: en-US
+_name: English
+
+actions:
+  user:
+    accountDeleted: Your user account ({email}) has been deleted.
+    authTokenError: Error obtaining an authorization token.
+    confirmDeleteMonitoredTrip: Would you like to remove this trip?
+    confirmDeletePlace: Would you like to remove this place?
+    emailVerificationResent: The email verification message has been resent.
+    genericError: "An error was encountered: {err}"
+    getDependentUserInfoFailed: Error getting mobility profile information.
+    itineraryExistenceCheckFailed: Error checking whether your selected trip is possible.
+    mustAcceptTermsToSavePlace: Please accept the Terms of Use (under My Account) to save locations.
+    mustBeLoggedInToSavePlace: Please log in to save locations.
+    placeDeleted: Your place has been deleted.
+    placeRemembered: The settings for this place have been saved.
+    preferencesSaved: Your preferences have been saved.
+    smsInvalidCode: The code you entered is invalid. Please try again.
+    smsResendThrottled: >-
+      A verification SMS was sent to the indicated phone number less than a
+      minute ago. Please try again in a few moments.
+    smsVerificationFailed: >-
+      Your phone could not be verified. Perhaps the code you entered has
+      expired. Please request a new code and try again.
+    tripDeleted: Your trip has been deleted.
+components:
+  A11yPrefs:
+    accessibilityRoutingByDefault: Prefer accessible trips by default
+  AccountSetupFinishPane:
+    message: >-
+      Your changes have been saved. You are ready to start planning trips. Click
+      the "Finish" button to return to trip planner.
+  BackToTripPlanner:
+    backToTripPlanner: Back to trip planner
+  CompanionsPane:
+    addNewCompanion: Add a new travel companion
+    companionAlreadyAdded: You already have a companion with email {email}
+    companionExplanation: >
+      Invite an existing G-MAP user to be a travel companion by entering their
+      email. When they accept, their status will change to "verified", and you
+      can share your trip status and plan trips based on one another's mobility
+      profile.
+    confirmDeleteCompanion: Do you want to delete companion {email}?
+    currentCompanionsLabel: "Current travel companions:"
+    deleteCompanion: Delete {email}
+    noCompanions: You do not have any existing travel companions.
+    submitNewCompanion: Send invitation
+    title: Travel companions
+  DeleteUser:
+    deleteMyAccount: Delete my account
+  ExistingAccountDisplay:
+    a11y: Accessibility
+    mainTitle: My settings
+    notifications: Notifications
+    places: Saved places
+    terms: Terms
+  FavoritePlaceList:
+    addAnotherPlace: Add another place
+    description: "Add the places you frequent often to save time planning trips:"
+    editThisPlace: Edit this place
+  FavoritePlaceScreen:
+    addNewPlace: Add new place
+    charactersOverLimit: >-
+      {chars, plural, one {# character} other {# characters}} over limit
+    charactersRemaining: >-
+      {chars, plural, one {# character} other {# characters}} remaining
+    deleteThisPlace: Delete this place
+    editPlace: Edit {placeName}
+    editPlaceGeneric: Edit place
+    invalidAddress: Please set a location for this place.
+    invalidName: Please enter a name for this place.
+    nameAlreadyUsed: >-
+      You are already using this name for another place. Please enter a
+      different name.
+    nameTooLong: Name must be fewer than {char} characters.
+    placeNotFound: Place not found
+    placeNotFoundDescription: Sorry, the requested place was not found.
+  MobilityProfile:
+    DevicesPane:
+      devices:
+        cane: Cane
+        crutches: Crutches
+        electric wheelchair: Electric wheelchair
+        manual walker: Manual walker
+        manual wheelchair: Manual/traditional wheelchair
+        mobility scooter: Mobility scooter
+        none: No assistive device
+        service animal: Service animal
+        stroller: Stroller
+        wheeled walker: Wheeled walker
+        white cane: White cane
+      prompt: Do you regularly use a mobility assistive device? (Check all that apply)
+    LimitationsPane:
+      mobilityPrompt: >-
+        Do you have any mobility limitations that cause you to walk more slowly
+        or more carefully than other people?
+      visionLimitations:
+        legally-blind: Legally blind
+        low-vision: Low-vision
+        none: None
+      visionPrompt: Do you have any vision limitations?
+    MobilityPane:
+      button: Edit your mobility profile
+      header: Mobility Profile
+      mobilityDevices: "Mobility devices: "
+      mobilityLimitations: "Mobility limitations: "
+      planTripDescription: >-
+        If you have a travel companion, you can choose to plan this trip
+        according to their mobility profile.
+      visionLimitations: "Vision limitations: "
+    dropdownLabel: "User mobility profile:"
+    intro: >-
+      Please answer a few questions to customize the trip planning experience to
+      your needs and preferences.
+    myself: Myself
+    title: Define Your Mobility Profile
+  NewAccountWizard:
+    createNewAccount: Create a new account
+    finish: Account setup complete!
+    notifications: Notification preferences
+    places: Add your saved places
+    verify: Verify your email address
+  NotificationPrefsPane:
+    devicesRegistered: "{count, plural, one {# device} other {# devices}} registered"
+    noDeviceForPush: Register your device using the mobile app to access push notifications.
+    notificationChannelPrompt: "Receive notifications about your saved trips via:"
+  PhoneNumberEditor:
+    changeNumber: Change number
+    invalidCode: Please enter 6 digits for the validation code.
+    invalidPhone: Please enter a valid phone number.
+    phoneNumberSubmitted: Phone number {phoneNumber} was successfully submitted.
+    phoneNumberVerified: Phone number {phoneNumber} was successfully verified.
+    placeholder: Enter your phone number
+    prompt: "Enter your phone number for SMS notifications:"
+    requestNewCode: Request a new code
+    sendVerificationText: Send verification text
+    smsConsent: >
+      By providing your phone number, you agree to receive verification and trip
+      monitoring SMS messages. Additional costs from your phone carrier may
+      apply.
+    verificationCode: "Verification code:"
+    verificationInstructions: >
+      Please check the SMS messaging app on your mobile phone for a text message
+      with a verification code, and enter the code below (code expires after 10
+      minutes).
+    verify: Verify
+    verifySms: >-
+      Please complete the verification process in order to set up SMS
+      notifications.
+  PlaceEditor:
+    addressPrompt: "Address:"
+    genericLocationPlaceholder: Search for location
+    locationPlaceholder: Search for {placeName} location
+    locationTypePrompt: "Location type:"
+    nameExample: My coffee shop
+    namePrompt: "Place name:"
+  SavedTripEditor:
+    deleteSavedTrip: Delete
+    editSavedTrip: Edit saved trip
+    readOnlyBanner: >-
+      {creator} created and added you to this trip. Therefore, you cannot make
+      changes.
+    saveNewTrip: Save new trip
+    travelCompanions: Travel companions
+    tripInformation: Trip information
+    tripNotFound: Trip not found
+    tripNotFoundDescription: Sorry, the requested trip was not found.
+    tripNotifications: Trip notifications
+  SavedTripList:
+    alertTag: "{alert, plural, one {View one alert} other {View # alerts}}"
+    fromTo: From {from} to {to}
+    myTrips: My trips
+    noSavedTrips: You have no saved trips
+    noSavedTripsInstructions: Perform a trip search from the map first.
+    pause: Pause
+    resume: Resume
+    unsnooze: Unsnooze
+  SavedTripScreen:
+    itineraryLoaded: Itinerary loaded
+    itineraryLoading: Loading itinerary
+    selectAtLeastOneDay: Please select at least one day to monitor.
+    tooManyTrips: >
+      You already have reached the maximum of five saved trips. Please remove
+      unused trips from your saved trips, and try again.
+    tripNameAlreadyUsed: Another saved trip already uses this name. Please choose a different name.
+    tripNameRequired: Please enter a trip name.
+  TermsOfUsePane:
+    confirmDeletionPrompt: >
+      Removing your consent to storage of historical trips will cause your trip
+      history to be deleted.  Are you sure you want to continue?
+    mustAgreeToTerms: You must agree to the terms of service to continue.
+    termsOfServiceStatement: >
+      I confirm that I am at least 18 years old, and I have read and consent to
+      the <termsOfUseLink>Terms of service</termsOfUseLink > for using the Trip
+      Planner.
+    termsOfStorageStatement: >
+      Optional: I consent to the Trip Planner storing my historical planned
+      trips in order to improve transit services in my area.
+      <termsOfStorageLink>More info...</termsOfStorageLink>
+  TripBasicsPane:
+    checkAgain: Check again
+    checkingItineraryExistence: Checking itinerary existence for each day of the week...
+    indicatesRequiredFields: Fields marked with an asterisk (*) are required.
+    onlyOnDate: Only on {date, date, ::eeeee yyyyMMdd}
+    recurringEachWeek: On certain days each week
+    tripDaysPrompt: What days do you take this trip?
+    tripIsAvailableOnDaysIndicated: Your trip is available on the days of the week as indicated above.
+    tripNamePrompt: "Please provide a name for this trip:"
+    tripNotAvailableOnDay: Trip not available on {repeatedDay}
+    unsavedChangesExistingTrip: You haven't saved your trip yet. If you leave, changes will be lost.
+    unsavedChangesNewTrip: You haven't saved your new trip yet. If you leave, it will be lost.
+  TripCompanionsPane:
+    companionLabel: "Companion on this trip:"
+    observersLabel: "Observers watching this trip:"
+    primaryLabel: "Primary traveler: "
+  TripNotificationsPane:
+    advancedSettings: Advanced settings
+    altRouteRecommended: An alternative route or transfer point is recommended
+    delaysAboveThreshold: There are delays or disruptions of more than
+    howToReceiveAlerts: >
+      To receive alerts for your saved trips, enable notifications in your
+      account settings, and try saving a trip again.
+    monitorThisTrip: "Monitor this trip before it begins:"
+    notificationsTurnedOff: Notifications are turned off for your account.
+    notifyViaChannelWhen: "Notify me via {channel} when:"
+    oneHour: 1 hour
+    realtimeAlertFlagged: There is a realtime alert flagged on my journey
+    timeBefore: "{time} before"
+  TripStatus:
+    alerts: "There {alerts, plural, one {is # alert} other {are # alerts}} on your trip"
+    deleteTrip: Delete Trip
+    planNewTrip: Plan New Trip
+  TripStatusRenderers:
+    active:
+      delayedHeading: Trip is in progress and is delayed {formattedDuration}
+      description: Trip is due to arrive at the destination at {arrivalTime, time, short}.
+      earlyHeading: >-
+        Trip is in progress and is arriving {formattedDuration} earlier than
+        expected.
+      noDataHeading: Trip is in progress (no realtime updates available).
+      onTimeHeading: Trip is in progress and is about on time.
+    base:
+      lastCheckedDefaultText: Last checked time unknown
+      lastCheckedText: "Last checked: {formattedDuration} ago"
+      togglePause: Pause
+      tripIsNotSnoozed: Snooze for rest of today
+      tripIsSnoozed: Unsnooze
+      unknownState: Unknown Trip State
+      untogglePause: Resume
+    inactive:
+      description: Resume to receive notifications.
+      heading: Notifications are paused.
+    nextTripNotPossible:
+      description: >
+        After multiple failed attempts to locate your itinerary, monitoring has
+        been snoozed for today as one or more changes to the itinerary may have
+        occurred.  To resume trip monitoring, click Unsnooze. If monitoring is
+        still not available, click Plan New Trip to save an up to date itinerary
+        to monitor.
+      heading: Unable to monitor trip
+    noLongerPossible:
+      description: >
+        The trip planner was unable to find your trip on any selected days of
+        the week. Please try re-planning your itinerary to find an alternative
+        route.
+      heading: Trip is no longer possible
+    notCalculated:
+      awaiting: Awaiting calculation...
+      description: Please wait a bit for the trip to calculate.
+      heading: Trip not yet calculated
+    past:
+      description: This is a one-time trip that occurred in the past.
+      heading: Trip is in the past
+    snoozed:
+      description: >-
+        Notifications for this trip will automatically begin on the next
+        selected available day. Unsnooze to receive notifications today.
+      heading: Notifications are snoozed for today.
+    upcoming:
+      nextTripBegins: >-
+        Next trip starts on {tripDatetime, date, ::eeeee yyyyMMdd} at
+        {tripDatetime, time, short}.
+      tripBegins: >-
+        Trip is due to begin at {tripStart, time, short}. (Realtime monitoring
+        will begin at {monitoringStart, time, short}.)
+      tripStartIsDelayed: Trip start time is delayed {duration}!
+      tripStartIsEarly: Trip start time is happening {duration} earlier than expected!
+      tripStartsSoonNoUpdates: Trip is starting soon (no realtime updates available).
+      tripStartsSoonOnTime: Trip is starting soon and is about on time.
+  TripSummaryPane:
+    happensOnDays: "Happens on: {days}"
+    monitoredTripDays: Trip monitored days
+    notifications: "{leadTimeInMinutes} min. before scheduled departure"
+    notificationsPaused: Notifications are paused.
+    notificationsSnoozed: Notifications are snoozed for today.
+    timeAndDuration: Trip time and duration
+  UserAccountScreen:
+    confirmDelete: >-
+      Are you sure you would like to delete your user account? Once you do so,
+      it cannot be recovered.
+    errorUpdatingProfile: Error updating profile.
+    fieldUpdated: This setting has been updated.
+    fields:
+      add-companion-form: Travel Companions
+      storeTripHistory: Store trip history
+  VerifyEmailPane:
+    emailIsVerified: My email is verified!
+    instructions1: >
+      Please check your email inbox and follow the link in the message to verify
+      your email address before finishing your account setup.
+    instructions2: Once you're verified, click the button below to continue.
+    instructions3: >-
+      You can plan trips and return to this page anytime to continue setting up
+      your account.
+    resendVerification: Resend verification email

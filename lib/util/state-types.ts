@@ -38,6 +38,8 @@ export interface OtpState {
     errors: any
     highlightedLocation: Location | null
     highlightedStop: any
+    loadedModules: string[]
+    loadingMessages: boolean
     locale: string
     localizedMessages: any
     mainPanelContent: number
