@@ -95,6 +95,7 @@ common:
     noItineraryToDisplay: No itinerary to display.
     relativeCo2: |
       {co2} {isMore, select, true {more} other {less} } CO₂ than driving alone
+    reservationRequired: Reservation required
     timeStartEnd: "{start} – {end}"
   linkOpensNewWindow: (Opens new window)
   modes:
