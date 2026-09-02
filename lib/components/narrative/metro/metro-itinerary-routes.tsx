@@ -1,11 +1,14 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Itinerary, Leg } from '@opentripplanner/types'
-import React from 'react'
+import coreUtils from '@opentripplanner/core-utils'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import { AppReduxState } from '../../../util/state-types'
+import { ComponentContext } from '../../../util/contexts'
 import { getFormattedMode } from '../../../util/i18n'
+import FlexDecoration from '../../util/flex-decoration'
 import FormattedDuration, {
   formatDuration
 } from '../../util/formatted-duration'
@@ -60,8 +63,6 @@ const InvisibleHeader = styled(InvisibleA11yLabel)`
 `
 
 type Props = {
-  // TODO: create and reuse type for LegIcon.
-  LegIcon: ({ height, leg }: { height: number; leg: Leg }) => React.ReactElement
   enableDot?: boolean
   /** This is true when there is only one itinerary being shown and the itinerary-body is visible */
   expanded: boolean
@@ -74,11 +75,12 @@ const MetroItineraryRoutes = ({
   enableDot,
   expanded,
   itinerary,
-  LegIcon,
   showAllWalkLegs,
   showLegDurations
 }: Props): JSX.Element => {
   const intl = useIntl()
+  // @ts-expect-error No type on ComponentContext
+  const { LegIcon } = useContext(ComponentContext)
   const routeLegs = itinerary.legs
     .filter(showAllWalkLegs ? () => true : removeInsignificantWalkLegs)
     .filter((leg) => !leg.interlineWithPreviousLeg)
@@ -107,24 +109,35 @@ const MetroItineraryRoutes = ({
       </InvisibleHeader>
       <Routes aria-hidden className="routes-container" enableDot={enableDot}>
         {routeLegs.map((leg: Leg, index: number, filteredLegs: Leg[]) => {
-          const previousLegMode =
-            (index > 0 && filteredLegs[index - 1].mode) || undefined
+          let previousLegMode
+          let previousLegNeedsReservation
+
+          if (index > 0) {
+            const prevLeg = filteredLegs[index - 1]
+            previousLegMode = prevLeg.mode
+            previousLegNeedsReservation =
+              coreUtils.itinerary.isReservationRequired(prevLeg)
+          }
+
+          const needsReservation =
+            coreUtils.itinerary.isReservationRequired(leg)
           return (
             <RouteBlock
-              aria-hidden
               footer={
                 showLegDurations && (
-                  <FormattedDuration
-                    duration={leg.duration}
-                    includeSeconds={false}
-                  />
+                  <FormattedDuration duration={leg.duration} />
                 )
               }
               hideLongName
               key={index}
               leg={leg}
               LegIcon={LegIcon}
-              previousLegMode={previousLegMode}
+              modeIconDecoration={needsReservation && <FlexDecoration />}
+              previousLegMode={
+                needsReservation === previousLegNeedsReservation
+                  ? previousLegMode
+                  : undefined
+              }
               showDivider={enableDot}
             />
           )
