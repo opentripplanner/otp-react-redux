@@ -1,5 +1,4 @@
 import { connect, useSelector } from 'react-redux'
-import { format } from 'date-fns'
 import { FormattedMessage } from 'react-intl'
 import { matchPath } from 'react-router'
 import React, { useEffect, useMemo, useState } from 'react'
