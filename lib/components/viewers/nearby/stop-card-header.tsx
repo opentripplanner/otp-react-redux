@@ -7,7 +7,7 @@ import React, { ComponentType } from 'react'
 import styled from 'styled-components'
 
 import { AppReduxState } from '../../../util/state-types'
-import { CLOSED_STOP_RED } from '../../util/colors'
+import { DISABLED_RED } from '../../util/colors'
 import { Icon, IconWithText } from '../../util/styledIcon'
 import { StopData } from '../../util/types'
 import Strong from '../../util/strong-text'
@@ -18,7 +18,7 @@ import DistanceDisplay from './distance-display'
 
 const ClosedStopContainer = styled.div`
   align-items: center;
-  color: ${CLOSED_STOP_RED};
+  color: ${DISABLED_RED};
   display: flex;
   gap: 5px;
 `

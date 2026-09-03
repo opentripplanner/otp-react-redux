@@ -33,9 +33,7 @@ const GREY_ON_WHITE = grey[700]
  */
 const BLUE_ON_WHITE = blue[800]
 
-const CANCELED_TRIP_RED = red[700]
-
-const CLOSED_STOP_RED = red[700]
+const DISABLED_RED = red[700]
 
 const DARK_TEXT_GREY = '#333333'
 
@@ -53,8 +51,7 @@ export {
   grey,
   red,
   blue,
-  CANCELED_TRIP_RED,
-  CLOSED_STOP_RED,
+  DISABLED_RED,
   DARK_TEXT_GREY,
   DEFAULT_ROUTE_COLOR,
   ELEVATION_BLUE,
