@@ -33,6 +33,8 @@ const GREY_ON_WHITE = grey[700]
  */
 const BLUE_ON_WHITE = blue[800]
 
+const DISABLED_RED = red[700]
+
 const DARK_TEXT_GREY = '#333333'
 
 const DEFAULT_ROUTE_COLOR = grey[800]
@@ -49,6 +51,7 @@ export {
   grey,
   red,
   blue,
+  DISABLED_RED,
   DARK_TEXT_GREY,
   DEFAULT_ROUTE_COLOR,
   ELEVATION_BLUE,

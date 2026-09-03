@@ -1,10 +1,13 @@
 import { connect } from 'react-redux'
+import { ExclamationTriangle } from '@styled-icons/fa-solid'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Search } from '@styled-icons/fa-solid/Search'
 import { TransitOperator } from '@opentripplanner/types'
 import React, { ComponentType } from 'react'
+import styled from 'styled-components'
 
 import { AppReduxState } from '../../../util/state-types'
+import { DISABLED_RED } from '../../util/colors'
 import { Icon, IconWithText } from '../../util/styledIcon'
 import { StopData } from '../../util/types'
 import Strong from '../../util/strong-text'
@@ -13,11 +16,19 @@ import TransitOperatorLogos from '../../util/transit-operator-icons'
 import { ActionLink, CardBody, CardHeader, CardTitle } from './styled'
 import DistanceDisplay from './distance-display'
 
+const ClosedStopContainer = styled.div`
+  align-items: center;
+  color: ${DISABLED_RED};
+  display: flex;
+  gap: 5px;
+`
+
 type Props = {
   actionIcon: ComponentType
   actionParams?: Record<string, unknown>
   actionPath?: string
   actionText?: JSX.Element
+  closed?: boolean
   fromToSlot: JSX.Element
   onZoomClick?: () => void
   stopData: StopData & { distance?: number }
@@ -30,6 +41,7 @@ const StopCardHeader = ({
   actionParams,
   actionPath,
   actionText,
+  closed,
   fromToSlot,
   onZoomClick,
   stopData,
@@ -76,6 +88,12 @@ const StopCardHeader = ({
         <DistanceDisplay distance={stopData.distance} />
       </CardHeader>
       <CardBody>
+        {closed && (
+          <ClosedStopContainer>
+            <ExclamationTriangle size={15} />
+            <FormattedMessage id="common.closedStop" />
+          </ClosedStopContainer>
+        )}
         {(stopData.code || actionPath) && (
           // TODO: Clean up these conditionals -- perhaps grid one level higher?
           <div style={{ display: 'grid', height: 20 }}>
