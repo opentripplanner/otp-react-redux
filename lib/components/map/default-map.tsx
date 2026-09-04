@@ -398,7 +398,7 @@ class DefaultMap extends Component<DefaultMapProps> {
 
     // Closed stops are stored as a map with route ID as the key; we just want a set
     // of all the stop values
-    const closedStopsSet = closedStops
+    const closedStopIds = closedStops
       ? flattenStopClosures(closedStops)
       : new Set()
 
@@ -557,7 +557,7 @@ class DefaultMap extends Component<DefaultMapProps> {
                   config.companies,
                   this.getEntityPrefix,
                   feeds,
-                  closedStopsSet
+                  closedStopIds
                 )
               default:
                 return null
