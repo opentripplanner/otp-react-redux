@@ -28,7 +28,9 @@ import VehiclePositionRetriever from './vehicle-position-retriever'
 const TimetableLink = styled.a`
   align-items: center;
   display: flex;
-  justify-content: space-around;
+  gap: 5px;
+  justify-content: center;
+  margin-bottom: 12px;
   min-width: 10rem;
 `
 
@@ -132,18 +134,18 @@ const PatternViewer = ({
               </InvisibleA11yLabel>
             )}
           </h1>
-          {callTakerEnabled && (
-            <TimetableLink
-              href={timetableHref}
-              onClick={handleTimetableButtonClick}
-              rel="noreferrer"
-              target="_blank"
-            >
-              <FormattedMessage id="components.Timetable.timetable" />
-              <NewWindowIconA11y size={14} />
-            </TimetableLink>
-          )}
         </div>
+        {callTakerEnabled && (
+          <TimetableLink
+            href={timetableHref}
+            onClick={handleTimetableButtonClick}
+            rel="noreferrer"
+            target="_blank"
+          >
+            <FormattedMessage id="components.Timetable.timetable" />
+            <NewWindowIconA11y size={14} />
+          </TimetableLink>
+        )}
         <RouteDetails operator={operator} patternId={patternId} route={route} />
       </div>
     )

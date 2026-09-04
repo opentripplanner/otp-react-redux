@@ -5,10 +5,9 @@ import { Calendar } from '@styled-icons/fa-regular/Calendar'
 import { Clock } from '@styled-icons/fa-regular/Clock'
 import { FormattedDate, FormattedMessage, useIntl } from 'react-intl'
 import LocationIcon from '@opentripplanner/location-icon'
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
-import { ComponentContext } from '../../../util/contexts'
 import { dayFieldsToArray } from '../../../util/monitored-trip'
 import { grey } from '../../util/colors'
 import { InlineLoading } from '../../narrative/loading'
@@ -134,8 +133,6 @@ const TripSummaryPane = ({
   const intl = useIntl()
   const itinerary = monitoredTrip.itinerary
   const leadTimeInMinutes = monitoredTrip.leadTimeInMinutes
-  // @ts-expect-error No type on ComponentContext
-  const { LegIcon } = useContext(ComponentContext)
   if (!itinerary) {
     return (
       <div>
@@ -226,11 +223,7 @@ const TripSummaryPane = ({
             {/* Itinerary route block (for save trip page) */}
             {isEditingTrip && (
               <li>
-                <MetroItineraryRoutes
-                  expanded={false}
-                  itinerary={itinerary}
-                  LegIcon={LegIcon}
-                />
+                <MetroItineraryRoutes expanded={false} itinerary={itinerary} />
               </li>
             )}
             {/* Available trip days */}

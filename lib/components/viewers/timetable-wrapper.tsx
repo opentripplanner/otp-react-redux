@@ -1,5 +1,4 @@
 import { connect, useSelector } from 'react-redux'
-import { format } from 'date-fns'
 import { FormattedMessage } from 'react-intl'
 import { matchPath } from 'react-router'
 import React, { useEffect, useMemo, useState } from 'react'
@@ -58,6 +57,19 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
     if (timetable?.route) setLoading(false)
   }, [timetable])
 
+  const directionIdsAreInvalid = useMemo(() => {
+    const invalid = timetable?.route?.patterns?.some(
+      (pattern: any) => ![0, 1].includes(pattern?.directionId)
+    )
+
+    if (invalid)
+      console.warn(
+        'Direction IDs of timetable data are not valid (must be 0 or 1 for every pattern)'
+      )
+
+    return invalid
+  }, [timetable])
+
   const directionNames = useMemo(() => {
     const map = new Map<number, string[]>()
 
@@ -75,7 +87,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
     return <Loading />
   }
 
-  return routeId && timetable?.route ? (
+  return routeId && timetable?.route && !directionIdsAreInvalid ? (
     <div>
       <div
         style={{
