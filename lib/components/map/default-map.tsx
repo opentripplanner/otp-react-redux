@@ -30,6 +30,7 @@ import {
   rentalVehicleQuery
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
+import { flattenStopClosures } from '../../util/itinerary'
 import { getActiveItinerary, getActiveSearch } from '../../util/state'
 import {
   getCurrentPosition,
@@ -397,9 +398,9 @@ class DefaultMap extends Component<DefaultMapProps> {
 
     // Closed stops are stored as a map with route ID as the key; we just want a set
     // of all the stop values
-    const closedStopsSet = new Set(
-      closedStops?.values().flatMap((v) => v.values())
-    )
+    const closedStopIds = closedStops
+      ? flattenStopClosures(closedStops)
+      : new Set()
 
     const scooters = rentalVehicles.filter(
       (vehicle) => vehicle.vehicleType?.formFactor === 'SCOOTER'
@@ -556,7 +557,7 @@ class DefaultMap extends Component<DefaultMapProps> {
                   config.companies,
                   this.getEntityPrefix,
                   feeds,
-                  closedStopsSet
+                  closedStopIds
                 )
               default:
                 return null
