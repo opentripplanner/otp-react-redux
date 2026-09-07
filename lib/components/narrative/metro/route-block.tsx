@@ -170,7 +170,7 @@ const RouteBlock = ({
             })}
           </MultiWrapper>
         )}
-        {!hideLongName && leg.routeLongName && (
+        {!hideLongName && (leg.routeLongName || leg.route?.longName) && (
           <MultiRouteLongName>
             <RouteLongName className="route-block-route-long-name" leg={leg} />
             {Object.entries(leg?.alternateRoutes || {})?.length > 0 && (
