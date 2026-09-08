@@ -10,7 +10,6 @@ import styled from 'styled-components'
 
 import * as userActions from '../../../actions/user'
 import { AppReduxState } from '../../../util/state-types'
-import { ComponentContext } from '../../../util/contexts'
 import { IconWithText } from '../../util/styledIcon'
 import { MonitoredTrip } from '../types'
 import {
@@ -81,8 +80,6 @@ class TripListItem extends Component<ItemProps, ItemState> {
     }
   }
 
-  static contextType = ComponentContext
-
   componentDidUpdate = (prevProps: ItemProps) => {
     if (
       prevProps.trip.isActive !== this.props.trip.isActive ||
@@ -124,7 +121,6 @@ class TripListItem extends Component<ItemProps, ItemState> {
     const previewTripText = intl.formatMessage({
       id: 'components.TripPreviewLayout.previewTrip'
     })
-    const { LegIcon } = this.context
     return (
       <Panel className="saved-trip-panel">
         <TripPanelHeading>
@@ -145,12 +141,7 @@ class TripListItem extends Component<ItemProps, ItemState> {
             </Link>
           </TripPanelTitle>
           <RouteBlockGrid>
-            {/* TODO: Fix issues with custom route renderer */}
-            <MetroItineraryRoutes
-              expanded={false}
-              itinerary={itinerary}
-              LegIcon={LegIcon}
-            />
+            <MetroItineraryRoutes expanded={false} itinerary={itinerary} />
           </RouteBlockGrid>
         </TripPanelHeading>
         <Panel.Body>
