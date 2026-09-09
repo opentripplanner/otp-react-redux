@@ -139,7 +139,7 @@ const mapStateToProps = (state: AppReduxState) => {
   const { pathname } = state.router.location
   const match = matchPath<{ routeId: string }>(pathname, {
     exact: true,
-    path: TIMETABLE_PATH,
+    path: TIMETABLE_PATH(':routeId'),
     strict: false
   })
   const routeId = match?.params.routeId ?? ''

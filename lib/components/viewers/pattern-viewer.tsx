@@ -17,6 +17,7 @@ import {
   ViewedRouteObject,
   ViewedRouteState
 } from '../util/types'
+import { TIMETABLE_PATH } from '../../util/constants'
 import BackButton from '../util/back-button'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import PageTitle from '../util/page-title'
@@ -62,7 +63,7 @@ const PatternViewer = ({
   const patternId = viewedRoute?.patternId
   const routeId = viewedRoute?.routeId || null
 
-  const timetableHref = useMemo(() => `/#/timetable/${routeId}`, [routeId])
+  const timetableHref = useMemo(() => `/#${TIMETABLE_PATH(routeId)}`, [routeId])
 
   const handleTimetableButtonClick = useCallback(() => {
     window.open(timetableHref, undefined, 'width=1000,height=800')
