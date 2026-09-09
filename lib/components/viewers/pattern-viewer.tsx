@@ -65,9 +65,13 @@ const PatternViewer = ({
 
   const timetableHref = useMemo(() => `/#${TIMETABLE_PATH(routeId)}`, [routeId])
 
-  const handleTimetableButtonClick = useCallback(() => {
-    window.open(timetableHref, undefined, 'width=1000,height=800')
-  }, [timetableHref])
+  const handleTimetableButtonClick = useCallback(
+    (e) => {
+      e.preventDefault()
+      window.open(timetableHref, undefined, 'width=1000,height=800')
+    },
+    [timetableHref]
+  )
 
   /**
    * If we're viewing a pattern's stops, route to main route viewer.
