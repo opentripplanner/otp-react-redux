@@ -30,8 +30,8 @@ const TimetableLink = styled.a`
   align-items: center;
   display: flex;
   gap: 5px;
-  justify-content: center;
   margin-bottom: 12px;
+  margin-left: 16px;
   min-width: 10rem;
 `
 
