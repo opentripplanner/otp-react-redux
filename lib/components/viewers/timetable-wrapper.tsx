@@ -87,6 +87,11 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
     return <Loading />
   }
 
+  if (stopClosuresError)
+    console.warn('Error loading stop closures', stopClosuresError)
+
+  if (!closedStops) console.warn('No stop closures object is defined')
+
   return routeId && timetable?.route && !directionIdsAreInvalid ? (
     <div>
       <div
