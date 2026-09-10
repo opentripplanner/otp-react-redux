@@ -27,7 +27,8 @@ import {
   carRentalQuery,
   findFeeds,
   findStopTimesForStop,
-  rentalVehicleQuery
+  rentalVehicleQuery,
+  stopClosuresQuery
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
 import { getActiveItinerary, getActiveSearch } from '../../util/state'
@@ -336,6 +337,8 @@ class DefaultMap extends Component<DefaultMapProps> {
 
     // Fetch feeds in the background
     this.props.findFeeds()
+    // Load closed stops into state for usage throughout UI (map popup, timetable, itinerary, etc.)
+    this.props.stopClosuresQuery()
   }
 
   componentDidUpdate(prevProps) {
@@ -637,6 +640,7 @@ const mapDispatchToProps = {
   setLocation,
   setMapPopupLocationAndGeocode,
   setViewedStop,
+  stopClosuresQuery,
   updateOverlayVisibility
 }
 
