@@ -146,6 +146,9 @@ const RouteBlock = ({
   }
   const showModeIcon = leg.mode !== previousLegMode
 
+  const longNameExists =
+    leg.routeLongName || (typeof leg.route === 'object' && leg.route.longName)
+
   return (
     <>
       {showDivider && previousLegMode && (
@@ -170,7 +173,7 @@ const RouteBlock = ({
             })}
           </MultiWrapper>
         )}
-        {!hideLongName && leg.routeLongName && (
+        {!hideLongName && longNameExists && (
           <MultiRouteLongName>
             <RouteLongName className="route-block-route-long-name" leg={leg} />
             {Object.entries(leg?.alternateRoutes || {})?.length > 0 && (
