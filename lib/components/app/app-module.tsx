@@ -6,26 +6,31 @@ import { AppReduxState } from '../../util/state-types'
 
 interface OwnProps {
   children?: ReactNode
-  name: string
+  load: string | string[]
 }
 
 interface Props extends OwnProps {
   isLoaded: boolean
-  loadAppModule: (name: string) => void
+  loadAppModules: (appModules: string[]) => void
 }
 
 /**
- * Declares a module. Content rendering is held until the module and messages are loaded.
+ * Declares one or several modules.
+ * Each module groups and loads i18n messages dynamically
+ * and also serves as an abstract set of code and features.
+ * Content rendering is held until the module and messages are loaded.
  */
 const AppModule = ({
   children,
   isLoaded,
-  loadAppModule,
-  name
+  load: moduleNames,
+  loadAppModules
 }: Props): ReactElement | null => {
   useEffect(() => {
-    loadAppModule(name)
-  }, [loadAppModule, name])
+    const moduleList =
+      typeof moduleNames === 'string' ? [moduleNames] : moduleNames
+    loadAppModules(moduleList)
+  }, [loadAppModules, moduleNames])
 
   return isLoaded && children ? <>{children}</> : null
 }
@@ -33,11 +38,11 @@ const AppModule = ({
 // connect to the redux store
 
 const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => ({
-  isLoaded: uiActions.isModuleLoaded(state, ownProps.name)
+  isLoaded: uiActions.areModulesLoaded(state, ownProps.load)
 })
 
 const mapDispatchToProps = {
-  loadAppModule: uiActions.loadAppModule
+  loadAppModules: uiActions.loadAppModules
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppModule)

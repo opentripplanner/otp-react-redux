@@ -75,11 +75,11 @@ class AccountRoute extends Component<Props> {
     const { isWizard, mobilityProfile, popupContent, setPopupContent } =
       this.props
     const components = this.context
+    const modules = ['account']
+    if (mobilityProfile) modules.push('mobilityprofile')
 
     return (
-      <AppModule name="account">
-        {mobilityProfile && <AppModule name="mobilityprofile" />}
-
+      <AppModule load={modules}>
         {/* @ts-expect-error TODO: add typing for SubNav */}
         <AppFrame SubNav={!isWizard && SubNav}>
           <PopupWrapper

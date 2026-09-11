@@ -73,7 +73,7 @@ const DependentSelector = ({
   if (!loggedInUser) return null
 
   return (
-    <AppModule name="mobilityprofile">
+    <AppModule load="mobilityprofile">
       <MobilityProfileContainer>
         <VisibleSubheader>
           <FormattedMessage id="components.MobilityProfile.MobilityPane.header" />
