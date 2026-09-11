@@ -379,8 +379,6 @@ components:
     saveTripText: Save trip
     signInText: Log in to save trip
     signInTooltip: Please log in to save trip.
-  SequentialPaneDisplay:
-    stepNumber: Step {step} of {total}
   SessionTimeout:
     body: >-
       Your session will expire within a minute. Press 'Continue Session' to keep
@@ -389,8 +387,6 @@ components:
     keepSession: Continue Session
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: This trip uses real-time traffic and delay information
-  StackedPaneDisplay:
-    savePreferences: Save preferences
   StatusBadge:
     invalid: Invalid
     pending: Pending
