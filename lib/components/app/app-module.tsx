@@ -14,6 +14,10 @@ interface Props extends OwnProps {
   loadAppModules: (appModules: string[]) => void
 }
 
+function stringOrArrayPropToArray(stringOrArray: string | string[]): string[] {
+  return typeof stringOrArray === 'string' ? [stringOrArray] : stringOrArray
+}
+
 /**
  * Declares one or several modules.
  * Each module groups and loads i18n messages dynamically
@@ -27,8 +31,7 @@ const AppModule = ({
   loadAppModules
 }: Props): ReactElement | null => {
   useEffect(() => {
-    const moduleList =
-      typeof moduleNames === 'string' ? [moduleNames] : moduleNames
+    const moduleList = stringOrArrayPropToArray(moduleNames)
     loadAppModules(moduleList)
   }, [loadAppModules, moduleNames])
 
@@ -38,7 +41,10 @@ const AppModule = ({
 // connect to the redux store
 
 const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => ({
-  isLoaded: uiActions.areModulesLoaded(state, ownProps.load)
+  isLoaded: uiActions.areModulesLoaded(
+    state,
+    stringOrArrayPropToArray(ownProps.load)
+  )
 })
 
 const mapDispatchToProps = {
