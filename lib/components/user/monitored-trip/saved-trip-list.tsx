@@ -22,7 +22,6 @@ import {
 } from '../styled'
 import { RETURN_TO_CURRENT_ROUTE } from '../../../util/ui'
 import { TRIP_PREVIEW_PATH, TRIPS_PATH } from '../../../util/constants'
-import AccountPage from '../account-page'
 import AwaitingScreen from '../awaiting-screen'
 import BackToTripPlanner from '../back-to-trip-planner'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
@@ -246,7 +245,7 @@ const SavedTripList = ({ trips }: Props) => {
     }
   }
 
-  return <AccountPage>{content}</AccountPage>
+  return content
 }
 
 // connect to the redux store
