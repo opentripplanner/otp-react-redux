@@ -50,6 +50,7 @@
 
 .otp .trip-viewer .header-with-back-button,
 .otp .pattern-viewer .header-with-back-button {
+  align-items: center;
   display: flex;
   gap: 5px;
 }

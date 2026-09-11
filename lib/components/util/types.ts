@@ -125,3 +125,10 @@ export type ZoomToPlaceHandler = (
 ) => void
 
 export type QueryParamChangeHandler = (event: any) => void
+
+export interface TimetableDataParams {
+  /** The desired service date for the timetable, as a Date object */
+  date: Date
+  /** The GTFS ID of the route for which a timetable is being fetched */
+  gtfsId: string
+}

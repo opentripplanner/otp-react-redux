@@ -109,6 +109,11 @@ exports[`lib > reducers > create-otp-reducer should be able to create the initia
         "search": "",
       },
     },
+    "stopClosures": {
+      "closedStops": undefined,
+      "error": undefined,
+    },
+    "timetable": {},
   },
 }
 `;
