@@ -56,8 +56,8 @@ import { setModeButtonEnabled } from './batch-settings'
 import { styledCheckboxCss } from './styled'
 import { StyledTransparentButton } from './advanced-settings-button'
 
-const AdvancedSettingsMobilityProfile = withSuspense(
-  lazy(() => import('./advanced-settings-mobility-profile'))
+const DependentSelector = withSuspense(
+  lazy(() => import('../user/mobility-profile/dependent-selector'))
 )
 
 const PanelOverlay = styled.div`
@@ -277,7 +277,7 @@ const AdvancedSettingsPanel = ({
           </GlobalSettingsContainer>
         </>
       )}
-      {mobilityProfile && user && <AdvancedSettingsMobilityProfile />}
+      {mobilityProfile && user && <DependentSelector />}
 
       <AdvancedModeSubsettingsContainer
         accentColor={accentColor}

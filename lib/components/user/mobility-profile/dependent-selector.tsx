@@ -10,6 +10,7 @@ import * as userActions from '../../../actions/user'
 import { AppReduxState } from '../../../util/state-types'
 import { getDependentName } from '../../../util/user'
 import { User } from '../../user/types'
+import AppModule from '../../app/app-module'
 
 const VisibleSubheader = styled.h2`
   display: block;
@@ -72,32 +73,34 @@ const DependentSelector = ({
   if (!loggedInUser) return null
 
   return (
-    <MobilityProfileContainer>
-      <VisibleSubheader>
-        <FormattedMessage id="components.MobilityProfile.MobilityPane.header" />
-      </VisibleSubheader>
-      <FormattedMessage id="components.MobilityProfile.MobilityPane.planTripDescription" />
-      <MobilityProfileDropdown
-        label={intl.formatMessage({
-          id: 'components.MobilityProfile.dropdownLabel'
-        })}
-        name="forEmail"
-        onChange={onMobilityProfileChange}
-        options={[
-          {
-            text: intl.formatMessage({
-              id: 'components.MobilityProfile.myself'
-            }),
-            value: loggedInUser.email
-          },
-          ...(loggedInUser.dependentsInfo?.map((user) => ({
-            text: getDependentName(user),
-            value: user.email
-          })) || [])
-        ]}
-        value={selectedMobilityProfile}
-      />
-    </MobilityProfileContainer>
+    <AppModule name="mobilityprofile">
+      <MobilityProfileContainer>
+        <VisibleSubheader>
+          <FormattedMessage id="components.MobilityProfile.MobilityPane.header" />
+        </VisibleSubheader>
+        <FormattedMessage id="components.MobilityProfile.MobilityPane.planTripDescription" />
+        <MobilityProfileDropdown
+          label={intl.formatMessage({
+            id: 'components.MobilityProfile.dropdownLabel'
+          })}
+          name="forEmail"
+          onChange={onMobilityProfileChange}
+          options={[
+            {
+              text: intl.formatMessage({
+                id: 'components.MobilityProfile.myself'
+              }),
+              value: loggedInUser.email
+            },
+            ...(loggedInUser.dependentsInfo?.map((user) => ({
+              text: getDependentName(user),
+              value: user.email
+            })) || [])
+          ]}
+          value={selectedMobilityProfile}
+        />
+      </MobilityProfileContainer>
+    </AppModule>
   )
 }
 
