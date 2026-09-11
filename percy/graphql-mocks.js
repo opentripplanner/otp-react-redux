@@ -1,7 +1,9 @@
-const PlanResponseBike = require('./mocks/PlanResponseBike.json').data.plan
-const PlanResponseWalk = require('./mocks/PlanResponseWalk.json').data.plan
+const PlanResponseBike = require('./mocks/PlanResponseBike.json').data
+  .planConnection
+const PlanResponseWalk = require('./mocks/PlanResponseWalk.json').data
+  .planConnection
 const PlanResponseBusSubwayTram =
-  require('./mocks/PlanResponseBusSubwayTram.json').data.plan
+  require('./mocks/PlanResponseBusSubwayTram.json').data.planConnection
 const TripResponse = require('./mocks/TripResponse.json').data.trip
 const NearestResponse = require('./mocks/NearbyResponse.json').data.nearest
 const Stop114900Response = require('./mocks/Stop114900Response.json').data.stop
@@ -13,24 +15,36 @@ const ServiceTimeRangeResponse =
 const RoutesResponse = require('./mocks/Routes.json').data.routes
 const IndividualRouteResponse = require('./mocks/IndividualRoute.json').data
   .route
-const PlanResponseBlank = require('./mocks/PlanResponseBlank.json').data.plan
-function getPlanResponseMock(transportModes) {
-  const transportModesString = transportModes
-    .map((tm) => tm.mode)
+const PlanResponseBlank = require('./mocks/PlanResponseBlank.json').data
+  .planConnection
+function getPlanResponseMock(modes) {
+  const modesString = Array.from(
+    new Set([
+      ...modes.direct,
+      ...modes.transit.access,
+      ...modes.transit.egress,
+      ...modes.transit.transfer,
+      ...modes.transit.transit.map((m) => m.mode)
+    ])
+  )
     .sort()
     .join('')
-  console.log(transportModesString)
-  switch (transportModesString) {
+  console.log(modesString)
+  switch (modesString) {
     case 'BICYCLEBUSSUBWAYTRAM':
     case 'TRANSITWALK':
     case 'BUSSUBWAY':
+    case 'BUSSUBWAYWALK':
       return PlanResponseBusSubwayTram
     case 'BICYCLE':
+    case 'BICYCLEBUSSUBWAYTRAMWALK':
+    case 'BICYCLEBUSSUBWAYWALK':
       return PlanResponseBike
     case 'WALK':
       return PlanResponseWalk
     case 'BUSSUBWAYTRAM':
     case 'BUSCARSUBWAYTRAM':
+    case 'BUSSUBWAYTRAMWALK':
       return PlanResponseBlank
     default:
       return PlanResponseBike
@@ -56,9 +70,9 @@ const mocks = (callCount) => ({
       increment(callCount, 'nearest')
       return NearestResponse
     },
-    plan(obj, { transportModes }) {
-      increment(callCount, 'plan')
-      return getPlanResponseMock(transportModes)
+    planConnection(obj, { modes }) {
+      increment(callCount, 'planConnection')
+      return getPlanResponseMock(modes)
     },
     route() {
       increment(callCount, 'route')

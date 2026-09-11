@@ -43,7 +43,7 @@ function ModeDropdown({ modeDropdownOptions, onChangeModes }: Props) {
 
     const newModes = modeDropdownOptions.find(
       (mdo) => mdo.label === selectedMode
-    )?.combination
+    )?.combination?.input
     onChangeModes(newModes || [])
   }, [selectedMode, modeDropdownOptions, onChangeModes])
 
