@@ -38,6 +38,7 @@ interface Props {
   isTermsOrVerifyPage: boolean
   isWizard: boolean
   loggedInUser: User
+  mobilityProfile?: boolean
   popupContent: PopupTargetConfig
   routeTo: (url: string, arg2: any, arg3: any) => void
   setPopupContent: (url: string | null) => void
@@ -71,11 +72,14 @@ class AccountRoute extends Component<Props> {
   }
 
   render() {
-    const { isWizard, popupContent, setPopupContent } = this.props
+    const { isWizard, mobilityProfile, popupContent, setPopupContent } =
+      this.props
     const components = this.context
 
     return (
       <AppModule name="account">
+        {mobilityProfile && <AppModule name="mobilityprofile" />}
+
         {/* @ts-expect-error TODO: add typing for SubNav */}
         <AppFrame SubNav={!isWizard && SubNav}>
           <PopupWrapper
@@ -135,6 +139,7 @@ const mapStateToProps = (state: AppReduxState) => {
       currentPath === CREATE_ACCOUNT_VERIFY_PATH,
     isWizard: !!basePath,
     loggedInUser: state.user.loggedInUser,
+    mobilityProfile: state.otp.config?.mobilityProfile || false,
     popupContent: state.otp.ui.popup
   }
 }

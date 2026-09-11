@@ -5,7 +5,7 @@ import * as uiActions from '../../actions/ui'
 import { AppReduxState } from '../../util/state-types'
 
 interface OwnProps {
-  children: ReactNode
+  children?: ReactNode
   name: string
 }
 
@@ -27,19 +27,14 @@ const AppModule = ({
     loadAppModule(name)
   }, [loadAppModule, name])
 
-  return isLoaded ? <>{children}</> : null
+  return isLoaded && children ? <>{children}</> : null
 }
 
 // connect to the redux store
 
-const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => {
-  const { loadedModules, loadingMessages = false } = state.otp.ui
-  const isLoaded = loadedModules.includes(ownProps.name) && !loadingMessages
-
-  return {
-    isLoaded
-  }
-}
+const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => ({
+  isLoaded: uiActions.isModuleLoaded(state, ownProps.name)
+})
 
 const mapDispatchToProps = {
   loadAppModule: uiActions.loadAppModule
