@@ -70,18 +70,6 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
     return invalid
   }, [timetable])
 
-  const directionNames = useMemo(() => {
-    const map = new Map<number, string[]>()
-
-    timetable?.route?.patterns?.forEach((pattern: any) => {
-      const dirId = pattern.directionId
-      const names = (map.get(dirId) || []).concat([pattern.name])
-      map.set(dirId, names)
-    })
-
-    return map
-  }, [timetable])
-
   if (loading) {
     // TODO: add aria status region to the body
     return <Loading />
@@ -118,9 +106,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
         <button onClick={() => setDirectionId(directionId === 1 ? 0 : 1)}>
           <FormattedMessage id="components.Timetable.switchDirection" />
         </button>
-        {(directionNames.get(directionId) || []).map((dirName) => (
-          <span key={dirName}>{dirName}</span>
-        ))}
+        <span>{timetable.route.desc}</span>
       </div>
       {timetable && (
         <div style={{ overflow: 'scroll' }}>
