@@ -633,6 +633,7 @@ components:
   Timetable:
     errorLoadingStopClosures: Error loading stop closures
     errorLoadingTimetable: Error loading timetable
+    routeInformation: Route Information
     showAllStops: Show All Stops
     showTimepointsOnly: Show Timepoints Only
     switchDirection: Switch Direction
