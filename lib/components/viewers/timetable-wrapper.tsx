@@ -132,7 +132,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
         {(directionNames.get(directionId) || []).map((dirName) => (
           <span key={dirName}>{dirName}</span>
         ))}
-        {timetable?.route?.url && (
+        {routeInformation.url && (
           <a href={routeInformation.url} onClick={handleRouteUrlClick}>
             <FormattedMessage id="components.Timetable.routeInformation" />
           </a>
