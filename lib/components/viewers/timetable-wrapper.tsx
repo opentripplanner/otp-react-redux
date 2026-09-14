@@ -33,7 +33,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
     (state: AppReduxState) => state.otp.ui.timetable
   )
 
-  const handleClick = useCallback(
+  const handleRouteUrlClick = useCallback(
     (e) => {
       e.preventDefault()
       window.open(timetable?.route?.url, undefined, 'width=1000,height=800')
@@ -133,7 +133,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
           <span key={dirName}>{dirName}</span>
         ))}
         {timetable?.route?.url && (
-          <a href={timetable.route.url} onClick={handleClick}>
+          <a href={routeInformation.url} onClick={handleRouteUrlClick}>
             <FormattedMessage id="components.Timetable.routeInformation" />
           </a>
         )}
