@@ -42,6 +42,7 @@ actions:
       expired. Please request a new code and try again.
     tripDeleted: Your trip has been deleted.
 common:
+  closedStop: Closed Stop
   coordinates: "{lat}, {lon}"
   currentlySelected: " (Currently selected)"
   dateExpressions:

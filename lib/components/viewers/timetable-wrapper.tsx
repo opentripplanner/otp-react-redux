@@ -13,20 +13,20 @@ import Loading from '../narrative/loading'
 interface TimeTableWrapperProps {
   /** A map of closed stops. Keys are route gtfsIds, values are sets of gtfsIds for stops that are closed on that route */
   closedStops?: Map<string, Set<string>>
+  getStopClosures: () => void
   getTimetableData: (params: TimetableDataParams) => void
   routeId: string
   stopClosuresError?: string
-  stopClosuresQuery: () => void
 }
 
 // eslint-disable-next-line complexity
 const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   const {
     closedStops,
+    getStopClosures,
     getTimetableData,
     routeId,
-    stopClosuresError,
-    stopClosuresQuery
+    stopClosuresError
   } = props
 
   const timetable = useSelector(
@@ -51,23 +51,25 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   )
 
   useEffect(() => {
-    stopClosuresQuery()
+    getStopClosures()
 
     getTimetableData({
       date: new Date(),
-      gtfsId: routeId
+      routeGtfsId: routeId
     })
-  }, [getTimetableData, routeId, stopClosuresQuery])
+  }, [getTimetableData, routeId, getStopClosures])
+
+  const routeInformation = useMemo(() => timetable?.route, [timetable])
 
   useEffect(() => {
     // TODO: improve handling of data fetching to avoid issues with useEffect and stale data.
     // This will be important when the capability to fetch timetables for different dates via a calendar
     // is added.
-    if (timetable?.route) setLoading(false)
-  }, [timetable])
+    if (routeInformation) setLoading(false)
+  }, [routeInformation])
 
   const directionIdsAreInvalid = useMemo(() => {
-    const invalid = timetable?.route?.patterns?.some(
+    const invalid = routeInformation?.patterns?.some(
       (pattern: any) => ![0, 1].includes(pattern?.directionId)
     )
 
@@ -77,19 +79,19 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
       )
 
     return invalid
-  }, [timetable])
+  }, [routeInformation])
 
   const directionNames = useMemo(() => {
     const map = new Map<number, string[]>()
 
-    timetable?.route?.patterns?.forEach((pattern: any) => {
+    routeInformation?.patterns?.forEach((pattern: any) => {
       const dirId = pattern.directionId
       const names = (map.get(dirId) || []).concat([pattern.name])
       map.set(dirId, names)
     })
 
     return map
-  }, [timetable])
+  }, [routeInformation])
 
   if (loading) {
     // TODO: add aria status region to the body
@@ -101,7 +103,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
 
   if (!closedStops) console.warn('No stop closures object is defined')
 
-  return routeId && timetable?.route && !directionIdsAreInvalid ? (
+  return routeId && routeInformation && !directionIdsAreInvalid ? (
     <div>
       <div
         style={{
@@ -136,7 +138,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
           </a>
         )}
       </div>
-      {timetable && (
+      {routeInformation && (
         <div style={{ overflow: 'scroll' }}>
           <TimeTable
             closedStops={closedStopsSet}
@@ -171,8 +173,8 @@ const mapStateToProps = (state: AppReduxState) => {
 }
 
 const mapDispatchToProps = {
-  getTimetableData: apiActions.getTimetableData,
-  stopClosuresQuery: apiActions.stopClosuresQuery
+  getStopClosures: apiActions.getStopClosures,
+  getTimetableData: apiActions.getTimetableData
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TimeTableWrapper)
