@@ -66,8 +66,10 @@ beforeAll(async () => {
 
     // Web security is disabled to allow requests to the mock OTP server
     browser = await puppeteer.launch({
-      args: ['--disable-web-security', '--no-sandbox']
-      // , headless: false
+      args: ['--disable-web-security', '--no-sandbox'],
+      executablePath:
+        '/Users/miles/.cache/puppeteer/chrome/mac_arm-151.0.7922.71/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing',
+      headless: false
     })
   } catch (error) {
     console.log(error)
