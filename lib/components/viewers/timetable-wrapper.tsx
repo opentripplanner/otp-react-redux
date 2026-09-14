@@ -108,7 +108,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
         <button onClick={() => setDirectionId(directionId === 1 ? 0 : 1)}>
           <FormattedMessage id="components.Timetable.switchDirection" />
         </button>
-        <span>{timetable.route.desc}</span>
+        <span>{`${routeInformation.shortName}: ${routeInformation.desc}`}</span>
       </div>
       {routeInformation && (
         <div style={{ overflow: 'scroll' }}>
@@ -116,7 +116,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
             closedStops={closedStopsSet}
             directionId={directionId}
             includeDwellStops
-            route={timetable.route}
+            route={routeInformation}
             showBlockId
             timepointsOnly={timepointsOnly}
           />
