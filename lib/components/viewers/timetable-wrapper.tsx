@@ -46,7 +46,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
 
     getTimetableData({
       date: new Date(),
-      gtfsId: routeId
+      routeGtfsId: routeId
     })
   }, [getTimetableData, routeId, stopClosuresQuery])
 
