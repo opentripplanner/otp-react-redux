@@ -17,7 +17,6 @@ import * as uiActions from '../../../actions/ui'
 import { AppReduxState } from '../../../util/state-types'
 import { ComponentContext } from '../../../util/contexts'
 import { DARK_TEXT_GREY } from '../../util/colors'
-import { FlexIndicator } from '../default/flex-indicator'
 import { getActiveSearch } from '../../../util/state'
 import { getFare } from '../../../util/itinerary'
 import { IconWithText } from '../../util/styledIcon'
@@ -41,6 +40,7 @@ import DepartureTimesList, {
 } from './departure-times-list'
 import MetroItineraryRoutes from './metro-itinerary-routes'
 import RouteBlock from './route-block'
+import RouteBlockWithModeDecoration from './route-block-with-mode-decoration'
 
 const { ensureAtLeastOneMinute } = coreUtils.time
 
@@ -188,6 +188,14 @@ const LoadingBlurred = styled.span<{ loading: boolean }>`
   transition: all 0.2s ease-in-out;
 `
 
+// Add visual separation from the "Reservation required" text,
+// especially if the flex indicator is just plain text (e.g a star or shorthand such as "FLX").
+const FlexNoticeWrapper = styled.span`
+  ::after {
+    content: ' ';
+  }
+`
+
 type Props = {
   LegIcon: React.ReactNode
   accessibilityScoreGradationMap: { [value: number]: string }
@@ -270,11 +278,15 @@ class MetroItinerary extends NarrativeItinerary {
       showLegDurations,
       showRealtimeAnnotation
     } = this.props
-    const { ItineraryPreviewSupplement, RouteRenderer, SvgIcon } = this.context
+    const {
+      FlexNoticeIcon,
+      ItineraryPreviewSupplement,
+      RouteRenderer,
+      SvgIcon
+    } = this.context
     const Route = RouteRenderer || DefaultRouteRenderer
 
-    const { isCallAhead, isContinuousDropoff, isFlexItinerary, phone } =
-      getFlexAttributes(itinerary)
+    const { isCallAhead, isFlexItinerary } = getFlexAttributes(itinerary)
 
     const { fareCurrency, transitFare } = getFare(itinerary, defaultFareType)
 
@@ -393,7 +405,6 @@ class MetroItinerary extends NarrativeItinerary {
                 <MetroItineraryRoutes
                   expanded={expanded}
                   itinerary={itinerary}
-                  LegIcon={LegIcon}
                   showLegDurations={showLegDurations}
                 />
                 <ItineraryDetails
@@ -407,15 +418,12 @@ class MetroItinerary extends NarrativeItinerary {
                       includeSeconds={false}
                     />
                   </PrimaryInfo>
-                  {isFlexItinerary && (
+                  {isFlexItinerary && isCallAhead && (
                     <SecondaryInfo className={isFlexItinerary ? 'flex' : ''}>
-                      <FlexIndicator
-                        isCallAhead={isCallAhead}
-                        isContinuousDropoff={isContinuousDropoff}
-                        phoneNumber={phone}
-                        shrink={false}
-                        textOnly
-                      />
+                      <FlexNoticeWrapper aria-hidden>
+                        <FlexNoticeIcon />
+                      </FlexNoticeWrapper>
+                      <FormattedMessage id="common.itineraryDescriptions.reservationRequired" />
                     </SecondaryInfo>
                   )}
                   {/* If inline summary is enabled, don't show fare in side */}
@@ -514,7 +522,7 @@ class MetroItinerary extends NarrativeItinerary {
               accessibilityScoreGradationMap={localizedGradationMapWithIcons}
               itinerary={itinerary}
               LegIcon={LegIcon}
-              RouteDescriptionOverride={RouteBlock}
+              RouteDescriptionOverride={RouteBlockWithModeDecoration}
               setActiveLeg={setActiveLeg}
             />
           </>

@@ -5,13 +5,12 @@ import { Marker } from 'react-map-gl/maplibre'
 import centroid from '@turf/centroid'
 import distance from '@turf/distance'
 import polyline from '@mapbox/polyline'
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import * as narriativeActions from '../../actions/narrative'
 import { AppReduxState } from '../../util/state-types'
 import { boxShadowCss } from '../form/batch-styled'
-import { ComponentContext } from '../../util/contexts'
 import { doMergeItineraries } from '../narrative/narrative-itineraries'
 import {
   getActiveItinerary,
@@ -153,9 +152,6 @@ const ItinerarySummaryOverlay = ({
   visible,
   visibleItinerary
 }: Props) => {
-  // @ts-expect-error React context is populated dynamically
-  const { LegIcon } = useContext(ComponentContext)
-
   if (!itins || !visible) return <></>
   const indexedItins: ItinWithGeometry[] = addTrueIndex(
     itins.filter((i) => !!i).map(addItinLineString)
@@ -199,11 +195,7 @@ const ItinerarySummaryOverlay = ({
                   // TODO: restore setting visible itinerary on hover without
                   // causing endless re-render?
                 >
-                  <MetroItineraryRoutes
-                    expanded={false}
-                    itinerary={mp.itin}
-                    LegIcon={LegIcon}
-                  />
+                  <MetroItineraryRoutes expanded={false} itinerary={mp.itin} />
                   <TimeWrapper>
                     <FormattedDuration duration={mp.itin.duration} />
                   </TimeWrapper>
