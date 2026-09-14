@@ -23,6 +23,11 @@ actions:
       Your phone could not be verified. Perhaps the code you entered has
       expired. Please request a new code and try again.
     tripDeleted: Your trip has been deleted.
+common:
+  notifications:
+    email: email
+    push: push notifications
+    sms: SMS
 components:
   A11yPrefs:
     accessibilityRoutingByDefault: Prefer accessible trips by default

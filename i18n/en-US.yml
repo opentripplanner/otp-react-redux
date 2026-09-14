@@ -96,10 +96,6 @@ common:
     tram: Streetcar
     transit: Transit
     walk: Walk
-  notifications:
-    email: email
-    push: push notifications
-    sms: SMS
   places:
     custom: custom
     dining: dining
