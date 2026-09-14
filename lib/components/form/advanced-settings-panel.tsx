@@ -1,7 +1,6 @@
 import {
   addSettingsToButton,
   AdvancedModeSubsettingsContainer,
-  DropdownSelector,
   ModeSettingRenderer,
   populateSettingWithValue
 } from '@opentripplanner/trip-form'
@@ -15,14 +14,12 @@ import {
   ModeSetting,
   ModeSettingValues
 } from '@opentripplanner/types'
-import { QueryParamChangeEvent } from '@opentripplanner/trip-form/lib/types'
 import coreUtils from '@opentripplanner/core-utils'
 import React, {
+  lazy,
   RefObject,
   useCallback,
   useContext,
-  useEffect,
-  useMemo,
   useState
 } from 'react'
 import styled from 'styled-components'
@@ -38,13 +35,13 @@ import {
   getDefaultModeSettingValues
 } from '../../util/api'
 import { getAuth0Config } from '../../util/auth'
-import { getDependentName } from '../../util/user'
 import { IconWithText } from '../util/styledIcon'
 import { invisibleCss } from '../util/invisible-a11y-label'
 import { PersistenceConfig } from '../../util/config-types'
 import { toastPromise } from '../util/toasts'
 import { User } from '../user/types'
 import BackButton from '../util/back-button'
+import withSuspense from '../util/with-suspense'
 
 import {
   addCustomSettingLabels,
@@ -58,6 +55,10 @@ import {
 import { setModeButtonEnabled } from './batch-settings'
 import { styledCheckboxCss } from './styled'
 import { StyledTransparentButton } from './advanced-settings-button'
+
+const DependentSelector = withSuspense(
+  lazy(() => import('../user/mobility-profile/dependent-selector'))
+)
 
 const PanelOverlay = styled.div`
   height: 100%;
@@ -98,15 +99,7 @@ const HeaderContainer = styled.div`
 const InvisibleSubheader = styled.h2`
   ${invisibleCss}
 `
-const VisibleSubheader = styled.h2`
-  display: block;
-  font-size: 18px;
-  font-weight: 700;
-  height: auto;
-  margin: 1em 0;
-  position: static;
-  width: auto;
-`
+
 const ReturnToTripPlanButton = styled.button`
   align-items: center;
   background-color: var(--main-base-color, ${blue[900]});
@@ -121,17 +114,6 @@ const ReturnToTripPlanButton = styled.button`
 
   svg {
     margin-bottom: 7px;
-  }
-`
-
-const MobilityProfileContainer = styled.div`
-  margin: 60px 0 60px 5px;
-`
-
-const MobilityProfileDropdown = styled(DropdownSelector)`
-  margin: 20px 0px;
-  label {
-    padding-left: 0;
   }
 `
 
@@ -161,10 +143,8 @@ const AdvancedSettingsPanel = ({
   createOrUpdateUser,
   currentQuery,
   enabledModeButtons,
-  getDependentUserInfo,
   handlePlanTrip,
   innerRef,
-  loggedInUser,
   mobilityProfile,
   modeButtonOptions,
   modeSettingDefinitions,
@@ -180,10 +160,8 @@ const AdvancedSettingsPanel = ({
   createOrUpdateUser: (user: User, intl: IntlShape) => Promise<number>
   currentQuery: any
   enabledModeButtons: string[]
-  getDependentUserInfo: (userIds: string[], intl: IntlShape) => void
   handlePlanTrip: () => void
   innerRef: RefObject<HTMLDivElement>
-  loggedInUser?: User
   mobilityProfile: boolean
   modeButtonOptions: ModeButtonDefinition[]
   modeSettingDefinitions: ModeSetting[]
@@ -196,20 +174,8 @@ const AdvancedSettingsPanel = ({
 }): JSX.Element => {
   const intl = useIntl()
   const [closingBySave, setClosingBySave] = useState(false)
-  const [selectedMobilityProfile, setSelectedMobilityProfile] =
-    useState<string>(currentQuery.forEmail || loggedInUser?.email)
-  const dependents = useMemo(
-    () => loggedInUser?.dependents || [],
-    [loggedInUser]
-  )
 
   const usersCanSignIn = Boolean(getAuth0Config(persistence))
-
-  useEffect(() => {
-    if (mobilityProfile && dependents.length > 0) {
-      getDependentUserInfo(dependents, intl)
-    }
-  }, [dependents, getDependentUserInfo, intl, mobilityProfile])
 
   const baseColor = getBaseColor()
   const accentColor = baseColor || blue[900]
@@ -291,16 +257,6 @@ const AdvancedSettingsPanel = ({
     closePanel()
   }, [closePanel, setCloseAdvancedSettingsWithDelay])
 
-  const onMobilityProfileChange = useCallback(
-    (evt: QueryParamChangeEvent) => {
-      const value = evt.forEmail
-      setSelectedMobilityProfile(value as string)
-      setQueryParam({
-        forEmail: value
-      })
-    },
-    [setSelectedMobilityProfile, setQueryParam]
-  )
   return (
     <PanelOverlay className="advanced-settings" ref={innerRef}>
       <HeaderContainer>
@@ -321,34 +277,7 @@ const AdvancedSettingsPanel = ({
           </GlobalSettingsContainer>
         </>
       )}
-      {loggedInUser?.dependentsInfo?.length && (
-        <MobilityProfileContainer>
-          <VisibleSubheader>
-            <FormattedMessage id="components.MobilityProfile.MobilityPane.header" />
-          </VisibleSubheader>
-          <FormattedMessage id="components.MobilityProfile.MobilityPane.planTripDescription" />
-          <MobilityProfileDropdown
-            label={intl.formatMessage({
-              id: 'components.MobilityProfile.dropdownLabel'
-            })}
-            name="forEmail"
-            onChange={onMobilityProfileChange}
-            options={[
-              {
-                text: intl.formatMessage({
-                  id: 'components.MobilityProfile.myself'
-                }),
-                value: loggedInUser?.email
-              },
-              ...(loggedInUser?.dependentsInfo?.map((user) => ({
-                text: getDependentName(user),
-                value: user.email
-              })) || [])
-            ]}
-            value={selectedMobilityProfile}
-          />
-        </MobilityProfileContainer>
-      )}
+      {mobilityProfile && user && <DependentSelector />}
 
       <AdvancedModeSubsettingsContainer
         accentColor={accentColor}
@@ -407,7 +336,6 @@ const mapStateToProps = (state: AppReduxState) => {
     state.otp.modeSettingDefinitions ?? [],
     defaultModeSettingValues
   )
-  const user = state.user.loggedInUser
 
   const { autoPlan } = state.otp.config
   const saveAndReturnButton =
@@ -421,14 +349,13 @@ const mapStateToProps = (state: AppReduxState) => {
         modeButtons: urlSearchParams.get('modeButtons')
       })?.modeButtons?.filter((mb): mb is string => mb !== null) ??
       defaultModeButtons,
-    loggedInUser: state.user.loggedInUser,
     mobilityProfile: state.otp.config?.mobilityProfile || false,
     modeButtonOptions: modes?.modeButtons || [],
     modeSettingDefinitions: state.otp?.modeSettingDefinitions || [],
     modeSettingValues,
     persistence: state.otp.config?.persistence,
     saveAndReturnButton,
-    user
+    user: state.user.loggedInUser
   }
 }
 
