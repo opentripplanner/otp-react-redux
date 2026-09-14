@@ -13,19 +13,19 @@ import Loading from '../narrative/loading'
 interface TimeTableWrapperProps {
   /** A map of closed stops. Keys are route gtfsIds, values are sets of gtfsIds for stops that are closed on that route */
   closedStops?: Map<string, Set<string>>
+  getStopClosures: () => void
   getTimetableData: (params: TimetableDataParams) => void
   routeId: string
   stopClosuresError?: string
-  stopClosuresQuery: () => void
 }
 
 const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   const {
     closedStops,
+    getStopClosures,
     getTimetableData,
     routeId,
-    stopClosuresError,
-    stopClosuresQuery
+    stopClosuresError
   } = props
 
   const timetable = useSelector(
@@ -42,13 +42,13 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   )
 
   useEffect(() => {
-    stopClosuresQuery()
+    getStopClosures()
 
     getTimetableData({
       date: new Date(),
       routeGtfsId: routeId
     })
-  }, [getTimetableData, routeId, stopClosuresQuery])
+  }, [getTimetableData, routeId, getStopClosures])
 
   useEffect(() => {
     // TODO: improve handling of data fetching to avoid issues with useEffect and stale data.
@@ -157,8 +157,8 @@ const mapStateToProps = (state: AppReduxState) => {
 }
 
 const mapDispatchToProps = {
-  getTimetableData: apiActions.getTimetableData,
-  stopClosuresQuery: apiActions.stopClosuresQuery
+  getStopClosures: apiActions.getStopClosures,
+  getTimetableData: apiActions.getTimetableData
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TimeTableWrapper)
