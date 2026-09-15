@@ -2,6 +2,7 @@ import { Button } from 'react-bootstrap'
 import { Check } from '@styled-icons/fa-solid/Check'
 import { Clipboard } from '@styled-icons/fa-solid/Clipboard'
 import { connect } from 'react-redux'
+import { FileText } from '@styled-icons/fa-solid/FileText'
 import { Flag } from '@styled-icons/fa-solid/Flag'
 import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl'
 import { Print } from '@styled-icons/fa-solid/Print'
@@ -35,11 +36,11 @@ interface CopyUrlButtonProps {
   copyItineraryUrl?: string
 }
 
-interface CopyUrlButtonState {
+interface CopyButtonState {
   showCopied: boolean
 }
 
-class CopyUrlButton extends Component<CopyUrlButtonProps, CopyUrlButtonState> {
+class CopyUrlButton extends Component<CopyUrlButtonProps, CopyButtonState> {
   constructor(props: CopyUrlButtonProps) {
     super(props)
     this.state = { showCopied: false }
@@ -104,6 +105,48 @@ class PrintButton extends Component {
           <IconWithText Icon={Print}>
             <FormattedMessage id="common.forms.print" />
           </IconWithText>
+        </Button>
+      </div>
+    )
+  }
+}
+
+class CopyTextButton extends Component<{ textOnlyItinString?: string }, CopyButtonState> {
+    constructor(props: { textOnlyItinString?: string }) {
+    super(props)
+    this.state = { showCopied: false }
+  }
+  _resetState = () => this.setState({ showCopied: false })
+
+  _onClick = () => {
+    copyToClipboard(this.props.textOnlyItinString || '')
+    this.setState({ showCopied: true })
+    window.setTimeout(this._resetState, 2000)
+  }
+
+  render() {
+    return (
+      <div>
+        <InvisibleA11yLabel aria-live="assertive">
+          {this.state?.showCopied && (
+            <FormattedMessage id="components.TripTools.linkCopied" />
+          )}
+        </InvisibleA11yLabel>
+        <Button className="tool-button" onClick={this._onClick}>
+          {this.state.showCopied ? (
+            <span>
+              <IconWithText Icon={Check}>
+                <FormattedMessage id="components.TripTools.linkCopied" />
+              </IconWithText>
+            </span>
+          ) : (
+            <span>
+              <IconWithText Icon={FileText}>
+                <FormattedMessage id="components.TripTools.copyItineraryText" />
+              </IconWithText>
+            </span>
+          )}
+          
         </Button>
       </div>
     )
@@ -188,6 +231,7 @@ class LinkButton extends Component<LinkButtonProps> {
 
 interface TripToolsProps {
   buttonTypes?: string[]
+  textOnlyItinString?: string
   copyItineraryUrl?: string
   popupTarget?: string
   reportConfig?: ReportIssueConfig
@@ -209,9 +253,11 @@ const TripTools = ({
     'PRINT',
     'REPORT_ISSUE',
     'START_OVER',
-    'POPUP_LINK'
+    'POPUP_LINK',
+    'COPY_TEXT_ITIN'
   ],
   copyItineraryUrl,
+  textOnlyItinString,
   popupTarget,
   reportConfig,
   setPopupContent,
@@ -251,6 +297,9 @@ const TripTools = ({
             text={<FormattedMessage id="common.forms.startOver" />}
           />
         )
+        break
+      case 'COPY_TEXT_ITIN':
+        buttonComponents.push(<CopyTextButton textOnlyItinString={textOnlyItinString}/>)
         break
       case 'POPUP_LINK':
         if (popupTarget) {
