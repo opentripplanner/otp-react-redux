@@ -36,11 +36,11 @@ interface CopyUrlButtonProps {
   copyItineraryUrl?: string
 }
 
-interface CopyButtonState {
+interface CopyUrlButtonState {
   showCopied: boolean
 }
 
-class CopyUrlButton extends Component<CopyUrlButtonProps, CopyButtonState> {
+class CopyUrlButton extends Component<CopyUrlButtonProps, CopyUrlButtonState> {
   constructor(props: CopyUrlButtonProps) {
     super(props)
     this.state = { showCopied: false }
