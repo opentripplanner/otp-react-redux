@@ -1,6 +1,7 @@
 import { Button } from 'react-bootstrap'
-import { Check, FileText } from '@styled-icons/fa-solid'
+import { Check } from '@styled-icons/fa-solid/Check'
 import { connect } from 'react-redux'
+import { FileText } from '@styled-icons/fa-solid/FileText'
 import { FormattedMessage } from 'react-intl'
 import { Itinerary } from '@opentripplanner/types'
 import { textOnlyItineraryString } from '@opentripplanner/itinerary-body'
