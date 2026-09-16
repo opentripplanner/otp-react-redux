@@ -773,6 +773,7 @@ components:
 
       *** TECHNICAL DETAILS ***
     reportIssue: Report Issue
+    copyItineraryText: Copy Trip Text
   TripViewer:
     accessible: Accessible
     bicyclesAllowed: Allowed
