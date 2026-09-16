@@ -189,7 +189,6 @@ class LinkButton extends Component<LinkButtonProps> {
 
 interface TripToolsProps {
   buttonTypes?: string[]
-  textOnlyItinString?: string
   copyItineraryUrl?: string
   popupTarget?: string
   reportConfig?: ReportIssueConfig
