@@ -2,7 +2,6 @@ import { Button } from 'react-bootstrap'
 import { Check } from '@styled-icons/fa-solid/Check'
 import { Clipboard } from '@styled-icons/fa-solid/Clipboard'
 import { connect } from 'react-redux'
-import { FileText } from '@styled-icons/fa-solid/FileText'
 import { Flag } from '@styled-icons/fa-solid/Flag'
 import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl'
 import { Print } from '@styled-icons/fa-solid/Print'
@@ -29,6 +28,7 @@ import { IconWithText } from '../util/styledIcon'
 import { ReportIssueConfig } from '../../util/config-types'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import PopupTriggerText from '../app/popup-trigger-text'
+import CopyItineraryTextButton from './copy-text-itin-button'
 
 // Copy URL Button
 
@@ -105,48 +105,6 @@ class PrintButton extends Component {
           <IconWithText Icon={Print}>
             <FormattedMessage id="common.forms.print" />
           </IconWithText>
-        </Button>
-      </div>
-    )
-  }
-}
-
-class CopyTextButton extends Component<{ textOnlyItinString?: string }, CopyButtonState> {
-    constructor(props: { textOnlyItinString?: string }) {
-    super(props)
-    this.state = { showCopied: false }
-  }
-  _resetState = () => this.setState({ showCopied: false })
-
-  _onClick = () => {
-    copyToClipboard(this.props.textOnlyItinString || '')
-    this.setState({ showCopied: true })
-    window.setTimeout(this._resetState, 2000)
-  }
-
-  render() {
-    return (
-      <div>
-        <InvisibleA11yLabel aria-live="assertive">
-          {this.state?.showCopied && (
-            <FormattedMessage id="components.TripTools.linkCopied" />
-          )}
-        </InvisibleA11yLabel>
-        <Button className="tool-button" onClick={this._onClick}>
-          {this.state.showCopied ? (
-            <span>
-              <IconWithText Icon={Check}>
-                <FormattedMessage id="components.TripTools.linkCopied" />
-              </IconWithText>
-            </span>
-          ) : (
-            <span>
-              <IconWithText Icon={FileText}>
-                <FormattedMessage id="components.TripTools.copyItineraryText" />
-              </IconWithText>
-            </span>
-          )}
-          
         </Button>
       </div>
     )
@@ -257,7 +215,6 @@ const TripTools = ({
     'COPY_TEXT_ITIN'
   ],
   copyItineraryUrl,
-  textOnlyItinString,
   popupTarget,
   reportConfig,
   setPopupContent,
@@ -299,7 +256,7 @@ const TripTools = ({
         )
         break
       case 'COPY_TEXT_ITIN':
-        buttonComponents.push(<CopyTextButton textOnlyItinString={textOnlyItinString}/>)
+        buttonComponents.push(<CopyItineraryTextButton />)
         break
       case 'POPUP_LINK':
         if (popupTarget) {
