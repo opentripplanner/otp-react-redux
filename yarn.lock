@@ -3174,7 +3174,7 @@
     "@opentripplanner/core-utils" "^16.0.3"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@9.8.0", "@opentripplanner/itinerary-body@^9.7.0":
+"@opentripplanner/itinerary-body@9.8.0", "@opentripplanner/itinerary-body@^9.6.0":
   version "9.8.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-9.8.0.tgz#f5b37497fec5ba8b204ddd581ef105754ed05af1"
   integrity sha512-04Vua6wkIDnCilF3jzOYvIbw/lMHz/rfdElPT1o0puUgJOgElVJlbY83d9GBpR9QtbybH46sPAzSAMqlgYb3Ag==
@@ -3341,13 +3341,15 @@
     flat "^5.0.2"
     lodash.memoize "^4.1.2"
 
-"@opentripplanner/transitive-overlay@file:../../../../tmp/otp-ui-pkg/transitive-overlay":
+"@opentripplanner/transitive-overlay@7.3.0":
   version "7.3.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/transitive-overlay/-/transitive-overlay-7.3.0.tgz#7fd226fce9ba7f8d029d46a8cf2812cf0a6c973a"
+  integrity sha512-0bQwHsdCfp1UvuYox6/jSbC1RGrMMt9wf9c6L/mxt6ReZuonHy1aK66uN2d1aF3BQS7bDm4cq4BJmwZM0hHe0w==
   dependencies:
     "@mapbox/polyline" "^1.1.1"
     "@opentripplanner/building-blocks" "^3.2.0"
     "@opentripplanner/core-utils" "^16.1.0"
-    "@opentripplanner/itinerary-body" "^9.7.0"
+    "@opentripplanner/itinerary-body" "^9.6.0"
     "@turf/bbox" "^7.3.5"
     "@turf/bearing" "^7.3.5"
     "@turf/destination" "^7.3.5"
