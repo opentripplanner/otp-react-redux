@@ -1,7 +1,7 @@
 import { connect, useSelector } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import { matchPath } from 'react-router'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import TimeTable from '@opentripplanner/timetable'
 
 import * as apiActions from '../../actions/api'
@@ -19,6 +19,7 @@ interface TimeTableWrapperProps {
   stopClosuresError?: string
 }
 
+// eslint-disable-next-line complexity
 const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   const {
     closedStops,
@@ -30,6 +31,14 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
 
   const timetable = useSelector(
     (state: AppReduxState) => state.otp.ui.timetable
+  )
+
+  const handleRouteUrlClick = useCallback(
+    (e) => {
+      e.preventDefault()
+      window.open(timetable?.route?.url, undefined, 'width=1000,height=800')
+    },
+    [timetable]
   )
 
   const [directionId, setDirectionId] = useState<0 | 1>(0)
@@ -123,6 +132,11 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
         {(directionNames.get(directionId) || []).map((dirName) => (
           <span key={dirName}>{dirName}</span>
         ))}
+        {routeInformation.url && (
+          <a href={routeInformation.url} onClick={handleRouteUrlClick}>
+            <FormattedMessage id="components.Timetable.routeInformation" />
+          </a>
+        )}
       </div>
       {routeInformation && (
         <div style={{ overflow: 'scroll' }}>
