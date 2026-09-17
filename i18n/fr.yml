@@ -819,6 +819,7 @@ components:
 
       *** DÉTAILS TECHNIQUES ***
     reportIssue: Un problème ?
+    copyItineraryText: Copy Trip Text
   TripViewer:
     accessible: Accessible
     bicyclesAllowed: Autorisés
