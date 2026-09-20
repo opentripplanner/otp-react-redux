@@ -81,18 +81,6 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
     return invalid
   }, [routeInformation])
 
-  const directionNames = useMemo(() => {
-    const map = new Map<number, string[]>()
-
-    routeInformation?.patterns?.forEach((pattern: any) => {
-      const dirId = pattern.directionId
-      const names = (map.get(dirId) || []).concat([pattern.name])
-      map.set(dirId, names)
-    })
-
-    return map
-  }, [routeInformation])
-
   if (loading) {
     // TODO: add aria status region to the body
     return <Loading />
@@ -129,9 +117,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
         <button onClick={() => setDirectionId(directionId === 1 ? 0 : 1)}>
           <FormattedMessage id="components.Timetable.switchDirection" />
         </button>
-        {(directionNames.get(directionId) || []).map((dirName) => (
-          <span key={dirName}>{dirName}</span>
-        ))}
+        <span>{`${routeInformation.shortName}: ${routeInformation.desc}`}</span>
         {routeInformation.url && (
           <a href={routeInformation.url} onClick={handleRouteUrlClick}>
             <FormattedMessage id="components.Timetable.routeInformation" />
@@ -144,7 +130,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
             closedStops={closedStopsSet}
             directionId={directionId}
             includeDwellStops
-            route={timetable.route}
+            route={routeInformation}
             showBlockId
             timepointsOnly={timepointsOnly}
           />
