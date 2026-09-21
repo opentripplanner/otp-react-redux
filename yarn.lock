@@ -3323,11 +3323,12 @@
     "@opentripplanner/map-popup" "^8.0.4"
     flat "^5.0.2"
 
-"@opentripplanner/timetable@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/timetable/-/timetable-1.1.0.tgz#f859c74c2c4c79b249f29b85c1969eca5aed9753"
-  integrity sha512-xS2RPTcUzu33WXTKNjv8Yjsyosf7QJr8t71ZAbv4EDrhA/qswP+tPpjwgJdAA0l3YIkiIF/neq06zC6WF4RGBQ==
+"@opentripplanner/timetable@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/timetable/-/timetable-1.2.0.tgz#d7a773fdb4023db3aee65c71041af6d5f84a1152"
+  integrity sha512-+KReLm7jYv5OPEuTIwT1BkitZfichhoCUcy7EX2m8Lu6kkkK9WTcLDLGkPN8RtiF+1sNKWSxXswMkLK606lN6g==
   dependencies:
+    "@opentripplanner/building-blocks" "^3.2.0"
     toposort "^2.0.2"
 
 "@opentripplanner/transit-vehicle-overlay@7.1.1":
