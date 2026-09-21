@@ -57,7 +57,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
     getStopClosures()
 
     getTimetableData({
-      // The Date constuctor has a quirk: passing in yyyy-MM-dd will create the date in UTC, causing
+      // The Date constructor has a quirk: passing in yyyy-MM-dd will create the date in UTC, causing
       // issues with timezone offsets. Passing in yyyy/MM/dd will honor the local machine's timezone
       date: new Date(date.replaceAll('-', '/')),
       routeGtfsId: routeId
