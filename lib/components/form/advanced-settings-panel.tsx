@@ -37,7 +37,7 @@ import {
 import { getAuth0Config } from '../../util/auth'
 import { IconWithText } from '../util/styledIcon'
 import { invisibleCss } from '../util/invisible-a11y-label'
-import { isModuleEnabled } from '../../util/config'
+import { isModuleEnabled, Modules } from '../../util/config'
 import { PersistenceConfig } from '../../util/config-types'
 import { toastPromise } from '../util/toasts'
 import { User } from '../user/types'
@@ -350,7 +350,7 @@ const mapStateToProps = (state: AppReduxState) => {
         modeButtons: urlSearchParams.get('modeButtons')
       })?.modeButtons?.filter((mb): mb is string => mb !== null) ??
       defaultModeButtons,
-    mobilityProfile: isModuleEnabled(state, 'mobilityProfile'),
+    mobilityProfile: isModuleEnabled(state, Modules.MOBILITY_PROFILE),
     modeButtonOptions: modes?.modeButtons || [],
     modeSettingDefinitions: state.otp?.modeSettingDefinitions || [],
     modeSettingValues,

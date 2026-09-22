@@ -4,7 +4,7 @@ import { FormikProps } from 'formik'
 import React from 'react'
 
 import { AppReduxState } from '../../util/state-types'
-import { isModuleEnabled } from '../../util/config'
+import { isModuleEnabled, Modules } from '../../util/config'
 import { TransitModeConfig } from '../../util/config-types'
 import PageTitle from '../util/page-title'
 
@@ -108,7 +108,7 @@ const mapStateToProps = (state: AppReduxState) => {
     (mode: TransitModeConfig) => mode.showWheelchairSetting
   )
   return {
-    mobilityProfileEnabled: isModuleEnabled(state, 'mobilityProfile'),
+    mobilityProfileEnabled: isModuleEnabled(state, Modules.MOBILITY_PROFILE),
     wheelchairEnabled
   }
 }

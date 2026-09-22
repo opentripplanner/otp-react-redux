@@ -20,7 +20,7 @@ import {
 } from '../../util/constants'
 import { AppReduxState } from '../../util/state-types'
 import { ComponentContext } from '../../util/contexts'
-import { isModuleEnabled } from '../../util/config'
+import { isModuleEnabled, Modules } from '../../util/config'
 import { PopupTargetConfig } from '../../util/config-types'
 import { RETURN_TO_CURRENT_ROUTE } from '../../util/ui'
 import AppFrame from '../app/app-frame'
@@ -140,7 +140,7 @@ const mapStateToProps = (state: AppReduxState) => {
       currentPath === CREATE_ACCOUNT_VERIFY_PATH,
     isWizard: !!basePath,
     loggedInUser: state.user.loggedInUser,
-    mobilityProfile: isModuleEnabled(state, 'mobilityProfile'),
+    mobilityProfile: isModuleEnabled(state, Modules.MOBILITY_PROFILE),
     popupContent: state.otp.ui.popup
   }
 }
