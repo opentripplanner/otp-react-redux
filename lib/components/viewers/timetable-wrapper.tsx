@@ -1,4 +1,5 @@
 import { connect, useSelector } from 'react-redux'
+import { format } from 'date-fns'
 import { FormattedMessage } from 'react-intl'
 import { matchPath } from 'react-router'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
@@ -44,6 +45,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   const [directionId, setDirectionId] = useState<0 | 1>(0)
   const [timepointsOnly, setTimepointsOnly] = useState(true)
   const [loading, setLoading] = useState(true)
+  const [date, setDate] = useState(format(new Date(), 'yyyy-MM-dd'))
 
   const closedStopsSet = useMemo(
     () => closedStops?.get(routeId),
@@ -51,13 +53,16 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   )
 
   useEffect(() => {
+    setLoading(true)
     getStopClosures()
 
     getTimetableData({
-      date: new Date(),
+      // The Date constructor has a quirk: passing in yyyy-MM-dd will create the date in UTC, causing
+      // issues with timezone offsets. Passing in yyyy/MM/dd will honor the local machine's timezone
+      date: new Date(date.replaceAll('-', '/')),
       routeGtfsId: routeId
     })
-  }, [getTimetableData, routeId, getStopClosures])
+  }, [date, getTimetableData, routeId, getStopClosures])
 
   const routeInformation = useMemo(() => timetable?.route, [timetable])
 
@@ -80,6 +85,10 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
 
     return invalid
   }, [routeInformation])
+
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.length) setDate(e.target.value)
+  }
 
   if (loading) {
     // TODO: add aria status region to the body
@@ -123,6 +132,15 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
             <FormattedMessage id="components.Timetable.routeInformation" />
           </a>
         )}
+        <label htmlFor="date-picker">
+          <FormattedMessage id="components.Timetable.timetableDate" />
+        </label>
+        <input
+          id="date-picker"
+          onChange={handleDateChange}
+          type="date"
+          value={date}
+        />
       </div>
       {routeInformation && (
         <div style={{ overflow: 'scroll' }}>
