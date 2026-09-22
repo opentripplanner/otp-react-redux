@@ -3,6 +3,7 @@ import { useIntl } from 'react-intl'
 import React, { useCallback } from 'react'
 
 import { AppReduxState } from '../../util/state-types'
+import { isModuleEnabled } from '../../util/config'
 
 import { EditedUser } from './types'
 import Wizard, { WizardProps } from './wizard'
@@ -52,7 +53,7 @@ const NewAccountWizard = ({
 // Get the new account pages based on the configuration's mobilityProfile flag.
 const mapStateToProps = (state: AppReduxState) => {
   return {
-    pages: state.otp.config.mobilityProfile
+    pages: isModuleEnabled(state, 'mobilityprofile')
       ? [
           'terms',
           'mobilityDevices',
