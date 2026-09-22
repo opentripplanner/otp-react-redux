@@ -77,7 +77,7 @@ class AccountRoute extends Component<Props> {
       this.props
     const components = this.context
     const modules = ['account']
-    if (mobilityProfile) modules.push('mobilityprofile')
+    if (mobilityProfile) modules.push('mobilityProfile')
 
     return (
       <AppModule load={modules}>
@@ -140,7 +140,7 @@ const mapStateToProps = (state: AppReduxState) => {
       currentPath === CREATE_ACCOUNT_VERIFY_PATH,
     isWizard: !!basePath,
     loggedInUser: state.user.loggedInUser,
-    mobilityProfile: isModuleEnabled(state, 'mobilityprofile'),
+    mobilityProfile: isModuleEnabled(state, 'mobilityProfile'),
     popupContent: state.otp.ui.popup
   }
 }

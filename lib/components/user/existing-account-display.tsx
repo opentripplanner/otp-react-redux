@@ -108,7 +108,7 @@ const mapStateToProps = (state: AppReduxState) => {
     (mode: TransitModeConfig) => mode.showWheelchairSetting
   )
   return {
-    mobilityProfileEnabled: isModuleEnabled(state, 'mobilityprofile'),
+    mobilityProfileEnabled: isModuleEnabled(state, 'mobilityProfile'),
     wheelchairEnabled
   }
 }

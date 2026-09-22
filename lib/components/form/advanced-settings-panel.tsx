@@ -350,7 +350,7 @@ const mapStateToProps = (state: AppReduxState) => {
         modeButtons: urlSearchParams.get('modeButtons')
       })?.modeButtons?.filter((mb): mb is string => mb !== null) ??
       defaultModeButtons,
-    mobilityProfile: isModuleEnabled(state, 'mobilityprofile'),
+    mobilityProfile: isModuleEnabled(state, 'mobilityProfile'),
     modeButtonOptions: modes?.modeButtons || [],
     modeSettingDefinitions: state.otp?.modeSettingDefinitions || [],
     modeSettingValues,

@@ -53,7 +53,7 @@ const NewAccountWizard = ({
 // Get the new account pages based on the configuration's mobilityProfile flag.
 const mapStateToProps = (state: AppReduxState) => {
   return {
-    pages: isModuleEnabled(state, 'mobilityprofile')
+    pages: isModuleEnabled(state, 'mobilityProfile')
       ? [
           'terms',
           'mobilityDevices',
