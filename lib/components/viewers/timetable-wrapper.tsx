@@ -151,6 +151,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
             route={routeInformation}
             showBlockId
             showNotices
+            showTripShortName
             timepointsOnly={timepointsOnly}
           />
         </div>
