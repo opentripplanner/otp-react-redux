@@ -1,5 +1,3 @@
-import { Route } from '@opentripplanner/types'
-
 import { AppReduxState } from './state-types'
 import { ModuleConfig } from './config-types'
 
@@ -25,8 +23,8 @@ export function isModuleEnabled(
 }
 
 export function checkForRouteModeOverride(
-  route: Route,
+  route: { id: string; mode: string },
   overrideConfig: Record<string, string>
-): string | undefined {
+): string {
   return overrideConfig?.[route.id] || route.mode
 }

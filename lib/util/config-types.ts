@@ -417,6 +417,7 @@ export type ExtraView = {
 
 export interface ModuleConfig {
   id: string
+  options?: any
 }
 
 /** The main application configuration object */

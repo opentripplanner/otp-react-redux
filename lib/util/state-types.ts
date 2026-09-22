@@ -83,7 +83,7 @@ export interface UserState {
 }
 
 export interface AppReduxState {
-  calltaker?: any // TODO
+  callTaker?: any // TODO
   otp: OtpState
   router: RouterState
   user: UserState
