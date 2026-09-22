@@ -51,6 +51,11 @@ export interface OtpState {
     popup: PopupTargetConfig
     printView: boolean
     routeViewer: any
+    stopClosures: {
+      closedStops?: Map<string, Set<string>>
+      error?: string
+    }
+    timetable: any
     viewedRoute: {
       patternId: string
       routeId: string

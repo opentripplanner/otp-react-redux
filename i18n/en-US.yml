@@ -20,6 +20,7 @@ actions:
   map:
     currentLocation: (Current Location)
 common:
+  closedStop: Closed Stop
   coordinates: "{lat}, {lon}"
   currentlySelected: " (Currently selected)"
   dateExpressions:
@@ -425,6 +426,14 @@ components:
   SwitchButton:
     defaultContent: Switch
     switchLocations: Switch locations
+  Timetable:
+    errorLoadingStopClosures: Error loading stop closures
+    errorLoadingTimetable: Error loading timetable
+    routeInformation: Route Information
+    showAllStops: Show All Stops
+    showTimepointsOnly: Show Timepoints Only
+    switchDirection: Switch Direction
+    timetable: Timetable
   TransitVehicleOverlay:
     in_transit_to: "Next stop: {stop}"
     incoming_at: "Approaching: {stop}"
@@ -437,6 +446,7 @@ components:
     arriveAt: "Arrive at "
     leaveAt: "Leave at "
   TripTools:
+    copyItineraryText: Copy Trip Text
     copyLink: Copy Link
     header: Trip Tools
     linkCopied: Copied

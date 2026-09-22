@@ -1,3 +1,13 @@
+import { lazy } from 'react'
+
+import withSuspense from '../components/util/with-suspense'
+
+import { TIMETABLE_PATH } from './constants'
+
+const TimetableWrapper = lazy(
+  () => import('../components/viewers/timetable-wrapper')
+)
+
 /**
  * Contains mapping of the component(s) to display for each URL route.
  *
@@ -31,6 +41,11 @@ const routes = [
       '/trip/:id'
     ],
     shouldRenderWebApp: true
+  },
+  {
+    a11yIgnore: true,
+    component: withSuspense(TimetableWrapper),
+    path: TIMETABLE_PATH(':routeId')
   }
 ]
 
