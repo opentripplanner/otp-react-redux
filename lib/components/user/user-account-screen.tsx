@@ -19,7 +19,6 @@ import { formattedToastSuccessMessage, toastPromise } from '../util/toasts'
 import { RETURN_TO_CURRENT_ROUTE } from '../../util/ui'
 
 import { EditedUser, User } from './types'
-import AccountPage from './account-page'
 import ExistingAccountDisplay from './existing-account-display'
 import MobilityWizard from './mobility-profile/mobility-wizard'
 import NewAccountWizard from './new-account-wizard'
@@ -162,56 +161,54 @@ class UserAccountScreen extends Component<Props> {
   }
 
   render() {
-    const { isWizard, loggedInUser } = this.props
+    const { loggedInUser } = this.props
     const loggedInUserWithNotificationArray = {
       ...loggedInUser,
       notificationChannel: loggedInUser.notificationChannel?.split(',') || []
     }
     return (
-      <AccountPage subnav={!isWizard}>
-        <Wrapper>
-          <Formik
-            // Force Formik to reload initialValues when we update them (e.g. user gets assigned an id).
-            enableReinitialize
-            initialValues={loggedInUserWithNotificationArray}
-            onSubmit={this._handleFieldChange}
-          >
-            {
-              // Formik props provide access to the current user data state and errors,
-              // (in props.values, props.touched, props.errors)
-              // and to its own blur/change/submit event handlers that automate the state.
-              // We pass the Formik props below to the components rendered so that individual controls
-              // can be wired to be managed by Formik.
-              (formikProps) => {
-                const newFormikProps = {
-                  ...formikProps,
-                  // Use our own handleChange handler that wraps around Formik's.
-                  handleChange: this._handleInputChange(formikProps)
-                }
-                return (
-                  <Switch>
-                    <Route exact path={CREATE_ACCOUNT_VERIFY_PATH}>
-                      <VerifyEmailScreen />
-                    </Route>
-                    <Route path={CREATE_ACCOUNT_PATH}>
-                      <NewAccountWizard
-                        formikProps={newFormikProps}
-                        onCreate={this._handleCreateNewUser}
-                      />
-                    </Route>
-                    <Route path={MOBILITY_PATH}>
-                      <MobilityWizard formikProps={newFormikProps} />
-                    </Route>
-                    <Route>
-                      <ExistingAccountDisplay {...newFormikProps} />
-                    </Route>
-                  </Switch>
-                )
+      <Wrapper>
+        <Formik
+          // Force Formik to reload initialValues when we update them (e.g. user gets assigned an id).
+          enableReinitialize
+          initialValues={loggedInUserWithNotificationArray}
+          onSubmit={this._handleFieldChange}
+        >
+          {
+            // Formik props provide access to the current user data state and errors,
+            // (in props.values, props.touched, props.errors)
+            // and to its own blur/change/submit event handlers that automate the state.
+            // We pass the Formik props below to the components rendered so that individual controls
+            // can be wired to be managed by Formik.
+            (formikProps) => {
+              const newFormikProps = {
+                ...formikProps,
+                // Use our own handleChange handler that wraps around Formik's.
+                handleChange: this._handleInputChange(formikProps)
               }
+              return (
+                <Switch>
+                  <Route exact path={CREATE_ACCOUNT_VERIFY_PATH}>
+                    <VerifyEmailScreen />
+                  </Route>
+                  <Route path={CREATE_ACCOUNT_PATH}>
+                    <NewAccountWizard
+                      formikProps={newFormikProps}
+                      onCreate={this._handleCreateNewUser}
+                    />
+                  </Route>
+                  <Route path={MOBILITY_PATH}>
+                    <MobilityWizard formikProps={newFormikProps} />
+                  </Route>
+                  <Route>
+                    <ExistingAccountDisplay {...newFormikProps} />
+                  </Route>
+                </Switch>
+              )
             }
-          </Formik>
-        </Wrapper>
-      </AccountPage>
+          }
+        </Formik>
+      </Wrapper>
     )
   }
 }
@@ -219,12 +216,7 @@ class UserAccountScreen extends Component<Props> {
 // connect to the redux store
 
 const mapStateToProps = (state: AppReduxState) => {
-  const { pathname } = state.router.location
-  const basePath = [CREATE_ACCOUNT_PATH, MOBILITY_PATH].find((path) =>
-    pathname.startsWith(path)
-  )
   return {
-    isWizard: !!basePath,
     loggedInUser: state.user.loggedInUser
   }
 }
