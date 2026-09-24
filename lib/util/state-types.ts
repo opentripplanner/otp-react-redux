@@ -50,7 +50,7 @@ export interface OtpState {
     printView: boolean
     routeViewer: any
     stopClosures: {
-      closedStops?: Map<string, Set<string>>
+      closedStops?: Set<string>
       error?: string
     }
     timetable: any
