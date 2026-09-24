@@ -41,21 +41,37 @@ modes:
       label: Transit
       modes:
         - mode: TRANSIT
-    - iconName: walk
-      key: walk
-      label: Walk
-      modes:
         - mode: WALK
+          input:
+            direct: [WALK]
+            directOnly: true
+        - mode: WALK
+          input:
+            direct: [WALK]
     - iconName: bicycle
-      key: bike
+      key: bicycle
       label: Bike
       modes:
         - mode: BICYCLE
+          input:
+            direct: [BICYCLE]
+            directOnly: true
+        - mode: BICYCLE
+          input:
+            transit:
+              access: [BICYCLE]
+              egress: [BICYCLE]
+              transfer: [BICYCLE]
+            transitOnly: true
     - iconName: car
       key: car
       label: Car
       modes:
         - mode: CAR
+          input:
+            transit:
+              access: [CAR_PARKING]
+              egress: [WALK]
   initialState:
     enabledModeButtons:
       - walk
