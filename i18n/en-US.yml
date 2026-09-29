@@ -318,7 +318,7 @@ components:
       TO: Destination
   PlaceShortcut:
     enterAlert: >
-      Enter origin/destination in the form (or set via map click)  and click the
+      Enter origin/destination in the form (or set via map click) and click the
       resulting marker to set as {placeType} location.
     setAddressForPlaceType: Set your {placeType} address
   PlanFirstLastButtons:
@@ -496,11 +496,11 @@ components:
     rememberSearches: Remember recent searches/places?
     stopId: "Stop ID: {stopId}"
     storageDisclaimer: >
-      Any preferences, places, or settings you opt  to save will be stored in
-      the local storage of your browser.  TriMet will not have access to
-      knowledge about your home, work,  or any other location. At any point you
-      can opt to turn off  remembering recent places/searches and clear your
-      saved home/work locations and favorite stops.
+      Any preferences, places, or settings you opt to save will be stored in the
+      local storage of your browser.  TriMet will not have access to knowledge
+      about your home, work, or any other location. At any point you can opt to
+      turn off remembering recent places/searches and clear your saved home/work
+      locations and favorite stops.
   ViewSwitcher:
     nearby: Nearby
     switcher: Switcher
