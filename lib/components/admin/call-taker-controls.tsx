@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-import { GraduationCap } from '@styled-icons/fa-solid/GraduationCap'
 import { History } from '@styled-icons/fa-solid/History'
 import { injectIntl, IntlShape, WrappedComponentProps } from 'react-intl'
 import { Phone } from '@styled-icons/fa-solid/Phone'
@@ -35,7 +34,6 @@ type Props = {
   endCall: (intl: IntlShape) => void
   fetchCalls: (intl: IntlShape) => void
   resetAndToggleCallHistory: () => void
-  session: string
 } & WrappedComponentProps
 
 /**
@@ -47,11 +45,9 @@ type Props = {
  */
 class CallTakerControls extends Component<Props> {
   componentDidUpdate(prevProps: Props) {
-    const { callTakerEnabled, fetchCalls, intl, session } = this.props
-    // Once session is available, fetch calls.
-    if (session && !prevProps.session) {
-      if (callTakerEnabled) fetchCalls(intl)
-    }
+    const { callTakerEnabled, fetchCalls, intl } = this.props
+    // Fetch calls.
+    if (callTakerEnabled) fetchCalls(intl)
   }
 
   _onClickCall = () => {
@@ -90,10 +86,8 @@ class CallTakerControls extends Component<Props> {
   _callInProgress = () => Boolean(this.props.callTaker.activeCall)
 
   render() {
-    const { callTaker, callTakerEnabled, resetAndToggleCallHistory, session } =
+    const { callTaker, callTakerEnabled, resetAndToggleCallHistory } =
       this.props
-    // If no valid session is found, do not show calltaker controls.
-    if (!session) return null
     return (
       <ControlsContainer>
         {/* Start/End Call button */}
@@ -128,8 +122,7 @@ class CallTakerControls extends Component<Props> {
 const mapStateToProps = (state: Record<string, any>) => {
   return {
     callTaker: state.callTaker,
-    callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),
-    session: state.callTaker.session
+    callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER)
   }
 }
 

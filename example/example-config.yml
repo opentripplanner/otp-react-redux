@@ -309,10 +309,6 @@ modes:
     - mode: BICYCLE
       label: Transit + Bike
 
-# # The following modules require the datastoreUrl to be set.
-# # trinetReDirect is optional, however omitting it requires pre-configured sessions.
-# datastoreUrl: https://localhost:9000
-# trinetReDirect: https://localhost:9001
 # modules:
 #   # Provides UI elements for Call Takers to record calls/trip queries.
 #   - id: call
