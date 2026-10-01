@@ -12,8 +12,7 @@ import { TimetableDataParams } from '../util/types'
 import Loading from '../narrative/loading'
 
 interface TimeTableWrapperProps {
-  /** A map of closed stops. Keys are route gtfsIds, values are sets of gtfsIds for stops that are closed on that route */
-  closedStops?: Map<string, Set<string>>
+  closedStops?: Set<string>
   getStopClosures: () => void
   getTimetableData: (params: TimetableDataParams) => void
   routeId: string
@@ -46,11 +45,6 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   const [timepointsOnly, setTimepointsOnly] = useState(true)
   const [loading, setLoading] = useState(true)
   const [date, setDate] = useState(format(new Date(), 'yyyy-MM-dd'))
-
-  const closedStopsSet = useMemo(
-    () => closedStops?.get(routeId),
-    [closedStops, routeId]
-  )
 
   useEffect(() => {
     setLoading(true)
@@ -145,7 +139,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
       {routeInformation && (
         <div style={{ overflow: 'scroll' }}>
           <TimeTable
-            closedStops={closedStopsSet}
+            closedStops={closedStops}
             directionId={directionId}
             includeDwellStops
             route={routeInformation}
