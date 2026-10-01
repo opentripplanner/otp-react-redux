@@ -27,6 +27,7 @@ import {
   carRentalQuery,
   findFeeds,
   findStopTimesForStop,
+  getStopClosures,
   rentalVehicleQuery
 } from '../../actions/api'
 import { ComponentContext } from '../../util/contexts'
@@ -165,6 +166,7 @@ interface DefaultMapProps {
   bikeRentalStations: VehicleRentalStation[]
   carRentalQuery: () => void
   carRentalStations: VehicleRentalStation[]
+  closedStops?: Set<string>
   config: AppConfig
   getCurrentPosition: GetCurrentPositionFunction
   intl: IntlShape
@@ -335,6 +337,8 @@ class DefaultMap extends Component<DefaultMapProps> {
 
     // Fetch feeds in the background
     this.props.findFeeds()
+    // Load closed stops into state for usage throughout UI (map popup, timetable, itinerary, etc.)
+    this.props.getStopClosures()
   }
 
   componentDidUpdate(prevProps) {
@@ -355,6 +359,7 @@ class DefaultMap extends Component<DefaultMapProps> {
       bikeRentalStations,
       carRentalQuery,
       carRentalStations,
+      closedStops,
       config,
       feeds,
       getCurrentPosition,
@@ -547,7 +552,8 @@ class DefaultMap extends Component<DefaultMapProps> {
                   viewedRouteStops,
                   config.companies,
                   this.getEntityPrefix,
-                  feeds
+                  feeds,
+                  closedStops
                 )
               default:
                 return null
@@ -602,6 +608,7 @@ const mapStateToProps = (state) => {
     activeNearbyFilters,
     bikeRentalStations: state.otp.overlay.bikeRental.stations,
     carRentalStations: state.otp.overlay.carRental.stations,
+    closedStops: state.otp.ui.stopClosures.closedStops,
     config: state.otp.config,
     currentPositionError,
     feeds: state.otp.transitIndex.feeds,
@@ -623,6 +630,7 @@ const mapDispatchToProps = {
   findFeeds,
   findStopTimesForStop,
   getCurrentPosition,
+  getStopClosures,
   rentalVehicleQuery,
   setLocation,
   setMapPopupLocationAndGeocode,

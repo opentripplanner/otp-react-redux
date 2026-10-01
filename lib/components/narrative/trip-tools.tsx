@@ -29,6 +29,8 @@ import { ReportIssueConfig } from '../../util/config-types'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import PopupTriggerText from '../app/popup-trigger-text'
 
+import CopyItineraryTextButton from './copy-text-itin-button'
+
 // Copy URL Button
 
 interface CopyUrlButtonProps {
@@ -209,7 +211,8 @@ const TripTools = ({
     'PRINT',
     'REPORT_ISSUE',
     'START_OVER',
-    'POPUP_LINK'
+    'POPUP_LINK',
+    'COPY_TEXT_ITIN'
   ],
   copyItineraryUrl,
   popupTarget,
@@ -251,6 +254,9 @@ const TripTools = ({
             text={<FormattedMessage id="common.forms.startOver" />}
           />
         )
+        break
+      case 'COPY_TEXT_ITIN':
+        buttonComponents.push(<CopyItineraryTextButton />)
         break
       case 'POPUP_LINK':
         if (popupTarget) {

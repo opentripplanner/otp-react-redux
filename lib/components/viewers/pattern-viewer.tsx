@@ -1,7 +1,8 @@
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { TransitOperator } from '@opentripplanner/types'
-import React, { useCallback, useContext, useEffect } from 'react'
+import React, { useCallback, useContext, useEffect, useMemo } from 'react'
+import styled from 'styled-components'
 
 import * as apiActions from '../../actions/api'
 import * as uiActions from '../../actions/ui'
@@ -9,11 +10,14 @@ import { ComponentContext } from '../../util/contexts'
 import { DARK_TEXT_GREY } from '../util/colors'
 import { getRouteOperator } from '../../util/state'
 import { getRouteOrPatternViewerTitle } from '../../util/viewer'
+import { isModuleEnabled, Modules } from '../../util/config'
+import { NewWindowIconA11y } from '../util/externalLink'
 import {
   SetViewedRouteHandler,
   ViewedRouteObject,
   ViewedRouteState
 } from '../util/types'
+import { TIMETABLE_PATH } from '../../util/constants'
 import BackButton from '../util/back-button'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import PageTitle from '../util/page-title'
@@ -22,7 +26,17 @@ import { RouteRowDetails } from './route-row'
 import RouteDetails from './route-details'
 import VehiclePositionRetriever from './vehicle-position-retriever'
 
+const TimetableLink = styled.a`
+  align-items: center;
+  display: flex;
+  gap: 5px;
+  margin-bottom: 12px;
+  margin-left: 16px;
+  min-width: 10rem;
+`
+
 interface Props {
+  callTakerEnabled?: boolean
   findRoutesIfNeeded: () => void
   setViewedRoute: SetViewedRouteHandler
   transitOperators: TransitOperator[]
@@ -32,6 +46,7 @@ interface Props {
 }
 
 const PatternViewer = ({
+  callTakerEnabled,
   findRoutesIfNeeded,
   setViewedRoute,
   transitOperators,
@@ -47,6 +62,16 @@ const PatternViewer = ({
   const routePatternKeys = route?.patterns && Object.keys(route?.patterns)
   const patternId = viewedRoute?.patternId
   const routeId = viewedRoute?.routeId || null
+
+  const timetableHref = useMemo(() => `/#${TIMETABLE_PATH(routeId)}`, [routeId])
+
+  const handleTimetableButtonClick = useCallback(
+    (e) => {
+      e.preventDefault()
+      window.open(timetableHref, undefined, 'width=1000,height=800')
+    },
+    [timetableHref]
+  )
 
   /**
    * If we're viewing a pattern's stops, route to main route viewer.
@@ -115,6 +140,17 @@ const PatternViewer = ({
             )}
           </h1>
         </div>
+        {callTakerEnabled && (
+          <TimetableLink
+            href={timetableHref}
+            onClick={handleTimetableButtonClick}
+            rel="noreferrer"
+            target="_blank"
+          >
+            <FormattedMessage id="components.Timetable.timetable" />
+            <NewWindowIconA11y size={14} />
+          </TimetableLink>
+        )}
         <RouteDetails operator={operator} patternId={patternId} route={route} />
       </div>
     )
@@ -128,6 +164,7 @@ const PatternViewer = ({
 const mapStateToProps = (state: any) => {
   const { viewedRoute } = state.otp.ui
   return {
+    callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),
     transitOperators: state.otp.config.transitOperators,
     useRouteColorAsBackground:
       state.otp.config?.routeViewer?.useRouteColorAsBackground,

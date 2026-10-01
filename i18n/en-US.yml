@@ -42,6 +42,7 @@ actions:
       expired. Please request a new code and try again.
     tripDeleted: Your trip has been deleted.
 common:
+  closedStop: Closed Stop
   coordinates: "{lat}, {lon}"
   currentlySelected: " (Currently selected)"
   dateExpressions:
@@ -95,6 +96,7 @@ common:
     noItineraryToDisplay: No itinerary to display.
     relativeCo2: |
       {co2} {isMore, select, true {more} other {less} } CO₂ than driving alone
+    reservationRequired: Reservation required
     timeStartEnd: "{start} – {end}"
   linkOpensNewWindow: (Opens new window)
   modes:
@@ -629,6 +631,15 @@ components:
       Optional: I consent to the Trip Planner storing my historical planned
       trips in order to improve transit services in my area.
       <termsOfStorageLink>More info...</termsOfStorageLink>
+  Timetable:
+    errorLoadingStopClosures: Error loading stop closures
+    errorLoadingTimetable: Error loading timetable
+    routeInformation: Route Information
+    showAllStops: Show All Stops
+    showTimepointsOnly: Show Timepoints Only
+    switchDirection: Switch Direction
+    timetable: Timetable
+    timetableDate: Select Date
   TransitVehicleOverlay:
     in_transit_to: "Next stop: {stop}"
     incoming_at: "Approaching: {stop}"
@@ -738,6 +749,7 @@ components:
     notificationsSnoozed: Notifications are snoozed for today.
     timeAndDuration: Trip time and duration
   TripTools:
+    copyItineraryText: Copy Trip Text
     copyLink: Copy Link
     header: Trip Tools
     linkCopied: Copied

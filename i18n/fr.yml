@@ -55,6 +55,7 @@ actions:
       réessayez.
     tripDeleted: Votre trajet a été supprimé.
 common:
+  closedStop: Closed Stop
   coordinates: "{lat}; {lon}"
   currentlySelected: " (actuellement sélectionné)"
   dateExpressions:
@@ -108,6 +109,7 @@ common:
     noItineraryToDisplay: Aucun trajet à afficher.
     relativeCo2: |
       {co2} de CO₂ en {isMore, select, true {plus} other {moins} } qu'en voiture
+    reservationRequired: Réservation obligatoire
     timeStartEnd: "{start} – {end}"
   linkOpensNewWindow: (Ouvre une nouvelle fenêtre)
   modes:
@@ -664,6 +666,15 @@ components:
       Facultatif: Je consens à ce que le Planificateur de trajets sauvegarde mes
       recherches afin d'améliorer les transports publics dans ma region.
       <termsOfStorageLink>Plus d'informations...</termsOfStorageLink>
+  Timetable:
+    errorLoadingStopClosures: Error loading stop closures
+    errorLoadingTimetable: Error loading timetable
+    routeInformation: Informations sur la ligne
+    showAllStops: Show All Stops
+    showTimepointsOnly: Show Timepoints Only
+    switchDirection: Switch Direction
+    timetable: Timetable
+    timetableDate: Select Date
   TransitVehicleOverlay:
     in_transit_to: "Prochain arrêt : {stop}"
     incoming_at: Approchant {stop}
@@ -809,6 +820,7 @@ components:
 
       *** DÉTAILS TECHNIQUES ***
     reportIssue: Un problème ?
+    copyItineraryText: Copy Trip Text
   TripViewer:
     accessible: Accessible
     bicyclesAllowed: Autorisés
