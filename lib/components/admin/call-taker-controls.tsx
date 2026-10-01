@@ -27,6 +27,7 @@ type Props = {
       calls: {
         data: Array<any>
       }
+      fetched: boolean
       visible: boolean
     }
   }
@@ -45,9 +46,10 @@ type Props = {
  */
 class CallTakerControls extends Component<Props> {
   componentDidUpdate(prevProps: Props) {
-    const { callTakerEnabled, fetchCalls, intl } = this.props
+    const { callTaker, callTakerEnabled, fetchCalls, intl } = this.props
     // Fetch calls.
-    if (callTakerEnabled) fetchCalls(intl)
+    if (callTakerEnabled && callTaker.callHistory.fetched === false)
+      fetchCalls(intl)
   }
 
   _onClickCall = () => {
