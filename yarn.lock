@@ -3323,10 +3323,10 @@
     "@opentripplanner/map-popup" "^8.0.4"
     flat "^5.0.2"
 
-"@opentripplanner/timetable@1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/timetable/-/timetable-1.3.0.tgz#462f4022d990a44c868df86cd22390e4cc9d6195"
-  integrity sha512-SDaSSUDwicrnAiP4b7EXn1kxiIiTSKSGNSWkbzEnw+hCFSWV3CwUTiJs6ypjUC9eWXG2MPfGozmcH3Chz2D5Jw==
+"@opentripplanner/timetable@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/timetable/-/timetable-2.0.0.tgz#5009de2b69229bef88052132a7b190dbd14fd299"
+  integrity sha512-VOMcAHrlSxYfkuXjQnBxP92WSjTYbiNRDR/syQ6NJSXcy4rSuOX4Q06Jo7nk/vB7BviQHl26y/gNkWBvnHE3nQ==
   dependencies:
     "@opentripplanner/building-blocks" "^3.2.0"
     toposort "^2.0.2"
