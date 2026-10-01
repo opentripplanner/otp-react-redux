@@ -142,7 +142,6 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                     >
                       <styled__DropdownButton
                         aria-controls="to-listbox"
-                        aria-disabled={false}
                         aria-expanded={false}
                         aria-label="Open the list of location suggestions"
                         onClick={[Function]}
@@ -151,7 +150,6 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                       >
                         <button
                           aria-controls="to-listbox"
-                          aria-disabled={false}
                           aria-expanded={false}
                           aria-label="Open the list of location suggestions"
                           className="styled__BaseButton-sc-xahsq2-1 styled__DropdownButton-sc-xahsq2-4 coKZWn dGsLHu"
@@ -4527,7 +4525,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                     >
                       <styled__DropdownButton
                         aria-controls="to-listbox"
-                        aria-disabled={false}
                         aria-expanded={false}
                         aria-label="Open the list of location suggestions"
                         onClick={[Function]}
@@ -4536,7 +4533,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                       >
                         <button
                           aria-controls="to-listbox"
-                          aria-disabled={false}
                           aria-expanded={false}
                           aria-label="Open the list of location suggestions"
                           className="styled__BaseButton-sc-xahsq2-1 styled__DropdownButton-sc-xahsq2-4 coKZWn dGsLHu"
