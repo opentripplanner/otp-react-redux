@@ -1,7 +1,7 @@
 {
   "data": {
     "trip": {
-      "gtfsId": "MARTA:8063444",
+      "gtfsId": "MARTA:TCSU1011E",
       "route": {
         "gtfsId": "MARTA:19455",
         "agency": {
@@ -150,7 +150,7 @@
           "scheduledDeparture": 62580,
           "stop": {
             "code": "908990",
-            "gtfsId": "MARTA:806",
+            "gtfsId": "MARTA:908515",
             "lat": 33.754123,
             "locationType": "STOP",
             "lon": -84.391876,
@@ -189,7 +189,7 @@
           "scheduledDeparture": 62760,
           "stop": {
             "code": "908964",
-            "gtfsId": "MARTA:486",
+            "gtfsId": "MARTA:907933",
             "lat": 33.756477,
             "locationType": "STOP",
             "lon": -84.417328,

@@ -121,7 +121,7 @@ export const FlexIndicator = ({
     )
 
   return (
-    <FlexIndicatorWrapper shrink={shrink}>
+    <FlexIndicatorWrapper className="flex-indicator" shrink={shrink}>
       {!shrink && (
         <h4>
           <FormattedMessage id="config.flex.flex-service" />
