@@ -28,7 +28,6 @@ import {
   NearbyFilterKey,
   NearbyFilters
 } from '../../../util/state-types'
-import { flattenStopClosures } from '../../../util/itinerary'
 import { GeocoderConfig, NearbyFilterConfig } from '../../../util/config-types'
 import { getCurrentServiceWeek } from '../../../util/current-service-week'
 import { grey } from '../../util/colors'
@@ -65,7 +64,7 @@ type ServiceWeek = { end: string; start: string }
 
 type Props = {
   activeNearbyFilters: NearbyFilters
-  closedStops?: Map<string, Set<string>>
+  closedStops?: Set<string>
   currentPosition?: CurrentPosition
   currentServiceWeek?: ServiceWeek
   defaultLatLon: LatLonObj | null
@@ -206,11 +205,6 @@ function NearbyView({
   const [loading, setLoading] = useState(true)
   const [reversedPoint, setReversedPoint] = useState('')
   const [locationInputFocused, setLocationInputFocused] = useState(false)
-
-  const closedStopsSet = useMemo(
-    () => (closedStops ? flattenStopClosures(closedStops) : new Set<string>()),
-    [closedStops]
-  )
 
   const nearbyContainerRef = useRef<HTMLOListElement>(null)
   const finalNearbyCoords = useMemo(
@@ -388,7 +382,7 @@ function NearbyView({
         >
           {getNearbyItem(
             { ...n.place, distance: n.distance, nearbyRoutes },
-            closedStopsSet,
+            closedStops,
             feeds
           )}
         </div>
