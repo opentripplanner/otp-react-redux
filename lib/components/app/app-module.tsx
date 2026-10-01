@@ -6,16 +6,12 @@ import { AppReduxState } from '../../util/state-types'
 
 interface OwnProps {
   children?: ReactNode
-  load: string | string[]
+  load: string[]
 }
 
 interface Props extends OwnProps {
   isLoaded: boolean
   loadAppModules: (appModules: string[]) => void
-}
-
-function stringOrArrayPropToArray(stringOrArray: string | string[]): string[] {
-  return typeof stringOrArray === 'string' ? [stringOrArray] : stringOrArray
 }
 
 /**
@@ -31,8 +27,7 @@ const AppModule = ({
   loadAppModules
 }: Props): ReactElement | null => {
   useEffect(() => {
-    const moduleList = stringOrArrayPropToArray(moduleNames)
-    loadAppModules(moduleList)
+    loadAppModules(moduleNames)
   }, [loadAppModules, moduleNames])
 
   return isLoaded && children ? <>{children}</> : null
@@ -41,10 +36,7 @@ const AppModule = ({
 // connect to the redux store
 
 const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => ({
-  isLoaded: uiActions.areModulesLoaded(
-    state,
-    stringOrArrayPropToArray(ownProps.load)
-  )
+  isLoaded: uiActions.areModulesLoaded(state, ownProps.load)
 })
 
 const mapDispatchToProps = {
