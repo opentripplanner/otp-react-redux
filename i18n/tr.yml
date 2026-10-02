@@ -4,7 +4,8 @@ actions:
   callTaker:
     callQuerySaveError: "Çağrı sorguları kaydedilirken hata oluştu: {err}"
     checkSessionError: "Oturum kimlik doğrulama oluşturulurken hata oluştu: {err}"
-    couldNotFindCallError: Çağrı bulunamadı. Sorguları kaydetme isteği iptal ediliyor.
+    couldNotFindCallError: Çağrı bulunamadı. Sorguları kaydetme isteği iptal 
+      ediliyor.
     fetchCallsError: "Çağrılar alınırken hata oluştu: {err}"
     queryFetchError: "Sorgular alınırken hata oluştu: {err}"
   location:
@@ -13,28 +14,12 @@ actions:
 
       Mevcut konumunuzu kullanmak için tarayıcınızdan konum izinlerini
       etkinleştirin ve sayfayı yeniden yükleyin. 
-    geolocationNotSupportedError: Coğrafi konum tarayıcınız tarafından desteklenmiyor
+    geolocationNotSupportedError: Coğrafi konum tarayıcınız tarafından 
+      desteklenmiyor
     unknownPositionError: Konum alınırken bilinmeyen hata
     userDeniedPermission: Kullanıcı izni reddetti
   map:
     currentLocation: (Mevcut Konum)
-  user:
-    accountDeleted: Kullanıcı hesabınız ({email}) silindi.
-    authTokenError: Yetkilendirme anahtarı alınırken hata oluştu.
-    confirmDeletePlace: Bu yeri kaldırmak ister misiniz?
-    emailVerificationResent: E-posta doğrulama mesajı yeniden gönderildi.
-    genericError: "Bir hata ile karşılaşıldı: {err}"
-    itineraryExistenceCheckFailed: Seçtiğiniz seyahatin mümkün olup olmadığı kontrol edilirken hata oluştu.
-    mustBeLoggedInToSavePlace: Konumları kaydetmek için lütfen giriş yapın.
-    placeRemembered: Bu yerin ayarları kaydedildi.
-    preferencesSaved: Tercihleriniz kaydedilmiştir.
-    smsInvalidCode: Girdiğiniz kod geçersiz. Lütfen tekrar deneyin.
-    smsResendThrottled: >-
-      Belirtilen telefon numarasına bir dakikadan kısa süre önce bir doğrulama
-      SMS'i gönderildi. Lütfen birkaç dakika sonra tekrar deneyin.
-    smsVerificationFailed: >-
-      Telefonunuz doğrulanamadı. Girdiğiniz kodun süresi dolmuş olabilir. Lütfen
-      yeni bir kod isteyin ve tekrar deneyin.
 common:
   coordinates: "{lat}, {lon}"
   dateExpressions:
@@ -102,10 +87,6 @@ common:
     subway: Metro
     tram: Tramvay
     walk: Yürümek
-  notifications:
-    email: eposta
-    push: bildirimler
-    sms: SMS
   places:
     dining: yemek
     home: ev
@@ -116,11 +97,10 @@ common:
     duration:
       aFewSeconds: birkaç saniye
 components:
-  A11yPrefs:
-    accessibilityRoutingByDefault: Varsayılan olarak erişilebilir seyahatleri tercih et
   AddPlaceButton:
     addPlace: Yer ekle
-    needOriginDestination: Ara yerler eklemek için başlangıç/bitiş noktasını tanımlayın
+    needOriginDestination: Ara yerler eklemek için başlangıç/bitiş noktasını 
+      tanımlayın
     tooManyPlaces: Maksimum ara yerlere ulaşıldı
   AdvancedOptions:
     bannedRoutes: Yasaklanan rotaları seç…
