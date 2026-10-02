@@ -415,6 +415,11 @@ export type ExtraView = {
   showInHeaderBar?: boolean
 }
 
+export interface ModuleConfig {
+  id: string
+  options?: any
+}
+
 /** The main application configuration object */
 export interface AppConfig {
   accessibilityScore?: AccessibilityScoreConfig
@@ -441,8 +446,8 @@ export interface AppConfig {
   localization?: LocalizationConfig
   map: MapConfig
   mapillary?: MapillaryConfig
-  mobilityProfile?: boolean
   modes: ModesConfig
+  modules?: ModuleConfig[]
   nearbyView?: NearbyViewConfig
   /** Interval in seconds past which a trip is no longer considered "on-time". */
   onTimeThresholdSeconds?: number
