@@ -2,12 +2,8 @@ _id: en-US
 _name: English
 actions:
   callTaker:
-    callQuerySaveError: "Error storing call queries: {err}"
     callSaveError: "Could not save call: {err}"
-    checkSessionError: "Error establishing auth session: {err}"
-    couldNotFindCallError: Could not find call. Cancelling save queries request.
     fetchCallsError: "Error fetching calls: {err}"
-    queryFetchError: "Error fetching queries: {err}"
   location:
     deniedAccessAlert: >
       Access to your location is blocked.
