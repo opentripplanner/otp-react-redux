@@ -2,13 +2,14 @@ import { connect } from 'react-redux'
 import { isMobile } from '@opentripplanner/core-utils/lib/ui'
 import { Nav, Navbar } from 'react-bootstrap'
 import { useIntl } from 'react-intl'
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
 import { accountLinks, getAuth0Config } from '../../util/auth'
 import { AppConfig } from '../../util/config-types'
 import { AppReduxState } from '../../util/state-types'
+import { ComponentContext } from '../../util/contexts'
 import { DEFAULT_APP_TITLE } from '../../util/constants'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import NavLoginButtonAuth0 from '../user/nav-login-button-auth0'
@@ -86,6 +87,8 @@ const DesktopNav = ({
   popupTarget,
   setPopupContent
 }: Props) => {
+  // @ts-expect-error Context is not typed
+  const { MainControls } = useContext(ComponentContext)
   const {
     brandClickable,
     branding,
@@ -158,6 +161,7 @@ const DesktopNav = ({
                 style={{ float: 'right' }}
               />
             )}
+            {MainControls && <MainControls />}
           </StyledNav>
         </Navbar.Header>
       </Navbar>

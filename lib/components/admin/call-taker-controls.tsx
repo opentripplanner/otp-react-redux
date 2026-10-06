@@ -1,24 +1,18 @@
 import { connect } from 'react-redux'
-import { GraduationCap } from '@styled-icons/fa-solid/GraduationCap'
 import { History } from '@styled-icons/fa-solid/History'
 import { injectIntl, IntlShape, WrappedComponentProps } from 'react-intl'
 import { Phone } from '@styled-icons/fa-solid/Phone'
-import { Plus } from '@styled-icons/fa-solid/Plus'
 import { Stop } from '@styled-icons/fa-solid/Stop'
 import React, { Component } from 'react'
 
 import * as apiActions from '../../actions/api'
 import * as callTakerActions from '../../actions/call-taker'
 import * as uiActions from '../../actions/ui'
-import { Icon, StyledIconWrapper } from '../util/styledIcon'
 import { isModuleEnabled, Modules } from '../../util/config'
+import { NavbarButton } from '../app/nav-item'
+import { StyledIconWrapper } from '../util/styledIcon'
 
-import {
-  CallHistoryButton,
-  CallTimeCounter,
-  ControlsContainer,
-  ToggleCallButton
-} from './styled'
+import { ControlsContainer, ToggleCallButton } from './styled'
 
 type Props = {
   beginCall: () => void
@@ -63,30 +57,6 @@ class CallTakerControls extends Component<Props> {
     }
   }
 
-  _renderCallButtonIcon = () => {
-    // Show stop button if call not in progress.
-    if (this._callInProgress()) {
-      return <Icon Icon={Stop} size="4x" style={{ padding: '6px' }} />
-    }
-    // No call is in progress.
-    return (
-      <>
-        <StyledIconWrapper
-          style={{
-            marginLeft: '37px',
-            marginTop: '16px',
-            position: 'absolute'
-          }}
-        >
-          <Plus />
-        </StyledIconWrapper>
-        <StyledIconWrapper flipHorizontal size="4x">
-          <Phone />
-        </StyledIconWrapper>
-      </>
-    )
-  }
-
   _callInProgress = () => Boolean(this.props.callTaker.activeCall)
 
   render() {
@@ -103,22 +73,21 @@ class CallTakerControls extends Component<Props> {
             className="call-taker-button"
             onClick={this._onClickCall}
           >
-            {this._renderCallButtonIcon()}
+            <StyledIconWrapper flipHorizontal>
+              {this._callInProgress() ? <Stop /> : <Phone />}
+            </StyledIconWrapper>
           </ToggleCallButton>
         )}
-        {this._callInProgress() ? (
-          <CallTimeCounter startTime={callTaker?.activeCall?.startTime} />
-        ) : null}
         {/* Call History toggle button */}
         {callTakerEnabled && (
-          <CallHistoryButton
+          <NavbarButton
             className="call-taker-button"
             onClick={resetAndToggleCallHistory}
           >
-            <StyledIconWrapper size="2x">
+            <StyledIconWrapper>
               <History />
             </StyledIconWrapper>
-          </CallHistoryButton>
+          </NavbarButton>
         )}
       </ControlsContainer>
     )

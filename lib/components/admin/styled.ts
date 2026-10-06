@@ -1,67 +1,24 @@
 import { Button as BsButton } from 'react-bootstrap'
 import styled, { css } from 'styled-components'
 
-import { RED_ON_WHITE } from '../util/colors'
-import { StyledIconWrapper } from '../util/styledIcon'
+import { blue } from '../util/colors'
+import { NavbarButton } from '../app/nav-item'
 
 import DefaultCounter from './call-time-counter'
 
 // Call Taker Controls Components
 
-const RED = RED_ON_WHITE
-const BLUE = '#1C4D89'
-const GREEN = '#6B931B'
-const PURPLE = '#8134D3'
+export const CallTimeCounter = styled(DefaultCounter)``
 
-const circleButtonStyle = css`
-  aspect-ratio: 1/1;
-  border: none;
-  border-radius: 50%;
-  box-shadow: 2px 2px 4px #000000;
-  color: white;
-  position: absolute;
-  z-index: 999999;
-`
-
-export const CallHistoryButton = styled.button`
-  ${circleButtonStyle}
-  background-color: ${GREEN};
-  margin-left: 69px;
-  top: 140px;
-`
-
-export const CallTimeCounter = styled(DefaultCounter)`
-  background-color: ${BLUE};
-  border-radius: 20px;
-  box-shadow: 2px 2px 4px #000000;
-  color: white;
-  font-weight: 600;
-  margin-left: -8px;
-  position: absolute;
-  text-align: center;
-  top: 241px;
-  width: 80px;
-  z-index: 999999;
-`
-
-export const ControlsContainer = styled.div`
-  position: relative;
-`
+export const ControlsContainer = styled.div``
 
 type ToggleCallButtonProps = {
   callInProgress?: boolean
 }
 
-export const ToggleCallButton = styled.button<ToggleCallButtonProps>`
-  ${circleButtonStyle}
-  background-color: ${(props) => (props.callInProgress ? RED : BLUE)};
-  margin-left: -8px;
-  top: 154px;
-`
+export const ToggleCallButton = styled(NavbarButton)<ToggleCallButtonProps>``
 
 // Field Trip Windows Components
-
-export const Bold = styled.strong``
 
 export const Button = styled(BsButton)`
   margin-left: 5px;
@@ -76,17 +33,37 @@ export const Half = styled.div`
   width: 50%;
 `
 
-export const CallRecordRow = styled.div``
+export const CallRecordContainer = styled.div``
 
-export const CallRecordButton = styled.button`
+export const CallRecordHeader = styled.span`
   display: flex;
-  flex-direction: row;
+  font-weight: 700;
+  font-size: 14px;
+  gap: 10px;
+  padding: 0.5em;
   width: 100%;
 `
 
-export const CallRecordIcon = styled(StyledIconWrapper)`
-  margin-right: 3px;
-  padding-top: 4px;
+export const OriginDestinationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-left: 1rem;
+  border-left: solid 1px #747474;
+`
+
+export const QueryRecordButton = styled.button`
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 1em 0;
+  div.search-container {
+    color: ${blue[800]};
+    padding-right: 1rem;
+    display: flex;
+    align-items: center;
+  }
 `
 
 export const Full = styled.div`
@@ -95,15 +72,6 @@ export const Full = styled.div`
 
 export const FullWithMargin = styled(Full)`
   margin-top: 10px;
-`
-
-export const Header = styled.h4`
-  margin-bottom: 5px;
-  width: 100%;
-`
-
-export const InlineHeader = styled(Header)`
-  display: inline;
 `
 
 export const textCss = css`

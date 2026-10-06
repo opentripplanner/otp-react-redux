@@ -29,6 +29,7 @@ function CallHistoryWindow(props: Props) {
   const { callTaker, fetchQueries, intl, searches, toggleCallHistory } = props
   const { activeCall, callHistory } = callTaker
   if (!callHistory.visible) return null
+  console.log(callHistory.calls)
   return (
     <DraggableWindow
       header={
@@ -37,7 +38,7 @@ function CallHistoryWindow(props: Props) {
         </WindowHeader>
       }
       onClickClose={toggleCallHistory}
-      style={{ right: '15px', top: '50px', width: '450px' }}
+      style={{ fontSize: '14px', right: '15px', top: '50px', width: '450px' }}
     >
       {activeCall ? (
         <CallRecord
@@ -48,15 +49,17 @@ function CallHistoryWindow(props: Props) {
         />
       ) : null}
       {callHistory.calls.data.length > 0 ? (
-        callHistory.calls.data.map((call, i) => (
-          <CallRecord
-            // Create a key so that when call records get added, elements in this list are
-            // recreated/remounted so that they don't show the state from the previous list.
-            call={call}
-            fetchQueries={fetchQueries}
-            intl={intl}
-            key={`${call.id}-${i}`}
-          />
+        callHistory.calls.data.map((call, i, arr) => (
+          <React.Fragment key={`${call.id}-${i}`}>
+            <CallRecord
+              // Create a key so that when call records get added, elements in this list are
+              // recreated/remounted so that they don't show the state from the previous list.
+              call={call}
+              fetchQueries={fetchQueries}
+              intl={intl}
+            />
+            {i !== arr.length && <hr />}
+          </React.Fragment>
         ))
       ) : (
         <div>No calls in history</div>
