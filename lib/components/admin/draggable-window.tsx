@@ -70,7 +70,6 @@ export default function DraggableWindow({
         <div
           style={{
             height,
-            margin: '0px 5px',
             overflowY: scroll ? 'scroll' : 'visible'
           }}
         >

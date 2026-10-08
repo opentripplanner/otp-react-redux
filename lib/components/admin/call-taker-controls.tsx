@@ -2,7 +2,6 @@ import { connect } from 'react-redux'
 import { History } from '@styled-icons/fa-solid/History'
 import { injectIntl, IntlShape, WrappedComponentProps } from 'react-intl'
 import { Phone } from '@styled-icons/fa-solid/Phone'
-import { Plus } from '@styled-icons/fa-solid/Plus'
 import { Stop } from '@styled-icons/fa-solid/Stop'
 import React, { Component } from 'react'
 
@@ -12,13 +11,10 @@ import * as uiActions from '../../actions/ui'
 import { AppReduxState } from '../../util/state-types'
 import { Icon, StyledIconWrapper } from '../util/styledIcon'
 import { isModuleEnabled, Modules } from '../../util/config'
+import { NavbarButton } from '../app/nav-item'
+import { StyledIconWrapper } from '../util/styledIcon'
 
-import {
-  CallHistoryButton,
-  CallTimeCounter,
-  ControlsContainer,
-  ToggleCallButton
-} from './styled'
+import { ControlsContainer, ToggleCallButton } from './styled'
 
 type Props = {
   beginCall: () => void
@@ -28,6 +24,7 @@ type Props = {
       calls: {
         data: Array<any>
       }
+      fetched: boolean
       visible: boolean
     }
   }
@@ -35,7 +32,6 @@ type Props = {
   endCall: (intl: IntlShape) => void
   fetchCalls: (intl: IntlShape) => void
   resetAndToggleCallHistory: () => void
-  session: string
 } & WrappedComponentProps
 
 /**
@@ -47,11 +43,10 @@ type Props = {
  */
 class CallTakerControls extends Component<Props> {
   componentDidUpdate(prevProps: Props) {
-    const { callTakerEnabled, fetchCalls, intl, session } = this.props
-    // Once session is available, fetch calls.
-    if (session && !prevProps.session) {
-      if (callTakerEnabled) fetchCalls(intl)
-    }
+    const { callTaker, callTakerEnabled, fetchCalls, intl } = this.props
+    // Fetch calls.
+    if (callTakerEnabled && callTaker.callHistory.fetched === false)
+      fetchCalls(intl)
   }
 
   _onClickCall = () => {
@@ -63,37 +58,11 @@ class CallTakerControls extends Component<Props> {
     }
   }
 
-  _renderCallButtonIcon = () => {
-    // Show stop button if call not in progress.
-    if (this._callInProgress()) {
-      return <Icon Icon={Stop} size="4x" style={{ padding: '6px' }} />
-    }
-    // No call is in progress.
-    return (
-      <>
-        <StyledIconWrapper
-          style={{
-            marginLeft: '37px',
-            marginTop: '16px',
-            position: 'absolute'
-          }}
-        >
-          <Plus />
-        </StyledIconWrapper>
-        <StyledIconWrapper flipHorizontal size="4x">
-          <Phone />
-        </StyledIconWrapper>
-      </>
-    )
-  }
-
   _callInProgress = () => Boolean(this.props.callTaker.activeCall)
 
   render() {
-    const { callTaker, callTakerEnabled, resetAndToggleCallHistory, session } =
+    const { callTaker, callTakerEnabled, resetAndToggleCallHistory } =
       this.props
-    // If no valid session is found, do not show calltaker controls.
-    if (!session) return null
     return (
       <ControlsContainer>
         {/* Start/End Call button */}
@@ -103,22 +72,21 @@ class CallTakerControls extends Component<Props> {
             className="call-taker-button"
             onClick={this._onClickCall}
           >
-            {this._renderCallButtonIcon()}
+            <StyledIconWrapper flipHorizontal>
+              {this._callInProgress() ? <Stop /> : <Phone />}
+            </StyledIconWrapper>
           </ToggleCallButton>
         )}
-        {this._callInProgress() ? (
-          <CallTimeCounter startTime={callTaker?.activeCall?.startTime} />
-        ) : null}
         {/* Call History toggle button */}
         {callTakerEnabled && (
-          <CallHistoryButton
+          <NavbarButton
             className="call-taker-button"
             onClick={resetAndToggleCallHistory}
           >
-            <StyledIconWrapper size="2x">
+            <StyledIconWrapper>
               <History />
             </StyledIconWrapper>
-          </CallHistoryButton>
+          </NavbarButton>
         )}
       </ControlsContainer>
     )
@@ -128,8 +96,7 @@ class CallTakerControls extends Component<Props> {
 const mapStateToProps = (state: AppReduxState) => {
   return {
     callTaker: state.callTaker,
-    callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),
-    session: state.callTaker.session
+    callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER)
   }
 }
 
