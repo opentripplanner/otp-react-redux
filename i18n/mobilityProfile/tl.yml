@@ -1,0 +1,67 @@
+_id: tl
+_name: Tagalog
+actions:
+  user:
+    getDependentUserInfoFailed: Pagkakamali sa pagkuha ng impormasyon sa profile
+      sa kadaliang kumilos.
+components:
+  CompanionsPane:
+    addNewCompanion: Magdagdag ng bagong kasama sa pagbiyahe
+    companionAlreadyAdded: Mayroon ka nang kasamang may email na {email}
+    companionExplanation: >
+      Mag-imbita ng aalis na G-MAP user na magiging kasama sa pagbiyahe sa
+      pamamagitan ng paglalagay ng kanyang email. Kapag tinanggap niya ito,
+      magiging "na-verify" ang kanyang status, at magagawa mong ibahagi ang
+      iyong status ng biyahe at magplano ng mga biyahe batay sa mobility profile
+      ng isa't isa.
+    confirmDeleteCompanion: Gusto mo bang i-delete ang kasamang si {email}?
+    currentCompanionsLabel: "Mga kasalukuyang kasama sa pagbiyahe:"
+    deleteCompanion: I-delete si {email}
+    noCompanions: Wala kang sinumang kasama sa pagbiyahe sa kasalukuyan.
+    submitNewCompanion: Magpadala ng imbitasyon
+    title: Mga kasama sa pagbiyahe
+  MobilityProfile:
+    DevicesPane:
+      devices:
+        cane: Tungkod
+        crutches: Saklay
+        electric wheelchair: Electric na wheelchair
+        manual walker: Manual na walker
+        manual wheelchair: Manual/tradisyonal na wheelchair
+        mobility scooter: Mobility scooter
+        none: Walang pantulong na device
+        service animal: Panserbisyong hayop
+        stroller: Stroller
+        wheeled walker: Walker na may gulong
+        white cane: Puting tungkod
+      prompt: >-
+        Regular ka bang gumagamit ng device na pantulong sa paggalaw? (Lagyan ng
+        check ang lahat ng naaangkop)
+    LimitationsPane:
+      mobilityPrompt: >-
+        Mayroon ka bang anumang limitasyon sa paggalaw na nagdudulot sa iyong
+        maglakad nang mas mabagal at mas maingat kaysa sa iba pang tao?
+      visionLimitations:
+        legally-blind: Legal na bulag
+        low-vision: Low-vision
+        none: Wala
+      visionPrompt: Mayroon ka bang anumang limitasyon sa paningin?
+    MobilityPane:
+      button: I-edit ang iyong mobility profile
+      header: Mobility Profile
+      mobilityDevices: "Mga device para sa paggalaw: "
+      mobilityLimitations: "Mga limitasyon sa paggalaw: "
+      planTripDescription: >-
+        Kung mayroon kang kasama sa paglalakbay, maaari mong piliing planuhin
+        ang biyaheng ito ayon sa kanilang profile sa kadaliang kumilos.
+      visionLimitations: "Mga limitasyon sa paningin: "
+    dropdownLabel: "Profile sa kadaliang kumilos ng user:"
+    intro: >-
+      Pakisagot ang ilang tanong para i-customize ang karanasan sa pagpaplano ng
+      biyahe ayon sa iyong mga pangangailangan at kagustuhan.
+    myself: Sarili ko
+    title: Tukuyin ang iyong Mobility Pofile
+  TripCompanionsPane:
+    companionLabel: "Kasama sa biyaheng ito:"
+    observersLabel: "Mga tagamasid na nanonood ng biyaheng ito:"
+    primaryLabel: "Pangunahing manlalakbay: "
