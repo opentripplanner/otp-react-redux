@@ -5,6 +5,7 @@ import React from 'react'
 
 import * as callTakerActions from '../../actions/call-taker'
 import { compareEndTimes } from '../../util/call-taker'
+import { grey } from '../util/colors'
 import { IconWithText } from '../util/styledIcon'
 
 import { WindowHeader } from './styled'
@@ -27,7 +28,33 @@ function CallHistoryWindow(props: Props) {
   const { callTaker, intl, searches, toggleCallHistory } = props
   const { activeCall, callHistory } = callTaker
   if (!callHistory.visible) return null
-  console.log(callHistory.calls)
+
+  const sortedCalls = callHistory.calls.sort(compareEndTimes)
+
+  // Sort the calls into dates
+  const callsByDate = sortedCalls.reduce((acc, call) => {
+    const time = intl.formatDate(call.startTime, {
+      day: 'numeric',
+      month: 'long',
+      weekday: 'long'
+    })
+
+    if (!acc[time]) {
+      acc[time] = []
+    }
+
+    acc[time].push(call)
+
+    return acc
+  }, {})
+
+  const callsByDateArray: Array<{ date: string; trips: any }> = Object.entries(
+    callsByDate
+  ).map(([key, value]) => ({
+    date: key,
+    trips: value
+  }))
+
   return (
     <DraggableWindow
       header={
@@ -39,25 +66,42 @@ function CallHistoryWindow(props: Props) {
       style={{ fontSize: '14px', right: '15px', top: '50px', width: '450px' }}
     >
       {activeCall ? (
-        <CallRecord
-          call={activeCall}
-          inProgress
-          intl={intl}
-          searches={searches}
-        />
+        <div style={{ margin: '5px 5px' }}>
+          <CallRecord
+            call={activeCall}
+            inProgress
+            intl={intl}
+            searches={searches}
+          />
+        </div>
       ) : null}
-      {callHistory.calls.length > 0 ? (
-        callHistory.calls.sort(compareEndTimes).map((call, i, arr) => (
-          <React.Fragment key={`${call.id}-${i}`}>
-            <CallRecord
-              // Create a key so that when call records get added, elements in this list are
-              // recreated/remounted so that they don't show the state from the previous list.
-              call={call}
-              intl={intl}
-              key={`${call.id}-${i}`}
-            />
-            {i !== arr.length - 1 && <hr style={{ margin: 0 }} />}
-          </React.Fragment>
+      {callsByDateArray.length > 0 ? (
+        callsByDateArray.map((day) => (
+          <div key={day.date}>
+            <div
+              style={{
+                background: grey[100],
+                fontWeight: 'bold',
+                padding: '5px'
+              }}
+            >
+              {day.date}
+            </div>
+            <div style={{ margin: '0 5px' }}>
+              {day.trips.map((call, i, arr) => (
+                <React.Fragment key={`${call.id}-${i}`}>
+                  <CallRecord
+                    // Create a key so that when call records get added, elements in this list are
+                    // recreated/remounted so that they don't show the state from the previous list.
+                    call={call}
+                    intl={intl}
+                    key={`${call.id}-${i}`}
+                  />
+                  {i !== arr.length - 1 && <hr style={{ margin: 0 }} />}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
         ))
       ) : (
         <div>No calls in history</div>
