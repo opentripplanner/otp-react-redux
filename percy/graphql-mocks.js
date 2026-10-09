@@ -40,6 +40,7 @@ function getPlanResponseMock(modes) {
     case 'BICYCLEBUSSUBWAYTRAMWALK':
     case 'BICYCLEBUSSUBWAYWALK':
       return PlanResponseBike
+    // TODO: with PlanConnection, this mock doesn't fire anymore (since walk is implicit, we have to check for directOnly instead)
     case 'WALK':
       return PlanResponseWalk
     case 'BUSSUBWAYTRAM':
