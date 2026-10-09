@@ -1,0 +1,67 @@
+_id: fr
+_name: Français
+
+actions:
+  user:
+    getDependentUserInfoFailed: Erreur lors de l'obtention des profils de 
+      mobilité.
+components:
+  CompanionsPane:
+    addNewCompanion: Ajouter un accompagnateur
+    companionAlreadyAdded: Vous avez déjà un accompagnateur utilisant {email}.
+    companionExplanation: >
+      Invitez un utilisateur G-MAP existant à être votre accompagnateur en
+      entrant leur adresse email. Leur statut passera à "vérifié" dès leur
+      acceptation, et vous pourrez alors partager vos trajets et planifier des
+      trajets qui conviennent à leur profil de mobilité.
+    confirmDeleteCompanion: Voulez-vous supprimer l'accompagnateur {email} ?
+    currentCompanionsLabel: "Mes accompagnateurs :"
+    deleteCompanion: Supprimer {email}
+    noCompanions: Vous n'avez aucun accompagnateur.
+    submitNewCompanion: Envoyer l'invitation
+    title: Accompagnateurs
+  MobilityProfile:
+    DevicesPane:
+      devices:
+        cane: Canne
+        crutches: Béquilles
+        electric wheelchair: Fauteuil roulant électrique
+        manual walker: Déambulateur manuel
+        manual wheelchair: Fauteuil roulant manuel
+        mobility scooter: Scooter électrique
+        none: Aucun
+        service animal: Animal de service
+        stroller: Poussette
+        wheeled walker: Déambulateur à roues
+        white cane: Canne blanche
+      prompt: >-
+        Utilisez-vous habituellement l'aide d'un appareil pour vous déplacer ?
+        (Cochez tous les cas qui vous concernent)
+    LimitationsPane:
+      mobilityPrompt: >-
+        Avez-vous des handicaps moteurs qui vous font marcher plus lentement ou
+        plus prudemment que d'autres personnes ?
+      visionLimitations:
+        legally-blind: Non-voyant
+        low-vision: Vision basse
+        none: Aucun
+      visionPrompt: Avez-vous des handicaps visuels ?
+    MobilityPane:
+      button: Modifier votre profil mobilité
+      header: Profil mobilité
+      mobilityDevices: "Appareils d'aide : "
+      mobilityLimitations: "Handicaps moteurs : "
+      planTripDescription: >-
+        Vous pouvez rechercher des trajets adaptés au profil mobilité des
+        personnes que vous accompagnez.
+      visionLimitations: "Handicaps visuels : "
+    dropdownLabel: "Profil à utiliser :"
+    intro: >-
+      Veuillez répondre a quelques questions pour personaliser vos recherches de
+      trajets selon vos besoins et préférences.
+    myself: Moi-même
+    title: Spécifiez votre profil de mobilité
+  TripCompanionsPane:
+    companionLabel: "Accompagnateurs sur ce trajet :"
+    observersLabel: "Observateurs suivant ce trajet :"
+    primaryLabel: "Voyageur principal : "

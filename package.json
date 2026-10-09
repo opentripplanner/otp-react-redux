@@ -7,7 +7,7 @@
     "add-husky": "husky install",
     "build": "vite build",
     "bundle-stats": "yarn build && node -e \"require('open')('stats.html')\"",
-    "check:i18n-en-fr": "node node_modules/@opentripplanner/scripts/lib/run-validate-i18n.js lib i18n/en-US.yml i18n/fr.yml",
+    "check:i18n-en-fr": "node node_modules/@opentripplanner/scripts/lib/run-validate-i18n.js lib i18n/en-US.yml i18n/**/en-US.yml i18n/fr.yml i18n/**/fr.yml",
     "unit": "jest __tests__/",
     "lint": "lint-staged",
     "lint-all": "eslint lib __tests__ a11y --quiet",

@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-import { GraduationCap } from '@styled-icons/fa-solid/GraduationCap'
 import { History } from '@styled-icons/fa-solid/History'
 import { injectIntl, IntlShape, WrappedComponentProps } from 'react-intl'
 import { Phone } from '@styled-icons/fa-solid/Phone'
@@ -10,6 +9,7 @@ import React, { Component } from 'react'
 import * as apiActions from '../../actions/api'
 import * as callTakerActions from '../../actions/call-taker'
 import * as uiActions from '../../actions/ui'
+import { AppReduxState } from '../../util/state-types'
 import { Icon, StyledIconWrapper } from '../util/styledIcon'
 import { isModuleEnabled, Modules } from '../../util/config'
 
@@ -125,7 +125,7 @@ class CallTakerControls extends Component<Props> {
   }
 }
 
-const mapStateToProps = (state: Record<string, any>) => {
+const mapStateToProps = (state: AppReduxState) => {
   return {
     callTaker: state.callTaker,
     callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),
