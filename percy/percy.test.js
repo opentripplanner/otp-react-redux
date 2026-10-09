@@ -218,7 +218,7 @@ async function executeTest(page, isMobile, isCallTaker) {
     // take screenshot
     await percySnapshotWithWait(page, 'Call Taker With Settings Adjusted')
     await page.goto(
-      `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=South%20Prado%20Northeast%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.78946214120528%2C-84.37663414886111&toPlace=1%20Copenhill%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.767060728439574%2C-84.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false&modeButtons=bicycle`
+      `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=South%20Prado%20Northeast%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.78946214120528%2C-84.37663414886111&toPlace=1%20Copenhill%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.767060728439574%2C-84.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false`
     )
 
     // Other steps are identical to desktop, so we end here to not waste screenshots.
