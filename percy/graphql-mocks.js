@@ -48,7 +48,7 @@ function getPlanResponseMock(modes) {
     case 'BUSSUBWAYTRAMWALK':
       return PlanResponseBusSubwayTram
     default:
-      return PlanResponseBlank
+      return PlanResponseWalk
   }
 }
 
