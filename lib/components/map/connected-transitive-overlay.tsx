@@ -10,7 +10,8 @@ type Props = TransitiveConfig & IntlShape
 
 // connect to the redux store
 const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
-  const { labeledModes, styles } = state.otp.config.map.transitive || {}
+  const { beforeId, labeledModes, styles } =
+    state.otp.config.map.transitive || {}
   const { viewedRoute } = state.otp.ui
 
   // If the route viewer is active, do not show itinerary on map.
@@ -24,6 +25,7 @@ const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
 
   return {
     activeLeg: getActiveLeg(state),
+    beforeId,
     labeledModes,
     styles,
     // @ts-expect-error typescript is confused by the complex redux reducer. Both params are needed
