@@ -29,7 +29,7 @@ function getPlanResponseMock(modes) {
   )
     .sort()
     .join('')
-  console.log(modesString)
+  // console.log(modesString)
   switch (modesString) {
     case 'BICYCLEBUSSUBWAYTRAM':
     case 'TRANSITWALK':
@@ -45,9 +45,9 @@ function getPlanResponseMock(modes) {
     case 'BUSSUBWAYTRAM':
     case 'BUSCARSUBWAYTRAM':
     case 'BUSSUBWAYTRAMWALK':
-      return PlanResponseBlank
+      return PlanResponseBusSubwayTram
     default:
-      return PlanResponseBike
+      return PlanResponseBlank
   }
 }
 
