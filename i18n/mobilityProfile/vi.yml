@@ -1,0 +1,62 @@
+_id: vi
+_name: Vietnamese
+
+actions:
+  user:
+    getDependentUserInfoFailed: Đã xảy ra lỗi khi thu thập thông tin hồ sơ di 
+      chuyển.
+components:
+  CompanionsPane:
+    addNewCompanion: Thêm người đồng hành đi lại mới
+    companionAlreadyAdded: Quý vị đã có bạn đồng hành có email {email}
+    confirmDeleteCompanion: Quý vị có muốn xóa người đồng hành {email} không?
+    currentCompanionsLabel: "Người đồng hành đi lại hiện tại:"
+    deleteCompanion: Xóa {email}
+    noCompanions: Quý vị hiện không có người đồng hành đi lại nào.
+    submitNewCompanion: Gửi lời mời
+    title: Người đồng hành đi lại
+  MobilityProfile:
+    DevicesPane:
+      devices:
+        cane: Gậy chống
+        crutches: Nạng
+        electric wheelchair: Xe lăn điện
+        manual walker: Khung tập đi
+        manual wheelchair: Xe lăn thủ công/truyền thống
+        mobility scooter: Xe điện ba/bốn bánh
+        none: Không có thiết bị hỗ trợ
+        service animal: Động vật hỗ trợ
+        stroller: Xe đẩy trẻ em
+        wheeled walker: Khung tập đi có bánh xe
+        white cane: Gậy cho người khiếm thị
+      prompt: >-
+        Quý vị có thường xuyên sử dụng thiết bị hỗ trợ di chuyển không? (Chọn
+        tất cả câu trả lời phù hợp)
+    LimitationsPane:
+      mobilityPrompt: >-
+        Quý vị có gặp phải hạn chế nào về khả năng vận động khiến quý vị đi chậm
+        hơn hoặc cẩn thận hơn những người khác không?
+      visionLimitations:
+        legally-blind: Mù theo quy định pháp luật
+        low-vision: Thị lực kém
+        none: Không có
+      visionPrompt: Quý vị có gặp phải hạn chế nào về thị lực không?
+    MobilityPane:
+      button: Chỉnh sửa hồ sơ vận động của quý vị
+      header: Hồ Sơ Vận Động
+      mobilityDevices: "Thiết bị di chuyển: "
+      mobilityLimitations: "Hạn chế về khả năng vận động: "
+      planTripDescription: >-
+        Nếu quý vị đã có bạn đồng hành, quý vị có thể chọn lên kế hoạch cho
+        chuyến đi này theo hồ sơ di chuyển của họ.
+      visionLimitations: "Hạn chế về thị lực: "
+    dropdownLabel: "Hồ sơ di chuyển của người dùng:"
+    intro: >-
+      Vui lòng trả lời một số câu hỏi để tùy chỉnh trải nghiệm lập kế hoạch
+      chuyến đi theo nhu cầu và tùy chọn của quý vị.
+    myself: Bản thân thôi
+    title: Xác Định Hồ Sơ Vận Động của Quý Vị
+  TripCompanionsPane:
+    companionLabel: "Người đồng hành trên chuyến đi này:"
+    observersLabel: "Người quan sát đang theo dõi chuyến đi này:"
+    primaryLabel: "Người di chuyển chính: "
