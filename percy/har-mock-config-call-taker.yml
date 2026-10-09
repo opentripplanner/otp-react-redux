@@ -11,6 +11,42 @@ api:
 # and not in the "normal" OTP-RR portion.
 modules:
 - id: call
+  options:
+      modeDropdownOptions:
+        - label: Transit
+          combination:
+            input:
+              direct: [FLEX, WALK]
+              transit:
+                access: [FLEX, WALK]
+                egress: [FLEX, WALK]
+        - label: Bike Only
+          combination:
+            input:
+              direct: [BICYCLE]
+              directOnly: true
+        - label: Bike and Transit
+          combination:
+            input:
+              transit:
+                access: [BICYCLE]
+                egress: [BICYCLE]
+                transfer: [BICYCLE]
+              transitOnly: true
+        - label: Park and Ride
+          combination:
+            input:
+              transit:
+                access: [CAR_PARKING]
+                egress: [WALK]
+              transitOnly: true
+        - label: Walk Only
+          combination:
+            input:
+              direct: [WALK]
+              directOnly: true
+      defaultQueryParams:
+
 
 elevationProfile: true
 map:
@@ -40,19 +76,16 @@ geocoder:
   type: PELIAS
 
 modes:
+  disableCombinationGeneration: true
+  numItineraries: 4
   modeButtons:
-    - iconName: transit
+    - iconName: bus
       key: transit
       label: Transit
       modes:
         - mode: TRANSIT
-    - iconName: walk
-      key: walk
-      label: Walk
-      modes:
-        - mode: WALK
     - iconName: bicycle
-      key: bike
+      key: bicycle
       label: Bike
       modes:
         - mode: BICYCLE
@@ -63,8 +96,9 @@ modes:
         - mode: CAR
   initialState:
     enabledModeButtons:
-      - walk
       - transit
+    modeSettingValues:
+
   modeSettingDefinitions:
     - applicableMode: TRANSIT
       default: false

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { TransportMode } from '@opentripplanner/types'
+import { PlanModesInput } from '@opentripplanner/types'
 import { useQueryParam } from 'use-query-params'
 import React, { useEffect } from 'react'
 
@@ -7,13 +7,13 @@ import { defaultDropdownConfig } from '../../../util/call-taker'
 import { getModuleConfig, Modules } from '../../../util/config'
 
 type DropdownOption = {
-  combination: TransportMode[]
+  combination: { input: PlanModesInput }
   label: string
 }
 
 type Props = {
   modeDropdownOptions: DropdownOption[]
-  onChangeModes: (combination: TransportMode[]) => void
+  onChangeModes: (input?: PlanModesInput) => void
 }
 
 /**
@@ -43,8 +43,8 @@ function ModeDropdown({ modeDropdownOptions, onChangeModes }: Props) {
 
     const newModes = modeDropdownOptions.find(
       (mdo) => mdo.label === selectedMode
-    )?.combination
-    onChangeModes(newModes || [])
+    )?.combination?.input
+    onChangeModes(newModes)
   }, [selectedMode, modeDropdownOptions, onChangeModes])
 
   return (
