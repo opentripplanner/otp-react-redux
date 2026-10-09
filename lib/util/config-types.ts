@@ -231,6 +231,7 @@ export type SupportedOverlays =
   | MapTileLayerConfig
 
 export interface TransitiveConfig {
+  beforeId?: string
   disableFlexArc?: boolean
   labeledModes?: string[]
   styles?: {
