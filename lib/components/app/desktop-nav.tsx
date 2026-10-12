@@ -60,7 +60,7 @@ const NavItemOnLargeScreens = styled(NavbarItem)`
 
 // Typscript TODO: otpConfig type
 export type Props = {
-  isCallTaker: boolean
+  callTakerEnabled: boolean
   locale: string
   networkConnectionLost: boolean
   otpConfig: AppConfig
@@ -82,7 +82,7 @@ export type Props = {
  * TODO: merge with the mobile navigation bar.
  */
 const DesktopNav = ({
-  isCallTaker,
+  callTakerEnabled,
   locale,
   networkConnectionLost,
   otpConfig,
@@ -161,7 +161,7 @@ const DesktopNav = ({
                 style={{ float: 'right' }}
               />
             )}
-            {isCallTaker && <CallTakerControls />}
+            {callTakerEnabled && <CallTakerControls />}
           </StyledNav>
         </Navbar.Header>
       </Navbar>
@@ -175,7 +175,7 @@ const mapStateToProps = (state: AppReduxState) => {
   const { config: otpConfig } = state.otp
   const { networkConnectionLost } = state.otp.ui.errors
   return {
-    isCallTaker: !!state.callTaker,
+    callTakerEnabled: !!state.callTaker,
     locale: state.otp.ui.locale,
     networkConnectionLost,
     otpConfig,

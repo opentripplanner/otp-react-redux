@@ -10,7 +10,10 @@ import DefaultCounter from './call-time-counter'
 
 export const CallTimeCounter = styled(DefaultCounter)``
 
-export const ControlsContainer = styled.div``
+export const ControlsContainer = styled.div`
+  position: relative;
+  z-index: 10;
+`
 
 type ToggleCallButtonProps = {
   callInProgress?: boolean

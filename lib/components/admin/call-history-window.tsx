@@ -12,6 +12,12 @@ import { WindowHeader } from './styled'
 import CallRecord from './call-record'
 import DraggableWindow from './draggable-window'
 
+interface Call {
+  endTime: string
+  queries: any[]
+  startTime: string
+}
+
 type Props = {
   callTaker: {
     activeCall: any
@@ -88,18 +94,16 @@ function CallHistoryWindow(props: Props) {
               {day.date}
             </div>
             <div style={{ margin: '0 5px' }}>
-              {day.trips.map((call, i, arr) => (
-                <React.Fragment key={`${call.id}-${i}`}>
-                  <CallRecord
-                    // Create a key so that when call records get added, elements in this list are
-                    // recreated/remounted so that they don't show the state from the previous list.
-                    call={call}
-                    intl={intl}
-                    key={`${call.id}-${i}`}
-                  />
-                  {i !== arr.length - 1 && <hr style={{ margin: 0 }} />}
-                </React.Fragment>
-              ))}
+              {day.trips.map((call: Call, i: number, arr: Call[]) => {
+                return (
+                  // Create a key so that when call records get added, elements in this list are
+                  // recreated/remounted so that they don't show the state from the previous list.
+                  <React.Fragment key={`${call.endTime}-${i}`}>
+                    <CallRecord call={call} intl={intl} />
+                    {i !== arr.length - 1 && <hr style={{ margin: 0 }} />}
+                  </React.Fragment>
+                )
+              })}
             </div>
           </div>
         ))
