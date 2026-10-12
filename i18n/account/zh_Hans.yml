@@ -1,0 +1,226 @@
+_id: zh
+_name: Chinese (Simplified)
+
+actions:
+  user:
+    accountDeleted: 您的用户账户({email})已被删除.
+    authTokenError: 获取授权凭证时出现错误.
+    confirmDeleteMonitoredTrip: 你想取消这次旅行吗?
+    confirmDeletePlace: 你想删除这个地方吗?
+    emailVerificationResent: 电子邮件验证信息已被重新发送.
+    genericError: "遇到了一个错误: {err}"
+    itineraryExistenceCheckFailed: 检查你选择的旅行是否可行时出现错误.
+    mustAcceptTermsToSavePlace: 请接受使用条款（在“我的帐户”下）以保存位置。
+    mustBeLoggedInToSavePlace: 请登录以保存位置。
+    placeDeleted: 您的位置已被删除。
+    placeRemembered: 针对此地点的设置已保存。
+    preferencesSaved: 您的偏好已被保存.
+    smsInvalidCode: 您输入的代码无效. 请再试一次.
+    smsResendThrottled: 不到一分钟前一条验证短信已经发送到指定的电话号码上. 请稍后再试.
+    smsVerificationFailed: 您的手机无法被验证. 也许你输入的代码已经过期. 请申请一个新的代码并重新尝试.
+    tripDeleted: 您的行程已删除.
+common:
+  notifications:
+    email: 电子邮件
+    push: 推送通知
+    sms: 短信
+components:
+  A11yPrefs:
+    accessibilityRoutingByDefault: 默认情况下优先选择无障碍旅行
+  AccountSetupFinishPane:
+    message: 你已经准备好开始计划你的旅行.
+  BackToTripPlanner:
+    backToTripPlanner: 返回到行程计划表
+  DeleteUser:
+    deleteMyAccount: 删除我的账户
+  ExistingAccountDisplay:
+    a11y: 无障碍
+    mainTitle: 我的设置
+    notifications: 通知
+    places: 最喜欢的地点
+    terms: 条款
+  FavoritePlaceList:
+    addAnotherPlace: 添加另一个地点
+    description: "添加你经常去的地点以节省计划行程的时间:"
+    editThisPlace: 编辑此位置
+    setAddressForPlaceType: 设置您的 {placeType} 地址
+  FavoritePlaceScreen:
+    addNewPlace: 添加新地点
+    charactersRemaining: "{chars, plural, one {# 剩余字符} other {# 剩餘字元}}"
+    deleteThisPlace: 删除这个地点
+    editPlace: 编辑 {placeName}
+    editPlaceGeneric: 编辑地点
+    invalidAddress: 请为这个地点设定一个位置.
+    invalidName: 请为这个地点输入一个名称.
+    nameAlreadyUsed: 您已经在另一个地点使用这个名字. 请输入一个不同的名字.
+    placeNotFound: 未找到地点
+    placeNotFoundDescription: 对不起, 没有找到要求的地方.
+    charactersOverLimit: '{chars, plural, one {# 字符数超出限制} other {# 字符数超出限制} }'
+    nameTooLong: 名称须少于 {char} 个字符.
+  NewAccountWizard:
+    createNewAccount: 创建一个新账户
+    finish: 账户设置完成!
+    notifications: 通知偏好
+    places: 添加您的位置
+    verify: 验证您的电子邮件地址
+  NotificationPrefsPane:
+    devicesRegistered: "{count, plural, one {# device} other {# devices}}已注册"
+    noDeviceForPush: 使用移动应用程序注册您的设备以访问推送通知。
+    notificationChannelPrompt: "如何接收已保存行程的通知:"
+  PhoneNumberEditor:
+    changeNumber: 更改电话号码
+    invalidCode: 请输入6位数的验证码.
+    invalidPhone: 请输入一个有效的电话号码.
+    phoneNumberSubmitted: 电话号码{phoneNumber}已成功提交。
+    phoneNumberVerified: 电话号码 {phoneNumber} 已成功验证。
+    placeholder: 输入你的电话号码
+    prompt: "输入你的电话号码以便收到短信通知:"
+    requestNewCode: 申请一个新的代码
+    sendVerificationText: 发送验证短信
+    smsConsent: 提供您的电话号码即表示您同意接收验证和行程监控短信。您的手机运营商可能会收取额外费用。
+    verificationCode: "验证码:"
+    verificationInstructions: |
+      请检查您手机上的短信应用查看是否有验证码的短信并输入以下代码 (代码在10分钟后失效).
+    verify: 核实
+    verifySms: 请完成验证流程，以便设置短信通知。
+  PlaceEditor:
+    addressPrompt: "地址:"
+    genericLocationPlaceholder: 搜索地点
+    locationPlaceholder: 搜索 {placeName} 位置
+    locationTypePrompt: 位置类型：
+    nameExample: 我的咖啡店
+    namePrompt: "地名:"
+  SavedTripEditor:
+    deleteSavedTrip: 删除已保存的行程
+    editSavedTrip: 编辑已保存的行程
+    readOnlyBanner: "{creator} 创建并将您添加到了此行程。因此，您无法进行更改。"
+    saveNewTrip: 保存新的行程
+    travelCompanions: 出行伙伴
+    tripInformation: 行程信息
+    tripNotFound: 未找到行程
+    tripNotFoundDescription: 对不起, 没有找到所要求的行程.
+    tripNotifications: 行程通知
+  SavedTripList:
+    alertTag: "{alert, plural, one {View one alert} other {View # alerts}}"
+    fromTo: 从 {from} 这里 {to}
+    myTrips: 我的行程
+    noSavedTrips: 你没有保存的行程
+    noSavedTripsInstructions: 首先从地图上进行行程搜索.
+    pause: 暂停
+    resume: 继续
+  SavedTripScreen:
+    itineraryLoaded: 行程已加载
+    itineraryLoading: 加载行程
+    selectAtLeastOneDay: 请至少选择一天进行监测。
+    tooManyTrips: |
+      你已经达到了五次保存行程的上限. 请从你保存行程中删除未使用的行程然后再试一次.
+    tripNameAlreadyUsed: 另一个保存行程已经使用了这个名字. 请选择一个不同的名字.
+    tripNameRequired: 请输入一个行程名称.
+  SequentialPaneDisplay:
+    stepNumber: 步骤{step}/{total}
+  StackedPaneDisplay:
+    savePreferences: 保存偏好
+  TermsOfUsePane:
+    confirmDeletionPrompt: |
+      取消您对存储历史旅行的同意将导致您的旅行历史被删除. 你确定你要继续吗？
+    mustAgreeToTerms: 您必须同意服务条款才能继续.
+    termsOfServiceStatement: >
+      我确认我已年满 18 岁并且我已阅读并同意 <termsOfUseLink>服务条款</termsOfUseLink > 使用 Trip
+      Planner.
+    termsOfStorageStatement: >
+      可选的: 我同意 Trip Planner 存储我的历史计划行程，以改善我所在地区的交通服务.
+      <termsOfStorageLink>更多信息...</termsOfStorageLink>
+  TripBasicsPane:
+    checkingItineraryExistence: 检查一周中每一天的行程存在…
+    onlyOnDate: 仅限{date, date, ::eeeee yyyyMMdd}
+    recurringEachWeek: 每周特定几天
+    tripDaysPrompt: 您这次行程是在哪天进行的?
+    tripIsAvailableOnDaysIndicated: 您的行程可以在上述一周的日子里进行.
+    tripNamePrompt: "请为这次旅行提供一个名称:"
+    tripNotAvailableOnDay: 此行程每 {repeatedDay} 不举行!
+    unsavedChangesExistingTrip: 您还没有保存你的行程. 如果您离开了，变更就会消失.
+    unsavedChangesNewTrip: 您尚未保存新行程。若您离开本页面，该行程将丢失。
+  TripNotificationsPane:
+    advancedSettings: 进阶设置
+    altRouteRecommended: 建议采用替代路线或换乘点
+    delaysAboveThreshold: 延误或中断超过
+    howToReceiveAlerts: |
+      要接收已保存行程的提醒, 请在你的账户设置中启用通知, 并尝试再次保存一个行程.
+    monitorThisTrip: "在开始之前监控此行程:"
+    notificationsTurnedOff: 你账户的通知被关闭了.
+    notifyViaChannelWhen: "通过 {channel} 通知我当:"
+    oneHour: 1小时
+    realtimeAlertFlagged: 在我的行程中有一个实时警报标志着
+    timeBefore: "{time} 前"
+  TripStatus:
+    alerts: "{alerts, plural, one {# 警报!} other {# 警报!}}"
+    deleteTrip: 删除行程
+    planNewTrip: 计划新的行程
+  TripStatusRenderers:
+    active:
+      delayedHeading: 旅程正在进行中并延迟了{formattedDuration}.
+      description: 旅程将于 {arrivalTime, time, short} 到达目的地.
+      earlyHeading: 旅程正在进行中将比预计时间早 {formattedDuration} 到达!
+      noDataHeading: 旅程正在进行中 (没有可用的实时更新).
+      onTimeHeading: 旅程正在进行中而且大约是准时的.
+    base:
+      lastCheckedDefaultText: 最后一次检查时间未知
+      lastCheckedText: "最后一次检查: {formattedDuration} 前"
+      togglePause: 暂停
+      tripIsNotSnoozed: 将今天剩下的时间设为打盹状态
+      tripIsSnoozed: 取消暂停
+      unknownState: 未知的旅行状态
+      untogglePause: 继续
+    inactive:
+      description: 点击恢复，接收通知.
+      heading: 已暂停通知.
+    nextTripNotPossible:
+      description: |
+        由于路线可能发生一次或多次变更，多次定位尝试路线失败后，已暂停今日监控。  点击取消暂停，即可恢复行程监控。若仍无法监控，请点击新建行程，保存最新路线用于监控.
+      heading: 无法监控行程
+    noLongerPossible:
+      description: |
+        行程规划器无法找到您在一周内任何选定日期的行程。请尝试重新规划您的行程，寻找其他路线。
+      heading: 行程已不可能进行
+    notCalculated:
+      awaiting: 等待计算…
+      description: 请稍等一下以便计算行程.
+      heading: 尚未计算的行程
+    past:
+      description: 这是一次已结束的单次行程。
+      heading: 行程已过期
+    snoozed:
+      description: 本次行程通知将在下一个可选日期自动开启。取消暂停，重启监控功能并接收今日通知.
+      heading: 已暂停今日通知.
+    upcoming:
+      nextTripBegins: >-
+        下一趟旅程于 {tripDatetime, date, ::eeeee yyyyMMdd} {tripDatetime, time,
+        short} 开始.
+      tripBegins: >-
+        您的行程将于 {tripStart, time, short} 开始. (实时跟踪将于{monitoringStart, time,
+        short}开始.)
+      tripStartIsDelayed: 行程开始时间延迟 {duration}!
+      tripStartIsEarly: 开始时间比预期早 {duration}!
+      tripStartsSoonNoUpdates: 行程即将开始 (没有实时更新).
+      tripStartsSoonOnTime: 行程即将开始而且大约是准时的.
+  TripSummaryPane:
+    happensOnDays: "发生在: {days}"
+    monitoredTripDays: 行程监测日期
+    notifications: 预定出发前 {leadTimeInMinutes}
+    notificationsPaused: "通知: 已禁用"
+    timeAndDuration: 行程时间与时长
+    notificationsSnoozed: 已暂停今日通知.
+  UserAccountScreen:
+    confirmDelete: 您确定要删除你的用户账户吗?一旦您这样做, 它就无法恢复.
+    errorUpdatingProfile: 更新配置文件出错。
+    fieldUpdated: 此设置已更新。
+    fields:
+      add-companion-form: 出行伙伴
+      storeTripHistory: 存储行程历史记录
+  VerifyEmailPane:
+    emailIsVerified: 我的电子邮件被验证了!
+    instructions1: |
+      在完成账户设置之前请检查您的电子邮件收件箱并按照信息中的链接来验证您的电子邮件地址.
+    instructions2: 一旦您被验证，请点击下面的按钮继续.
+    resendVerification: 重新发送验证邮件
+    instructions3: 规划行程后，您可随时返回此页面继续进行账户设置。

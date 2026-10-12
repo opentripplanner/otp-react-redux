@@ -1,5 +1,6 @@
 _id: ko
 _name: Korean
+
 actions:
   callTaker:
     callQuerySaveError: "통화 쿼리를 저장하는 중에 오류가 발생했습니다: {err}"
@@ -17,25 +18,6 @@ actions:
     userDeniedPermission: 사용자가 허용 거부
   map:
     currentLocation: (현재 위치)
-  user:
-    accountDeleted: 귀하의 사용자 계정({email})이 삭제되었습니다.
-    authTokenError: 승인 토큰을 얻는 중에 오류가 발생했습니다.
-    confirmDeleteMonitoredTrip: 이 트립을 제거하시겠습니까?
-    confirmDeletePlace: 이 장소를 제거하시겠습니까?
-    emailVerificationResent: 이메일 확인 메시지가 다시 전송되었습니다.
-    genericError: "오류가 발견되었습니다: {err}"
-    getDependentUserInfoFailed: 모빌리티 프로필 정보를 가져오는 중 오류가 발생했습니다.
-    itineraryExistenceCheckFailed: 선택한 트립이 가능한지 확인하는 중에 오류가 발생했습니다.
-    mustAcceptTermsToSavePlace: 위치를 저장하려면 사용 약관(내 계정 아래)을 수락하십시오.
-    mustBeLoggedInToSavePlace: 위치를 저장하려면 로그인하십시오.
-    placeDeleted: 내 장소가 삭제되었습니다.
-    placeRemembered: 이 장소에 대한 설정이 저장되었습니다.
-    preferencesSaved: 선호사항이 저장되었습니다.
-    smsInvalidCode: 입력한 코드가 유효하지 않습니다. 다시 시도하세요.
-    smsResendThrottled: 확인 SMS가 1분 미만 전에 표시된 전화번호로 전송되었습니다. 잠시 후 다시 시도하세요.
-    smsVerificationFailed: 번호가 확인되지 않습니다. 입력한 코드가 만료되었을 수 있습니다. 새 코드를 요청한 후 다시 
-      시도하세요.
-    tripDeleted: 여행이 삭제되었습니다.
 common:
   coordinates: "{lat}, {lon}"
   dateExpressions:
@@ -109,10 +91,6 @@ common:
     tram: 시가 전차
     transit: 대중 교통
     walk: 걷기
-  notifications:
-    email: 이메일
-    push: 푸시 알림
-    sms: SMS
   places:
     custom: 사용자 정의
     dining: 식당
@@ -136,10 +114,6 @@ common:
       {hours, plural, =0 {} other {# 시간 }}{minutes} 분 { seconds, plural, =0 {}
       other {# 초}}
 components:
-  A11yPrefs:
-    accessibilityRoutingByDefault: 접근 가능한 트립 선호를 기본 설정으로
-  AccountSetupFinishPane:
-    message: 트립 계획을 시작하실 준비가 되었습니다.
   AddPlaceButton:
     addPlace: 장소 추가
     needOriginDestination: 출발지/목적지를 정의하고 중간 경유지 추가
@@ -158,8 +132,6 @@ components:
     networkConnectionRestored: 네트워크 연결이 복구됨
     openMenu: 메뉴 열기
     skipNavigation: 내비게이션 건너뛰기
-  BackToTripPlanner:
-    backToTripPlanner: 트립 플래너로 돌아가기
   BatchResultsScreen:
     expandMap: 지도 확장
     showResults: 결과 보기
@@ -189,18 +161,6 @@ components:
   CallTakerPanel:
     advancedOptions: 고급 옵션
     intermediateDestination: 중간 목적지 입력
-  CompanionsPane:
-    addNewCompanion: 새로운 여행 동행 추가
-    companionAlreadyAdded: 이미 {email} 이메일을 사용하는 동행이 있습니다
-    companionExplanation: >
-      기존 G-MAP 사용자의 이메일 주소를 입력하여 여행 동행으로 초대합니다. 상대방이 수락하면 상태가 "확인됨"으로 변경되고, 서로의
-      이동성 프로필에 따라 여행 상태를 공유하고 여행을 계획할 수 있습니다.
-    confirmDeleteCompanion: 동행 {email}을 삭제하시겠습니까?
-    currentCompanionsLabel: "현재 여행 동행:"
-    deleteCompanion: "{email} 삭제"
-    noCompanions: 기존 여행 동행이 없습니다.
-    submitNewCompanion: 초대장 보내기
-    title: 여행 동행
   DateTimeOptions:
     arriveBy: 도착 시간
     departAt: 출발 시간
@@ -217,35 +177,9 @@ components:
     clickDetails: 클릭하여 자세한 내용 보기
     multiModeSummary: "{accessMode} + {transitMode}"
     nonTransit: 대체 옵션
-  DeleteUser:
-    deleteMyAccount: 내 계정 삭제
   ErrorMessage:
     header: 트립을 계획할 수 없음
     warning: 경고
-  ExistingAccountDisplay:
-    a11y: 접근성
-    mainTitle: 내 설정
-    notifications: 알림
-    places: 좋아하는 장소
-    terms: 약관
-  FavoritePlaceList:
-    addAnotherPlace: 다른 장소 추가
-    description: "자주 가는 장소를 추가하여 트립 플랜 시간을 절약하세요 :"
-    editThisPlace: 이 장소 수정
-    setAddressForPlaceType: "{placeType}의 주소 설정"
-  FavoritePlaceScreen:
-    addNewPlace: 새 장소 추가
-    charactersRemaining: "{chars, plural, one {# 남은 문자 수} other {# 남은 글자수}}"
-    editPlace: "{placeName} 수정"
-    editPlaceGeneric: 장소 수정
-    invalidAddress: 이 장소의 위치를 설정하세요.
-    invalidName: 이 장소의 이름을 입력하세요.
-    nameAlreadyUsed: 이 이름은 이미 다른 장소에 사용되고 있습니다. 다른 이름을 입력해 주세요.
-    placeNotFound: 장소를 찾을 수 없음
-    placeNotFoundDescription: 죄송합니다. 요청하신 장소를 찾을 수 없습니다.
-    charactersOverLimit: '{chars, plural, one {# # 자가 초과되었습니다} other {# 자가 초과되었습니다}
-      }'
-    nameTooLong: 이름은 {char} 자 미만이어야 합니다.
   FormNavigationButtons:
     ariaLabel: 내비게이션 양식
   ItinerarySummary:
@@ -277,40 +211,6 @@ components:
     originallyScheduledTime: (기존 {originalTime})
     singleModeItineraryDescription: "{time} {mode} 일정표"
     timeWalking: "{time} 걷기"
-  MobilityProfile:
-    DevicesPane:
-      devices:
-        cane: 지팡이
-        crutches: 목발
-        electric wheelchair: 전동 휠체어
-        manual walker: 수동 보행기
-        manual wheelchair: 수동/전통 휠체어
-        mobility scooter: 기동성 스쿠터
-        none: 보조 장치 없음
-        service animal: 도우미 동물
-        stroller: 유모차
-        wheeled walker: 바퀴가 달린 보행기
-        white cane: 흰색 지팡이
-      prompt: 이동 보조 장치를 정기적으로 사용하십니까?  (해당 항목에 모두 표시)
-    LimitationsPane:
-      mobilityPrompt: 다른 사람보다 더 느리게 또는 더 조심스럽게 걷는 원인이 되는 이동성 제한이 있습니까?
-      visionLimitations:
-        legally-blind: 법적 시각 장애
-        low-vision: 시력이 낮음
-        none: 없음
-      visionPrompt: 시력이 제한적입니까?
-    MobilityPane:
-      button: 이동성 프로필을 편집
-      header: 이동성 프로필
-      mobilityDevices: "이동성 장치: "
-      mobilityLimitations: "이동성 제한: "
-      planTripDescription: 여정 동반자가 있는 경우, 동반자의 모빌리티 프로필에 따라 여정을 계획하도록 선택할 수 
-        있습니다.
-      visionLimitations: "시력 제한: "
-    dropdownLabel: "사용자 모빌리티 프로필:"
-    intro: 귀하의 필요 사항과 선호도에 맞게 여행 계획 경험을 맞춤화하기 위해 몇 가지 질문에 답해 주십시오.
-    myself: 본인
-    title: 이동성 프로필 정의하기
   NarrativeItinerariesHeader:
     changeSortDir: 정렬 방향 변경
     howToFindResults: 결과를 보려면, 아래 검색된 일정표 제목을 보십시오.
@@ -346,19 +246,9 @@ components:
     searchNearby: 주변 검색...
     spacesAvailable: "{spacesAvailable} 빈 자리 있음"
     nothingNearbyHeader: 범위 초과
-  NewAccountWizard:
-    createNewAccount: 새 계정 생성
-    finish: 계정 설정을 완료하셨습니다!
-    notifications: 알림 설정
-    places: 위치 추가
-    verify: 이메일 주소 확인
   NotFound:
     description: 요청한 콘텐츠를 사용할 수 없습니다.
     header: 콘텐츠를 찾을 수 없음
-  NotificationPrefsPane:
-    devicesRegistered: "{count, plural, one {# device} other {# devices}} 등록됨"
-    noDeviceForPush: 푸시 알림을 이용하려면 모바일 앱을 사용해 기기를 등록하십시오.
-    notificationChannelPrompt: "저장된 여행의 알림을 받는 방법:"
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
       body: >-
@@ -396,35 +286,10 @@ components:
     OTP_RR_TRIP_IN_PAST:
       header: 여행이 이미 진행되었습니다
       body: 여행 일정 중 하나 이상이 과거에 완료되었습니다.
-  PhoneNumberEditor:
-    changeNumber: 번호 변경
-    invalidCode: 확인 코드 6 자리를 입력하세요.
-    invalidPhone: 유효한 전화번호를 입력하세요.
-    phoneNumberSubmitted: 전화번호 {phoneNumber} 이/가 성공적으로 제출되었습니다.
-    phoneNumberVerified: 전화번호 {phoneNumber}가 성공적으로 확인되었습니다.
-    placeholder: 전화번호를 입력하십시오
-    prompt: "SMS 알림 수신을 위한 전화번호를 입력하세요:"
-    requestNewCode: 새 코드 요청
-    sendVerificationText: 확인 텍스트 전송
-    smsConsent: >-
-      전화번호를 제공하면, 확인 및 이동편 모니터링 SMS 메시지를 받는 데 동의하시는 것입니다. 요금제에 따라 추가 비용이 발생할 수
-      있습니다.
-    verificationCode: "확인 코드:"
-    verificationInstructions: |
-      휴대폰의 SMS 메시지 앱에서 인증 코드를 확인하고 아래에 코드를 입력하세요(코드는 10분 후에 만료됩니다).
-    verify: 확인
-    verifySms: 단문 메시지 서비스 (Short Message Service, SMS) 알림을 설정하려면 인증 절차를 완료하십시오.
-  Place:
-    deleteThisPlace: 이 장소 삭제
+  PlaceShortcut:
     enterAlert: |
       양식에 출발지/목적지를 입력하고(또는 지도를 클릭하여 설정), 생성된 마커를 클릭하여 {placeType} 위치로 설정하세요.
-  PlaceEditor:
-    addressPrompt: "주소:"
-    genericLocationPlaceholder: 위치 검색
-    locationPlaceholder: "{placeName} 위치 검색"
-    locationTypePrompt: "위치 유형:"
-    nameExample: 내 커피숍
-    namePrompt: "지명:"
+    setAddressForPlaceType: "{placeType}의 주소 설정"
   PlanFirstLastButtons:
     first: 처음
     last: 마지막
@@ -474,42 +339,12 @@ components:
     saveTripText: 트립 저장
     signInText: 로그인하여 트립 저장
     signInTooltip: 트립을 저장하려면 로그인하십시오.
-  SavedTripEditor:
-    deleteSavedTrip: 저장된 여행 삭제
-    editSavedTrip: 저장된 트립 수정
-    readOnlyBanner: "{creator} 님이 이 여정을 만들고 귀하를 추가했습니다. 따라서 귀하는 이 여정을 변경할 수 없습니다."
-    saveNewTrip: 새 트립 저장
-    travelCompanions: 여행 동행
-    tripInformation: 트립 정보
-    tripNotFound: 트립을 찾을 수 없음
-    tripNotFoundDescription: 죄송합니다. 요청된 트립을 찾을 수 없습니다.
-    tripNotifications: 트립 알림
-  SavedTripList:
-    alertTag: "{alert, plural, one {알림 한 개 보기} other {알림 #개 보기}}"
-    fromTo: "{from}에서 {to}까지"
-    myTrips: 내 트립
-    noSavedTrips: 저장된 트립이 없음
-    noSavedTripsInstructions: 지도에서 먼저 트립을 검색하세요.
-    pause: 일시 정지
-    resume: 다시 시작
-  SavedTripScreen:
-    itineraryLoaded: 일정표 로드됨
-    itineraryLoading: 일정표 로드 중
-    selectAtLeastOneDay: 모니터링할 날짜를 하나 이상 선택하십시오.
-    tooManyTrips: |
-      저장된 트립의 최대 개수인 5개에 도달했습니다. 저장된 트립에서 사용하지 않는 트립을 제거한 후, 다시 시도하세요.
-    tripNameAlreadyUsed: 저장된 다른 트립이 이 이름을 사용하고 있습니다. 다른 이름을 선택하세요.
-    tripNameRequired: 트립의 이름을 입력하세요.
-  SequentialPaneDisplay:
-    stepNumber: "{step} / {total}단계"
   SessionTimeout:
     body: 세션이 1분 이내에 만료됩니다. 검색을 유지하려면 '세션 계속'을 누르세요.
     header: 세션이 곧 타임아웃됩니다!
     keepSession: 세션 계속
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: 이 트립은 실시간 교통 및 지체 정보를 사용합니다
-  StackedPaneDisplay:
-    savePreferences: 환경설정 저장
   StatusBadge:
     invalid: Invalid
     pending: 보류 중
@@ -551,111 +386,17 @@ components:
   SwitchButton:
     defaultContent: 바꾸기
     switchLocations: 위치 바꾸기
-  TermsOfUsePane:
-    confirmDeletionPrompt: |
-      트립 기록 저장에 대한 동의를 제거하면 트립 기록이 삭제됩니다. 계속하시겠습니까?
-    mustAgreeToTerms: 계속하시려면 서비스 약관에 동의하셔야 합니다.
-    termsOfServiceStatement: >
-      본인은 만 18세 이상임을 확인하며, 트립 플래너 이용을 위한 <termsOfUseLink>이용 약관</termsOfUseLink>을
-      읽고 이에 동의합니다.
-    termsOfStorageStatement: >
-      선택 사항: 본인의 지역의 대중 교통 서비스를 개선하기 위해 내 트립 플랜 기록을 저장하는 데 동의합니다.
-      <termsOfStorageLink>보다 자세한 정보...</termsOfStorageLink>
   TransitVehicleOverlay:
     in_transit_to: "다음 정류장: {stop}"
     incoming_at: "{stop}에 접근하는 중"
     stopped_at: "{stop}에서 문이 열립니다"
     travelingAt: 현재 {milesPerHour} 속도로 주행 중
     vehicleName: 차량 {vehicleNumber}
-  TripBasicsPane:
-    checkingItineraryExistence: 각 요일의 트립을 확인 중…
-    onlyOnDate: "{date, date, ::eeeee yyyyMMdd} 한정"
-    recurringEachWeek: 매주 특정 날짜
-    tripDaysPrompt: 어느 요일에 이 트립을 사용하시나요?
-    tripIsAvailableOnDaysIndicated: 트립은 위에 표시된 요일에 제공됩니다.
-    tripNamePrompt: "이 트립의 이름을 입력하세요:"
-    tripNotAvailableOnDay: "{repeatedDay}에는 트립을 이용할 수 없음"
-    unsavedChangesExistingTrip: 트립을 아직 저장하지 않았습니다. 나가시면 변경내용이 사라집니다.
-    unsavedChangesNewTrip: 새 트립을 저장하지 않았습니다. 나가시면 변경내용이 사라집니다.
-  TripCompanionsPane:
-    companionLabel: "이 여정의 동반자:"
-    observersLabel: "이 여정을 지켜보는 관찰자:"
-    primaryLabel: "주요 이동하는 사람: "
-  TripNotificationsPane:
-    advancedSettings: 고급 설정
-    altRouteRecommended: 대체 경로 또는 환승 지점이 권장됩니다
-    delaysAboveThreshold: "다음 시간 이상의 지연 또는 차질이 있습니다:"
-    howToReceiveAlerts: |
-      저장된 트립에 대한 경고를 받으려면, 계정 설정에서 알림을 활성화하고 트립을 다시 저장하세요.
-    monitorThisTrip: "시작하기 전에 이 여행을 모니터링하세요:"
-    notificationsTurnedOff: 계정에 대한 알림이 꺼져 있습니다.
-    notifyViaChannelWhen: "다음의 경우, {channel}을 통해 알려주세요:"
-    oneHour: 1 시간
-    realtimeAlertFlagged: 내 트립 일정에 실시간 경고가 있습니다
-    timeBefore: "{time} 전"
   TripPreviewLayout:
     previewTrip: 여행 미리 보기
-  TripStatus:
-    alerts: "경고 {alerts}개!"
-    deleteTrip: 트립 삭제
-    planNewTrip: 새 트립 계획
-  TripStatusRenderers:
-    active:
-      delayedHeading: 진행 중인 트립이 {formattedDuration} 지연됩니다.
-      description: "{arrivalTime, time, short}에 목적지에 도착할 예정입니다."
-      earlyHeading: 진행 중인 트립이 예상보다 {formattedDuration} 일찍 시작됩니다!
-      noDataHeading: 트립이 진행 중입니다 (실시간 업데이트를 사용할 수 없습니다).
-      onTimeHeading: 트립이 정시에 진행 중에 있습니다.
-    base:
-      lastCheckedDefaultText: 마지막 확인 시간 알 수 없음
-      lastCheckedText: "마지막 확인 시간: {formattedDuration} 전"
-      togglePause: 일시 정지
-      tripIsNotSnoozed: 오늘 하루 동안 스누즈하기
-      tripIsSnoozed: 트립 분석 스누즈 해제
-      unknownState: 트립 상태 알 수 없음
-      untogglePause: 다시 시작
-    inactive:
-      description: 트립 모니터링을 다시 시작하여 상태 업데이트 확인
-      heading: 트립 모니터링이 일시 중지됨.
-    nextTripNotPossible:
-      description: |
-        트립 플래너가 오늘 트립을 찾을 수 없습니다. 대체 경로를 찾으려면 여정을 트립 일정을 다시 계획하세요.
-      heading: 오늘 트립이 불가능함
-    noLongerPossible:
-      description: |
-        트립 플래너는 선택된 요일에 트립을 찾을 수 없습니다. 대체 경로를 찾으려면 트립 일정을 다시 계획하세요.
-      heading: 트립은 더 이상 불가능함
-    notCalculated:
-      awaiting: 계산을 기다리는 중…
-      description: 트립이 계산되는 동안 잠시 기다려 주십시오.
-      heading: 트립이 아직 계산되지 않음
-    past:
-      description: 과거에 있었던 일회성 여행입니다.
-      heading: 과거의 여행
-    snoozed:
-      description: 트립 모니터링의 스누즈를 해제하여 상태 업데이트를 확인하세요.
-      heading: 오늘 트립 모니터링이 일시 중지되었습니다.
-    upcoming:
-      nextTripBegins: >-
-        다음 트립은 {tripDatetime, date, ::eeeee yyyyMMdd}, {tripDatetime, time,
-        short}에 시작됩니다.
-      tripBegins: >-
-        트립이 {tripStart, time, short}에 시작될 것으로 예정되어 있습니다. (실시간 모니터링은
-        {monitoringStart, time, short}에 시작됩니다.)
-      tripStartIsDelayed: 트립 시작 시간이 {duration} 지연됩니다!
-      tripStartIsEarly: 트립이 예상보다 {duration} 일찍 시작됩니다!
-      tripStartsSoonNoUpdates: 트립이 곧 시작됩니다 (실시간 업데이트를 사용할 수 없습니다).
-      tripStartsSoonOnTime: 트립은 곧 정시에 시작됩니다.
   TripSummary:
     arriveAt: "도착 "
     leaveAt: "출발 "
-  TripSummaryPane:
-    happensOnDays: "발생: {days}"
-    monitoredTripDays: 여행을 모니터링한 일수
-    notifications: 출발 예정 시간 {leadTimeInMinutes} 분 전
-    notificationsPaused: "알림: 비활성화됨."
-    timeAndDuration: 여행 시간 및 기간
-    notificationsSnoozed: 오늘 트립 모니터링이 일시 중지되었습니다.
   TripTools:
     copyLink: 링크 복사
     header: 도구
@@ -682,13 +423,6 @@ components:
     listOfRouteStops: 이 경로의 정류장 목록
     startOfTrip: 여기에서 이동편 시작
     tripDescription: "{boardAtStop} 에서 탑승하고 {disembarkAtStop}에서 하차"
-  UserAccountScreen:
-    confirmDelete: 귀하의 사용자 계정을 삭제하시겠습니까? 한 번 그렇게 하신 경우, 복구할 수 없습니다.
-    errorUpdatingProfile: 프로필 업데이트 중 오류.
-    fieldUpdated: 이 설정이 업데이트되었습니다.
-    fields:
-      add-companion-form: "여정 동반자:"
-      storeTripHistory: 이동편 이력 저장
   UserSettings:
     confirmDeletion: 최근 검색이나 장소가 저장되어 있습니다. 최근 장소 또는 검색을 비활성화하면 이러한 항목이 제거됩니다. 
       계속하시겠습니까?
@@ -705,13 +439,6 @@ components:
       저장하기로 선택한 환경설정, 장소 또는 설정은 브라우저의 로컬 저장소에 저장됩니다. TriMet은 귀하의 집, 직장 또는 기타 위치에
       대한 정보에 접근할 수 없습니다. 언제든지 최근 장소/검색 기억을 끄고 저장된 집/직장 위치 및 즐겨찾는 정류장을 지우실 수
       있습니다.
-  VerifyEmailPane:
-    emailIsVerified: 내 이메일이 확인되었습니다!
-    instructions1: |
-      귀하의 이메일의 받은 편지함을 확인한 후, 메시지의 링크를 따라 이메일 주소를 확인하여 계정 설정을 완료하세요.
-    instructions2: 확인 후, 아래의 버튼을 클릭하여 계속 진행하십시오.
-    resendVerification: 확인 이메일을 다시 전송
-    instructions3: 여행을 계획하고 이 페이지로 돌아와 계정 설정을 계속할 수 있습니다.
   ViewSwitcher:
     nearby: 근처 보기
     switcher: 변경
