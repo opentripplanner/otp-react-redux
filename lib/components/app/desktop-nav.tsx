@@ -2,15 +2,15 @@ import { connect } from 'react-redux'
 import { isMobile } from '@opentripplanner/core-utils/lib/ui'
 import { Nav, Navbar } from 'react-bootstrap'
 import { useIntl } from 'react-intl'
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
 import { accountLinks, getAuth0Config } from '../../util/auth'
 import { AppConfig } from '../../util/config-types'
 import { AppReduxState } from '../../util/state-types'
-import { ComponentContext } from '../../util/contexts'
 import { DEFAULT_APP_TITLE } from '../../util/constants'
+import CallTakerControls from '../admin/call-taker-controls'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import NavLoginButtonAuth0 from '../user/nav-login-button-auth0'
 
@@ -60,6 +60,7 @@ const NavItemOnLargeScreens = styled(NavbarItem)`
 
 // Typscript TODO: otpConfig type
 export type Props = {
+  isCallTaker: boolean
   locale: string
   networkConnectionLost: boolean
   otpConfig: AppConfig
@@ -81,14 +82,13 @@ export type Props = {
  * TODO: merge with the mobile navigation bar.
  */
 const DesktopNav = ({
+  isCallTaker,
   locale,
   networkConnectionLost,
   otpConfig,
   popupTarget,
   setPopupContent
 }: Props) => {
-  // @ts-expect-error Context is not typed
-  const { MainControls } = useContext(ComponentContext)
   const {
     brandClickable,
     branding,
@@ -161,7 +161,7 @@ const DesktopNav = ({
                 style={{ float: 'right' }}
               />
             )}
-            {MainControls && <MainControls />}
+            {isCallTaker && <CallTakerControls />}
           </StyledNav>
         </Navbar.Header>
       </Navbar>
@@ -175,6 +175,7 @@ const mapStateToProps = (state: AppReduxState) => {
   const { config: otpConfig } = state.otp
   const { networkConnectionLost } = state.otp.ui.errors
   return {
+    isCallTaker: !!state.callTaker,
     locale: state.otp.ui.locale,
     networkConnectionLost,
     otpConfig,
