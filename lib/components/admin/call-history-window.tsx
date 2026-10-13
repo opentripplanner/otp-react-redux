@@ -18,6 +18,11 @@ interface Call {
   startTime: string
 }
 
+interface DateGroup {
+  date: string
+  trips: Call[]
+}
+
 type Props = {
   callTaker: {
     activeCall: any
@@ -30,6 +35,8 @@ type Props = {
   toggleCallHistory: () => null
 } & WrappedComponentProps
 
+const containerPadding = { padding: '5px' }
+
 function CallHistoryWindow(props: Props) {
   const { callTaker, intl, searches, toggleCallHistory } = props
   const { activeCall, callHistory } = callTaker
@@ -38,28 +45,24 @@ function CallHistoryWindow(props: Props) {
   const sortedCalls = callHistory.calls.sort(compareEndTimes)
 
   // Sort the calls into dates
-  const callsByDate = sortedCalls.reduce((acc, call) => {
+  const callsByDateArray: Array<DateGroup> = sortedCalls.reduce((acc, call) => {
     const time = intl.formatDate(call.startTime, {
       day: 'numeric',
       month: 'long',
       weekday: 'long'
     })
 
-    if (!acc[time]) {
-      acc[time] = []
+    let dateGroup = acc.find((g: DateGroup) => g.date === time)
+
+    if (!dateGroup) {
+      dateGroup = { date: time, trips: [] }
+      acc.push(dateGroup)
     }
 
-    acc[time].push(call)
+    dateGroup.trips.push(call)
 
     return acc
-  }, {})
-
-  const callsByDateArray: Array<{ date: string; trips: any }> = Object.entries(
-    callsByDate
-  ).map(([key, value]) => ({
-    date: key,
-    trips: value
-  }))
+  }, [])
 
   return (
     <DraggableWindow
@@ -88,7 +91,7 @@ function CallHistoryWindow(props: Props) {
               style={{
                 background: grey[100],
                 fontWeight: 'bold',
-                padding: '5px'
+                ...containerPadding
               }}
             >
               {day.date}
@@ -108,7 +111,7 @@ function CallHistoryWindow(props: Props) {
           </div>
         ))
       ) : (
-        <div>No calls in history</div>
+        <div style={containerPadding}>No calls in history</div>
       )}
     </DraggableWindow>
   )

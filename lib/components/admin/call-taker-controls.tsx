@@ -71,7 +71,7 @@ class CallTakerControls extends Component<Props> {
             className="call-taker-button"
             onClick={this._onClickCall}
           >
-            <StyledIconWrapper flipHorizontal>
+            <StyledIconWrapper>
               {this._callInProgress() ? <Stop /> : <Phone />}
             </StyledIconWrapper>
           </ToggleCallButton>
