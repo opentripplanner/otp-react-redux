@@ -72,6 +72,7 @@ function CallHistoryWindow(props: Props) {
         </WindowHeader>
       }
       onClickClose={toggleCallHistory}
+      // TODO: Better handle font sizes
       style={{ fontSize: '14px', right: '15px', top: '50px', width: '450px' }}
     >
       {activeCall ? (
