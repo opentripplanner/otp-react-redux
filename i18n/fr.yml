@@ -17,36 +17,6 @@ actions:
     userDeniedPermission: Refusé par l'utilisateur
   map:
     currentLocation: (Emplacement actuel)
-  user:
-    accountDeleted: Votre compte utilisateur ({email}) a été supprimé.
-    authTokenError: Erreur lors de l'obtention d'un jeton d'authentification.
-    confirmDeleteMonitoredTrip: Voulez-vous supprimer ce trajet ?
-    confirmDeletePlace: Voulez-vous supprimer ce lieu ?
-    emailVerificationResent: >-
-      Le message de vérification de votre adresse e-mail a été envoyé de
-      nouveau.
-    genericError: "Une erreur s'est produite : {err}"
-    getDependentUserInfoFailed: Erreur lors de l'obtention des profils de 
-      mobilité.
-    itineraryExistenceCheckFailed: Erreur lors de la vérification de la validité
-      du trajet choisi.
-    mustAcceptTermsToSavePlace: >-
-      Veuillez accepter les conditions d'utilisation (dans Mon compte) pour
-      enregistrer des lieux.
-    mustBeLoggedInToSavePlace: Veuillez vous connecter pour enregistrer des 
-      lieux.
-    placeDeleted: Votre lieu a été supprimé
-    placeRemembered: Les informations pour ce lieu ont été enregistrées.
-    preferencesSaved: Vos préférences ont été enregistrées.
-    smsInvalidCode: Le code saisi est incorrect. Veuillez réessayer.
-    smsResendThrottled: >-
-      Un SMS de vérification a été envoyé au numéro de téléphone indiqué il y a
-      moins d'une minute. Patientez quelques moments avant de réessayer.
-    smsVerificationFailed: >-
-      Votre numéro de téléphone n'a pas pu être vérifié. Le code que vous avez
-      entré a peut-être expiré. Veuillez demander un nouveau code, puis
-      réessayez.
-    tripDeleted: Votre trajet a été supprimé.
 common:
   closedStop: Closed Stop
   coordinates: "{lat}; {lon}"
@@ -125,10 +95,6 @@ common:
     tram: Tram
     transit: En transports
     walk: À pied
-  notifications:
-    email: e-mail
-    push: notifications push
-    sms: SMS
   places:
     custom: divers
     dining: restaurant
@@ -153,13 +119,6 @@ common:
       {hours, plural, =0 {} other {# h }}{minutes} min { seconds, plural, =0 {}
       other {# s}}
 components:
-  A11yPrefs:
-    accessibilityRoutingByDefault: Privilégier par défaut les trajets 
-      accessibles
-  AccountSetupFinishPane:
-    message: >-
-      Vos changements ont été enregistrés. Vous pouvez maintenant planifier vos
-      trajets. Cliquez sur Terminer pour retourner au planificateur.
   AddPlaceButton:
     addPlace: Ajouter un point intermédiaire
     needOriginDestination: >-
@@ -182,8 +141,6 @@ components:
     networkConnectionRestored: Connexion réseau restaurée
     openMenu: Ouvrir le menu
     skipNavigation: Sauter la navigation
-  BackToTripPlanner:
-    backToTripPlanner: Retour au planificateur de trajets
   BatchResultsScreen:
     expandMap: Agrandir la carte
     showResults: Voir les résultats
@@ -218,20 +175,6 @@ components:
   CallTakerPanel:
     advancedOptions: Options avancées
     intermediateDestination: Entrez la destination intermédiaire
-  CompanionsPane:
-    addNewCompanion: Ajouter un accompagnateur
-    companionAlreadyAdded: Vous avez déjà un accompagnateur utilisant {email}.
-    companionExplanation: >
-      Invitez un utilisateur G-MAP existant à être votre accompagnateur en
-      entrant leur adresse email. Leur statut passera à "vérifié" dès leur
-      acceptation, et vous pourrez alors partager vos trajets et planifier des
-      trajets qui conviennent à leur profil de mobilité.
-    confirmDeleteCompanion: Voulez-vous supprimer l'accompagnateur {email} ?
-    currentCompanionsLabel: "Mes accompagnateurs :"
-    deleteCompanion: Supprimer {email}
-    noCompanions: Vous n'avez aucun accompagnateur.
-    submitNewCompanion: Envoyer l'invitation
-    title: Accompagnateurs
   DateTimeOptions:
     arriveBy: Arriver à
     departAt: Partir à
@@ -248,40 +191,9 @@ components:
     clickDetails: Cliquez pour afficher les détails
     multiModeSummary: "{accessMode} + {transitMode}"
     nonTransit: Alternatives
-  DeleteUser:
-    deleteMyAccount: Supprimer mon compte
   ErrorMessage:
     header: Impossible de planifier le trajet
     warning: Attention
-  ExistingAccountDisplay:
-    a11y: Accessibilité
-    mainTitle: Mes préférences
-    notifications: Notifications
-    places: Lieux favoris
-    terms: Conditions d'utilisation
-  FavoritePlaceList:
-    addAnotherPlace: Ajouter un autre lieu
-    description: >-
-      Ajoutez les lieux que vous fréquentez souvent pour faciliter vos
-      recherches de trajets :
-    editThisPlace: Modifier ce lieu
-    setAddressForPlaceType: Entrez l'adresse de votre {placeType}
-  FavoritePlaceScreen:
-    addNewPlace: Ajouter un nouveau lieu
-    charactersOverLimit: "{chars, plural, one {# caractère en trop} other {# caractères
-      en trop}}"
-    charactersRemaining: "{chars, plural, one {# caractère restant} other {# caractères
-      restant}}"
-    editPlace: Modifier le {placeName}
-    editPlaceGeneric: Modifier le lieu
-    invalidAddress: Veuillez entrer l'adresse du lieu.
-    invalidName: Veuillez saisir le nom du lieu.
-    nameAlreadyUsed: >-
-      Ce nom est déjà utilisé avec un autre lieu. Veuillez saisir un nom
-      différent.
-    nameTooLong: Le nom doit comporter {char} caractères maximum.
-    placeNotFound: Lieu introuvable
-    placeNotFoundDescription: Le lieu recherché est introuvable.
   FormNavigationButtons:
     ariaLabel: Navigation du formulaire
   ItinerarySummary:
@@ -313,47 +225,6 @@ components:
     originallyScheduledTime: (initialement {originalTime})
     singleModeItineraryDescription: Trajet de {time} {mode}
     timeWalking: "{time} de marche"
-  MobilityProfile:
-    DevicesPane:
-      devices:
-        cane: Canne
-        crutches: Béquilles
-        electric wheelchair: Fauteuil roulant électrique
-        manual walker: Déambulateur manuel
-        manual wheelchair: Fauteuil roulant manuel
-        mobility scooter: Scooter électrique
-        none: Aucun
-        service animal: Animal de service
-        stroller: Poussette
-        wheeled walker: Déambulateur à roues
-        white cane: Canne blanche
-      prompt: >-
-        Utilisez-vous habituellement l'aide d'un appareil pour vous déplacer ?
-        (Cochez tous les cas qui vous concernent)
-    LimitationsPane:
-      mobilityPrompt: >-
-        Avez-vous des handicaps moteurs qui vous font marcher plus lentement ou
-        plus prudemment que d'autres personnes ?
-      visionLimitations:
-        legally-blind: Non-voyant
-        low-vision: Vision basse
-        none: Aucun
-      visionPrompt: Avez-vous des handicaps visuels ?
-    MobilityPane:
-      button: Modifier votre profil mobilité
-      header: Profil mobilité
-      mobilityDevices: "Appareils d'aide : "
-      mobilityLimitations: "Handicaps moteurs : "
-      planTripDescription: >-
-        Vous pouvez rechercher des trajets adaptés au profil mobilité des
-        personnes que vous accompagnez.
-      visionLimitations: "Handicaps visuels : "
-    dropdownLabel: "Profil à utiliser :"
-    intro: >-
-      Veuillez répondre a quelques questions pour personaliser vos recherches de
-      trajets selon vos besoins et préférences.
-    myself: Moi-même
-    title: Spécifiez votre profil de mobilité
   NarrativeItinerariesHeader:
     changeSortDir: Changer l'ordre de tri
     howToFindResults: Pour afficher les résultats, utilisez l'en-tête Trajets 
@@ -397,22 +268,9 @@ components:
     nothingNearbyHeader: Hors de portée
     searchNearby: Search nearby...
     spacesAvailable: "{spacesAvailable} emplacements libres disponibles"
-  NewAccountWizard:
-    createNewAccount: Créez un nouveau compte
-    finish: Votre nouveau compte est prêt !
-    notifications: Préférences pour les notifications
-    places: Ajoutez vos lieux
-    verify: Vérifiez votre adresse e-mail
   NotFound:
     description: Le contenu que vous avez demandé n'est pas disponible.
     header: Contenu introuvable
-  NotificationPrefsPane:
-    devicesRegistered: >-
-      {count, plural, one {# appareil enregistré} other {# appareils
-      enregistrés}}
-    noDeviceForPush: Inscrivez-vous avec l'application mobile pour accéder à ce 
-      paramètre.
-    notificationChannelPrompt: "Recevoir des notifications sur vos trajets par :"
   OTP2ErrorRenderer:
     LOCATION_NOT_FOUND:
       body: >-
@@ -463,41 +321,12 @@ components:
     inputFields:
       FROM: point de départ
       TO: destination
-  PhoneNumberEditor:
-    changeNumber: Changer de numéro
-    invalidCode: Le code de vérification doit comporter 6 chiffres.
-    invalidPhone: Veuillez entrer un numéro de téléphone valable.
-    phoneNumberSubmitted: Le numéro {phoneNumber} a bien été envoyé.
-    phoneNumberVerified: Le numéro {phoneNumber} a bien été vérifié.
-    placeholder: Entrez votre numéro
-    prompt: "Entrez votre numéro de téléphone pour les SMS de notification :"
-    requestNewCode: Envoyer un nouveau code
-    sendVerificationText: Envoyer le SMS de vérification
-    smsConsent: >
-      En donnant votre numéro de téléphone, vous acceptez de recevoir des SMS de
-      vérification et de suivi de vos trajets. Frais applicables selon votre
-      opérateur téléphonique.
-    verificationCode: "Code de vérification :"
-    verificationInstructions: >
-      Un SMS vous a été envoyé avec un code de vérification. Veuillez taper ce
-      code ci-dessous (le code expire après 10 minutes).
-    verify: Vérifier
-    verifySms: >-
-      Veuillez effectuer la vérification de votre numéro de téléphone afin de
-      recevoir des notifications par SMS.
-  Place:
-    deleteThisPlace: Supprimer ce lieu
+  PlaceShortcut:
     enterAlert: >
       Entrez votre point de départ/destination dans le formulaire (ou cliquez
       sur la carte), puis cliquez sur le marqueur qui apparaît afin de définir
       votre {placeType}.
-  PlaceEditor:
-    addressPrompt: "Adresse :"
-    genericLocationPlaceholder: Adresse du lieu
-    locationPlaceholder: Adresse de votre {placeName}
-    locationTypePrompt: "Type de lieu :"
-    nameExample: Mon café du coin
-    namePrompt: "Nom du lieu :"
+    setAddressForPlaceType: Entrez l'adresse de votre {placeType}
   PlanFirstLastButtons:
     first: Premier
     last: Dernier
@@ -554,43 +383,6 @@ components:
     saveTripText: Enregistrer
     signInText: Connectez-vous pour enregistrer
     signInTooltip: Veuillez vous connecter pour enregistrer ce trajet.
-  SavedTripEditor:
-    deleteSavedTrip: Supprimer ce trajet
-    editSavedTrip: Modifier un trajet enregistré
-    readOnlyBanner: >-
-      {creator} a créé et vous a ajouté sur ce trajet. Vous ne pouvez donc pas
-      faire de modifications.
-    saveNewTrip: Enregistrer un nouveau trajet
-    travelCompanions: Accompagnateurs
-    tripInformation: Informations sur le trajet
-    tripNotFound: Trajet introuvable
-    tripNotFoundDescription: Le trajet recherché est introuvable.
-    tripNotifications: Notifications du trajet
-  SavedTripList:
-    alertTag: "{alert, plural, one {Afficher une alerte} other {Afficher # alertes}}"
-    fromTo: De {from} à {to}
-    myTrips: Mes trajets
-    noSavedTrips: Vous n'avez aucun trajet enregistré
-    noSavedTripsInstructions: >-
-      Effectuez une recherche depuis la carte avant de pouvoir enregistrer un
-      nouveau trajet.
-    pause: Arrêter
-    resume: Reprendre
-    unsnooze: Reprendre
-  SavedTripScreen:
-    itineraryLoaded: Trajet chargé
-    itineraryLoading: Chargement du trajet
-    selectAtLeastOneDay: Veuillez choisir au moins un jour pour le suivi.
-    tooManyTrips: >
-      Vous avez déjà atteint le nombre maximum de 5 trajets enregistrés.
-      Veuillez supprimer les trajets enregistrés qui sont inutilisés, puis
-      réessayez.
-    tripNameAlreadyUsed: >-
-      Ce nom est déjà utilisé avec un autre trajet. Veuillez choisir un nom
-      différent.
-    tripNameRequired: Veuillez entrer un nom pour ce trajet.
-  SequentialPaneDisplay:
-    stepNumber: Étape {step} sur {total}
   SessionTimeout:
     body: >-
       Votre session va expirer d'ici une minute. Appuyez sur 'Prolonger ma
@@ -601,8 +393,6 @@ components:
     usingRealtimeInfo: >-
       Ce trajet utilise les informations en temps réel sur le trafic et les
       retards
-  StackedPaneDisplay:
-    savePreferences: Enregistrer mes préférences
   StatusBadge:
     invalid: Non valable
     pending: Non vérifié
@@ -644,21 +434,6 @@ components:
   SwitchButton:
     defaultContent: Permuter
     switchLocations: Permuter les lieux
-  TermsOfUsePane:
-    confirmDeletionPrompt: >
-      En révoquant votre accord sur l'enregistrement de vos recherches de
-      trajets, tout l'historique de vos de trajets sera supprimé. Voulez-vous
-      continuer ?
-    mustAgreeToTerms: Vous devez accepter les conditions d'utilisation avant de 
-      continuer.
-    termsOfServiceStatement: >
-      J'atteste avoir au moins 18 ans et j'ai lu et consens aux
-      <termsOfUseLink>Conditions de service</termsOfUseLink> pour utiliser the
-      Planificateur de trajets.
-    termsOfStorageStatement: >
-      Facultatif: Je consens à ce que le Planificateur de trajets sauvegarde mes
-      recherches afin d'améliorer les transports publics dans ma region.
-      <termsOfStorageLink>Plus d'informations...</termsOfStorageLink>
   Timetable:
     errorLoadingStopClosures: Error loading stop closures
     errorLoadingTimetable: Error loading timetable
@@ -674,119 +449,11 @@ components:
     stopped_at: À quai à {stop}
     travelingAt: "Vitesse : {milesPerHour}"
     vehicleName: Véhicule {vehicleNumber}
-  TripBasicsPane:
-    checkAgain: Revérifier
-    checkingItineraryExistence: Vérification du trajet pour chaque jour de la 
-      semaine...
-    indicatesRequiredFields: Les champs marqués d'une astérisque (*) sont 
-      obligatoires.
-    onlyOnDate: "{date, date, ::eeeee yyyyMMdd} uniquement"
-    recurringEachWeek: Certains jours chaque semaine
-    tripDaysPrompt: Quels jours effectuez-vous ce trajet ?
-    tripIsAvailableOnDaysIndicated: Votre trajet est possible les jours indiqués
-      ci-dessus.
-    tripNamePrompt: "Saisissez un nom pour ce trajet :"
-    tripNotAvailableOnDay: Ce trajet n'est pas possible les {repeatedDay}.
-    unsavedChangesExistingTrip: >-
-      Vous n'avez pas encore enregistré votre trajet. Si vous annulez, les
-      changements seront perdus.
-    unsavedChangesNewTrip: >-
-      Vous n'avez pas encore enregistré votre nouveau trajet. Si vous annulez,
-      ce trajet sera perdu.
-  TripCompanionsPane:
-    companionLabel: "Accompagnateurs sur ce trajet :"
-    observersLabel: "Observateurs suivant ce trajet :"
-    primaryLabel: "Voyageur principal : "
-  TripNotificationsPane:
-    advancedSettings: Paramètres avancés
-    altRouteRecommended: Un·e autre trajet ou correspondance est conseillé·e
-    delaysAboveThreshold: Il y a des perturbations ou des retards de plus de
-    howToReceiveAlerts: >
-      Pour recevoir les alertes pour vos trajets suivis, activez les
-      notifications dans la section Préférences de votre compte, et essayez
-      d'enregistrer un trajet à nouveau.
-    monitorThisTrip: "Faire le suivi du trajet avant le départ :"
-    notificationsTurnedOff: Les notifications sont désactivées pour votre 
-      compte.
-    notifyViaChannelWhen: "Recevoir des notifications par {channel} lorsque :"
-    oneHour: 1 heure
-    realtimeAlertFlagged: Une alerte en temps réel affecte mon trajet
-    timeBefore: "{time} avant"
   TripPreviewLayout:
     previewTrip: Aperçu du trajet
-  TripStatus:
-    alerts: "{alerts, plural, =0 {# alerte !} one {# alerte !} other {# alertes !}}"
-    deleteTrip: Supprimer le trajet
-    planNewTrip: Planifier un nouveau trajet
-  TripStatusRenderers:
-    active:
-      delayedHeading: Trajet en cours, retardé de {formattedDuration}.
-      description: Arrivée à destination prévue à {arrivalTime, time, short}.
-      earlyHeading: Trajet en cours, en avance de {formattedDuration}.
-      noDataHeading: Trajet en cours (données en temps réel non disponibles).
-      onTimeHeading: Trajet en cours et prévu à l'heure.
-    base:
-      lastCheckedDefaultText: Dernière vérification inconnue
-      lastCheckedText: Dernière vérification effectuée il y a 
-        {formattedDuration}
-      togglePause: Suspendre le suivi
-      tripIsNotSnoozed: Suspendre jusqu'à demain
-      tripIsSnoozed: Reprendre
-      unknownState: État du trajet inconnu
-      untogglePause: Reprendre
-    inactive:
-      description: Reprendre et recevoir les notifications.
-      heading: Suivi suspendu.
-    nextTripNotPossible:
-      description: >
-        Votre trajet étant introuvable après plusieurs tentatives, le suivi a
-        été suspendu jusqu'à demain, votre itinéraire ayant probablement changé.
-        Pour relancer le suivi, cliquez sur Reprendre. Si le suivi n'est
-        toujours pas disponible, cliquez sur Planifier un trajet pour
-        enregistrer un trajet valable.
-      heading: Suivi impossible
-    noLongerPossible:
-      description: >
-        Le planificateur n'a pas pu trouver votre trajet pour aucun des jours
-        choisis. Veuillez replanifier votre trajet pour trouver une alternative.
-      heading: Le trajet n'est plus possible
-    notCalculated:
-      awaiting: Calcul des conditions du trajet en cours...
-      description: >-
-        Veuillez patienter pendant que les conditions du trajet sont
-        déterminées.
-      heading: Conditions du trajet indéterminées
-    past:
-      description: Le jour de ce trajet non-répété est passé.
-      heading: Trajet dans le passé
-    snoozed:
-      description: >-
-        Les notifications reprendront automatiquement le prochain jour
-        selectionné pour ce trajet. Cliquez sur Reprendre pour recevoir les
-        notifications aujourd'hui.
-      heading: Notifications suspendues pour le restant de la journée.
-    upcoming:
-      nextTripBegins: >-
-        Prochain départ : {tripDatetime, date, ::eeeee yyyyMMdd} à
-        {tripDatetime, time, short}.
-      tripBegins: >-
-        Départ prévu à {tripStart, time, short}. (Le suivi en temps réel
-        débutera à {monitoringStart, time, short}.)
-      tripStartIsDelayed: Départ retardé de {duration}.
-      tripStartIsEarly: Départ avancé de {duration} !
-      tripStartsSoonNoUpdates: Départ proche (pas de données en temps réel).
-      tripStartsSoonOnTime: Départ proche et prévu à l'heure.
   TripSummary:
     arriveAt: "Arrivée à "
     leaveAt: "Partez à "
-  TripSummaryPane:
-    happensOnDays: "Effectué : {days}"
-    monitoredTripDays: Jours de suivi de ce trajet
-    notifications: "{leadTimeInMinutes} mn avant l'heure de départ prévue"
-    notificationsPaused: Notifications suspendues.
-    notificationsSnoozed: Notifications suspendues pour le restant de la 
-      journée.
-    timeAndDuration: Heure et durée du trajet
   TripTools:
     copyLink: Copier le lien
     header: Outils
@@ -822,15 +489,6 @@ components:
     listOfRouteStops: Liste des arrêts sur cette ligne
     startOfTrip: Début du trajet
     tripDescription: Montez à {boardAtStop} et descendez à {disembarkAtStop}
-  UserAccountScreen:
-    confirmDelete: >-
-      Voulez-vous vraiment supprimer votre compte ? Cette action est
-      irréversible.
-    errorUpdatingProfile: Erreur dans la mise à jour de votre profil.
-    fieldUpdated: Ce paramètre a été mis à jour.
-    fields:
-      add-companion-form: Accompagnateurs
-      storeTripHistory: Enregistrement des recherches
   UserSettings:
     confirmDeletion: >-
       Vous avez des recherches et/ou lieux récemment enregistrés qui vont être
@@ -850,19 +508,6 @@ components:
       données concernant votre domicile, lieu de travail, ou autre endroit. Vous
       pouvez à tout moment désactiver la collecte de vos recherches/lieux
       récents et effacer vos domicile, lieu de travail, et arrêts favoris.
-  VerifyEmailPane:
-    emailIsVerified: Mon email est vérifié
-    instructions1: >
-      Vous devriez recevoir un message par e-mail. Cliquez le lien dans le
-      message pour verifier votre adresse e-mail. Vous pourrez ensuite finir de
-      créer votre compte.
-    instructions2: >-
-      Une fois votre adresse vérifiée, cliquez sur le bouton ci-dessous pour
-      continuer.
-    instructions3: >-
-      Vous pouvez planifier des trajets et revenir à cet écran à tout moment
-      pour poursuivre la creation de votre compte.
-    resendVerification: Envoyer un nouveau message de vérification
   ViewSwitcher:
     nearby: À proximité
     switcher: Sélecteur de vues

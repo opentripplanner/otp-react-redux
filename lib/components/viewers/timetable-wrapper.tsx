@@ -139,13 +139,17 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
       {routeInformation && (
         <div style={{ overflow: 'scroll' }}>
           <TimeTable
+            additionalColumns={[
+              'NOTICES',
+              'BLOCK_ID',
+              'TRIP_SHORT_NAME',
+              'TRIP_HEADSIGN',
+              'TRIP_ID'
+            ]}
             closedStops={closedStops}
             directionId={directionId}
             includeDwellStops
             route={routeInformation}
-            showBlockId
-            showNotices
-            showTripShortName
             timepointsOnly={timepointsOnly}
           />
         </div>

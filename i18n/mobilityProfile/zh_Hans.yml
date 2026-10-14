@@ -1,0 +1,53 @@
+_id: zh
+_name: Chinese (Simplified)
+
+actions:
+  user:
+    getDependentUserInfoFailed: 获取移动配置文件信息出错。
+components:
+  CompanionsPane:
+    addNewCompanion: 添加新的出行伙伴
+    companionAlreadyAdded: 您已添加一位电子邮箱为 {email} 的出行伙伴
+    confirmDeleteCompanion: 是否要删除电子邮箱为 {email} 的出行伙伴？
+    currentCompanionsLabel: 当前出行伙伴：
+    deleteCompanion: 删除 {email}
+    noCompanions: 您当前未添加任何出行伙伴。
+    submitNewCompanion: 发送邀请
+    title: 出行伙伴
+  MobilityProfile:
+    DevicesPane:
+      devices:
+        cane: 手杖
+        crutches: 拐杖
+        electric wheelchair: 电动轮椅
+        manual walker: 手动助行器
+        manual wheelchair: 手动/传统轮椅
+        mobility scooter: 代步车
+        none: 无辅助设备
+        service animal: 服务性动物
+        stroller: 婴儿车
+        wheeled walker: 带轮助行器
+        white cane: 白色盲杖
+      prompt: 您是否经常使用辅助移动设备？（勾选所有适用项）
+    LimitationsPane:
+      mobilityPrompt: 您是否有任何行动限制，导致您比他人走路更慢或更谨慎？
+      visionLimitations:
+        legally-blind: 法定盲人
+        low-vision: 低视力
+        none: 无
+      visionPrompt: 您是否有任何视力限制？
+    MobilityPane:
+      button: 编辑您的移动配置文件
+      header: 移动配置文件
+      mobilityDevices: "移动设备： "
+      mobilityLimitations: "行动限制： "
+      planTripDescription: 如果您有出行伙伴，您可以选择根据他们的移动配置文件规划此行程。
+      visionLimitations: "视力限制： "
+    dropdownLabel: 用户移动配置文件：
+    intro: 请回答几个问题，以根据您的需求和偏好自定义行程规划体验。
+    myself: 本人
+    title: 定义您的移动配置文件
+  TripCompanionsPane:
+    companionLabel: 此行程中的伙伴：
+    observersLabel: 观察此行程的人员：
+    primaryLabel: "主要出行人： "

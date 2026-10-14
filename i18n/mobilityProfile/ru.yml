@@ -1,0 +1,69 @@
+_id: ru
+_name: Pусский
+
+actions:
+  user:
+    getDependentUserInfoFailed: Ошибка при получении информации о профиле 
+      мобильности.
+components:
+  CompanionsPane:
+    addNewCompanion: Добавить нового попутчика
+    companionAlreadyAdded: У вас уже есть попутчик с адресом электронной почты 
+      {email}.
+    companionExplanation: >
+      Invite an existing G-MAP user to be a travel companion by entering their
+      email. When they accept, their status will change to "verified", and you
+      can share your trip status and plan trips based on one another's mobility
+      profile.
+    confirmDeleteCompanion: Удалить попутчика {email}?
+    currentCompanionsLabel: "Нынешние попутчики:"
+    deleteCompanion: Удалить {email}
+    noCompanions: У вас нет попутчиков.
+    submitNewCompanion: Отправить приглашение
+    title: Попутчики
+  MobilityProfile:
+    DevicesPane:
+      devices:
+        cane: Трость
+        crutches: Костыли
+        electric wheelchair: Кресло-коляска с электроприводом
+        manual walker: Ручные ходунки
+        manual wheelchair: Кресло-коляска с ручным управлением/обычное 
+          кресло-коляска
+        mobility scooter: Электроскутер для маломобильных людей
+        none: Без вспомогательного устройства
+        service animal: Служебное животное
+        stroller: Коляска
+        wheeled walker: Ходунки на колесах
+        white cane: Трость для слепых
+      prompt: >-
+        Вы регулярно пользуетесь вспомогательным устройством для передвижения?
+        (Отметьте все подходящие варианты.)
+    LimitationsPane:
+      mobilityPrompt: >-
+        Есть ли у вас проблемы с передвижением, из-за которых вам приходится
+        ходить медленнее или осторожнее, чем другим людям?
+      visionLimitations:
+        legally-blind: Официально признанный слепым
+        low-vision: Слабовидящий
+        none: Ничего
+      visionPrompt: Есть ли у вас проблемы со зрением?
+    MobilityPane:
+      button: Отредактируйте ваш профиль мобильности
+      header: Профиль мобильности
+      mobilityDevices: "Устройства для передвижения: "
+      mobilityLimitations: "Ограничения подвижности: "
+      planTripDescription: >-
+        Если у вас есть попутчик, вы можете спланировать эту поездку в
+        соответствии с его профилем мобильности.
+      visionLimitations: "Проблемы со зрением: "
+    dropdownLabel: "Профиль мобильности пользователя:"
+    intro: >-
+      Ответьте на несколько вопросов, чтобы спланировать поездку в соответствии
+      с вашими потребностями и предпочтениями.
+    myself: Я
+    title: Определите ваш профиль мобильности
+  TripCompanionsPane:
+    companionLabel: "Попутчик в этой поездке:"
+    observersLabel: "Наблюдатели следят за этой поездкой:"
+    primaryLabel: "Основной путешественник: "
