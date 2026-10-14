@@ -2,12 +2,7 @@ _id: en-US
 _name: İngilizce
 actions:
   callTaker:
-    callQuerySaveError: "Çağrı sorguları kaydedilirken hata oluştu: {err}"
-    checkSessionError: "Oturum kimlik doğrulama oluşturulurken hata oluştu: {err}"
-    couldNotFindCallError: Çağrı bulunamadı. Sorguları kaydetme isteği iptal 
-      ediliyor.
     fetchCallsError: "Çağrılar alınırken hata oluştu: {err}"
-    queryFetchError: "Sorgular alınırken hata oluştu: {err}"
   location:
     deniedAccessAlert: >
       Konumunuza erişim engellendi.
