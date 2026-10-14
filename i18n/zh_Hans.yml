@@ -3,12 +3,8 @@ _name: Chinese (Simplified)
 
 actions:
   callTaker:
-    callQuerySaveError: "存储通话查询时出现错误: {err}"
     callSaveError: "无法保存通话: {err}"
-    checkSessionError: "建立授权使用时出现错误: {err}"
-    couldNotFindCallError: 找不到通话.取消保存查询请求.
     fetchCallsError: "获取通话时出现错误: {err}"
-    queryFetchError: "获取查询时出现错误: {err}"
   location:
     deniedAccessAlert: |
       访问您的位置被阻止。
