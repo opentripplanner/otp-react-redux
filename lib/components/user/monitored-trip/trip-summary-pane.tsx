@@ -4,7 +4,6 @@ import { BellSlash } from '@styled-icons/fa-regular/BellSlash'
 import { Calendar } from '@styled-icons/fa-regular/Calendar'
 import { Clock } from '@styled-icons/fa-regular/Clock'
 import { FormattedDate, FormattedMessage, useIntl } from 'react-intl'
-import LocationIcon from '@opentripplanner/location-icon'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -14,6 +13,9 @@ import { InlineLoading } from '../../narrative/loading'
 import { MonitoredTripProps } from '../types'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import MetroItineraryRoutes from '../../narrative/metro/metro-itinerary-routes'
+import OriginDestination, {
+  TextWIcon
+} from '../../util/origin-destination-layout'
 
 import MonitoredDays from './trip-monitored-days'
 import TripSummary from './trip-duration-summary'
@@ -68,18 +70,6 @@ const ItineraryDetails = styled.div`
   @media (max-width: 768px) {
     padding-top: 30px;
     width: 100%;
-  }
-`
-const TextWIcon = styled.div`
-  align-items: flex-start;
-  display: flex;
-  gap: 7px;
-  justify-content: left;
-  // TODO: Do this in grid
-  width: 250px;
-
-  svg {
-    flex-shrink: 0;
   }
 `
 
@@ -165,8 +155,6 @@ const TripSummaryPane = ({
       id: 'components.ExistingAccountDisplay.notifications'
     })
 
-    const ICON_SIZE = 14
-
     const isActiveAndNotSnoozed =
       monitoredTrip.isActive && !monitoredTrip.snoozed
 
@@ -186,27 +174,7 @@ const TripSummaryPane = ({
           />
         </InvisibleA11yLabel>
         <LocationDetails aria-hidden className="trip-location-details">
-          <TextWIcon>
-            {/* Location Icon does not allow a title prop so use a span wrapper for a title tooltip */}
-            <span
-              title={intl.formatMessage({
-                id: 'components.BatchSettings.origin'
-              })}
-            >
-              <LocationIcon size={ICON_SIZE} type="from" />
-            </span>
-            <span>{fromPlace}</span>
-          </TextWIcon>
-          <TextWIcon>
-            <span
-              title={intl.formatMessage({
-                id: 'components.BatchSettings.destination'
-              })}
-            >
-              <LocationIcon size={ICON_SIZE} type="to" />
-            </span>
-            <span>{toPlace}</span>
-          </TextWIcon>
+          <OriginDestination from={fromPlace} intl={intl} to={toPlace} />
         </LocationDetails>
         <ItineraryDetails>
           <TripDetailsList className="trip-details-list">

@@ -34,7 +34,6 @@ const ItineraryFooter = () => <div />
  * - ItineraryFooter (optional) The component rendered below itinerary details.
  * - LegIcon (required) An existing, imported LegIcon component
  *    from @opentripplanner/icons, but it is possible to create a custom component if desired.)
- * - MainControls (optional) Floating component over the main UI, if any.
  * - MainPanel (required) The component that renders the main (side) panel.
  * - MapWindows (optional) Floating window component over the map, if any.
  * - MobileResultsScreen (required) The component that renders the mobile search results.
