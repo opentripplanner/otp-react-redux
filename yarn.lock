@@ -3323,10 +3323,10 @@
     "@opentripplanner/map-popup" "^8.0.4"
     flat "^5.0.2"
 
-"@opentripplanner/timetable@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/timetable/-/timetable-2.0.0.tgz#5009de2b69229bef88052132a7b190dbd14fd299"
-  integrity sha512-VOMcAHrlSxYfkuXjQnBxP92WSjTYbiNRDR/syQ6NJSXcy4rSuOX4Q06Jo7nk/vB7BviQHl26y/gNkWBvnHE3nQ==
+"@opentripplanner/timetable@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/timetable/-/timetable-2.0.1.tgz#e08fab5b53ad1d4b9bd37f6e0979ded4ddc3ee6e"
+  integrity sha512-9xw5zxwPAY45lO/MEzd6Wqve81DUqhN4GFx7k2fhDRJizZF1FOFeijGOOJ+teCM4GTykYuJOOv4gKazHoGPpug==
   dependencies:
     "@opentripplanner/building-blocks" "^3.2.0"
     toposort "^2.0.2"
@@ -10021,9 +10021,9 @@ fn-name@~3.0.0:
   integrity sha512-eNMNr5exLoavuAMhIUVsOKF79SWd/zG104ef6sxBTSw+cZc6BXdQXDvYcGvp0VbxVVSp1XDUNoz7mg1xMtSznA==
 
 follow-redirects@^1.0.0:
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.16.0.tgz#28474a159d3b9d11ef62050a14ed60e4df6d61bc"
-  integrity sha512-y5rN/uOsadFT/JfYwhxRS5R7Qce+g3zG97+JrtFZlC9klX/W5hD7iiLzScI4nZqUS7DNUdhPgw4xI8W2LuXlUw==
+  version "1.16.1"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.16.1.tgz#6e0efa40a727fb369b98dab15883ec34787d675e"
+  integrity sha512-FNvFGzoMLWmE6Yj9spb/zjd7yiNCHiAW9/Tg9CXrQ8wuu32HtlJOwWO11OJafl5FfY3DxTdQ0vj42zU1kvv5jg==
 
 fontkit@^1.8.1:
   version "1.8.1"
