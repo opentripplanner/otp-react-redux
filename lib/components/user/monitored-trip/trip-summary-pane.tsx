@@ -174,7 +174,7 @@ const TripSummaryPane = ({
           />
         </InvisibleA11yLabel>
         <LocationDetails aria-hidden className="trip-location-details">
-          <OriginDestination from={fromPlace} intl={intl} to={toPlace} />
+          <OriginDestination from={fromPlace} to={toPlace} />
         </LocationDetails>
         <ItineraryDetails>
           <TripDetailsList className="trip-details-list">

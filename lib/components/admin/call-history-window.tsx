@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { History } from '@styled-icons/fa-solid/History'
-import { injectIntl, WrappedComponentProps } from 'react-intl'
+import { useIntl, WrappedComponentProps } from 'react-intl'
 import React from 'react'
 
 import * as callTakerActions from '../../actions/call-taker'
@@ -38,7 +38,8 @@ type Props = {
 const containerPadding = { padding: '5px' }
 
 function CallHistoryWindow(props: Props) {
-  const { callTaker, intl, searches, toggleCallHistory } = props
+  const intl = useIntl()
+  const { callTaker, searches, toggleCallHistory } = props
   const { activeCall, callHistory } = callTaker
   if (!callHistory.visible) return null
 
@@ -130,7 +131,4 @@ const mapDispatchToProps = {
   toggleCallHistory: callTakerActions.toggleCallHistory
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(injectIntl(CallHistoryWindow))
+export default connect(mapStateToProps, mapDispatchToProps)(CallHistoryWindow)

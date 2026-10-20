@@ -1,4 +1,4 @@
-import { IntlShape } from 'react-intl'
+import { useIntl } from 'react-intl'
 import LocationIcon from '@opentripplanner/location-icon'
 import React from 'react'
 import styled from 'styled-components'
@@ -18,13 +18,12 @@ export const TextWIcon = styled.div`
 
 const OriginDestination = ({
   from,
-  intl,
   to
 }: {
   from: any
-  intl: IntlShape
   to: any
-}) => {
+}): JSX.Element => {
+  const intl = useIntl()
   return (
     <>
       <TextWIcon>
