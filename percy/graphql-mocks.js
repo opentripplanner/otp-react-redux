@@ -29,7 +29,6 @@ function getPlanResponseMock(modes) {
   )
     .sort()
     .join('')
-  // console.log(modesString)
   switch (modesString) {
     case 'BICYCLEBUSSUBWAYTRAM':
     case 'TRANSITWALK':
