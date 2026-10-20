@@ -39,16 +39,16 @@ const containerPadding = { padding: '5px' }
 
 const sortCallsByDate = (calls: any[], intl: IntlShape) =>
   calls.reduce((acc, call) => {
-    const time = intl.formatDate(call.startTime, {
+    const date = intl.formatDate(call.startTime, {
       day: 'numeric',
       month: 'long',
       weekday: 'long'
     })
 
-    let dateGroup = acc.find((g: DateGroup) => g.date === time)
+    let dateGroup = acc.find((g: DateGroup) => g.date === date)
 
     if (!dateGroup) {
-      dateGroup = { date: time, trips: [] }
+      dateGroup = { date: date, trips: [] }
       acc.push(dateGroup)
     }
 
