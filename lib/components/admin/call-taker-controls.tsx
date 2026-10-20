@@ -28,6 +28,7 @@ type Props = {
       calls: {
         data: Array<any>
       }
+      fetched: boolean
       visible: boolean
     }
   }
@@ -35,7 +36,6 @@ type Props = {
   endCall: (intl: IntlShape) => void
   fetchCalls: (intl: IntlShape) => void
   resetAndToggleCallHistory: () => void
-  session: string
 } & WrappedComponentProps
 
 /**
@@ -47,11 +47,10 @@ type Props = {
  */
 class CallTakerControls extends Component<Props> {
   componentDidUpdate(prevProps: Props) {
-    const { callTakerEnabled, fetchCalls, intl, session } = this.props
-    // Once session is available, fetch calls.
-    if (session && !prevProps.session) {
-      if (callTakerEnabled) fetchCalls(intl)
-    }
+    const { callTaker, callTakerEnabled, fetchCalls, intl } = this.props
+    // Fetch calls.
+    if (callTakerEnabled && callTaker.callHistory.fetched === false)
+      fetchCalls(intl)
   }
 
   _onClickCall = () => {
@@ -90,10 +89,8 @@ class CallTakerControls extends Component<Props> {
   _callInProgress = () => Boolean(this.props.callTaker.activeCall)
 
   render() {
-    const { callTaker, callTakerEnabled, resetAndToggleCallHistory, session } =
+    const { callTaker, callTakerEnabled, resetAndToggleCallHistory } =
       this.props
-    // If no valid session is found, do not show calltaker controls.
-    if (!session) return null
     return (
       <ControlsContainer>
         {/* Start/End Call button */}
@@ -128,8 +125,7 @@ class CallTakerControls extends Component<Props> {
 const mapStateToProps = (state: AppReduxState) => {
   return {
     callTaker: state.callTaker,
-    callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),
-    session: state.callTaker.session
+    callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER)
   }
 }
 
