@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { History } from '@styled-icons/fa-solid/History'
-import { useIntl, WrappedComponentProps } from 'react-intl'
+import { IntlShape, useIntl, WrappedComponentProps } from 'react-intl'
 import React from 'react'
 
 import * as callTakerActions from '../../actions/call-taker'
@@ -37,16 +37,8 @@ type Props = {
 
 const containerPadding = { padding: '5px' }
 
-function CallHistoryWindow(props: Props) {
-  const intl = useIntl()
-  const { callTaker, searches, toggleCallHistory } = props
-  const { activeCall, callHistory } = callTaker
-  if (!callHistory.visible) return null
-
-  const sortedCalls = callHistory.calls.sort(compareEndTimes)
-
-  // Sort the calls into dates
-  const callsByDateArray: Array<DateGroup> = sortedCalls.reduce((acc, call) => {
+const sortCallsByDate = (calls: any[], intl: IntlShape) =>
+  calls.reduce((acc, call) => {
     const time = intl.formatDate(call.startTime, {
       day: 'numeric',
       month: 'long',
@@ -64,6 +56,17 @@ function CallHistoryWindow(props: Props) {
 
     return acc
   }, [])
+
+function CallHistoryWindow(props: Props) {
+  const intl = useIntl()
+  const { callTaker, searches, toggleCallHistory } = props
+  const { activeCall, callHistory } = callTaker
+  if (!callHistory.visible) return null
+
+  const sortedCalls = callHistory.calls.sort(compareEndTimes)
+
+  // Sort the calls into dates
+  const callsByDateArray: Array<DateGroup> = sortCallsByDate(sortedCalls, intl)
 
   return (
     <DraggableWindow
