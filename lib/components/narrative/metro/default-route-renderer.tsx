@@ -1,4 +1,6 @@
+import { getLegRouteName } from '@opentripplanner/core-utils/lib/itinerary'
 import { Leg } from '@opentripplanner/types'
+import { useIntl } from 'react-intl'
 import React, { CSSProperties } from 'react'
 import styled from 'styled-components'
 
@@ -37,10 +39,8 @@ const DefaultRouteRenderer = ({
   leg,
   style
 }: RouteRendererProps): JSX.Element => {
-  const routeTitle =
-    typeof leg.route === 'object'
-      ? leg.route.shortName || leg.route.longName
-      : leg.routeShortName || leg.routeLongName
+  const intl = useIntl()
+  const routeTitle = getLegRouteName(leg, intl)
   return (
     <Block
       color={
