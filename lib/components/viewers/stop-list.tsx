@@ -1,9 +1,11 @@
+import { connect } from 'react-redux'
 import { FormattedMessage, IntlShape } from 'react-intl'
 import { toDate } from 'date-fns-tz'
 import coreUtils from '@opentripplanner/core-utils'
 import React, { ReactElement, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
+import { AppReduxState } from '../../util/state-types'
 import {
   DARK_TEXT_GREY,
   DEFAULT_ROUTE_COLOR,
@@ -120,6 +122,7 @@ export const Stop = styled.li<{ routeColor: string; timeColumn?: boolean }>`
 `
 
 interface StopListProps {
+  disableNearbyButton?: boolean
   fromIndex?: number
   homeTimezone?: any
   intl: IntlShape
@@ -131,6 +134,7 @@ interface StopListProps {
 }
 
 const StopList = ({
+  disableNearbyButton,
   fromIndex,
   homeTimezone,
   intl,
@@ -190,7 +194,7 @@ const StopList = ({
             className={`percy-stop ${highlighted ? 'highlighted' : 'faded'}`}
             // Use array index instead of stop id because a stop can be visited several times.
             key={index}
-            onClick={() => stopLinkClicked(stop)}
+            onClick={() => !disableNearbyButton && stopLinkClicked(stop)}
             onMouseOver={
               () => setHoveredStop && setHoveredStop(stop.stopId ?? null)
               // eslint-disable-next-line react/jsx-curly-newline
@@ -212,6 +216,8 @@ const StopList = ({
             )}
             <div className="stop-decoration" />
             <StopLink
+              // TODO: This might be confusing to screenreaders
+              disabled={disableNearbyButton}
               name={stop.name}
               onFocus={
                 () => setHoveredStop && setHoveredStop(stop.stopId ?? null)
@@ -233,4 +239,12 @@ const StopList = ({
   )
 }
 
-export default StopList
+const mapStateToProps = (state: AppReduxState) => {
+  return {
+    disableNearbyButton: state.otp.config.routeViewer?.disableNearbyButton
+  }
+}
+
+const mapDispatchToProps = {}
+
+export default connect(mapStateToProps, mapDispatchToProps)(StopList)
