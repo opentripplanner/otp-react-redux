@@ -3,11 +3,12 @@ import { connect } from 'react-redux'
 import { AppReduxState } from '../../util/state-types'
 import { FETCH_STATUS } from '../../util/constants'
 
-import { RouteWithAgencyGtfsId, StopTime } from './types'
+import { RouteWithAgencyGtfsId, StopData, StopTime } from './types'
 import TransitOperatorLogos from './transit-operator-icons'
 
 interface Props {
-  stopId: string
+  stopData?: StopData
+  stopId?: string
 }
 
 function getAgencies(routes: RouteWithAgencyGtfsId[]): Set<string> {
@@ -17,16 +18,14 @@ function getAgencies(routes: RouteWithAgencyGtfsId[]): Set<string> {
   }, new Set<string>())
 }
 
-const mapStateToProps = (state: AppReduxState, { stopId }: Props) => {
+const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
   const { areaStops, stops } = state.otp.transitIndex
-  const regularStop = stops[stopId]
+  const { stopData, stopId = '' } = ownProps
+  const regStop = stopData || stops[stopId]
   const areaStop = areaStops[stopId]
-  const stopData = regularStop || areaStop
-  const agencies = regularStop
+  const agencies = regStop
     ? getAgencies(
-        regularStop.stoptimesForPatterns?.map(
-          (st: StopTime) => st.pattern.route
-        )
+        regStop.stoptimesForPatterns?.map((st: StopTime) => st.pattern.route)
       )
     : areaStop
     ? getAgencies(areaStop.routes)
@@ -34,7 +33,7 @@ const mapStateToProps = (state: AppReduxState, { stopId }: Props) => {
 
   return {
     agencies,
-    loading: stopData?.fetchStatus === FETCH_STATUS.FETCHING,
+    loading: (regStop || areaStop)?.fetchStatus === FETCH_STATUS.FETCHING,
     transitOperators: state.otp.config.transitOperators || []
   }
 }
