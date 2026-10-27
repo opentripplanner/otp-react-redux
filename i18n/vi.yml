@@ -3,13 +3,8 @@ _name: Vietnamese
 
 actions:
   callTaker:
-    callQuerySaveError: "Lỗi khi lưu trữ các truy vấn cuộc gọi: {err}"
     callSaveError: "Không thể lưu cuộc gọi: {err}"
-    checkSessionError: "Lỗi khi thiết lập phiên ủy quyền: {err}"
-    couldNotFindCallError: Không thể tìm thấy cuộc gọi. Đang hủy yêu cầu lưu 
-      truy vấn.
     fetchCallsError: "Lỗi khi tìm nạp cuộc gọi: {err}"
-    queryFetchError: "Lỗi khi tìm nạp các truy vấn: {err}"
   location:
     deniedAccessAlert: >
       Quyền truy cập vào địa điểm của quý vị bị chặn.

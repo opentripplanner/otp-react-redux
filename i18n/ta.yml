@@ -3,13 +3,8 @@ _name: ஆங்கிலம்
 
 actions:
   callTaker:
-    callQuerySaveError: "அழைப்பு வினவல்களை சேமிப்பதில் பிழை: {err}"
     callSaveError: "அழைப்பைச் சேமிக்க முடியவில்லை: {err}"
-    checkSessionError: "அங்கீகார அமர்வை நிறுவுவதில் பிழை: {err}"
-    couldNotFindCallError: அழைப்பைக் கண்டுபிடிக்க முடியவில்லை. சேமி வினவல் 
-      கோரிக்கையை ரத்து செய்தல்.
     fetchCallsError: "அழைப்புகளைப் பெறுவதில் பிழை: {err}"
-    queryFetchError: "வினவல்களைப் பெறுவதில் பிழை: {err}"
   location:
     deniedAccessAlert: |
       உங்கள் இருப்பிடத்திற்கான அணுகல் தடுக்கப்பட்டுள்ளது.

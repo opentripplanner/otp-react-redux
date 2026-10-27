@@ -2,14 +2,8 @@ _id: es
 _name: Spanish
 actions:
   callTaker:
-    callQuerySaveError: "Error al almacenar consultas de llamadas: {err}"
     callSaveError: "No se pudo guardar la llamada: {err}"
-    checkSessionError: "Error al establecer la sesión de autorización: {err}"
-    couldNotFindCallError: >-
-      No se pudo encontrar la llamada. Estamos cancelando la solicitud de
-      guardar consultas.
     fetchCallsError: "Error al obtener llamadas: {err}"
-    queryFetchError: "Error al obtener consultas: {err}"
   location:
     deniedAccessAlert: >
       El acceso a tu ubicación está bloqueado.
