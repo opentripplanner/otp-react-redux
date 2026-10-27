@@ -3105,7 +3105,7 @@
   dependencies:
     "@styled-icons/bootstrap" "^10.47.0"
 
-"@opentripplanner/core-utils@16.1.2", "@opentripplanner/core-utils@^16.1.1", "@opentripplanner/core-utils@^16.1.2":
+"@opentripplanner/core-utils@16.1.2", "@opentripplanner/core-utils@^16.1.1":
   version "16.1.2"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-16.1.2.tgz#4e96eefc256d8dca351b7f083be70a0897f36c2a"
   integrity sha512-/dYKbr0xCGgws7L7B0twGEZMCrpz2r914TpfJ/YorPuY2BoKPDEzH8zJq4TXphWroFgHrZWhB8IrT1G3srxepg==
@@ -3143,6 +3143,23 @@
   version "16.1.1"
   resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-16.1.1.tgz#36544f49512c3bfd6eeec3a468ab04a5d0c77758"
   integrity sha512-DaHqxnRUcgsyepvh14zFVF1RJH3MKMiLcvuA0JHr5mPzV8kgjwzC9865crntBOOhbld7v8XdNIuwhWmIplLNqw==
+  dependencies:
+    "@conveyal/lonlat" "^1.4.1"
+    "@mapbox/polyline" "^1.1.1"
+    "@opentripplanner/geocoder" "^3.1.3"
+    "@styled-icons/foundation" "^10.34.0"
+    "@turf/along" "^7.3.1"
+    chroma-js "^3.2.0"
+    date-fns "^3.6.0"
+    date-fns-tz "^3.2.0"
+    graphql "^16.6.0"
+    lodash.clonedeep "^4.5.0"
+    qs "^6.9.1"
+
+"@opentripplanner/core-utils@^16.2.0":
+  version "16.2.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-16.2.0.tgz#29477ee702f93f4c091c3e1615750e8b0972ad30"
+  integrity sha512-ZIL/gOOlgpIcmyTzpZEBxXUol3m6c98LwoD7hfLRBSWgcLqe68HRLqdcIHtpZqFABplBvgxL+sV5X1ggBVXq2A==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.1"
@@ -3212,13 +3229,13 @@
     "@opentripplanner/core-utils" "^16.0.3"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@9.8.2":
-  version "9.8.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-9.8.2.tgz#8281d1e560e240af9b270925fc51ae8ec2cc566d"
-  integrity sha512-Cz4J8q5IOyHoUB9rRnjxPelozmdrozfFNb+CeEU0xo5X50zoDzsMDyQxZTZq/UdCABGJBtR/cfgb3tDjvawXLQ==
+"@opentripplanner/itinerary-body@9.10.0":
+  version "9.10.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-9.10.0.tgz#637a2818b3b7d96ddfa73b9074ac972a919caabc"
+  integrity sha512-C8ql7s6NsM5uKmLE9f4USbi0wpA08xAxsO5ff3nriLkP9GWe8HGsUG9kQWD9bpO3Jsz3td1SD0hKbNaidZAdxw==
   dependencies:
     "@opentripplanner/building-blocks" "^3.2.0"
-    "@opentripplanner/core-utils" "^16.1.2"
+    "@opentripplanner/core-utils" "^16.2.0"
     "@opentripplanner/humanize-distance" "^2.1.1"
     "@opentripplanner/icons" "^4.1.4"
     "@opentripplanner/location-icon" "^2.0.0"
