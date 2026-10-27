@@ -96,7 +96,7 @@
     "object-path": "^0.11.8",
     "pdfkit": "^0.12.1",
     "prop-types": "^15.6.0",
-    "qs": "^6.16.0",
+    "qs": "^6.16.1",
     "react": "<17.0.0",
     "react-animate-height": "^3.0.4",
     "react-bootstrap": "^0.32.1",
