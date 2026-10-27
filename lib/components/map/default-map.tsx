@@ -7,14 +7,13 @@ import {
   GeolocateControl,
   NavigationControl
 } from 'react-map-gl/maplibre'
-import {
-  FormFactor,
-  RentalVehicle,
-  VehicleRentalStation
-} from '@opentripplanner/types/otp2'
 import { getCurrentDate } from '@opentripplanner/core-utils/lib/time'
 import { injectIntl, IntlShape } from 'react-intl'
 import { Itinerary } from '@opentripplanner/types'
+import {
+  RentalVehicle,
+  VehicleRentalStation
+} from '@opentripplanner/types/otp2'
 import BaseMap from '@opentripplanner/base-map'
 import generateOTP2TileLayers from '@opentripplanner/otp2-tile-overlay'
 import React, { Component } from 'react'
