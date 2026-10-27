@@ -2,12 +2,11 @@ import { MapPin } from '@styled-icons/fa-solid/MapPin'
 import { useIntl } from 'react-intl'
 import React from 'react'
 import Skeleton from 'react-loading-skeleton'
+import styled from 'styled-components'
 import type { TransitOperator } from '@opentripplanner/types'
 
 import InvisibleA11yLabel from './invisible-a11y-label'
 import OperatorLogo from './operator-logo'
-import styled from 'styled-components'
-import type { StopData } from './types'
 
 const OperatorContainer = styled.span`
   &:not(:last-of-type) {
@@ -52,23 +51,14 @@ const Operator = ({ operator }: { operator?: TransitOperator }) => {
 }
 
 const TransitOperatorLogos = ({
+  agencies,
   loading = false,
-  stopData,
   transitOperators
 }: {
+  agencies: Set<string>
   loading?: boolean
-  stopData?: StopData
   transitOperators?: TransitOperator[]
 }): JSX.Element => {
-  const agencies =
-    (stopData &&
-      stopData.stoptimesForPatterns?.reduce<Set<string>>((prev, cur) => {
-        // @ts-expect-error The agency type is not yet compatible with OTP2
-        const agencyGtfsId = cur.pattern.route.agency?.gtfsId
-        return agencyGtfsId ? prev.add(agencyGtfsId) : prev
-      }, new Set())) ||
-    new Set()
-
   return (
     <>
       {loading ? (
