@@ -92,7 +92,7 @@ interface AgencyWithGtfsId extends Agency {
 }
 
 // FIXME: add to OTP-UI types
-interface RouteWithAgencyGtfsId extends Route {
+export interface RouteWithAgencyGtfsId extends Route {
   agency: AgencyWithGtfsId
 }
 
