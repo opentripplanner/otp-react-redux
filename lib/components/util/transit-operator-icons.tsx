@@ -9,9 +9,7 @@ import InvisibleA11yLabel from './invisible-a11y-label'
 import OperatorLogo from './operator-logo'
 
 const OperatorContainer = styled.span`
-  &:not(:last-of-type) {
-    margin-right: 0.5ch;
-  }
+  margin-right: 0.5ch;
 `
 
 const Operator = ({ operator }: { operator?: TransitOperator }) => {
@@ -62,7 +60,9 @@ const TransitOperatorLogos = ({
   return (
     <>
       {loading ? (
-        <Skeleton height={20} style={{ marginRight: '0.5ch' }} width={20} />
+        <OperatorContainer>
+          <Skeleton height="1em" width="1em" />
+        </OperatorContainer>
       ) : (
         transitOperators
           ?.filter((to) => Array.from(agencies).includes(to.agencyId))
