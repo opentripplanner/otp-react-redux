@@ -3176,6 +3176,17 @@
     "@opentripplanner/location-icon" "^2.0.0"
     flat "^5.0.2"
 
+"@opentripplanner/geocoder@./tmp/opentripplanner-geocoder-3.1.4.tgz":
+  version "3.1.4"
+  resolved "./tmp/opentripplanner-geocoder-3.1.4.tgz#793d889a746faa3de65637640a62bd63873ad726"
+  dependencies:
+    "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
+    "@conveyal/lonlat" "^1.4.1"
+    "@leeoniya/ufuzzy" "^1.0.14"
+    "@types/geojson" "^7946.0.16"
+    isomorphic-mapzen-search "^1.6.1"
+    lodash.memoize "^4.1.2"
+
 "@opentripplanner/geocoder@^3.1.2":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@opentripplanner/geocoder/-/geocoder-3.1.2.tgz#d5ce4baea674df980f568e65eeab971ec863c0e7"
