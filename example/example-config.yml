@@ -688,6 +688,8 @@ disableSingleItineraryDays: false
 #   # (defaults to false if unspecified).
 #   showBlockIds: false
 # routeViewer:
+#   # Prevent user from navigating to nearby view through route or trip viewer
+#   disableNearbyButton: false
 #   # Whether to render routes within flex zones of a route's patterns. If set to true,
 #   # routes will not be rendered within flex zones.
 #   hideRouteShapesWithinFlexZones: true
