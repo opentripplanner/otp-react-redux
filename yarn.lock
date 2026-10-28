@@ -3096,10 +3096,10 @@
   dependencies:
     "@styled-icons/bootstrap" "^10.47.0"
 
-"@opentripplanner/core-utils@16.1.2", "@opentripplanner/core-utils@^16.1.1":
-  version "16.1.2"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-16.1.2.tgz#4e96eefc256d8dca351b7f083be70a0897f36c2a"
-  integrity sha512-/dYKbr0xCGgws7L7B0twGEZMCrpz2r914TpfJ/YorPuY2BoKPDEzH8zJq4TXphWroFgHrZWhB8IrT1G3srxepg==
+"@opentripplanner/core-utils@16.2.0", "@opentripplanner/core-utils@^16.2.0":
+  version "16.2.0"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-16.2.0.tgz#29477ee702f93f4c091c3e1615750e8b0972ad30"
+  integrity sha512-ZIL/gOOlgpIcmyTzpZEBxXUol3m6c98LwoD7hfLRBSWgcLqe68HRLqdcIHtpZqFABplBvgxL+sV5X1ggBVXq2A==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.1"
@@ -3147,10 +3147,10 @@
     lodash.clonedeep "^4.5.0"
     qs "^6.9.1"
 
-"@opentripplanner/core-utils@^16.2.0":
-  version "16.2.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-16.2.0.tgz#29477ee702f93f4c091c3e1615750e8b0972ad30"
-  integrity sha512-ZIL/gOOlgpIcmyTzpZEBxXUol3m6c98LwoD7hfLRBSWgcLqe68HRLqdcIHtpZqFABplBvgxL+sV5X1ggBVXq2A==
+"@opentripplanner/core-utils@^16.1.1":
+  version "16.1.2"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/core-utils/-/core-utils-16.1.2.tgz#4e96eefc256d8dca351b7f083be70a0897f36c2a"
+  integrity sha512-/dYKbr0xCGgws7L7B0twGEZMCrpz2r914TpfJ/YorPuY2BoKPDEzH8zJq4TXphWroFgHrZWhB8IrT1G3srxepg==
   dependencies:
     "@conveyal/lonlat" "^1.4.1"
     "@mapbox/polyline" "^1.1.1"
@@ -3231,53 +3231,13 @@
     "@opentripplanner/core-utils" "^16.0.3"
     prop-types "^15.7.2"
 
-"@opentripplanner/itinerary-body@9.10.0":
+"@opentripplanner/itinerary-body@9.10.0", "@opentripplanner/itinerary-body@^9.9.0":
   version "9.10.0"
   resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-9.10.0.tgz#637a2818b3b7d96ddfa73b9074ac972a919caabc"
   integrity sha512-C8ql7s6NsM5uKmLE9f4USbi0wpA08xAxsO5ff3nriLkP9GWe8HGsUG9kQWD9bpO3Jsz3td1SD0hKbNaidZAdxw==
   dependencies:
     "@opentripplanner/building-blocks" "^3.2.0"
     "@opentripplanner/core-utils" "^16.2.0"
-    "@opentripplanner/humanize-distance" "^2.1.1"
-    "@opentripplanner/icons" "^4.1.4"
-    "@opentripplanner/location-icon" "^2.0.0"
-    "@styled-icons/fa-solid" "^10.34.0"
-    "@styled-icons/foundation" "^10.34.0"
-    "@styled-icons/styled-icon" "^10.7.1"
-    date-fns "^3.6.0"
-    date-fns-tz "^3.2.0"
-    flat "^5.0.2"
-    react-animate-height "^3.0.4"
-    react-resize-detector "^4.2.1"
-    string-similarity "^4.0.4"
-
-"@opentripplanner/itinerary-body@^9.3.1":
-  version "9.6.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-9.6.0.tgz#4dddd7087d64acb305b5f805054516433f1f8df4"
-  integrity sha512-drW1f6aWOeh0ooTKIjalpGiLJ05vdVqEh4aAXQwVAf6F6S3Eh5qccMvg49OI1vLE7hL0Nt7Q2vWAp8BioWtzmA==
-  dependencies:
-    "@opentripplanner/building-blocks" "^3.2.0"
-    "@opentripplanner/core-utils" "^16.1.0"
-    "@opentripplanner/humanize-distance" "^2.1.1"
-    "@opentripplanner/icons" "^4.1.4"
-    "@opentripplanner/location-icon" "^2.0.0"
-    "@styled-icons/fa-solid" "^10.34.0"
-    "@styled-icons/foundation" "^10.34.0"
-    "@styled-icons/styled-icon" "^10.7.1"
-    date-fns "^3.6.0"
-    date-fns-tz "^3.2.0"
-    flat "^5.0.2"
-    react-animate-height "^3.0.4"
-    react-resize-detector "^4.2.1"
-    string-similarity "^4.0.4"
-
-"@opentripplanner/itinerary-body@^9.8.0":
-  version "9.8.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/itinerary-body/-/itinerary-body-9.8.0.tgz#f5b37497fec5ba8b204ddd581ef105754ed05af1"
-  integrity sha512-04Vua6wkIDnCilF3jzOYvIbw/lMHz/rfdElPT1o0puUgJOgElVJlbY83d9GBpR9QtbybH46sPAzSAMqlgYb3Ag==
-  dependencies:
-    "@opentripplanner/building-blocks" "^3.2.0"
-    "@opentripplanner/core-utils" "^16.1.0"
     "@opentripplanner/humanize-distance" "^2.1.1"
     "@opentripplanner/icons" "^4.1.4"
     "@opentripplanner/location-icon" "^2.0.0"
