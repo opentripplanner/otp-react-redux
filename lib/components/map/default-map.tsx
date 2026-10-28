@@ -233,7 +233,7 @@ class DefaultMap extends Component<DefaultMapProps> {
     // (There are no OTP stop times in area stops.)
     if (entity.sourceLayer === 'areaStops') {
       this.props.findAreaStopAgencies({
-        gtfsId: entity.gtfsId,
+        stopId: entity.gtfsId,
         stopName: entity.name
       })
       return <TransitOperatorIcons stopId={entity.gtfsId} />
