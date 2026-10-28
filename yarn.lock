@@ -3184,9 +3184,9 @@
     "@opentripplanner/location-icon" "^2.0.0"
     flat "^5.0.2"
 
-"@opentripplanner/geocoder@./tmp/opentripplanner-geocoder-3.1.4.tgz":
+"@opentripplanner/geocoder@./opentripplanner-geocoder-3.1.4.tgz":
   version "3.1.4"
-  resolved "./tmp/opentripplanner-geocoder-3.1.4.tgz#793d889a746faa3de65637640a62bd63873ad726"
+  resolved "./opentripplanner-geocoder-3.1.4.tgz#dd4ebd00e6558515a1c723641f87b148b1978c6e"
   dependencies:
     "@conveyal/geocoder-arcgis-geojson" "^0.0.3"
     "@conveyal/lonlat" "^1.4.1"
