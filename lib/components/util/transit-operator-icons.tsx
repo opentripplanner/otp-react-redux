@@ -56,25 +56,23 @@ const TransitOperatorLogos = ({
   agencies: Set<string>
   loading?: boolean
   transitOperators?: TransitOperator[]
-}): JSX.Element => {
-  return (
-    <>
-      {loading ? (
-        <OperatorContainer>
-          <Skeleton height="1em" width="1em" />
-        </OperatorContainer>
-      ) : (
-        transitOperators
-          ?.filter((to) => Array.from(agencies).includes(to.agencyId))
-          // Second pass to remove duplicates based on name
-          .filter(
-            (to, index, arr) =>
-              index === arr.findIndex((t) => t?.name === to?.name)
-          )
-          .map((to) => <Operator key={to.agencyId} operator={to} />)
-      )}
-    </>
-  )
-}
+}): JSX.Element => (
+  <>
+    {loading ? (
+      <OperatorContainer>
+        <Skeleton height="1em" width="1em" />
+      </OperatorContainer>
+    ) : (
+      transitOperators
+        ?.filter((to) => agencies.has(to.agencyId))
+        // Second pass to remove duplicates based on name
+        .filter(
+          (to, index, arr) =>
+            index === arr.findIndex((t) => t?.name === to?.name)
+        )
+        .map((to) => <Operator key={to.agencyId} operator={to} />)
+    )}
+  </>
+)
 
 export default TransitOperatorLogos
