@@ -54,13 +54,17 @@ const TransitOperatorLogos = ({
 }: {
   loading?: boolean
   transitOperators: TransitOperator[]
-}): React.ReactNode =>
+}): JSX.Element =>
   loading ? (
     <OperatorContainer>
       <Skeleton height="1em" width="1em" />
     </OperatorContainer>
   ) : (
-    transitOperators.map((to) => <Operator key={to.agencyId} operator={to} />)
+    <>
+      {transitOperators.map((to) => (
+        <Operator key={to.agencyId} operator={to} />
+      ))}
+    </>
   )
 
 export default TransitOperatorLogos
