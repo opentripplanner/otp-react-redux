@@ -10101,11 +10101,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <TransitOperatorLogos
-                                          agencies={
-                                            Set {
-                                              "kcm:1",
-                                            }
-                                          }
                                           dispatch={[Function]}
                                           loading={false}
                                           stopData={
@@ -17257,11 +17252,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <TransitOperatorLogos
-                                          agencies={
-                                            Set {
-                                              "40:40",
-                                            }
-                                          }
                                           dispatch={[Function]}
                                           loading={false}
                                           stopData={
@@ -26588,11 +26578,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <TransitOperatorLogos
-                                          agencies={
-                                            Set {
-                                              "kcm:1",
-                                            }
-                                          }
                                           dispatch={[Function]}
                                           loading={false}
                                           stopData={
@@ -36554,11 +36539,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <TransitOperatorLogos
-                                          agencies={
-                                            Set {
-                                              "kcm:1",
-                                            }
-                                          }
                                           dispatch={[Function]}
                                           loading={false}
                                           stopData={
@@ -44320,11 +44300,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <TransitOperatorLogos
-                                          agencies={
-                                            Set {
-                                              "40:40",
-                                            }
-                                          }
                                           dispatch={[Function]}
                                           loading={false}
                                           stopData={
@@ -51822,12 +51797,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <TransitOperatorLogos
-                                          agencies={
-                                            Set {
-                                              "kcm:40",
-                                              "kcm:1",
-                                            }
-                                          }
                                           dispatch={[Function]}
                                           loading={false}
                                           stopData={
@@ -63231,11 +63200,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                         }
                                       >
                                         <TransitOperatorLogos
-                                          agencies={
-                                            Set {
-                                              "kcm:1",
-                                            }
-                                          }
                                           dispatch={[Function]}
                                           loading={false}
                                           stopData={
