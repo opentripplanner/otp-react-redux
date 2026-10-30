@@ -49,30 +49,18 @@ const Operator = ({ operator }: { operator?: TransitOperator }) => {
 }
 
 const TransitOperatorLogos = ({
-  agencies,
   loading = false,
-  transitOperators
+  transitOperators = []
 }: {
-  agencies: Set<string>
   loading?: boolean
-  transitOperators?: TransitOperator[]
-}): JSX.Element => (
-  <>
-    {loading ? (
-      <OperatorContainer>
-        <Skeleton height="1em" width="1em" />
-      </OperatorContainer>
-    ) : (
-      transitOperators
-        ?.filter((to) => agencies.has(to.agencyId))
-        // Second pass to remove duplicates based on name
-        .filter(
-          (to, index, arr) =>
-            index === arr.findIndex((t) => t?.name === to?.name)
-        )
-        .map((to) => <Operator key={to.agencyId} operator={to} />)
-    )}
-  </>
-)
+  transitOperators: TransitOperator[]
+}): React.ReactNode =>
+  loading ? (
+    <OperatorContainer>
+      <Skeleton height="1em" width="1em" />
+    </OperatorContainer>
+  ) : (
+    transitOperators.map((to) => <Operator key={to.agencyId} operator={to} />)
+  )
 
 export default TransitOperatorLogos

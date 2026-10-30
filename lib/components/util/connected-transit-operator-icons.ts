@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { TransitOperator } from '@opentripplanner/types'
 
 import { AppReduxState } from '../../util/state-types'
 import { FETCH_STATUS } from '../../util/constants'
@@ -31,10 +32,25 @@ const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
     ? getAgencies(areaStop.routes)
     : new Set<string>()
 
+  const configOperators = state.otp.config.transitOperators || []
+  const filteredTransitOperators = configOperators
+    .filter((to) => agencies.has(to.agencyId))
+    .reduce(
+      (prev, to) => {
+        if (to.name && prev.names.has(to.name)) return prev
+        if (!agencies.has(to.agencyId)) return prev
+        if (to.name) {
+          prev.names.add(to.name)
+          prev.operators.push(to)
+        }
+        return prev
+      },
+      { names: new Set<string>(), operators: [] as TransitOperator[] }
+    )
+
   return {
-    agencies,
     loading: (regStop || areaStop)?.fetchStatus === FETCH_STATUS.FETCHING,
-    transitOperators: state.otp.config.transitOperators || []
+    transitOperators: filteredTransitOperators
   }
 }
 
