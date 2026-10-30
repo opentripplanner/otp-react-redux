@@ -5,7 +5,7 @@ import { AppReduxState } from '../../util/state-types'
 import { FETCH_STATUS } from '../../util/constants'
 
 import { RouteWithAgencyGtfsId, StopData, StopTime } from './types'
-import TransitOperatorLogos from './transit-operator-icons'
+import TransitOperatorIcons from './transit-operator-icons'
 
 interface Props {
   stopData?: StopData
@@ -34,9 +34,7 @@ const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
     .filter((to) => agencies.has(to.agencyId))
     .reduce(
       (prev, to) => {
-        if (to.name && prev.names.has(to.name)) return prev
-        if (!agencies.has(to.agencyId)) return prev
-        if (to.name) {
+        if (to.name && !prev.names.has(to.name) && agencies.has(to.agencyId)) {
           prev.names.add(to.name)
           prev.operators.push(to)
         }
@@ -47,8 +45,8 @@ const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
 
   return {
     loading: (regStop || areaStop)?.fetchStatus === FETCH_STATUS.FETCHING,
-    transitOperators: filteredTransitOperators
+    transitOperators: filteredTransitOperators.operators
   }
 }
 
-export default connect(mapStateToProps)(TransitOperatorLogos)
+export default connect(mapStateToProps)(TransitOperatorIcons)
