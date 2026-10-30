@@ -13,10 +13,7 @@ interface Props {
 }
 
 function getAgencies(routes: RouteWithAgencyGtfsId[]): Set<string> {
-  return routes?.reduce((prev, cur) => {
-    const agencyGtfsId = cur.agency?.gtfsId
-    return agencyGtfsId ? prev.add(agencyGtfsId) : prev
-  }, new Set<string>())
+  return new Set((routes || []).map((r) => r.agency?.gtfsId).filter((r) => !!r))
 }
 
 const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
