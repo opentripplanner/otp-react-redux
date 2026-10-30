@@ -75,6 +75,7 @@ exports[`lib > reducers > create-otp-reducer should be able to create the initia
     "rideEstimates": {},
   },
   "transitIndex": {
+    "areaStops": {},
     "feeds": [],
     "routes": {},
     "routesFetchStatus": 0,

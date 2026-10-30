@@ -2,7 +2,7 @@ import { TransitOperator } from '@opentripplanner/types'
 import React from 'react'
 import styled from 'styled-components'
 
-const OperatorImg = styled.img<{ marginRight?: number; maxHeight?: number }>`
+const OperatorImg = styled.img`
   width: 25px;
 `
 
