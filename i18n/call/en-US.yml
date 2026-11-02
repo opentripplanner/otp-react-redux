@@ -1,0 +1,34 @@
+_id: en-US
+_name: English
+actions:
+  callTaker:
+    callSaveError: "Could not save call: {err}"
+    fetchCallsError: "Error fetching calls: {err}"
+components:
+  AddPlaceButton:
+    addPlace: Add place
+    needOriginDestination: Define origin/destination to add intermediate places
+    tooManyPlaces: Maximum intermediate places reached
+  AdvancedOptions:
+    bannedRoutes: Select banned routes…
+    preferredRoutes: Select preferred routes...
+  AppMenu:
+    callHistory: Call History
+    mailables: Mailables
+  CallTakerPanel:
+    advancedOptions: Advanced options
+    intermediateDestination: Enter intermediate destination
+  PlanFirstLastButtons:
+    first: First
+    last: Last
+    next: Next
+    previous: Previous
+  Timetable:
+    errorLoadingStopClosures: Error loading stop closures
+    errorLoadingTimetable: Error loading timetable
+    routeInformation: Route Information
+    showAllStops: Show All Stops
+    showTimepointsOnly: Show Timepoints Only
+    switchDirection: Switch Direction
+    timetable: Timetable
+    timetableDate: Select Date

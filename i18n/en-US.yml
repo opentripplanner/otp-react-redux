@@ -1,9 +1,6 @@
 _id: en-US
 _name: English
 actions:
-  callTaker:
-    callSaveError: "Could not save call: {err}"
-    fetchCallsError: "Error fetching calls: {err}"
   location:
     deniedAccessAlert: >
       Access to your location is blocked.
@@ -116,22 +113,13 @@ common:
       {hours, plural, =0 {} other {# hr }}{minutes} min { seconds, plural, =0 {}
       other {# sec}}
 components:
-  AddPlaceButton:
-    addPlace: Add place
-    needOriginDestination: Define origin/destination to add intermediate places
-    tooManyPlaces: Maximum intermediate places reached
-  AdvancedOptions:
-    bannedRoutes: Select banned routes…
-    preferredRoutes: Select preferred routes...
   AfterSignInScreen:
     mainTitle: Redirecting...
     message: >-
       If the page doesn't load after a few seconds, <redirectLink>click
       here</redirectLink>.
   AppMenu:
-    callHistory: Call History
     closeMenu: Close Menu
-    mailables: Mailables
     networkConnectionLost: Network connection lost
     networkConnectionRestored: Network connection restored
     openMenu: Open Menu
@@ -165,9 +153,6 @@ components:
     message: >
       In order to access this page you will need to log in. Please wait while we
       redirect you to the login page...
-  CallTakerPanel:
-    advancedOptions: Advanced options
-    intermediateDestination: Enter intermediate destination
   DateTimeOptions:
     arriveBy: Arrive by
     departAt: Depart at
@@ -317,11 +302,6 @@ components:
       Enter origin/destination in the form (or set via map click) and click the
       resulting marker to set as {placeType} location.
     setAddressForPlaceType: Set your {placeType} address
-  PlanFirstLastButtons:
-    first: First
-    last: Last
-    next: Next
-    previous: Previous
   PlanTripButton:
     planTrip: Plan Trip
   PointPopup:
@@ -422,15 +402,6 @@ components:
   SwitchButton:
     defaultContent: Switch
     switchLocations: Switch locations
-  Timetable:
-    errorLoadingStopClosures: Error loading stop closures
-    errorLoadingTimetable: Error loading timetable
-    routeInformation: Route Information
-    showAllStops: Show All Stops
-    showTimepointsOnly: Show Timepoints Only
-    switchDirection: Switch Direction
-    timetable: Timetable
-    timetableDate: Select Date
   TransitVehicleOverlay:
     in_transit_to: "Next stop: {stop}"
     incoming_at: "Approaching: {stop}"
