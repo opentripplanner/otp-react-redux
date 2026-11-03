@@ -2,13 +2,6 @@ _id: zh
 _name: Chinese (Simplified)
 
 actions:
-  callTaker:
-    callQuerySaveError: "存储通话查询时出现错误: {err}"
-    callSaveError: "无法保存通话: {err}"
-    checkSessionError: "建立授权使用时出现错误: {err}"
-    couldNotFindCallError: 找不到通话.取消保存查询请求.
-    fetchCallsError: "获取通话时出现错误: {err}"
-    queryFetchError: "获取查询时出现错误: {err}"
   location:
     deniedAccessAlert: |
       访问您的位置被阻止。
@@ -114,20 +107,11 @@ common:
       {hours, plural, =0 {} other {#小时}}{minutes} 分钟 { seconds, plural, =0 {}
       other {#秒}}
 components:
-  AddPlaceButton:
-    addPlace: 添加地点
-    needOriginDestination: 定义出发地或目的地以增加中途地点
-    tooManyPlaces: 已达到最多中途地点
-  AdvancedOptions:
-    bannedRoutes: 选择禁行路线…
-    preferredRoutes: 选择首选路线…
   AfterSignInScreen:
     mainTitle: 重新定向…
     message: 如果几秒钟后页面没有加载, 请 <redirectLink>点击这里</redirectLink>.
   AppMenu:
-    callHistory: 呼叫历史
     closeMenu: 关闭菜单
-    mailables: 准备发布
     networkConnectionLost: 网络连接中断
     networkConnectionRestored: 网络连接已恢复
     openMenu: 打开菜单
@@ -158,9 +142,6 @@ components:
     mainTitle: 签到
     message: |
       为了访问这个页面 你将需要登录。我们会将您重新定向到登录页面，请稍等。
-  CallTakerPanel:
-    advancedOptions: 进阶选项
-    intermediateDestination: 输入中间目的地
   DateTimeOptions:
     arriveBy: 到达
     departAt: 出发时间
@@ -288,11 +269,6 @@ components:
     enterAlert: |
       在表格中输入出发地/目的地(或通过地图点击设置)并点击产生的标记设置为 {placeType} 地点.
     setAddressForPlaceType: 设置您的 {placeType} 地址
-  PlanFirstLastButtons:
-    first: 首先
-    last: 最后一次
-    next: 下一个
-    previous: 上一个
   PlanTripButton:
     planTrip: 计划行程
   PointPopup:

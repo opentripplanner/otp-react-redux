@@ -1,0 +1,13 @@
+_id: tr
+_name: İngilizce
+actions:
+  callTaker:
+    fetchCallsError: "Çağrılar alınırken hata oluştu: {err}"
+components:
+  AddPlaceButton:
+    addPlace: Yer ekle
+    needOriginDestination: Ara yerler eklemek için başlangıç/bitiş noktasını tanımlayın
+    tooManyPlaces: Maksimum ara yerlere ulaşıldı
+  AdvancedOptions:
+    bannedRoutes: Yasaklanan rotaları seç…
+    preferredRoutes: Tercih edilen rotaları seçin...

@@ -1,0 +1,26 @@
+_id: zh
+_name: Chinese (Simplified)
+
+actions:
+  callTaker:
+    callSaveError: "无法保存通话: {err}"
+    fetchCallsError: "获取通话时出现错误: {err}"
+components:
+  AddPlaceButton:
+    addPlace: 添加地点
+    needOriginDestination: 定义出发地或目的地以增加中途地点
+    tooManyPlaces: 已达到最多中途地点
+  AdvancedOptions:
+    bannedRoutes: 选择禁行路线…
+    preferredRoutes: 选择首选路线…
+  CallTakerMenu:
+    callHistory: 呼叫历史
+    mailables: 准备发布
+  CallTakerPanel:
+    advancedOptions: 进阶选项
+    intermediateDestination: 输入中间目的地
+  PlanFirstLastButtons:
+    first: 首先
+    last: 最后一次
+    next: 下一个
+    previous: 上一个

@@ -1,0 +1,36 @@
+_id: fr
+_name: Exemple de traduction pour le module CallTaker en français
+actions:
+  callTaker:
+    callSaveError: "Impossible d'enregistrer l'appel : {err}"
+    fetchCallsError: "Erreur lors du chargement des appels : {err}"
+components:
+  AddPlaceButton:
+    addPlace: Ajouter un point intermédiaire
+    needOriginDestination: >-
+      Choisissez le départ et l'arrivée avant d'ajouter les points
+      intermédiaires
+    tooManyPlaces: Nombre max. de points intermédiaires atteint
+  AdvancedOptions:
+    bannedRoutes: Choisissez les lignes à éviter…
+    preferredRoutes: Choisissez les lignes préferées
+  CallTakerMenu:
+    callHistory: Historique des appels
+    mailables: Prêt-à-poster
+  CallTakerPanel:
+    advancedOptions: Options avancées
+    intermediateDestination: Entrez la destination intermédiaire
+  PlanFirstLastButtons:
+    first: Premier
+    last: Dernier
+    next: Suivant
+    previous: Précédent
+  Timetable:
+    errorLoadingStopClosures: Erreur de chargement des arrêts fermés
+    errorLoadingTimetable: Erreur de chargement des horaires
+    routeInformation: Informations sur la ligne
+    showAllStops: Montrer tous les arrêts
+    showTimepointsOnly: Montrer les arrêts de référence uniquement
+    switchDirection: Changer de direction
+    timetable: Grille horaire
+    timetableDate: Choisissez la date

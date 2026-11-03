@@ -1,0 +1,27 @@
+_id: vi
+_name: Vietnamese
+
+actions:
+  callTaker:
+    callSaveError: "Không thể lưu cuộc gọi: {err}"
+    fetchCallsError: "Lỗi khi tìm nạp cuộc gọi: {err}"
+components:
+  AddPlaceButton:
+    addPlace: Thêm địa điểm
+    needOriginDestination: Xác định nguồn gốc hoặc đích đến để thêm các địa điểm
+      trung gian
+    tooManyPlaces: Địa điểm trung gian tối đa đạt được
+  AdvancedOptions:
+    bannedRoutes: Chọn các tuyến đường bị cấm…
+    preferredRoutes: Chọn các tuyến đường ưa thích…
+  CallTakerMenu:
+    callHistory: Lịch sử cuộc gọi
+    mailables: Sẵn sàng để gửi
+  CallTakerPanel:
+    advancedOptions: Tùy chọn nâng cao
+    intermediateDestination: Nhập điểm đến trung gian
+  PlanFirstLastButtons:
+    first: Thứ nhất
+    last: Cuối
+    next: Tiếp theo
+    previous: Trước

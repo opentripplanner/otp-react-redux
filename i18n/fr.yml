@@ -1,9 +1,6 @@
 _id: fr
 _name: Exemple de traduction pour OTP-react-redux en français
 actions:
-  callTaker:
-    callSaveError: "Impossible d'enregistrer l'appel : {err}"
-    fetchCallsError: "Erreur lors du chargement des appels : {err}"
   location:
     deniedAccessAlert: >
       L'accès à votre position est refusé.
@@ -119,24 +116,13 @@ common:
       {hours, plural, =0 {} other {# h }}{minutes} min { seconds, plural, =0 {}
       other {# s}}
 components:
-  AddPlaceButton:
-    addPlace: Ajouter un point intermédiaire
-    needOriginDestination: >-
-      Choisissez le départ et l'arrivée avant d'ajouter les points
-      intermédiaires
-    tooManyPlaces: Nombre max. de points intermédiaires atteint
-  AdvancedOptions:
-    bannedRoutes: Choisissez les lignes à éviter…
-    preferredRoutes: Choisissez les lignes préferées
   AfterSignInScreen:
     mainTitle: Redirection...
     message: >-
       Si la page ne s'affiche pas après quelques secondes, <redirectLink>cliquez
       ici</redirectLink>.
   AppMenu:
-    callHistory: Historique des appels
     closeMenu: Fermer le menu
-    mailables: Prêt-à-poster
     networkConnectionLost: Erreur de connexion réseau
     networkConnectionRestored: Connexion réseau restaurée
     openMenu: Ouvrir le menu
@@ -172,9 +158,6 @@ components:
     message: >
       Pour accéder à cette page, vous devez vous connecter. Veuillez patienter
       pendant que nous vous redirigeons vers la page de connexion...
-  CallTakerPanel:
-    advancedOptions: Options avancées
-    intermediateDestination: Entrez la destination intermédiaire
   DateTimeOptions:
     arriveBy: Arriver à
     departAt: Partir à
@@ -327,11 +310,6 @@ components:
       sur la carte), puis cliquez sur le marqueur qui apparaît afin de définir
       votre {placeType}.
     setAddressForPlaceType: Entrez l'adresse de votre {placeType}
-  PlanFirstLastButtons:
-    first: Premier
-    last: Dernier
-    next: Suivant
-    previous: Précédent
   PlanTripButton:
     planTrip: Planifier le trajet
   PointPopup:
@@ -434,15 +412,6 @@ components:
   SwitchButton:
     defaultContent: Permuter
     switchLocations: Permuter les lieux
-  Timetable:
-    errorLoadingStopClosures: Error loading stop closures
-    errorLoadingTimetable: Error loading timetable
-    routeInformation: Informations sur la ligne
-    showAllStops: Show All Stops
-    showTimepointsOnly: Show Timepoints Only
-    switchDirection: Switch Direction
-    timetable: Timetable
-    timetableDate: Select Date
   TransitVehicleOverlay:
     in_transit_to: "Prochain arrêt : {stop}"
     incoming_at: Approchant {stop}
