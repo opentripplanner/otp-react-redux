@@ -12,7 +12,7 @@ components:
   AdvancedOptions:
     bannedRoutes: Select banned routes…
     preferredRoutes: Select preferred routes...
-  AppMenu:
+  CallTakerMenu:
     callHistory: Call History
     mailables: Mailables
   CallTakerPanel:
