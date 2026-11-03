@@ -1,0 +1,26 @@
+_id: ko
+_name: Korean
+
+actions:
+  callTaker:
+    callSaveError: "통화를 저장할 수 없습니다: {err}"
+    fetchCallsError: "통화를 가져오는 중에 오류가 발생했습니다: {err}"
+components:
+  AddPlaceButton:
+    addPlace: 장소 추가
+    needOriginDestination: 출발지/목적지를 정의하고 중간 경유지 추가
+    tooManyPlaces: 중간 경유지의 최대 수에 도달함
+  AdvancedOptions:
+    bannedRoutes: 금지된 경로 선택…
+    preferredRoutes: 선호 경로 선택…
+  CallTakerMenu:
+    callHistory: 통화 기록
+    mailables: 발송 가능
+  CallTakerPanel:
+    advancedOptions: 고급 옵션
+    intermediateDestination: 중간 목적지 입력
+  PlanFirstLastButtons:
+    first: 처음
+    last: 마지막
+    next: 다음
+    previous: 이전

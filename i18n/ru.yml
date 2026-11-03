@@ -2,14 +2,6 @@ _id: ru
 _name: Pусский
 
 actions:
-  callTaker:
-    callQuerySaveError: "Ошибка сохранения запросов на вызов: {err}"
-    callSaveError: "Не удалось сохранить вызов: {err}"
-    checkSessionError: "Ошибка установления сеанса авторизации: {err}"
-    couldNotFindCallError: Не удалось найти вызов. Отмена запроса на сохранение 
-      запросов.
-    fetchCallsError: "Ошибка получения вызовов: {err}"
-    queryFetchError: "Ошибка получения запросов: {err}"
   location:
     deniedAccessAlert: >
       Доступ к вашему местоположению заблокирован.
@@ -118,24 +110,13 @@ common:
       {hours, plural, =0 {} other {# hr }}{minutes} min { seconds, plural, =0 {}
       other {# sec}}
 components:
-  AddPlaceButton:
-    addPlace: Добавить место
-    needOriginDestination: >-
-      Выберите место отправления и назначения, чтобы добавить промежуточные
-      места
-    tooManyPlaces: Достигнуто ограничение по количеству промежуточных мест
-  AdvancedOptions:
-    bannedRoutes: Выбор заблокированных маршрутов…
-    preferredRoutes: Выбор предпочтительных маршрутов…
   AfterSignInScreen:
     mainTitle: Перенаправление…
     message: >-
       Если страница не загрузится через несколько секунд, <redirectLink>нажмите
       здесь</redirectLink>.
   AppMenu:
-    callHistory: История вызовов
     closeMenu: Закрыть меню
-    mailables: Почтовые отправления
     networkConnectionLost: Сетевое подключение потеряно
     networkConnectionRestored: Сетевое подключение восстановлено
     openMenu: Открыть меню
@@ -169,9 +150,6 @@ components:
     message: >
       Чтобы перейти на эту страницу, войдите в систему. Подождите. Мы
       перенаправляем вас на страницу входа…
-  CallTakerPanel:
-    advancedOptions: Расширенные опции
-    intermediateDestination: Введите промежуточное место назначения
   DateTimeOptions:
     arriveBy: Прибытие к
     departAt: Отправление в
@@ -322,11 +300,6 @@ components:
       Затем нажмите на маркер, чтобы задать его как местоположение
       «{placeType}».
     setAddressForPlaceType: Укажите адрес места «{placeType}»
-  PlanFirstLastButtons:
-    first: Первый
-    last: Последний
-    next: Следующий
-    previous: Предыдущий
   PlanTripButton:
     planTrip: Запланировать поездку
   PointPopup:
