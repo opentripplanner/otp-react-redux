@@ -370,6 +370,8 @@ export interface AdvancedSettingsPanelConfig {
 
 /** Route Viewer config */
 export interface RouteViewerConfig {
+  /** Prevent user from navigating to nearby view through route or trip viewer */
+  disableNearbyButton?: boolean
   /** Whether to hide the route linear shape inside a flex zone of that route. */
   hideRouteShapesWithinFlexZones?: boolean
   /** Remove vehicles from the map if they haven't sent an update in a number of seconds */

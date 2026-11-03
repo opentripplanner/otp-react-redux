@@ -10,6 +10,8 @@ import { accountLinks, getAuth0Config } from '../../util/auth'
 import { AppConfig } from '../../util/config-types'
 import { AppReduxState } from '../../util/state-types'
 import { DEFAULT_APP_TITLE } from '../../util/constants'
+import { isModuleEnabled, Modules } from '../../util/config'
+import CallTakerControls from '../admin/call-taker-controls'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import NavLoginButtonAuth0 from '../user/nav-login-button-auth0'
 
@@ -59,6 +61,7 @@ const NavItemOnLargeScreens = styled(NavbarItem)`
 
 // Typscript TODO: otpConfig type
 export type Props = {
+  callTakerEnabled: boolean
   locale: string
   networkConnectionLost: boolean
   otpConfig: AppConfig
@@ -80,6 +83,7 @@ export type Props = {
  * TODO: merge with the mobile navigation bar.
  */
 const DesktopNav = ({
+  callTakerEnabled,
   locale,
   networkConnectionLost,
   otpConfig,
@@ -158,6 +162,7 @@ const DesktopNav = ({
                 style={{ float: 'right' }}
               />
             )}
+            {callTakerEnabled && <CallTakerControls />}
           </StyledNav>
         </Navbar.Header>
       </Navbar>
@@ -171,6 +176,7 @@ const mapStateToProps = (state: AppReduxState) => {
   const { config: otpConfig } = state.otp
   const { networkConnectionLost } = state.otp.ui.errors
   return {
+    callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),
     locale: state.otp.ui.locale,
     networkConnectionLost,
     otpConfig,
