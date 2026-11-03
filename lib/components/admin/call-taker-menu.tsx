@@ -31,7 +31,7 @@ const CallTakerMenuItems = ({
         icon={<History />}
         onClick={resetAndToggleCallHistory}
         text={intl.formatMessage({
-          id: 'components.AppMenu.callHistory'
+          id: 'components.CallTakerMenu.callHistory'
         })}
       />
       {mailablesEnabled && (
@@ -39,7 +39,7 @@ const CallTakerMenuItems = ({
           icon={<Envelope />}
           onClick={toggleMailables}
           text={intl.formatMessage({
-            id: 'components.AppMenu.mailables'
+            id: 'components.CallTakerMenu.mailables'
           })}
         />
       )}
