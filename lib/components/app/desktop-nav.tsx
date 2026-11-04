@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { isMobile } from '@opentripplanner/core-utils/lib/ui'
 import { Nav, Navbar } from 'react-bootstrap'
 import { useIntl } from 'react-intl'
-import React from 'react'
+import React, { lazy } from 'react'
 import styled from 'styled-components'
 
 import * as uiActions from '../../actions/ui'
@@ -11,15 +11,19 @@ import { AppConfig } from '../../util/config-types'
 import { AppReduxState } from '../../util/state-types'
 import { DEFAULT_APP_TITLE } from '../../util/constants'
 import { isModuleEnabled, Modules } from '../../util/config'
-import CallTakerControls from '../admin/call-taker-controls'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import NavLoginButtonAuth0 from '../user/nav-login-button-auth0'
+import withSuspense from '../util/with-suspense'
 
 import { NetworkConnectionBanner } from './network-connection-banner'
 import AppMenu, { Icon } from './app-menu'
 import LocaleSelector from './locale-selector'
 import NavbarItem from './nav-item'
 import ViewSwitcher from './view-switcher'
+
+const CallTakerControls = withSuspense(
+  lazy(() => import('../admin/call-taker-controls'))
+)
 
 const StyledNav = styled(Nav)`
   display: flex;
