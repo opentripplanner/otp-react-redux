@@ -337,8 +337,8 @@ class DefaultMap extends Component<DefaultMapProps> {
 
     // Fetch feeds in the background
     this.props.findFeeds()
-    // Load closed stops into state for usage throughout UI (map popup, timetable, itinerary, etc.)
-    this.props.getStopClosures()
+    // Load the current closed stops into state for usage throughout UI (map popup, nearby view)
+    this.props.getStopClosures(new Date())
   }
 
   componentDidUpdate(prevProps) {
