@@ -13,7 +13,7 @@ import Loading from '../narrative/loading'
 
 interface TimeTableWrapperProps {
   closedStops?: Set<string>
-  getStopClosures: () => void
+  getStopClosures: (date: Date) => void
   getTimetableData: (params: TimetableDataParams) => void
   routeId: string
   stopClosuresError?: string
@@ -44,16 +44,15 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   const [directionId, setDirectionId] = useState<0 | 1>(0)
   const [timepointsOnly, setTimepointsOnly] = useState(true)
   const [loading, setLoading] = useState(true)
-  const [date, setDate] = useState(format(new Date(), 'yyyy-MM-dd'))
+  const [date, setDate] = useState<Date>(new Date())
+  const dateString = useMemo(() => format(date, 'yyyy-MM-dd'), [date])
 
   useEffect(() => {
     setLoading(true)
-    getStopClosures()
+    getStopClosures(date)
 
     getTimetableData({
-      // The Date constructor has a quirk: passing in yyyy-MM-dd will create the date in UTC, causing
-      // issues with timezone offsets. Passing in yyyy/MM/dd will honor the local machine's timezone
-      date: new Date(date.replaceAll('-', '/')),
+      date,
       routeGtfsId: routeId
     })
   }, [date, getTimetableData, routeId, getStopClosures])
@@ -81,7 +80,20 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   }, [routeInformation])
 
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length) setDate(e.target.value)
+    if (e.target.value.length) {
+      // Preserve the current hour/minute/second when changing the date. This allows closed stops that
+      // take effect partway through a day to be reflected accurately
+      const selectedDateWithCurrentTime = new Date()
+      // The Date constructor has a quirk: passing in yyyy-MM-dd will create the date in UTC, causing
+      // issues with timezone offsets. Passing in yyyy/MM/dd will honor the local machine's timezone
+      const newDate = new Date(e.target.value.replaceAll('-', '/'))
+      selectedDateWithCurrentTime.setFullYear(
+        newDate.getFullYear(),
+        newDate.getMonth(),
+        newDate.getDate()
+      )
+      setDate(selectedDateWithCurrentTime)
+    }
   }
 
   if (loading) {
@@ -133,7 +145,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
           id="date-picker"
           onChange={handleDateChange}
           type="date"
-          value={date}
+          value={dateString}
         />
       </div>
       {routeInformation && (
