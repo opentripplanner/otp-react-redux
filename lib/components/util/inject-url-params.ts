@@ -1,17 +1,16 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import coreUtils from '@opentripplanner/core-utils'
-import qs from 'qs'
 
+import * as apiActions from '../../actions/api'
 import * as uiActions from '../../actions/ui'
 import { AppReduxState } from '../../util/state-types'
-import { isBlank } from '../../util/ui'
 
 interface Props {
   injectUrlParams: (params: string[]) => void
   params: any
   path: string
-  routeTo: (path: string, search: string) => void
+  setUrlSearch: (params: any, replace: boolean) => void
   subtractUrlParams: (params: string[]) => void
 }
 
@@ -26,7 +25,7 @@ class InjectUrlParams extends Component<Props> {
   }
 
   componentDidUpdate() {
-    const { params, path, routeTo } = this.props
+    const { params, setUrlSearch } = this.props
 
     // Append filter params to existing search params.
     const urlParams = coreUtils.query.getUrlParams()
@@ -35,25 +34,20 @@ class InjectUrlParams extends Component<Props> {
     let altered = false
     Object.keys(params).forEach((key) => {
       const newParam = params[key]
-      if (
-        urlParams[key] === undefined &&
-        newParam !== undefined &&
-        newParam !== null
-      ) {
+      if (!(key in urlParams) && newParam !== undefined && newParam !== null) {
         urlParams[key] = newParam
         altered = true
       }
     })
 
     if (altered) {
-      const paramString = qs.stringify(urlParams, { skipNulls: true })
-      routeTo(path, isBlank(paramString) ? '' : `?${paramString}`)
+      setUrlSearch(urlParams, true)
     }
   }
 
   componentWillUnmount(): void {
     console.log('inject url parms UNmount')
-    const { params, path, routeTo, subtractUrlParams } = this.props
+    const { params, setUrlSearch, subtractUrlParams } = this.props
 
     const urlParamsOnLeave = coreUtils.query.getUrlParams()
     // Remove injected params by setting them to null
@@ -67,8 +61,7 @@ class InjectUrlParams extends Component<Props> {
 
     if (finalAltered) {
       subtractUrlParams(Object.keys(params))
-      const paramString = qs.stringify(urlParamsOnLeave, { skipNulls: true })
-      routeTo(path, isBlank(paramString) ? '' : `?${paramString}`)
+      setUrlSearch(urlParamsOnLeave, true)
     }
   }
 
@@ -86,7 +79,7 @@ const mapStateToProps = (state: AppReduxState) => ({
 
 const mapDispatchToProps = {
   injectUrlParams: uiActions.injectUrlParams,
-  routeTo: uiActions.routeTo,
+  setUrlSearch: apiActions.setUrlSearch,
   subtractUrlParams: uiActions.subtractUrlParams
 }
 
