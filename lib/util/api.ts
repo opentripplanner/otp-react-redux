@@ -49,17 +49,21 @@ export function getServiceStart(
 }
 
 /**
- * Helper function to add/modify parameters from the URL bar
+ * Helper function to add/modify/remove parameters from the URL bar
  * while preserving the other ones.
  */
 export function combineQueryParams(
-  addedParams?: Record<string, unknown>
+  addedParams?: Record<string, unknown>,
+  droppedParams?: string[]
 ): string {
   const search = {
     ...getUrlParams(),
     ...addedParams
   }
-  return qs.stringify(search, { arrayFormat: 'repeat' })
+  if (droppedParams) {
+    droppedParams.forEach((key) => (search[key] = null))
+  }
+  return qs.stringify(search, { arrayFormat: 'repeat', skipNulls: true })
 }
 
 /** Get the default number of itineraries to display for a search */
