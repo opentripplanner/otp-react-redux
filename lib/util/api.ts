@@ -54,7 +54,7 @@ export function getServiceStart(
  */
 export function combineQueryParams(
   addedParams?: Record<string, unknown>,
-  droppedParams?: string[]
+  droppedParams?: Set<string>
 ): string {
   const search = {
     ...getUrlParams(),
