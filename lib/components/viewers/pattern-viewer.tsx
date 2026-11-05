@@ -1,3 +1,4 @@
+import { ArrowLeft } from '@styled-icons/fa-solid/ArrowLeft'
 import { connect } from 'react-redux'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { TransitOperator } from '@opentripplanner/types'
@@ -18,8 +19,8 @@ import {
   ViewedRouteState
 } from '../util/types'
 import { TIMETABLE_PATH } from '../../util/constants'
-import BackButton from '../util/back-button'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
+import Link from '../util/link'
 import PageTitle from '../util/page-title'
 
 import { RouteRowDetails } from './route-row'
@@ -37,6 +38,7 @@ const TimetableLink = styled.a`
 
 interface Props {
   callTakerEnabled?: boolean
+  currentRoutePath: string
   findRoutesIfNeeded: () => void
   setViewedRoute: SetViewedRouteHandler
   transitOperators: TransitOperator[]
@@ -47,6 +49,7 @@ interface Props {
 
 const PatternViewer = ({
   callTakerEnabled,
+  currentRoutePath,
   findRoutesIfNeeded,
   setViewedRoute,
   transitOperators,
@@ -72,19 +75,6 @@ const PatternViewer = ({
     },
     [timetableHref]
   )
-
-  /**
-   * If we're viewing a pattern's stops, route to main route viewer.
-   */
-  const _backClicked = useCallback(() => {
-    // The if test is for typescript checks.
-    if (viewedRoute && routeId) {
-      setViewedRoute({
-        ...viewedRoute,
-        patternId: undefined
-      })
-    }
-  }, [viewedRoute, setViewedRoute])
 
   useEffect(findRoutesIfNeeded, [findRoutesIfNeeded])
 
@@ -118,11 +108,13 @@ const PatternViewer = ({
         />
         {/* Header Block */}
         <div className="header-with-back-button pattern-viewer-header">
-          <BackButton
-            backButtonText={backButtonText}
+          <Link
+            aria-label={backButtonText}
             id="pattern-viewer-back-button"
-            onClick={_backClicked}
-          />
+            to={currentRoutePath}
+          >
+            <ArrowLeft size={22} />
+          </Link>
           <h1 style={{ display: 'contents', lineHeight: '1.4' }}>
             {!route.pending && ModeIcon ? (
               <RouteRowDetails
@@ -163,8 +155,10 @@ const PatternViewer = ({
 
 const mapStateToProps = (state: any) => {
   const { viewedRoute } = state.otp.ui
+  const currentRoutePath = state.router.location.pathname.split('/pattern')[0]
   return {
     callTakerEnabled: isModuleEnabled(state, Modules.CALL_TAKER),
+    currentRoutePath,
     transitOperators: state.otp.config.transitOperators,
     useRouteColorAsBackground:
       state.otp.config?.routeViewer?.useRouteColorAsBackground,
