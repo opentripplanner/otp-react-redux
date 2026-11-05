@@ -16,9 +16,11 @@ import {
 } from '../../util/state'
 import { getFormattedMode } from '../../util/i18n'
 import { getRouteOrPatternViewerTitle } from '../../util/viewer'
+import { isBlank } from '../../util/ui'
 import { StyledIconWrapper } from '../util/styledIcon'
 import { TransitOperatorConfig } from '../../util/config-types'
 import { ViewedRouteObject, ViewedRouteState } from '../util/types'
+import InjectUrlParams from '../util/inject-url-params'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import PageTitle from '../util/page-title'
 
@@ -41,8 +43,12 @@ interface Props {
   intl: IntlShape
   modes: string[]
   routes: Route[]
+  rvAgency?: string
+  rvMode?: string
+  rvSearch?: string
   setMainPanelContent: (panelId: number | null) => void
   setRouteViewerFilter: (filter: FilterProps) => void
+  setUrlSearch: (params: any, replace: boolean) => void
   transitOperators: TransitOperatorConfig[]
   viewedRoute?: ViewedRouteState
   viewedRouteObject?: ViewedRouteObject
@@ -50,6 +56,14 @@ interface Props {
 
 interface State {
   initialRender: boolean
+}
+
+function toUrlParams({ agency, mode, search }) {
+  return {
+    rvAgency: agency,
+    rvMode: mode,
+    rvSearch: isBlank(search) ? null : search
+  }
 }
 
 class RouteViewer extends Component<Props, State> {
@@ -64,7 +78,23 @@ class RouteViewer extends Component<Props, State> {
   _backClicked = () => this.props.setMainPanelContent(null)
 
   componentDidMount() {
-    this.props.findRoutesIfNeeded()
+    const {
+      findRoutesIfNeeded,
+      rvAgency,
+      rvMode,
+      rvSearch,
+      setRouteViewerFilter
+    } = this.props
+    // Set filter per URL params
+    if (rvAgency || rvMode || rvSearch) {
+      setRouteViewerFilter({
+        agency: rvAgency,
+        mode: rvMode,
+        search: rvSearch
+      })
+    }
+
+    findRoutesIfNeeded()
   }
 
   /** Used to scroll to actively viewed route on load */
@@ -146,6 +176,7 @@ class RouteViewer extends Component<Props, State> {
     return (
       <div className="route-viewer">
         <VehiclePositionRetriever />
+        <InjectUrlParams params={toUrlParams(this.props.filter)} />
         <PageTitle
           title={getRouteOrPatternViewerTitle(
             transitOperators,
@@ -272,11 +303,15 @@ class RouteViewer extends Component<Props, State> {
 
 const mapStateToProps = (state: AppReduxState) => {
   const { viewedRoute } = state.otp.ui
+  const { rvAgency, rvMode, rvSearch } = state.router.location.query
   return {
     agencies: getAgenciesFromRoutes(state),
     filter: state.otp.ui.routeViewer.filter,
     modes: getModesForActiveAgencyFilter(state),
     routes: getSortedFilteredRoutes(state),
+    rvAgency,
+    rvMode,
+    rvSearch,
     transitOperators: state.otp.config.transitOperators || [],
     viewedRoute,
     viewedRouteObject: state.otp.transitIndex.routes?.[viewedRoute?.routeId]
@@ -286,8 +321,10 @@ const mapStateToProps = (state: AppReduxState) => {
 const mapDispatchToProps = {
   findRouteIfNeeded: apiActions.findRouteIfNeeded,
   findRoutesIfNeeded: apiActions.findRoutesIfNeeded,
+  routeTo: uiActions.routeTo,
   setMainPanelContent: uiActions.setMainPanelContent,
-  setRouteViewerFilter: uiActions.setRouteViewerFilter
+  setRouteViewerFilter: uiActions.setRouteViewerFilter,
+  setUrlSearch: apiActions.setUrlSearch
 }
 
 export default connect(
