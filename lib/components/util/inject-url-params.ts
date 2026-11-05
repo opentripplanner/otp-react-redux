@@ -1,5 +1,5 @@
+import { Component } from 'react'
 import { connect } from 'react-redux'
-import { useEffect } from 'react'
 import coreUtils from '@opentripplanner/core-utils'
 import qs from 'qs'
 
@@ -19,14 +19,15 @@ interface Props {
  * Invisible component that adds the specified URL params when the component is mounted,
  * and removes them when the component is unmounted.
  */
-const InjectUrlParams = ({
-  injectUrlParams,
-  params,
-  path,
-  routeTo,
-  subtractUrlParams
-}: Props) => {
-  useEffect(() => {
+class InjectUrlParams extends Component<Props> {
+  componentDidMount() {
+    // Should happen only once when the parent is first created/rendered.
+    this.props.injectUrlParams(Object.keys(this.props.params))
+  }
+
+  componentDidUpdate() {
+    const { params, path, routeTo } = this.props
+
     // Append filter params to existing search params.
     const urlParams = coreUtils.query.getUrlParams()
 
@@ -45,33 +46,36 @@ const InjectUrlParams = ({
     })
 
     if (altered) {
-      injectUrlParams(Object.keys(params))
       const paramString = qs.stringify(urlParams, { skipNulls: true })
       routeTo(path, isBlank(paramString) ? '' : `?${paramString}`)
     }
+  }
 
-    // Remove the injected URL params when the component unmounts.
-    return () => {
-      const urlParamsOnLeave = coreUtils.query.getUrlParams()
-      // Remove injected params by setting them to null
-      let finalAltered = false
-      Object.keys(params).forEach((key) => {
-        if (key in urlParamsOnLeave) {
-          urlParamsOnLeave[key] = null
-          finalAltered = true
-        }
-      })
+  componentWillUnmount(): void {
+    console.log('inject url parms UNmount')
+    const { params, path, routeTo, subtractUrlParams } = this.props
 
-      if (finalAltered) {
-        subtractUrlParams(Object.keys(params))
-        const paramString = qs.stringify(urlParamsOnLeave, { skipNulls: true })
-        routeTo(path, isBlank(paramString) ? '' : `?${paramString}`)
+    const urlParamsOnLeave = coreUtils.query.getUrlParams()
+    // Remove injected params by setting them to null
+    let finalAltered = false
+    Object.keys(params).forEach((key) => {
+      if (key in urlParamsOnLeave) {
+        urlParamsOnLeave[key] = null
+        finalAltered = true
       }
-    }
-  }, [injectUrlParams, params, path, routeTo, subtractUrlParams])
+    })
 
-  // Component renders nothing
-  return null
+    if (finalAltered) {
+      subtractUrlParams(Object.keys(params))
+      const paramString = qs.stringify(urlParamsOnLeave, { skipNulls: true })
+      routeTo(path, isBlank(paramString) ? '' : `?${paramString}`)
+    }
+  }
+
+  render() {
+    // Component renders nothing
+    return null
+  }
 }
 
 // connect to redux store
