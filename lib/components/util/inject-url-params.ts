@@ -46,7 +46,6 @@ class InjectUrlParams extends Component<Props> {
   }
 
   componentWillUnmount(): void {
-    console.log('inject url parms UNmount')
     const { params, setUrlSearch, subtractUrlParams } = this.props
 
     const urlParamsOnLeave = coreUtils.query.getUrlParams()
