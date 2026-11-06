@@ -2,6 +2,7 @@ import { connect, useSelector } from 'react-redux'
 import { format } from 'date-fns'
 import { FormattedMessage } from 'react-intl'
 import { matchPath } from 'react-router'
+import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import TimeTable from '@opentripplanner/timetable'
 
@@ -15,16 +16,17 @@ interface TimeTableWrapperProps {
   closedStops?: Set<string>
   getStopClosures: (date: Date) => void
   getTimetableData: (params: TimetableDataParams) => void
+  homeTimezone: string
   routeId: string
   stopClosuresError?: string
 }
 
-// eslint-disable-next-line complexity
 const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   const {
     closedStops,
     getStopClosures,
     getTimetableData,
+    homeTimezone,
     routeId,
     stopClosuresError
   } = props
@@ -44,18 +46,33 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   const [directionId, setDirectionId] = useState<0 | 1>(0)
   const [timepointsOnly, setTimepointsOnly] = useState(true)
   const [loading, setLoading] = useState(true)
-  const [date, setDate] = useState<Date>(new Date())
-  const dateString = useMemo(() => format(date, 'yyyy-MM-dd'), [date])
+  // Initialize to the current date in the config's timezone
+  const [date, setDate] = useState<string>(
+    format(utcToZonedTime(Date.now(), homeTimezone), 'yyyy-MM-dd')
+  )
 
   useEffect(() => {
     setLoading(true)
-    getStopClosures(date)
+    // TODO: Determine best way to handle stop closures that start/end somewhere in the
+    // middle of a service day. For now, we will be conservative and ask for stop closures
+    // that are valid at 23:59 of the given day; this will capture closures that took effect
+    // (started) during the service day, but will also preserve closures that ended sometime
+    // during the service day.
+
+    // Midnight local time at beginning of service day:
+    const stopClosuresDate = zonedTimeToUtc(date, homeTimezone)
+    // Shift 23 hours and 59 minutes to capture stop closures that begin on this date:
+    stopClosuresDate.setHours(
+      stopClosuresDate.getHours() + 23,
+      stopClosuresDate.getMinutes() + 59
+    )
+    getStopClosures(stopClosuresDate)
 
     getTimetableData({
       date,
       routeGtfsId: routeId
     })
-  }, [date, getTimetableData, routeId, getStopClosures])
+  }, [date, getTimetableData, routeId, getStopClosures, homeTimezone])
 
   const routeInformation = useMemo(() => timetable?.route, [timetable])
 
@@ -80,20 +97,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   }, [routeInformation])
 
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length) {
-      // Preserve the current hour/minute/second when changing the date. This allows closed stops that
-      // take effect partway through a day to be reflected accurately
-      const selectedDateWithCurrentTime = new Date()
-      // The Date constructor has a quirk: passing in yyyy-MM-dd will create the date in UTC, causing
-      // issues with timezone offsets. Passing in yyyy/MM/dd will honor the local machine's timezone
-      const newDate = new Date(e.target.value.replaceAll('-', '/'))
-      selectedDateWithCurrentTime.setFullYear(
-        newDate.getFullYear(),
-        newDate.getMonth(),
-        newDate.getDate()
-      )
-      setDate(selectedDateWithCurrentTime)
-    }
+    if (e.target.value.length) setDate(e.target.value)
   }
 
   if (loading) {
@@ -145,7 +149,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
           id="date-picker"
           onChange={handleDateChange}
           type="date"
-          value={dateString}
+          value={date}
         />
       </div>
       {routeInformation && (
@@ -183,6 +187,7 @@ const mapStateToProps = (state: AppReduxState) => {
 
   return {
     closedStops: state.otp.ui.stopClosures.closedStops,
+    homeTimezone: state.otp.config.homeTimezone,
     routeId,
     stopClosuresError: state.otp.ui.stopClosures.error
   }
