@@ -75,15 +75,8 @@ class RouteViewer extends Component<Props, State> {
    */
   _backClicked = () => this.props.setMainPanelContent(null)
 
-  componentDidMount() {
-    const {
-      findRoutesIfNeeded,
-      rvAgency,
-      rvMode,
-      rvSearch,
-      setRouteViewerFilter
-    } = this.props
-    // Set filter per URL params
+  _setReduxFilterFromUrl = () => {
+    const { rvAgency, rvMode, rvSearch, setRouteViewerFilter } = this.props
     if (rvAgency || rvMode || rvSearch) {
       setRouteViewerFilter({
         agency: rvAgency,
@@ -91,13 +84,17 @@ class RouteViewer extends Component<Props, State> {
         search: rvSearch
       })
     }
+  }
 
+  componentDidMount() {
+    const { findRoutesIfNeeded } = this.props
+    this._setReduxFilterFromUrl()
     findRoutesIfNeeded()
   }
 
   /** Used to scroll to actively viewed route on load */
   componentDidUpdate() {
-    const { routes } = this.props
+    const { filter, routes, rvMode } = this.props
     const { initialRender } = this.state
 
     // Wait until more than the one route is present.
@@ -110,6 +107,14 @@ class RouteViewer extends Component<Props, State> {
         // any more scrolling
         this.setState({ initialRender: false })
       })
+    }
+
+    // Attempt to apply the mode URL filter param if provided,
+    // especially after routes fetching is complete.
+    // That param can get overwritten in setRouteViewerFilter if routes have not been loaded or
+    // no previously loaded routes are of the desired mode.
+    if (rvMode && isBlank(filter.mode)) {
+      this._setReduxFilterFromUrl()
     }
   }
 
