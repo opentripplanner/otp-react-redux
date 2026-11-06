@@ -70,6 +70,24 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                 title="components.NearbyView.header"
               />
             </Connect(PageTitle)>
+            <Connect(InjectUrlParams)
+              params={
+                {
+                  "entityId": undefined,
+                }
+              }
+            >
+              <InjectUrlParams
+                injectUrlParams={[Function]}
+                params={
+                  {
+                    "entityId": undefined,
+                  }
+                }
+                setUrlSearch={[Function]}
+                subtractUrlParams={[Function]}
+              />
+            </Connect(InjectUrlParams)>
             <styled.span
               as="h3"
               style={
@@ -4455,6 +4473,24 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                 title="components.NearbyView.header"
               />
             </Connect(PageTitle)>
+            <Connect(InjectUrlParams)
+              params={
+                {
+                  "entityId": undefined,
+                }
+              }
+            >
+              <InjectUrlParams
+                injectUrlParams={[Function]}
+                params={
+                  {
+                    "entityId": undefined,
+                  }
+                }
+                setUrlSearch={[Function]}
+                subtractUrlParams={[Function]}
+              />
+            </Connect(InjectUrlParams)>
             <styled.span
               as="h3"
               style={
@@ -8372,11 +8408,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   "render": [Function],
                                 }
                               }
-                              actionParams={
-                                {
-                                  "entityId": undefined,
-                                }
-                              }
                               actionPath="/schedule/kcm:36940"
                               actionText={
                                 <Memo(MemoizedFormattedMessage)
@@ -9529,11 +9560,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     "$$typeof": Symbol(react.forward_ref),
                                     "displayName": "Calendar",
                                     "render": [Function],
-                                  }
-                                }
-                                actionParams={
-                                  {
-                                    "entityId": undefined,
                                   }
                                 }
                                 actionPath="/schedule/kcm:36940"
@@ -11331,11 +11357,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         }
                                         to="/schedule/kcm:36940"
-                                        toParams={
-                                          {
-                                            "entityId": undefined,
-                                          }
-                                        }
                                       >
                                         <Connect(Component)
                                           className="sc-jcVcSv fpGUGz stop-header-action"
@@ -11346,11 +11367,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             }
                                           }
                                           to="/schedule/kcm:36940"
-                                          toParams={
-                                            {
-                                              "entityId": undefined,
-                                            }
-                                          }
                                         >
                                           <a
                                             className="sc-jcVcSv fpGUGz stop-header-action"
@@ -16716,11 +16732,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   "render": [Function],
                                 }
                               }
-                              actionParams={
-                                {
-                                  "entityId": undefined,
-                                }
-                              }
                               actionPath="/schedule/40:990003"
                               actionText={
                                 <Memo(MemoizedFormattedMessage)
@@ -17471,11 +17482,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     "$$typeof": Symbol(react.forward_ref),
                                     "displayName": "Calendar",
                                     "render": [Function],
-                                  }
-                                }
-                                actionParams={
-                                  {
-                                    "entityId": undefined,
                                   }
                                 }
                                 actionPath="/schedule/40:990003"
@@ -18651,11 +18657,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         }
                                         to="/schedule/40:990003"
-                                        toParams={
-                                          {
-                                            "entityId": undefined,
-                                          }
-                                        }
                                       >
                                         <Connect(Component)
                                           className="sc-jcVcSv fpGUGz stop-header-action"
@@ -18666,11 +18667,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             }
                                           }
                                           to="/schedule/40:990003"
-                                          toParams={
-                                            {
-                                              "entityId": undefined,
-                                            }
-                                          }
                                         >
                                           <a
                                             className="sc-jcVcSv fpGUGz stop-header-action"
@@ -25597,11 +25593,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   "render": [Function],
                                 }
                               }
-                              actionParams={
-                                {
-                                  "entityId": undefined,
-                                }
-                              }
                               actionPath="/schedule/kcm:16430"
                               actionText={
                                 <Memo(MemoizedFormattedMessage)
@@ -26908,11 +26899,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     "$$typeof": Symbol(react.forward_ref),
                                     "displayName": "Calendar",
                                     "render": [Function],
-                                  }
-                                }
-                                actionParams={
-                                  {
-                                    "entityId": undefined,
                                   }
                                 }
                                 actionPath="/schedule/kcm:16430"
@@ -28941,11 +28927,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         }
                                         to="/schedule/kcm:16430"
-                                        toParams={
-                                          {
-                                            "entityId": undefined,
-                                          }
-                                        }
                                       >
                                         <Connect(Component)
                                           className="sc-jcVcSv fpGUGz stop-header-action"
@@ -28956,11 +28937,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             }
                                           }
                                           to="/schedule/kcm:16430"
-                                          toParams={
-                                            {
-                                              "entityId": undefined,
-                                            }
-                                          }
                                         >
                                           <a
                                             className="sc-jcVcSv fpGUGz stop-header-action"
@@ -37059,11 +37035,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   "render": [Function],
                                 }
                               }
-                              actionParams={
-                                {
-                                  "entityId": undefined,
-                                }
-                              }
                               actionPath="/schedule/kcm:16440"
                               actionText={
                                 <Memo(MemoizedFormattedMessage)
@@ -37814,11 +37785,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     "$$typeof": Symbol(react.forward_ref),
                                     "displayName": "Calendar",
                                     "render": [Function],
-                                  }
-                                }
-                                actionParams={
-                                  {
-                                    "entityId": undefined,
                                   }
                                 }
                                 actionPath="/schedule/kcm:16440"
@@ -39013,11 +38979,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         }
                                         to="/schedule/kcm:16440"
-                                        toParams={
-                                          {
-                                            "entityId": undefined,
-                                          }
-                                        }
                                       >
                                         <Connect(Component)
                                           className="sc-jcVcSv fpGUGz stop-header-action"
@@ -39028,11 +38989,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             }
                                           }
                                           to="/schedule/kcm:16440"
-                                          toParams={
-                                            {
-                                              "entityId": undefined,
-                                            }
-                                          }
                                         >
                                           <a
                                             className="sc-jcVcSv fpGUGz stop-header-action"
@@ -44684,11 +44640,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   "render": [Function],
                                 }
                               }
-                              actionParams={
-                                {
-                                  "entityId": undefined,
-                                }
-                              }
                               actionPath="/schedule/40:990004"
                               actionText={
                                 <Memo(MemoizedFormattedMessage)
@@ -45789,11 +45740,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     "$$typeof": Symbol(react.forward_ref),
                                     "displayName": "Calendar",
                                     "render": [Function],
-                                  }
-                                }
-                                actionParams={
-                                  {
-                                    "entityId": undefined,
                                   }
                                 }
                                 actionPath="/schedule/40:990004"
@@ -47494,11 +47440,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         }
                                         to="/schedule/40:990004"
-                                        toParams={
-                                          {
-                                            "entityId": undefined,
-                                          }
-                                        }
                                       >
                                         <Connect(Component)
                                           className="sc-jcVcSv fpGUGz stop-header-action"
@@ -47509,11 +47450,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             }
                                           }
                                           to="/schedule/40:990004"
-                                          toParams={
-                                            {
-                                              "entityId": undefined,
-                                            }
-                                          }
                                         >
                                           <a
                                             className="sc-jcVcSv fpGUGz stop-header-action"
@@ -52436,11 +52372,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   "render": [Function],
                                 }
                               }
-                              actionParams={
-                                {
-                                  "entityId": undefined,
-                                }
-                              }
                               actionPath="/schedule/kcm:23561"
                               actionText={
                                 <Memo(MemoizedFormattedMessage)
@@ -53747,11 +53678,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     "$$typeof": Symbol(react.forward_ref),
                                     "displayName": "Calendar",
                                     "render": [Function],
-                                  }
-                                }
-                                actionParams={
-                                  {
-                                    "entityId": undefined,
                                   }
                                 }
                                 actionPath="/schedule/kcm:23561"
@@ -55780,11 +55706,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         }
                                         to="/schedule/kcm:23561"
-                                        toParams={
-                                          {
-                                            "entityId": undefined,
-                                          }
-                                        }
                                       >
                                         <Connect(Component)
                                           className="sc-jcVcSv fpGUGz stop-header-action"
@@ -55795,11 +55716,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             }
                                           }
                                           to="/schedule/kcm:23561"
-                                          toParams={
-                                            {
-                                              "entityId": undefined,
-                                            }
-                                          }
                                         >
                                           <a
                                             className="sc-jcVcSv fpGUGz stop-header-action"
@@ -64737,11 +64653,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                   "render": [Function],
                                 }
                               }
-                              actionParams={
-                                {
-                                  "entityId": undefined,
-                                }
-                              }
                               actionPath="/schedule/kcm:36931"
                               actionText={
                                 <Memo(MemoizedFormattedMessage)
@@ -65894,11 +65805,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                     "$$typeof": Symbol(react.forward_ref),
                                     "displayName": "Calendar",
                                     "render": [Function],
-                                  }
-                                }
-                                actionParams={
-                                  {
-                                    "entityId": undefined,
                                   }
                                 }
                                 actionPath="/schedule/kcm:36931"
@@ -67696,11 +67602,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                           }
                                         }
                                         to="/schedule/kcm:36931"
-                                        toParams={
-                                          {
-                                            "entityId": undefined,
-                                          }
-                                        }
                                       >
                                         <Connect(Component)
                                           className="sc-jcVcSv fpGUGz stop-header-action"
@@ -67711,11 +67612,6 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                             }
                                           }
                                           to="/schedule/kcm:36931"
-                                          toParams={
-                                            {
-                                              "entityId": undefined,
-                                            }
-                                          }
                                         >
                                           <a
                                             className="sc-jcVcSv fpGUGz stop-header-action"
