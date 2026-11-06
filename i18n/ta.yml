@@ -2,14 +2,6 @@ _id: en-us
 _name: ஆங்கிலம்
 
 actions:
-  callTaker:
-    callQuerySaveError: "அழைப்பு வினவல்களை சேமிப்பதில் பிழை: {err}"
-    callSaveError: "அழைப்பைச் சேமிக்க முடியவில்லை: {err}"
-    checkSessionError: "அங்கீகார அமர்வை நிறுவுவதில் பிழை: {err}"
-    couldNotFindCallError: அழைப்பைக் கண்டுபிடிக்க முடியவில்லை. சேமி வினவல் 
-      கோரிக்கையை ரத்து செய்தல்.
-    fetchCallsError: "அழைப்புகளைப் பெறுவதில் பிழை: {err}"
-    queryFetchError: "வினவல்களைப் பெறுவதில் பிழை: {err}"
   location:
     deniedAccessAlert: |
       உங்கள் இருப்பிடத்திற்கான அணுகல் தடுக்கப்பட்டுள்ளது.
@@ -120,23 +112,13 @@ common:
       {மணிநேரம், பன்மை, = 0 {} பிற {# hr}} {minutes} மணித்துளி {விநாடிகள்,
       பன்மை, = 0 {} பிற {# நொடி}}
 components:
-  AddPlaceButton:
-    addPlace: இடம் சேர்க்கவும்
-    needOriginDestination: இடைநிலை இடங்களைச் சேர்க்க தோற்றம்/இலக்கை 
-      வரையறுக்கவும்
-    tooManyPlaces: அதிகபட்ச இடைநிலை இடங்கள் எட்டப்பட்டன
-  AdvancedOptions:
-    bannedRoutes: தடைசெய்யப்பட்ட பாதைகளைத் தேர்ந்தெடுக்கவும்…
-    preferredRoutes: விருப்பமான வழிகளைத் தேர்ந்தெடுக்கவும் ...
   AfterSignInScreen:
     mainTitle: திருப்பிவிடுதல் ...
     message: >-
       சில விநாடிகளுக்குப் பிறகு பக்கம் ஏற்றப்படாவிட்டால், <redirectLink>இங்கே
       சொடுக்கு செய்க</redirectLink>.
   AppMenu:
-    callHistory: வரலாற்றை அழைக்கவும்
     closeMenu: பட்டியல் மூடு
-    mailables: அஞ்சல்கள்
     networkConnectionLost: பிணைய இணைப்பு இழந்தது
     networkConnectionRestored: பிணைய இணைப்பு மீட்டெடுக்கப்பட்டது
     openMenu: திறந்த பட்டியல்
@@ -170,9 +152,6 @@ components:
     message: >
       இந்த பக்கத்தை அணுக நீங்கள் உள்நுழைய வேண்டும். உள்நுழைவு பக்கத்திற்கு
       நாங்கள் உங்களை திருப்பி விடும்போது காத்திருங்கள் ...
-  CallTakerPanel:
-    advancedOptions: மேம்பட்ட விருப்பங்கள்
-    intermediateDestination: இடைநிலை இலக்கை உள்ளிடவும்
   DateTimeOptions:
     arriveBy: மூலம் வந்து
     departAt: புறப்படுங்கள்
@@ -324,11 +303,6 @@ components:
       அமைக்கவும்) மற்றும் இதன் விளைவாக வரும் மார்க்கரை {placeType} இருப்பிடமாக
       அமைக்க சொடுக்கு செய்க.
     setAddressForPlaceType: உங்கள் {placeType} முகவரியை அமைக்கவும்
-  PlanFirstLastButtons:
-    first: முதல்
-    last: கடைசி
-    next: அடுத்தது
-    previous: முந்தைய
   PlanTripButton:
     planTrip: திட்ட பயணம்
   PointPopup:
