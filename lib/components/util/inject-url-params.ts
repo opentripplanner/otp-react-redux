@@ -4,13 +4,11 @@ import coreUtils from '@opentripplanner/core-utils'
 
 import * as apiActions from '../../actions/api'
 import * as uiActions from '../../actions/ui'
-import { AppReduxState } from '../../util/state-types'
 import { isBlank } from '../../util/ui'
 
 interface Props {
   injectUrlParams: (params: string[]) => void
   params: any
-  path: string
   setUrlSearch: (params: any, replace: boolean) => void
   subtractUrlParams: (params: string[]) => void
 }
@@ -59,19 +57,19 @@ class InjectUrlParams extends Component<Props> {
   componentWillUnmount(): void {
     const { params, setUrlSearch, subtractUrlParams } = this.props
 
-    const urlParamsOnLeave = coreUtils.query.getUrlParams()
+    const urlParams = coreUtils.query.getUrlParams()
     // Remove injected params by setting them to null
-    let finalAltered = false
+    let altered = false
     Object.keys(params).forEach((key) => {
-      if (key in urlParamsOnLeave) {
-        urlParamsOnLeave[key] = null
-        finalAltered = true
+      if (key in urlParams) {
+        urlParams[key] = null
+        altered = true
       }
     })
 
-    if (finalAltered) {
+    if (altered) {
       subtractUrlParams(Object.keys(params))
-      setUrlSearch(urlParamsOnLeave, true)
+      setUrlSearch(urlParams, true)
     }
   }
 
@@ -83,14 +81,10 @@ class InjectUrlParams extends Component<Props> {
 
 // connect to redux store
 
-const mapStateToProps = (state: AppReduxState) => ({
-  path: state.router.location.pathname
-})
-
 const mapDispatchToProps = {
   injectUrlParams: uiActions.injectUrlParams,
   setUrlSearch: apiActions.setUrlSearch,
   subtractUrlParams: uiActions.subtractUrlParams
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(InjectUrlParams)
+export default connect(null, mapDispatchToProps)(InjectUrlParams)
