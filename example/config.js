@@ -30,6 +30,10 @@ const ItineraryFooter = () => <div />
  * @return  This function must return an object with the following attributes.
  * All attributes are React components(*), unless noted.
  * - defaultMobileTitle (JSX markup, optional) The title bar contents.
+ * - getCustomIcon(iconName) (optional) A function that maps a string to a React component that renders an icon.
+ * - getCustomQueryParams(state) (Required if planQuery is defined and takes custom variables)
+ *   Function that returns fields/values to be injected to the variables of a GraphQL query,
+ *   according to the ambient Redux state.
  * - ItineraryBody (required) The component for itinerary details.
  * - ItineraryFooter (optional) The component rendered below itinerary details.
  * - LegIcon (required) An existing, imported LegIcon component
@@ -40,6 +44,8 @@ const ItineraryFooter = () => <div />
  * - MobileSearchScreen (required) The component that renders the mobile search form.
  * - ModeIcon (required) An existing, imported ModeIcon component
  *    from @opentripplanner/icons, but it is possible to create a custom component if desired.)
+ * - RouteRenderer (optional) The component for rendering route numbers in the route viewer and search results.
+ * - planQuery (optional) Content for a custom GraphQL planConnection query imported from a file.
  * - TermsOfService (required if otpConfig.persistence.strategy === 'otp_middleware')
  *    A component that renders terms of service, if any.
  * - TermsOfStorage (required if otpConfig.persistence.strategy === 'otp_middleware')
