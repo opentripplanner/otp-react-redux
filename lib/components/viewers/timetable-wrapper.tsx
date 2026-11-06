@@ -3,6 +3,7 @@ import { ExternalLinkAlt } from '@styled-icons/fa-solid'
 import { format } from 'date-fns'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { matchPath } from 'react-router'
+import { Route } from '@opentripplanner/types'
 import React, {
   useCallback,
   useContext,
@@ -17,17 +18,21 @@ import * as apiActions from '../../actions/api'
 import { AppReduxState } from '../../util/state-types'
 import { blue } from '../util/colors'
 import { ComponentContext } from '../../util/contexts'
+import { getSortedFilteredRoutes } from '../../util/state'
 import { TIMETABLE_PATH } from '../../util/constants'
 import { TimetableDataParams } from '../util/types'
 import Loading from '../narrative/loading'
 
 import { RouteRowDetails } from './route-row'
+import RouteSelect from '../../util/RouteSelect'
 
 interface TimeTableWrapperProps {
   closedStops?: Set<string>
+  findRoutesIfNeeded: () => void
   getStopClosures: () => void
   getTimetableData: (params: TimetableDataParams) => void
   routeId: string
+  routes: Route[]
   stopClosuresError?: string
 }
 
@@ -37,9 +42,8 @@ const TimetableHeader = styled.div`
 `
 
 const TimetableControlPanel = styled.div`
-  margin: 1em 0;
   width: 20%;
-  min-width: 200px;
+  min-width: 225px;
   display: flex;
   flex-direction: column;
   gap: 1em;
@@ -69,9 +73,11 @@ const SwitchDirectionButton = styled.button`
 const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   const {
     closedStops,
+    findRoutesIfNeeded,
     getStopClosures,
     getTimetableData,
     routeId,
+    routes,
     stopClosuresError
   } = props
 
@@ -91,6 +97,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   const [timepointsOnly, setTimepointsOnly] = useState(true)
   const [loading, setLoading] = useState(true)
   const [date, setDate] = useState(format(new Date(), 'yyyy-MM-dd'))
+  const [currentRoute, setCurrentRoute] = useState(routeId)
 
   const intl = useIntl()
 
@@ -105,11 +112,13 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
       // The Date constructor has a quirk: passing in yyyy-MM-dd will create the date in UTC, causing
       // issues with timezone offsets. Passing in yyyy/MM/dd will honor the local machine's timezone
       date: new Date(date.replaceAll('-', '/')),
-      routeGtfsId: routeId
+      routeGtfsId: currentRoute
     })
-  }, [date, getTimetableData, routeId, getStopClosures])
+  }, [date, getTimetableData, getStopClosures, currentRoute])
 
   const routeInformation = useMemo(() => timetable?.route, [timetable])
+
+  useEffect(findRoutesIfNeeded, [findRoutesIfNeeded])
 
   useEffect(() => {
     // TODO: improve handling of data fetching to avoid issues with useEffect and stale data.
@@ -135,23 +144,70 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
     if (e.target.value.length) setDate(e.target.value)
   }
 
-  if (loading) {
-    // TODO: add aria status region to the body
-    return <Loading />
-  }
-
   if (stopClosuresError)
     console.warn('Error loading stop closures', stopClosuresError)
 
   if (!closedStops) console.warn('No stop closures object is defined')
 
-  return routeId && routeInformation && !directionIdsAreInvalid ? (
+  const TimeTableData = () =>
+    routeId && routeInformation && !directionIdsAreInvalid ? (
+      <>
+        <span style={{ alignItems: 'center', display: 'flex', gap: '7px' }}>
+          <RouteRowDetails
+            intl={intl}
+            ModeIcon={ModeIcon}
+            route={routeInformation}
+            RouteRenderer={RouteRenderer}
+          />
+          <span style={{ fontSize: '16px', fontWeight: 500 }}>
+            {`- ${routeInformation.desc}`}
+          </span>
+          {routeInformation.url && (
+            <a
+              aria-label={intl.formatMessage({
+                id: 'components.Timetable.routeInformation'
+              })}
+              href={routeInformation.url}
+              onClick={handleRouteUrlClick}
+              title={intl.formatMessage({
+                id: 'components.Timetable.routeInformation'
+              })}
+            >
+              <ExternalLinkAlt size={15} />
+            </a>
+          )}
+        </span>
+        <TimeTable
+          additionalColumns={[
+            'BLOCK_ID',
+            'TRIP_SHORT_NAME',
+            'TRIP_HEADSIGN',
+            'TRIP_ID'
+          ]}
+          closedStops={closedStops}
+          directionId={directionId}
+          includeDwellStops
+          route={routeInformation}
+          timepointsOnly={timepointsOnly}
+        />
+      </>
+    ) : (
+      <FormattedMessage id="components.Timetable.errorLoadingTimetable" />
+    )
+
+  return (
     <div style={{ margin: '3em' }}>
       <TimetableHeader>
         <h1>Timetable Tool</h1>
       </TimetableHeader>
       <TimetableContainer>
         <TimetableControlPanel>
+          <RouteSelect
+            id="timetable-route-select"
+            onChange={setCurrentRoute}
+            placeholderText="Select a route..."
+            routes={routes}
+          />
           <label htmlFor="timepoints-checkbox">
             <input
               checked={timepointsOnly}
@@ -183,53 +239,11 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
         {(stopClosuresError || !closedStops) && (
           <FormattedMessage id="components.Timetable.errorLoadingStopClosures" />
         )}
-
-        {routeInformation && (
-          <div style={{ overflow: 'scroll', width: '75%' }}>
-            <span style={{ alignItems: 'center', display: 'flex', gap: '7px' }}>
-              <RouteRowDetails
-                intl={intl}
-                ModeIcon={ModeIcon}
-                route={routeInformation}
-                RouteRenderer={RouteRenderer}
-              />
-              <span style={{ fontSize: '16px', fontWeight: 500 }}>
-                {`- ${routeInformation.desc}`}
-              </span>
-              {routeInformation.url && (
-                <a
-                  aria-label={intl.formatMessage({
-                    id: 'components.Timetable.routeInformation'
-                  })}
-                  href={routeInformation.url}
-                  onClick={handleRouteUrlClick}
-                  title={intl.formatMessage({
-                    id: 'components.Timetable.routeInformation'
-                  })}
-                >
-                  <ExternalLinkAlt size={15} />
-                </a>
-              )}
-            </span>
-            <TimeTable
-              additionalColumns={[
-                'BLOCK_ID',
-                'TRIP_SHORT_NAME',
-                'TRIP_HEADSIGN',
-                'TRIP_ID'
-              ]}
-              closedStops={closedStops}
-              directionId={directionId}
-              includeDwellStops
-              route={routeInformation}
-              timepointsOnly={timepointsOnly}
-            />
-          </div>
-        )}
+        <div style={{ overflow: 'scroll', width: '75%' }}>
+          {loading ? <Loading /> : <TimeTableData />}
+        </div>
       </TimetableContainer>
     </div>
-  ) : (
-    <FormattedMessage id="components.Timetable.errorLoadingTimetable" />
   )
 }
 
@@ -241,15 +255,18 @@ const mapStateToProps = (state: AppReduxState) => {
     strict: false
   })
   const routeId = match?.params.routeId ?? ''
+  const routes = getSortedFilteredRoutes(state)
 
   return {
     closedStops: state.otp.ui.stopClosures.closedStops,
     routeId,
+    routes,
     stopClosuresError: state.otp.ui.stopClosures.error
   }
 }
 
 const mapDispatchToProps = {
+  findRoutesIfNeeded: apiActions.findRoutesIfNeeded,
   getStopClosures: apiActions.getStopClosures,
   getTimetableData: apiActions.getTimetableData
 }
