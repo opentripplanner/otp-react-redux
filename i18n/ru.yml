@@ -3,13 +3,8 @@ _name: Pусский
 
 actions:
   callTaker:
-    callQuerySaveError: "Ошибка сохранения запросов на вызов: {err}"
     callSaveError: "Не удалось сохранить вызов: {err}"
-    checkSessionError: "Ошибка установления сеанса авторизации: {err}"
-    couldNotFindCallError: Не удалось найти вызов. Отмена запроса на сохранение 
-      запросов.
     fetchCallsError: "Ошибка получения вызовов: {err}"
-    queryFetchError: "Ошибка получения запросов: {err}"
   location:
     deniedAccessAlert: >
       Доступ к вашему местоположению заблокирован.

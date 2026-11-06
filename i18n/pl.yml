@@ -1,12 +1,7 @@
 actions:
   callTaker:
     callSaveError: 'Nie można zapisać połączenia: {err}'
-    queryFetchError: 'Błąd podczas pobierania zapytań: {err}'
-    couldNotFindCallError: Nie można odnaleźć połączenia. Anulowanie żądania 
-      zapisania zapytań.
     fetchCallsError: 'Błąd podczas pobierania połączeń: {err}'
-    callQuerySaveError: 'Błąd podczas zapisywania zapytań o połączenia: {err}'
-    checkSessionError: 'Błąd podczas nawiązywania sesji uwierzytelniania: {err}'
 _id: pl
 _name: Polski
 components:

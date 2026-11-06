@@ -2,9 +2,6 @@ _name: Norsk bokmål
 actions:
   callTaker:
     callSaveError: "Kunne ikke lagre anrop: {err}"
-  user:
-    confirmDeletePlace: Fjern dette stedet?
-    smsInvalidCode: Koden du har skrevet inn er ugyldig. Prøv igjen.
 common:
   daysOfWeek:
     monday: Mandag
@@ -43,8 +40,6 @@ common:
     startOver: Start om igjen
     submitting: Sender inn …
     "yes": Ja
-  notifications:
-    sms: tekstmelding
   places:
     custom: egendefinert
     home: hjem
@@ -70,42 +65,13 @@ components:
     advancedOptions: Avanserte innstillinger
   DateTimeOptions:
     now: Nå
-  DeleteUser:
-    deleteMyAccount: Slett kontoen min
   ErrorMessage:
     header: Kunne ikke planlegge tur
     warning: Advarsel
-  ExistingAccountDisplay:
-    a11y: Tilgjengelighet
-    mainTitle: Mine innstillinger
-    notifications: Merknader
-    places: Favorittsteder
-    terms: Vilkår
-  FavoritePlaceList:
-    addAnotherPlace: Legg til nytt sted
-    editThisPlace: Rediger dette stedet
-    setAddressForPlaceType: Sett din {placeType}-adresse
-  FavoritePlaceScreen:
-    addNewPlace: Legg til nytt sted
-    editPlace: Rediger {placeName}
-    editPlaceGeneric: Rediger sted
   LocationSearch:
     setDestination: Sett mål
   MapLayers:
     streets: Gater
-  NewAccountWizard:
-    createNewAccount: Opprett ny konto
-    places: Legg til dine steder
-    verify: Bekreft din e-postadresse
-  PhoneNumberEditor:
-    invalidPhone: Skriv inn et gyldig telefonnummer.
-    placeholder: Skriv inn dit telefonnummer
-    requestNewCode: Forespør ny kode
-    sendVerificationText: Send bekreftelsestekst
-    verificationCode: Bekreftelseskode
-    verify: Bekreft
-  Place:
-    deleteThisPlace: Slett dette stedet
   PlanFirstLastButtons:
     first: Først
     last: Sist
@@ -123,17 +89,5 @@ components:
   SaveTripButton:
     cantSaveText: Kan ikke lagre
     saveTripText: Lagre tur
-  SavedTripEditor:
-    editSavedTrip: Rediger lagret tur
-    saveNewTrip: Lagre ny tur
-    tripInformation: Turinfo
-    tripNotifications: Turmerknader
-  SavedTripList:
-    myTrips: Mine turer
-    noSavedTrips: Du har ingen lagrede turer
-    pause: Pause
-    resume: Fortsett
   SessionTimeout:
     keepSession: Fortsett økt
-  StackedPaneDisplay:
-    savePreferences: Lagre innstillinger

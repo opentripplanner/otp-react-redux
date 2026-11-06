@@ -3,12 +3,8 @@ _name: Chinese (Traditional)
 
 actions:
   callTaker:
-    callQuerySaveError: 儲存通話查詢時發生錯誤：{err}
     callSaveError: 無法儲存通話：{err}
-    checkSessionError: 建立授權工作階段時發生錯誤：{err}
-    couldNotFindCallError: 找不到通話。正在取消儲存查詢請求。
     fetchCallsError: 擷取通話時發生錯誤：{err}
-    queryFetchError: 擷取查詢時發生錯誤：{err}
   location:
     deniedAccessAlert: |
       系統已封鎖您存取地點的權限。
