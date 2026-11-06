@@ -93,7 +93,7 @@ class RouteViewer extends Component<Props, State> {
   }
 
   /** Used to scroll to actively viewed route on load */
-  componentDidUpdate() {
+  componentDidUpdate(prevProps: Props) {
     const { filter, routes, rvMode } = this.props
     const { initialRender } = this.state
 
@@ -113,7 +113,9 @@ class RouteViewer extends Component<Props, State> {
     // especially after routes fetching is complete.
     // That param can get overwritten in setRouteViewerFilter if routes have not been loaded or
     // no previously loaded routes are of the desired mode.
-    if (rvMode && isBlank(filter.mode)) {
+    const routesHaveBeenFetched =
+      prevProps.routes.length === 0 && this.props.routes.length !== 0
+    if (rvMode && isBlank(filter.mode) && routesHaveBeenFetched) {
       this._setReduxFilterFromUrl()
     }
   }

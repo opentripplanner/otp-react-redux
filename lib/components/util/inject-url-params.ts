@@ -5,6 +5,7 @@ import coreUtils from '@opentripplanner/core-utils'
 import * as apiActions from '../../actions/api'
 import * as uiActions from '../../actions/ui'
 import { AppReduxState } from '../../util/state-types'
+import { isBlank } from '../../util/ui'
 
 interface Props {
   injectUrlParams: (params: string[]) => void
@@ -32,9 +33,11 @@ class InjectUrlParams extends Component<Props> {
 
     // If the URL params are already present (e.g. user is reloading the page), do nothing.
     // If the props params have changed, update the URL.
+    // If the value of a props parameter is null/undefined/blank, remove that from URL parameters.
     let altered = false
     Object.keys(params).forEach((key) => {
-      const newParam = params[key]
+      const newValue = params[key]
+      const newParam = isBlank(newValue) ? undefined : newValue
       const urlParamMissing =
         !(key in urlParams) && newParam !== undefined && newParam !== null
       const urlParamNeedsUpdating =
