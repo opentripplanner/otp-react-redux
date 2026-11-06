@@ -56,7 +56,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
     // TODO: Determine best way to handle stop closures that start/end somewhere in the
     // middle of a service day. For now, we will be conservative and ask for stop closures
     // that are valid at 23:59 of the given day; this will capture closures that took effect
-    // (started) during the service day, but will also preserve closures that ended sometime
+    // (started) during the service day, but will not include closures that ended sometime
     // during the service day.
 
     // Midnight local time at beginning of service day:
