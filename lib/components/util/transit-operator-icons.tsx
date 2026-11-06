@@ -2,17 +2,14 @@ import { MapPin } from '@styled-icons/fa-solid/MapPin'
 import { useIntl } from 'react-intl'
 import React from 'react'
 import Skeleton from 'react-loading-skeleton'
+import styled from 'styled-components'
 import type { TransitOperator } from '@opentripplanner/types'
 
 import InvisibleA11yLabel from './invisible-a11y-label'
 import OperatorLogo from './operator-logo'
-import styled from 'styled-components'
-import type { StopData } from './types'
 
 const OperatorContainer = styled.span`
-  &:not(:last-of-type) {
-    margin-right: 0.5ch;
-  }
+  margin-right: 0.5ch;
 `
 
 const Operator = ({ operator }: { operator?: TransitOperator }) => {
@@ -53,38 +50,21 @@ const Operator = ({ operator }: { operator?: TransitOperator }) => {
 
 const TransitOperatorLogos = ({
   loading = false,
-  stopData,
-  transitOperators
+  transitOperators = []
 }: {
   loading?: boolean
-  stopData?: StopData
-  transitOperators?: TransitOperator[]
-}): JSX.Element => {
-  const agencies =
-    (stopData &&
-      stopData.stoptimesForPatterns?.reduce<Set<string>>((prev, cur) => {
-        // @ts-expect-error The agency type is not yet compatible with OTP2
-        const agencyGtfsId = cur.pattern.route.agency?.gtfsId
-        return agencyGtfsId ? prev.add(agencyGtfsId) : prev
-      }, new Set())) ||
-    new Set()
-
-  return (
+  transitOperators: TransitOperator[]
+}): JSX.Element =>
+  loading ? (
+    <OperatorContainer>
+      <Skeleton height="1em" width="1em" />
+    </OperatorContainer>
+  ) : (
     <>
-      {loading ? (
-        <Skeleton height={20} style={{ marginRight: '0.5ch' }} width={20} />
-      ) : (
-        transitOperators
-          ?.filter((to) => Array.from(agencies).includes(to.agencyId))
-          // Second pass to remove duplicates based on name
-          .filter(
-            (to, index, arr) =>
-              index === arr.findIndex((t) => t?.name === to?.name)
-          )
-          .map((to) => <Operator key={to.agencyId} operator={to} />)
-      )}
+      {transitOperators.map((to) => (
+        <Operator key={to.agencyId} operator={to} />
+      ))}
     </>
   )
-}
 
 export default TransitOperatorLogos
