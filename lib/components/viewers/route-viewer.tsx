@@ -267,24 +267,26 @@ class RouteViewer extends Component<Props, State> {
           )}
         </InvisibleA11yLabel>
         <ul className="route-viewer-body">
-          {sortedRoutes.map((route) => {
-            // Find operator based on agency_id (extracted from OTP route ID).
-            const operator = coreUtils.route.getTransitOperatorFromOtpRoute(
-              route,
-              transitOperators
-            ) as TransitOperatorConfig
-            return (
-              <RouteRow
-                findRouteIfNeeded={findRouteIfNeeded}
-                initialRender={initialRender}
-                intl={intl}
-                isActive={viewedRoute && viewedRoute.routeId === route.id}
-                key={route.id}
-                operator={operator}
-                route={route}
-              />
-            )
-          })}
+          {sortedRoutes
+            .filter((route) => !!route.id)
+            .map((route) => {
+              // Find operator based on agency_id (extracted from OTP route ID).
+              const operator = coreUtils.route.getTransitOperatorFromOtpRoute(
+                route,
+                transitOperators
+              ) as TransitOperatorConfig
+              return (
+                <RouteRow
+                  findRouteIfNeeded={findRouteIfNeeded}
+                  initialRender={initialRender}
+                  intl={intl}
+                  isActive={viewedRoute && viewedRoute.routeId === route.id}
+                  key={route.id}
+                  operator={operator}
+                  route={route}
+                />
+              )
+            })}
           {/* check modes length to differentiate between loading and over-filtered */}
           {modes.length > 0 && sortedRoutes.length === 0 && (
             <span className="noRoutesFoundMessage">
