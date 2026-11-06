@@ -24,17 +24,25 @@ class InjectUrlParams extends Component<Props> {
     this.props.injectUrlParams(Object.keys(this.props.params))
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps: Props) {
     const { params, setUrlSearch } = this.props
 
     // Append filter params to existing search params.
     const urlParams = coreUtils.query.getUrlParams()
 
-    // If the params are already present (e.g. user is reloading the page), do nothing.
+    // If the URL params are already present (e.g. user is reloading the page), do nothing.
+    // If the props params have changed, update the URL.
     let altered = false
     Object.keys(params).forEach((key) => {
       const newParam = params[key]
-      if (!(key in urlParams) && newParam !== undefined && newParam !== null) {
+      const urlParamMissing =
+        !(key in urlParams) && newParam !== undefined && newParam !== null
+      const urlParamNeedsUpdating =
+        key in urlParams &&
+        key in prevProps.params &&
+        prevProps.params[key] !== params[key]
+
+      if (urlParamMissing || urlParamNeedsUpdating) {
         urlParams[key] = newParam
         altered = true
       }
