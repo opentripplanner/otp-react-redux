@@ -1,3 +1,4 @@
+import { Leg, Location, ModeSetting } from '@opentripplanner/types'
 import { RouterState } from 'connected-react-router'
 
 import {
@@ -5,7 +6,6 @@ import {
   MonitoredTrip,
   User
 } from '../components/user/types'
-import { Leg, Location, ModeSetting } from '@opentripplanner/types'
 
 import { AppConfig, PopupTargetConfig } from './config-types'
 
@@ -17,6 +17,12 @@ export type NearbyFilterKey =
 export type NearbyFilters = Record<NearbyFilterKey, boolean>
 
 export type LatLonObj = { lat: number; lon: number }
+
+export interface RouteViewerFilter {
+  agency?: string
+  mode?: string
+  search?: string
+}
 
 export interface OtpState {
   // TODO: Add other OTP states
@@ -38,6 +44,7 @@ export interface OtpState {
     errors: any
     highlightedLocation: Location | null
     highlightedStop: any
+    injectedUrlParams: Set<string>
     loadedModules: Set<string>
     loadingMessages: boolean
     locale: string
@@ -50,7 +57,9 @@ export interface OtpState {
     nearbyViewCoords: LatLonObj
     popup: PopupTargetConfig
     printView: boolean
-    routeViewer: any
+    routeViewer: {
+      filter: RouteViewerFilter
+    }
     stopClosures: {
       closedStops?: Set<string>
       error?: string

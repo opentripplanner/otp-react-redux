@@ -8,7 +8,7 @@ import React, { Component, FormEvent } from 'react'
 
 import * as apiActions from '../../actions/api'
 import * as uiActions from '../../actions/ui'
-import { AppReduxState } from '../../util/state-types'
+import { AppReduxState, RouteViewerFilter } from '../../util/state-types'
 import {
   getAgenciesFromRoutes,
   getModesForActiveAgencyFilter,
@@ -27,15 +27,9 @@ import PageTitle from '../util/page-title'
 import { RouteRow } from './route-row'
 import VehiclePositionRetriever from './vehicle-position-retriever'
 
-interface FilterProps {
-  agency?: string
-  mode?: string
-  search?: string
-}
-
 interface Props {
   agencies: string[]
-  filter: FilterProps
+  filter: RouteViewerFilter
   // Not really worried about the args for findRoute(s)IfNeeded.
   findRouteIfNeeded: () => void
   findRoutesIfNeeded: () => void
@@ -47,7 +41,7 @@ interface Props {
   rvMode?: string
   rvSearch?: string
   setMainPanelContent: (panelId: number | null) => void
-  setRouteViewerFilter: (filter: FilterProps) => void
+  setRouteViewerFilter: (filter: RouteViewerFilter) => void
   setUrlSearch: (params: any, replace: boolean) => void
   transitOperators: TransitOperatorConfig[]
   viewedRoute?: ViewedRouteState
@@ -58,7 +52,11 @@ interface State {
   initialRender: boolean
 }
 
-function toUrlParams({ agency, mode, search }) {
+/**
+ * Maps filter params into their URL counterparts.
+ * This is used to avoid conflicts with existing URL params.
+ */
+function toUrlParams({ agency, mode, search }: RouteViewerFilter) {
   return {
     rvAgency: agency,
     rvMode: mode,
