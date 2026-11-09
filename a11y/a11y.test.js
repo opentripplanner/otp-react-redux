@@ -8,16 +8,14 @@ import '../__tests__/test-utils/mock-window-url'
 
 import routes from '../lib/util/webapp-routes'
 
-import { mockServer } from './mock-server'
-
 // Path relative to OTP-RR repo root.
 const OTP_RR_TEST_CONFIG_PATH = './a11y/test-config.yml'
 
-const MOCK_SERVER_PORT = 9999
+const PREV_SERVER_PORT = 9999
 
 const DISABLED_ROUTES = ['/nearby', '/nearby/:latLon', '/schedule']
 
-let browser, server
+let browser
 // These rules aren't relevant to this project
 const disabledRules = [
   'region', // Leaflet does not comply
@@ -31,7 +29,7 @@ const disabledRules = [
  */
 async function runAxeTestOnPath(otpPath) {
   const page = await browser.newPage()
-  const filePath = `http://localhost:${MOCK_SERVER_PORT}/#${otpPath}`
+  const filePath = `http://localhost:${PREV_SERVER_PORT}/#${otpPath}`
   await Promise.all([
     page.setViewport({
       deviceScaleFactor: 1,
@@ -56,12 +54,14 @@ beforeAll(async () => {
   execa.sync('env', [`YAML_CONFIG=${OTP_RR_TEST_CONFIG_PATH}`, 'yarn', 'build'])
   console.log('Built OTP-RR')
 
+  execa('yarn', ['percy-preview', '--port', PREV_SERVER_PORT]).stdout.pipe(
+    process.stdout
+  )
+
   // Launch mock OTP server
-  server = mockServer.listen(MOCK_SERVER_PORT, () => {
-    console.log(
-      `Mock response server running on http://localhost:${MOCK_SERVER_PORT}`
-    )
-  })
+  execa('yarn', ['percy-otp-server']).stdout.pipe(process.stdout)
+  // Wait for server to start
+  await execa('sleep', ['18'])
   // Web security is disabled to allow requests to the mock OTP server
   browser = await puppeteer.launch({
     args: ['--disable-web-security', '--no-sandbox']
@@ -69,7 +69,6 @@ beforeAll(async () => {
 })
 
 afterAll(async () => {
-  await server.close()
   await browser.close()
   console.log('Closed mock server and headless browser')
 })
