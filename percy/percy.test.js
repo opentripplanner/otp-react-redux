@@ -262,7 +262,7 @@ async function executeTest(page, isMobile, isCallTaker) {
   // Request a schedule for a specific valid date in the past,
   // so it is different than today and triggers a full render of the schedule.
   await page.focus('input[type="date"]')
-  await page.keyboard.type('10072026') // MMDDYYYY format.
+  await page.keyboard.type('10202026') // MMDDYYYY format.
   await page.waitForTimeout(2000)
   await percySnapshotWithWait(page, 'Schedule Viewer')
 
