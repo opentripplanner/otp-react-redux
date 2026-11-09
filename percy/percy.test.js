@@ -81,6 +81,13 @@ jest.setTimeout(600000)
 
 // eslint-disable-next-line complexity
 async function executeTest(page, isMobile, isCallTaker) {
+  // Fix time (for nearby view)
+  await page.evaluate(() => {
+    Date.now = () => {
+      return 1792497600000
+    }
+  })
+
   // Make sure that the main UI (incl. map controls) has loaded.
   await page.waitForSelector('.maplibregl-ctrl-zoom-in')
 
