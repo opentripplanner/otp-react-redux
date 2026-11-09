@@ -40,8 +40,11 @@ jobs:
         run: yarn check:i18n-en-fr
       - name: Run tests
         run: yarn unit
-      - name: Download latest OTP
+      - name: Download latest OTP (for a11y tests)
         run: yarn percy-otp-download
+      - name: Download graph.obj for OTP server (for a11y tests)
+        run: >
+          curl -O ${{ secrets.PERCY_MOCK_CONFIG_BASE }}/graph.obj
       - name: Run a11y tests
         run: yarn a11y-test
 
