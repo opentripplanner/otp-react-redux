@@ -43,6 +43,7 @@ import RouteBlock from './route-block'
 import RouteBlockWithModeDecoration from './route-block-with-mode-decoration'
 
 const { ensureAtLeastOneMinute } = coreUtils.time
+const { getItinerarySummaryTiming } = coreUtils.itinerary
 
 // Styled components
 const ItineraryWrapper = styled.div.attrs((props) => {
@@ -276,7 +277,8 @@ class MetroItinerary extends NarrativeItinerary {
       setItineraryView,
       showInlineItinerarySummary,
       showLegDurations,
-      showRealtimeAnnotation
+      showRealtimeAnnotation,
+      transitOnly
     } = this.props
     const {
       FlexNoticeIcon,
@@ -285,6 +287,7 @@ class MetroItinerary extends NarrativeItinerary {
       SvgIcon
     } = this.context
     const Route = RouteRenderer || DefaultRouteRenderer
+    const summaryTiming = getItinerarySummaryTiming(itinerary, transitOnly)
 
     const { isCallAhead, isFlexItinerary } = getFlexAttributes(itinerary)
 
@@ -414,7 +417,7 @@ class MetroItinerary extends NarrativeItinerary {
                 >
                   <PrimaryInfo>
                     <FormattedDuration
-                      duration={ensureAtLeastOneMinute(itinerary.duration)}
+                      duration={ensureAtLeastOneMinute(summaryTiming.duration)}
                       includeSeconds={false}
                     />
                   </PrimaryInfo>
@@ -439,9 +442,9 @@ class MetroItinerary extends NarrativeItinerary {
                             duration={
                               /* If the walk time is truly zero, show 0. But if the walk time is just less 
                               than a minute, round up to the nearest minute to avoid showing no walk time. */
-                              itinerary.walkTime > 0
-                                ? ensureAtLeastOneMinute(itinerary.walkTime)
-                                : itinerary.walkTime
+                              summaryTiming.walkTime > 0
+                                ? ensureAtLeastOneMinute(summaryTiming.walkTime)
+                                : summaryTiming.walkTime
                             }
                             includeSeconds={false}
                           />
@@ -474,6 +477,7 @@ class MetroItinerary extends NarrativeItinerary {
                     itinerary={itinerary}
                     setActiveItinerary={setActiveItinerary}
                     showArrivals={arrivesAt}
+                    transitOnly={transitOnly}
                   />
                   {showInlineItinerarySummary && (
                     <>
@@ -490,10 +494,10 @@ class MetroItinerary extends NarrativeItinerary {
                   {expanded && showInlineItinerarySummary && (
                     <div style={{ color: '#111' }}>
                       <FormattedMessage id="components.TripSummary.leaveAt" />
-                      <FormattedTime value={itinerary.startTime} />
+                      <FormattedTime value={summaryTiming.startTime} />
                       <span style={{ marginLeft: '2ch' }}> </span>
                       <FormattedMessage id="components.TripSummary.arriveAt" />
-                      <FormattedTime value={itinerary.endTime} />
+                      <FormattedTime value={summaryTiming.endTime} />
                     </div>
                   )}
                 </DepartureTimes>
@@ -503,7 +507,7 @@ class MetroItinerary extends NarrativeItinerary {
               <ItineraryGridSmall className="other-itin">
                 <PrimaryInfo as="span">
                   <FormattedDuration
-                    duration={ensureAtLeastOneMinute(itinerary.duration)}
+                    duration={ensureAtLeastOneMinute(summaryTiming.duration)}
                     includeSeconds={false}
                   />
                 </PrimaryInfo>
@@ -548,7 +552,8 @@ const mapStateToProps = (state: AppReduxState, ownProps: Props) => {
 
     showInlineItinerarySummary:
       state.otp.config.itinerary?.showInlineItinerarySummary,
-    showLegDurations: state.otp.config.itinerary?.showLegDurations
+    showLegDurations: state.otp.config.itinerary?.showLegDurations,
+    transitOnly: state.otp.config.itinerary?.transitOnly
   }
 }
 

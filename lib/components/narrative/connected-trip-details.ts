@@ -19,7 +19,9 @@ const mapStateToProps = (state: AppReduxState) => {
   const defaultFareType = itinerary?.defaultFareType
   return {
     co2Config: co2,
-    defaultFareType
+    defaultFareType,
+    showTransitTime: itinerary?.showTransitTime,
+    transitOnly: itinerary?.transitOnly
   }
 }
 
