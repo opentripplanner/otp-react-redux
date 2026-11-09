@@ -1,3 +1,4 @@
+import { CircleXmark } from '@styled-icons/fa-solid/CircleXmark'
 import { Clock } from '@styled-icons/fa-regular/Clock'
 import { connect } from 'react-redux'
 import { format, getTimezoneOffset, utcToZonedTime } from 'date-fns-tz'
@@ -82,15 +83,21 @@ const StopTimeCell = ({
   const formattedDay = utcToZonedTime(stopTime.serviceDay * 1000, homeTimezone)
 
   const realtime = stopTime.realtimeState === 'UPDATED'
+  const canceled = stopTime.realtimeState === 'CANCELED'
   const realtimeLabel = realtime
     ? intl.formatMessage({
         id: 'components.StopTimeCell.realtime'
       })
+    : canceled
+    ? 'Canceled'
     : intl.formatMessage({
         id: 'components.StopTimeCell.scheduled'
       })
   return (
-    <div className="percy-hide">
+    <div
+      className="percy-hide"
+      style={{ textDecoration: canceled ? 'line-through' : 'none' }}
+    >
       <StyledIconWrapperTextAlign
         style={{
           fontSize: '0.6em',
@@ -99,7 +106,7 @@ const StopTimeCell = ({
         }}
         title={realtimeLabel}
       >
-        {realtime ? <PulsingRss /> : <Clock />}
+        {realtime ? <PulsingRss /> : canceled ? <CircleXmark /> : <Clock />}
       </StyledIconWrapperTextAlign>
 
       <span
@@ -107,6 +114,7 @@ const StopTimeCell = ({
         title={getRealtimeStatusLabel({
           intl,
           minutes: Math.abs(Math.ceil(stopTime.departureDelay / 60)),
+          // TODO: support canceled status
           status: getTripStatus(realtime, stopTime.departureDelay, 30) as status
         })}
       >
