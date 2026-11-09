@@ -28,6 +28,18 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 22.x
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '27'
+      - name: Download Percy configs
+        run: >
+          curl -O ${{ secrets.PERCY_MOCK_CONFIG_BASE }}/graph.obj &&
+          cd percy &&
+          curl -O ${{ secrets.PERCY_MOCK_CONFIG_BASE }}/har-mock-config${{ matrix.suffix }}.yml && 
+          curl -O ${{ secrets.PERCY_MOCK_CONFIG_BASE }}/har-mock-config${{ matrix.suffix }}.js
+      - name: Download latest OTP
+        run: yarn percy-otp-download
       - name: Install npm packages using cache
         uses: bahmutov/npm-install@v1
       - name: Build OTP-RR

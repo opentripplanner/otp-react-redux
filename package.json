@@ -16,8 +16,8 @@
     "semantic-release": "semantic-release",
     "start": "yarn && patch-package && vite",
     "percy-preview": "vite preview",
-    "percy-har-express": "har-express",
-    "percy-combined-mock-server": "node ./percy/mock-server.js"
+    "percy-otp-download": "curl -O https://otp-repo.ibi-transit.com/otp-latest-ibi-dev-2.x.jar",
+    "percy-otp-server": "java -jar otp-latest-ibi-dev-2.x.jar --load ."
   },
   "engines": {
     "node": ">=17"
