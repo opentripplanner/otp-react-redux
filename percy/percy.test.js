@@ -296,7 +296,8 @@ async function executeTest(page, isMobile, isCallTaker) {
   await page.waitForTimeout(2500)
 
   // click the little pattern arrow.
-  await page.click('#open-route-button-1-')
+  const route1Button = await page.waitForSelector('[id*="open-route-button-1"]')
+  await route1Button.click()
 
   // View the other pattern on the selected route.
   await page.click('#headsign-selector-label')
