@@ -113,8 +113,7 @@ async function executeTest(page, isMobile, isCallTaker) {
 
     await page.waitForTimeout(200)
     await page.focus('input[type="date"]')
-    // FIXME: Puppeteer only: On Wednesday 08/09/2026, Monday 08/07/2026 was shown as "Last Sunday"!...
-    await page.keyboard.type('10072026') // MMDDYYYY format.
+    await page.keyboard.type('10202026') // MMDDYYYY format.
 
     // Open advanced settings and wait for animation
     await page.click('#open-advanced-settings-button')
