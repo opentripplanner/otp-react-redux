@@ -1,5 +1,6 @@
 import { ArrowRight } from '@styled-icons/fa-solid/ArrowRight'
 import { FormattedMessage, IntlShape } from 'react-intl'
+import { v4 } from 'uuid'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 
@@ -243,7 +244,7 @@ export class RouteRow extends PureComponent<Props> {
         <PatternViewerLink
           aria-label={patternViewerLinkText}
           id={`open-route-button-${shortName || longName}-${
-            operator?.name || '' // don't print 'undefined' if there is no operator.
+            operator?.name || v4() // don't print 'undefined' if there is no operator.
           }`}
           // Cannot keyboard navigate to the link unless it is visible
           tabIndex={isActive ? 0 : -1}
