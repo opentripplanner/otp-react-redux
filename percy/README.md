@@ -11,7 +11,7 @@ PERCY_OTP_CONFIG_OVERRIDE=<path-to-yml> npx percy exec -- npx jest percy/percy.t
 
 ## Mock OTP Server and HAR file
 
-Percy tests are rely on a real OTP server that is downloaded via `yarn percy-otp-download`. A real geocoder must be provided in the percy yaml config, which must be copied to the `percy` directory.
+Percy tests rely on a real OTP server that is downloaded via `yarn percy-otp-download`. A real geocoder must be provided in the percy yaml config, which must be copied to the `percy` directory.
 
 A `graph.obj` for the Atlanta region, with valid service in October 2026 must also be specified.
 
