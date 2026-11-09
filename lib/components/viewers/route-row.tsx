@@ -1,5 +1,6 @@
 import { ArrowRight } from '@styled-icons/fa-solid/ArrowRight'
 import { FormattedMessage, IntlShape } from 'react-intl'
+// @ts-expect-error we are using an old version of uuid to reduce bundle size
 import { v4 } from 'uuid'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
