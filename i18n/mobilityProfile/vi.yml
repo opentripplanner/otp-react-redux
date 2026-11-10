@@ -15,6 +15,7 @@ components:
     noCompanions: Quý vị hiện không có người đồng hành đi lại nào.
     submitNewCompanion: Gửi lời mời
     title: Người đồng hành đi lại
+    companionExplanation: ''
   MobilityProfile:
     DevicesPane:
       devices:
