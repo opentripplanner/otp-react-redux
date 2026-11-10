@@ -1,5 +1,5 @@
 import { connect, useSelector } from 'react-redux'
-import { format } from 'date-fns'
+import { endOfDay, format } from 'date-fns'
 import { FormattedMessage } from 'react-intl'
 import { matchPath } from 'react-router'
 import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz'
@@ -61,12 +61,8 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
 
     // Midnight local time at beginning of service day:
     const stopClosuresDate = zonedTimeToUtc(date, homeTimezone)
-    // Shift 23 hours and 59 minutes to capture stop closures that begin on this date:
-    stopClosuresDate.setHours(
-      stopClosuresDate.getHours() + 23,
-      stopClosuresDate.getMinutes() + 59
-    )
-    getStopClosures(stopClosuresDate)
+    // Shift to end of day to capture stop closures that begin on this date:
+    getStopClosures(endOfDay(stopClosuresDate))
 
     getTimetableData({
       date,
