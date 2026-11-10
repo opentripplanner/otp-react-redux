@@ -1,12 +1,6 @@
-_id: en-US
+_id: tr
 _name: İngilizce
 actions:
-  callTaker:
-    callQuerySaveError: "Çağrı sorguları kaydedilirken hata oluştu: {err}"
-    checkSessionError: "Oturum kimlik doğrulama oluşturulurken hata oluştu: {err}"
-    couldNotFindCallError: Çağrı bulunamadı. Sorguları kaydetme isteği iptal ediliyor.
-    fetchCallsError: "Çağrılar alınırken hata oluştu: {err}"
-    queryFetchError: "Sorgular alınırken hata oluştu: {err}"
   location:
     deniedAccessAlert: >
       Konumunuza erişim engellendi.
@@ -118,12 +112,5 @@ common:
 components:
   A11yPrefs:
     accessibilityRoutingByDefault: Varsayılan olarak erişilebilir seyahatleri tercih et
-  AddPlaceButton:
-    addPlace: Yer ekle
-    needOriginDestination: Ara yerler eklemek için başlangıç/bitiş noktasını tanımlayın
-    tooManyPlaces: Maksimum ara yerlere ulaşıldı
-  AdvancedOptions:
-    bannedRoutes: Yasaklanan rotaları seç…
-    preferredRoutes: Tercih edilen rotaları seçin...
   AfterSignInScreen:
     mainTitle: Yönlendiriliyor...
