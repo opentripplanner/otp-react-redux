@@ -50,6 +50,9 @@ common:
     fareUnknown: ''
     noItineraryToDisplay: ''
     relativeCo2: ''
+    noDefaultFareTypeConfigured: ''
+    containsCanceledTrip: ''
+    reservationRequired: ''
   forms:
     "yes": ''
     print: ''
@@ -90,6 +93,16 @@ common:
   linkOpensNewWindow: ''
   routing:
     routeAndNumber: ''
+  currentlySelected: ''
+  daysOfWeekCompact:
+    wednesday: ''
+    thursday: ''
+    sunday: ''
+    tuesday: ''
+    saturday: ''
+    friday: ''
+    monday: ''
+  closedStop: ''
 components:
   TripStatusRenderers: {}
   UserAccountScreen: {}
@@ -106,6 +119,9 @@ components:
     resultsSortedBy: ''
     selectArrivalTime: ''
     itinerariesFound: ''
+    selectEmissions: ''
+    howToFindResults: ''
+    selectFare: ''
   NavLoginButton:
     help: ''
     signOut: ''
@@ -162,6 +178,7 @@ components:
     leaveAt: ''
     orAlternatives: ''
     originallyScheduledTime: ''
+    fare: ''
   BatchSettings:
     destination: ''
     validationMessage: ''
@@ -180,6 +197,7 @@ components:
       body: ''
     NO_TRANSIT_CONNECTION:
       body: ''
+      header: ''
     inputFields:
       FROM: ''
       TO: ''
@@ -195,6 +213,9 @@ components:
     NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
       body: ''
       header: ''
+    NO_DIRECT_MODE_CONNECTION:
+      header: ''
+      body: ''
   DefaultItinerary:
     nonTransit: ''
     multiModeSummary: ''
@@ -220,6 +241,9 @@ components:
     header: ''
     title: ''
     findARoute: ''
+    shortTitle: ''
+    routesFilteredBy: ''
+    noRouteFilter: ''
   StopViewer:
     findSchedule: ''
     operatorLogoAriaLabel: ''
@@ -234,6 +258,7 @@ components:
     flexStop: ''
     zoomToStop: ''
     forStop: ''
+    viewNearby: ''
   TransitVehicleOverlay:
     stopped_at: ''
     in_transit_to: ''
@@ -246,6 +271,7 @@ components:
     stopsTo: ''
     moreDetails: ''
     operatedBy: ''
+    headsignFrom: ''
   SimpleRealtimeAnnotation:
     usingRealtimeInfo: ''
   TripTools:
@@ -255,6 +281,7 @@ components:
     linkCopied: ''
     reportEmailTemplate: ''
     copyLink: ''
+    copyItineraryText: ''
   RealtimeStatusLabel:
     early: ''
     onTime: ''
@@ -322,16 +349,37 @@ components:
     itinerary: ''
   BatchSearchScreen:
     header: ''
+    modeSelectorLabel: ''
   DateTimeOptions:
     now: ''
     departAt: ''
     arriveBy: ''
   ViewSwitcher:
     switcher: ''
+    nearby: ''
   MapillaryFrame:
     title: ''
   ItinerarySummary:
     itineraryDetails: ''
+  NearbyView:
+    error: ''
+    header: ''
+    errorHeader: ''
+    bikesAvailable: ''
+    filterNearby: ''
+    companyBicycle: ''
+    bikeRentalStation: ''
+    nearbyListIntro: ''
+    nothingNearby: ''
+    companyScooter: ''
+    spacesAvailable: ''
+  PlaceShortcut:
+    enterAlert: ''
+    setAddressForPlaceType: ''
+  StatusBadge:
+    invalid: ''
+    verified: ''
+    pending: ''
 config:
   flex:
     both: ''
