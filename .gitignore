@@ -33,6 +33,7 @@ stats.html
 # Things downloaded for percy
 graph.obj
 otp-latest-ibi-dev-2.x.jar
+otp-latest-upstream-merge-2026-11-03.jar
 percy/har-mock-config.yml
 percy/har-mock-config.js
 percy/har-mock-config-call-taker.yml

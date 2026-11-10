@@ -1,7 +1,5 @@
 import { ArrowRight } from '@styled-icons/fa-solid/ArrowRight'
 import { FormattedMessage, IntlShape } from 'react-intl'
-// @ts-expect-error we are using an old version of uuid to reduce bundle size
-import { v4 } from 'uuid'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 
@@ -245,7 +243,7 @@ export class RouteRow extends PureComponent<Props> {
         <PatternViewerLink
           aria-label={patternViewerLinkText}
           id={`open-route-button-${shortName || longName}-${
-            operator?.name || v4() // don't print 'undefined' if there is no operator.
+            operator?.name || 'no-operator' // don't print 'undefined' if there is no operator.
           }`}
           // Cannot keyboard navigate to the link unless it is visible
           tabIndex={isActive ? 0 : -1}
