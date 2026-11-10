@@ -3,7 +3,6 @@ import { Clock } from '@styled-icons/fa-regular/Clock'
 import { connect } from 'react-redux'
 import { format, getTimezoneOffset, utcToZonedTime } from 'date-fns-tz'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { Plus } from '@styled-icons/fa-solid/Plus'
 import coreUtils from '@opentripplanner/core-utils'
 import isSameDay from 'date-fns/isSameDay'
 import React from 'react'
@@ -59,7 +58,7 @@ const CountDown = ({ seconds }: { seconds: number }) => {
 const statusMapping = {
   ADDED: {
     Cell: StopTimeCellBase,
-    Icon: Plus
+    Icon: PulsingRss
   },
   CANCELED: {
     Cell: CanceledTripCell,
