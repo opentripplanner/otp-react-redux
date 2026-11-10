@@ -110,8 +110,8 @@ common:
       nMinutes: "{minutes, plural, =1 {one minute} other {# minutes}}"
     durationAgo: "{duration} ago"
     tripDurationFormat: >-
-      {hours, plural, =0 {} other {# hr }}{minutes} min { seconds, plural, =0 {}
-      other {# sec}}
+      {hours, plural, =0 {} other {# hr }}{minutes} min{ seconds, plural, =0 {}
+      other { # sec}}
 components:
   AfterSignInScreen:
     mainTitle: Redirecting...

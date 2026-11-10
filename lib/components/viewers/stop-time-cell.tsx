@@ -113,7 +113,7 @@ const StopTimeCell = ({
 
   const formattedDay = utcToZonedTime(stopTime.serviceDay * 1000, homeTimezone)
 
-  const realtime = realtimeState === 'UPDATED'
+  const realtime = realtimeState === 'UPDATED' || realtimeState === 'ADDED'
   const realtimeLabel =
     realtimeState !== 'CANCELED' && realtimeState !== 'ADDED'
       ? getRealtimeStatusLabel({

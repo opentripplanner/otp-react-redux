@@ -30,7 +30,8 @@ const StopTimeCellBase = ({
     </IconWrapper>
 
     <span className="percy-hide">
-      {children} <InvisibleA11yLabel>{status}</InvisibleA11yLabel>
+      {children}
+      <InvisibleA11yLabel>, {status}</InvisibleA11yLabel>
     </span>
   </div>
 )
