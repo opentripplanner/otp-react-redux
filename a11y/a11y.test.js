@@ -20,6 +20,7 @@ let browser
 const disabledRules = [
   'region', // Leaflet does not comply
   'meta-viewport', // Leaflet does not comply
+  'duplicate-id-active', // Handled explictly via aria
   'page-has-heading-one' // Heading is provided by logo
 ]
 
