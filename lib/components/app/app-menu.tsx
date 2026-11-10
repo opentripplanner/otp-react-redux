@@ -1,19 +1,15 @@
 import { Bus } from '@styled-icons/fa-solid/Bus'
 import { connect } from 'react-redux'
-import { Envelope } from '@styled-icons/fa-regular/Envelope'
 import { ExternalLinkSquareAlt } from '@styled-icons/fa-solid/ExternalLinkSquareAlt'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { GlobeAmericas } from '@styled-icons/fa-solid/GlobeAmericas'
-import { GraduationCap } from '@styled-icons/fa-solid/GraduationCap'
-import { History } from '@styled-icons/fa-solid/History'
 import { MapMarked } from '@styled-icons/fa-solid/MapMarked'
 import { MapPin } from '@styled-icons/fa-solid/MapPin'
 import { Undo } from '@styled-icons/fa-solid/Undo'
-import React, { Component, Fragment, useContext } from 'react'
+import React, { Component, lazy, useContext } from 'react'
 import SlidingPane from 'react-sliding-pane'
 import type { WrappedComponentProps } from 'react-intl'
 
-import * as callTakerActions from '../../actions/call-taker'
 import * as uiActions from '../../actions/ui'
 import {
   AppMenuItemConfig,
@@ -24,6 +20,7 @@ import { AppReduxState } from '../../util/state-types'
 import { ComponentContext } from '../../util/contexts'
 import { convertChineseLanguageCode, getLanguageOptions } from '../../util/i18n'
 import { isModuleEnabled, Modules } from '../../util/config'
+import withSuspense from '../util/with-suspense'
 
 import AppMenuItem from './app-menu-item'
 import PopupTriggerText from './popup-trigger-text'
@@ -48,18 +45,19 @@ type AppMenuProps = {
   extraMenuItems?: AppMenuItemConfig[]
   language?: LanguageConfig
   languageOptions: Record<string, any> | null
-  mailablesEnabled?: boolean
   popupTarget?: string
-  resetAndToggleCallHistory?: () => void
   setLocale: (locale: string) => void
   setPopupContent: (url: string) => void
   startOverFromInitialUrl: () => void
-  toggleMailables: () => void
   translateExternalLinks?: boolean
 }
 type AppMenuState = {
   isPaneOpen: boolean
 }
+
+const CallTakerMenu = withSuspense(
+  lazy(() => import('../admin/call-taker-menu'))
+)
 
 /**
  * Sidebar which appears to show user list of options and links
@@ -154,11 +152,8 @@ class AppMenu extends Component<
       extraMenuItems,
       intl,
       languageOptions,
-      mailablesEnabled,
       popupTarget,
-      resetAndToggleCallHistory,
       setLocale,
-      toggleMailables,
       translateExternalLinks
     } = this.props
     const languageMenuItems: MenuItem[] | null = languageOptions && [
@@ -266,24 +261,7 @@ class AppMenu extends Component<
                 text={<PopupTriggerText popupTarget={popupTarget} />}
               />
             )}
-            {callTakerEnabled && (
-              <AppMenuItem
-                icon={<History />}
-                onClick={resetAndToggleCallHistory}
-                text={intl.formatMessage({
-                  id: 'components.AppMenu.callHistory'
-                })}
-              />
-            )}
-            {mailablesEnabled && (
-              <AppMenuItem
-                icon={<Envelope />}
-                onClick={toggleMailables}
-                text={intl.formatMessage({
-                  id: 'components.AppMenu.mailables'
-                })}
-              />
-            )}
+            {callTakerEnabled && <CallTakerMenu />}
             {extraViews.map((view: ExtraView) => (
               <AppMenuItem
                 icon={view.icon}
@@ -313,18 +291,15 @@ const mapStateToProps = (state: AppReduxState) => {
     extraMenuItems,
     language,
     languageOptions: getLanguageOptions(language),
-    mailablesEnabled: isModuleEnabled(state, Modules.MAILABLES),
     popupTarget: popups?.launchers?.sidebarLink,
     translateExternalLinks
   }
 }
 
 const mapDispatchToProps = {
-  resetAndToggleCallHistory: callTakerActions.resetAndToggleCallHistory,
   setLocale: uiActions.setLocale,
   setPopupContent: uiActions.setPopupContent,
-  startOverFromInitialUrl: uiActions.startOverFromInitialUrl,
-  toggleMailables: callTakerActions.toggleMailables
+  startOverFromInitialUrl: uiActions.startOverFromInitialUrl
 }
 
 export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(AppMenu))

@@ -2,13 +2,6 @@ _id: ko
 _name: Korean
 
 actions:
-  callTaker:
-    callQuerySaveError: "통화 쿼리를 저장하는 중에 오류가 발생했습니다: {err}"
-    callSaveError: "통화를 저장할 수 없습니다: {err}"
-    checkSessionError: "인증 세션을 설정하는 중에 오류가 발생했습니다: {err}"
-    couldNotFindCallError: 통화를 찾을 수 없습니다. 쿼리 저장 요청을 취소하는 중입니다.
-    fetchCallsError: "통화를 가져오는 중에 오류가 발생했습니다: {err}"
-    queryFetchError: "쿼리를 가져오는 중에 오류가 발생했습니다: {err}"
   location:
     deniedAccessAlert: |
       귀하의 위치로 액세스가 차단되었습니다.
@@ -114,20 +107,11 @@ common:
       {hours, plural, =0 {} other {# 시간 }}{minutes} 분 { seconds, plural, =0 {}
       other {# 초}}
 components:
-  AddPlaceButton:
-    addPlace: 장소 추가
-    needOriginDestination: 출발지/목적지를 정의하고 중간 경유지 추가
-    tooManyPlaces: 중간 경유지의 최대 수에 도달함
-  AdvancedOptions:
-    bannedRoutes: 금지된 경로 선택…
-    preferredRoutes: 선호 경로 선택…
   AfterSignInScreen:
     mainTitle: 경로 재설정 중...
     message: 몇 초 후에도 페이지가 로드되지 않는 경우, <redirectLink>여기를 클릭</redirectLink>하십시오.
   AppMenu:
-    callHistory: 통화 기록
     closeMenu: 메뉴 닫기
-    mailables: 발송 가능
     networkConnectionLost: 네트워크 연결이 끊어짐
     networkConnectionRestored: 네트워크 연결이 복구됨
     openMenu: 메뉴 열기
@@ -158,9 +142,6 @@ components:
     mainTitle: 로그인 중
     message: |
       이 페이지에 접근하려면 로그인해야 합니다. 로그인 페이지로 리디렉션하는 동안 기다려 주세요…
-  CallTakerPanel:
-    advancedOptions: 고급 옵션
-    intermediateDestination: 중간 목적지 입력
   DateTimeOptions:
     arriveBy: 도착 시간
     departAt: 출발 시간
@@ -290,11 +271,6 @@ components:
     enterAlert: |
       양식에 출발지/목적지를 입력하고(또는 지도를 클릭하여 설정), 생성된 마커를 클릭하여 {placeType} 위치로 설정하세요.
     setAddressForPlaceType: "{placeType}의 주소 설정"
-  PlanFirstLastButtons:
-    first: 처음
-    last: 마지막
-    next: 다음
-    previous: 이전
   PlanTripButton:
     planTrip: 트립 계획
   PointPopup:
