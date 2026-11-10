@@ -65,6 +65,9 @@ common:
       {co2} de CO₂ en {isMore, select, true {más} other {menos} } que conducir
       solo
     timeStartEnd: "{start} – {end}"
+    noDefaultFareTypeConfigured: ''
+    containsCanceledTrip: ''
+    reservationRequired: ''
   linkOpensNewWindow: (Abre una nueva ventana)
   modes:
     bicycle_rent: Compartir bicicleta
@@ -109,6 +112,8 @@ common:
     tripDurationFormat: >-
       {hours, plural, =0 {} other {# h }}{minutes} min { seconds, plural, =0 {}
       other {# s}}
+  currentlySelected: ''
+  closedStop: ''
 components:
   AfterSignInScreen:
     mainTitle: Redirigiendo…
@@ -222,6 +227,8 @@ components:
     selectWalkTime: Tiempo de caminata
     sortResults: Ordenar los resultados
     viewAll: Ver todas las opciones
+    selectEmissions: ''
+    selectFare: ''
   NavLoginButton:
     help: Ayuda
     myAccount: Mi cuenta
@@ -243,6 +250,8 @@ components:
     searchNearby: Buscar cerca...
     spacesAvailable: "{spacesAvailable} espacios libres disponibles"
     nothingNearbyHeader: Fuera del alcance
+    errorHeader: ''
+    filterNearby: ''
   NotFound:
     description: El contenido que ha solicitado no está disponible.
     header: No se encontró el contenido
@@ -292,6 +301,9 @@ components:
     OTP_RR_TRIP_IN_PAST:
       header: Este viaje ya se ha realizado
       body: Uno o más de estos itinerarios ya terminaron.
+    NO_DIRECT_MODE_CONNECTION:
+      header: ''
+      body: ''
   PlaceShortcut:
     enterAlert: >
       Introduzca el origen/destino en el formulario (o establezca mediante un
@@ -324,6 +336,7 @@ components:
     operatedBy: Servicio operado por {agencyName}
     selectADirection: Seleccione una dirección…
     stopsTo: Hacia
+    headsignFrom: ''
   RouteViewer:
     agencyFilter: Filtro de agencia
     allAgencies: Todas las agencias
@@ -337,6 +350,8 @@ components:
     shortTitle: Ver rutas
     stopsInDirectionOfTravel: "Paradas en este sentido de la marcha:"
     title: Visor de rutas
+    routesFilteredBy: ''
+    noRouteFilter: ''
   SaveTripButton:
     cantSaveText: No se puede guardar
     cantSaveTooltip: >-
@@ -434,6 +449,7 @@ components:
 
       *** DETALLES TÉCNICOS ***
     reportIssue: ¿Un problema?
+    copyItineraryText: ''
   TripViewer:
     accessible: Accesible
     bicyclesAllowed: Permitido
