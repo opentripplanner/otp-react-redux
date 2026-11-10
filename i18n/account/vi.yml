@@ -180,6 +180,8 @@ components:
       những thay đổi sẽ bị mất.
     unsavedChangesNewTrip: Bạn chưa lưu chuyến đi mới của mình. Nếu bạn rời đi, 
       nó sẽ bị mất.
+    indicatesRequiredFields: ''
+    checkAgain: ''
   TripNotificationsPane:
     advancedSettings: Cài đặt nâng cao
     altRouteRecommended: Một tuyến đường hoặc điểm trung chuyển thay thế được 
