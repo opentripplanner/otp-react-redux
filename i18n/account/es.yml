@@ -70,6 +70,8 @@ components:
     nameTooLong: El nombre debe tener menos de {char} caracteres.
     placeNotFound: No se encontró el lugar
     placeNotFoundDescription: Lo sentimos, no se encontró el lugar solicitado.
+    deleteThisPlace: ''
+    charactersOverLimit: ''
   NewAccountWizard:
     createNewAccount: Crear una nueva cuenta
     finish: ¡Configuración de la cuenta completa!
@@ -183,6 +185,8 @@ components:
       perderán.
     unsavedChangesNewTrip: Todavía no ha guardado su nuevo viaje. Si abandona la
       página, se perderá.
+    indicatesRequiredFields: ''
+    checkAgain: ''
   TripNotificationsPane:
     advancedSettings: Configuración avanzada
     altRouteRecommended: Se recomienda una ruta alternativa o un punto de 
