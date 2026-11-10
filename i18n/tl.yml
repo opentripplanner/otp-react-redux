@@ -53,6 +53,7 @@ common:
     noDefaultFareTypeConfigured: ''
     containsCanceledTrip: ''
     reservationRequired: ''
+    timeStartEnd: ''
   forms:
     "yes": ''
     print: ''
@@ -136,6 +137,7 @@ components:
     streets: ''
     satellite: ''
     stops: ''
+    stations: ''
   NotFound:
     description: ''
     header: ''
@@ -179,6 +181,7 @@ components:
     orAlternatives: ''
     originallyScheduledTime: ''
     fare: ''
+    itinerarySummary: ''
   BatchSettings:
     destination: ''
     validationMessage: ''
@@ -224,6 +227,8 @@ components:
     openMenu: ''
     skipNavigation: ''
     closeMenu: ''
+    networkConnectionLost: ''
+    networkConnectionRestored: ''
   TripSummary:
     arriveAt: ''
     leaveAt: ''
@@ -350,6 +355,12 @@ components:
   BatchSearchScreen:
     header: ''
     modeSelectorLabel: ''
+    tripOptions: ''
+    saved: ''
+    advancedHeader: ''
+    moreOptions: ''
+    saveAndReturn: ''
+    submodeSelectorLabel: ''
   DateTimeOptions:
     now: ''
     departAt: ''
@@ -373,6 +384,9 @@ components:
     nothingNearby: ''
     companyScooter: ''
     spacesAvailable: ''
+    headsign: ''
+    distanceAway: ''
+    searchNearby: ''
   PlaceShortcut:
     enterAlert: ''
     setAddressForPlaceType: ''
@@ -380,6 +394,8 @@ components:
     invalid: ''
     verified: ''
     pending: ''
+  TripPreviewLayout:
+    previewTrip: ''
 config:
   flex:
     both: ''
