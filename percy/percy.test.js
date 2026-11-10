@@ -303,8 +303,7 @@ async function executeTest(page, isMobile, isCallTaker) {
   await page.waitForTimeout(2500)
 
   // click the little pattern arrow.
-  const route1Button = await page.waitForSelector('[id*="open-route-button-1"]')
-  await route1Button.click()
+  await page.click('#open-route-button-1-no-operator')
 
   await page.waitForTimeout(2500)
 
