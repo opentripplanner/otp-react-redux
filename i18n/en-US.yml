@@ -370,9 +370,10 @@ components:
     destination: To
     route: Route
   StopTimeCell:
+    canceled: Canceled
     imminentArrival: Due
-    realtime: Based on realtime data
     scheduled: Based on schedule data
+    updated: Based on realtime data
   StopViewer:
     displayStopId: "<strong>Stop ID</strong>: {stopId}"
     findSchedule: Find schedule by date

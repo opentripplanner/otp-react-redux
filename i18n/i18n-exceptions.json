@@ -57,6 +57,11 @@
       "low-vision",
       "legally-blind"
     ],
+    "components.StopTimeCell.*": [
+      "canceled",
+      "scheduled",
+      "updated"
+    ],
     "components.TransitVehicleOverlay.*": [
       "incoming_at",
       "in_transit_to",
