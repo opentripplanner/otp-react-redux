@@ -316,9 +316,11 @@ components:
       following routes: {routes}.
     serviceUpdate: Service update
   RealtimeStatusLabel:
+    added: added
+    canceled: canceled
     early: "{minutes} early"
     late: "{minutes} late"
-    onTime: on time
+    on_time: on time
     scheduled: scheduled
   ResultsError:
     backToSearch: Back to Search
@@ -370,6 +372,7 @@ components:
     destination: To
     route: Route
   StopTimeCell:
+    added: Added
     canceled: Canceled
     imminentArrival: Due
     scheduled: Based on schedule data

@@ -3,6 +3,7 @@ import { Clock } from '@styled-icons/fa-regular/Clock'
 import { connect } from 'react-redux'
 import { format, getTimezoneOffset, utcToZonedTime } from 'date-fns-tz'
 import { FormattedMessage, useIntl } from 'react-intl'
+import { Plus } from '@styled-icons/fa-solid/Plus'
 import coreUtils from '@opentripplanner/core-utils'
 import isSameDay from 'date-fns/isSameDay'
 import React from 'react'
@@ -10,13 +11,12 @@ import styled from 'styled-components'
 
 import { AppReduxState } from '../../util/state-types'
 import { getSecondsUntilDeparture, getTripStatus } from '../../util/viewer'
-import { PulsingRss, StyledIconWrapperTextAlign } from '../util/styledIcon'
+import { PulsingRss } from '../util/styledIcon'
 import FormattedDayOfWeek from '../util/formatted-day-of-week'
 import FormattedDuration from '../util/formatted-duration'
 import getRealtimeStatusLabel, {
-  status
+  Status
 } from '../util/get-realtime-status-label'
-import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import type { Time } from '../util/types'
 
 import DepartureTime from './departure-time'
@@ -57,6 +57,10 @@ const CountDown = ({ seconds }: { seconds: number }) => {
 }
 
 const statusMapping = {
+  ADDED: {
+    Cell: StopTimeCellBase,
+    Icon: Plus
+  },
   CANCELED: {
     Cell: CanceledTripCell,
     Icon: CircleXmark
@@ -94,6 +98,7 @@ const StopTimeCell = ({
     console.warn(`homeTimezone '${homeTimezone}' is invalid`)
     return <Error />
   }
+  const { realtimeState } = stopTime
 
   // Determine whether to show departure as countdown (e.g. "5 min") or as HH:mm
   // time, using realtime updates if available.
@@ -109,21 +114,25 @@ const StopTimeCell = ({
 
   const formattedDay = utcToZonedTime(stopTime.serviceDay * 1000, homeTimezone)
 
-  const realtime = stopTime.realtimeState === 'UPDATED'
-  const realtimeLabel = intl.formatMessage({
-    id: `components.StopTimeCell.${stopTime.realtimeState.toLowerCase()}`
-  })
+  const realtime = realtimeState === 'UPDATED'
+  const realtimeLabel =
+    realtimeState !== 'CANCELED' && realtimeState !== 'ADDED'
+      ? getRealtimeStatusLabel({
+          intl,
+          minutes: Math.abs(Math.ceil(stopTime.departureDelay / 60)),
+          status: getTripStatus(realtime, stopTime.departureDelay, 30) as Status
+        })
+      : intl.formatMessage({
+          id: `components.StopTimeCell.${realtimeState.toLowerCase()}`
+        })
 
   const countdownMode =
     (onlyShowCountdownForRealtime === true && realtime) ||
     (onlyShowCountdownForRealtime === false && showCountdown)
 
-  const Cell = statusMapping[stopTime.realtimeState].Cell
+  const { Cell, Icon } = statusMapping[realtimeState]
   return (
-    <Cell
-      Icon={statusMapping[stopTime.realtimeState].Icon}
-      status={realtimeLabel}
-    >
+    <Cell Icon={Icon} status={realtimeLabel}>
       {countdownMode ? (
         <CountDown seconds={secondsUntilDeparture} />
       ) : (

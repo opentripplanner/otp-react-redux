@@ -57,6 +57,14 @@
       "low-vision",
       "legally-blind"
     ],
+    "components.RealtimeStatusLabel.*": [
+      "added",
+      "canceled",
+      "early",
+      "late",
+      "on_time",
+      "scheduled"
+    ],
     "components.StopTimeCell.*": [
       "canceled",
       "scheduled",

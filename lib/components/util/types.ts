@@ -60,7 +60,7 @@ export interface Time {
   realtime: boolean
   realtimeArrival: number
   realtimeDeparture: number
-  realtimeState: 'SCHEDULED' | 'UPDATED' | 'CANCELED'
+  realtimeState: 'SCHEDULED' | 'UPDATED' | 'CANCELED' | 'ADDED'
   scheduledArrival: number
   scheduledDeparture: number
   serviceAreaRadius: number
