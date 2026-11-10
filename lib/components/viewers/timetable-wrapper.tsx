@@ -3,6 +3,7 @@ import { format } from 'date-fns'
 import { FormattedMessage } from 'react-intl'
 import { matchPath } from 'react-router'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import styled from 'styled-components'
 import TimeTable from '@opentripplanner/timetable'
 
 import * as apiActions from '../../actions/api'
@@ -10,6 +11,23 @@ import { AppReduxState } from '../../util/state-types'
 import { TIMETABLE_PATH } from '../../util/constants'
 import { TimetableDataParams } from '../util/types'
 import Loading from '../narrative/loading'
+
+const TimeTableContainer = styled.div`
+  display: flex;
+  overflow: auto;
+`
+
+const TimeTableControlsBar = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+`
+
+const TimeTableWindowContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+`
 
 interface TimeTableWrapperProps {
   closedStops?: Set<string>
@@ -95,14 +113,8 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   if (!closedStops) console.warn('No stop closures object is defined')
 
   return routeId && routeInformation && !directionIdsAreInvalid ? (
-    <div>
-      <div
-        style={{
-          alignItems: 'center',
-          display: 'flex',
-          flexDirection: 'column'
-        }}
-      >
+    <TimeTableWindowContainer>
+      <TimeTableControlsBar>
         {(stopClosuresError || !closedStops) && (
           <FormattedMessage id="components.Timetable.errorLoadingStopClosures" />
         )}
@@ -135,9 +147,9 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
           type="date"
           value={date}
         />
-      </div>
+      </TimeTableControlsBar>
       {routeInformation && (
-        <div style={{ overflow: 'scroll' }}>
+        <TimeTableContainer>
           <TimeTable
             additionalColumns={[
               'NOTICES',
@@ -152,9 +164,9 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
             route={routeInformation}
             timepointsOnly={timepointsOnly}
           />
-        </div>
+        </TimeTableContainer>
       )}
-    </div>
+    </TimeTableWindowContainer>
   ) : (
     <FormattedMessage id="components.Timetable.errorLoadingTimetable" />
   )
