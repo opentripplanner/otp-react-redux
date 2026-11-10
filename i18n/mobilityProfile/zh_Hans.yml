@@ -14,6 +14,7 @@ components:
     noCompanions: 您当前未添加任何出行伙伴。
     submitNewCompanion: 发送邀请
     title: 出行伙伴
+    companionExplanation: ''
   MobilityProfile:
     DevicesPane:
       devices:
