@@ -68,6 +68,8 @@ common:
     error: ''
     next: ''
     defaultValue: ''
+    loading: ''
+    startOver: ''
   searchForms:
     enterStartLocation: ''
     click: ''
@@ -219,6 +221,9 @@ components:
     NO_DIRECT_MODE_CONNECTION:
       header: ''
       body: ''
+    OTP_RR_TRIP_IN_PAST:
+      header: ''
+      body: ''
   DefaultItinerary:
     nonTransit: ''
     multiModeSummary: ''
@@ -361,6 +366,8 @@ components:
     moreOptions: ''
     saveAndReturn: ''
     submodeSelectorLabel: ''
+    setAsDefault: ''
+    logInToSetDefault: ''
   DateTimeOptions:
     now: ''
     departAt: ''
@@ -387,6 +394,7 @@ components:
     headsign: ''
     distanceAway: ''
     searchNearby: ''
+    nothingNearbyHeader: ''
   PlaceShortcut:
     enterAlert: ''
     setAddressForPlaceType: ''
