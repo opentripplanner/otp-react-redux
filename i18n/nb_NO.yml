@@ -1,7 +1,5 @@
 _name: Norsk bokmål
 actions:
-  callTaker:
-    callSaveError: "Kunne ikke lagre anrop: {err}"
   user:
     confirmDeletePlace: Fjern dette stedet?
     smsInvalidCode: Koden du har skrevet inn er ugyldig. Prøv igjen.
@@ -50,12 +48,9 @@ common:
     home: hjem
     work: arbeid
 components:
-  AddPlaceButton:
-    addPlace: Legg til sted
   AfterSignInScreen:
     mainTitle: Videresender …
   AppMenu:
-    callHistory: Anropshistorikk
     closeMenu: Lukk menyen
   BatchResultsScreen:
     showResults: Vis resultater
@@ -66,8 +61,6 @@ components:
   BatchSettings:
     destination: mål
     planTripTooltip: Planlegg tur
-  CallTakerPanel:
-    advancedOptions: Avanserte innstillinger
   DateTimeOptions:
     now: Nå
   DeleteUser:
@@ -106,11 +99,6 @@ components:
     verify: Bekreft
   Place:
     deleteThisPlace: Slett dette stedet
-  PlanFirstLastButtons:
-    first: Først
-    last: Sist
-    next: Neste
-    previous: Forrige
   PlanTripButton:
     planTrip: Planlegg tur
   RouteDetails:

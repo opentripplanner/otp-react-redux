@@ -51,18 +51,8 @@ beforeAll(async () => {
       process.stdout
     )
 
-    // Launch mock OTP server
-    execa('yarn', ['percy-combined-mock-server'], {
-      env: { HAR: './percy/mock.har', PORT: '9999' }
-    }).stdout.pipe(process.stdout)
-
-    // Launch mock geocoder server
-    execa('yarn', [
-      'percy-har-express',
-      `percy/geocoder-mock-${OTP_RR_UI_MODE}.har`,
-      '-p',
-      '9977'
-    ]).stdout.pipe(process.stdout)
+    // Launch OTP server
+    execa('yarn', ['percy-otp-server']).stdout.pipe(process.stdout)
 
     // Web security is disabled to allow requests to the mock OTP server
     browser = await puppeteer.launch({
@@ -74,7 +64,7 @@ beforeAll(async () => {
   }
 
   // Give servers time to start up
-  await execa('sleep', ['5'])
+  await execa('sleep', ['18'])
 })
 
 afterAll(async () => {
@@ -91,6 +81,13 @@ jest.setTimeout(600000)
 
 // eslint-disable-next-line complexity
 async function executeTest(page, isMobile, isCallTaker) {
+  // Fix time (for nearby view)
+  await page.evaluate(() => {
+    Date.now = () => {
+      return 1792497600000
+    }
+  })
+
   // Make sure that the main UI (incl. map controls) has loaded.
   await page.waitForSelector('.maplibregl-ctrl-zoom-in')
 
@@ -98,7 +95,7 @@ async function executeTest(page, isMobile, isCallTaker) {
   // Triggers mock.har graphql query #1 and #2 (bike-only query, twice).
   // FIXME: Opening a url with non-default mode params triggers the plan query twice.
   await page.goto(
-    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=South%20Prado%20Northeast%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.78946214120528%2C-84.37663414886111&toPlace=1%20Copenhill%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.767060728439574%2C-84.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false&modeButtons=bicycle`
+    `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=South%20Prado%20Northeast%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.78946214120528%2C-84.37663414886111&toPlace=1%20Copenhill%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.767060728439574%2C-84.35749390533111&date=2026-10-09&time=17%3A56&arriveBy=false&modeButtons=bicycle`
   )
   // FIXME: Network idle condition seems never met after navigating to above link.
   // await page.waitForNavigation({ waitUntil: 'networkidle2' })
@@ -123,8 +120,7 @@ async function executeTest(page, isMobile, isCallTaker) {
 
     await page.waitForTimeout(200)
     await page.focus('input[type="date"]')
-    // FIXME: Puppeteer only: On Wednesday 08/09/2023, Monday 08/07/2023 was shown as "Last Sunday"!...
-    await page.keyboard.type('08072023') // MMDDYYYY format.
+    await page.keyboard.type('10202026') // MMDDYYYY format.
 
     // Open advanced settings and wait for animation
     await page.click('#open-advanced-settings-button')
@@ -163,7 +159,7 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.hover('.from-form-control')
     await page.focus('.from-form-control')
     // FIXME: Characters are typed very fast, but each stroke still triggers a geocoder call.
-    await page.keyboard.type('Opus Music', { delay: 100 })
+    await page.keyboard.type('908981', { delay: 100 })
     await page.waitForTimeout(2000)
     await page.keyboard.press('ArrowDown')
     await page.waitForTimeout(200)
@@ -172,8 +168,14 @@ async function executeTest(page, isMobile, isCallTaker) {
     // Fill in new destination
     await page.focus('.to-form-control')
     // FIXME: Characters are typed very fast, but each stroke still triggers a geocoder call.
-    await page.keyboard.type('908981', { delay: 100 })
+    await page.keyboard.type('Opus Music store', { delay: 100 })
     await page.waitForTimeout(2000)
+    await page.keyboard.press('ArrowDown')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('ArrowDown')
+    await page.waitForTimeout(200)
+    await page.keyboard.press('ArrowDown')
+    await page.waitForTimeout(200)
     await page.keyboard.press('ArrowDown')
     await page.waitForTimeout(200)
     await page.keyboard.press('Enter')
@@ -218,7 +220,7 @@ async function executeTest(page, isMobile, isCallTaker) {
     // take screenshot
     await percySnapshotWithWait(page, 'Call Taker With Settings Adjusted')
     await page.goto(
-      `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=South%20Prado%20Northeast%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.78946214120528%2C-84.37663414886111&toPlace=1%20Copenhill%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.767060728439574%2C-84.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false`
+      `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=South%20Prado%20Northeast%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.78946214120528%2C-84.37663414886111&toPlace=1%20Copenhill%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.767060728439574%2C-84.35749390533111&date=2026-10-09&time=17%3A56&arriveBy=false`
     )
 
     // Other steps are identical to desktop, so we end here to not waste screenshots.
@@ -267,7 +269,7 @@ async function executeTest(page, isMobile, isCallTaker) {
   // Request a schedule for a specific valid date in the past,
   // so it is different than today and triggers a full render of the schedule.
   await page.focus('input[type="date"]')
-  await page.keyboard.type('08072023') // MMDDYYYY format.
+  await page.keyboard.type('10202026') // MMDDYYYY format.
   await page.waitForTimeout(2000)
   await percySnapshotWithWait(page, 'Schedule Viewer')
 
@@ -290,22 +292,20 @@ async function executeTest(page, isMobile, isCallTaker) {
   await percySnapshotWithWait(page, 'Route Viewer')
 
   // Open Specific Route
-  // Triggers mock.har graphql query #10 (route details), #11 and #12 (vehicle positions, twice).
-  // FIXME: Investigate why twice.
   try {
-    await page.$x("//span[contains(., 'Marietta Blvd')]")
+    await page.$x("//span[contains(., 'Lowery')]")
   } catch {
     await page.reload({ waitUntil: 'networkidle0' })
   }
-  const [busRouteButton] = await page.$x("//span[contains(., 'Marietta Blvd')]")
+  const [busRouteButton] = await page.$x("//span[contains(., 'Lowery')]")
   await busRouteButton.click()
 
-  await page.waitForTimeout(500)
+  await page.waitForTimeout(2500)
 
-  // click the little pattern arrow
-  // Triggers mock.har graphql query #13 and #14 (vehicle positions, twice again).
-  // FIXME: Investigate why twice.
-  await page.click('#open-route-button-1-')
+  // click the little pattern arrow.
+  await page.click('#open-route-button-1-no-operator')
+
+  await page.waitForTimeout(2500)
 
   // View the other pattern on the selected route.
   await page.click('#headsign-selector-label')
@@ -371,7 +371,7 @@ async function executeTest(page, isMobile, isCallTaker) {
   if (!isCallTaker) {
     // Go to a URL that will trigger an error message.
     await page.goto(
-      `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=TestLocation%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A34.78946214120528%2C-86.37663414886111&toPlace=1%20TestLocation2%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A35.767060728439574%2C-86.35749390533111&date=2023-08-09&time=17%3A56&arriveBy=false&modeButtons=car_transit`
+      `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=TestLocation%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A34.78946214120528%2C-86.37663414886111&toPlace=1%20TestLocation2%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A35.767060728439574%2C-86.35749390533111&date=2026-10-09&time=17%3A56&arriveBy=false&modeButtons=car_transit`
     )
     await page.waitForTimeout(500)
     await openEditIfNeeded(page, isMobile)
