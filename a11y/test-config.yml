@@ -4,7 +4,7 @@ homeTimezone: America/Chicago
 
 # Default OTP API
 api:
-  host: http://localhost:9999
+  host: http://localhost:8080
   v2: true
   # host: http://localhost:8001 # For testing against a local OTP instance
   path: /otp/routers/default
