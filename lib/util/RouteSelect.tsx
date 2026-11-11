@@ -18,7 +18,7 @@ const StyledSelectContainer = styled.div`
   }
 `
 
-export type routeSelectOption = {
+export type RouteSelectOption = {
   label: string | JSX.Element | undefined
   name: string | undefined
   value: string
@@ -30,7 +30,7 @@ const routeOptions = (
   RouteRenderer?: any,
   ModeIcon?: any,
   simpleRouteRenderer?: boolean
-): routeSelectOption[] =>
+): RouteSelectOption[] =>
   routes.map((r) => ({
     label: simpleRouteRenderer ? (
       r.shortName || r.longName
@@ -49,7 +49,7 @@ const routeOptions = (
 
 interface RouteSelectProps {
   currentValue?: string | string[]
-  disabled?: any
+  disabled?: (arg: RouteSelectOption) => boolean
   id: string
   isMulti?: boolean
   onChange: (arg: any) => void

@@ -22,9 +22,9 @@ import { getSortedFilteredRoutes } from '../../util/state'
 import { TIMETABLE_PATH } from '../../util/constants'
 import { TimetableDataParams } from '../util/types'
 import Loading from '../narrative/loading'
+import RouteSelect, { RouteSelectOption } from '../../util/RouteSelect'
 
 import { RouteRowDetails } from './route-row'
-import RouteSelect, { routeSelectOption } from '../../util/RouteSelect'
 
 interface TimeTableWrapperProps {
   closedStops?: Set<string>
@@ -149,7 +149,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
 
   if (!closedStops) console.warn('No stop closures object is defined')
 
-  const routeAlreadySelected = (option: routeSelectOption): boolean => {
+  const routeAlreadySelected = (option: RouteSelectOption): boolean => {
     return option.value === currentRoute
   }
 
@@ -163,6 +163,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
             route={routeInformation}
             RouteRenderer={RouteRenderer}
           />
+          {/* This does not look awesome on smaller screen sizes */}
           <span style={{ fontSize: '16px', fontWeight: 500 }}>
             {`- ${routeInformation.desc}`}
           </span>
@@ -209,7 +210,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
           <RouteSelect
             disabled={routeAlreadySelected}
             id="timetable-route-select"
-            onChange={(e: routeSelectOption) =>
+            onChange={(e: RouteSelectOption) =>
               // eslint-disable-next-line prettier/prettier
               setCurrentRoute(e.value)}
             placeholderText="Select a route..."
