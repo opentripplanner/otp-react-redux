@@ -9,6 +9,7 @@ import * as apiActions from '../../actions/api'
 import { AppReduxState } from '../../util/state-types'
 import { TIMETABLE_PATH } from '../../util/constants'
 import { TimetableDataParams } from '../util/types'
+import AppModule from '../app/app-module'
 import Loading from '../narrative/loading'
 
 interface TimeTableWrapperProps {
@@ -94,69 +95,73 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
 
   if (!closedStops) console.warn('No stop closures object is defined')
 
-  return routeId && routeInformation && !directionIdsAreInvalid ? (
-    <div>
-      <div
-        style={{
-          alignItems: 'center',
-          display: 'flex',
-          flexDirection: 'column'
-        }}
-      >
-        {(stopClosuresError || !closedStops) && (
-          <FormattedMessage id="components.Timetable.errorLoadingStopClosures" />
-        )}
-        <button
-          onClick={() => {
-            setTimepointsOnly(!timepointsOnly)
-          }}
-        >
-          {timepointsOnly ? (
-            <FormattedMessage id="components.Timetable.showAllStops" />
-          ) : (
-            <FormattedMessage id="components.Timetable.showTimepointsOnly" />
+  return (
+    <AppModule load={['call']}>
+      {routeId && routeInformation && !directionIdsAreInvalid ? (
+        <div>
+          <div
+            style={{
+              alignItems: 'center',
+              display: 'flex',
+              flexDirection: 'column'
+            }}
+          >
+            {(stopClosuresError || !closedStops) && (
+              <FormattedMessage id="components.Timetable.errorLoadingStopClosures" />
+            )}
+            <button
+              onClick={() => {
+                setTimepointsOnly(!timepointsOnly)
+              }}
+            >
+              {timepointsOnly ? (
+                <FormattedMessage id="components.Timetable.showAllStops" />
+              ) : (
+                <FormattedMessage id="components.Timetable.showTimepointsOnly" />
+              )}
+            </button>
+            <button onClick={() => setDirectionId(directionId === 1 ? 0 : 1)}>
+              <FormattedMessage id="components.Timetable.switchDirection" />
+            </button>
+            <span>{`${routeInformation.shortName}: ${routeInformation.desc}`}</span>
+            {routeInformation.url && (
+              <a href={routeInformation.url} onClick={handleRouteUrlClick}>
+                <FormattedMessage id="components.Timetable.routeInformation" />
+              </a>
+            )}
+            <label htmlFor="date-picker">
+              <FormattedMessage id="components.Timetable.timetableDate" />
+            </label>
+            <input
+              id="date-picker"
+              onChange={handleDateChange}
+              type="date"
+              value={date}
+            />
+          </div>
+          {routeInformation && (
+            <div style={{ overflow: 'scroll' }}>
+              <TimeTable
+                additionalColumns={[
+                  'NOTICES',
+                  'BLOCK_ID',
+                  'TRIP_SHORT_NAME',
+                  'TRIP_HEADSIGN',
+                  'TRIP_ID'
+                ]}
+                closedStops={closedStops}
+                directionId={directionId}
+                includeDwellStops
+                route={routeInformation}
+                timepointsOnly={timepointsOnly}
+              />
+            </div>
           )}
-        </button>
-        <button onClick={() => setDirectionId(directionId === 1 ? 0 : 1)}>
-          <FormattedMessage id="components.Timetable.switchDirection" />
-        </button>
-        <span>{`${routeInformation.shortName}: ${routeInformation.desc}`}</span>
-        {routeInformation.url && (
-          <a href={routeInformation.url} onClick={handleRouteUrlClick}>
-            <FormattedMessage id="components.Timetable.routeInformation" />
-          </a>
-        )}
-        <label htmlFor="date-picker">
-          <FormattedMessage id="components.Timetable.timetableDate" />
-        </label>
-        <input
-          id="date-picker"
-          onChange={handleDateChange}
-          type="date"
-          value={date}
-        />
-      </div>
-      {routeInformation && (
-        <div style={{ overflow: 'scroll' }}>
-          <TimeTable
-            additionalColumns={[
-              'NOTICES',
-              'BLOCK_ID',
-              'TRIP_SHORT_NAME',
-              'TRIP_HEADSIGN',
-              'TRIP_ID'
-            ]}
-            closedStops={closedStops}
-            directionId={directionId}
-            includeDwellStops
-            route={routeInformation}
-            timepointsOnly={timepointsOnly}
-          />
         </div>
+      ) : (
+        <FormattedMessage id="components.Timetable.errorLoadingTimetable" />
       )}
-    </div>
-  ) : (
-    <FormattedMessage id="components.Timetable.errorLoadingTimetable" />
+    </AppModule>
   )
 }
 
