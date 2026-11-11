@@ -16,6 +16,7 @@ import FormattedDuration from '../util/formatted-duration'
 import getRealtimeStatusLabel, {
   Status
 } from '../util/get-realtime-status-label'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import type { Time } from '../util/types'
 
 import DepartureTime from './departure-time'
@@ -135,7 +136,20 @@ const StopTimeCell = ({
       {countdownMode ? (
         <CountDown seconds={secondsUntilDeparture} />
       ) : (
-        <DepartureTime realTime stopTime={stopTime} />
+        <>
+          {!isSameDay(new Date(), formattedDay) && (
+            <InvisibleA11yLabel>
+              <FormattedDayOfWeek
+                // 'iiii' returns the long ISO day of the week (independent of browser locale).
+                // See https://date-fns.org/v2.28.0/docs/format
+                day={format(formattedDay, 'iiii', {
+                  timeZone: homeTimezone
+                }).toLowerCase()}
+              />{' '}
+            </InvisibleA11yLabel>
+          )}
+          <DepartureTime realTime stopTime={stopTime} />
+        </>
       )}
     </Cell>
   )
