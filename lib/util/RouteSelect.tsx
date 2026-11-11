@@ -1,10 +1,11 @@
 import { IntlShape, useIntl } from 'react-intl'
 import { Route } from '@opentripplanner/types'
-
-import { ComponentContext } from './contexts'
-import { RouteRowDetails } from '../components/viewers/route-row'
 import React, { lazy, useContext } from 'react'
 import styled from 'styled-components'
+
+import { RouteRowDetails } from '../components/viewers/route-row'
+
+import { ComponentContext } from './contexts'
 
 const StyledSelectContainer = styled.div`
   span {
@@ -17,13 +18,19 @@ const StyledSelectContainer = styled.div`
   }
 `
 
+export type routeSelectOption = {
+  label: string | JSX.Element | undefined
+  name: string | undefined
+  value: string
+}
+
 const routeOptions = (
   routes: Route[],
   intl: IntlShape,
   RouteRenderer?: any,
   ModeIcon?: any,
   simpleRouteRenderer?: boolean
-) =>
+): routeSelectOption[] =>
   routes.map((r) => ({
     label: simpleRouteRenderer ? (
       r.shortName || r.longName
@@ -42,10 +49,10 @@ const routeOptions = (
 
 interface RouteSelectProps {
   currentValue?: string | string[]
-  disabled?: boolean
+  disabled?: any
   id: string
   isMulti?: boolean
-  onChange: (arg: string) => void
+  onChange: (arg: any) => void
   placeholderText?: string
   routes: Route[]
   simpleRouteRenderer?: boolean
@@ -76,19 +83,28 @@ const RouteSelect = ({
     ModeIcon,
     simpleRouteRenderer
   )
+
+  const findOption = (id: string) => routesList.find((r) => r.value === id)
+
+  // current value is either a string or an array (depending on if the component is multiselect)
+  const findValue = (value: string | string[] | undefined) => {
+    if (value === undefined) return
+    if (typeof value === 'string') return findOption(value)
+    if (typeof value !== 'string' && isMulti)
+      // @ts-expect-error There's no way value can be a string below but ts is still throwing an error
+      return value.map((v: string[]) => findOption(v))
+  }
+
   return (
     <StyledSelectContainer>
       <Select
         id={id}
         isMulti={isMulti}
         isOptionDisabled={disabled}
-        onChange={
-          (e: { label: JSX.Element; value: string }) => onChange(e.value)
-          // eslint-disable-next-line react/jsx-curly-newline
-        }
+        onChange={onChange}
         options={routesList}
         placeholder={placeholderText}
-        value={currentValue}
+        value={findValue(currentValue)}
       />
     </StyledSelectContainer>
   )
