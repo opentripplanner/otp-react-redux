@@ -79,7 +79,7 @@ const RouteSelect = ({
   const routesList = useMemo(
     () =>
       routeOptions(routes, intl, RouteRenderer, ModeIcon, simpleRouteRenderer),
-    []
+    [routes, intl, RouteRenderer, ModeIcon, simpleRouteRenderer]
   )
   const findOption = (id: string) => routesList.find((r) => r.value === id)
 
