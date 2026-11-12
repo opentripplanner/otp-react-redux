@@ -372,7 +372,6 @@ components:
     destination: To
     route: Route
   StopTimeCell:
-    added: Added
     canceled: Canceled
     imminentArrival: Due
     scheduled: Based on schedule data

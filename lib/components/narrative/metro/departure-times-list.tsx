@@ -42,7 +42,7 @@ const TimeButton = ({
   if (active) classNames.push('active')
   const timeString = intl.formatTime(displayedTime)
   const realtimeStatus = realTime
-    ? intl.formatMessage({ id: 'components.StopTimeCell.realtime' })
+    ? intl.formatMessage({ id: 'components.StopTimeCell.updated' })
     : intl.formatMessage({ id: 'components.StopTimeCell.scheduled' })
   const label = `${timeString} (${realtimeStatus})`
 
