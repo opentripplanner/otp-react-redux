@@ -144,6 +144,12 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
     if (e.target.value.length) setDate(e.target.value)
   }
 
+  const handleRouteChange = (route: string) => {
+    setCurrentRoute(route)
+    // Match URL to route selected
+    window.location.href = `${window.location.origin}/#/timetable/${route}`
+  }
+
   if (stopClosuresError)
     console.warn('Error loading stop closures', stopClosuresError)
 
@@ -214,7 +220,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
             id="timetable-route-select"
             onChange={(e: RouteSelectOption) =>
               // eslint-disable-next-line prettier/prettier
-              setCurrentRoute(e.value)}
+              handleRouteChange(e.value)}
             routes={routes}
           />
           <label htmlFor="timepoints-checkbox">
