@@ -1,6 +1,6 @@
 import { IntlShape, useIntl } from 'react-intl'
 import { Route } from '@opentripplanner/types'
-import React, { lazy, useContext } from 'react'
+import React, { lazy, useContext, useMemo } from 'react'
 import styled from 'styled-components'
 
 import { RouteRowDetails } from '../components/viewers/route-row'
@@ -76,14 +76,11 @@ const RouteSelect = ({
 
   const intl = useIntl()
 
-  const routesList = routeOptions(
-    routes,
-    intl,
-    RouteRenderer,
-    ModeIcon,
-    simpleRouteRenderer
+  const routesList = useMemo(
+    () =>
+      routeOptions(routes, intl, RouteRenderer, ModeIcon, simpleRouteRenderer),
+    []
   )
-
   const findOption = (id: string) => routesList.find((r) => r.value === id)
 
   // current value is either a string or an array (depending on if the component is multiselect)
@@ -103,7 +100,10 @@ const RouteSelect = ({
         isOptionDisabled={disabled}
         onChange={onChange}
         options={routesList}
-        placeholder={placeholderText}
+        placeholder={
+          placeholderText ||
+          intl.formatMessage({ id: 'components.RouteViewer.findARoute' })
+        }
         value={findValue(currentValue)}
       />
     </StyledSelectContainer>

@@ -165,7 +165,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
           />
           {/* This does not look awesome on smaller screen sizes */}
           <span style={{ fontSize: '16px', fontWeight: 500 }}>
-            {`- ${routeInformation.desc}`}
+            {routeInformation.desc}
           </span>
           {routeInformation.url && (
             <a
@@ -203,7 +203,9 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   return (
     <div style={{ margin: '3em' }}>
       <TimetableHeader>
-        <h1>Timetable Tool</h1>
+        <h1>
+          <FormattedMessage id="components.Timetable.timetableDate" />
+        </h1>
       </TimetableHeader>
       <TimetableContainer>
         <TimetableControlPanel>
@@ -213,7 +215,6 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
             onChange={(e: RouteSelectOption) =>
               // eslint-disable-next-line prettier/prettier
               setCurrentRoute(e.value)}
-            placeholderText="Select a route..."
             routes={routes}
           />
           <label htmlFor="timepoints-checkbox">

@@ -32,3 +32,4 @@ components:
     switchDirection: Switch Direction
     timetable: Timetable
     timetableDate: Select Date
+    timetableHeader: Timetable Tool
