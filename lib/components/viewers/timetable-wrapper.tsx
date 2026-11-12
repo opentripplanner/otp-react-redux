@@ -190,6 +190,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
         </span>
         <TimeTable
           additionalColumns={[
+            'NOTICES',
             'BLOCK_ID',
             'TRIP_SHORT_NAME',
             'TRIP_HEADSIGN',
@@ -210,7 +211,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
     <div style={{ margin: '3em' }}>
       <TimetableHeader>
         <h1>
-          <FormattedMessage id="components.Timetable.timetableDate" />
+          <FormattedMessage id="components.Timetable.timetableHeader" />
         </h1>
       </TimetableHeader>
       <TimetableContainer>
