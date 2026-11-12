@@ -118,8 +118,8 @@ common:
       nMinutes: "{minutes} (na) minuto"
     durationAgo: "{duration} ang nakalipas"
     tripDurationFormat: >-
-      {hours, plural, =0 {} other {# hr }}{minutes} min { seconds, plural, =0 {}
-      other {# sec}}
+      {hours, plural, =0 {} other {# hr }}{minutes} min{ seconds, plural, =0 {}
+      other { # sec}}
 components:
   AddPlaceButton:
     addPlace: Magdagdag ng lugar
@@ -345,9 +345,11 @@ components:
       {normalDuration} gamit ang mga sumusunod na ruta: {routes}.
     serviceUpdate: Update sa serbisyo
   RealtimeStatusLabel:
+    added: ekstra
+    canceled: kaltas
     early: "{minutes} (na) maaga"
     late: "{minutes} (na) late"
-    onTime: nasa oras
+    on_time: nasa oras
     scheduled: nakaiskedyul
   ResultsError:
     backToSearch: Bumalik sa Paghahanap
