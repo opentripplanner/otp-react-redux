@@ -1,0 +1,26 @@
+_id: zh-Hant
+_name: Chinese (Traditional)
+
+actions:
+  callTaker:
+    callSaveError: 無法儲存通話：{err}
+    fetchCallsError: 擷取通話時發生錯誤：{err}
+components:
+  AddPlaceButton:
+    addPlace: 新增地點
+    needOriginDestination: 定義起點/目的地以新增中間地點
+    tooManyPlaces: 已達到中間地點數量上限
+  AdvancedOptions:
+    bannedRoutes: 選取禁止的路線……
+    preferredRoutes: 選取首選路線……
+  CallTakerMenu:
+    callHistory: 通話記錄
+    mailables: 可郵寄
+  CallTakerPanel:
+    advancedOptions: 進階選項
+    intermediateDestination: 輸入中間目的地
+  PlanFirstLastButtons:
+    first: 第一個
+    last: 最後一個
+    next: 前進
+    previous: 上一個
