@@ -120,7 +120,7 @@ const StopTimeCell = ({
           status: getTripStatus(realtime, stopTime.departureDelay, 30) as Status
         })
       : intl.formatMessage({
-          id: `components.StopTimeCell.${realtimeState.toLowerCase()}`
+          id: `components.RealtimeStatusLabel.${realtimeState.toLowerCase()}`
         })
 
   const countdownMode =
