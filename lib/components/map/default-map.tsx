@@ -7,14 +7,13 @@ import {
   GeolocateControl,
   NavigationControl
 } from 'react-map-gl/maplibre'
-import {
-  FormFactor,
-  RentalVehicle,
-  VehicleRentalStation
-} from '@opentripplanner/types/otp2'
 import { getCurrentDate } from '@opentripplanner/core-utils/lib/time'
 import { injectIntl, IntlShape } from 'react-intl'
 import { Itinerary } from '@opentripplanner/types'
+import {
+  RentalVehicle,
+  VehicleRentalStation
+} from '@opentripplanner/types/otp2'
 import BaseMap from '@opentripplanner/base-map'
 import generateOTP2TileLayers from '@opentripplanner/otp2-tile-overlay'
 import React, { Component } from 'react'
@@ -25,6 +24,7 @@ import {
   assembleBasePath,
   bikeRentalQuery,
   carRentalQuery,
+  findAreaStopAgencies,
   findFeeds,
   findStopTimesForStop,
   getStopClosures,
@@ -229,6 +229,16 @@ class DefaultMap extends Component<DefaultMapProps> {
 
   // Generate operator logos to pass through OTP tile layer to map-popup
   getEntityPrefix = (entity) => {
+    // If this is a stop area (flex/microtransit zone), directly get the feed/agency/operator from the gtfsId field
+    // (There are no OTP stop times in area stops.)
+    if (entity.sourceLayer === 'areaStops') {
+      this.props.findAreaStopAgencies({
+        stopId: entity.gtfsId,
+        stopName: entity.name
+      })
+      return <TransitOperatorIcons stopId={entity.gtfsId} />
+    }
+
     // In the case that we are dealing with a station, use the first stop of the station
     const firstStopOfStationId = entity.stops
       ? JSON.parse(entity.stops)[0]
@@ -627,6 +637,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   bikeRentalQuery,
   carRentalQuery,
+  findAreaStopAgencies,
   findFeeds,
   findStopTimesForStop,
   getCurrentPosition,
