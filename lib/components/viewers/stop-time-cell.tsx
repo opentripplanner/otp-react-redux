@@ -1,17 +1,15 @@
 import { CircleXmark } from '@styled-icons/fa-solid/CircleXmark'
 import { Clock } from '@styled-icons/fa-regular/Clock'
 import { connect } from 'react-redux'
-import { format, getTimezoneOffset, utcToZonedTime } from 'date-fns-tz'
 import { FormattedMessage, useIntl } from 'react-intl'
+import { getTimezoneOffset } from 'date-fns-tz'
 import coreUtils from '@opentripplanner/core-utils'
-import isSameDay from 'date-fns/isSameDay'
 import React from 'react'
 import styled from 'styled-components'
 
 import { AppReduxState } from '../../util/state-types'
 import { getSecondsUntilDeparture, getTripStatus } from '../../util/viewer'
 import { PulsingRss } from '../util/styledIcon'
-import FormattedDayOfWeek from '../util/formatted-day-of-week'
 import FormattedDuration from '../util/formatted-duration'
 import getRealtimeStatusLabel, {
   Status
@@ -21,6 +19,7 @@ import type { Time } from '../util/types'
 
 import DepartureTime from './departure-time'
 import StopTimeCellBase from './stop-time-cell-base'
+import StopTimeDifferentDay from './stop-time-different-day'
 
 const { getUserTimezone } = coreUtils.time
 const ONE_HOUR_IN_SECONDS = 3600
@@ -98,7 +97,7 @@ const StopTimeCell = ({
     console.warn(`homeTimezone '${homeTimezone}' is invalid`)
     return <Error />
   }
-  const { realtimeState } = stopTime
+  const { realtimeState, serviceDay } = stopTime
 
   // Determine whether to show departure as countdown (e.g. "5 min") or as HH:mm
   // time, using realtime updates if available.
@@ -111,8 +110,6 @@ const StopTimeCell = ({
   // Show the exact time if the departure happens within an hour.
   const showCountdown =
     secondsUntilDeparture < ONE_HOUR_IN_SECONDS && departsInFuture
-
-  const formattedDay = utcToZonedTime(stopTime.serviceDay * 1000, homeTimezone)
 
   const realtime = realtimeState === 'UPDATED' || realtimeState === 'ADDED'
   const realtimeLabel =
@@ -137,17 +134,12 @@ const StopTimeCell = ({
         <CountDown seconds={secondsUntilDeparture} />
       ) : (
         <>
-          {!isSameDay(new Date(), formattedDay) && (
-            <InvisibleA11yLabel>
-              <FormattedDayOfWeek
-                // 'iiii' returns the long ISO day of the week (independent of browser locale).
-                // See https://date-fns.org/v2.28.0/docs/format
-                day={format(formattedDay, 'iiii', {
-                  timeZone: homeTimezone
-                }).toLowerCase()}
-              />{' '}
-            </InvisibleA11yLabel>
-          )}
+          <InvisibleA11yLabel>
+            <StopTimeDifferentDay
+              day={serviceDay}
+              homeTimezone={homeTimezone}
+            />{' '}
+          </InvisibleA11yLabel>
           <DepartureTime realTime stopTime={stopTime} />
         </>
       )}

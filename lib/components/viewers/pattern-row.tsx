@@ -1,8 +1,6 @@
 import { Calendar } from '@styled-icons/fa-regular/Calendar'
-import { format, utcToZonedTime } from 'date-fns-tz'
 import { FormattedMessage } from 'react-intl'
 import { getMostReadableTextColor } from '@opentripplanner/core-utils/lib/route'
-import { isSameDay } from 'date-fns'
 import React, { useContext } from 'react'
 import type { Route, TransitOperator } from '@opentripplanner/types'
 
@@ -13,14 +11,13 @@ import {
   getRouteColorBasedOnSettings,
   routeNameFontSize
 } from '../../util/viewer'
-import { IconWithText } from '../util/styledIcon'
 import { Pattern, Time } from '../util/types'
 import DefaultRouteRenderer from '../narrative/metro/default-route-renderer'
-import FormattedDayOfWeek from '../util/formatted-day-of-week'
 import OperatorLogo from '../util/operator-logo'
 
 import { NextTripPreview, PatternRowItem } from './styled'
 import StopTimeCell from './stop-time-cell'
+import StopTimeDifferentDay from './stop-time-different-day'
 
 type Props = {
   alwaysShowLongName?: boolean
@@ -29,29 +26,6 @@ type Props = {
   route: Route & { operator?: TransitOperator & { colorMode?: string } }
   showOperatorLogo?: boolean
   stopTimes: Time[]
-}
-
-const renderDay = (homeTimezone: string, day: number): JSX.Element => {
-  const now = new Date()
-  const formattedDay = utcToZonedTime(day * 1000, homeTimezone)
-  return (
-    <React.Fragment key={day}>
-      {/* If the service day is not today, add a label */}
-      {!isSameDay(now, formattedDay) && (
-        <p aria-hidden className="day-label">
-          <IconWithText Icon={Calendar}>
-            <FormattedDayOfWeek
-              // 'iiii' returns the long ISO day of the week (independent of browser locale).
-              // See https://date-fns.org/v2.28.0/docs/format
-              day={format(formattedDay, 'iiii', {
-                timeZone: homeTimezone
-              }).toLowerCase()}
-            />
-          </IconWithText>
-        </p>
-      )}
-    </React.Fragment>
-  )
 }
 
 /**
@@ -126,7 +100,15 @@ const PatternRow = ({
         {/* next departure preview (only shows up to 3 entries) */}
         {hasStopTimes && (
           <NextTripPreview className="departure-times">
-            {homeTimezone && renderDay(homeTimezone, stopTimes?.[0].serviceDay)}
+            {homeTimezone && (
+              <p aria-hidden className="day-label">
+                <StopTimeDifferentDay
+                  day={stopTimes?.[0].serviceDay}
+                  homeTimezone={homeTimezone}
+                  Icon={Calendar}
+                />
+              </p>
+            )}
             {[0, 1, 2].map(
               (index) =>
                 stopTimes?.[index] && (
