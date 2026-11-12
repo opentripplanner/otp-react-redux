@@ -6,7 +6,7 @@ import InvisibleA11yLabel from '../util/invisible-a11y-label'
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   Icon: ComponentType
-  status: string // "Scheduled", "2 min late based on real-time data", "Canceled"
+  status: string // "Scheduled", "2 min late", "Canceled"
 }
 
 const IconWrapper = styled(StyledIconWrapperTextAlign)`
