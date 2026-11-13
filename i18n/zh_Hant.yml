@@ -2,13 +2,6 @@ _id: zh-Hant
 _name: Chinese (Traditional)
 
 actions:
-  callTaker:
-    callQuerySaveError: 儲存通話查詢時發生錯誤：{err}
-    callSaveError: 無法儲存通話：{err}
-    checkSessionError: 建立授權工作階段時發生錯誤：{err}
-    couldNotFindCallError: 找不到通話。正在取消儲存查詢請求。
-    fetchCallsError: 擷取通話時發生錯誤：{err}
-    queryFetchError: 擷取查詢時發生錯誤：{err}
   location:
     deniedAccessAlert: |
       系統已封鎖您存取地點的權限。
@@ -113,20 +106,11 @@ common:
       {hours, plural, =0 {} other {# 小時 }}{minutes} 分鐘 { seconds, plural, =0 {}
       other {# 秒鐘}}
 components:
-  AddPlaceButton:
-    addPlace: 新增地點
-    needOriginDestination: 定義起點/目的地以新增中間地點
-    tooManyPlaces: 已達到中間地點數量上限
-  AdvancedOptions:
-    bannedRoutes: 選取禁止的路線……
-    preferredRoutes: 選取首選路線……
   AfterSignInScreen:
     mainTitle: 正在重新導向……
     message: 如果頁面未在幾秒鐘後載入，請<redirectLink>按一下這裡</redirectLink>。
   AppMenu:
-    callHistory: 通話記錄
     closeMenu: 關閉功能表
-    mailables: 可郵寄
     openMenu: 開啟功能表
     skipNavigation: 跳過導航
   BatchResultsScreen:
@@ -153,9 +137,6 @@ components:
     mainTitle: 登入中
     message: |
       您必須登入才能存取此頁面。我們正在將您重新導向到登入頁面，請稍候……
-  CallTakerPanel:
-    advancedOptions: 進階選項
-    intermediateDestination: 輸入中間目的地
   DateTimeOptions:
     arriveBy: 最晚抵達時間
     departAt: 出發時間
@@ -274,11 +255,6 @@ components:
     enterAlert: |
       請在表單內輸入起點/目的地 (或按一下地圖來設定)，然後按一下產生的標記以設定為{placeType}位置。
     setAddressForPlaceType: 設定您的{placeType}地址
-  PlanFirstLastButtons:
-    first: 第一個
-    last: 最後一個
-    next: 前進
-    previous: 上一個
   PlanTripButton:
     planTrip: 規劃行程
   PointPopup:

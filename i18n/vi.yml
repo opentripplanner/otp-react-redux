@@ -2,14 +2,6 @@ _id: vi
 _name: Vietnamese
 
 actions:
-  callTaker:
-    callQuerySaveError: "Lỗi khi lưu trữ các truy vấn cuộc gọi: {err}"
-    callSaveError: "Không thể lưu cuộc gọi: {err}"
-    checkSessionError: "Lỗi khi thiết lập phiên ủy quyền: {err}"
-    couldNotFindCallError: Không thể tìm thấy cuộc gọi. Đang hủy yêu cầu lưu 
-      truy vấn.
-    fetchCallsError: "Lỗi khi tìm nạp cuộc gọi: {err}"
-    queryFetchError: "Lỗi khi tìm nạp các truy vấn: {err}"
   location:
     deniedAccessAlert: >
       Quyền truy cập vào địa điểm của quý vị bị chặn.
@@ -118,23 +110,13 @@ common:
       {hours, plural, =0 {} other {# giờ }}{minutes} phút { seconds, plural, =0
       {} other {# giây}}
 components:
-  AddPlaceButton:
-    addPlace: Thêm địa điểm
-    needOriginDestination: Xác định nguồn gốc hoặc đích đến để thêm các địa điểm
-      trung gian
-    tooManyPlaces: Địa điểm trung gian tối đa đạt được
-  AdvancedOptions:
-    bannedRoutes: Chọn các tuyến đường bị cấm…
-    preferredRoutes: Chọn các tuyến đường ưa thích…
   AfterSignInScreen:
     mainTitle: Chuyển hướng...
     message: >-
       Nếu trang này không tải sau vài giây, <redirectLink>bấm vào
       đây</redirectLink>.
   AppMenu:
-    callHistory: Lịch sử cuộc gọi
     closeMenu: Đóng danh mục
-    mailables: Sẵn sàng để gửi
     networkConnectionLost: Mất kết nối mạng
     networkConnectionRestored: Kết nối mạng đã được khôi phục
     openMenu: Mở danh mục
@@ -170,9 +152,6 @@ components:
     message: >
       Để truy cập trang này, bạn sẽ cần phải đăng nhập. Vui lòng đợi trong khi
       chúng tôi chuyển hướng bạn đến trang đăng nhập…
-  CallTakerPanel:
-    advancedOptions: Tùy chọn nâng cao
-    intermediateDestination: Nhập điểm đến trung gian
   DateTimeOptions:
     arriveBy: Đến nơi trước
     departAt: Khởi hành lúc
@@ -319,11 +298,6 @@ components:
       vào bản đồ) và nhấp vào điểm đánh dấu kết quả để cài đặt vị trí
       {placeType}.
     setAddressForPlaceType: Cài đặt địa chỉ {placeType} của bạn
-  PlanFirstLastButtons:
-    first: Thứ nhất
-    last: Cuối
-    next: Tiếp theo
-    previous: Trước
   PlanTripButton:
     planTrip: Lên kế hoạch cho chuyến đi
   PointPopup:
