@@ -62,6 +62,10 @@ common:
     noItineraryToDisplay: 沒有預定行程可顯示。
     relativeCo2: |
       {co2}比單獨開車排放的CO₂{isMore, select, true {要多} other {少}}
+    timeStartEnd: ''
+    noDefaultFareTypeConfigured: ''
+    containsCanceledTrip: ''
+    reservationRequired: ''
   linkOpensNewWindow: (開啟新視窗)
   modes:
     bicycle_rent: 自行車共享
@@ -105,6 +109,8 @@ common:
     tripDurationFormat: >-
       {hours, plural, =0 {} other {# 小時 }}{minutes} 分鐘 { seconds, plural, =0 {}
       other {# 秒鐘}}
+  currentlySelected: ''
+  closedStop: ''
 components:
   AfterSignInScreen:
     mainTitle: 正在重新導向……
@@ -113,6 +119,8 @@ components:
     closeMenu: 關閉功能表
     openMenu: 開啟功能表
     skipNavigation: 跳過導航
+    networkConnectionLost: ''
+    networkConnectionRestored: ''
   BatchResultsScreen:
     expandMap: 展開地圖
     showResults: 顯示結果
@@ -127,6 +135,8 @@ components:
     tripOptions: 行程選擇
     setAsDefault: 設為預設值
     logInToSetDefault: 登入以設為預設值
+    saved: ''
+    submodeSelectorLabel: ''
   BatchSettings:
     destination: 目的地
     invalidModeSelection: 無法使用所選模式規劃行程。嘗試將公共交通納入您的模式選取內容。
@@ -173,6 +183,7 @@ components:
     shared-vehicles: 共享車輛
     stops: 公共交通車站
     streets: 街道
+    stations: ''
   MapillaryFrame:
     title: 街道圖像
   MetroUI:
@@ -185,6 +196,7 @@ components:
     originallyScheduledTime: (原定 {originalTime})
     singleModeItineraryDescription: "{time} {mode} 路線"
     timeWalking: 步行{time}
+    itinerarySummary: ''
   NarrativeItinerariesHeader:
     changeSortDir: 變更排序方向
     howToFindResults: 要檢視結果，請參閱下方「找到的預定行程」標題。
@@ -199,6 +211,8 @@ components:
     selectWalkTime: 步行時間
     sortResults: 對結果排序
     viewAll: 檢視所有選項
+    selectEmissions: ''
+    selectFare: ''
   NavLoginButton:
     help: 說明
     myAccount: 我的帳戶
@@ -217,6 +231,9 @@ components:
     spacesAvailable: "{spacesAvailable} 有未佔用的空間"
     nothingNearbyHeader: 超出範圍
     nothingNearby: 附近無相關地點.
+    errorHeader: ''
+    filterNearby: ''
+    nearbyListIntro: ''
   NotFound:
     description: 您要求的內容無法使用。
     header: 找不到內容
@@ -251,6 +268,9 @@ components:
     OTP_RR_TRIP_IN_PAST:
       header: 行程時間已過
       body: 其中一項或多項行程方案的結束時間已過.
+    NO_DIRECT_MODE_CONNECTION:
+      header: ''
+      body: ''
   PlaceShortcut:
     enterAlert: |
       請在表單內輸入起點/目的地 (或按一下地圖來設定)，然後按一下產生的標記以設定為{placeType}位置。
@@ -279,6 +299,7 @@ components:
     operatedBy: 由{agencyName}營運
     selectADirection: 選取方向……
     stopsTo: 朝向
+    headsignFrom: ''
   RouteViewer:
     agencyFilter: 機構篩選
     allAgencies: 所有機構
@@ -292,6 +313,8 @@ components:
     shortTitle: 檢視路線
     stopsInDirectionOfTravel: 此行駛方向的沿路車站：
     title: 路線檢視器
+    routesFilteredBy: ''
+    noRouteFilter: ''
   SaveTripButton:
     cantSaveText: 無法儲存
     cantSaveTooltip: 僅能監控包括公共交通且沒有租賃或叫車服務的預定行程。
@@ -372,6 +395,7 @@ components:
        
       *** 技術詳細資訊 ***"
     reportIssue: 回報問題
+    copyItineraryText: ''
   TripViewer:
     accessible: 無障礙
     bicyclesAllowed: 已允許

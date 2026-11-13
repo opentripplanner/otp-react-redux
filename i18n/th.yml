@@ -1,3 +1,420 @@
 components:
-  TermsOfUsePane:
-    termsOfServiceStatement: ""
+  NarrativeItinerariesHeader:
+    selectDuration: ''
+    selectCost: ''
+    sortResults: ''
+    selectDepartureTime: ''
+    selectEmissions: ''
+    changeSortDir: ''
+    howToFindResults: ''
+    searching: ''
+    viewAll: ''
+    selectFare: ''
+    selectWalkTime: ''
+    selectBest: ''
+    resultsSortedBy: ''
+    selectArrivalTime: ''
+    itinerariesFound: ''
+  RouteDetails:
+    headsignFrom: ''
+    selectADirection: ''
+    headsignTo: ''
+    stopsTo: ''
+    moreDetails: ''
+    operatedBy: ''
+  NavLoginButton:
+    help: ''
+    signOut: ''
+    signIn: ''
+    myAccount: ''
+  MapLayers:
+    bike-rental: ''
+    park-and-ride: ''
+    shared-vehicles: ''
+    micromobility-rental: ''
+    car-rental: ''
+    streets: ''
+    stations: ''
+    satellite: ''
+    stops: ''
+  BatchSearchScreen:
+    modeSelectorLabel: ''
+    tripOptions: ''
+    saved: ''
+    advancedHeader: ''
+    moreOptions: ''
+    setAsDefault: ''
+    saveAndReturn: ''
+    header: ''
+    submodeSelectorLabel: ''
+    logInToSetDefault: ''
+  NearbyView:
+    error: ''
+    headsign: ''
+    header: ''
+    errorHeader: ''
+    bikesAvailable: ''
+    filterNearby: ''
+    companyBicycle: ''
+    distanceAway: ''
+    bikeRentalStation: ''
+    nearbyListIntro: ''
+    nothingNearby: ''
+    nothingNearbyHeader: ''
+    companyScooter: ''
+    spacesAvailable: ''
+    searchNearby: ''
+  NotFound:
+    description: ''
+    header: ''
+  UserSettings:
+    stopId: ''
+    confirmDeletion: ''
+    recentSearchSummary: ''
+    mySavedPlaces: ''
+    noFavoriteStops: ''
+    recentPlaces: ''
+    favoriteStops: ''
+    storageDisclaimer: ''
+    recentSearches: ''
+    myPreferences: ''
+    rememberSearches: ''
+  DateTimePreview:
+    dayLastWeek: ''
+    leaveNow: ''
+    editDepartOrArrival: ''
+    arriveAt: ''
+    departAt: ''
+  StopTimeCell:
+    imminentArrival: ''
+    realtime: ''
+    scheduled: ''
+  TripViewer:
+    header: ''
+    startOfTrip: ''
+    listOfRouteStops: ''
+    tripDescription: ''
+    accessible: ''
+    endOfTrip: ''
+    bicyclesAllowed: ''
+  MetroUI:
+    multipleOptions: ''
+    singleModeItineraryDescription: ''
+    itinerarySummary: ''
+    arriveAt: ''
+    fare: ''
+    timeWalking: ''
+    itineraryDescription: ''
+    leaveAt: ''
+    orAlternatives: ''
+    originallyScheduledTime: ''
+  BatchSettings:
+    destination: ''
+    validationMessage: ''
+    planTripTooltip: ''
+    origin: ''
+    invalidModeSelection: ''
+  OTP2ErrorRenderer:
+    SYSTEM_ERROR:
+      header: ''
+      body: ''
+    LOCATION_NOT_FOUND:
+      body: ''
+      header: ''
+    OTP_RR_TRIP_IN_PAST:
+      header: ''
+      body: ''
+    NO_STOPS_IN_RANGE:
+      header: ''
+      body: ''
+    NO_TRANSIT_CONNECTION:
+      body: ''
+      header: ''
+    NO_DIRECT_MODE_CONNECTION:
+      header: ''
+      body: ''
+    inputFields:
+      FROM: ''
+      TO: ''
+    WALKING_BETTER_THAN_TRANSIT:
+      body: ''
+      header: ''
+    OUTSIDE_SERVICE_PERIOD:
+      header: ''
+      body: ''
+    OUTSIDE_BOUNDS:
+      header: ''
+      body: ''
+    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
+      body: ''
+      header: ''
+  DefaultItinerary:
+    nonTransit: ''
+    multiModeSummary: ''
+    clickDetails: ''
+  AppMenu:
+    openMenu: ''
+    skipNavigation: ''
+    networkConnectionLost: ''
+    networkConnectionRestored: ''
+    closeMenu: ''
+  TripSummary:
+    arriveAt: ''
+    leaveAt: ''
+  PlanTripButton:
+    planTrip: ''
+  RouteViewer:
+    shortTitle: ''
+    allAgencies: ''
+    stopsInDirectionOfTravel: ''
+    routesFilteredBy: ''
+    allModes: ''
+    noFilteredRoutesFound: ''
+    noRouteFilter: ''
+    agencyFilter: ''
+    modeFilter: ''
+    details: ''
+    openPatternViewer: ''
+    header: ''
+    title: ''
+    findARoute: ''
+  StopViewer:
+    findSchedule: ''
+    operatorLogoAriaLabel: ''
+    loadingText: ''
+    noStopsFound: ''
+    header: ''
+    displayStopId: ''
+    viewSchedule: ''
+    schedule: ''
+    timezoneWarning: ''
+    titleBarStopId: ''
+    flexStop: ''
+    zoomToStop: ''
+    forStop: ''
+    viewNearby: ''
+  TransitVehicleOverlay:
+    stopped_at: ''
+    in_transit_to: ''
+    travelingAt: ''
+    vehicleName: ''
+    incoming_at: ''
+  SimpleRealtimeAnnotation:
+    usingRealtimeInfo: ''
+  PlaceShortcut:
+    enterAlert: ''
+    setAddressForPlaceType: ''
+  TripTools:
+    reportEmailSubject: ''
+    reportIssue: ''
+    copyItineraryText: ''
+    header: ''
+    linkCopied: ''
+    reportEmailTemplate: ''
+    copyLink: ''
+  RealtimeStatusLabel:
+    early: ''
+    onTime: ''
+    late: ''
+    scheduled: ''
+  SaveTripButton:
+    cantSaveTooltip: ''
+    cantSaveText: ''
+    signInText: ''
+    signInTooltip: ''
+    saveTripText: ''
+  StopScheduleTable:
+    route: ''
+    block: ''
+    departure: ''
+    destination: ''
+  BeforeSignInScreen:
+    mainTitle: ''
+    message: ''
+  ViewSwitcher:
+    nearby: ''
+    switcher: ''
+  SubNav:
+    languageSelector: ''
+    settings: ''
+    userMenu: ''
+    trips: ''
+    languages: ''
+    selectALanguage: ''
+    myAccount: ''
+  SwitchButton:
+    defaultContent: ''
+    switchLocations: ''
+  DateTimeScreen:
+    header: ''
+  RealtimeAnnotation:
+    delaysShownInResults: ''
+    serviceUpdate: ''
+  LocationSearch:
+    enterLocation: ''
+    setDestination: ''
+    setOrigin: ''
+  ErrorMessage:
+    header: ''
+    warning: ''
+  PointPopup:
+    zoomToLocation: ''
+  AfterSignInScreen:
+    mainTitle: ''
+    message: ''
+  ResultsError:
+    backToSearch: ''
+  StatusBadge:
+    invalid: ''
+    verified: ''
+    pending: ''
+  BatchResultsScreen:
+    showResults: ''
+    expandMap: ''
+  SessionTimeout:
+    body: ''
+    header: ''
+    keepSession: ''
+  WelcomeScreen:
+    prompt: ''
+  BatchRoutingPanel:
+    shortTitle: ''
+  FormNavigationButtons:
+    ariaLabel: ''
+  PrintLayout:
+    toggleMap: ''
+    itinerary: ''
+  DateTimeOptions:
+    now: ''
+    departAt: ''
+    arriveBy: ''
+  MapillaryFrame:
+    title: ''
+  TripPreviewLayout:
+    previewTrip: ''
+  ItinerarySummary:
+    itineraryDetails: ''
+common:
+  currentlySelected: ''
+  itineraryDescriptions:
+    timeStartEnd: ''
+    fareUnknown: ''
+    noDefaultFareTypeConfigured: ''
+    noItineraryToDisplay: ''
+    containsCanceledTrip: ''
+    relativeCo2: ''
+    reservationRequired: ''
+  daysOfWeekPlural:
+    thursday: ''
+    tuesday: ''
+    saturday: ''
+    friday: ''
+    monday: ''
+    wednesday: ''
+    sunday: ''
+  modes:
+    car: ''
+    micromobility_rent: ''
+    subway: ''
+    micromobility: ''
+    rent: ''
+    walk: ''
+    funicular: ''
+    car_park: ''
+    flex: ''
+    ferry: ''
+    bike: ''
+    tram: ''
+    transit: ''
+    gondola: ''
+    drive: ''
+    cable_car: ''
+    rail: ''
+    bus: ''
+    bicycle_rent: ''
+  time:
+    duration:
+      nDays: ''
+      nHours: ''
+      nMinutes: ''
+      aFewSeconds: ''
+    tripDurationFormat: ''
+    durationAgo: ''
+  daysOfWeekCompact:
+    wednesday: ''
+    thursday: ''
+    sunday: ''
+    tuesday: ''
+    saturday: ''
+    friday: ''
+    monday: ''
+  forms:
+    "yes": ''
+    print: ''
+    loading: ''
+    "no": ''
+    finish: ''
+    submitting: ''
+    startOver: ''
+    close: ''
+    edit: ''
+    save: ''
+    cancel: ''
+    back: ''
+    error: ''
+    next: ''
+    defaultValue: ''
+  closedStop: ''
+  searchForms:
+    enterStartLocation: ''
+    click: ''
+    tap: ''
+    enterDestination: ''
+  places:
+    custom: ''
+    home: ''
+    dining: ''
+    work: ''
+  daysOfWeek:
+    sunday: ''
+    wednesday: ''
+    saturday: ''
+    friday: ''
+    monday: ''
+    tuesday: ''
+    thursday: ''
+  dateExpressions:
+    tomorrow: ''
+    yesterday: ''
+    today: ''
+  coordinates: ''
+  linkOpensNewWindow: ''
+  routing:
+    routeAndNumber: ''
+_id: ''
+config:
+  flex:
+    both: ''
+    flex-service: ''
+    call-ahead: ''
+    flex-service-colon: ''
+    continuous-dropoff: ''
+  accessModes:
+    car_hail: ''
+util:
+  state:
+    noTripFoundReason: ''
+    networkUnavailable: ''
+    errorPlanningTrip: ''
+    noTripFound: ''
+    noTripFoundForMode: ''
+    noTripFoundWithReason: ''
+actions:
+  location:
+    userDeniedPermission: ''
+    deniedAccessAlert: ''
+    unknownPositionError: ''
+    geolocationNotSupportedError: ''
+  map:
+    currentLocation: ''
+_name: ''

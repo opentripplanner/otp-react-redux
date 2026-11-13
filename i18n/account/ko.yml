@@ -112,6 +112,7 @@ components:
     noSavedTripsInstructions: 지도에서 먼저 트립을 검색하세요.
     pause: 일시 정지
     resume: 다시 시작
+    unsnooze: ''
   SavedTripScreen:
     itineraryLoaded: 일정표 로드됨
     itineraryLoading: 일정표 로드 중
@@ -144,6 +145,8 @@ components:
     tripNotAvailableOnDay: "{repeatedDay}에는 트립을 이용할 수 없음"
     unsavedChangesExistingTrip: 트립을 아직 저장하지 않았습니다. 나가시면 변경내용이 사라집니다.
     unsavedChangesNewTrip: 새 트립을 저장하지 않았습니다. 나가시면 변경내용이 사라집니다.
+    indicatesRequiredFields: ''
+    checkAgain: ''
   TripNotificationsPane:
     advancedSettings: 고급 설정
     altRouteRecommended: 대체 경로 또는 환승 지점이 권장됩니다

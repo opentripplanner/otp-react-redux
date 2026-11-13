@@ -193,6 +193,7 @@ components:
       அது இழக்கப்படும்.
     indicatesRequiredFields: நட்சத்திரக் குறியீடு (*) குறிக்கப்பட்ட புலங்கள் 
       தேவை.
+    checkAgain: ''
   TripNotificationsPane:
     advancedSettings: மேம்பட்ட அமைப்புகள்
     altRouteRecommended: மாற்று பாதை அல்லது பரிமாற்ற புள்ளி 

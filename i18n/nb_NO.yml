@@ -1,8 +1,12 @@
 _name: Norsk bokmål
 actions:
-  user:
-    confirmDeletePlace: Fjern dette stedet?
-    smsInvalidCode: Koden du har skrevet inn er ugyldig. Prøv igjen.
+  location:
+    userDeniedPermission: ''
+    deniedAccessAlert: ''
+    unknownPositionError: ''
+    geolocationNotSupportedError: ''
+  map:
+    currentLocation: ''
 common:
   daysOfWeek:
     monday: Mandag
@@ -11,6 +15,7 @@ common:
     thursday: Torsdag
     tuesday: Tirsdag
     wednesday: Onsdag
+    friday: ''
   daysOfWeekCompact:
     friday: Fre.
     monday: Man.
@@ -41,87 +46,375 @@ common:
     startOver: Start om igjen
     submitting: Sender inn …
     "yes": Ja
-  notifications:
-    sms: tekstmelding
+    loading: ''
+    error: ''
   places:
     custom: egendefinert
     home: hjem
     work: arbeid
+    dining: ''
+  currentlySelected: ''
+  itineraryDescriptions:
+    timeStartEnd: ''
+    fareUnknown: ''
+    noDefaultFareTypeConfigured: ''
+    noItineraryToDisplay: ''
+    containsCanceledTrip: ''
+    relativeCo2: ''
+    reservationRequired: ''
+  modes:
+    car: ''
+    micromobility_rent: ''
+    subway: ''
+    micromobility: ''
+    rent: ''
+    walk: ''
+    funicular: ''
+    car_park: ''
+    flex: ''
+    ferry: ''
+    bike: ''
+    tram: ''
+    transit: ''
+    gondola: ''
+    drive: ''
+    cable_car: ''
+    rail: ''
+    bus: ''
+    bicycle_rent: ''
+  time:
+    duration:
+      nDays: ''
+      nHours: ''
+      nMinutes: ''
+      aFewSeconds: ''
+    tripDurationFormat: ''
+    durationAgo: ''
+  closedStop: ''
+  searchForms:
+    enterStartLocation: ''
+    click: ''
+    tap: ''
+    enterDestination: ''
+  dateExpressions:
+    tomorrow: ''
+    yesterday: ''
+    today: ''
+  coordinates: ''
+  linkOpensNewWindow: ''
+  routing:
+    routeAndNumber: ''
 components:
   AfterSignInScreen:
     mainTitle: Videresender …
+    message: ''
   AppMenu:
     closeMenu: Lukk menyen
+    openMenu: ''
+    skipNavigation: ''
+    networkConnectionLost: ''
+    networkConnectionRestored: ''
   BatchResultsScreen:
     showResults: Vis resultater
+    expandMap: ''
   BatchRoutingPanel:
     shortTitle: Planlegg tur
   BatchSearchScreen:
     header: Planlegg turen din
+    modeSelectorLabel: ''
+    tripOptions: ''
+    saved: ''
+    advancedHeader: ''
+    moreOptions: ''
+    setAsDefault: ''
+    saveAndReturn: ''
+    submodeSelectorLabel: ''
+    logInToSetDefault: ''
   BatchSettings:
     destination: mål
     planTripTooltip: Planlegg tur
+    validationMessage: ''
+    origin: ''
+    invalidModeSelection: ''
   DateTimeOptions:
     now: Nå
-  DeleteUser:
-    deleteMyAccount: Slett kontoen min
+    departAt: ''
+    arriveBy: ''
   ErrorMessage:
     header: Kunne ikke planlegge tur
     warning: Advarsel
-  ExistingAccountDisplay:
-    a11y: Tilgjengelighet
-    mainTitle: Mine innstillinger
-    notifications: Merknader
-    places: Favorittsteder
-    terms: Vilkår
-  FavoritePlaceList:
-    addAnotherPlace: Legg til nytt sted
-    editThisPlace: Rediger dette stedet
-    setAddressForPlaceType: Sett din {placeType}-adresse
-  FavoritePlaceScreen:
-    addNewPlace: Legg til nytt sted
-    editPlace: Rediger {placeName}
-    editPlaceGeneric: Rediger sted
   LocationSearch:
     setDestination: Sett mål
+    enterLocation: ''
+    setOrigin: ''
   MapLayers:
     streets: Gater
-  NewAccountWizard:
-    createNewAccount: Opprett ny konto
-    places: Legg til dine steder
-    verify: Bekreft din e-postadresse
-  PhoneNumberEditor:
-    invalidPhone: Skriv inn et gyldig telefonnummer.
-    placeholder: Skriv inn dit telefonnummer
-    requestNewCode: Forespør ny kode
-    sendVerificationText: Send bekreftelsestekst
-    verificationCode: Bekreftelseskode
-    verify: Bekreft
-  Place:
-    deleteThisPlace: Slett dette stedet
+    bike-rental: ''
+    park-and-ride: ''
+    shared-vehicles: ''
+    micromobility-rental: ''
+    car-rental: ''
+    stations: ''
+    satellite: ''
+    stops: ''
   PlanTripButton:
     planTrip: Planlegg tur
   RouteDetails:
     moreDetails: Flere detaljer
+    headsignFrom: ''
+    selectADirection: ''
+    headsignTo: ''
+    stopsTo: ''
+    operatedBy: ''
   RouteViewer:
     details: " "
     findARoute: Finn en rute
     shortTitle: Vis ruter
     title: Ruteviser
+    allAgencies: ''
+    stopsInDirectionOfTravel: ''
+    routesFilteredBy: ''
+    allModes: ''
+    noFilteredRoutesFound: ''
+    noRouteFilter: ''
+    agencyFilter: ''
+    modeFilter: ''
+    openPatternViewer: ''
+    header: ''
   SaveTripButton:
     cantSaveText: Kan ikke lagre
     saveTripText: Lagre tur
-  SavedTripEditor:
-    editSavedTrip: Rediger lagret tur
-    saveNewTrip: Lagre ny tur
-    tripInformation: Turinfo
-    tripNotifications: Turmerknader
-  SavedTripList:
-    myTrips: Mine turer
-    noSavedTrips: Du har ingen lagrede turer
-    pause: Pause
-    resume: Fortsett
+    cantSaveTooltip: ''
+    signInText: ''
+    signInTooltip: ''
   SessionTimeout:
     keepSession: Fortsett økt
-  StackedPaneDisplay:
-    savePreferences: Lagre innstillinger
+    body: ''
+    header: ''
+  NarrativeItinerariesHeader:
+    selectDuration: ''
+    selectCost: ''
+    sortResults: ''
+    selectDepartureTime: ''
+    selectEmissions: ''
+    changeSortDir: ''
+    howToFindResults: ''
+    searching: ''
+    viewAll: ''
+    selectFare: ''
+    selectWalkTime: ''
+    selectBest: ''
+    resultsSortedBy: ''
+    selectArrivalTime: ''
+    itinerariesFound: ''
+  NavLoginButton:
+    help: ''
+    signOut: ''
+    signIn: ''
+    myAccount: ''
+  NearbyView:
+    error: ''
+    headsign: ''
+    header: ''
+    errorHeader: ''
+    bikesAvailable: ''
+    filterNearby: ''
+    companyBicycle: ''
+    distanceAway: ''
+    bikeRentalStation: ''
+    nearbyListIntro: ''
+    nothingNearby: ''
+    nothingNearbyHeader: ''
+    companyScooter: ''
+    spacesAvailable: ''
+    searchNearby: ''
+  NotFound:
+    description: ''
+    header: ''
+  UserSettings:
+    stopId: ''
+    confirmDeletion: ''
+    recentSearchSummary: ''
+    mySavedPlaces: ''
+    noFavoriteStops: ''
+    recentPlaces: ''
+    favoriteStops: ''
+    storageDisclaimer: ''
+    recentSearches: ''
+    myPreferences: ''
+    rememberSearches: ''
+  DateTimePreview:
+    dayLastWeek: ''
+    leaveNow: ''
+    editDepartOrArrival: ''
+    arriveAt: ''
+    departAt: ''
+  StopTimeCell:
+    imminentArrival: ''
+    realtime: ''
+    scheduled: ''
+  TripViewer:
+    header: ''
+    startOfTrip: ''
+    listOfRouteStops: ''
+    tripDescription: ''
+    accessible: ''
+    endOfTrip: ''
+    bicyclesAllowed: ''
+  MetroUI:
+    multipleOptions: ''
+    singleModeItineraryDescription: ''
+    itinerarySummary: ''
+    arriveAt: ''
+    fare: ''
+    timeWalking: ''
+    itineraryDescription: ''
+    leaveAt: ''
+    orAlternatives: ''
+    originallyScheduledTime: ''
+  OTP2ErrorRenderer:
+    SYSTEM_ERROR:
+      header: ''
+      body: ''
+    LOCATION_NOT_FOUND:
+      body: ''
+      header: ''
+    OTP_RR_TRIP_IN_PAST:
+      header: ''
+      body: ''
+    NO_STOPS_IN_RANGE:
+      header: ''
+      body: ''
+    NO_TRANSIT_CONNECTION:
+      body: ''
+      header: ''
+    NO_DIRECT_MODE_CONNECTION:
+      header: ''
+      body: ''
+    inputFields:
+      FROM: ''
+      TO: ''
+    WALKING_BETTER_THAN_TRANSIT:
+      body: ''
+      header: ''
+    OUTSIDE_SERVICE_PERIOD:
+      header: ''
+      body: ''
+    OUTSIDE_BOUNDS:
+      header: ''
+      body: ''
+    NO_TRANSIT_CONNECTION_IN_SEARCH_WINDOW:
+      body: ''
+      header: ''
+  DefaultItinerary:
+    nonTransit: ''
+    multiModeSummary: ''
+    clickDetails: ''
+  TripSummary:
+    arriveAt: ''
+    leaveAt: ''
+  StopViewer:
+    findSchedule: ''
+    operatorLogoAriaLabel: ''
+    loadingText: ''
+    noStopsFound: ''
+    header: ''
+    displayStopId: ''
+    viewSchedule: ''
+    schedule: ''
+    timezoneWarning: ''
+    titleBarStopId: ''
+    flexStop: ''
+    zoomToStop: ''
+    forStop: ''
+    viewNearby: ''
+  TransitVehicleOverlay:
+    stopped_at: ''
+    in_transit_to: ''
+    travelingAt: ''
+    vehicleName: ''
+    incoming_at: ''
+  SimpleRealtimeAnnotation:
+    usingRealtimeInfo: ''
+  PlaceShortcut:
+    enterAlert: ''
+    setAddressForPlaceType: ''
+  TripTools:
+    reportEmailSubject: ''
+    reportIssue: ''
+    copyItineraryText: ''
+    header: ''
+    linkCopied: ''
+    reportEmailTemplate: ''
+    copyLink: ''
+  RealtimeStatusLabel:
+    early: ''
+    onTime: ''
+    late: ''
+    scheduled: ''
+  StopScheduleTable:
+    route: ''
+    block: ''
+    departure: ''
+    destination: ''
+  BeforeSignInScreen:
+    mainTitle: ''
+    message: ''
+  ViewSwitcher:
+    nearby: ''
+    switcher: ''
+  SubNav:
+    languageSelector: ''
+    settings: ''
+    userMenu: ''
+    trips: ''
+    languages: ''
+    selectALanguage: ''
+    myAccount: ''
+  SwitchButton:
+    defaultContent: ''
+    switchLocations: ''
+  DateTimeScreen:
+    header: ''
+  RealtimeAnnotation:
+    delaysShownInResults: ''
+    serviceUpdate: ''
+  PointPopup:
+    zoomToLocation: ''
+  ResultsError:
+    backToSearch: ''
+  StatusBadge:
+    invalid: ''
+    verified: ''
+    pending: ''
+  WelcomeScreen:
+    prompt: ''
+  FormNavigationButtons:
+    ariaLabel: ''
+  PrintLayout:
+    toggleMap: ''
+    itinerary: ''
+  MapillaryFrame:
+    title: ''
+  TripPreviewLayout:
+    previewTrip: ''
+  ItinerarySummary:
+    itineraryDetails: ''
+_id: ''
+config:
+  flex:
+    both: ''
+    flex-service: ''
+    call-ahead: ''
+    flex-service-colon: ''
+    continuous-dropoff: ''
+  accessModes:
+    car_hail: ''
+util:
+  state:
+    noTripFoundReason: ''
+    networkUnavailable: ''
+    errorPlanningTrip: ''
+    noTripFound: ''
+    noTripFoundForMode: ''
+    noTripFoundWithReason: ''

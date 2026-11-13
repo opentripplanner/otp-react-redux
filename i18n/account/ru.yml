@@ -130,6 +130,7 @@ components:
     noSavedTripsInstructions: Сперва выполните поиск поездок на карте.
     pause: Приостановить
     resume: Возобновить
+    unsnooze: ''
   SavedTripScreen:
     itineraryLoaded: Маршрут загружен
     itineraryLoading: Загрузка маршрута
@@ -169,6 +170,8 @@ components:
       изменения будут утеряны.
     unsavedChangesNewTrip: Вы не сохранили новую поездку. Если вы выйдете, она 
       будет удалена.
+    indicatesRequiredFields: ''
+    checkAgain: ''
   TripNotificationsPane:
     advancedSettings: Расширенные настройки
     altRouteRecommended: Рекомендуется использовать пересадку или альтернативный
@@ -254,6 +257,7 @@ components:
       отправления
     timeAndDuration: Время и продолжительность поездки
     notificationsSnoozed: На сегодня отслеживание поездки отложено.
+    notificationsPaused: ''
   UserAccountScreen:
     confirmDelete: >-
       Действительно удалить учетную запись? После удаления ее невозможно будет

@@ -108,6 +108,7 @@ components:
     noSavedTripsInstructions: 首先从地图上进行行程搜索.
     pause: 暂停
     resume: 继续
+    unsnooze: ''
   SavedTripScreen:
     itineraryLoaded: 行程已加载
     itineraryLoading: 加载行程
@@ -140,6 +141,8 @@ components:
     tripNotAvailableOnDay: 此行程每 {repeatedDay} 不举行!
     unsavedChangesExistingTrip: 您还没有保存你的行程. 如果您离开了，变更就会消失.
     unsavedChangesNewTrip: 您尚未保存新行程。若您离开本页面，该行程将丢失。
+    indicatesRequiredFields: ''
+    checkAgain: ''
   TripNotificationsPane:
     advancedSettings: 进阶设置
     altRouteRecommended: 建议采用替代路线或换乘点
