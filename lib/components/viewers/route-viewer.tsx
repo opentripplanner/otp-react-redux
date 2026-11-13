@@ -30,9 +30,8 @@ import VehiclePositionRetriever from './vehicle-position-retriever'
 interface Props {
   agencies: string[]
   filter: RouteViewerFilter
-  // Not really worried about the args for findRoute(s)IfNeeded.
+  // Not really worried about the args for findRouteIfNeeded.
   findRouteIfNeeded: () => void
-  findRoutesIfNeeded: () => void
   hideHeader?: boolean
   intl: IntlShape
   modes: string[]
@@ -72,11 +71,6 @@ class RouteViewer extends Component<Props, State> {
    * Route back to main view.
    */
   _backClicked = () => this.props.setMainPanelContent(null)
-
-  componentDidMount() {
-    const { findRoutesIfNeeded } = this.props
-    findRoutesIfNeeded()
-  }
 
   /** Used to scroll to actively viewed route on load */
   componentDidUpdate(prevProps: Props) {
@@ -311,7 +305,6 @@ const mapStateToProps = (state: AppReduxState) => {
 
 const mapDispatchToProps = {
   findRouteIfNeeded: apiActions.findRouteIfNeeded,
-  findRoutesIfNeeded: apiActions.findRoutesIfNeeded,
   setMainPanelContent: uiActions.setMainPanelContent,
   setRouteViewerFilter: uiActions.setRouteViewerFilter,
   setRouteViewerFilterFromUrl: uiActions.setRouteViewerFilterFromUrl
