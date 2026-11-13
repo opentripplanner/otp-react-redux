@@ -37,12 +37,10 @@ interface Props {
   intl: IntlShape
   modes: string[]
   routes: Route[]
-  rvAgency?: string
   rvMode?: string
-  rvSearch?: string
   setMainPanelContent: (panelId: number | null) => void
   setRouteViewerFilter: (filter: RouteViewerFilter) => void
-  setUrlSearch: (params: any, replace: boolean) => void
+  setRouteViewerFilterFromUrl: () => void
   transitOperators: TransitOperatorConfig[]
   viewedRoute?: ViewedRouteState
   viewedRouteObject?: ViewedRouteObject
@@ -75,26 +73,14 @@ class RouteViewer extends Component<Props, State> {
    */
   _backClicked = () => this.props.setMainPanelContent(null)
 
-  _setReduxFilterFromUrl = () => {
-    const { rvAgency, rvMode, rvSearch, setRouteViewerFilter } = this.props
-    if (rvAgency || rvMode || rvSearch) {
-      setRouteViewerFilter({
-        agency: rvAgency,
-        mode: rvMode,
-        search: rvSearch
-      })
-    }
-  }
-
   componentDidMount() {
     const { findRoutesIfNeeded } = this.props
-    this._setReduxFilterFromUrl()
     findRoutesIfNeeded()
   }
 
   /** Used to scroll to actively viewed route on load */
   componentDidUpdate(prevProps: Props) {
-    const { filter, routes, rvMode } = this.props
+    const { filter, routes, rvMode, setRouteViewerFilterFromUrl } = this.props
     const { initialRender } = this.state
 
     // Wait until more than the one route is present.
@@ -114,9 +100,9 @@ class RouteViewer extends Component<Props, State> {
     // That param can get overwritten in setRouteViewerFilter if routes have not been loaded or
     // no previously loaded routes are of the desired mode.
     const routesHaveBeenFetched =
-      prevProps.routes.length === 0 && this.props.routes.length !== 0
+      prevProps.routes.length === 0 && routes.length !== 0
     if (rvMode && isBlank(filter.mode) && routesHaveBeenFetched) {
-      this._setReduxFilterFromUrl()
+      setRouteViewerFilterFromUrl()
     }
   }
 
@@ -310,15 +296,13 @@ class RouteViewer extends Component<Props, State> {
 
 const mapStateToProps = (state: AppReduxState) => {
   const { viewedRoute } = state.otp.ui
-  const { rvAgency, rvMode, rvSearch } = state.router.location.query
+  const { rvMode } = state.router.location.query
   return {
     agencies: getAgenciesFromRoutes(state),
     filter: state.otp.ui.routeViewer.filter,
     modes: getModesForActiveAgencyFilter(state),
     routes: getSortedFilteredRoutes(state),
-    rvAgency,
     rvMode,
-    rvSearch,
     transitOperators: state.otp.config.transitOperators || [],
     viewedRoute,
     viewedRouteObject: state.otp.transitIndex.routes?.[viewedRoute?.routeId]
@@ -328,10 +312,9 @@ const mapStateToProps = (state: AppReduxState) => {
 const mapDispatchToProps = {
   findRouteIfNeeded: apiActions.findRouteIfNeeded,
   findRoutesIfNeeded: apiActions.findRoutesIfNeeded,
-  routeTo: uiActions.routeTo,
   setMainPanelContent: uiActions.setMainPanelContent,
   setRouteViewerFilter: uiActions.setRouteViewerFilter,
-  setUrlSearch: apiActions.setUrlSearch
+  setRouteViewerFilterFromUrl: uiActions.setRouteViewerFilterFromUrl
 }
 
 export default connect(
