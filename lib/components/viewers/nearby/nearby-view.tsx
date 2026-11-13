@@ -74,7 +74,8 @@ type Props = {
   fetchNearby: (
     latLon: LatLonObj,
     radius?: number,
-    currentServiceWeek?: ServiceWeek
+    currentServiceWeek?: ServiceWeek,
+    omitCanceled?: boolean
   ) => void
   geocoderConfig: GeocoderConfig
   getCurrentPosition: any // TODO
@@ -86,6 +87,7 @@ type Props = {
   nearbyFilters?: Array<NearbyFilterConfig>
   nearbyViewCoords?: LatLonObj
   nearbyViewError?: any
+  omitCanceled?: boolean
   onLocationFieldBlur?: () => void
   onLocationFieldFocus?: () => void
   radius?: number
@@ -189,6 +191,7 @@ function NearbyView({
   nearbyFilters,
   nearbyViewCoords,
   nearbyViewError,
+  omitCanceled,
   onLocationFieldBlur,
   onLocationFieldFocus,
   radius,
@@ -294,17 +297,24 @@ function NearbyView({
   useEffect(() => {
     scrollToTop()
     if (finalNearbyCoords && !locationInputFocused) {
-      fetchNearby(finalNearbyCoords, radius, currentServiceWeek)
+      fetchNearby(finalNearbyCoords, radius, currentServiceWeek, omitCanceled)
       setLoading(true)
       const interval = setInterval(() => {
-        fetchNearby(finalNearbyCoords, radius, currentServiceWeek)
+        fetchNearby(finalNearbyCoords, radius, currentServiceWeek, omitCanceled)
         setLoading(true)
       }, AUTO_REFRESH_INTERVAL)
       return function cleanup() {
         clearInterval(interval)
       }
     }
-  }, [finalNearbyCoords, fetchNearby, locationInputFocused, radius])
+  }, [
+    currentServiceWeek,
+    finalNearbyCoords,
+    fetchNearby,
+    locationInputFocused,
+    omitCanceled,
+    radius
+  ])
 
   useEffect(() => {
     if (nearbyViewError) {
@@ -396,7 +406,7 @@ function NearbyView({
       // If there's stale data, fetch again
       setLoading(true)
       finalNearbyCoords &&
-        fetchNearby(finalNearbyCoords, radius, currentServiceWeek)
+        fetchNearby(finalNearbyCoords, radius, currentServiceWeek, omitCanceled)
     }
   }, [nearby, staleData])
 
@@ -581,6 +591,7 @@ const mapStateToProps = (state: AppReduxState) => {
     nearbyFilters,
     nearbyViewCoords,
     nearbyViewError: nearby?.error,
+    omitCanceled: nearbyViewConfig?.omitCanceledTrips,
     radius: config.nearbyView?.radius,
     routeSortComparator,
     sessionSearches

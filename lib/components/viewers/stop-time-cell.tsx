@@ -1,23 +1,25 @@
+import { CircleXmark } from '@styled-icons/fa-solid/CircleXmark'
 import { Clock } from '@styled-icons/fa-regular/Clock'
 import { connect } from 'react-redux'
-import { format, getTimezoneOffset, utcToZonedTime } from 'date-fns-tz'
 import { FormattedMessage, useIntl } from 'react-intl'
+import { getTimezoneOffset } from 'date-fns-tz'
 import coreUtils from '@opentripplanner/core-utils'
-import isSameDay from 'date-fns/isSameDay'
 import React from 'react'
+import styled from 'styled-components'
 
 import { AppReduxState } from '../../util/state-types'
 import { getSecondsUntilDeparture, getTripStatus } from '../../util/viewer'
-import { PulsingRss, StyledIconWrapperTextAlign } from '../util/styledIcon'
-import FormattedDayOfWeek from '../util/formatted-day-of-week'
+import { PulsingRss } from '../util/styledIcon'
 import FormattedDuration from '../util/formatted-duration'
 import getRealtimeStatusLabel, {
-  status
+  Status
 } from '../util/get-realtime-status-label'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import type { Time } from '../util/types'
 
 import DepartureTime from './departure-time'
+import StopTimeCellBase from './stop-time-cell-base'
+import StopTimeDifferentDay from './stop-time-different-day'
 
 const { getUserTimezone } = coreUtils.time
 const ONE_HOUR_IN_SECONDS = 3600
@@ -31,6 +33,45 @@ type Props = {
   stopTime: Time
   /** Whether to use arrival time instead of departure time */
   useArrivalTime?: boolean
+}
+
+const CanceledTripCell = styled(StopTimeCellBase)`
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+`
+
+const Error = () => (
+  <div>
+    <FormattedMessage id="common.forms.error" />
+  </div>
+)
+
+const CountDown = ({ seconds }: { seconds: number }) => {
+  const isDue = seconds < 60
+  return isDue ? (
+    <FormattedMessage id="components.StopTimeCell.imminentArrival" />
+  ) : (
+    <FormattedDuration duration={seconds} />
+  )
+}
+
+const statusMapping = {
+  ADDED: {
+    Cell: StopTimeCellBase,
+    Icon: PulsingRss
+  },
+  CANCELED: {
+    Cell: CanceledTripCell,
+    Icon: CircleXmark
+  },
+  SCHEDULED: {
+    Cell: StopTimeCellBase,
+    Icon: Clock
+  },
+  UPDATED: {
+    Cell: StopTimeCellBase,
+    Icon: PulsingRss
+  }
 }
 
 /**
@@ -50,20 +91,13 @@ const StopTimeCell = ({
     console.warn(
       'Missing required prop(s) for StopTimeCell: homeTimezone, stopTime'
     )
-    return (
-      <div>
-        <FormattedMessage id="common.forms.error" />
-      </div>
-    )
+    return <Error />
   }
   if (isNaN(getTimezoneOffset(homeTimezone))) {
     console.warn(`homeTimezone '${homeTimezone}' is invalid`)
-    return (
-      <div>
-        <FormattedMessage id="common.forms.error" />
-      </div>
-    )
+    return <Error />
   }
+  const { realtimeState, serviceDay } = stopTime
 
   // Determine whether to show departure as countdown (e.g. "5 min") or as HH:mm
   // time, using realtime updates if available.
@@ -76,71 +110,40 @@ const StopTimeCell = ({
   // Show the exact time if the departure happens within an hour.
   const showCountdown =
     secondsUntilDeparture < ONE_HOUR_IN_SECONDS && departsInFuture
-  // Whether to display "Due" or a countdown (used in conjunction with showCountdown).
-  const isDue = secondsUntilDeparture < 60
 
-  const formattedDay = utcToZonedTime(stopTime.serviceDay * 1000, homeTimezone)
-
-  const realtime = stopTime.realtimeState === 'UPDATED'
-  const realtimeLabel = realtime
-    ? intl.formatMessage({
-        id: 'components.StopTimeCell.realtime'
-      })
-    : intl.formatMessage({
-        id: 'components.StopTimeCell.scheduled'
-      })
-  return (
-    <div className="percy-hide">
-      <StyledIconWrapperTextAlign
-        style={{
-          fontSize: '0.6em',
-          margin: 0,
-          marginRight: 2
-        }}
-        title={realtimeLabel}
-      >
-        {realtime ? <PulsingRss /> : <Clock />}
-      </StyledIconWrapperTextAlign>
-
-      <span
-        className="percy-hide"
-        title={getRealtimeStatusLabel({
+  const realtime = realtimeState === 'UPDATED' || realtimeState === 'ADDED'
+  const realtimeLabel =
+    realtimeState !== 'CANCELED' && realtimeState !== 'ADDED'
+      ? getRealtimeStatusLabel({
           intl,
           minutes: Math.abs(Math.ceil(stopTime.departureDelay / 60)),
-          status: getTripStatus(realtime, stopTime.departureDelay, 30) as status
-        })}
-      >
-        {/* Not the cleanest boolean, but makes it very clear what we're doing
-        in all cases. */}
-        {(onlyShowCountdownForRealtime === true && realtime) ||
-        (onlyShowCountdownForRealtime === false && showCountdown) ? (
-          // Show countdown string (e.g., 3 min or Due)
-          isDue ? (
-            <FormattedMessage id="components.StopTimeCell.imminentArrival" />
-          ) : (
-            <FormattedDuration
-              duration={secondsUntilDeparture}
-              includeSeconds={false}
-            />
-          )
-        ) : (
-          <>
-            {!isSameDay(new Date(), formattedDay) && (
-              <InvisibleA11yLabel>
-                <FormattedDayOfWeek
-                  // 'iiii' returns the long ISO day of the week (independent of browser locale).
-                  // See https://date-fns.org/v2.28.0/docs/format
-                  day={format(formattedDay, 'iiii', {
-                    timeZone: homeTimezone
-                  }).toLowerCase()}
-                />{' '}
-              </InvisibleA11yLabel>
-            )}
-            <DepartureTime realTime stopTime={stopTime} />
-          </>
-        )}
-      </span>
-    </div>
+          status: getTripStatus(realtime, stopTime.departureDelay, 30) as Status
+        })
+      : intl.formatMessage({
+          id: `components.RealtimeStatusLabel.${realtimeState.toLowerCase()}`
+        })
+
+  const countdownMode =
+    (onlyShowCountdownForRealtime === true && realtime) ||
+    (onlyShowCountdownForRealtime === false && showCountdown)
+
+  const { Cell, Icon } = statusMapping[realtimeState]
+  return (
+    <Cell Icon={Icon} status={realtimeLabel}>
+      {countdownMode ? (
+        <CountDown seconds={secondsUntilDeparture} />
+      ) : (
+        <>
+          <InvisibleA11yLabel>
+            <StopTimeDifferentDay
+              day={serviceDay}
+              homeTimezone={homeTimezone}
+            />{' '}
+          </InvisibleA11yLabel>
+          <DepartureTime realTime stopTime={stopTime} />
+        </>
+      )}
+    </Cell>
   )
 }
 

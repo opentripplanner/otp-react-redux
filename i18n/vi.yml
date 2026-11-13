@@ -107,8 +107,8 @@ common:
       nMinutes: "{minutes, plural, =1 {một phút} other {# phút}}"
     durationAgo: Cách đây {duration}
     tripDurationFormat: >-
-      {hours, plural, =0 {} other {# giờ }}{minutes} phút { seconds, plural, =0
-      {} other {# giây}}
+      {hours, plural, =0 {} other {# giờ }}{minutes} phút{ seconds, plural, =0
+      {} other { # giây}}
 components:
   AfterSignInScreen:
     mainTitle: Chuyển hướng...
@@ -312,9 +312,11 @@ components:
       bằng cách sử dụng các tuyến sau: {routes}.
     serviceUpdate: Cập nhật dịch vụ
   RealtimeStatusLabel:
+    added: đã thêm
+    canceled: đã hủy
     early: Sớm {minutes}
     late: Trễ {minutes}
-    onTime: kịp thời
+    on_time: kịp thời
     scheduled: lên kế hoạch
   ResultsError:
     backToSearch: Quay lại tìm kiếm

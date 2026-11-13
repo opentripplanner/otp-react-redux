@@ -110,8 +110,8 @@ common:
       nMinutes: "{minutes, plural, =1 {one minute} other {# minutes}}"
     durationAgo: "{duration} ago"
     tripDurationFormat: >-
-      {hours, plural, =0 {} other {# hr }}{minutes} min { seconds, plural, =0 {}
-      other {# sec}}
+      {hours, plural, =0 {} other {# hr }}{minutes} min{ seconds, plural, =0 {}
+      other { # sec}}
 components:
   AfterSignInScreen:
     mainTitle: Redirecting...
@@ -316,9 +316,11 @@ components:
       following routes: {routes}.
     serviceUpdate: Service update
   RealtimeStatusLabel:
+    added: added
+    canceled: canceled
     early: "{minutes} early"
     late: "{minutes} late"
-    onTime: on time
+    on_time: on time
     scheduled: scheduled
   ResultsError:
     backToSearch: Back to Search
