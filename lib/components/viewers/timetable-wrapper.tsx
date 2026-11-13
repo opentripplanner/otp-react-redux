@@ -36,9 +36,17 @@ interface TimeTableWrapperProps {
   stopClosuresError?: string
 }
 
-const TimetableHeader = styled.div`
-  height: 50px;
+const TIMETABLE_HEADER_HEIGHT = 4
+
+const TimetableWindow = styled.div`
+  height: calc(100vh - 20px);
+  margin: 0 3rem;
+`
+
+const TimetableHeader = styled.h1`
+  height: ${TIMETABLE_HEADER_HEIGHT}rem;
   border-bottom: #333 solid 1px;
+  margin-bottom: 0;
 `
 
 const TimetableControlPanel = styled.div`
@@ -49,10 +57,11 @@ const TimetableControlPanel = styled.div`
   gap: 1em;
 `
 
-const TimetableContainer = styled.div`
-  margin: 2em 0;
+const TimetableBody = styled.div`
+  height: calc(100% - ${TIMETABLE_HEADER_HEIGHT}rem - 20px);
+  margin: 0;
   display: flex;
-  gap: 2em;
+  padding-top: 2em;
 `
 
 const SwitchDirectionButton = styled.button`
@@ -67,6 +76,21 @@ const SwitchDirectionButton = styled.button`
     background-color: ${blue[900]};
     transition: 100ms ease-in all;
   }
+`
+
+const ROUTE_INFORMATION_HEIGHT = 4
+
+const RouteInformationContainer = styled.span`
+  align-items: center;
+  display: flex;
+  gap: 7px;
+  height: ${ROUTE_INFORMATION_HEIGHT}rem;
+`
+
+const TimetableContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - ${ROUTE_INFORMATION_HEIGHT}rem);
 `
 
 // eslint-disable-next-line complexity
@@ -162,7 +186,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   const TimeTableData = () =>
     routeId && routeInformation && !directionIdsAreInvalid ? (
       <>
-        <span style={{ alignItems: 'center', display: 'flex', gap: '7px' }}>
+        <RouteInformationContainer>
           <RouteRowDetails
             intl={intl}
             ModeIcon={ModeIcon}
@@ -187,34 +211,34 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
               <ExternalLinkAlt size={15} />
             </a>
           )}
-        </span>
-        <TimeTable
-          additionalColumns={[
-            'NOTICES',
-            'BLOCK_ID',
-            'TRIP_SHORT_NAME',
-            'TRIP_HEADSIGN',
-            'TRIP_ID'
-          ]}
-          closedStops={closedStops}
-          directionId={directionId}
-          includeDwellStops
-          route={routeInformation}
-          timepointsOnly={timepointsOnly}
-        />
+        </RouteInformationContainer>
+        <TimetableContainer>
+          <TimeTable
+            additionalColumns={[
+              'NOTICES',
+              'BLOCK_ID',
+              'TRIP_SHORT_NAME',
+              'TRIP_HEADSIGN',
+              'TRIP_ID'
+            ]}
+            closedStops={closedStops}
+            directionId={directionId}
+            includeDwellStops
+            route={routeInformation}
+            timepointsOnly={timepointsOnly}
+          />
+        </TimetableContainer>
       </>
     ) : (
       <FormattedMessage id="components.Timetable.errorLoadingTimetable" />
     )
 
   return (
-    <div style={{ margin: '3em' }}>
+    <TimetableWindow>
       <TimetableHeader>
-        <h1>
-          <FormattedMessage id="components.Timetable.timetableHeader" />
-        </h1>
+        <FormattedMessage id="components.Timetable.timetableHeader" />
       </TimetableHeader>
-      <TimetableContainer>
+      <TimetableBody>
         <TimetableControlPanel>
           <RouteSelect
             disabled={routeAlreadySelected}
@@ -255,11 +279,11 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
         {(stopClosuresError || !closedStops) && (
           <FormattedMessage id="components.Timetable.errorLoadingStopClosures" />
         )}
-        <div style={{ overflow: 'scroll', width: '75%' }}>
+        <div style={{ width: '75%' }}>
           {loading ? <Loading /> : <TimeTableData />}
         </div>
-      </TimetableContainer>
-    </div>
+      </TimetableBody>
+    </TimetableWindow>
   )
 }
 
