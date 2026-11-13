@@ -165,8 +165,6 @@ const Stop = ({
     <Card>
       <StopCardHeader
         actionIcon={Calendar}
-        // Remove entityId URL parameter when leaving nearby view.
-        actionParams={{ entityId: undefined }}
         actionPath={!isParentStop ? `/schedule/${stopData.gtfsId}` : undefined}
         actionText={
           !isParentStop ? (

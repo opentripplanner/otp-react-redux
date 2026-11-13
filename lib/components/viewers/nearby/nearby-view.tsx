@@ -37,6 +37,7 @@ import {
   SetLocationHandler,
   ZoomToPlaceHandler
 } from '../../util/types'
+import InjectUrlParams from '../../util/inject-url-params'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
 import Loading from '../../narrative/loading'
 import MobileContainer from '../../mobile/container'
@@ -412,6 +413,7 @@ function NearbyView({
       <PageTitle
         title={intl.formatMessage({ id: 'components.NearbyView.header' })}
       />
+      <InjectUrlParams params={{ entityId }} />
       {mobile && (
         <MobileNavigationBar
           headerText={intl.formatMessage({
