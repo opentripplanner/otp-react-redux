@@ -33,3 +33,4 @@ components:
     switchDirection: Changer de direction
     timetable: Grille horaire
     timetableDate: Choisissez la date
+    timetableHeader: Timetable Tool
