@@ -1,5 +1,11 @@
 import { IntlShape } from 'react-intl'
-type Status = 'early' | 'late' | 'on_time' | 'scheduled' | 'canceled' | 'added'
+
+/**
+ * Status values from the realtimeStatus field of OTP StopTime objects.
+ * ON_TIME status is mapped to i18n strings under RealtimeStatusLabel > on_time
+ * (snake case in that entry comes from calling toLowerCase()).
+ */
+type Status = 'EARLY' | 'LATE' | 'ON_TIME' | 'SCHEDULED' | 'CANCELED' | 'ADDED'
 /**
  * Returns a FormattedMessage component for realtime status labels such that i18n IDs
  * are hardcoded and can be kept track of by format.js CLI tools
