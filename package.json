@@ -77,6 +77,7 @@
     "date-fns": "^2.23.0",
     "date-fns-tz": "^1.1.4",
     "deepmerge": "^4.2.2",
+    "flat": "^5.0.2",
     "formik": "^2.1.5",
     "formik-error-focus": "^1.1.0",
     "graphql": "^16.8.1",
