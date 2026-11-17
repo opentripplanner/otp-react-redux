@@ -89,7 +89,6 @@ const RouteInformationContainer = styled.span`
 
 const TimetableContainer = styled.div`
   display: flex;
-  flex-direction: column;
   height: calc(100% - ${ROUTE_INFORMATION_HEIGHT}rem);
 `
 
