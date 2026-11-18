@@ -29,8 +29,8 @@ components:
     errorLoadingStopClosures: Erreur de chargement des arrêts fermés
     errorLoadingTimetable: Erreur de chargement des horaires
     routeInformation: Informations sur la ligne
-    showAllStops: Montrer tous les arrêts
     showTimepointsOnly: Montrer les arrêts de référence uniquement
     switchDirection: Changer de direction
     timetable: Grille horaire
     timetableDate: Choisissez la date
+    timetableHeader: Timetable Tool
