@@ -1,9 +1,10 @@
 import { connect, useSelector } from 'react-redux'
+import { endOfDay, format } from 'date-fns'
 import { ExternalLinkAlt } from '@styled-icons/fa-solid'
-import { format } from 'date-fns'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { matchPath } from 'react-router'
 import { Route } from '@opentripplanner/types'
+import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz'
 import React, {
   useCallback,
   useContext,
@@ -21,6 +22,7 @@ import { ComponentContext } from '../../util/contexts'
 import { getSortedFilteredRoutes } from '../../util/state'
 import { TIMETABLE_PATH } from '../../util/constants'
 import { TimetableDataParams } from '../util/types'
+import AppModule from '../app/app-module'
 import Loading from '../narrative/loading'
 import RouteSelect, { RouteSelectOption } from '../../util/RouteSelect'
 
@@ -29,8 +31,9 @@ import { RouteRowDetails } from './route-row'
 interface TimeTableWrapperProps {
   closedStops?: Set<string>
   findRoutesIfNeeded: () => void
-  getStopClosures: () => void
+  getStopClosures: (date: Date) => void
   getTimetableData: (params: TimetableDataParams) => void
+  homeTimezone: string
   routeId: string
   routes: Route[]
   stopClosuresError?: string
@@ -70,12 +73,14 @@ const SwitchDirectionButton = styled.button`
 `
 
 // eslint-disable-next-line complexity
+
 const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   const {
     closedStops,
     findRoutesIfNeeded,
     getStopClosures,
     getTimetableData,
+    homeTimezone,
     routeId,
     routes,
     stopClosuresError
@@ -96,8 +101,11 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   const [directionId, setDirectionId] = useState<0 | 1>(0)
   const [timepointsOnly, setTimepointsOnly] = useState(true)
   const [loading, setLoading] = useState(true)
-  const [date, setDate] = useState(format(new Date(), 'yyyy-MM-dd'))
   const [currentRoute, setCurrentRoute] = useState(routeId)
+  // Initialize to the current date in the config's timezone
+  const [date, setDate] = useState<string>(
+    format(utcToZonedTime(Date.now(), homeTimezone), 'yyyy-MM-dd')
+  )
 
   const intl = useIntl()
 
@@ -106,15 +114,29 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
 
   useEffect(() => {
     setLoading(true)
-    getStopClosures()
+    // TODO: Determine best way to handle stop closures that start/end somewhere in the
+    // middle of a service day. For now, we will be conservative and ask for stop closures
+    // that are valid at 23:59 of the given day; this will capture closures that took effect
+    // (started) during the service day, but will not include closures that ended sometime
+    // during the service day.
+
+    // Midnight local time at beginning of service day:
+    const stopClosuresDate = zonedTimeToUtc(date, homeTimezone)
+    // Shift to end of day to capture stop closures that begin on this date:
+    getStopClosures(endOfDay(stopClosuresDate))
 
     getTimetableData({
-      // The Date constructor has a quirk: passing in yyyy-MM-dd will create the date in UTC, causing
-      // issues with timezone offsets. Passing in yyyy/MM/dd will honor the local machine's timezone
-      date: new Date(date.replaceAll('-', '/')),
+      date,
       routeGtfsId: currentRoute
     })
-  }, [date, getTimetableData, getStopClosures, currentRoute])
+  }, [
+    date,
+    getTimetableData,
+    routeId,
+    getStopClosures,
+    homeTimezone,
+    currentRoute
+  ])
 
   const routeInformation = useMemo(() => timetable?.route, [timetable])
 
@@ -208,58 +230,60 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
     )
 
   return (
-    <div style={{ margin: '3em' }}>
-      <TimetableHeader>
-        <h1>
-          <FormattedMessage id="components.Timetable.timetableHeader" />
-        </h1>
-      </TimetableHeader>
-      <TimetableContainer>
-        <TimetableControlPanel>
-          <RouteSelect
-            disabled={routeAlreadySelected}
-            id="timetable-route-select"
-            onChange={(e: RouteSelectOption) =>
-              // eslint-disable-next-line prettier/prettier
+    <AppModule load={['call']}>
+      <div style={{ margin: '3em' }}>
+        <TimetableHeader>
+          <h1>
+            <FormattedMessage id="components.Timetable.timetableHeader" />
+          </h1>
+        </TimetableHeader>
+        <TimetableContainer>
+          <TimetableControlPanel>
+            <RouteSelect
+              disabled={routeAlreadySelected}
+              id="timetable-route-select"
+              onChange={(e: RouteSelectOption) =>
+                // eslint-disable-next-line prettier/prettier
               handleRouteChange(e.value)}
-            routes={routes}
-          />
-          <label htmlFor="timepoints-checkbox">
-            <input
-              checked={timepointsOnly}
-              id="timepoints-checkbox"
-              onChange={() => setTimepointsOnly(!timepointsOnly)}
-              style={{ marginRight: '10px' }}
-              type="checkbox"
+              routes={routes}
             />
-            <FormattedMessage id="components.Timetable.showTimepointsOnly" />
-          </label>
-          <span>
-            <label htmlFor="date-picker" style={{ marginRight: '10px' }}>
-              <FormattedMessage id="components.Timetable.timetableDate" />
+            <label htmlFor="timepoints-checkbox">
+              <input
+                checked={timepointsOnly}
+                id="timepoints-checkbox"
+                onChange={() => setTimepointsOnly(!timepointsOnly)}
+                style={{ marginRight: '10px' }}
+                type="checkbox"
+              />
+              <FormattedMessage id="components.Timetable.showTimepointsOnly" />
             </label>
-            <input
-              id="date-picker"
-              onChange={handleDateChange}
-              type="date"
-              value={date}
-            />
-          </span>
-          <SwitchDirectionButton
-            onClick={() => setDirectionId(directionId === 1 ? 0 : 1)}
-          >
-            <FormattedMessage id="components.Timetable.switchDirection" />
-          </SwitchDirectionButton>
-        </TimetableControlPanel>
+            <span>
+              <label htmlFor="date-picker" style={{ marginRight: '10px' }}>
+                <FormattedMessage id="components.Timetable.timetableDate" />
+              </label>
+              <input
+                id="date-picker"
+                onChange={handleDateChange}
+                type="date"
+                value={date}
+              />
+            </span>
+            <SwitchDirectionButton
+              onClick={() => setDirectionId(directionId === 1 ? 0 : 1)}
+            >
+              <FormattedMessage id="components.Timetable.switchDirection" />
+            </SwitchDirectionButton>
+          </TimetableControlPanel>
 
-        {(stopClosuresError || !closedStops) && (
-          <FormattedMessage id="components.Timetable.errorLoadingStopClosures" />
-        )}
-        <div style={{ overflow: 'scroll', width: '75%' }}>
-          {loading ? <Loading /> : <TimeTableData />}
-        </div>
-      </TimetableContainer>
-    </div>
+          {(stopClosuresError || !closedStops) && (
+            <FormattedMessage id="components.Timetable.errorLoadingStopClosures" />
+          )}
+          <div style={{ overflow: 'scroll', width: '75%' }}>
+            {loading ? <Loading /> : <TimeTableData />}
+          </div>
+        </TimetableContainer>
+      </div>
+    </AppModule>
   )
 }
 
@@ -275,6 +299,7 @@ const mapStateToProps = (state: AppReduxState) => {
 
   return {
     closedStops: state.otp.ui.stopClosures.closedStops,
+    homeTimezone: state.otp.config.homeTimezone,
     routeId,
     routes,
     stopClosuresError: state.otp.ui.stopClosures.error

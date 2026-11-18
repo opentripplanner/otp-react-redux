@@ -92,7 +92,7 @@ interface AgencyWithGtfsId extends Agency {
 }
 
 // FIXME: add to OTP-UI types
-interface RouteWithAgencyGtfsId extends Route {
+export interface RouteWithAgencyGtfsId extends Route {
   agency: AgencyWithGtfsId
 }
 
@@ -127,8 +127,8 @@ export type ZoomToPlaceHandler = (
 export type QueryParamChangeHandler = (event: any) => void
 
 export interface TimetableDataParams {
-  /** The desired service date for the timetable, as a Date object */
-  date: Date
+  /** The desired service date for the timetable, as a string in the format yyyy-MM-dd */
+  date: string
   /** The GTFS ID of the route for which a timetable is being fetched */
   routeGtfsId: string
 }

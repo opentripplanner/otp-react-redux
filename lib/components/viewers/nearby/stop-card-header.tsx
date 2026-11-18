@@ -1,17 +1,14 @@
-import { connect } from 'react-redux'
 import { ExclamationTriangle } from '@styled-icons/fa-solid'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Search } from '@styled-icons/fa-solid/Search'
-import { TransitOperator } from '@opentripplanner/types'
 import React, { ComponentType } from 'react'
 import styled from 'styled-components'
 
-import { AppReduxState } from '../../../util/state-types'
 import { CLOSED_OR_CANCELED_RED } from '../../util/colors'
 import { Icon, IconWithText } from '../../util/styledIcon'
 import { StopData } from '../../util/types'
 import Strong from '../../util/strong-text'
-import TransitOperatorLogos from '../../util/transit-operator-icons'
+import TransitOperatorIcons from '../../util/connected-transit-operator-icons'
 
 import { ActionLink, CardBody, CardHeader, CardTitle } from './styled'
 import DistanceDisplay from './distance-display'
@@ -33,7 +30,6 @@ type Props = {
   onZoomClick?: () => void
   stopData: StopData & { distance?: number }
   titleAs?: string
-  transitOperators?: TransitOperator[]
 }
 
 const StopCardHeader = ({
@@ -45,8 +41,7 @@ const StopCardHeader = ({
   fromToSlot,
   onZoomClick,
   stopData,
-  titleAs,
-  transitOperators
+  titleAs
 }: Props): JSX.Element => {
   const intl = useIntl()
 
@@ -61,10 +56,7 @@ const StopCardHeader = ({
       <CardHeader>
         {/* @ts-expect-error The 'as' prop in styled-components is not listed for TypeScript. */}
         <CardTitle as={titleAs}>
-          <TransitOperatorLogos
-            stopData={stopData}
-            transitOperators={transitOperators}
-          />
+          <TransitOperatorIcons stopData={stopData} />
           <span>{stopData.name}</span>
           {onZoomClick ? (
             <button
@@ -126,11 +118,4 @@ const StopCardHeader = ({
   )
 }
 
-const mapStateToProps = (state: AppReduxState) => {
-  const { config } = state.otp
-  return {
-    transitOperators: config.transitOperators
-  }
-}
-
-export default connect(mapStateToProps)(StopCardHeader)
+export default StopCardHeader
