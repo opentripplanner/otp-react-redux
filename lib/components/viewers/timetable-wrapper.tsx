@@ -1,3 +1,4 @@
+import { Calendar } from 'react-calendar'
 import { connect, useSelector } from 'react-redux'
 import { endOfDay, format } from 'date-fns'
 import { ExternalLinkAlt } from '@styled-icons/fa-solid'
@@ -15,6 +16,7 @@ import React, {
 import styled from 'styled-components'
 import TimeTable from '@opentripplanner/timetable'
 
+import { Value } from 'react-calendar/dist/shared/types'
 import * as apiActions from '../../actions/api'
 import { AppReduxState } from '../../util/state-types'
 import { blue } from '../util/colors'
@@ -28,6 +30,9 @@ import RouteSelect, { RouteSelectOption } from '../../util/RouteSelect'
 
 import { RouteRowDetails } from './route-row'
 
+// @ts-expect-error TS not loving this import
+import 'react-calendar/dist/Calendar.css'
+
 interface TimeTableWrapperProps {
   closedStops?: Set<string>
   findRoutesIfNeeded: () => void
@@ -38,6 +43,39 @@ interface TimeTableWrapperProps {
   routes: Route[]
   stopClosuresError?: string
 }
+
+const StyledCalendar = styled(Calendar)`
+  border: 0 !important;
+
+  button.react-calendar__navigation__arrow {
+    min-width: 30px !important;
+  }
+
+  .react-calendar__tile--now {
+    background-color: ${blue[50]};
+    color: ${blue[800]};
+  }
+
+  .react-calendar__tile--active {
+    background-color: ${blue[900]};
+    color: white;
+  }
+`
+
+const TodayButton = styled.button`
+  background-color: transparent;
+  border: 0;
+  color: ${blue[900]};
+  font-weight: 700;
+  width: fit-content;
+  margin-bottom: 2em;
+  text-align: left;
+  padding: 0;
+
+  &:hover {
+    color: ${blue[700]};
+  }
+`
 
 const TIMETABLE_HEADER_HEIGHT = 4
 
@@ -126,9 +164,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   const [loading, setLoading] = useState(true)
   const [currentRoute, setCurrentRoute] = useState(routeId)
   // Initialize to the current date in the config's timezone
-  const [date, setDate] = useState<string>(
-    format(utcToZonedTime(Date.now(), homeTimezone), 'yyyy-MM-dd')
-  )
+  const [date, setDate] = useState<Date>(new Date())
 
   const intl = useIntl()
 
@@ -149,7 +185,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
     getStopClosures(endOfDay(stopClosuresDate))
 
     getTimetableData({
-      date,
+      date: format(utcToZonedTime(date, homeTimezone), 'yyyy-MM-dd'),
       routeGtfsId: currentRoute
     })
   }, [
@@ -185,8 +221,9 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
     return invalid
   }, [routeInformation])
 
-  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length) setDate(e.target.value)
+  const handleDateChange = (value: Value) => {
+    // @ts-expect-error idk
+    value && setDate(new Date(value))
   }
 
   const handleRouteChange = (route: string) => {
@@ -270,6 +307,22 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
               handleRouteChange(e.value)}
               routes={routes}
             />
+            <StyledCalendar
+              formatMonthYear={(locale, date) =>
+                new Intl.DateTimeFormat(locale, {
+                  month: 'short'
+                }).format(date)}
+              formatShortWeekday={(locale, date) =>
+                new Intl.DateTimeFormat(locale, { weekday: 'narrow' }).format(
+                  date
+                )
+              }
+              onChange={handleDateChange}
+              value={date}
+            />
+            <TodayButton onClick={() => setDate(new Date())}>
+              Jump to today
+            </TodayButton>
             <label htmlFor="timepoints-checkbox">
               <input
                 checked={timepointsOnly}
@@ -280,17 +333,6 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
               />
               <FormattedMessage id="components.Timetable.showTimepointsOnly" />
             </label>
-            <span>
-              <label htmlFor="date-picker" style={{ marginRight: '10px' }}>
-                <FormattedMessage id="components.Timetable.timetableDate" />
-              </label>
-              <input
-                id="date-picker"
-                onChange={handleDateChange}
-                type="date"
-                value={date}
-              />
-            </span>
             <SwitchDirectionButton
               onClick={() => setDirectionId(directionId === 1 ? 0 : 1)}
             >
