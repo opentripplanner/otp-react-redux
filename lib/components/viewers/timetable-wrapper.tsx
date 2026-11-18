@@ -43,7 +43,7 @@ const TIMETABLE_HEADER_HEIGHT = 4
 
 const TimetableWindow = styled.div`
   height: calc(100vh - 20px);
-  margin: 0 3rem;
+  margin: 0 2rem;
 `
 
 const TimetableHeader = styled.h1`
@@ -65,6 +65,7 @@ const TimetableBody = styled.div`
   margin: 0;
   display: flex;
   padding-top: 2em;
+  gap: 1em;
 `
 
 const SwitchDirectionButton = styled.button`
@@ -300,7 +301,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
           {(stopClosuresError || !closedStops) && (
             <FormattedMessage id="components.Timetable.errorLoadingStopClosures" />
           )}
-          <div style={{ width: '75%' }}>
+          <div style={{ width: '80%' }}>
             {loading ? <Loading /> : <TimeTableData />}
           </div>
         </TimetableBody>
