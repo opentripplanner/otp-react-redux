@@ -15,7 +15,10 @@ import {
   getSortedFilteredRoutes
 } from '../../util/state'
 import { getFormattedMode } from '../../util/i18n'
-import { getRouteOrPatternViewerTitle } from '../../util/viewer'
+import {
+  getRouteOrPatternViewerTitle,
+  routeViewerToUrlParams as toUrlParams
+} from '../../util/viewer'
 import { isBlank } from '../../util/ui'
 import { StyledIconWrapper } from '../util/styledIcon'
 import { TransitOperatorConfig } from '../../util/config-types'
@@ -47,18 +50,6 @@ interface Props {
 
 interface State {
   initialRender: boolean
-}
-
-/**
- * Maps filter params into their URL counterparts.
- * This is used to avoid conflicts with existing URL params.
- */
-function toUrlParams({ agency, mode, search }: RouteViewerFilter) {
-  return {
-    rvAgency: agency,
-    rvMode: mode,
-    rvSearch: isBlank(search) ? null : search
-  }
 }
 
 class RouteViewer extends Component<Props, State> {
