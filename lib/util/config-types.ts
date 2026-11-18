@@ -15,6 +15,7 @@ import {
 } from '@opentripplanner/types'
 import { ControlPosition } from 'react-map-gl/maplibre'
 import { GeocoderConfig as GeocoderConfigOtpUI } from '@opentripplanner/geocoder'
+import { SortedFonts } from '@opentripplanner/transitive-overlay/lib/util'
 
 import { NearbyFilterKey } from './state-types'
 
@@ -232,6 +233,7 @@ export type SupportedOverlays =
 
 export interface TransitiveConfig {
   disableFlexArc?: boolean
+  fontOverride?: SortedFonts
   labeledModes?: string[]
   styles?: {
     labels: Record<string, unknown>
