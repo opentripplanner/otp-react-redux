@@ -72,8 +72,6 @@ const SwitchDirectionButton = styled.button`
   }
 `
 
-// eslint-disable-next-line complexity
-
 const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   const {
     closedStops,
