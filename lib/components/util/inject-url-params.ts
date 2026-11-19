@@ -25,7 +25,7 @@ class InjectUrlParams extends Component<Props> {
   }
 
   componentDidUpdate(prevProps: Props) {
-    const { params, setUrlSearch } = this.props
+    const { injectUrlParams, params, setUrlSearch } = this.props
 
     // Append filter params to existing search params.
     const urlParams = coreUtils.query.getUrlParams()
@@ -51,6 +51,7 @@ class InjectUrlParams extends Component<Props> {
     })
 
     if (altered) {
+      injectUrlParams(params)
       setUrlSearch(urlParams, true)
     }
   }
