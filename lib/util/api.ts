@@ -63,7 +63,12 @@ export function combineQueryParams(
   if (droppedParams) {
     droppedParams.forEach((key) => (search[key] = null))
   }
-  return qs.stringify(search, { arrayFormat: 'repeat', skipNulls: true })
+
+  return qs.stringify(search, {
+    addQueryPrefix: true,
+    arrayFormat: 'repeat',
+    skipNulls: true
+  })
 }
 
 /** Get the default number of itineraries to display for a search */
