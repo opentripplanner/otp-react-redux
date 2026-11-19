@@ -236,7 +236,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   }, [routeInformation])
 
   const handleDateChange = (value: Value) => {
-    // @ts-expect-error idk
+    // @ts-expect-error Value can technically be an array but it will only ever be a date here
     value && setDate(new Date(value))
   }
 
