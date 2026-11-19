@@ -6,6 +6,7 @@ import { FormattedMessage, useIntl } from 'react-intl'
 import { matchPath } from 'react-router'
 import { Route } from '@opentripplanner/types'
 import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz'
+import { Value } from 'react-calendar/dist/shared/types'
 import React, {
   useCallback,
   useContext,
@@ -16,7 +17,6 @@ import React, {
 import styled from 'styled-components'
 import TimeTable from '@opentripplanner/timetable'
 
-import { Value } from 'react-calendar/dist/shared/types'
 import * as apiActions from '../../actions/api'
 import { AppReduxState } from '../../util/state-types'
 import { blue } from '../util/colors'
@@ -308,14 +308,19 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
               routes={routes}
             />
             <StyledCalendar
-              formatMonthYear={(locale, date) =>
-                new Intl.DateTimeFormat(locale, {
-                  month: 'short'
-                }).format(date)}
-              formatShortWeekday={(locale, date) =>
-                new Intl.DateTimeFormat(locale, { weekday: 'narrow' }).format(
-                  date
-                )
+              formatMonthYear={
+                (locale, date) =>
+                  new Intl.DateTimeFormat(locale, {
+                    month: 'short'
+                  }).format(date)
+                // eslint-disable-next-line react/jsx-curly-newline
+              }
+              formatShortWeekday={
+                (locale, date) =>
+                  new Intl.DateTimeFormat(locale, { weekday: 'narrow' }).format(
+                    date
+                  )
+                // eslint-disable-next-line react/jsx-curly-newline
               }
               onChange={handleDateChange}
               value={date}
