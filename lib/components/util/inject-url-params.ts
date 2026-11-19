@@ -4,13 +4,13 @@ import coreUtils from '@opentripplanner/core-utils'
 
 import * as apiActions from '../../actions/api'
 import * as uiActions from '../../actions/ui'
-import { isBlank } from '../../util/ui'
 
 interface Props {
   injectUrlParams: (params: any) => void
   params: any
   setUrlSearch: (params: any, replace: boolean) => void
   subtractUrlParams: (params: any) => void
+  syncUrlToParams: (params: any) => void
 }
 
 /**
@@ -24,36 +24,10 @@ class InjectUrlParams extends Component<Props> {
     injectUrlParams(params)
   }
 
-  componentDidUpdate(prevProps: Props) {
-    const { injectUrlParams, params, setUrlSearch } = this.props
+  componentDidUpdate() {
+    const { params, syncUrlToParams } = this.props
 
-    // Append filter params to existing search params.
-    const urlParams = coreUtils.query.getUrlParams()
-
-    // If the URL params are already present (e.g. user is reloading the page), do nothing.
-    // If the props params have changed, update the URL.
-    // If the value of a props parameter is null/undefined/blank, remove that from URL parameters.
-    let altered = false
-    Object.keys(params).forEach((key) => {
-      const newValue = params[key]
-      const newParam = isBlank(newValue) ? undefined : newValue
-      const urlParamMissing =
-        !(key in urlParams) && newParam !== undefined && newParam !== null
-      const urlParamNeedsUpdating =
-        key in urlParams &&
-        key in prevProps.params &&
-        prevProps.params[key] !== params[key]
-
-      if (urlParamMissing || urlParamNeedsUpdating) {
-        urlParams[key] = newParam
-        altered = true
-      }
-    })
-
-    if (altered) {
-      injectUrlParams(params)
-      setUrlSearch(urlParams, true)
-    }
+    syncUrlToParams(params)
   }
 
   componentWillUnmount(): void {
@@ -86,7 +60,8 @@ class InjectUrlParams extends Component<Props> {
 const mapDispatchToProps = {
   injectUrlParams: uiActions.injectUrlParams,
   setUrlSearch: apiActions.setUrlSearch,
-  subtractUrlParams: uiActions.subtractUrlParams
+  subtractUrlParams: uiActions.subtractUrlParams,
+  syncUrlToParams: uiActions.syncUrlToParams
 }
 
 export default connect(null, mapDispatchToProps)(InjectUrlParams)
