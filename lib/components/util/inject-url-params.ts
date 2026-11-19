@@ -43,8 +43,10 @@ class InjectUrlParams extends Component<Props> {
     })
 
     if (altered) {
-      subtractUrlParams(params)
       setUrlSearch(urlParams, true)
+      // Remove injected URL params from redux after updating the URL bar,
+      // so that link components correctly update.
+      subtractUrlParams(params)
     }
   }
 
