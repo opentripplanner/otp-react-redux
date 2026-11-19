@@ -6,11 +6,11 @@ import * as apiActions from '../../actions/api'
 import * as uiActions from '../../actions/ui'
 
 interface Props {
-  injectUrlParams: (params: any) => void
-  params: any
-  setUrlSearch: (params: any, replace: boolean) => void
-  subtractUrlParams: (params: any) => void
-  syncUrlToParams: (params: any) => void
+  injectUrlParams: (params: unknown) => void
+  params: Record<string, unknown>
+  setUrlSearch: (params: unknown, replace: boolean) => void
+  subtractUrlParams: (params: unknown) => void
+  syncUrlToParams: (params: unknown) => void
 }
 
 /**
@@ -26,7 +26,6 @@ class InjectUrlParams extends Component<Props> {
 
   componentDidUpdate() {
     const { params, syncUrlToParams } = this.props
-
     syncUrlToParams(params)
   }
 
