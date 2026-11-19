@@ -60,6 +60,15 @@ const StyledCalendar = styled(Calendar)`
     background-color: ${blue[900]};
     color: white;
   }
+
+  .react-calendar__tile--now:enabled:hover {
+    background-color: ${blue[100]};
+  }
+
+  .react-calendar__tile--active:hover,
+  .react-calendar__tile--active:focus {
+    background-color: ${blue[700]} !important;
+  }
 `
 
 const TodayButton = styled.button`
@@ -95,6 +104,7 @@ const TimetableControlPanel = styled.div`
   min-width: 225px;
   display: flex;
   flex-direction: column;
+  flex: none;
   gap: 1em;
 `
 
