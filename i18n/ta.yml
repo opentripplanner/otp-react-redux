@@ -67,6 +67,8 @@ common:
       வண்டி ஓட்டுவதை விட
     timeStartEnd: "{start} - {end}"
     noDefaultFareTypeConfigured: பல கட்டணங்கள் பொருந்தும்
+    containsCanceledTrip: ''
+    reservationRequired: ''
   linkOpensNewWindow: (புதிய சாளரத்தைத் திறக்கிறது)
   modes:
     bicycle_rent: பிக்ச்ரே
@@ -111,6 +113,7 @@ common:
     tripDurationFormat: >-
       {மணிநேரம், பன்மை, = 0 {} பிற {# hr}} {minutes} மணித்துளி {விநாடிகள்,
       பன்மை, = 0 {} பிற {# நொடி}}
+  closedStop: ''
 components:
   AfterSignInScreen:
     mainTitle: திருப்பிவிடுதல் ...
@@ -224,6 +227,7 @@ components:
     sortResults: முடிவுகளை வரிசைப்படுத்துங்கள்
     viewAll: அனைத்து விருப்பங்களையும் காண்க
     selectFare: போக்குவரத்து கட்டணம்
+    selectEmissions: ''
   NavLoginButton:
     help: உதவி
     myAccount: எனது கணக்கு
@@ -297,6 +301,9 @@ components:
       body: இந்த பயணத்திட்டங்களில் ஒன்று அல்லது அதற்கு மேற்பட்டவை கடந்த 
         காலத்தில் முடிவடைகின்றன.
       header: பயணம் ஏற்கனவே நடந்துள்ளது
+    NO_DIRECT_MODE_CONNECTION:
+      header: ''
+      body: ''
   PlaceShortcut:
     enterAlert: >
       படிவத்தில் தோற்றம்/இலக்கை உள்ளிடவும் (அல்லது வரைபடக் சொடுக்கு வழியாக
@@ -329,6 +336,7 @@ components:
     operatedBy: "{agencyName}ஆல் இயக்கப்படுகிறது"
     selectADirection: ஒரு திசையைத் தேர்ந்தெடுக்கவும் ...
     stopsTo: நோக்கி
+    headsignFrom: ''
   RouteViewer:
     agencyFilter: ஏசென்சி வடிகட்டி
     allAgencies: அனைத்து ஏசென்சிகளும்
@@ -435,6 +443,7 @@ components:
 
        *** தொழில்நுட்ப விவரங்கள் ***
     reportIssue: சிக்கல் அறிக்கை
+    copyItineraryText: ''
   TripViewer:
     accessible: அணுகக்கூடியது
     bicyclesAllowed: அனுமதிக்கப்படுகிறது

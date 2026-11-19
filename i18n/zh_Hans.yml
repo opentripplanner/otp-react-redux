@@ -63,6 +63,9 @@ common:
     relativeCo2: |
       {co2} {isMore, select, true {更多} other {更少} } CO₂ 比单独驾车
     timeStartEnd: "{start} – {end}"
+    noDefaultFareTypeConfigured: ''
+    containsCanceledTrip: ''
+    reservationRequired: ''
   linkOpensNewWindow: （打开新窗口）
   modes:
     bicycle_rent: 共享单车
@@ -106,6 +109,8 @@ common:
     tripDurationFormat: >-
       {hours, plural, =0 {} other {#小时}}{minutes} 分钟 { seconds, plural, =0 {}
       other {#秒}}
+  currentlySelected: ''
+  closedStop: ''
 components:
   AfterSignInScreen:
     mainTitle: 重新定向…
@@ -206,6 +211,8 @@ components:
     selectWalkTime: 步行时间
     sortResults: 排序结果
     viewAll: 查看所有选项
+    selectEmissions: ''
+    selectFare: ''
   NavLoginButton:
     help: 帮助
     myAccount: 我的账户
@@ -225,6 +232,8 @@ components:
     searchNearby: 搜索附近…
     spacesAvailable: "{spacesAvailable} 可用空位"
     nothingNearbyHeader: 超出范围
+    errorHeader: ''
+    filterNearby: ''
   NotFound:
     description: 您要求的内容不存在.
     header: 未找到内容
@@ -265,6 +274,9 @@ components:
     OTP_RR_TRIP_IN_PAST:
       header: 行程已发生
       body: 部分路线已过期.
+    NO_DIRECT_MODE_CONNECTION:
+      header: ''
+      body: ''
   PlaceShortcut:
     enterAlert: |
       在表格中输入出发地/目的地(或通过地图点击设置)并点击产生的标记设置为 {placeType} 地点.
@@ -293,6 +305,7 @@ components:
     operatedBy: 由 {agencyName} 运营
     selectADirection: 选择一个方向…
     stopsTo: 邁向
+    headsignFrom: ''
   RouteViewer:
     agencyFilter: 运输机构筛选
     allAgencies: 所有运输机构
@@ -306,6 +319,8 @@ components:
     shortTitle: 查看路线
     stopsInDirectionOfTravel: 行程此方向上的公车站：
     title: 路线查看器
+    routesFilteredBy: ''
+    noRouteFilter: ''
   SaveTripButton:
     cantSaveText: 无法保存
     cantSaveTooltip: 只有包括交通的行程而没有租车或叫车的行程可以被监控.
@@ -385,6 +400,7 @@ components:
        
        ***技术细节***
     reportIssue: 报告问题
+    copyItineraryText: ''
   TripViewer:
     accessible: 可通行
     bicyclesAllowed: 允许的

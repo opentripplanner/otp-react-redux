@@ -63,6 +63,9 @@ common:
     relativeCo2: |
       {co2} CO₂ 를 자동차보다 {isMore, select, true {더} other {덜} } 사용합니다
     timeStartEnd: "{start}~{end}"
+    noDefaultFareTypeConfigured: ''
+    containsCanceledTrip: ''
+    reservationRequired: ''
   linkOpensNewWindow: (새 창 열림)
   modes:
     bicycle_rent: 공유자전거
@@ -106,6 +109,8 @@ common:
     tripDurationFormat: >-
       {hours, plural, =0 {} other {# 시간 }}{minutes} 분 { seconds, plural, =0 {}
       other {# 초}}
+  currentlySelected: ''
+  closedStop: ''
 components:
   AfterSignInScreen:
     mainTitle: 경로 재설정 중...
@@ -208,6 +213,8 @@ components:
     selectWalkTime: 도보 시간
     sortResults: 결과 정렬
     viewAll: 모든 옵션 보기
+    selectEmissions: ''
+    selectFare: ''
   NavLoginButton:
     help: 지원
     myAccount: 내 계정
@@ -227,6 +234,8 @@ components:
     searchNearby: 주변 검색...
     spacesAvailable: "{spacesAvailable} 빈 자리 있음"
     nothingNearbyHeader: 범위 초과
+    errorHeader: ''
+    filterNearby: ''
   NotFound:
     description: 요청한 콘텐츠를 사용할 수 없습니다.
     header: 콘텐츠를 찾을 수 없음
@@ -267,6 +276,9 @@ components:
     OTP_RR_TRIP_IN_PAST:
       header: 여행이 이미 진행되었습니다
       body: 여행 일정 중 하나 이상이 과거에 완료되었습니다.
+    NO_DIRECT_MODE_CONNECTION:
+      header: ''
+      body: ''
   PlaceShortcut:
     enterAlert: |
       양식에 출발지/목적지를 입력하고(또는 지도를 클릭하여 설정), 생성된 마커를 클릭하여 {placeType} 위치로 설정하세요.
@@ -296,6 +308,7 @@ components:
     operatedBy: "{agencyName}에서 운영하는 서비스"
     selectADirection: 방향 선택…
     stopsTo: 방면
+    headsignFrom: ''
   RouteViewer:
     agencyFilter: 에이전시 필터
     allAgencies: 모든 에이전시
@@ -309,6 +322,8 @@ components:
     shortTitle: 경로 보기
     stopsInDirectionOfTravel: "이동편 이 방향의 정류장:"
     title: 경로 뷰어
+    routesFilteredBy: ''
+    noRouteFilter: ''
   SaveTripButton:
     cantSaveText: 저장할 수 없음
     cantSaveTooltip: 대중교통을 포함하고 렌트 또는 차량 호출을 포함하지 않는 트립 일정만 모니터링할 수 있습니다.
@@ -391,6 +406,7 @@ components:
        
        *** 기술적 문제의 세부 내용 ***
     reportIssue: 문제 보고
+    copyItineraryText: ''
   TripViewer:
     accessible: 접근성이 있음
     bicyclesAllowed: 허용됨

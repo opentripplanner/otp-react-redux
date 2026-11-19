@@ -66,6 +66,9 @@ common:
       {co2} {isMore, select, true {больше } other {меньше} } CO₂, чем при
       вождении в одиночку
     timeStartEnd: "{start} – {end}"
+    noDefaultFareTypeConfigured: ''
+    containsCanceledTrip: ''
+    reservationRequired: ''
   linkOpensNewWindow: (Открывает новое окно)
   modes:
     bicycle_rent: Прокат велосипедов
@@ -109,6 +112,8 @@ common:
     tripDurationFormat: >-
       {hours, plural, =0 {} other {# hr }}{minutes} min { seconds, plural, =0 {}
       other {# sec}}
+  currentlySelected: ''
+  closedStop: ''
 components:
   AfterSignInScreen:
     mainTitle: Перенаправление…
@@ -222,6 +227,8 @@ components:
     selectWalkTime: Время прогулки
     sortResults: Результаты сортировки
     viewAll: Просмотреть все варианты
+    selectEmissions: ''
+    selectFare: ''
   NavLoginButton:
     help: Помощь
     myAccount: Моя учетная запись
@@ -243,6 +250,8 @@ components:
     searchNearby: Искать поблизости...
     spacesAvailable: "{spacesAvailable} есть свободные места"
     nothingNearbyHeader: Вне диапазона
+    errorHeader: ''
+    filterNearby: ''
   NotFound:
     description: Запрашиваемое содержимое недоступно.
     header: Содержимое не обнаружено
@@ -294,6 +303,9 @@ components:
     OTP_RR_TRIP_IN_PAST:
       header: Поездка уже произошла
       body: Одна или больше из выбранных поездок заканчивается в прошлом.
+    NO_DIRECT_MODE_CONNECTION:
+      header: ''
+      body: ''
   PlaceShortcut:
     enterAlert: >
       Укажите место назначения и отправления в форме (или выберите их на карте).
@@ -326,6 +338,7 @@ components:
     operatedBy: "Оператор: {agencyName}"
     selectADirection: Выберите направление…
     stopsTo: По направлению
+    headsignFrom: ''
   RouteViewer:
     agencyFilter: Фильтр агентств
     allAgencies: Все агентства
@@ -340,6 +353,8 @@ components:
     shortTitle: Просмотр маршрутов
     stopsInDirectionOfTravel: "Остановки в этом направлении движения:"
     title: Средство просмотра маршрутов
+    routesFilteredBy: ''
+    noRouteFilter: ''
   SaveTripButton:
     cantSaveText: Невозможно сохранить
     cantSaveTooltip: >-
@@ -430,6 +445,7 @@ components:
        
        *** ТЕХНИЧЕСКИЕ СВЕДЕНИЯ ***"
     reportIssue: Сообщить о проблеме
+    copyItineraryText: ''
   TripViewer:
     accessible: Доступно
     bicyclesAllowed: Разрешено

@@ -1,0 +1,53 @@
+_id: ''
+components:
+  CompanionsPane:
+    companionExplanation: ''
+    submitNewCompanion: ''
+    deleteCompanion: ''
+    title: ''
+    addNewCompanion: ''
+    currentCompanionsLabel: ''
+    noCompanions: ''
+    confirmDeleteCompanion: ''
+    companionAlreadyAdded: ''
+  TripCompanionsPane:
+    companionLabel: ''
+    observersLabel: ''
+    primaryLabel: ''
+  MobilityProfile:
+    LimitationsPane:
+      visionLimitations:
+        legally-blind: ''
+        none: ''
+        low-vision: ''
+      visionPrompt: ''
+      mobilityPrompt: ''
+    DevicesPane:
+      devices:
+        manual walker: ''
+        white cane: ''
+        none: ''
+        stroller: ''
+        crutches: ''
+        service animal: ''
+        cane: ''
+        wheeled walker: ''
+        manual wheelchair: ''
+        electric wheelchair: ''
+        mobility scooter: ''
+      prompt: ''
+    MobilityPane:
+      visionLimitations: ''
+      button: ''
+      planTripDescription: ''
+      header: ''
+      mobilityLimitations: ''
+      mobilityDevices: ''
+    dropdownLabel: ''
+    intro: ''
+    title: ''
+    myself: ''
+_name: ''
+actions:
+  user:
+    getDependentUserInfoFailed: ''

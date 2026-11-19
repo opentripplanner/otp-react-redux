@@ -83,6 +83,7 @@ components:
     verificationInstructions: |
       請查看您手機的簡訊應用程式是否收到含有驗證碼的簡訊，並在下方輸入該驗證碼 (驗證碼將在10分鐘後失效)。
     verify: 驗證
+    verifySms: ''
   PlaceEditor:
     addressPrompt: 地址：
     genericLocationPlaceholder: 搜尋位置
@@ -97,6 +98,9 @@ components:
     tripNotFound: 找不到行程
     tripNotFoundDescription: 很抱歉，找不到請求的行程。
     tripNotifications: 行程通知
+    readOnlyBanner: ''
+    travelCompanions: ''
+    deleteSavedTrip: ''
   SavedTripList:
     fromTo: 從 {from} 到 {to}
     myTrips: 我的行程
@@ -105,6 +109,7 @@ components:
     pause: 暫停
     resume: 繼續
     alertTag: '檢視 {alert} 則警示'
+    unsnooze: ''
   SavedTripScreen:
     itineraryLoaded: 路線已載入
     itineraryLoading: 正在載入路線
@@ -112,6 +117,7 @@ components:
       您已經達到五個儲存行程上限。請將未使用的行程從已儲存行程中移除，然後再試一次。
     tripNameAlreadyUsed: 已經有另一個儲存的行程使用此名稱。請選擇其他名稱。
     tripNameRequired: 請輸入行程名稱。
+    selectAtLeastOneDay: ''
   SequentialPaneDisplay:
     stepNumber: 第{step}步，共{total}步
   StackedPaneDisplay:
@@ -132,6 +138,10 @@ components:
     tripNotAvailableOnDay: 行程無法在{repeatedDay}使用
     unsavedChangesExistingTrip: 您尚未儲存行程。如果離開，變更就會遺失。
     unsavedChangesNewTrip: 您尚未儲存新的行程。如果離開，該行程就會遺失。
+    onlyOnDate: ''
+    indicatesRequiredFields: ''
+    recurringEachWeek: ''
+    checkAgain: ''
   TripNotificationsPane:
     advancedSettings: 進階設定
     altRouteRecommended: 建議使用備選方案路線或轉乘點
@@ -194,17 +204,21 @@ components:
       tripStartsSoonOnTime: 行程即將開始且大約準時。
     past:
       heading: 此為過去行程
+      description: ''
   TripSummaryPane:
     happensOnDays: 發生於：{days}
     notifications: 預定出發前{leadTimeInMinutes}分鐘
     notificationsPaused: 通知已停用
     notificationsSnoozed: 已為今天延遲行程監控.
+    timeAndDuration: ''
+    monitoredTripDays: ''
   UserAccountScreen:
     confirmDelete: 您確定要刪除使用者帳戶嗎？一旦刪除，就無法復原。
     errorUpdatingProfile: 更新設定檔時發生錯誤。
     fieldUpdated: 此設定已更新。
     fields:
       storeTripHistory: 儲存行程歷史紀錄
+      add-companion-form: ''
   VerifyEmailPane:
     emailIsVerified: 我的電子郵件已驗證！
     instructions1: |

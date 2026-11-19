@@ -66,6 +66,9 @@ common:
     relativeCo2: |
       {co2} CO₂ {isMore, select, true {nhiều} other {ít} } hơn so với xe hơi
     timeStartEnd: "{start} – {end}"
+    noDefaultFareTypeConfigured: ''
+    containsCanceledTrip: ''
+    reservationRequired: ''
   linkOpensNewWindow: (Mở khoảng thời gian mới)
   modes:
     bicycle_rent: Chia sẻ xe đạp
@@ -109,6 +112,8 @@ common:
     tripDurationFormat: >-
       {hours, plural, =0 {} other {# giờ }}{minutes} phút { seconds, plural, =0
       {} other {# giây}}
+  currentlySelected: ''
+  closedStop: ''
 components:
   AfterSignInScreen:
     mainTitle: Chuyển hướng...
@@ -219,6 +224,8 @@ components:
     selectWalkTime: Thời gian đi bộ
     sortResults: Kết quả sắp xếp
     viewAll: Xem tất cả các tùy chọn
+    selectEmissions: ''
+    selectFare: ''
   NavLoginButton:
     help: Giúp đỡ
     myAccount: Tài khoản của tôi
@@ -238,6 +245,8 @@ components:
     searchNearby: Tìm kiếm gần đây...
     spacesAvailable: "{spacesAvailable} chỗ trống có sẵn"
     nothingNearbyHeader: Ngoài phạm vi
+    errorHeader: ''
+    filterNearby: ''
   NotFound:
     description: Nội dung bạn yêu cầu không có sẵn.
     header: Không tìm thấy nội dung
@@ -292,6 +301,9 @@ components:
     OTP_RR_TRIP_IN_PAST:
       header: Chuyến đi đã diễn ra
       body: Một hoặc nhiều hành trình trong số này đã kết thúc.
+    NO_DIRECT_MODE_CONNECTION:
+      header: ''
+      body: ''
   PlaceShortcut:
     enterAlert: >
       Nhập điểm xuất phát/điểm đến vào biểu mẫu này (hoặc cài đặt qua việc nhấp
@@ -324,6 +336,7 @@ components:
     operatedBy: Được điều hành bởi {agencyName}
     selectADirection: Chọn một hướng…
     stopsTo: Hướng
+    headsignFrom: ''
   RouteViewer:
     agencyFilter: Sàng lọc đại lý giao thông công cộng
     allAgencies: Tất cả các đại lý phương tiện công cộng
@@ -337,6 +350,8 @@ components:
     shortTitle: Xem các tuyến đường
     stopsInDirectionOfTravel: "Các trạm dừng trong hướng di chuyển này:"
     title: Xem tuyến đường
+    routesFilteredBy: ''
+    noRouteFilter: ''
   SaveTripButton:
     cantSaveText: Không thể tiết kiệm
     cantSaveTooltip: >-
@@ -426,6 +441,7 @@ components:
        
        *** CHI TIẾT KỸ THUẬT***
     reportIssue: Báo cáo sự cố
+    copyItineraryText: ''
   TripViewer:
     accessible: Truy cập được
     bicyclesAllowed: Được phép

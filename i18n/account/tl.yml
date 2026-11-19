@@ -23,6 +23,23 @@ actions:
     userDeniedPermission: Tinanggihan ng user ang pahintulot
   map:
     currentLocation: (Kasalukuyang Lokasyon)
+  user:
+    emailVerificationResent: ''
+    genericError: ''
+    smsVerificationFailed: ''
+    authTokenError: ''
+    mustBeLoggedInToSavePlace: ''
+    itineraryExistenceCheckFailed: ''
+    mustAcceptTermsToSavePlace: ''
+    tripDeleted: ''
+    smsInvalidCode: ''
+    accountDeleted: ''
+    preferencesSaved: ''
+    confirmDeleteMonitoredTrip: ''
+    placeRemembered: ''
+    confirmDeletePlace: ''
+    placeDeleted: ''
+    smsResendThrottled: ''
 common:
   coordinates: "{lat}, {lon}"
   dateExpressions:
@@ -120,6 +137,10 @@ common:
     tripDurationFormat: >-
       {hours, plural, =0 {} other {# hr }}{minutes} min { seconds, plural, =0 {}
       other {# sec}}
+  notifications:
+    email: ''
+    push: ''
+    sms: ''
 components:
   AddPlaceButton:
     addPlace: Magdagdag ng lugar
@@ -492,6 +513,192 @@ components:
     switcher: Switcher
   WelcomeScreen:
     prompt: Saan mo gustong pumunta?
+  TripStatus:
+    planNewTrip: ''
+    deleteTrip: ''
+    alerts: ''
+  SavedTripScreen:
+    itineraryLoaded: ''
+    tripNameRequired: ''
+    itineraryLoading: ''
+    tooManyTrips: ''
+    selectAtLeastOneDay: ''
+    tripNameAlreadyUsed: ''
+  PhoneNumberEditor:
+    verifySms: ''
+    smsConsent: ''
+    invalidCode: ''
+    placeholder: ''
+    verificationCode: ''
+    invalidPhone: ''
+    verify: ''
+    phoneNumberSubmitted: ''
+    prompt: ''
+    requestNewCode: ''
+    sendVerificationText: ''
+    verificationInstructions: ''
+    phoneNumberVerified: ''
+    changeNumber: ''
+  SavedTripEditor:
+    readOnlyBanner: ''
+    travelCompanions: ''
+    deleteSavedTrip: ''
+    tripNotFound: ''
+    tripNotifications: ''
+    saveNewTrip: ''
+    tripNotFoundDescription: ''
+    tripInformation: ''
+    editSavedTrip: ''
+  NotificationPrefsPane:
+    notificationChannelPrompt: ''
+    devicesRegistered: ''
+    noDeviceForPush: ''
+  FavoritePlaceScreen:
+    placeNotFound: ''
+    addNewPlace: ''
+    charactersRemaining: ''
+    deleteThisPlace: ''
+    editPlace: ''
+    charactersOverLimit: ''
+    nameAlreadyUsed: ''
+    nameTooLong: ''
+    invalidName: ''
+    invalidAddress: ''
+    editPlaceGeneric: ''
+    placeNotFoundDescription: ''
+  TripStatusRenderers:
+    inactive:
+      description: ''
+      heading: ''
+    past:
+      heading: ''
+      description: ''
+    base:
+      lastCheckedText: ''
+      unknownState: ''
+      togglePause: ''
+      tripIsNotSnoozed: ''
+      untogglePause: ''
+      tripIsSnoozed: ''
+      lastCheckedDefaultText: ''
+    snoozed:
+      heading: ''
+      description: ''
+    noLongerPossible:
+      description: ''
+      heading: ''
+    nextTripNotPossible:
+      description: ''
+      heading: ''
+    upcoming:
+      tripStartsSoonNoUpdates: ''
+      nextTripBegins: ''
+      tripStartIsEarly: ''
+      tripBegins: ''
+      tripStartIsDelayed: ''
+      tripStartsSoonOnTime: ''
+    notCalculated:
+      description: ''
+      heading: ''
+      awaiting: ''
+    active:
+      noDataHeading: ''
+      description: ''
+      delayedHeading: ''
+      earlyHeading: ''
+      onTimeHeading: ''
+  ExistingAccountDisplay:
+    a11y: ''
+    mainTitle: ''
+    terms: ''
+    places: ''
+    notifications: ''
+  SavedTripList:
+    noSavedTrips: ''
+    alertTag: ''
+    unsnooze: ''
+    pause: ''
+    resume: ''
+    noSavedTripsInstructions: ''
+    fromTo: ''
+    myTrips: ''
+  VerifyEmailPane:
+    emailIsVerified: ''
+    instructions3: ''
+    resendVerification: ''
+    instructions2: ''
+    instructions1: ''
+  TripBasicsPane:
+    tripDaysPrompt: ''
+    onlyOnDate: ''
+    tripNotAvailableOnDay: ''
+    tripIsAvailableOnDaysIndicated: ''
+    unsavedChangesNewTrip: ''
+    tripNamePrompt: ''
+    indicatesRequiredFields: ''
+    checkingItineraryExistence: ''
+    recurringEachWeek: ''
+    checkAgain: ''
+    unsavedChangesExistingTrip: ''
+  NewAccountWizard:
+    finish: ''
+    places: ''
+    createNewAccount: ''
+    verify: ''
+    notifications: ''
+  TripSummaryPane:
+    notifications: ''
+    happensOnDays: ''
+    timeAndDuration: ''
+    notificationsPaused: ''
+    notificationsSnoozed: ''
+    monitoredTripDays: ''
+  TripNotificationsPane:
+    notificationsTurnedOff: ''
+    advancedSettings: ''
+    oneHour: ''
+    notifyViaChannelWhen: ''
+    realtimeAlertFlagged: ''
+    monitorThisTrip: ''
+    timeBefore: ''
+    delaysAboveThreshold: ''
+    altRouteRecommended: ''
+    howToReceiveAlerts: ''
+  TermsOfUsePane:
+    confirmDeletionPrompt: ''
+    mustAgreeToTerms: ''
+    termsOfServiceStatement: ''
+    termsOfStorageStatement: ''
+  UserAccountScreen:
+    fields:
+      add-companion-form: ''
+      storeTripHistory: ''
+    errorUpdatingProfile: ''
+    confirmDelete: ''
+    fieldUpdated: ''
+  PlaceEditor:
+    namePrompt: ''
+    nameExample: ''
+    locationPlaceholder: ''
+    genericLocationPlaceholder: ''
+    locationTypePrompt: ''
+    addressPrompt: ''
+  StackedPaneDisplay:
+    savePreferences: ''
+  BackToTripPlanner:
+    backToTripPlanner: ''
+  FavoritePlaceList:
+    editThisPlace: ''
+    description: ''
+    addAnotherPlace: ''
+  SequentialPaneDisplay:
+    stepNumber: ''
+  AccountSetupFinishPane:
+    message: ''
+  A11yPrefs:
+    accessibilityRoutingByDefault: ''
+  DeleteUser:
+    deleteMyAccount: ''
 config:
   accessModes:
     car_hail: Ride Hail
