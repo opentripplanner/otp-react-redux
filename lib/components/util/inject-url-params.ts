@@ -7,10 +7,10 @@ import * as uiActions from '../../actions/ui'
 import { isBlank } from '../../util/ui'
 
 interface Props {
-  injectUrlParams: (params: string[]) => void
+  injectUrlParams: (params: any) => void
   params: any
   setUrlSearch: (params: any, replace: boolean) => void
-  subtractUrlParams: (params: string[]) => void
+  subtractUrlParams: (params: any) => void
 }
 
 /**
@@ -19,8 +19,9 @@ interface Props {
  */
 class InjectUrlParams extends Component<Props> {
   componentDidMount() {
+    const { injectUrlParams, params } = this.props
     // Should happen only once when the parent is first created/rendered.
-    this.props.injectUrlParams(Object.keys(this.props.params))
+    injectUrlParams(params)
   }
 
   componentDidUpdate(prevProps: Props) {
@@ -68,7 +69,7 @@ class InjectUrlParams extends Component<Props> {
     })
 
     if (altered) {
-      subtractUrlParams(Object.keys(params))
+      subtractUrlParams(params)
       setUrlSearch(urlParams, true)
     }
   }

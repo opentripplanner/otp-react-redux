@@ -27,7 +27,7 @@ const Link: ComponentType = 'a' as unknown as ComponentType
 
 const mapStateToProps = (state: AppReduxState, ownProps: OwnProps) => {
   const { className, to = '', toParams, tracking } = ownProps
-  const paramsToRemove = state.otp.ui.injectedUrlParams
+  const paramsToRemove = Object.keys(state.otp.ui.injectedUrlParams)
   const queryParams = combineQueryParams(toParams, paramsToRemove)
   const href = `#${to}${isBlank(queryParams) ? '' : `?${queryParams}`}`
 
