@@ -86,6 +86,7 @@ exports[`components > viewers > nearby view renders nothing on a blank page 1`] 
                 }
                 setUrlSearch={[Function]}
                 subtractUrlParams={[Function]}
+                syncUrlToParams={[Function]}
               />
             </Connect(InjectUrlParams)>
             <styled.span
@@ -4489,6 +4490,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                 }
                 setUrlSearch={[Function]}
                 subtractUrlParams={[Function]}
+                syncUrlToParams={[Function]}
               />
             </Connect(InjectUrlParams)>
             <styled.span
