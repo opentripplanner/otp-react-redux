@@ -60,7 +60,6 @@ export function combineQueryParams(
     ...getUrlParams(),
     ...addedParams
   }
-  console.log('search', search)
   if (droppedParams) {
     droppedParams.forEach((key) => (search[key] = null))
   }
