@@ -44,6 +44,14 @@ interface TimeTableWrapperProps {
   stopClosuresError?: string
 }
 
+// Layout Constants
+
+const TIMETABLE_HEADER_HEIGHT = 4
+const ROUTE_INFORMATION_HEIGHT = 4
+// 2 percent accounts for the gap between
+const CONTROLS_WIDTH = '20%'
+const TIMETABLE_WIDTH = '78%'
+
 const StyledCalendar = styled(Calendar)`
   border: 0 !important;
 
@@ -86,8 +94,6 @@ const TodayButton = styled.button`
   }
 `
 
-const TIMETABLE_HEADER_HEIGHT = 4
-
 const TimetableWindow = styled.div`
   height: calc(100vh - 20px);
   margin: 0 2rem;
@@ -100,7 +106,7 @@ const TimetableHeader = styled.h1`
 `
 
 const TimetableControlPanel = styled.div`
-  width: 20%;
+  width: ${CONTROLS_WIDTH};
   min-width: 225px;
   display: flex;
   flex-direction: column;
@@ -113,7 +119,7 @@ const TimetableBody = styled.div`
   margin: 0;
   display: flex;
   padding-top: 2em;
-  gap: 1em;
+  justify-content: space-between;
 `
 
 const SwitchDirectionButton = styled.button`
@@ -129,8 +135,6 @@ const SwitchDirectionButton = styled.button`
     transition: 100ms ease-in all;
   }
 `
-
-const ROUTE_INFORMATION_HEIGHT = 4
 
 const RouteInformationContainer = styled.span`
   align-items: center;
@@ -358,7 +362,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
           {(stopClosuresError || !closedStops) && (
             <FormattedMessage id="components.Timetable.errorLoadingStopClosures" />
           )}
-          <div style={{ width: '80%' }}>
+          <div style={{ width: TIMETABLE_WIDTH }}>
             {loading ? <Loading /> : <TimeTableData />}
           </div>
         </TimetableBody>
