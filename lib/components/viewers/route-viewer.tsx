@@ -8,7 +8,7 @@ import React, { Component, FormEvent } from 'react'
 
 import * as apiActions from '../../actions/api'
 import * as uiActions from '../../actions/ui'
-import { AppReduxState } from '../../util/state-types'
+import { AppReduxState, RouteViewerFilter } from '../../util/state-types'
 import {
   getAgenciesFromRoutes,
   getModesForActiveAgencyFilter,
@@ -16,33 +16,28 @@ import {
 } from '../../util/state'
 import { getFormattedMode } from '../../util/i18n'
 import { getRouteOrPatternViewerTitle } from '../../util/viewer'
+import { isBlank } from '../../util/ui'
 import { StyledIconWrapper } from '../util/styledIcon'
 import { TransitOperatorConfig } from '../../util/config-types'
 import { ViewedRouteObject, ViewedRouteState } from '../util/types'
+import InjectUrlParams from '../util/inject-url-params'
 import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import PageTitle from '../util/page-title'
 
 import { RouteRow } from './route-row'
 import VehiclePositionRetriever from './vehicle-position-retriever'
 
-interface FilterProps {
-  agency?: string
-  mode?: string
-  search?: string
-}
-
 interface Props {
   agencies: string[]
-  filter: FilterProps
-  // Not really worried about the args for findRoute(s)IfNeeded.
+  filter: RouteViewerFilter
+  // Not really worried about the args for findRouteIfNeeded.
   findRouteIfNeeded: () => void
-  findRoutesIfNeeded: () => void
   hideHeader?: boolean
   intl: IntlShape
   modes: string[]
   routes: Route[]
   setMainPanelContent: (panelId: number | null) => void
-  setRouteViewerFilter: (filter: FilterProps) => void
+  setRouteViewerFilter: (filter: RouteViewerFilter) => void
   transitOperators: TransitOperatorConfig[]
   viewedRoute?: ViewedRouteState
   viewedRouteObject?: ViewedRouteObject
@@ -50,6 +45,18 @@ interface Props {
 
 interface State {
   initialRender: boolean
+}
+
+/**
+ * Maps filter params into their URL counterparts.
+ * This is used to avoid conflicts with existing URL params.
+ */
+function toUrlParams({ agency, mode, search }: RouteViewerFilter) {
+  return {
+    rvAgency: agency,
+    rvMode: mode,
+    rvSearch: isBlank(search) ? null : search
+  }
 }
 
 class RouteViewer extends Component<Props, State> {
@@ -62,10 +69,6 @@ class RouteViewer extends Component<Props, State> {
    * Route back to main view.
    */
   _backClicked = () => this.props.setMainPanelContent(null)
-
-  componentDidMount() {
-    this.props.findRoutesIfNeeded()
-  }
 
   /** Used to scroll to actively viewed route on load */
   componentDidUpdate() {
@@ -146,6 +149,7 @@ class RouteViewer extends Component<Props, State> {
     return (
       <div className="route-viewer">
         <VehiclePositionRetriever />
+        <InjectUrlParams params={toUrlParams(this.props.filter)} />
         <PageTitle
           title={getRouteOrPatternViewerTitle(
             transitOperators,
@@ -238,24 +242,26 @@ class RouteViewer extends Component<Props, State> {
           )}
         </InvisibleA11yLabel>
         <ul className="route-viewer-body">
-          {sortedRoutes.map((route) => {
-            // Find operator based on agency_id (extracted from OTP route ID).
-            const operator = coreUtils.route.getTransitOperatorFromOtpRoute(
-              route,
-              transitOperators
-            ) as TransitOperatorConfig
-            return (
-              <RouteRow
-                findRouteIfNeeded={findRouteIfNeeded}
-                initialRender={initialRender}
-                intl={intl}
-                isActive={viewedRoute && viewedRoute.routeId === route.id}
-                key={route.id}
-                operator={operator}
-                route={route}
-              />
-            )
-          })}
+          {sortedRoutes
+            .filter((route) => !!route.id)
+            .map((route) => {
+              // Find operator based on agency_id (extracted from OTP route ID).
+              const operator = coreUtils.route.getTransitOperatorFromOtpRoute(
+                route,
+                transitOperators
+              ) as TransitOperatorConfig
+              return (
+                <RouteRow
+                  findRouteIfNeeded={findRouteIfNeeded}
+                  initialRender={initialRender}
+                  intl={intl}
+                  isActive={viewedRoute && viewedRoute.routeId === route.id}
+                  key={route.id}
+                  operator={operator}
+                  route={route}
+                />
+              )
+            })}
           {/* check modes length to differentiate between loading and over-filtered */}
           {modes.length > 0 && sortedRoutes.length === 0 && (
             <span className="noRoutesFoundMessage">
@@ -285,7 +291,6 @@ const mapStateToProps = (state: AppReduxState) => {
 
 const mapDispatchToProps = {
   findRouteIfNeeded: apiActions.findRouteIfNeeded,
-  findRoutesIfNeeded: apiActions.findRoutesIfNeeded,
   setMainPanelContent: uiActions.setMainPanelContent,
   setRouteViewerFilter: uiActions.setRouteViewerFilter
 }
