@@ -366,6 +366,13 @@ modes:
 
 # Itinerary options
 itinerary:
+  # Base summary start/end/duration and TripDetails active time on the portion
+  # from the first transit boarding to the last alighting (including transfers
+  # and waits). Trips without transit keep their full-journey timing.
+  transitOnly: false
+  # Show time spent on board transit vehicles in TripDetails, independently of
+  # transitOnly (excludes transfer activity and waiting).
+  showTransitTime: false
   # Show fares for each transit leg (false if omitted).
   # (Requires using LineItinerary.)
   showRouteFares: false
