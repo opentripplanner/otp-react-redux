@@ -36,8 +36,7 @@ type Props = {
 }
 
 const CanceledTripCell = styled(StopTimeCellBase)`
-  text-decoration: line-through;
-  text-decoration-thickness: 2px;
+  text-decoration: 2px line-through;
 `
 
 const Error = () => (
