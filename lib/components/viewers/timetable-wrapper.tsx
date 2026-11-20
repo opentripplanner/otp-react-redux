@@ -48,9 +48,7 @@ interface TimeTableWrapperProps {
 
 const TIMETABLE_HEADER_HEIGHT = 4
 const ROUTE_INFORMATION_HEIGHT = 4
-// 2 percent accounts for the gap between
-const CONTROLS_WIDTH = '20%'
-const TIMETABLE_WIDTH = '78%'
+const TIMETABLE_WIDTH = '80%'
 
 const StyledCalendar = styled(Calendar)`
   border: 0 !important;
@@ -106,7 +104,7 @@ const TimetableHeader = styled.h1`
 `
 
 const TimetableControlPanel = styled.div`
-  width: ${CONTROLS_WIDTH};
+  width: calc(100% - ${TIMETABLE_WIDTH});
   min-width: 225px;
   display: flex;
   flex-direction: column;
@@ -118,7 +116,8 @@ const TimetableBody = styled.div`
   height: calc(100% - ${TIMETABLE_HEADER_HEIGHT}rem - 20px);
   margin: 0;
   display: flex;
-  padding-top: 2em;
+  padding-top: 1em;
+  gap: 1em;
   justify-content: space-between;
 `
 
@@ -141,6 +140,10 @@ const RouteInformationContainer = styled.span`
   display: flex;
   gap: 7px;
   height: ${ROUTE_INFORMATION_HEIGHT}rem;
+
+  .route-block {
+    max-width: none;
+  }
 `
 
 const TimetableContainer = styled.div`
