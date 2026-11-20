@@ -109,8 +109,8 @@ common:
       nMinutes: "{நிமிடங்கள், பன்மை, = 1 {one minute} பிற {# நிமிடங்கள்}}"
     durationAgo: "{duration} முன்பு"
     tripDurationFormat: >-
-      {மணிநேரம், பன்மை, = 0 {} பிற {# hr}} {minutes} மணித்துளி {விநாடிகள்,
-      பன்மை, = 0 {} பிற {# நொடி}}
+      {மணிநேரம், பன்மை, = 0 {} பிற {# hr}} {minutes} மணித்துளி{விநாடிகள்,
+      பன்மை, = 0 {} பிற { # நொடி}}
 components:
   AfterSignInScreen:
     mainTitle: திருப்பிவிடுதல் ...
@@ -317,9 +317,11 @@ components:
       {normalDuration} எடுக்கும்: {routes}.
     serviceUpdate: பணி புதுப்பிப்பு
   RealtimeStatusLabel:
+    added: சேர்க்கப்பட்டது
+    canceled: ரத்து செய்யப்பட்டது
     early: "{minutes} ஆரம்பத்தில்"
     late: "{minutes} தாமதமாக"
-    onTime: சரியான நேரத்தில்
+    on_time: சரியான நேரத்தில்
     scheduled: திட்டமிடப்பட்டுள்ளது
   ResultsError:
     backToSearch: தேட திரும்பவும்

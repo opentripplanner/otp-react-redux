@@ -104,8 +104,8 @@ common:
       nMinutes: "{minutes} 분"
     durationAgo: "{duration} 전"
     tripDurationFormat: >-
-      {hours, plural, =0 {} other {# 시간 }}{minutes} 분 { seconds, plural, =0 {}
-      other {# 초}}
+      {hours, plural, =0 {} other {# 시간 }}{minutes} 분{ seconds, plural, =0 {}
+      other { # 초}}
 components:
   AfterSignInScreen:
     mainTitle: 경로 재설정 중...
@@ -284,9 +284,11 @@ components:
       {normalDuration} 이 소요됩니다: {routes}
     serviceUpdate: 서비스 업데이트
   RealtimeStatusLabel:
+    added: 추가됨
+    canceled: 취소
     early: "{minutes} 일찍"
     late: "{minutes} 늦게"
-    onTime: 제 시간
+    on_time: 제 시간
     scheduled: 예정
   ResultsError:
     backToSearch: 검색으로 돌아가기

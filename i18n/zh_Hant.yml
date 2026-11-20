@@ -103,8 +103,8 @@ common:
       nMinutes: "{minutes}分鐘"
     durationAgo: "{duration}前"
     tripDurationFormat: >-
-      {hours, plural, =0 {} other {# 小時 }}{minutes} 分鐘 { seconds, plural, =0 {}
-      other {# 秒鐘}}
+      {hours, plural, =0 {} other {# 小時 }}{minutes} 分鐘{ seconds, plural, =0 {}
+      other { # 秒鐘}}
 components:
   AfterSignInScreen:
     mainTitle: 正在重新導向……
@@ -267,9 +267,11 @@ components:
       您的行程結果已依據即時資訊調整。在一般情況下，此形成使用以下路線會需要{normalDuration}：{routes}。
     serviceUpdate: 服務更新
   RealtimeStatusLabel:
+    added: 額外
+    canceled: 取消
     early: 提早{minutes}
     late: 延後{minutes}
-    onTime: 準時
+    on_time: 準時
     scheduled: 預定
   ResultsError:
     backToSearch: 返回搜尋
