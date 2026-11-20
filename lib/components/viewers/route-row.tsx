@@ -63,17 +63,17 @@ export const OperatorImg = styled.img`
   height: 25px;
 `
 
-export const ModeIconElement = styled.span`
+export const ModeIconElement = styled.span<{ iconSize: number }>`
   display: inherit; // Allows for equal sizing and vertical centering of mode icons
-  height: 28px;
-  width: 28px;
+  height: ${(props) => props.iconSize};
+  width: ${(props) => props.iconSize};
 `
 
-const RouteDetailsContainer = styled.div`
+const RouteDetailsContainer = styled.div<{ compressed?: boolean }>`
   align-items: center;
   display: flex;
-  gap: 12px;
-  margin-left: 5px;
+  gap: ${(props) => (props.compressed ? '7px' : '12px')};
+  margin-left: ${(props) => (props.compressed ? 0 : '5px')};
   max-height: 180px;
   min-height: 36px;
   overflow: hidden;
@@ -126,7 +126,8 @@ export const RouteRowDetails = ({
   ModeIcon,
   operator,
   route,
-  RouteRenderer
+  RouteRenderer,
+  small
 }: {
   ModeIcon: any
   RouteRenderer: any
@@ -134,17 +135,20 @@ export const RouteRowDetails = ({
   isActive?: boolean
   operator?: TransitOperatorConfig
   route: ViewedRouteObject
+  small?: boolean
 }): JSX.Element => {
   const modeFromRoute = getModeFromRoute(route)
   const { id, longName, shortName } = route
+  const iconSize = small ? 20 : 28
+
   return (
-    <RouteDetailsContainer>
+    <RouteDetailsContainer compressed={small}>
       {operator && <OperatorLogo operator={operator} />}
       {modeFromRoute && operator?.routeIcons !== false && (
-        <ModeIconElement>
+        <ModeIconElement iconSize={iconSize}>
           <ModeIcon
             aria-label={getFormattedMode(modeFromRoute.toLowerCase(), intl)}
-            height={28}
+            height={iconSize}
             leg={{
               routeId: id,
               routeLongName: longName,
@@ -152,7 +156,7 @@ export const RouteRowDetails = ({
             }}
             mode={modeFromRoute}
             role="img"
-            width={28}
+            width={iconSize}
           />
         </ModeIconElement>
       )}

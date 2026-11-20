@@ -12421,6 +12421,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="333333"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -12431,7 +12432,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="45"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg bFzDym"
+                                                    className="sc-bZSRNg bFzDym route-block"
                                                     color="333333"
                                                     style={
                                                       {
@@ -13258,6 +13259,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="333333"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -13268,7 +13270,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="62"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg bFzDym"
+                                                    className="sc-bZSRNg bFzDym route-block"
                                                     color="333333"
                                                     style={
                                                       {
@@ -14025,6 +14027,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="333333"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -14035,7 +14038,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="79"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg bFzDym"
+                                                    className="sc-bZSRNg bFzDym route-block"
                                                     color="333333"
                                                     style={
                                                       {
@@ -18870,6 +18873,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="28813F"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -18880,7 +18884,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="1 Line"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg izzWS"
+                                                    className="sc-bZSRNg izzWS route-block"
                                                     color="28813F"
                                                     style={
                                                       {
@@ -19580,6 +19584,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="28813F"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -19590,7 +19595,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="1 Line"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg izzWS"
+                                                    className="sc-bZSRNg izzWS route-block"
                                                     color="28813F"
                                                     style={
                                                       {
@@ -20093,6 +20098,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="28813F"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -20103,7 +20109,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="1 Line"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg izzWS"
+                                                    className="sc-bZSRNg izzWS route-block"
                                                     color="28813F"
                                                     style={
                                                       {
@@ -29099,6 +29105,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="333333"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -29109,7 +29116,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="45"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg bFzDym"
+                                                    className="sc-bZSRNg bFzDym route-block"
                                                     color="333333"
                                                     style={
                                                       {
@@ -29949,6 +29956,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="333333"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -29959,7 +29967,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="62"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg bFzDym"
+                                                    className="sc-bZSRNg bFzDym route-block"
                                                     color="333333"
                                                     style={
                                                       {
@@ -30721,6 +30729,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="333333"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -30731,7 +30740,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="79"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg bFzDym"
+                                                    className="sc-bZSRNg bFzDym route-block"
                                                     color="333333"
                                                     style={
                                                       {
@@ -31431,6 +31440,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="333333"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -31441,7 +31451,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="988"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg bFzDym"
+                                                    className="sc-bZSRNg bFzDym route-block"
                                                     color="333333"
                                                     style={
                                                       {
@@ -38146,6 +38156,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="333333"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -38156,7 +38167,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="67"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg bFzDym"
+                                                    className="sc-bZSRNg bFzDym route-block"
                                                     color="333333"
                                                     style={
                                                       {
@@ -38978,6 +38989,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="333333"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -38988,7 +39000,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="73"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg bFzDym"
+                                                    className="sc-bZSRNg bFzDym route-block"
                                                     color="333333"
                                                     style={
                                                       {
@@ -39688,6 +39700,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="333333"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -39698,7 +39711,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="984"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg bFzDym"
+                                                    className="sc-bZSRNg bFzDym route-block"
                                                     color="333333"
                                                     style={
                                                       {
@@ -46554,6 +46567,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="28813F"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -46564,7 +46578,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="1 Line"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg izzWS"
+                                                    className="sc-bZSRNg izzWS route-block"
                                                     color="28813F"
                                                     style={
                                                       {
@@ -54208,6 +54222,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="2B376E"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -54218,7 +54233,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="522"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg fLjXnO"
+                                                    className="sc-bZSRNg fLjXnO route-block"
                                                     color="2B376E"
                                                     style={
                                                       {
@@ -54970,6 +54985,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="333333"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -54980,7 +54996,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="67"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg bFzDym"
+                                                    className="sc-bZSRNg bFzDym route-block"
                                                     color="333333"
                                                     style={
                                                       {
@@ -55737,6 +55753,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="2B376E"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -55747,7 +55764,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="522"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg fLjXnO"
+                                                    className="sc-bZSRNg fLjXnO route-block"
                                                     color="2B376E"
                                                     style={
                                                       {
@@ -56564,6 +56581,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="333333"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -56574,7 +56592,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="73"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg bFzDym"
+                                                    className="sc-bZSRNg bFzDym route-block"
                                                     color="333333"
                                                     style={
                                                       {
@@ -57326,6 +57344,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="333333"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -57336,7 +57355,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="322"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg bFzDym"
+                                                    className="sc-bZSRNg bFzDym route-block"
                                                     color="333333"
                                                     style={
                                                       {
@@ -58062,6 +58081,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="333333"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -58072,7 +58092,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="322"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg bFzDym"
+                                                    className="sc-bZSRNg bFzDym route-block"
                                                     color="333333"
                                                     style={
                                                       {
@@ -65430,6 +65450,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="333333"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -65440,7 +65461,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="45"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg bFzDym"
+                                                    className="sc-bZSRNg bFzDym route-block"
                                                     color="333333"
                                                     style={
                                                       {
@@ -66267,6 +66288,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="333333"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -66277,7 +66299,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="62"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg bFzDym"
+                                                    className="sc-bZSRNg bFzDym route-block"
                                                     color="333333"
                                                     style={
                                                       {
@@ -67034,6 +67056,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                 }
                                               >
                                                 <styled.span
+                                                  className="route-block"
                                                   color="333333"
                                                   isOnColoredBackground={true}
                                                   style={
@@ -67044,7 +67067,7 @@ exports[`components > viewers > nearby view renders proper scooter dates 1`] = `
                                                   title="79"
                                                 >
                                                   <span
-                                                    className="sc-bZSRNg bFzDym"
+                                                    className="sc-bZSRNg bFzDym route-block"
                                                     color="333333"
                                                     style={
                                                       {
