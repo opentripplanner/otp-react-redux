@@ -244,7 +244,7 @@ async function executeTest(page, isMobile, isCallTaker) {
   await percySnapshotWithWait(page, 'Trip Viewer')
 
   // Open nearby viewer from trip viewer
-  await page.click('.percy-stop:first-of-type button:first-of-type')
+  await page.click('.percy-stop:nth-of-type(2) button:first-of-type')
   await page.waitForSelector('.nearby-view')
 
   await percySnapshotWithWait(page, 'Nearby View')
