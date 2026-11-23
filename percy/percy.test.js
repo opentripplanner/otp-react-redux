@@ -92,8 +92,6 @@ async function executeTest(page, isMobile, isCallTaker) {
   await page.waitForSelector('.maplibregl-ctrl-zoom-in')
 
   // Load itinerary from URL
-  // Triggers mock.har graphql query #1 and #2 (bike-only query, twice).
-  // FIXME: Opening a url with non-default mode params triggers the plan query twice.
   await page.goto(
     `http://localhost:${MOCK_SERVER_PORT}/#/?ui_activeSearch=fg33svlbf&ui_activeItinerary=-1&fromPlace=South%20Prado%20Northeast%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.78946214120528%2C-84.37663414886111&toPlace=1%20Copenhill%20Avenue%20NE%2C%20Atlanta%2C%20GA%2C%20USA%3A%3A33.767060728439574%2C-84.35749390533111&date=2026-10-09&time=17%3A56&arriveBy=false&modeButtons=bicycle`
   )
@@ -126,10 +124,10 @@ async function executeTest(page, isMobile, isCallTaker) {
     await page.click('#open-advanced-settings-button')
     await page.waitForTimeout(500)
 
-    // Check submode selector (this will have no effect on mock query)
+    // Check submode selector (should not trigger OTP query)
     await page.click('#id-query-param-tram')
 
-    // Enable accessible routing (this will have no effect on mock query)
+    // Enable accessible routing (should not trigger OTP query)
     await page.click('#id-query-param-wheelchair')
 
     // Close advanced settings
@@ -182,7 +180,6 @@ async function executeTest(page, isMobile, isCallTaker) {
 
     // On desktop, the last action will trigger a replan.
     // On mobile, we need to click explicitly.
-    // Triggers mock.har graphql query #3 and #4 (transit and walk-alone queries).
     if (isMobile) {
       await page.click('#plan-trip')
     }
@@ -234,7 +231,6 @@ async function executeTest(page, isMobile, isCallTaker) {
   await percySnapshotWithWait(page, 'Metro Itinerary Selected')
 
   // Open Trip Viewer
-  // Triggers mock.har graphql query #5 (trip).
   await page.waitForTimeout(2000)
   const [tripViewerButton] = await page.$x(
     "//button[contains(., 'Trip Viewer')]"
@@ -255,7 +251,6 @@ async function executeTest(page, isMobile, isCallTaker) {
   await percySnapshotWithWait(page, 'Trip Viewer')
 
   // Open nearby viewer from trip viewer
-  // Triggers mock.har graphql query #6, #7, and #8 (stop details, nearest places, nearest stops).
   await page.click('.percy-stop:first-of-type button:first-of-type')
   await page.waitForSelector('.nearby-view')
 
@@ -274,7 +269,6 @@ async function executeTest(page, isMobile, isCallTaker) {
   await percySnapshotWithWait(page, 'Schedule Viewer')
 
   // Open route viewer
-  // Triggers mock.har graphql query #9.
   // FIXME: This action also results in a probably unneeded query to index/stops returning a large dataset.
   if (isMobile) {
     await page.click('.app-menu-icon')
@@ -327,7 +321,6 @@ async function executeTest(page, isMobile, isCallTaker) {
   await percySnapshotWithWait(page, 'Pattern Viewer Showing Route 1')
 
   // Nearby viewer from pattern viewer
-  // Triggers mock.har graphql query #15 (stop info), #16 (nearest amenities), #17 (stops by radius).
   await page.click('ol > li:nth-of-type(1) > button')
   await page.waitForSelector('.nearby-view')
   await page.waitForTimeout(1000)
