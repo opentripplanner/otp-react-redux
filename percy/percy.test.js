@@ -251,10 +251,16 @@ async function executeTest(page, isMobile, isCallTaker) {
   await percySnapshotWithWait(page, 'Trip Viewer')
 
   // Open nearby viewer from trip viewer
+  // Use West Lake Station, the second stop on the trip viewer,
+  // less time sensitive content on the departure board.
   await page.click('.percy-stop:nth-of-type(2) button:first-of-type')
   await page.waitForSelector('.nearby-view')
 
   await percySnapshotWithWait(page, 'Nearby View')
+
+  // Go back to trip viewer, select Holmes station (first stop on trip viewer, no screenshot)
+  await page.goBack({ timeout: 2000 })
+  await page.click('.percy-stop:first-of-type button:first-of-type')
 
   // Open schedule view
   await page.waitForTimeout(2000)
