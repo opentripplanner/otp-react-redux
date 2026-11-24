@@ -30,7 +30,6 @@ import RouteSelect, { RouteSelectOption } from '../../util/RouteSelect'
 
 import { RouteRowDetails } from './route-row'
 
-// @ts-expect-error TS not loving this import
 import 'react-calendar/dist/Calendar.css'
 
 interface TimeTableWrapperProps {
