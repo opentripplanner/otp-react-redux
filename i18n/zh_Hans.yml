@@ -104,8 +104,8 @@ common:
       nMinutes: "{minutes} 分钟"
     durationAgo: "{duration} 前"
     tripDurationFormat: >-
-      {hours, plural, =0 {} other {#小时}}{minutes} 分钟 { seconds, plural, =0 {}
-      other {#秒}}
+      {hours, plural, =0 {} other {#小时}}{minutes} 分钟{ seconds, plural, =0 {}
+      other { #秒}}
 components:
   AfterSignInScreen:
     mainTitle: 重新定向…
@@ -281,9 +281,11 @@ components:
       你的旅行结果已经根据实时信息进行了调整. 在正常情况下使用以下路线, 这个行程需要 {normalDuration}: {routes}.
     serviceUpdate: 服务更新
   RealtimeStatusLabel:
+    added: 额外
+    canceled: 取消
     early: 提前 {minutes}
     late: 迟到 {minutes}
-    onTime: 准时
+    on_time: 准时
     scheduled: 预定的
   ResultsError:
     backToSearch: 返回搜索
