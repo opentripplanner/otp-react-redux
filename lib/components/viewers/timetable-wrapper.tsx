@@ -25,6 +25,7 @@ import { getSortedFilteredRoutes } from '../../util/state'
 import { TIMETABLE_PATH } from '../../util/constants'
 import { TimetableDataParams } from '../util/types'
 import AppModule from '../app/app-module'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import Loading from '../narrative/loading'
 import RouteSelect, { RouteSelectOption } from '../../util/RouteSelect'
 
@@ -323,6 +324,9 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
               handleRouteChange(e.value)}
               routes={routes}
             />
+            <InvisibleA11yLabel>
+              <FormattedMessage id="components.Timetable.timetableDate" />
+            </InvisibleA11yLabel>
             <StyledCalendar
               formatMonthYear={
                 (locale, date) =>
