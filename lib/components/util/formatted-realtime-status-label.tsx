@@ -30,7 +30,7 @@ const FormattedRealtimeStatusLabel = ({
         />
       )
     case 'onTime':
-      return <FormattedMessage id="components.RealtimeStatusLabel.onTime" />
+      return <FormattedMessage id="components.RealtimeStatusLabel.on_time" />
     case 'scheduled':
       return <FormattedMessage id="components.RealtimeStatusLabel.scheduled" />
     default:

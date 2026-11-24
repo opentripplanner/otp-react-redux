@@ -107,8 +107,8 @@ common:
       nMinutes: "{minutes, plural, =1 {одну минуту} other {# мин}}"
     durationAgo: "{duration} назад"
     tripDurationFormat: >-
-      {hours, plural, =0 {} other {# hr }}{minutes} min { seconds, plural, =0 {}
-      other {# sec}}
+      {hours, plural, =0 {} other {# hr }}{minutes} min{ seconds, plural, =0 {}
+      other { # sec}}
 components:
   AfterSignInScreen:
     mainTitle: Перенаправление…
@@ -314,9 +314,11 @@ components:
       придерживаться следующих маршрутов: {routes}.
     serviceUpdate: Обновление сервиса
   RealtimeStatusLabel:
+    added: добавлен
+    canceled: отменено
     early: на {minutes} раньше
     late: на {minutes} позже
-    onTime: вовремя
+    on_time: вовремя
     scheduled: по расписанию
   ResultsError:
     backToSearch: Вернуться к поиску
