@@ -710,6 +710,8 @@ disableSingleItineraryDays: false
 # Mapillary calls these "Client Tokens". They can be created at https://www.mapillary.com/dashboard/developers
 # mapillary:
 #   key: <Mapillary Key>
+#   provider: GOOGLE | MAPILLARY (default) -- defined in core-utils
+#   
 
 ### Setting to enable touch-friendly behavior
 ### e.g. on touch-screen kiosks that run a desktop OS.
