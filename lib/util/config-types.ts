@@ -315,8 +315,12 @@ export interface ItineraryConfig {
   showRouteFares?: boolean
   /** Whether to show the x minutes late/early in the itinerary body */
   showScheduleDeviation?: boolean
+  /** Show onboard transit time in TripDetails independently of transitOnly. Defaults to false. */
+  showTransitTime?: boolean
   sortModes?: ItinerarySortOption[]
   syncSortWithDepartArrive?: boolean
+  /** Exclude access and egress from summary timing and TripDetails activity. Defaults to false. */
+  transitOnly?: boolean
   weights?: ItineraryCostWeights
 }
 

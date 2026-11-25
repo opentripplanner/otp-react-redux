@@ -1,14 +1,12 @@
 import { FormattedList, useIntl } from 'react-intl'
+import coreUtils from '@opentripplanner/core-utils'
 import React, { MouseEvent, useCallback } from 'react'
 
 import { firstTransitLegIsRealtime } from '../../../util/viewer'
-import {
-  getFirstLegStartTime,
-  getLastLegEndTime,
-  ItineraryStartTime,
-  ItineraryWithIndex
-} from '../../../util/itinerary'
+import { ItineraryStartTime, ItineraryWithIndex } from '../../../util/itinerary'
 import InvisibleA11yLabel from '../../util/invisible-a11y-label'
+
+const { getItinerarySummaryTiming } = coreUtils.itinerary
 
 export type SetActiveItineraryHandler = (payload: { index: number }) => void
 
@@ -19,6 +17,7 @@ type DepartureTimesProps = {
   }
   setActiveItinerary: SetActiveItineraryHandler
   showArrivals?: boolean
+  transitOnly?: boolean
 }
 
 interface TimeButtonProps {
@@ -73,13 +72,17 @@ const DepartureTimesList = ({
   expanded,
   itinerary,
   setActiveItinerary,
-  showArrivals
+  showArrivals,
+  transitOnly
 }: DepartureTimesProps): JSX.Element => {
+  const summaryTiming = getItinerarySummaryTiming(itinerary, transitOnly)
   if (!itinerary.allStartTimes) {
     return (
       <TimeButton
         active
-        displayedTime={showArrivals ? itinerary.endTime : itinerary.startTime}
+        displayedTime={
+          showArrivals ? summaryTiming.endTime : summaryTiming.startTime
+        }
         itinerary={itinerary}
         realTime={firstTransitLegIsRealtime(itinerary)}
         setActiveItinerary={expanded ? undefined : setActiveItinerary}
@@ -92,9 +95,11 @@ const DepartureTimesList = ({
       type="disjunction"
       value={itinerary.allStartTimes.map((time, index) => {
         const { itinerary: itinOption, legs, realtime } = time
-        const displayedTime = showArrivals
-          ? getLastLegEndTime(legs)
-          : getFirstLegStartTime(legs)
+        const timing = getItinerarySummaryTiming(
+          { ...itinOption, legs },
+          transitOnly
+        )
+        const displayedTime = showArrivals ? timing.endTime : timing.startTime
         return (
           <TimeButton
             active={itinOption.index === itinerary.index}

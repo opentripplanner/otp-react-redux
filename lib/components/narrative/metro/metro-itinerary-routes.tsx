@@ -69,6 +69,7 @@ type Props = {
   itinerary: Itinerary
   showAllWalkLegs?: boolean
   showLegDurations?: boolean
+  transitOnly?: boolean
 }
 
 const MetroItineraryRoutes = ({
@@ -76,7 +77,8 @@ const MetroItineraryRoutes = ({
   expanded,
   itinerary,
   showAllWalkLegs,
-  showLegDurations
+  showLegDurations,
+  transitOnly
 }: Props): JSX.Element => {
   const intl = useIntl()
   // @ts-expect-error No type on ComponentContext
@@ -85,6 +87,10 @@ const MetroItineraryRoutes = ({
     .filter(showAllWalkLegs ? () => true : removeInsignificantWalkLegs)
     .filter((leg) => !leg.interlineWithPreviousLeg)
   const transitRoutes = getItineraryRoutes(itinerary, intl)
+  const { duration } = coreUtils.itinerary.getItinerarySummaryTiming(
+    itinerary,
+    transitOnly
+  )
 
   return (
     <>
@@ -94,7 +100,7 @@ const MetroItineraryRoutes = ({
             id="components.MetroUI.itineraryDescription"
             values={{
               routes: transitRoutes,
-              time: formatDuration(itinerary.duration, intl, false)
+              time: formatDuration(duration, intl, false)
             }}
           />
         ) : (
@@ -102,7 +108,7 @@ const MetroItineraryRoutes = ({
             id="components.MetroUI.singleModeItineraryDescription"
             values={{
               mode: getFormattedMode(itinerary.legs[0].mode, intl),
-              time: formatDuration(itinerary.duration, intl, false)
+              time: formatDuration(duration, intl, false)
             }}
           />
         )}
@@ -149,7 +155,8 @@ const MetroItineraryRoutes = ({
 
 const mapStateToProps = (state: AppReduxState) => ({
   enableDot: !state.otp.config.itinerary?.disableMetroSeperatorDot,
-  showAllWalkLegs: state.otp.config.itinerary?.showAllWalkLegs
+  showAllWalkLegs: state.otp.config.itinerary?.showAllWalkLegs,
+  transitOnly: state.otp.config.itinerary?.transitOnly
 })
 
 export default connect(mapStateToProps)(MetroItineraryRoutes)
