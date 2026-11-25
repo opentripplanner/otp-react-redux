@@ -1,3 +1,4 @@
+import { Calendar } from 'react-calendar'
 import { connect, useSelector } from 'react-redux'
 import { endOfDay, format } from 'date-fns'
 import { ExternalLinkAlt } from '@styled-icons/fa-solid'
@@ -5,6 +6,7 @@ import { FormattedMessage, useIntl } from 'react-intl'
 import { matchPath } from 'react-router'
 import { Route } from '@opentripplanner/types'
 import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz'
+import { Value } from 'react-calendar/dist/shared/types'
 import React, {
   useCallback,
   useContext,
@@ -23,10 +25,13 @@ import { getSortedFilteredRoutes } from '../../util/state'
 import { TIMETABLE_PATH } from '../../util/constants'
 import { TimetableDataParams } from '../util/types'
 import AppModule from '../app/app-module'
+import InvisibleA11yLabel from '../util/invisible-a11y-label'
 import Loading from '../narrative/loading'
 import RouteSelect, { RouteSelectOption } from '../../util/RouteSelect'
 
 import { RouteRowDetails } from './route-row'
+
+import 'react-calendar/dist/Calendar.css'
 
 interface TimeTableWrapperProps {
   closedStops?: Set<string>
@@ -39,7 +44,53 @@ interface TimeTableWrapperProps {
   stopClosuresError?: string
 }
 
+// Layout Constants
+
 const TIMETABLE_HEADER_HEIGHT = 4
+const ROUTE_INFORMATION_HEIGHT = 4
+const TIMETABLE_WIDTH = '80%'
+
+const StyledCalendar = styled(Calendar)`
+  border: 0 !important;
+
+  button.react-calendar__navigation__arrow {
+    min-width: 30px !important;
+  }
+
+  .react-calendar__tile--now {
+    background-color: ${blue[50]};
+    color: ${blue[800]};
+  }
+
+  .react-calendar__tile--active {
+    background-color: ${blue[900]};
+    color: white;
+  }
+
+  .react-calendar__tile--now:enabled:hover {
+    background-color: ${blue[100]};
+  }
+
+  .react-calendar__tile--active:hover,
+  .react-calendar__tile--active:focus {
+    background-color: ${blue[700]} !important;
+  }
+`
+
+const TodayButton = styled.button`
+  background-color: transparent;
+  border: 0;
+  color: ${blue[900]};
+  font-weight: 700;
+  width: fit-content;
+  margin-bottom: 2em;
+  text-align: left;
+  padding: 0;
+
+  &:hover {
+    color: ${blue[700]};
+  }
+`
 
 const TimetableWindow = styled.div`
   height: calc(100vh - 20px);
@@ -53,10 +104,11 @@ const TimetableHeader = styled.h1`
 `
 
 const TimetableControlPanel = styled.div`
-  width: 20%;
+  width: calc(100% - ${TIMETABLE_WIDTH});
   min-width: 225px;
   display: flex;
   flex-direction: column;
+  flex: none;
   gap: 1em;
 `
 
@@ -64,8 +116,9 @@ const TimetableBody = styled.div`
   height: calc(100% - ${TIMETABLE_HEADER_HEIGHT}rem - 20px);
   margin: 0;
   display: flex;
-  padding-top: 2em;
+  padding-top: 1em;
   gap: 1em;
+  justify-content: space-between;
 `
 
 const SwitchDirectionButton = styled.button`
@@ -82,13 +135,15 @@ const SwitchDirectionButton = styled.button`
   }
 `
 
-const ROUTE_INFORMATION_HEIGHT = 4
-
 const RouteInformationContainer = styled.span`
   align-items: center;
   display: flex;
   gap: 7px;
   height: ${ROUTE_INFORMATION_HEIGHT}rem;
+
+  .route-block {
+    max-width: none;
+  }
 `
 
 const TimetableContainer = styled.div`
@@ -126,9 +181,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
   const [loading, setLoading] = useState(true)
   const [currentRoute, setCurrentRoute] = useState(routeId)
   // Initialize to the current date in the config's timezone
-  const [date, setDate] = useState<string>(
-    format(utcToZonedTime(Date.now(), homeTimezone), 'yyyy-MM-dd')
-  )
+  const [date, setDate] = useState<Date>(new Date())
 
   const intl = useIntl()
 
@@ -149,7 +202,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
     getStopClosures(endOfDay(stopClosuresDate))
 
     getTimetableData({
-      date,
+      date: format(utcToZonedTime(date, homeTimezone), 'yyyy-MM-dd'),
       routeGtfsId: currentRoute
     })
   }, [
@@ -185,8 +238,9 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
     return invalid
   }, [routeInformation])
 
-  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length) setDate(e.target.value)
+  const handleDateChange = (value: Value) => {
+    // @ts-expect-error Value can technically be an array but it will only ever be a date here
+    value && setDate(new Date(value))
   }
 
   const handleRouteChange = (route: string) => {
@@ -270,6 +324,30 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
               handleRouteChange(e.value)}
               routes={routes}
             />
+            <InvisibleA11yLabel>
+              <FormattedMessage id="components.Timetable.timetableDate" />
+            </InvisibleA11yLabel>
+            <StyledCalendar
+              formatMonthYear={
+                (locale, date) =>
+                  new Intl.DateTimeFormat(locale, {
+                    month: 'short'
+                  }).format(date)
+                // eslint-disable-next-line react/jsx-curly-newline
+              }
+              formatShortWeekday={
+                (locale, date) =>
+                  new Intl.DateTimeFormat(locale, { weekday: 'narrow' }).format(
+                    date
+                  )
+                // eslint-disable-next-line react/jsx-curly-newline
+              }
+              onChange={handleDateChange}
+              value={date}
+            />
+            <TodayButton onClick={() => setDate(new Date())}>
+              Jump to today
+            </TodayButton>
             <label htmlFor="timepoints-checkbox">
               <input
                 checked={timepointsOnly}
@@ -280,17 +358,6 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
               />
               <FormattedMessage id="components.Timetable.showTimepointsOnly" />
             </label>
-            <span>
-              <label htmlFor="date-picker" style={{ marginRight: '10px' }}>
-                <FormattedMessage id="components.Timetable.timetableDate" />
-              </label>
-              <input
-                id="date-picker"
-                onChange={handleDateChange}
-                type="date"
-                value={date}
-              />
-            </span>
             <SwitchDirectionButton
               onClick={() => setDirectionId(directionId === 1 ? 0 : 1)}
             >
@@ -301,7 +368,7 @@ const TimeTableWrapper = (props: TimeTableWrapperProps): JSX.Element => {
           {(stopClosuresError || !closedStops) && (
             <FormattedMessage id="components.Timetable.errorLoadingStopClosures" />
           )}
-          <div style={{ width: '80%' }}>
+          <div style={{ width: TIMETABLE_WIDTH }}>
             {loading ? <Loading /> : <TimeTableData />}
           </div>
         </TimetableBody>
