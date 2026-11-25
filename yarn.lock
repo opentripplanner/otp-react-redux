@@ -2881,10 +2881,10 @@
     "@mapbox/polyline" "^1.1.1"
     "@opentripplanner/core-utils" "^16.0.3"
 
-"@opentripplanner/types@8.7.0":
-  version "8.7.0"
-  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-8.7.0.tgz#6abaa7c8a7f3ae0b70913a25d23e5cd716829804"
-  integrity sha512-FWjI5iyO0NJVuV61oLMYIfKRLYf9fQ306Gs7O7YaEBriPEYek/DYiS27nvubZ+S1Xra3dP1CCljNoFd8n2CU2w==
+"@opentripplanner/types@9.0.0-alpha.4":
+  version "9.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/@opentripplanner/types/-/types-9.0.0-alpha.4.tgz#84c25aea528dbcda1ac1383a955201e8203725f3"
+  integrity sha512-KkoQ1LNGDJTmUAOTV6cVgax8CWulPKtnUE0ttx1YARVHpvgJVURwrmWb9X+JtybJEkiI666Pj3far7mqtsXbIg==
   dependencies:
     "@types/geojson" "^7946.0.16"
 
