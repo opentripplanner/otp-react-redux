@@ -1,0 +1,16 @@
+_name: Norsk bokmål
+actions:
+  callTaker:
+    callSaveError: "Kunne ikke lagre anrop: {err}"
+components:
+  AddPlaceButton:
+    addPlace: Legg til sted
+  CallTakerMenu:
+    callHistory: Anropshistorikk
+  CallTakerPanel:
+    advancedOptions: Avanserte innstillinger
+  PlanFirstLastButtons:
+    first: Først
+    last: Sist
+    next: Neste
+    previous: Forrige

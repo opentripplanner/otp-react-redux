@@ -43,6 +43,7 @@ const DefaultRouteRenderer = ({
   const routeTitle = getLegRouteName(leg, intl)
   return (
     <Block
+      className="route-block"
       color={
         (typeof leg.route === 'object' ? leg.route.color : leg.routeColor) ||
         '333333'

@@ -1,0 +1,6 @@
+_id: pl
+_name: Polski
+actions:
+  callTaker:
+    callSaveError: 'Nie można zapisać połączenia: {err}'
+    fetchCallsError: 'Błąd podczas pobierania połączeń: {err}'

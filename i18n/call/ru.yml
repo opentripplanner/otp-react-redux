@@ -1,0 +1,28 @@
+_id: ru
+_name: Pусский
+
+actions:
+  callTaker:
+    callSaveError: "Не удалось сохранить вызов: {err}"
+    fetchCallsError: "Ошибка получения вызовов: {err}"
+components:
+  AddPlaceButton:
+    addPlace: Добавить место
+    needOriginDestination: >-
+      Выберите место отправления и назначения, чтобы добавить промежуточные
+      места
+    tooManyPlaces: Достигнуто ограничение по количеству промежуточных мест
+  AdvancedOptions:
+    bannedRoutes: Выбор заблокированных маршрутов…
+    preferredRoutes: Выбор предпочтительных маршрутов…
+  CallTakerMenu:
+    callHistory: История вызовов
+    mailables: Почтовые отправления
+  CallTakerPanel:
+    advancedOptions: Расширенные опции
+    intermediateDestination: Введите промежуточное место назначения
+  PlanFirstLastButtons:
+    first: Первый
+    last: Последний
+    next: Следующий
+    previous: Предыдущий

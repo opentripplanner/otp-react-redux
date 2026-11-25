@@ -78,6 +78,7 @@ export type NearbyViewConfig = {
   alwaysShowLongName?: boolean
   filters?: Array<NearbyFilterConfig>
   hideEmptyStops?: boolean
+  omitCanceledTrips?: boolean
   radius?: number
   showShadowDotOnMapDrag?: boolean
   useArrivalTime?: boolean
@@ -303,6 +304,7 @@ export interface ItineraryConfig {
   onlyShowCountdownForRealtime?: boolean
   previewOverlay?: boolean
   renderRouteNamesInBlocks?: boolean
+  shiftPlanTime?: number
   showAllWalkLegs?: boolean
   showApproximatePrefixAccessLegs?: boolean
   showFirstResultByDefault?: boolean
