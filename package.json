@@ -135,7 +135,7 @@
     "@graphql-tools/schema": "^10.0.0",
     "@modyfi/vite-plugin-yaml": "^1.1.1",
     "@opentripplanner/scripts": "^1.2.0",
-    "@opentripplanner/types": "8.7.0",
+    "@opentripplanner/types": "9.0.0-alpha.4",
     "@percy/cli": "^1.20.3",
     "@percy/puppeteer": "^2.0.2",
     "@types/clone": "^2.1.1",
