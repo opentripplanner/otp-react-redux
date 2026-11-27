@@ -2,15 +2,21 @@ import { Button } from 'react-bootstrap'
 import { Spinner } from '@styled-icons/fa-solid/Spinner'
 import { Times } from '@styled-icons/fa-solid/Times'
 import { useIntl } from 'react-intl'
+import core from '@opentripplanner/core-utils'
 import React, { useEffect, useState } from 'react'
 
+import { MapillaryConfig } from '../../util/config-types'
 import { StyledIconWrapper } from '../util/styledIcon'
+
+const { mapillary } = core
 
 const MapillaryFrame = ({
   id,
+  mapillaryConfig,
   onClose
 }: {
   id: string
+  mapillaryConfig: MapillaryConfig
   onClose?: () => void
 }): React.ReactElement => {
   const intl = useIntl()
@@ -39,7 +45,9 @@ const MapillaryFrame = ({
       </div>
       <iframe
         frameBorder="0"
-        src={`https://www.mapillary.com/embed?image_key=${id}&style=photo`}
+        src={mapillary.generateUrlForProvider[
+          mapillaryConfig?.provider || 'MAPILLARY'
+        ](id)}
         style={{
           display: fakeLoad ? 'none' : 'block',
           height: '100%',
