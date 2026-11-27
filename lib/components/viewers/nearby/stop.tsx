@@ -203,6 +203,7 @@ const Stop = ({
           return (
             <React.Fragment key={childStop.gtfsId || index}>
               <ChildStopHeader>
+                {/* TODO: This section copies a lot of code from stop-card-header. This can probably be fixed */}
                 <div>
                   <span className="child-stop-name">{childStop.name}</span>
                   {childStop.code ? (
@@ -217,7 +218,10 @@ const Stop = ({
                     </div>
                   ) : null}
                 </div>
-                <ActionLink to={`/schedule/${childStop.gtfsId}`}>
+                <ActionLink
+                  className="stop-header-action"
+                  to={`/schedule/${childStop.gtfsId}`}
+                >
                   <IconWithText Icon={Calendar}>
                     <FormattedMessage id="components.StopViewer.viewSchedule" />
                   </IconWithText>

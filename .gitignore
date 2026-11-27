@@ -19,7 +19,7 @@ dist
 *config.yml
 !example-config.yml
 !test-config.yml
-!har-mock-config.yml
+!percy-mock-config.yml
 
 # Ignore index.html at the root (it gets copied over during build)
 index.html
@@ -34,7 +34,7 @@ stats.html
 graph.obj
 otp-latest-ibi-dev-2.x.jar
 otp-latest-upstream-merge-2026-11-03.jar
-percy/har-mock-config.yml
-percy/har-mock-config.js
-percy/har-mock-config-call-taker.yml
-percy/har-mock-config-call-taker.js
+percy/percy-mock-config.yml
+percy/percy-mock-config.js
+percy/percy-mock-config-call-taker.yml
+percy/percy-mock-config-call-taker.js
