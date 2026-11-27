@@ -15,7 +15,7 @@ import {
 } from '@opentripplanner/types'
 import { ControlPosition } from 'react-map-gl/maplibre'
 import { GeocoderConfig as GeocoderConfigOtpUI } from '@opentripplanner/geocoder'
-import { MapillaryProvider } from '@opentripplanner/core-utils/lib/mapillary'
+import { StreetImageryProvider } from '@opentripplanner/core-utils/lib/streetImagery'
 
 import { NearbyFilterKey } from './state-types'
 
@@ -69,7 +69,7 @@ interface ApiKeyConfig {
 
 export type BugsnagConfig = ApiKeyConfig
 export type MapillaryConfig = ApiKeyConfig & {
-  provider: MapillaryProvider
+  provider: StreetImageryProvider
 }
 export type NearbyFilterConfig = {
   cardType: NearbyFilterKey
