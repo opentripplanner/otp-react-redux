@@ -459,6 +459,8 @@ itinerary:
   #   - 'DEPARTURETIME'
   # In the batch itinerary UI, this setting will always show both departure/arrival times
   alwaysShowBothTimes: false
+  # minutes. If this is set to a non-zero value, the plan time will be shifted by this amount when the user clicks the "Next/Previous" button. This is useful for call takers who want to plan trips in the future.
+  shiftPlanTime: 0
 advancedSettingsPanel:
   # Show button in advanced panel that allows users to save and return
   saveAndReturnButton: true
