@@ -36,8 +36,8 @@ jobs:
         run: >
           curl -O ${{ secrets.PERCY_MOCK_CONFIG_BASE }}/graph.obj &&
           cd percy &&
-          curl -O ${{ secrets.PERCY_MOCK_CONFIG_BASE }}/har-mock-config${{ matrix.suffix }}.yml && 
-          curl -O ${{ secrets.PERCY_MOCK_CONFIG_BASE }}/har-mock-config${{ matrix.suffix }}.js
+          curl -O ${{ secrets.PERCY_MOCK_CONFIG_BASE }}/percy-mock-config${{ matrix.suffix }}.yml && 
+          curl -O ${{ secrets.PERCY_MOCK_CONFIG_BASE }}/percy-mock-config${{ matrix.suffix }}.js
       - name: Download latest OTP
         run: yarn percy-otp-download
       - name: Install npm packages using cache
@@ -45,8 +45,8 @@ jobs:
       - name: Build OTP-RR
         run: yarn build
         env:
-          YAML_CONFIG: ./percy/har-mock-config${{ matrix.suffix }}.yml
-          JS_CONFIG: ./percy/har-mock-config${{ matrix.suffix }}.js
+          YAML_CONFIG: ./percy/percy-mock-config${{ matrix.suffix }}.yml
+          JS_CONFIG: ./percy/percy-mock-config${{ matrix.suffix }}.js
       - name: Take Percy Snapshots
         run: npx percy exec -- npx jest percy/percy.test.js --force-exit
         env:
